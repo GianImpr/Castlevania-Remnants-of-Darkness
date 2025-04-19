@@ -11,8 +11,8 @@ This game is a fan sequel to ***Castlevania: Curse of Darkness***, a 3D Castleva
 This game aims to take the distinctive elements of ***Castlevania: Curse of Darkness*** and reproduce them in a 2D Metroidvania context, while also taking inspiration from other games in the franchise such as ***Symphony of the Night***, ***Lament of Innocence*** and the DS Castlevania titles.
 
 ## What you can find here
-- If you want to play the game, you can get the .exe or .apk in the Releases page.
-- If you instead want to open the project in Godot, you can download the source code and then open project.godot in Godot Engine 4.3.
+- If you want to play the game, you can get the ```.exe``` or ```.apk``` in the [Releases](https://github.com/GianImpr/Castlevania-Remnants-of-Darkness/releases) page.
+- If you instead want to open the project in Godot, you can download the source code and then open ```project.godot``` in Godot Engine 4.3.
 
 > [!WARNING]
 > When opening this project, **please use Godot Engine 4.3**, as the project is not compatible with older versions of the engine, and 4.4 *breaks room transitions*.
