@@ -1,0 +1,374 @@
+[gd_scene load_steps=32 format=3 uid="uid://cgnlu6aihtr6r"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/title_screen.gd" id="1_wa1th"]
+[ext_resource type="PackedScene" uid="uid://c3xqaietfgs7l" path="res://SampleProject/Game.tscn" id="2_jg82w"]
+[ext_resource type="Texture2D" uid="uid://drvtxptjc62a0" path="res://assets/sprites/HUD/Title/Logo.png" id="4_ejp0b"]
+[ext_resource type="Texture2D" uid="uid://bnambwf21bgi8" path="res://assets/sprites/HUD/Title/PressStart.png" id="4_o6pa4"]
+[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="5_kt45t"]
+[ext_resource type="Texture2D" uid="uid://6wd7mmy7y5xn" path="res://assets/sprites/HUD/Title/sky.png" id="5_p8ta0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="8_xsm36"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="9_rpmvm"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="10_n0xa1"]
+[ext_resource type="AudioStream" uid="uid://cw48nwx7ttnp1" path="res://assets/music/MenuTheme.MP3" id="11_g628w"]
+[ext_resource type="AudioStream" uid="uid://crjwwfg00eh3" path="res://assets/sounds/Menu/MenuSelect.MP3" id="12_ix1y5"]
+[ext_resource type="Texture2D" uid="uid://dtyoud2v5t5ao" path="res://assets/sprites/HUD/Buttons/Back.png" id="13_2poar"]
+[ext_resource type="Texture2D" uid="uid://cxhoxuk5ouguu" path="res://assets/sprites/HUD/Buttons/Forward.png" id="14_yy616"]
+
+[sub_resource type="Animation" id="Animation_uxodi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c71ra"]
+resource_name = "animate"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-864, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fardd"]
+_data = {
+"RESET": SubResource("Animation_uxodi"),
+"animate": SubResource("Animation_c71ra")
+}
+
+[sub_resource type="Animation" id="Animation_besla"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vnioj"]
+resource_name = "button"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 1, 1), Color(1, 0, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ydt5q"]
+_data = {
+"RESET": SubResource("Animation_besla"),
+"button": SubResource("Animation_vnioj")
+}
+
+[sub_resource type="Theme" id="Theme_wac11"]
+default_font = ExtResource("5_kt45t")
+default_font_size = 32
+
+[sub_resource type="Animation" id="Animation_8fcej"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
+}
+
+[sub_resource type="Animation" id="Animation_m3iml"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["menu"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tpcl8"]
+resource_name = "disappear"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"startGame"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["select"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MusicPlayer:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, -80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ino1f"]
+_data = {
+"RESET": SubResource("Animation_8fcej"),
+"appear": SubResource("Animation_m3iml"),
+"disappear": SubResource("Animation_tpcl8")
+}
+
+[sub_resource type="Resource" id="Resource_bk1s4"]
+script = ExtResource("10_n0xa1")
+Tag = "menu"
+stream = ExtResource("11_g628w")
+
+[sub_resource type="Resource" id="Resource_8tmy6"]
+script = ExtResource("9_rpmvm")
+sound_effects = Array[ExtResource("10_n0xa1")]([SubResource("Resource_bk1s4")])
+
+[sub_resource type="Resource" id="Resource_8ssia"]
+script = ExtResource("10_n0xa1")
+Tag = "select"
+stream = ExtResource("12_ix1y5")
+
+[sub_resource type="Resource" id="Resource_jfflm"]
+script = ExtResource("9_rpmvm")
+sound_effects = Array[ExtResource("10_n0xa1")]([SubResource("Resource_8ssia")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seutv"]
+size = Vector2(700, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vaeb"]
+size = Vector2(500, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8lvt"]
+size = Vector2(200, 70)
+
+[node name="Control" type="Control" node_paths=PackedStringArray("animation", "save_label", "difficulty_label")]
+process_mode = 3
+clip_children = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wa1th")
+animation = NodePath("AnimationPlayer2")
+game = ExtResource("2_jg82w")
+save_label = NodePath("Label")
+difficulty_label = NodePath("Difficulty")
+
+[node name="Title" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 87.0
+offset_top = 13.0
+offset_right = 1248.0
+offset_bottom = 447.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_ejp0b")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 864.0
+offset_bottom = 480.0
+texture = ExtResource("5_p8ta0")
+expand_mode = 1
+
+[node name="Background2" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_left = 864.0
+offset_right = 1728.0
+offset_bottom = 480.0
+texture = ExtResource("5_p8ta0")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Background")
+libraries = {
+"": SubResource("AnimationLibrary_fardd")
+}
+autoplay = "animate"
+speed_scale = 0.2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 0, 1, 1)
+self_modulate = Color(1, 0, 1, 1)
+layout_mode = 0
+offset_left = 248.0
+offset_top = 361.0
+offset_right = 527.0
+offset_bottom = 371.0
+scale = Vector2(1.5, 2)
+texture = ExtResource("4_o6pa4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+root_node = NodePath("../../AnimationPlayer")
+libraries = {
+"": SubResource("AnimationLibrary_ydt5q")
+}
+autoplay = "button"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 429.0
+offset_right = 294.0
+offset_bottom = 453.0
+theme = SubResource("Theme_wac11")
+text = "PRESS SELECT TO LOAD SAVE DATA"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ino1f")
+}
+autoplay = "appear"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+script = ExtResource("8_xsm36")
+audio_library = SubResource("Resource_8tmy6")
+
+[node name="Sounds" type="AudioStreamPlayer" parent="."]
+volume_db = -12.0
+script = ExtResource("8_xsm36")
+audio_library = SubResource("Resource_jfflm")
+
+[node name="Difficulty" type="Label" parent="."]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 429.0
+offset_right = 861.0
+offset_bottom = 480.0
+theme = SubResource("Theme_wac11")
+text = "DIFFICULTY
+NORMAL"
+horizontal_alignment = 1
+
+[node name="Left" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 694.0
+offset_top = 460.0
+offset_right = 714.0
+offset_bottom = 480.0
+texture = ExtResource("13_2poar")
+
+[node name="Right" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 460.0
+offset_right = 860.0
+offset_bottom = 480.0
+texture = ExtResource("14_yy616")
+
+[node name="Start" type="TouchScreenButton" parent="."]
+position = Vector2(461, 361)
+shape = SubResource("RectangleShape2D_seutv")
+action = "menu"
+
+[node name="LoadSave" type="TouchScreenButton" parent="."]
+position = Vector2(251, 450)
+shape = SubResource("RectangleShape2D_2vaeb")
+action = "map"
+
+[node name="ChangeDifficulty" type="TouchScreenButton" parent="."]
+position = Vector2(764, 444)
+shape = SubResource("RectangleShape2D_b8lvt")
+action = "move_right"

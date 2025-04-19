@@ -1,0 +1,125 @@
+[gd_scene load_steps=25 format=3 uid="uid://c03o20jchp7kb"]
+
+[ext_resource type="Script" path="res://guide_examples/action_priority/action_priority.gd" id="1_segid"]
+[ext_resource type="Resource" uid="uid://ragqbe7yjfwe" path="res://guide_examples/action_priority/mapping_contexts/action_priority.tres" id="2_spx2e"]
+[ext_resource type="Resource" uid="uid://c5eq1avod0lu8" path="res://guide_examples/action_priority/mapping_contexts/actions/spell_toggle.tres" id="3_k38f6"]
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="3_ocaq1"]
+[ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="4_ur8xb"]
+[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="4_v7mqo"]
+[ext_resource type="Resource" uid="uid://esf4ilpf0inv" path="res://guide_examples/action_priority/mapping_contexts/actions/acid_bolt.tres" id="5_oqj0p"]
+[ext_resource type="Resource" uid="uid://bhq3gby2yiibf" path="res://guide_examples/action_priority/mapping_contexts/actions/acid_enchantment.tres" id="6_ue1ny"]
+[ext_resource type="PackedScene" uid="uid://bsv0uwfyqbbbw" path="res://guide_examples/action_priority/dpad_spells/dpad_spells.tscn" id="7_48cit"]
+[ext_resource type="Resource" uid="uid://cdhpb7yuq5pkb" path="res://guide_examples/action_priority/mapping_contexts/actions/mana_bolt.tres" id="7_ruu3d"]
+[ext_resource type="Texture2D" uid="uid://emjksgvvx8kr" path="res://guide_examples/action_priority/icons/fireball-acid-3.png" id="8_pbht4"]
+[ext_resource type="Resource" uid="uid://dsp8h1ycwd6tt" path="res://guide_examples/action_priority/mapping_contexts/actions/heal.tres" id="8_tl0ch"]
+[ext_resource type="Texture2D" uid="uid://do0b76wher5pk" path="res://guide_examples/action_priority/icons/fireball-sky-3.png" id="9_6ehip"]
+[ext_resource type="Resource" uid="uid://b5plj56pss47x" path="res://guide_examples/action_priority/mapping_contexts/actions/shield.tres" id="9_rbwtd"]
+[ext_resource type="Texture2D" uid="uid://bb2whckygsgvj" path="res://guide_examples/action_priority/icons/heal-royal-3.png" id="10_vp0as"]
+[ext_resource type="Resource" uid="uid://do3hivxhwoqvi" path="res://guide_examples/action_priority/mapping_contexts/actions/mana_enchantment.tres" id="11_223o5"]
+[ext_resource type="Texture2D" uid="uid://dvy7bcy022rqq" path="res://guide_examples/action_priority/icons/protect-blue-2.png" id="11_t3r7p"]
+[ext_resource type="Texture2D" uid="uid://dbwgq8udtj2hp" path="res://guide_examples/action_priority/icons/enchant-acid-3.png" id="12_2ht6b"]
+[ext_resource type="Resource" uid="uid://dtr3jy86gc3rk" path="res://guide_examples/action_priority/mapping_contexts/actions/healing_enchantment.tres" id="12_4o7kv"]
+[ext_resource type="Resource" uid="uid://bfskfiw1k8574" path="res://guide_examples/action_priority/mapping_contexts/actions/fire_enchantment.tres" id="13_6g6j5"]
+[ext_resource type="Texture2D" uid="uid://b3j6yx4455rj0" path="res://guide_examples/action_priority/icons/enchant-blue-3.png" id="13_yufl8"]
+[ext_resource type="Texture2D" uid="uid://djexj402ii0qp" path="res://guide_examples/action_priority/icons/enchant-jade-3.png" id="14_dpiqo"]
+[ext_resource type="PackedScene" uid="uid://cx8f0hljh5dhs" path="res://guide_examples/action_priority/spell_indicator/spell_indicator.tscn" id="14_gmycm"]
+[ext_resource type="Texture2D" uid="uid://bcls6cfcyhf0t" path="res://guide_examples/action_priority/icons/enchant-red-3.png" id="15_xjepw"]
+
+[node name="ActionPriority" type="Node2D"]
+script = ExtResource("1_segid")
+mapping_context = ExtResource("2_spx2e")
+spell_toggle = ExtResource("3_k38f6")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Instructions Label" type="RichTextLabel" parent="UILayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -78.0
+offset_top = 19.0
+offset_right = -38.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme = ExtResource("4_ur8xb")
+script = ExtResource("4_v7mqo")
+instructions_text = "%s - acid bolt
+%s - mana bolt
+%s - heal
+%s - shield
+%s - acid enchantment
+%s - mana enchantment
+%s - healing enchantment
+%s - fire enchantment"
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("5_oqj0p"), ExtResource("7_ruu3d"), ExtResource("8_tl0ch"), ExtResource("9_rbwtd"), ExtResource("6_ue1ny"), ExtResource("11_223o5"), ExtResource("12_4o7kv"), ExtResource("13_6g6j5")])
+
+[node name="SpellIndicators" type="Node2D" parent="UILayer"]
+position = Vector2(1149, 781)
+
+[node name="AcidBolt" parent="UILayer/SpellIndicators" instance=ExtResource("14_gmycm")]
+action = ExtResource("5_oqj0p")
+texture = ExtResource("8_pbht4")
+
+[node name="ManaBolt" parent="UILayer/SpellIndicators" instance=ExtResource("14_gmycm")]
+action = ExtResource("7_ruu3d")
+texture = ExtResource("9_6ehip")
+
+[node name="Heal" parent="UILayer/SpellIndicators" instance=ExtResource("14_gmycm")]
+action = ExtResource("8_tl0ch")
+texture = ExtResource("10_vp0as")
+
+[node name="Shield" parent="UILayer/SpellIndicators" instance=ExtResource("14_gmycm")]
+action = ExtResource("9_rbwtd")
+texture = ExtResource("11_t3r7p")
+
+[node name="AcidEnchant" parent="UILayer/SpellIndicators" instance=ExtResource("14_gmycm")]
+action = ExtResource("6_ue1ny")
+texture = ExtResource("12_2ht6b")
+
+[node name="ManaEnchant" parent="UILayer/SpellIndicators" instance=ExtResource("14_gmycm")]
+action = ExtResource("11_223o5")
+texture = ExtResource("13_yufl8")
+
+[node name="HealingEnchant" parent="UILayer/SpellIndicators" instance=ExtResource("14_gmycm")]
+action = ExtResource("12_4o7kv")
+texture = ExtResource("14_dpiqo")
+
+[node name="FireEnchant" parent="UILayer/SpellIndicators" instance=ExtResource("14_gmycm")]
+action = ExtResource("13_6g6j5")
+texture = ExtResource("15_xjepw")
+
+[node name="Spells" type="MarginContainer" parent="UILayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -529.0
+offset_top = 5.0
+offset_right = -85.0
+offset_bottom = 455.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(171, 194)
+
+[node name="Layer1" parent="UILayer/Spells" instance=ExtResource("7_48cit")]
+unique_name_in_owner = true
+layout_mode = 2
+up = ExtResource("8_pbht4")
+left = ExtResource("9_6ehip")
+right = ExtResource("10_vp0as")
+down = ExtResource("11_t3r7p")
+
+[node name="Layer2" parent="UILayer/Spells" instance=ExtResource("7_48cit")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+up = ExtResource("12_2ht6b")
+left = ExtResource("13_yufl8")
+right = ExtResource("14_dpiqo")
+down = ExtResource("15_xjepw")
+
+[node name="DebugLayer" type="CanvasLayer" parent="."]
+
+[node name="GuideDebugger" parent="DebugLayer" instance=ExtResource("3_ocaq1")]
+theme = ExtResource("4_ur8xb")

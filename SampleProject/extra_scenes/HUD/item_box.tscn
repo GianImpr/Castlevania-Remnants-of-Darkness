@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://2k1tvl70buqg"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/item_box.gd" id="1_d8mr8"]
+[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="1_xust1"]
+[ext_resource type="Texture2D" uid="uid://gbcs3e2yhpky" path="res://assets/sprites/HUD/ItemBox.png" id="2_qvc4r"]
+[ext_resource type="Texture2D" uid="uid://brdok712lblw" path="res://assets/sprites/HUD/SkillBox.png" id="3_v843h"]
+[ext_resource type="Texture2D" uid="uid://ovg0jielsica" path="res://assets/sprites/HUD/RelicBox.png" id="4_nvhjh"]
+[ext_resource type="Texture2D" uid="uid://c0ga0q3ud2q8b" path="res://assets/sprites/HUD/EnemyBox.png" id="6_tpb60"]
+
+[sub_resource type="Theme" id="Theme_tdcqo"]
+default_font = ExtResource("1_xust1")
+default_font_size = 16
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eeolh"]
+content_margin_bottom = 4.0
+texture = ExtResource("6_tpb60")
+texture_margin_left = 20.0
+texture_margin_right = 20.0
+
+[node name="ItemBox" type="Control" node_paths=PackedStringArray("label", "timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d8mr8")
+label = NodePath("PanelContainer/Label")
+timer = NodePath("Timer")
+textures = Array[CompressedTexture2D]([ExtResource("2_qvc4r"), ExtResource("3_v843h"), ExtResource("4_nvhjh")])
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 41.0
+offset_bottom = 22.0
+scale = Vector2(2, 2)
+theme = SubResource("Theme_tdcqo")
+theme_override_styles/panel = SubResource("StyleBoxTexture_eeolh")
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+text = "Potion"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

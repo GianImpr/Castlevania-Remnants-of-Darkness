@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://b85mrm6ht3kgn"]
+
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="1_bh7m8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_drn0g"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_t78vw"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0, 0, 1, 1, 0.237976, 0.000364831, 0.649183, 1, 0, 0.497594, 0.945088, 1, 0.203922, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6s7ff"]
+gradient = SubResource("Gradient_t78vw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_plw4o"]
+emission_shape = 1
+emission_sphere_radius = 15.0
+direction = Vector3(0, -1, 0)
+flatness = 0.49
+initial_velocity_max = 100.0
+gravity = Vector3(0, -100, 0)
+color_ramp = SubResource("GradientTexture1D_6s7ff")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="Animation" id="Animation_qh0go"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v0qst"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2lua"]
+_data = {
+"RESET": SubResource("Animation_qh0go"),
+"start": SubResource("Animation_v0qst")
+}
+
+[node name="RefreshingAir" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_drn0g")
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_plw4o")
+texture = ExtResource("1_bh7m8")
+one_shot = true
+explosiveness = 0.07
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d2lua")
+}
+autoplay = "start"

@@ -1,0 +1,1438 @@
+[gd_scene load_steps=43 format=4 uid="uid://be57nauej434c"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_uf00n"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_4p3d3"]
+[ext_resource type="Texture2D" uid="uid://bx451tat2qr51" path="res://assets/sprites/Tiles/InnocentDevilRoom.png" id="3_hkwvi"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="3_sfivm"]
+[ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="5_0ilth"]
+[ext_resource type="Shader" path="res://scenes/aura.gdshader" id="5_dnpec"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/devil_forging.gd" id="7_1gwmw"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="7_1iij1"]
+[ext_resource type="Texture2D" uid="uid://biwn5irdj8rpr" path="res://assets/sprites/Objects/DevilDoor.png" id="7_mmtkg"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_g7ffl"]
+[ext_resource type="Texture2D" uid="uid://bpiy0qh3bsdit" path="res://assets/sprites/Objects/DevilDoorAura.png" id="8_jp7sw"]
+[ext_resource type="PackedScene" uid="uid://crov6smdsbwb4" path="res://SampleProject/familiars/Faerie/faerie.tscn" id="8_ns1be"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="9_ewq5u"]
+[ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="9_hrdd7"]
+[ext_resource type="Texture2D" uid="uid://c350vlw6uws2f" path="res://assets/sprites/InnocentDevils/FairySealed.png" id="9_o4ht3"]
+[ext_resource type="AudioStream" uid="uid://ccbtqu8n0yk0n" path="res://assets/sounds/Effects/InnocentForge.MP3" id="10_21tnh"]
+[ext_resource type="AudioStream" uid="uid://pgfes7qej7na" path="res://assets/sounds/InnocentDevils/Faerie/FaerieThankYou.MP3" id="14_takdq"]
+[ext_resource type="PackedScene" uid="uid://q43vbthycopx" path="res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn" id="18_rcncv"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dfmu6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_deia1"]
+width = 128
+height = 256
+seamless = true
+noise = SubResource("FastNoiseLite_dfmu6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ylq07"]
+shader = ExtResource("5_dnpec")
+shader_parameter/min_intensity = 0.4
+shader_parameter/max_intensity = 0.6
+shader_parameter/speed = 10.0
+shader_parameter/n = SubResource("NoiseTexture2D_deia1")
+
+[sub_resource type="Gradient" id="Gradient_ak5p1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ibus"]
+gradient = SubResource("Gradient_ak5p1")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pt205"]
+texture = ExtResource("3_hkwvi")
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+15:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+7:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+9:16/0 = 0
+10:16/0 = 0
+11:16/0 = 0
+12:16/0 = 0
+13:16/0 = 0
+14:16/0 = 0
+15:16/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+10:17/0 = 0
+11:17/0 = 0
+12:17/0 = 0
+14:17/0 = 0
+15:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+6:18/0 = 0
+7:18/0 = 0
+8:18/0 = 0
+9:18/0 = 0
+10:18/0 = 0
+12:18/0 = 0
+13:18/0 = 0
+14:18/0 = 0
+15:18/0 = 0
+0:19/0 = 0
+1:19/0 = 0
+2:19/0 = 0
+3:19/0 = 0
+4:19/0 = 0
+5:19/0 = 0
+6:19/0 = 0
+12:19/0 = 0
+15:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+3:20/0 = 0
+6:20/0 = 0
+7:20/0 = 0
+8:20/0 = 0
+9:20/0 = 0
+10:20/0 = 0
+15:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+2:21/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+6:21/0 = 0
+7:21/0 = 0
+8:21/0 = 0
+9:21/0 = 0
+10:21/0 = 0
+11:21/0 = 0
+12:21/0 = 0
+15:21/0 = 0
+0:22/0 = 0
+1:22/0 = 0
+2:22/0 = 0
+3:22/0 = 0
+4:22/0 = 0
+5:22/0 = 0
+6:22/0 = 0
+7:22/0 = 0
+8:22/0 = 0
+9:22/0 = 0
+10:22/0 = 0
+11:22/0 = 0
+12:22/0 = 0
+15:22/0 = 0
+0:23/0 = 0
+1:23/0 = 0
+2:23/0 = 0
+3:23/0 = 0
+6:23/0 = 0
+7:23/0 = 0
+8:23/0 = 0
+9:23/0 = 0
+10:23/0 = 0
+11:23/0 = 0
+12:23/0 = 0
+13:23/0 = 0
+15:23/0 = 0
+1:24/0 = 0
+2:24/0 = 0
+3:24/0 = 0
+4:24/0 = 0
+5:24/0 = 0
+6:24/0 = 0
+7:24/0 = 0
+8:24/0 = 0
+9:24/0 = 0
+10:24/0 = 0
+11:24/0 = 0
+12:24/0 = 0
+13:24/0 = 0
+15:24/0 = 0
+0:25/0 = 0
+1:25/0 = 0
+2:25/0 = 0
+3:25/0 = 0
+4:25/0 = 0
+5:25/0 = 0
+6:25/0 = 0
+7:25/0 = 0
+8:25/0 = 0
+9:25/0 = 0
+10:25/0 = 0
+11:25/0 = 0
+12:25/0 = 0
+13:25/0 = 0
+14:25/0 = 0
+15:25/0 = 0
+0:26/0 = 0
+1:26/0 = 0
+2:26/0 = 0
+3:26/0 = 0
+4:26/0 = 0
+5:26/0 = 0
+6:26/0 = 0
+7:26/0 = 0
+8:26/0 = 0
+9:26/0 = 0
+10:26/0 = 0
+11:26/0 = 0
+12:26/0 = 0
+14:26/0 = 0
+15:26/0 = 0
+0:27/0 = 0
+1:27/0 = 0
+2:27/0 = 0
+3:27/0 = 0
+4:27/0 = 0
+5:27/0 = 0
+6:27/0 = 0
+7:27/0 = 0
+8:27/0 = 0
+9:27/0 = 0
+10:27/0 = 0
+11:27/0 = 0
+12:27/0 = 0
+14:27/0 = 0
+15:27/0 = 0
+0:28/0 = 0
+1:28/0 = 0
+2:28/0 = 0
+3:28/0 = 0
+4:28/0 = 0
+5:28/0 = 0
+6:28/0 = 0
+7:28/0 = 0
+8:28/0 = 0
+9:28/0 = 0
+10:28/0 = 0
+11:28/0 = 0
+12:28/0 = 0
+13:28/0 = 0
+14:28/0 = 0
+15:28/0 = 0
+0:29/0 = 0
+1:29/0 = 0
+2:29/0 = 0
+3:29/0 = 0
+4:29/0 = 0
+5:29/0 = 0
+6:29/0 = 0
+7:29/0 = 0
+8:29/0 = 0
+9:29/0 = 0
+10:29/0 = 0
+11:29/0 = 0
+12:29/0 = 0
+13:29/0 = 0
+14:29/0 = 0
+15:29/0 = 0
+0:30/0 = 0
+1:30/0 = 0
+2:30/0 = 0
+3:30/0 = 0
+4:30/0 = 0
+5:30/0 = 0
+6:30/0 = 0
+7:30/0 = 0
+8:30/0 = 0
+9:30/0 = 0
+10:30/0 = 0
+11:30/0 = 0
+12:30/0 = 0
+13:30/0 = 0
+14:30/0 = 0
+15:30/0 = 0
+0:31/0 = 0
+1:31/0 = 0
+2:31/0 = 0
+3:31/0 = 0
+4:31/0 = 0
+5:31/0 = 0
+6:31/0 = 0
+7:31/0 = 0
+8:31/0 = 0
+9:31/0 = 0
+10:31/0 = 0
+11:31/0 = 0
+12:31/0 = 0
+13:31/0 = 0
+14:31/0 = 0
+15:31/0 = 0
+0:32/0 = 0
+1:32/0 = 0
+2:32/0 = 0
+3:32/0 = 0
+4:32/0 = 0
+5:32/0 = 0
+6:32/0 = 0
+7:32/0 = 0
+8:32/0 = 0
+9:32/0 = 0
+10:32/0 = 0
+11:32/0 = 0
+12:32/0 = 0
+13:32/0 = 0
+14:32/0 = 0
+15:32/0 = 0
+0:33/0 = 0
+1:33/0 = 0
+2:33/0 = 0
+3:33/0 = 0
+4:33/0 = 0
+5:33/0 = 0
+6:33/0 = 0
+7:33/0 = 0
+8:33/0 = 0
+9:33/0 = 0
+10:33/0 = 0
+11:33/0 = 0
+12:33/0 = 0
+13:33/0 = 0
+14:33/0 = 0
+15:33/0 = 0
+0:34/0 = 0
+1:34/0 = 0
+2:34/0 = 0
+3:34/0 = 0
+4:34/0 = 0
+5:34/0 = 0
+6:34/0 = 0
+7:34/0 = 0
+8:34/0 = 0
+9:34/0 = 0
+10:34/0 = 0
+11:34/0 = 0
+12:34/0 = 0
+13:34/0 = 0
+14:34/0 = 0
+15:34/0 = 0
+0:35/0 = 0
+1:35/0 = 0
+2:35/0 = 0
+3:35/0 = 0
+4:35/0 = 0
+5:35/0 = 0
+6:35/0 = 0
+7:35/0 = 0
+8:35/0 = 0
+9:35/0 = 0
+10:35/0 = 0
+11:35/0 = 0
+12:35/0 = 0
+13:35/0 = 0
+14:35/0 = 0
+15:35/0 = 0
+0:36/0 = 0
+1:36/0 = 0
+2:36/0 = 0
+3:36/0 = 0
+4:36/0 = 0
+5:36/0 = 0
+6:36/0 = 0
+7:36/0 = 0
+8:36/0 = 0
+9:36/0 = 0
+10:36/0 = 0
+11:36/0 = 0
+12:36/0 = 0
+13:36/0 = 0
+14:36/0 = 0
+15:36/0 = 0
+0:37/0 = 0
+1:37/0 = 0
+2:37/0 = 0
+3:37/0 = 0
+4:37/0 = 0
+5:37/0 = 0
+6:37/0 = 0
+7:37/0 = 0
+8:37/0 = 0
+9:37/0 = 0
+10:37/0 = 0
+11:37/0 = 0
+12:37/0 = 0
+13:37/0 = 0
+14:37/0 = 0
+15:37/0 = 0
+0:38/0 = 0
+1:38/0 = 0
+2:38/0 = 0
+3:38/0 = 0
+4:38/0 = 0
+5:38/0 = 0
+6:38/0 = 0
+7:38/0 = 0
+8:38/0 = 0
+9:38/0 = 0
+10:38/0 = 0
+11:38/0 = 0
+12:38/0 = 0
+13:38/0 = 0
+14:38/0 = 0
+15:38/0 = 0
+0:39/0 = 0
+1:39/0 = 0
+2:39/0 = 0
+3:39/0 = 0
+4:39/0 = 0
+5:39/0 = 0
+6:39/0 = 0
+7:39/0 = 0
+8:39/0 = 0
+9:39/0 = 0
+10:39/0 = 0
+11:39/0 = 0
+12:39/0 = 0
+13:39/0 = 0
+14:39/0 = 0
+15:39/0 = 0
+0:40/0 = 0
+1:40/0 = 0
+2:40/0 = 0
+3:40/0 = 0
+12:40/0 = 0
+13:40/0 = 0
+14:40/0 = 0
+15:40/0 = 0
+0:41/0 = 0
+1:41/0 = 0
+4:41/0 = 0
+5:41/0 = 0
+7:41/0 = 0
+8:41/0 = 0
+9:41/0 = 0
+10:41/0 = 0
+12:41/0 = 0
+13:41/0 = 0
+14:41/0 = 0
+15:41/0 = 0
+0:42/0 = 0
+1:42/0 = 0
+5:42/0 = 0
+6:42/0 = 0
+7:42/0 = 0
+8:42/0 = 0
+9:42/0 = 0
+10:42/0 = 0
+11:42/0 = 0
+12:42/0 = 0
+13:42/0 = 0
+14:42/0 = 0
+15:42/0 = 0
+0:43/0 = 0
+1:43/0 = 0
+2:43/0 = 0
+3:43/0 = 0
+4:43/0 = 0
+5:43/0 = 0
+7:43/0 = 0
+8:43/0 = 0
+9:43/0 = 0
+10:43/0 = 0
+11:43/0 = 0
+12:43/0 = 0
+13:43/0 = 0
+14:43/0 = 0
+15:43/0 = 0
+0:44/0 = 0
+1:44/0 = 0
+2:44/0 = 0
+3:44/0 = 0
+4:44/0 = 0
+5:44/0 = 0
+6:44/0 = 0
+7:44/0 = 0
+10:44/0 = 0
+11:44/0 = 0
+12:44/0 = 0
+13:44/0 = 0
+14:44/0 = 0
+15:44/0 = 0
+0:45/0 = 0
+1:45/0 = 0
+2:45/0 = 0
+3:45/0 = 0
+4:45/0 = 0
+5:45/0 = 0
+6:45/0 = 0
+7:45/0 = 0
+10:45/0 = 0
+11:45/0 = 0
+12:45/0 = 0
+13:45/0 = 0
+14:45/0 = 0
+15:45/0 = 0
+0:46/0 = 0
+1:46/0 = 0
+2:46/0 = 0
+3:46/0 = 0
+6:46/0 = 0
+7:46/0 = 0
+8:46/0 = 0
+9:46/0 = 0
+12:46/0 = 0
+13:46/0 = 0
+14:46/0 = 0
+15:46/0 = 0
+0:47/0 = 0
+1:47/0 = 0
+2:47/0 = 0
+3:47/0 = 0
+6:47/0 = 0
+7:47/0 = 0
+8:47/0 = 0
+9:47/0 = 0
+13:47/0 = 0
+14:47/0 = 0
+15:47/0 = 0
+0:48/0 = 0
+1:48/0 = 0
+2:48/0 = 0
+3:48/0 = 0
+6:48/0 = 0
+7:48/0 = 0
+8:48/0 = 0
+9:48/0 = 0
+10:48/0 = 0
+11:48/0 = 0
+12:48/0 = 0
+13:48/0 = 0
+14:48/0 = 0
+15:48/0 = 0
+0:49/0 = 0
+1:49/0 = 0
+2:49/0 = 0
+3:49/0 = 0
+5:49/0 = 0
+6:49/0 = 0
+7:49/0 = 0
+8:49/0 = 0
+9:49/0 = 0
+10:49/0 = 0
+11:49/0 = 0
+12:49/0 = 0
+13:49/0 = 0
+14:49/0 = 0
+15:49/0 = 0
+1:50/0 = 0
+2:50/0 = 0
+3:50/0 = 0
+5:50/0 = 0
+6:50/0 = 0
+7:50/0 = 0
+8:50/0 = 0
+9:50/0 = 0
+10:50/0 = 0
+11:50/0 = 0
+12:50/0 = 0
+13:50/0 = 0
+14:50/0 = 0
+15:50/0 = 0
+0:51/0 = 0
+1:51/0 = 0
+2:51/0 = 0
+3:51/0 = 0
+4:51/0 = 0
+5:51/0 = 0
+6:51/0 = 0
+7:51/0 = 0
+8:51/0 = 0
+9:51/0 = 0
+10:51/0 = 0
+11:51/0 = 0
+12:51/0 = 0
+13:51/0 = 0
+0:52/0 = 0
+1:52/0 = 0
+2:52/0 = 0
+3:52/0 = 0
+4:52/0 = 0
+5:52/0 = 0
+6:52/0 = 0
+7:52/0 = 0
+8:52/0 = 0
+9:52/0 = 0
+10:52/0 = 0
+11:52/0 = 0
+12:52/0 = 0
+13:52/0 = 0
+14:52/0 = 0
+0:53/0 = 0
+1:53/0 = 0
+2:53/0 = 0
+3:53/0 = 0
+4:53/0 = 0
+5:53/0 = 0
+6:53/0 = 0
+7:53/0 = 0
+8:53/0 = 0
+9:53/0 = 0
+11:53/0 = 0
+12:53/0 = 0
+13:53/0 = 0
+14:53/0 = 0
+0:54/0 = 0
+1:54/0 = 0
+2:54/0 = 0
+3:54/0 = 0
+4:54/0 = 0
+5:54/0 = 0
+6:54/0 = 0
+7:54/0 = 0
+8:54/0 = 0
+9:54/0 = 0
+10:54/0 = 0
+12:54/0 = 0
+13:54/0 = 0
+14:54/0 = 0
+15:54/0 = 0
+0:55/0 = 0
+1:55/0 = 0
+2:55/0 = 0
+3:55/0 = 0
+4:55/0 = 0
+5:55/0 = 0
+6:55/0 = 0
+7:55/0 = 0
+8:55/0 = 0
+9:55/0 = 0
+10:55/0 = 0
+11:55/0 = 0
+14:55/0 = 0
+15:55/0 = 0
+0:56/0 = 0
+1:56/0 = 0
+2:56/0 = 0
+3:56/0 = 0
+4:56/0 = 0
+5:56/0 = 0
+6:56/0 = 0
+7:56/0 = 0
+8:56/0 = 0
+9:56/0 = 0
+10:56/0 = 0
+11:56/0 = 0
+12:56/0 = 0
+0:57/0 = 0
+1:57/0 = 0
+2:57/0 = 0
+3:57/0 = 0
+4:57/0 = 0
+5:57/0 = 0
+6:57/0 = 0
+7:57/0 = 0
+8:57/0 = 0
+9:57/0 = 0
+10:57/0 = 0
+11:57/0 = 0
+12:57/0 = 0
+0:58/0 = 0
+1:58/0 = 0
+2:58/0 = 0
+3:58/0 = 0
+4:58/0 = 0
+5:58/0 = 0
+6:58/0 = 0
+8:58/0 = 0
+9:58/0 = 0
+10:58/0 = 0
+11:58/0 = 0
+12:58/0 = 0
+0:59/0 = 0
+1:59/0 = 0
+2:59/0 = 0
+3:59/0 = 0
+4:59/0 = 0
+5:59/0 = 0
+6:59/0 = 0
+7:59/0 = 0
+8:59/0 = 0
+9:59/0 = 0
+10:59/0 = 0
+11:59/0 = 0
+12:59/0 = 0
+0:60/0 = 0
+1:60/0 = 0
+2:60/0 = 0
+3:60/0 = 0
+4:60/0 = 0
+5:60/0 = 0
+6:60/0 = 0
+7:60/0 = 0
+8:60/0 = 0
+9:60/0 = 0
+10:60/0 = 0
+11:60/0 = 0
+12:60/0 = 0
+0:61/0 = 0
+1:61/0 = 0
+2:61/0 = 0
+3:61/0 = 0
+4:61/0 = 0
+5:61/0 = 0
+6:61/0 = 0
+7:61/0 = 0
+0:62/0 = 0
+1:62/0 = 0
+4:62/0 = 0
+5:62/0 = 0
+10:53/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_uar6o"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_pt205")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n88jm"]
+size = Vector2(79, 20)
+
+[sub_resource type="Gradient" id="Gradient_7ing1"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1c76g"]
+gradient = SubResource("Gradient_7ing1")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.509506, 0.501901)
+fill_to = Vector2(0.0114068, 1)
+
+[sub_resource type="Curve" id="Curve_07cqy"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.183857, 1.58242), 0.0, 0.0, 0, 0, Vector2(0.843049, 1.54945), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_nvkhl"]
+offsets = PackedFloat32Array(0, 0.34359, 0.841026)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 1, 1, 0.537255, 0.435294, 1, 1)
+
+[sub_resource type="Animation" id="Animation_6qjin"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CPUParticles2D:lifetime")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Forging:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CPUParticles2D:one_shot")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Fairy:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CPUParticles2D2:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CPUParticles2D2:gravity")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -980)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CPUParticles2D2:one_shot")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5lpdp"]
+resource_name = "forging"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CPUParticles2D:lifetime")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.4, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.5, 4.56667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [5.0, 20.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Forging:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CPUParticles2D:one_shot")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PolyphonicAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["forge"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["thank_you"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Fairy:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CPUParticles2D:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Fairy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(5.03333, 10),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"forgeInnocentDevil"
+}, {
+"args": [],
+"method": &"unfreezePlayer"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CPUParticles2D2:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../CPUParticles2D2:gravity")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -980)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../CPUParticles2D2:one_shot")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_74824"]
+resource_name = "light"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [15.0, 3.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CPUParticles2D:one_shot")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CPUParticles2D:lifetime")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dyiqa"]
+_data = {
+"RESET": SubResource("Animation_6qjin"),
+"forging": SubResource("Animation_5lpdp"),
+"light": SubResource("Animation_74824")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pjks5"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_6v02t"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nv871"]
+gradient = SubResource("Gradient_6v02t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xp4id"]
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector3(0, 0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 70.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 1.0
+gravity = Vector3(0, -50, 0)
+color_ramp = SubResource("GradientTexture1D_nv871")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3m2a2"]
+load_path = "res://.godot/imported/floaty_64.png-98c8a1b060829ec7186cfcbd5b433f7e.ctex"
+
+[sub_resource type="Resource" id="Resource_nxqkd"]
+script = ExtResource("9_ewq5u")
+Tag = "forge"
+stream = ExtResource("10_21tnh")
+
+[sub_resource type="Resource" id="Resource_rhehf"]
+script = ExtResource("9_ewq5u")
+Tag = "thank_you"
+stream = ExtResource("14_takdq")
+
+[sub_resource type="Resource" id="Resource_1ikbu"]
+script = ExtResource("8_g7ffl")
+sound_effects = Array[ExtResource("9_ewq5u")]([SubResource("Resource_nxqkd"), SubResource("Resource_rhehf")])
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_uf00n")
+stage_music = "innocent_devil"
+change_music = true
+apply_limits = true
+camera_limit_right = 864
+camera_limit_bottom = 480
+
+[node name="RoomInstance" parent="." instance=ExtResource("2_4p3d3")]
+
+[node name="Foreground" type="TileMapLayer" parent="."]
+modulate = Color(0.429533, 0.511435, 0.999989, 1)
+tile_map_data = PackedByteArray("AAAAAA4AAAAQACwAAAAAAAAAAAAKAC4AADAAAAEAAAAIADMAAAAAAAIAAAAIADIAAAAAAAMAAAAIADMAAAAAAAQAAAAIADIAAAAAAAUAAAAIADMAAAAAAAYAAAAIADIAAAAAAAcAAAAIADMAAAAAAAgAAAAIADIAAAAAAAkAAAAKACwAABABAA4AAAARACwAAAACAA4AAAASACwAAAADAA4AAAATACwAAAAEAA4AAAAUACwAAAAFAA4AAAAVACwAAAAGAA4AAAAWACwAAAAHAA4AAAAXACwAAAAIAA4AAAAQACwAAAAJAA4AAAARACwAAAAKAA4AAAASACwAAAALAA4AAAATACwAAAAMAA4AAAASACwAAAANAA4AAAARACwAAAAOAA4AAAASACwAAAAPAA4AAAARACwAAAAQAA4AAAASACwAAAARAA4AAAATACwAAAASAA4AAAAUACwAAAATAA4AAAAVACwAAAAUAA4AAAAWACwAAAAVAA4AAAAXACwAAAAWAA4AAAASACwAAAAXAA4AAAATACwAAAAYAA4AAAAQACwAAAAZAA4AAAAVACwAAAABAAAAAAAQACwAAAACAAAAAAARACwAAAADAAAAAAASACwAAAAEAAAAAAATACwAAAAFAAAAAAAUACwAAAAGAAAAAAAVACwAAAAHAAAAAAAWACwAAAAIAAAAAAAXACwAAAAJAAAAAAAQACwAAAAKAAAAAAARACwAAAALAAAAAAASACwAAAAMAAAAAAATACwAAAANAAAAAAASACwAAAAOAAAAAAARACwAAAAPAAAAAAASACwAAAAQAAAAAAARACwAAAARAAAAAAASACwAAAASAAAAAAATACwAAAATAAAAAAAUACwAAAAUAAAAAAAVACwAAAAVAAAAAAAWACwAAAAWAAAAAAAXACwAAAAXAAAAAAASACwAAAAZAAAAAAAQACwAAAAYAAAAAAAVACwAAAAaAAAAAAAKAC4AACAaAAEAAAAIADMAABAaAAIAAAAIADIAABAaAAMAAAAIADMAABAaAAQAAAAIADIAABAaAAUAAAAIADMAABAaAAYAAAAIADIAADAaAAcAAAAIADMAADAaAAgAAAAIADIAADAaAAkAAAAIADMAADAaAAoAAAAIADIAADAaAAsAAAAIADMAADAaAAwAAAAIADIAADAaAA0AAAAIADMAADAaAA4AAAAKAC4AAAA=")
+tile_set = ExtResource("3_sfivm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 0, 1, 1)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_ylq07")
+offset_right = 864.0
+offset_bottom = 480.0
+texture = SubResource("GradientTexture2D_1ibus")
+flip_v = true
+
+[node name="Background" type="TileMapLayer" parent="."]
+modulate = Color(0.589096, 0.589096, 0.589096, 1)
+show_behind_parent = true
+position = Vector2(-22, -6)
+scale = Vector2(0.75, 0.75)
+tile_map_data = PackedByteArray("AAAGAAQAAAAAABkAAAAGAAUAAAAAABoAAAAGAAYAAAAAABsAAAAGAAcAAAAAABwAAAAGAAgAAAAAAB0AAAAGAAkAAAAAAB4AAAAGAAoAAAAAAB8AAAAGAAsAAAAAACAAAAAGAAwAAAAAACEAAAAGAA0AAAAAACIAAAAGAA4AAAAAACMAAAAGAA8AAAAAACQAAAAGABAAAAAAACUAAAAHAAMAAAABABgAAAAHAAQAAAABABkAAAAHAAUAAAABABoAAAAHAAYAAAABABsAAAAHAAcAAAABABwAAAAHAAgAAAABAB0AAAAHAAkAAAABAB4AAAAHAAoAAAABAB8AAAAHAAsAAAABACAAAAAHAAwAAAABACEAAAAHAA0AAAABACIAAAAHAA4AAAABACMAAAAHAA8AAAABACQAAAAHABAAAAABACUAAAAIAAMAAAACABgAAAAIAAQAAAACABkAAAAIAAUAAAACABoAAAAIAAYAAAACABsAAAAIAAcAAAACABwAAAAIAAgAAAACAB0AAAAIAAkAAAACAB4AAAAIAAoAAAACAB8AAAAIAAsAAAACACAAAAAIAAwAAAACACEAAAAIAA0AAAACACIAAAAIAA4AAAACACMAAAAIAA8AAAACACQAAAAIABAAAAACACUAAAAJAAMAAAADABgAAAAJAAQAAAADABkAAAAJAAUAAAADABoAAAAJAAYAAAADABsAAAAJAAcAAAADABwAAAAJAAgAAAADAB0AAAAJAAkAAAADAB4AAAAJAAoAAAADAB8AAAAJAAsAAAADACAAAAAJAAwAAAADACEAAAAJAA0AAAADACIAAAAJAA4AAAADACMAAAAJAA8AAAADACQAAAAJABAAAAADACUAAAAKAAMAAAAEABgAAAAKAAQAAAAEABkAAAAKAAUAAAAEABoAAAAKAAYAAAAEABsAAAAKAAcAAAAEABwAAAAKAAgAAAAEAB0AAAAKAAkAAAAEAB4AAAAKAAoAAAAEAB8AAAAKAAsAAAAEACAAAAAKAAwAAAAEACEAAAAKAA0AAAAEACIAAAAKAA4AAAAEACMAAAAKAA8AAAAEACQAAAAKABAAAAAEACUAAAALAAMAAAAFABgAAAALAAQAAAAFABkAAAALAAUAAAAFABoAAAALAAYAAAAFABsAAAALAAcAAAAFABwAAAALAAgAAAAFAB0AAAALAAkAAAAFAB4AAAALAAoAAAAFAB8AAAALAAsAAAAFACAAAAALAAwAAAAFACEAAAALAA0AAAAFACIAAAALAA4AAAAFACMAAAALAA8AAAAFACQAAAALABAAAAAFACUAAAAMAAMAAAAGABgAAAAMAAQAAAAGABkAAAAMAAUAAAAGABoAAAAMAAYAAAAGABsAAAAMAAcAAAAGABwAAAAMAAgAAAAGAB0AAAAMAAkAAAAGAB4AAAAMAAoAAAAGAB8AAAAMAAsAAAAGACAAAAAMAAwAAAAGACEAAAAMAA0AAAAGACIAAAAMAA4AAAAGACMAAAAMAA8AAAAGACQAAAAMABAAAAAGACUAAAANAAMAAAAHABgAAAANAAQAAAAHABkAAAANAAUAAAAHABoAAAANAAYAAAAHABsAAAANAAcAAAAHABwAAAANAAgAAAAHAB0AAAANAAkAAAAHAB4AAAANAAoAAAAHAB8AAAANAAsAAAAHACAAAAANAAwAAAAHACEAAAANAA0AAAAHACIAAAANAA4AAAAHACMAAAANAA8AAAAHACQAAAANABAAAAAHACUAAAAOAAMAAAAIABgAAAAOAAQAAAAIABkAAAAOAAUAAAAIABoAAAAOAAYAAAAIABsAAAAOAAcAAAAIABwAAAAOAAgAAAAIAB0AAAAOAAkAAAAIAB4AAAAOAAoAAAAIAB8AAAAOAAsAAAAIACAAAAAOAAwAAAAIACEAAAAOAA0AAAAIACIAAAAOAA4AAAAIACMAAAAOAA8AAAAIACQAAAAOABAAAAAIACUAAAAPAAMAAAAJABgAAAAPAAQAAAAJABkAAAAPAAUAAAAJABoAAAAPAAYAAAAJABsAAAAPAAcAAAAJABwAAAAPAAgAAAAJAB0AAAAPAAkAAAAJAB4AAAAPAAoAAAAJAB8AAAAPAAsAAAAJACAAAAAPAAwAAAAJACEAAAAPAA0AAAAJACIAAAAPAA4AAAAJACMAAAAPAA8AAAAJACQAAAAPABAAAAAJACUAAAAQAAMAAAAKABgAAAAQAAQAAAAKABkAAAAQAAUAAAAKABoAAAAQAAYAAAAKABsAAAAQAAcAAAAKABwAAAAQAAgAAAAKAB0AAAAQAAkAAAAKAB4AAAAQAAoAAAAKAB8AAAAQAAsAAAAKACAAAAAQAAwAAAAKACEAAAAQAA0AAAAKACIAAAAQAA4AAAAKACMAAAAQAA8AAAAKACQAAAAQABAAAAAKACUAAAARAAMAAAALABgAAAARAAQAAAALABkAAAARAAUAAAALABoAAAARAAYAAAALABsAAAARAAcAAAALABwAAAARAAgAAAALAB0AAAARAAkAAAALAB4AAAARAAoAAAALAB8AAAARAAsAAAALACAAAAARAAwAAAALACEAAAARAA0AAAALACIAAAARAA4AAAALACMAAAARAA8AAAALACQAAAARABAAAAALACUAAAASAAMAAAAMABgAAAASAAQAAAAMABkAAAASAAUAAAAMABoAAAASAAYAAAAMABsAAAASAAcAAAAMABwAAAASAAgAAAAMAB0AAAASAAkAAAAMAB4AAAASAAoAAAAMAB8AAAASAAsAAAAMACAAAAASAAwAAAAMACEAAAASAA0AAAAMACIAAAASAA4AAAAMACMAAAASAA8AAAAMACQAAAASABAAAAAMACUAAAATAAMAAAAMABgAABATAAQAAAAMABkAABATAAUAAAAMABoAABATAAYAAAAMABsAABATAAcAAAAMABwAABATAAgAAAAMAB0AABATAAkAAAAMAB4AABATAAoAAAAMAB8AABATAAsAAAAMACAAABATAAwAAAAMACEAABATAA0AAAAMACIAABATAA4AAAAMACMAABATAA8AAAAMACQAABATABAAAAAMACUAABAUAAMAAAALABgAABAUAAQAAAALABkAABAUAAUAAAALABoAABAUAAYAAAALABsAABAUAAcAAAALABwAABAUAAgAAAALAB0AABAUAAkAAAALAB4AABAUAAoAAAALAB8AABAUAAsAAAALACAAABAUAAwAAAALACEAABAUAA0AAAALACIAABAUAA4AAAALACMAABAUAA8AAAALACQAABAUABAAAAALACUAABAVAAMAAAAKABgAABAVAAQAAAAKABkAABAVAAUAAAAKABoAABAVAAYAAAAKABsAABAVAAcAAAAKABwAABAVAAgAAAAKAB0AABAVAAkAAAAKAB4AABAVAAoAAAAKAB8AABAVAAsAAAAKACAAABAVAAwAAAAKACEAABAVAA0AAAAKACIAABAVAA4AAAAKACMAABAVAA8AAAAKACQAABAVABAAAAAKACUAABAWAAMAAAAJABgAABAWAAQAAAAJABkAABAWAAUAAAAJABoAABAWAAYAAAAJABsAABAWAAcAAAAJABwAABAWAAgAAAAJAB0AABAWAAkAAAAJAB4AABAWAAoAAAAJAB8AABAWAAsAAAAJACAAABAWAAwAAAAJACEAABAWAA0AAAAJACIAABAWAA4AAAAJACMAABAWAA8AAAAJACQAABAWABAAAAAJACUAABAXAAMAAAAIABgAABAXAAQAAAAIABkAABAXAAUAAAAIABoAABAXAAYAAAAIABsAABAXAAcAAAAIABwAABAXAAgAAAAIAB0AABAXAAkAAAAIAB4AABAXAAoAAAAIAB8AABAXAAsAAAAIACAAABAXAAwAAAAIACEAABAXAA0AAAAIACIAABAXAA4AAAAIACMAABAXAA8AAAAIACQAABAXABAAAAAIACUAABAYAAMAAAAHABgAABAYAAQAAAAHABkAABAYAAUAAAAHABoAABAYAAYAAAAHABsAABAYAAcAAAAHABwAABAYAAgAAAAHAB0AABAYAAkAAAAHAB4AABAYAAoAAAAHAB8AABAYAAsAAAAHACAAABAYAAwAAAAHACEAABAYAA0AAAAHACIAABAYAA4AAAAHACMAABAYAA8AAAAHACQAABAYABAAAAAHACUAABAZAAMAAAAGABgAABAZAAQAAAAGABkAABAZAAUAAAAGABoAABAZAAYAAAAGABsAABAZAAcAAAAGABwAABAZAAgAAAAGAB0AABAZAAkAAAAGAB4AABAZAAoAAAAGAB8AABAZAAsAAAAGACAAABAZAAwAAAAGACEAABAZAA0AAAAGACIAABAZAA4AAAAGACMAABAZAA8AAAAGACQAABAZABAAAAAGACUAABAaAAMAAAAFABgAABAaAAQAAAAFABkAABAaAAUAAAAFABoAABAaAAYAAAAFABsAABAaAAcAAAAFABwAABAaAAgAAAAFAB0AABAaAAkAAAAFAB4AABAaAAoAAAAFAB8AABAaAAsAAAAFACAAABAaAAwAAAAFACEAABAaAA0AAAAFACIAABAaAA4AAAAFACMAABAaAA8AAAAFACQAABAaABAAAAAFACUAABAbAAMAAAAEABgAABAbAAQAAAAEABkAABAbAAUAAAAEABoAABAbAAYAAAAEABsAABAbAAcAAAAEABwAABAbAAgAAAAEAB0AABAbAAkAAAAEAB4AABAbAAoAAAAEAB8AABAbAAsAAAAEACAAABAbAAwAAAAEACEAABAbAA0AAAAEACIAABAbAA4AAAAEACMAABAbAA8AAAAEACQAABAbABAAAAAEACUAABAcAAMAAAADABgAABAcAAQAAAADABkAABAcAAUAAAADABoAABAcAAYAAAADABsAABAcAAcAAAADABwAABAcAAgAAAADAB0AABAcAAkAAAADAB4AABAcAAoAAAADAB8AABAcAAsAAAADACAAABAcAAwAAAADACEAABAcAA0AAAADACIAABAcAA4AAAADACMAABAcAA8AAAADACQAABAcABAAAAADACUAABAGABEAAAAAACYAAAAGABIAAAAAACcAAAAHABEAAAABACYAAAAHABIAAAABACcAAAAIABEAAAACACYAAAAIABIAAAACACcAAAAJABEAAAADACYAAAAJABIAAAADACcAAAAKABEAAAAEACYAAAAKABIAAAAEACcAAAALABEAAAAFACYAAAALABIAAAAFACcAAAAMABEAAAAGACYAAAAMABIAAAAGACcAAAANABEAAAAHACYAAAANABIAAAAHACcAAAAOABEAAAAIACYAAAAOABIAAAAIACcAAAAPABEAAAAJACYAAAAPABIAAAAJACcAAAAQABEAAAAKACYAAAAQABIAAAAKACcAAAARABEAAAALACYAAAARABIAAAALACcAAAASABEAAAAMACYAAAASABIAAAAMACcAAAATABEAAAAMACYAABATABIAAAAMACcAABAUABEAAAALACYAABAUABIAAAALACcAABAVABEAAAAKACYAABAVABIAAAAKACcAABAWABEAAAAJACYAABAWABIAAAAJACcAABAXABEAAAAIACYAABAXABIAAAAIACcAABAYABEAAAAHACYAABAYABIAAAAHACcAABAZABEAAAAGACYAABAZABIAAAAGACcAABAaABEAAAAFACYAABAaABIAAAAFACcAABAbABEAAAAEACYAABAbABIAAAAEACcAABAcABEAAAADACYAABAcABIAAAADACcAABAdAAMAAAACABgAABAdAAQAAAACABkAABAdAAUAAAACABoAABAdAAYAAAACABsAABAdAAcAAAACABwAABAdAAgAAAACAB0AABAdAAkAAAACAB4AABAdAAoAAAACAB8AABAdAAsAAAACACAAABAdAAwAAAACACEAABAdAA0AAAACACIAABAdAA4AAAACACMAABAdAA8AAAACACQAABAdABAAAAACACUAABAdABEAAAACACYAABAdABIAAAACACcAABAeAAMAAAABABgAABAeAAQAAAABABkAABAeAAUAAAABABoAABAeAAYAAAABABsAABAeAAcAAAABABwAABAeAAgAAAABAB0AABAeAAkAAAABAB4AABAeAAoAAAABAB8AABAeAAsAAAABACAAABAeAAwAAAABACEAABAeAA0AAAABACIAABAeAA4AAAABACMAABAeAA8AAAABACQAABAeABAAAAABACUAABAeABEAAAABACYAABAeABIAAAABACcAABAfAAQAAAAAABkAABAfAAUAAAAAABoAABAfAAYAAAAAABsAABAfAAcAAAAAABwAABAfAAgAAAAAAB0AABAfAAkAAAAAAB4AABAfAAoAAAAAAB8AABAfAAsAAAAAACAAABAfAAwAAAAAACEAABAfAA0AAAAAACIAABAfAA4AAAAAACMAABAfAA8AAAAAACQAABAfABAAAAAAACUAABAfABEAAAAAACYAABAfABIAAAAAACcAABAMAAIAAAAGABcAAAANAAIAAAAHABcAAAAOAAIAAAAIABcAAAAPAAIAAAAJABcAAAAQAAIAAAAKABcAAAARAAIAAAALABcAAAASAAIAAAAMABcAAAATAAIAAAANABcAAAAZAAIAAAAGABcAABAYAAIAAAAHABcAABAXAAIAAAAIABcAABAWAAIAAAAJABcAABAVAAIAAAAKABcAABAUAAIAAAALABcAABABABIAAAAEACcAABACABIAAAADACcAABADABIAAAACACcAABAEABIAAAABACcAABAFABIAAAAAACcAABABABEAAAAEACYAABACABEAAAADACYAABADABEAAAACACYAABAEABEAAAABACYAABAFABEAAAAAACYAABABABAAAAAEACUAABACABAAAAADACUAABADABAAAAACACUAABAEABAAAAABACUAABAFABAAAAAAACUAABABAA8AAAAEACQAABACAA8AAAADACQAABADAA8AAAACACQAABAEAA8AAAABACQAABAFAA8AAAAAACQAABABAA4AAAAEACMAABACAA4AAAADACMAABADAA4AAAACACMAABAEAA4AAAABACMAABAFAA4AAAAAACMAABABAA0AAAAEACIAABACAA0AAAADACIAABADAA0AAAACACIAABAEAA0AAAABACIAABAFAA0AAAAAACIAABABAAwAAAAEACEAABACAAwAAAADACEAABADAAwAAAACACEAABAEAAwAAAABACEAABAFAAwAAAAAACEAABABAAsAAAAEACAAABACAAsAAAADACAAABADAAsAAAACACAAABAEAAsAAAABACAAABAFAAsAAAAAACAAABABAAoAAAAEAB8AABACAAoAAAADAB8AABADAAoAAAACAB8AABAEAAoAAAABAB8AABAFAAoAAAAAAB8AABABAAkAAAAEAB4AABACAAkAAAADAB4AABADAAkAAAACAB4AABAEAAkAAAABAB4AABAFAAkAAAAAAB4AABABAAgAAAAEAB0AABACAAgAAAADAB0AABADAAgAAAACAB0AABAEAAgAAAABAB0AABAFAAgAAAAAAB0AABABAAcAAAAEABwAABACAAcAAAADABwAABADAAcAAAACABwAABAEAAcAAAABABwAABAFAAcAAAAAABwAABABAAYAAAAEABsAABACAAYAAAADABsAABADAAYAAAACABsAABAEAAYAAAABABsAABAFAAYAAAAAABsAABABAAUAAAAEABoAABACAAUAAAADABoAABADAAUAAAACABoAABAEAAUAAAABABoAABAFAAUAAAAAABoAABABAAQAAAAEABkAABACAAQAAAADABkAABADAAQAAAACABkAABAEAAQAAAABABkAABAFAAQAAAAAABkAABABAAMAAAAEABgAABACAAMAAAADABgAABADAAMAAAACABgAABAEAAMAAAABABgAABAkAAMAAAAEABgAAAAjAAMAAAADABgAAAAiAAMAAAACABgAAAAhAAMAAAABABgAAAAkAAQAAAAEABkAAAAjAAQAAAADABkAAAAiAAQAAAACABkAAAAhAAQAAAABABkAAAAgAAQAAAAAABkAAAAkAAUAAAAEABoAAAAjAAUAAAADABoAAAAiAAUAAAACABoAAAAhAAUAAAABABoAAAAgAAUAAAAAABoAAAAkAAYAAAAEABsAAAAjAAYAAAADABsAAAAiAAYAAAACABsAAAAhAAYAAAABABsAAAAgAAYAAAAAABsAAAAkAAcAAAAEABwAAAAjAAcAAAADABwAAAAiAAcAAAACABwAAAAhAAcAAAABABwAAAAgAAcAAAAAABwAAAAkAAgAAAAEAB0AAAAjAAgAAAADAB0AAAAiAAgAAAACAB0AAAAhAAgAAAABAB0AAAAgAAgAAAAAAB0AAAAkAAkAAAAEAB4AAAAjAAkAAAADAB4AAAAiAAkAAAACAB4AAAAhAAkAAAABAB4AAAAgAAkAAAAAAB4AAAAkAAoAAAAEAB8AAAAjAAoAAAADAB8AAAAiAAoAAAACAB8AAAAhAAoAAAABAB8AAAAgAAoAAAAAAB8AAAAkAAsAAAAEACAAAAAjAAsAAAADACAAAAAiAAsAAAACACAAAAAhAAsAAAABACAAAAAgAAsAAAAAACAAAAAkAAwAAAAEACEAAAAjAAwAAAADACEAAAAiAAwAAAACACEAAAAhAAwAAAABACEAAAAgAAwAAAAAACEAAAAkAA0AAAAEACIAAAAjAA0AAAADACIAAAAiAA0AAAACACIAAAAhAA0AAAABACIAAAAgAA0AAAAAACIAAAAkAA4AAAAEACMAAAAjAA4AAAADACMAAAAiAA4AAAACACMAAAAhAA4AAAABACMAAAAgAA4AAAAAACMAAAAkAA8AAAAEACQAAAAjAA8AAAADACQAAAAiAA8AAAACACQAAAAhAA8AAAABACQAAAAgAA8AAAAAACQAAAAkABAAAAAEACUAAAAjABAAAAADACUAAAAiABAAAAACACUAAAAhABAAAAABACUAAAAgABAAAAAAACUAAAAkABEAAAAEACYAAAAjABEAAAADACYAAAAiABEAAAACACYAAAAhABEAAAABACYAAAAgABEAAAAAACYAAAAkABIAAAAEACcAAAAjABIAAAADACcAAAAiABIAAAACACcAAAAhABIAAAABACcAAAAgABIAAAAAACcAAAABAAIAAAAEABoAABACAAIAAAADABoAABADAAIAAAAKADUAAAAEAAIAAAAKADUAAAAFAAIAAAAKADUAAAAGAAIAAAAKADUAAAAHAAIAAAAKADUAAAAIAAIAAAAKADUAAAAJAAIAAAADABoAAAAKAAIAAAAEABoAAAALAAIAAAAFABoAAAALAAEAAAAFABkAAAAKAAEAAAAEABkAAAAJAAEAAAADABkAAAAIAAEAAAAKADUAAAAHAAEAAAAKADUAAAAGAAEAAAAKADUAAAAFAAEAAAAKADUAAAAEAAEAAAAKADUAAAADAAEAAAAKADUAAAACAAEAAAADABkAABABAAEAAAAEABkAABAFAAMAAAAKADUAAAAGAAMAAAAKADUAAAAfAAMAAAAKADUAAAAgAAMAAAAKADUAAAAaAAIAAAAFABoAABAbAAIAAAAEABoAABAcAAIAAAADABoAABAdAAIAAAAKADUAAAAeAAIAAAAKADUAAAAfAAIAAAAKADUAAAAgAAIAAAAKADUAAAAhAAEAAAAKADUAAAAiAAEAAAAKADUAAAAjAAEAAAADABkAAAAjAAIAAAADABoAAAAkAAIAAAAEABoAAAAkAAEAAAAEABkAAAAiAAIAAAAKADUAAAAhAAIAAAAKADUAAAAgAAEAAAAKADUAAAAfAAEAAAAKADUAAAAeAAEAAAAKADUAAAAdAAEAAAAKADUAAAAcAAEAAAADABkAABAbAAEAAAAEABkAABAaAAEAAAAFABkAABAZAAEAAAAGABYAABAYAAEAAAAHABYAABAXAAEAAAAIABYAABAWAAEAAAAJABYAABAVAAEAAAAKABYAABAUAAEAAAALABYAABATAAEAAAAMABYAABAMAAEAAAAGABYAAAANAAEAAAAHABYAAAAOAAEAAAAIABYAAAAPAAEAAAAJABYAAAAQAAEAAAAKABYAAAARAAEAAAALABYAAAASAAEAAAAMABYAAAABABMAAAAKADUAAAACABMAAAAKADUAAAADABMAAAAKADUAAAAEABMAAAAKADUAAAAFABMAAAAKADUAAAAGABMAAAAKADUAAAAHABMAAAAKADUAAAAIABMAAAAKADUAAAAJABMAAAAKADUAAAAKABMAAAAKADUAAAALABMAAAAKADUAAAAMABMAAAAKADUAAAANABMAAAAKADUAAAAOABMAAAAKADUAAAAPABMAAAAKADUAAAAQABMAAAAKADUAAAARABMAAAAKADUAAAASABMAAAAKADUAAAATABMAAAAKADUAAAAUABMAAAAKADUAAAAVABMAAAAKADUAAAAWABMAAAAKADUAAAAXABMAAAAKADUAAAAYABMAAAAKADUAAAAZABMAAAAKADUAAAAaABMAAAAKADUAAAAbABMAAAAKADUAAAAcABMAAAAKADUAAAAdABMAAAAKADUAAAAeABMAAAAKADUAAAAfABMAAAAKADUAAAAgABMAAAAKADUAAAAhABMAAAAKADUAAAAiABMAAAAKADUAAAAjABMAAAAKADUAAAAkABMAAAAKADUAAAA=")
+tile_set = SubResource("TileSet_uar6o")
+
+[node name="Fairy" type="Sprite2D" parent="Background" node_paths=PackedStringArray("animation", "forging_particles")]
+position = Vector2(606.667, 537.333)
+scale = Vector2(2.66667, 2.66667)
+texture = ExtResource("9_o4ht3")
+script = ExtResource("7_1gwmw")
+innocent_devil_scene = ExtResource("8_ns1be")
+event_id = 3
+animation = NodePath("../AnimationPlayer")
+forging_particles = NodePath("../Forging")
+
+[node name="ForgeTrigger" type="Area2D" parent="Background/Fairy"]
+position = Vector2(-216.5, -198.5)
+scale = Vector2(0.499999, 0.499999)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Fairy/ForgeTrigger"]
+position = Vector2(321.5, 448)
+shape = SubResource("RectangleShape2D_n88jm")
+
+[node name="HintBoxTrigger" parent="Background/Fairy" instance=ExtResource("9_hrdd7")]
+position = Vector2(-65.5, -51.9998)
+scale = Vector2(1, 0.4)
+flag_id = 10
+text = "Seems like a good place for devil forging."
+time = 3.5
+
+[node name="PointLight2D" type="PointLight2D" parent="Background"]
+position = Vector2(609.333, 541.333)
+scale = Vector2(1.33333, 1.33333)
+color = Color(1, 0, 1, 1)
+energy = 9.0
+texture = SubResource("GradientTexture2D_1c76g")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Background"]
+position = Vector2(609.333, 545.333)
+scale = Vector2(1.33333, 1.33333)
+emitting = false
+amount = 100
+preprocess = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(48, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, -300)
+initial_velocity_max = 60.0
+scale_amount_curve = SubResource("Curve_07cqy")
+color_ramp = SubResource("Gradient_nvkhl")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="Background"]
+position = Vector2(609.333, 545.333)
+scale = Vector2(1.33333, 1.33333)
+emitting = false
+amount = 40
+lifetime = 0.4
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, -980)
+initial_velocity_max = 60.0
+scale_amount_curve = SubResource("Curve_07cqy")
+color_ramp = SubResource("Gradient_nvkhl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+root_node = NodePath("../PointLight2D")
+libraries = {
+"": SubResource("AnimationLibrary_dyiqa")
+}
+autoplay = "light"
+
+[node name="Forging" type="GPUParticles2D" parent="Background"]
+z_index = 20
+material = SubResource("CanvasItemMaterial_pjks5")
+position = Vector2(609.333, 545.333)
+emitting = false
+amount = 350
+process_material = SubResource("ParticleProcessMaterial_xp4id")
+texture = SubResource("CompressedTexture2D_3m2a2")
+lifetime = 3.0
+one_shot = true
+explosiveness = 0.7
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="Background"]
+volume_db = -5.0
+script = ExtResource("7_1iij1")
+audio_library = SubResource("Resource_1ikbu")
+
+[node name="SaveDoor" parent="." instance=ExtResource("5_0ilth")]
+position = Vector2(16, 385)
+spritesheet = ExtResource("7_mmtkg")
+aura_sheet = ExtResource("8_jp7sw")
+aura_color = Color(0.168627, 0.635294, 0, 1)
+
+[node name="TutorialScreenTrigger" parent="." instance=ExtResource("18_rcncv")]
+position = Vector2(264, 0)
+tutorial_id = 5
+
+[node name="TutorialScreenTrigger2" parent="." instance=ExtResource("18_rcncv")]
+position = Vector2(210, 0)
+tutorial_id = 6
+
+[node name="TutorialScreenTrigger3" parent="." instance=ExtResource("18_rcncv")]
+position = Vector2(151, 0)
+tutorial_id = 7
+
+[connection signal="body_entered" from="Background/Fairy/ForgeTrigger" to="Background/Fairy" method="_on_forge_trigger_body_entered"]
+[connection signal="body_exited" from="Background/Fairy/ForgeTrigger" to="Background/Fairy" method="_on_forge_trigger_body_exited"]

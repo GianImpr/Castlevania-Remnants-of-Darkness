@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://b1f0bnaomla7u"]
+
+[ext_resource type="Script" path="res://guide_examples/virtual_cursor/virtual_cursor.gd" id="1_g0bre"]
+[ext_resource type="Resource" uid="uid://b4tn11iq7uvr7" path="res://guide_examples/virtual_cursor/mapping_contexts/virtual_cursor.tres" id="2_4xju7"]
+[ext_resource type="Texture2D" uid="uid://ntkhw87eedc0" path="res://guide_examples/virtual_cursor/pointer.svg" id="2_mxnae"]
+[ext_resource type="Script" path="res://guide_examples/virtual_cursor/pointer.gd" id="3_dw1p5"]
+[ext_resource type="PackedScene" uid="uid://ca51sup6v0qr1" path="res://guide_examples/virtual_cursor/pointable/pointable.tscn" id="3_uy61q"]
+[ext_resource type="Resource" uid="uid://bcumfh8j6k1ln" path="res://guide_examples/virtual_cursor/mapping_contexts/actions/cursor_2d.tres" id="5_tj3fv"]
+[ext_resource type="Resource" uid="uid://cwtdxy3gy7kud" path="res://guide_examples/virtual_cursor/mapping_contexts/actions/click.tres" id="6_1ffq2"]
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="6_hfxka"]
+[ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="7_bh7yl"]
+[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="7_udsq5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ltt1b"]
+radius = 32.95
+
+[node name="VirtualCursor" type="Node2D"]
+script = ExtResource("1_g0bre")
+mapping_context = ExtResource("2_4xju7")
+
+[node name="Pointable" parent="." instance=ExtResource("3_uy61q")]
+position = Vector2(358, 282)
+
+[node name="Pointable2" parent="." instance=ExtResource("3_uy61q")]
+position = Vector2(915, 209)
+
+[node name="Pointable3" parent="." instance=ExtResource("3_uy61q")]
+position = Vector2(1177, 621)
+
+[node name="Pointable4" parent="." instance=ExtResource("3_uy61q")]
+position = Vector2(338, 859)
+
+[node name="Pointable5" parent="." instance=ExtResource("3_uy61q")]
+position = Vector2(1476, 274)
+
+[node name="Pointable6" parent="." instance=ExtResource("3_uy61q")]
+position = Vector2(791, 808)
+
+[node name="Pointable7" parent="." instance=ExtResource("3_uy61q")]
+position = Vector2(605, 499)
+
+[node name="Pointable8" parent="." instance=ExtResource("3_uy61q")]
+position = Vector2(1515, 845)
+
+[node name="Pointer" type="Area2D" parent="."]
+position = Vector2(813, 485)
+script = ExtResource("3_dw1p5")
+cursor_2d = ExtResource("5_tj3fv")
+click = ExtResource("6_1ffq2")
+
+[node name="PointerVisual" type="Sprite2D" parent="Pointer"]
+texture = ExtResource("2_mxnae")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pointer"]
+shape = SubResource("CircleShape2D_ltt1b")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GuideDebugger" parent="CanvasLayer" instance=ExtResource("6_hfxka")]
+theme = ExtResource("7_bh7yl")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UILayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 56.0
+offset_right = -64.0
+offset_bottom = 96.0
+grow_horizontal = 0
+theme = ExtResource("7_bh7yl")
+script = ExtResource("7_udsq5")
+instructions_text = "This shows how to use a controller stick to control a virtual cursor.
+
+%s to move the the cursor
+%s to \"click\""
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("5_tj3fv"), ExtResource("6_1ffq2")])

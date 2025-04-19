@@ -1,0 +1,155 @@
+[gd_scene load_steps=25 format=3 uid="uid://dp5hxkqh3r2d1"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/save_room_menu.gd" id="1_0kbg0"]
+[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="1_3j664"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/MenuButtons.gd" id="2_ga5p6"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_buttons_save_room.gd" id="3_abqqg"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_1w6yx"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_wbt3t"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_gcdub"]
+[ext_resource type="AudioStream" uid="uid://dqyf6u63hcg44" path="res://assets/sounds/Menu/Confirm.wav" id="7_oka46"]
+[ext_resource type="AudioStream" uid="uid://dkncwk1mfb0lp" path="res://assets/sounds/Menu/Cursor.wav" id="8_q7nu8"]
+[ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="9_63qly"]
+[ext_resource type="AudioStream" uid="uid://k0xc30ehu3h8" path="res://assets/sounds/Menu/HPItem.MP3" id="10_827hi"]
+
+[sub_resource type="Theme" id="Theme_21ors"]
+default_font = ExtResource("1_3j664")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85b6g"]
+bg_color = Color(0.165975, 0.113166, 0.71543, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_c1t8f"]
+colors = PackedColorArray(0, 0, 0.690196, 1, 0, 0, 0.215686, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bg00p"]
+gradient = SubResource("Gradient_c1t8f")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1jjp"]
+bg_color = Color(0.339735, 6.22692e-07, 1.08294e-07, 1)
+
+[sub_resource type="Animation" id="Animation_mu7pr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xrtdc"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e20sr"]
+_data = {
+"RESET": SubResource("Animation_mu7pr"),
+"appear": SubResource("Animation_xrtdc")
+}
+
+[sub_resource type="Resource" id="Resource_oqor7"]
+script = ExtResource("6_gcdub")
+Tag = "confirm"
+stream = ExtResource("7_oka46")
+
+[sub_resource type="Resource" id="Resource_81yio"]
+script = ExtResource("6_gcdub")
+Tag = "cursor"
+stream = ExtResource("8_q7nu8")
+
+[sub_resource type="Resource" id="Resource_aoxut"]
+script = ExtResource("6_gcdub")
+Tag = "denied"
+stream = ExtResource("9_63qly")
+
+[sub_resource type="Resource" id="Resource_jw5b0"]
+script = ExtResource("6_gcdub")
+Tag = "HPItem"
+stream = ExtResource("10_827hi")
+
+[sub_resource type="Resource" id="Resource_03h60"]
+script = ExtResource("5_wbt3t")
+sound_effects = Array[ExtResource("6_gcdub")]([SubResource("Resource_oqor7"), SubResource("Resource_81yio"), SubResource("Resource_aoxut"), SubResource("Resource_jw5b0")])
+
+[node name="InGameMenu" type="CanvasLayer" node_paths=PackedStringArray("default_button")]
+script = ExtResource("1_0kbg0")
+default_button = NodePath("PanelContainer/MenuButtons/Save")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 362.0
+offset_top = 162.0
+offset_right = 764.0
+offset_bottom = 270.0
+theme = SubResource("Theme_21ors")
+theme_override_styles/panel = SubResource("StyleBoxFlat_85b6g")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_bg00p")
+
+[node name="MenuButtons" type="VBoxContainer" parent="PanelContainer" node_paths=PackedStringArray("animation", "sound")]
+layout_mode = 2
+script = ExtResource("3_abqqg")
+animation = NodePath("../../AnimationPlayer")
+button_glow = SubResource("StyleBoxFlat_u1jjp")
+sound = NodePath("../../PolyphonicMenuAudio")
+stateless = true
+
+[node name="Save" type="Button" parent="PanelContainer/MenuButtons"]
+layout_mode = 2
+action_mode = 0
+text = "Save Game"
+flat = true
+script = ExtResource("2_ga5p6")
+
+[node name="Register" type="Button" parent="PanelContainer/MenuButtons"]
+layout_mode = 2
+disabled = true
+action_mode = 0
+text = "Register Memorial Ticket"
+flat = true
+script = ExtResource("2_ga5p6")
+
+[node name="Exit" type="Button" parent="PanelContainer/MenuButtons"]
+layout_mode = 2
+action_mode = 0
+text = "Exit"
+flat = true
+script = ExtResource("2_ga5p6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e20sr")
+}
+autoplay = "appear"
+
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+max_polyphony = 5
+bus = &"SFX"
+script = ExtResource("4_1w6yx")
+audio_library = SubResource("Resource_03h60")

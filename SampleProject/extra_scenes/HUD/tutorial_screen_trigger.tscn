@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://q43vbthycopx"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/tutorial_screen_trigger.gd" id="1_jid8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5are"]
+size = Vector2(489, 20)
+
+[node name="TutorialScreenTrigger" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_jid8p")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.02503e-05, 234.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_y5are")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

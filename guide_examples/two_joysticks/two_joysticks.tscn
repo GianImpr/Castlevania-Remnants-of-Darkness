@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2uycqcjf0hth"]
+
+[ext_resource type="Script" path="res://guide_examples/two_joysticks/two_joysticks.gd" id="1_1dy65"]
+[ext_resource type="Resource" uid="uid://chr8ugns0fh70" path="res://guide_examples/two_joysticks/two_joysticks.tres" id="2_3p2l3"]
+[ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="2_c65ah"]
+[ext_resource type="Script" path="res://guide_examples/two_joysticks/player.gd" id="3_3ycuu"]
+[ext_resource type="Resource" uid="uid://d31d5dpoavou1" path="res://guide_examples/two_joysticks/actions/player_one_move.tres" id="4_f356y"]
+[ext_resource type="Resource" uid="uid://7g78pa31v44m" path="res://guide_examples/two_joysticks/actions/player_two_move.tres" id="5_700m5"]
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="7_ojfv8"]
+
+[node name="TwoJoysticks" type="Node2D"]
+script = ExtResource("1_1dy65")
+mapping_context = ExtResource("2_3p2l3")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1359.0
+offset_top = 13.0
+offset_right = 1909.0
+offset_bottom = 135.0
+text = "This demonstrates how to consume different actions in the same script. We have two players each one controlled by a joystick. Both players share a single script and just listen to different actions which are given as export parameters."
+autowrap_mode = 2
+
+[node name="Player1" type="Sprite2D" parent="."]
+position = Vector2(509, 509)
+texture = ExtResource("2_c65ah")
+script = ExtResource("3_3ycuu")
+move_action = ExtResource("4_f356y")
+
+[node name="Player2" type="Sprite2D" parent="."]
+modulate = Color(1, 0.533333, 1, 1)
+position = Vector2(1315, 505)
+texture = ExtResource("2_c65ah")
+script = ExtResource("3_3ycuu")
+move_action = ExtResource("5_700m5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GuideDebugger" parent="CanvasLayer" instance=ExtResource("7_ojfv8")]
+metadata/_edit_lock_ = true

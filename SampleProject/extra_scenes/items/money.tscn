@@ -1,0 +1,212 @@
+[gd_scene load_steps=27 format=3 uid="uid://rum44mjshdlr"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/money.gd" id="1_vli05"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/coin.gd" id="2_4f0fn"]
+[ext_resource type="Texture2D" uid="uid://dcymuvw7on6dk" path="res://assets/sprites/Items/Coin.png" id="2_kh8ev"]
+[ext_resource type="Texture2D" uid="uid://bh7cvwpoyikx4" path="res://assets/sprites/Items/BlueCoin.png" id="3_ep0wj"]
+[ext_resource type="Texture2D" uid="uid://b0ptc7whdk1r1" path="res://assets/sprites/Items/SapphireCoin.png" id="4_54mre"]
+[ext_resource type="Texture2D" uid="uid://ckiopu4qy87wc" path="res://assets/sprites/Items/BronzeCoin.png" id="5_aflrv"]
+[ext_resource type="Texture2D" uid="uid://kn358rpfckos" path="res://assets/sprites/Items/PlatinumCoin.png" id="6_adi4m"]
+[ext_resource type="Texture2D" uid="uid://ddvvnc0vodbva" path="res://assets/sprites/Items/SilverCoin.png" id="7_0oxqv"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="9_u44rf"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="10_h61gb"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="11_mgovo"]
+[ext_resource type="AudioStream" uid="uid://4wvxocon6qcv" path="res://assets/sounds/Pickups/GoldGet.MP3" id="12_sgehq"]
+
+[sub_resource type="Resource" id="Resource_60yej"]
+script = ExtResource("2_4f0fn")
+value = 1
+texture = ExtResource("3_ep0wj")
+animated = true
+
+[sub_resource type="Resource" id="Resource_vbehf"]
+script = ExtResource("2_4f0fn")
+value = 5
+texture = ExtResource("4_54mre")
+animated = true
+
+[sub_resource type="Resource" id="Resource_q4maf"]
+script = ExtResource("2_4f0fn")
+value = 10
+texture = ExtResource("5_aflrv")
+animated = true
+
+[sub_resource type="Resource" id="Resource_7j8qk"]
+script = ExtResource("2_4f0fn")
+value = 25
+texture = ExtResource("6_adi4m")
+animated = true
+
+[sub_resource type="Resource" id="Resource_putv5"]
+script = ExtResource("2_4f0fn")
+value = 50
+texture = ExtResource("7_0oxqv")
+animated = true
+
+[sub_resource type="Resource" id="Resource_l85ci"]
+script = ExtResource("2_4f0fn")
+value = 100
+texture = ExtResource("2_kh8ev")
+animated = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nj3rc"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evkvh"]
+size = Vector2(8, 8)
+
+[sub_resource type="Animation" id="Animation_y713h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hq48n"]
+resource_name = "coin"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_pp5tc"]
+resource_name = "picked"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s40my"]
+_data = {
+"RESET": SubResource("Animation_y713h"),
+"coin": SubResource("Animation_hq48n"),
+"picked": SubResource("Animation_pp5tc")
+}
+
+[sub_resource type="Resource" id="Resource_2va75"]
+script = ExtResource("11_mgovo")
+Tag = "collect"
+stream = ExtResource("12_sgehq")
+
+[sub_resource type="Resource" id="Resource_xx3d8"]
+script = ExtResource("10_h61gb")
+sound_effects = Array[ExtResource("11_mgovo")]([SubResource("Resource_2va75")])
+
+[node name="Money" type="RigidBody2D" node_paths=PackedStringArray("sprite", "animation", "sound")]
+collision_layer = 0
+lock_rotation = true
+script = ExtResource("1_vli05")
+sprite = NodePath("Sprite2D")
+animation = NodePath("AnimationPlayer")
+sound = NodePath("PolyphonicMenuAudio")
+coin_data = Array[ExtResource("2_4f0fn")]([SubResource("Resource_60yej"), SubResource("Resource_vbehf"), SubResource("Resource_q4maf"), SubResource("Resource_7j8qk"), SubResource("Resource_putv5"), SubResource("Resource_l85ci")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_kh8ev")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(2.3, 2.3)
+shape = SubResource("RectangleShape2D_nj3rc")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -5)
+scale = Vector2(2.3, 2.3)
+shape = SubResource("RectangleShape2D_evkvh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s40my")
+}
+
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+script = ExtResource("9_u44rf")
+audio_library = SubResource("Resource_xx3d8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

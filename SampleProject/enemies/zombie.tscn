@@ -1,0 +1,348 @@
+[gd_scene load_steps=29 format=3 uid="uid://bpbuc4imoao83"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="1_17sfr"]
+[ext_resource type="Script" path="res://SampleProject/enemies/zombie.gd" id="1_vknq3"]
+[ext_resource type="Texture2D" uid="uid://bfbhnh66puau2" path="res://assets/sprites/Enemies/Zombie.png" id="2_5kk3e"]
+[ext_resource type="Script" path="res://assets/sprites/Enemies/ZombieMoving.gd" id="4_grrpx"]
+[ext_resource type="Script" path="res://assets/sprites/Enemies/ZombieSpawning.gd" id="5_dpl5p"]
+[ext_resource type="PackedScene" uid="uid://chsi373nippdo" path="res://SampleProject/extra_scenes/polyphonic_audio_player.tscn" id="6_60l16"]
+[ext_resource type="Script" path="res://assets/sprites/Enemies/ZombieDying.gd" id="6_de3rd"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_y1k3t"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="8_ile2y"]
+[ext_resource type="AudioStream" uid="uid://baubt1rksjbty" path="res://assets/sounds/jump.MP3" id="9_a80cu"]
+[ext_resource type="AudioStream" uid="uid://cghql4ik4xqao" path="res://assets/sounds/Backdash.MP3" id="10_hjd37"]
+[ext_resource type="AudioStream" uid="uid://bc2alrbmrk7op" path="res://assets/sounds/land.MP3" id="11_y0yiq"]
+[ext_resource type="AudioStream" uid="uid://cav4876kfmc7t" path="res://assets/sounds/Sword.MP3" id="12_kbti4"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="13_eqw15"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="14_klfs4"]
+
+[sub_resource type="Animation" id="Animation_s8eig"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5kk3e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_idywo"]
+resource_name = "dying"
+length = 1.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5kk3e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19]
+}
+
+[sub_resource type="Animation" id="Animation_vx0g8"]
+resource_name = "moving"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5kk3e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_b1n0f"]
+resource_name = "spawning"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_5kk3e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 6, 5, 4, 3, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wmja6"]
+_data = {
+"RESET": SubResource("Animation_s8eig"),
+"dying": SubResource("Animation_idywo"),
+"moving": SubResource("Animation_vx0g8"),
+"spawning": SubResource("Animation_b1n0f")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2c72"]
+size = Vector2(25, 46)
+
+[sub_resource type="GDScript" id="GDScript_dnhlh"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="Resource" id="Resource_hltme"]
+script = ExtResource("8_ile2y")
+Tag = "jump"
+stream = ExtResource("9_a80cu")
+
+[sub_resource type="Resource" id="Resource_xogs2"]
+script = ExtResource("8_ile2y")
+Tag = "backdash"
+stream = ExtResource("10_hjd37")
+
+[sub_resource type="Resource" id="Resource_p5qdx"]
+script = ExtResource("8_ile2y")
+Tag = "land"
+stream = ExtResource("11_y0yiq")
+
+[sub_resource type="Resource" id="Resource_44eon"]
+script = ExtResource("8_ile2y")
+Tag = "sword"
+stream = ExtResource("12_kbti4")
+
+[sub_resource type="Resource" id="Resource_ja2e3"]
+script = ExtResource("7_y1k3t")
+sound_effects = Array[ExtResource("8_ile2y")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6fpy"]
+size = Vector2(13.4783, 35.4348)
+
+[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+scale = Vector2(2.3, 2.3)
+collision_layer = 4
+collision_priority = 2.0
+script = ExtResource("1_vknq3")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Area2D")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamageLocation")
+iframe_timer = NodePath("Area2D/Timer")
+hitbox_iframe = NodePath("Area2D")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("1_17sfr")
+enemy_name = "Zombie"
+LV = 1
+HP = 3
+ATK = 9
+EXP = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2.6087)
+texture = ExtResource("2_5kk3e")
+hframes = 20
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wmja6")
+}
+
+[node name="Collision box" type="CollisionShape2D" parent="."]
+position = Vector2(-4.5, 1)
+shape = SubResource("RectangleShape2D_o2c72")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_dnhlh")
+initial_state = NodePath("Spawning")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+script = ExtResource("4_grrpx")
+SPEED = 5000.0
+hitbox_iframe = NodePath("../../Area2D/Hitbox")
+
+[node name="Spawning" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+script = ExtResource("5_dpl5p")
+hitbox_iframe = NodePath("../../Area2D/Hitbox")
+
+[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+script = ExtResource("6_de3rd")
+hitbox_iframe = NodePath("../../Area2D/Hitbox")
+
+[node name="PolyphonicAudioPlayer" parent="." instance=ExtResource("6_60l16")]
+audio_library = SubResource("Resource_ja2e3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4.13044, 6.41305)
+shape = SubResource("RectangleShape2D_w6fpy")
+
+[node name="Timer" type="Timer" parent="Area2D"]
+
+[node name="DamageLocation" type="Marker2D" parent="."]
+position = Vector2(-3.91304, -26.087)
+script = ExtResource("13_eqw15")
+damage_node = ExtResource("14_klfs4")
+
+[node name="RayCast2DRight" type="RayCast2D" parent="."]
+position = Vector2(-3.47826, 0)
+target_position = Vector2(15.2174, 0)
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+position = Vector2(-3.47826, 0)
+target_position = Vector2(-13.913, 0)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Area2D/Timer" to="." method="_on_timer_timeout"]

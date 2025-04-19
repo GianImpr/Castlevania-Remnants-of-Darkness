@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=14 format=3 uid="uid://chr8ugns0fh70"]
+
+[ext_resource type="Resource" uid="uid://d31d5dpoavou1" path="res://guide_examples/two_joysticks/actions/player_one_move.tres" id="1_d7e45"]
+[ext_resource type="Script" path="res://addons/guide/guide_mapping_context.gd" id="1_sp28b"]
+[ext_resource type="Script" path="res://addons/guide/inputs/guide_input_joy_axis_2d.gd" id="2_exwu1"]
+[ext_resource type="Script" path="res://addons/guide/guide_input_mapping.gd" id="3_ga6gt"]
+[ext_resource type="Resource" uid="uid://cxd3gqa1bof30" path="res://guide_examples/two_joysticks/modifiers/joystick_deadzone.tres" id="3_xy1jy"]
+[ext_resource type="Script" path="res://addons/guide/guide_action_mapping.gd" id="4_mvoug"]
+[ext_resource type="Resource" uid="uid://7g78pa31v44m" path="res://guide_examples/two_joysticks/actions/player_two_move.tres" id="5_aeoun"]
+
+[sub_resource type="Resource" id="Resource_jkkrr"]
+script = ExtResource("2_exwu1")
+x = 0
+y = 1
+joy_index = 0
+
+[sub_resource type="Resource" id="Resource_6efv4"]
+script = ExtResource("3_ga6gt")
+input = SubResource("Resource_jkkrr")
+modifiers = Array[Resource("res://addons/guide/modifiers/guide_modifier.gd")]([ExtResource("3_xy1jy")])
+triggers = Array[Resource("res://addons/guide/triggers/guide_trigger.gd")]([])
+
+[sub_resource type="Resource" id="Resource_kv6y3"]
+script = ExtResource("4_mvoug")
+action = ExtResource("1_d7e45")
+input_mappings = Array[ExtResource("3_ga6gt")]([SubResource("Resource_6efv4")])
+
+[sub_resource type="Resource" id="Resource_660yw"]
+script = ExtResource("2_exwu1")
+x = 0
+y = 1
+joy_index = 1
+
+[sub_resource type="Resource" id="Resource_kg721"]
+script = ExtResource("3_ga6gt")
+input = SubResource("Resource_660yw")
+modifiers = Array[Resource("res://addons/guide/modifiers/guide_modifier.gd")]([ExtResource("3_xy1jy")])
+triggers = Array[Resource("res://addons/guide/triggers/guide_trigger.gd")]([])
+
+[sub_resource type="Resource" id="Resource_6ruab"]
+script = ExtResource("4_mvoug")
+action = ExtResource("5_aeoun")
+input_mappings = Array[ExtResource("3_ga6gt")]([SubResource("Resource_kg721")])
+
+[resource]
+script = ExtResource("1_sp28b")
+display_name = "Player Input"
+mappings = Array[ExtResource("4_mvoug")]([SubResource("Resource_kv6y3"), SubResource("Resource_6ruab")])

@@ -1,0 +1,176 @@
+[gd_scene load_steps=11 format=3 uid="uid://beartgufu5i2u"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/floating_numbers.gd" id="1_hhsrs"]
+[ext_resource type="FontFile" uid="uid://ci2tmsivehkf6" path="res://assets/sprites/Font/Caja.ttf" id="2_4b5ty"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/damage_numbers.gd" id="3_xa5cm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbl7t"]
+font = ExtResource("2_4b5ty")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_btdgk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-18, -11)]
+}
+
+[sub_resource type="Animation" id="Animation_fq4gv"]
+resource_name = "popup"
+length = 0.75
+step = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 0.125), Vector2(1.25, 1.25)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-92, -8), Vector2(-23, -18), Vector2(-23, -38)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87dba"]
+_data = {
+"RESET": SubResource("Animation_btdgk"),
+"popup": SubResource("Animation_fq4gv")
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dt85b"]
+load_path = "res://.godot/imported/DamageNumbers.png-c8016333acc0359b420fcdf2ac062c9b.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66ndt"]
+atlas = SubResource("CompressedTexture2D_dt85b")
+region = Rect2(48, 0, 8, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8dvg"]
+atlas = SubResource("CompressedTexture2D_dt85b")
+region = Rect2(40, 0, 8, 10)
+
+[node name="FloatingNumbers" type="Marker2D" node_paths=PackedStringArray("label", "damage_container")]
+z_index = 10
+script = ExtResource("1_hhsrs")
+label = NodePath("Label")
+damage_container = NodePath("Control/HBoxContainer")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -42.0
+offset_right = 14.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.25, 1.25)
+pivot_offset = Vector2(14, 12)
+text = "15"
+label_settings = SubResource("LabelSettings_lbl7t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_87dba")
+}
+autoplay = "popup"
+
+[node name="DamageNumbers" type="TextureRect" parent="."]
+visible = false
+offset_right = 8.0
+offset_bottom = 10.0
+texture = SubResource("AtlasTexture_66ndt")
+stretch_mode = 2
+
+[node name="Control" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -41.0
+offset_right = -23.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.25, 1.25)
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" node_paths=PackedStringArray("damage_numbers")]
+modulate = Color(1, 1, 1, 1)
+custom_minimum_size = Vector2(20, 0)
+offset_right = 20.0
+offset_bottom = 10.0
+scale = Vector2(2, 2)
+theme_override_constants/separation = -1
+alignment = 1
+script = ExtResource("3_xa5cm")
+damage_numbers = NodePath("../../DamageNumbers")
+
+[node name="DamageNumbers2" type="TextureRect" parent="Control/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_s8dvg")
+stretch_mode = 2
+
+[node name="DamageNumbers3" type="TextureRect" parent="Control/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_s8dvg")
+stretch_mode = 2

@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsv0uwfyqbbbw"]
+
+[ext_resource type="Script" path="res://guide_examples/action_priority/dpad_spells/dpad_spells.gd" id="1_pl5jh"]
+
+[node name="DpadSpells" type="GridContainer"]
+offset_right = 323.0
+offset_bottom = 329.0
+columns = 3
+script = ExtResource("1_pl5jh")
+
+[node name="Spacer" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Up" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spacer2" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Left" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spacer3" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Right" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spacer4" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Down" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Spacer5" type="Control" parent="."]
+layout_mode = 2

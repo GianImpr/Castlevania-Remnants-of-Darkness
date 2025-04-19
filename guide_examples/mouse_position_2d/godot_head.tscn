@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj8m2n32yjxka"]
+
+[ext_resource type="Script" path="res://guide_examples/mouse_position_2d/godot_head.gd" id="1_7od3t"]
+[ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="1_1168h"]
+
+[node name="GodotHead" type="Node2D"]
+script = ExtResource("1_7od3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1168h")

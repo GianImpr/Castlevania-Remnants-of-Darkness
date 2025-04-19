@@ -1,0 +1,79 @@
+[gd_scene load_steps=16 format=3 uid="uid://c4de28wapdqtp"]
+
+[ext_resource type="Script" path="res://guide_examples/mouse_position_2d/mouse_position.gd" id="1_rkyn8"]
+[ext_resource type="Resource" uid="uid://cfbk5croqnocs" path="res://guide_examples/mouse_position_2d/mapping_contexts/mouse_position.tres" id="2_f4xly"]
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="2_yylue"]
+[ext_resource type="Resource" uid="uid://y7q516rtjlt8" path="res://guide_examples/mouse_position_2d/mapping_contexts/actions/cursor.tres" id="3_e2cui"]
+[ext_resource type="Resource" uid="uid://cap7r63x8tait" path="res://guide_examples/mouse_position_2d/mapping_contexts/actions/spawn.tres" id="3_e16oi"]
+[ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="3_xcjwc"]
+[ext_resource type="Script" path="res://guide_examples/mouse_position_2d/camera_2d.gd" id="3_xpjlw"]
+[ext_resource type="PackedScene" uid="uid://cj8m2n32yjxka" path="res://guide_examples/mouse_position_2d/godot_head.tscn" id="5_6xobh"]
+[ext_resource type="Resource" uid="uid://ehdejslyo58y" path="res://guide_examples/mouse_position_2d/mapping_contexts/actions/camera_movement.tres" id="5_snwnm"]
+[ext_resource type="Texture2D" uid="uid://slnmn5k0drdb" path="res://guide_examples/mouse_position_2d/background.svg" id="6_1tobk"]
+[ext_resource type="Script" path="res://guide_examples/mouse_position_2d/background.gd" id="7_4oihe"]
+[ext_resource type="Resource" uid="uid://6dm5j1sdhdp2" path="res://guide_examples/mouse_position_2d/mapping_contexts/actions/camera_zoom.tres" id="8_6tg1h"]
+[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="9_y8piq"]
+
+[sub_resource type="Shader" id="Shader_v4pj1"]
+code = "shader_type canvas_item;
+
+uniform vec2 scale;
+uniform vec2 offset;
+
+void vertex() {
+	UV =  UV * scale + offset;
+}
+
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1sa2x"]
+shader = SubResource("Shader_v4pj1")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+
+[node name="MousePosition" type="Node2D"]
+script = ExtResource("1_rkyn8")
+mapping_context = ExtResource("2_f4xly")
+spawn = ExtResource("3_e16oi")
+cursor = ExtResource("3_e2cui")
+godot_head_scene = ExtResource("5_6xobh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_xpjlw")
+camera_movement = ExtResource("5_snwnm")
+camera_zoom = ExtResource("8_6tg1h")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_1sa2x")
+texture = ExtResource("6_1tobk")
+centered = false
+script = ExtResource("7_4oihe")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UILayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -107.0
+offset_top = 41.0
+offset_right = -67.0
+offset_bottom = 81.0
+grow_horizontal = 0
+theme = ExtResource("3_xcjwc")
+script = ExtResource("9_y8piq")
+instructions_text = "%s to move the camera.
+%s to zoom the camera.
+%s to place a Godot head."
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("5_snwnm"), ExtResource("8_6tg1h"), ExtResource("3_e16oi")])
+
+[node name="DebuggerLayer" type="CanvasLayer" parent="."]
+
+[node name="GuideDebugger" parent="DebuggerLayer" instance=ExtResource("2_yylue")]
+theme = ExtResource("3_xcjwc")

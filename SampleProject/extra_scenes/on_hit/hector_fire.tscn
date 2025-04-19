@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt30pxcyq6siw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ciw13"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vc6o2"]
+load_path = "res://.godot/imported/Fire2.png-0e700c9f88cf62ed3b8e0eb93db0ad82.ctex"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="HectorFire" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ciw13")
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 0.3
+randomness = 0.5
+texture = SubResource("CompressedTexture2D_vc6o2")
+emission_shape = 3
+emission_rect_extents = Vector2(20, 40)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+anim_speed_min = 3.0
+anim_speed_max = 3.0

@@ -1,0 +1,452 @@
+[gd_scene load_steps=41 format=3 uid="uid://c6wkdyxdx8cqd"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/equip_menu.gd" id="1_oo2ya"]
+[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="1_or4xx"]
+[ext_resource type="Script" path="res://SampleProject/items/equip_slots.gd" id="2_85kp5"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_ylibq"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_hcxx0"]
+[ext_resource type="AudioStream" uid="uid://b32havei62w4k" path="res://assets/sounds/Menu/Confirm.MP3" id="6_ytbjd"]
+[ext_resource type="AudioStream" uid="uid://d1keij3ygo5dq" path="res://assets/sounds/Menu/Cursor.MP3" id="7_m54og"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon_compendium.gd" id="8_g04oq"]
+[ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="8_tjetl"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="8_wxe1t"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="9_3fr13"]
+[ext_resource type="Texture2D" uid="uid://dvhm565w0bkyu" path="res://assets/sprites/Items/Inventory/Inventory_387.png" id="9_st7lb"]
+[ext_resource type="Texture2D" uid="uid://c2l6d0sowxme7" path="res://assets/sprites/Items/Inventory/Inventory_255.png" id="9_u5lvb"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/MenuButtons.gd" id="10_jbhsu"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/menuLabels.gd" id="11_gbg8x"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/equip_list.gd" id="12_61ma5"]
+[ext_resource type="Texture2D" uid="uid://ccj2k1he5hhe7" path="res://assets/sprites/Items/Inventory/Inventory_254.png" id="12_t6o1e"]
+
+[sub_resource type="Gradient" id="Gradient_ixg84"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rhnkm"]
+gradient = SubResource("Gradient_ixg84")
+
+[sub_resource type="Gradient" id="Gradient_ot1tp"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m5ofj"]
+gradient = SubResource("Gradient_ot1tp")
+
+[sub_resource type="Gradient" id="Gradient_4yga6"]
+colors = PackedColorArray(0, 0, 0, 1, 0.00226884, 0.11899, 0.578939, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wcpvx"]
+gradient = SubResource("Gradient_4yga6")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_seje4"]
+
+[sub_resource type="Theme" id="Theme_uwrdr"]
+default_font = ExtResource("1_or4xx")
+default_font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orkgf"]
+bg_color = Color(0.339734, 2.97809e-06, 1.63645e-06, 1)
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_ttekt"]
+default_font = ExtResource("1_or4xx")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6avg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_pwoiy"]
+default_font = ExtResource("1_or4xx")
+default_font_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dn4s1"]
+bg_color = Color(0.339734, 2.97809e-06, 1.63645e-06, 1)
+corner_detail = 1
+
+[sub_resource type="Resource" id="Resource_ruwk0"]
+script = ExtResource("8_wxe1t")
+weapon_name = "Short Sword"
+weapon_description = "A common sword, not really good due to its poor range."
+type = 0
+element = Array[int]([])
+ATK = 5
+DEF = 3
+STR = 5
+CON = -1
+INT = 4
+SYN = 3
+RES = 5
+LCK = -2
+value = 0
+max_quantity = 99
+icon = ExtResource("9_st7lb")
+
+[sub_resource type="Resource" id="Resource_3u7xn"]
+script = ExtResource("8_g04oq")
+Weapon_Compendium = Array[ExtResource("8_wxe1t")]([SubResource("Resource_ruwk0")])
+
+[sub_resource type="Animation" id="Animation_khk0n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kl0ui"]
+resource_name = "blur"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.2, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_41rsd"]
+resource_name = "change"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.166667, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cuwo4"]
+_data = {
+"RESET": SubResource("Animation_khk0n"),
+"blur": SubResource("Animation_kl0ui"),
+"change": SubResource("Animation_41rsd")
+}
+
+[sub_resource type="Resource" id="Resource_238n2"]
+script = ExtResource("5_hcxx0")
+Tag = "confirm"
+stream = ExtResource("6_ytbjd")
+
+[sub_resource type="Resource" id="Resource_kxks2"]
+script = ExtResource("5_hcxx0")
+Tag = "cursor"
+stream = ExtResource("7_m54og")
+
+[sub_resource type="Resource" id="Resource_wk333"]
+script = ExtResource("5_hcxx0")
+Tag = "denied"
+stream = ExtResource("8_tjetl")
+
+[sub_resource type="Resource" id="Resource_nw7uy"]
+script = ExtResource("4_ylibq")
+sound_effects = Array[ExtResource("5_hcxx0")]([SubResource("Resource_238n2"), SubResource("Resource_kxks2"), SubResource("Resource_wk333")])
+
+[node name="EquipMenu" type="Control" node_paths=PackedStringArray("labels", "buttons", "animation", "default_button")]
+z_index = 8
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -25.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oo2ya")
+labels = NodePath("Display/Text")
+buttons = NodePath("Display/PanelContainer/EquipSlots")
+animation = NodePath("AnimationPlayer")
+default_button = NodePath("Display/PanelContainer/EquipSlots/Weapon")
+open = true
+
+[node name="BlackBackground" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -14.0
+offset_top = -13.0
+offset_right = 854.0
+offset_bottom = 467.0
+texture = SubResource("GradientTexture1D_rhnkm")
+
+[node name="Display" type="Node2D" parent="."]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(-13, -13)
+
+[node name="Margin" type="TextureRect" parent="Display"]
+show_behind_parent = true
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 852.0
+offset_bottom = 471.0
+texture = SubResource("GradientTexture1D_m5ofj")
+
+[node name="UpperBackground" type="TextureRect" parent="Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 850.0
+offset_bottom = 227.0
+texture = SubResource("GradientTexture2D_wcpvx")
+
+[node name="InventoryBackground" type="TextureRect" parent="Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 229.0
+offset_right = 850.0
+offset_bottom = 420.0
+texture = SubResource("GradientTexture2D_wcpvx")
+
+[node name="DescriptionBackground" type="TextureRect" parent="Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 422.0
+offset_right = 1209.0
+offset_bottom = 489.0
+scale = Vector2(0.7, 0.7)
+texture = SubResource("GradientTexture2D_wcpvx")
+
+[node name="PanelContainer" type="PanelContainer" parent="Display"]
+z_index = 1
+offset_left = 228.0
+offset_top = 16.0
+offset_right = 569.0
+offset_bottom = 224.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_seje4")
+
+[node name="EquipSlots" type="VBoxContainer" parent="Display/PanelContainer" node_paths=PackedStringArray("equip_list", "quantity_list", "sound")]
+layout_mode = 2
+focus_neighbor_top = NodePath("Accessory 2")
+focus_neighbor_bottom = NodePath("Weapon")
+theme = SubResource("Theme_uwrdr")
+theme_override_constants/separation = 0
+script = ExtResource("2_85kp5")
+equip_list = NodePath("../../EquipList")
+quantity_list = NodePath("../../QuantityList")
+button_glow = SubResource("StyleBoxFlat_orkgf")
+sound = NodePath("../../../PolyphonicMenuAudio")
+
+[node name="Weapon" type="Button" parent="Display/PanelContainer/EquipSlots"]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("9_u5lvb")
+flat = true
+alignment = 0
+script = ExtResource("10_jbhsu")
+
+[node name="Artifact" type="Button" parent="Display/PanelContainer/EquipSlots"]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("9_u5lvb")
+flat = true
+alignment = 0
+script = ExtResource("10_jbhsu")
+
+[node name="Relic" type="Button" parent="Display/PanelContainer/EquipSlots"]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("9_u5lvb")
+flat = true
+alignment = 0
+script = ExtResource("10_jbhsu")
+
+[node name="Head" type="Button" parent="Display/PanelContainer/EquipSlots"]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("9_u5lvb")
+flat = true
+alignment = 0
+script = ExtResource("10_jbhsu")
+
+[node name="Body" type="Button" parent="Display/PanelContainer/EquipSlots"]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("9_u5lvb")
+flat = true
+alignment = 0
+script = ExtResource("10_jbhsu")
+
+[node name="Legs" type="Button" parent="Display/PanelContainer/EquipSlots"]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("9_u5lvb")
+flat = true
+alignment = 0
+script = ExtResource("10_jbhsu")
+
+[node name="Accessory 1" type="Button" parent="Display/PanelContainer/EquipSlots"]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("9_u5lvb")
+flat = true
+alignment = 0
+script = ExtResource("10_jbhsu")
+
+[node name="Accessory 2" type="Button" parent="Display/PanelContainer/EquipSlots"]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("9_u5lvb")
+flat = true
+alignment = 0
+script = ExtResource("10_jbhsu")
+
+[node name="GlowTimer" type="Timer" parent="Display/PanelContainer/EquipSlots"]
+wait_time = 0.1
+autostart = true
+
+[node name="Text" type="Control" parent="Display" node_paths=PackedStringArray("SubStatValues", "BattleStatsValues")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 53.0
+offset_bottom = 53.0
+theme = SubResource("Theme_ttekt")
+script = ExtResource("11_gbg8x")
+SubStatValues = NodePath("SubStatValues")
+BattleStatsValues = NodePath("BattleStatsValues")
+
+[node name="SubStats" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_top = 46.0
+offset_right = 106.0
+offset_bottom = 205.0
+text = "STR
+CON
+INT
+MND
+SYN
+LCK"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="SlotType" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 12.0
+offset_right = 203.0
+offset_bottom = 36.0
+text = "Weapon"
+horizontal_alignment = 1
+
+[node name="SubStatValues" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 46.0
+offset_right = 140.0
+offset_bottom = 205.0
+text = "6
+4
+5
+2
+0
+3"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="BattleStats" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 116.0
+offset_right = 661.0
+offset_bottom = 198.0
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("1_or4xx")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_a6avg")
+text = "ATK
+DEF"
+uppercase = true
+
+[node name="BattleStatsValues" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 122.0
+offset_right = 753.0
+offset_bottom = 204.0
+theme_override_constants/line_spacing = 24
+theme_override_fonts/font = ExtResource("1_or4xx")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_a6avg")
+text = "8
+0"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="EquipList" type="GridContainer" parent="Display" node_paths=PackedStringArray("glow_timer", "sound", "equipSlots")]
+custom_minimum_size = Vector2(392, 94)
+offset_left = 39.0
+offset_top = 229.0
+offset_right = 347.0
+offset_bottom = 249.0
+scale = Vector2(2, 2)
+focus_neighbor_top = NodePath("Unequip")
+focus_neighbor_bottom = NodePath("Unequip")
+theme = SubResource("Theme_pwoiy")
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = -5
+columns = 2
+script = ExtResource("12_61ma5")
+button_glow = SubResource("StyleBoxFlat_dn4s1")
+glow_timer = NodePath("GlowTimer")
+sound = NodePath("../../PolyphonicMenuAudio")
+weapons = SubResource("Resource_3u7xn")
+equipSlots = NodePath("../PanelContainer/EquipSlots")
+
+[node name="Unequip" type="Button" parent="Display/EquipList"]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+text = "Unequip"
+icon = ExtResource("12_t6o1e")
+flat = true
+alignment = 0
+
+[node name="GlowTimer" type="Timer" parent="Display/EquipList"]
+wait_time = 0.1
+autostart = true
+
+[node name="QuantityList" type="GridContainer" parent="Display"]
+custom_minimum_size = Vector2(227, 90)
+offset_left = 359.0
+offset_top = 229.0
+offset_right = 586.0
+offset_bottom = 319.0
+scale = Vector2(2, 2)
+theme = SubResource("Theme_pwoiy")
+theme_override_constants/h_separation = 172
+theme_override_constants/v_separation = -5
+columns = 2
+
+[node name="Label" type="Label" parent="Display/QuantityList"]
+custom_minimum_size = Vector2(27, 24)
+layout_mode = 2
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cuwo4")
+}
+speed_scale = 1.2
+
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+script = ExtResource("9_3fr13")
+audio_library = SubResource("Resource_nw7uy")
+
+[connection signal="timeout" from="Display/PanelContainer/EquipSlots/GlowTimer" to="Display/PanelContainer/EquipSlots" method="_on_glow_timer_timeout"]
+[connection signal="timeout" from="Display/EquipList/GlowTimer" to="Display/EquipList" method="_on_glow_timer_timeout"]

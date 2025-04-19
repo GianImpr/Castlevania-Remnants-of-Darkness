@@ -1,0 +1,224 @@
+[gd_scene load_steps=20 format=3 uid="uid://pmhfi7gv5sxe"]
+
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="1_j32fa"]
+[ext_resource type="Script" path="res://SampleProject/extra_scenes/enemies/spawn_enemy.gd" id="1_liif3"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_vluex"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_y6l26"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_6ll7l"]
+[ext_resource type="AudioStream" uid="uid://cap3q8r1k13kl" path="res://assets/sounds/Effects/SpawnEnemy.MP3" id="6_k3qju"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j27em"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_l3fnd"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0.35321, 0.0699027, 0.848477, 1, 0.364712, 0.00064861, 0.493994, 1, 0.852377, 0.000141697, 0.718575, 1, 1, 0.0117647, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_omh53"]
+gradient = SubResource("Gradient_l3fnd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3das4"]
+emission_shape = 1
+emission_sphere_radius = 36.0
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, -600, 0)
+color_ramp = SubResource("GradientTexture1D_omh53")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="Animation" id="Animation_alq1m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_da8nx"]
+resource_name = "spawn"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.233333, 3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_spawnEnemy"
+}, {
+"args": [],
+"method": &"deleteIfNoRespawn"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["spawn"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_serlo"]
+resource_name = "test"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D2:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(200, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dq8ar"]
+_data = {
+"RESET": SubResource("Animation_alq1m"),
+"spawn": SubResource("Animation_da8nx"),
+"test": SubResource("Animation_serlo")
+}
+
+[sub_resource type="Resource" id="Resource_fap5k"]
+script = ExtResource("5_6ll7l")
+Tag = "spawn"
+stream = ExtResource("6_k3qju")
+
+[sub_resource type="Resource" id="Resource_s0sue"]
+script = ExtResource("4_y6l26")
+sound_effects = Array[ExtResource("5_6ll7l")]([SubResource("Resource_fap5k")])
+
+[sub_resource type="Gradient" id="Gradient_pj3hq"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0.35321, 0.0699027, 0.848477, 1, 0.364712, 0.00064861, 0.493994, 1, 0.852377, 0.000141697, 0.718575, 1, 1, 0.0117647, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tnrw0"]
+gradient = SubResource("Gradient_pj3hq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_go66r"]
+emission_shape = 1
+emission_sphere_radius = 23.0
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 100.0
+gravity = Vector3(0, -100, 0)
+color_ramp = SubResource("GradientTexture1D_tnrw0")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="SpawnEnemy" type="Node2D" node_paths=PackedStringArray("timer", "animation", "delete_timer")]
+script = ExtResource("1_liif3")
+timer = NodePath("Timer")
+animation = NodePath("AnimationPlayer")
+delete_timer = NodePath("DeleteTimer")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 20
+material = SubResource("CanvasItemMaterial_j27em")
+emitting = false
+amount = 360
+process_material = SubResource("ParticleProcessMaterial_3das4")
+texture = ExtResource("1_j32fa")
+one_shot = true
+explosiveness = 0.07
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dq8ar")
+}
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = 5.0
+script = ExtResource("3_vluex")
+audio_library = SubResource("Resource_s0sue")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+z_index = 20
+material = SubResource("CanvasItemMaterial_j27em")
+emitting = false
+amount = 600
+process_material = SubResource("ParticleProcessMaterial_go66r")
+texture = ExtResource("1_j32fa")
+one_shot = true
+explosiveness = 0.07
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_playSpawn"]
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]

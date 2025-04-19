@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://sojetaw1vp73"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_rb3kc"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="2_h21b1"]
+[ext_resource type="PackedScene" uid="uid://yby38f15lji0" path="res://scenes/HUD.tscn" id="3_c5nvu"]
+[ext_resource type="PackedScene" uid="uid://dt8t755oidogh" path="res://scenes/player.tscn" id="4_44pgh"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_rb3kc")
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_h21b1")
+
+[node name="Player" parent="." instance=ExtResource("4_44pgh")]
+z_index = 5
+position = Vector2(245, 69)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3.375, 3.375)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 192
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("3_c5nvu")]

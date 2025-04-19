@@ -1,0 +1,170 @@
+[gd_scene load_steps=17 format=3 uid="uid://ds8enf7ivwg6o"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="1_beicf"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/canister.gd" id="1_yto3p"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="2_stgdq"]
+[ext_resource type="Texture2D" uid="uid://dcofyfqruenet" path="res://assets/sprites/Objects/Canister.png" id="2_vddg6"]
+[ext_resource type="PackedScene" uid="uid://cn5udljc46woc" path="res://SampleProject/extra_scenes/items/life_vessel.tscn" id="2_ysejs"]
+[ext_resource type="Texture2D" uid="uid://b14un0hnoriq2" path="res://assets/sprites/Effects/Fire2.png" id="3_hefti"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="3_oiy7i"]
+[ext_resource type="AudioStream" uid="uid://d36otnwl0rx7d" path="res://assets/sounds/Effects/Nuova cartella/Container.MP3" id="4_43fgi"]
+
+[sub_resource type="Resource" id="Resource_sork7"]
+script = ExtResource("3_oiy7i")
+Tag = "canister"
+stream = ExtResource("4_43fgi")
+
+[sub_resource type="Resource" id="Resource_wpyr0"]
+script = ExtResource("2_stgdq")
+sound_effects = Array[ExtResource("3_oiy7i")]([SubResource("Resource_sork7")])
+
+[sub_resource type="Animation" id="Animation_nqi3h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_n4100"]
+resource_name = "destroy"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_eefjp"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_13kty"]
+_data = {
+"RESET": SubResource("Animation_nqi3h"),
+"destroy": SubResource("Animation_n4100"),
+"idle": SubResource("Animation_eefjp")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cctky"]
+size = Vector2(39, 109)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ob55f"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Canister" type="RigidBody2D" node_paths=PackedStringArray("animation", "sound", "hitbox_iframe")]
+collision_layer = 4
+collision_mask = 0
+freeze = true
+script = ExtResource("1_yto3p")
+animation = NodePath("AnimationPlayer")
+item_scene = ExtResource("2_ysejs")
+sound = NodePath("PolyphonicAudio")
+hitbox_iframe = NodePath("CollisionShape2D")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+script = ExtResource("1_beicf")
+audio_library = SubResource("Resource_wpyr0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_vddg6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_13kty")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_cctky")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_ob55f")
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 0.3
+randomness = 0.5
+texture = ExtResource("3_hefti")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 50)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+anim_speed_min = 3.0
+anim_speed_max = 3.0

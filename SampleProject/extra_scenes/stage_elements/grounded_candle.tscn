@@ -1,0 +1,194 @@
+[gd_scene load_steps=19 format=3 uid="uid://des8o3jbf3a4m"]
+
+[ext_resource type="Texture2D" uid="uid://djhpguwd6mfwx" path="res://assets/sprites/Objects/MonasteryCandle.png" id="1_l58hb"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/grounded_candle.gd" id="1_x0eij"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_56uos"]
+[ext_resource type="PackedScene" uid="uid://lxr3qjc6ny5a" path="res://SampleProject/extra_scenes/stage_elements/broken_candle.tscn" id="2_pn8v4"]
+[ext_resource type="PackedScene" uid="uid://rum44mjshdlr" path="res://SampleProject/extra_scenes/items/money.tscn" id="3_eq77u"]
+[ext_resource type="PackedScene" uid="uid://3ypsgown6bve" path="res://SampleProject/extra_scenes/items/heart.tscn" id="4_ao52r"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_6nt66"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="8_g4end"]
+[ext_resource type="AudioStream" uid="uid://cuso1funi7udm" path="res://assets/sounds/Effects/GroundCandleBreak.MP3" id="9_26yp3"]
+
+[sub_resource type="Gradient" id="Gradient_w2l2v"]
+offsets = PackedFloat32Array(0, 0.467105, 0.720395, 0.871711, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.431283, 0.611583, 1, 1, 0, 0.291096, 0.686373, 0.501961, 0.562872, 0.764, 1, 0, 0.582657, 0.758623, 0.999678, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ycxnd"]
+gradient = SubResource("Gradient_w2l2v")
+fill = 1
+fill_from = Vector2(0.538462, 0.504274)
+
+[sub_resource type="Animation" id="Animation_oukcy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_cx65l"]
+resource_name = "destroy"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"disabled", true],
+"method": &"set_deferred"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_q3imq"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pcwyt"]
+_data = {
+"RESET": SubResource("Animation_oukcy"),
+"destroy": SubResource("Animation_cx65l"),
+"idle": SubResource("Animation_q3imq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jl43i"]
+size = Vector2(33, 97)
+
+[sub_resource type="Resource" id="Resource_0l0lg"]
+script = ExtResource("8_g4end")
+Tag = "destroy"
+stream = ExtResource("9_26yp3")
+
+[sub_resource type="Resource" id="Resource_jukau"]
+script = ExtResource("7_6nt66")
+sound_effects = Array[ExtResource("8_g4end")]([SubResource("Resource_0l0lg")])
+
+[node name="MonasteryCandle" type="RigidBody2D" node_paths=PackedStringArray("light", "sprite", "animation", "sound", "hitbox_iframe")]
+collision_layer = 4
+collision_mask = 0
+freeze = true
+script = ExtResource("1_x0eij")
+light = NodePath("PointLight2D")
+sprite = NodePath("Sprite2D")
+animation = NodePath("AnimationPlayer")
+explosion_scene = ExtResource("2_pn8v4")
+coin_scene = ExtResource("3_eq77u")
+heart_scene = ExtResource("4_ao52r")
+sound = NodePath("PolyphonicAudio")
+hitbox_iframe = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_l58hb")
+hframes = 5
+vframes = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-6, -31)
+energy = 2.0
+texture = SubResource("GradientTexture2D_ycxnd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pcwyt")
+}
+autoplay = "idle"
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-4.5, 6.5)
+shape = SubResource("RectangleShape2D_jl43i")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("2_56uos")
+audio_library = SubResource("Resource_jukau")

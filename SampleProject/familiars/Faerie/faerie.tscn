@@ -1,0 +1,718 @@
+[gd_scene load_steps=62 format=3 uid="uid://crov6smdsbwb4"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/Faerie.gd" id="1_un82i"]
+[ext_resource type="Texture2D" uid="uid://cg6xqwlb4rrii" path="res://assets/sprites/InnocentDevils/fairywings.png" id="1_x40rn"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/innocent_devil.gd" id="2_fhvse"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/IDSkill.gd" id="3_5jgsh"]
+[ext_resource type="Texture2D" uid="uid://sxtc4unu2010" path="res://assets/sprites/InnocentDevils/fairy.png" id="3_i28bv"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieIdle.gd" id="3_ry4ys"]
+[ext_resource type="Texture2D" uid="uid://btru3nul44e6v" path="res://assets/sprites/HUD/IDIcons/Heal1.png" id="4_sbpmc"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_u4ig5"]
+[ext_resource type="Texture2D" uid="uid://deqm7hrmownqo" path="res://assets/sprites/HUD/IDIcons/RefreshingAir.png" id="5_dnftg"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieRun.gd" id="5_wubor"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieStopMoving.gd" id="6_nci8y"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieHealing.gd" id="7_8u2gj"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_kyyu2"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFreeze.gd" id="8_v045c"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFunnyWall.gd" id="9_0ixtq"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="9_7ueiy"]
+[ext_resource type="AudioStream" uid="uid://c2turxxbo67s2" path="res://assets/sounds/InnocentDevils/Faerie/FairyHeal1.MP3" id="10_jqjld"]
+[ext_resource type="AudioStream" uid="uid://7ia3jv1shxri" path="res://assets/sounds/InnocentDevils/Faerie/FairyHeal2.MP3" id="11_6v3ya"]
+[ext_resource type="AudioStream" uid="uid://c3hvhwhjsbhp8" path="res://assets/sounds/InnocentDevils/Faerie/FairyHeal3.MP3" id="12_0ku5v"]
+[ext_resource type="PackedScene" uid="uid://b85mrm6ht3kgn" path="res://SampleProject/extra_scenes/effects/refreshing_air.tscn" id="13_aa5on"]
+[ext_resource type="AudioStream" uid="uid://dmygyfdvwkny8" path="res://assets/sounds/InnocentDevils/Faerie/HealEffect.MP3" id="13_n2r0b"]
+[ext_resource type="AudioStream" uid="uid://o8xb73wudmam" path="res://assets/sounds/InnocentDevils/Faerie/FaerieFunnyWall.MP3" id="16_sa2f5"]
+[ext_resource type="AudioStream" uid="uid://dlmhl7dysb8lh" path="res://assets/sounds/InnocentDevils/IDLevelUp.MP3" id="24_2jcuy"]
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="24_782qj"]
+[ext_resource type="AudioStream" uid="uid://rpogipl0n7kv" path="res://assets/sounds/Powerups/RefreshingAir.MP3" id="24_oyaot"]
+
+[sub_resource type="Resource" id="Resource_afldu"]
+script = ExtResource("3_5jgsh")
+name = "Heal"
+description = "Heals Hector a moderate amount of HP."
+cost = 20
+power = 50
+multiplier = 1.0
+type = 2
+synergy_engager = false
+icon = ExtResource("4_sbpmc")
+
+[sub_resource type="Resource" id="Resource_cf336"]
+script = ExtResource("3_5jgsh")
+name = "Refreshing Air"
+description = "Temporarily allows Hector to heal MP when attacking a foe."
+cost = 15
+power = 0
+multiplier = 0.0
+type = 2
+synergy_engager = false
+icon = ExtResource("5_dnftg")
+
+[sub_resource type="Curve" id="Curve_mesp0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502242, 1.01099), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_x3b60"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Magic:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Magic:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8kj1f"]
+resource_name = "rising"
+length = 0.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [16, 17, 18]
+}
+
+[sub_resource type="Animation" id="Animation_uujjc"]
+resource_name = "heal"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [25, 26, 27, 28, 29, 30, 31, 32, 33, 36]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Magic:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Healing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"performSkill"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3clpc"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_3us23"]
+resource_name = "move_start"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [15, 14, 13, 12]
+}
+
+[sub_resource type="Animation" id="Animation_j27ag"]
+resource_name = "open"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [25, 26, 27, 28, 29, 30, 31, 32, 33, 36]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Magic:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Funny_wall")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"trigger_event"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Magic:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0.860559, 0, 0.464751, 1), Color(0, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3f2ob"]
+resource_name = "rising"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_jpwqi"]
+resource_name = "running"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_xd0rn"]
+resource_name = "stopping"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_refp3"]
+_data = {
+"RESET": SubResource("Animation_x3b60"),
+"dropping": SubResource("Animation_8kj1f"),
+"heal": SubResource("Animation_uujjc"),
+"idle": SubResource("Animation_3clpc"),
+"move_start": SubResource("Animation_3us23"),
+"open": SubResource("Animation_j27ag"),
+"rising": SubResource("Animation_3f2ob"),
+"running": SubResource("Animation_jpwqi"),
+"stopping": SubResource("Animation_xd0rn")
+}
+
+[sub_resource type="Animation" id="Animation_dcm6y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_awsxv"]
+resource_name = "normal"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ftk4c"]
+resource_name = "running"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b676p"]
+_data = {
+"RESET": SubResource("Animation_dcm6y"),
+"normal": SubResource("Animation_awsxv"),
+"running": SubResource("Animation_ftk4c")
+}
+
+[sub_resource type="GDScript" id="GDScript_x8twt"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="Resource" id="Resource_aqksd"]
+script = ExtResource("9_7ueiy")
+Tag = "heal1"
+stream = ExtResource("10_jqjld")
+
+[sub_resource type="Resource" id="Resource_vmbya"]
+script = ExtResource("9_7ueiy")
+Tag = "heal2"
+stream = ExtResource("11_6v3ya")
+
+[sub_resource type="Resource" id="Resource_ntdpa"]
+script = ExtResource("9_7ueiy")
+Tag = "heal3"
+stream = ExtResource("12_0ku5v")
+
+[sub_resource type="Resource" id="Resource_vyyje"]
+script = ExtResource("9_7ueiy")
+Tag = "heal_effect"
+stream = ExtResource("13_n2r0b")
+
+[sub_resource type="Resource" id="Resource_ee45a"]
+script = ExtResource("9_7ueiy")
+Tag = "funny_wall"
+stream = ExtResource("16_sa2f5")
+
+[sub_resource type="Resource" id="Resource_rdxi0"]
+script = ExtResource("9_7ueiy")
+Tag = "refreshing_air"
+stream = ExtResource("24_oyaot")
+
+[sub_resource type="Resource" id="Resource_dxc67"]
+script = ExtResource("9_7ueiy")
+Tag = "level_up"
+stream = ExtResource("24_2jcuy")
+
+[sub_resource type="Resource" id="Resource_g1eeh"]
+script = ExtResource("8_kyyu2")
+sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_aqksd"), SubResource("Resource_vmbya"), SubResource("Resource_ntdpa"), SubResource("Resource_vyyje"), SubResource("Resource_ee45a"), SubResource("Resource_rdxi0"), SubResource("Resource_dxc67")])
+
+[sub_resource type="Gradient" id="Gradient_kkorl"]
+interpolation_mode = 2
+colors = PackedColorArray(100, 100, 100, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fikny"]
+gradient = SubResource("Gradient_kkorl")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.0213675, 0.995726)
+fill_to = Vector2(0.512821, 0.521368)
+
+[sub_resource type="Animation" id="Animation_hbqe7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_x6bix"]
+resource_name = "glow"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 3.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rt05c"]
+_data = {
+"RESET": SubResource("Animation_hbqe7"),
+"glow": SubResource("Animation_x6bix")
+}
+
+[sub_resource type="Curve" id="Curve_ykbwx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gq6fw"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_2xivr"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.682635, 1)
+colors = PackedColorArray(0.248935, 0.22347, 0, 1, 0.720155, 0.558532, 1.92523e-07, 1, 0.986061, 0.854681, 1.54018e-06, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2y65o"]
+gradient = SubResource("Gradient_2xivr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v85tw"]
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_2y65o")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Faerie" type="CharacterBody2D" node_paths=PackedStringArray("stats", "state_machine")]
+z_index = 7
+scale = Vector2(2, 2)
+script = ExtResource("1_un82i")
+id_name = "Fairy"
+stats = NodePath("InnocentDevil")
+state_machine = NodePath("StateMachine")
+
+[node name="InnocentDevil" type="Node" parent="." node_paths=PackedStringArray("level_up", "sound")]
+script = ExtResource("2_fhvse")
+Stats = {
+"ATK": 5,
+"DEF": 0,
+"EXP": 0,
+"Hearts": 50,
+"INT": 5,
+"LV": 1,
+"MHearts": 50,
+"MND": 5
+}
+Growths = {
+"ATK": 50,
+"DEF": 0,
+"INT": 130,
+"MHearts": 300,
+"MND": 150
+}
+Boosts = {
+"CON": 0,
+"INT": 0,
+"LCK": 0,
+"MND": 0,
+"STR": 0
+}
+Initial = {
+"ATK": 5,
+"DEF": 0,
+"EXP": 0,
+"Hearts": 50,
+"INT": 5,
+"LV": 1,
+"MHearts": 50,
+"MND": 5
+}
+Bases = {
+"ATK": 5,
+"DEF": 0,
+"EXP": 0,
+"Hearts": 50,
+"INT": 5,
+"LV": 1,
+"MHearts": 50,
+"MND": 5
+}
+skills = Array[ExtResource("3_5jgsh")]([SubResource("Resource_afldu"), SubResource("Resource_cf336")])
+level_up = NodePath("../LevelUp")
+sound = NodePath("../PolyphonicAudioPlayer")
+
+[node name="WingSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_x40rn")
+hframes = 4
+vframes = 6
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(3, 1, 3, 1)
+position = Vector2(0, -5.21739)
+amount = 15
+lifetime = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(15, 8)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+scale_amount_curve = SubResource("Curve_mesp0")
+color = Color(0.913065, 0.000749685, 0.925435, 1)
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("3_i28bv")
+hframes = 4
+vframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_refp3")
+}
+
+[node name="WingAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b676p")
+}
+speed_scale = 5.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_x8twt")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings")]
+script = ExtResource("3_ry4ys")
+wings = NodePath("../../WingAnim")
+
+[node name="Run" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings")]
+script = ExtResource("5_wubor")
+wings = NodePath("../../WingAnim")
+
+[node name="Stop_moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings")]
+script = ExtResource("6_nci8y")
+wings = NodePath("../../WingAnim")
+
+[node name="Healing" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings", "magic_particles")]
+script = ExtResource("7_8u2gj")
+wings = NodePath("../../WingAnim")
+refreshing_air_scene = ExtResource("13_aa5on")
+magic_particles = NodePath("../../Magic")
+
+[node name="Freeze" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings", "timer", "glow")]
+script = ExtResource("8_v045c")
+wings = NodePath("../../WingAnim")
+timer = NodePath("Duration")
+glow = NodePath("../../PointLight2D")
+
+[node name="Duration" type="Timer" parent="StateMachine/Freeze"]
+wait_time = 5.0
+
+[node name="Funny_wall" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings", "idle_duration")]
+script = ExtResource("9_0ixtq")
+wings = NodePath("../../WingAnim")
+idle_duration = NodePath("IdleDuration")
+
+[node name="IdleDuration" type="Timer" parent="StateMachine/Funny_wall"]
+wait_time = 3.0
+one_shot = true
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
+bus = &"Voice"
+script = ExtResource("4_u4ig5")
+audio_library = SubResource("Resource_g1eeh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-0.434783, -3.04348)
+scale = Vector2(0.0815217, 0.0883152)
+energy = 2.0
+texture = SubResource("GradientTexture2D_fikny")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="PointLight2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_rt05c")
+}
+autoplay = "glow"
+
+[node name="Magic" type="CPUParticles2D" parent="."]
+self_modulate = Color(0, 1, 0, 1)
+position = Vector2(-14, -11.5)
+emitting = false
+amount = 40
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.9
+direction = Vector2(-1, -1)
+spread = 50.0
+gravity = Vector2(0, 300)
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_ykbwx")
+
+[node name="LevelUp" type="GPUParticles2D" parent="."]
+z_index = 20
+material = SubResource("CanvasItemMaterial_gq6fw")
+emitting = false
+amount = 80
+process_material = SubResource("ParticleProcessMaterial_v85tw")
+texture = ExtResource("24_782qj")
+lifetime = 2.5
+one_shot = true
+explosiveness = 0.75
+
+[connection signal="timeout" from="StateMachine/Freeze/Duration" to="StateMachine/Freeze" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Funny_wall/IdleDuration" to="StateMachine/Funny_wall" method="_on_idle_duration_timeout"]

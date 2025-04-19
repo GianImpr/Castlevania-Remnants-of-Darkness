@@ -1,0 +1,212 @@
+[gd_scene load_steps=16 format=3 uid="uid://cdbaucja5abn7"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanSpike.gd" id="1_a4nj1"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="2_gmmut"]
+[ext_resource type="Texture2D" uid="uid://c6ewa6vhvradu" path="res://assets/sprites/Spells/IceFang.png" id="3_yyt81"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_clwjl"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_q8jgc"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_cfwk0"]
+[ext_resource type="AudioStream" uid="uid://cricl0oqswl8h" path="res://assets/sounds/Spells/IceFang.MP3" id="7_1xq1r"]
+
+[sub_resource type="Animation" id="Animation_ordmn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_lnn4f"]
+resource_name = "spawn"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.430303, 0.460606, 0.490909, 0.521212, 0.884848, 0.915151, 0.945455, 0.975758),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 3, 2, 1, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["fang"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.21, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [8.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2n46o"]
+_data = {
+"RESET": SubResource("Animation_ordmn"),
+"spawn": SubResource("Animation_lnn4f")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmsuk"]
+size = Vector2(24, 124)
+
+[sub_resource type="Resource" id="Resource_qnii7"]
+script = ExtResource("6_cfwk0")
+Tag = "fang"
+stream = ExtResource("7_1xq1r")
+
+[sub_resource type="Resource" id="Resource_nv0be"]
+script = ExtResource("5_q8jgc")
+sound_effects = Array[ExtResource("6_cfwk0")]([SubResource("Resource_qnii7")])
+
+[sub_resource type="Gradient" id="Gradient_v216e"]
+colors = PackedColorArray(0, 1, 1, 1, 0, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7b35h"]
+gradient = SubResource("Gradient_v216e")
+fill = 1
+fill_from = Vector2(0.487179, 0.478632)
+
+[node name="DullahanFang" type="Node2D" node_paths=PackedStringArray("stats", "area", "iframes")]
+script = ExtResource("1_a4nj1")
+stats = NodePath("Projectile")
+area = NodePath("Area2D")
+iframes = NodePath("Timer")
+
+[node name="Projectile" type="Node" parent="."]
+script = ExtResource("2_gmmut")
+base_damage = 1
+chip_damage = 15
+attribute = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("3_yyt81")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2n46o")
+}
+autoplay = "spawn"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_bmsuk")
+disabled = true
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("4_clwjl")
+audio_library = SubResource("Resource_nv0be")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 46)
+texture = SubResource("GradientTexture2D_7b35h")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

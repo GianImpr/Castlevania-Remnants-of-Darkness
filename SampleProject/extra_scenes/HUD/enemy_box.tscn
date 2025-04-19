@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgmgx8v6dbp3u"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/enemy_box.gd" id="1_ttlp4"]
+[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="5_761la"]
+[ext_resource type="Texture2D" uid="uid://c0ga0q3ud2q8b" path="res://assets/sprites/HUD/EnemyBox.png" id="6_r3r3t"]
+
+[sub_resource type="Theme" id="Theme_tdcqo"]
+default_font = ExtResource("5_761la")
+default_font_size = 16
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eeolh"]
+content_margin_bottom = 4.0
+texture = ExtResource("6_r3r3t")
+texture_margin_left = 20.0
+texture_margin_right = 20.0
+
+[node name="EnemyBox" type="Control" node_paths=PackedStringArray("label", "timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -432.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_ttlp4")
+label = NodePath("MarginContainer/PanelContainer/Label")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(41, 22)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -41.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(41, 22)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = SubResource("Theme_tdcqo")
+theme_override_styles/panel = SubResource("StyleBoxTexture_eeolh")
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

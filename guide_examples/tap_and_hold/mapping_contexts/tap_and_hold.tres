@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=17 format=3 uid="uid://dkorp45s6fjqk"]
+
+[ext_resource type="Resource" uid="uid://djow080f02fos" path="res://guide_examples/tap_and_hold/mapping_contexts/jump.tres" id="1_pwkn3"]
+[ext_resource type="Script" path="res://addons/guide/inputs/guide_input_key.gd" id="2_6utl5"]
+[ext_resource type="Script" path="res://addons/guide/guide_input_mapping.gd" id="3_sfabf"]
+[ext_resource type="Script" path="res://addons/guide/triggers/guide_trigger_tap.gd" id="4_0qfc2"]
+[ext_resource type="Script" path="res://addons/guide/guide_action_mapping.gd" id="4_nrdxn"]
+[ext_resource type="Resource" uid="uid://dcdlaiw50k4t3" path="res://guide_examples/tap_and_hold/mapping_contexts/somersault.tres" id="6_5qh27"]
+[ext_resource type="Script" path="res://addons/guide/triggers/guide_trigger_hold.gd" id="7_sj5n7"]
+[ext_resource type="Script" path="res://addons/guide/guide_mapping_context.gd" id="8_q4q7m"]
+
+[sub_resource type="Resource" id="Resource_fvatf"]
+script = ExtResource("2_6utl5")
+key = 32
+shift = false
+control = false
+alt = false
+meta = false
+allow_additional_modifiers = true
+
+[sub_resource type="Resource" id="Resource_k188c"]
+script = ExtResource("4_0qfc2")
+tap_threshold = 0.2
+actuation_threshold = 0.5
+
+[sub_resource type="Resource" id="Resource_tg2ja"]
+script = ExtResource("3_sfabf")
+input = SubResource("Resource_fvatf")
+modifiers = Array[Resource("res://addons/guide/modifiers/guide_modifier.gd")]([])
+triggers = Array[Resource("res://addons/guide/triggers/guide_trigger.gd")]([SubResource("Resource_k188c")])
+
+[sub_resource type="Resource" id="Resource_ghgfq"]
+script = ExtResource("4_nrdxn")
+action = ExtResource("1_pwkn3")
+input_mappings = Array[ExtResource("3_sfabf")]([SubResource("Resource_tg2ja")])
+
+[sub_resource type="Resource" id="Resource_75xxu"]
+script = ExtResource("2_6utl5")
+key = 32
+shift = false
+control = false
+alt = false
+meta = false
+allow_additional_modifiers = true
+
+[sub_resource type="Resource" id="Resource_dum1i"]
+script = ExtResource("7_sj5n7")
+hold_treshold = 0.5
+is_one_shot = true
+actuation_threshold = 0.5
+
+[sub_resource type="Resource" id="Resource_tbykh"]
+script = ExtResource("3_sfabf")
+input = SubResource("Resource_75xxu")
+modifiers = Array[Resource("res://addons/guide/modifiers/guide_modifier.gd")]([])
+triggers = Array[Resource("res://addons/guide/triggers/guide_trigger.gd")]([SubResource("Resource_dum1i")])
+
+[sub_resource type="Resource" id="Resource_5u3vu"]
+script = ExtResource("4_nrdxn")
+action = ExtResource("6_5qh27")
+input_mappings = Array[ExtResource("3_sfabf")]([SubResource("Resource_tbykh")])
+
+[resource]
+script = ExtResource("8_q4q7m")
+display_name = ""
+mappings = Array[ExtResource("4_nrdxn")]([SubResource("Resource_ghgfq"), SubResource("Resource_5u3vu")])

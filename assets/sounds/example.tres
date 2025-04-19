@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AudioLibrary" load_steps=5 format=3 uid="uid://bym1ij17kxa2l"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="1_xv8u4"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="2_7f81k"]
+[ext_resource type="AudioStream" uid="uid://baubt1rksjbty" path="res://assets/sounds/jump.MP3" id="3_3dlc2"]
+
+[sub_resource type="Resource" id="Resource_h81t8"]
+script = ExtResource("2_7f81k")
+Tag = "jump"
+stream = ExtResource("3_3dlc2")
+
+[resource]
+script = ExtResource("1_xv8u4")
+sound_effects = Array[ExtResource("2_7f81k")]([SubResource("Resource_h81t8")])

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://cye0mxa62e7lh"]
+
+[ext_resource type="Script" path="res://guide_examples/quick_start/game.gd" id="1_eetgd"]
+[ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="1_twtcc"]
+[ext_resource type="Script" path="res://guide_examples/quick_start/player.gd" id="2_75sqh"]
+[ext_resource type="Resource" uid="uid://b2becclfhsxec" path="res://guide_examples/quick_start/mapping_contexts/quickstart.tres" id="2_enypg"]
+[ext_resource type="Resource" uid="uid://uscuhd84vv0i" path="res://guide_examples/quick_start/mapping_contexts/actions/move.tres" id="3_nwedj"]
+[ext_resource type="Resource" uid="uid://d0dmecppsgpo6" path="res://guide_examples/quick_start/mapping_contexts/actions/say_hi.tres" id="6_xqef5"]
+
+[node name="QuickStart" type="Node2D"]
+script = ExtResource("1_eetgd")
+mapping_context = ExtResource("2_enypg")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(979, 544)
+texture = ExtResource("1_twtcc")
+script = ExtResource("2_75sqh")
+move_action = ExtResource("3_nwedj")
+say_hi_action = ExtResource("6_xqef5")
+
+[node name="MessagePanel" type="PanelContainer" parent="Player"]
+unique_name_in_owner = true
+visible = false
+offset_left = 38.0
+offset_top = -161.0
+offset_right = 122.0
+offset_bottom = -73.0
+
+[node name="Label" type="Label" parent="Player/MessagePanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Hi!"

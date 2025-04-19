@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvbxt8jyo8okq"]
+
+[ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="1_4tef3"]
+[ext_resource type="Script" path="res://guide_examples/2d_axis_mapping/2d_axis_mapping.gd" id="1_vdstu"]
+[ext_resource type="Script" path="res://guide_examples/2d_axis_mapping/player.gd" id="2_54pxx"]
+[ext_resource type="Resource" uid="uid://2hl7iqpondhi" path="res://guide_examples/input_scheme_switching/mapping_contexts/keyboard_scheme.tres" id="2_jtcd0"]
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="5_ewox0"]
+[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="5_h0lne"]
+[ext_resource type="Resource" uid="uid://cxn2ibe1mn3sb" path="res://guide_examples/input_scheme_switching/mapping_contexts/actions/move.tres" id="8_581qd"]
+[ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="8_p4vbo"]
+
+[node name="2DAxisMapping" type="Node"]
+script = ExtResource("1_vdstu")
+mapping_context = ExtResource("2_jtcd0")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(546, 317)
+texture = ExtResource("1_4tef3")
+script = ExtResource("2_54pxx")
+move_action = ExtResource("8_581qd")
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="Instructions Label" type="RichTextLabel" parent="UI Layer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -286.0
+offset_top = 24.0
+offset_right = -39.0
+offset_bottom = 47.0
+grow_horizontal = 0
+theme = ExtResource("8_p4vbo")
+script = ExtResource("5_h0lne")
+instructions_text = "Use %s to move the player."
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("8_581qd")])
+
+[node name="Debug Layer" type="CanvasLayer" parent="."]
+
+[node name="GuideDebugger" parent="Debug Layer" instance=ExtResource("5_ewox0")]
+theme = ExtResource("8_p4vbo")
+metadata/_edit_lock_ = true

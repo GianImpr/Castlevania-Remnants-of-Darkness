@@ -1,0 +1,240 @@
+[gd_scene load_steps=22 format=3 uid="uid://csrmfyxqbrq51"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/door.gd" id="1_7pu62"]
+[ext_resource type="Texture2D" uid="uid://25id4f3caeeo" path="res://assets/sprites/Objects/SaveDoor.png" id="1_cuyk2"]
+[ext_resource type="Shader" path="res://scenes/aura.gdshader" id="2_d1xi3"]
+[ext_resource type="Texture2D" uid="uid://c8wefiqxotjyy" path="res://assets/sprites/Objects/DoorAura.png" id="3_7sakx"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_mhjp2"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_nydkd"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="7_g5x71"]
+[ext_resource type="AudioStream" uid="uid://cuxhrofqam4iy" path="res://assets/sounds/Door/DoorOpen.MP3" id="8_ngq30"]
+[ext_resource type="AudioStream" uid="uid://dscgm3b0gg1j8" path="res://assets/sounds/Door/DoorClose.MP3" id="9_31xyp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j0tdh"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3ya43"]
+width = 10
+height = 10
+seamless = true
+noise = SubResource("FastNoiseLite_j0tdh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_htg63"]
+shader = ExtResource("2_d1xi3")
+shader_parameter/min_intensity = 1.0
+shader_parameter/max_intensity = 1.5
+shader_parameter/speed = 0.3
+shader_parameter/n = SubResource("NoiseTexture2D_3ya43")
+
+[sub_resource type="Animation" id="Animation_cy7r1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rhypp"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tof42"]
+resource_name = "opening"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 18, 19, 20, 22]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_55l8i"]
+_data = {
+"RESET": SubResource("Animation_cy7r1"),
+"idle": SubResource("Animation_rhypp"),
+"opening": SubResource("Animation_tof42")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8y6u"]
+size = Vector2(17.5526, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4l07o"]
+size = Vector2(24, 128)
+
+[sub_resource type="Resource" id="Resource_a2nwi"]
+script = ExtResource("7_g5x71")
+Tag = "open"
+stream = ExtResource("8_ngq30")
+
+[sub_resource type="Resource" id="Resource_mxeu0"]
+script = ExtResource("7_g5x71")
+Tag = "close"
+stream = ExtResource("9_31xyp")
+
+[sub_resource type="Resource" id="Resource_5hexu"]
+script = ExtResource("6_nydkd")
+sound_effects = Array[ExtResource("7_g5x71")]([SubResource("Resource_a2nwi"), SubResource("Resource_mxeu0")])
+
+[node name="SaveDoor" type="RigidBody2D" node_paths=PackedStringArray("sprite", "aura", "animation", "hitbox", "collision_box", "sound", "area", "spawn_cooldown")]
+collision_layer = 16
+collision_mask = 2
+collision_priority = 2.0
+freeze = true
+script = ExtResource("1_7pu62")
+sprite = NodePath("Sprite2D")
+aura = NodePath("Aura")
+animation = NodePath("AnimationPlayer")
+hitbox = NodePath("Area2D/CollisionShape2D")
+collision_box = NodePath("CollisionShape2D")
+sound = NodePath("PolyphonicAudio")
+area = NodePath("Area2D")
+spawn_cooldown = NodePath("SpawnCooldown")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(25, 0)
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("1_cuyk2")
+hframes = 12
+vframes = 2
+
+[node name="Aura" type="Sprite2D" parent="."]
+modulate = Color(2.21401e-06, 0.580119, 0.746432, 1)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_htg63")
+position = Vector2(33, -2.60473e-06)
+scale = Vector2(2.48649, 1.95757)
+texture = ExtResource("3_7sakx")
+flip_v = true
+hframes = 12
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_55l8i")
+}
+speed_scale = 2.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(3.325, 0)
+scale = Vector2(1.9, 1.9)
+shape = SubResource("RectangleShape2D_i8y6u")
+
+[node name="Node2D" type="Node2D" parent="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_4l07o")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -3.0
+script = ExtResource("5_mhjp2")
+audio_library = SubResource("Resource_5hexu")
+
+[node name="SpawnCooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]

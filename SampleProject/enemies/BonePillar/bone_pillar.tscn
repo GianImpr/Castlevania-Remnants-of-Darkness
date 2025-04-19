@@ -1,0 +1,335 @@
+[gd_scene load_steps=29 format=3 uid="uid://b33buvcvhwwqa"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/bone_pillar.gd" id="1_whnnv"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_63tft"]
+[ext_resource type="Texture2D" uid="uid://ef0clrhyqt83" path="res://assets/sprites/Enemies/bonePillar.png" id="3_2y5qg"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_gkhun"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_1xuni"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/BonePillarIdle.gd" id="5_4yidx"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="5_wg3yk"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_0mqfv"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_hylne"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/BonePillarShoot.gd" id="6_wma57"]
+[ext_resource type="AudioStream" uid="uid://c3katgon2vst" path="res://assets/sounds/Enemies/BonePillar/BonePillarShoot.MP3" id="7_pg1j8"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/BonePillarDying.gd" id="7_vh1xc"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/BonePillarTurning.gd" id="8_6lv8s"]
+[ext_resource type="AudioStream" uid="uid://biq6cue5ccbc4" path="res://assets/sounds/Enemies/BonePillar/BonePillarDead.wav" id="8_ljfld"]
+[ext_resource type="PackedScene" uid="uid://by2tojgiqqi2u" path="res://SampleProject/enemies/BonePillar/fireball.tscn" id="11_axyld"]
+[ext_resource type="PackedScene" uid="uid://s7fw3ol2hc0h" path="res://SampleProject/enemies/BonePillar/bone_pillar_dead.tscn" id="15_xv7ij"]
+
+[sub_resource type="Animation" id="Animation_rqd7f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v6k6r"]
+resource_name = "dying"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_q1wnq"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 1, 0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_1346x"]
+resource_name = "shoot"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 10, 11, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Shoot")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shootFireball"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4vv74"]
+resource_name = "turn"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21, 22]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_layit"]
+_data = {
+"RESET": SubResource("Animation_rqd7f"),
+"dying": SubResource("Animation_v6k6r"),
+"idle": SubResource("Animation_q1wnq"),
+"shoot": SubResource("Animation_1346x"),
+"turn": SubResource("Animation_4vv74")
+}
+
+[sub_resource type="Resource" id="Resource_et0hc"]
+script = ExtResource("6_hylne")
+Tag = "shoot"
+stream = ExtResource("7_pg1j8")
+
+[sub_resource type="Resource" id="Resource_r6lc4"]
+script = ExtResource("6_hylne")
+Tag = "dead"
+stream = ExtResource("8_ljfld")
+
+[sub_resource type="Resource" id="Resource_cntts"]
+script = ExtResource("5_1xuni")
+sound_effects = Array[ExtResource("6_hylne")]([SubResource("Resource_et0hc"), SubResource("Resource_r6lc4")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imavs"]
+size = Vector2(426, 113)
+
+[sub_resource type="GDScript" id="GDScript_40be2"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nr5ai"]
+size = Vector2(60, 56)
+
+[node name="BonePillar" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "stats", "damage_popup", "hitbox_iframe")]
+collision_layer = 5
+collision_mask = 3
+script = ExtResource("1_whnnv")
+sprite = NodePath("Sprite2D")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+hitbox_iframe = NodePath("Area2D")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_63tft")
+enemy_name = "Bone Pillar"
+LV = 7
+HP = 50
+ATK = 12
+DEF = 5
+RES = 10
+EXP = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_layit")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("3_2y5qg")
+offset = Vector2(10, 0)
+hframes = 6
+vframes = 4
+frame = 1
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
+bus = &"SFX"
+script = ExtResource("3_gkhun")
+audio_library = SubResource("Resource_cntts")
+
+[node name="Vision" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+position = Vector2(0, -30.5)
+shape = SubResource("RectangleShape2D_imavs")
+
+[node name="IdleDuration" type="Timer" parent="."]
+one_shot = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_40be2")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_duration")]
+script = ExtResource("5_4yidx")
+idle_duration = NodePath("../../IdleDuration")
+
+[node name="Shoot" type="Node" parent="StateMachine"]
+script = ExtResource("6_wma57")
+fireball_scene = ExtResource("11_axyld")
+fireball_origin = Vector2(37, -30)
+
+[node name="Dying" type="Node" parent="StateMachine"]
+script = ExtResource("7_vh1xc")
+dying_scene = ExtResource("15_xv7ij")
+
+[node name="Turning" type="Node" parent="StateMachine"]
+script = ExtResource("8_6lv8s")
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+position = Vector2(0, -48)
+script = ExtResource("5_wg3yk")
+damage_node = ExtResource("6_0mqfv")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("RectangleShape2D_nr5ai")
+disabled = true
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_nr5ai")
+
+[connection signal="body_entered" from="Vision" to="StateMachine/Idle" method="_on_vision_body_entered"]
+[connection signal="timeout" from="IdleDuration" to="StateMachine/Idle" method="_on_idle_duration_timeout"]

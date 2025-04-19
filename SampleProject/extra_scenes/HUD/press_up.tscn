@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhu73hhippefg"]
+
+[ext_resource type="Texture2D" uid="uid://b4tgelwp7vykt" path="res://assets/sprites/HUD/Tap/TapUp.png" id="1_uo54s"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/press_up.gd" id="2_xnq5j"]
+
+[sub_resource type="Animation" id="Animation_cw7kx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7ubc7"]
+resource_name = "tap"
+length = 0.3
+loop_mode = 2
+step = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_prnih"]
+_data = {
+"RESET": SubResource("Animation_cw7kx"),
+"tap": SubResource("Animation_7ubc7")
+}
+
+[node name="PressUp" type="Sprite2D"]
+texture = ExtResource("1_uo54s")
+hframes = 2
+script = ExtResource("2_xnq5j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_prnih")
+}
+autoplay = "tap"

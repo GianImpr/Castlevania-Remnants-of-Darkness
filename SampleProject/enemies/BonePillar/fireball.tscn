@@ -1,0 +1,234 @@
+[gd_scene load_steps=15 format=3 uid="uid://by2tojgiqqi2u"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/fireball.gd" id="1_aa7w3"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="1_nlcup"]
+[ext_resource type="Texture2D" uid="uid://ef0clrhyqt83" path="res://assets/sprites/Enemies/bonePillar.png" id="2_a1p5o"]
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="4_ytjqh"]
+
+[sub_resource type="Animation" id="Animation_dy1ew"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireEffect:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_oqc8f"]
+resource_name = "destroy"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireEffect:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_3ua8e"]
+resource_name = "travel"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x73cy"]
+_data = {
+"RESET": SubResource("Animation_dy1ew"),
+"destroy": SubResource("Animation_oqc8f"),
+"travel": SubResource("Animation_3ua8e")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gqff"]
+size = Vector2(73, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36603"]
+size = Vector2(72, 30)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gyr3f"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_gwynj"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0.589035, 0.184031, 4.81308e-08, 1, 0.92549, 0.403922, 0, 1, 0.68224, 0.113402, 1.92523e-07, 1, 1, 0.0117647, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_omh53"]
+gradient = SubResource("Gradient_gwynj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jeft2"]
+emission_shape = 3
+emission_box_extents = Vector3(30, 16, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 30.0
+gravity = Vector3(0, -200, 0)
+color_ramp = SubResource("GradientTexture1D_omh53")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Fireball" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "lifespan_timer")]
+collision_layer = 4
+collision_mask = 0
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_aa7w3")
+stats = NodePath("Projectile")
+sprite = NodePath("Sprite2D")
+hitbox_iframe = NodePath("Area2D/Hitbox")
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+lifespan_timer = NodePath("Lifespan")
+SPEED = 600.0
+
+[node name="Projectile" type="Node" parent="."]
+script = ExtResource("1_nlcup")
+base_damage = 15
+destructible = true
+destroy_on_contact = true
+magical = true
+attribute = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_a1p5o")
+hframes = 6
+vframes = 4
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x73cy")
+}
+autoplay = "travel"
+speed_scale = 2.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(-3.5, 28)
+shape = SubResource("RectangleShape2D_2gqff")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-4, 28)
+shape = SubResource("RectangleShape2D_36603")
+
+[node name="Lifespan" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="FireEffect" type="GPUParticles2D" parent="."]
+z_index = 20
+material = SubResource("CanvasItemMaterial_gyr3f")
+position = Vector2(1, 27)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_jeft2")
+texture = ExtResource("4_ytjqh")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

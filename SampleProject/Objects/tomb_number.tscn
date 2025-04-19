@@ -1,0 +1,218 @@
+[gd_scene load_steps=18 format=3 uid="uid://nnher1fawj4d"]
+
+[ext_resource type="Texture2D" uid="uid://b8sx0ei6e1xp6" path="res://assets/sprites/Objects/TombNumber.png" id="1_1gmwf"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/tomb_number.gd" id="1_ixson"]
+[ext_resource type="FontFile" uid="uid://ci2tmsivehkf6" path="res://assets/sprites/Font/Caja.ttf" id="2_s8kxc"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_5euwx"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_xvk7x"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_5frcv"]
+[ext_resource type="AudioStream" uid="uid://b2rp1jojfe45t" path="res://assets/sounds/Effects/MoveStone.MP3" id="7_rkkop"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjx03"]
+size = Vector2(54, 102)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ym56"]
+size = Vector2(55, 103)
+
+[sub_resource type="Theme" id="Theme_46ogr"]
+default_font = ExtResource("2_s8kxc")
+default_font_size = 32
+
+[sub_resource type="Animation" id="Animation_hvlqn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vs7em"]
+resource_name = "clear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2, 3, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4uaki"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_rnv6o"]
+resource_name = "on_hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.380392, 0.376471, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"updateNumber"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PolyphonicAudio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["move"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyPortrait:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.380392, 0.376471, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aslly"]
+_data = {
+"RESET": SubResource("Animation_hvlqn"),
+"clear": SubResource("Animation_vs7em"),
+"idle": SubResource("Animation_4uaki"),
+"on_hit": SubResource("Animation_rnv6o")
+}
+
+[sub_resource type="Resource" id="Resource_yb51m"]
+script = ExtResource("6_5frcv")
+Tag = "move"
+stream = ExtResource("7_rkkop")
+
+[sub_resource type="Resource" id="Resource_2r6ja"]
+script = ExtResource("5_xvk7x")
+sound_effects = Array[ExtResource("6_5frcv")]([SubResource("Resource_yb51m")])
+
+[node name="TombNumber" type="RigidBody2D" node_paths=PackedStringArray("animation", "hurtbox", "label", "enemy_portrait")]
+collision_layer = 0
+script = ExtResource("1_ixson")
+eventID = 1
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Area2D")
+label = NodePath("Label")
+enemy_portrait = NodePath("EnemyPortrait")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_xjx03")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_4ym56")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_1gmwf")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -9.0
+offset_top = -31.0
+offset_right = 5.0
+offset_bottom = -7.0
+scale = Vector2(1.5, 1.5)
+theme = SubResource("Theme_46ogr")
+theme_override_colors/font_color = Color(0.448286, 0.34345, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "0"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aslly")
+}
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+script = ExtResource("4_5euwx")
+audio_library = SubResource("Resource_2r6ja")
+
+[node name="EnemyPortrait" type="TextureRect" parent="."]
+offset_left = -7.0
+offset_top = -35.0
+offset_right = 9.0
+offset_bottom = -20.0
+expand_mode = 3
+stretch_mode = 4
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

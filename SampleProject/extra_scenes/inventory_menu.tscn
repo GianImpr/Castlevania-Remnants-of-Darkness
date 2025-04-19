@@ -1,0 +1,3123 @@
+[gd_scene load_steps=148 format=3 uid="uid://b4f2sbjwt3lf7"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/inventory_menu.gd" id="1_7csjs"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/MenuStateMachine.gd" id="2_4vawb"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/Main.gd" id="3_jim0d"]
+[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="4_awnik"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menuButtons.gd" id="6_du6jk"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/MenuButtons.gd" id="6_r83iq"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="7_6qbgg"]
+[ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/Sinfonia.ttf" id="9_6pgav"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/Closed.gd" id="9_jcvgn"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="9_rjh3h"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/Equip.gd" id="10_fvj6d"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/EquipButtons.gd" id="11_08wtv"]
+[ext_resource type="Texture2D" uid="uid://c2l6d0sowxme7" path="res://assets/sprites/Items/Inventory/Inventory_255.png" id="11_qotuu"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/equip_list.gd" id="12_7vum4"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/devil_menu.gd" id="12_kdyk3"]
+[ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="12_n8w3b"]
+[ext_resource type="Texture2D" uid="uid://sxtc4unu2010" path="res://assets/sprites/InnocentDevils/fairy.png" id="12_nt5t6"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/DevilButtons.gd" id="13_6r6nx"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="13_bqrf5"]
+[ext_resource type="Texture2D" uid="uid://bm452tl7d2mv2" path="res://assets/images/Hector.png" id="13_feeqv"]
+[ext_resource type="FontFile" uid="uid://bq6buh6ugnknk" path="res://assets/sprites/Font/WOOJOOAIDP.ttf" id="13_hj8or"]
+[ext_resource type="Texture2D" uid="uid://cg6xqwlb4rrii" path="res://assets/sprites/InnocentDevils/fairywings.png" id="13_vluw8"]
+[ext_resource type="Texture2D" uid="uid://dvhm565w0bkyu" path="res://assets/sprites/Items/Inventory/Inventory_387.png" id="14_e4g1x"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/menuLabels.gd" id="14_y3mt3"]
+[ext_resource type="Texture2D" uid="uid://dylojyrielw2s" path="res://assets/sprites/Items/Inventory/NoHead.png" id="15_10264"]
+[ext_resource type="Texture2D" uid="uid://detagb3dfufip" path="res://assets/sprites/Items/Inventory/NoArtifact.png" id="15_afhqn"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon_compendium.gd" id="15_p7f3h"]
+[ext_resource type="Texture2D" uid="uid://c1n02ftbq0vm5" path="res://assets/sprites/Items/Inventory/NoRelic.png" id="16_o4pdq"]
+[ext_resource type="Texture2D" uid="uid://md808ef2m5dm" path="res://assets/sprites/Items/Inventory/NoBody.png" id="16_rsv5g"]
+[ext_resource type="Texture2D" uid="uid://ccj2k1he5hhe7" path="res://assets/sprites/Items/Inventory/Inventory_254.png" id="16_t72so"]
+[ext_resource type="Texture2D" uid="uid://dbrnb84o1ijue" path="res://assets/sprites/Items/Inventory/NoFoot.png" id="17_jridr"]
+[ext_resource type="Texture2D" uid="uid://c5r6j2rvrer2g" path="res://assets/sprites/Items/Inventory/NoEquip.png" id="18_0ad0f"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/Items.gd" id="19_l3hae"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/itemButtons.gd" id="21_dn7ys"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/item_list.gd" id="22_4xjdf"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/skill_menu.gd" id="23_xewwx"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/Skills.gd" id="24_txscp"]
+[ext_resource type="AudioStream" uid="uid://dqyf6u63hcg44" path="res://assets/sounds/Menu/Confirm.wav" id="26_dfll3"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="26_vtso6"]
+[ext_resource type="AudioStream" uid="uid://dkncwk1mfb0lp" path="res://assets/sounds/Menu/Cursor.wav" id="27_yxdy3"]
+[ext_resource type="AudioStream" uid="uid://k0xc30ehu3h8" path="res://assets/sounds/Menu/HPItem.MP3" id="29_h17r3"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/RichTextEffectVAlign.gd" id="30_itkm0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="30_m47lu"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/summon_menu.gd" id="33_8wvtw"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/SummonButtons.gd" id="33_qfkoi"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/options_menu.gd" id="39_fbvxh"]
+[ext_resource type="Texture2D" uid="uid://dtyoud2v5t5ao" path="res://assets/sprites/HUD/Buttons/Back.png" id="39_lm186"]
+[ext_resource type="Texture2D" uid="uid://cxhoxuk5ouguu" path="res://assets/sprites/HUD/Buttons/Forward.png" id="40_3pvl0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/option_buttons.gd" id="40_tk7lc"]
+[ext_resource type="Texture2D" uid="uid://xm72q0nsbqu3" path="res://assets/sprites/HUD/Buttons/Down.png" id="43_5ev2a"]
+[ext_resource type="Texture2D" uid="uid://bfxgefahhvb23" path="res://assets/sprites/HUD/Buttons/Up.png" id="44_dqurr"]
+[ext_resource type="Texture2D" uid="uid://04nfu7yqt655" path="res://assets/sprites/HUD/Buttons/Square.png" id="45_f1q7q"]
+[ext_resource type="Texture2D" uid="uid://bub8pv7d3ygqq" path="res://assets/sprites/HUD/Buttons/Cross.png" id="46_apl21"]
+[ext_resource type="Texture2D" uid="uid://df3r78tr52cd6" path="res://assets/sprites/HUD/Buttons/Circle.png" id="47_5tm2s"]
+[ext_resource type="Texture2D" uid="uid://dg4l11144v0c8" path="res://assets/sprites/HUD/Buttons/Triangle.png" id="48_nxlbw"]
+[ext_resource type="Texture2D" uid="uid://olj2gbgqp3jo" path="res://assets/sprites/HUD/Buttons/L1.png" id="49_px0ct"]
+[ext_resource type="Texture2D" uid="uid://d1l7cik71qhqi" path="res://assets/sprites/HUD/Buttons/R1.png" id="50_ah0io"]
+[ext_resource type="Texture2D" uid="uid://dfrygpb4tnhda" path="res://assets/sprites/HUD/Buttons/Options.png" id="51_voiot"]
+[ext_resource type="Texture2D" uid="uid://krdtf7rdenp4" path="res://assets/sprites/HUD/Buttons/Select.png" id="52_nmcq0"]
+[ext_resource type="Texture2D" uid="uid://dxdefq0sl6148" path="res://assets/sprites/HUD/Buttons/L2.png" id="53_ij3vk"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/InvHints.gd" id="54_nkih0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/HintButtons.gd" id="55_v1gb1"]
+[ext_resource type="AudioStream" uid="uid://cpi3vmsn423y2" path="res://assets/sounds/Menu/MPHeal.MP3" id="61_xj8br"]
+
+[sub_resource type="Animation" id="Animation_jhpsa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/BlackBackground:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../PolyphonicMenuAudio:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="Animation" id="Animation_3h4y3"]
+resource_name = "fade"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/BlackBackground:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../PolyphonicMenuAudio:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-10.0, -80.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pauseGame"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ajekb"]
+resource_name = "fade_resume"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/BlackBackground:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../PolyphonicMenuAudio:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-10.0, -80.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.533333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"resumeGame"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gvbh1"]
+_data = {
+"RESET": SubResource("Animation_jhpsa"),
+"fade": SubResource("Animation_3h4y3"),
+"fade_resume": SubResource("Animation_ajekb")
+}
+
+[sub_resource type="Gradient" id="Gradient_sev68"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2d6gn"]
+gradient = SubResource("Gradient_sev68")
+
+[sub_resource type="Gradient" id="Gradient_ei6cn"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bwiba"]
+gradient = SubResource("Gradient_ei6cn")
+
+[sub_resource type="Gradient" id="Gradient_ucdhj"]
+colors = PackedColorArray(0, 0, 0, 1, 0.00226884, 0.11899, 0.578939, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5sy3y"]
+gradient = SubResource("Gradient_ucdhj")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g45ka"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_gcc0r"]
+default_font = ExtResource("4_awnik")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06wc2"]
+bg_color = Color(0.339735, 6.22692e-07, 1.08294e-07, 1)
+corner_detail = 1
+
+[sub_resource type="Gradient" id="Gradient_qgnad"]
+offsets = PackedFloat32Array(0, 0.590909, 0.823232, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.266918, 0.318996, 0.923994, 1, 0, 0.243137, 0.478431, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cbwc1"]
+gradient = SubResource("Gradient_qgnad")
+fill = 2
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Theme" id="Theme_o5871"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25csj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_0pw8i"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="Animation" id="Animation_bakdg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../PolyphonicMenuAudio:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="Animation" id="Animation_q00fv"]
+resource_name = "change"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.166667, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xuig2"]
+_data = {
+"RESET": SubResource("Animation_bakdg"),
+"change": SubResource("Animation_q00fv")
+}
+
+[sub_resource type="Theme" id="Theme_ubd1q"]
+default_font = ExtResource("4_awnik")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxlv2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_ce4rh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_cg6yq"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_himjo"]
+_data = {
+"RESET": SubResource("Animation_ce4rh"),
+"idle": SubResource("Animation_cg6yq")
+}
+
+[sub_resource type="Animation" id="Animation_4qst1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wings:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fjmrg"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wings:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tp124"]
+_data = {
+"RESET": SubResource("Animation_4qst1"),
+"idle": SubResource("Animation_fjmrg")
+}
+
+[sub_resource type="Gradient" id="Gradient_npf8k"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hdhbs"]
+gradient = SubResource("Gradient_npf8k")
+
+[sub_resource type="Gradient" id="Gradient_fjjae"]
+colors = PackedColorArray(0, 0, 0, 1, 0.00226884, 0.11899, 0.578939, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lclwx"]
+gradient = SubResource("Gradient_fjjae")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ea2r"]
+
+[sub_resource type="Theme" id="Theme_pwypc"]
+default_font = ExtResource("4_awnik")
+default_font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2w5a"]
+bg_color = Color(0.341176, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_4l5ar"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ngi1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_pws06"]
+default_font = ExtResource("13_hj8or")
+default_font_size = 33
+
+[sub_resource type="Theme" id="Theme_j428y"]
+default_font = ExtResource("4_awnik")
+default_font_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amko3"]
+bg_color = Color(0.339734, 2.97809e-06, 1.63645e-06, 1)
+corner_detail = 1
+
+[sub_resource type="Resource" id="Resource_ruwk0"]
+script = ExtResource("13_bqrf5")
+weapon_name = "Short Sword"
+weapon_description = "A common sword, not really good due to its poor range."
+type = 0
+element = Array[int]([])
+ATK = 5
+DEF = 0
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+jump_cancel = false
+crouch_attack = false
+value = 0
+max_quantity = 99
+icon = ExtResource("14_e4g1x")
+
+[sub_resource type="Resource" id="Resource_s8k7j"]
+script = ExtResource("15_p7f3h")
+Weapon_Compendium = Array[ExtResource("13_bqrf5")]([SubResource("Resource_ruwk0")])
+
+[sub_resource type="Theme" id="Theme_hr12r"]
+default_font = ExtResource("4_awnik")
+default_font_size = 16
+
+[sub_resource type="Theme" id="Theme_s5yqm"]
+default_font = ExtResource("4_awnik")
+default_font_size = 32
+
+[sub_resource type="Animation" id="Animation_khk0n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kl0ui"]
+resource_name = "blur"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.2, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_41rsd"]
+resource_name = "change"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.166667, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cuwo4"]
+_data = {
+"RESET": SubResource("Animation_khk0n"),
+"blur": SubResource("Animation_kl0ui"),
+"change": SubResource("Animation_41rsd")
+}
+
+[sub_resource type="Gradient" id="Gradient_0uqko"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r37ge"]
+gradient = SubResource("Gradient_0uqko")
+
+[sub_resource type="Gradient" id="Gradient_q7qlu"]
+colors = PackedColorArray(0, 0, 0, 1, 0.00226884, 0.11899, 0.578939, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1o7wn"]
+gradient = SubResource("Gradient_q7qlu")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Theme" id="Theme_ic6tr"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_lj5n3"]
+default_font = ExtResource("9_6pgav")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vl8s6"]
+
+[sub_resource type="Theme" id="Theme_dvff1"]
+default_font = ExtResource("4_awnik")
+default_font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urtv8"]
+bg_color = Color(0.341176, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_vagyt"]
+colors = PackedColorArray(0, 0, 0, 1, 0.00226884, 0.11899, 0.578939, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0br1u"]
+gradient = SubResource("Gradient_vagyt")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Theme" id="Theme_vyuey"]
+default_font = ExtResource("4_awnik")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_uwbuc"]
+default_font = ExtResource("4_awnik")
+default_font_size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4v5uf"]
+bg_color = Color(0.341176, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_t4ucm"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_37m4q"]
+script = ExtResource("30_itkm0")
+
+[sub_resource type="Gradient" id="Gradient_wx3tg"]
+colors = PackedColorArray(0.281187, 0.281187, 0.281187, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q1aj5"]
+gradient = SubResource("Gradient_wx3tg")
+width = 200
+height = 20
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_22av7"]
+colors = PackedColorArray(1, 0.72549, 0.0588235, 1, 0.516901, 0.367234, 2.88785e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4qo27"]
+gradient = SubResource("Gradient_22av7")
+width = 200
+height = 20
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Theme" id="Theme_0h0bh"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_1ycwe"]
+default_font_size = 12
+
+[sub_resource type="Theme" id="Theme_wof83"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_pvykr"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_idane"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_4f1bd"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_n6p2h"]
+default_font = ExtResource("4_awnik")
+default_font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_673n5"]
+
+[sub_resource type="Theme" id="Theme_eojiu"]
+default_font = ExtResource("4_awnik")
+default_font_size = 32
+
+[sub_resource type="Resource" id="Resource_oqor7"]
+script = ExtResource("9_rjh3h")
+Tag = "confirm"
+stream = ExtResource("26_dfll3")
+
+[sub_resource type="Resource" id="Resource_81yio"]
+script = ExtResource("9_rjh3h")
+Tag = "cursor"
+stream = ExtResource("27_yxdy3")
+
+[sub_resource type="Resource" id="Resource_aoxut"]
+script = ExtResource("9_rjh3h")
+Tag = "denied"
+stream = ExtResource("12_n8w3b")
+
+[sub_resource type="Resource" id="Resource_jw5b0"]
+script = ExtResource("9_rjh3h")
+Tag = "HPItem"
+stream = ExtResource("29_h17r3")
+
+[sub_resource type="Resource" id="Resource_2s0rm"]
+script = ExtResource("9_rjh3h")
+Tag = "MPItem"
+stream = ExtResource("61_xj8br")
+
+[sub_resource type="Resource" id="Resource_qfoex"]
+script = ExtResource("26_vtso6")
+sound_effects = Array[ExtResource("9_rjh3h")]([SubResource("Resource_oqor7"), SubResource("Resource_81yio"), SubResource("Resource_aoxut"), SubResource("Resource_jw5b0"), SubResource("Resource_2s0rm")])
+
+[node name="InventoryMenu" type="Node" node_paths=PackedStringArray("state_machine", "equip_slots", "reset_timer")]
+process_mode = 3
+script = ExtResource("1_7csjs")
+state_machine = NodePath("MenuStateMachine")
+equip_slots = NodePath("MenuStateMachine/Equip/Display/PanelContainer/Menu")
+reset_timer = NodePath("ResetTimer")
+
+[node name="MenuStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "menu", "polyphonic_audio_player")]
+script = ExtResource("2_4vawb")
+initial_state = NodePath("Closed")
+menu = NodePath("..")
+polyphonic_audio_player = NodePath("../PolyphonicMenuAudio")
+
+[node name="Closed" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("animation")]
+script = ExtResource("9_jcvgn")
+animation = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Closed"]
+libraries = {
+"": SubResource("AnimationLibrary_gvbh1")
+}
+speed_scale = 3.0
+
+[node name="Display" type="Node2D" parent="MenuStateMachine/Closed"]
+
+[node name="BlackBackground" type="TextureRect" parent="MenuStateMachine/Closed/Display"]
+show_behind_parent = true
+offset_right = 868.0
+offset_bottom = 480.0
+texture = SubResource("GradientTexture1D_2d6gn")
+
+[node name="Menu" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("labels", "id_label", "animation", "default_button")]
+script = ExtResource("3_jim0d")
+labels = NodePath("Display/Text")
+id_label = NodePath("Display/Text/InnocentDevil")
+animation = NodePath("AnimationPlayer")
+default_button = NodePath("Display/PanelContainer/Menu/Summons")
+
+[node name="Display" type="Node2D" parent="MenuStateMachine/Menu"]
+modulate = Color(0, 0, 0, 0)
+
+[node name="Margin" type="TextureRect" parent="MenuStateMachine/Menu/Display"]
+show_behind_parent = true
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 852.0
+offset_bottom = 471.0
+texture = SubResource("GradientTexture1D_bwiba")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="MenuStateMachine/Menu/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 850.0
+offset_bottom = 469.0
+texture = SubResource("GradientTexture2D_5sy3y")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Menu/Display"]
+z_index = 1
+offset_left = 346.0
+offset_top = 179.0
+offset_right = 518.0
+offset_bottom = 407.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g45ka")
+metadata/_edit_use_anchors_ = true
+
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Menu/Display/PanelContainer" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+layout_mode = 2
+focus_neighbor_top = NodePath("Skills")
+focus_neighbor_bottom = NodePath("Summons")
+theme = SubResource("Theme_gcc0r")
+theme_override_constants/separation = 0
+script = ExtResource("6_du6jk")
+button_glow = SubResource("StyleBoxFlat_06wc2")
+sound = NodePath("../../../../../PolyphonicMenuAudio")
+menu = NodePath("../../..")
+state_machine = NodePath("../../../..")
+
+[node name="Summons" type="Button" parent="MenuStateMachine/Menu/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Options")
+disabled = true
+action_mode = 0
+text = "? ? ?"
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Items" type="Button" parent="MenuStateMachine/Menu/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+action_mode = 0
+text = "Items"
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Equip" type="Button" parent="MenuStateMachine/Menu/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+action_mode = 0
+text = "Equip"
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Combine" type="Button" parent="MenuStateMachine/Menu/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+disabled = true
+action_mode = 0
+text = "? ? ?"
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Bestiary" type="Button" parent="MenuStateMachine/Menu/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+disabled = true
+action_mode = 0
+text = "? ? ?"
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Hints" type="Button" parent="MenuStateMachine/Menu/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+action_mode = 0
+text = "Hints"
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Skills" type="Button" parent="MenuStateMachine/Menu/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+action_mode = 0
+text = "Skills
+"
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Options" type="Button" parent="MenuStateMachine/Menu/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Summons")
+action_mode = 0
+text = "Options"
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display"]
+offset_left = 54.0
+offset_top = 25.0
+offset_right = 190.0
+offset_bottom = 179.0
+texture = ExtResource("13_feeqv")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/TextureRect"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 154.0
+texture = SubResource("GradientTexture2D_cbwc1")
+
+[node name="Text" type="Control" parent="MenuStateMachine/Menu/Display" node_paths=PackedStringArray("LevelValue", "MainStatsMaxValues", "MainStatsValues", "StatusValue", "SubStatValues", "BattleStatsValues", "ResourcesValues", "TimeValue")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 53.0
+offset_bottom = 53.0
+theme = SubResource("Theme_o5871")
+script = ExtResource("14_y3mt3")
+LevelValue = NodePath("LevelValue")
+MainStatsMaxValues = NodePath("MainStatsMaxValues")
+MainStatsValues = NodePath("MainStatsValues")
+StatusValue = NodePath("StatusValue")
+SubStatValues = NodePath("SubStatValues")
+BattleStatsValues = NodePath("BattleStatsValues")
+ResourcesValues = NodePath("ResourcesValues")
+TimeValue = NodePath("TimeValue")
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 12.0
+offset_right = 406.0
+offset_bottom = 36.0
+text = "Hector"
+horizontal_alignment = 3
+uppercase = true
+
+[node name="Level" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 12.0
+offset_right = 702.0
+offset_bottom = 36.0
+text = "LEVEL"
+horizontal_alignment = 3
+uppercase = true
+
+[node name="LevelValue" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 702.0
+offset_top = 12.0
+offset_right = 738.0
+offset_bottom = 36.0
+text = "1"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="MainStats" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 51.0
+offset_right = 387.0
+offset_bottom = 129.0
+text = "HP      /
+MP      /
+SP      /"
+uppercase = true
+
+[node name="MainStatsMaxValues" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 51.0
+offset_right = 462.0
+offset_bottom = 129.0
+text = "180
+100
+0"
+horizontal_alignment = 2
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="MainStatsValues" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.075
+anchor_right = -0.075
+offset_left = 300.0
+offset_top = 51.0
+offset_right = 372.0
+offset_bottom = 129.0
+text = "180
+100
+0"
+horizontal_alignment = 2
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Status" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 40.0
+offset_right = 702.0
+offset_bottom = 64.0
+text = "STATUS"
+horizontal_alignment = 3
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="StatusValue" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 64.0
+offset_right = 728.0
+offset_bottom = 88.0
+text = "GOOD"
+uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubStats" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 166.0
+offset_right = 131.0
+offset_bottom = 298.0
+text = "STR
+CON
+INT
+MND
+SYN
+LCK"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="SubStatValues" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 166.0
+offset_right = 167.0
+offset_bottom = 298.0
+text = "6
+4
+5
+2
+0
+3"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="BattleStats" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 131.0
+offset_right = 641.0
+offset_bottom = 213.0
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("4_awnik")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_25csj")
+text = "ATK
+DEF"
+uppercase = true
+
+[node name="BattleStatsValues" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 669.0
+offset_top = 138.0
+offset_right = 750.0
+offset_bottom = 220.0
+theme_override_constants/line_spacing = 24
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_25csj")
+text = "8
+0"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Resources" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 335.0
+offset_right = 157.0
+offset_bottom = 467.0
+text = "EXP
+NEXT
+GOLD"
+uppercase = true
+
+[node name="ResourcesValues" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 335.0
+offset_right = 260.0
+offset_bottom = 413.0
+text = "0
+57
+0"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Time" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 353.0
+offset_right = 631.0
+offset_bottom = 377.0
+text = "TIME"
+uppercase = true
+
+[node name="TimeValue" type="Label" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 340.0
+offset_right = 737.0
+offset_bottom = 384.0
+text = "0:00:00"
+uppercase = true
+
+[node name="InnocentDevil" type="RichTextLabel" parent="MenuStateMachine/Menu/Display/Text"]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 413.0
+offset_right = 826.0
+offset_bottom = 453.0
+theme = SubResource("Theme_0pw8i")
+bbcode_enabled = true
+script = ExtResource("30_m47lu")
+new_text = "Innocent Devil [[R1]]"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_xuig2")
+}
+speed_scale = 1.2
+
+[node name="Devil" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("labels", "id_name", "skill_description", "skill_list", "animation")]
+script = ExtResource("12_kdyk3")
+labels = NodePath("Display/Text")
+id_name = NodePath("Display/Text/Name")
+skill_description = NodePath("Display/DescriptionBackground/Description")
+skill_list = NodePath("Display/PanelContainer/Menu")
+animation = NodePath("AnimationPlayer")
+
+[node name="Display" type="Node2D" parent="MenuStateMachine/Devil"]
+modulate = Color(0, 0, 0, 0)
+
+[node name="Margin" type="TextureRect" parent="MenuStateMachine/Devil/Display"]
+show_behind_parent = true
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 852.0
+offset_bottom = 471.0
+texture = SubResource("GradientTexture1D_bwiba")
+metadata/_edit_use_anchors_ = true
+
+[node name="StatBackground" type="TextureRect" parent="MenuStateMachine/Devil/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 293.0
+offset_bottom = 469.0
+texture = SubResource("GradientTexture2D_5sy3y")
+metadata/_edit_use_anchors_ = true
+
+[node name="SkillsBackground" type="TextureRect" parent="MenuStateMachine/Devil/Display"]
+show_behind_parent = true
+offset_left = 295.0
+offset_top = 13.0
+offset_right = 850.0
+offset_bottom = 395.0
+texture = SubResource("GradientTexture2D_5sy3y")
+metadata/_edit_use_anchors_ = true
+
+[node name="DescriptionBackground" type="TextureRect" parent="MenuStateMachine/Devil/Display"]
+show_behind_parent = true
+offset_left = 295.0
+offset_top = 397.0
+offset_right = 850.0
+offset_bottom = 469.0
+texture = SubResource("GradientTexture2D_5sy3y")
+metadata/_edit_use_anchors_ = true
+
+[node name="Description" type="Label" parent="MenuStateMachine/Devil/Display/DescriptionBackground"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 557.0
+offset_bottom = 76.0
+theme = SubResource("Theme_ubd1q")
+text = "Heals Hector a considerate amount of HP."
+autowrap_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Devil/Display"]
+z_index = 1
+offset_left = 301.0
+offset_top = 16.0
+offset_right = 846.0
+offset_bottom = 84.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lxlv2")
+metadata/_edit_use_anchors_ = true
+
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Devil/Display/PanelContainer" node_paths=PackedStringArray("skill_description", "sound", "menu", "state_machine")]
+layout_mode = 2
+theme = SubResource("Theme_gcc0r")
+theme_override_constants/separation = 0
+script = ExtResource("13_6r6nx")
+skill_description = NodePath("../../DescriptionBackground/Description")
+button_glow = SubResource("StyleBoxFlat_06wc2")
+sound = NodePath("../../../../../PolyphonicMenuAudio")
+menu = NodePath("../../..")
+state_machine = NodePath("../../../..")
+
+[node name="Text" type="Control" parent="MenuStateMachine/Devil/Display" node_paths=PackedStringArray("MainStatsMaxValues", "StatusValue", "ResourcesValues")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 53.0
+offset_bottom = 53.0
+theme = SubResource("Theme_o5871")
+script = ExtResource("14_y3mt3")
+MainStatsMaxValues = NodePath("MaxHearts")
+StatusValue = NodePath("StatValues")
+ResourcesValues = NodePath("ResourcesValues")
+metadata/_edit_use_anchors_ = true
+
+[node name="Name" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 276.0
+offset_bottom = 27.0
+text = "FAIRY"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Stats" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 166.0
+offset_right = 131.0
+offset_bottom = 298.0
+text = "LEVEL
+HEART
+ATK
+DEF
+INT
+MND
+
+"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="StatValues" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 166.0
+offset_right = 191.0
+offset_bottom = 298.0
+text = "1
+50
+5
+0
+5
+5
+"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="MaxHearts" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 193.0
+offset_right = 262.0
+offset_bottom = 325.0
+text = "/ 50"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Resources" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 360.0
+offset_right = 157.0
+offset_bottom = 492.0
+text = "EXP
+NEXT"
+uppercase = true
+
+[node name="ResourcesValues" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 360.0
+offset_right = 260.0
+offset_bottom = 438.0
+text = "0
+57"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Hector" type="RichTextLabel" parent="MenuStateMachine/Devil/Display/Text"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 413.0
+offset_right = 342.0
+offset_bottom = 453.0
+theme = SubResource("Theme_0pw8i")
+bbcode_enabled = true
+script = ExtResource("30_m47lu")
+new_text = " [[L1]] Hector"
+
+[node name="InnocentSprite" type="Sprite2D" parent="MenuStateMachine/Devil/Display"]
+position = Vector2(154, 99)
+scale = Vector2(3, 3)
+texture = ExtResource("12_nt5t6")
+hframes = 4
+vframes = 10
+
+[node name="Wings" type="Sprite2D" parent="MenuStateMachine/Devil/Display/InnocentSprite"]
+show_behind_parent = true
+position = Vector2(-0.333356, -13)
+texture = ExtResource("13_vluw8")
+hframes = 4
+vframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Devil/Display/InnocentSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_himjo")
+}
+autoplay = "idle"
+
+[node name="Wings2" type="AnimationPlayer" parent="MenuStateMachine/Devil/Display/InnocentSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_tp124")
+}
+autoplay = "idle"
+speed_scale = 1.1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Devil"]
+libraries = {
+"": SubResource("AnimationLibrary_xuig2")
+}
+speed_scale = 1.2
+
+[node name="Equip" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("labels", "equip_list", "animation", "default_button")]
+script = ExtResource("10_fvj6d")
+labels = NodePath("Display/Text")
+equip_list = NodePath("Display/EquipList")
+animation = NodePath("AnimationPlayer")
+default_button = NodePath("Display/PanelContainer/Menu/Weapon")
+
+[node name="Display" type="Node2D" parent="MenuStateMachine/Equip"]
+modulate = Color(0, 0, 0, 0)
+z_index = 1
+
+[node name="Margin" type="TextureRect" parent="MenuStateMachine/Equip/Display"]
+show_behind_parent = true
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 852.0
+offset_bottom = 471.0
+texture = SubResource("GradientTexture1D_hdhbs")
+
+[node name="UpperBackground" type="TextureRect" parent="MenuStateMachine/Equip/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 850.0
+offset_bottom = 227.0
+texture = SubResource("GradientTexture2D_lclwx")
+
+[node name="InventoryBackground" type="TextureRect" parent="MenuStateMachine/Equip/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 229.0
+offset_right = 850.0
+offset_bottom = 420.0
+texture = SubResource("GradientTexture2D_lclwx")
+
+[node name="DescriptionBackground" type="TextureRect" parent="MenuStateMachine/Equip/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 422.0
+offset_right = 1209.0
+offset_bottom = 489.0
+scale = Vector2(0.7, 0.7)
+texture = SubResource("GradientTexture2D_lclwx")
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Equip/Display"]
+z_index = 1
+offset_left = 228.0
+offset_top = 16.0
+offset_right = 569.0
+offset_bottom = 224.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7ea2r")
+
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Equip/Display/PanelContainer" node_paths=PackedStringArray("equip_list", "slot_type", "sound", "menu", "state_machine")]
+layout_mode = 2
+focus_neighbor_top = NodePath("Accessory 2")
+focus_neighbor_bottom = NodePath("Weapon")
+theme = SubResource("Theme_pwypc")
+theme_override_constants/separation = 0
+script = ExtResource("11_08wtv")
+equip_list = NodePath("../../EquipList")
+slot_type = NodePath("../../Text/SlotType")
+button_glow = SubResource("StyleBoxFlat_h2w5a")
+sound = NodePath("../../../../../PolyphonicMenuAudio")
+menu = NodePath("../../..")
+state_machine = NodePath("../../../..")
+
+[node name="Weapon" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Accessory 2")
+text = "Short Sword"
+icon = ExtResource("11_qotuu")
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/Weapon"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 38.0
+offset_bottom = 39.0
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("14_e4g1x")
+
+[node name="Artifact" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+disabled = true
+text = "--------"
+icon = ExtResource("11_qotuu")
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/Artifact"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 38.0
+offset_bottom = 39.0
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("15_afhqn")
+
+[node name="Relic" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("11_qotuu")
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/Relic"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 38.0
+offset_bottom = 39.0
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("16_o4pdq")
+
+[node name="Head" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("11_qotuu")
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/Head"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 38.0
+offset_bottom = 39.0
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("15_10264")
+
+[node name="Body" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("11_qotuu")
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/Body"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 38.0
+offset_bottom = 39.0
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("16_rsv5g")
+
+[node name="Legs" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("11_qotuu")
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/Legs"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 38.0
+offset_bottom = 39.0
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("17_jridr")
+
+[node name="Accessory 1" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+text = "--------"
+icon = ExtResource("11_qotuu")
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/Accessory 1"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 38.0
+offset_bottom = 39.0
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("18_0ad0f")
+
+[node name="Accessory 2" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Weapon")
+text = "--------"
+icon = ExtResource("11_qotuu")
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/Accessory 2"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 38.0
+offset_bottom = 39.0
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("18_0ad0f")
+
+[node name="Text" type="Control" parent="MenuStateMachine/Equip/Display" node_paths=PackedStringArray("SubStatValues", "BattleStatsValues", "SubArrows", "BattleArrows", "NewSubStats", "NewBattleStats")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 53.0
+offset_bottom = 53.0
+theme = SubResource("Theme_4l5ar")
+script = ExtResource("14_y3mt3")
+SubStatValues = NodePath("SubStatValues")
+BattleStatsValues = NodePath("BattleStatsValues")
+SubArrows = NodePath("SubArrows")
+BattleArrows = NodePath("BattleArrows")
+NewSubStats = NodePath("NewSubStats")
+NewBattleStats = NodePath("NewBattleStats")
+
+[node name="SubStats" type="Label" parent="MenuStateMachine/Equip/Display/Text"]
+layout_mode = 0
+offset_top = 46.0
+offset_right = 106.0
+offset_bottom = 205.0
+text = "STR
+CON
+INT
+MND
+SYN
+LCK"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="SlotType" type="Label" parent="MenuStateMachine/Equip/Display/Text"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 12.0
+offset_right = 203.0
+offset_bottom = 36.0
+text = "Weapon"
+horizontal_alignment = 1
+
+[node name="SubStatValues" type="Label" parent="MenuStateMachine/Equip/Display/Text"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 46.0
+offset_right = 140.0
+offset_bottom = 205.0
+text = "6
+4
+5
+2
+0
+3"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="BattleStats" type="Label" parent="MenuStateMachine/Equip/Display/Text"]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 116.0
+offset_right = 661.0
+offset_bottom = 198.0
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("4_awnik")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ngi1")
+text = "ATK
+DEF"
+uppercase = true
+
+[node name="BattleStatsValues" type="Label" parent="MenuStateMachine/Equip/Display/Text"]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 122.0
+offset_right = 730.0
+offset_bottom = 204.0
+theme_override_constants/line_spacing = 24
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ngi1")
+text = "8
+2"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="SubArrows" type="RichTextLabel" parent="MenuStateMachine/Equip/Display/Text"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 46.0
+offset_right = 161.0
+offset_bottom = 208.0
+theme = SubResource("Theme_pws06")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="BattleArrows" type="RichTextLabel" parent="MenuStateMachine/Equip/Display/Text"]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 123.0
+offset_right = 755.0
+offset_bottom = 199.0
+theme = SubResource("Theme_pws06")
+theme_override_constants/line_separation = 21
+bbcode_enabled = true
+scroll_active = false
+
+[node name="NewSubStats" type="RichTextLabel" parent="MenuStateMachine/Equip/Display/Text"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 46.0
+offset_right = 215.0
+offset_bottom = 208.0
+theme_override_constants/line_separation = 3
+bbcode_enabled = true
+scroll_active = false
+
+[node name="NewBattleStats" type="RichTextLabel" parent="MenuStateMachine/Equip/Display/Text"]
+layout_mode = 0
+offset_left = 756.0
+offset_top = 122.0
+offset_right = 810.0
+offset_bottom = 198.0
+theme_override_constants/line_separation = 24
+bbcode_enabled = true
+scroll_active = false
+
+[node name="EquipList" type="GridContainer" parent="MenuStateMachine/Equip/Display" node_paths=PackedStringArray("glow_timer", "sound", "equipSlots", "state_machine", "weapon_desc", "qty_list", "labels")]
+custom_minimum_size = Vector2(392, 94)
+offset_left = 39.0
+offset_top = 229.0
+offset_right = 431.0
+offset_bottom = 323.0
+scale = Vector2(2, 2)
+focus_neighbor_top = NodePath("Unequip")
+focus_neighbor_bottom = NodePath("Unequip")
+theme = SubResource("Theme_j428y")
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 0
+columns = 2
+script = ExtResource("12_7vum4")
+button_glow = SubResource("StyleBoxFlat_amko3")
+glow_timer = NodePath("GlowTimer")
+sound = NodePath("../../../../PolyphonicMenuAudio")
+weapons = SubResource("Resource_s8k7j")
+equipSlots = NodePath("../PanelContainer/Menu")
+state_machine = NodePath("../../..")
+weapon_desc = NodePath("../Description")
+qty_list = NodePath("../QuantityList")
+labels = NodePath("../Text")
+
+[node name="Unequip" type="Button" parent="MenuStateMachine/Equip/Display/EquipList"]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+text = "Unequip"
+icon = ExtResource("16_t72so")
+flat = true
+alignment = 0
+
+[node name="GlowTimer" type="Timer" parent="MenuStateMachine/Equip/Display/EquipList"]
+wait_time = 0.1
+autostart = true
+
+[node name="QuantityList" type="GridContainer" parent="MenuStateMachine/Equip/Display"]
+custom_minimum_size = Vector2(227, 90)
+offset_left = 359.0
+offset_top = 229.0
+offset_right = 586.0
+offset_bottom = 319.0
+scale = Vector2(2, 2)
+theme = SubResource("Theme_hr12r")
+theme_override_constants/h_separation = 172
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="Label" type="Label" parent="MenuStateMachine/Equip/Display/QuantityList"]
+custom_minimum_size = Vector2(27, 24)
+layout_mode = 2
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Description" type="Node" parent="MenuStateMachine/Equip/Display"]
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/Description"]
+z_index = 1
+offset_left = 21.0
+offset_top = 426.0
+offset_right = 61.0
+offset_bottom = 466.0
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Text" type="Label" parent="MenuStateMachine/Equip/Display/Description"]
+z_index = 1
+offset_left = 74.0
+offset_top = 417.0
+offset_right = 850.0
+offset_bottom = 468.0
+theme = SubResource("Theme_s5yqm")
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Equip"]
+libraries = {
+"": SubResource("AnimationLibrary_cuwo4")
+}
+speed_scale = 1.2
+
+[node name="Items" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("labels", "item_list", "animation", "default_button")]
+script = ExtResource("19_l3hae")
+labels = NodePath("Display/Text")
+item_list = NodePath("Display/ItemList")
+animation = NodePath("AnimationPlayer")
+default_button = NodePath("Display/PanelContainer/Menu/Consumables")
+
+[node name="Display" type="Node2D" parent="MenuStateMachine/Items"]
+modulate = Color(0, 0, 0, 0)
+z_index = 1
+
+[node name="Margin" type="TextureRect" parent="MenuStateMachine/Items/Display"]
+show_behind_parent = true
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 852.0
+offset_bottom = 471.0
+texture = SubResource("GradientTexture1D_r37ge")
+
+[node name="StatusBackground" type="TextureRect" parent="MenuStateMachine/Items/Display"]
+show_behind_parent = true
+offset_left = 224.0
+offset_top = 13.0
+offset_right = 672.0
+offset_bottom = 129.0
+texture = SubResource("GradientTexture2D_1o7wn")
+
+[node name="PropertiesBackground" type="TextureRect" parent="MenuStateMachine/Items/Display"]
+show_behind_parent = true
+offset_left = 674.0
+offset_top = 13.0
+offset_right = 850.0
+offset_bottom = 129.0
+texture = SubResource("GradientTexture2D_1o7wn")
+
+[node name="ListBackground" type="TextureRect" parent="MenuStateMachine/Items/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 131.0
+offset_right = 850.0
+offset_bottom = 420.0
+texture = SubResource("GradientTexture2D_1o7wn")
+
+[node name="ButtonBackground" type="TextureRect" parent="MenuStateMachine/Items/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 222.0
+offset_bottom = 129.0
+texture = SubResource("GradientTexture2D_1o7wn")
+
+[node name="Text" type="Control" parent="MenuStateMachine/Items/Display" node_paths=PackedStringArray("MainStatsMaxValues", "MainStatsValues", "StatusValue", "ResourcesValues")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 53.0
+offset_bottom = 53.0
+theme = SubResource("Theme_ic6tr")
+script = ExtResource("14_y3mt3")
+MainStatsMaxValues = NodePath("MainStatsMaxValues")
+MainStatsValues = NodePath("MainStatsValues")
+StatusValue = NodePath("StatusValue")
+ResourcesValues = NodePath("ItemProperties")
+
+[node name="MainStats" type="Label" parent="MenuStateMachine/Items/Display/Text"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 10.0
+offset_right = 389.0
+offset_bottom = 88.0
+text = "HP      /
+MP      /
+SP      /
+"
+uppercase = true
+
+[node name="ItemProperties" type="Label" parent="MenuStateMachine/Items/Display/Text"]
+layout_mode = 0
+offset_left = 671.0
+offset_top = 10.0
+offset_right = 835.0
+offset_bottom = 88.0
+theme = SubResource("Theme_lj5n3")
+uppercase = true
+
+[node name="MainStatsMaxValues" type="Label" parent="MenuStateMachine/Items/Display/Text"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 10.0
+offset_right = 462.0
+offset_bottom = 88.0
+text = "180
+100
+0"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="MainStatsValues" type="Label" parent="MenuStateMachine/Items/Display/Text"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 10.0
+offset_right = 369.0
+offset_bottom = 88.0
+text = "180
+100
+0"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Status" type="Label" parent="MenuStateMachine/Items/Display/Text"]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 10.0
+offset_right = 587.0
+offset_bottom = 34.0
+text = "STATUS"
+horizontal_alignment = 3
+uppercase = true
+
+[node name="StatusValue" type="Label" parent="MenuStateMachine/Items/Display/Text"]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 40.0
+offset_right = 610.0
+offset_bottom = 64.0
+text = "GOOD"
+uppercase = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Items/Display"]
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 222.0
+offset_bottom = 135.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vl8s6")
+
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Items/Display/PanelContainer" node_paths=PackedStringArray("item_list", "qty_list", "description", "labels", "sound", "menu", "state_machine")]
+layout_mode = 2
+focus_neighbor_top = NodePath("Materials")
+focus_neighbor_bottom = NodePath("Consumables")
+theme = SubResource("Theme_dvff1")
+script = ExtResource("21_dn7ys")
+item_list = NodePath("../../ItemList")
+qty_list = NodePath("../../QuantityList")
+description = NodePath("../../Description")
+labels = NodePath("../../Text")
+button_glow = SubResource("StyleBoxFlat_urtv8")
+sound = NodePath("../../../../../PolyphonicMenuAudio")
+menu = NodePath("../../..")
+state_machine = NodePath("../../../..")
+
+[node name="Consumables" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Materials")
+text = "Consumables"
+flat = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Collectibles" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+text = "Collectibles"
+flat = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Rare" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+text = "Rare Items"
+flat = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Materials" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Consumables")
+text = "Materials"
+flat = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="DescriptionBackground" type="TextureRect" parent="MenuStateMachine/Items/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 422.0
+offset_right = 1209.0
+offset_bottom = 489.0
+scale = Vector2(0.7, 0.7)
+texture = SubResource("GradientTexture2D_0br1u")
+
+[node name="Description" type="Node" parent="MenuStateMachine/Items/Display"]
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Items/Display/Description"]
+z_index = 1
+offset_left = 21.0
+offset_top = 426.0
+offset_right = 61.0
+offset_bottom = 466.0
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Text" type="Label" parent="MenuStateMachine/Items/Display/Description"]
+z_index = 1
+offset_left = 74.0
+offset_top = 417.0
+offset_right = 850.0
+offset_bottom = 468.0
+theme = SubResource("Theme_vyuey")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ItemList" type="GridContainer" parent="MenuStateMachine/Items/Display" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+offset_left = 37.0
+offset_top = 136.0
+offset_right = 431.0
+offset_bottom = 276.0
+scale = Vector2(2, 2)
+theme = SubResource("Theme_uwbuc")
+theme_override_constants/h_separation = 10
+columns = 2
+script = ExtResource("22_4xjdf")
+button_glow = SubResource("StyleBoxFlat_4v5uf")
+sound = NodePath("../../../../PolyphonicMenuAudio")
+menu = NodePath("../..")
+state_machine = NodePath("../../..")
+
+[node name="QuantityList" type="GridContainer" parent="MenuStateMachine/Items/Display"]
+offset_left = 380.0
+offset_top = 148.0
+offset_right = 833.0
+offset_bottom = 257.0
+theme = SubResource("Theme_t4ucm")
+theme_override_constants/h_separation = 370
+theme_override_constants/v_separation = 32
+columns = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Items"]
+libraries = {
+"": SubResource("AnimationLibrary_xuig2")
+}
+speed_scale = 1.2
+
+[node name="Skills" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("skill_list", "animation", "default_button")]
+script = ExtResource("23_xewwx")
+skill_list = NodePath("Display/SkillList")
+animation = NodePath("AnimationPlayer")
+default_button = NodePath("Display/PanelContainer/Menu/KeyItems")
+
+[node name="Display" type="Node2D" parent="MenuStateMachine/Skills"]
+modulate = Color(0, 0, 0, 0)
+z_index = 1
+
+[node name="Margin" type="TextureRect" parent="MenuStateMachine/Skills/Display"]
+show_behind_parent = true
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 852.0
+offset_bottom = 471.0
+texture = SubResource("GradientTexture1D_r37ge")
+
+[node name="StatusBackground" type="TextureRect" parent="MenuStateMachine/Skills/Display"]
+show_behind_parent = true
+offset_left = 224.0
+offset_top = 13.0
+offset_right = 850.0
+offset_bottom = 129.0
+texture = SubResource("GradientTexture2D_1o7wn")
+
+[node name="ListBackground" type="TextureRect" parent="MenuStateMachine/Skills/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 131.0
+offset_right = 850.0
+offset_bottom = 420.0
+texture = SubResource("GradientTexture2D_1o7wn")
+
+[node name="ButtonBackground" type="TextureRect" parent="MenuStateMachine/Skills/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 222.0
+offset_bottom = 129.0
+texture = SubResource("GradientTexture2D_1o7wn")
+
+[node name="DescriptionBackground" type="TextureRect" parent="MenuStateMachine/Skills/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 422.0
+offset_right = 1209.0
+offset_bottom = 489.0
+scale = Vector2(0.7, 0.7)
+texture = SubResource("GradientTexture2D_0br1u")
+
+[node name="Description" type="Node" parent="MenuStateMachine/Skills/Display"]
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Description"]
+z_index = 1
+offset_left = 21.0
+offset_top = 426.0
+offset_right = 61.0
+offset_bottom = 466.0
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabelWithButtons" type="RichTextLabel" parent="MenuStateMachine/Skills/Display/Description"]
+z_index = 1
+offset_left = 74.0
+offset_top = 417.0
+offset_right = 850.0
+offset_bottom = 468.0
+theme = SubResource("Theme_vyuey")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+scroll_following = true
+custom_effects = [SubResource("RichTextEffect_37m4q")]
+script = ExtResource("30_m47lu")
+
+[node name="Text" type="Control" parent="MenuStateMachine/Skills/Display"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 53.0
+offset_bottom = 53.0
+theme = SubResource("Theme_ic6tr")
+script = ExtResource("14_y3mt3")
+
+[node name="Affinity" type="Label" parent="MenuStateMachine/Skills/Display/Text"]
+layout_mode = 0
+offset_left = 212.0
+offset_top = -3.0
+offset_right = 376.0
+offset_bottom = 75.0
+text = "Weapon affinity"
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Skills/Display"]
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 222.0
+offset_bottom = 135.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vl8s6")
+
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Skills/Display/PanelContainer" node_paths=PackedStringArray("skill_list", "cost_list", "description", "labels", "sound", "menu", "state_machine")]
+layout_mode = 2
+theme = SubResource("Theme_dvff1")
+script = ExtResource("24_txscp")
+skill_list = NodePath("../../SkillList")
+cost_list = NodePath("../../CostList")
+description = NodePath("../../Description")
+labels = NodePath("../../Text")
+button_glow = SubResource("StyleBoxFlat_urtv8")
+sound = NodePath("../../../../../PolyphonicMenuAudio")
+menu = NodePath("../../..")
+state_machine = NodePath("../../../..")
+
+[node name="KeyItems" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Special")
+text = "Key items"
+flat = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="WeaponSkills" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+disabled = true
+text = "? ? ?"
+flat = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="SynergySkills" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+disabled = true
+text = "? ? ?"
+flat = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Special" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../KeyItems")
+disabled = true
+text = "? ? ?"
+flat = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="SkillList" type="GridContainer" parent="MenuStateMachine/Skills/Display" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+offset_left = 37.0
+offset_top = 136.0
+offset_right = 431.0
+offset_bottom = 276.0
+scale = Vector2(2, 2)
+theme = SubResource("Theme_uwbuc")
+theme_override_constants/h_separation = 10
+columns = 2
+script = ExtResource("22_4xjdf")
+button_glow = SubResource("StyleBoxFlat_4v5uf")
+sound = NodePath("../../../../PolyphonicMenuAudio")
+menu = NodePath("../..")
+state_machine = NodePath("../../..")
+
+[node name="CostList" type="GridContainer" parent="MenuStateMachine/Skills/Display"]
+offset_left = 380.0
+offset_top = 148.0
+offset_right = 833.0
+offset_bottom = 257.0
+theme = SubResource("Theme_t4ucm")
+theme_override_constants/h_separation = 370
+theme_override_constants/v_separation = 32
+columns = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Skills"]
+libraries = {
+"": SubResource("AnimationLibrary_xuig2")
+}
+speed_scale = 1.2
+
+[node name="Summons" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("id_panel", "buttons", "animation")]
+script = ExtResource("33_8wvtw")
+empty_ID_bar = SubResource("GradientTexture2D_q1aj5")
+fill_ID_bar = SubResource("GradientTexture2D_4qo27")
+id_panel = NodePath("Display/IDPanels")
+buttons = NodePath("Display/Summons")
+animation = NodePath("AnimationPlayer")
+
+[node name="Display" type="Node2D" parent="MenuStateMachine/Summons"]
+modulate = Color(0, 0, 0, 0)
+z_index = 1
+
+[node name="Margin" type="TextureRect" parent="MenuStateMachine/Summons/Display"]
+show_behind_parent = true
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 852.0
+offset_bottom = 471.0
+texture = SubResource("GradientTexture1D_r37ge")
+
+[node name="ListBackground" type="TextureRect" parent="MenuStateMachine/Summons/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 850.0
+offset_bottom = 469.0
+texture = SubResource("GradientTexture2D_1o7wn")
+
+[node name="IDPanels" type="VBoxContainer" parent="MenuStateMachine/Summons/Display"]
+z_index = 1
+offset_left = 21.0
+offset_top = 23.0
+offset_right = 833.0
+offset_bottom = 83.0
+theme = SubResource("Theme_0h0bh")
+
+[node name="Summons" type="VBoxContainer" parent="MenuStateMachine/Summons/Display" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+custom_minimum_size = Vector2(820, 0)
+offset_left = 21.0
+offset_top = 25.0
+offset_right = 61.0
+offset_bottom = 91.0
+theme = SubResource("Theme_1ycwe")
+script = ExtResource("33_qfkoi")
+button_glow = SubResource("StyleBoxFlat_06wc2")
+sound = NodePath("../../../../PolyphonicMenuAudio")
+menu = NodePath("../..")
+state_machine = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Summons"]
+libraries = {
+"": SubResource("AnimationLibrary_xuig2")
+}
+speed_scale = 1.2
+
+[node name="Options" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("buttons", "graphics_menu", "audio_menu", "controller_menu", "game_menu", "binding_buttons", "description", "animation", "default_button")]
+script = ExtResource("39_fbvxh")
+buttons = NodePath("Display/OptionList")
+graphics_menu = NodePath("Graphics/Options")
+audio_menu = NodePath("Audio/Options")
+controller_menu = NodePath("Controls/Options")
+game_menu = NodePath("Game/Options")
+button_glow = SubResource("StyleBoxFlat_06wc2")
+settings = {
+"buffer": 9,
+"device": 0,
+"frames": 0,
+"layout": 0,
+"light": 0,
+"master_volume": 100,
+"music_volume": 100,
+"resolution": 1,
+"scaling": 0,
+"sfx_volume": 100,
+"voice_volume": 100,
+"vsync": 0,
+"window_mode": 0
+}
+binding_buttons = NodePath("Controls/Options/Bindings")
+description = NodePath("Display/Description")
+animation = NodePath("AnimationPlayer")
+default_button = NodePath("Display/OptionList/Window")
+
+[node name="Display" type="Node2D" parent="MenuStateMachine/Options"]
+modulate = Color(0, 0, 0, 0)
+z_index = 1
+
+[node name="Margin" type="TextureRect" parent="MenuStateMachine/Options/Display"]
+show_behind_parent = true
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 852.0
+offset_bottom = 471.0
+texture = SubResource("GradientTexture1D_r37ge")
+
+[node name="TitleBackground" type="TextureRect" parent="MenuStateMachine/Options/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 850.0
+offset_bottom = 43.0
+texture = SubResource("GradientTexture2D_1o7wn")
+expand_mode = 1
+
+[node name="OptionBackground" type="TextureRect" parent="MenuStateMachine/Options/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 45.0
+offset_right = 190.0
+offset_bottom = 420.0
+texture = SubResource("GradientTexture2D_1o7wn")
+expand_mode = 1
+
+[node name="ListBackground" type="TextureRect" parent="MenuStateMachine/Options/Display"]
+show_behind_parent = true
+offset_left = 192.0
+offset_top = 45.0
+offset_right = 850.0
+offset_bottom = 420.0
+texture = SubResource("GradientTexture2D_1o7wn")
+expand_mode = 1
+
+[node name="DescriptionBackground" type="TextureRect" parent="MenuStateMachine/Options/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 422.0
+offset_right = 1209.0
+offset_bottom = 489.0
+scale = Vector2(0.7, 0.7)
+texture = SubResource("GradientTexture2D_0br1u")
+
+[node name="Description" type="RichTextLabel" parent="MenuStateMachine/Options/Display"]
+z_index = 1
+offset_left = 21.0
+offset_top = 417.0
+offset_right = 850.0
+offset_bottom = 468.0
+theme = SubResource("Theme_vyuey")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+scroll_following = true
+custom_effects = [SubResource("RichTextEffect_37m4q")]
+script = ExtResource("30_m47lu")
+
+[node name="OptionList" type="VBoxContainer" parent="MenuStateMachine/Options/Display" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+z_index = 1
+offset_left = 21.0
+offset_top = 53.0
+offset_right = 180.0
+offset_bottom = 409.0
+focus_neighbor_top = NodePath("Controls")
+focus_neighbor_bottom = NodePath("Window")
+theme = SubResource("Theme_0h0bh")
+script = ExtResource("40_tk7lc")
+button_glow = SubResource("StyleBoxFlat_urtv8")
+sound = NodePath("../../../../PolyphonicMenuAudio")
+menu = NodePath("../..")
+state_machine = NodePath("../../..")
+
+[node name="Window" type="Button" parent="MenuStateMachine/Options/Display/OptionList" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Game")
+text = "Graphics"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../..")
+
+[node name="Audio" type="Button" parent="MenuStateMachine/Options/Display/OptionList" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+text = "Audio"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../..")
+
+[node name="Controls" type="Button" parent="MenuStateMachine/Options/Display/OptionList" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+text = "Controls"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../..")
+
+[node name="Game" type="Button" parent="MenuStateMachine/Options/Display/OptionList" node_paths=PackedStringArray("state_machine")]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Window")
+text = "Game"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../..")
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Display"]
+offset_left = 346.0
+offset_top = 13.0
+offset_right = 472.0
+offset_bottom = 37.0
+theme = SubResource("Theme_wof83")
+text = "Options"
+uppercase = true
+
+[node name="Audio" type="Node" parent="MenuStateMachine/Options/Display"]
+
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Display/Audio"]
+offset_left = 204.0
+offset_top = 49.0
+offset_right = 841.0
+offset_bottom = 416.0
+
+[node name="Controls" type="Node" parent="MenuStateMachine/Options/Display"]
+
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Display/Controls"]
+offset_left = 204.0
+offset_top = 49.0
+offset_right = 841.0
+offset_bottom = 416.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Options"]
+libraries = {
+"": SubResource("AnimationLibrary_xuig2")
+}
+speed_scale = 1.2
+
+[node name="Graphics" type="Node2D" parent="MenuStateMachine/Options"]
+
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Graphics"]
+visible = false
+offset_left = 204.0
+offset_top = 49.0
+offset_right = 841.0
+offset_bottom = 416.0
+
+[node name="Mode" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Mode" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Window mode         "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Mode"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Mode"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "Windowed"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Mode"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Resolution" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Resolution" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Window resolution   "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Resolution"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Resolution"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "864x480"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Resolution"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Scaling" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Scaling" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Sprite scaling      "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Scaling"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Scaling"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "Canvas"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Scaling"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Vsync" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Vsync" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Vertical sync       "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Vsync"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Vsync"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "Enabled"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Vsync"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Framerate" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Framerate" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Show framerate      "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Framerate"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Framerate"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "No"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Framerate"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Audio" type="Node2D" parent="MenuStateMachine/Options"]
+
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Audio"]
+visible = false
+offset_left = 204.0
+offset_top = 49.0
+offset_right = 841.0
+offset_bottom = 416.0
+
+[node name="Master" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/Master" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Master volume       "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Master"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/Master"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "100%"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Master"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="SFX" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/SFX" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "SFX volume          "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/SFX"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/SFX"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "100%"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/SFX"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Music" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/Music" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Music volume        "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Music"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/Music"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "100%"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Music"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Voice" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/Voice" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Voice volume        "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Voice"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/Voice"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "100%"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Voice"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Controls" type="Node2D" parent="MenuStateMachine/Options"]
+
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Controls"]
+visible = false
+offset_left = 204.0
+offset_top = 49.0
+offset_right = 841.0
+offset_bottom = 416.0
+
+[node name="Layout" type="HBoxContainer" parent="MenuStateMachine/Options/Controls/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Controls/Options/Layout" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Controller layout   "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Layout"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Controls/Options/Layout"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "Playstation"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Layout"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Buffering" type="HBoxContainer" parent="MenuStateMachine/Options/Controls/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Controls/Options/Buffering" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Input buffering     "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Buffering"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Controls/Options/Buffering"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "9 frames"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Buffering"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Device" type="HBoxContainer" parent="MenuStateMachine/Options/Controls/Options"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Controls/Options/Device" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Input device        "
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Device"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Controls/Options/Device"]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "Controller"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Device"]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Bindings" type="GridContainer" parent="MenuStateMachine/Options/Controls/Options"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_4f1bd")
+theme_override_constants/h_separation = 100
+columns = 2
+
+[node name="Left" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Left"
+icon = ExtResource("39_lm186")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Right" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Right"
+icon = ExtResource("40_3pvl0")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Down" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Down"
+icon = ExtResource("43_5ev2a")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Up" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Up"
+icon = ExtResource("44_dqurr")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Attack" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Attack"
+icon = ExtResource("45_f1q7q")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Jump,Accept" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Jump,Accept"
+icon = ExtResource("46_apl21")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Skill,Back" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Skill,Back"
+icon = ExtResource("47_5tm2s")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="ID Skill" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "ID Skill"
+icon = ExtResource("48_nxlbw")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Backdash" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Backdash"
+icon = ExtResource("49_px0ct")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Guard" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Guard"
+icon = ExtResource("50_ah0io")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Inventory" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Inventory"
+icon = ExtResource("51_voiot")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Map" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Map"
+icon = ExtResource("52_nmcq0")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Switch" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Switch"
+icon = ExtResource("53_ij3vk")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Reset buttons" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(256, 32)
+layout_mode = 2
+text = "Reset buttons"
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Game" type="Node2D" parent="MenuStateMachine/Options"]
+
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Game"]
+visible = false
+offset_left = 204.0
+offset_top = 49.0
+offset_right = 841.0
+offset_bottom = 416.0
+
+[node name="Title" type="HBoxContainer" parent="MenuStateMachine/Options/Game/Options"]
+layout_mode = 2
+
+[node name="Title screen" type="Button" parent="MenuStateMachine/Options/Game/Options/Title" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Return to title screen"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Quit" type="HBoxContainer" parent="MenuStateMachine/Options/Game/Options"]
+layout_mode = 2
+
+[node name="Quit game" type="Button" parent="MenuStateMachine/Options/Game/Options/Quit" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "Quit game"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Hints" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("buttons", "tutorial_box", "animation")]
+script = ExtResource("54_nkih0")
+button_glow = SubResource("StyleBoxFlat_06wc2")
+buttons = NodePath("Display/PanelContainer/ScrollContainer/HintButtons")
+tutorial_box = NodePath("Display/TutorialBox")
+animation = NodePath("AnimationPlayer")
+
+[node name="Display" type="Node2D" parent="MenuStateMachine/Hints"]
+modulate = Color(0, 0, 0, 0)
+z_index = 1
+
+[node name="Margin" type="TextureRect" parent="MenuStateMachine/Hints/Display"]
+show_behind_parent = true
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 852.0
+offset_bottom = 471.0
+texture = SubResource("GradientTexture1D_r37ge")
+
+[node name="TitleBackground" type="TextureRect" parent="MenuStateMachine/Hints/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 850.0
+offset_bottom = 43.0
+texture = SubResource("GradientTexture2D_1o7wn")
+expand_mode = 1
+
+[node name="OptionBackground" type="TextureRect" parent="MenuStateMachine/Hints/Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 45.0
+offset_right = 271.0
+offset_bottom = 469.0
+texture = SubResource("GradientTexture2D_1o7wn")
+expand_mode = 1
+
+[node name="HintBackground" type="TextureRect" parent="MenuStateMachine/Hints/Display"]
+show_behind_parent = true
+offset_left = 273.0
+offset_top = 45.0
+offset_right = 850.0
+offset_bottom = 469.0
+texture = SubResource("GradientTexture2D_1o7wn")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MenuStateMachine/Hints/Display"]
+offset_left = 346.0
+offset_top = 13.0
+offset_right = 472.0
+offset_bottom = 37.0
+theme = SubResource("Theme_wof83")
+text = "Hints"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Hints/Display"]
+custom_minimum_size = Vector2(250, 0)
+offset_left = 16.0
+offset_top = 49.0
+offset_right = 186.0
+offset_bottom = 462.0
+theme = SubResource("Theme_n6p2h")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_673n5")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Hints/Display/PanelContainer"]
+layout_mode = 2
+follow_focus = true
+
+[node name="HintButtons" type="VBoxContainer" parent="MenuStateMachine/Hints/Display/PanelContainer/ScrollContainer" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+layout_mode = 2
+script = ExtResource("55_v1gb1")
+button_glow = SubResource("StyleBoxFlat_06wc2")
+sound = NodePath("../../../../../../PolyphonicMenuAudio")
+menu = NodePath("../../../..")
+state_machine = NodePath("../../../../..")
+
+[node name="TutorialBox" type="VBoxContainer" parent="MenuStateMachine/Hints/Display"]
+offset_left = 277.0
+offset_top = 48.0
+offset_right = 848.0
+offset_bottom = 464.0
+theme = SubResource("Theme_eojiu")
+
+[node name="Image" type="TextureRect" parent="MenuStateMachine/Hints/Display/TutorialBox"]
+layout_mode = 2
+
+[node name="Description" type="RichTextLabel" parent="MenuStateMachine/Hints/Display/TutorialBox"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_following = true
+shortcut_keys_enabled = false
+script = ExtResource("30_m47lu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Hints"]
+libraries = {
+"": SubResource("AnimationLibrary_xuig2")
+}
+speed_scale = 1.2
+
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -80.0
+max_polyphony = 5
+bus = &"SFX"
+script = ExtResource("7_6qbgg")
+audio_library = SubResource("Resource_qfoex")
+
+[node name="ResetTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="MenuStateMachine/Equip/Display/EquipList/GlowTimer" to="MenuStateMachine/Equip/Display/EquipList" method="_on_glow_timer_timeout"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

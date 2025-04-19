@@ -1,0 +1,386 @@
+[gd_scene load_steps=34 format=3 uid="uid://c1r4pk8kud8xn"]
+
+[ext_resource type="Texture2D" uid="uid://bkqfo3kkkk52w" path="res://assets/sprites/HUD/Crest.png" id="1_ueoij"]
+[ext_resource type="Texture2D" uid="uid://dkxgqvaj0gxh" path="res://assets/sprites/HUD/Circle.png" id="2_cacmn"]
+[ext_resource type="Shader" path="res://scenes/aura.gdshader" id="3_q358c"]
+[ext_resource type="Texture2D" uid="uid://cxargyue378id" path="res://assets/sprites/HUD/GlowCircle.png" id="4_vf552"]
+[ext_resource type="Texture2D" uid="uid://cuk8fr307q0o3" path="res://assets/sprites/HUD/Sword.png" id="5_aa8qr"]
+
+[sub_resource type="Gradient" id="Gradient_nfb7p"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mogcr"]
+gradient = SubResource("Gradient_nfb7p")
+
+[sub_resource type="Gradient" id="Gradient_405sx"]
+colors = PackedColorArray(0.768126, 0.692807, 0.236212, 1, 0.968125, 0.941774, 0.765538, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tkug1"]
+gradient = SubResource("Gradient_405sx")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_7h74g"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jkp8l"]
+gradient = SubResource("Gradient_7h74g")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o730v"]
+noise_type = 4
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vilhf"]
+width = 256
+height = 64
+seamless = true
+seamless_blend_skirt = 0.5
+noise = SubResource("FastNoiseLite_o730v")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_chya5"]
+shader = ExtResource("3_q358c")
+shader_parameter/min_intensity = 1.0
+shader_parameter/max_intensity = 1.0
+shader_parameter/speed = 7.0
+shader_parameter/n = SubResource("NoiseTexture2D_vilhf")
+
+[sub_resource type="Gradient" id="Gradient_i12mg"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l6gw5"]
+gradient = SubResource("Gradient_i12mg")
+
+[sub_resource type="SystemFont" id="SystemFont_b8f28"]
+font_names = PackedStringArray("Sitka Text")
+subpixel_positioning = 0
+multichannel_signed_distance_field = true
+
+[sub_resource type="Theme" id="Theme_7620t"]
+default_font = SubResource("SystemFont_b8f28")
+default_font_size = 16
+
+[sub_resource type="Gradient" id="Gradient_cr3i2"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mwxaq"]
+gradient = SubResource("Gradient_cr3i2")
+width = 128
+height = 9
+
+[sub_resource type="Gradient" id="Gradient_mxkps"]
+offsets = PackedFloat32Array(0, 0.272727, 0.807487, 1)
+colors = PackedColorArray(1, 0.55806, 0.601017, 1, 0.914277, 0, 0.346391, 1, 0.905769, 0, 0.412598, 1, 0.617143, 0, 0.240053, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nig4b"]
+gradient = SubResource("Gradient_mxkps")
+width = 128
+height = 9
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_ynxry"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g3ryp"]
+gradient = SubResource("Gradient_ynxry")
+width = 128
+height = 7
+
+[sub_resource type="Gradient" id="Gradient_buvn4"]
+offsets = PackedFloat32Array(0, 0.272727, 0.807487, 1)
+colors = PackedColorArray(0.600776, 0.692067, 1, 1, 0.354989, 0.41164, 1, 1, 0.328878, 0.420043, 1, 1, 0.24065, 3.11887e-05, 0.91573, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3fqy8"]
+gradient = SubResource("Gradient_buvn4")
+width = 128
+height = 7
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_ddigi"]
+offsets = PackedFloat32Array(0, 0.351759, 1)
+colors = PackedColorArray(0.952941, 0.705882, 0.235294, 1, 0.997974, 0.934684, 0.835621, 1, 0.952941, 0.705882, 0.235294, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n7srs"]
+gradient = SubResource("Gradient_ddigi")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_l2k3p"]
+offsets = PackedFloat32Array(0, 0.351759, 1)
+colors = PackedColorArray(0.952941, 0.705882, 0.235294, 1, 0.994857, 0.826217, 0.660599, 1, 0.666667, 0.478431, 0.0862745, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aq0pm"]
+gradient = SubResource("Gradient_l2k3p")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q5okx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f67p1"]
+width = 32
+height = 32
+seamless = true
+seamless_blend_skirt = 0.5
+noise = SubResource("FastNoiseLite_q5okx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4fq3"]
+shader = ExtResource("3_q358c")
+shader_parameter/min_intensity = 0.7
+shader_parameter/max_intensity = 1.0
+shader_parameter/speed = 5.0
+shader_parameter/n = SubResource("NoiseTexture2D_f67p1")
+
+[node name="HUD" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -21.0
+offset_right = 187.0
+offset_bottom = 179.0
+texture = ExtResource("1_ueoij")
+expand_mode = 3
+
+[node name="HPBar" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 49.0
+offset_right = 336.0
+offset_bottom = 68.0
+texture = SubResource("GradientTexture2D_mogcr")
+expand_mode = 1
+
+[node name="HPBarGold" type="TextureRect" parent="HPBar"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 219.0
+offset_bottom = 18.0
+texture = SubResource("GradientTexture2D_tkug1")
+expand_mode = 1
+
+[node name="HPBarGold2" type="TextureRect" parent="HPBar"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 219.0
+offset_bottom = 18.0
+texture = SubResource("GradientTexture2D_tkug1")
+expand_mode = 1
+
+[node name="HPBarBlackBorder" type="TextureRect" parent="HPBar"]
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 218.0
+offset_bottom = 17.0
+texture = SubResource("GradientTexture2D_jkp8l")
+expand_mode = 1
+
+[node name="HPBlueBackground" type="TextureRect" parent="HPBar"]
+self_modulate = Color(0.133333, 0.137255, 0.862745, 1)
+material = SubResource("ShaderMaterial_chya5")
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 217.0
+offset_bottom = 16.0
+texture = SubResource("GradientTexture2D_l6gw5")
+expand_mode = 1
+
+[node name="HPLabel" type="Label" parent="HPBar"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 46.0
+offset_bottom = 26.0
+theme = SubResource("Theme_7620t")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "HP"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HPBar"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 5.0
+offset_right = 159.0
+offset_bottom = 45.0
+value = 100.0
+texture_under = SubResource("GradientTexture2D_mwxaq")
+texture_progress = SubResource("GradientTexture2D_nig4b")
+
+[node name="HPBar2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 67.0
+offset_right = 336.0
+offset_bottom = 86.0
+texture = SubResource("GradientTexture2D_mogcr")
+expand_mode = 1
+
+[node name="HPBarGold" type="TextureRect" parent="HPBar2"]
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 224.0
+offset_bottom = 18.0
+texture = SubResource("GradientTexture2D_tkug1")
+expand_mode = 1
+
+[node name="HPBarGold2" type="TextureRect" parent="HPBar2"]
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 223.0
+offset_bottom = 18.0
+texture = SubResource("GradientTexture2D_tkug1")
+expand_mode = 1
+
+[node name="HPBarBlackBorder" type="TextureRect" parent="HPBar2"]
+offset_left = 10.0
+offset_top = 2.0
+offset_right = 223.0
+offset_bottom = 17.0
+texture = SubResource("GradientTexture2D_jkp8l")
+expand_mode = 1
+
+[node name="HPBlueBackground" type="TextureRect" parent="HPBar2"]
+self_modulate = Color(0.133333, 0.137255, 0.862745, 1)
+material = SubResource("ShaderMaterial_chya5")
+offset_left = 11.0
+offset_top = 3.0
+offset_right = 222.0
+offset_bottom = 16.0
+texture = SubResource("GradientTexture2D_l6gw5")
+expand_mode = 1
+
+[node name="HPLabel" type="Label" parent="HPBar2"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 26.0
+theme = SubResource("Theme_7620t")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "MP"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HPBar2"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 6.0
+offset_right = 164.0
+offset_bottom = 46.0
+value = 100.0
+texture_under = SubResource("GradientTexture2D_g3ryp")
+texture_progress = SubResource("GradientTexture2D_3fqy8")
+
+[node name="BlackCircle" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 50.0
+offset_top = 28.0
+offset_right = 121.0
+offset_bottom = 98.0
+texture = ExtResource("2_cacmn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GoldCircle" type="TextureRect" parent="BlackCircle"]
+self_modulate = Color(0.974931, 0.815013, 0.517056, 1)
+clip_children = 1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 70.0
+offset_bottom = 66.0
+texture = ExtResource("2_cacmn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="BlackCircle/GoldCircle"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_n7srs")
+
+[node name="InternalBlackCircle3" type="TextureRect" parent="BlackCircle"]
+modulate = Color(0, 0, 0, 0.529412)
+layout_mode = 0
+offset_left = 12.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 62.0
+texture = ExtResource("2_cacmn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="InternalCircle" type="TextureRect" parent="BlackCircle"]
+modulate = Color(0.899258, 0.899258, 0.899258, 1)
+self_modulate = Color(0.770624, 0.584033, 0.185727, 1)
+clip_children = 1
+layout_mode = 0
+offset_left = 13.0
+offset_top = 5.0
+offset_right = 67.0
+offset_bottom = 61.0
+texture = ExtResource("2_cacmn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="BlackCircle/InternalCircle"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_aq0pm")
+
+[node name="InternalBlackCircle" type="TextureRect" parent="BlackCircle"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 17.0
+offset_top = 6.0
+offset_right = 67.0
+offset_bottom = 63.0
+texture = ExtResource("2_cacmn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="InternalWhiteCircle" type="TextureRect" parent="BlackCircle"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 8.0
+offset_right = 65.0
+offset_bottom = 63.0
+texture = ExtResource("2_cacmn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="InternalBlackCircle2" type="TextureRect" parent="BlackCircle"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 9.0
+offset_right = 64.0
+offset_bottom = 66.0
+texture = ExtResource("2_cacmn")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="WeaponColor" type="TextureRect" parent="BlackCircle"]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("ShaderMaterial_q4fq3")
+layout_mode = 0
+offset_left = 22.0
+offset_top = 11.0
+offset_right = 62.0
+offset_bottom = 63.0
+texture = ExtResource("4_vf552")
+expand_mode = 1
+stretch_mode = 4
+flip_v = true
+
+[node name="WeaponIcon" type="TextureRect" parent="BlackCircle"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 15.0
+offset_right = 66.0
+offset_bottom = 67.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_aa8qr")
+expand_mode = 1
+stretch_mode = 4
