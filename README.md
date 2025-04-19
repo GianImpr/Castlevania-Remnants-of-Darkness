@@ -41,3 +41,12 @@ Since this project does not contain monetization in any form, it's compliant to 
 - Masked Dedede: [YouTube](https://youtube.com/@masked_dedede_?si=8iUp6s7aaM2Wm-NS)
 - Distopia: [YouTube](https://www.youtube.com/@_distopia)
 - MazenK3: [YouTube](https://www.youtube.com/@mazenk3863)
+
+## Godot Addons
+- KoBeWi: [Metroidvania System](https://github.com/KoBeWi/Metroidvania-System)
+- nathanhoad: [Godot Input Helper](https://github.com/nathanhoad/godot_input_helper)
+- godotneers: [G.U.I.D.E](https://github.com/godotneers/G.U.I.D.E)
+- johnnyneverwalked: [Godot Input Buffer](https://github.com/johnnyneverwalked/godot-input-buffer)
+
+## Godot resources
+- RPicster: [Godot Particle and VFX Textures](https://github.com/RPicster/Godot-particle-and-vfx-textures/)
