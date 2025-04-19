@@ -14,6 +14,9 @@ This game aims to take the distinctive elements of ***Castlevania: Curse of Dark
 - If you want to play the game, you can get the ```.exe``` or ```.apk``` in the [Releases](https://github.com/GianImpr/Castlevania-Remnants-of-Darkness/releases) page.
 - If you instead want to open the project in Godot, you can download the source code and then open ```project.godot``` in Godot Engine 4.3.
 
+> [!TIP]
+> If you are playing this on Windows, Windows SmartScreen will surely complain. Ignore it, this project is safe. (and if you're not trusting me, just look at the source code)
+
 > [!WARNING]
 > When opening this project, **please use Godot Engine 4.3**, as the project is not compatible with older versions of the engine, and 4.4 *breaks room transitions*.
 
