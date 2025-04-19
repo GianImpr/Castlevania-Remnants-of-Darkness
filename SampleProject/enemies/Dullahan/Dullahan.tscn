@@ -1,0 +1,2072 @@
+[gd_scene load_steps=110 format=3 uid="uid://clukty1febu2i"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/Dullahan.gd" id="1_gu5el"]
+[ext_resource type="PackedScene" uid="uid://btql1r5psei2s" path="res://SampleProject/enemies/Dullahan/dullahan_spike.tscn" id="2_22u3v"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_mi30h"]
+[ext_resource type="PackedScene" uid="uid://cdbaucja5abn7" path="res://SampleProject/enemies/Dullahan/dullahan_fang.tscn" id="3_axff6"]
+[ext_resource type="Texture2D" uid="uid://bd04xbgb1vwok" path="res://assets/sprites/Enemies/Dullahan/Dullahan.png" id="3_j55ok"]
+[ext_resource type="Texture2D" uid="uid://b4hr0kshcx2us" path="res://assets/sprites/Enemies/Dullahan/Sword_4.png" id="4_8g5hp"]
+[ext_resource type="Shader" path="res://SampleProject/extra_scenes/items/rainbowradial.gdshader" id="4_84ayn"]
+[ext_resource type="PackedScene" uid="uid://du621xlvbwtno" path="res://SampleProject/enemies/Dullahan/dullahan_projectile.tscn" id="4_538uc"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_dxfhd"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="6_o0djy"]
+[ext_resource type="Texture2D" uid="uid://qaeuke7xt5u2" path="res://assets/sprites/Enemies/Dullahan/Head.png" id="7_e1yb8"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_ovcwt"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="7_th3gw"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanAppearing.gd" id="8_kh7vg"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="8_ywwwp"]
+[ext_resource type="AudioStream" uid="uid://c17jpyl8isnjb" path="res://assets/sounds/Enemies/Dullahan/Levitate.wav" id="9_hmspw"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanIdle.gd" id="9_pawer"]
+[ext_resource type="AudioStream" uid="uid://dr5i8rqmq78ol" path="res://assets/sounds/Enemies/Dullahan/Appear.wav" id="10_8kumk"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanWalking.gd" id="10_cdvrk"]
+[ext_resource type="AudioStream" uid="uid://8duivle55mgx" path="res://assets/sounds/Enemies/Dullahan/Rotate.wav" id="11_2swvn"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanThrust.gd" id="11_q1evp"]
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="12_4uvrp"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanShockwave.gd" id="12_gd57p"]
+[ext_resource type="AudioStream" uid="uid://dr03s28hk53p3" path="res://assets/sounds/Enemies/Dullahan/Thrust.wav" id="12_wxjgf"]
+[ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="13_5s3hq"]
+[ext_resource type="AudioStream" uid="uid://cihuahwwymbmv" path="res://assets/sounds/Enemies/Dullahan/Jump.wav" id="13_rg1ro"]
+[ext_resource type="AudioStream" uid="uid://hl0gmh8dl8yr" path="res://assets/sounds/Enemies/Dullahan/Step.wav" id="14_corba"]
+[ext_resource type="AudioStream" uid="uid://dg62tn0615n3v" path="res://assets/sounds/Enemies/Dullahan/DullahanFire.MP3" id="15_d6sw2"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanWaiting.gd" id="15_hs7pp"]
+[ext_resource type="AudioStream" uid="uid://csdotxqi31n2n" path="res://assets/sounds/Enemies/Dullahan/Laser.mp3" id="16_a74c3"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanNeedles.gd" id="16_wjcun"]
+[ext_resource type="AudioStream" uid="uid://msyok2a6jert" path="res://assets/sounds/Enemies/Dullahan/Land.wav" id="17_86ytx"]
+[ext_resource type="AudioStream" uid="uid://ce6wcyv31i4gv" path="res://assets/sounds/Enemies/Dullahan/PowerUp.wav" id="20_5p2d2"]
+[ext_resource type="AudioStream" uid="uid://b1qbt2g750xti" path="res://assets/sounds/Enemies/Dullahan/Laugh.wav" id="21_j5b6t"]
+[ext_resource type="PackedScene" uid="uid://m6mdjyrpiuny" path="res://SampleProject/extra_scenes/backdash_trail.tscn" id="22_73ss8"]
+[ext_resource type="AudioStream" uid="uid://hsx6jf5238fb" path="res://assets/sounds/Powerups/ActivateRelic.MP3" id="23_w5wa8"]
+[ext_resource type="AudioStream" uid="uid://b744h3oqpvpqk" path="res://assets/sounds/Enemies/Dullahan/Dying.wav" id="24_bftbe"]
+[ext_resource type="AudioStream" uid="uid://cnpbdd3832unm" path="res://assets/sounds/Enemies/Dullahan/ThrowProjectiles.MP3" id="25_nj8kq"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanTeleport.gd" id="26_baiok"]
+[ext_resource type="AudioStream" uid="uid://dnwjo4bv6320f" path="res://assets/sounds/Enemies/Dullahan/Explode.MP3" id="27_ctukx"]
+[ext_resource type="AudioStream" uid="uid://dfur7knqfp4ho" path="res://assets/sounds/Enemies/ArmorLord/Explosion.MP3" id="27_djw73"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanLaser.gd" id="28_tco0d"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanEnterRage.gd" id="33_ys5du"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanThrowHead.gd" id="37_yivsw"]
+[ext_resource type="Texture2D" uid="uid://bbvs7ydskelbc" path="res://assets/sprites/Effects/BlueFire.png" id="42_40b4t"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanDying.gd" id="43_qlhxj"]
+[ext_resource type="PackedScene" uid="uid://sx5bpu32eldc" path="res://SampleProject/extra_scenes/effects/big_explosion.tscn" id="44_418iw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jkbhy"]
+shader = ExtResource("4_84ayn")
+shader_parameter/influence = 0.5
+shader_parameter/color = Color(0.498039, 0, 0, 1)
+shader_parameter/speed = 1.0
+shader_parameter/enabled = false
+shader_parameter/sheet_columns = 10
+shader_parameter/sheet_rows = 5
+
+[sub_resource type="Animation" id="Animation_1tbbu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ympif"]
+resource_name = "dying"
+step = 0.1
+
+[sub_resource type="Animation" id="Animation_dmim2"]
+resource_name = "spinning"
+length = 1.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8am7o"]
+_data = {
+"RESET": SubResource("Animation_1tbbu"),
+"dying": SubResource("Animation_ympif"),
+"spinning": SubResource("Animation_dmim2")
+}
+
+[sub_resource type="Gradient" id="Gradient_8lkmh"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nn7a3"]
+gradient = SubResource("Gradient_8lkmh")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.517094, 0.542735)
+fill_to = Vector2(0.0128205, 0.017094)
+
+[sub_resource type="Curve" id="Curve_o6s6q"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49763, 2), 0.0, 0.0, 0, 0, Vector2(0.995261, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ioo5t"]
+colors = PackedColorArray(0.62, 0, 0.307976, 1, 0.980392, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_rp3ci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan/BlueSilouette:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dullahan/BlueSilouette:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dullahan:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dullahan:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Dullahan/BlueSilouette:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Dullahan/Sword:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Dullahan/Sword:vframes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Dullahan/Sword:hframes")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Dullahan/Sword:texture")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_8g5hp")]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Dullahan/Sword:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Dullahan/Sword:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Dullahan/Sword:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.869565, -26.9565)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Dullahan/Sword:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Dullahan/Sword:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Thrust/CollisionShape2D:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Thrust/CollisionShape2D:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(77.5, 90)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Shockwave/CollisionShape2D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("ShockwaveEffect:emitting")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Dullahan:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Hurtbox:disabled")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Hitbox:monitoring")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("LaserEffect:emitting")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("LaserHitbox/CollisionShape2D:disabled")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Dullahan/Head:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Dullahan/Head:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4.34783, -1.30435)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Dullahan/Rage:emitting")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("DyingFlames:emitting")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("DyingFire:emitting")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Dullahan:visible")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pmnq5"]
+resource_name = "appearing"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan/BlueSilouette:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dullahan/BlueSilouette:self_modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.6, 3.93333, 4.33333, 4.83333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dullahan:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.16667, 4.7, 5.53333, 5.63333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 1, 2, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Dullahan:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.66667, 4.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Dullahan/BlueSilouette:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 4.93333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Dullahan/Sword:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Dullahan/Sword:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 4.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_8g5hp"), ExtResource("3_j55ok")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Dullahan/Sword:hframes")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 4.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 10]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Dullahan/Sword:vframes")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 4.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 5]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Dullahan/Sword:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 4.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(36, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Dullahan/Sword:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 4.03334, 4.06667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 0, 3]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Dullahan/Sword:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.9, 3.93333, 4.06667, 4.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-0.87, 80), Vector2(-0.87, 32), Vector2(-0.87, 32), Vector2(-0.87, 40), Vector2(-1, -27)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Dullahan/Sword:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.2, 2.13333, 2.76667, 3.2, 3.63333, 3.76667, 4.06667, 4.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 6.28319, 12.5664, 18.8496, 25.1327, 26.8781, 26.8781, 0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Dullahan/Sword:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3.9, 4, 4.26667, 4.43333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 1, 0), Color(0, 0, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("PolyphonicAudioPlayer")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0.133333, 1.36667, 1.9, 2.23333, 2.6, 2.86667, 3.16667, 3.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": ["levitate"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["rotate"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["rotate"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["rotate"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["rotate"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["rotate"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["rotate"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["appear"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath(".")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"setBossBar"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fmxpu"]
+resource_name = "catch_head"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dullahan/Head:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dullahan/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, -1), Vector2(4, -51)]
+}
+
+[sub_resource type="Animation" id="Animation_kq1mj"]
+resource_name = "dying"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [44, 45, 46, 47]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dullahan/Rage:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DyingFlames:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DyingFire:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Dullahan:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 2, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0.337255, 1, 1), Color(0, 0.337255, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hitbox:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PolyphonicAudioPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dying"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PolyphonicAudioPlayer/Dying")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dying"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Dullahan:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_e13kb"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qebt7"]
+resource_name = "laser"
+length = 4.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.85, 0.9, 0.95, 3.25, 3.3, 3.35, 3.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23, 24, 24, 23, 22, 20]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PolyphonicAudioPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.85, 0.95),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["thrust"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["laser"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LaserEffect:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.95),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LaserHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.95, 3.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_bk7ny"]
+resource_name = "needles"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.35, 0.45, 0.8, 0.85, 0.9, 2.65, 2.75, 2.85, 2.8501),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 32, 33, 10, 10]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"initSpikes"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudioPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.85),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["thrust"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_6bogu"]
+resource_name = "shockwave"
+length = 3.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.05, 1.1, 1.8, 1.85, 1.9, 2.8, 2.9, 3, 3.0001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 34, 35, 36, 37, 38, 39, 32, 33, 10, 10]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Shockwave")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"jump"
+}, {
+"args": [],
+"method": &"modulateRoomColor"
+}, {
+"args": [],
+"method": &"resetModulateRoomColor"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shockwave/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PolyphonicAudioPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 2, 2.05),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": ["jump"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["land"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["fire"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shakeCamera"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_u3a2x"]
+resource_name = "shockwave_land"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.25, 1.35, 1.45, 1.4501),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [39, 32, 33, 10, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shockwave/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShockwaveEffect:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hojae"]
+resource_name = "teleport"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.45, 1.5, 1.7, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(0, 0, 1, 0), Color(0, 0, 1, 0), Color(0, 0, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PolyphonicAudioPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["appear"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["appear"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Teleport")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.65),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"warp"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hurtbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Dullahan:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_to6qo"]
+resource_name = "teleport_center"
+length = 2.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.45, 1.5, 1.7, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(0, 0, 1, 0), Color(0, 0, 1, 0), Color(0, 0, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PolyphonicAudioPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["appear"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["appear"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Dullahan:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("StateMachine/Enter_rage")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"warpToCenter"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dnd5y"]
+resource_name = "throw_head"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Dullahan/Head:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dullahan/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, -1), Vector2(4, -51)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PolyphonicAudioPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["laugh"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dklvu"]
+resource_name = "thrust"
+length = 1.9
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7, 0.75, 0.8, 1.5, 1.55, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23, 24, 24, 23, 22, 20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Thrust/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Thrust/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 0.75, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(77.5, 90), Vector2(103, 90), Vector2(148, 91)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StateMachine/Thrust")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"apply_thrust_speed"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PolyphonicAudioPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["thrust"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8nvot"]
+resource_name = "walking"
+length = 0.9
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dullahan:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 16, 10]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PolyphonicAudioPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["step"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["step"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l14ou"]
+_data = {
+"RESET": SubResource("Animation_rp3ci"),
+"appearing": SubResource("Animation_pmnq5"),
+"catch_head": SubResource("Animation_fmxpu"),
+"dying": SubResource("Animation_kq1mj"),
+"idle": SubResource("Animation_e13kb"),
+"laser": SubResource("Animation_qebt7"),
+"needles": SubResource("Animation_bk7ny"),
+"shockwave": SubResource("Animation_6bogu"),
+"shockwave_land": SubResource("Animation_u3a2x"),
+"teleport": SubResource("Animation_hojae"),
+"teleport_center": SubResource("Animation_to6qo"),
+"throw_head": SubResource("Animation_dnd5y"),
+"thrust": SubResource("Animation_dklvu"),
+"walking": SubResource("Animation_8nvot")
+}
+
+[sub_resource type="Resource" id="Resource_q7t48"]
+script = ExtResource("8_ywwwp")
+Tag = "levitate"
+stream = ExtResource("9_hmspw")
+
+[sub_resource type="Resource" id="Resource_dmevd"]
+script = ExtResource("8_ywwwp")
+Tag = "appear"
+stream = ExtResource("10_8kumk")
+
+[sub_resource type="Resource" id="Resource_dqjuu"]
+script = ExtResource("8_ywwwp")
+Tag = "rotate"
+stream = ExtResource("11_2swvn")
+
+[sub_resource type="Resource" id="Resource_lpxd5"]
+script = ExtResource("8_ywwwp")
+Tag = "thrust"
+stream = ExtResource("12_wxjgf")
+
+[sub_resource type="Resource" id="Resource_quyhb"]
+script = ExtResource("8_ywwwp")
+Tag = "jump"
+stream = ExtResource("13_rg1ro")
+
+[sub_resource type="Resource" id="Resource_5nag2"]
+script = ExtResource("8_ywwwp")
+Tag = "step"
+stream = ExtResource("14_corba")
+
+[sub_resource type="Resource" id="Resource_55bem"]
+script = ExtResource("8_ywwwp")
+Tag = "fire"
+stream = ExtResource("15_d6sw2")
+
+[sub_resource type="Resource" id="Resource_uotxc"]
+script = ExtResource("8_ywwwp")
+Tag = "laser"
+stream = ExtResource("16_a74c3")
+
+[sub_resource type="Resource" id="Resource_6k801"]
+script = ExtResource("8_ywwwp")
+Tag = "land"
+stream = ExtResource("17_86ytx")
+
+[sub_resource type="Resource" id="Resource_kaexc"]
+script = ExtResource("8_ywwwp")
+Tag = "power_up"
+stream = ExtResource("20_5p2d2")
+
+[sub_resource type="Resource" id="Resource_b04bj"]
+script = ExtResource("8_ywwwp")
+Tag = "laugh"
+stream = ExtResource("21_j5b6t")
+
+[sub_resource type="Resource" id="Resource_64lji"]
+script = ExtResource("8_ywwwp")
+Tag = "dying"
+stream = ExtResource("24_bftbe")
+
+[sub_resource type="Resource" id="Resource_xahfq"]
+script = ExtResource("7_ovcwt")
+sound_effects = Array[ExtResource("8_ywwwp")]([SubResource("Resource_q7t48"), SubResource("Resource_dmevd"), SubResource("Resource_dqjuu"), SubResource("Resource_lpxd5"), SubResource("Resource_quyhb"), SubResource("Resource_5nag2"), SubResource("Resource_55bem"), SubResource("Resource_uotxc"), SubResource("Resource_6k801"), SubResource("Resource_kaexc"), SubResource("Resource_b04bj"), SubResource("Resource_64lji")])
+
+[sub_resource type="Resource" id="Resource_i4awn"]
+script = ExtResource("8_ywwwp")
+Tag = "head_light"
+stream = ExtResource("23_w5wa8")
+
+[sub_resource type="Resource" id="Resource_mo44l"]
+script = ExtResource("8_ywwwp")
+Tag = "throw_projectiles"
+stream = ExtResource("25_nj8kq")
+
+[sub_resource type="Resource" id="Resource_dm2hk"]
+script = ExtResource("8_ywwwp")
+Tag = "dying"
+stream = ExtResource("27_ctukx")
+
+[sub_resource type="Resource" id="Resource_e3hpp"]
+script = ExtResource("7_ovcwt")
+sound_effects = Array[ExtResource("8_ywwwp")]([SubResource("Resource_i4awn"), SubResource("Resource_mo44l"), SubResource("Resource_dm2hk")])
+
+[sub_resource type="Resource" id="Resource_mu02t"]
+script = ExtResource("8_ywwwp")
+Tag = "dying"
+stream = ExtResource("27_djw73")
+
+[sub_resource type="Resource" id="Resource_oq6dj"]
+script = ExtResource("7_ovcwt")
+sound_effects = Array[ExtResource("8_ywwwp")]([SubResource("Resource_mu02t")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yaeit"]
+size = Vector2(74, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njylg"]
+size = Vector2(41, 109)
+
+[sub_resource type="GDScript" id="GDScript_arysl"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0fdl"]
+size = Vector2(113, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lakvy"]
+size = Vector2(2432, 20)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0rct7"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_2r0xp"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0.588235, 0.184314, 0.992157, 1, 0.569217, 0.48837, 1, 1, 0, 0.332213, 0.79058, 1, 0.00101084, 0.600025, 0.698585, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_omh53"]
+gradient = SubResource("Gradient_2r0xp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wge43"]
+emission_shape = 3
+emission_box_extents = Vector3(890, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 30.0
+gravity = Vector3(0, -400, 0)
+color_ramp = SubResource("GradientTexture1D_omh53")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="Gradient" id="Gradient_d4n63"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0.0389459, 0.0663804, 0.853585, 1, 0.141176, 0, 0.717647, 1, 0, 0.332213, 0.79058, 1, 0, 0.337255, 0.698039, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bb365"]
+gradient = SubResource("Gradient_d4n63")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1qbbt"]
+spread = 89.217
+flatness = 1.0
+initial_velocity_min = 1000.0
+initial_velocity_max = 3000.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_bb365")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgami"]
+radius = 447.66
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1an2b"]
+size = Vector2(1498, 21)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cuows"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i8ss5"]
+blend_mode = 1
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_fyrak"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0.167053, 0, 0.980231, 1, 0.401694, 0.549764, 1, 1, 4.86121e-05, 0.300071, 0.858043, 1, 0.217294, 0.510414, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_12173"]
+gradient = SubResource("Gradient_fyrak")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_edw4s"]
+emission_shape = 1
+emission_sphere_radius = 70.0
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 100.0
+gravity = Vector3(0, -50, 0)
+color_ramp = SubResource("GradientTexture1D_12173")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Dullahan" type="CharacterBody2D" node_paths=PackedStringArray("spike_respawn_timer", "thrust_hitbox", "shockwave_hitbox", "laser_hitbox", "trigger_boss", "hurtbox", "state_machine", "head_sprite", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+z_index = 8
+scale = Vector2(-1, 1)
+collision_layer = 4
+script = ExtResource("1_gu5el")
+spike_start_position = Vector2(108, 92)
+spike_min_x_position = 80.0
+spike_max_x_position = 880.0
+spike_scene = ExtResource("2_22u3v")
+fang_scene = ExtResource("3_axff6")
+projectile_scene = ExtResource("4_538uc")
+spike_respawn_timer = NodePath("Spikes")
+thrust_hitbox = NodePath("Thrust")
+shockwave_hitbox = NodePath("Shockwave")
+laser_hitbox = NodePath("LaserHitbox")
+trigger_boss = NodePath("TriggerBoss")
+hurtbox = NodePath("Hurtbox")
+state_machine = NodePath("StateMachine")
+head_sprite = NodePath("Dullahan/Head")
+boss = true
+sprite = NodePath("Dullahan")
+hitbox = NodePath("Hitbox")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("IframeTimer")
+hitbox_iframe = NodePath("Hitbox")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_mi30h")
+enemy_name = "Dullahan"
+LV = 9
+HP = 800
+ATK = 25
+DEF = 10
+EXP = 500
+
+[node name="Dullahan" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_jkbhy")
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("3_j55ok")
+offset = Vector2(36, 0)
+hframes = 10
+vframes = 5
+frame = 1
+
+[node name="BlueSilouette" type="Sprite2D" parent="Dullahan"]
+visible = false
+texture = ExtResource("3_j55ok")
+offset = Vector2(36, 0)
+hframes = 10
+vframes = 5
+
+[node name="Sword" type="Sprite2D" parent="Dullahan"]
+position = Vector2(-0.869565, -26.9565)
+texture = ExtResource("4_8g5hp")
+offset = Vector2(48, 0)
+hframes = 10
+vframes = 5
+
+[node name="Head" type="Sprite2D" parent="Dullahan"]
+visible = false
+position = Vector2(4.34783, -1.30435)
+texture = ExtResource("7_e1yb8")
+hframes = 7
+vframes = 2
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dullahan/Head"]
+libraries = {
+"": SubResource("AnimationLibrary_8am7o")
+}
+autoplay = "spinning"
+speed_scale = 3.0
+
+[node name="AttackSpark" type="PointLight2D" parent="Dullahan/Head"]
+position = Vector2(-0.869569, -1.73914)
+color = Color(0, 1, 1, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_nn7a3")
+
+[node name="Rage" type="CPUParticles2D" parent="Dullahan"]
+position = Vector2(-3.04348, 47.3913)
+scale = Vector2(0.434783, 0.434783)
+emitting = false
+amount = 100
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(30, 70)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 120.0
+angular_velocity_min = 20.0
+angular_velocity_max = 80.0
+angle_max = 180.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_o6s6q")
+color_initial_ramp = SubResource("Gradient_ioo5t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l14ou")
+}
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -15.0
+script = ExtResource("4_dxfhd")
+audio_library = SubResource("Resource_xahfq")
+
+[node name="HeadEffects" type="AudioStreamPlayer2D" parent="PolyphonicAudioPlayer"]
+script = ExtResource("4_dxfhd")
+audio_library = SubResource("Resource_e3hpp")
+
+[node name="Dying" type="AudioStreamPlayer2D" parent="PolyphonicAudioPlayer"]
+volume_db = -6.0
+script = ExtResource("4_dxfhd")
+audio_library = SubResource("Resource_oq6dj")
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+position = Vector2(0, 12)
+script = ExtResource("6_o0djy")
+damage_node = ExtResource("7_th3gw")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-8, 97.5)
+shape = SubResource("RectangleShape2D_yaeit")
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.5, 114)
+shape = SubResource("RectangleShape2D_njylg")
+disabled = true
+
+[node name="IframeTimer" type="Timer" parent="."]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_arysl")
+initial_state = NodePath("Waiting")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Waiting" type="Node" parent="StateMachine"]
+script = ExtResource("15_hs7pp")
+event_id = 5
+
+[node name="Appearing" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_sprite", "trail_timer")]
+script = ExtResource("8_kh7vg")
+trail_scene = ExtResource("22_73ss8")
+sword_sprite = NodePath("../../Dullahan/Sword")
+trail_timer = NodePath("Trail_frequency")
+
+[node name="Trail_frequency" type="Timer" parent="StateMachine/Appearing"]
+wait_time = 0.05
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_duration")]
+script = ExtResource("9_pawer")
+idle_duration = NodePath("Idle_duration")
+
+[node name="Idle_duration" type="Timer" parent="StateMachine/Idle"]
+one_shot = true
+
+[node name="Walking" type="Node" parent="StateMachine" node_paths=PackedStringArray("walk_duration")]
+script = ExtResource("10_cdvrk")
+walk_duration = NodePath("Walk_duration")
+speed = 100.0
+
+[node name="Walk_duration" type="Timer" parent="StateMachine/Walking"]
+one_shot = true
+
+[node name="Thrust" type="Node" parent="StateMachine"]
+script = ExtResource("11_q1evp")
+thrust_speed = 300.0
+
+[node name="Shockwave" type="Node" parent="StateMachine" node_paths=PackedStringArray("shockwave_effect", "shockwave_hitbox")]
+script = ExtResource("12_gd57p")
+red_spark_scene = ExtResource("13_5s3hq")
+jump_strength = 900.0
+shockwave_effect = NodePath("../../ShockwaveEffect")
+shockwave_hitbox = NodePath("../../Shockwave/CollisionShape2D")
+
+[node name="Needles" type="Node" parent="StateMachine"]
+script = ExtResource("16_wjcun")
+
+[node name="Teleport" type="Node" parent="StateMachine"]
+script = ExtResource("26_baiok")
+min_x_position = 240.0
+max_x_position = 720.0
+
+[node name="Laser" type="Node" parent="StateMachine"]
+script = ExtResource("28_tco0d")
+red_spark_scene = ExtResource("13_5s3hq")
+
+[node name="Enter_rage" type="Node" parent="StateMachine" node_paths=PackedStringArray("rage_particles", "rage_spark", "rage_delay", "dullahan_sprite")]
+script = ExtResource("33_ys5du")
+rage_particles = NodePath("../../Dullahan/Rage")
+rage_spark = NodePath("../../RageSpark")
+rage_delay = NodePath("Rage_delay")
+dullahan_sprite = NodePath("../../Dullahan")
+
+[node name="Rage_delay" type="Timer" parent="StateMachine/Enter_rage"]
+one_shot = true
+
+[node name="Throw_head" type="Node" parent="StateMachine" node_paths=PackedStringArray("head_light", "fangs_timer")]
+script = ExtResource("37_yivsw")
+head_light = NodePath("../../Dullahan/Head/AttackSpark")
+fangs_number = 10
+fangs_timer = NodePath("../../Fangs")
+
+[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("dullahan_sprite", "head_disappear", "queue_free_timer", "head_sound")]
+script = ExtResource("43_qlhxj")
+explosion_scene = ExtResource("44_418iw")
+dullahan_sprite = NodePath("../../Dullahan")
+head_disappear = NodePath("Head_disappear_delay")
+queue_free_timer = NodePath("Free_delay")
+head_sound = NodePath("../../PolyphonicAudioPlayer/HeadEffects")
+
+[node name="Head_disappear_delay" type="Timer" parent="StateMachine/Dying"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Free_delay" type="Timer" parent="StateMachine/Dying"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Thrust" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Thrust"]
+position = Vector2(77.5, 90)
+shape = SubResource("RectangleShape2D_j0fdl")
+disabled = true
+debug_color = Color(0.983864, 0, 0.349033, 0.42)
+
+[node name="Shockwave" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shockwave"]
+position = Vector2(37, 163)
+shape = SubResource("RectangleShape2D_lakvy")
+disabled = true
+
+[node name="ShockwaveEffect" type="GPUParticles2D" parent="."]
+modulate = Color(0.160784, 1, 1, 1)
+z_index = 20
+material = SubResource("CanvasItemMaterial_0rct7")
+position = Vector2(-5, 170)
+emitting = false
+amount = 1200
+process_material = SubResource("ParticleProcessMaterial_wge43")
+texture = ExtResource("12_4uvrp")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.4
+
+[node name="LaserEffect" type="GPUParticles2D" parent="."]
+z_index = 20
+material = SubResource("CanvasItemMaterial_0rct7")
+position = Vector2(103, 91)
+emitting = false
+amount = 1200
+process_material = SubResource("ParticleProcessMaterial_1qbbt")
+texture = ExtResource("12_4uvrp")
+lifetime = 2.1
+one_shot = true
+
+[node name="Spikes" type="Timer" parent="."]
+wait_time = 0.15
+
+[node name="Fangs" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="TriggerBoss" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerBoss"]
+shape = SubResource("CircleShape2D_vgami")
+
+[node name="StartCooldown" type="Timer" parent="TriggerBoss"]
+one_shot = true
+autostart = true
+
+[node name="LaserHitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LaserHitbox"]
+position = Vector2(793, 90.5)
+shape = SubResource("RectangleShape2D_1an2b")
+disabled = true
+
+[node name="RageSpark" type="PointLight2D" parent="."]
+position = Vector2(2, 95)
+energy = 0.0
+texture = SubResource("GradientTexture2D_nn7a3")
+
+[node name="DyingFlames" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_cuows")
+position = Vector2(9, 121)
+emitting = false
+amount = 64
+lifetime = 2.0
+one_shot = true
+local_coords = true
+texture = ExtResource("42_40b4t")
+emission_shape = 3
+emission_rect_extents = Vector2(40, 50)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+anim_speed_min = 6.0
+anim_speed_max = 6.0
+
+[node name="DyingFire" type="GPUParticles2D" parent="."]
+z_index = 20
+material = SubResource("CanvasItemMaterial_i8ss5")
+position = Vector2(-2, 132)
+emitting = false
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_edw4s")
+texture = ExtResource("12_4uvrp")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.07
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="IframeTimer" to="." method="_on_iframe_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Appearing/Trail_frequency" to="StateMachine/Appearing" method="_on_trail_frequency_timeout"]
+[connection signal="timeout" from="StateMachine/Idle/Idle_duration" to="StateMachine/Idle" method="_on_duration_timeout"]
+[connection signal="timeout" from="StateMachine/Walking/Walk_duration" to="StateMachine/Walking" method="_on_duration_timeout"]
+[connection signal="timeout" from="StateMachine/Enter_rage/Rage_delay" to="StateMachine/Enter_rage" method="_on_rage_delay_timeout"]
+[connection signal="timeout" from="StateMachine/Dying/Head_disappear_delay" to="StateMachine/Dying" method="_on_head_disappear_delay_timeout"]
+[connection signal="timeout" from="StateMachine/Dying/Free_delay" to="StateMachine/Dying" method="_on_free_delay_timeout"]
+[connection signal="body_entered" from="Thrust" to="." method="_on_thrust_body_entered"]
+[connection signal="body_entered" from="Shockwave" to="." method="_on_shockwave_body_entered"]
+[connection signal="timeout" from="Spikes" to="." method="_on_spikes_timeout"]
+[connection signal="timeout" from="Fangs" to="StateMachine/Throw_head" method="_on_fangs_timeout"]
+[connection signal="body_entered" from="TriggerBoss" to="StateMachine/Waiting" method="_on_trigger_boss_body_entered"]
+[connection signal="timeout" from="TriggerBoss/StartCooldown" to="." method="_on_start_cooldown_timeout"]
+[connection signal="body_entered" from="LaserHitbox" to="." method="_on_laser_2_body_entered"]

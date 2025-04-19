@@ -1,0 +1,224 @@
+[gd_scene load_steps=21 format=3 uid="uid://bq0w7uaotgfct"]
+
+[ext_resource type="Script" path="res://guide_examples/remapping/ui/remapping_dialog.gd" id="1_6hgqj"]
+[ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="1_uhsj0"]
+[ext_resource type="Resource" uid="uid://cu0dhstc00cj5" path="res://guide_examples/remapping/mapping_contexts/keyboard.tres" id="2_cgour"]
+[ext_resource type="Script" path="res://addons/guide/remapping/guide_input_detector.gd" id="3_o0nvn"]
+[ext_resource type="Resource" uid="uid://bexjevffjsh3i" path="res://guide_examples/remapping/mapping_contexts/controller.tres" id="3_tgkdx"]
+[ext_resource type="PackedScene" uid="uid://bme1y0ikthda7" path="res://guide_examples/remapping/ui/binding_row.tscn" id="4_iojgu"]
+[ext_resource type="PackedScene" uid="uid://cj1h0wxamje4s" path="res://guide_examples/remapping/ui/binding_section.tscn" id="5_8v80s"]
+[ext_resource type="Resource" uid="uid://bqd45wwsetlyg" path="res://guide_examples/remapping/mapping_contexts/binding_keyboard.tres" id="5_tw3jw"]
+[ext_resource type="Resource" uid="uid://dubuepcs1w17f" path="res://guide_examples/remapping/mapping_contexts/binding_controller.tres" id="6_gdrkn"]
+[ext_resource type="Resource" uid="uid://bcum2m26we6ct" path="res://guide_examples/remapping/mapping_contexts/shared_actions/close_menu.tres" id="7_djty7"]
+[ext_resource type="Resource" uid="uid://3vqfs786vcsa" path="res://guide_examples/remapping/mapping_contexts/keyboard_actions/switch_to_controller.tres" id="8_lj8gw"]
+[ext_resource type="Resource" uid="uid://ce3ytxn2tcxxe" path="res://guide_examples/remapping/mapping_contexts/controller_actions/switch_to_keyboard.tres" id="9_brmt1"]
+[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="10_xsw70"]
+[ext_resource type="Script" path="res://addons/guide/inputs/guide_input_key.gd" id="11_e078a"]
+[ext_resource type="Resource" uid="uid://cfrx54l1vmjey" path="res://guide_examples/remapping/mapping_contexts/controller_actions/previous_tab.tres" id="11_uxwof"]
+[ext_resource type="Resource" uid="uid://dg1or0do0s1ad" path="res://guide_examples/remapping/mapping_contexts/controller_actions/next_tab.tres" id="12_byojv"]
+[ext_resource type="Script" path="res://addons/guide/inputs/guide_input_joy_button.gd" id="12_hftpv"]
+
+[sub_resource type="Resource" id="Resource_f3bao"]
+script = ExtResource("11_e078a")
+key = 4194305
+shift = false
+control = false
+alt = false
+meta = false
+allow_additional_modifiers = false
+
+[sub_resource type="Resource" id="Resource_twrga"]
+script = ExtResource("12_hftpv")
+button = 4
+joy_index = -1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bagfg"]
+bg_color = Color(0.266575, 0.266575, 0.266575, 1)
+
+[node name="RemappingDialog" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uhsj0")
+script = ExtResource("1_6hgqj")
+keyboard_context = ExtResource("2_cgour")
+controller_context = ExtResource("3_tgkdx")
+binding_keyboard_context = ExtResource("5_tw3jw")
+binding_controller_context = ExtResource("6_gdrkn")
+close_dialog = ExtResource("7_djty7")
+switch_to_controller = ExtResource("8_lj8gw")
+switch_to_keyboard = ExtResource("9_brmt1")
+previous_tab = ExtResource("11_uxwof")
+next_tab = ExtResource("12_byojv")
+binding_row_scene = ExtResource("4_iojgu")
+binding_section_scene = ExtResource("5_8v80s")
+
+[node name="Blocker" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(8.66354e-07, 0.331199, 0.634906, 0.352941)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Input Rebinding"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TabContainer" type="TabContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 1
+clip_tabs = false
+
+[node name="Keyboard" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Keyboard"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Keyboard/MarginContainer"]
+layout_mode = 2
+
+[node name="KeyboardBindings" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Keyboard/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Controller" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Controller"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Controller/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Controller/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ControllerBindings" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Controller/MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Section" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Controller/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_8v80s")]
+layout_mode = 2
+text = "Miscellaneous"
+
+[node name="ControllerInvertHorizontal" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Controller/MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Invert horizontal movement"
+
+[node name="ControllerInvertVertical" type="CheckBox" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Controller/MarginContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Invert vertical movement"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("10_xsw70")
+instructions_text = "%s"
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("11_uxwof")])
+
+[node name="Control" type="Control" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("10_xsw70")
+instructions_text = "%s"
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("12_byojv")])
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReturnToGame" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Return to game"
+
+[node name="GUIDEInputDetector" type="Node" parent="."]
+unique_name_in_owner = true
+editor_description = "This node has two inputs specified which count as abort for detection (Escape and Controller back button)."
+script = ExtResource("3_o0nvn")
+detection_countdown_seconds = 0.1
+abort_detection_on = Array[Resource("res://addons/guide/inputs/guide_input.gd")]([SubResource("Resource_f3bao"), SubResource("Resource_twrga")])
+
+[node name="PressPrompt" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_filter = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="PressPrompt"]
+layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="PressPrompt/CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bagfg")
+
+[node name="MarginContainer" type="MarginContainer" parent="PressPrompt/CenterContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="PressPrompt/CenterContainer/Panel/MarginContainer"]
+layout_mode = 2
+text = "Press new input..."
+
+[connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Controller/MarginContainer/ScrollContainer/VBoxContainer/ControllerInvertHorizontal" to="." method="_on_controller_invert_horizontal_toggled"]
+[connection signal="toggled" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Controller/MarginContainer/ScrollContainer/VBoxContainer/ControllerInvertVertical" to="." method="_on_controller_invert_vertical_toggled"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ReturnToGame" to="." method="_on_return_to_game_pressed"]

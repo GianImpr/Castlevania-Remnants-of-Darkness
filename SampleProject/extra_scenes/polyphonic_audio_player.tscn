@@ -1,0 +1,55 @@
+[gd_scene load_steps=19 format=3 uid="uid://chsi373nippdo"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="1_frplv"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="2_sey1v"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="3_2ndaa"]
+[ext_resource type="AudioStream" uid="uid://baubt1rksjbty" path="res://assets/sounds/jump.MP3" id="4_da3gs"]
+[ext_resource type="AudioStream" uid="uid://cghql4ik4xqao" path="res://assets/sounds/Backdash.MP3" id="5_fov8f"]
+[ext_resource type="AudioStream" uid="uid://bc2alrbmrk7op" path="res://assets/sounds/land.MP3" id="6_xlvwx"]
+[ext_resource type="AudioStream" uid="uid://cav4876kfmc7t" path="res://assets/sounds/Sword.MP3" id="7_v46kn"]
+[ext_resource type="AudioStream" uid="uid://qh67j7bbnnnq" path="res://assets/sounds/HardLanding.MP3" id="8_bkjar"]
+[ext_resource type="AudioStream" uid="uid://cw51sljc7882f" path="res://assets/sounds/HectorHit.MP3" id="9_5w74b"]
+[ext_resource type="AudioStream" uid="uid://cbkwgw4yer5fw" path="res://assets/sounds/Hit.MP3" id="10_ugnrj"]
+
+[sub_resource type="Resource" id="Resource_hltme"]
+script = ExtResource("3_2ndaa")
+Tag = "jump"
+stream = ExtResource("4_da3gs")
+
+[sub_resource type="Resource" id="Resource_xogs2"]
+script = ExtResource("3_2ndaa")
+Tag = "backdash"
+stream = ExtResource("5_fov8f")
+
+[sub_resource type="Resource" id="Resource_p5qdx"]
+script = ExtResource("3_2ndaa")
+Tag = "land"
+stream = ExtResource("6_xlvwx")
+
+[sub_resource type="Resource" id="Resource_44eon"]
+script = ExtResource("3_2ndaa")
+Tag = "sword"
+stream = ExtResource("7_v46kn")
+
+[sub_resource type="Resource" id="Resource_hssc0"]
+script = ExtResource("3_2ndaa")
+Tag = "hard_landing"
+stream = ExtResource("8_bkjar")
+
+[sub_resource type="Resource" id="Resource_k2jhd"]
+script = ExtResource("3_2ndaa")
+Tag = "damage"
+stream = ExtResource("9_5w74b")
+
+[sub_resource type="Resource" id="Resource_ry8tl"]
+script = ExtResource("3_2ndaa")
+Tag = "hit_sfx"
+stream = ExtResource("10_ugnrj")
+
+[sub_resource type="Resource" id="Resource_h6kku"]
+script = ExtResource("2_sey1v")
+sound_effects = Array[ExtResource("3_2ndaa")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl")])
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D"]
+script = ExtResource("1_frplv")
+audio_library = SubResource("Resource_h6kku")

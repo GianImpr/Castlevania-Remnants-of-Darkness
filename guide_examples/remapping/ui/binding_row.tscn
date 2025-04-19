@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://bme1y0ikthda7"]
+
+[ext_resource type="Script" path="res://guide_examples/remapping/ui/binding_row.gd" id="1_mc50g"]
+
+[node name="BindingRow" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+script = ExtResource("1_mc50g")
+
+[node name="ActionName" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Lorem ipsum"
+flat = true
+
+[node name="ActionBinding" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+
+[connection signal="pressed" from="ActionName" to="." method="_on_action_name_pressed"]

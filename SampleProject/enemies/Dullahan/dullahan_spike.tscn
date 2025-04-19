@@ -1,0 +1,131 @@
+[gd_scene load_steps=14 format=3 uid="uid://btql1r5psei2s"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="1_e1smr"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanSpike.gd" id="1_ifryw"]
+[ext_resource type="Texture2D" uid="uid://cw4h8icayu8fm" path="res://assets/sprites/Enemies/Dullahan/Spike.png" id="2_tosun"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_yihsi"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_esq15"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_mhj6l"]
+[ext_resource type="AudioStream" uid="uid://dxcgrps002omt" path="res://assets/sounds/Enemies/Dullahan/Spike.wav" id="7_o2qfh"]
+
+[sub_resource type="Animation" id="Animation_5wgsr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_tkgqy"]
+resource_name = "spawn"
+length = 0.55
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["spike"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pptn1"]
+_data = {
+"RESET": SubResource("Animation_5wgsr"),
+"spawn": SubResource("Animation_tkgqy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3d4gp"]
+size = Vector2(49, 136)
+
+[sub_resource type="Resource" id="Resource_qnii7"]
+script = ExtResource("6_mhj6l")
+Tag = "spike"
+stream = ExtResource("7_o2qfh")
+
+[sub_resource type="Resource" id="Resource_nv0be"]
+script = ExtResource("5_esq15")
+sound_effects = Array[ExtResource("6_mhj6l")]([SubResource("Resource_qnii7")])
+
+[node name="DullahanSpike" type="Node2D" node_paths=PackedStringArray("stats", "area", "iframes")]
+script = ExtResource("1_ifryw")
+stats = NodePath("Projectile")
+area = NodePath("Area2D")
+iframes = NodePath("Iframe_timer")
+
+[node name="Projectile" type="Node" parent="."]
+script = ExtResource("1_e1smr")
+base_damage = 20
+chip_damage = -25
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_tosun")
+hframes = 9
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pptn1")
+}
+autoplay = "spawn"
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.5, 24)
+shape = SubResource("RectangleShape2D_3d4gp")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -19.0
+script = ExtResource("4_yihsi")
+audio_library = SubResource("Resource_nv0be")
+
+[node name="Iframe_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Iframe_timer" to="." method="_on_iframe_timer_timeout"]

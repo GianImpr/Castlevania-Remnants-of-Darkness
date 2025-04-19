@@ -1,0 +1,543 @@
+[gd_scene load_steps=35 format=3 uid="uid://bbynbo2s4gdqw"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/inventory.gd" id="1_3qpet"]
+[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="1_dx6m5"]
+[ext_resource type="Texture2D" uid="uid://bm452tl7d2mv2" path="res://assets/images/Hector.png" id="2_toa0b"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/MenuButtons.gd" id="3_61xda"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/ButtonPanel.gd" id="3_f78sw"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/menuLabels.gd" id="4_gmeov"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="5_v2a5c"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_a5y0j"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="9_rp51v"]
+[ext_resource type="AudioStream" uid="uid://b32havei62w4k" path="res://assets/sounds/Menu/Confirm.MP3" id="10_3mcqk"]
+[ext_resource type="AudioStream" uid="uid://d1keij3ygo5dq" path="res://assets/sounds/Menu/Cursor.MP3" id="11_mkxp5"]
+[ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="12_ud3f7"]
+[ext_resource type="PackedScene" uid="uid://c6wkdyxdx8cqd" path="res://SampleProject/items/equip_menu.tscn" id="13_fvlu4"]
+
+[sub_resource type="Gradient" id="Gradient_sev68"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rhnkm"]
+gradient = SubResource("Gradient_sev68")
+
+[sub_resource type="Gradient" id="Gradient_0uqko"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m5ofj"]
+gradient = SubResource("Gradient_0uqko")
+
+[sub_resource type="Gradient" id="Gradient_q7qlu"]
+colors = PackedColorArray(0, 0, 0, 1, 0.00226884, 0.11899, 0.578939, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wcpvx"]
+gradient = SubResource("Gradient_q7qlu")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f4tk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_fv3t3"]
+default_font = ExtResource("1_dx6m5")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1pas"]
+bg_color = Color(0.339734, 2.97809e-06, 1.63645e-06, 1)
+corner_detail = 1
+
+[sub_resource type="Resource" id="Resource_oqor7"]
+script = ExtResource("9_rp51v")
+Tag = "confirm"
+stream = ExtResource("10_3mcqk")
+
+[sub_resource type="Resource" id="Resource_81yio"]
+script = ExtResource("9_rp51v")
+Tag = "cursor"
+stream = ExtResource("11_mkxp5")
+
+[sub_resource type="Resource" id="Resource_aoxut"]
+script = ExtResource("9_rp51v")
+Tag = "denied"
+stream = ExtResource("12_ud3f7")
+
+[sub_resource type="Resource" id="Resource_tmtfn"]
+script = ExtResource("8_a5y0j")
+sound_effects = Array[ExtResource("9_rp51v")]([SubResource("Resource_oqor7"), SubResource("Resource_81yio"), SubResource("Resource_aoxut")])
+
+[sub_resource type="Gradient" id="Gradient_tgsn3"]
+offsets = PackedFloat32Array(0, 0.590909, 0.823232, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.266918, 0.318996, 0.923994, 1, 0, 0.243137, 0.478431, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_45vno"]
+gradient = SubResource("Gradient_tgsn3")
+fill = 2
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Theme" id="Theme_ttekt"]
+default_font = ExtResource("1_dx6m5")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a6avg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Animation" id="Animation_bakdg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Display/PanelContainer/VBoxContainer/PolyphonicMenuAudio:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ltht0"]
+resource_name = "blur"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.2, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlackBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Display/PanelContainer/VBoxContainer/PolyphonicMenuAudio:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-80.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_q00fv"]
+resource_name = "change"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xuig2"]
+_data = {
+"RESET": SubResource("Animation_bakdg"),
+"blur": SubResource("Animation_ltht0"),
+"change": SubResource("Animation_q00fv")
+}
+
+[node name="Inventory" type="Control" node_paths=PackedStringArray("labels", "buttons", "default_button", "equip_menu", "animation")]
+process_mode = 3
+z_index = 8
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = -12.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3qpet")
+labels = NodePath("Display/Text")
+buttons = NodePath("Display/PanelContainer/VBoxContainer")
+default_button = NodePath("Display/PanelContainer/VBoxContainer/Summons")
+equip_menu = NodePath("EquipMenu")
+animation = NodePath("AnimationPlayer")
+
+[node name="BlackBackground" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -14.0
+offset_top = -13.0
+offset_right = 854.0
+offset_bottom = 467.0
+texture = SubResource("GradientTexture1D_rhnkm")
+
+[node name="Display" type="Node2D" parent="."]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(-13, -13)
+
+[node name="Margin" type="TextureRect" parent="Display"]
+show_behind_parent = true
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 852.0
+offset_bottom = 471.0
+texture = SubResource("GradientTexture1D_m5ofj")
+
+[node name="Background" type="TextureRect" parent="Display"]
+show_behind_parent = true
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 850.0
+offset_bottom = 469.0
+texture = SubResource("GradientTexture2D_wcpvx")
+
+[node name="PanelContainer" type="PanelContainer" parent="Display"]
+z_index = 1
+offset_left = 346.0
+offset_top = 179.0
+offset_right = 518.0
+offset_bottom = 407.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0f4tk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Display/PanelContainer" node_paths=PackedStringArray("glow_timer", "sound")]
+layout_mode = 2
+theme = SubResource("Theme_fv3t3")
+theme_override_constants/separation = 0
+script = ExtResource("3_f78sw")
+button_glow = SubResource("StyleBoxFlat_h1pas")
+glow_timer = NodePath("ChangeGlow")
+sound = NodePath("PolyphonicMenuAudio")
+
+[node name="Summons" type="Button" parent="Display/PanelContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Options")
+disabled = true
+action_mode = 0
+text = "? ? ?"
+script = ExtResource("3_61xda")
+
+[node name="Items" type="Button" parent="Display/PanelContainer/VBoxContainer"]
+layout_mode = 2
+action_mode = 0
+text = "Items"
+script = ExtResource("3_61xda")
+
+[node name="Equip" type="Button" parent="Display/PanelContainer/VBoxContainer"]
+layout_mode = 2
+action_mode = 0
+text = "Equip"
+script = ExtResource("3_61xda")
+
+[node name="Combine" type="Button" parent="Display/PanelContainer/VBoxContainer"]
+layout_mode = 2
+disabled = true
+action_mode = 0
+text = "? ? ?"
+script = ExtResource("3_61xda")
+
+[node name="Bestiary" type="Button" parent="Display/PanelContainer/VBoxContainer"]
+layout_mode = 2
+disabled = true
+action_mode = 0
+text = "? ? ?"
+script = ExtResource("3_61xda")
+
+[node name="Skills" type="Button" parent="Display/PanelContainer/VBoxContainer"]
+layout_mode = 2
+disabled = true
+action_mode = 0
+text = "Skills"
+script = ExtResource("3_61xda")
+
+[node name="Options" type="Button" parent="Display/PanelContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Summons")
+disabled = true
+action_mode = 0
+text = "Options"
+script = ExtResource("3_61xda")
+
+[node name="ChangeGlow" type="Timer" parent="Display/PanelContainer/VBoxContainer"]
+wait_time = 0.1
+autostart = true
+
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="Display/PanelContainer/VBoxContainer"]
+max_polyphony = 5
+bus = &"SFX"
+script = ExtResource("5_v2a5c")
+audio_library = SubResource("Resource_tmtfn")
+
+[node name="TextureRect" type="TextureRect" parent="Display"]
+offset_left = 54.0
+offset_top = 25.0
+offset_right = 190.0
+offset_bottom = 179.0
+texture = ExtResource("2_toa0b")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="Display/TextureRect"]
+show_behind_parent = true
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 154.0
+texture = SubResource("GradientTexture2D_45vno")
+
+[node name="Text" type="Control" parent="Display" node_paths=PackedStringArray("LevelValue", "MainStatsMaxValues", "MainStatsValues", "StatusValue", "SubStatValues", "BattleStatsValues", "ResourcesValues", "TimeValue")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 53.0
+offset_bottom = 53.0
+theme = SubResource("Theme_ttekt")
+script = ExtResource("4_gmeov")
+LevelValue = NodePath("LevelValue")
+MainStatsMaxValues = NodePath("MainStatsMaxValues")
+MainStatsValues = NodePath("MainStatsValues")
+StatusValue = NodePath("StatusValue")
+SubStatValues = NodePath("SubStatValues")
+BattleStatsValues = NodePath("BattleStatsValues")
+ResourcesValues = NodePath("ResourcesValues")
+TimeValue = NodePath("TimeValue")
+
+[node name="Name" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 12.0
+offset_right = 406.0
+offset_bottom = 36.0
+text = "Hector"
+horizontal_alignment = 3
+uppercase = true
+
+[node name="Level" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 12.0
+offset_right = 702.0
+offset_bottom = 36.0
+text = "LEVEL"
+horizontal_alignment = 3
+uppercase = true
+
+[node name="LevelValue" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 702.0
+offset_top = 12.0
+offset_right = 738.0
+offset_bottom = 36.0
+text = "1"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="MainStats" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 51.0
+offset_right = 261.0
+offset_bottom = 129.0
+text = "HP           /
+MP          /
+SP           /"
+horizontal_alignment = 3
+uppercase = true
+
+[node name="MainStatsMaxValues" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 51.0
+offset_right = 462.0
+offset_bottom = 129.0
+text = "180
+100
+0"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="MainStatsValues" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 51.0
+offset_right = 372.0
+offset_bottom = 129.0
+text = "180
+100
+0"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Status" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 596.0
+offset_top = 40.0
+offset_right = 702.0
+offset_bottom = 64.0
+text = "STATUS"
+horizontal_alignment = 3
+uppercase = true
+
+[node name="StatusValue" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 64.0
+offset_right = 728.0
+offset_bottom = 88.0
+text = "GOOD"
+uppercase = true
+
+[node name="SubStats" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 166.0
+offset_right = 131.0
+offset_bottom = 298.0
+text = "STR
+CON
+INT
+MND
+SYN
+LCK"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="SubStatValues" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 166.0
+offset_right = 167.0
+offset_bottom = 298.0
+text = "6
+4
+5
+2
+0
+3"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="BattleStats" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 131.0
+offset_right = 641.0
+offset_bottom = 213.0
+theme_override_constants/line_spacing = 12
+theme_override_fonts/font = ExtResource("1_dx6m5")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_a6avg")
+text = "ATK
+DEF"
+uppercase = true
+
+[node name="BattleStatsValues" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 669.0
+offset_top = 138.0
+offset_right = 750.0
+offset_bottom = 220.0
+theme_override_constants/line_spacing = 24
+theme_override_fonts/font = ExtResource("1_dx6m5")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_a6avg")
+text = "8
+0"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Resources" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 335.0
+offset_right = 157.0
+offset_bottom = 467.0
+text = "EXP
+NEXT
+GOLD"
+uppercase = true
+
+[node name="ResourcesValues" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 335.0
+offset_right = 260.0
+offset_bottom = 413.0
+text = "0
+17
+0"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Time" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 353.0
+offset_right = 631.0
+offset_bottom = 377.0
+text = "TIME"
+uppercase = true
+
+[node name="TimeValue" type="Label" parent="Display/Text"]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 340.0
+offset_right = 778.0
+offset_bottom = 384.0
+text = "0:00:00"
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xuig2")
+}
+speed_scale = 1.2
+
+[node name="EquipMenu" parent="." instance=ExtResource("13_fvlu4")]
+layout_mode = 1
+
+[connection signal="timeout" from="Display/PanelContainer/VBoxContainer/ChangeGlow" to="Display/PanelContainer/VBoxContainer" method="_on_change_glow_timeout"]

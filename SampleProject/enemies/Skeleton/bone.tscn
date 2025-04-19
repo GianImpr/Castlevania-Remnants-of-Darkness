@@ -1,0 +1,315 @@
+[gd_scene load_steps=17 format=3 uid="uid://b7tq5olcjkkvy"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/BonePhysics.gd" id="1_l76rm"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/bone.gd" id="1_vkqme"]
+[ext_resource type="Texture2D" uid="uid://c11n13r75ggmc" path="res://assets/sprites/Enemies/Skeleton.png" id="2_va7mg"]
+[ext_resource type="Texture2D" uid="uid://c75kgbqkyn6c5" path="res://assets/sprites/Effects/SmallFire.png" id="4_om1ku"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_r2ukc"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="7_wjqnj"]
+[ext_resource type="AudioStream" uid="uid://cymbbuk0ioone" path="res://assets/sounds/SkeletonDrop.MP3" id="8_il484"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcnoe"]
+size = Vector2(5, 14)
+
+[sub_resource type="Animation" id="Animation_1h7ln"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_va7mg")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Area2D:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fqhc6"]
+resource_name = "destroy"
+length = 0.55
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_om1ku")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.55),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Area2D:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_nd5jj"]
+resource_name = "rotate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.28319, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yx1c6"]
+_data = {
+"RESET": SubResource("Animation_1h7ln"),
+"destroy": SubResource("Animation_fqhc6"),
+"rotate": SubResource("Animation_nd5jj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4eam0"]
+size = Vector2(5, 14)
+
+[sub_resource type="GDScript" id="GDScript_10oeh"]
+script/source = "extends AudioStreamPlayer2D
+
+
+@export var audio_library: AudioLibrary
+@export var custom_max_polyphony: int = 32
+
+func _ready() -> void:
+	stream = AudioStreamPolyphonic.new()
+	stream.polyphony = custom_max_polyphony
+	process_mode = PROCESS_MODE_ALWAYS
+
+func play_sound_effect_from_library(_tag: String) -> void:
+	if _tag:
+		var audio_stream = audio_library.get_audio_stream(_tag)
+		if !playing: self.play()
+		
+		var polyphonic_stream_playback := self.get_stream_playback()
+		polyphonic_stream_playback.play_stream(audio_stream)
+	else:
+		printerr(\"no tag provided, cannnot play sound effect!\")
+"
+
+[sub_resource type="Resource" id="Resource_jkyud"]
+script = ExtResource("7_wjqnj")
+Tag = "drop"
+stream = ExtResource("8_il484")
+
+[sub_resource type="Resource" id="Resource_q6lnd"]
+script = ExtResource("5_r2ukc")
+sound_effects = Array[ExtResource("7_wjqnj")]([SubResource("Resource_jkyud")])
+
+[node name="Bone" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "sound")]
+collision_layer = 4
+mass = 0.001
+lock_rotation = true
+script = ExtResource("1_l76rm")
+stats = NodePath("Stats")
+sprite = NodePath("Sprite2D")
+hitbox_iframe = NodePath("Area2D/Hitbox")
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+sound = NodePath("PolyphonicAudio")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("1_vkqme")
+base_damage = 7
+destructible = true
+destroy_on_contact = true
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+scale = Vector2(2.3, 2.3)
+shape = SubResource("RectangleShape2D_xcnoe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("2_va7mg")
+offset = Vector2(-3, 1)
+hframes = 6
+vframes = 4
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_yx1c6")
+}
+autoplay = "rotate"
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(2.3, 2.3)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_4eam0")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+script = SubResource("GDScript_10oeh")
+audio_library = SubResource("Resource_q6lnd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

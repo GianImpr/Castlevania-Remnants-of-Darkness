@@ -1,0 +1,53 @@
+[gd_scene load_steps=12 format=3 uid="uid://cchyatnt0wl5x"]
+
+[ext_resource type="Script" path="res://guide_examples/simple_input/simple_input.gd" id="1_cgpw0"]
+[ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="1_t8vwd"]
+[ext_resource type="Script" path="res://guide_examples/simple_input/player.gd" id="2_o6vg3"]
+[ext_resource type="Resource" uid="uid://c161ru5ubsvm5" path="res://guide_examples/simple_input/mapping_contexts/simple_input.tres" id="3_2b24x"]
+[ext_resource type="Resource" uid="uid://b7rcj2usvx7iu" path="res://guide_examples/simple_input/mapping_contexts/move_left.tres" id="4_50on6"]
+[ext_resource type="Resource" uid="uid://cn4nypfrnusrn" path="res://guide_examples/simple_input/mapping_contexts/move_right.tres" id="5_47yin"]
+[ext_resource type="Resource" uid="uid://cjohgt5cdoxvd" path="res://guide_examples/simple_input/mapping_contexts/move_up.tres" id="6_b7h5t"]
+[ext_resource type="Resource" uid="uid://cjfdsja54wtus" path="res://guide_examples/simple_input/mapping_contexts/move_down.tres" id="7_4pdc5"]
+[ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="8_tko8y"]
+[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="9_hqrkx"]
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="10_3ap6u"]
+
+[node name="SimpleInput" type="Node"]
+script = ExtResource("1_cgpw0")
+mapping_context = ExtResource("3_2b24x")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(546, 317)
+texture = ExtResource("1_t8vwd")
+script = ExtResource("2_o6vg3")
+speed = 300.0
+left_action = ExtResource("4_50on6")
+right_action = ExtResource("5_47yin")
+up_action = ExtResource("6_b7h5t")
+down_action = ExtResource("7_4pdc5")
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="Instructions Label" type="RichTextLabel" parent="UI Layer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -286.0
+offset_top = 24.0
+offset_right = -39.0
+offset_bottom = 47.0
+grow_horizontal = 0
+theme = ExtResource("8_tko8y")
+script = ExtResource("9_hqrkx")
+instructions_text = "%s to move left.
+%s to move right.
+%s to move up.
+%s to move down."
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("4_50on6"), ExtResource("5_47yin"), ExtResource("6_b7h5t"), ExtResource("7_4pdc5")])
+metadata/_edit_use_anchors_ = true
+
+[node name="Debug Layer" type="CanvasLayer" parent="."]
+
+[node name="GuideDebugger" parent="Debug Layer" instance=ExtResource("10_3ap6u")]
+theme = ExtResource("8_tko8y")
+metadata/_edit_lock_ = true

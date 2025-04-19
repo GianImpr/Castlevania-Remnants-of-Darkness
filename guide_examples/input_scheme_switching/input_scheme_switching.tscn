@@ -1,0 +1,60 @@
+[gd_scene load_steps=14 format=3 uid="uid://dvbxt8jyo8okp"]
+
+[ext_resource type="Script" path="res://guide_examples/input_scheme_switching/input_scheme_switching.gd" id="1_7l2n1"]
+[ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="1_t4jeg"]
+[ext_resource type="Resource" uid="uid://x33fk5wo7l2r" path="res://guide_examples/input_scheme_switching/mapping_contexts/joystick_scheme.tres" id="2_fx1v6"]
+[ext_resource type="Resource" uid="uid://2hl7iqpondhi" path="res://guide_examples/input_scheme_switching/mapping_contexts/keyboard_scheme.tres" id="3_pvyn2"]
+[ext_resource type="Resource" uid="uid://cxn2ibe1mn3sb" path="res://guide_examples/input_scheme_switching/mapping_contexts/actions/move.tres" id="4_3bnea"]
+[ext_resource type="Resource" uid="uid://b11rcmd3hse58" path="res://guide_examples/input_scheme_switching/mapping_contexts/actions/switch_to_keyboard.tres" id="4_tts5j"]
+[ext_resource type="Resource" uid="uid://c7htf8h44vbwi" path="res://guide_examples/input_scheme_switching/mapping_contexts/actions/shoot.tres" id="5_4yg1b"]
+[ext_resource type="Resource" uid="uid://vctiwgvnl0ba" path="res://guide_examples/input_scheme_switching/mapping_contexts/actions/switch_to_joystick.tres" id="6_b05vw"]
+[ext_resource type="Script" path="res://guide_examples/input_scheme_switching/player.gd" id="7_2r4ev"]
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="8_nv6u5"]
+[ext_resource type="PackedScene" uid="uid://c36cnvgv2ur60" path="res://guide_examples/shared/fireball/fireball.tscn" id="8_t3npb"]
+[ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="10_vp4t3"]
+[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="11_qdni4"]
+
+[node name="InputSchemeSwitching" type="Node2D"]
+script = ExtResource("1_7l2n1")
+joystick_scheme = ExtResource("2_fx1v6")
+keyboard_scheme = ExtResource("3_pvyn2")
+switch_to_keyboard = ExtResource("4_tts5j")
+switch_to_joystick = ExtResource("6_b05vw")
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(929, 695)
+script = ExtResource("7_2r4ev")
+speed = 300.0
+move_action = ExtResource("4_3bnea")
+shoot_action = ExtResource("5_4yg1b")
+fireball_scene = ExtResource("8_t3npb")
+
+[node name="GodotLogo" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_t4jeg")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InstructionsLabel" type="RichTextLabel" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -552.0
+offset_top = 85.0
+offset_right = -52.0
+offset_bottom = 125.0
+grow_horizontal = 0
+theme = ExtResource("10_vp4t3")
+bbcode_enabled = true
+text = "Lorem Ipsum Dolor"
+fit_content = true
+script = ExtResource("11_qdni4")
+instructions_text = "%s to move.
+%s to shoot a fireball."
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("4_3bnea"), ExtResource("5_4yg1b")])
+
+[node name="Debugger" type="CanvasLayer" parent="."]
+
+[node name="GuideDebugger" parent="Debugger" instance=ExtResource("8_nv6u5")]
+theme = ExtResource("10_vp4t3")

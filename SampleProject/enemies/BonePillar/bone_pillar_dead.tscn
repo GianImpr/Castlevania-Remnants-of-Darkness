@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=3 uid="uid://s7fw3ol2hc0h"]
+
+[ext_resource type="Texture2D" uid="uid://us83palu5byc" path="res://assets/sprites/Enemies/bonePillarBroken.png" id="1_u2pdu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kapwn"]
+size = Vector2(41.4782, 25.8695)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrepe"]
+size = Vector2(31, 23.6087)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcxrk"]
+size = Vector2(59.0435, 39.4782)
+
+[sub_resource type="Animation" id="Animation_rqwf4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0tw1g"]
+resource_name = "fade"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1o8a6"]
+_data = {
+"RESET": SubResource("Animation_rqwf4"),
+"fade": SubResource("Animation_0tw1g")
+}
+
+[node name="Node2D" type="Node2D"]
+self_modulate = Color(1, 1, 1, 0)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 0
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_u2pdu")
+offset = Vector2(10, 0)
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(20.2609, -22.9348)
+shape = SubResource("RectangleShape2D_kapwn")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+collision_layer = 0
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_u2pdu")
+offset = Vector2(10, 0)
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-15.5, -22.8043)
+shape = SubResource("RectangleShape2D_qrepe")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+collision_layer = 0
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_u2pdu")
+offset = Vector2(10, 0)
+hframes = 3
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(11.4783, 9.26088)
+shape = SubResource("RectangleShape2D_hcxrk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1o8a6")
+}
+autoplay = "fade"

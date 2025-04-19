@@ -1,0 +1,88 @@
+[gd_scene load_steps=18 format=3 uid="uid://hxx7y33rfrnh"]
+
+[ext_resource type="Script" path="res://guide_examples/touch/touch.gd" id="1_gq4pr"]
+[ext_resource type="Resource" uid="uid://bcepjnqawyxeb" path="res://guide_examples/touch/mapping_contexts/touch.tres" id="2_btyg8"]
+[ext_resource type="Resource" uid="uid://iilpc2tjr5mx" path="res://guide_examples/touch/mapping_contexts/actions/spawn.tres" id="3_nwdqb"]
+[ext_resource type="Script" path="res://guide_examples/touch/camera_2d.gd" id="5_k0qyy"]
+[ext_resource type="PackedScene" uid="uid://c3kfkmt7p66c2" path="res://guide_examples/touch/godot_head.tscn" id="5_mimge"]
+[ext_resource type="Resource" uid="uid://brsk1axa7e3h" path="res://guide_examples/touch/mapping_contexts/actions/camera_movement.tres" id="7_hbc7d"]
+[ext_resource type="Resource" uid="uid://b2xbr2rqob6gw" path="res://guide_examples/touch/mapping_contexts/actions/camera_zoom.tres" id="8_t7xto"]
+[ext_resource type="Texture2D" uid="uid://slnmn5k0drdb" path="res://guide_examples/mouse_position_2d/background.svg" id="9_0mhj2"]
+[ext_resource type="Script" path="res://guide_examples/mouse_position_2d/background.gd" id="10_7apxo"]
+[ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="11_bclaf"]
+[ext_resource type="PackedScene" uid="uid://c1ht6xduduxri" path="res://guide_examples/touch/placement_indicator/placement_indicator.tscn" id="12_e3xb3"]
+[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="12_fwxrg"]
+[ext_resource type="Resource" uid="uid://dpu1f4xeigqdr" path="res://guide_examples/touch/mapping_contexts/actions/camera_rotation.tres" id="13_lmkyb"]
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="13_n0vwi"]
+[ext_resource type="Resource" uid="uid://dhtj0p55ylhcu" path="res://guide_examples/touch/mapping_contexts/actions/camera_reset.tres" id="14_bfrfr"]
+
+[sub_resource type="Shader" id="Shader_v4pj1"]
+code = "shader_type canvas_item;
+
+uniform vec2 scale;
+uniform vec2 offset;
+
+void vertex() {
+	UV =  UV * scale + offset;
+}
+
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1sa2x"]
+shader = SubResource("Shader_v4pj1")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/offset = Vector2(0, 0)
+
+[node name="Touch" type="Node2D"]
+script = ExtResource("1_gq4pr")
+mapping_context = ExtResource("2_btyg8")
+spawn = ExtResource("3_nwdqb")
+godot_head_scene = ExtResource("5_mimge")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+script = ExtResource("5_k0qyy")
+camera_movement = ExtResource("7_hbc7d")
+camera_zoom = ExtResource("8_t7xto")
+camera_rotation = ExtResource("13_lmkyb")
+camera_reset = ExtResource("14_bfrfr")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_1sa2x")
+texture = ExtResource("9_0mhj2")
+centered = false
+script = ExtResource("10_7apxo")
+
+[node name="PlacementIndicator" parent="." instance=ExtResource("12_e3xb3")]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UILayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -107.0
+offset_top = 41.0
+offset_right = -67.0
+offset_bottom = 81.0
+grow_horizontal = 0
+theme = ExtResource("11_bclaf")
+script = ExtResource("12_fwxrg")
+instructions_text = "%s to move the camera.
+%s to zoom the camera.
+%s to rotate the camera.
+%s to reset the camera zoom and rotation.
+%s to place a Godot head.
+"
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("7_hbc7d"), ExtResource("8_t7xto"), ExtResource("13_lmkyb"), ExtResource("14_bfrfr"), ExtResource("3_nwdqb")])
+
+[node name="DebuggerLayer" type="CanvasLayer" parent="."]
+
+[node name="GuideDebugger" parent="DebuggerLayer" instance=ExtResource("13_n0vwi")]
+theme = ExtResource("11_bclaf")

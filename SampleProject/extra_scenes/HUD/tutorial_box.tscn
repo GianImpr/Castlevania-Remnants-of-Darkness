@@ -1,0 +1,304 @@
+[gd_scene load_steps=34 format=3 uid="uid://dogi4hsvyxsgs"]
+
+[ext_resource type="Script" path="res://SampleProject/extra_scenes/HUD/tutorial_box.gd" id="1_1rggr"]
+[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="1_8nx3f"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/TutorialFormat.gd" id="2_fcv6a"]
+[ext_resource type="Texture2D" uid="uid://dt0pb87xgi3pu" path="res://assets/images/GuardHealth.png" id="3_cyhd6"]
+[ext_resource type="Texture2D" uid="uid://chgh1icjepfq" path="res://assets/images/Guarding.png" id="3_e0b5c"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_dp0oq"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="4_ghrps"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_2jnfb"]
+[ext_resource type="Texture2D" uid="uid://dlgbsgjhyq3ii" path="res://assets/sprites/HUD/TutorialImages/Relic.png" id="5_vfp2l"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_glbrx"]
+[ext_resource type="Texture2D" uid="uid://cp25oophuxjaq" path="res://assets/images/RedSpark.png" id="6_xnnn0"]
+[ext_resource type="Texture2D" uid="uid://cx1wxmu3nscdw" path="res://assets/images/PerfectGuard.png" id="7_m14ni"]
+[ext_resource type="AudioStream" uid="uid://cr25eu7ste64s" path="res://assets/sounds/Effects/TutorialPopup.MP3" id="7_vu011"]
+[ext_resource type="AudioStream" uid="uid://dqyf6u63hcg44" path="res://assets/sounds/Menu/Confirm.wav" id="8_hwhci"]
+[ext_resource type="Texture2D" uid="uid://ct0h83wstlnl3" path="res://assets/images/Hearts.png" id="8_pxr1b"]
+[ext_resource type="Texture2D" uid="uid://bho5p0s6oes73" path="res://assets/images/InnocentFairy.png" id="9_rfsp2"]
+
+[sub_resource type="Resource" id="Resource_pakqc"]
+script = ExtResource("2_fcv6a")
+title = "GUARDING"
+description = "By holding [[R1]] down, Hector can block incoming
+attacks, negating most, if not all damage.
+
+If the blocked attack's base damage is high,
+some chip damage will still be taken.
+
+Hector can only block a couple blows at a time,
+after which he will suffer a guard break, leaving
+him vulnerable."
+image = ExtResource("3_e0b5c")
+condition = "Global.player.stats.findItem(1, Global.player.stats.skill_inventory)"
+
+[sub_resource type="Resource" id="Resource_v7vry"]
+script = ExtResource("2_fcv6a")
+title = "GUARD HEALTH"
+description = "Guard health represents how many hits Hector
+can block before suffering from a guard break.
+
+The two orbs beneath the MP gauge represent
+remaining Guard health, which recovers over
+time."
+image = ExtResource("3_cyhd6")
+condition = "Global.player.stats.findItem(1, Global.player.stats.skill_inventory)"
+
+[sub_resource type="Resource" id="Resource_ce2tk"]
+script = ExtResource("2_fcv6a")
+title = "RELICS"
+description = "Relics are powerful items that
+allow Hector to trigger special effects, 
+at the cost of some MP.
+
+Press [[Circle]] while guarding to activate the
+currently equipped relic."
+image = ExtResource("5_vfp2l")
+condition = "Global.player.stats.relic_inventory.size() > 0 or Global.player.stats.equipment[\"relic\"] > 0"
+
+[sub_resource type="Resource" id="Resource_om33j"]
+script = ExtResource("2_fcv6a")
+title = "RED SPARK ATTACK"
+description = "When an enemy glows red,
+the attack they're going to
+unleash will instantly break
+Hector's guard, dealing
+increased damage.
+
+Dodge this kind of attack
+to avoid taking damage."
+image = ExtResource("6_xnnn0")
+condition = ""
+
+[sub_resource type="Resource" id="Resource_1trho"]
+script = ExtResource("2_fcv6a")
+title = "PERFECT GUARD"
+description = "Platinum Arm is a skill that allows Hector
+to perfect guard attacks.
+Upon guarding right before an enemy
+attack, Hector will restore
+some MP and Hearts depending on the
+strength of the blocked attack.
+
+Perfect guarding Red Spark
+attacks will increase MP restoration."
+image = ExtResource("7_m14ni")
+condition = "Global.player.stats.findItem(3, Global.player.stats.skill_inventory)"
+
+[sub_resource type="Resource" id="Resource_4uphu"]
+script = ExtResource("2_fcv6a")
+title = "INNOCENT DEVILS"
+description = "Innocent Devils are loyal creatures that
+will follow Hector throughout his journey.
+
+They can help in battle with offensive or
+supportive skills and can aid Hector by
+unlocking some secret paths or treasures.
+
+Similarly to Hector, they can gain EXP and level
+up to become stronger while deployed.
+
+By pressing [[Triangle]], they'll use their special skills."
+condition = "Global.player.innocent_devil != null"
+
+[sub_resource type="Resource" id="Resource_nl7m1"]
+script = ExtResource("2_fcv6a")
+title = "HEART METER"
+description = "Innocent Devils use hearts as their energy.
+
+Whenever they use a special skill or take
+damage in combat, their Heart meter decreases.
+
+Switch the current selected skill by moving
+the right stick left or right. (or Left and
+Right arrows if using a keyboard)
+
+When they run out of Hearts, they will dissolve,
+and can only come back when they've recovered
+a good amount of Hearts."
+image = ExtResource("8_pxr1b")
+condition = "Global.player.innocent_devil != null"
+
+[sub_resource type="Resource" id="Resource_j2x7b"]
+script = ExtResource("2_fcv6a")
+title = "FAIRY-TYPE INNOCENT DEVIL"
+description = "Fairy-Type Innocent Devils have the ability
+to heal Hector and grant him some passive buffs
+during battle.
+
+They can also reveal secret paths or open locked
+treasure chests.
+
+Cannot be harmed by enemies."
+image = ExtResource("9_rfsp2")
+condition = "Global.player.innocent_devil != null"
+
+[sub_resource type="Theme" id="Theme_ysinr"]
+default_font = ExtResource("1_8nx3f")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyb4m"]
+bg_color = Color(0, 0, 0.501961, 0.729412)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.501961)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Animation" id="Animation_1ogn0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d43i8"]
+resource_name = "appear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jueci"]
+resource_name = "disappear"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81h6x"]
+_data = {
+"RESET": SubResource("Animation_1ogn0"),
+"appear": SubResource("Animation_d43i8"),
+"disappear": SubResource("Animation_jueci")
+}
+
+[sub_resource type="Resource" id="Resource_r3fyu"]
+script = ExtResource("6_glbrx")
+Tag = "tutorial"
+stream = ExtResource("7_vu011")
+
+[sub_resource type="Resource" id="Resource_exbuw"]
+script = ExtResource("6_glbrx")
+Tag = "confirm"
+stream = ExtResource("8_hwhci")
+
+[sub_resource type="Resource" id="Resource_ahy7p"]
+script = ExtResource("5_2jnfb")
+sound_effects = Array[ExtResource("6_glbrx")]([SubResource("Resource_r3fyu"), SubResource("Resource_exbuw")])
+
+[node name="TutorialScreen" type="Control" node_paths=PackedStringArray("animation", "title", "image", "description", "continue_label", "sound")]
+process_mode = 3
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1rggr")
+animation = NodePath("AnimationPlayer")
+title = NodePath("PanelContainer/VBoxContainer/Title")
+image = NodePath("PanelContainer/VBoxContainer/Image")
+description = NodePath("PanelContainer/VBoxContainer/Description")
+continue_label = NodePath("PanelContainer/VBoxContainer/Continue")
+sound = NodePath("PolyphonicMenuAudio")
+tutorials = Array[ExtResource("2_fcv6a")]([SubResource("Resource_pakqc"), SubResource("Resource_v7vry"), SubResource("Resource_ce2tk"), SubResource("Resource_om33j"), SubResource("Resource_1trho"), SubResource("Resource_4uphu"), SubResource("Resource_nl7m1"), SubResource("Resource_j2x7b")])
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -14.0
+offset_right = 83.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ysinr")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cyb4m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "GUARD HEALTH"
+horizontal_alignment = 1
+
+[node name="Image" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_cyhd6")
+stretch_mode = 3
+
+[node name="Description" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+scroll_following = true
+autowrap_mode = 0
+script = ExtResource("4_ghrps")
+new_text = "Guard health represents how many hits Hector
+can block before suffering from a guard break.
+
+The two orbs beneath the MP gauge represent
+remaining Guard health, which recovers over
+time."
+
+[node name="Continue" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+scroll_following = true
+autowrap_mode = 0
+script = ExtResource("4_ghrps")
+new_text = "[right]Press [[Cross]] to continue.[/right]"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_81h6x")
+}
+
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+script = ExtResource("4_dp0oq")
+audio_library = SubResource("Resource_ahy7p")

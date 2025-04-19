@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfjo7q67uoilb"]
+
+[ext_resource type="PackedScene" uid="uid://cblcs0qqndm0e" path="res://rooms/room_2.tscn" id="1_36dx2"]
+[ext_resource type="TileSet" uid="uid://mprmq4li685x" path="res://SampleProject/Resources/OoE.tres" id="2_j06wo"]
+
+[node name="Room2" instance=ExtResource("1_36dx2")]
+scale = Vector2(2.5, 2.5)
+
+[node name="Foreground" parent="." index="0"]
+tile_set = ExtResource("2_j06wo")
+
+[node name="Background" parent="." index="1"]
+tile_set = ExtResource("2_j06wo")

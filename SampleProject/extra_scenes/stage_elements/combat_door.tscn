@@ -1,0 +1,439 @@
+[gd_scene load_steps=24 format=3 uid="uid://bnsy1kwfc8603"]
+
+[ext_resource type="Texture2D" uid="uid://bvo251myppcop" path="res://assets/sprites/Objects/BossDoor.png" id="1_1pdi4"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/combat_door.gd" id="1_8e8x8"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/combat_door_node.gd" id="1_wnmjm"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_jdr85"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_l8vw0"]
+[ext_resource type="Texture2D" uid="uid://dc2kbfme7doyx" path="res://assets/sprites/Objects/BossSeal.png" id="4_u7fhh"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_7yhri"]
+[ext_resource type="Texture2D" uid="uid://tyvxnf27ms2e" path="res://assets/sprites/Objects/BossDoor2.png" id="5_e11eq"]
+[ext_resource type="AudioStream" uid="uid://dv8cvlp0chhne" path="res://assets/sounds/Door/OpenCombatDoor.MP3" id="6_civa4"]
+[ext_resource type="AudioStream" uid="uid://dgshuccmcc8q0" path="res://assets/sounds/Door/CloseCombatDoor.MP3" id="7_6q3kv"]
+
+[sub_resource type="Animation" id="Animation_hiwn8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HorizontalCollision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HorizontalCollision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-32, -9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_1pdi4")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Seal:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.4, 0.4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Seal:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3mye4"]
+resource_name = "close"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -128), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../PolyphonicAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["close"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HorizontalCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../HorizontalCollision:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-32, -9), Vector2(0, -9)]
+}
+
+[sub_resource type="Animation" id="Animation_v3h54"]
+resource_name = "close_boss"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -128), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../PolyphonicAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["close"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HorizontalCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../HorizontalCollision:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-32, -9), Vector2(0, -9)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Seal:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Seal:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.433333, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_3pxgt"]
+resource_name = "idle"
+length = 0.1
+
+[sub_resource type="Animation" id="Animation_3j4hm"]
+resource_name = "open"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -128)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../PolyphonicAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["open"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HorizontalCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_73k6k"]
+resource_name = "open_boss"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -128)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../PolyphonicAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["open"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HorizontalCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.03333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_e11eq")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Seal:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Seal:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_11822"]
+_data = {
+"RESET": SubResource("Animation_hiwn8"),
+"close": SubResource("Animation_3mye4"),
+"close_boss": SubResource("Animation_v3h54"),
+"idle": SubResource("Animation_3pxgt"),
+"open": SubResource("Animation_3j4hm"),
+"open_boss": SubResource("Animation_73k6k")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3ty1"]
+size = Vector2(16, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2cmv"]
+size = Vector2(20, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yot3j"]
+size = Vector2(32, 391)
+
+[sub_resource type="Resource" id="Resource_hfuc5"]
+script = ExtResource("5_7yhri")
+Tag = "open"
+stream = ExtResource("6_civa4")
+
+[sub_resource type="Resource" id="Resource_mn6qn"]
+script = ExtResource("5_7yhri")
+Tag = "close"
+stream = ExtResource("7_6q3kv")
+
+[sub_resource type="Resource" id="Resource_lxtvt"]
+script = ExtResource("4_l8vw0")
+sound_effects = Array[ExtResource("5_7yhri")]([SubResource("Resource_hfuc5"), SubResource("Resource_mn6qn")])
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("init_cooldown", "detection")]
+script = ExtResource("1_wnmjm")
+init_cooldown = NodePath("InitCooldown")
+detection = NodePath("CombatDoor/DetectionArea")
+
+[node name="CombatDoor" type="StaticBody2D" parent="." node_paths=PackedStringArray("animation", "open_delay", "close_delay", "door_sprite", "seal_sprite")]
+z_index = -1
+position = Vector2(0, -128)
+collision_layer = 17
+collision_mask = 2
+collision_priority = 2.0
+script = ExtResource("1_8e8x8")
+animation = NodePath("AnimationPlayer")
+open_delay = NodePath("../OpenDelay")
+close_delay = NodePath("../CloseDelay")
+combat_door_texture = ExtResource("1_1pdi4")
+boss_door_texture = ExtResource("5_e11eq")
+door_sprite = NodePath("Door")
+seal_sprite = NodePath("Door/Seal")
+
+[node name="Door" type="Sprite2D" parent="CombatDoor"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_1pdi4")
+
+[node name="Seal" type="Sprite2D" parent="CombatDoor/Door"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_u7fhh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CombatDoor"]
+root_node = NodePath("../Door")
+libraries = {
+"": SubResource("AnimationLibrary_11822")
+}
+autoplay = "idle"
+
+[node name="VerticalCollision" type="CollisionShape2D" parent="CombatDoor"]
+visible = false
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_s3ty1")
+
+[node name="DetectionArea" type="Area2D" parent="CombatDoor"]
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatDoor/DetectionArea"]
+visible = false
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_u2cmv")
+
+[node name="HorizontalCollision" type="CollisionShape2D" parent="CombatDoor"]
+position = Vector2(-32, -9)
+shape = SubResource("RectangleShape2D_yot3j")
+disabled = true
+debug_color = Color(1.92523e-06, 0.632613, 0.449587, 0.42)
+
+[node name="OpenDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="CloseDelay" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_jdr85")
+audio_library = SubResource("Resource_lxtvt")
+
+[node name="InitCooldown" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="CombatDoor/DetectionArea" to="CombatDoor" method="_on_detection_area_body_entered"]
+[connection signal="timeout" from="OpenDelay" to="CombatDoor" method="_on_animation_delay_timeout"]
+[connection signal="timeout" from="CloseDelay" to="CombatDoor" method="_on_close_delay_timeout"]
+[connection signal="timeout" from="InitCooldown" to="." method="_on_init_cooldown_timeout"]

@@ -1,0 +1,148 @@
+[gd_scene load_steps=22 format=3 uid="uid://dmpv0dh2nk5j"]
+
+[ext_resource type="Script" path="res://guide_examples/mouse_position_3d/mouse_position_3d.gd" id="1_8oqik"]
+[ext_resource type="Resource" uid="uid://bpatu7vi2kj4l" path="res://guide_examples/mouse_position_3d/mapping_context/mouse_position_3d.tres" id="2_bb21n"]
+[ext_resource type="Script" path="res://guide_examples/mouse_position_3d/camera_control.gd" id="3_4etic"]
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="3_m2gj2"]
+[ext_resource type="Script" path="res://guide_examples/mouse_position_3d/mouse_indicator.gd" id="3_tunsg"]
+[ext_resource type="Resource" uid="uid://2b0ncq7ogvv0" path="res://guide_examples/mouse_position_3d/mapping_context/actions/cursor_3d.tres" id="4_dla1l"]
+[ext_resource type="Resource" uid="uid://bago2pmgvpepb" path="res://guide_examples/mouse_position_3d/mapping_context/actions/camera_pitch.tres" id="4_xr1vq"]
+[ext_resource type="Script" path="res://guide_examples/mouse_position_3d/player.gd" id="5_8nflt"]
+[ext_resource type="Resource" uid="uid://bltmi1lr7umq0" path="res://guide_examples/mouse_position_3d/mapping_context/actions/camera_yaw.tres" id="5_mnyiu"]
+[ext_resource type="Resource" uid="uid://cpljlaavuq515" path="res://guide_examples/mouse_position_3d/mapping_context/actions/camera_toggle.tres" id="6_51csy"]
+[ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="6_lyxvk"]
+[ext_resource type="Resource" uid="uid://b2jb27062t2mh" path="res://guide_examples/mouse_position_3d/mapping_context/actions/select.tres" id="6_uviri"]
+[ext_resource type="Resource" uid="uid://ceti1avx1l1qw" path="res://guide_examples/mouse_position_3d/mapping_context/actions/camera_move.tres" id="7_1vbs8"]
+[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="12_c4bk3"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_sfop5"]
+vertices = PackedVector3Array(2.25, 2.656, -7, 2.25, 2.656, -3.5, 4.25, 1.156, -3.5, 4.25, 1.156, -7, 4.25, 1.156, -7, 4.25, 1.156, -3.5, 4.75, 0.905995, -2.5, 9, 0.905995, -2.5, 9, 0.905995, -9, 4.75, 0.905995, -8.5, 9, 0.905995, -9, 4.25, 0.905995, -9, 4.75, 0.905995, -8.5, -3.5, 3.656, -3.5, 2.25, 2.656, -3.5, 2.25, 2.656, -7, -7.5, 3.656, -7, 0.8125, 3.656, -3.5, 0.857143, 3.656, -7, -7.5, 3.656, 5.25, -4.25, 3.656, 5.25, -4.25, 3.656, -2.75, -7.5, 3.656, -7, -4.25, 3.656, -2.75, -3.5, 3.656, -3.5, -7.5, 3.656, -7, 9, 0.905995, -2.5, 4.75, 0.905995, -2.5, 4.25, 0.905995, -1.5, -3, 0.905995, 7.25, -9, 0.905995, 7, -9, 0.905995, 9, 9, 0.905995, 9, 4.25, 0.905995, -1.5, -2.25, 0.905995, -1.5, -2.25, 0.905995, 6.5, 9, 0.905995, 9, 9, 0.905995, -2.5, 4.25, 0.905995, -1.5, -2.25, 0.905995, 6.5, -2.25, 0.905995, 6.5, -3, 0.905995, 7.25, 9, 0.905995, 9)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 9), PackedInt32Array(6, 9, 7), PackedInt32Array(7, 9, 8), PackedInt32Array(10, 12, 11), PackedInt32Array(15, 14, 18), PackedInt32Array(18, 14, 17), PackedInt32Array(18, 17, 13), PackedInt32Array(18, 13, 16), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(25, 24, 23), PackedInt32Array(28, 27, 26), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 32), PackedInt32Array(35, 34, 33), PackedInt32Array(37, 36, 38), PackedInt32Array(38, 36, 39), PackedInt32Array(42, 41, 40)]
+agent_radius = 1.0
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_taqbr"]
+
+[sub_resource type="Sky" id="Sky_qlesy"]
+sky_material = SubResource("ProceduralSkyMaterial_taqbr")
+
+[sub_resource type="Environment" id="Environment_wd3mo"]
+background_mode = 2
+sky = SubResource("Sky_qlesy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q83ll"]
+transparency = 1
+albedo_color = Color(0.890196, 0.176471, 0.133333, 0.678431)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubo0r"]
+albedo_color = Color(1.15514e-06, 0.522721, 0.747218, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3a636"]
+radius = 0.6
+height = 2.3
+
+[node name="MousePosition3d" type="Node3D"]
+script = ExtResource("1_8oqik")
+mapping_context = ExtResource("2_bb21n")
+
+[node name="CameraYaw" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.435231, 0, 0.900319, 0, 1, 0, -0.900319, 0, 0.435231, 6.62904, 4.72731, 0)
+script = ExtResource("3_4etic")
+camera_pitch = ExtResource("4_xr1vq")
+camera_yaw = ExtResource("5_mnyiu")
+camera_toggle = ExtResource("6_51csy")
+camera_move = ExtResource("7_1vbs8")
+movement_speed = 8.0
+
+[node name="CameraPitch" type="SpringArm3D" parent="CameraYaw"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0)
+spring_length = 8.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraYaw/CameraPitch"]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]
+navigation_mesh = SubResource("NavigationMesh_sfop5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="World/NavigationRegion3D"]
+use_collision = true
+size = Vector3(20, 1, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(0.80368, 0.595061, 0, -0.595061, 0.80368, 0, 0, 0, 1, 2.07477, 0.832275, -5.22408)
+use_collision = true
+size = Vector3(5.14954, 2.2251, 5.07178)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8367, 2.1428, -5.22408)
+use_collision = true
+size = Vector3(9.01666, 2.2251, 5.07178)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.81752, 2.1428, 1.66142)
+use_collision = true
+size = Vector3(9.01666, 2.2251, 5.07178)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_wd3mo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 0.780496, 0.625161, 0, -0.625161, 0.780496, 0, 4.93937, 0)
+shadow_enabled = true
+
+[node name="MouseIndicator" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84397, 1.04571, 0)
+material = SubResource("StandardMaterial3D_q83ll")
+script = ExtResource("3_tunsg")
+cursor = ExtResource("4_dla1l")
+camera_toggle = ExtResource("6_51csy")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26495, 0)
+collision_layer = 2
+input_ray_pickable = false
+floor_constant_speed = true
+script = ExtResource("5_8nflt")
+select = ExtResource("6_uviri")
+cursor = ExtResource("4_dla1l")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28249, 0)
+material = SubResource("StandardMaterial3D_ubo0r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26098, 0)
+shape = SubResource("CapsuleShape3D_3a636")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.886095, 0.359614, 0.933159, 1)
+debug_path_custom_point_size = 7.17
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UILayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 56.0
+offset_right = -64.0
+offset_bottom = 96.0
+grow_horizontal = 0
+theme = ExtResource("6_lyxvk")
+script = ExtResource("12_c4bk3")
+instructions_text = "%s to send the agent somewhere.
+%s to move the camera.
+%s to rotate the camera.
+%s to tilt the camera."
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("6_uviri"), ExtResource("7_1vbs8"), ExtResource("5_mnyiu"), ExtResource("4_xr1vq")])
+
+[node name="DebuggerLayer" type="CanvasLayer" parent="."]
+
+[node name="GuideDebugger" parent="DebuggerLayer" instance=ExtResource("3_m2gj2")]
+theme = ExtResource("6_lyxvk")

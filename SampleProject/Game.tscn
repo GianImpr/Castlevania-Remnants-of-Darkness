@@ -1,0 +1,717 @@
+[gd_scene load_steps=74 format=3 uid="uid://c3xqaietfgs7l"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
+[ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="3_a3gfy"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/camera_2d.gd" id="3_mx3v0"]
+[ext_resource type="PackedScene" uid="uid://dt8t755oidogh" path="res://scenes/player.tscn" id="5_81k16"]
+[ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/Sinfonia.ttf" id="5_pjg0o"]
+[ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="6_70wxk"]
+[ext_resource type="PackedScene" uid="uid://yby38f15lji0" path="res://scenes/HUD.tscn" id="6_mhw4y"]
+[ext_resource type="PackedScene" uid="uid://b4f2sbjwt3lf7" path="res://SampleProject/extra_scenes/inventory_menu.tscn" id="6_pokik"]
+[ext_resource type="PackedScene" uid="uid://2k1tvl70buqg" path="res://SampleProject/extra_scenes/HUD/item_box.tscn" id="7_11rec"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="7_ip71q"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/music_player.gd" id="8_385te"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_afqo1"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="10_etx3r"]
+[ext_resource type="AudioStream" uid="uid://ce1urfkmutvrd" path="res://assets/sounds/Menu/ShowMap.MP3" id="10_kb15x"]
+[ext_resource type="PackedScene" uid="uid://bbvmo7y5quj1s" path="res://SampleProject/extra_scenes/HUD/hint_box.tscn" id="12_nov2h"]
+[ext_resource type="PackedScene" uid="uid://cgmgx8v6dbp3u" path="res://SampleProject/extra_scenes/HUD/enemy_box.tscn" id="13_uka3k"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/fade_screen.gd" id="13_voup6"]
+[ext_resource type="AudioStream" uid="uid://b2hhmewc5j580" path="res://assets/music/GaribaldiTemple.ogg" id="15_n6l4g"]
+[ext_resource type="AudioStream" uid="uid://bh5hppwruqd0i" path="res://assets/music/YoungNobleman.ogg" id="16_mtiyt"]
+[ext_resource type="PackedScene" uid="uid://cc1yrxsfbarkc" path="res://SampleProject/extra_scenes/HUD/stage_presentation.tscn" id="16_yvhsl"]
+[ext_resource type="AudioStream" uid="uid://wfp61kihdjdb" path="res://assets/music/WindSFX.ogg" id="17_b6s8r"]
+[ext_resource type="AudioStream" uid="uid://c2p7yddfxv2it" path="res://assets/music/EnemyEncounter.ogg" id="18_hpump"]
+[ext_resource type="AudioStream" uid="uid://cr60u8c82m68u" path="res://assets/music/Followers1.ogg" id="19_3ndk5"]
+[ext_resource type="PackedScene" uid="uid://dogi4hsvyxsgs" path="res://SampleProject/extra_scenes/HUD/tutorial_box.tscn" id="20_ra60k"]
+[ext_resource type="AudioStream" uid="uid://divaxkj2wapst" path="res://assets/music/InnocentDevil.ogg" id="20_yyavx"]
+[ext_resource type="AudioStream" uid="uid://dt0wjxu3j762s" path="res://assets/music/Castlevania Reincarnation.ogg" id="21_u7hil"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/fps_display.gd" id="27_3mlqo"]
+[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="27_ggyg0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/touchcontrols.gd" id="29_1b3st"]
+[ext_resource type="Texture2D" uid="uid://cfy1rx4d4wjdh" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Cross.png" id="29_ufvnj"]
+[ext_resource type="Texture2D" uid="uid://civpcnwgbu5ky" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Circle.png" id="30_3q31x"]
+[ext_resource type="Texture2D" uid="uid://dm6vfcwtodame" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Square.png" id="31_tk0s7"]
+[ext_resource type="Texture2D" uid="uid://bjjj12v4g82g4" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Triangle.png" id="32_um34v"]
+[ext_resource type="Texture2D" uid="uid://bkttgyeuecjw" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Options.png" id="33_gcngi"]
+[ext_resource type="Texture2D" uid="uid://bw2h7xxdtp31i" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Share.png" id="34_happf"]
+[ext_resource type="Texture2D" uid="uid://rwgkfm18pk3l" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_R1.png" id="35_fjwe1"]
+[ext_resource type="Texture2D" uid="uid://cqgpumb0tf5xr" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_L1.png" id="36_bnl1m"]
+[ext_resource type="Texture2D" uid="uid://gnvoi6u0ffdp" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Down_Unpressed.png" id="38_h6y1l"]
+[ext_resource type="Texture2D" uid="uid://b3gum7x5yjsbb" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Up_Unpressed.png" id="39_t8vm2"]
+[ext_resource type="Texture2D" uid="uid://br17o8wgwbm6q" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Left_Unpressed.png" id="40_fiphx"]
+[ext_resource type="Texture2D" uid="uid://dpll8sp1lw65e" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Right_Unpressed.png" id="41_mca3i"]
+[ext_resource type="Texture2D" uid="uid://bukgaq1m26bw3" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Right_Stick.png" id="42_iw62n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sngb1"]
+bg_color = Color(0.0593842, 0, 0.585751, 0.270588)
+
+[sub_resource type="GDScript" id="GDScript_u7odr"]
+resource_name = "MapWindow"
+script/source = "# The window that contains a bigger map overview than minimap. Toggled with M.
+extends Panel
+
+# The size of the window in cells.
+var SIZE: Vector2i
+
+# The position where the player started (for the vector feature).
+var starting_coords: Vector2i
+# The offset for drawing the cells. Allows map panning.
+var offset: Vector2i
+# The player location node from MetSys.add_player_location()
+var player_location: Node2D
+# The vector feature, toggled with D. It displays an arrow from player's starting point to the current position.
+# It's purely to show custom drawing on the map.
+var show_delta: bool
+@export var sound: PolyphonicMenuAudio
+
+func _ready() -> void:
+	# Cellular size is total size divided by cell size.
+	SIZE = size / MetSys.CELL_SIZE
+	# Connect some signals.
+	MetSys.cell_changed.connect(queue_redraw.unbind(1))
+	MetSys.cell_changed.connect(update_offset.unbind(1)) # When player moves to another cell, move the map.
+	MetSys.map_updated.connect(queue_redraw)
+	# Create player location. We need a reference to update its offset.
+	player_location = MetSys.add_player_location(self)
+
+func _draw() -> void:
+	for x in SIZE.x:
+		for y in SIZE.y:
+			# Draw cells. Note how offset is used.
+			MetSys.draw_cell(self, Vector2i(x, y), Vector3i(x - offset.x, y - offset.y, MetSys.current_layer))
+	# Draw shared borders and custom elements.
+	if MetSys.settings.theme.use_shared_borders:
+		MetSys.draw_shared_borders()
+	MetSys.draw_custom_elements(self, Rect2i(-offset.x, -offset.y, SIZE.x, SIZE.y))
+	# Get the current player coordinates.
+	var coords := MetSys.get_current_flat_coords()
+	# If the delta vector (D) is enabled and player isn't on the starting position...
+	if show_delta and coords != starting_coords:
+		var start_pos := MetSys.get_cell_position(starting_coords + offset)
+		var current_pos := MetSys.get_cell_position(coords + offset)
+		# draw the vector...
+		draw_line(start_pos, current_pos, Color.WHITE, 2)
+		
+		const arrow_size = 4
+		# and arrow. This code shows how to draw custom stuff on the map outside the MetSys functions.
+		draw_set_transform(current_pos, start_pos.angle_to_point(current_pos), Vector2.ONE)
+		draw_primitive([Vector2(-arrow_size, -arrow_size), Vector2(arrow_size, 0), Vector2(-arrow_size, arrow_size)], [Color.WHITE], [])
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"map\"):
+		if not visible and Global.screen == Global.ScreenType.NONE:
+			Global.screen = Global.ScreenType.MAP
+			sound.play_sound_effect_from_library(\"map\")
+			visible = true
+			$\"../Minimap\".visible = false
+			get_tree().paused = true
+			var tween = get_tree().create_tween()
+			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+			tween.tween_property(Global.fade_screen, \"modulate\", Color(1, 1, 1, 1), 0.1)
+			await tween.finished
+			tween = get_tree().create_tween()
+			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+			tween.tween_property(self, \"modulate\", Color(1, 1, 1, 1), 0.1)
+			await tween.finished
+			return
+		if visible and Global.screen == Global.ScreenType.MAP:
+			sound.play_sound_effect_from_library(\"map\")
+			var tween = get_tree().create_tween()
+			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+			tween.tween_property(self, \"modulate\", Color(1, 1, 1, 0), 0.1)
+			await tween.finished
+			tween = get_tree().create_tween()
+			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+			tween.tween_property(Global.fade_screen, \"modulate\", Color(1, 1, 1, 0), 0.1)
+			await tween.finished
+			if Global.screen == Global.ScreenType.MAP:
+				get_tree().paused = false
+			visible = false
+			$\"../Minimap\".visible = true
+			Global.screen = Global.ScreenType.NONE
+			update_offset()
+
+
+func _input(event: InputEvent) -> void:
+	pass
+	if event is InputEventAction:
+		if event.pressed:
+			pass
+			# Toggle visibility when pressing M.
+			#elif event.keycode == KEY_D:
+				# D toggles position tracking (delta vector).
+				#show_delta = not show_delta
+				#queue_redraw()
+
+func update_offset():
+	# Update the map offset based on the current position.
+	# Normally the offset is interactive and the player is able to move freely around the map.
+	# But in this demo, the map can overlay the game and thus is updated in real time.
+	offset = Vector2(2,13)
+	#offset = -MetSys.get_current_flat_coords() + SIZE / 2
+	player_location.offset = Vector2(offset) * MetSys.CELL_SIZE
+
+func reset_starting_coords():
+	# Starting position for the delta vector.
+	var coords := MetSys.get_current_flat_coords()
+	starting_coords = Vector2i(coords.x, coords.y)
+	queue_redraw()
+"
+
+[sub_resource type="Theme" id="Theme_j0fso"]
+default_font = ExtResource("5_pjg0o")
+default_font_size = 32
+
+[sub_resource type="GDScript" id="GDScript_66suq"]
+resource_name = "PercentLabel"
+script/source = "# Displays map completion percentage
+extends Label
+
+func _ready() -> void:
+	# The percentage may change when map is updated.
+	MetSys.map_updated.connect(update)
+
+func _notification(what: int) -> void:
+	# Update when the label is made visible. This happens when the map is toggled.
+	if what == NOTIFICATION_VISIBILITY_CHANGED:
+		update()
+
+func update():
+	# Only update when visible.
+	if is_visible_in_tree():
+		# Show the percentage.
+		text = \"%3d%%\" % int(MetSys.get_explored_ratio() * 100)
+"
+
+[sub_resource type="Theme" id="Theme_m08mk"]
+default_font = ExtResource("6_70wxk")
+default_font_size = 32
+
+[sub_resource type="Resource" id="Resource_rsagu"]
+script = ExtResource("10_etx3r")
+Tag = "map"
+stream = ExtResource("10_kb15x")
+
+[sub_resource type="Resource" id="Resource_k7wl7"]
+script = ExtResource("8_afqo1")
+sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_rsagu")])
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_00yi7"]
+polyphony = 1
+
+[sub_resource type="Resource" id="Resource_v1m0x"]
+script = ExtResource("10_etx3r")
+Tag = "garibaldi"
+stream = ExtResource("15_n6l4g")
+
+[sub_resource type="Resource" id="Resource_yfkrg"]
+script = ExtResource("10_etx3r")
+Tag = "save_room"
+stream = ExtResource("16_mtiyt")
+
+[sub_resource type="Resource" id="Resource_ugwl0"]
+script = ExtResource("10_etx3r")
+Tag = "wind_sfx"
+stream = ExtResource("17_b6s8r")
+
+[sub_resource type="Resource" id="Resource_k0xgh"]
+script = ExtResource("10_etx3r")
+Tag = "encounter"
+stream = ExtResource("18_hpump")
+
+[sub_resource type="Resource" id="Resource_ixgba"]
+script = ExtResource("10_etx3r")
+Tag = "followers"
+stream = ExtResource("19_3ndk5")
+
+[sub_resource type="Resource" id="Resource_4wf17"]
+script = ExtResource("10_etx3r")
+Tag = "innocent_devil"
+stream = ExtResource("20_yyavx")
+
+[sub_resource type="Resource" id="Resource_fkqie"]
+script = ExtResource("10_etx3r")
+Tag = "boss_1"
+stream = ExtResource("21_u7hil")
+
+[sub_resource type="Resource" id="Resource_8tj7q"]
+script = ExtResource("8_afqo1")
+sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie")])
+
+[sub_resource type="Gradient" id="Gradient_0dip4"]
+offsets = PackedFloat32Array(0, 0.989418)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xll01"]
+gradient = SubResource("Gradient_0dip4")
+
+[sub_resource type="Animation" id="Animation_bqv2o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fw4b4"]
+resource_name = "fade_in"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h86rj"]
+_data = {
+"RESET": SubResource("Animation_bqv2o"),
+"fade_in": SubResource("Animation_fw4b4")
+}
+
+[sub_resource type="Animation" id="Animation_tb3np"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Minimap:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/MapWindow:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xvhwi"]
+resource_name = "blur"
+length = 0.1333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Minimap:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.1333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/MapWindow:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0cs38"]
+_data = {
+"RESET": SubResource("Animation_tb3np"),
+"blur": SubResource("Animation_xvhwi")
+}
+
+[sub_resource type="Environment" id="Environment_vusj1"]
+background_mode = 3
+ambient_light_energy = 4.09
+glow_enabled = true
+glow_levels/2 = 1.0
+glow_levels/4 = 1.0
+glow_levels/6 = 1.0
+glow_levels/7 = 1.0
+glow_blend_mode = 1
+fog_mode = 1
+fog_density = 1.0
+adjustment_enabled = true
+
+[sub_resource type="Theme" id="Theme_o031g"]
+default_font = ExtResource("27_ggyg0")
+default_font_size = 16
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yu22f"]
+radius = 49.64
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kopmc"]
+radius = 70.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3ieb"]
+radius = 70.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_es7rp"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ie6f"]
+size = Vector2(200, 40)
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("animation", "world_environment")]
+script = ExtResource("1_xdpfu")
+animation = NodePath("AnimationPlayer")
+world_environment = NodePath("WorldEnvironment")
+starting_map = "FirstLevel/Woods.tscn"
+
+[node name="Player" parent="." instance=ExtResource("5_81k16")]
+z_index = 5
+position = Vector2(47, 386)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+process_callback = 0
+position_smoothing_speed = 200.0
+drag_vertical_enabled = true
+drag_vertical_offset = 0.39
+script = ExtResource("3_mx3v0")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Minimap" parent="UI" instance=ExtResource("3_a3gfy")]
+unique_name_in_owner = true
+z_index = 8
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -91.0
+offset_top = 8.0
+offset_right = 77.0
+offset_bottom = 176.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+display_player_location = true
+area = Vector2i(7, 7)
+
+[node name="Background" type="Panel" parent="UI/Minimap"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapWindow" type="Panel" parent="UI" node_paths=PackedStringArray("sound")]
+process_mode = 3
+visible = false
+z_index = 10
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -220.0
+offset_right = 413.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sngb1")
+script = SubResource("GDScript_u7odr")
+sound = NodePath("MapSound")
+
+[node name="Percent" type="Label" parent="UI/MapWindow"]
+layout_mode = 0
+offset_left = 749.0
+offset_top = 5.0
+offset_right = 789.0
+offset_bottom = 29.0
+theme = SubResource("Theme_j0fso")
+text = "9%"
+script = SubResource("GDScript_66suq")
+
+[node name="Label" type="Label" parent="UI/MapWindow"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.5
+offset_right = 126.5
+offset_bottom = 26.0
+grow_horizontal = 2
+theme = SubResource("Theme_m08mk")
+theme_override_colors/font_shadow_color = Color(0.187176, 0.187176, 0.187176, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "Abandoned Monastery"
+
+[node name="MapSound" type="AudioStreamPlayer" parent="UI/MapWindow"]
+process_mode = 3
+volume_db = -10.0
+bus = &"SFX"
+script = ExtResource("7_ip71q")
+audio_library = SubResource("Resource_k7wl7")
+
+[node name="HUD" parent="UI" instance=ExtResource("6_mhw4y")]
+
+[node name="ItemBox" parent="UI" instance=ExtResource("7_11rec")]
+offset_left = 11.0
+offset_top = 435.0
+offset_right = 11.0
+offset_bottom = 435.0
+
+[node name="EnemyBox" parent="UI" instance=ExtResource("13_uka3k")]
+offset_left = -11.0
+offset_top = 435.0
+offset_right = -443.0
+offset_bottom = 195.0
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="UI"]
+process_mode = 3
+stream = SubResource("AudioStreamPolyphonic_00yi7")
+volume_db = -15.0
+bus = &"Music"
+playback_type = 1
+script = ExtResource("8_385te")
+audio_library = SubResource("Resource_8tj7q")
+custom_max_polyphony = 1
+
+[node name="HintBox" parent="UI" instance=ExtResource("12_nov2h")]
+
+[node name="FadeScreen" type="TextureRect" parent="UI" node_paths=PackedStringArray("animation")]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+z_index = 9
+offset_right = 869.0
+offset_bottom = 483.0
+texture = SubResource("GradientTexture1D_xll01")
+script = ExtResource("13_voup6")
+animation = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/FadeScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_h86rj")
+}
+
+[node name="StagePresentation" parent="UI" instance=ExtResource("16_yvhsl")]
+
+[node name="TutorialScreen" parent="UI" instance=ExtResource("20_ra60k")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0cs38")
+}
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+
+[node name="InventoryMenu" parent="PauseMenu" instance=ExtResource("6_pokik")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+process_mode = 3
+environment = SubResource("Environment_vusj1")
+
+[node name="Framerate" type="CanvasLayer" parent="."]
+layer = 30
+
+[node name="Frames" type="RichTextLabel" parent="Framerate"]
+process_mode = 3
+visible = false
+offset_top = -1.0
+offset_right = 56.0
+offset_bottom = 39.0
+theme = SubResource("Theme_o031g")
+bbcode_enabled = true
+text = "60 FPS"
+script = ExtResource("27_3mlqo")
+
+[node name="TouchScreenControls" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 31
+visible = false
+
+[node name="Node2D" type="Node2D" parent="TouchScreenControls"]
+modulate = Color(1, 1, 1, 0.3)
+script = ExtResource("29_1b3st")
+
+[node name="Cross" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(731, 406)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("29_ufvnj")
+shape = SubResource("CircleShape2D_yu22f")
+action = "jump"
+
+[node name="Cross2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(769, 443)
+scale = Vector2(0.75, 0.75)
+shape = SubResource("CircleShape2D_yu22f")
+action = "ui_accept"
+
+[node name="Circle" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(785, 352)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("30_3q31x")
+shape = SubResource("CircleShape2D_yu22f")
+action = "ui_cancel"
+
+[node name="Circle2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(823, 390)
+scale = Vector2(0.75, 0.75)
+shape = SubResource("CircleShape2D_yu22f")
+action = "circle"
+
+[node name="Square" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(677, 352)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("31_tk0s7")
+shape = SubResource("CircleShape2D_yu22f")
+action = "attack"
+
+[node name="Triangle" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(731, 298)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("32_um34v")
+shape = SubResource("CircleShape2D_yu22f")
+action = "innocent_devil_move"
+
+[node name="Options" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(444, 406)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("33_gcngi")
+shape = SubResource("CircleShape2D_yu22f")
+action = "menu"
+
+[node name="Share" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(363, 406)
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("34_happf")
+shape = SubResource("CircleShape2D_yu22f")
+action = "map"
+
+[node name="R1" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(743, 101)
+texture_normal = ExtResource("35_fjwe1")
+shape = SubResource("CircleShape2D_kopmc")
+action = "guard"
+
+[node name="L1" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(20, 103)
+texture_normal = ExtResource("36_bnl1m")
+shape = SubResource("CircleShape2D_q3ieb")
+action = "backdash"
+
+[node name="Down" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(69, 397)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("38_h6y1l")
+shape = SubResource("CircleShape2D_es7rp")
+passby_press = true
+action = "crouch"
+
+[node name="Down2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(105, 439)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_es7rp")
+passby_press = true
+action = "ui_down"
+
+[node name="Up" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(69, 297)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("39_t8vm2")
+shape = SubResource("CircleShape2D_es7rp")
+passby_press = true
+action = "up_arrow"
+
+[node name="Up2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(105, 339)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_es7rp")
+passby_press = true
+action = "ui_up"
+
+[node name="Left" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(5, 353)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("40_fiphx")
+shape = SubResource("CircleShape2D_es7rp")
+passby_press = true
+action = "move_left"
+
+[node name="Left2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(46, 389)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_es7rp")
+passby_press = true
+action = "ui_left"
+
+[node name="Right" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(122, 351)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("41_mca3i")
+shape = SubResource("CircleShape2D_es7rp")
+passby_press = true
+action = "move_right"
+
+[node name="Right2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(164, 388)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_es7rp")
+passby_press = true
+action = "ui_right"
+
+[node name="ChangeIDSkill" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(516, 400)
+texture_normal = ExtResource("42_iw62n")
+shape = SubResource("CircleShape2D_es7rp")
+passby_press = true
+action = "next_skill"
+
+[node name="Touch" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+position = Vector2(153, 30)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_2ie6f")
+passby_press = true
+action = "toggle_touch"

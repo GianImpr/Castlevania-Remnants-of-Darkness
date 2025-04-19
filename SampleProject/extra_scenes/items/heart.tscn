@@ -1,0 +1,229 @@
+[gd_scene load_steps=17 format=3 uid="uid://3ypsgown6bve"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/hearts.gd" id="1_3kv6o"]
+[ext_resource type="Texture2D" uid="uid://cxtf7n57tpwda" path="res://assets/sprites/Items/SoulHeart.png" id="1_33cq2"]
+[ext_resource type="Texture2D" uid="uid://c6lkn1a8y44rh" path="res://assets/sprites/Items/Heart.png" id="2_k6pcm"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_tpijv"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_y7kkt"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_244dn"]
+[ext_resource type="AudioStream" uid="uid://tt23b086nl2r" path="res://assets/sounds/Pickups/Heart.MP3" id="6_emw4u"]
+
+[sub_resource type="Animation" id="Animation_vk05w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bbpou"]
+resource_name = "floating"
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vdsw4"]
+resource_name = "idle"
+length = 1.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_c5sd6"]
+resource_name = "picked"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PolyphonicAudio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["heart"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h8i1f"]
+_data = {
+"RESET": SubResource("Animation_vk05w"),
+"floating": SubResource("Animation_bbpou"),
+"idle": SubResource("Animation_vdsw4"),
+"picked": SubResource("Animation_c5sd6")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0s4b"]
+size = Vector2(20, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4v8j4"]
+size = Vector2(22, 19)
+
+[sub_resource type="Resource" id="Resource_cvlhf"]
+script = ExtResource("5_244dn")
+Tag = "heart"
+stream = ExtResource("6_emw4u")
+
+[sub_resource type="Resource" id="Resource_w2v3p"]
+script = ExtResource("4_y7kkt")
+sound_effects = Array[ExtResource("5_244dn")]([SubResource("Resource_cvlhf")])
+
+[node name="Heart" type="RigidBody2D" node_paths=PackedStringArray("sprite", "animation")]
+collision_layer = 0
+gravity_scale = 0.0
+lock_rotation = true
+linear_velocity = Vector2(0, 60)
+script = ExtResource("1_3kv6o")
+innocent_heart_texture = ExtResource("2_k6pcm")
+SPEED = 100.0
+sprite = NodePath("Sprite2D")
+animation = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_33cq2")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h8i1f")
+}
+autoplay = "floating"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, -2.5)
+shape = SubResource("RectangleShape2D_m0s4b")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -2.5)
+shape = SubResource("RectangleShape2D_4v8j4")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
+script = ExtResource("3_tpijv")
+audio_library = SubResource("Resource_w2v3p")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

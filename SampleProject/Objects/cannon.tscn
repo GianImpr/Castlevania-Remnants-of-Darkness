@@ -1,0 +1,125 @@
+[gd_scene load_steps=11 format=3 uid="uid://dymes2yvwmsfp"]
+
+[ext_resource type="Texture2D" uid="uid://cj2x6da82t64e" path="res://assets/sprites/Objects/cannon/cannon_mouth.png" id="1_tmty2"]
+[ext_resource type="Texture2D" uid="uid://bpt7rdwaopr2" path="res://assets/sprites/Objects/cannon/lever.png" id="2_rroep"]
+[ext_resource type="Texture2D" uid="uid://dvb8265hje8kd" path="res://assets/sprites/Objects/cannon/cannon_body.png" id="3_8ls7o"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_fe7b0"]
+
+[sub_resource type="Animation" id="Animation_7gqlq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouth:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-47, -46)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qs751"]
+resource_name = "firing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouth:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-47, -46), Vector2(-32, -46), Vector2(-47, -46)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ylxh2"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_obp00"]
+_data = {
+"RESET": SubResource("Animation_7gqlq"),
+"firing": SubResource("Animation_qs751"),
+"idle": SubResource("Animation_ylxh2")
+}
+
+[sub_resource type="Curve" id="Curve_rema2"]
+max_value = 4.0
+_data = [Vector2(0, 4), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_fwkbj"]
+offsets = PackedFloat32Array(0, 0.71, 0.79)
+colors = PackedColorArray(1, 0.443632, 0.0867511, 1, 1, 1, 0, 1, 1, 1, 1, 1)
+
+[node name="Cannon" type="StaticBody2D"]
+
+[node name="Mouth" type="Sprite2D" parent="."]
+position = Vector2(-47, -46)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_tmty2")
+
+[node name="LeverNode" type="Node2D" parent="."]
+position = Vector2(52, 28)
+
+[node name="Lever" type="Sprite2D" parent="LeverNode"]
+position = Vector2(5.99999, -56)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_rroep")
+
+[node name="Body" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("3_8ls7o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_obp00")
+}
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("4_fe7b0")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-110, -45)
+emitting = false
+amount = 20
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 10)
+direction = Vector2(-1, 0)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+scale_amount_curve = SubResource("Curve_rema2")
+color_ramp = SubResource("Gradient_fwkbj")

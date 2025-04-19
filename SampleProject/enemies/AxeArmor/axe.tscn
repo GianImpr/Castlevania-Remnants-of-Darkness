@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://chah0gfmy6gd7"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/Axe.gd" id="1_p7llq"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="1_yupox"]
+[ext_resource type="Texture2D" uid="uid://ditr8o63awx3g" path="res://assets/sprites/Enemies/AxeArmor.png" id="2_f2f7g"]
+
+[sub_resource type="Animation" id="Animation_qckqd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ipath"]
+resource_name = "rotate"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.28319, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qsmiq"]
+_data = {
+"RESET": SubResource("Animation_qckqd"),
+"rotate": SubResource("Animation_ipath")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8xc7"]
+radius = 6.95652
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gt764"]
+radius = 6.95652
+
+[node name="Axe" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "slowdown_timer", "lifespan_timer")]
+collision_layer = 4
+collision_mask = 0
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_p7llq")
+stats = NodePath("Stats")
+sprite = NodePath("Sprite2D")
+hitbox_iframe = NodePath("Area2D/Hitbox")
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+slowdown_timer = NodePath("Slowdown")
+lifespan_timer = NodePath("Lifespan")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("1_yupox")
+base_damage = 8
+destructible = true
+effect_on_destroy = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_f2f7g")
+offset = Vector2(0, 1)
+hframes = 17
+vframes = 7
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qsmiq")
+}
+autoplay = "rotate"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 1)
+scale = Vector2(2.3, 2.3)
+shape = SubResource("CircleShape2D_c8xc7")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+scale = Vector2(2.3, 2.3)
+shape = SubResource("CircleShape2D_gt764")
+
+[node name="Slowdown" type="Timer" parent="."]
+
+[node name="Lifespan" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Slowdown" to="." method="_on_slowdown_timeout"]
+[connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

@@ -1,0 +1,536 @@
+[gd_scene load_steps=91 format=3 uid="uid://byirytfochyi7"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/item_compendium.gd" id="1_wj1no"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/item.gd" id="2_yyrms"]
+[ext_resource type="Texture2D" uid="uid://du0eiy67cnc7d" path="res://assets/sprites/Items/Inventory/Inventory_258.png" id="3_50mic"]
+[ext_resource type="Texture2D" uid="uid://b0pf1n6afknku" path="res://assets/sprites/Items/Inventory/Inventory_257.png" id="4_7siy3"]
+[ext_resource type="Texture2D" uid="uid://baxtph716gnw5" path="res://assets/sprites/Items/Inventory/Inventory_291.png" id="5_xn61n"]
+[ext_resource type="Texture2D" uid="uid://drwi0scdnk2tl" path="res://assets/sprites/Items/Inventory/Inventory_292.png" id="6_4vuru"]
+[ext_resource type="Texture2D" uid="uid://c6ppcg8i6ld1d" path="res://assets/sprites/Items/Inventory/Inventory_293.png" id="7_80wlg"]
+[ext_resource type="Texture2D" uid="uid://caxuiae8j1lj7" path="res://assets/sprites/Items/Inventory/Inventory_294.png" id="8_t8426"]
+[ext_resource type="Texture2D" uid="uid://cf258lfi3stud" path="res://assets/sprites/Items/Inventory/Inventory_295.png" id="9_8s3ni"]
+[ext_resource type="Texture2D" uid="uid://b5oidu006hp5j" path="res://assets/sprites/Items/Inventory/Inventory_296.png" id="10_gd0jl"]
+[ext_resource type="Texture2D" uid="uid://dqnxid8kdbq7o" path="res://assets/sprites/Items/Inventory/Inventory_262.png" id="11_k24b7"]
+[ext_resource type="Texture2D" uid="uid://cs7o2ihn4m8vt" path="res://assets/sprites/Items/Inventory/Inventory_279.png" id="12_em6mt"]
+[ext_resource type="Texture2D" uid="uid://c1ww1k77g45te" path="res://assets/sprites/Items/Inventory/Inventory_332.png" id="13_eut16"]
+[ext_resource type="Texture2D" uid="uid://j0iqrvrsfr8l" path="res://assets/sprites/Items/Inventory/Inventory_259.png" id="14_0iac1"]
+[ext_resource type="Texture2D" uid="uid://c5e7abdrgw8fe" path="res://assets/sprites/Items/Inventory/Inventory_260.png" id="15_62wxu"]
+[ext_resource type="Texture2D" uid="uid://d30dhtcws23nf" path="res://assets/sprites/Items/Inventory/Inventory_261.png" id="16_m03on"]
+[ext_resource type="Texture2D" uid="uid://c82gjyj5jc0u5" path="res://assets/sprites/Items/Inventory/Inventory_263.png" id="17_8m00m"]
+[ext_resource type="Texture2D" uid="uid://df1g78v41j8gj" path="res://assets/sprites/Items/Inventory/Inventory_264.png" id="18_hrbja"]
+[ext_resource type="Texture2D" uid="uid://d3lc0nij607wk" path="res://assets/sprites/Items/Inventory/Inventory_265.png" id="19_4jq4t"]
+[ext_resource type="Texture2D" uid="uid://djkd5e0fxxt5d" path="res://assets/sprites/Items/Inventory/Inventory_266.png" id="20_bey3j"]
+[ext_resource type="Texture2D" uid="uid://bvhwax421fy18" path="res://assets/sprites/Items/Inventory/Inventory_267.png" id="21_2kmvk"]
+[ext_resource type="Texture2D" uid="uid://bvu1deu76admw" path="res://assets/sprites/Items/Inventory/Inventory_268.png" id="22_q1i7h"]
+[ext_resource type="Texture2D" uid="uid://ck7nsk2ql7ugf" path="res://assets/sprites/Items/Inventory/Inventory_269.png" id="23_0dvj6"]
+[ext_resource type="Texture2D" uid="uid://d0lqa0d5iimar" path="res://assets/sprites/Items/Inventory/Inventory_270.png" id="24_17xhs"]
+[ext_resource type="Texture2D" uid="uid://c57sw7py2gl7q" path="res://assets/sprites/Items/Inventory/Inventory_271.png" id="25_ycgnl"]
+[ext_resource type="Texture2D" uid="uid://cud4go0d1igc5" path="res://assets/sprites/Items/Inventory/Inventory_272.png" id="26_6ptdw"]
+[ext_resource type="Texture2D" uid="uid://b0w1atcaqhjsv" path="res://assets/sprites/Items/Inventory/Inventory_273.png" id="27_03l7l"]
+[ext_resource type="Texture2D" uid="uid://6p7n4eskpk4c" path="res://assets/sprites/Items/Inventory/Inventory_274.png" id="28_7u7ao"]
+[ext_resource type="Texture2D" uid="uid://0dseup6781ic" path="res://assets/sprites/Items/Inventory/Inventory_275.png" id="29_pyouq"]
+[ext_resource type="Texture2D" uid="uid://clu1utyj8cyvs" path="res://assets/sprites/Items/Inventory/Inventory_276.png" id="30_a638d"]
+[ext_resource type="Texture2D" uid="uid://dbcpcppmsb0k0" path="res://assets/sprites/Items/Inventory/Inventory_277.png" id="31_i5f38"]
+[ext_resource type="Texture2D" uid="uid://bnhnnpu6nlg2b" path="res://assets/sprites/Items/Inventory/Inventory_278.png" id="32_yeknk"]
+[ext_resource type="Texture2D" uid="uid://dfcnoqbynj6om" path="res://assets/sprites/Items/Inventory/Inventory_280.png" id="33_07exp"]
+[ext_resource type="Texture2D" uid="uid://h7oy37mw522s" path="res://assets/sprites/Items/Inventory/Inventory_281.png" id="34_8y2n1"]
+[ext_resource type="Texture2D" uid="uid://bwnou6gcrmmx3" path="res://assets/sprites/Items/Inventory/Inventory_282.png" id="35_vfv5o"]
+[ext_resource type="Texture2D" uid="uid://c74c11xifor65" path="res://assets/sprites/Items/Inventory/Inventory_283.png" id="36_6bafq"]
+[ext_resource type="Texture2D" uid="uid://dxtjc4cxi13qm" path="res://assets/sprites/Items/Inventory/Inventory_284.png" id="37_7rma2"]
+[ext_resource type="Texture2D" uid="uid://c50ps33nritj7" path="res://assets/sprites/Items/Inventory/Inventory_285.png" id="38_r61hx"]
+[ext_resource type="Texture2D" uid="uid://seheewb7knbc" path="res://assets/sprites/Items/Inventory/Inventory_286.png" id="39_rymbm"]
+[ext_resource type="Texture2D" uid="uid://dj2485ajmbxmt" path="res://assets/sprites/Items/Inventory/Inventory_287.png" id="40_2odkk"]
+[ext_resource type="Texture2D" uid="uid://byto4t4vp78uc" path="res://assets/sprites/Items/Inventory/Inventory_288.png" id="41_81u2e"]
+[ext_resource type="Texture2D" uid="uid://distdgmohnwjj" path="res://assets/sprites/Items/Inventory/Inventory_289.png" id="42_s3jry"]
+[ext_resource type="Texture2D" uid="uid://cwstihg15g122" path="res://assets/sprites/Items/Inventory/Inventory_290.png" id="43_iuuc0"]
+[ext_resource type="Texture2D" uid="uid://do2lvlkgmwswm" path="res://assets/sprites/Items/Inventory/Inventory_312.png" id="44_0n5mq"]
+[ext_resource type="Texture2D" uid="uid://buib8poeof58" path="res://assets/sprites/Items/Inventory/Inventory_310.png" id="45_b2cki"]
+[ext_resource type="Texture2D" uid="uid://xvghj23me31b" path="res://assets/sprites/Items/Inventory/Inventory_508.png" id="46_f0f15"]
+
+[sub_resource type="Resource" id="Resource_m5ppe"]
+script = ExtResource("2_yyrms")
+item_name = "Potion"
+item_description = "Restores 80 HP."
+type = 1
+healing_type = 1
+power = 80
+value = 500
+max_quantity = 5
+icon = ExtResource("3_50mic")
+
+[sub_resource type="Resource" id="Resource_448x1"]
+script = ExtResource("2_yyrms")
+item_name = "High Potion"
+item_description = "Restores 200 HP."
+type = 1
+healing_type = 1
+power = 200
+value = 1500
+max_quantity = 3
+icon = ExtResource("4_7siy3")
+
+[sub_resource type="Resource" id="Resource_wrvvh"]
+script = ExtResource("2_yyrms")
+item_name = "Super Potion"
+item_description = "Restores all HP."
+type = 1
+healing_type = 1
+power = 9999
+value = 5000
+max_quantity = 9
+icon = ExtResource("5_xn61n")
+
+[sub_resource type="Resource" id="Resource_tjyd3"]
+script = ExtResource("2_yyrms")
+item_name = "Tonic"
+item_description = "Restores 100 MP."
+type = 1
+healing_type = 2
+power = 100
+value = 500
+max_quantity = 5
+icon = ExtResource("6_4vuru")
+
+[sub_resource type="Resource" id="Resource_0v6et"]
+script = ExtResource("2_yyrms")
+item_name = "High Tonic"
+item_description = "Restores 200 MP."
+type = 1
+healing_type = 2
+power = 1500
+value = 0
+max_quantity = 3
+icon = ExtResource("7_80wlg")
+
+[sub_resource type="Resource" id="Resource_gs8wo"]
+script = ExtResource("2_yyrms")
+item_name = "Mana Prism"
+item_description = "Restores all MP."
+type = 1
+healing_type = 2
+power = 9999
+value = 5000
+max_quantity = 9
+icon = ExtResource("8_t8426")
+
+[sub_resource type="Resource" id="Resource_1poc1"]
+script = ExtResource("2_yyrms")
+item_name = "Uncurse"
+item_description = "Breaks anathemas."
+type = 1
+healing_type = 7
+power = 0
+value = 200
+max_quantity = 9
+icon = ExtResource("9_8s3ni")
+
+[sub_resource type="Resource" id="Resource_pn85t"]
+script = ExtResource("2_yyrms")
+item_name = "Antivenom"
+item_description = "Cures poison."
+type = 1
+healing_type = 6
+power = 0
+value = 200
+max_quantity = 9
+icon = ExtResource("10_gd0jl")
+
+[sub_resource type="Resource" id="Resource_k7ohu"]
+script = ExtResource("2_yyrms")
+item_name = "Drive Potion"
+item_description = "Confers more Synergy to the user."
+type = 1
+healing_type = 0
+power = 100
+value = 800
+max_quantity = 3
+icon = ExtResource("11_k24b7")
+
+[sub_resource type="Resource" id="Resource_fsd3a"]
+script = ExtResource("2_yyrms")
+item_name = "Nectar of Rebirth"
+item_description = "Revives the fallen Innocent Devil."
+type = 1
+healing_type = 8
+power = 9999
+value = 5000
+max_quantity = 1
+icon = ExtResource("12_em6mt")
+
+[sub_resource type="Resource" id="Resource_yssgd"]
+script = ExtResource("2_yyrms")
+item_name = "Augment of Darkness"
+item_description = "Completely restores all TP."
+type = 1
+healing_type = 4
+power = 9999
+value = 4000
+max_quantity = 1
+icon = ExtResource("13_eut16")
+
+[sub_resource type="Resource" id="Resource_bg36p"]
+script = ExtResource("2_yyrms")
+item_name = "Mussel"
+item_description = "Delicious food coming from Mediterranean coast."
+type = 1
+healing_type = 1
+power = 40
+value = 350
+max_quantity = 9
+icon = ExtResource("14_0iac1")
+
+[sub_resource type="Resource" id="Resource_cp0mo"]
+script = ExtResource("2_yyrms")
+item_name = "Escargot"
+item_description = "Typical french food, clearly not for everyone."
+type = 1
+healing_type = 1
+power = 30
+value = 230
+max_quantity = 9
+icon = ExtResource("15_62wxu")
+
+[sub_resource type="Resource" id="Resource_t6sc3"]
+script = ExtResource("2_yyrms")
+item_name = "Fried Crab Claw"
+item_description = "Not too healthy, but it looks like I could eat a large amount of this..."
+type = 1
+healing_type = 1
+power = 38
+value = 390
+max_quantity = 9
+icon = ExtResource("16_m03on")
+
+[sub_resource type="Resource" id="Resource_otu3b"]
+script = ExtResource("2_yyrms")
+item_name = "Canele"
+item_description = "A Bordeaux specialty."
+type = 1
+healing_type = 1
+power = 45
+value = 450
+max_quantity = 9
+icon = ExtResource("17_8m00m")
+
+[sub_resource type="Resource" id="Resource_yhtqt"]
+script = ExtResource("2_yyrms")
+item_name = "Bagel"
+item_description = "A bagel stuffed with perhaps too much stuff. Looks hard to digest."
+type = 1
+healing_type = 1
+power = 60
+value = 620
+max_quantity = 9
+icon = ExtResource("18_hrbja")
+
+[sub_resource type="Resource" id="Resource_utmnj"]
+script = ExtResource("2_yyrms")
+item_name = "Popcorn"
+item_description = "They say you should eat them when watching something entertaining."
+type = 1
+healing_type = 1
+power = 30
+value = 290
+max_quantity = 9
+icon = ExtResource("19_4jq4t")
+
+[sub_resource type="Resource" id="Resource_x7euw"]
+script = ExtResource("2_yyrms")
+item_name = "Berry Mousse"
+item_description = "A rare delicacy, with berries exported from outside Wallachia."
+type = 1
+healing_type = 1
+power = 50
+value = 540
+max_quantity = 9
+icon = ExtResource("20_bey3j")
+
+[sub_resource type="Resource" id="Resource_h28u3"]
+script = ExtResource("2_yyrms")
+item_name = "Chocolate Cruller"
+item_description = "An exquisite sweet if you want to spoil yourself."
+type = 1
+healing_type = 1
+power = 28
+value = 260
+max_quantity = 9
+icon = ExtResource("21_2kmvk")
+
+[sub_resource type="Resource" id="Resource_x25q1"]
+script = ExtResource("2_yyrms")
+item_name = "Strawberry Donut"
+item_description = "Donut decorated with some strawberry sauce, not bad."
+type = 1
+healing_type = 1
+power = 30
+value = 290
+max_quantity = 9
+icon = ExtResource("22_q1i7h")
+
+[sub_resource type="Resource" id="Resource_i8haf"]
+script = ExtResource("2_yyrms")
+item_name = "Chocolate Donut"
+item_description = "A tasty sweet you could just eat forever if you had an infinite quantity."
+type = 1
+healing_type = 1
+power = 25
+value = 200
+max_quantity = 9
+icon = ExtResource("23_0dvj6")
+
+[sub_resource type="Resource" id="Resource_n52ve"]
+script = ExtResource("2_yyrms")
+item_name = "Tiramisu"
+item_description = "A heavenly italian dessert, easy to prepare."
+type = 1
+healing_type = 1
+power = 80
+value = 750
+max_quantity = 9
+icon = ExtResource("24_17xhs")
+
+[sub_resource type="Resource" id="Resource_nal7h"]
+script = ExtResource("2_yyrms")
+item_name = "Cruller"
+item_description = "A simple choux pastry with a light texture."
+type = 1
+healing_type = 1
+power = 23
+value = 190
+max_quantity = 9
+icon = ExtResource("25_ycgnl")
+
+[sub_resource type="Resource" id="Resource_exk3f"]
+script = ExtResource("2_yyrms")
+item_name = "Donut"
+item_description = "A crisp donut with no special additions."
+type = 1
+healing_type = 1
+power = 20
+value = 170
+max_quantity = 9
+icon = ExtResource("26_6ptdw")
+
+[sub_resource type="Resource" id="Resource_yyval"]
+script = ExtResource("2_yyrms")
+item_name = "Strawberry Cruller"
+item_description = "Pastry accompanied by some sweet strawberry sauce."
+type = 1
+healing_type = 1
+power = 32
+value = 340
+max_quantity = 9
+icon = ExtResource("27_03l7l")
+
+[sub_resource type="Resource" id="Resource_fhdrx"]
+script = ExtResource("2_yyrms")
+item_name = "Green Cruller"
+item_description = "Pastry with an additional green tea-flavored chocolate"
+type = 1
+healing_type = 1
+power = 32
+value = 340
+max_quantity = 9
+icon = ExtResource("28_7u7ao")
+
+[sub_resource type="Resource" id="Resource_rip4o"]
+script = ExtResource("2_yyrms")
+item_name = "Mango Mousse"
+item_description = "An explosive combination of sweet flavors, accompanied by some cherries on top."
+type = 1
+healing_type = 1
+power = 55
+value = 620
+max_quantity = 9
+icon = ExtResource("29_pyouq")
+
+[sub_resource type="Resource" id="Resource_bjtgx"]
+script = ExtResource("2_yyrms")
+item_name = "Mint Mousse"
+item_description = "An exotic combination of flavors that may not satisfy everyone."
+type = 1
+healing_type = 1
+power = 55
+value = 620
+max_quantity = 9
+icon = ExtResource("30_a638d")
+
+[sub_resource type="Resource" id="Resource_kubol"]
+script = ExtResource("2_yyrms")
+item_name = "Licorice"
+item_description = "Its strong aroma coupled with its chewy texture make for a unique treat."
+type = 1
+healing_type = 1
+power = 15
+value = 120
+max_quantity = 9
+icon = ExtResource("31_i5f38")
+
+[sub_resource type="Resource" id="Resource_uuqkx"]
+script = ExtResource("2_yyrms")
+item_name = "Enchanted Licorice"
+item_description = "A special kind of licorice with special properties to restore one's mind."
+type = 1
+healing_type = 2
+power = 30
+value = 250
+max_quantity = 9
+icon = ExtResource("32_yeknk")
+
+[sub_resource type="Resource" id="Resource_v8cwp"]
+script = ExtResource("2_yyrms")
+item_name = "Parmacotto"
+item_description = "A great portion of ham that you could easily eat whole due to its precious taste."
+type = 1
+healing_type = 1
+power = 120
+value = 890
+max_quantity = 9
+icon = ExtResource("33_07exp")
+
+[sub_resource type="Resource" id="Resource_8hctt"]
+script = ExtResource("2_yyrms")
+item_name = "Roast Beef"
+item_description = "Exceptional taste accompanied by remarkable cooking. A trip for meat lovers."
+type = 1
+healing_type = 1
+power = 150
+value = 930
+max_quantity = 9
+icon = ExtResource("34_8y2n1")
+
+[sub_resource type="Resource" id="Resource_dw7gu"]
+script = ExtResource("2_yyrms")
+item_name = "Kiwi"
+item_description = "Says to be good for your skin due to its vitamins."
+type = 1
+healing_type = 2
+power = 20
+value = 180
+max_quantity = 9
+icon = ExtResource("35_vfv5o")
+
+[sub_resource type="Resource" id="Resource_p4rjt"]
+script = ExtResource("2_yyrms")
+item_name = "Olives"
+item_description = "A great addition to salads."
+type = 1
+healing_type = 2
+power = 15
+value = 130
+max_quantity = 9
+icon = ExtResource("36_6bafq")
+
+[sub_resource type="Resource" id="Resource_fw6ao"]
+script = ExtResource("2_yyrms")
+item_name = "Caesar Salad"
+item_description = "Salad made with lettuce, topped with cheese. Wonder if Caesar ate this..."
+type = 1
+healing_type = 2
+power = 70
+value = 680
+max_quantity = 9
+icon = ExtResource("37_7rma2")
+
+[sub_resource type="Resource" id="Resource_6sxfy"]
+script = ExtResource("2_yyrms")
+item_name = "Gazpacho"
+item_description = "A soup eaten cold, made with ripe tomatoes."
+type = 1
+healing_type = 1
+power = 70
+value = 580
+max_quantity = 9
+icon = ExtResource("38_r61hx")
+
+[sub_resource type="Resource" id="Resource_7ld45"]
+script = ExtResource("2_yyrms")
+item_name = "California Roll"
+item_description = "A sushi roll garnished with tobiko."
+type = 1
+healing_type = 1
+power = 35
+value = 300
+max_quantity = 9
+icon = ExtResource("39_rymbm")
+
+[sub_resource type="Resource" id="Resource_m7xj0"]
+script = ExtResource("2_yyrms")
+item_name = "Quiche"
+item_description = "A french specialty, great for its harmony between eggs and crust."
+type = 0
+healing_type = 1
+power = 50
+value = 430
+max_quantity = 9
+icon = ExtResource("40_2odkk")
+
+[sub_resource type="Resource" id="Resource_utthq"]
+script = ExtResource("2_yyrms")
+item_name = "Pizza"
+item_description = "A simple yet perfect italian food."
+type = 1
+healing_type = 1
+power = 70
+value = 500
+max_quantity = 9
+icon = ExtResource("41_81u2e")
+
+[sub_resource type="Resource" id="Resource_ftwv4"]
+script = ExtResource("2_yyrms")
+item_name = "Shrimp Cocktail"
+item_description = "Cooked by the chef of chefs, a cocktail you can simply not forget."
+type = 1
+healing_type = 1
+power = 80
+value = 580
+max_quantity = 9
+icon = ExtResource("42_s3jry")
+
+[sub_resource type="Resource" id="Resource_5j7we"]
+script = ExtResource("2_yyrms")
+item_name = "Rusty Food Tin"
+item_description = "Takes you to heaven instantly if you try to eat it."
+type = 1
+healing_type = 1
+power = -600
+value = 1
+max_quantity = 9
+icon = ExtResource("43_iuuc0")
+
+[sub_resource type="Resource" id="Resource_7qrnh"]
+script = ExtResource("2_yyrms")
+item_name = "Pot Roast"
+item_description = "Restores 86 HP."
+type = 1
+healing_type = 1
+power = 86
+value = 600
+max_quantity = 9
+icon = ExtResource("44_0n5mq")
+
+[sub_resource type="Resource" id="Resource_1macm"]
+script = ExtResource("2_yyrms")
+item_name = "New York Steak"
+item_description = "Meat so tender that you will devour in a single moment."
+type = 1
+healing_type = 1
+power = 290
+value = 2000
+max_quantity = 9
+icon = ExtResource("45_b2cki")
+
+[sub_resource type="Resource" id="Resource_4ofp1"]
+script = ExtResource("2_yyrms")
+item_name = "Ancient Text 1"
+item_description = "The locked room's password is the year of Dracula's death and birth of Dracula's Curse."
+type = 2
+healing_type = 0
+power = 0
+value = 0
+max_quantity = 1
+icon = ExtResource("46_f0f15")
+
+[node name="ItemCompendium" type="Node"]
+script = ExtResource("1_wj1no")
+Compendium = Array[ExtResource("2_yyrms")]([SubResource("Resource_m5ppe"), SubResource("Resource_448x1"), SubResource("Resource_wrvvh"), SubResource("Resource_tjyd3"), SubResource("Resource_0v6et"), SubResource("Resource_gs8wo"), SubResource("Resource_1poc1"), SubResource("Resource_pn85t"), SubResource("Resource_k7ohu"), SubResource("Resource_fsd3a"), SubResource("Resource_yssgd"), SubResource("Resource_bg36p"), SubResource("Resource_cp0mo"), SubResource("Resource_t6sc3"), SubResource("Resource_otu3b"), SubResource("Resource_yhtqt"), SubResource("Resource_utmnj"), SubResource("Resource_x7euw"), SubResource("Resource_h28u3"), SubResource("Resource_x25q1"), SubResource("Resource_i8haf"), SubResource("Resource_n52ve"), SubResource("Resource_nal7h"), SubResource("Resource_exk3f"), SubResource("Resource_yyval"), SubResource("Resource_fhdrx"), SubResource("Resource_rip4o"), SubResource("Resource_bjtgx"), SubResource("Resource_kubol"), SubResource("Resource_uuqkx"), SubResource("Resource_v8cwp"), SubResource("Resource_8hctt"), SubResource("Resource_dw7gu"), SubResource("Resource_p4rjt"), SubResource("Resource_fw6ao"), SubResource("Resource_6sxfy"), SubResource("Resource_7ld45"), SubResource("Resource_m7xj0"), SubResource("Resource_utthq"), SubResource("Resource_ftwv4"), SubResource("Resource_5j7we"), SubResource("Resource_7qrnh"), SubResource("Resource_1macm"), SubResource("Resource_4ofp1")])

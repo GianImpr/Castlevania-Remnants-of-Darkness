@@ -1,0 +1,1158 @@
+[gd_scene load_steps=54 format=3 uid="uid://cxfeg6jj146ah"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/armor_lord.gd" id="1_qx3bf"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_g2oj7"]
+[ext_resource type="Texture2D" uid="uid://6tg0bhd0y3s5" path="res://assets/sprites/Enemies/ArmorLord/ArmorLord.png" id="3_8hn7x"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_bpgqt"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_v8jfn"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_33ghu"]
+[ext_resource type="AudioStream" uid="uid://ctvhyi7v5j6yr" path="res://assets/sounds/Enemies/ArmorLord/ArmorLordMince.MP3" id="7_2yukg"]
+[ext_resource type="AudioStream" uid="uid://diltuytw6xnnu" path="res://assets/sounds/Enemies/ArmorLord/ArmorLordSwing.MP3" id="8_br2it"]
+[ext_resource type="AudioStream" uid="uid://bvr5ewwyv5jb" path="res://assets/sounds/Enemies/ArmorLord/ArmorLordFire.MP3" id="9_b1ed3"]
+[ext_resource type="AudioStream" uid="uid://cxs7fvrah5p3i" path="res://assets/sounds/Voice/ArmorLord/ArmorLordDie.wav" id="10_5hxx0"]
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="10_24fll"]
+[ext_resource type="Texture2D" uid="uid://jceget2gixtd" path="res://assets/sprites/Enemies/ArmorLord/ArmorLordSwing.png" id="11_apeug"]
+[ext_resource type="AudioStream" uid="uid://dfur7knqfp4ho" path="res://assets/sounds/Enemies/ArmorLord/Explosion.MP3" id="11_vqraa"]
+[ext_resource type="Texture2D" uid="uid://cc2xtjhv1qdqd" path="res://assets/sprites/Enemies/ArmorLord/ArmorLordFireTrail.png" id="12_oq3vb"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="13_4q8sp"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="13_rfaak"]
+[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordIdle.gd" id="15_jdmar"]
+[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordMoving.gd" id="16_cgj71"]
+[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordSwing.gd" id="17_y722i"]
+[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordFire.gd" id="18_byf6u"]
+[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordMince.gd" id="19_syfeh"]
+[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordDying.gd" id="20_vield"]
+[ext_resource type="Texture2D" uid="uid://b14un0hnoriq2" path="res://assets/sprites/Effects/Fire2.png" id="21_jdpwl"]
+
+[sub_resource type="Animation" id="Animation_rla4m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../FireEffect:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../FireEffect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnimationPlayer:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SwordTrail:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../FireSwordTrail:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Mince/MinceHitbox:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Fire/FireHitbox:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Fire/FireHitbox:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 40)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Swing/SwingHitbox:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../SwordLinger/SwordHitbox:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../SwordLinger/SwordHitbox:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(37.3913, 13.0435)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../SwordLinger/SwordHitbox:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.816815]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath(".:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../DyingFire:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../DyingFlames:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../Detection:monitoring")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../Swing:monitoring")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../Fire:monitoring")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("../Mince:monitoring")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("../SwordLinger:monitoring")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_n6pw1"]
+resource_name = "dying"
+length = 8.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 2, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.3, 0, 1), Color(1.4, 0.3, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../DyingFire:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../DyingFlames:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Detection:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Swing:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Fire:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Mince:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../SwordLinger:monitoring")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("..")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../PolyphonicAudioPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["dying"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["explosion"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../AnimationPlayer:speed_scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_j5ihs"]
+resource_name = "fire_attack"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 1.2, 1.3, 1.4, 1.5, 3.3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [18, 22, 23, 24, 25, 26, 27, 13, 12, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../FireEffect:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../FireEffect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.2, 3.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(35, 44), Vector2(185, 44)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AnimationPlayer:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../FireSwordTrail:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Fire/FireHitbox:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.2, 3.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Fire/FireHitbox:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.2, 3.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(35, 40), Vector2(185, 40)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../PolyphonicAudioPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["fire"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../SwordLinger/SwordHitbox:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3, 1.5, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../SwordLinger/SwordHitbox:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 1.5, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(37.3913, 13.0435), Vector2(31.7391, 37.8261), Vector2(33.4783, 43.4783), Vector2(-46.9565, 23.4783), Vector2(-36.5217, 6.95652)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../SwordLinger/SwordHitbox:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 1.5, 3.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [-0.816815, 0.361901, 0.761258, -0.00256658, 0.754394]
+}
+
+[sub_resource type="Animation" id="Animation_ywrfs"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_si5rc"]
+resource_name = "mincemeat"
+length = 10.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 7, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 8, 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9, 9, 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 10, 10.1, 10.2, 10.3, 10.4, 10.5, 10.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 33, 34, 35, 36, 37, 38, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 40, 39, 38, 18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.1, 2.5, 10.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1.0, 2.0, 1.0, 4.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Mince/MinceHitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.6, 10.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PolyphonicAudioPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["mincemeat"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_niihj"]
+resource_name = "step"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_m2fh8"]
+resource_name = "swing_sword"
+length = 3.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 1.1, 1.2, 1.3, 2.6, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15, 16, 17, 18]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimationPlayer:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SwordTrail:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Swing/SwingHitbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PolyphonicAudioPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["swing"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../SwordLinger/SwordHitbox:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.5, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../SwordLinger/SwordHitbox:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 1.5, 2.6, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.754394, 0.00478959, 0.440405, -0.00785509, -0.745274]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../SwordLinger/SwordHitbox:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 1.5, 2.6, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-36.5217, 6.95652), Vector2(-48.6957, 23.4783), Vector2(49.1304, 49.1304), Vector2(48.6957, 36.9565), Vector2(35.6522, 14.3478)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mij7x"]
+_data = {
+"RESET": SubResource("Animation_rla4m"),
+"dying": SubResource("Animation_n6pw1"),
+"fire_attack": SubResource("Animation_j5ihs"),
+"idle": SubResource("Animation_ywrfs"),
+"mincemeat": SubResource("Animation_si5rc"),
+"step": SubResource("Animation_niihj"),
+"swing_sword": SubResource("Animation_m2fh8")
+}
+
+[sub_resource type="Resource" id="Resource_fwfx2"]
+script = ExtResource("6_33ghu")
+Tag = "mincemeat"
+stream = ExtResource("7_2yukg")
+
+[sub_resource type="Resource" id="Resource_jo7lf"]
+script = ExtResource("6_33ghu")
+Tag = "swing"
+stream = ExtResource("8_br2it")
+
+[sub_resource type="Resource" id="Resource_gn8i3"]
+script = ExtResource("6_33ghu")
+Tag = "fire"
+stream = ExtResource("9_b1ed3")
+
+[sub_resource type="Resource" id="Resource_8dtjt"]
+script = ExtResource("6_33ghu")
+Tag = "dying"
+stream = ExtResource("10_5hxx0")
+
+[sub_resource type="Resource" id="Resource_3c73s"]
+script = ExtResource("6_33ghu")
+Tag = "explosion"
+stream = ExtResource("11_vqraa")
+
+[sub_resource type="Resource" id="Resource_siycx"]
+script = ExtResource("5_v8jfn")
+sound_effects = Array[ExtResource("6_33ghu")]([SubResource("Resource_fwfx2"), SubResource("Resource_jo7lf"), SubResource("Resource_gn8i3"), SubResource("Resource_8dtjt"), SubResource("Resource_3c73s")])
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bb03v"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_jj1yo"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0.589035, 0.184031, 4.81308e-08, 1, 0.92549, 0.403922, 0, 1, 0.68224, 0.113402, 1.92523e-07, 1, 1, 0.0117647, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_o2kqk"]
+gradient = SubResource("Gradient_jj1yo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c8cdf"]
+emission_shape = 1
+emission_sphere_radius = 11.81
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 30.0
+gravity = Vector3(0, -200, 0)
+color_ramp = SubResource("GradientTexture1D_o2kqk")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o00jw"]
+size = Vector2(27, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dklpl"]
+size = Vector2(27, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qip8"]
+size = Vector2(88, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3amw"]
+size = Vector2(20, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjqq2"]
+size = Vector2(74, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctjme"]
+size = Vector2(147, 69)
+
+[sub_resource type="GDScript" id="GDScript_cw8br"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ok50"]
+size = Vector2(42.1739, 10.8696)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uwia0"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_vf6rj"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0.589035, 0.184031, 4.81308e-08, 1, 0.92549, 0.403922, 0, 1, 0.68224, 0.113402, 1.92523e-07, 1, 1, 0.0117647, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_norel"]
+gradient = SubResource("Gradient_vf6rj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_agiik"]
+emission_shape = 1
+emission_sphere_radius = 28.18
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 30.0
+gravity = Vector3(0, -50, 0)
+color_ramp = SubResource("GradientTexture1D_norel")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="ArmorLord" type="CharacterBody2D" node_paths=PackedStringArray("vision", "mince", "fire", "swing", "sword_linger", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+scale = Vector2(2.3, 2.3)
+collision_layer = 4
+script = ExtResource("1_qx3bf")
+vision = NodePath("AreaOfVision")
+mince = NodePath("Mince")
+fire = NodePath("Fire")
+swing = NodePath("Swing")
+sword_linger = NodePath("SwordLinger")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Detection")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("IframeTimer")
+hitbox_iframe = NodePath("Detection")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_g2oj7")
+enemy_name = "Armor Lord"
+LV = 9
+HP = 75
+ATK = 15
+DEF = 8
+EXP = 100
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(28, 0)
+texture = ExtResource("3_8hn7x")
+hframes = 11
+vframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_mij7x")
+}
+speed_scale = 2.0
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+script = ExtResource("4_bpgqt")
+audio_library = SubResource("Resource_siycx")
+
+[node name="FireEffect" type="GPUParticles2D" parent="."]
+z_index = 20
+material = SubResource("CanvasItemMaterial_bb03v")
+position = Vector2(200, 0)
+emitting = false
+amount = 600
+process_material = SubResource("ParticleProcessMaterial_c8cdf")
+texture = ExtResource("10_24fll")
+lifetime = 1.2
+one_shot = true
+explosiveness = 0.07
+
+[node name="SwordTrail" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.117647)
+show_behind_parent = true
+position = Vector2(18, 2.625)
+scale = Vector2(1.68486, 1.85887)
+texture = ExtResource("11_apeug")
+
+[node name="FireSwordTrail" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.117647)
+show_behind_parent = true
+position = Vector2(4, 32.088)
+scale = Vector2(1.79041, 2.04055)
+texture = ExtResource("12_oq3vb")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1.5, 25.5)
+shape = SubResource("RectangleShape2D_o00jw")
+
+[node name="Detection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="Detection"]
+visible = false
+position = Vector2(1.5, 25)
+shape = SubResource("RectangleShape2D_dklpl")
+
+[node name="Swing" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="SwingHitbox" type="CollisionShape2D" parent="Swing"]
+visible = false
+position = Vector2(27, 5)
+shape = SubResource("RectangleShape2D_4qip8")
+disabled = true
+
+[node name="Fire" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="FireHitbox" type="CollisionShape2D" parent="Fire"]
+visible = false
+position = Vector2(5, 40)
+shape = SubResource("RectangleShape2D_j3amw")
+disabled = true
+
+[node name="Mince" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="MinceHitbox" type="CollisionShape2D" parent="Mince"]
+visible = false
+position = Vector2(52, 21.5)
+shape = SubResource("RectangleShape2D_fjqq2")
+disabled = true
+
+[node name="AreaOfVision" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaOfVision"]
+position = Vector2(3, 24)
+shape = SubResource("RectangleShape2D_ctjme")
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+position = Vector2(4, -6)
+script = ExtResource("13_rfaak")
+damage_node = ExtResource("13_4q8sp")
+
+[node name="IframeTimer" type="Timer" parent="."]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_cw8br")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("duration_timer")]
+script = ExtResource("15_jdmar")
+duration_timer = NodePath("Duration")
+
+[node name="Duration" type="Timer" parent="StateMachine/Idle"]
+wait_time = 0.7
+one_shot = true
+
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("duration_timer")]
+script = ExtResource("16_cgj71")
+SPEED = Vector2(30, 0)
+duration_timer = NodePath("Duration")
+
+[node name="Duration" type="Timer" parent="StateMachine/Moving"]
+wait_time = 0.8
+one_shot = true
+
+[node name="Swing" type="Node" parent="StateMachine"]
+script = ExtResource("17_y722i")
+forward_momentum = 800.0
+
+[node name="Fire" type="Node" parent="StateMachine" node_paths=PackedStringArray("fire_hitbox")]
+script = ExtResource("18_byf6u")
+fire_hitbox = NodePath("../../Fire/FireHitbox")
+
+[node name="Mince" type="Node" parent="StateMachine" node_paths=PackedStringArray("mincemeat_hitbox", "iframe_timer")]
+script = ExtResource("19_syfeh")
+mincemeat_hitbox = NodePath("../../Mince/MinceHitbox")
+iframe_timer = NodePath("Iframes")
+
+[node name="Iframes" type="Timer" parent="StateMachine/Mince"]
+wait_time = 0.6
+one_shot = true
+
+[node name="Dying" type="Node" parent="StateMachine"]
+script = ExtResource("20_vield")
+
+[node name="SwordLinger" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="SwordHitbox" type="CollisionShape2D" parent="SwordLinger"]
+position = Vector2(37.3913, 13.0435)
+rotation = -0.816815
+shape = SubResource("RectangleShape2D_5ok50")
+disabled = true
+
+[node name="DyingFlames" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_uwia0")
+position = Vector2(-0.434783, 30.4348)
+emitting = false
+amount = 16
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("21_jdpwl")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 30)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+anim_speed_min = 3.0
+anim_speed_max = 3.0
+
+[node name="DyingFire" type="GPUParticles2D" parent="."]
+z_index = 20
+material = SubResource("CanvasItemMaterial_bb03v")
+position = Vector2(2.17391, 42.1739)
+emitting = false
+amount = 700
+process_material = SubResource("ParticleProcessMaterial_agiik")
+texture = ExtResource("10_24fll")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.07
+
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_entered" from="Swing" to="." method="_on_swing_body_entered"]
+[connection signal="body_entered" from="Fire" to="." method="_on_fire_body_entered"]
+[connection signal="body_entered" from="Mince" to="." method="_on_mince_body_entered"]
+[connection signal="body_entered" from="AreaOfVision" to="StateMachine/Idle" method="_on_area_of_vision_body_entered"]
+[connection signal="timeout" from="StateMachine/Idle/Duration" to="StateMachine/Idle" method="_on_duration_timeout"]
+[connection signal="timeout" from="StateMachine/Moving/Duration" to="StateMachine/Moving" method="_on_duration_timeout"]
+[connection signal="timeout" from="StateMachine/Mince/Iframes" to="StateMachine/Mince" method="_on_iframes_timeout"]
+[connection signal="body_entered" from="SwordLinger" to="." method="_on_sword_linger_body_entered"]

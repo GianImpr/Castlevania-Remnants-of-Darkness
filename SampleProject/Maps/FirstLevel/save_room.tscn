@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjcrmak88k0aw"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_pgp4j"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_cim8y"]
+
+[node name="SaveRoom" type="Node2D"]
+script = ExtResource("1_pgp4j")
+
+[node name="RoomInstance" parent="." instance=ExtResource("2_cim8y")]

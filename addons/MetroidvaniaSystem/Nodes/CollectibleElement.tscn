@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://w48b71tv2d4v"]
+
+[ext_resource type="Script" path="res://addons/MetroidvaniaSystem/Scripts/CollectibleElement.gd" id="1_1bebr"]
+[ext_resource type="Script" path="res://addons/MetroidvaniaSystem/Scripts/EditorIconButton.gd" id="2_3d05g"]
+
+[node name="Collectible" type="PanelContainer"]
+script = ExtResource("1_1bebr")
+metadata/is_collectible = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Node Name"
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+script = ExtResource("2_3d05g")
+icon_name = "Remove"
+
+[node name="IconContainer" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/IconContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Icon"
+
+[node name="SaveTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer2/LineEdit" to="SaveTimer" method="start" unbinds=1]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button" to="." method="delete"]
+[connection signal="timeout" from="SaveTimer" to="." method="emit_signal" binds= [&"save_request"]]

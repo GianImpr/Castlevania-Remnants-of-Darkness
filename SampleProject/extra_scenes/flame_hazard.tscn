@@ -1,0 +1,185 @@
+[gd_scene load_steps=10 format=3 uid="uid://dq1xfw3e0ojg5"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/flame_hazard.gd" id="1_br8h3"]
+[ext_resource type="Texture2D" uid="uid://ccynj5rj2fhih" path="res://assets/sprites/Objects/FlameHazard.png" id="1_n472d"]
+
+[sub_resource type="Animation" id="Animation_28pkp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.3, 2.3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pce05"]
+resource_name = "disappear"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.3, 2.3), Vector2(0, 10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_60xi0"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1sk3l"]
+_data = {
+"RESET": SubResource("Animation_28pkp"),
+"disappear": SubResource("Animation_pce05"),
+"idle": SubResource("Animation_60xi0")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbopx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xlin"]
+size = Vector2(30, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fslm8"]
+size = Vector2(58, 74)
+
+[node name="FlameHazard" type="StaticBody2D" node_paths=PackedStringArray("hitbox_iframe", "iframe_timer", "animation")]
+collision_layer = 5
+collision_mask = 3
+script = ExtResource("1_br8h3")
+event_ID = 2
+power = 50
+hitbox_iframe = NodePath("Hitbox/HitboxIframe")
+iframe_timer = NodePath("Hitbox/IframeTimer")
+animation = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_1sk3l")
+}
+autoplay = "idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dbopx")
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_n472d")
+hframes = 5
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(15, 5)
+shape = SubResource("RectangleShape2D_0xlin")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HitboxIframe" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_fslm8")
+
+[node name="IframeTimer" type="Timer" parent="Hitbox"]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Hitbox/IframeTimer" to="." method="_on_iframe_timer_timeout"]

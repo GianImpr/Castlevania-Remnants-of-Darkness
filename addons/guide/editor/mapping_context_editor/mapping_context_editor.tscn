@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm3hott3tfvwe"]
+
+[ext_resource type="Script" path="res://addons/guide/editor/mapping_context_editor/mapping_context_editor.gd" id="1_vytdu"]
+[ext_resource type="PackedScene" uid="uid://361aipcef24h" path="res://addons/guide/editor/action_mapping_editor/action_mapping_editor.tscn" id="2_qb3p8"]
+[ext_resource type="PackedScene" uid="uid://cly0ff32fvpb2" path="res://addons/guide/editor/array_edit/array_edit.tscn" id="3_x7h5x"]
+
+[node name="MappingContextEditor" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_vytdu")
+action_mapping_editor_scene = ExtResource("2_qb3p8")
+
+[node name="EditingView" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EditingView"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="EditingView/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+text = "narf.tres"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="EditingView"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="EditingView"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionMappings" parent="EditingView/ScrollContainer" instance=ExtResource("3_x7h5x")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+title = "Action mappings"
+add_tooltip = "Add action mapping"
+clear_tooltip = "Clear action mappings"
+
+[node name="EmptyView" type="CenterContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EmptyView"]
+layout_mode = 2
+text = "Create and open a GUIDEMappingContext to get started."

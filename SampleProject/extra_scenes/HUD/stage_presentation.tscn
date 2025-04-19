@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://cc1yrxsfbarkc"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/stage_presentation.gd" id="1_epyo1"]
+[ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="1_kof52"]
+
+[sub_resource type="Theme" id="Theme_3hkym"]
+default_font = ExtResource("1_kof52")
+default_font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_ep8vh"]
+colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mpbjy"]
+gradient = SubResource("Gradient_ep8vh")
+width = 64
+use_hdr = true
+
+[sub_resource type="Animation" id="Animation_ts1wm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.84]
+}
+
+[sub_resource type="Animation" id="Animation_rwaba"]
+resource_name = "present"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 2, 1), Color(1, 1, 2, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.06667, 1.53333, 2.56667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyave"]
+_data = {
+"RESET": SubResource("Animation_ts1wm"),
+"present": SubResource("Animation_rwaba")
+}
+
+[node name="StagePresentation" type="Control" node_paths=PackedStringArray("label", "animation")]
+process_mode = 3
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_epyo1")
+label = NodePath("Label")
+animation = NodePath("AnimationPlayer")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 307.0
+offset_top = 221.0
+offset_right = 560.0
+offset_bottom = 247.0
+theme = SubResource("Theme_3hkym")
+text = "Abandoned Monastery"
+horizontal_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(432, 234)
+scale = Vector2(4.82813, 37.5)
+energy = 2.84
+texture = SubResource("GradientTexture1D_mpbjy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uyave")
+}
+autoplay = "present"

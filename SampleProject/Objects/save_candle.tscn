@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfulexp2leb83"]
+
+[ext_resource type="Texture2D" uid="uid://riuclfbnrsi8" path="res://assets/sprites/Objects/SaveCandle.png" id="1_s48rf"]
+[ext_resource type="Texture2D" uid="uid://bilcqmlafvg6f" path="res://assets/sprites/Objects/SaveCandleFire.png" id="2_6icat"]
+
+[sub_resource type="Animation" id="Animation_0oddd"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_x0xxg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7m0ed"]
+_data = {
+"RESET": SubResource("Animation_x0xxg"),
+"idle": SubResource("Animation_0oddd")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7b71m"]
+size = Vector2(37, 20)
+
+[node name="SaveCandle" type="RigidBody2D"]
+collision_layer = 0
+
+[node name="Candle" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_s48rf")
+
+[node name="Fire" type="Sprite2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+position = Vector2(3, -69)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_6icat")
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7m0ed")
+}
+autoplay = "idle"
+speed_scale = 0.8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 34)
+shape = SubResource("RectangleShape2D_7b71m")

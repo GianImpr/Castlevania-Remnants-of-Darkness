@@ -1,0 +1,194 @@
+[gd_scene load_steps=25 format=3 uid="uid://b6h4wnjfjs70m"]
+
+[ext_resource type="Script" path="res://guide_examples/input_contexts/boat.gd" id="1_61cdj"]
+[ext_resource type="Script" path="res://guide_examples/input_contexts/input_contexts.gd" id="1_386pq"]
+[ext_resource type="Texture2D" uid="uid://byjxtsekdl8t2" path="res://guide_examples/shared/godot_logo.svg" id="1_x61i0"]
+[ext_resource type="Texture2D" uid="uid://cyqlk5nkvswx7" path="res://guide_examples/input_contexts/boat.svg" id="1_yfaid"]
+[ext_resource type="Resource" uid="uid://bv3t73wg3atf7" path="res://guide_examples/input_contexts/mapping_contexts/boat_context.tres" id="2_ha2ml"]
+[ext_resource type="Resource" uid="uid://5jercxe6t3go" path="res://guide_examples/input_contexts/mapping_contexts/boat_actions/accelerate.tres" id="3_8s4br"]
+[ext_resource type="Script" path="res://guide_examples/input_contexts/player.gd" id="3_kn2qk"]
+[ext_resource type="Resource" uid="uid://cplpvxhus6bwb" path="res://guide_examples/input_contexts/mapping_contexts/player_context.tres" id="4_3xwjv"]
+[ext_resource type="Resource" uid="uid://qsysw0ljlj0l" path="res://guide_examples/input_contexts/mapping_contexts/boat_actions/turn.tres" id="4_w1gps"]
+[ext_resource type="Resource" uid="uid://cnaj42xnfcibo" path="res://guide_examples/input_contexts/mapping_contexts/player_actions/move.tres" id="5_70jqj"]
+[ext_resource type="Resource" uid="uid://bk2j1ww7iwqd0" path="res://guide_examples/input_contexts/mapping_contexts/boat_actions/leave.tres" id="5_typxl"]
+[ext_resource type="Resource" uid="uid://crjkk2edn8g8k" path="res://guide_examples/input_contexts/mapping_contexts/player_actions/use.tres" id="6_aiqns"]
+[ext_resource type="PackedScene" uid="uid://dkr80d2pi0d41" path="res://addons/guide/debugger/guide_debugger.tscn" id="12_jcoq7"]
+[ext_resource type="Theme" uid="uid://dot0gi1yoqmrl" path="res://guide_examples/shared/ui_theme.tres" id="12_u0g3a"]
+[ext_resource type="Script" path="res://guide_examples/shared/instructions_label.gd" id="14_ui0u7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w57h4"]
+size = Vector2(1972, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5hqg"]
+size = Vector2(59, 1161)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifvju"]
+size = Vector2(2030.5, 60.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qarqo"]
+size = Vector2(102, 1160.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la1oy"]
+size = Vector2(446.5, 1141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3q8sb"]
+size = Vector2(368, 148)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_54ta5"]
+radius = 75.0
+height = 252.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lf7l"]
+size = Vector2(126, 130)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dt2nf"]
+radius = 141.891
+
+[node name="InputContexts" type="Node2D"]
+script = ExtResource("1_386pq")
+starting_context = ExtResource("4_3xwjv")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Sea" type="ColorRect" parent="World"]
+offset_right = 2009.0
+offset_bottom = 1129.0
+color = Color(0.0440738, 0.000205037, 0.549847, 1)
+metadata/_edit_lock_ = true
+
+[node name="Land" type="Polygon2D" parent="World"]
+color = Color(0.336331, 0.394587, 0.063959, 1)
+polygon = PackedVector2Array(55, -51, 259, -24, 398, 124, 356, 225, 279, 461, 394, 656, 412, 865, 342, 1085, -15, 1119, -22, -67)
+metadata/_edit_lock_ = true
+
+[node name="Jetty" type="ColorRect" parent="World/Land"]
+offset_left = 283.0
+offset_top = 144.0
+offset_right = 641.0
+offset_bottom = 280.0
+color = Color(0.243329, 0.15798, 7.21961e-08, 1)
+
+[node name="World Boundaries" type="StaticBody2D" parent="World"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/World Boundaries"]
+position = Vector2(976, -19.5)
+shape = SubResource("RectangleShape2D_w57h4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/World Boundaries"]
+position = Vector2(-10, 532)
+shape = SubResource("RectangleShape2D_r5hqg")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="World/World Boundaries"]
+position = Vector2(975.75, 1082.25)
+shape = SubResource("RectangleShape2D_ifvju")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="World/World Boundaries"]
+position = Vector2(1940, 532.25)
+shape = SubResource("RectangleShape2D_qarqo")
+
+[node name="NoBoatZone" type="StaticBody2D" parent="World"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/NoBoatZone"]
+position = Vector2(210.75, 556.5)
+shape = SubResource("RectangleShape2D_la1oy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="World/NoBoatZone"]
+position = Vector2(454, 211)
+shape = SubResource("RectangleShape2D_3q8sb")
+
+[node name="Boat" type="CharacterBody2D" parent="."]
+position = Vector2(744, 269)
+rotation = -1.44336
+collision_layer = 5
+collision_mask = 3
+script = ExtResource("1_61cdj")
+speed = 500.0
+context = ExtResource("2_ha2ml")
+accelerate = ExtResource("3_8s4br")
+turn = ExtResource("4_w1gps")
+leave = ExtResource("5_typxl")
+
+[node name="Boat" type="Sprite2D" parent="Boat"]
+texture = ExtResource("1_yfaid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat"]
+position = Vector2(-13, 0)
+rotation = -1.57573
+shape = SubResource("CapsuleShape2D_54ta5")
+
+[node name="PlayerSpot" type="Node2D" parent="Boat"]
+unique_name_in_owner = true
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+
+[node name="ExitSpot" type="Marker2D" parent="Boat"]
+unique_name_in_owner = true
+position = Vector2(-11.0732, -212.314)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(205, 212)
+script = ExtResource("3_kn2qk")
+context = ExtResource("4_3xwjv")
+move = ExtResource("5_70jqj")
+use = ExtResource("6_aiqns")
+
+[node name="Icon" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_x61i0")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Player"]
+unique_name_in_owner = true
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_3lf7l")
+
+[node name="DetectionArea" type="Area2D" parent="Player"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/DetectionArea"]
+shape = SubResource("CircleShape2D_dt2nf")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="UILayer"]
+offset_left = 894.0
+offset_top = 24.0
+offset_right = 1872.0
+offset_bottom = 132.0
+theme = ExtResource("12_u0g3a")
+text = "This demonstrates the use of multiple mapping contexts. We have one for the player
+and one for the boat. When the player enters the boat, the boat mappings will
+become active and will become inactive once the player leaves. "
+
+[node name="BoatInstructions" type="RichTextLabel" parent="UILayer"]
+offset_left = 1316.0
+offset_top = 772.0
+offset_right = 1356.0
+offset_bottom = 812.0
+theme = ExtResource("12_u0g3a")
+script = ExtResource("14_ui0u7")
+instructions_text = "%s to accelerate/break.
+%s to turn the boat.
+%s to leave the boat."
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("3_8s4br"), ExtResource("4_w1gps"), ExtResource("5_typxl")])
+limit_to_context = ExtResource("2_ha2ml")
+
+[node name="PlayerInstructions" type="RichTextLabel" parent="UILayer"]
+offset_left = 1316.0
+offset_top = 772.0
+offset_right = 1356.0
+offset_bottom = 812.0
+theme = ExtResource("12_u0g3a")
+script = ExtResource("14_ui0u7")
+instructions_text = "%s to move.
+%s to enter the boat.
+"
+actions = Array[Resource("res://addons/guide/guide_action.gd")]([ExtResource("5_70jqj"), ExtResource("6_aiqns")])
+limit_to_context = ExtResource("4_3xwjv")
+
+[node name="DebugLayer" type="CanvasLayer" parent="."]
+
+[node name="GuideDebugger" parent="DebugLayer" instance=ExtResource("12_jcoq7")]
+theme = ExtResource("12_u0g3a")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1ht6xduduxri"]
+
+[ext_resource type="Script" path="res://guide_examples/touch/placement_indicator/placement_indicator.gd" id="1_gnpc8"]
+[ext_resource type="Resource" uid="uid://iilpc2tjr5mx" path="res://guide_examples/touch/mapping_contexts/actions/spawn.tres" id="2_grp35"]
+[ext_resource type="Texture2D" uid="uid://geq3rs2fxqs4" path="res://guide_examples/touch/placement_indicator/radial_progress.png" id="2_slqs6"]
+
+[node name="PlacementIndicator" type="Node2D"]
+script = ExtResource("1_gnpc8")
+spawn = ExtResource("2_grp35")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.0
+fill_mode = 4
+texture_progress = ExtResource("2_slqs6")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bajf1t4a5sd2h"]
+
+[ext_resource type="Texture2D" uid="uid://cig3wdbp4ddjl" path="res://assets/sprites/Objects/monasteryEntrance.png" id="1_jutta"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_s41ia"]
+points = PackedVector2Array(0, 0, 10, 10, 0, 10)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+scale = Vector2(1.2, 1.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("1_jutta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(79, 113)
+scale = Vector2(-6.96369, 7.66667)
+shape = SubResource("ConvexPolygonShape2D_s41ia")

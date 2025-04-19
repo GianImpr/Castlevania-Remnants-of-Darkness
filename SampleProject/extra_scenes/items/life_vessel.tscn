@@ -1,0 +1,174 @@
+[gd_scene load_steps=23 format=3 uid="uid://cn5udljc46woc"]
+
+[ext_resource type="Shader" path="res://flash.gdshader" id="1_vjqmd"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/life_vessel.gd" id="1_yx2o4"]
+[ext_resource type="Texture2D" uid="uid://d4il687uurbj1" path="res://assets/sprites/Items/LifeVessel.png" id="2_m14wy"]
+[ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="2_wyfb2"]
+[ext_resource type="Shader" path="res://scenes/rainbow.gdshader" id="3_hfifi"]
+[ext_resource type="Texture2D" uid="uid://hvp2h5n3owjw" path="res://assets/sprites/Items/LifeVesselEssence.png" id="4_0ccpd"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="7_cxv4q"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_h25pp"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="9_ysxcq"]
+[ext_resource type="AudioStream" uid="uid://djh3kkwjm0n4f" path="res://assets/sounds/Pickups/LifeUp.wav" id="10_pun3y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yniq"]
+shader = ExtResource("1_vjqmd")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="Gradient" id="Gradient_71y8j"]
+offsets = PackedFloat32Array(0, 0.328042)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8ych"]
+gradient = SubResource("Gradient_71y8j")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.495726, 0.474359)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0q2ud"]
+shader = ExtResource("3_hfifi")
+shader_parameter/strength = 0.75
+shader_parameter/speed = 2.0
+shader_parameter/angle = 80.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fe178"]
+size = Vector2(16, 14.0201)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3iyo"]
+size = Vector2(16, 16)
+
+[sub_resource type="Environment" id="Environment_q43d6"]
+background_mode = 3
+glow_enabled = true
+glow_blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_piiex"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nge4v"]
+resource_name = "picked"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["life_up"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ojjl5"]
+_data = {
+"RESET": SubResource("Animation_piiex"),
+"picked": SubResource("Animation_nge4v")
+}
+
+[sub_resource type="Resource" id="Resource_6bnuw"]
+script = ExtResource("9_ysxcq")
+Tag = "life_up"
+stream = ExtResource("10_pun3y")
+
+[sub_resource type="Resource" id="Resource_m26fd"]
+script = ExtResource("8_h25pp")
+sound_effects = Array[ExtResource("9_ysxcq")]([SubResource("Resource_6bnuw")])
+
+[node name="LifeVessel" type="RigidBody2D" node_paths=PackedStringArray("animation", "sound", "area")]
+scale = Vector2(1.3, 1.3)
+collision_layer = 0
+script = ExtResource("1_yx2o4")
+power = 15
+boost_message = ExtResource("2_wyfb2")
+animation = NodePath("AnimationPlayer")
+sound = NodePath("PolyphonicAudio")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_3yniq")
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("2_m14wy")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(0, 1.19209e-07)
+scale = Vector2(0.434783, 0.434783)
+energy = 7.0
+texture = SubResource("GradientTexture2D_a8ych")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+material = SubResource("ShaderMaterial_0q2ud")
+texture = ExtResource("4_0ccpd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.27692)
+scale = Vector2(2.3, 2.3)
+shape = SubResource("RectangleShape2D_fe178")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+scale = Vector2(2.3, 2.3)
+shape = SubResource("RectangleShape2D_v3iyo")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q43d6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ojjl5")
+}
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+volume_db = -25.0
+script = ExtResource("7_cxv4q")
+audio_library = SubResource("Resource_m26fd")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

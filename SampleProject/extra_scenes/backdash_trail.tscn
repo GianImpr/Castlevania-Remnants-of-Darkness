@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://m6mdjyrpiuny"]
+
+[ext_resource type="Texture2D" uid="uid://bc22rt5lbfl50" path="res://assets/sprites/HectorSprite2D.png" id="1_557ln"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/backdash_trail.gd" id="2_mqnmt"]
+
+[node name="BackdashTrail" type="Sprite2D"]
+modulate = Color(0.231845, 0.385287, 1, 1)
+texture = ExtResource("1_557ln")
+hframes = 20
+vframes = 20
+script = ExtResource("2_mqnmt")

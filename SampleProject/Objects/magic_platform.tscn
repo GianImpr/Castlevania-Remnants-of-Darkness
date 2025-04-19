@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://cuwu4qu7mdjwg"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/magic_platform.gd" id="1_5kyr1"]
+
+[sub_resource type="Curve" id="Curve_41i01"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2vsw"]
+size = Vector2(158, 14)
+
+[sub_resource type="Animation" id="Animation_2hy8i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1.5, 2, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pw7y3"]
+resource_name = "reveal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1.3, 1.8, 2.3, 1), Color(1, 1.5, 1.7, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0j68i"]
+_data = {
+"RESET": SubResource("Animation_2hy8i"),
+"reveal": SubResource("Animation_pw7y3")
+}
+
+[node name="MagicPlatform" type="StaticBody2D" node_paths=PackedStringArray("particles", "collision_box", "animation")]
+script = ExtResource("1_5kyr1")
+eventID = 1
+particles = NodePath("CPUParticles2D")
+collision_box = NodePath("CollisionShape2D")
+animation = NodePath("AnimationPlayer")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+self_modulate = Color(1, 1.5, 2, 1)
+amount = 70
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(80, 5)
+direction = Vector2(0, -1)
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 50.0
+scale_amount_curve = SubResource("Curve_41i01")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -3)
+shape = SubResource("RectangleShape2D_v2vsw")
+one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0j68i")
+}

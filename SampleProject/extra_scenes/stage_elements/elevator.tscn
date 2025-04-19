@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://ca4vreioqht4h"]
+
+[ext_resource type="Texture2D" uid="uid://c2yqyahqgxlxg" path="res://assets/sprites/Objects/Elevator/Chain.png" id="1_5sa8a"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/elevator.gd" id="1_tht4r"]
+[ext_resource type="Texture2D" uid="uid://crbidn5tonryi" path="res://assets/sprites/Objects/Elevator/Elevator.png" id="2_27f6t"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_plx5k"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_425cv"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_baeg1"]
+[ext_resource type="AudioStream" uid="uid://dxr0r5lniftre" path="res://assets/sounds/Objects/Elevator.MP3" id="7_h1rk2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xc2gm"]
+size = Vector2(34, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80ybh"]
+size = Vector2(64, 16)
+
+[sub_resource type="Resource" id="Resource_g2o76"]
+script = ExtResource("6_baeg1")
+Tag = "elevator"
+stream = ExtResource("7_h1rk2")
+
+[sub_resource type="Resource" id="Resource_0up5w"]
+script = ExtResource("5_425cv")
+sound_effects = Array[ExtResource("6_baeg1")]([SubResource("Resource_g2o76")])
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Elevator" type="Node2D" parent="." node_paths=PackedStringArray("chain", "elevator", "collision_box", "sound")]
+script = ExtResource("1_tht4r")
+height = 852.0
+chain = NodePath("Chain")
+elevator = NodePath("Elevator")
+collision_box = NodePath("../CollisionShape2D")
+sound = NodePath("../PolyphonicMenuAudio")
+
+[node name="Chain" type="Sprite2D" parent="Elevator"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = ExtResource("1_5sa8a")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 5, 852)
+
+[node name="Elevator" type="Sprite2D" parent="Elevator"]
+position = Vector2(4, 1776)
+scale = Vector2(2, 2)
+texture = ExtResource("2_27f6t")
+
+[node name="Area2D" type="Area2D" parent="Elevator/Elevator"]
+position = Vector2(0, 32)
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator/Elevator/Area2D"]
+position = Vector2(13, -62)
+shape = SubResource("RectangleShape2D_xc2gm")
+debug_color = Color(0.86548, 0.356066, 7.70092e-07, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 1840)
+shape = SubResource("RectangleShape2D_80ybh")
+
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+script = ExtResource("4_plx5k")
+audio_library = SubResource("Resource_0up5w")
+
+[connection signal="body_entered" from="Elevator/Elevator/Area2D" to="Elevator" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Elevator/Elevator/Area2D" to="Elevator" method="_on_area_2d_body_exited"]

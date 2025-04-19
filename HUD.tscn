@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://bex0fp0gerhew"]
+
+[ext_resource type="Texture2D" uid="uid://5i5nsq4bad0r" path="res://assets/sprites/HUD/Body.png" id="1_r4po5"]
+[ext_resource type="Script" path="res://hud.gd" id="1_sn6v2"]
+[ext_resource type="Texture2D" uid="uid://o847yl7lsxpe" path="res://assets/sprites/HUD/Health.png" id="2_6bv25"]
+[ext_resource type="Texture2D" uid="uid://c0vht0ktmkbou" path="res://assets/sprites/HUD/Mana.png" id="3_dpp6q"]
+[ext_resource type="Script" path="res://h_box_container.gd" id="4_pt866"]
+
+[node name="HUD" type="Control"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+offset_right = 304.0
+offset_bottom = 90.0
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_sn6v2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 230.0
+offset_bottom = 64.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_r4po5")
+
+[node name="Health" type="TextureProgressBar" parent="TextureRect"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 10.0
+offset_right = 132.0
+offset_bottom = 13.0
+scale = Vector2(2, 2)
+max_value = 10.0
+value = 10.0
+nine_patch_stretch = true
+texture_progress = ExtResource("2_6bv25")
+
+[node name="Mana" type="TextureProgressBar" parent="TextureRect"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 20.0
+offset_right = 132.0
+offset_bottom = 23.0
+scale = Vector2(2, 2)
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("3_dpp6q")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 28.5714
+offset_top = 22.8571
+offset_right = 67.5714
+offset_bottom = 38.8571
+scale = Vector2(2.1, 2.1)
+theme_override_constants/separation = 1
+alignment = 1
+script = ExtResource("4_pt866")

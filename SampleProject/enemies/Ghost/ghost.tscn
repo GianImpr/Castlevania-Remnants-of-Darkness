@@ -1,0 +1,265 @@
+[gd_scene load_steps=25 format=3 uid="uid://bn3lg7fw7nbhb"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/Ghost/ghost.gd" id="1_4jg88"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_shggr"]
+[ext_resource type="Texture2D" uid="uid://dkvr4kl120kyv" path="res://assets/sprites/Enemies/Ghost.png" id="3_4s651"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_n7p7b"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_524ja"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="5_plncu"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_q4s2a"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_rmf7j"]
+[ext_resource type="AudioStream" uid="uid://b0dag7jv7b3ou" path="res://assets/sounds/Enemies/Ghost/GhostDying.MP3" id="7_3q31p"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ghost/GhostIdle.gd" id="7_vwp3b"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ghost/GhostMove.gd" id="8_llm2s"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ghost/GhostBounce.gd" id="9_ki8vk"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ghost/GhostDying.gd" id="10_ga7yx"]
+[ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="11_ch1nl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddx2q"]
+size = Vector2(20, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e0kp"]
+size = Vector2(20, 18)
+
+[sub_resource type="Animation" id="Animation_rc1vi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jnama"]
+resource_name = "dead"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ixnpa"]
+resource_name = "move"
+length = 0.1
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_hn6es"]
+resource_name = "spawn"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ef4r7"]
+_data = {
+"RESET": SubResource("Animation_rc1vi"),
+"dead": SubResource("Animation_jnama"),
+"move": SubResource("Animation_ixnpa"),
+"spawn": SubResource("Animation_hn6es")
+}
+
+[sub_resource type="Resource" id="Resource_5pstg"]
+script = ExtResource("6_rmf7j")
+Tag = "dying"
+stream = ExtResource("7_3q31p")
+
+[sub_resource type="Resource" id="Resource_ci558"]
+script = ExtResource("5_524ja")
+sound_effects = Array[ExtResource("6_rmf7j")]([SubResource("Resource_5pstg")])
+
+[sub_resource type="GDScript" id="GDScript_6mahy"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+collision_layer = 4
+collision_mask = 0
+floor_block_on_wall = false
+script = ExtResource("1_4jg88")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Area2D")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Area2D/Hitbox_iframe")
+hitbox_iframe = NodePath("Area2D")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_shggr")
+enemy_name = "Ghost"
+LV = 2
+HP = 1
+ATK = 9
+EXP = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("3_4s651")
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(2.3, 2.3)
+shape = SubResource("RectangleShape2D_ddx2q")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+scale = Vector2(2.3, 2.3)
+shape = SubResource("RectangleShape2D_4e0kp")
+debug_color = Color(0.901914, 0.309396, 0, 0.42)
+
+[node name="Hitbox_iframe" type="Timer" parent="Area2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ef4r7")
+}
+speed_scale = 1.5
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -8.0
+script = ExtResource("3_n7p7b")
+audio_library = SubResource("Resource_ci558")
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+visible = false
+position = Vector2(0, -9)
+script = ExtResource("5_plncu")
+damage_node = ExtResource("6_q4s2a")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_6mahy")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("area")]
+script = ExtResource("7_vwp3b")
+area = NodePath("../../Area2D")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("8_llm2s")
+speed = 100.0
+
+[node name="Bounce" type="Node" parent="StateMachine"]
+script = ExtResource("9_ki8vk")
+
+[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("area")]
+script = ExtResource("10_ga7yx")
+area = NodePath("../../Area2D")
+dying_effect = ExtResource("11_ch1nl")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="StateMachine/Move" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Area2D/Hitbox_iframe" to="." method="_on_hitbox_iframe_timeout"]

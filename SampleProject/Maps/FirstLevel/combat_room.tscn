@@ -1,0 +1,363 @@
+[gd_scene load_steps=16 format=4 uid="uid://n8de41ke2tmv"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_cidgj"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_1gj7c"]
+[ext_resource type="Texture2D" uid="uid://5xcr3mvkxsa0" path="res://assets/sprites/Tiles/OoEMonastery5.png" id="3_ox741"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="4_hu8of"]
+[ext_resource type="PackedScene" uid="uid://bnsy1kwfc8603" path="res://SampleProject/extra_scenes/stage_elements/combat_door.tscn" id="4_nfs5r"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Event/combat_event.gd" id="5_kpgoe"]
+[ext_resource type="PackedScene" uid="uid://cxfeg6jj146ah" path="res://SampleProject/enemies/ArmorLord/armor_lord.tscn" id="6_6wjbu"]
+[ext_resource type="PackedScene" uid="uid://pmhfi7gv5sxe" path="res://SampleProject/extra_scenes/spawn_enemy.tscn" id="6_luxi4"]
+[ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="7_ogh4b"]
+[ext_resource type="PackedScene" uid="uid://cl543nev3n2bf" path="res://SampleProject/enemies/AxeArmor/axe_armor.tscn" id="8_kg6ei"]
+[ext_resource type="PackedScene" uid="uid://bxi1h5wf54pjq" path="res://SampleProject/enemies/BoneScimitar/bone_scimitar.tscn" id="9_1pwnx"]
+[ext_resource type="PackedScene" uid="uid://dfuncyp0yhrbk" path="res://SampleProject/enemies/Slinger/slinger.tscn" id="10_sq3r5"]
+[ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="13_f5kw1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l1ixx"]
+texture = ExtResource("3_ox741")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+11:0/0 = 0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+12:0/0 = 0
+12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+13:0/0 = 0
+13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+14:0/0 = 0
+14:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+15:0/0 = 0
+15:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+12:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+0:7/0 = 0
+3:7/0 = 0
+6:7/0 = 0
+9:7/0 = 0
+12:7/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_13nju"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_l1ixx")
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_cidgj")
+
+[node name="RoomInstance" parent="." instance=ExtResource("2_1gj7c")]
+
+[node name="Foreground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAA4AAAAAAAAAACABAA4AAAABAAAAACACAA4AAAACAAAAACADAA4AAAADAAAAACAEAA4AAAAEAAAAACAFAA4AAAAFAAAAACAGAA4AAAAGAAAAACAHAA4AAAAHAAAAACAIAA4AAAAIAAAAACAJAA4AAAAJAAAAACAKAA4AAAAKAAAAACALAA4AAAALAAAAACAMAA4AAAAMAAAAACANAA4AAAANAAAAACAOAA4AAAAOAAAAACAPAA4AAAABAAAAACAQAA4AAAACAAAAACARAA4AAAADAAAAACASAA4AAAAEAAAAACATAA4AAAAFAAAAACAUAA4AAAAGAAAAACAVAA4AAAAHAAAAACAWAA4AAAAIAAAAACAXAA4AAAAJAAAAACAYAA4AAAAKAAAAACAZAA4AAAALAAAAACAaAA4AAAAMAAAAACAbAA4AAAANAAAAACAcAA4AAAAOAAAAACAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAACAAAAAAADAAAAAAADAAAAAAAEAAAAAAAEAAAAAAAFAAAAAAAFAAAAAAAGAAAAAAAGAAAAAAAHAAAAAAAHAAAAAAAIAAAAAAAIAAAAAAAJAAAAAAAJAAAAAAAKAAAAAAAKAAAAAAALAAAAAAALAAAAAAAMAAAAAAAMAAAAAAANAAAAAAANAAAAAAAOAAAAAAAOAAAAAAAPAAAAAAABAAAAAAAQAAAAAAACAAAAAAARAAAAAAADAAAAAAASAAAAAAAEAAAAAAATAAAAAAAFAAAAAAAUAAAAAAAGAAAAAAAVAAAAAAAHAAAAAAAWAAAAAAAIAAAAAAAXAAAAAAAJAAAAAAAYAAAAAAAKAAAAAAAZAAAAAAALAAAAAAAaAAAAAAAMAAAAAAAbAAAAAAANAAAAAAAcAAAAAAAOAAAAAAAdAAAAAAAPAAAAAAAdAA4AAAAPAAAAACAdAAEAAAAAAAEAABAdAAIAAAAAAAIAABAdAAMAAAAAAAEAABAdAAQAAAAAAAIAABAdAAUAAAAAAAEAABAdAAYAAAAAAAIAABAdAAcAAAAAAAEAABAdAAgAAAAAAAIAABAdAAkAAAAAAAMAABAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAEAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAMAAAA=")
+tile_set = SubResource("TileSet_13nju")
+
+[node name="Foreground2" type="TileMapLayer" parent="."]
+modulate = Color(0, 1, 1, 1)
+tile_map_data = PackedByteArray("AAALAAoAAAAOACYAAAAMAAoAAAAPACYAAAANAAoAAAAMACYAAAAOAAoAAAANACYAAAAPAAoAAAAOACYAAAAQAAoAAAAPACYAAAARAAoAAAAMACYAAAASAAoAAAANACYAAAAZAAcAAAAMACYAAAAaAAcAAAANACYAAAAbAAcAAAAOACYAAAAcAAcAAAAPACYAAAAXAAcAAAAOACYAAAAYAAcAAAAPACYAAAABAAcAAAAMACYAAAACAAcAAAANACYAAAADAAcAAAAOACYAAAAEAAcAAAAPACYAAAAFAAcAAAAMACYAAAAGAAcAAAANACYAAAA=")
+tile_set = ExtResource("4_hu8of")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Background" type="TileMapLayer" parent="ParallaxBackground/ParallaxLayer"]
+tile_map_data = PackedByteArray("AAABAAYAAAABAAMAAAABAAcAAAABAAQAAAABAAgAAAABAAUAAAABAAkAAAABAAYAAAACAAYAAAACAAMAAAACAAcAAAACAAQAAAACAAgAAAACAAUAAAACAAkAAAACAAYAAAADAAYAAAADAAMAAAADAAcAAAADAAQAAAADAAgAAAADAAUAAAADAAkAAAADAAYAAAAEAAYAAAAEAAMAAAAEAAcAAAAEAAQAAAAEAAgAAAAEAAUAAAAEAAkAAAAEAAYAAAAFAAYAAAAFAAMAAAAFAAcAAAAFAAQAAAAFAAgAAAAFAAUAAAAFAAkAAAAFAAYAAAAGAAcAAAAGAAQAAAAGAAgAAAAGAAUAAAAGAAkAAAAGAAYAAAAHAAYAAAAHAAMAAAAHAAcAAAAHAAQAAAAHAAgAAAAHAAUAAAAHAAkAAAAHAAYAAAAIAAYAAAAIAAMAAAAIAAcAAAAIAAQAAAAIAAgAAAAIAAUAAAAIAAkAAAAIAAYAAAAJAAcAAAAGAAQAABAJAAgAAAAJAAUAAAAJAAkAAAAJAAYAAAAKAAYAAAAFAAMAABAKAAcAAAAFAAQAABAKAAgAAAAKAAUAAAAKAAkAAAAKAAYAAAALAAYAAAAEAAMAABALAAcAAAAEAAQAABALAAgAAAALAAUAAAALAAkAAAALAAYAAAAMAAYAAAADAAMAABAMAAcAAAADAAQAABAMAAgAAAAMAAUAAAAMAAkAAAAMAAYAAAANAAYAAAACAAMAABANAAcAAAACAAQAABANAAgAAAANAAUAAAANAAkAAAANAAYAAAAOAAYAAAABAAMAABAOAAcAAAABAAQAABAOAAgAAAAOAAUAAAAOAAkAAAAOAAYAAAAPAAYAAAABAAMAAAAPAAcAAAABAAQAAAAPAAgAAAABAAUAAAAPAAkAAAABAAYAAAAQAAYAAAACAAMAAAAQAAcAAAACAAQAAAAQAAgAAAACAAUAAAAQAAkAAAACAAYAAAARAAYAAAADAAMAAAARAAcAAAADAAQAAAARAAgAAAADAAUAAAARAAkAAAADAAYAAAASAAYAAAAEAAMAAAASAAcAAAAEAAQAAAASAAgAAAAEAAUAAAASAAkAAAAEAAYAAAATAAYAAAAFAAMAAAATAAcAAAAFAAQAAAATAAgAAAAFAAUAAAATAAkAAAAFAAYAAAAUAAcAAAAGAAQAAAAUAAgAAAAGAAUAAAAUAAkAAAAGAAYAAAAVAAYAAAAHAAMAAAAVAAcAAAAHAAQAAAAVAAgAAAAHAAUAAAAVAAkAAAAHAAYAAAAWAAYAAAAIAAMAAAAWAAcAAAAIAAQAAAAWAAgAAAAIAAUAAAAWAAkAAAAIAAYAAAAXAAcAAAAGAAQAABAXAAgAAAAJAAUAAAAXAAkAAAAJAAYAAAAYAAYAAAAFAAMAABAYAAcAAAAFAAQAABAYAAgAAAAKAAUAAAAYAAkAAAAKAAYAAAAZAAYAAAAEAAMAABAZAAcAAAAEAAQAABAZAAgAAAALAAUAAAAZAAkAAAALAAYAAAAaAAYAAAADAAMAABAaAAcAAAADAAQAABAaAAgAAAAMAAUAAAAaAAkAAAAMAAYAAAAbAAYAAAACAAMAABAbAAcAAAACAAQAABAbAAgAAAANAAUAAAAbAAkAAAANAAYAAAAcAAYAAAABAAMAABAcAAcAAAABAAQAABAcAAgAAAAOAAUAAAAcAAkAAAAOAAYAAAABAAQAAAABAAEAAAABAAUAAAABAAIAAAACAAQAAAACAAEAAAACAAUAAAACAAIAAAADAAQAAAADAAEAAAADAAUAAAADAAIAAAAEAAQAAAAEAAEAAAAEAAUAAAAEAAIAAAAFAAQAAAAFAAEAAAAFAAUAAAAFAAIAAAAGAAUAAAAGAAIAAAAGAAYAAAAGAAMAAAAHAAQAAAAHAAEAAAAHAAUAAAAHAAIAAAAIAAQAAAAIAAEAAAAIAAUAAAAIAAIAAAAJAAUAAAAGAAIAABAJAAYAAAAGAAMAABAKAAQAAAAFAAEAABAKAAUAAAAFAAIAABALAAQAAAAEAAEAABALAAUAAAAEAAIAABAMAAQAAAADAAEAABAMAAUAAAADAAIAABANAAQAAAACAAEAABANAAUAAAACAAIAABAOAAQAAAABAAEAABAOAAUAAAABAAIAABAPAAQAAAABAAEAAAAPAAUAAAABAAIAAAAQAAQAAAACAAEAAAAQAAUAAAACAAIAAAARAAQAAAADAAEAAAARAAUAAAADAAIAAAASAAQAAAAEAAEAAAASAAUAAAAEAAIAAAATAAQAAAAFAAEAAAATAAUAAAAFAAIAAAAUAAUAAAAGAAIAAAAUAAYAAAAGAAMAAAAVAAQAAAAHAAEAAAAVAAUAAAAHAAIAAAAWAAQAAAAIAAEAAAAWAAUAAAAIAAIAAAAXAAUAAAAGAAIAABAXAAYAAAAGAAMAABAYAAQAAAAFAAEAABAYAAUAAAAFAAIAABAZAAQAAAAEAAEAABAZAAUAAAAEAAIAABAaAAQAAAADAAEAABAaAAUAAAADAAIAABAbAAQAAAACAAEAABAbAAUAAAACAAIAABAcAAQAAAABAAEAABAcAAUAAAABAAIAABA=")
+tile_set = SubResource("TileSet_13nju")
+
+[node name="Background2" type="TileMapLayer" parent="ParallaxBackground/ParallaxLayer"]
+tile_map_data = PackedByteArray("AAABAAgAAAABAAgAAAABAAkAAAABAAkAAAABAAoAAAABAAoAAAABAAsAAAABAAsAAAABAAwAAAABAAwAAAABAA0AAAABAA0AAAACAAgAAAACAAgAAAACAAkAAAACAAkAAAACAAoAAAACAAoAAAACAAsAAAACAAsAAAACAAwAAAACAAwAAAACAA0AAAACAA0AAAADAAcAAAADAAcAAAADAAgAAAADAAgAAAADAAkAAAADAAkAAAADAAoAAAADAAoAAAADAAsAAAADAAsAAAADAAwAAAADAAwAAAADAA0AAAADAA0AAAAEAAgAAAAEAAgAAAAEAAkAAAAEAAkAAAAEAAoAAAAEAAoAAAAEAAsAAAAEAAsAAAAEAAwAAAAEAAwAAAAEAA0AAAAEAA0AAAAFAAgAAAAFAAgAAAAFAAkAAAAFAAkAAAAFAAoAAAAFAAoAAAAFAAsAAAAFAAsAAAAFAAwAAAAFAAwAAAAFAA0AAAAFAA0AAAAGAAcAAAAGAAcAAAAGAAgAAAAGAAgAAAAGAAkAAAAGAAkAAAAGAAoAAAAGAAoAAAAGAAsAAAAGAAsAAAAGAAwAAAAGAAwAAAAGAA0AAAAGAA0AAAAHAAgAAAAHAAgAAAAHAAkAAAAHAAkAAAAHAAoAAAAHAAoAAAAHAAsAAAAHAAsAAAAHAAwAAAAHAAwAAAAHAA0AAAAHAA0AAAAIAAgAAAAIAAgAAAAIAAkAAAAIAAkAAAAIAAoAAAAIAAoAAAAIAAsAAAAIAAsAAAAIAAwAAAAIAAwAAAAIAA0AAAAIAA0AAAAJAAcAAAAJAAcAAAAJAAgAAAAJAAgAAAAJAAkAAAAJAAkAAAAJAAoAAAAJAAoAAAAJAAsAAAAJAAsAAAAJAAwAAAAJAAwAAAAJAA0AAAAJAA0AAAAKAAgAAAAKAAgAAAAKAAkAAAAKAAkAAAAKAAoAAAAKAAoAAAAKAAsAAAAKAAsAAAAKAAwAAAAKAAwAAAAKAA0AAAAKAA0AAAALAAgAAAALAAgAAAALAAkAAAALAAkAAAALAAoAAAALAAoAAAALAAsAAAALAAsAAAALAAwAAAALAAwAAAALAA0AAAALAA0AAAAMAAcAAAAMAAcAAAAMAAgAAAAMAAgAAAAMAAkAAAAMAAkAAAAMAAoAAAAMAAoAAAAMAAsAAAAMAAsAAAAMAAwAAAAMAAwAAAAMAA0AAAAMAA0AAAANAAgAAAANAAgAAAANAAkAAAANAAkAAAANAAoAAAANAAoAAAANAAsAAAANAAsAAAANAAwAAAANAAwAAAANAA0AAAANAA0AAAAOAAgAAAAOAAgAAAAOAAkAAAAOAAkAAAAOAAoAAAAOAAoAAAAOAAsAAAAOAAsAAAAOAAwAAAAOAAwAAAAOAA0AAAAOAA0AAAAPAAgAAAABAAgAAAAPAAkAAAABAAkAAAAPAAoAAAABAAoAAAAPAAsAAAABAAsAAAAPAAwAAAABAAwAAAAPAA0AAAABAA0AAAAQAAgAAAACAAgAAAAQAAkAAAACAAkAAAAQAAoAAAACAAoAAAAQAAsAAAACAAsAAAAQAAwAAAACAAwAAAAQAA0AAAACAA0AAAARAAcAAAADAAcAAAARAAgAAAADAAgAAAARAAkAAAADAAkAAAARAAoAAAADAAoAAAARAAsAAAADAAsAAAARAAwAAAADAAwAAAARAA0AAAADAA0AAAASAAgAAAAEAAgAAAASAAkAAAAEAAkAAAASAAoAAAAEAAoAAAASAAsAAAAEAAsAAAASAAwAAAAEAAwAAAASAA0AAAAEAA0AAAATAAgAAAAFAAgAAAATAAkAAAAFAAkAAAATAAoAAAAFAAoAAAATAAsAAAAFAAsAAAATAAwAAAAFAAwAAAATAA0AAAAFAA0AAAAUAAcAAAAGAAcAAAAUAAgAAAAGAAgAAAAUAAkAAAAGAAkAAAAUAAoAAAAGAAoAAAAUAAsAAAAGAAsAAAAUAAwAAAAGAAwAAAAUAA0AAAAGAA0AAAAVAAgAAAAHAAgAAAAVAAkAAAAHAAkAAAAVAAoAAAAHAAoAAAAVAAsAAAAHAAsAAAAVAAwAAAAHAAwAAAAVAA0AAAAHAA0AAAAWAAgAAAAIAAgAAAAWAAkAAAAIAAkAAAAWAAoAAAAIAAoAAAAWAAsAAAAIAAsAAAAWAAwAAAAIAAwAAAAWAA0AAAAIAA0AAAAXAAcAAAAJAAcAAAAXAAgAAAAJAAgAAAAXAAkAAAAJAAkAAAAXAAoAAAAJAAoAAAAXAAsAAAAJAAsAAAAXAAwAAAAJAAwAAAAXAA0AAAAJAA0AAAAYAAgAAAAKAAgAAAAYAAkAAAAKAAkAAAAYAAoAAAAKAAoAAAAYAAsAAAAKAAsAAAAYAAwAAAAKAAwAAAAYAA0AAAAKAA0AAAAZAAgAAAALAAgAAAAZAAkAAAALAAkAAAAZAAoAAAALAAoAAAAZAAsAAAALAAsAAAAZAAwAAAALAAwAAAAZAA0AAAALAA0AAAAaAAcAAAAMAAcAAAAaAAgAAAAMAAgAAAAaAAkAAAAMAAkAAAAaAAoAAAAMAAoAAAAaAAsAAAAMAAsAAAAaAAwAAAAMAAwAAAAaAA0AAAAMAA0AAAAbAAgAAAANAAgAAAAbAAkAAAANAAkAAAAbAAoAAAANAAoAAAAbAAsAAAANAAsAAAAbAAwAAAANAAwAAAAbAA0AAAANAA0AAAAcAAgAAAAOAAgAAAAcAAkAAAAOAAkAAAAcAAoAAAAOAAoAAAAcAAsAAAAOAAsAAAAcAAwAAAAOAAwAAAAcAA0AAAAOAA0AAAA=")
+tile_set = SubResource("TileSet_13nju")
+
+[node name="Background3" type="TileMapLayer" parent="ParallaxBackground/ParallaxLayer"]
+z_index = -1
+tile_map_data = PackedByteArray("AAAAAAoAAAAAAAQAAAAAAAsAAAAAAAUAAAAAAAwAAAAAAAYAAAAAAA0AAAAAAAcAAAAdAAoAAAAAAAQAABAdAAsAAAAAAAUAABAdAAwAAAAAAAYAABAdAA0AAAAAAAcAABA=")
+tile_set = SubResource("TileSet_13nju")
+
+[node name="CombatDoor" parent="." instance=ExtResource("4_nfs5r")]
+position = Vector2(16, 384)
+combat_flag_id = 1
+should_close = true
+
+[node name="CombatDoor2" parent="." instance=ExtResource("4_nfs5r")]
+position = Vector2(944, 384)
+combat_flag_id = 1
+should_close = true
+
+[node name="CombatEvent" type="Node" parent="." node_paths=PackedStringArray("door1", "door2")]
+script = ExtResource("5_kpgoe")
+armor_lord = ExtResource("6_6wjbu")
+spawn_enemy = ExtResource("6_luxi4")
+event_ID = 1
+door1 = NodePath("../CombatDoor")
+door2 = NodePath("../CombatDoor2")
+
+[node name="SpawnEnemy" parent="CombatEvent" instance=ExtResource("6_luxi4")]
+position = Vector2(480, 438)
+enemy = ExtResource("7_ogh4b")
+enemy_type = "Skeleton"
+offset = Vector2(15, 33)
+spawn_range = Vector2(400, 0)
+respawn = true
+respawn_cooldown = 3.0
+condition = 3
+enemy_count = 8
+max_at_once = 1
+
+[node name="SpawnEnemy6" parent="CombatEvent" instance=ExtResource("6_luxi4")]
+position = Vector2(480, 288)
+enemy = ExtResource("7_ogh4b")
+enemy_type = "Skeleton"
+offset = Vector2(15, 33)
+spawn_range = Vector2(200, 0)
+respawn = true
+respawn_cooldown = 5.0
+condition = 3
+enemy_count = 5
+max_at_once = 1
+
+[node name="SpawnEnemy7" parent="CombatEvent" instance=ExtResource("6_luxi4")]
+position = Vector2(77, 197)
+enemy = ExtResource("10_sq3r5")
+enemy_type = "Slinger"
+offset = Vector2(15, 33)
+respawn = true
+respawn_cooldown = 4.0
+condition = 3
+enemy_count = 5
+max_at_once = 1
+
+[node name="SpawnEnemy8" parent="CombatEvent" instance=ExtResource("6_luxi4")]
+position = Vector2(884, 195)
+enemy = ExtResource("10_sq3r5")
+enemy_type = "Slinger"
+offset = Vector2(15, 33)
+respawn = true
+respawn_cooldown = 3.0
+condition = 3
+enemy_count = 3
+max_at_once = 1
+
+[node name="SpawnEnemy3" parent="CombatEvent" instance=ExtResource("6_luxi4")]
+position = Vector2(480, 438)
+enemy = ExtResource("8_kg6ei")
+enemy_type = "AxeArmor"
+offset = Vector2(15, 40)
+spawn_range = Vector2(400, 0)
+respawn = true
+respawn_cooldown = 15.0
+condition = 3
+enemy_count = 4
+max_at_once = 1
+
+[node name="SpawnEnemy4" parent="CombatEvent" instance=ExtResource("6_luxi4")]
+position = Vector2(480, 438)
+enemy = ExtResource("9_1pwnx")
+enemy_type = "BoneScimitar"
+offset = Vector2(15, 48)
+spawn_range = Vector2(400, 0)
+respawn = true
+respawn_cooldown = 6.0
+condition = 3
+enemy_count = 6
+max_at_once = 1
+
+[node name="SpawnEnemy5" parent="CombatEvent" instance=ExtResource("6_luxi4")]
+position = Vector2(480, 438)
+enemy = ExtResource("9_1pwnx")
+enemy_type = "BoneScimitar"
+offset = Vector2(15, 50)
+spawn_range = Vector2(400, 0)
+respawn = true
+respawn_cooldown = 10.0
+condition = 3
+enemy_count = 4
+max_at_once = 1
+
+[node name="Timer" type="Timer" parent="CombatEvent"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Pick-up2" parent="." instance=ExtResource("13_f5kw1")]
+position = Vector2(461, 301)
+id = 2
+pickup_flag = 25
+
+[node name="Pick-up3" parent="." instance=ExtResource("13_f5kw1")]
+position = Vector2(502, 301)
+id = 4
+pickup_flag = 26
+
+[connection signal="timeout" from="CombatEvent/Timer" to="CombatEvent" method="_on_timer_timeout"]

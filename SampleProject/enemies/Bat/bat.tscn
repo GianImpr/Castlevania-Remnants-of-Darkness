@@ -1,0 +1,257 @@
+[gd_scene load_steps=26 format=3 uid="uid://126k0dgwv4i3"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/Bat/bat.gd" id="1_t4pbr"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_sndu6"]
+[ext_resource type="Texture2D" uid="uid://b0wy844sn8xoh" path="res://assets/sprites/Enemies/Bat.png" id="3_bjahf"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="4_81pg3"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Bat/BatIdle.gd" id="5_bdtj8"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Bat/BatFlying.gd" id="6_5b8ur"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="6_fwwmo"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Bat/BatWaking.gd" id="6_vdxb1"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Bat/BatDying.gd" id="7_nruu7"]
+[ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="8_hh4ex"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="10_nrqdg"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="12_i40f0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="13_c63lj"]
+[ext_resource type="AudioStream" uid="uid://c2ubqq1vrk4vi" path="res://assets/sounds/Enemies/Bat/Bat.wav" id="14_gdk68"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gki5g"]
+size = Vector2(25, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8mfi"]
+size = Vector2(24, 20)
+
+[sub_resource type="Animation" id="Animation_64vy7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_nvr71"]
+resource_name = "flying"
+length = 1.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 3, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_d8psw"]
+resource_name = "idle"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_x26go"]
+resource_name = "waking"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pqyyj"]
+_data = {
+"RESET": SubResource("Animation_64vy7"),
+"flying": SubResource("Animation_nvr71"),
+"idle": SubResource("Animation_d8psw"),
+"waking": SubResource("Animation_x26go")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxwe6"]
+radius = 354.683
+
+[sub_resource type="GDScript" id="GDScript_vowgc"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="Resource" id="Resource_o1e8j"]
+script = ExtResource("13_c63lj")
+Tag = "dead"
+stream = ExtResource("14_gdk68")
+
+[sub_resource type="Resource" id="Resource_qnkqq"]
+script = ExtResource("12_i40f0")
+sound_effects = Array[ExtResource("13_c63lj")]([SubResource("Resource_o1e8j")])
+
+[node name="Bat" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+collision_layer = 4
+collision_mask = 0
+floor_block_on_wall = false
+script = ExtResource("1_t4pbr")
+vision = NodePath("Area of Vision")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Area2D")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Area2D/Iframe Timer")
+hitbox_iframe = NodePath("Area2D")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_sndu6")
+enemy_name = "Bat"
+LV = 1
+HP = 1
+ATK = 9
+EXP = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("3_bjahf")
+hframes = 10
+vframes = 2
+frame = 10
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, 22.5)
+shape = SubResource("RectangleShape2D_gki5g")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(-2, 5)
+shape = SubResource("RectangleShape2D_i8mfi")
+
+[node name="Iframe Timer" type="Timer" parent="Area2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pqyyj")
+}
+speed_scale = 2.0
+
+[node name="Area of Vision" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision"]
+shape = SubResource("CircleShape2D_rxwe6")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_vowgc")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+script = ExtResource("5_bdtj8")
+hitbox_iframe = NodePath("../../Area2D/Hitbox")
+
+[node name="Waking" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe", "wake_duration")]
+script = ExtResource("6_vdxb1")
+hitbox_iframe = NodePath("../../Area2D/Hitbox")
+wake_duration = NodePath("WakeDuration")
+
+[node name="WakeDuration" type="Timer" parent="StateMachine/Waking"]
+
+[node name="Flying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+script = ExtResource("6_5b8ur")
+hitbox_iframe = NodePath("../../Area2D/Hitbox")
+SPEED = Vector2(200, 300)
+
+[node name="Dying" type="Node" parent="StateMachine"]
+script = ExtResource("7_nruu7")
+dying_effect = ExtResource("8_hh4ex")
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+position = Vector2(0, -57)
+script = ExtResource("6_fwwmo")
+damage_node = ExtResource("4_81pg3")
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -15.0
+script = ExtResource("10_nrqdg")
+audio_library = SubResource("Resource_qnkqq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Area2D/Iframe Timer" to="." method="_on_iframe_timer_timeout"]
+[connection signal="body_entered" from="Area of Vision" to="StateMachine/Idle" method="_on_area_of_vision_body_entered"]
+[connection signal="timeout" from="StateMachine/Waking/WakeDuration" to="StateMachine/Waking" method="_on_wake_duration_timeout"]

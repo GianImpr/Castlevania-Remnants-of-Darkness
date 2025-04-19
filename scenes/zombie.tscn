@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://bykvw48m04nlg"]
+
+[ext_resource type="Texture2D" uid="uid://bfbhnh66puau2" path="res://assets/sprites/Enemies/Zombie.png" id="1_ac2l3"]
+[ext_resource type="Script" path="res://scripts/zombie.gd" id="1_e77u0"]
+[ext_resource type="PackedScene" uid="uid://brv2m3cxkh34f" path="res://scenes/kill_zone.tscn" id="2_iae6g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6knj"]
+atlas = ExtResource("1_ac2l3")
+region = Rect2(0, 0, 30, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w1f6"]
+atlas = ExtResource("1_ac2l3")
+region = Rect2(30, 0, 30, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hu14i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6knj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w1f6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vaymi"]
+size = Vector2(21, 45)
+
+[node name="Zombie" type="Node2D"]
+script = ExtResource("1_e77u0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hu14i")
+autoplay = "default"
+frame = 1
+frame_progress = 0.884774
+
+[node name="Kill zone" parent="." instance=ExtResource("2_iae6g")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill zone"]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_vaymi")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

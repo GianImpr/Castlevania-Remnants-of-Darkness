@@ -1,0 +1,425 @@
+[gd_scene load_steps=21 format=3 uid="uid://d0jg4wghfdqpn"]
+
+[ext_resource type="Texture2D" uid="uid://cx0am10mnr4np" path="res://assets/sprites/PowerUps/Icicle.png" id="1_jgp1w"]
+[ext_resource type="Script" path="res://SampleProject/Objects/ArcticShield/icicle.gd" id="1_mob5w"]
+[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="2_rbtqm"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_3t8er"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_ptlel"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_3p6t8"]
+[ext_resource type="AudioStream" uid="uid://dilfjuatytln6" path="res://assets/sounds/Powerups/ArcticShield/OpenShield/Hit.MP3" id="7_sywl1"]
+[ext_resource type="AudioStream" uid="uid://cbkwgw4yer5fw" path="res://assets/sounds/Hit.MP3" id="7_yxglj"]
+
+[sub_resource type="Animation" id="Animation_4b7c2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [22]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../IcicleFade:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../IcicleFade:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Dissolve:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Explosion:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ld0xm"]
+resource_name = "create"
+length = 1.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dissolve_base"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_t7nul"]
+resource_name = "destroy"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Explosion:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Area2D:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rqpgv"]
+resource_name = "dissolve_base"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [21]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Dissolve:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../IcicleFade:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../IcicleFade:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["travel"],
+"method": &"play"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"change_parent"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ihggy"]
+resource_name = "travel"
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [21]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Area2D:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ep8w1"]
+_data = {
+"RESET": SubResource("Animation_4b7c2"),
+"create": SubResource("Animation_ld0xm"),
+"destroy": SubResource("Animation_t7nul"),
+"dissolve_base": SubResource("Animation_rqpgv"),
+"travel": SubResource("Animation_ihggy")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byaud"]
+size = Vector2(108, 38)
+
+[sub_resource type="Curve" id="Curve_oluk7"]
+max_value = 3.0
+_data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1e-05, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_jy3xv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 1, 1, 0)
+
+[sub_resource type="Resource" id="Resource_g6rs7"]
+script = ExtResource("6_3p6t8")
+Tag = "ice"
+stream = ExtResource("7_sywl1")
+
+[sub_resource type="Resource" id="Resource_v2tkt"]
+script = ExtResource("6_3p6t8")
+Tag = "hit_sfx"
+stream = ExtResource("7_yxglj")
+
+[sub_resource type="Resource" id="Resource_8k2xb"]
+script = ExtResource("5_ptlel")
+sound_effects = Array[ExtResource("6_3p6t8")]([SubResource("Resource_g6rs7"), SubResource("Resource_v2tkt")])
+
+[node name="Icicle" type="RigidBody2D" node_paths=PackedStringArray("hitbox", "sound", "animation", "area")]
+position = Vector2(30, 0)
+gravity_scale = 0.0
+script = ExtResource("1_mob5w")
+acceleration = 20.0
+max_speed = 800.0
+magical = true
+hitbox = NodePath("Area2D/Hitbox")
+sound = NodePath("PolyphonicAudio")
+hit_collision_scene = ExtResource("2_rbtqm")
+animation = NodePath("AnimationPlayer")
+area = NodePath("Area2D")
+
+[node name="Icicle2" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_jgp1w")
+hframes = 15
+vframes = 3
+frame = 22
+
+[node name="IcicleFade" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("1_jgp1w")
+hframes = 15
+vframes = 3
+frame = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Icicle2")
+libraries = {
+"": SubResource("AnimationLibrary_ep8w1")
+}
+autoplay = "create"
+speed_scale = 3.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 4
+monitoring = false
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(12, -1)
+shape = SubResource("RectangleShape2D_byaud")
+
+[node name="Dissolve" type="CPUParticles2D" parent="."]
+position = Vector2(-33, 6)
+scale = Vector2(2, 2)
+emitting = false
+amount = 25
+lifetime = 0.33
+one_shot = true
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(10, 10)
+direction = Vector2(0, -1)
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_oluk7")
+color = Color(0, 0.596078, 1, 1)
+
+[node name="Explosion" type="CPUParticles2D" parent="."]
+position = Vector2(12, 0)
+scale = Vector2(2, 2)
+emitting = false
+amount = 200
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(25, 10)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_curve = SubResource("Curve_oluk7")
+color = Color(0, 0.596078, 1, 1)
+color_initial_ramp = SubResource("Gradient_jy3xv")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("4_3t8er")
+audio_library = SubResource("Resource_8k2xb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

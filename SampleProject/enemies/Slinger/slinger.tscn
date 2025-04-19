@@ -1,0 +1,306 @@
+[gd_scene load_steps=29 format=3 uid="uid://dfuncyp0yhrbk"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/Skeleton.gd" id="1_vg00r"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_q8su5"]
+[ext_resource type="Texture2D" uid="uid://0mfaod3akkg1" path="res://assets/sprites/Enemies/Slinger/Slinger.png" id="3_cikg3"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_s8roe"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_0b0j7"]
+[ext_resource type="AudioStream" uid="uid://c1mpwbjmbcwi4" path="res://assets/sounds/ThrowBone.MP3" id="7_8iduh"]
+[ext_resource type="AudioStream" uid="uid://cqnbivel1hcx6" path="res://assets/sounds/SkeletonKill.MP3" id="7_okkd4"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="8_pbqbx"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="9_hi8yh"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonIdle.gd" id="10_xt7jb"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonMoving.gd" id="11_dmtn2"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonAttack.gd" id="12_2jss4"]
+[ext_resource type="PackedScene" uid="uid://bgqxhdb3bmwpy" path="res://SampleProject/enemies/Slinger/slinger_projectile.tscn" id="13_ac424"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonDying.gd" id="14_r02y0"]
+[ext_resource type="PackedScene" uid="uid://c68ce046l2fjs" path="res://SampleProject/enemies/Slinger/slinger_shatter.tscn" id="15_n0q4b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg1j5"]
+size = Vector2(25.6522, 40)
+
+[sub_resource type="GDScript" id="GDScript_10oeh"]
+script/source = "extends AudioStreamPlayer2D
+
+
+@export var audio_library: AudioLibrary
+@export var custom_max_polyphony: int = 32
+
+func _ready() -> void:
+	stream = AudioStreamPolyphonic.new()
+	stream.polyphony = custom_max_polyphony
+	process_mode = PROCESS_MODE_ALWAYS
+
+func play_sound_effect_from_library(_tag: String) -> void:
+	if _tag:
+		var audio_stream = audio_library.get_audio_stream(_tag)
+		if !playing: self.play()
+		
+		var polyphonic_stream_playback := self.get_stream_playback()
+		polyphonic_stream_playback.play_stream(audio_stream)
+	else:
+		printerr(\"no tag provided, cannnot play sound effect!\")
+"
+
+[sub_resource type="Resource" id="Resource_tqpj4"]
+script = ExtResource("6_0b0j7")
+Tag = "throw"
+stream = ExtResource("7_8iduh")
+
+[sub_resource type="Resource" id="Resource_73b0q"]
+script = ExtResource("6_0b0j7")
+Tag = "dying"
+stream = ExtResource("7_okkd4")
+
+[sub_resource type="Resource" id="Resource_7cys7"]
+script = ExtResource("4_s8roe")
+sound_effects = Array[ExtResource("6_0b0j7")]([SubResource("Resource_tqpj4"), SubResource("Resource_73b0q")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63bul"]
+size = Vector2(17.8261, 33.0435)
+
+[sub_resource type="GDScript" id="GDScript_8q4jf"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qovo5"]
+size = Vector2(418.913, 126.522)
+
+[sub_resource type="Animation" id="Animation_mleb5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [22]
+}
+
+[sub_resource type="Animation" id="Animation_lpud7"]
+resource_name = "idle"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25, 26]
+}
+
+[sub_resource type="Animation" id="Animation_gymmq"]
+resource_name = "throw"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15, 16, 17, 18]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Attack")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"throw_bone"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ng0ac"]
+resource_name = "moving"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_318wi"]
+_data = {
+"RESET": SubResource("Animation_mleb5"),
+"idle": SubResource("Animation_lpud7"),
+"throw": SubResource("Animation_gymmq"),
+"walk": SubResource("Animation_ng0ac")
+}
+
+[node name="Slinger" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+scale = Vector2(2.3, 2.3)
+collision_layer = 4
+script = ExtResource("1_vg00r")
+vision = NodePath("Area of Vision")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Area2D")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamageLocation")
+iframe_timer = NodePath("Area2D/Timer")
+hitbox_iframe = NodePath("Area2D")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_q8su5")
+enemy_name = "Slinger"
+LV = 4
+HP = 5
+ATK = 8
+DEF = 3
+EXP = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_cikg3")
+hframes = 11
+vframes = 3
+frame = 22
+
+[node name="Collision box" type="CollisionShape2D" parent="."]
+position = Vector2(3.26087, 1.30435)
+shape = SubResource("RectangleShape2D_dg1j5")
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+script = SubResource("GDScript_10oeh")
+audio_library = SubResource("Resource_7cys7")
+
+[node name="DamageLocation" type="Marker2D" parent="."]
+position = Vector2(1.30435, -23.913)
+script = ExtResource("8_pbqbx")
+damage_node = ExtResource("9_hi8yh")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3.26087, 0.869568)
+shape = SubResource("RectangleShape2D_63bul")
+
+[node name="Timer" type="Timer" parent="Area2D"]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_8q4jf")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../SlingerAnim")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+script = ExtResource("10_xt7jb")
+hitbox_iframe = NodePath("../../Area2D/Hitbox")
+
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe", "timer_attack", "timer_direction")]
+script = ExtResource("11_dmtn2")
+hitbox_iframe = NodePath("../../Area2D/Hitbox")
+timer_attack = NodePath("Attack")
+timer_direction = NodePath("SwitchDirection")
+SPEED = 4000.0
+aggro_distance = Vector2(450, 50)
+
+[node name="Attack" type="Timer" parent="StateMachine/Moving"]
+wait_time = 0.5
+
+[node name="SwitchDirection" type="Timer" parent="StateMachine/Moving"]
+wait_time = 0.5
+
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+script = ExtResource("12_2jss4")
+hitbox_iframe = NodePath("../../Area2D/Hitbox")
+bone_scene = ExtResource("13_ac424")
+bone_speed = Vector2(450, 0)
+
+[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+script = ExtResource("14_r02y0")
+hitbox_iframe = NodePath("../../Area2D/Hitbox")
+dying_scene = ExtResource("15_n0q4b")
+
+[node name="Area of Vision" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision"]
+position = Vector2(17.0652, -26.3044)
+shape = SubResource("RectangleShape2D_qovo5")
+
+[node name="SlingerAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_318wi")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Area2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Moving/Attack" to="StateMachine/Moving" method="_on_attack_timeout"]
+[connection signal="timeout" from="StateMachine/Moving/SwitchDirection" to="StateMachine/Moving" method="_on_switch_direction_timeout"]
+[connection signal="body_entered" from="Area of Vision" to="StateMachine/Idle" method="_on_area_of_vision_body_entered"]
