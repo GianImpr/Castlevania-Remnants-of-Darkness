@@ -843,13 +843,13 @@ anim_speed_max = 1.0
 size = Vector2(27, 67)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dklpl"]
-size = Vector2(27, 66)
+size = Vector2(27, 49.3043)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qip8"]
-size = Vector2(88, 108)
+size = Vector2(88, 65.9565)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3amw"]
-size = Vector2(20, 37)
+size = Vector2(20, 12.8478)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjqq2"]
 size = Vector2(74, 17)
@@ -1013,7 +1013,7 @@ collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="Detection"]
 visible = false
-position = Vector2(1.5, 25)
+position = Vector2(1.5, 33.3478)
 shape = SubResource("RectangleShape2D_dklpl")
 
 [node name="Swing" type="Area2D" parent="."]
@@ -1022,7 +1022,7 @@ collision_mask = 2
 
 [node name="SwingHitbox" type="CollisionShape2D" parent="Swing"]
 visible = false
-position = Vector2(27, 5)
+position = Vector2(27, 26.0217)
 shape = SubResource("RectangleShape2D_4qip8")
 disabled = true
 
@@ -1031,7 +1031,6 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="FireHitbox" type="CollisionShape2D" parent="Fire"]
-visible = false
 position = Vector2(5, 40)
 shape = SubResource("RectangleShape2D_j3amw")
 disabled = true

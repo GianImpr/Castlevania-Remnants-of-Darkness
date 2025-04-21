@@ -23,3 +23,8 @@ func Physics_Update(delta: float):
 	
 	if player.is_on_floor() and ignore_landing.is_stopped():
 		Transitioned.emit(self, "hard_landing")
+		player.mercy_invincibility_duration.start()
+		var tween = get_tree().create_tween()
+		const TWEEN_LOOP_DURATION: float = 0.1
+		tween.set_loops(player.mercy_invincibility_duration.wait_time/TWEEN_LOOP_DURATION/2)
+		tween.tween_property(player.sprite, "self_modulate", Color(1,1,1,1), 0.2).from(Color(1,1,1,0.5))
