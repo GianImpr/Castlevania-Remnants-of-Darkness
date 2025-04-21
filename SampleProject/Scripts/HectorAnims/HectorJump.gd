@@ -9,7 +9,7 @@ func enter():
 	animation.seek(0)
 	player.velocity.y = JUMP_VELOCITY
 	sound.play_sound_effect_from_library("jump")
-	
+		
 func Update(delta: float):
 	pass
 	
@@ -17,6 +17,7 @@ func Physics_Update(delta: float):
 		
 	if not Input.is_action_pressed("jump") and player.velocity.y < 0:
 		player.velocity.y *= 0.95*delta
+
 			
 	can_move_with_momentum(player.velocity.y < 200)
 	can_turn()

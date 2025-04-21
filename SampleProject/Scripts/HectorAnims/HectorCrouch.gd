@@ -17,6 +17,7 @@ func Update(delta: float):
 	can_turn()
 	can_fall(false)
 	can_attack()
+	can_guard()
 	check_is_hurt()
 	can_die()
 	can_drop_ledge()

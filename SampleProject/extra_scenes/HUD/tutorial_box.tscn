@@ -34,13 +34,16 @@ condition = "Global.player.stats.findItem(1, Global.player.stats.skill_inventory
 
 [sub_resource type="Resource" id="Resource_v7vry"]
 script = ExtResource("2_fcv6a")
-title = "GUARD HEALTH"
+title = "GUARD HEALTH AND COMBO BREAKS"
 description = "Guard health represents how many hits Hector
 can block before suffering from a guard break.
 
 The two orbs beneath the MP gauge represent
 remaining Guard health, which recovers over
-time."
+time.
+
+Enemies can juggle Hector if they sorround him.
+To minimize damage taken, quickly guard the attacks."
 image = ExtResource("3_cyhd6")
 condition = "Global.player.stats.findItem(1, Global.player.stats.skill_inventory)"
 
@@ -276,12 +279,15 @@ scroll_active = false
 scroll_following = true
 autowrap_mode = 0
 script = ExtResource("4_ghrps")
-new_text = "Guard health represents how many hits Hector
-can block before suffering from a guard break.
+new_text = "By holding [[R1]] down, Hector can block incoming
+attacks, negating most, if not all damage.
 
-The two orbs beneath the MP gauge represent
-remaining Guard health, which recovers over
-time."
+If the blocked attack's base damage is high,
+some chip damage will still be taken.
+
+Hector can only block a couple blows at a time,
+after which he will suffer a guard break, leaving
+him vulnerable."
 
 [node name="Continue" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

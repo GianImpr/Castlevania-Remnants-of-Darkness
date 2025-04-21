@@ -1,4 +1,4 @@
-[gd_scene load_steps=341 format=3 uid="uid://dt8t755oidogh"]
+[gd_scene load_steps=343 format=3 uid="uid://dt8t755oidogh"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorStats.gd" id="1_f0ls1"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
@@ -157,6 +157,7 @@
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorGuardPerfect.gd" id="133_qno2k"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorGuardPerfectAir.gd" id="134_fj7lc"]
 [ext_resource type="AudioStream" uid="uid://cqn0ukglajys6" path="res://assets/sounds/Effects/Guard/Block.wav" id="135_oqc8j"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorDamageMercy.gd" id="136_2ccld"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorWait.gd" id="136_g7mo7"]
 [ext_resource type="AudioStream" uid="uid://gfj58uvb5asp" path="res://assets/sounds/Effects/Guard/GuardBreak.wav" id="137_xyr7s"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="140_3d8p5"]
@@ -195,13 +196,18 @@ class_name HectorPlayer
 @export var guard_recovery: Timer
 @export var coyote_timer: Timer
 @export var perfect_guard_timer: Timer
+@export var mercy_invincibility_duration: Timer
+@export var mercy_invincibility_hit_threshold_reset: Timer
 @export_category(\"Temporary nodes\")
 @export var heal_effect: GPUParticles2D
 @export var heal_mp_effect: GPUParticles2D
 @export var tap_up: TapUp
 @export var effects: Node
 
+
 const SPEED = 260.0
+const IFRAMES_HIT_THRESHOLD: int = 3
+var current_hits_taken_before_iframes: int = 0
 var reset_position: Vector2
 var facing_position: int
 var skip_crouch_anim: bool
@@ -255,7 +261,7 @@ func _input(event: InputEvent) -> void:
 	
 func _process(delta: float) -> void:
 	#If harmed, become invulnerable for a while
-	set_collision_layer_value(2, not is_hurt)
+	set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped())
 	
 	# Update Hector's relic aura glow frame and facing position
 	if aura.frame != sprite.frame and not state_machine.current_state is HectorIdle or aura.frame != 0 and sprite.frame == 0:
@@ -357,7 +363,7 @@ func unlockMagic():
 	unlocked_magic = true
 	
 func isGuarding() -> bool:
-	return state_machine.current_state is HectorGuard or state_machine.current_state is HectorGuardWalk or isPerfectGuarding()
+	return state_machine.current_state is HectorGuard or state_machine.current_state is HectorGuardWalk or isPerfectGuarding() or state_machine.current_state is HectorGuardBlocking
 
 func isPerfectGuarding() -> bool:
 	return state_machine.current_state.can_perfect_guard and willPerfectGuard()
@@ -442,6 +448,10 @@ func applyHitEffect(type: Global.Attribute) -> void:
 
 	var tween = get_tree().create_tween()
 	tween.tween_property(sprite, \"self_modulate\", Color(1,1,1), 0.1)
+
+
+func _on_iframe_hit_counter_reset_timeout() -> void:
+	current_hits_taken_before_iframes = 0
 "
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
@@ -2520,6 +2530,35 @@ tracks/2/keys = {
 "values": [Vector2(17.622, 15)]
 }
 
+[sub_resource type="Animation" id="Animation_upmxk"]
+resource_name = "damage_mercy"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [122]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
 [sub_resource type="Animation" id="Animation_8pt8e"]
 resource_name = "dying"
 tracks/0/type = "value"
@@ -3021,30 +3060,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [62, 63, 64, 65, 66, 67, 68, 69]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape2D:shape:size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(15, 45)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 12.5)]
-}
 
 [sub_resource type="Animation" id="Animation_453o6"]
 resource_name = "landing"
@@ -3261,6 +3276,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [220, 221, 222]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 12.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 45)]
 }
 
 [sub_resource type="Animation" id="Animation_m23uc"]
@@ -3522,6 +3561,7 @@ _data = {
 "crouch": SubResource("Animation_v6x1f"),
 "crouch_attack": SubResource("Animation_dlpvv"),
 "crouch_attack_fist": SubResource("Animation_d4fhg"),
+"damage_mercy": SubResource("Animation_upmxk"),
 "dying": SubResource("Animation_8pt8e"),
 "guard_break": SubResource("Animation_qlkcq"),
 "guard_walk": SubResource("Animation_075cc"),
@@ -3818,8 +3858,8 @@ particles_anim_h_frames = 12
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "heal_effect", "heal_mp_effect", "tap_up", "effects")]
-scale = Vector2(2.3, 2.3)
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "heal_effect", "heal_mp_effect", "tap_up", "effects")]
+scale = Vector2(2.305, 2.305)
 collision_layer = 2
 collision_mask = 17
 floor_constant_speed = true
@@ -3837,6 +3877,8 @@ boost_message = ExtResource("1_l85l3")
 guard_recovery = NodePath("Guard_recovery")
 coyote_timer = NodePath("StateMachine/Falling/Coyote_timer")
 perfect_guard_timer = NodePath("Perfect_timer")
+mercy_invincibility_duration = NodePath("MercyInvincibility")
+mercy_invincibility_hit_threshold_reset = NodePath("IframeHitCounterReset")
 heal_effect = NodePath("Heal")
 heal_mp_effect = NodePath("HealMP")
 tap_up = NodePath("PressUp")
@@ -4161,6 +4203,11 @@ script = ExtResource("134_fj7lc")
 [node name="Wait" type="Node" parent="StateMachine"]
 script = ExtResource("136_g7mo7")
 
+[node name="Damage_mercy" type="Node" parent="StateMachine" node_paths=PackedStringArray("ignore_landing")]
+script = ExtResource("136_2ccld")
+recoil_speed = Vector2(150, -630)
+ignore_landing = NodePath("../Guard_break/Ignore_landing")
+
 [node name="PolyphonicAudioPlayer" parent="." instance=ExtResource("15_lipy2")]
 bus = &"SFX"
 audio_library = SubResource("Resource_uk8xp")
@@ -4296,6 +4343,13 @@ scale_amount_max = 2.0
 anim_speed_min = 6.0
 anim_speed_max = 6.0
 
+[node name="MercyInvincibility" type="Timer" parent="."]
+wait_time = 1.7
+one_shot = true
+
+[node name="IframeHitCounterReset" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="Sprite2D/SwordHitbox" to="Sprite2D/SwordHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="Sprite2D/Glow" to="Sprite2D" method="_on_glow_timeout"]
@@ -4306,3 +4360,4 @@ anim_speed_max = 6.0
 [connection signal="timeout" from="StateMachine/Opening_door/IdleDuration" to="StateMachine/Opening_door" method="_on_idle_duration_timeout"]
 [connection signal="timeout" from="StateMachine/Opening_door/FinalDuration" to="StateMachine/Opening_door" method="_on_final_duration_timeout"]
 [connection signal="timeout" from="Guard_recovery" to="." method="_on_guard_recovery_timeout"]
+[connection signal="timeout" from="IframeHitCounterReset" to="." method="_on_iframe_hit_counter_reset_timeout"]

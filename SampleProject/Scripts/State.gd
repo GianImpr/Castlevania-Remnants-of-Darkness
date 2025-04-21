@@ -90,16 +90,20 @@ func check_is_hurt():
 	if player.state_machine.current_state is HectorGuardPerfectAir:
 		return
 	if player.is_hurt and player.stats.Stats["HP"] > 0:
-		if player.is_on_floor() and not self is HectorCrouch:
+		player.current_hits_taken_before_iframes += 1
+		player.mercy_invincibility_hit_threshold_reset.start()
+		if player.is_on_floor() and not self is HectorCrouch and player.current_hits_taken_before_iframes != player.IFRAMES_HIT_THRESHOLD:
 			Transitioned.emit(self, "damage")
 		elif not player.is_on_floor():
 			Transitioned.emit(self, "damage_air")
-		else:
+		elif player.current_hits_taken_before_iframes != player.IFRAMES_HIT_THRESHOLD:
 			Transitioned.emit(self, "damage")
+		else:
+			Transitioned.emit(self, "damage_mercy")
 		var voice_clip = randi_range(0, 2)
-		if voice_clip > 0 and player.is_on_floor():
+		if voice_clip > 0 and player.is_on_floor() and player.current_hits_taken_before_iframes != player.IFRAMES_HIT_THRESHOLD:
 			voice.play_sound_effect_from_library("Hit" + str(voice_clip))
-		elif voice_clip > 0 and not player.is_on_floor():
+		elif voice_clip > 0 and (not player.is_on_floor() or player.current_hits_taken_before_iframes == player.IFRAMES_HIT_THRESHOLD):
 			voice.play_sound_effect_from_library("HeavyHit")
 	elif player.stats.Stats["HP"] == 0:
 		sound.play_sound_effect_from_library("damage")
