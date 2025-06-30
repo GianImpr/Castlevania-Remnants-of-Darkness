@@ -19,8 +19,8 @@ func _process(delta: float) -> void:
 		menu.accessed_menu = 0
 
 func on_focused(button):
-	labels.ResourcesValues.text = ""
-	sound.play_sound_effect_from_library("cursor")
+	super(button)
+	labels.SubStatValues.text = ""
 	deleteList()
 	match button.get_index():
 		0:
@@ -85,7 +85,7 @@ func initList(itemType: int) -> void:
 		var item = getItemFromCompendium(slot["id"])
 		if item.type == itemType:
 			var item_button = InventoryButton.new()
-			if itemType == item.Type.CONSUMABLE:
+			if itemType == item.Type.CONSUMABLE or itemType == item.Type.MATERIAL:
 				var qty_label = Label.new()
 				qty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 				qty_label.text = "x" + str(slot["quantity"])
@@ -170,17 +170,17 @@ func useItem(item: Item) -> bool:
 	
 	#Global.player.stats.removeItem()
 func displayProperties(item: Item) -> void:
-	labels.ResourcesValues.text = ""
+	labels.SubStatValues.text = ""
 	if item.power == 0:
 		return
 	match item.healing_type:
 		item.HealingType.HEALTH:
-			labels.ResourcesValues.text += "HP "
+			labels.SubStatValues.text += "HP "
 		item.HealingType.MAGIC:
-			labels.ResourcesValues.text += "MP "
+			labels.SubStatValues.text += "MP "
 		item.HealingType.SYNERGY:
-			labels.ResourcesValues.text += "SP "
+			labels.SubStatValues.text += "SP "
 	if item.power > 0:
-		labels.ResourcesValues.text += "+" + str(item.power)
+		labels.SubStatValues.text += "+" + str(item.power)
 	else:
-		labels.ResourcesValues.text += "-" + str(item.power)
+		labels.SubStatValues.text += "-" + str(item.power)

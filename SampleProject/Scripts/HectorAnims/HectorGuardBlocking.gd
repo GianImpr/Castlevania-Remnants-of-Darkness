@@ -2,6 +2,7 @@ extends State
 class_name HectorGuardBlocking
 @export var recoil_speed: float
 var can_perfect_guard: bool = false
+const DECELERATION: float = 0.9
 
 func enter():
 	player.velocity.x = recoil_speed * player.facing_position * (-1)
@@ -19,7 +20,7 @@ func Physics_Update(delta: float):
 	can_fall(true)
 	
 	if animation.is_playing():
-		player.velocity.x *= 0.9
+		player.velocity.x *= DECELERATION
 	else:
 		player.velocity.x = 0
 		Transitioned.emit(self, "guard")

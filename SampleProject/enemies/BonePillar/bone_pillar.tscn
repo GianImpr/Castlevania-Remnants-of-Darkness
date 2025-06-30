@@ -239,10 +239,12 @@ func on_child_transition(state, new_state_name):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nr5ai"]
 size = Vector2(60, 56)
 
-[node name="BonePillar" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "stats", "damage_popup", "hitbox_iframe")]
+[node name="BonePillar" type="CharacterBody2D" node_paths=PackedStringArray("vision", "vision_startup_timer", "sprite", "stats", "damage_popup", "hitbox_iframe")]
 collision_layer = 5
 collision_mask = 3
 script = ExtResource("1_whnnv")
+vision = NodePath("Vision")
+vision_startup_timer = NodePath("Vision/Timer")
 sprite = NodePath("Sprite2D")
 stats = NodePath("EnemyStats")
 damage_popup = NodePath("DamagePopup")
@@ -257,6 +259,8 @@ ATK = 12
 DEF = 5
 RES = 10
 EXP = 5
+weaknesses = Array[int]([1, 4])
+tolerances = Array[int]([3, 9])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -264,7 +268,7 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("3_2y5qg")
 offset = Vector2(10, 0)
 hframes = 6
@@ -281,10 +285,16 @@ audio_library = SubResource("Resource_cntts")
 visible = false
 collision_layer = 2
 collision_mask = 2
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
 position = Vector2(0, -30.5)
 shape = SubResource("RectangleShape2D_imavs")
+
+[node name="Timer" type="Timer" parent="Vision"]
+wait_time = 0.5
+one_shot = true
+autostart = true
 
 [node name="IdleDuration" type="Timer" parent="."]
 one_shot = true
@@ -328,8 +338,9 @@ shape = SubResource("RectangleShape2D_nr5ai")
 disabled = true
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
-visible = false
+scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_nr5ai")
 
 [connection signal="body_entered" from="Vision" to="StateMachine/Idle" method="_on_vision_body_entered"]
+[connection signal="timeout" from="Vision/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="IdleDuration" to="StateMachine/Idle" method="_on_idle_duration_timeout"]

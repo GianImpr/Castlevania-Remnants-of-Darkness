@@ -34,10 +34,6 @@ func pauseMenu():
 func resumeGame():
 	Global.screen = Global.ScreenType.NONE
 	get_tree().paused = false
-	
-func pauseGame():
-	get_tree().paused = true
-
 
 func _on_reset_timer_timeout() -> void:
 	Global.toTitleScreen()

@@ -13,6 +13,8 @@ class_name EnemyStats
 @export var rare_drop_id: int = 0
 @export var rare_drop_category: PickUp.ItemType
 @export var rare_drop_rate: float = 0
+@export var weaknesses: Array[Global.Attribute]
+@export var tolerances: Array[Global.Attribute]
 var enemy_parent_node: Node
 const PICK_UP_SCENE_PATH: String = "res://SampleProject/extra_scenes/items/pick_up.tscn"
 const HEART_SCENE_PATH: String = "res://SampleProject/extra_scenes/items/heart.tscn"
@@ -38,10 +40,12 @@ func determineDrop(include_misc_items: bool) -> void:
 	const HEART_DROP_RATE: float = 0.25
 	const MONEY_DROP_RATE: float = 0.3
 	var random_number: float = randf_range(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
-	if random_number > common_rate and random_number <= rare_rate:
+	if random_number > common_rate and random_number <= common_rate + rare_rate:
 		dropItem(rare_drop_id, rare_drop_category)
-	elif random_number <= common_drop_rate:
+		return
+	elif random_number <= common_rate:
 		dropItem(common_drop_id, common_drop_category)
+		return
 		
 	if not include_misc_items:
 		return

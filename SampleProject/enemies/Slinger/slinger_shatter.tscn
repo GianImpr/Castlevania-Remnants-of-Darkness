@@ -931,7 +931,7 @@ collision_layer = 8
 lock_rotation = true
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_s3hcq")
 hframes = 11
 vframes = 3
@@ -939,7 +939,7 @@ frame = 28
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Body"]
 position = Vector2(12, -1)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_onnmr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
@@ -955,11 +955,11 @@ lock_rotation = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Head"]
 position = Vector2(9, -3)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_1sj6t")
 
 [node name="Sprite" type="Sprite2D" parent="Head"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_s3hcq")
 hframes = 11
 vframes = 3
@@ -978,11 +978,11 @@ lock_rotation = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Arm"]
 position = Vector2(10, -1)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_e5ldl")
 
 [node name="Sprite" type="Sprite2D" parent="Arm"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_s3hcq")
 hframes = 11
 vframes = 3
@@ -1001,11 +1001,11 @@ lock_rotation = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="SecondArm"]
 position = Vector2(6.625, -2)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_brvuo")
 
 [node name="Sprite" type="Sprite2D" parent="SecondArm"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_s3hcq")
 hframes = 11
 vframes = 3
@@ -1024,11 +1024,11 @@ lock_rotation = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Leg"]
 position = Vector2(9, -1)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_v2cu3")
 
 [node name="Sprite" type="Sprite2D" parent="Leg"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_s3hcq")
 hframes = 11
 vframes = 3
@@ -1047,11 +1047,11 @@ lock_rotation = true
 
 [node name="CollisionBox" type="CollisionShape2D" parent="SecondLeg"]
 position = Vector2(4.5, 0)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_hrjl3")
 
 [node name="Sprite" type="Sprite2D" parent="SecondLeg"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_s3hcq")
 hframes = 11
 vframes = 3
@@ -1069,7 +1069,7 @@ collision_layer = 8
 lock_rotation = true
 
 [node name="Sprite" type="Sprite2D" parent="Shield"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_s3hcq")
 hframes = 11
 vframes = 3
@@ -1077,7 +1077,7 @@ frame = 6
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Shield"]
 position = Vector2(10.5, 8)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_37v7a")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]

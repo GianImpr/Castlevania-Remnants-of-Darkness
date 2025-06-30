@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://bbvmo7y5quj1s"]
 
-[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="1_hfjao"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/hint_box.gd" id="1_ltenk"]
+[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="2_e2c6u"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="3_chrie"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="3_jwu5c"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_twsgs"]
@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://bt2twsi6xy61v" path="res://assets/sounds/Menu/Window.wav" id="6_7n3ic"]
 
 [sub_resource type="Theme" id="Theme_0pcjg"]
-default_font = ExtResource("1_hfjao")
+default_font = ExtResource("2_e2c6u")
 default_font_size = 32
 
 [sub_resource type="Gradient" id="Gradient_yqhpb"]
@@ -113,7 +113,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_qh7qy")
 [node name="RichTextLabelWithButtons" type="RichTextLabel" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
 bbcode_enabled = true
-text = "Press [img]res://assets/sprites/HUD/Buttons/Square.png[/img] to attack."
 fit_content = true
 scroll_active = false
 autowrap_mode = 0

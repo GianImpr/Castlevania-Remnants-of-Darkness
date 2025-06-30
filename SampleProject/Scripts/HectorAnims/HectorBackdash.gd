@@ -6,9 +6,12 @@ class_name HectorBackdash
 @export var trail_timer: Timer
 @export var debris_timer: Timer
 var can_perfect_guard: bool = true
+const STARTING_ANIM_POSITION: float = 0.5
+const DEBRIS_POSITION: Vector2 = Vector2(40,68)
+const DECELERATION_RATE: float = 0.9
 
-
-func instance_scene(scene: PackedScene, get_player_frame: bool, offset: Vector2):
+#Creates one afterimage instance of Hector
+func instantiateScene(scene: PackedScene, get_player_frame: bool, offset: Vector2):
 	var instance: Sprite2D = scene.instantiate()
 	get_parent().get_parent().get_parent().add_child(instance)
 	instance.scale = player.scale
@@ -22,11 +25,11 @@ func instance_scene(scene: PackedScene, get_player_frame: bool, offset: Vector2)
 
 func enter():
 	animation.play("run_end", -1, -1, true)
-	animation.seek(0.5)
+	animation.seek(STARTING_ANIM_POSITION)
 	player.velocity.x = backdash_speed * player.facing_position * (-1)
 	sound.play_sound_effect_from_library("backdash")
-	instance_scene(trail_scene, true, Vector2(0,0))
-	instance_scene(debris_scene, false, Vector2(player.facing_position*40,68))
+	instantiateScene(trail_scene, true, Vector2(0,0))
+	instantiateScene(debris_scene, false, Vector2(player.facing_position*DEBRIS_POSITION.x,DEBRIS_POSITION.y))
 	trail_timer.start()
 	debris_timer.start()
 	if randi_range(0, 1) > 0:
@@ -46,7 +49,7 @@ func Physics_Update(delta: float):
 		debris_timer.stop()
 		
 	if animation.is_playing():
-		player.velocity.x *= 0.9
+		player.velocity.x *= DECELERATION_RATE
 	else:
 		player.velocity.x = 0
 		Transitioned.emit(self, "idle")
@@ -56,7 +59,7 @@ func exit():
 	debris_timer.stop()
 
 func _on_trail_timer_timeout() -> void:
-	instance_scene(trail_scene, true, Vector2(0,0))
+	instantiateScene(trail_scene, true, Vector2(0,0))
 	
 func _on_debris_timer_timeout() -> void:
-	instance_scene(debris_scene, false, Vector2(player.facing_position*40,68))
+	instantiateScene(debris_scene, false, Vector2(player.facing_position*DEBRIS_POSITION.x,DEBRIS_POSITION.y))

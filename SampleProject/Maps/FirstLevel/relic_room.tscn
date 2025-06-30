@@ -21,7 +21,10 @@ noise = SubResource("FastNoiseLite_hs7nk")
 shader = ExtResource("3_hnrkb")
 shader_parameter/min_intensity = 0.3
 shader_parameter/max_intensity = 0.4
-shader_parameter/speed = 10.0
+shader_parameter/speed_x = 10.0
+shader_parameter/speed_y = 10.0
+shader_parameter/fade_start = 1.0
+shader_parameter/fade_end = 1.0
 shader_parameter/n = SubResource("NoiseTexture2D_5m0lg")
 
 [sub_resource type="Gradient" id="Gradient_5mnut"]

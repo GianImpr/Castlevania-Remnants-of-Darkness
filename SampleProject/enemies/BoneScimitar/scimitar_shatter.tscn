@@ -468,6 +468,70 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brvuo"]
 size = Vector2(6.41304, 10)
 
+[sub_resource type="Animation" id="Animation_ty03t"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_xcv8j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [34]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-18, -19)]
+}
+
 [sub_resource type="Animation" id="Animation_50lfl"]
 resource_name = "destroy"
 length = 1.1
@@ -547,7 +611,16 @@ tracks/5/keys = {
 "values": [Vector2(5, 6)]
 }
 
-[sub_resource type="Animation" id="Animation_ty03t"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0aohk"]
+_data = {
+"RESET": SubResource("Animation_ty03t"),
+"destroy": SubResource("Animation_50lfl")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2cu3"]
+size = Vector2(5, 18)
+
+[sub_resource type="Animation" id="Animation_ogj1p"]
 resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
@@ -596,7 +669,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [34]
+"values": [36]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -610,15 +683,6 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(-18, -19)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0aohk"]
-_data = {
-"RESET": SubResource("Animation_ty03t"),
-"destroy": SubResource("Animation_50lfl")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2cu3"]
-size = Vector2(5, 18)
 
 [sub_resource type="Animation" id="Animation_e6a73"]
 resource_name = "destroy"
@@ -699,7 +763,16 @@ tracks/5/keys = {
 "values": [Vector2(5, 6)]
 }
 
-[sub_resource type="Animation" id="Animation_ogj1p"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qskqo"]
+_data = {
+"RESET": SubResource("Animation_ogj1p"),
+"destroy": SubResource("Animation_e6a73")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrjl3"]
+size = Vector2(5, 20)
+
+[sub_resource type="Animation" id="Animation_2kv7j"]
 resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
@@ -748,7 +821,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [36]
+"values": [35]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -762,15 +835,6 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(-18, -19)]
 }
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qskqo"]
-_data = {
-"RESET": SubResource("Animation_ogj1p"),
-"destroy": SubResource("Animation_e6a73")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrjl3"]
-size = Vector2(5, 20)
 
 [sub_resource type="Animation" id="Animation_r6tg6"]
 resource_name = "destroy"
@@ -851,7 +915,13 @@ tracks/5/keys = {
 "values": [Vector2(5, 6)]
 }
 
-[sub_resource type="Animation" id="Animation_2kv7j"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ku70"]
+_data = {
+"RESET": SubResource("Animation_2kv7j"),
+"destroy": SubResource("Animation_r6tg6")
+}
+
+[sub_resource type="Animation" id="Animation_ac6xd"]
 resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
@@ -900,7 +970,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [35]
+"values": [30]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -913,12 +983,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-18, -19)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ku70"]
-_data = {
-"RESET": SubResource("Animation_2kv7j"),
-"destroy": SubResource("Animation_r6tg6")
 }
 
 [sub_resource type="Animation" id="Animation_obvo6"]
@@ -1000,70 +1064,6 @@ tracks/5/keys = {
 "values": [Vector2(5, 6)]
 }
 
-[sub_resource type="Animation" id="Animation_ac6xd"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_xcv8j")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [10]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [30]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-18, -19)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bat4y"]
 _data = {
 "RESET": SubResource("Animation_ac6xd"),
@@ -1097,7 +1097,7 @@ lock_rotation = true
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
 position = Vector2(-18, -19)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("4_xcv8j")
 hframes = 10
 vframes = 4
@@ -1105,7 +1105,7 @@ frame = 32
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Body"]
 position = Vector2(12, -1)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_onnmr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
@@ -1121,7 +1121,7 @@ lock_rotation = true
 
 [node name="Sprite" type="Sprite2D" parent="Head"]
 position = Vector2(-18, -19)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("4_xcv8j")
 hframes = 10
 vframes = 4
@@ -1129,7 +1129,7 @@ frame = 31
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Head"]
 position = Vector2(9, -3)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_1sj6t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
@@ -1145,7 +1145,7 @@ lock_rotation = true
 
 [node name="Sprite" type="Sprite2D" parent="Arm"]
 position = Vector2(-18, -19)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("4_xcv8j")
 hframes = 10
 vframes = 4
@@ -1153,7 +1153,7 @@ frame = 33
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Arm"]
 position = Vector2(10, -1)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_e5ldl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Arm"]
@@ -1169,7 +1169,7 @@ lock_rotation = true
 
 [node name="Sprite" type="Sprite2D" parent="SecondArm"]
 position = Vector2(-18, -19)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("4_xcv8j")
 hframes = 10
 vframes = 4
@@ -1177,7 +1177,7 @@ frame = 34
 
 [node name="CollisionBox" type="CollisionShape2D" parent="SecondArm"]
 position = Vector2(6.625, -2)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_brvuo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SecondArm"]
@@ -1193,7 +1193,7 @@ lock_rotation = true
 
 [node name="Sprite" type="Sprite2D" parent="Leg"]
 position = Vector2(-18, -19)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("4_xcv8j")
 hframes = 10
 vframes = 4
@@ -1201,7 +1201,7 @@ frame = 36
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Leg"]
 position = Vector2(9, -1)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_v2cu3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Leg"]
@@ -1217,7 +1217,7 @@ lock_rotation = true
 
 [node name="Sprite" type="Sprite2D" parent="SecondLeg"]
 position = Vector2(-18, -19)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("4_xcv8j")
 hframes = 10
 vframes = 4
@@ -1225,7 +1225,7 @@ frame = 35
 
 [node name="CollisionBox" type="CollisionShape2D" parent="SecondLeg"]
 position = Vector2(4.5, 0)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_hrjl3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SecondLeg"]
@@ -1241,7 +1241,7 @@ lock_rotation = true
 
 [node name="Sprite" type="Sprite2D" parent="Shield"]
 position = Vector2(-18, -19)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("4_xcv8j")
 hframes = 10
 vframes = 4
@@ -1249,7 +1249,7 @@ frame = 30
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Shield"]
 position = Vector2(8.1, 3.9)
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_onnmr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]

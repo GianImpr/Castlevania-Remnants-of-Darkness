@@ -5,6 +5,7 @@ signal Transitioned
 var menu: InventoryMenu
 @export var animation: AnimationPlayer
 @export var default_button: InventoryButton
+var last_button: InventoryButton
 var sound: PolyphonicMenuAudio
 
 func enter():

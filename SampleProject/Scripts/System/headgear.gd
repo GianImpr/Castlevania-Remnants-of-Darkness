@@ -1,8 +1,23 @@
 extends Resource
 class_name Headgear
 
+enum RecipeStatus {
+	LOCKED,
+	UNLOCKED,
+	REVEALED,
+	UNAVAILABLE
+}
+
+enum Inventory {
+	weapon,
+	headgear,
+	body,
+	item
+}
+
+
 @export var headgear_name: String
-@export var headgear_description: String
+@export_multiline var headgear_description: String
 @export var element: Array[Global.Attribute]
 @export var ATK: int
 @export var DEF: int
@@ -15,3 +30,5 @@ class_name Headgear
 @export var value: int
 @export var max_quantity: int = 99
 @export var icon: Texture2D
+@export var recipe_status: RecipeStatus = RecipeStatus.UNAVAILABLE
+@export var recipe: Array[Dictionary] = [{"id": 0, "quantity": 0, "inventory": Inventory.weapon}]

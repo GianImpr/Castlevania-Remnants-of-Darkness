@@ -4,6 +4,7 @@ shader_type canvas_item;
 uniform float influence: hint_range(0.0, 1.0, 0.01) = 0.5;
 uniform vec3 color: source_color = vec3(1);
 uniform float speed: hint_range(0.0, 10.0, 0.1) = 1;
+uniform bool mix_colors = false;
 uniform bool enabled;
 uniform int sheet_columns = 20;
 uniform int sheet_rows = 20;
@@ -12,7 +13,17 @@ const float TWO_PI = 6.28318530718;
 
 // --- Functions --- //
 vec3 hsv2rgb(vec3 _c) {
-    vec4 _K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3);
+	float color_gradient_red_green;
+	float color_gradient_green_blue;
+	if (mix_colors) {
+		color_gradient_red_green = 1.0;
+		color_gradient_green_blue = 1.0;
+	}
+	else {
+		color_gradient_red_green = 2.0 / 3.0;
+		color_gradient_green_blue = 1.0 / 3.0;
+	}
+    vec4 _K = vec4(1.0, color_gradient_red_green, color_gradient_green_blue, 3);
     vec3 _p = abs(fract(_c.xxx + _K.xyz) * 6.0 - _K.www);
     return _c.z * mix(_K.xxx, clamp(_p - _K.xxx, 0.0, 1.0), _c.y);
 }

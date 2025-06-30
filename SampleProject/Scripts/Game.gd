@@ -12,6 +12,15 @@ var load_data: bool = false
 @export var world_environment: WorldEnvironment
 @export var touch_screen_enabled: bool = false
 
+@export var weapon_compendium: Array[Weapon]
+@export var item_compendium: ItemCompendium
+@export var headgear_compendium: Array[Headgear]
+@export var body_compendium: Array[Body]
+@export var legs_compendium: Array[Legs]
+@export var accessory_compendium: Array[Accessory]
+@export var skill_compendium: Array[Skill]
+@export var relic_compendium: Array[Relic]
+
 enum ControllerScheme {
 	PLAYSTATION,
 	XBOX,
@@ -68,6 +77,15 @@ func _ready() -> void:
 	else:
 		# If no data exists, set empty one.
 		MetSys.set_save_data()
+		
+	player.stats.item_compendium = item_compendium
+	player.stats.weapon_compendium = weapon_compendium
+	player.stats.headgear_compendium = headgear_compendium
+	player.stats.body_compendium = body_compendium
+	player.stats.legs_compendium = legs_compendium
+	player.stats.relic_compendium = relic_compendium
+	player.stats.skill_compendium = skill_compendium
+
 	
 	# Initialize room when it changes.
 	room_loaded.connect(init_room, CONNECT_DEFERRED)
@@ -102,7 +120,6 @@ func save_game():
 	save_manager.set_value("can_jump_cancel", player.can_jump_cancel)
 	save_manager.set_value("can_crouch_attack", player.can_crouch_attack)
 	save_manager.set_value("pocket_size", player.pocket_size)
-	save_manager.set_value("equip_text", Global.inventory.equip_slots.saveEquipText())
 	save_manager.set_value("equip_icons", Global.inventory.equip_slots.saveEquipIcons())
 	save_manager.set_value("binding_swaps", Global.settings_node.joypad_binding_swaps)
 	save_manager.set_value("settings", Global.settings_node.settings)
@@ -140,9 +157,8 @@ func load_game():
 	player.summoned_innocent_devil_id = save_manager.get_value("current_innocent_devil")
 	player.can_jump_cancel = save_manager.get_value("can_jump_cancel")
 	player.can_crouch_attack = save_manager.get_value("can_crouch_attack")
-	var equip_text = save_manager.get_value("equip_text")
 	var equip_icons = save_manager.get_value("equip_icons")
-	Global.inventory.equip_slots.setEquipTextAndIcons(equip_text, equip_icons)
+	Global.inventory.equip_slots.setEquipIcons(equip_icons)
 	Global.settings_node.joypad_binding_swaps = save_manager.get_value("binding_swaps")
 	Global.settings_node.settings = save_manager.get_value("settings")
 	InputHelper.deserialize_inputs_for_actions(save_manager.get_value("key_mapping"))

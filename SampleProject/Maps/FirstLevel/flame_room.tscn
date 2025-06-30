@@ -851,7 +851,7 @@ tile_set = SubResource("TileSet_iubak")
 [node name="Enemies" type="Node" parent="."]
 
 [node name="SpawnEnemy" parent="Enemies" instance=ExtResource("5_0w7h2")]
-position = Vector2(718, 759)
+position = Vector2(718, 766)
 enemy = ExtResource("6_1yra5")
 spawn_instantly = true
 offset = Vector2(15, 33)
@@ -864,10 +864,10 @@ position = Vector2(18, 385)
 
 [node name="FlameHazard" parent="." node_paths=PackedStringArray("tutorial_hint") instance=ExtResource("7_uc6f5")]
 position = Vector2(857, 868)
-tutorial_hint = NodePath("../HintBoxTrigger")
+tutorial_hint = NodePath("HintBoxTrigger")
 
-[node name="HintBoxTrigger" parent="." instance=ExtResource("8_hnfr4")]
-position = Vector2(746, 780)
+[node name="HintBoxTrigger" parent="FlameHazard" instance=ExtResource("8_hnfr4")]
+position = Vector2(-111, -88)
 scale = Vector2(1, 0.4)
 flag_id = 7
 text = "Ice could break this."

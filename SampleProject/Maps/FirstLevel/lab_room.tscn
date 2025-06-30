@@ -987,26 +987,26 @@ tile_set = SubResource("TileSet_i7s4i")
 [node name="Enemies" type="Node" parent="."]
 
 [node name="BoneScimitar" parent="Enemies" instance=ExtResource("4_8rb2n")]
-position = Vector2(584, 382)
+position = Vector2(584, 389)
 
 [node name="BoneScimitar2" parent="Enemies" instance=ExtResource("4_8rb2n")]
-position = Vector2(1604, 382)
+position = Vector2(1604, 389)
 
 [node name="Slinger" parent="Enemies" instance=ExtResource("5_nlx8i")]
-position = Vector2(689, 393)
+position = Vector2(689, 400)
 
 [node name="Slinger2" parent="Enemies" instance=ExtResource("5_nlx8i")]
-position = Vector2(1778, 399)
+position = Vector2(1778, 406)
 
 [node name="AxeArmor" parent="Enemies" instance=ExtResource("6_kme2h")]
-position = Vector2(1708, 393)
+position = Vector2(1708, 400)
 
 [node name="EnemySpawner" type="Node" parent="Enemies"]
 script = ExtResource("7_tvcij")
 enemy_to_spawn = ExtResource("8_yglqj")
 spawn_frequency_in_seconds = 1.5
-min_pos_limits = Vector2(96, 416)
-max_pos_limits = Vector2(2300, 416)
+min_pos_limits = Vector2(96, 423)
+max_pos_limits = Vector2(2300, 423)
 
 [node name="Candles" type="Node" parent="."]
 
@@ -1017,22 +1017,22 @@ position = Vector2(627, 279)
 position = Vector2(1344, 279)
 
 [node name="MonasteryCandle" parent="Candles" instance=ExtResource("10_ayo0d")]
-position = Vector2(364, 393)
+position = Vector2(364, 400)
 
 [node name="MonasteryCandle2" parent="Candles" instance=ExtResource("10_ayo0d")]
-position = Vector2(1005, 393)
+position = Vector2(1005, 400)
 
 [node name="MonasteryCandle3" parent="Candles" instance=ExtResource("10_ayo0d")]
-position = Vector2(2139, 393)
+position = Vector2(2139, 400)
 
 [node name="Items" type="Node" parent="."]
 
 [node name="LifeVessel" parent="Items" instance=ExtResource("10_n8083")]
-position = Vector2(1104, 140)
+position = Vector2(1104, 146)
 pickup_flag = 15
 
 [node name="HardModeOnly" type="Node" parent="."]
 script = ExtResource("12_xbddx")
 
 [node name="AxeArmor" parent="HardModeOnly" instance=ExtResource("6_kme2h")]
-position = Vector2(1062, 396)
+position = Vector2(1062, 403)

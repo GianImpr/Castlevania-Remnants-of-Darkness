@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		spawn.spawn_instantly = false
 		spawn.respawn_cooldown = 3
 		spawn.offset.y = 113
-		spawn.global_position = Vector2(450, 420)
+		spawn.global_position = Vector2(450, 430)
 		spawn.spawn_range = Vector2(700, 0)
 		spawn.condition = spawn.Conditions.SUMMONED_IN_TOTAL
 		spawn.respawn = true

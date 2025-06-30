@@ -18,7 +18,7 @@ func play_air():
 
 func stop():
 	visible = false
-	animation.stop()
+	animation.call_deferred("stop")
 	
 func register_anim_pos():
 	anim_position = animation.current_animation_position

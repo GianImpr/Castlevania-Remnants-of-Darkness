@@ -8,9 +8,9 @@ static var enemy_box = null
 static var tutorial_box = null
 static var inventory = null
 static var tutorial_screen: TutorialScreen = null
-static var fade_screen = null
+static var fade_screen: FadeScreen = null
 static var music_player: PolyphonicMenuAudio = null
-static var stage_presentation = null
+static var stage_presentation: StagePresentation = null
 static var boss_bar = null
 static var fps_display = null
 static var settings_node: InvOptions = null
@@ -21,6 +21,9 @@ var loaded_settings: bool = false
 static var screen = ScreenType.NONE
 const TITLE_SCREEN_SCENE: String = "res://SampleProject/extra_scenes/title_screen.tscn"
 
+#Used in ChangeArea
+@warning_ignore("unused_signal")
+signal change_area(new_room, initial_position)
 
 enum ScreenType {
 	NONE,

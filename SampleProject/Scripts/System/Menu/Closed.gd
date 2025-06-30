@@ -6,6 +6,7 @@ func enter():
 	animation.play("fade_resume")
 	
 func exit():
+	get_tree().paused = true
 	animation.speed_scale = 3
 	animation.play_backwards("fade")
 

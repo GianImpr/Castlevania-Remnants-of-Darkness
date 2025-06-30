@@ -53,6 +53,7 @@ shader = ExtResource("4_84ayn")
 shader_parameter/influence = 0.5
 shader_parameter/color = Color(0.498039, 0, 0, 1)
 shader_parameter/speed = 1.0
+shader_parameter/mix_colors = false
 shader_parameter/enabled = false
 shader_parameter/sheet_columns = 10
 shader_parameter/sheet_rows = 5
@@ -1399,7 +1400,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.7, 0.75, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [Vector2(77.5, 90), Vector2(103, 90), Vector2(148, 91)]
+"values": [Vector2(77.5, 80), Vector2(103, 80), Vector2(148, 81)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -1748,11 +1749,13 @@ HP = 800
 ATK = 25
 DEF = 10
 EXP = 500
+weaknesses = Array[int]([1, 3, 5])
+tolerances = Array[int]([4, 7, 6])
 
 [node name="Dullahan" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_jkbhy")
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("3_j55ok")
 offset = Vector2(36, 0)
 hframes = 10
@@ -1839,16 +1842,18 @@ damage_node = ExtResource("7_th3gw")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-8, 97.5)
+position = Vector2(-8, 84.5)
+scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_yaeit")
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0.5, 114)
+visible = false
+position = Vector2(0.5, 101)
+scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_njylg")
 disabled = true
 
@@ -1950,17 +1955,18 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Thrust"]
 position = Vector2(77.5, 90)
+scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_j0fdl")
 disabled = true
 debug_color = Color(0.983864, 0, 0.349033, 0.42)
 
 [node name="Shockwave" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shockwave"]
-position = Vector2(37, 163)
+visible = false
+position = Vector2(37, 140)
 shape = SubResource("RectangleShape2D_lakvy")
 disabled = true
 
@@ -1968,7 +1974,7 @@ disabled = true
 modulate = Color(0.160784, 1, 1, 1)
 z_index = 20
 material = SubResource("CanvasItemMaterial_0rct7")
-position = Vector2(-5, 170)
+position = Vector2(-5, 145)
 emitting = false
 amount = 1200
 process_material = SubResource("ParticleProcessMaterial_wge43")
@@ -1980,7 +1986,7 @@ explosiveness = 0.4
 [node name="LaserEffect" type="GPUParticles2D" parent="."]
 z_index = 20
 material = SubResource("CanvasItemMaterial_0rct7")
-position = Vector2(103, 91)
+position = Vector2(88, 76)
 emitting = false
 amount = 1200
 process_material = SubResource("ParticleProcessMaterial_1qbbt")
@@ -2013,7 +2019,8 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaserHitbox"]
-position = Vector2(793, 90.5)
+position = Vector2(738, 79)
+scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_1an2b")
 disabled = true
 

@@ -3,8 +3,22 @@ class_name Weapon
 
 enum Type {
 	SWORD = 0,
-	FIST = 1,
+	FIST = 4,
 	AXE = 2
+}
+
+enum RecipeStatus {
+	LOCKED,
+	UNLOCKED,
+	REVEALED,
+	UNAVAILABLE
+}
+
+enum Inventory {
+	weapon,
+	headgear,
+	body,
+	item
 }
 
 @export var weapon_name: String
@@ -25,3 +39,5 @@ enum Type {
 @export var max_quantity: int = 99
 @export var icon: Texture2D
 @export var sprite: PackedScene
+@export var recipe_status: RecipeStatus = RecipeStatus.UNAVAILABLE
+@export var recipe: Array[Dictionary] = [{"id": 0, "quantity": 0, "inventory": Inventory.weapon}]

@@ -27,11 +27,11 @@ func _on_detection_body_entered(body: Node2D) -> void:
 	
 
 func _on_swing_body_entered(body: Node2D) -> void:
-	hit_target(2.5, body, swing, 8)
+	hit_target(2.5, body, swing, 1)
 	
 
 func _on_fire_body_entered(body: Node2D) -> void:
-	hit_target(3, body, fire, stats.ATK, false, Global.Attribute.FIRE)
+	hit_target(3, body, fire, stats.ATK/2, false, Global.Attribute.FIRE)
 
 
 func _on_mince_body_entered(body: Node2D) -> void:

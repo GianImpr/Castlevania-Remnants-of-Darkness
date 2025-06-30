@@ -23,7 +23,10 @@ noise = SubResource("FastNoiseLite_d06tv")
 shader = ExtResource("2_bu55c")
 shader_parameter/min_intensity = 0.5
 shader_parameter/max_intensity = 1.0
-shader_parameter/speed = 2.0
+shader_parameter/speed_x = 1.0
+shader_parameter/speed_y = 1.0
+shader_parameter/fade_start = 1.0
+shader_parameter/fade_end = 1.0
 shader_parameter/n = SubResource("NoiseTexture2D_vvx5f")
 
 [sub_resource type="Animation" id="Animation_34wpl"]
@@ -373,7 +376,8 @@ save_menu_scene = ExtResource("2_o3lir")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1.2, 0.8, 1.5, 1)
-scale = Vector2(2.3, 2.3)
+position = Vector2(0, 9)
+scale = Vector2(2, 2)
 texture = ExtResource("1_pssc2")
 
 [node name="Aura" type="Sprite2D" parent="Sprite2D"]

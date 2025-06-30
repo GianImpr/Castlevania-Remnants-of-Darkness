@@ -1,12 +1,12 @@
 extends State
 class_name HectorGuardPerfectAir
 var can_perfect_guard: bool = true
-
+const INITIAL_HEIGHT_BOOST: float = -300
 
 func enter():
 	animation.play("perfect_guarding_air", -1, 2.8)
 	sound.play_sound_effect_from_library("perfect_guard")
-	player.velocity.y = -300
+	player.velocity.y = INITIAL_HEIGHT_BOOST
 	
 func exit():
 	player.is_hurt = false

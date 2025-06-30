@@ -2,6 +2,7 @@ extends State
 class_name HectorGuardWalk
 var anim_direction: int
 var can_perfect_guard: bool = true
+const WALK_SPEED_MULTIPLIER: float = 0.33
 
 
 func enter():
@@ -23,9 +24,10 @@ func Update(delta: float):
 	_can_activate_magic()
 	
 func Physics_Update(delta: float):
-	player.velocity.x = player.direction * player.SPEED/3
+	player.velocity.x = player.direction * player.SPEED*WALK_SPEED_MULTIPLIER
 	
 
+#Updates Hector's walking direction alongside adjusting his animation
 func updateDirection():
 	anim_direction = player.direction * player.facing_position
 	if anim_direction > 0:

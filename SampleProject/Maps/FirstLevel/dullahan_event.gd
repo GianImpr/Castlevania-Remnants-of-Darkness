@@ -7,10 +7,11 @@ func _ready() -> void:
 	super()
 	if Global.player.stats.combat_flags[event_ID]:
 		dullahan.queue_free()
+		queue_free()
 
 func _process(delta: float) -> void:
 	if dullahan != null and dullahan.state_machine.current_state is DullahanAppearing:
-		playMusic("boss1")
+		playMusic("boss_1")
 		music_playing = true
 		
 	if dullahan == null and not Global.player.stats.combat_flags[event_ID] and (orb != null and not orb.spawned):
@@ -18,9 +19,9 @@ func _process(delta: float) -> void:
 		await orb._spawnOrb()
 		
 	if orb == null and Global.screen == Global.ScreenType.NONE:
-		#Global.player.stats.combat_flags[event_ID] = true
-		thanksScreen()
-		#queue_free()
+		Global.player.stats.combat_flags[event_ID] = true
+		#thanksScreen()
+		queue_free()
 
 func thanksScreen() -> void:
 	Global.screen = Global.ScreenType.EVENT

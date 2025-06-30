@@ -1,4 +1,5 @@
 extends Control
+class_name StagePresentation
 
 @export var label: Label
 @export var animation: AnimationPlayer

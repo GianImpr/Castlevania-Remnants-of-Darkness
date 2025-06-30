@@ -181,13 +181,13 @@ sound = NodePath("PolyphonicMenuAudio")
 coin_data = Array[ExtResource("2_4f0fn")]([SubResource("Resource_60yej"), SubResource("Resource_vbehf"), SubResource("Resource_q4maf"), SubResource("Resource_7j8qk"), SubResource("Resource_putv5"), SubResource("Resource_l85ci")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_kh8ev")
 hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
-scale = Vector2(2.3, 2.3)
+position = Vector2(0, -4)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_nj3rc")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -195,8 +195,8 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -5)
-scale = Vector2(2.3, 2.3)
+position = Vector2(0, -4)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_evkvh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

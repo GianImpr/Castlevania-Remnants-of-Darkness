@@ -2,11 +2,12 @@ extends State
 class_name HectorCrouch
 @export var reset_pos_timer: Timer
 var can_perfect_guard: bool = false
+const CROUCHED_FRAME_POS: float = 0.4
 
 func enter():
 	animation.play("crouch", -1, 2.9)
 	if player.skip_crouch_anim:
-		animation.seek(0.4)
+		animation.seek(CROUCHED_FRAME_POS)
 		player.skip_crouch_anim = false
 	player.velocity.x = 0
 
@@ -21,6 +22,3 @@ func Update(delta: float):
 	check_is_hurt()
 	can_die()
 	can_drop_ledge()
-	
-func Physics_Update(delta: float):
-	pass

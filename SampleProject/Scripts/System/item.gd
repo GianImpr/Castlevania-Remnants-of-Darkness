@@ -20,7 +20,7 @@ enum HealingType {
 }
 
 @export var item_name: String
-@export var item_description: String
+@export_multiline var item_description: String
 @export var type: Type
 @export var healing_type: HealingType
 @export var power: int

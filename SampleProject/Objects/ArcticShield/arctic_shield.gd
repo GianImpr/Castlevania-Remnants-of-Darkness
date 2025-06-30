@@ -49,6 +49,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			icicle.scale.x *= -1
 			icicle.direction = -1
 		icicle.power = power + multiplier*Global.player.stats.Stats["INT"]
+		if Global.player.stats.findItem(4, Global.player.stats.skill_inventory):
+			icicle.power *= 1.5
 		call_deferred("add_child", icicle)
 		return
 		

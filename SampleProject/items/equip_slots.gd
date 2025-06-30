@@ -51,5 +51,6 @@ func trigger_focus():
 
 
 func _on_glow_timer_timeout() -> void:
-	for child in get_children():
-		button_glow.bg_color = Color(glow_intensity, 0, 0)
+	pass
+	#for child in get_children():
+		#button_glow.bg_color = Color(glow_intensity, 0, 0)

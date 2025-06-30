@@ -39,35 +39,34 @@ func _process(delta: float) -> void:
 		if glow_timer.is_stopped():
 			glow_timer.start()
 		if Input.is_action_just_pressed("ui_cancel"):
-			equipSlots.get_child(equipSlots.button_index).grab_focus()
+			equipSlots.get_child(0).get_child(equipSlots.button_index).grab_focus()
 			state_machine.current_state.accessed_menu = 0
 	elif not glow_timer.is_stopped():
 		glow_timer.stop()
 		
 func on_button_pressed(button):
 	var current_slot = getCurSlot()
-	equipSlots.get_child(equipSlots.button_index).grab_focus()
+	equipSlots.get_child(0).get_child(equipSlots.button_index).grab_focus()
 	sound.play_sound_effect_from_library("confirm")
 	if equippingWeapon():
 		updateProperties(getEquipFromInventory(button.get_index()-2))
 	updateNewStats(getEquipFromInventory(button.get_index()-2), getEquipFromCompendium(getCurSlot()-1, getCurCompendium()), ["STR", "CON", "INT", "RES", "SYN", "LCK", "ATK", "DEF"])
-	updateStats(["STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
-	updateStats(["ATK", "DEF"], labels.BattleStatsValues)
+	updateStats(["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
 	updateWeaponSprite(getEquipFromInventory(button.get_index()-2))
 	if button.get_index() == 0:
 		if current_slot > 0:
 			player.addItem(current_slot, getCurInventory())
 		setCurSlot(0)
-		equipSlots.get_child(equipSlots.button_index).get_child(0).texture = defaultIcon()
-		equipSlots.get_child(equipSlots.button_index).text = "--------"
+		equipSlots.get_child(0).get_child(equipSlots.button_index).get_child(0).texture = defaultIcon()
+		#equipSlots.get_child(0).get_child(equipSlots.button_index).text = "--------"
 	else:
 		if current_slot > 0:
 			player.addItem(current_slot, getCurInventory())
 		setCurSlot(getCurInventory()[button.get_index()-2]["id"])
 		player.removeItem(getCurSlot(), getCurInventory())
-		equipSlots.get_child(equipSlots.button_index).get_child(0).texture = getCurCompendium()[getCurSlot()-1]["icon"]
-		equipSlots.get_child(equipSlots.button_index).text = getCurCompendium()[getCurSlot()-1][getCurItemProperty("name")]
-	equipSlots.on_focused(equipSlots.get_child(equipSlots.button_index))
+		equipSlots.get_child(0).get_child(equipSlots.button_index).get_child(0).texture = getCurCompendium()[getCurSlot()-1]["icon"]
+		#equipSlots.get_child(0).get_child(equipSlots.button_index).text = getCurCompendium()[getCurSlot()-1][getCurItemProperty("name")]
+	equipSlots.on_focused(equipSlots.get_child(0).get_child(equipSlots.button_index))
 	equipSlots.menu.accessed_menu = 0
 	
 	
@@ -82,10 +81,8 @@ func on_focused(button):
 	var selectedEquip = getEquipFromInventory(button.get_index()-2)
 	var currentEquip = getCurEquip()
 		
-	var subStats: Array[String] = ["STR", "CON", "INT", "RES", "SYN", "LCK"]
-	var battleStats: Array[String] = ["ATK", "DEF"]
+	var subStats: Array[String] = ["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"]
 	compareStats(selectedEquip, currentEquip, subStats, labels.SubArrows, labels.NewSubStats)
-	compareStats(selectedEquip, currentEquip, battleStats, labels.BattleArrows, labels.NewBattleStats)
 
 	sound.play_sound_effect_from_library("cursor")
 	
@@ -110,7 +107,7 @@ func initList(list: Array[Dictionary]):
 		button.state_machine = state_machine
 		button.desired_state = equipSlots.menu
 		button.flat = true
-		button.custom_minimum_size.x = 190
+		button.custom_minimum_size.x = 162
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		
 func updateList():
@@ -125,8 +122,6 @@ func updateList():
 	weapon_text.text = ""
 	resetLabel(labels.SubArrows)
 	resetLabel(labels.NewSubStats)
-	resetLabel(labels.BattleArrows)
-	resetLabel(labels.NewBattleStats)
 
 func _on_glow_timer_timeout() -> void:
 	for child in children:
@@ -154,22 +149,7 @@ func getCurSlot() -> int:
 	return player.equipment[slot]
 	
 func defaultIcon():
-	var slot = equipSlots.button_index
-	match slot:
-		0:
-			return load("res://assets/sprites/Items/Inventory/Inventory_462.png")
-		1:
-			return load("res://assets/sprites/Items/Inventory/NoArtifact.png")
-		2:
-			return load("res://assets/sprites/Items/Inventory/NoRelic.png")
-		3:
-			return load("res://assets/sprites/Items/Inventory/NoHead.png")
-		4:
-			return load("res://assets/sprites/Items/Inventory/NoBody.png")
-		5:
-			return load("res://assets/sprites/Items/Inventory/NoFoot.png")
-		_:
-			return load("res://assets/sprites/Items/Inventory/NoEquip.png")
+	return load("res://assets/sprites/Items/Inventory/Inventory_255.png")
 
 func setCurSlot(id: int):
 	var slots = ["weapon", "artifact", "relic", "head", "body", "legs", "acc1", "acc2"]

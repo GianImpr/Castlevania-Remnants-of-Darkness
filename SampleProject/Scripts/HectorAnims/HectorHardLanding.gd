@@ -1,6 +1,7 @@
 extends State
 class_name HectorHardLanding
 var can_perfect_guard: bool = false
+const MOMENTUM_MULTIPLIER: float = 0.3
 
 func enter():
 	animation.play("hard_landing", -1, 1.7)
@@ -9,8 +10,8 @@ func enter():
 func Update(delta: float):
 	pass
 	
-func Physics_Update(delta: float):		
-	player.velocity.x *= 0.3
+func Physics_Update(delta: float):
+	player.velocity.x *= MOMENTUM_MULTIPLIER
 	can_fall(false)
 	can_die()
 	if not animation.is_playing():

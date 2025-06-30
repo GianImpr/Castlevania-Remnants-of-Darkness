@@ -2,6 +2,7 @@ extends Control
 
 @onready var health: TextureProgressBar = $TextureRect/Health
 @onready var mana: TextureProgressBar = $TextureRect/Mana
+@onready var focus: TextureProgressBar = $TextureRect/Focus
 @onready var hearts: TextureProgressBar = $IDBody/Hearts
 @onready var health_glow: TextureRect = $TextureRect/HGlow
 @onready var mana_glow: TextureRect = $TextureRect/MGlow
@@ -50,6 +51,14 @@ func _process(delta: float) -> void:
 	updateHP(delta)
 	updateMP(delta)
 	updateGuardHealth()
+	
+	var focus_animation: AnimationPlayer = focus.get_child(0)
+	focus.value = player.stats.Stats["FP"]/player.stats.Stats["MFP"]*focus.max_value
+	if player.stats.Stats["FP"] == player.stats.Stats["MFP"] and not focus_animation.current_animation == "full":
+		focus_animation.play("full")
+	elif player.stats.Stats["FP"] != player.stats.Stats["MFP"] and not focus_animation.current_animation == "not_full":
+		focus_animation.play("not_full")
+
 	if Global.player.innocent_devil != null:
 		id_skill.texture = Global.player.innocent_devil.stats.skills[Global.player.innocent_devil.current_skill].icon
 		updateHearts(delta)

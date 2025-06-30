@@ -2,11 +2,12 @@ extends State
 class_name HectorRise
 @export var run_state: State 
 var can_perfect_guard: bool = true
+const STARTING_ANIMATION_POSITION: float = 0.1
 
 
 func enter():
 	animation.play("crouch", -1, -1.8, true)
-	animation.seek(0.1)
+	animation.seek(STARTING_ANIMATION_POSITION)
 	
 func Update(delta: float):
 	pass

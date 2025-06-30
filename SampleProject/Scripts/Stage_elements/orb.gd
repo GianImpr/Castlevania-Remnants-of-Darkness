@@ -9,6 +9,7 @@ class_name Orb
 @export var sound: PolyphonicAudio
 @export var pickup_flag_id: int
 @export var beat_sound_timer: Timer
+@export var item_id: int
 var spawned: bool = false
 const orb_texture_path: String = "res://assets/sprites/Items/Orbs/"
 
@@ -59,6 +60,7 @@ func collecting() -> void:
 	beat_sound_timer.stop()
 	const HEALING_AMOUNT: int = 9999
 	Global.player.heal_innocent(HEALING_AMOUNT)
+	Global.player.stats.addItem(item_id, Global.player.stats.skill_inventory)
 	Global.player.stats.Stats["HP"] = Global.player.stats.Stats["MHP"]
 	Global.player.stats.Stats["MP"] = Global.player.stats.Stats["MMP"]
 	sound.play_sound_effect_from_library("collect")

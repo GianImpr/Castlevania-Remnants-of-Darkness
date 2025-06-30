@@ -3,7 +3,7 @@ class_name InvHints
 @export var button_glow: StyleBoxFlat
 @export var buttons: HintButtons
 @export var tutorial_box: VBoxContainer
-const MINIMUM_BUTTON_SIZE: Vector2 = Vector2(250, 0)
+const MINIMUM_BUTTON_SIZE: Vector2 = Vector2(230, 65)
 
 func enter():
 	animation.play_backwards("change")
@@ -49,7 +49,6 @@ func on_button_pressed(which) -> void:
 	
 func on_focused(which) -> void:
 	var current_button_index: int = which.get_index()
-	sound.play_sound_effect_from_library("cursor")
 	displayCurrentHint(current_button_index, which.disabled)
 	
 func displayCurrentHint(hint_id: int, hide_hint: bool) -> void:

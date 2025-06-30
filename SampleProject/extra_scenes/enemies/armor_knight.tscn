@@ -26,10 +26,10 @@
 [ext_resource type="Script" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightDeflect.gd" id="23_qqk2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bup83"]
-size = Vector2(68, 94)
+size = Vector2(68, 85)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51w40"]
-size = Vector2(31, 94)
+size = Vector2(28, 76)
 
 [sub_resource type="Animation" id="Animation_yefq4"]
 length = 0.001
@@ -867,10 +867,13 @@ HP = 50
 ATK = 18
 DEF = 5
 EXP = 8
+common_drop_id = 46
+common_drop_rate = 2.6
+weaknesses = Array[int]([1, 5])
+tolerances = Array[int]([6])
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(3, 22)
+position = Vector2(3, 17.5)
 shape = SubResource("RectangleShape2D_bup83")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -878,13 +881,12 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2(2.5, 22)
+position = Vector2(1, 22)
 shape = SubResource("RectangleShape2D_51w40")
 debug_color = Color(0.972499, 0, 0.44062, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("3_6v812")
 hframes = 10
 vframes = 5
@@ -978,33 +980,32 @@ visible = false
 shape = SubResource("CircleShape2D_pr16o")
 
 [node name="Spear" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spear"]
 position = Vector2(-55, 17)
+scale = Vector2(0.85, 0.85)
 shape = SubResource("RectangleShape2D_68u7o")
 disabled = true
 
 [node name="Special" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Special"]
-visible = false
 position = Vector2(-54.5, -10)
+scale = Vector2(0.85, 0.85)
 shape = SubResource("RectangleShape2D_osilp")
 disabled = true
 
 [node name="Spear_UpDown" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spear_UpDown"]
 position = Vector2(6, 93.25)
+scale = Vector2(0.85, 0.85)
 shape = SubResource("RectangleShape2D_bbkdk")
 disabled = true
 
@@ -1014,6 +1015,7 @@ collision_mask = 1024
 script = ExtResource("23_atrjo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectProjectiles"]
+scale = Vector2(0.85, 0.85)
 shape = SubResource("CircleShape2D_laf07")
 debug_color = Color(0, 0.333298, 0.264208, 0.42)
 
@@ -1024,6 +1026,7 @@ collision_mask = 1024
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProtectiveSwing"]
+visible = false
 shape = SubResource("CircleShape2D_edfwy")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_detection_body_entered"]

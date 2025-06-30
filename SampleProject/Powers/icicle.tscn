@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d0jg4wghfdqpn"]
+[gd_scene load_steps=19 format=3 uid="uid://d0jg4wghfdqpn"]
 
 [ext_resource type="Texture2D" uid="uid://cx0am10mnr4np" path="res://assets/sprites/PowerUps/Icicle.png" id="1_jgp1w"]
 [ext_resource type="Script" path="res://SampleProject/Objects/ArcticShield/icicle.gd" id="1_mob5w"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_ptlel"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_3p6t8"]
 [ext_resource type="AudioStream" uid="uid://dilfjuatytln6" path="res://assets/sounds/Powerups/ArcticShield/OpenShield/Hit.MP3" id="7_sywl1"]
-[ext_resource type="AudioStream" uid="uid://cbkwgw4yer5fw" path="res://assets/sounds/Hit.MP3" id="7_yxglj"]
 
 [sub_resource type="Animation" id="Animation_4b7c2"]
 length = 0.001
@@ -328,16 +327,12 @@ script = ExtResource("6_3p6t8")
 Tag = "ice"
 stream = ExtResource("7_sywl1")
 
-[sub_resource type="Resource" id="Resource_v2tkt"]
-script = ExtResource("6_3p6t8")
-Tag = "hit_sfx"
-stream = ExtResource("7_yxglj")
-
 [sub_resource type="Resource" id="Resource_8k2xb"]
 script = ExtResource("5_ptlel")
-sound_effects = Array[ExtResource("6_3p6t8")]([SubResource("Resource_g6rs7"), SubResource("Resource_v2tkt")])
+sound_effects = Array[ExtResource("6_3p6t8")]([SubResource("Resource_g6rs7")])
 
 [node name="Icicle" type="RigidBody2D" node_paths=PackedStringArray("hitbox", "sound", "animation", "area")]
+z_index = 10
 position = Vector2(30, 0)
 gravity_scale = 0.0
 script = ExtResource("1_mob5w")
@@ -349,6 +344,7 @@ sound = NodePath("PolyphonicAudio")
 hit_collision_scene = ExtResource("2_rbtqm")
 animation = NodePath("AnimationPlayer")
 area = NodePath("Area2D")
+element = 4
 
 [node name="Icicle2" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

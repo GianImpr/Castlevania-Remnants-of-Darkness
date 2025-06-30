@@ -790,7 +790,7 @@ collision_layer = 8
 lock_rotation = true
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("1_14p6w")
 hframes = 5
 vframes = 2
@@ -798,6 +798,7 @@ frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(-3.5, 40.5)
+scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_0gskk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D"]
@@ -812,10 +813,11 @@ lock_rotation = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
 position = Vector2(-6.5, 17)
+scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_ctqpr")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("1_14p6w")
 hframes = 5
 vframes = 2
@@ -833,10 +835,11 @@ lock_rotation = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
 position = Vector2(-4.5, -2)
+scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_5nyyx")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("1_14p6w")
 hframes = 5
 vframes = 2
@@ -854,10 +857,11 @@ lock_rotation = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
 position = Vector2(-14.5, -13)
+scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_v3pbi")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D4"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("1_14p6w")
 hframes = 5
 vframes = 2
@@ -875,10 +879,11 @@ lock_rotation = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
 position = Vector2(6, -15)
+scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_2df7t")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D5"]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("1_14p6w")
 hframes = 5
 vframes = 2

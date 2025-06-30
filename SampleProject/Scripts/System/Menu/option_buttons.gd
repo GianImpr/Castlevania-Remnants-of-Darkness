@@ -4,7 +4,7 @@ class_name OptionButtons
 @export var description: Node
 	
 func on_focused(button):
-	sound.play_sound_effect_from_library("cursor")
+	super(button)
 	
 func on_button_pressed(which):
 	sound.play_sound_effect_from_library("confirm")

@@ -1,13 +1,14 @@
 extends State
 class_name HectorFalling
 @export var coyote_timer: Timer
-var cur_falling_speed: float
+static var cur_falling_speed: float
 var can_perfect_guard: bool = false
-
+const FALL_STARTING_ANIM_TIME: float = 0.5
+const HARD_LAND_SPEED_THRESHOLD: float = 1000
 
 func enter():
 	animation.play("jump", -1, 1.3)
-	animation.seek(0.5)
+	animation.seek(FALL_STARTING_ANIM_TIME)
 	cur_falling_speed = 0
 	
 func Update(delta: float):
@@ -22,10 +23,16 @@ func Physics_Update(delta: float):
 	if not coyote_timer.is_stopped():
 		can_perform("jump", true)
 	
+	determineLandingType()
+
+#Checks if the player will soft land or hard land
+#cur_falling_speed is needed because player.velocity.y updates to 0
+#BEFORE player.is_on_floor() returns true
+func determineLandingType() -> void:
 	if player.is_on_floor():
-		if cur_falling_speed < 1000:
+		if cur_falling_speed < HARD_LAND_SPEED_THRESHOLD:
 			Transitioned.emit(self, "landing")
-		elif cur_falling_speed >= 1000:
+		elif cur_falling_speed >= HARD_LAND_SPEED_THRESHOLD:
 			Transitioned.emit(self, "hard_landing")
 	else:
 		cur_falling_speed = player.velocity.y

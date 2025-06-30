@@ -19,7 +19,9 @@ enum Tutorial {
 	PERFECT_GUARD,
 	INNOCENT_DEVIL,
 	HEART_METER,
-	FAIRY_ID
+	FAIRY_ID,
+	ORBS,
+	CYAN_ORB
 }
 
 func _process(delta: float) -> void:

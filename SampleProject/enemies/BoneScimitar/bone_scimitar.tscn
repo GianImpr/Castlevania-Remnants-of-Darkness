@@ -199,7 +199,7 @@ _data = {
 }
 
 [node name="BoneScimitar" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sword_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_nyag5")
 vision = NodePath("Area of Vision")
@@ -219,6 +219,12 @@ HP = 20
 ATK = 11
 DEF = 4
 EXP = 4
+common_drop_id = 47
+common_drop_rate = 3.0
+rare_drop_id = 45
+rare_drop_rate = 2.6
+weaknesses = Array[int]([1, 3, 8])
+tolerances = Array[int]([9])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_lgc47")

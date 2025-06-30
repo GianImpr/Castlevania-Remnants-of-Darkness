@@ -10,8 +10,7 @@ func enter():
 	default_button.grab_focus()
 	accessed_menu = 0
 	equip_list.player = Global.player.stats
-	updateStats(["STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
-	updateStats(["ATK", "DEF"], labels.BattleStatsValues)
+	updateStats(["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
 	
 func exit():
 	animation.play("change")

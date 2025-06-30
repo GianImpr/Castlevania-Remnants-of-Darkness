@@ -12,11 +12,14 @@ var direction: int = 1
 @export var hit_collision_scene: PackedScene
 @export var animation: AnimationPlayer
 @export var area: Area2D
+@export var element: Global.Attribute
 var body_covered: Array[Enemy]
 
 func _ready():
 	area.set_deferred("monitoring", false)
 	base_HP += Global.player.stats.Stats["INT"]
+	if Global.player.stats.findItem(4, Global.player.stats.skill_inventory):
+		base_HP *= 2
 
 func _physics_process(delta: float) -> void:
 	if animation.current_animation == "travel":
@@ -75,12 +78,20 @@ func kills(body: Node2D, damage) -> bool:
 	return damage >= body.stats.HP
 	
 func apply_damage(body: Node2D, damage: int):
+	create_effects(body)
+	var multiplier_rate: float = 2
+	if element in body.stats.weaknesses:
+		multiplier_rate *= 1.5
+	elif element in body.stats.tolerances:
+		multiplier_rate *= 0.67
+	
+	multiplier_rate = max(multiplier_rate, 1)
+	damage *= log(multiplier_rate) / log(2)
+	
 	body.damage_popup.popup(damage, 1)
 	body.stats.HP -= damage
-	create_effects(body)
 	
 func create_effects(body: Node2D):
-	sound.play_sound_effect_from_library("hit_sfx")
 	sound.play_sound_effect_from_library("ice")
 	create_hit_effect(body)
 	
@@ -96,7 +107,7 @@ func change_parent():
 	var location = global_position
 	var old_parent = get_parent()
 	get_parent().remove_child(self)
-	old_parent.get_parent().get_parent().add_child(self)
+	MetSys.current_room.add_child(self)
 	global_position = location
 
 func take_damage(damage: int) -> void:

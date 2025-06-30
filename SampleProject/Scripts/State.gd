@@ -11,6 +11,11 @@ const Actions = {
 	CROUCH = "crouch"
 }
 
+func _ready() -> void:
+	if player == Global.player:
+		HectorCrouchAttack.getWeaponAttackSound = get_attack_sound
+		HectorCrouchAttack.getHectorAttackSound = get_hector_attack_sound
+
 func enter():
 	pass
 	
@@ -22,7 +27,8 @@ func Update(_delta: float):
 	
 func Physics_Update(_delta: float):
 	pass
-	
+
+#Allows the player to perform an action in a certain state
 func can_perform(anim_name: String, just_pressed: bool):
 	if just_pressed:
 		if InputBuffer.is_action_press_buffered(anim_name):
@@ -31,21 +37,25 @@ func can_perform(anim_name: String, just_pressed: bool):
 		if Input.is_action_pressed(anim_name):
 			Transitioned.emit(self, anim_name)
 
+#Allows the player to run in a certain state
 func run_without_start_anim(skip_run_start_animation: bool):
 	if player.direction:
 		player.skip_run_start = skip_run_start_animation
 		Transitioned.emit(self, "run")
 
+#Allows the player to fall in a certain state
 func can_fall(coyote_effect: bool):
 	if not player.is_on_floor():
 		if coyote_effect:
 			player.coyote_timer.start()
 		Transitioned.emit(self, "falling")
-		
+
+#Allows the player to drop from ledges in a certain state
 func can_drop_ledge():
 	if player.is_on_floor() and InputBuffer.is_action_press_buffered("jump") and Input.is_action_pressed("crouch"):
 		player.position.y += 1
-		
+
+#Allows the player to guard if they have Fortitude Gauntlet (Skill ID 1)
 func can_guard():
 	if player.stats.findItem(1, player.stats.skill_inventory):
 		can_perform("guard", false)
@@ -53,24 +63,31 @@ func can_guard():
 	else:
 		player.stats.Stats["Guard"] = 0
 
+#Allows the player to turnaround
 func can_turn():
 	if player.direction == 1:
 		player.sprite.flip_h = false
 	elif player.direction == -1:
 		player.sprite.flip_h = true
-		
+
+#Allows the player to move, with possibility to retain momentum
+#This only applies movement, without changing animation, so it is different than
+#can_run_without_anim
 func can_move_with_momentum(keep_momentum: bool):
+	const MOMENTUM_DECELERATION: float = 0.91
 	if player.direction:
 		player.velocity.x = player.direction * player.SPEED
 	else:
 		if keep_momentum:
-			player.velocity.x *= 0.91
+			player.velocity.x *= MOMENTUM_DECELERATION
 		else:
 			player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
-			
+
 func remove_momentum():
 	player.velocity.x = 0
 	
+#Checks if the player is currently guarding an attack
+#and transition to the appropriate new state
 func check_is_blocking():
 	if player.is_hurt and player.stats.Stats["HP"] > 0:
 		if (self is HectorJump or self is HectorFalling) and player.willPerfectGuard():
@@ -85,7 +102,8 @@ func check_is_blocking():
 			Transitioned.emit(self, "Guard_blocking")
 		else:
 			Transitioned.emit(self, "Guard_break")
-	
+
+#Checks if the player got hit and if the hit was guarded
 func check_is_hurt():
 	if player.state_machine.current_state is HectorGuardPerfectAir:
 		return
@@ -107,13 +125,42 @@ func check_is_hurt():
 			voice.play_sound_effect_from_library("HeavyHit")
 	elif player.stats.Stats["HP"] == 0:
 		sound.play_sound_effect_from_library("damage")
-		
+
+#Tells if the player is currently attacking
 func attacking() -> bool:
 	return (self is HectorAttack or self is HectorAirAttack or self is HectorCrouchAttack)
 
+#Allows the player to attack in a certain state
 func can_attack():
 	if self != player.state_machine.current_state:
 		return
+	
+	#Check command inputs from unlocked special moves
+	for skill in player.stats.skill_inventory:
+		var cur_skill: Skill = player.stats.skill_compendium[skill["id"]-1]
+		var state_to_transition_to: String = cur_skill.transitions_into_state
+		var stat_to_consume: String
+		
+		match cur_skill.cost_type:
+			Skill.CostType.HP:
+				stat_to_consume = "HP"
+			Skill.CostType.MP:
+				stat_to_consume = "MP"
+			Skill.CostType.SP:
+				stat_to_consume = "SP"
+			Skill.CostType.FP:
+				stat_to_consume = "FP"
+				
+		#Not a command input move or wrong weapon type or insufficient resources
+		if cur_skill.command_input.size() == 0 or player.stats.getCurrentWeaponType() != cur_skill.weapon_type or player.stats.Stats[stat_to_consume] < cur_skill.cost_value:
+			continue
+		
+		if InputBuffer.checkCommandInput(cur_skill.command_input, 20):
+			Transitioned.emit(self, state_to_transition_to)
+			player.stats.Stats[stat_to_consume] -= cur_skill.cost_value
+			get_hector_attack_sound()
+			return
+		
 	if InputBuffer.is_action_press_buffered("attack"):
 		if (self is HectorCrouch or self is HectorRise) and player.can_crouch_attack:
 			Transitioned.emit(self, "crouch_attack")
@@ -123,11 +170,17 @@ func can_attack():
 		else:
 			Transitioned.emit(self, "attack")
 			swingWeapon(false)
-		sound.play_sound_effect_from_library(get_attack_sound())
-		var voice_clip = randi_range(0, 4)
-		if voice_clip > 0:
-			voice.play_sound_effect_from_library("Attack" + str(voice_clip))
+		get_hector_attack_sound()
 
+#Plays one of Hector's attack grunts
+func get_hector_attack_sound() -> void:
+	sound.play_sound_effect_from_library(get_attack_sound())
+	var voice_clip = randi_range(0, 4)
+	if voice_clip > 0:
+		voice.play_sound_effect_from_library("Attack" + str(voice_clip))
+
+#Plays the appropriate animation for the currently equipped weapon
+#Crouching attacks are missing
 func swingWeapon(air_anim: bool):
 	if player.sprite.weapon != null:
 		if air_anim:
@@ -135,7 +188,15 @@ func swingWeapon(air_anim: bool):
 		else:
 			player.sprite.weapon.play()
 
+#Allows the player to activate a relic and handles the activation logic along
+#with visual effects
 func _can_activate_magic():
+	const STARTING_GLOW_INTENSITY: float = 3
+	const STARTING_GLOW_DURATION: float = 0.4
+	const DEACTIVATING_RELIC_GLOW_COLOR: Color = Color(2,2,2,1)
+	const DEACTIVATING_RELIC_GLOW_DURATION: float = 0.4
+	const NORMAL_COLOR: Color = Color(1,1,1,1)
+	const TIME_TO_RETURN_TO_NORMAL_COLOR: float = 0.2
 	if not player.isRelicEquipped() or player.activating_magic:
 		return
 	if self != player.state_machine.current_state:
@@ -146,22 +207,22 @@ func _can_activate_magic():
 			player.enabled_magic = true
 			sound.play_sound_effect_from_library("activate_relic")
 			var tweener = get_tree().create_tween()
-			tweener.tween_property(player.sprite, "self_modulate", player.relicColor()*3, 0.4)
+			tweener.tween_property(player.sprite, "self_modulate", player.relicColor()*STARTING_GLOW_INTENSITY, STARTING_GLOW_DURATION)
 			await tweener.finished
 			tweener = get_tree().create_tween()
 			player.aura.visible = player.enabled_magic
-			tweener.tween_property(player.sprite, "self_modulate", Color(1, 1, 1, 1), 0.2)
+			tweener.tween_property(player.sprite, "self_modulate", NORMAL_COLOR, TIME_TO_RETURN_TO_NORMAL_COLOR)
 			await tweener.finished
 			player.activating_magic = false
 			return
 		player.enabled_magic = not player.enabled_magic
 		player.aura.visible = player.enabled_magic
 		var tween = get_tree().create_tween()
-		tween.tween_property(player.sprite, "self_modulate", Color(2, 2, 2, 1), 0.4)
+		tween.tween_property(player.sprite, "self_modulate", DEACTIVATING_RELIC_GLOW_COLOR, DEACTIVATING_RELIC_GLOW_DURATION)
 		await tween.finished
 		tween = get_tree().create_tween()
 		player.aura.visible = player.enabled_magic
-		tween.tween_property(player.sprite, "self_modulate", Color(1, 1, 1, 1), 0.2)
+		tween.tween_property(player.sprite, "self_modulate", NORMAL_COLOR, TIME_TO_RETURN_TO_NORMAL_COLOR)
 		await tween.finished
 
 

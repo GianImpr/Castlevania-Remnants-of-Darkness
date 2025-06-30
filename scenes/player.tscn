@@ -1,7 +1,8 @@
-[gd_scene load_steps=343 format=3 uid="uid://dt8t755oidogh"]
+[gd_scene load_steps=388 format=3 uid="uid://dt8t755oidogh"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorStats.gd" id="1_f0ls1"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
+[ext_resource type="PackedScene" uid="uid://bao10vvn6rpga" path="res://SampleProject/Powers/Axes/axe_throw.tscn" id="2_1180g"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/item.gd" id="2_j5pj6"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="2_ju6fn"]
 [ext_resource type="Texture2D" uid="uid://du0eiy67cnc7d" path="res://assets/sprites/Items/Inventory/Inventory_258.png" id="3_2k40y"]
@@ -88,12 +89,18 @@
 [ext_resource type="Texture2D" uid="uid://bifyy7bgttxhc" path="res://assets/sprites/Items/Inventory/Inventory_79.png" id="50_x2g8c"]
 [ext_resource type="Texture2D" uid="uid://d2kun4yp6rsfi" path="res://assets/sprites/Items/Inventory/Inventory_66.png" id="51_qmfnu"]
 [ext_resource type="Texture2D" uid="uid://dv6rs35ycpg0" path="res://assets/sprites/Items/Inventory/Inventory_67.png" id="52_sf5ji"]
+[ext_resource type="Texture2D" uid="uid://dnxvfxcvixl1q" path="res://assets/sprites/Items/Other/16x16/fa196.png" id="53_ds1pu"]
 [ext_resource type="Texture2D" uid="uid://diyx848qdddov" path="res://assets/sprites/Items/Inventory/Inventory_70.png" id="53_govws"]
 [ext_resource type="Texture2D" uid="uid://che41vuldjiow" path="res://assets/sprites/Items/Inventory/Inventory_69.png" id="54_5l8bk"]
+[ext_resource type="Texture2D" uid="uid://bd78ypxrcvdx0" path="res://assets/sprites/Items/Other/16x16/fa214.png" id="54_x0qqy"]
+[ext_resource type="Texture2D" uid="uid://bkercceiayxe6" path="res://assets/sprites/Items/Other/16x16/fa225.png" id="55_lmjxq"]
 [ext_resource type="Texture2D" uid="uid://wuqes1nmb64x" path="res://assets/sprites/Items/Inventory/Inventory_60.png" id="55_vl0gl"]
 [ext_resource type="Texture2D" uid="uid://cfdtpsx3s1mxx" path="res://assets/sprites/Items/Inventory/Inventory_77.png" id="56_6b6af"]
+[ext_resource type="Texture2D" uid="uid://bcv44kn3yb5wy" path="res://assets/sprites/Items/Other/16x16/fa216.png" id="56_53tw6"]
+[ext_resource type="Texture2D" uid="uid://dy8ocb3wlkud4" path="res://assets/sprites/Items/Other/16x16/fa189.png" id="57_4uyg2"]
 [ext_resource type="Texture2D" uid="uid://du7q0jejn63ki" path="res://assets/sprites/Items/Inventory/Inventory_64.png" id="57_v18bd"]
 [ext_resource type="Texture2D" uid="uid://tgauhuvp8qi0" path="res://assets/sprites/Items/Inventory/Inventory_46.png" id="58_6by3d"]
+[ext_resource type="Texture2D" uid="uid://daplcoannwghj" path="res://assets/sprites/Items/Other/16x16/fa324.png" id="58_i6jwi"]
 [ext_resource type="Texture2D" uid="uid://cdr5amg17bhtx" path="res://assets/sprites/Items/Inventory/Inventory_55.png" id="59_8b7d7"]
 [ext_resource type="Texture2D" uid="uid://bt3pj8mi1e2kk" path="res://assets/sprites/Items/Inventory/Inventory_59.png" id="60_smw6j"]
 [ext_resource type="Texture2D" uid="uid://bdolgtswrmd7w" path="res://assets/sprites/Items/Inventory/Inventory_54.png" id="61_074ts"]
@@ -138,11 +145,16 @@
 [ext_resource type="Shader" path="res://scenes/aura.gdshader" id="91_qpjil"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/hector_glow.gd" id="91_toel8"]
 [ext_resource type="Texture2D" uid="uid://b1k4jwit2pa3b" path="res://assets/sprites/HectorSprite2DAura.png" id="92_8s8fj"]
+[ext_resource type="Texture2D" uid="uid://cpl4ojot08g5x" path="res://assets/sprites/Items/Inventory/Inventory_152.png" id="92_fjoft"]
 [ext_resource type="Texture2D" uid="uid://rwjwge6ax26o" path="res://assets/sprites/Items/Inventory/Inventory_88.png" id="92_mllui"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/Hour.gd" id="93_30li2"]
 [ext_resource type="Texture2D" uid="uid://d2qa62lanx4gy" path="res://assets/sprites/Items/Inventory/Inventory_487.png" id="93_cubg8"]
+[ext_resource type="Texture2D" uid="uid://4smy5odjsp82" path="res://assets/sprites/Items/Inventory/Inventory_153.png" id="93_uanbt"]
 [ext_resource type="Texture2D" uid="uid://bxrfi6678x4vs" path="res://assets/sprites/Items/Inventory/Inventory_389.png" id="95_c15jr"]
+[ext_resource type="Texture2D" uid="uid://l21l3i5yfbcu" path="res://assets/sprites/Items/Inventory/Inventory_504.png" id="96_pcxc3"]
 [ext_resource type="Texture2D" uid="uid://r2n0ylgg3jx2" path="res://assets/sprites/SwordTrail.png" id="97_n5l36"]
+[ext_resource type="Texture2D" uid="uid://7w70o4xbesqe" path="res://assets/sprites/Items/Inventory/Inventory_506.png" id="98_asytc"]
+[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="105_c2fce"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorDying.gd" id="108_egrmx"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorOpeningDoor.gd" id="114_cgcp8"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorSitDown.gd" id="115_efwyv"]
@@ -160,7 +172,9 @@
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorDamageMercy.gd" id="136_2ccld"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorWait.gd" id="136_g7mo7"]
 [ext_resource type="AudioStream" uid="uid://gfj58uvb5asp" path="res://assets/sounds/Effects/Guard/GuardBreak.wav" id="137_xyr7s"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorSwordSpin.gd" id="138_q0p4k"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="140_3d8p5"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorThrowAxe.gd" id="141_js2j3"]
 [ext_resource type="AudioStream" uid="uid://fw6xwwdjdls8" path="res://assets/sounds/Effects/Punch.MP3" id="142_67mgn"]
 [ext_resource type="AudioStream" uid="uid://c52p25lskmuel" path="res://assets/sounds/Effects/HitSfx.MP3" id="143_ftd0k"]
 [ext_resource type="AudioStream" uid="uid://35wyqwaytp4d" path="res://assets/sounds/Effects/AxeSwing.MP3" id="146_ob5yr"]
@@ -171,9 +185,16 @@
 [ext_resource type="AudioStream" uid="uid://c3hff11461yhv" path="res://assets/sounds/InnocentDevils/InnocentCommand.MP3" id="154_q7ikr"]
 [ext_resource type="AudioStream" uid="uid://cp0wlsu0kr46r" path="res://assets/sounds/Effects/HectorHit/HitFire.MP3" id="156_roqt5"]
 [ext_resource type="AudioStream" uid="uid://bya56k86ttxfv" path="res://assets/sounds/Effects/HectorHit/HitIce.MP3" id="157_an6m8"]
+[ext_resource type="AudioStream" uid="uid://cr3vhib8t4q2a" path="res://assets/sounds/Effects/Swords/SwordSpin.WAV" id="160_oaxy7"]
+[ext_resource type="AudioStream" uid="uid://3tjhhiow3jv5" path="res://assets/sounds/Effects/Swords/SwordGrab.WAV" id="161_7g84s"]
+[ext_resource type="AudioStream" uid="uid://bxttc25p3boho" path="res://assets/sounds/Effects/SpecialAttack.WAV" id="163_hmql1"]
+[ext_resource type="AudioStream" uid="uid://dsrp2qq44o8du" path="res://assets/sounds/Effects/FocusFull.wav" id="164_xgoly"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="167_ltqbs"]
+[ext_resource type="AudioStream" uid="uid://d1dl1exlnlmj2" path="res://assets/sounds/Effects/WeaponRankUp.wav" id="168_o4hqs"]
 [ext_resource type="PackedScene" uid="uid://dhu73hhippefg" path="res://SampleProject/extra_scenes/HUD/press_up.tscn" id="170_moyg6"]
 [ext_resource type="Texture2D" uid="uid://brw1jnqokwney" path="res://assets/sprites/Effects/IceCollision.png" id="172_syffh"]
+[ext_resource type="PackedScene" uid="uid://b1qte8d156lf4" path="res://SampleProject/Powers/Swords/sword_spin.tscn" id="176_86i4x"]
+[ext_resource type="Texture2D" uid="uid://d2yr58nplltvm" path="res://assets/sprites/Effects/SpecialAttackVFX/Sparkles.png" id="181_s2s3l"]
 
 [sub_resource type="GDScript" id="GDScript_vri8q"]
 script/source = "extends CharacterBody2D
@@ -198,15 +219,21 @@ class_name HectorPlayer
 @export var perfect_guard_timer: Timer
 @export var mercy_invincibility_duration: Timer
 @export var mercy_invincibility_hit_threshold_reset: Timer
+@export var focus_gain_duration: Timer
 @export_category(\"Temporary nodes\")
 @export var heal_effect: GPUParticles2D
 @export var heal_mp_effect: GPUParticles2D
 @export var tap_up: TapUp
 @export var effects: Node
+@export var special_attack_animation: AnimationPlayer
+@export var throw_axe: PackedScene
+@export var raycast: RayCast2D
 
 
 const SPEED = 260.0
 const IFRAMES_HIT_THRESHOLD: int = 3
+const FOCUS_GAIN_RATIO: int = 10
+
 var current_hits_taken_before_iframes: int = 0
 var reset_position: Vector2
 var facing_position: int
@@ -224,7 +251,7 @@ var enabled_magic: bool = false
 var activating_magic: bool = false
 var hit_effect_applied: bool = false
 const PERFECT_GUARD_WINDOW_NORMAL: float = 0.096
-const PERFECT_GUARD_WINDOW_CRAZY: float = 0.064
+const PERFECT_GUARD_WINDOW_CRAZY: float = 0.096
 
 const Animations = {
 	ATTACK_AIR = \"air_attack\",
@@ -289,10 +316,18 @@ func _process(delta: float) -> void:
 		
 	if stats.Stats[\"EXP\"] >= expNeededToLvUp() and stats.Stats[\"LV\"] < 99:
 		levelUp()
+		
+	if expNeededToRankUpWeapon() <= 0:
+		weaponRankUp()
+		
+	if not focus_gain_duration.is_stopped():
+		if stats.Stats[\"FP\"] < stats.Stats[\"MFP\"] and stats.Stats[\"FP\"]+FOCUS_GAIN_RATIO*delta >= stats.Stats[\"MFP\"]:
+			fullFocusEffect()
+		stats.Stats[\"FP\"] = min(stats.Stats[\"MFP\"], stats.Stats[\"FP\"]+FOCUS_GAIN_RATIO*delta)
 	
 	removeSwordTrail()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> void:	
 	# Add the gravity.
 	if not is_on_floor() and not state_machine.current_state is HectorDying:
 		velocity += get_gravity()*2 * delta
@@ -327,6 +362,29 @@ func kill():
 # (Unused as well) Position for kill system. Assigned when entering new room (see Game.gd).
 func on_enter():
 	reset_position = position
+	
+func weaponRankUp():
+	const POPUP_DURATION: float = 3
+	sound.play_sound_effect_from_library(\"rank_up\")
+	sprite.enable_glow = true # Rainbow effect on Hector
+	var weapon_type: int = 4
+	if stats.equipment[\"weapon\"] != 0:
+		weapon_type = stats.searchItemInCompendium(stats.equipment[\"weapon\"], stats.weapon_compendium).type
+	stats.weapon_proficiency[weapon_type][\"lv\"] += 1
+	var skills_learned: Array[String]
+	for i in range(0, stats.skill_compendium.size()):
+		var skill: Skill = stats.skill_compendium[i]
+		
+		if skill.type != Skill.SkillType.LEARNABLE:
+			continue
+
+		if skill.weapon_type == weapon_type and skill.weapon_rank == stats.weapon_proficiency[weapon_type][\"lv\"]:
+			skills_learned.append(skill.skill_name)
+			stats.addItem(i+1, stats.skill_inventory)
+			
+	Global.tutorial_box.activate = true
+	Global.tutorial_box.time = 3
+	Global.tutorial_box.text = \"Learned [color=yellow]\" + skills_learned[0] + \"[/color] and [color=yellow]\" + skills_learned[1] + \"[/color].\"
 
 func levelUp():
 	var popup = boost_message.instantiate()
@@ -350,7 +408,18 @@ func levelUp():
 	
 func expNeededToLvUp() -> int:
 	return (13*pow(stats.Stats[\"LV\"], 3)+39*pow(stats.Stats[\"LV\"], 2)+104*stats.Stats[\"LV\"]+100)/6
-
+	
+func expNeededToRankUpWeapon() -> int:
+	var weapon_type: int = 4
+	if stats.equipment[\"weapon\"] != 0:
+		weapon_type = stats.searchItemInCompendium(stats.equipment[\"weapon\"], stats.weapon_compendium).type
+	var next_weapon_lv = stats.weapon_proficiency[weapon_type][\"lv\"]+1
+	var cur_weapon_exp = stats.weapon_proficiency[weapon_type][\"exp\"]
+	var remaining_exp: int = 150*next_weapon_lv*1.5*log(next_weapon_lv*1.5+2.7)-cur_weapon_exp
+	if next_weapon_lv == 6:
+		return 1
+	return remaining_exp
+	
 # Is the MP bar enabled?
 func unlockedMagic() -> bool:
 	return unlocked_magic
@@ -390,7 +459,17 @@ func addExp(amount: int) -> void:
 	stats.Stats[\"EXP\"] += amount
 	if innocent_devil != null:
 		innocent_devil.stats.Stats[\"EXP\"] += amount
-
+		
+func addWeaponExp() -> void:
+	var amount_gained = 1
+	var weapon_type: int = 4
+	if stats.equipment[\"weapon\"] != 0:
+		weapon_type = stats.searchItemInCompendium(stats.equipment[\"weapon\"], stats.weapon_compendium).type
+	
+	if weapon_type == Weapon.Type.AXE:
+		amount_gained = 2
+		
+	stats.weapon_proficiency[weapon_type][\"exp\"] += amount_gained
 	
 func heal(amount: int) -> void:
 	if state_machine.current_state is HectorDying:
@@ -452,6 +531,21 @@ func applyHitEffect(type: Global.Attribute) -> void:
 
 func _on_iframe_hit_counter_reset_timeout() -> void:
 	current_hits_taken_before_iframes = 0
+
+func playSpecialAttackEffect() -> void:
+	special_attack_animation.play(\"trigger\")
+
+func fullFocusEffect() -> void:
+	sound.play_sound_effect_from_library(\"focus_full\")
+	var tween: Tween = get_tree().create_tween()
+	const GLOW_DURATION: float = 0.4
+	tween.tween_property(sprite, \"self_modulate\", Color(0.1, 2, 4), GLOW_DURATION).from(Color(0.1, 1.5, 2.5))
+	tween.tween_property(sprite, \"self_modulate\", Color(1, 1, 1), GLOW_DURATION/2)
+
+func throwAxe() -> void:
+	var axe = throw_axe.instantiate()
+	MetSys.get_current_room_instance().add_child(axe)
+	axe.global_position = position + Vector2(98*facing_position, -5)
 "
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
@@ -473,6 +567,11 @@ crouch_attack = true
 value = 100
 max_quantity = 99
 icon = ExtResource("3_8yse2")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_onxks"]
 script = ExtResource("2_ju6fn")
@@ -494,6 +593,11 @@ value = 0
 max_quantity = 99
 icon = ExtResource("5_hrc7u")
 sprite = ExtResource("6_4ugja")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_m5ppe"]
 script = ExtResource("2_j5pj6")
@@ -979,9 +1083,78 @@ value = 0
 max_quantity = 1
 icon = ExtResource("46_glofk")
 
+[sub_resource type="Resource" id="Resource_67oob"]
+script = ExtResource("2_j5pj6")
+item_name = "Bronze"
+item_description = "This material is often used to craft simple works.
+Cheap and easy to use and find."
+type = 3
+healing_type = 0
+power = 0
+value = 10
+max_quantity = 99
+icon = ExtResource("53_ds1pu")
+
+[sub_resource type="Resource" id="Resource_7pn65"]
+script = ExtResource("2_j5pj6")
+item_name = "Iron"
+item_description = "Some kind of gray metal that is widely used by blacksmiths."
+type = 3
+healing_type = 0
+power = 0
+value = 20
+max_quantity = 99
+icon = ExtResource("54_x0qqy")
+
+[sub_resource type="Resource" id="Resource_7inng"]
+script = ExtResource("2_j5pj6")
+item_name = "Skull"
+item_description = "This is a real human skull.
+It still emanates some dark magic from the inside."
+type = 3
+healing_type = 0
+power = 0
+value = 15
+max_quantity = 99
+icon = ExtResource("55_lmjxq")
+
+[sub_resource type="Resource" id="Resource_24wm7"]
+script = ExtResource("2_j5pj6")
+item_name = "Aluminum"
+item_description = "A very light material, usually consumed by alchemists."
+type = 3
+healing_type = 0
+power = 0
+value = 20
+max_quantity = 99
+icon = ExtResource("56_53tw6")
+
+[sub_resource type="Resource" id="Resource_4tm77"]
+script = ExtResource("2_j5pj6")
+item_name = "Steel dust"
+item_description = "Steel reduced to dust, usually used to reinforce some existing gear."
+type = 3
+healing_type = 0
+power = 0
+value = 25
+max_quantity = 99
+icon = ExtResource("57_4uyg2")
+
+[sub_resource type="Resource" id="Resource_vylqu"]
+script = ExtResource("2_j5pj6")
+item_name = "Wild Memory"
+item_description = "A stone fragment with some symbols carved on it.
+Used to create some simple weapons."
+type = 3
+healing_type = 0
+power = 0
+value = 15
+max_quantity = 99
+icon = ExtResource("58_i6jwi")
+
 [sub_resource type="Resource" id="Resource_4r3pk"]
 script = ExtResource("47_ldyn0")
-Compendium = Array[ExtResource("2_j5pj6")]([SubResource("Resource_m5ppe"), SubResource("Resource_448x1"), SubResource("Resource_wrvvh"), SubResource("Resource_tjyd3"), SubResource("Resource_0v6et"), SubResource("Resource_gs8wo"), SubResource("Resource_1poc1"), SubResource("Resource_pn85t"), SubResource("Resource_k7ohu"), SubResource("Resource_fsd3a"), SubResource("Resource_yssgd"), SubResource("Resource_bg36p"), SubResource("Resource_cp0mo"), SubResource("Resource_t6sc3"), SubResource("Resource_otu3b"), SubResource("Resource_yhtqt"), SubResource("Resource_utmnj"), SubResource("Resource_x7euw"), SubResource("Resource_h28u3"), SubResource("Resource_x25q1"), SubResource("Resource_i8haf"), SubResource("Resource_n52ve"), SubResource("Resource_nal7h"), SubResource("Resource_exk3f"), SubResource("Resource_yyval"), SubResource("Resource_fhdrx"), SubResource("Resource_rip4o"), SubResource("Resource_bjtgx"), SubResource("Resource_kubol"), SubResource("Resource_uuqkx"), SubResource("Resource_v8cwp"), SubResource("Resource_8hctt"), SubResource("Resource_dw7gu"), SubResource("Resource_p4rjt"), SubResource("Resource_fw6ao"), SubResource("Resource_6sxfy"), SubResource("Resource_7ld45"), SubResource("Resource_m7xj0"), SubResource("Resource_utthq"), SubResource("Resource_ftwv4"), SubResource("Resource_5j7we"), SubResource("Resource_7qrnh"), SubResource("Resource_1macm"), SubResource("Resource_4ofp1")])
+Compendium = Array[ExtResource("2_j5pj6")]([SubResource("Resource_m5ppe"), SubResource("Resource_448x1"), SubResource("Resource_wrvvh"), SubResource("Resource_tjyd3"), SubResource("Resource_0v6et"), SubResource("Resource_gs8wo"), SubResource("Resource_1poc1"), SubResource("Resource_pn85t"), SubResource("Resource_k7ohu"), SubResource("Resource_fsd3a"), SubResource("Resource_yssgd"), SubResource("Resource_bg36p"), SubResource("Resource_cp0mo"), SubResource("Resource_t6sc3"), SubResource("Resource_otu3b"), SubResource("Resource_yhtqt"), SubResource("Resource_utmnj"), SubResource("Resource_x7euw"), SubResource("Resource_h28u3"), SubResource("Resource_x25q1"), SubResource("Resource_i8haf"), SubResource("Resource_n52ve"), SubResource("Resource_nal7h"), SubResource("Resource_exk3f"), SubResource("Resource_yyval"), SubResource("Resource_fhdrx"), SubResource("Resource_rip4o"), SubResource("Resource_bjtgx"), SubResource("Resource_kubol"), SubResource("Resource_uuqkx"), SubResource("Resource_v8cwp"), SubResource("Resource_8hctt"), SubResource("Resource_dw7gu"), SubResource("Resource_p4rjt"), SubResource("Resource_fw6ao"), SubResource("Resource_6sxfy"), SubResource("Resource_7ld45"), SubResource("Resource_m7xj0"), SubResource("Resource_utthq"), SubResource("Resource_ftwv4"), SubResource("Resource_5j7we"), SubResource("Resource_7qrnh"), SubResource("Resource_1macm"), SubResource("Resource_4ofp1"), SubResource("Resource_67oob"), SubResource("Resource_7pn65"), SubResource("Resource_7inng"), SubResource("Resource_24wm7"), SubResource("Resource_4tm77"), SubResource("Resource_vylqu")])
 
 [sub_resource type="Resource" id="Resource_stdwu"]
 script = ExtResource("48_wnecb")
@@ -999,6 +1172,12 @@ LCK = 0
 value = 100
 max_quantity = 99
 icon = ExtResource("49_xk045")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_hcxc2"]
 script = ExtResource("48_wnecb")
@@ -1016,6 +1195,12 @@ LCK = 0
 value = 250
 max_quantity = 99
 icon = ExtResource("50_x2g8c")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_qtfvs"]
 script = ExtResource("48_wnecb")
@@ -1033,6 +1218,12 @@ LCK = 2
 value = 100
 max_quantity = 99
 icon = ExtResource("51_qmfnu")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_b4qdd"]
 script = ExtResource("48_wnecb")
@@ -1050,6 +1241,12 @@ LCK = 0
 value = 300
 max_quantity = 99
 icon = ExtResource("52_sf5ji")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_w8tqy"]
 script = ExtResource("48_wnecb")
@@ -1067,6 +1264,12 @@ LCK = 5
 value = 250
 max_quantity = 99
 icon = ExtResource("53_govws")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_4iosu"]
 script = ExtResource("48_wnecb")
@@ -1084,6 +1287,12 @@ LCK = 3
 value = 500
 max_quantity = 99
 icon = ExtResource("54_5l8bk")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_b0lhj"]
 script = ExtResource("48_wnecb")
@@ -1101,6 +1310,12 @@ LCK = 0
 value = 200
 max_quantity = 99
 icon = ExtResource("55_vl0gl")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_kh436"]
 script = ExtResource("48_wnecb")
@@ -1118,6 +1333,12 @@ LCK = 3
 value = 300
 max_quantity = 99
 icon = ExtResource("56_6b6af")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_n53u7"]
 script = ExtResource("48_wnecb")
@@ -1135,6 +1356,12 @@ LCK = 0
 value = 500
 max_quantity = 99
 icon = ExtResource("57_v18bd")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_n15bh"]
 script = ExtResource("48_wnecb")
@@ -1152,6 +1379,12 @@ LCK = 5
 value = 350
 max_quantity = 99
 icon = ExtResource("58_6by3d")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_2gney"]
 script = ExtResource("48_wnecb")
@@ -1169,6 +1402,12 @@ LCK = 2
 value = 650
 max_quantity = 99
 icon = ExtResource("59_8b7d7")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_580rm"]
 script = ExtResource("48_wnecb")
@@ -1186,6 +1425,12 @@ LCK = -2
 value = 500
 max_quantity = 99
 icon = ExtResource("60_smw6j")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_fy53e"]
 script = ExtResource("48_wnecb")
@@ -1203,6 +1448,12 @@ LCK = 0
 value = 750
 max_quantity = 99
 icon = ExtResource("61_074ts")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_xv0ma"]
 script = ExtResource("48_wnecb")
@@ -1220,6 +1471,12 @@ LCK = 0
 value = 450
 max_quantity = 99
 icon = ExtResource("62_sxfdf")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_csljy"]
 script = ExtResource("48_wnecb")
@@ -1237,6 +1494,12 @@ LCK = 0
 value = 600
 max_quantity = 99
 icon = ExtResource("63_vobih")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_nfnn0"]
 script = ExtResource("48_wnecb")
@@ -1254,6 +1517,12 @@ LCK = 4
 value = 1200
 max_quantity = 99
 icon = ExtResource("64_agefk")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_7go8i"]
 script = ExtResource("48_wnecb")
@@ -1271,6 +1540,12 @@ LCK = 10
 value = 800
 max_quantity = 99
 icon = ExtResource("65_s1vb5")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_ji887"]
 script = ExtResource("48_wnecb")
@@ -1288,6 +1563,12 @@ LCK = 0
 value = 1200
 max_quantity = 99
 icon = ExtResource("66_snnhu")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_nhhcx"]
 script = ExtResource("48_wnecb")
@@ -1305,6 +1586,12 @@ LCK = 0
 value = 1500
 max_quantity = 99
 icon = ExtResource("67_y3nmo")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_ocbsj"]
 script = ExtResource("48_wnecb")
@@ -1322,23 +1609,40 @@ LCK = -5
 value = 2500
 max_quantity = 99
 icon = ExtResource("68_dqf1p")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_jsrpv"]
 script = ExtResource("48_wnecb")
 headgear_name = "Skull Mask"
-headgear_description = "Frightening mask used by assassins in the West. Made with the skulls of the dead."
+headgear_description = "Frightening mask used by assassins in the West.
+Made with the skulls of the dead."
 element = Array[int]([9])
-ATK = 0
-DEF = 10
+ATK = 1
+DEF = 3
 STR = 0
 CON = 0
 INT = 0
-SYN = -5
-RES = 15
-LCK = -10
-value = 2000
+SYN = 0
+RES = 0
+LCK = -3
+value = 100
 max_quantity = 99
 icon = ExtResource("69_3o102")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 47,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 50,
+"inventory": 3,
+"quantity": 1
+}])
 
 [sub_resource type="Resource" id="Resource_qx0f7"]
 script = ExtResource("48_wnecb")
@@ -1356,6 +1660,12 @@ LCK = 0
 value = 2500
 max_quantity = 99
 icon = ExtResource("70_quq8i")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_bg2je"]
 script = ExtResource("48_wnecb")
@@ -1373,6 +1683,12 @@ LCK = 10
 value = 5000
 max_quantity = 99
 icon = ExtResource("71_a8532")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_vexyv"]
 script = ExtResource("48_wnecb")
@@ -1390,6 +1706,12 @@ LCK = 0
 value = 1500
 max_quantity = 99
 icon = ExtResource("72_hg2r5")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_utsap"]
 script = ExtResource("48_wnecb")
@@ -1407,6 +1729,12 @@ LCK = 0
 value = 2500
 max_quantity = 99
 icon = ExtResource("73_k6mex")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_itck4"]
 script = ExtResource("48_wnecb")
@@ -1424,6 +1752,12 @@ LCK = 8
 value = 3000
 max_quantity = 99
 icon = ExtResource("74_cs4xo")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_ms7n0"]
 script = ExtResource("48_wnecb")
@@ -1441,6 +1775,12 @@ LCK = 0
 value = 3500
 max_quantity = 99
 icon = ExtResource("75_3xa5q")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_0i5km"]
 script = ExtResource("76_u0gli")
@@ -1458,6 +1798,12 @@ LCK = 0
 value = 100
 max_quantity = 99
 icon = ExtResource("77_rjaf1")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_ypho0"]
 script = ExtResource("76_u0gli")
@@ -1475,6 +1821,12 @@ LCK = -1
 value = 150
 max_quantity = 99
 icon = ExtResource("78_seouv")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
 
 [sub_resource type="Resource" id="Resource_qpfcj"]
 script = ExtResource("76_u0gli")
@@ -1492,6 +1844,63 @@ LCK = 0
 value = 250
 max_quantity = 99
 icon = ExtResource("79_tij2o")
+recipe_status = 3
+recipe = Array[Dictionary]([{
+"id": 0,
+"inventory": 0,
+"quantity": 0
+}])
+
+[sub_resource type="Resource" id="Resource_nolcn"]
+script = ExtResource("76_u0gli")
+body_name = "Bronze Cuirass"
+body_description = "Relatively light armor made with cheap bronze."
+element = Array[int]([])
+ATK = 0
+DEF = 7
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 0
+max_quantity = 99
+icon = ExtResource("92_fjoft")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 45,
+"inventory": 3,
+"quantity": 2
+}])
+
+[sub_resource type="Resource" id="Resource_o68me"]
+script = ExtResource("76_u0gli")
+body_name = "Iron Plate"
+body_description = "Armor made with fairly used metal.
+Lightweight and strong at the same time."
+element = Array[int]([])
+ATK = 0
+DEF = 10
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 0
+max_quantity = 99
+icon = ExtResource("93_uanbt")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 46,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 4,
+"inventory": 2,
+"quantity": 1
+}])
 
 [sub_resource type="Resource" id="Resource_olb5a"]
 script = ExtResource("80_3huhm")
@@ -1587,7 +1996,12 @@ max_quantity = 1
 type = 0
 cost_type = 0
 cost_value = 0
+command_input = Array[String]([])
+command_input_serialized = ""
 icon = ExtResource("89_tx7o4")
+weapon_type = 0
+weapon_rank = 0
+transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_v2mv7"]
 script = ExtResource("88_j2qrq")
@@ -1598,7 +2012,12 @@ max_quantity = 1
 type = 0
 cost_type = 0
 cost_value = 0
+command_input = Array[String]([])
+command_input_serialized = ""
 icon = ExtResource("93_cubg8")
+weapon_type = 0
+weapon_rank = 0
+transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_u4ub6"]
 script = ExtResource("88_j2qrq")
@@ -1609,12 +2028,111 @@ max_quantity = 1
 type = 0
 cost_type = 0
 cost_value = 0
+command_input = Array[String]([])
+command_input_serialized = ""
 icon = ExtResource("95_c15jr")
+weapon_type = 0
+weapon_rank = 0
+transitions_into_state = ""
+
+[sub_resource type="Resource" id="Resource_6o46a"]
+script = ExtResource("88_j2qrq")
+skill_name = "Cyan Orb"
+skill_description = "Enhances Indigo Cross by increasing icicles' endurance and power.
+Unlocks Ice Affinity."
+value = 0
+max_quantity = 1
+type = 1
+cost_type = 0
+cost_value = 0
+command_input = Array[String]([])
+command_input_serialized = ""
+icon = ExtResource("96_pcxc3")
+weapon_type = 0
+weapon_rank = 0
+transitions_into_state = ""
+
+[sub_resource type="Resource" id="Resource_m10e8"]
+script = ExtResource("88_j2qrq")
+skill_name = "Sword Spin"
+skill_description = "A technique with swords that spins the sword, hitting enemies from afar multiple times."
+value = 0
+max_quantity = 1
+type = 2
+cost_type = 3
+cost_value = 35
+command_input = Array[String](["move_right", "move_right", "circle"])
+command_input_serialized = " [[Forward]] [[Forward]] + [[Circle]]"
+weapon_type = 0
+weapon_rank = 1
+transitions_into_state = "sword_spin"
+
+[sub_resource type="Resource" id="Resource_gsb2m"]
+script = ExtResource("88_j2qrq")
+skill_name = "Axe Throw"
+skill_description = "Throws the currently equipped weapon to hit enemies above Hector. The currently equipped weapon will not be lost."
+value = 0
+max_quantity = 1
+type = 2
+cost_type = 3
+cost_value = 40
+command_input = Array[String](["up_arrow", "up_arrow", "circle"])
+command_input_serialized = " [[Up]] [[Up]] + [[Circle]]"
+weapon_type = 2
+weapon_rank = 1
+transitions_into_state = "throw_axe"
+
+[sub_resource type="Resource" id="Resource_s1o4l"]
+script = ExtResource("88_j2qrq")
+skill_name = "Sword Hand"
+skill_description = "Increases damage dealt with swords by 10%."
+value = 0
+max_quantity = 1
+type = 2
+cost_type = 0
+cost_value = 0
+command_input = Array[String]([])
+command_input_serialized = ""
+weapon_type = 0
+weapon_rank = 1
+transitions_into_state = ""
+
+[sub_resource type="Resource" id="Resource_d8rda"]
+script = ExtResource("88_j2qrq")
+skill_name = "Executioner's Hand"
+skill_description = "Allows Hector to attack more rapidly with axes."
+value = 0
+max_quantity = 1
+type = 2
+cost_type = 0
+cost_value = 0
+command_input = Array[String]([])
+command_input_serialized = ""
+weapon_type = 2
+weapon_rank = 1
+transitions_into_state = ""
+
+[sub_resource type="Resource" id="Resource_fna47"]
+script = ExtResource("88_j2qrq")
+skill_name = "Blacksmith Contract"
+skill_description = "Allows Hector to combine materials in order to create new items."
+value = 0
+max_quantity = 1
+type = 0
+cost_type = 0
+cost_value = 0
+command_input = Array[String]([])
+command_input_serialized = ""
+icon = ExtResource("98_asytc")
+weapon_type = 0
+weapon_rank = 0
+transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_86suo"]
 script = ExtResource("91_ci5jh")
 relic_name = "Indigo Cross"
-relic_description = "The cross of a hunter buried in freezing catacombs. Summons a shield."
+relic_description = "The cross of a hunter buried in freezing catacombs.
+Summons a shield that reflects projectiles."
 ATK = 0
 DEF = 0
 STR = 0
@@ -1633,18 +2151,19 @@ size = Vector2(15, 45)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8u0y"]
 shader = ExtResource("88_t7gcy")
-shader_parameter/influence = 0.2
-shader_parameter/color = Color(0.12549, 0, 1, 1)
+shader_parameter/influence = 0.1
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/speed = 4.0
+shader_parameter/mix_colors = false
 shader_parameter/enabled = false
 shader_parameter/sheet_columns = 20
 shader_parameter/sheet_rows = 20
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_em0oi"]
-size = Vector2(46.0326, 14)
+size = Vector2(56, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu7uc"]
-size = Vector2(18.6685, 10.4783)
+size = Vector2(25, 10.478)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_25ioo"]
 frequency = 0.6231
@@ -1659,7 +2178,10 @@ noise = SubResource("FastNoiseLite_25ioo")
 shader = ExtResource("91_qpjil")
 shader_parameter/min_intensity = 0.6
 shader_parameter/max_intensity = 1.3
-shader_parameter/speed = 80.0
+shader_parameter/speed_x = 1000.0
+shader_parameter/speed_y = -100.0
+shader_parameter/fade_start = 1.0
+shader_parameter/fade_end = 1.0
 shader_parameter/n = SubResource("NoiseTexture2D_poo34")
 
 [sub_resource type="Animation" id="Animation_ilf42"]
@@ -1928,6 +2450,78 @@ tracks/21/keys = {
 "update": 0,
 "values": [Vector2(17.6223, 0.413044)]
 }
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("SpinNode/Spin:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("SpinNode/Spin:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(23, -1.5)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("SpinNode/Spin/Sprite2D/Spin:rotation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("SpinNode/Spin/Sprite2D/Spin:self_modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("SpinNode/Spin/Area2D:monitoring")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("SpinNode/Spin/Area2D/CollisionShape2D:disabled")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_lhfeg"]
 resource_name = "air_attack"
@@ -2048,9 +2642,12 @@ tracks/9/path = NodePath("Sprite2D")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"recolorTrail"
+}, {
 "args": [],
 "method": &"alignTrail"
 }]
@@ -2160,7 +2757,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(23, 9.167)]
+"values": [Vector2(23, 4)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -2193,9 +2790,12 @@ tracks/8/path = NodePath("Sprite2D")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"recolorTrail"
+}, {
 "args": [],
 "method": &"alignTrail"
 }]
@@ -2481,9 +3081,12 @@ tracks/10/path = NodePath("Sprite2D")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"recolorTrail"
+}, {
 "args": [],
 "method": &"alignTrail"
 }]
@@ -2491,7 +3094,7 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id="Animation_d4fhg"]
 resource_name = "crouch_attack_fist"
-length = 0.5
+length = 1.3
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2500,10 +3103,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [268, 269, 270, 271, 272]
+"values": [266, 267, 268, 269, 270, 271, 272, 268, 267, 266]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2512,7 +3115,7 @@ tracks/1/path = NodePath("Sprite2D/FistHitbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
+"times": PackedFloat32Array(0, 0.3, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -3550,6 +4153,189 @@ tracks/0/keys = {
 "values": [200, 201, 202, 203, 204, 205, 204]
 }
 
+[sub_resource type="Animation" id="Animation_b71ut"]
+resource_name = "sword_throw"
+length = 1.1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_hkpj0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.9, 0.95, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [146, 147, 148, 149, 150, 151, 152]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape2D:shape:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 45)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 12.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpinNode/Spin:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpinNode/Spin:position")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.15, 0.175, 0.9, 0.925),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(23, -1.5), Vector2(33, -1.5), Vector2(33, -1.5), Vector2(23, -1.5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SpinNode/Spin/Sprite2D/Spin:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.15, 0.4, 0.65, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [3.31613, -2.96706, -9.25025, -15.5334]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SpinNode/Spin/Sprite2D/Spin:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.15, 0.35, 0.65, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PolyphonicAudioPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.15, 0.875),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["sword_spin"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["sword_grab"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SpinNode/Spin/Area2D:monitoring")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.425, 0.5, 0.65, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("SpinNode/Spin/Area2D/CollisionShape2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qkrq3"]
+resource_name = "throw"
+length = 0.6
+step = 0.066
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [128, 129, 130, 131]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jttxa"]
 _data = {
 "RESET": SubResource("Animation_ilf42"),
@@ -3579,7 +4365,9 @@ _data = {
 "run": SubResource("Animation_m23uc"),
 "run_end": SubResource("Animation_rcift"),
 "run_start": SubResource("Animation_xave1"),
-"sitting_down": SubResource("Animation_w772u")
+"sitting_down": SubResource("Animation_w772u"),
+"sword_throw": SubResource("Animation_b71ut"),
+"throw": SubResource("Animation_qkrq3")
 }
 
 [sub_resource type="GDScript" id="GDScript_xq16k"]
@@ -3592,6 +4380,7 @@ class_name StateMachine
 @onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
 @onready var voice: PolyphonicAudio = $\"../VoiceClips\"
 
+var new_state: State
 var current_state: State
 var states: Dictionary = {}
 
@@ -3621,7 +4410,7 @@ func on_child_transition(state, new_state_name):
 	if state != current_state:
 		return
 	
-	var new_state = states.get(new_state_name.to_lower())
+	new_state = states.get(new_state_name.to_lower())
 	if !new_state:
 		return
 		
@@ -3727,9 +4516,34 @@ script = ExtResource("17_eidx6")
 Tag = "hit_ice"
 stream = ExtResource("157_an6m8")
 
+[sub_resource type="Resource" id="Resource_e3dkt"]
+script = ExtResource("17_eidx6")
+Tag = "sword_spin"
+stream = ExtResource("160_oaxy7")
+
+[sub_resource type="Resource" id="Resource_kj4nx"]
+script = ExtResource("17_eidx6")
+Tag = "sword_grab"
+stream = ExtResource("161_7g84s")
+
+[sub_resource type="Resource" id="Resource_8pr15"]
+script = ExtResource("17_eidx6")
+Tag = "special"
+stream = ExtResource("163_hmql1")
+
+[sub_resource type="Resource" id="Resource_rs8p6"]
+script = ExtResource("17_eidx6")
+Tag = "focus_full"
+stream = ExtResource("164_xgoly")
+
+[sub_resource type="Resource" id="Resource_71ttq"]
+script = ExtResource("17_eidx6")
+Tag = "rank_up"
+stream = ExtResource("168_o4hqs")
+
 [sub_resource type="Resource" id="Resource_uk8xp"]
 script = ExtResource("140_3d8p5")
-sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_fk7mo"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi")])
+sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_fk7mo"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq")])
 
 [sub_resource type="Resource" id="Resource_pomuy"]
 script = ExtResource("17_eidx6")
@@ -3858,13 +4672,137 @@ particles_anim_h_frames = 12
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "heal_effect", "heal_mp_effect", "tap_up", "effects")]
-scale = Vector2(2.305, 2.305)
+[sub_resource type="Animation" id="Animation_n7mi6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SparklesExploding:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SparklesImploding:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SparklesExploding:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SparklesImploding:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mooh2"]
+resource_name = "trigger"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SparklesExploding:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.501961), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SparklesExploding:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SparklesImploding:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.501961), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SparklesImploding:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(0.5, 0.5)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../PolyphonicAudioPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["special"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dojos"]
+_data = {
+"RESET": SubResource("Animation_n7mi6"),
+"trigger": SubResource("Animation_mooh2")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast")]
+scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 17
 floor_constant_speed = true
-floor_max_angle = 1.0472
+floor_max_angle = 1.309
 floor_snap_length = 30.0
+safe_margin = 0.5
 script = SubResource("GDScript_vri8q")
 sprite = NodePath("Sprite2D")
 aura = NodePath("Sprite2D/Aura")
@@ -3879,10 +4817,14 @@ coyote_timer = NodePath("StateMachine/Falling/Coyote_timer")
 perfect_guard_timer = NodePath("Perfect_timer")
 mercy_invincibility_duration = NodePath("MercyInvincibility")
 mercy_invincibility_hit_threshold_reset = NodePath("IframeHitCounterReset")
+focus_gain_duration = NodePath("FocusGainDuration")
 heal_effect = NodePath("Heal")
 heal_mp_effect = NodePath("HealMP")
 tap_up = NodePath("PressUp")
-effects = NodePath("Node2D")
+effects = NodePath("HitEffect")
+special_attack_animation = NodePath("SpecialAttackEffect/SpecialAnim")
+throw_axe = ExtResource("2_1180g")
+raycast = NodePath("RayCast2D")
 
 [node name="HectorStats" type="Node" parent="." node_paths=PackedStringArray("play_time")]
 script = ExtResource("1_f0ls1")
@@ -3891,12 +4833,14 @@ Stats = {
 "CON": 4,
 "DEF": 2,
 "EXP": 0,
+"FP": 0.0,
 "GOLD": 0,
 "Guard": 3,
 "HP": 180,
 "INT": 5,
 "LCK": 3,
 "LV": 1,
+"MFP": 100.0,
 "MHP": 180,
 "MMP": 0,
 "MP": 0,
@@ -3977,13 +4921,29 @@ equipment = {
 weapon_compendium = Array[ExtResource("2_ju6fn")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks")])
 item_compendium = SubResource("Resource_4r3pk")
 headgear_compendium = Array[ExtResource("48_wnecb")]([SubResource("Resource_stdwu"), SubResource("Resource_hcxc2"), SubResource("Resource_qtfvs"), SubResource("Resource_b4qdd"), SubResource("Resource_w8tqy"), SubResource("Resource_4iosu"), SubResource("Resource_b0lhj"), SubResource("Resource_kh436"), SubResource("Resource_n53u7"), SubResource("Resource_n15bh"), SubResource("Resource_2gney"), SubResource("Resource_580rm"), SubResource("Resource_fy53e"), SubResource("Resource_xv0ma"), SubResource("Resource_csljy"), SubResource("Resource_nfnn0"), SubResource("Resource_7go8i"), SubResource("Resource_ji887"), SubResource("Resource_nhhcx"), SubResource("Resource_ocbsj"), SubResource("Resource_jsrpv"), SubResource("Resource_qx0f7"), SubResource("Resource_bg2je"), SubResource("Resource_vexyv"), SubResource("Resource_utsap"), SubResource("Resource_itck4"), SubResource("Resource_ms7n0")])
-body_compendium = Array[ExtResource("76_u0gli")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj")])
+body_compendium = Array[ExtResource("76_u0gli")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me")])
 legs_compendium = Array[ExtResource("80_3huhm")]([SubResource("Resource_olb5a"), SubResource("Resource_jnr2a")])
 accessory_compendium = Array[ExtResource("83_i53lv")]([SubResource("Resource_fmjl1"), SubResource("Resource_g71f4"), SubResource("Resource_t5f6q")])
-skill_compendium = Array[ExtResource("88_j2qrq")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6")])
+skill_compendium = Array[ExtResource("88_j2qrq")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_6o46a"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47")])
 relic_compendium = Array[ExtResource("91_ci5jh")]([SubResource("Resource_86suo")])
 play_time = NodePath("Playtime")
 status = Array[int]([0])
+weapon_proficiency = Array[Dictionary]([{
+"exp": 0,
+"lv": 0
+}, {
+"exp": 0,
+"lv": 0
+}, {
+"exp": 0,
+"lv": 0
+}, {
+"exp": 0,
+"lv": 0
+}, {
+"exp": 0,
+"lv": 0
+}])
 
 [node name="Playtime" type="Node" parent="HectorStats"]
 script = ExtResource("93_30li2")
@@ -4021,6 +4981,8 @@ sound = NodePath("../../PolyphonicAudioPlayer")
 state_machine = NodePath("../../StateMachine")
 hitbox = NodePath("CollisionShape2D")
 hit_collision_scene = ExtResource("5_7iojt")
+ice_hit_collision_scene = ExtResource("105_c2fce")
+base_attribute = Array[int]([2])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/SwordHitbox"]
 position = Vector2(35, 9.16667)
@@ -4028,6 +4990,7 @@ shape = SubResource("RectangleShape2D_em0oi")
 
 [node name="FistHitbox" type="Area2D" parent="Sprite2D" node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1
+visible = false
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("3_rge3w")
@@ -4036,6 +4999,8 @@ sound = NodePath("../../PolyphonicAudioPlayer")
 state_machine = NodePath("../../StateMachine")
 hitbox = NodePath("CollisionShape2D")
 hit_collision_scene = ExtResource("5_7iojt")
+ice_hit_collision_scene = ExtResource("105_c2fce")
+base_attribute = Array[int]([0])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/FistHitbox"]
 position = Vector2(17.6223, 0.413044)
@@ -4208,6 +5173,13 @@ script = ExtResource("136_2ccld")
 recoil_speed = Vector2(150, -630)
 ignore_landing = NodePath("../Guard_break/Ignore_landing")
 
+[node name="Sword_spin" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_spin")]
+script = ExtResource("138_q0p4k")
+sword_spin = NodePath("../../SpinNode/Spin")
+
+[node name="Throw_axe" type="Node" parent="StateMachine"]
+script = ExtResource("141_js2j3")
+
 [node name="PolyphonicAudioPlayer" parent="." instance=ExtResource("15_lipy2")]
 bus = &"SFX"
 audio_library = SubResource("Resource_uk8xp")
@@ -4272,6 +5244,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="ArcticShield" parent="." instance=ExtResource("151_q5ni2")]
+visible = false
 position = Vector2(38, 9)
 
 [node name="Perfect_timer" type="Timer" parent="."]
@@ -4301,11 +5274,12 @@ lifetime = 0.7
 one_shot = true
 
 [node name="PressUp" parent="." instance=ExtResource("170_moyg6")]
+visible = false
 position = Vector2(0, -25)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="HitEffect" type="Node2D" parent="."]
 
-[node name="Fire" type="CPUParticles2D" parent="Node2D"]
+[node name="Fire" type="CPUParticles2D" parent="HitEffect"]
 material = SubResource("CanvasItemMaterial_i6sdk")
 position = Vector2(1.73913, 17.8261)
 emitting = false
@@ -4325,7 +5299,7 @@ scale_amount_max = 2.0
 anim_speed_min = 3.0
 anim_speed_max = 3.0
 
-[node name="Ice" type="CPUParticles2D" parent="Node2D"]
+[node name="Ice" type="CPUParticles2D" parent="HitEffect"]
 material = SubResource("CanvasItemMaterial_6yi6r")
 position = Vector2(1.73913, 17.8261)
 emitting = false
@@ -4350,6 +5324,40 @@ one_shot = true
 [node name="IframeHitCounterReset" type="Timer" parent="."]
 one_shot = true
 
+[node name="SpinNode" type="Node2D" parent="."]
+scale = Vector2(-1, 1)
+
+[node name="Spin" parent="SpinNode" instance=ExtResource("176_86i4x")]
+visible = false
+position = Vector2(23, -1.5)
+rotation = 3.14159
+scale = Vector2(2, -2)
+
+[node name="SpecialAttackEffect" type="Node2D" parent="."]
+
+[node name="SparklesExploding" type="Sprite2D" parent="SpecialAttackEffect"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(3, 13.5)
+texture = ExtResource("181_s2s3l")
+
+[node name="SparklesImploding" type="Sprite2D" parent="SpecialAttackEffect"]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 7.5)
+texture = ExtResource("181_s2s3l")
+
+[node name="SpecialAnim" type="AnimationPlayer" parent="SpecialAttackEffect"]
+libraries = {
+"": SubResource("AnimationLibrary_dojos")
+}
+
+[node name="FocusGainDuration" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, 16)
+target_position = Vector2(0, 16)
+
 [connection signal="body_entered" from="Sprite2D/SwordHitbox" to="Sprite2D/SwordHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="Sprite2D/Glow" to="Sprite2D" method="_on_glow_timeout"]
@@ -4361,3 +5369,5 @@ one_shot = true
 [connection signal="timeout" from="StateMachine/Opening_door/FinalDuration" to="StateMachine/Opening_door" method="_on_final_duration_timeout"]
 [connection signal="timeout" from="Guard_recovery" to="." method="_on_guard_recovery_timeout"]
 [connection signal="timeout" from="IframeHitCounterReset" to="." method="_on_iframe_hit_counter_reset_timeout"]
+
+[editable path="SpinNode/Spin"]

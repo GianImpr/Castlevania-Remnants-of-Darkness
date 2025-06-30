@@ -31,40 +31,40 @@ stage_name = "Abandoned Monastery"
 [node name="Enemies" type="Node" parent="."]
 
 [node name="ArmorKnight" parent="Enemies" instance=ExtResource("4_0b6ev")]
-position = Vector2(1116, 154)
+position = Vector2(1116, 161)
 
 [node name="ArmorKnight2" parent="Enemies" instance=ExtResource("4_0b6ev")]
-position = Vector2(1423, 154)
+position = Vector2(1423, 161)
 
 [node name="BonePillar3" parent="Enemies" instance=ExtResource("5_32me2")]
-position = Vector2(1075, 310)
+position = Vector2(1075, 324)
 
 [node name="BonePillar2" parent="Enemies" instance=ExtResource("5_32me2")]
-position = Vector2(1075, 366)
+position = Vector2(1075, 374)
 
 [node name="BonePillar" parent="Enemies" instance=ExtResource("5_32me2")]
-position = Vector2(1075, 420)
+position = Vector2(1075, 424)
 
 [node name="Slinger" parent="Enemies" instance=ExtResource("6_vj1xj")]
-position = Vector2(373, 142)
+position = Vector2(373, 149)
 
 [node name="Skeleton" parent="Enemies" instance=ExtResource("7_isosj")]
-position = Vector2(401, 404)
+position = Vector2(401, 411)
 
 [node name="Skeleton2" parent="Enemies" instance=ExtResource("7_isosj")]
-position = Vector2(818, 245)
+position = Vector2(818, 252)
 
 [node name="BoneScimitar" parent="Enemies" instance=ExtResource("8_vdjai")]
-position = Vector2(512, 384)
+position = Vector2(512, 391)
 
 [node name="BoneScimitar2" parent="Enemies" instance=ExtResource("8_vdjai")]
-position = Vector2(2827, 384)
+position = Vector2(2827, 391)
 
 [node name="AxeArmor" parent="Enemies" instance=ExtResource("9_nikwa")]
-position = Vector2(2594, 395)
+position = Vector2(2594, 402)
 
 [node name="ArmorKnight3" parent="Enemies" instance=ExtResource("4_0b6ev")]
-position = Vector2(2436, 379)
+position = Vector2(2436, 386)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -93,31 +93,31 @@ pickup_flag = 24
 [node name="Candle" type="Node" parent="."]
 
 [node name="MonasteryCandle" parent="Candle" instance=ExtResource("6_qkeyi")]
-position = Vector2(568, 392)
+position = Vector2(568, 399)
 
 [node name="MonasteryCandle2" parent="Candle" instance=ExtResource("6_qkeyi")]
-position = Vector2(1294, 393)
+position = Vector2(1294, 400)
 
 [node name="MonasteryCandle5" parent="Candle" instance=ExtResource("6_qkeyi")]
-position = Vector2(1165, 168)
+position = Vector2(1165, 175)
 
 [node name="MonasteryCandle6" parent="Candle" instance=ExtResource("6_qkeyi")]
-position = Vector2(1391, 168)
+position = Vector2(1391, 175)
 
 [node name="MonasteryCandle3" parent="Candle" instance=ExtResource("6_qkeyi")]
-position = Vector2(1928, 392)
+position = Vector2(1928, 399)
 
 [node name="MonasteryCandle4" parent="Candle" instance=ExtResource("6_qkeyi")]
-position = Vector2(2630, 392)
+position = Vector2(2630, 399)
 
 [node name="HardModeOnly" type="Node" parent="."]
 script = ExtResource("12_ar6qn")
 
 [node name="Slinger" parent="HardModeOnly" instance=ExtResource("6_vj1xj")]
-position = Vector2(1258, 176)
+position = Vector2(1258, 183)
 
 [node name="ArmorKnight" parent="HardModeOnly" instance=ExtResource("4_0b6ev")]
-position = Vector2(2508, 379)
+position = Vector2(2508, 386)
 
 [node name="Bat" parent="HardModeOnly" instance=ExtResource("13_bcgx3")]
 position = Vector2(1201, 264)

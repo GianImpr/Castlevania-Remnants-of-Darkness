@@ -7,7 +7,7 @@ func _ready() -> void:
 	
 func _on_spawn_interval_timeout() -> void:
 	var enemy = enemy_to_spawn.instantiate()
-	enemy.position = Vector2(randf_range(200, 2200), 392)
+	enemy.position = Vector2(randf_range(200, 2200), 397)
 	enemy.direction = randi_range(-1, 1)
 	if enemy.direction == 0:
 		enemy.direction = -1

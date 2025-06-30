@@ -143,11 +143,11 @@ sound = NodePath("PolyphonicAudio")
 hitbox_iframe = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_momd5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("4_qqxw7")
 hframes = 2
 

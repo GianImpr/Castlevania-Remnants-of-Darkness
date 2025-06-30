@@ -18,3 +18,6 @@ func Update(delta: float):
 	can_die()
 	run_without_start_anim(false)
 	can_fall(true)
+		
+	if not animation.is_playing():
+		animation.play(player.Animations.IDLE, BLEND, ANIM_SPEED)

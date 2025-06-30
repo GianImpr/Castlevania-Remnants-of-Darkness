@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://c2ubqq1vrk4vi" path="res://assets/sounds/Enemies/Bat/Bat.wav" id="14_gdk68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gki5g"]
-size = Vector2(25, 43)
+size = Vector2(25, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8mfi"]
 size = Vector2(24, 20)
@@ -177,17 +177,17 @@ LV = 1
 HP = 1
 ATK = 9
 EXP = 1
+weaknesses = Array[int]([2])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("3_bjahf")
 hframes = 10
 vframes = 2
 frame = 10
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-0.5, 22.5)
+position = Vector2(-0.5, 21)
 shape = SubResource("RectangleShape2D_gki5g")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -195,8 +195,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2(-2, 5)
+position = Vector2(-1, 9)
 shape = SubResource("RectangleShape2D_i8mfi")
 
 [node name="Iframe Timer" type="Timer" parent="Area2D"]

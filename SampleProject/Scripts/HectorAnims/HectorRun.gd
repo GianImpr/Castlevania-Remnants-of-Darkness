@@ -17,6 +17,7 @@ func Update(delta: float):
 	pass
 	
 func Physics_Update(delta: float):
+	#Continue the run animation if not stopping
 	if not animation.is_playing():
 		animation.play("run", -1, 1.5)
 		
@@ -30,7 +31,8 @@ func Physics_Update(delta: float):
 	check_is_hurt()
 	can_guard()
 	can_die()
-		
+	
+	#If stopped moving while you just started running, go to idle state
 	if not player.direction and animation.current_animation == "run_start":
 		Transitioned.emit(self, "idle")
 	elif not player.direction:

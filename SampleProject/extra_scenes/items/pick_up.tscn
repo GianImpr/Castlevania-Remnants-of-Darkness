@@ -401,6 +401,7 @@ glow_blend_mode = 1
 
 [node name="Pick-up" type="RigidBody2D" node_paths=PackedStringArray("sprite", "idle_timer", "flash_timer", "animation", "sound")]
 collision_layer = 0
+lock_rotation = true
 script = ExtResource("1_sp08q")
 id = 1
 sprite = NodePath("Sprite2D")
@@ -413,7 +414,7 @@ boost_message = ExtResource("3_gagnr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_3yniq")
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("5_8bxu2")
 
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
@@ -424,7 +425,7 @@ texture = SubResource("GradientTexture2D_a8ych")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_fe178")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -438,7 +439,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_v3iyo")
 
 [node name="IdleDuration" type="Timer" parent="."]

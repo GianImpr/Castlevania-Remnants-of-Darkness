@@ -1,12 +1,16 @@
 extends MenuState
 class_name InvMenu
 
-@export var labels: Control
+@export var elements: Control
 @export var id_label: RichTextLabelWithButtons
+@export var combine_button: InventoryButton
 
 func enter():
 	animation.play_backwards("change")
-	default_button.grab_focus()
+	if last_button == null:
+		default_button.grab_focus()
+	else:
+		last_button.grab_focus()
 	updateStats()
 	
 func Update(delta: float):
@@ -20,29 +24,45 @@ func Physics_Update(delta: float):
 	pass
 		
 func updateStats():
-	labels.LevelValue.text = str(Global.getStat("LV"))
-	labels.LevelValue.text = ""
-	labels.MainStatsValues.text = ""
-	labels.MainStatsMaxValues.text = ""
-	labels.SubStatValues.text = ""
-	labels.BattleStatsValues.text = ""
-	labels.TimeValue.text = Global.player.stats.play_time._to_string()
-	labels.LevelValue.text = str(Global.getStat("LV"))
-	for stat in Global.getBasicStats():
-		labels.SubStatValues.text += str(stat) + "\n"
+	elements.MainStatsValues.text = ""
+	elements.SubStatValues.text = ""
+	elements.ExperienceValues.text = ""
+	elements.GoldValue.text = ""
+	elements.TimeValue.text = Global.player.stats.play_time._to_string()
+	
+	elements.MainStatsValues.text = "%4d" % Global.getStat("LV") + "\n"
 	for stat in ["HP", "MP", "SP"]:
-		labels.MainStatsValues.text += str(Global.getStat(stat)) + "\n"
-		labels.MainStatsMaxValues.text += str(Global.getStat("M" + stat)) + "\n"
+		elements.MainStatsValues.text += "%4d" % Global.getStat(stat) + "/" + "%4d" % Global.getStat("M" + stat) + "\n"
+	
+	elements.health_bar.value = float(Global.getStat("HP")) / Global.getStat("MHP") * elements.health_bar.max_value
+	elements.mana_bar.value = float(Global.getStat("MP")) / Global.getStat("MMP") * elements.mana_bar.max_value
+	elements.synergy_bar.value = float(Global.getStat("SP")) / Global.getStat("MSP") * elements.synergy_bar.max_value
+
+	
 	for stat in ["ATK", "DEF"]:
-		labels.BattleStatsValues.text += str(Global.getStat(stat)) + "\n"
-	labels.ResourcesValues.text = str(Global.getStat("EXP")) + "\n"
-	labels.ResourcesValues.text += str(Global.player.expNeededToLvUp()-Global.getStat("EXP")) + "\n"
-	labels.ResourcesValues.text += str(Global.getStat("GOLD")) + "\n"
+		elements.SubStatValues.text += str(Global.getStat(stat)) + "\n"
+	for stat in Global.getBasicStats():
+		elements.SubStatValues.text += str(stat) + "\n"
+	
+	elements.ExperienceValues.text = str(Global.getStat("EXP")) + "\n"
+	elements.ExperienceValues.text += str(Global.player.expNeededToLvUp()-Global.getStat("EXP")) + "\n"
+	elements.GoldValue.text += str(Global.getStat("GOLD"))
+	
 	if Global.player.pocket_size > 0:
 		default_button.text = "Summon"
 	else:
 		default_button.text = "? ? ?"
 	default_button.disabled = true
+		
+	#Forgery
+	if Global.player.stats.findItem(9, Global.player.stats.skill_inventory):
+		combine_button.text = "Combine"
+		combine_button.disabled = false
+	else:
+		combine_button.text = "? ? ?"
+		combine_button.disabled = true
+	
+		
 	# This line will be decommented in a further update, when there are more than one innocent devil
 	#default_button.disabled = Global.player.pocket_size == 0
 	id_label.visible = Global.player.innocent_devil != null

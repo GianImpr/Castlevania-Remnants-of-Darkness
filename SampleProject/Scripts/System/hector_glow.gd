@@ -96,3 +96,9 @@ func repositionTrail() -> void:
 		weapon_trail.position = Vector2(3.9*trail_direction, -10)
 	elif Global.player.state_machine.current_state is HectorAttack:
 		weapon_trail.position = Vector2(3.9*trail_direction, 0.4)
+
+func recolorTrail() -> void:
+	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= 3 and Global.player.stats.equipment["relic"] == 1 and Global.player.stats.findItem(4, Global.player.stats.skill_inventory):
+		weapon_trail.modulate = Color(0.25, 0.6, 1, 0.6)
+	else:
+		weapon_trail.modulate = Color(1, 1, 1, 0.251)

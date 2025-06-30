@@ -844,7 +844,7 @@ position = Vector2(578, 33)
 position = Vector2(255, 34)
 
 [node name="AxeArmor" parent="Enemies" instance=ExtResource("5_sebu1")]
-position = Vector2(708, 395)
+position = Vector2(708, 402)
 
 [node name="Items" type="Node" parent="."]
 
@@ -856,13 +856,13 @@ pickup_flag = 5
 [node name="Candles" type="Node" parent="."]
 
 [node name="MonasteryCandle" parent="Candles" instance=ExtResource("8_souv4")]
-position = Vector2(809, 393)
+position = Vector2(809, 400)
 
 [node name="HardModeOnly" type="Node" parent="."]
 script = ExtResource("9_4lfsr")
 
 [node name="Skeleton" parent="HardModeOnly" instance=ExtResource("10_lo2wl")]
-position = Vector2(774, 403)
+position = Vector2(774, 410)
 
 [node name="HintBoxTrigger" parent="." instance=ExtResource("11_m7lpw")]
 position = Vector2(89, 435)

@@ -27,10 +27,10 @@ stage_name = "Abandoned Monastery"
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Skeleton" parent="Enemies" instance=ExtResource("4_qd0qw")]
-position = Vector2(1032, 408)
+position = Vector2(1032, 415)
 
 [node name="Skeleton2" parent="Enemies" instance=ExtResource("4_qd0qw")]
-position = Vector2(2044, 412)
+position = Vector2(2044, 419)
 
 [node name="ZombieSpawner" type="Node" parent="." node_paths=PackedStringArray("spawn_cooldown")]
 script = ExtResource("4_gmqd0")
@@ -60,24 +60,24 @@ tile_set = ExtResource("1_7nul7")
 [node name="Candle" type="Node" parent="."]
 
 [node name="MonasteryCandle" parent="Candle" instance=ExtResource("7_wimwc")]
-position = Vector2(568, 392)
+position = Vector2(568, 399)
 
 [node name="MonasteryCandle2" parent="Candle" instance=ExtResource("7_wimwc")]
-position = Vector2(1158, 392)
+position = Vector2(1158, 399)
 
 [node name="MonasteryCandle3" parent="Candle" instance=ExtResource("7_wimwc")]
-position = Vector2(1928, 392)
+position = Vector2(1928, 399)
 
 [node name="MonasteryCandle4" parent="Candle" instance=ExtResource("7_wimwc")]
-position = Vector2(2630, 392)
+position = Vector2(2630, 399)
 
 [node name="CrazyModeEnemies" type="Node" parent="."]
 script = ExtResource("8_0ajer")
 
 [node name="AxeArmor" parent="CrazyModeEnemies" instance=ExtResource("9_ysfnq")]
-position = Vector2(1563, 393)
+position = Vector2(1563, 400)
 
 [node name="Skeleton" parent="CrazyModeEnemies" instance=ExtResource("4_qd0qw")]
-position = Vector2(2180, 405)
+position = Vector2(2180, 412)
 
 [connection signal="timeout" from="ZombieSpawner/SpawnInterval" to="ZombieSpawner" method="_on_spawn_interval_timeout"]

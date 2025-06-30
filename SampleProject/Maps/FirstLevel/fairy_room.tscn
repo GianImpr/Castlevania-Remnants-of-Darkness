@@ -31,7 +31,10 @@ noise = SubResource("FastNoiseLite_dfmu6")
 shader = ExtResource("5_dnpec")
 shader_parameter/min_intensity = 0.4
 shader_parameter/max_intensity = 0.6
-shader_parameter/speed = 10.0
+shader_parameter/speed_x = 1000.0
+shader_parameter/speed_y = 10.0
+shader_parameter/fade_start = 1.0
+shader_parameter/fade_end = 1.0
 shader_parameter/n = SubResource("NoiseTexture2D_deia1")
 
 [sub_resource type="Gradient" id="Gradient_ak5p1"]
@@ -1330,7 +1333,7 @@ tile_set = SubResource("TileSet_uar6o")
 
 [node name="Fairy" type="Sprite2D" parent="Background" node_paths=PackedStringArray("animation", "forging_particles")]
 position = Vector2(606.667, 537.333)
-scale = Vector2(2.66667, 2.66667)
+scale = Vector2(2, 2)
 texture = ExtResource("9_o4ht3")
 script = ExtResource("7_1gwmw")
 innocent_devil_scene = ExtResource("8_ns1be")

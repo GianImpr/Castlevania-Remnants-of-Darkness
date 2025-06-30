@@ -4,16 +4,27 @@ class_name PlayerHitbox
 @export var sound: PolyphonicAudio
 @export var state_machine: Node
 @export var hitbox: CollisionShape2D
+@export var trail: Sprite2D
 @export var hit_collision_scene: PackedScene
+@export var ice_hit_collision_scene: PackedScene
+@export var base_attribute: Array[Global.Attribute]
+var actual_attributes: Array[Global.Attribute]
 
 func _ready() -> void:
 	pass
 	
 func _process(delta: float) -> void:
 	adjustHitboxOrientation()
-	removeHitboxIfNotAttacking()
+	
+	if player == null:
+		player = Global.player
+		sound = Global.player.sound
+	
+	if state_machine != null:
+		removeHitboxIfNotAttacking()
 		
 func _on_body_entered(body: Node2D) -> void:
+	actual_attributes = base_attribute.duplicate(true)
 	if body is Candle or body is Canister:
 		createHitEffect(body)
 		body.destroy()
@@ -27,6 +38,14 @@ func _on_body_entered(body: Node2D) -> void:
 	# Hitting an enemy
 	if isAlive(body):
 		var damage = calculateDamage(body)
+		
+		#Sword Hand skill
+		if player.stats.canApplySkill(7):
+			damage *= 1.1
+		
+		player.addWeaponExp()
+		
+		player.focus_gain_duration.start()
 		
 		if player.stats.status[player.stats.Status.REFRESHING_AIR] > 0 and player.unlocked_magic:
 			player.healMP(2+damage/20)
@@ -58,19 +77,29 @@ func createHitEffect(body: Node2D) -> void:
 		body_size = hurtbox.shape.size
 	elif hurtbox.shape is CircleShape2D:
 		body_size = Vector2(hurtbox.shape.radius*2, hurtbox.shape.radius*2)
-	var coordinatesX: Array[float] = [hitbox.global_position.x-hitbox.shape.size.x/2, hitbox.global_position.x+hitbox.shape.size.x/2, hurtbox.global_position.x+body_size.x/2, hurtbox.global_position.x-body_size.x/2]
-	var coordinatesY: Array[float] = [hitbox.global_position.y-hitbox.shape.size.y/2, hitbox.global_position.y+hitbox.shape.size.y/2, hurtbox.global_position.y+body_size.y/2, hurtbox.global_position.y-body_size.y/2]
+	var coordinatesX: Array[float] = [hitbox.global_position.x-body_size.x/2, hitbox.global_position.x+body_size.x/2, hurtbox.global_position.x+body_size.x/2, hurtbox.global_position.x-body_size.x/2]
+	var coordinatesY: Array[float] = [hitbox.global_position.y-body_size.y/2, hitbox.global_position.y+body_size.y/2, hurtbox.global_position.y+body_size.y/2, hurtbox.global_position.y-body_size.y/2]
 	coordinatesX.sort()
 	coordinatesY.sort()
 	var effect_x = (coordinatesX[1]+coordinatesX[2])/2
 	var effect_y = (coordinatesY[1]+coordinatesY[2])/2
-	var hit_effect = hit_collision_scene.instantiate()
+	var hit_effect
+	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= 3 and Global.player.stats.equipment["relic"] == 1 and Global.player.stats.findItem(4, Global.player.stats.skill_inventory):
+		actual_attributes.append(Global.Attribute.ICE)
+		hit_effect = ice_hit_collision_scene.instantiate()
+		if body is not Candle:
+			Global.player.stats.Stats["MP"] -= 3
+	else:
+		hit_effect = hit_collision_scene.instantiate()
 	Global.player.get_parent().add_child(hit_effect)
 	hit_effect.position = Vector2(effect_x, effect_y)
 
 # Adjusts hitbox according to Hector's facing position
 func adjustHitboxOrientation() -> void:
-	if get_parent().flip_h:
+	var reference = get_parent()
+	if reference == null or reference is not Sprite2D:
+		reference = Global.player.sprite
+	if reference.flip_h:
 		scale.x = -1
 	else:
 		scale.x = 1
@@ -87,13 +116,33 @@ func calculateDamage(body: Node2D) -> int:
 
 # Does the attack kill the target?
 func kills(body: Node2D, damage) -> bool:
+	var multiplier_rate: float = 2
+	for element in actual_attributes:
+		if element in body.stats.weaknesses:
+			multiplier_rate *= 1.5
+		elif element in body.stats.tolerances:
+			multiplier_rate *= 0.67
+	
+	multiplier_rate = max(multiplier_rate, 1)
+	damage *= log(multiplier_rate) / log(2)
+
 	return damage >= body.stats.HP
 
 # Generates the effect and applies the damage to the target
 func applyDamage(body: Node2D, damage: int) -> void:
+	createEffects(body)
+	var multiplier_rate: float = 2
+	for element in actual_attributes:
+		if element in body.stats.weaknesses:
+			multiplier_rate *= 1.5
+		elif element in body.stats.tolerances:
+			multiplier_rate *= 0.67
+	
+	multiplier_rate = max(multiplier_rate, 1)
+	damage *= log(multiplier_rate) / log(2)
+	
 	body.damage_popup.popup(damage, 1)
 	body.stats.HP -= damage
-	createEffects(body)
 
 # Creates the graphical hit effect and the sound effect of the impact
 func createEffects(body: Node2D) -> void:
@@ -113,3 +162,9 @@ func isAlive(body) -> bool:
 	if body is not CharacterBody2D:
 		return false
 	return body.stats.HP > 0
+
+func recolorTrail() -> void:
+	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= 3 and Global.player.stats.equipment["relic"] == 1 and Global.player.stats.findItem(4, Global.player.stats.skill_inventory):
+		trail.modulate = Color(0.3, 0.8, 1.5, 1)
+	else:
+		trail.modulate = Color(1, 1, 1, 1)

@@ -1,12 +1,14 @@
-[gd_scene load_steps=39 format=3 uid="uid://yby38f15lji0"]
+[gd_scene load_steps=45 format=3 uid="uid://yby38f15lji0"]
 
 [ext_resource type="Texture2D" uid="uid://5i5nsq4bad0r" path="res://assets/sprites/HUD/Body.png" id="1_r4po5"]
 [ext_resource type="Script" path="res://hud.gd" id="1_xhgqi"]
 [ext_resource type="Texture2D" uid="uid://o847yl7lsxpe" path="res://assets/sprites/HUD/Health.png" id="2_6bv25"]
 [ext_resource type="Texture2D" uid="uid://c0vht0ktmkbou" path="res://assets/sprites/HUD/Mana.png" id="3_dpp6q"]
 [ext_resource type="Script" path="res://h_box_container.gd" id="4_iqdk1"]
+[ext_resource type="Texture2D" uid="uid://knwunvou11hb" path="res://assets/sprites/HUD/FocusEmpty.png" id="5_0n8ox"]
 [ext_resource type="Texture2D" uid="uid://22lrwvydkpyk" path="res://assets/sprites/HUD/GuardHealth.png" id="5_j8311"]
 [ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="6_c6x0a"]
+[ext_resource type="Texture2D" uid="uid://bmw3n1frwb2e8" path="res://assets/sprites/HUD/FocusFull.png" id="6_tc5c0"]
 [ext_resource type="Script" path="res://scenes/guard_number.gd" id="7_uauha"]
 [ext_resource type="Texture2D" uid="uid://nuq5bvc306w5" path="res://assets/sprites/HUD/GuardLabel.png" id="8_asxhj"]
 [ext_resource type="Texture2D" uid="uid://bkndl4l3y8ril" path="res://assets/sprites/HUD/IDBodyBar.png" id="9_tryvd"]
@@ -109,6 +111,62 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_id3d2"),
 "glow": SubResource("Animation_mo8w8")
+}
+
+[sub_resource type="Animation" id="Animation_705et"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.243137, 0.6, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f1faq"]
+resource_name = "full"
+length = 0.3
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.572549, 0.552941, 0.788235, 1), Color(0, 0.243137, 0.6, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pa4og"]
+resource_name = "not_full"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0.243137, 0.6, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vnhn4"]
+_data = {
+"RESET": SubResource("Animation_705et"),
+"full": SubResource("Animation_f1faq"),
+"not_full": SubResource("Animation_pa4og")
 }
 
 [sub_resource type="Animation" id="Animation_6e8er"]
@@ -551,6 +609,24 @@ scale = Vector2(2, 2)
 value = 100.0
 nine_patch_stretch = true
 texture_progress = ExtResource("3_dpp6q")
+
+[node name="Focus" type="TextureProgressBar" parent="TextureRect"]
+self_modulate = Color(0, 0.243137, 0.6, 1)
+layout_mode = 0
+offset_left = 13.5714
+offset_top = 5.0
+offset_right = 73.5714
+offset_bottom = 45.0
+scale = Vector2(2, 2.143)
+fill_mode = 3
+texture_under = ExtResource("5_0n8ox")
+texture_progress = ExtResource("6_tc5c0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/Focus"]
+libraries = {
+"": SubResource("AnimationLibrary_vnhn4")
+}
+autoplay = "not_full"
 
 [node name="GuardHealth" type="HBoxContainer" parent="TextureRect"]
 layout_mode = 0

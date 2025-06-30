@@ -27,7 +27,7 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 		if damage < body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1:
 			damage = 0
 		elif damage >= body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1:
-			damage = min(damage*0.2, body.stats.Stats["HP"]-1)
+			damage = min(damage*0.1, body.stats.Stats["HP"]-1)
 		elif body.stats.Stats["Guard"] == 1:
 			damage *= 0.6
 		body.stats.Stats["Guard"] -= 1

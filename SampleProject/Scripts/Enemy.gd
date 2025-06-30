@@ -51,7 +51,7 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 		if damage_with_chip < body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1 and not guard_break:
 			damage = 0
 		elif damage_with_chip >= body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1 and not guard_break:
-			damage = min(damage * 0.2 + chip_damage, body.stats.Stats["HP"]-1)
+			damage = min(damage * 0.1 + chip_damage, body.stats.Stats["HP"]-1)
 		elif body.stats.Stats["Guard"] == 1 or guard_break:
 			damage = damage * 0.6 + chip_damage
 		if not guard_break:

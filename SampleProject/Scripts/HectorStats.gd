@@ -26,12 +26,15 @@ class_name HectorStats
 @export var relic_compendium: Array[Relic]
 @export var play_time: Hour
 @export var status: Array[int]
+@export var weapon_proficiency: Array[Dictionary]
+
 var picked_items: Array[bool] #ID list checks for item pick-up flags
 var hint_flags: Array[bool] #ID list checks for hints
 var event_flags: Array[bool] #ID list checks for events (combat rooms and bosses are excluded)
 var stage_name_flags: Array[bool] #ID list checks for stage name display
 var combat_flags: Array[bool] #ID list checks for combat rooms and bosses
 var tutorial_flags: Array[bool] #ID list checks for fullscreen tutorial popups
+var current_area: String = "???"
 
 enum Status {
 	REFRESHING_AIR
@@ -81,6 +84,16 @@ func removeItem(id: int, inventory) -> void:
 		for item in inventory:
 			if item["id"] == id:
 				item["quantity"] -= 1
+				
+# Removes multiple copies of a certain item ID in a certain inventory
+func removeItemCopies(id: int, qty: int, inventory) -> void:
+	var copies = findItem(id, inventory)
+	if copies <= qty:
+		inventory.erase({"id": id, "quantity": copies})
+	elif copies > qty:
+		for item in inventory:
+			if item["id"] == id:
+				item["quantity"] -= qty
 
 # Finds the item ID in a certain compendium
 func searchItemInCompendium(id: int, compendium):
@@ -89,10 +102,19 @@ func searchItemInCompendium(id: int, compendium):
 	return compendium[id-1]
 
 # Finds the slot number of the item in a certain compendium
-func getItemIndexInCompendium(item, compendium) -> int:
+func getItemIndexInCompendium(item, compendium: Array) -> int:
 	var slot = 1
 	for entry in compendium:
 		if item == entry:
 			return slot
 		slot += 1
 	return 0
+	
+func getCurrentWeaponType() -> int:
+	var weapon_type: int = 4
+	if equipment["weapon"] != 0:
+		weapon_type = searchItemInCompendium(equipment["weapon"], weapon_compendium).type
+	return weapon_type
+
+func canApplySkill(id: int) -> bool:
+	return findItem(id, skill_inventory) > 0 and getCurrentWeaponType() == searchItemInCompendium(id, skill_compendium).weapon_type

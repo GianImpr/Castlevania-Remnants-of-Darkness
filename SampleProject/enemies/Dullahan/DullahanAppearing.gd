@@ -26,6 +26,6 @@ func _on_trail_frequency_timeout() -> void:
 	trail.vframes = sword_sprite.vframes
 	trail.hframes = sword_sprite.hframes
 	trail.global_position = sword_sprite.global_position
-	trail.scale = Vector2(2.3, 2.3)
+	trail.scale = Vector2(2, 2)
 	trail.rotation_degrees = sword_sprite.rotation_degrees
 	trail.show_behind_parent = true

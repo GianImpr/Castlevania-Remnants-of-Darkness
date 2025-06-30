@@ -5,6 +5,7 @@ class_name SkillButtons
 @export var cost_list: GridContainer
 @export var description: Node
 @export var labels: Control
+@export var command_label: RichTextLabelWithButtons
 var button_index: int
 
 func _process(delta: float) -> void:
@@ -19,17 +20,9 @@ func _process(delta: float) -> void:
 		menu.accessed_menu = 0
 
 func on_focused(button):
-	sound.play_sound_effect_from_library("cursor")
+	super(button)
 	deleteList()
-	match button.get_index():
-		0:
-			initList(0)
-		1:
-			pass
-		2:
-			pass
-		3:
-			pass
+	initList(button.get_index())
 
 func on_button_pressed(which):
 	if skill_list.get_child_count() > 0:
@@ -43,13 +36,13 @@ func on_button_pressed(which):
 func getListType():
 	match button_index:
 		0:
-			return 0
+			return Skill.SkillType.PICKABLE
 		1:
-			pass
+			return Skill.SkillType.ORB
 		2:
-			pass
+			return Skill.SkillType.LEARNABLE
 		3:
-			pass
+			return Skill.SkillType.OTHER
 		
 func on_skill_button_pressed(which):
 	sound.play_sound_effect_from_library("denied")
@@ -69,14 +62,13 @@ func initList(skillType: int) -> void:
 		var skill = getSkillFromCompendium(slot["id"])
 		if skill.type == skillType:
 			var skill_button = InventoryButton.new()
-			if skillType == skill.SkillType.PICKABLE:
-				var cost_label = Label.new()
-				cost_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-				if skill.cost_value > 0:
-					cost_label.text = "" + str(skill.cost_value) + " " + str(Skill.CostType.keys()[skill.cost_type])
-				else:
-					cost_label.text = ""
-				cost_list.add_child(cost_label)
+			var cost_label = Label.new()
+			cost_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			if skill.cost_value > 0:
+				cost_label.text = "" + str(skill.cost_value) + " " + str(Skill.CostType.keys()[skill.cost_type])
+			else:
+				cost_label.text = ""
+			cost_list.add_child(cost_label)
 			skill_button.text = skill["skill_name"]
 			skill_button.icon = skill["icon"]
 			skill_list.add_child(skill_button)
@@ -118,6 +110,12 @@ func updateDescription(skill: Skill) -> void:
 	if skill:
 		skill_icon.texture = skill["icon"]
 		skill_text.new_text = skill["skill_description"]
+		if skill.command_input_serialized != "":
+			command_label.get_parent().visible = true
+			command_label.new_text = skill.command_input_serialized
+		else:
+			command_label.get_parent().visible = false
 	else:
 		skill_icon.texture = null
 		skill_text.new_text = ""
+		command_label.get_parent().visible = false

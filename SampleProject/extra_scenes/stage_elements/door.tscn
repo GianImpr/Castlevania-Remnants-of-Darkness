@@ -22,7 +22,10 @@ noise = SubResource("FastNoiseLite_j0tdh")
 shader = ExtResource("2_d1xi3")
 shader_parameter/min_intensity = 1.0
 shader_parameter/max_intensity = 1.5
-shader_parameter/speed = 0.3
+shader_parameter/speed_x = 1.0
+shader_parameter/speed_y = 1.0
+shader_parameter/fade_start = 0.3
+shader_parameter/fade_end = 0.8
 shader_parameter/n = SubResource("NoiseTexture2D_3ya43")
 
 [sub_resource type="Animation" id="Animation_cy7r1"]
