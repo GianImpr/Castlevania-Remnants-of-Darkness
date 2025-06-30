@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://re23rlrgaunh"]
+
+[ext_resource type="Script" path="res://addons/levelshot/capture/level_shot_capture.gd" id="1_ljmkx"]
+
+[node name="LevelshotCapture" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ljmkx")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="LevelParent" type="Node2D" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true

@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba682axuvqelk"]
+
+[ext_resource type="Script" path="res://addons/levelshot/ui/level_shot_levels_tree.gd" id="1_1fq12"]
+
+[node name="LevelshotLevelsTree" type="Tree"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+hide_root = true
+select_mode = 1
+script = ExtResource("1_1fq12")
+
+[node name="LevelsFileDialog" type="FileDialog" parent="."]
+title = "Select Level Scenes"
+size = Vector2i(800, 580)
+min_size = Vector2i(800, 580)
+ok_button_text = "Open"
+mode_overrides_title = false
+file_mode = 1
+filters = PackedStringArray("*.tscn", "*.scn")
+
+[connection signal="button_clicked" from="." to="." method="_on_button_clicked"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="item_edited" from="." to="." method="_on_item_edited"]
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]
+[connection signal="files_selected" from="LevelsFileDialog" to="." method="_on_levels_file_dialog_files_selected"]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvikboxpt5o45"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/dialogue_scene.gd" id="1_2shlh"]
+[ext_resource type="Texture2D" uid="uid://c08sind7c7n8c" path="res://assets/sprites/HUD/Faces/Hector/HalfBody.png" id="1_qijf7"]
+[ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Crop3.png" id="2_mt6ho"]
+[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="3_wbmmy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a3xlh"]
+texture = ExtResource("2_mt6ho")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="Theme" id="Theme_h8blr"]
+default_font = ExtResource("3_wbmmy")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_houn6"]
+default_font = ExtResource("3_wbmmy")
+default_font_size = 32
+
+[node name="Dialogue" type="Node2D" node_paths=PackedStringArray("left_character", "right_character", "character_name", "text")]
+script = ExtResource("1_2shlh")
+left_character = NodePath("LeftCharacter")
+right_character = NodePath("RightCharacter")
+character_name = NodePath("Label")
+text = NodePath("RichTextLabel")
+
+[node name="LeftCharacter" type="Sprite2D" parent="."]
+texture_filter = 2
+position = Vector2(120, 226)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_qijf7")
+hframes = 5
+frame = 1
+
+[node name="RightCharacter" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.5, 0.5, 0.5, 1)
+texture_filter = 2
+position = Vector2(744, 185)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_qijf7")
+flip_h = true
+hframes = 5
+
+[node name="DialogueBox" type="PanelContainer" parent="."]
+offset_top = 346.0
+offset_right = 864.0
+offset_bottom = 480.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_a3xlh")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 0.760784, 0, 1)
+offset_left = 41.0
+offset_top = 362.0
+offset_right = 107.0
+offset_bottom = 394.0
+theme = SubResource("Theme_h8blr")
+text = "Hector"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 59.0
+offset_top = 394.0
+offset_right = 804.0
+offset_bottom = 497.0
+theme = SubResource("Theme_houn6")
+bbcode_enabled = true
+text = "Carmilla...
+I should've known that you were behind all of this."
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0

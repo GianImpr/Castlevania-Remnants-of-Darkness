@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="LevelshotData" load_steps=5 format=3 uid="uid://va3b05b3n701"]
+
+[ext_resource type="Script" path="res://addons/levelshot/data/level_shot_level_data.gd" id="1_8df06"]
+[ext_resource type="Script" path="res://addons/levelshot/data/level_shot_data.gd" id="2_7suny"]
+
+[sub_resource type="Resource" id="Resource_fby5x"]
+script = ExtResource("1_8df06")
+is_default = true
+mirror_default = false
+level_scene_path = ""
+image_size_option = 1
+scale = 10
+size = Vector2(1920, 1080)
+level_boundary_option = 0
+excluded_node_groups = "levelshot_exclude"
+include_canvas_layers = false
+selected = true
+levelshot_capture_plugin = ""
+pause_before_capture_time = 0.0
+
+[sub_resource type="Resource" id="Resource_arv4p"]
+script = ExtResource("1_8df06")
+is_default = false
+mirror_default = true
+level_scene_path = "res://SampleProject/Maps/Fagaras/second_room.tscn"
+image_size_option = 1
+scale = 10
+size = Vector2(1920, 1080)
+level_boundary_option = 0
+excluded_node_groups = "levelshot_exclude"
+include_canvas_layers = false
+selected = true
+levelshot_capture_plugin = ""
+pause_before_capture_time = 0.0
+
+[resource]
+script = ExtResource("2_7suny")
+levels = Array[ExtResource("1_8df06")]([SubResource("Resource_fby5x"), SubResource("Resource_arv4p")])

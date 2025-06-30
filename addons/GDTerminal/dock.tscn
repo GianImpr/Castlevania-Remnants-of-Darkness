@@ -1,0 +1,267 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlc45f0gthetl"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_0imsi"]
+device = -1
+alt_pressed = true
+ctrl_pressed = true
+keycode = 4194310
+
+[sub_resource type="Shortcut" id="Shortcut_ab7yo"]
+events = [SubResource("InputEventKey_0imsi")]
+
+[sub_resource type="Gradient" id="Gradient_gou6x"]
+offsets = PackedFloat32Array(-2, -1, 0)
+colors = PackedColorArray(0.439216, 0.729412, 0.980392, 0, 1, 1, 1, 1, 0.439216, 0.729412, 0.980392, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i1jbc"]
+gradient = SubResource("Gradient_gou6x")
+width = 16
+
+[node name="GDTerminal" type="BoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 256)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CodeEdit" type="CodeEdit" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_smooth = true
+delimiter_comments = Array[String](["#"])
+indent_automatic = true
+auto_brace_completion_highlight_matching = true
+
+[node name="Settings" type="Panel" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Settings/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Control/Settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/Settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ClearOnRun" type="CheckButton" parent="Control/Settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "When enabled, the CodeEdit
+will be cleared after code is run."
+text = "Clear on Run"
+text_overrun_behavior = 3
+
+[node name="PrintOnRun" type="CheckButton" parent="Control/Settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "When enabled, statements will be
+printed before and after running code."
+text = "Print on Run"
+text_overrun_behavior = 3
+
+[node name="PrintExecutionTime" type="CheckButton" parent="Control/Settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "When enabled, the time that code
+takes to execute will be printed."
+text = "Print Execution Time"
+text_overrun_behavior = 3
+
+[node name="MarkUnsaved" type="CheckButton" parent="Control/Settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "When enabled, GDTerminal will mark the active
+scene as unsaved when a command is run."
+text = "Mark Scene as Unsaved"
+text_overrun_behavior = 3
+
+[node name="RunHotkey" type="HBoxContainer" parent="Control/Settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "The hotkey to run code.
+
+To change:
+1. Press the button
+2. Press the new key(s)
+3. Move your mouse outside of the button."
+theme_override_constants/separation = 0
+
+[node name="LSpacer" type="Control" parent="Control/Settings/ScrollContainer/VBoxContainer/RunHotkey"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="Control/Settings/ScrollContainer/VBoxContainer/RunHotkey"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Run Hotkey"
+text_overrun_behavior = 3
+
+[node name="Button" type="Button" parent="Control/Settings/ScrollContainer/VBoxContainer/RunHotkey"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="RSpacer" type="Control" parent="Control/Settings/ScrollContainer/VBoxContainer/RunHotkey"]
+custom_minimum_size = Vector2(7, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="ExpandFactor" type="HBoxContainer" parent="Control/Settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "How much the CodeEdit will be
+expanded when expand is toggled."
+theme_override_constants/separation = 0
+
+[node name="LSpacer" type="Control" parent="Control/Settings/ScrollContainer/VBoxContainer/ExpandFactor"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="Control/Settings/ScrollContainer/VBoxContainer/ExpandFactor"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Expand Factor"
+text_overrun_behavior = 3
+
+[node name="SpinBox" type="SpinBox" parent="Control/Settings/ScrollContainer/VBoxContainer/ExpandFactor"]
+layout_mode = 2
+min_value = 2.0
+max_value = 5.0
+step = 0.5
+value = 2.0
+alignment = 1
+suffix = "x"
+
+[node name="RSpacer" type="Control" parent="Control/Settings/ScrollContainer/VBoxContainer/ExpandFactor"]
+custom_minimum_size = Vector2(7, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="MoveToBottom" type="CheckButton" parent="Control/Settings/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Move this dock to the bottom panel."
+text = "Move to Bottom"
+alignment = 1
+
+[node name="Saved" type="Panel" parent="Control"]
+modulate = Color(1, 1, 1, 0.5)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Saved"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Saved/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Saved Commands"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/Saved/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Saved/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Saved/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator2" type="HSeparator" parent="Control/Saved/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/Saved/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Add the current command to
+the list of saved commands."
+text = "Add Current Command"
+
+[node name="Buttons" type="BoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Settings" type="Button" parent="Buttons"]
+layout_mode = 2
+tooltip_text = "Settings"
+toggle_mode = true
+
+[node name="Saved" type="Button" parent="Buttons"]
+layout_mode = 2
+tooltip_text = "Open saved commands."
+toggle_mode = true
+
+[node name="Run" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Runs the code currently in the CodeEdit.
+
+If a scene is not open, the code will be attatched
+to a new node parented to the scene root.
+If a scene is open, the code will be attatched
+to a new node parented to the editor's SceneTree."
+shortcut = SubResource("Shortcut_ab7yo")
+text = "Run"
+
+[node name="TextureRect" type="TextureRect" parent="Buttons/Run"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_i1jbc")
+expand_mode = 2
+
+[node name="Clear" type="Button" parent="Buttons"]
+layout_mode = 2
+tooltip_text = "Clear Code"
+
+[node name="Expand" type="Button" parent="Buttons"]
+layout_mode = 2
+tooltip_text = "Expand"
+toggle_mode = true

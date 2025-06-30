@@ -1,0 +1,219 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhpnj6ugs67ca"]
+
+[ext_resource type="ButtonGroup" uid="uid://b7vchtqbf3t7e" path="res://addons/levelshot/ui/level_shot_size_option_button_group.tres" id="1_3bddd"]
+[ext_resource type="Script" path="res://addons/levelshot/ui/level_settings.gd" id="1_tvtah"]
+[ext_resource type="ButtonGroup" uid="uid://cjjm1k14nh1r3" path="res://addons/levelshot/ui/level_shot_extents_button_group.tres" id="2_dp6q0"]
+[ext_resource type="Texture2D" uid="uid://gt3xu1tbm1dh" path="res://addons/levelshot/assets/icons/Camera.svg" id="4_7sfus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mime8"]
+draw_center = false
+border_width_bottom = 2
+
+[node name="LevelSettings" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tvtah")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HeaderLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_mime8")
+text = "Level Settings"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FilePathsLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Scene File:"
+
+[node name="MirrorDefaultCheckBox" type="CheckBox" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mirror Default Level Settings"
+
+[node name="SizeHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SizeLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer"]
+layout_mode = 2
+text = "Image Size"
+
+[node name="SizeOptionsVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer"]
+layout_mode = 2
+
+[node name="MaxImageSizeHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer"]
+layout_mode = 2
+
+[node name="SizeOptionMaxCheckBox" type="CheckBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer/MaxImageSizeHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+button_group = ExtResource("1_3bddd")
+text = "Max Size"
+
+[node name="SizeXSpinBox" type="SpinBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer/MaxImageSizeHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 10000.0
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer/MaxImageSizeHBoxContainer"]
+layout_mode = 2
+text = "px by"
+
+[node name="SizeYSpinBox" type="SpinBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer/MaxImageSizeHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 10000.0
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer/MaxImageSizeHBoxContainer"]
+layout_mode = 2
+text = "px"
+
+[node name="ScaleHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer"]
+layout_mode = 2
+
+[node name="SizeOptionScaleCheckBox" type="CheckBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer/ScaleHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_group = ExtResource("1_3bddd")
+text = "Scale"
+
+[node name="OneToLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer/ScaleHBoxContainer"]
+layout_mode = 2
+text = "1:"
+
+[node name="ScaleSpinBox" type="SpinBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer/ScaleHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 1000.0
+value = 10.0
+
+[node name="ScaleHelperLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer/ScaleHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(image will be 10% of level size)"
+
+[node name="ScaleWithMaxCheckBox" type="CheckBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_group = ExtResource("1_3bddd")
+text = "Use Scale but limit to Max Size"
+
+[node name="LevelExtentsHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelExtentsLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/LevelExtentsHBoxContainer"]
+layout_mode = 2
+text = "Level Boundary"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/LevelExtentsHBoxContainer"]
+layout_mode = 2
+
+[node name="LevelExtentsCalculateCheckBox" type="CheckBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/LevelExtentsHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_pressed = true
+button_group = ExtResource("2_dp6q0")
+text = "Calculate"
+
+[node name="LevelExtentsLevelshotBoundaryCheckBox" type="CheckBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/LevelExtentsHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_group = ExtResource("2_dp6q0")
+text = "Use LevelshotBoundary (calculate if none pesent)"
+
+[node name="LevelExtentsBothCheckBox" type="CheckBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/LevelExtentsHBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+button_group = ExtResource("2_dp6q0")
+text = "Use both LevelshotBoundary (if present) and Calculate"
+
+[node name="ExcludedNodeGroupsVBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExcludedNodeGroupsLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/ExcludedNodeGroupsVBoxContainer"]
+layout_mode = 2
+text = "Excluded Node Groups (comma separated)"
+
+[node name="ExcludedNodeGroupsLineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/ExcludedNodeGroupsVBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="IncludeCanvasLayersCheckBox" type="CheckBox" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Include Canvas Layers"
+
+[node name="PauseBeforeCaptureHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PauseBeforeCaptureLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/PauseBeforeCaptureHBoxContainer"]
+layout_mode = 2
+text = "Pause Before Capture"
+
+[node name="PauseBeforeCaptureSpinBox" type="SpinBox" parent="VBoxContainer/ScrollContainer/VBoxContainer/PauseBeforeCaptureHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 60.0
+step = 0.2
+
+[node name="CapturePluginScriptHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CapturePluginScriptLabel" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/CapturePluginScriptHBoxContainer"]
+layout_mode = 2
+text = "Capture Plugin Script"
+
+[node name="CapturePluginScriptLineEdit" type="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/CapturePluginScriptHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clear_button_enabled = true
+
+[node name="CapturePluginScriptOpenFileBtn" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/CapturePluginScriptHBoxContainer"]
+layout_mode = 2
+text = "..."
+flat = true
+
+[node name="CmdBtnHBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CaptureCurrentLevelBtn" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/CmdBtnHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Capture Current Level"
+text = "Capture Level"
+icon = ExtResource("4_7sfus")
+
+[node name="SelectCapturePluginScriptFileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Select LevelshotCapturePlugin Script"
+size = Vector2i(800, 580)
+min_size = Vector2i(800, 580)
+ok_button_text = "Open"
+mode_overrides_title = false
+file_mode = 0
+filters = PackedStringArray("*.gd")
+
+[connection signal="toggled" from="VBoxContainer/ScrollContainer/VBoxContainer/MirrorDefaultCheckBox" to="." method="_on_mirror_default_check_box_toggled"]
+[connection signal="value_changed" from="VBoxContainer/ScrollContainer/VBoxContainer/SizeHBoxContainer/SizeOptionsVBoxContainer/ScaleHBoxContainer/ScaleSpinBox" to="." method="_on_scale_spin_box_value_changed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/CapturePluginScriptHBoxContainer/CapturePluginScriptOpenFileBtn" to="." method="_on_capture_plugin_script_open_file_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/VBoxContainer/CmdBtnHBoxContainer/CaptureCurrentLevelBtn" to="." method="_on_capture_current_level_btn_pressed"]
+[connection signal="file_selected" from="SelectCapturePluginScriptFileDialog" to="." method="_on_select_capture_plugin_script_file_dialog_file_selected"]

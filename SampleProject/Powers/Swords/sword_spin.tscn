@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1qte8d156lf4"]
+
+[ext_resource type="Texture2D" uid="uid://dkxgqvaj0gxh" path="res://assets/sprites/HUD/Circle.png" id="1_0v4xv"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/player_projectile.gd" id="1_jlgld"]
+[ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="2_4hu7a"]
+[ext_resource type="Texture2D" uid="uid://1l6uoqc1boky" path="res://assets/sprites/Weapons/Swords/ShortSwordSpinBody.png" id="2_ub72w"]
+[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="3_jdvhq"]
+[ext_resource type="Shader" path="res://flash.gdshader" id="4_fq4ge"]
+
+[sub_resource type="Gradient" id="Gradient_acqb8"]
+colors = PackedColorArray(0.337255, 0.301961, 0.65098, 0.74902, 1, 0.74902, 0.752941, 0.129412)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5c8hu"]
+gradient = SubResource("Gradient_acqb8")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.666667, 0.897436)
+fill_to = Vector2(0.153846, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmdi8"]
+shader = ExtResource("4_fq4ge")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xf3pb"]
+size = Vector2(22.5, 10)
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("hitbox", "trail")]
+scale = Vector2(-2, 2)
+script = ExtResource("1_jlgld")
+base_damage = 5
+attribute = 2
+hitbox = NodePath("Area2D/CollisionShape2D")
+hit_collision_scene = ExtResource("2_4hu7a")
+ice_hit_collision_scene = ExtResource("3_jdvhq")
+trail = NodePath("Sprite2D/Spin")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 1
+scale = Vector2(0.04, 0.04)
+skew = 1.19904
+texture = ExtResource("1_0v4xv")
+
+[node name="Spin" type="TextureRect" parent="Sprite2D"]
+offset_right = 512.0
+offset_bottom = 512.0
+texture = SubResource("GradientTexture2D_5c8hu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Spin"]
+material = SubResource("ShaderMaterial_kmdi8")
+position = Vector2(73.6851, 19.2452)
+rotation = -1.5708
+scale = Vector2(15, 15)
+texture = ExtResource("2_ub72w")
+flip_h = true
+flip_v = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(-2.25, -1)
+shape = SubResource("RectangleShape2D_xf3pb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

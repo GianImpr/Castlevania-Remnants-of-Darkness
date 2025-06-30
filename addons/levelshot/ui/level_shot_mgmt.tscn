@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://1hidm70655n7"]
+
+[ext_resource type="Script" path="res://addons/levelshot/ui/level_shot_mgmt.gd" id="1_qpykt"]
+[ext_resource type="Texture2D" uid="uid://cexkt34ui6eru" path="res://addons/levelshot/assets/icons/AddScene.svg" id="2_712j6"]
+[ext_resource type="Texture2D" uid="uid://gt3xu1tbm1dh" path="res://addons/levelshot/assets/icons/Camera.svg" id="2_acfma"]
+[ext_resource type="PackedScene" uid="uid://ba682axuvqelk" path="res://addons/levelshot/ui/level_shot_levels_tree.tscn" id="3_ln012"]
+[ext_resource type="PackedScene" uid="uid://dhpnj6ugs67ca" path="res://addons/levelshot/ui/level_settings.tscn" id="4_g4g58"]
+
+[node name="LevelshotMgmt" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_qpykt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LevelsVBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/LevelsVBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LevelsLabel" type="Label" parent="MarginContainer/HSplitContainer/LevelsVBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Levels"
+
+[node name="AddLevelBtn" type="TextureButton" parent="MarginContainer/HSplitContainer/LevelsVBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Add Level Scenes"
+texture_normal = ExtResource("2_712j6")
+stretch_mode = 3
+
+[node name="LevelshotLevelsTree" parent="MarginContainer/HSplitContainer/LevelsVBoxContainer" instance=ExtResource("3_ln012")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TreeCmdBtnHboxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/LevelsVBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CaptureAllBtn" type="Button" parent="MarginContainer/HSplitContainer/LevelsVBoxContainer/TreeCmdBtnHboxContainer"]
+layout_mode = 2
+tooltip_text = "Capture Current Level"
+text = "Capture All Checked"
+icon = ExtResource("2_acfma")
+
+[node name="SettingsVBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer"]
+layout_mode = 2
+
+[node name="LevelSettings" parent="MarginContainer/HSplitContainer/SettingsVBoxContainer" instance=ExtResource("4_g4g58")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NoLevelSelectedCenterContainer" type="CenterContainer" parent="MarginContainer/HSplitContainer/SettingsVBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HSplitContainer/SettingsVBoxContainer/NoLevelSelectedCenterContainer"]
+layout_mode = 2
+text = "Please add a level scene"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CmdBtnHBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/SettingsVBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VersionLabel" type="Label" parent="MarginContainer/HSplitContainer/SettingsVBoxContainer/CmdBtnHBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "v4.3.0"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="MarginContainer/HSplitContainer/LevelsVBoxContainer/HBoxContainer/AddLevelBtn" to="." method="_on_add_level_btn_pressed"]
+[connection signal="level_selected" from="MarginContainer/HSplitContainer/LevelsVBoxContainer/LevelshotLevelsTree" to="." method="_on_levelshot_levels_tree_level_selected"]
+[connection signal="pressed" from="MarginContainer/HSplitContainer/LevelsVBoxContainer/TreeCmdBtnHboxContainer/CaptureAllBtn" to="." method="_on_capture_all_btn_pressed"]
+[connection signal="capture_level" from="MarginContainer/HSplitContainer/SettingsVBoxContainer/LevelSettings" to="." method="_on_level_settings_capture_level"]

@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://bao10vvn6rpga"]
+
+[ext_resource type="Texture2D" uid="uid://bh5qwwkhg4tf7" path="res://assets/sprites/Weapons/Bullova.png" id="1_c7po8"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Powers/axe_throw.gd" id="1_q023f"]
+[ext_resource type="PackedScene" uid="uid://m6mdjyrpiuny" path="res://SampleProject/extra_scenes/backdash_trail.tscn" id="2_8345f"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Powers/disjointed_player_hitbox.gd" id="2_u8rh7"]
+[ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="3_arr67"]
+[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="4_v3daj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yebif"]
+radius = 28.0
+
+[sub_resource type="Animation" id="Animation_ecxqs"]
+resource_name = "throw"
+length = 2.5
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotate/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1, 1.6, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 6.28319, 12.5664, 18.8496, 25.1327]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s4n8t"]
+_data = {
+"throw": SubResource("Animation_ecxqs")
+}
+
+[node name="RigidBody2D" type="RigidBody2D" node_paths=PackedStringArray("rotate_node", "sprite", "trail_frequency")]
+script = ExtResource("1_q023f")
+SPEED = Vector2(170, -610)
+rotate_node = NodePath("Rotate")
+sprite = NodePath("Rotate/Sprite2D")
+trail_scene = ExtResource("2_8345f")
+trail_frequency = NodePath("Trail")
+
+[node name="Rotate" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotate"]
+z_index = 10
+rotation = 6.65008
+scale = Vector2(2, 2)
+texture = ExtResource("1_c7po8")
+offset = Vector2(10, -17)
+hframes = 10
+vframes = 2
+
+[node name="PlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitbox")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_u8rh7")
+extra_base_damage = 5
+damage_multiplier = 1.15
+iframes = 60
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("3_arr67")
+ice_hit_collision_scene = ExtResource("4_v3daj")
+base_attribute = Array[int]([2])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_yebif")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s4n8t")
+}
+autoplay = "throw"
+
+[node name="Trail" type="Timer" parent="."]
+wait_time = 0.07
+autostart = true
+
+[connection signal="body_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_body_entered"]
+[connection signal="timeout" from="Trail" to="." method="_on_trail_timeout"]
