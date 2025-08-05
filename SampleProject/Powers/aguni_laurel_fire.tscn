@@ -1,0 +1,124 @@
+[gd_scene load_steps=14 format=3 uid="uid://bgau1ae4s0ma8"]
+
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="1_03wak"]
+[ext_resource type="Script" path="res://SampleProject/Powers/aguni_laurel_hitbox.gd" id="2_civ2u"]
+[ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="3_lfxv2"]
+[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="4_pocb7"]
+[ext_resource type="PackedScene" uid="uid://bneltl27wjbe4" path="res://SampleProject/extra_scenes/effects/candle_explosion.tscn" id="5_gwqfp"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a815h"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_04lbb"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(1, 0.607212, 0.477536, 1, 0.92549, 0.403922, 0, 1, 0.68224, 0.113402, 1.92523e-07, 1, 1, 0.0117647, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t78ee"]
+gradient = SubResource("Gradient_04lbb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0cegh"]
+emission_shape = 1
+emission_sphere_radius = 11.81
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 30.0
+gravity = Vector3(0, -60, 0)
+color_ramp = SubResource("GradientTexture1D_t78ee")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="Animation" id="Animation_oxi3p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireEffect:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_x0cd3"]
+resource_name = "sprout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FireEffect:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bd6ya"]
+_data = {
+"RESET": SubResource("Animation_oxi3p"),
+"sprout": SubResource("Animation_x0cd3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o33ff"]
+size = Vector2(27, 20)
+
+[node name="AguniLaurelFire" type="Node2D"]
+
+[node name="FireEffect" type="GPUParticles2D" parent="."]
+z_index = 20
+material = SubResource("CanvasItemMaterial_a815h")
+emitting = false
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_0cegh")
+texture = ExtResource("1_03wak")
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.07
+fixed_fps = 60
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bd6ya")
+}
+autoplay = "sprout"
+
+[node name="DisjointedPlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitbox")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_civ2u")
+extra_base_damage = 5
+damage_multiplier = 0.9
+iframes_duration = 0.5
+magical = true
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("3_lfxv2")
+ice_hit_collision_scene = ExtResource("4_pocb7")
+fire_hit_collision_scene = ExtResource("5_gwqfp")
+base_attribute = Array[int]([3])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DisjointedPlayerHitbox"]
+position = Vector2(-3.5, 0)
+shape = SubResource("RectangleShape2D_o33ff")
+
+[connection signal="body_entered" from="DisjointedPlayerHitbox" to="DisjointedPlayerHitbox" method="_on_hit"]

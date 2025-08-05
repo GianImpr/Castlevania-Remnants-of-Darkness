@@ -59,6 +59,8 @@ func getListType(index = null):
 	match list_indicator:
 		0:
 			return Weapon.Type.SWORD
+		1:
+			return Weapon.Type.GREATSWORD
 		2:
 			return Weapon.Type.AXE
 		4:
@@ -155,7 +157,7 @@ func getItemFromCompendium(index: int, type):
 	
 func getInventory(type):
 	var inventories: HectorStats = Global.player.stats
-	if type is int and (type == Weapon.Type.SWORD or type == Weapon.Type.AXE or type == Weapon.Type.FIST):
+	if type is int and (type == Weapon.Type.SWORD or type == Weapon.Type.AXE or type == Weapon.Type.GREATSWORD or type == Weapon.Type.FIST):
 		return inventories.weapon_inventory
 	elif type == "Headgear":
 		return inventories.head_inventory
@@ -167,7 +169,7 @@ func getInventory(type):
 	
 func getCompendium(type):
 	var compendiums: HectorStats = Global.player.stats
-	if type is int and (type == Weapon.Type.SWORD or type == Weapon.Type.AXE or type == Weapon.Type.FIST):
+	if type is int and (type == Weapon.Type.SWORD or type == Weapon.Type.AXE or type == Weapon.Type.GREATSWORD or type == Weapon.Type.FIST):
 		return compendiums.weapon_compendium
 	elif str(type) == "Headgear":
 		return compendiums.headgear_compendium
@@ -198,6 +200,10 @@ func checkMaterials(item, type) -> bool:
 				material_inventory = hector_stats.item_inventory
 				material_compendium = hector_stats.item_compendium.Compendium
 				
+			Weapon.Inventory.legs:
+				material_inventory = hector_stats.legs_inventory
+				material_compendium = hector_stats.legs_compendium
+				
 
 				
 		if hector_stats.findItem(material_item["id"], material_inventory) < material_item["quantity"]:
@@ -227,6 +233,10 @@ func craftItem(item, type, button_position) -> void:
 			Weapon.Inventory.item:
 				material_inventory = hector_stats.item_inventory
 				material_compendium = hector_stats.item_compendium
+				
+			Weapon.Inventory.legs:
+				material_inventory = hector_stats.legs_inventory
+				material_compendium = hector_stats.legs_compendium
 
 		hector_stats.removeItemCopies(material_item["id"], material_item["quantity"], material_inventory)
 	
@@ -245,7 +255,7 @@ func craftItem(item, type, button_position) -> void:
 	elif item_data is Headgear:
 		item_name = item_data.headgear_name
 	
-	craft_text.text = "Produced [color=yellow]" + item_name + "[/color]!"
+	craft_text.text = tr("PRODUCED_PREFIX_MESSAGE") + " " + "[color=yellow]" + tr(item_name) + "[/color]!"
 	hector_stats.addItem(hector_stats.getItemIndexInCompendium(item_data, getCompendium(type)), item_inventory)
 	deleteList()
 	initList(button_index)
@@ -287,7 +297,7 @@ func updateMaterialList(item, type = 0) -> void:
 			Weapon.Inventory.weapon:
 				material_inventory = hector_stats.weapon_inventory
 				material_compendium = hector_stats.weapon_compendium
-				name_property = "item_name"
+				name_property = "weapon_name"
 			Weapon.Inventory.headgear:
 				material_inventory = hector_stats.head_inventory
 				material_compendium = hector_stats.headgear_compendium
@@ -300,6 +310,10 @@ func updateMaterialList(item, type = 0) -> void:
 				material_inventory = hector_stats.item_inventory
 				material_compendium = hector_stats.item_compendium.Compendium
 				name_property = "item_name"
+			Weapon.Inventory.legs:
+				material_inventory = hector_stats.legs_inventory
+				material_compendium = hector_stats.legs_compendium
+				name_property = "legs_name"
 		var material_data = hector_stats.searchItemInCompendium(material_item["id"], material_compendium)
 		possessed_quantity = hector_stats.findItem(material_item["id"], material_inventory)
 
@@ -308,7 +322,7 @@ func updateMaterialList(item, type = 0) -> void:
 		material_quantity.text = "[right]" + str(possessed_quantity) + "/" + str(material_item["quantity"]) + "[/right]"
 		
 		if possessed_quantity < material_item["quantity"]:
-			material_name.text = "[color=#FF8080]" + material_name.text + "[/color]"
+			material_name.text = "[color=#FF8080]" + tr(material_name.text) + "[/color]"
 			material_quantity.text = "[right][color=#FF8080]" + material_quantity.text + "[/color][/right]"
 		
 		material_entry.add_child(material_icon)

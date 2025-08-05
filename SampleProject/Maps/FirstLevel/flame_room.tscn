@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_4x68s"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_p5fwr"]
-[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="3_0wq4p"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_0wq4p"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="4_1kd0h"]
 [ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="4_j08ok"]
 [ext_resource type="PackedScene" uid="uid://pmhfi7gv5sxe" path="res://SampleProject/extra_scenes/spawn_enemy.tscn" id="5_0w7h2"]
@@ -870,7 +870,7 @@ tutorial_hint = NodePath("HintBoxTrigger")
 position = Vector2(-111, -88)
 scale = Vector2(1, 0.4)
 flag_id = 7
-text = "Ice could break this."
+text = "HINT_7"
 time = 4.0
 
 [node name="CombatDoor" parent="." instance=ExtResource("9_ruior")]

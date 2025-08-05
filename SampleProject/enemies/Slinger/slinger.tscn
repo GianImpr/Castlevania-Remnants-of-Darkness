@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://0mfaod3akkg1" path="res://assets/sprites/Enemies/Slinger/Slinger.png" id="3_cikg3"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_s8roe"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_0b0j7"]
-[ext_resource type="AudioStream" uid="uid://c1mpwbjmbcwi4" path="res://assets/sounds/ThrowBone.MP3" id="7_8iduh"]
-[ext_resource type="AudioStream" uid="uid://cqnbivel1hcx6" path="res://assets/sounds/SkeletonKill.MP3" id="7_okkd4"]
+[ext_resource type="AudioStream" uid="uid://c1mpwbjmbcwi4" path="res://assets/sounds/Enemies/Skeleton/ThrowBone.MP3" id="7_8iduh"]
+[ext_resource type="AudioStream" uid="uid://cqnbivel1hcx6" path="res://assets/sounds/Enemies/Skeleton/SkeletonKill.MP3" id="7_okkd4"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="8_pbqbx"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="9_hi8yh"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonIdle.gd" id="10_xt7jb"]
@@ -214,7 +214,7 @@ hitbox_iframe = NodePath("Area2D")
 
 [node name="EnemyStats" type="Node" parent="."]
 script = ExtResource("2_q8su5")
-enemy_name = "Slinger"
+enemy_name = "SLINGER"
 LV = 4
 HP = 5
 ATK = 8
@@ -234,6 +234,7 @@ vframes = 3
 frame = 22
 
 [node name="Collision box" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(3.26087, 1.30435)
 shape = SubResource("RectangleShape2D_dg1j5")
 
@@ -251,6 +252,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(3.26087, 0.869568)
 shape = SubResource("RectangleShape2D_63bul")
 

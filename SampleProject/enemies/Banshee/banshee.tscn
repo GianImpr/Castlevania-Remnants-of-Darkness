@@ -583,16 +583,16 @@ hitbox_iframe = NodePath("Hitbox")
 
 [node name="EnemyStats" type="Node" parent="."]
 script = ExtResource("2_v0220")
-enemy_name = "Banshee"
+enemy_name = "BANSHEE"
 LV = 9
 HP = 35
-ATK = 25
+ATK = 27
 RES = 8
 EXP = 15
 common_drop_id = 50
 common_drop_rate = 2.8
 weaknesses = Array[int]([6, 8])
-tolerances = Array[int]([2, 1, 9])
+tolerances = Array[int]([2, 9])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_b27yv")

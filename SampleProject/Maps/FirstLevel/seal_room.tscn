@@ -1,19 +1,20 @@
-[gd_scene load_steps=19 format=4 uid="uid://cu5tu4u1eqk1y"]
+[gd_scene load_steps=20 format=4 uid="uid://cu5tu4u1eqk1y"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_10m66"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_p7h11"]
-[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="3_khe66"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_khe66"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="4_k3l4c"]
 [ext_resource type="PackedScene" uid="uid://nnher1fawj4d" path="res://SampleProject/Objects/tomb_number.tscn" id="7_514nv"]
-[ext_resource type="Texture2D" uid="uid://choseej2llej" path="res://assets/sprites/Objects/Skeleton_face.png" id="7_irn0w"]
+[ext_resource type="Texture2D" uid="uid://choseej2llej" path="res://assets/sprites/Objects/Tombstones/Skeleton_face.png" id="7_irn0w"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/tombstones.gd" id="7_lxs63"]
-[ext_resource type="Texture2D" uid="uid://cykk1moalws1d" path="res://assets/sprites/Objects/Bat_face.png" id="8_ju7so"]
+[ext_resource type="Texture2D" uid="uid://cykk1moalws1d" path="res://assets/sprites/Objects/Tombstones/Bat_face.png" id="8_ju7so"]
 [ext_resource type="PackedScene" uid="uid://cuwu4qu7mdjwg" path="res://SampleProject/Objects/magic_platform.tscn" id="8_kpxyc"]
-[ext_resource type="Texture2D" uid="uid://ovauinf0lhdi" path="res://assets/sprites/Objects/Axe_face.png" id="9_c5snc"]
+[ext_resource type="Texture2D" uid="uid://ovauinf0lhdi" path="res://assets/sprites/Objects/Tombstones/Axe_face.png" id="9_c5snc"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="9_gwnil"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="10_kqma4"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="11_gljb3"]
-[ext_resource type="AudioStream" uid="uid://bxt6p8rg1n288" path="res://assets/sounds/PlatformActivate.wav" id="12_7m0ux"]
+[ext_resource type="AudioStream" uid="uid://bxt6p8rg1n288" path="res://assets/sounds/Objects/PlatformActivate.wav" id="12_7m0ux"]
+[ext_resource type="PackedScene" uid="uid://df43umeqy115k" path="res://SampleProject/extra_scenes/stage_elements/dialogue_box_trigger.tscn" id="15_grob6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gf0y1"]
 texture = ExtResource("4_k3l4c")
@@ -882,5 +883,9 @@ position = Vector2(217, 224)
 
 [node name="MagicPlatform3" parent="Platforms" instance=ExtResource("8_kpxyc")]
 position = Vector2(375, 107)
+
+[node name="DialogueBoxTrigger" parent="." instance=ExtResource("15_grob6")]
+position = Vector2(80, 0)
+flag_id = 4
 
 [connection signal="timeout" from="Tombs/Timer" to="Tombs" method="_on_timer_timeout"]

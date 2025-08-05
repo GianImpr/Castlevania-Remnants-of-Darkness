@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=4 uid="uid://bpeasv1xcwcko"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_xxdu8"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_rwwdr"]
+[ext_resource type="Texture2D" uid="uid://b4d0xyxsq3tff" path="res://assets/sprites/Tiles/Debug.png" id="3_qvvab"]
+[ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="4_mrvfp"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ikyd"]
+texture = ExtResource("3_qvvab")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 0.125, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, 0.353552, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0, 16, 0.125, 16, 16, -16, 16)
+3:0/0/physics_layer_0/polygon_0/one_way = true
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, -1.06066, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -0.125, 16, 16, -16, 16)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, -16, 16, 16, -16, 16)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_cydyx"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_1ikyd")
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_xxdu8")
+
+[node name="RoomInstance" parent="." instance=ExtResource("2_rwwdr")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAAAAAAAAAAEAAAADAA4AAAAAAAEAAAAEAAAAAAACAAEAAAAEAA4AAAAAAAEAAAAFAAAAAAAAAAEAAAAFAA4AAAAAAAEAAAAGAAAAAAAAAAEAAAAGAA4AAAAAAAEAAAAHAAAAAAAAAAEAAAAHAA4AAAAAAAEAAAAIAAAAAAAAAAEAAAAIAA4AAAAAAAAAAAAJAAAAAAAAAAEAAAAJAA4AAAAAAAEAAAAKAAAAAAAAAAEAAAAKAA4AAAAAAAEAAAALAAAAAAAAAAEAAAALAA4AAAAAAAEAAAAMAAAAAAAAAAEAAAAMAA4AAAAAAAEAAAANAAAAAAAGAAEAAAANAA4AAAAAAAEAAAAOAAAAAAAAAAEAAAAOAA4AAAAAAAEAAAAPAAAAAAAAAAEAAAAPAA4AAAAAAAEAAAAQAAAAAAAAAAEAAAAQAA4AAAAAAAEAAAARAAAAAAAAAAEAAAARAA4AAAAAAAEAAAASAAAAAAAAAAEAAAASAA4AAAADAAEAAAATAAAAAAAAAAEAAAATAA4AAAAAAAEAAAAUAAAAAAAAAAEAAAAUAA4AAAAAAAEAAAAVAAAAAAAAAAEAAAAVAA4AAAAAAAEAAAAWAAAAAAAAAAEAAAAWAA4AAAAAAAEAAAAXAAAAAAAAAAEAAAAXAA4AAAAAAAEAAAAYAAAAAAAAAAEAAAAYAA4AAAAAAAEAAAAZAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAQAAAAAAAAAAAAAAAsAAAAAAAEAAAAAAAwAAAAAAAEAAAAAAA0AAAAAAAEAAAAAAA4AAAAAAAEAAAABAAAAAAAAAAEAAAABAA4AAAAAAAEAAAACAAAAAAAAAAEAAAACAA4AAAAGAAEAAAAdAAAAAAAAAAEAAAAdAAEAAAAAAAEAAAAdAAIAAAAAAAEAAAAdAAMAAAAAAAEAAAAdAAQAAAAAAAEAAAAdAAUAAAAAAAEAAAAcAAoAAAAAAAAAAAAcAAsAAAAAAAEAAAAcAAwAAAAEAAEAAAAcAA0AAAAAAAEAAAAcAA4AAAAAAAEAAAAdAAoAAAAAAAEAAAAdAAsAAAAAAAEAAAAdAAwAAAAAAAEAAAAdAA0AAAAAAAEAAAAdAA4AAAACAAEAAAAZAA4AAAAAAAEAAAAaAA4AAAAAAAEAAAAbAA4AAAAAAAEAAAAaAAAAAAAAAAEAAAAbAAAAAAAAAAEAAAAcAAAAAAAEAAEAAAAAAAoAAAAAAAEAAAABAAoAAAAAAAAAAAABAAsAAAAAAAEAAAABAAwAAAAAAAEAAAABAA0AAAAAAAEAAAACAAoAAAAHAAAAAAADAAsAAAAHAAAAAAAEAAwAAAAHAAAAAAAFAA0AAAAHAAAAAAACAAsAAAAAAAEAAAACAAwAAAAAAAEAAAACAA0AAAAAAAEAAAADAA0AAAAAAAEAAAADAAwAAAACAAEAAAAEAA0AAAAAAAEAAAAJAA0AAAABAAAAAAAKAA0AAAACAAAAAAALAA0AAAAAAAEAAAAMAA0AAAAAAAAAAAANAA0AAAAAAAEAAAAOAA0AAAAEAAAAAAAPAA0AAAAFAAAAAAARAA0AAAAGAAAAAAASAAwAAAAGAAAAAAATAAsAAAAGAAAAAAAUAAsAAAAAAAEAAAAVAAsAAAAAAAEAAAAWAAsAAAAAAAEAAAAWAAwAAAAFAAEAAAAVAAwAAAAAAAEAAAAUAAwAAAAAAAEAAAATAAwAAAAAAAEAAAATAA0AAAAAAAEAAAASAA0AAAAAAAEAAAAUAA0AAAAAAAEAAAAVAA0AAAAAAAEAAAAWAA0AAAAAAAEAAAAXAAsAAAAAAAEAAAAXAAwAAAAAAAEAAAAXAA0AAAAAAAEAAAAYAAoAAAABAAAAAAAZAAoAAAACAAAAAAAaAAoAAAAAAAEAAAAbAAoAAAAAAAEAAAAbAAsAAAAAAAEAAAAaAAsAAAAAAAEAAAAZAAsAAAAAAAEAAAAYAAsAAAAAAAEAAAAYAAwAAAAAAAEAAAAZAAwAAAAAAAEAAAAaAAwAAAAAAAEAAAAbAAwAAAAAAAEAAAAbAA0AAAAAAAEAAAAaAA0AAAAAAAEAAAAZAA0AAAAAAAAAAAAYAA0AAAAAAAEAAAAdAAYAAAACAAEAAAAdAAcAAAAAAAEAAAAdAAgAAAAAAAEAAAAdAAkAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_cydyx")
+
+[node name="Pick-up" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(274, 432)
+id = 3
+current_item_name = "Super Potion"
+
+[node name="Pick-up2" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(382, 400)
+type = 8
+id = 3
+current_item_name = "Platinum Arm"
+
+[node name="Pick-up3" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(427, 400)
+type = 8
+id = 2
+current_item_name = "Holy Manual"
+
+[node name="Pick-up4" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(475, 416)
+type = 4
+id = 13
+current_item_name = "Iron Helm"
+
+[node name="Pick-up5" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(520, 432)
+type = 8
+id = 1
+current_item_name = "Fortitude Gauntlet"
+
+[node name="Pick-up6" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(568, 400)
+type = 3
+id = 1
+current_item_name = "Indigo Cross"
+
+[node name="Pick-up7" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(609, 358)
+type = 6
+id = 2
+current_item_name = "Wingtips"
+
+[node name="Pick-up8" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(657, 333)
+type = 1
+id = 2
+current_item_name = "Bullova"
+
+[node name="Pick-up9" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(702, 333)
+type = 1
+id = 4
+current_item_name = "Falchion"
+
+[node name="Pick-up10" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(749, 333)
+type = 1
+id = 5
+current_item_name = "Mace"
+
+[node name="Pick-up11" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(211, 430)
+type = 3
+id = 2
+current_item_name = "<null>"
+
+[node name="Pick-up12" parent="." instance=ExtResource("4_mrvfp")]
+position = Vector2(164, 388)
+id = 6
+current_item_name = "Mana Prism"

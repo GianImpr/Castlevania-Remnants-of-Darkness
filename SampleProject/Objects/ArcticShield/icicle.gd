@@ -18,8 +18,8 @@ var body_covered: Array[Enemy]
 func _ready():
 	area.set_deferred("monitoring", false)
 	base_HP += Global.player.stats.Stats["INT"]
-	if Global.player.stats.findItem(4, Global.player.stats.skill_inventory):
-		base_HP *= 2
+	if Global.player.stats.findItem(Skill.Skills.CYAN_ORB, Global.player.stats.skill_inventory):
+		base_HP *= 1.5
 
 func _physics_process(delta: float) -> void:
 	if animation.current_animation == "travel":
@@ -32,11 +32,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		if is_alive(body):
 			var damage = calculate_damage(body)
 			take_damage(min(body.stats.HP, damage))
+			damage = apply_damage(body, damage)
 			if kills(body, damage):
 				Global.player.addExp(body.stats.EXP)
 			else:
 				body_covered.append(body)
-			apply_damage(body, damage)
 		if is_alive(body):
 			if body.stats.DEF > power/2.5:
 				apply_glow(body, Color(-1, -1, 1))
@@ -75,9 +75,9 @@ func calculate_damage(body: Node2D) -> int:
 		return power - body.stats.DEF/2
 	
 func kills(body: Node2D, damage) -> bool:
-	return damage >= body.stats.HP
+	return body.stats.HP <= 0
 	
-func apply_damage(body: Node2D, damage: int):
+func apply_damage(body: Node2D, damage: int) -> int:
 	create_effects(body)
 	var multiplier_rate: float = 2
 	if element in body.stats.weaknesses:
@@ -90,6 +90,7 @@ func apply_damage(body: Node2D, damage: int):
 	
 	body.damage_popup.popup(damage, 1)
 	body.stats.HP -= damage
+	return damage
 	
 func create_effects(body: Node2D):
 	sound.play_sound_effect_from_library("ice")

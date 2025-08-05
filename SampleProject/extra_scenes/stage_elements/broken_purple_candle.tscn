@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://dm7k8iy42xhd1"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/broken_candle.gd" id="1_u83di"]
+[ext_resource type="PackedScene" uid="uid://bneltl27wjbe4" path="res://SampleProject/extra_scenes/effects/candle_explosion.tscn" id="2_rdjpu"]
+[ext_resource type="Texture2D" uid="uid://bihxl3hifq5pi" path="res://assets/sprites/Objects/Candles/GroundPurple/BrokenPurpleCandles.png" id="2_s2pbf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbgsw"]
+size = Vector2(30.3764, 9.1954)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xt3jm"]
+size = Vector2(25.2874, 24.1379)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63qn8"]
+size = Vector2(18.3908, 25.2874)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpqs5"]
+size = Vector2(34.4828, 13.7931)
+
+[node name="BrokenCandle" type="Node2D" node_paths=PackedStringArray("delete_timer")]
+script = ExtResource("1_u83di")
+base_velocity = Vector2(250, -180)
+delete_timer = NodePath("DeleteTimer")
+explosion = ExtResource("2_rdjpu")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 8
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-1.21375, -11)
+scale = Vector2(0.87, 0.87)
+shape = SubResource("RectangleShape2D_fbgsw")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_s2pbf")
+hframes = 4
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+collision_layer = 8
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+position = Vector2(-1, 3.5)
+scale = Vector2(0.87, 0.87)
+shape = SubResource("RectangleShape2D_xt3jm")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_s2pbf")
+hframes = 4
+frame = 1
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+collision_layer = 8
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+position = Vector2(-1, 25)
+scale = Vector2(0.87, 0.87)
+shape = SubResource("RectangleShape2D_63qn8")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_s2pbf")
+hframes = 4
+frame = 2
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+collision_layer = 8
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
+position = Vector2(-1, 42)
+scale = Vector2(0.87, 0.87)
+shape = SubResource("RectangleShape2D_jpqs5")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D4"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_s2pbf")
+hframes = 4
+frame = 3
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]

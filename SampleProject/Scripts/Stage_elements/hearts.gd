@@ -8,6 +8,7 @@ class_name Heart
 		if value == Type.INNOCENT:
 			sprite.texture = innocent_heart_texture
 			type = value
+var can_be_red: bool = true
 const INNOCENT_DEVIL_HEAL_SMALL: int = 5
 
 @export var animation: AnimationPlayer
@@ -18,7 +19,8 @@ enum Type {
 
 func _ready():
 	linear_velocity.x = SPEED
-	determineType()
+	if can_be_red:
+		determineType()
 
 	
 func _physics_process(delta: float) -> void:

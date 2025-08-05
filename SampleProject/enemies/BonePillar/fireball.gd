@@ -5,6 +5,7 @@ extends RigidBody2D
 @export var animation: AnimationPlayer
 @export var hurtbox: CollisionShape2D
 @export var lifespan_timer: Timer
+@export var align_velocity_to_angle: bool = false
 var direction: int
 @export var SPEED: float
 var going_back: bool = false
@@ -14,9 +15,12 @@ var time_to_slowdown: bool = false
 
 func _ready():
 	linear_velocity.x = SPEED * direction
-
+	
 func _physics_process(delta: float) -> void:
-	move_local_x(delta)
+	if not align_velocity_to_angle:
+		move_local_x(delta)
+	else:
+		move_and_collide(linear_velocity*delta)
 
 func calculate_damage(body, multiplier) -> int:
 	return stats.calculate_damage(body, multiplier)
@@ -44,3 +48,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_lifespan_timeout() -> void:
 	destroy()
+	
+func applyDegreeVelocity() -> void:
+	linear_velocity.x = SPEED * direction * cos(rotation)
+	linear_velocity.y = SPEED * sin(rotation) * direction
+
+
+func _on_body_entered(body: Node) -> void:
+	pass # Replace with function body.

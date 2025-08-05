@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cdbaucja5abn7" path="res://SampleProject/enemies/Dullahan/dullahan_fang.tscn" id="3_axff6"]
 [ext_resource type="Texture2D" uid="uid://bd04xbgb1vwok" path="res://assets/sprites/Enemies/Dullahan/Dullahan.png" id="3_j55ok"]
 [ext_resource type="Texture2D" uid="uid://b4hr0kshcx2us" path="res://assets/sprites/Enemies/Dullahan/Sword_4.png" id="4_8g5hp"]
-[ext_resource type="Shader" path="res://SampleProject/extra_scenes/items/rainbowradial.gdshader" id="4_84ayn"]
+[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="4_84ayn"]
 [ext_resource type="PackedScene" uid="uid://du621xlvbwtno" path="res://SampleProject/enemies/Dullahan/dullahan_projectile.tscn" id="4_538uc"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_dxfhd"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="6_o0djy"]
@@ -1743,7 +1743,7 @@ hitbox_iframe = NodePath("Hitbox")
 
 [node name="EnemyStats" type="Node" parent="."]
 script = ExtResource("2_mi30h")
-enemy_name = "Dullahan"
+enemy_name = "DULLAHAN"
 LV = 9
 HP = 800
 ATK = 25

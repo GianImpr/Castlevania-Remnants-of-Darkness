@@ -1,11 +1,11 @@
 [gd_scene load_steps=25 format=3 uid="uid://lxr3qjc6ny5a"]
 
-[ext_resource type="Texture2D" uid="uid://djhpguwd6mfwx" path="res://assets/sprites/Objects/MonasteryCandle.png" id="1_14p6w"]
+[ext_resource type="Texture2D" uid="uid://djhpguwd6mfwx" path="res://assets/sprites/Objects/Candles/GroundBlue/MonasteryCandle.png" id="1_14p6w"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/broken_candle.gd" id="1_qkl08"]
 [ext_resource type="Texture2D" uid="uid://c75kgbqkyn6c5" path="res://assets/sprites/Effects/SmallFire.png" id="3_rkjpf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gskk"]
-size = Vector2(33, 29)
+size = Vector2(33.1667, 29)
 
 [sub_resource type="Animation" id="Animation_4pjmc"]
 resource_name = "RESET"
@@ -775,6 +775,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxwj4"]
+resource_local_to_scene = true
 _data = {
 "RESET": SubResource("Animation_ssxcn"),
 "destroy": SubResource("Animation_suywh")

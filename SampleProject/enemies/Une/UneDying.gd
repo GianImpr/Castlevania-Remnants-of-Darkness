@@ -12,7 +12,7 @@ func enter():
 	player.hitbox.monitoring = false
 	
 func Update(delta: float):
-	if not explosion and not sound.playing:
+	if not explosion and not sound.playing and not player.blood_particles.emitting:
 		player.queue_free()
 
 

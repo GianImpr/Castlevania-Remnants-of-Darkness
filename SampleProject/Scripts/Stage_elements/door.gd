@@ -52,6 +52,8 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	can_open_door = true
+	print(body.get_class())
+
 
 func enterDoor():
 	animation.play("opening")
@@ -61,6 +63,8 @@ func enterDoor():
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	can_open_door = false
+	print(body.get_class())
+
 
 
 func _on_spawn_cooldown_timeout() -> void:

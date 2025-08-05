@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://cq8yphrk1ridm"]
+[gd_scene load_steps=10 format=4 uid="uid://cq8yphrk1ridm"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_0ahwt"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_1f4vt"]
 [ext_resource type="Texture2D" uid="uid://c0qsvc0xjt6x1" path="res://assets/sprites/Tiles/outsideMonastery.png" id="3_jwtky"]
 [ext_resource type="PackedScene" uid="uid://cow3qaei4a10n" path="res://SampleProject/extra_scenes/stage_elements/change_area_trigger.tscn" id="4_73fky"]
+[ext_resource type="PackedScene" uid="uid://df43umeqy115k" path="res://SampleProject/extra_scenes/stage_elements/dialogue_box_trigger.tscn" id="5_tkhac"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1uv3y"]
 resource_name = "Woods"
@@ -561,7 +562,7 @@ change_music = true
 [node name="RoomInstance" parent="." instance=ExtResource("2_1f4vt")]
 top_level = true
 show_name_ID = 2
-stage_name = "Fagaras Forest"
+stage_name = "FAGARAS_FOREST_TITLE"
 
 [node name="Node2D" type="Node2D" parent="."]
 modulate = Color(0.460039, 0.590608, 1, 1)
@@ -614,3 +615,6 @@ color = Color(0, 1, 1, 1)
 position = Vector2(-10, 6)
 new_room_path = "FirstLevel/level_end.tscn"
 new_initial_position = Vector2(940, 400)
+
+[node name="DialogueBoxTrigger" parent="." instance=ExtResource("5_tkhac")]
+position = Vector2(481, 0)

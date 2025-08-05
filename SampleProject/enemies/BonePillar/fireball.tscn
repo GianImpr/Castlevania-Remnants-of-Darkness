@@ -152,7 +152,7 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
 colors = PackedColorArray(0.589035, 0.184031, 4.81308e-08, 1, 0.92549, 0.403922, 0, 1, 0.68224, 0.113402, 1.92523e-07, 1, 1, 0.0117647, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_omh53"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_154uc"]
 gradient = SubResource("Gradient_gwynj")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jeft2"]
@@ -161,7 +161,7 @@ emission_box_extents = Vector3(30, 16, 1)
 direction = Vector3(0, -1, 0)
 initial_velocity_max = 30.0
 gravity = Vector3(0, -200, 0)
-color_ramp = SubResource("GradientTexture1D_omh53")
+color_ramp = SubResource("GradientTexture1D_154uc")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
@@ -188,7 +188,7 @@ magical = true
 attribute = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.3, 2.3)
+scale = Vector2(2, 2)
 texture = ExtResource("2_a1p5o")
 hframes = 6
 vframes = 4

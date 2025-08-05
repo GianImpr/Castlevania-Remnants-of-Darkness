@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=4 uid="uid://cso1uxx8pqjwu"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_m604y"]
-[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="2_33r1d"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="2_33r1d"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="3_ayus2"]
-[ext_resource type="PackedScene" uid="uid://bn5w03bpeuhmt" path="res://SampleProject/extra_scenes/enemies/armor_knight.tscn" id="4_0b6ev"]
+[ext_resource type="PackedScene" uid="uid://bn5w03bpeuhmt" path="res://SampleProject/enemies/ArmorKnight/armor_knight.tscn" id="4_0b6ev"]
 [ext_resource type="PackedScene" uid="uid://b33buvcvhwwqa" path="res://SampleProject/enemies/BonePillar/bone_pillar.tscn" id="5_32me2"]
 [ext_resource type="PackedScene" uid="uid://des8o3jbf3a4m" path="res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn" id="6_qkeyi"]
 [ext_resource type="PackedScene" uid="uid://dfuncyp0yhrbk" path="res://SampleProject/enemies/Slinger/slinger.tscn" id="6_vj1xj"]
@@ -82,12 +82,15 @@ tile_set = ExtResource("2_33r1d")
 
 [node name="Pick-up" parent="Items" instance=ExtResource("10_ho7o8")]
 position = Vector2(1274, 205)
+id = 1
+current_item_name = "Potion"
 pickup_flag = 23
 
 [node name="Pick-up2" parent="Items" instance=ExtResource("10_ho7o8")]
 position = Vector2(381, 173)
 type = 6
 id = 2
+current_item_name = "Wingtips"
 pickup_flag = 24
 
 [node name="Candle" type="Node" parent="."]

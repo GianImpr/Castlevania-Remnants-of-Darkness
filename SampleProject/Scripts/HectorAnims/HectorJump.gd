@@ -19,7 +19,7 @@ func Physics_Update(delta: float):
 		player.velocity.y *= 0.95*delta
 		
 	#Check if player should get pushed above a one-way platform
-	if animation.current_animation_position <= 0.5 and player.raycast.is_colliding() and player.raycast.get_collider() is TileMapLayer and player.velocity.y > 0:
+	if animation.current_animation_position <= 0.6 and player.raycast.is_colliding() and player.raycast.get_collider() is TileMapLayer and player.velocity.y > 0:
 		var collider: TileMapLayer = player.raycast.get_collider()
 		var collision_position: Vector2 = player.raycast.get_collision_point()
 		var tile_coords = collider.local_to_map(collision_position)

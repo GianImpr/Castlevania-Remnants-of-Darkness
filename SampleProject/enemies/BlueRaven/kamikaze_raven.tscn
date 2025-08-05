@@ -1,0 +1,282 @@
+[gd_scene load_steps=30 format=3 uid="uid://crkxe62hk26kh"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/BlueRaven/kamikaze_raven.gd" id="1_8qu1v"]
+[ext_resource type="PackedScene" uid="uid://sx5bpu32eldc" path="res://SampleProject/extra_scenes/effects/big_explosion.tscn" id="2_g2x5a"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_vu1oc"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_exibr"]
+[ext_resource type="Texture2D" uid="uid://ds4t6bgwqg1d7" path="res://assets/sprites/Enemies/KamikazeBird.png" id="3_njjpr"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_d3kcu"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_8towm"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_pp3kr"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_73ml2"]
+[ext_resource type="AudioStream" uid="uid://c8tebvyyqybof" path="res://assets/sounds/Enemies/BlackCrow/CrowDie.MP3" id="7_wani5"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenIdle.gd" id="11_7x4cc"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenPreparing.gd" id="12_c4m40"]
+[ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="13_xp8o6"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenMoving.gd" id="14_tcadx"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenDying.gd" id="15_vau70"]
+[ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="16_whdmx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_078j5"]
+size = Vector2(17.5, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xn7mg"]
+size = Vector2(11.5, 11.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nyoa"]
+size = Vector2(275, 153)
+
+[sub_resource type="Resource" id="Resource_rq4bs"]
+script = ExtResource("6_73ml2")
+Tag = "dying"
+stream = ExtResource("7_wani5")
+
+[sub_resource type="Resource" id="Resource_haglp"]
+script = ExtResource("5_pp3kr")
+sound_effects = Array[ExtResource("6_73ml2")]([SubResource("Resource_rq4bs")])
+
+[sub_resource type="Curve" id="Curve_va3vl"]
+max_value = 5.0
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5pg3w"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GDScript" id="GDScript_326py"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="Animation" id="Animation_gafs8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_x4j2m"]
+resource_name = "fly"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_ouu6a"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_riikq"]
+_data = {
+"RESET": SubResource("Animation_gafs8"),
+"fly": SubResource("Animation_x4j2m"),
+"idle": SubResource("Animation_ouu6a")
+}
+
+[sub_resource type="Gradient" id="Gradient_6nwsw"]
+offsets = PackedFloat32Array(0, 0.550676, 0.790541, 1)
+colors = PackedColorArray(0.717647, 0.184314, 0, 1, 0.87451, 0.545098, 0, 1, 1, 0.792157, 0, 1, 1, 0.792157, 0, 0)
+
+[node name="KamikazeRaven" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_8qu1v")
+vision = NodePath("Vision")
+explosion_scene = ExtResource("2_g2x5a")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Hitbox")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Timer")
+hitbox_iframe = NodePath("Hitbox")
+blood_particles = NodePath("BloodDamage")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_vu1oc")
+enemy_name = "KAMIKAZE_RAVEN"
+LV = 11
+HP = 1
+ATK = 60
+EXP = 7
+weaknesses = Array[int]([2, 6])
+tolerances = Array[int]([7])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_njjpr")
+offset = Vector2(-2, -75)
+hframes = 4
+vframes = 2
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.75, -0.5)
+shape = SubResource("RectangleShape2D_078j5")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1.25, -0.75)
+shape = SubResource("RectangleShape2D_xn7mg")
+
+[node name="Vision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+visible = false
+position = Vector2(6.5, -6.5)
+shape = SubResource("RectangleShape2D_5nyoa")
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_exibr")
+audio_library = SubResource("Resource_haglp")
+
+[node name="BloodDamage" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 12
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_va3vl")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_5pg3w")
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+position = Vector2(0, -10.5)
+script = ExtResource("4_d3kcu")
+damage_node = ExtResource("5_8towm")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_326py")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("11_7x4cc")
+
+[node name="Preparing" type="Node" parent="StateMachine"]
+script = ExtResource("12_c4m40")
+SPEED = Vector2(200, 80)
+DURATION = 1.0
+red_spark_scene = ExtResource("13_xp8o6")
+
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("explode_timer")]
+script = ExtResource("14_tcadx")
+SPEED = 1300.0
+TRACKING_SPEED = 300.0
+TIME_FOR_MAX_SPEED = 2.0
+explode_timer = NodePath("ExplodeTimer")
+
+[node name="ExplodeTimer" type="Timer" parent="StateMachine/Moving"]
+wait_time = 5.0
+
+[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hot_particles", "hitbox_shape")]
+script = ExtResource("15_vau70")
+small_explosion_scene = ExtResource("16_whdmx")
+hot_particles = NodePath("../../HotParticles")
+hitbox_shape = NodePath("../../Hitbox/HitboxShape")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_riikq")
+}
+
+[node name="HotParticles" type="CPUParticles2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+amount = 4
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, -40)
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_6nwsw")

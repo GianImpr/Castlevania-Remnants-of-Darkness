@@ -1,0 +1,907 @@
+[gd_scene load_steps=36 format=3 uid="uid://bjjk4mm7bkkd5"]
+
+[ext_resource type="Texture2D" uid="uid://c6oahkcwklotc" path="res://assets/sprites/HUD/Loading/Background.png" id="1_mwlu3"]
+[ext_resource type="Texture2D" uid="uid://kh67q8mxxd1y" path="res://assets/sprites/HUD/Loading/AnimatedBackground.png" id="2_asjfv"]
+[ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="3_vdkpo"]
+[ext_resource type="Texture2D" uid="uid://c08sind7c7n8c" path="res://assets/sprites/HUD/Faces/Hector/HalfBody.png" id="4_tmset"]
+[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="5_p2lme"]
+[ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="6_kqwro"]
+[ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="7_dh6wh"]
+[ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="8_r6g7u"]
+
+[sub_resource type="Gradient" id="Gradient_ippbr"]
+offsets = PackedFloat32Array(0, 0.776)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.956863)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1i321"]
+gradient = SubResource("Gradient_ippbr")
+width = 512
+height = 512
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_kdq1a"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_81ofm"]
+resource_name = "background"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 0.366021),
+"update": 0,
+"values": [Vector2(-50, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2crau"]
+_data = {
+"RESET": SubResource("Animation_kdq1a"),
+"background": SubResource("Animation_81ofm")
+}
+
+[sub_resource type="Animation" id="Animation_i628r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_jqq2s"]
+resource_name = "background"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 0.366021),
+"update": 0,
+"values": [Vector2(-36, -20), Vector2(-36, -60)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j38d8"]
+_data = {
+"RESET": SubResource("Animation_i628r"),
+"background": SubResource("Animation_jqq2s")
+}
+
+[sub_resource type="Animation" id="Animation_6403w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-206, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_asb1n"]
+resource_name = "background"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-206, -70), Vector2(-156, -120), Vector2(-106, -70), Vector2(-156, -20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqp6o"]
+_data = {
+"RESET": SubResource("Animation_6403w"),
+"background": SubResource("Animation_asb1n")
+}
+
+[sub_resource type="Animation" id="Animation_ilct6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4tgns"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ww74"]
+_data = {
+"RESET": SubResource("Animation_ilct6"),
+"appear": SubResource("Animation_4tgns")
+}
+
+[sub_resource type="Theme" id="Theme_a85sy"]
+default_font = ExtResource("3_vdkpo")
+default_font_size = 48
+
+[sub_resource type="Gradient" id="Gradient_kn6ch"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vke4q"]
+gradient = SubResource("Gradient_kn6ch")
+width = 280
+height = 48
+fill_from = Vector2(0.0318471, 0.22293)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vndpk"]
+atlas = ExtResource("4_tmset")
+region = Rect2(100, 0, 360, 280)
+
+[sub_resource type="Theme" id="Theme_su86r"]
+default_font = ExtResource("5_p2lme")
+default_font_size = 32
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwt7n"]
+content_margin_top = 50.0
+texture = ExtResource("6_kqwro")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="Theme" id="Theme_l45mb"]
+default_font = ExtResource("3_vdkpo")
+default_font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_8hstr"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_huhwp"]
+gradient = SubResource("Gradient_8hstr")
+width = 280
+height = 48
+fill_to = Vector2(0, 0.761677)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4cy5i"]
+texture = ExtResource("7_dh6wh")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+modulate_color = Color(1, 1, 1, 0.533333)
+
+[sub_resource type="Theme" id="Theme_p3wiw"]
+default_font = ExtResource("5_p2lme")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_gekwv"]
+default_font = ExtResource("8_r6g7u")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_oocjw"]
+default_font = ExtResource("5_p2lme")
+default_font_size = 32
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+clip_children = 2
+layout_mode = 0
+offset_right = 864.0
+offset_bottom = 564.0
+texture = ExtResource("1_mwlu3")
+
+[node name="Gradient" type="TextureRect" parent="Background"]
+layout_mode = 0
+offset_right = 864.0
+offset_bottom = 564.0
+texture = SubResource("GradientTexture2D_1i321")
+
+[node name="Animation" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.054902)
+anchors_preset = 0
+offset_left = -35.1892
+offset_right = 4.81081
+offset_bottom = 40.0
+scale = Vector2(1.5, 1)
+
+[node name="Water" type="TextureRect" parent="Animation"]
+texture_repeat = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 640.0
+texture = ExtResource("2_asjfv")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_2crau")
+}
+autoplay = "background"
+
+[node name="Animation2" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.054902)
+anchors_preset = 0
+offset_left = 36.0
+offset_top = -120.0
+offset_right = 76.0
+offset_bottom = -80.0
+scale = Vector2(1.5, 1)
+
+[node name="Water" type="TextureRect" parent="Animation2"]
+texture_repeat = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 640.0
+texture = ExtResource("2_asjfv")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation2"]
+libraries = {
+"": SubResource("AnimationLibrary_j38d8")
+}
+autoplay = "background"
+
+[node name="Animation3" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.054902)
+anchors_preset = 0
+offset_left = -206.0
+offset_top = -120.0
+offset_right = -166.0
+offset_bottom = -80.0
+scale = Vector2(1.5, 1)
+
+[node name="Water" type="TextureRect" parent="Animation3"]
+texture_repeat = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 640.0
+texture = ExtResource("2_asjfv")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation3"]
+libraries = {
+"": SubResource("AnimationLibrary_hqp6o")
+}
+autoplay = "background"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4ww74")
+}
+
+[node name="Load" type="Label" parent="."]
+clip_children = 1
+layout_mode = 0
+offset_left = -38.0
+offset_top = 8.0
+offset_right = 272.0
+offset_bottom = 60.0
+theme = SubResource("Theme_a85sy")
+text = "Load Data"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Load"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_vke4q")
+
+[node name="Description" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="TextureRect" parent="Description"]
+z_index = 1
+texture_filter = 6
+layout_mode = 0
+offset_left = 7.0
+offset_top = 350.0
+offset_right = 79.0
+offset_bottom = 406.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_vndpk")
+expand_mode = 3
+
+[node name="Name" type="Label" parent="Description"]
+z_index = 1
+layout_mode = 0
+offset_left = 135.0
+offset_top = 380.0
+offset_right = 340.0
+offset_bottom = 412.0
+theme = SubResource("Theme_su86r")
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 8
+text = "Shüan"
+autowrap_mode = 3
+
+[node name="HPValue" type="Label" parent="Description"]
+z_index = 1
+layout_mode = 0
+offset_left = 284.0
+offset_top = 421.0
+offset_right = 340.0
+offset_bottom = 453.0
+theme = SubResource("Theme_su86r")
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 8
+text = "262"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="GoldValue" type="Label" parent="Description"]
+z_index = 1
+layout_mode = 0
+offset_left = 432.0
+offset_top = 421.0
+offset_right = 518.0
+offset_bottom = 453.0
+theme = SubResource("Theme_su86r")
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 8
+text = "1024"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="LVValue" type="Label" parent="Description"]
+z_index = 1
+layout_mode = 0
+offset_left = 167.0
+offset_top = 421.0
+offset_right = 223.0
+offset_bottom = 453.0
+theme = SubResource("Theme_su86r")
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 8
+text = "10"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="MAPValue" type="Label" parent="Description"]
+z_index = 1
+layout_mode = 0
+offset_left = 741.0
+offset_top = 421.0
+offset_right = 825.0
+offset_bottom = 453.0
+theme = SubResource("Theme_su86r")
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 8
+text = "9.25%"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="TimeValue" type="Label" parent="Description"]
+z_index = 1
+layout_mode = 0
+offset_left = 416.0
+offset_top = 380.0
+offset_right = 518.0
+offset_bottom = 412.0
+theme = SubResource("Theme_su86r")
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 8
+text = "0:18:36"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="CurrentLocation" type="Label" parent="Description"]
+z_index = 1
+layout_mode = 0
+offset_left = 588.0
+offset_top = 380.0
+offset_right = 825.0
+offset_bottom = 412.0
+theme = SubResource("Theme_su86r")
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 8
+text = "Abandoned Monastery"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Description"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 362.0
+offset_right = 852.0
+offset_bottom = 468.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vwt7n")
+
+[node name="HPLabel" type="Label" parent="Description"]
+clip_children = 1
+texture_filter = 2
+layout_mode = 0
+offset_left = 106.0
+offset_top = 419.0
+offset_right = 416.0
+offset_bottom = 471.0
+theme = SubResource("Theme_l45mb")
+text = "HP"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Description/HPLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_huhwp")
+
+[node name="LVLabel" type="Label" parent="Description"]
+clip_children = 1
+texture_filter = 2
+layout_mode = 0
+offset_top = 419.0
+offset_right = 310.0
+offset_bottom = 471.0
+theme = SubResource("Theme_l45mb")
+text = "LV"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Description/LVLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_huhwp")
+
+[node name="GOLDLabel" type="Label" parent="Description"]
+clip_children = 1
+texture_filter = 2
+layout_mode = 0
+offset_left = 226.0
+offset_top = 421.0
+offset_right = 536.0
+offset_bottom = 473.0
+theme = SubResource("Theme_l45mb")
+text = "Gold"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Description/GOLDLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_huhwp")
+
+[node name="TimeLabel" type="Label" parent="Description"]
+clip_children = 1
+texture_filter = 2
+layout_mode = 0
+offset_left = 226.0
+offset_top = 380.0
+offset_right = 536.0
+offset_bottom = 432.0
+theme = SubResource("Theme_l45mb")
+text = "Time"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Description/TimeLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_huhwp")
+
+[node name="MAPLabel" type="Label" parent="Description"]
+clip_children = 1
+texture_filter = 2
+layout_mode = 0
+offset_left = 534.0
+offset_top = 419.0
+offset_right = 844.0
+offset_bottom = 471.0
+theme = SubResource("Theme_l45mb")
+text = "MAP"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Description/MAPLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_huhwp")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 52.0
+offset_right = 852.0
+offset_bottom = 350.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4cy5i")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="Slot1" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "1"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Shüan"
+horizontal_alignment = 2
+
+[node name="Slot2" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "2"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot3" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "3"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot4" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "4"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot5" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "5"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot6" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "6"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot7" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "7"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot8" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "8"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot9" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "9"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot10" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "10"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot11" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "11"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot12" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "12"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot13" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "13"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot14" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "14"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2
+
+[node name="Slot15" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+modulate = Color(0.31, 0.31, 0.31, 1)
+show_behind_parent = true
+layout_mode = 2
+theme = SubResource("Theme_p3wiw")
+theme_override_constants/separation = 32
+
+[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_gekwv")
+theme_override_constants/outline_size = 8
+text = "15"
+horizontal_alignment = 2
+
+[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+theme = SubResource("Theme_oocjw")
+theme_override_constants/outline_size = 8
+text = "Empty"
+horizontal_alignment = 2

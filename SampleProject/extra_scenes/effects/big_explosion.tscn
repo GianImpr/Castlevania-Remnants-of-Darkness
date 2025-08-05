@@ -1,6 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://sx5bpu32eldc"]
+[gd_scene load_steps=11 format=3 uid="uid://sx5bpu32eldc"]
 
 [ext_resource type="Texture2D" uid="uid://cd5wfc51yc6hf" path="res://assets/sprites/Effects/BigExplosion.png" id="1_kecph"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_kol1d"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="3_bx3ow"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="4_66rhq"]
+[ext_resource type="AudioStream" uid="uid://baietjlntt48w" path="res://assets/sounds/Effects/Miscellaneous/Explosion.MP3" id="5_hlkgb"]
+
+[sub_resource type="Animation" id="Animation_npi4d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_0wjex"]
 resource_name = "explode"
@@ -32,20 +51,19 @@ tracks/1/keys = {
 "method": &"queue_free"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_npi4d"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [{
+"args": ["explosion"],
+"method": &"play_sound_effect_from_library"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ny88l"]
@@ -54,7 +72,17 @@ _data = {
 "explode": SubResource("Animation_0wjex")
 }
 
+[sub_resource type="Resource" id="Resource_pjjpj"]
+script = ExtResource("4_66rhq")
+Tag = "explosion"
+stream = ExtResource("5_hlkgb")
+
+[sub_resource type="Resource" id="Resource_xx1pe"]
+script = ExtResource("3_bx3ow")
+sound_effects = Array[ExtResource("4_66rhq")]([SubResource("Resource_pjjpj")])
+
 [node name="BigExplosion" type="Node2D"]
+z_index = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -66,3 +94,7 @@ libraries = {
 "": SubResource("AnimationLibrary_ny88l")
 }
 autoplay = "explode"
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("2_kol1d")
+audio_library = SubResource("Resource_xx1pe")

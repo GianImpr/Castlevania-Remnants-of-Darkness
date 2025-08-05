@@ -1,0 +1,159 @@
+[gd_scene load_steps=14 format=3 uid="uid://fgrfy7v26ty4"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/Warg/offensive_fire_pillars.gd" id="1_fvpks"]
+[ext_resource type="Texture2D" uid="uid://fufbp6clmn48" path="res://assets/sprites/Enemies/Warg/WargExplosion.png" id="1_j3eba"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_77a8p"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="2_ub67t"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="3_bluek"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="4_g07pk"]
+[ext_resource type="AudioStream" uid="uid://baietjlntt48w" path="res://assets/sounds/Effects/Miscellaneous/Explosion.MP3" id="5_uxx1u"]
+
+[sub_resource type="Resource" id="Resource_dtl0v"]
+script = ExtResource("4_g07pk")
+Tag = "explode"
+stream = ExtResource("5_uxx1u")
+
+[sub_resource type="Resource" id="Resource_uo5hy"]
+script = ExtResource("3_bluek")
+sound_effects = Array[ExtResource("4_g07pk")]([SubResource("Resource_dtl0v")])
+
+[sub_resource type="Animation" id="Animation_x6605"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_dsmjf"]
+resource_name = "explode"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PillarSprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 2), Vector2(0, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PillarSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PillarSprite:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(19, 0), Vector2(19, -46), Vector2(19, -115)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PolyphonicAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["explode"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q21yo"]
+_data = {
+"RESET": SubResource("Animation_x6605"),
+"explode": SubResource("Animation_dsmjf")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olo7j"]
+size = Vector2(37, 116.5)
+
+[node name="FirePillars" type="Node2D" node_paths=PackedStringArray("stats", "area")]
+scale = Vector2(2, 2)
+script = ExtResource("1_fvpks")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+
+[node name="Projectile" type="Node" parent="."]
+script = ExtResource("2_ub67t")
+base_damage = 17
+magical = true
+chip_damage = -100
+attribute = 3
+
+[node name="PillarSprite" type="Sprite2D" parent="."]
+position = Vector2(19, -46)
+scale = Vector2(1, 2)
+texture = ExtResource("1_j3eba")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("2_77a8p")
+audio_library = SubResource("Resource_uo5hy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q21yo")
+}
+autoplay = "explode"
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2(19.5, -58.75)
+shape = SubResource("RectangleShape2D_olo7j")
+disabled = true

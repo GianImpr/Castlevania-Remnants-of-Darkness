@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dj1w5vx1ut6l3"]
+[gd_scene load_steps=23 format=3 uid="uid://dj1w5vx1ut6l3"]
 
 [ext_resource type="Script" path="res://SampleProject/enemies/BlackPanther/black_panther.gd" id="1_gwyl7"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_qe57j"]
@@ -144,10 +144,10 @@ tracks/3/path = NodePath("Sprite2D:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.517647, 0, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(2, 1, 3, 1), Color(0.517647, 0, 1, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -249,7 +249,7 @@ size = Vector2(43.5, 15)
 size = Vector2(26, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lljl2"]
-size = Vector2(200, 22)
+size = Vector2(148.5, 22)
 
 [sub_resource type="Curve" id="Curve_v1yfl"]
 max_value = 2.0
@@ -308,9 +308,20 @@ func on_child_transition(state, new_state_name):
 	current_state = new_state
 "
 
-[node name="BlackPanther" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "ray_cast_2d_right")]
+[sub_resource type="Curve" id="Curve_ptads"]
+max_value = 5.0
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_fd6a3"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="BlackPanther" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "ray_cast_2d_right", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
+floor_constant_speed = true
+floor_max_angle = 1.22173
+floor_snap_length = 20.0
 script = ExtResource("1_gwyl7")
 vision = NodePath("Vision")
 sprite = NodePath("Sprite2D")
@@ -321,10 +332,11 @@ iframe_timer = NodePath("Hitbox/Iframe")
 hitbox_iframe = NodePath("Hitbox")
 ray_cast_2d_left = NodePath("RayCastLeft")
 ray_cast_2d_right = NodePath("RayCastRight")
+blood_particles = NodePath("BloodDamage")
 
 [node name="EnemyStats" type="Node" parent="."]
 script = ExtResource("2_qe57j")
-enemy_name = "Black Panther"
+enemy_name = "BLACK_PANTHER"
 LV = 10
 HP = 10
 ATK = 28
@@ -357,11 +369,12 @@ shape = SubResource("RectangleShape2D_o6mrf")
 [node name="Iframe" type="Timer" parent="Hitbox"]
 
 [node name="Vision" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="VisionShape" type="CollisionShape2D" parent="Vision"]
-position = Vector2(-17.5, 1)
+position = Vector2(-101.75, 1)
 shape = SubResource("RectangleShape2D_lljl2")
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -413,6 +426,22 @@ SPEED = 400.0
 [node name="Dying" type="Node" parent="StateMachine"]
 script = ExtResource("9_2bno5")
 SPEED = Vector2(150, -450)
+
+[node name="BloodDamage" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 12
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_ptads")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_fd6a3")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Vision" to="StateMachine/Idle" method="_on_area_of_vision_body_entered"]

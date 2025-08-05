@@ -1,0 +1,642 @@
+[gd_scene load_steps=47 format=3 uid="uid://djw0ueyeiotcq"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/Warg/warg.gd" id="1_cgj65"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_xuafy"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_hq73f"]
+[ext_resource type="Texture2D" uid="uid://dwjaayjdt0koj" path="res://assets/sprites/Enemies/Warg/Warg.png" id="3_vys3q"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_khvj0"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_15yv7"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_v0oup"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_6dxpd"]
+[ext_resource type="AudioStream" uid="uid://dmse8ctu3lpcf" path="res://assets/sounds/Enemies/Warg/Growling.MP3" id="7_ks6b6"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargIdle.gd" id="7_meydx"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargPreparing.gd" id="8_83122"]
+[ext_resource type="AudioStream" uid="uid://6875t8vkyr5n" path="res://assets/sounds/Enemies/Warg/Biting.MP3" id="8_uik0v"]
+[ext_resource type="AudioStream" uid="uid://d0fss7pifjyk7" path="res://assets/sounds/Enemies/Warg/Howling.MP3" id="9_126hs"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargBiting.gd" id="9_hajer"]
+[ext_resource type="AudioStream" uid="uid://hsx6jf5238fb" path="res://assets/sounds/Powerups/ActivateRelic.MP3" id="10_rqtjw"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargMoving.gd" id="10_ymwws"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargTurning.gd" id="11_uwv7u"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargDying.gd" id="12_tffoj"]
+[ext_resource type="PackedScene" uid="uid://1fl57luhpu2j" path="res://SampleProject/enemies/Warg/fire_pillars.tscn" id="13_sxqjb"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargMagic.gd" id="19_amidd"]
+[ext_resource type="PackedScene" uid="uid://fgrfy7v26ty4" path="res://SampleProject/enemies/Warg/offensive_fire_pillars.tscn" id="20_442vi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lju4n"]
+size = Vector2(74, 59.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ahje"]
+size = Vector2(83, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6348"]
+size = Vector2(18.5, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbiqm"]
+size = Vector2(332, 95.5)
+
+[sub_resource type="Resource" id="Resource_db220"]
+script = ExtResource("6_6dxpd")
+Tag = "growl"
+stream = ExtResource("7_ks6b6")
+
+[sub_resource type="Resource" id="Resource_5hhqw"]
+script = ExtResource("6_6dxpd")
+Tag = "biting"
+stream = ExtResource("8_uik0v")
+
+[sub_resource type="Resource" id="Resource_4ugar"]
+script = ExtResource("6_6dxpd")
+Tag = "howling"
+stream = ExtResource("9_126hs")
+
+[sub_resource type="Resource" id="Resource_a6uwl"]
+script = ExtResource("6_6dxpd")
+Tag = "magic"
+stream = ExtResource("10_rqtjw")
+
+[sub_resource type="Resource" id="Resource_5hka2"]
+script = ExtResource("5_v0oup")
+sound_effects = Array[ExtResource("6_6dxpd")]([SubResource("Resource_db220"), SubResource("Resource_5hhqw"), SubResource("Resource_4ugar"), SubResource("Resource_a6uwl")])
+
+[sub_resource type="Curve" id="Curve_va3vl"]
+max_value = 5.0
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5pg3w"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GDScript" id="GDScript_326py"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="Animation" id="Animation_thcpq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bite/BiteShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FireMagic:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v8weh"]
+resource_name = "biting"
+length = 1.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44, 45, 46, 47, 48]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bite/BiteShape:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Biting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"applyBitingSpeed"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_om1xe"]
+resource_name = "cast_magic"
+length = 3.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.8, 2, 2.2, 2.5, 2.7, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [60, 61, 62, 63, 64, 65, 66, 66, 65, 64, 63, 62, 61, 60, 0, 1, 2, 0, 1, 2]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Magic")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"startSpawningFirePillars"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(2.3, 1.5, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FireMagic:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PolyphonicAudioPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["magic"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qcud6"]
+resource_name = "dying"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [60, 61, 62, 63, 64, 65, 66]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bite/BiteShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PolyphonicAudioPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["howling"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5emmu"]
+resource_name = "idle"
+length = 1.2
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ywhlu"]
+resource_name = "preparing"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [30, 31]
+}
+
+[sub_resource type="Animation" id="Animation_d7vhg"]
+resource_name = "targeting"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_hp8il"]
+resource_name = "turn"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [50, 51, 52, 53, 54, 55, 56, 57, 58]
+}
+
+[sub_resource type="Animation" id="Animation_g6qul"]
+resource_name = "walking"
+length = 1.2
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kkaj5"]
+_data = {
+"RESET": SubResource("Animation_thcpq"),
+"biting": SubResource("Animation_v8weh"),
+"cast_magic": SubResource("Animation_om1xe"),
+"dying": SubResource("Animation_qcud6"),
+"idle": SubResource("Animation_5emmu"),
+"preparing": SubResource("Animation_ywhlu"),
+"targeting": SubResource("Animation_d7vhg"),
+"turn": SubResource("Animation_hp8il"),
+"walking": SubResource("Animation_g6qul")
+}
+
+[sub_resource type="Curve" id="Curve_01gth"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.506897, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_xl2y4"]
+colors = PackedColorArray(1, 0.435294, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_0y7r6"]
+colors = PackedColorArray(1, 0.6, 0, 0, 0.977332, 0.203058, 0, 1)
+
+[node name="Warg" type="CharacterBody2D" node_paths=PackedStringArray("vision", "bite_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+z_index = 1
+scale = Vector2(2, 2)
+collision_layer = 4
+script = ExtResource("1_cgj65")
+vision = NodePath("Vision")
+bite_hitbox = NodePath("Bite")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Hitbox")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Timer")
+hitbox_iframe = NodePath("Hitbox")
+blood_particles = NodePath("BloodDamage")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_xuafy")
+enemy_name = "WARG"
+LV = 11
+HP = 140
+ATK = 32
+DEF = 8
+EXP = 17
+common_drop_id = 59
+common_drop_rate = 2.25
+weaknesses = Array[int]([1, 2, 4])
+tolerances = Array[int]([3, 6])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_vys3q")
+hframes = 10
+vframes = 7
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 4.25)
+shape = SubResource("RectangleShape2D_lju4n")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2(-5.5, 7.5)
+shape = SubResource("RectangleShape2D_6ahje")
+
+[node name="Bite" type="Area2D" parent="."]
+position = Vector2(-0.5, 5.75)
+collision_layer = 0
+collision_mask = 2
+
+[node name="BiteShape" type="CollisionShape2D" parent="Bite"]
+visible = false
+position = Vector2(-45.25, -3.75)
+shape = SubResource("RectangleShape2D_p6348")
+disabled = true
+
+[node name="Vision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+visible = false
+position = Vector2(0.5, -14.75)
+shape = SubResource("RectangleShape2D_hbiqm")
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_hq73f")
+audio_library = SubResource("Resource_5hka2")
+
+[node name="BloodDamage" type="CPUParticles2D" parent="."]
+position = Vector2(-15.5, 0)
+emitting = false
+amount = 36
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 26.0
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_va3vl")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_5pg3w")
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+position = Vector2(-21, -34.5)
+script = ExtResource("4_khvj0")
+damage_node = ExtResource("5_15yv7")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_326py")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("7_meydx")
+
+[node name="Preparing" type="Node" parent="StateMachine"]
+script = ExtResource("8_83122")
+ANIM_DURATION = 0.7
+
+[node name="Biting" type="Node" parent="StateMachine"]
+script = ExtResource("9_hajer")
+BITING_SPEED = 410.0
+DECELERATION_DURATION = 0.6
+
+[node name="Moving" type="Node" parent="StateMachine"]
+script = ExtResource("10_ymwws")
+SPEED = 100.0
+
+[node name="Turning" type="Node" parent="StateMachine"]
+script = ExtResource("11_uwv7u")
+
+[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("flame_pillar_timer")]
+script = ExtResource("12_tffoj")
+fire_pillar_scene = ExtResource("13_sxqjb")
+fire_pillar_offset = 90.0
+flame_pillar_timer = NodePath("FlamePillarFrequency")
+
+[node name="FlamePillarFrequency" type="Timer" parent="StateMachine/Dying"]
+wait_time = 0.2
+
+[node name="Magic" type="Node" parent="StateMachine" node_paths=PackedStringArray("fire_pillar_respawn_timer")]
+script = ExtResource("19_amidd")
+offensive_fire_pillar_scene = ExtResource("20_442vi")
+fire_pillar_respawn_timer = NodePath("FlamePillarRespawn")
+
+[node name="FlamePillarRespawn" type="Timer" parent="StateMachine/Magic"]
+wait_time = 0.2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kkaj5")
+}
+
+[node name="FireMagic" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 36
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(50, 30)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, -60)
+angular_velocity_max = 100.0
+radial_accel_max = 30.0
+scale_amount_curve = SubResource("Curve_01gth")
+color = Color(2, 2, 1, 1)
+color_ramp = SubResource("Gradient_xl2y4")
+color_initial_ramp = SubResource("Gradient_0y7r6")

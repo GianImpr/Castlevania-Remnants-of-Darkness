@@ -175,11 +175,11 @@ func displayProperties(item: Item) -> void:
 		return
 	match item.healing_type:
 		item.HealingType.HEALTH:
-			labels.SubStatValues.text += "HP "
+			labels.SubStatValues.text += tr("HP_STAT") + " "
 		item.HealingType.MAGIC:
-			labels.SubStatValues.text += "MP "
+			labels.SubStatValues.text += tr("MP_STAT") + " "
 		item.HealingType.SYNERGY:
-			labels.SubStatValues.text += "SP "
+			labels.SubStatValues.text += tr("SP_STAT") + " "
 	if item.power > 0:
 		labels.SubStatValues.text += "+" + str(item.power)
 	else:

@@ -16,15 +16,18 @@ var player
 @export var weapon_desc: Node
 @export var qty_list: GridContainer
 @export var labels: Control
+@export var quick_weapon_icons: Control
 var weapon_text: Label
 var weapon_icon: TextureRect
+var cur_selected_item = null
+static var quick_weapons: Array = [null, null, null, null]
 
 func _ready() -> void:
 	get_child(0).flat = true
 	get_child(0)["theme_override_styles/focus"] = button_glow
 	get_child(0).pressed.connect(self.on_button_pressed.bind(get_child(0)))
 	get_child(0).focus_entered.connect(self.on_focused.bind(get_child(0)))
-	
+	WeaponWheel.quickWeaponSwap = quickWeaponSwap
 
 func _process(delta: float) -> void:
 	if weapon_desc:
@@ -43,13 +46,34 @@ func _process(delta: float) -> void:
 			state_machine.current_state.accessed_menu = 0
 	elif not glow_timer.is_stopped():
 		glow_timer.stop()
+	
+	#Change current quick weapon slot
+	if equipSlots.button_index == 0 and equipSlots.menu.accessed_menu == 1 and state_machine.current_state is InvEquip:
+		const RSTICK_ACTIONS: Array[String] = ["rstick_up", "next_skill", "rstick_down", "previous_skill"]
+		for i in range(0, RSTICK_ACTIONS.size()):
+			if Input.is_action_just_pressed(RSTICK_ACTIONS[i]):
+				if quick_weapons[i] != cur_selected_item:
+					quick_weapons[i] = cur_selected_item
+					quick_weapon_icons.get_child(i).texture = cur_selected_item.icon
+				else:
+					quick_weapons[i] = null
+					quick_weapon_icons.get_child(i).texture = null
+				sound.play_sound_effect_from_library("confirm")
+				break
 		
+#Equips the selected item by:
+#Updating stats
+#Updating the item ID of the current equip slot
+#Updating the list by adjust the # of items held after swapping equipment
+#Going back a layer in the menu
 func on_button_pressed(button):
 	var current_slot = getCurSlot()
 	equipSlots.get_child(0).get_child(equipSlots.button_index).grab_focus()
 	sound.play_sound_effect_from_library("confirm")
 	if equippingWeapon():
 		updateProperties(getEquipFromInventory(button.get_index()-2))
+	elif equippingRelic():
+		turnOffRelic()
 	updateNewStats(getEquipFromInventory(button.get_index()-2), getEquipFromCompendium(getCurSlot()-1, getCurCompendium()), ["STR", "CON", "INT", "RES", "SYN", "LCK", "ATK", "DEF"])
 	updateStats(["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
 	updateWeaponSprite(getEquipFromInventory(button.get_index()-2))
@@ -69,13 +93,15 @@ func on_button_pressed(button):
 	equipSlots.on_focused(equipSlots.get_child(0).get_child(equipSlots.button_index))
 	equipSlots.menu.accessed_menu = 0
 	
-	
+
+#Retrieves information about the currently highlighted equipment piece
 func on_focused(button):
 	if button.get_index() > 0:
-		weapon_icon.texture = getCurCompendium()[getCurInventory()[button.get_index()-2]["id"]-1]["icon"]
-		weapon_text.text = getCurCompendium()[getCurInventory()[button.get_index()-2]["id"]-1][getCurItemProperty("description")]
+		cur_selected_item = getCurCompendium()[getCurInventory()[button.get_index()-2]["id"]-1]
+		weapon_icon.texture = cur_selected_item["icon"]
+		weapon_text.text = cur_selected_item[getCurItemProperty("description")]
 	else:
-		weapon_icon.texture = load("res://assets/sprites/Items/Inventory/Inventory_255.png")
+		weapon_icon.texture = load("res://assets/sprites/Items/InventoryIcons/Inventory_255.png")
 		weapon_text.text = ""
 		
 	var selectedEquip = getEquipFromInventory(button.get_index()-2)
@@ -87,6 +113,7 @@ func on_focused(button):
 	sound.play_sound_effect_from_library("cursor")
 	
 
+#Creates the equip list corresponding to the currently selected slot
 func initList(list: Array[Dictionary]):
 	for item in list:
 		var button = InventoryButton.new()
@@ -109,7 +136,8 @@ func initList(list: Array[Dictionary]):
 		button.flat = true
 		button.custom_minimum_size.x = 162
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		
+
+#Deletes the list and resets the labels
 func updateList():
 	for child in get_children():
 		if child.get_name() != "Unequip" and child is InventoryButton:
@@ -118,7 +146,7 @@ func updateList():
 	for child in qty_list.get_children():
 		if child.get_index() > 0:
 			child.queue_free()
-	weapon_icon.texture = load("res://assets/sprites/Items/Inventory/Inventory_255.png")
+	weapon_icon.texture = load("res://assets/sprites/Items/InventoryIcons/Inventory_255.png")
 	weapon_text.text = ""
 	resetLabel(labels.SubArrows)
 	resetLabel(labels.NewSubStats)
@@ -127,36 +155,43 @@ func _on_glow_timer_timeout() -> void:
 	for child in children:
 		button_glow.bg_color = Color(glow_intensity, 0, 0)
 
+#Retrieves data from the index-th element of a compendium
 func getEquipFromCompendium(index: int, compendium):
 	if index >= 0:
 		return compendium[index]
 	return null
 
+#Retrieves data from the index-th element in the player's possessed items list
 func getEquipFromInventory(index: int):
 	if index >= 0 and index < getCurInventory().size():
 		return getCurCompendium()[getCurInventory()[index]["id"]-1]
 	return null
-	
+
+#Retrieves data about the currently equipped item
 func getCurEquip():
 	var slot = getCurSlot()
 	if slot > 0:
 		return getEquipFromCompendium(slot-1, getCurCompendium())
 	return null
 
+#Gets the id of item equipped in the slot corresponding to the type of currently opened list
 func getCurSlot() -> int:
 	var slots = ["weapon", "artifact", "relic", "head", "body", "legs", "acc1", "acc2"]
 	var slot = slots[equipSlots.button_index]
 	return player.equipment[slot]
-	
-func defaultIcon():
-	return load("res://assets/sprites/Items/Inventory/Inventory_255.png")
 
+#Empty icon
+func defaultIcon():
+	return load("res://assets/sprites/Items/InventoryIcons/Inventory_255.png")
+
+#Applies the selected item ID to the player's corresponding equip slot
 func setCurSlot(id: int):
 	var slots = ["weapon", "artifact", "relic", "head", "body", "legs", "acc1", "acc2"]
 	var slot = slots[equipSlots.button_index]
 	if id >= 0:
 		player.equipment[slot] = id
 
+#Calculates and shows stat differences when selecting an item to equip
 func compareStats(selectedEquip, currentEquip, stats: Array[String], arrowLabel: RichTextLabel, statLabel: RichTextLabel):
 	var newStatLabel = "[right]"
 	var newArrows = ""
@@ -181,7 +216,8 @@ func compareStats(selectedEquip, currentEquip, stats: Array[String], arrowLabel:
 			newStatLabel += "\n"
 	arrowLabel.text = newArrows
 	statLabel.text = newStatLabel + "[/right]"
-	
+
+#Updates the new stats
 func updateNewStats(selectedWeapon, currentWeapon, stats: Array[String]):
 	for stat in stats:
 		if selectedWeapon and currentWeapon:
@@ -191,7 +227,8 @@ func updateNewStats(selectedWeapon, currentWeapon, stats: Array[String]):
 		elif currentWeapon:
 			player.Boosts[stat] -= currentWeapon[stat]
 		player.Stats[stat] = player.Bases[stat] + player.Boosts[stat]
-		
+
+#Updates the labels showing the current stats, but does not update the stats themselves
 func updateStats(stats: Array[String], label: Label):
 	player = Global.player.stats
 	label.text = ""
@@ -205,6 +242,8 @@ func getCurCompendium():
 	match equipSlots.button_index:
 		0:
 			return Global.player.stats.weapon_compendium
+		1:
+			return Global.player.stats.artifact_compendium
 		2:
 			return Global.player.stats.relic_compendium
 		3:
@@ -243,12 +282,14 @@ func getCurInventory() -> Array[Dictionary]:
 			printerr("Inventory list " + equipSlots.button_index + " not found")
 			return []
 
+#Finds the prefix for the item properties
 func getCurItemProperty(key: String) -> String:
 	var prefixes = ["weapon_", "artifact_", "relic_", "headgear_", "body_", "legs_", "accessory_", "accessory_"]
 	return prefixes[equipSlots.button_index] + key
 
-func updateWeaponSprite(weapon) -> void:
-	if equipSlots.button_index == 0 and weapon is not Weapon:
+#Updates the weapon scene to the new weapon one
+func updateWeaponSprite(weapon, ignore_button_index: bool = false) -> void:
+	if (equipSlots.button_index == 0 or ignore_button_index) and weapon is not Weapon:
 		Global.player.sprite.removeWeapon()
 		return
 	if weapon is not Weapon:
@@ -257,6 +298,7 @@ func updateWeaponSprite(weapon) -> void:
 		Global.player.sprite.removeWeapon()
 	Global.player.sprite.changeWeapon(weapon.sprite)
 
+#Updates if Hector can jump cancel or crouch attack with the new weapon 
 func updateProperties(weapon):
 	if weapon is Weapon:
 		Global.player.can_jump_cancel = weapon.jump_cancel
@@ -265,5 +307,39 @@ func updateProperties(weapon):
 		Global.player.can_jump_cancel = true
 		Global.player.can_crouch_attack = true
 
+#Checks if the player is equipping a weapon
 func equippingWeapon() -> bool:
 	return equipSlots.button_index == 0
+
+#Checks if the player is equipping a relic
+func equippingRelic() -> bool:
+	return equipSlots.button_index == 2
+
+#Turns off the current relic in case the player is changing it
+func turnOffRelic() -> void:
+	Global.player.enabled_magic = false
+	Global.player.aura.visible = false
+
+#Used by the WeaponWheel node: allows to quickly swap between four different weapons
+func quickWeaponSwap(weapon_position: int) -> void:
+	if Global.player == null:
+		return
+
+	player = Global.player.stats
+	var current_weapon_id = player.equipment["weapon"]
+	var old_weapon = getEquipFromCompendium(current_weapon_id-1, Game.get_singleton().weapon_compendium)
+	updateProperties(quick_weapons[weapon_position])
+	updateNewStats(quick_weapons[weapon_position], old_weapon, ["STR", "CON", "INT", "RES", "SYN", "LCK", "ATK", "DEF"])
+	#updateStats(["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
+	updateWeaponSprite(quick_weapons[weapon_position], true)
+	if quick_weapons[weapon_position] != null:
+		if current_weapon_id > 0:
+			player.addItem(current_weapon_id, player.weapon_inventory)
+		player.removeItem(player.getItemIndexInCompendium(quick_weapons[weapon_position], Game.get_singleton().weapon_compendium), player.weapon_inventory)
+		player.equipment["weapon"] = player.getItemIndexInCompendium(quick_weapons[weapon_position], Game.get_singleton().weapon_compendium)
+		equipSlots.get_child(0).get_child(0).get_child(0).texture = quick_weapons[weapon_position].icon
+	else:
+		if current_weapon_id > 0:
+			player.addItem(current_weapon_id, player.weapon_inventory)
+		player.equipment["weapon"] = 0
+		equipSlots.get_child(0).get_child(0).get_child(0).texture = defaultIcon()

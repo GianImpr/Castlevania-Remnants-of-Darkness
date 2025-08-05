@@ -1,0 +1,172 @@
+[gd_scene load_steps=17 format=3 uid="uid://78uag16ilymj"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/fireball.gd" id="1_355s3"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="2_6xmiu"]
+[ext_resource type="Texture2D" uid="uid://b5ry27lim6y5q" path="res://assets/sprites/Enemies/Ctulhu/IceWave.png" id="3_7mx35"]
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="4_rgaxg"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gyr3f"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_vjvup"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.685345, 1)
+colors = PackedColorArray(0.0513022, 0.0962808, 0.976592, 1, 0, 0.614455, 0.941029, 1, 0.00186969, 0.260344, 0.923251, 1, 0, 0.640054, 0.35301, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gpp5d"]
+gradient = SubResource("Gradient_vjvup")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ko4gl"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 80, 1)
+spread = 20.0
+initial_velocity_min = 70.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_gpp5d")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkdjp"]
+size = Vector2(74.5, 162)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aad27"]
+size = Vector2(75, 161)
+
+[sub_resource type="Gradient" id="Gradient_yrtop"]
+offsets = PackedFloat32Array(0, 0.386364, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.746212, 0.746212, 0.746212, 0.746212, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bqjtj"]
+gradient = SubResource("Gradient_yrtop")
+height = 192
+fill = 1
+fill_from = Vector2(0.517094, 0.525641)
+
+[sub_resource type="Animation" id="Animation_1r132"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_1fhgq"]
+resource_name = "destroy"
+length = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_k0xp8"]
+resource_name = "travel"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 2.82843),
+"update": 0,
+"values": [1.5, 1.2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wwsah"]
+_data = {
+"RESET": SubResource("Animation_1r132"),
+"destroy": SubResource("Animation_1fhgq"),
+"travel": SubResource("Animation_k0xp8")
+}
+
+[node name="CtulhuIceWave" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "lifespan_timer")]
+collision_layer = 4
+collision_mask = 0
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_355s3")
+stats = NodePath("Projectile")
+sprite = NodePath("Sprite2D")
+hitbox_iframe = NodePath("Area2D/Hitbox")
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+lifespan_timer = NodePath("Lifespan")
+SPEED = 1000.0
+
+[node name="Projectile" type="Node" parent="."]
+script = ExtResource("2_6xmiu")
+base_damage = 40
+magical = true
+chip_damage = 20
+attribute = 4
+guard_break = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_7mx35")
+
+[node name="TrailParticles" type="GPUParticles2D" parent="Sprite2D"]
+z_index = -1
+material = SubResource("CanvasItemMaterial_gyr3f")
+position = Vector2(18, 15)
+scale = Vector2(0.5, 0.5)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_ko4gl")
+texture = ExtResource("4_rgaxg")
+lifetime = 0.5
+fixed_fps = 60
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(20.75, 30)
+shape = SubResource("RectangleShape2D_dkdjp")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(21.5, 29.5)
+shape = SubResource("RectangleShape2D_aad27")
+
+[node name="Lifespan" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(17, 22)
+energy = 2.0
+texture = SubResource("GradientTexture2D_bqjtj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wwsah")
+}
+autoplay = "travel"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

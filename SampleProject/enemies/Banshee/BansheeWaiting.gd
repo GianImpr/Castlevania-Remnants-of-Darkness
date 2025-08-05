@@ -4,6 +4,8 @@ class_name BansheeWaiting
 @export var hurtbox: CollisionShape2D
 
 func enter():
+	if Global.game.difficulty == Game.Difficulty.CRAZY:
+		animation.speed_scale = 1.5
 	animation.play("waiting", -1, 1)
 	
 func Update(delta: float):

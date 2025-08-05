@@ -1,158 +1,209 @@
-[gd_scene load_steps=281 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=394 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
 [ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="3_a3gfy"]
-[ext_resource type="Texture2D" uid="uid://dvhm565w0bkyu" path="res://assets/sprites/Items/Inventory/Inventory_387.png" id="3_cc0q7"]
+[ext_resource type="Texture2D" uid="uid://dvhm565w0bkyu" path="res://assets/sprites/Items/InventoryIcons/Inventory_387.png" id="3_cc0q7"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/camera_2d.gd" id="3_mx3v0"]
-[ext_resource type="Texture2D" uid="uid://bbrtcr6o7o2gi" path="res://assets/sprites/Items/Inventory/Bullova.png" id="4_5a8ru"]
+[ext_resource type="Texture2D" uid="uid://bbrtcr6o7o2gi" path="res://assets/sprites/Items/InventoryIcons/Bullova.png" id="4_5a8ru"]
 [ext_resource type="PackedScene" uid="uid://bvh7e1rc12sbj" path="res://SampleProject/Weapons/bullova.tscn" id="5_71vdw"]
-[ext_resource type="PackedScene" uid="uid://dt8t755oidogh" path="res://scenes/player.tscn" id="5_81k16"]
-[ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/Sinfonia.ttf" id="5_pjg0o"]
+[ext_resource type="PackedScene" uid="uid://cenjpg3o6am6u" path="res://scenes/player.tscn" id="5_81k16"]
+[ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="5_pjg0o"]
 [ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="6_70wxk"]
+[ext_resource type="Texture2D" uid="uid://bklif37kbg5bs" path="res://assets/sprites/Items/InventoryIcons/Claymore.png" id="6_c5tvp"]
 [ext_resource type="PackedScene" uid="uid://yby38f15lji0" path="res://scenes/HUD.tscn" id="6_mhw4y"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/item.gd" id="6_n752u"]
 [ext_resource type="PackedScene" uid="uid://b4f2sbjwt3lf7" path="res://SampleProject/extra_scenes/inventory_menu.tscn" id="6_pokik"]
 [ext_resource type="PackedScene" uid="uid://2k1tvl70buqg" path="res://SampleProject/extra_scenes/HUD/item_box.tscn" id="7_11rec"]
+[ext_resource type="PackedScene" uid="uid://dhpoigeaf1rv5" path="res://SampleProject/Weapons/claymore.tscn" id="7_g5tc5"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="7_ip71q"]
-[ext_resource type="Texture2D" uid="uid://du0eiy67cnc7d" path="res://assets/sprites/Items/Inventory/Inventory_258.png" id="7_oyt25"]
+[ext_resource type="Texture2D" uid="uid://du0eiy67cnc7d" path="res://assets/sprites/Items/InventoryIcons/Inventory_258.png" id="7_oyt25"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/music_player.gd" id="8_385te"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_afqo1"]
-[ext_resource type="Texture2D" uid="uid://b0pf1n6afknku" path="res://assets/sprites/Items/Inventory/Inventory_257.png" id="8_atld1"]
-[ext_resource type="Texture2D" uid="uid://baxtph716gnw5" path="res://assets/sprites/Items/Inventory/Inventory_291.png" id="9_fjwgd"]
-[ext_resource type="Texture2D" uid="uid://drwi0scdnk2tl" path="res://assets/sprites/Items/Inventory/Inventory_292.png" id="10_8v4x6"]
+[ext_resource type="Texture2D" uid="uid://b0pf1n6afknku" path="res://assets/sprites/Items/InventoryIcons/Inventory_257.png" id="8_atld1"]
+[ext_resource type="Texture2D" uid="uid://dil67bbpd26mq" path="res://assets/sprites/Items/InventoryIcons/Falchion.png" id="8_hgl6s"]
+[ext_resource type="Texture2D" uid="uid://baxtph716gnw5" path="res://assets/sprites/Items/InventoryIcons/Inventory_291.png" id="9_fjwgd"]
+[ext_resource type="PackedScene" uid="uid://cankh7clno27c" path="res://SampleProject/Weapons/falchion.tscn" id="9_s4pf2"]
+[ext_resource type="Texture2D" uid="uid://drwi0scdnk2tl" path="res://assets/sprites/Items/InventoryIcons/Inventory_292.png" id="10_8v4x6"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="10_etx3r"]
 [ext_resource type="AudioStream" uid="uid://ce1urfkmutvrd" path="res://assets/sounds/Menu/ShowMap.MP3" id="10_kb15x"]
-[ext_resource type="Texture2D" uid="uid://c6ppcg8i6ld1d" path="res://assets/sprites/Items/Inventory/Inventory_293.png" id="11_4mo0k"]
-[ext_resource type="Texture2D" uid="uid://caxuiae8j1lj7" path="res://assets/sprites/Items/Inventory/Inventory_294.png" id="12_ljk1s"]
+[ext_resource type="Texture2D" uid="uid://4kwuakvxtq7" path="res://assets/sprites/Items/InventoryIcons/Mace.png" id="10_tph4o"]
+[ext_resource type="Texture2D" uid="uid://c6ppcg8i6ld1d" path="res://assets/sprites/Items/InventoryIcons/Inventory_293.png" id="11_4mo0k"]
+[ext_resource type="PackedScene" uid="uid://og11ao24k2oq" path="res://SampleProject/Weapons/mace.tscn" id="11_u7wty"]
+[ext_resource type="Texture2D" uid="uid://caxuiae8j1lj7" path="res://assets/sprites/Items/InventoryIcons/Inventory_294.png" id="12_ljk1s"]
 [ext_resource type="PackedScene" uid="uid://bbvmo7y5quj1s" path="res://SampleProject/extra_scenes/HUD/hint_box.tscn" id="12_nov2h"]
-[ext_resource type="Texture2D" uid="uid://cf258lfi3stud" path="res://assets/sprites/Items/Inventory/Inventory_295.png" id="13_re8cm"]
+[ext_resource type="Texture2D" uid="uid://cf258lfi3stud" path="res://assets/sprites/Items/InventoryIcons/Inventory_295.png" id="13_re8cm"]
 [ext_resource type="PackedScene" uid="uid://cgmgx8v6dbp3u" path="res://SampleProject/extra_scenes/HUD/enemy_box.tscn" id="13_uka3k"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/fade_screen.gd" id="13_voup6"]
-[ext_resource type="Texture2D" uid="uid://b5oidu006hp5j" path="res://assets/sprites/Items/Inventory/Inventory_296.png" id="14_cmqwc"]
+[ext_resource type="Texture2D" uid="uid://b5oidu006hp5j" path="res://assets/sprites/Items/InventoryIcons/Inventory_296.png" id="14_cmqwc"]
 [ext_resource type="AudioStream" uid="uid://b2hhmewc5j580" path="res://assets/music/GaribaldiTemple.ogg" id="15_n6l4g"]
-[ext_resource type="Texture2D" uid="uid://dqnxid8kdbq7o" path="res://assets/sprites/Items/Inventory/Inventory_262.png" id="15_s2mtr"]
-[ext_resource type="Texture2D" uid="uid://cs7o2ihn4m8vt" path="res://assets/sprites/Items/Inventory/Inventory_279.png" id="16_aex55"]
+[ext_resource type="Texture2D" uid="uid://dqnxid8kdbq7o" path="res://assets/sprites/Items/InventoryIcons/Inventory_262.png" id="15_s2mtr"]
+[ext_resource type="Texture2D" uid="uid://cs7o2ihn4m8vt" path="res://assets/sprites/Items/InventoryIcons/Inventory_279.png" id="16_aex55"]
 [ext_resource type="AudioStream" uid="uid://bh5hppwruqd0i" path="res://assets/music/YoungNobleman.ogg" id="16_mtiyt"]
 [ext_resource type="PackedScene" uid="uid://cc1yrxsfbarkc" path="res://SampleProject/extra_scenes/HUD/stage_presentation.tscn" id="16_yvhsl"]
-[ext_resource type="Texture2D" uid="uid://c1ww1k77g45te" path="res://assets/sprites/Items/Inventory/Inventory_332.png" id="17_0foon"]
+[ext_resource type="Texture2D" uid="uid://c1ww1k77g45te" path="res://assets/sprites/Items/InventoryIcons/Inventory_332.png" id="17_0foon"]
 [ext_resource type="AudioStream" uid="uid://wfp61kihdjdb" path="res://assets/music/WindSFX.ogg" id="17_b6s8r"]
-[ext_resource type="Texture2D" uid="uid://j0iqrvrsfr8l" path="res://assets/sprites/Items/Inventory/Inventory_259.png" id="18_0iq5c"]
+[ext_resource type="Texture2D" uid="uid://j0iqrvrsfr8l" path="res://assets/sprites/Items/InventoryIcons/Inventory_259.png" id="18_0iq5c"]
 [ext_resource type="AudioStream" uid="uid://c2p7yddfxv2it" path="res://assets/music/EnemyEncounter.ogg" id="18_hpump"]
 [ext_resource type="AudioStream" uid="uid://cr60u8c82m68u" path="res://assets/music/Followers1.ogg" id="19_3ndk5"]
-[ext_resource type="Texture2D" uid="uid://c5e7abdrgw8fe" path="res://assets/sprites/Items/Inventory/Inventory_260.png" id="19_esy07"]
-[ext_resource type="Texture2D" uid="uid://d30dhtcws23nf" path="res://assets/sprites/Items/Inventory/Inventory_261.png" id="20_l5agq"]
+[ext_resource type="Texture2D" uid="uid://c5e7abdrgw8fe" path="res://assets/sprites/Items/InventoryIcons/Inventory_260.png" id="19_esy07"]
+[ext_resource type="Texture2D" uid="uid://d30dhtcws23nf" path="res://assets/sprites/Items/InventoryIcons/Inventory_261.png" id="20_l5agq"]
 [ext_resource type="PackedScene" uid="uid://dogi4hsvyxsgs" path="res://SampleProject/extra_scenes/HUD/tutorial_box.tscn" id="20_ra60k"]
 [ext_resource type="AudioStream" uid="uid://divaxkj2wapst" path="res://assets/music/InnocentDevil.ogg" id="20_yyavx"]
-[ext_resource type="Texture2D" uid="uid://c82gjyj5jc0u5" path="res://assets/sprites/Items/Inventory/Inventory_263.png" id="21_6kbvk"]
+[ext_resource type="Texture2D" uid="uid://c82gjyj5jc0u5" path="res://assets/sprites/Items/InventoryIcons/Inventory_263.png" id="21_6kbvk"]
 [ext_resource type="AudioStream" uid="uid://dt0wjxu3j762s" path="res://assets/music/Castlevania Reincarnation.ogg" id="21_u7hil"]
 [ext_resource type="AudioStream" uid="uid://cpcb4qwo3spyt" path="res://assets/music/InnerQuarters.ogg" id="22_2kg4t"]
-[ext_resource type="Texture2D" uid="uid://df1g78v41j8gj" path="res://assets/sprites/Items/Inventory/Inventory_264.png" id="22_vrwsp"]
-[ext_resource type="Texture2D" uid="uid://d3lc0nij607wk" path="res://assets/sprites/Items/Inventory/Inventory_265.png" id="23_e35ff"]
-[ext_resource type="Texture2D" uid="uid://djkd5e0fxxt5d" path="res://assets/sprites/Items/Inventory/Inventory_266.png" id="24_nqlpo"]
-[ext_resource type="Texture2D" uid="uid://bvhwax421fy18" path="res://assets/sprites/Items/Inventory/Inventory_267.png" id="25_3lhjh"]
-[ext_resource type="Texture2D" uid="uid://bvu1deu76admw" path="res://assets/sprites/Items/Inventory/Inventory_268.png" id="26_4vglm"]
+[ext_resource type="Texture2D" uid="uid://df1g78v41j8gj" path="res://assets/sprites/Items/InventoryIcons/Inventory_264.png" id="22_vrwsp"]
+[ext_resource type="Texture2D" uid="uid://d3lc0nij607wk" path="res://assets/sprites/Items/InventoryIcons/Inventory_265.png" id="23_e35ff"]
+[ext_resource type="Texture2D" uid="uid://djkd5e0fxxt5d" path="res://assets/sprites/Items/InventoryIcons/Inventory_266.png" id="24_nqlpo"]
+[ext_resource type="Texture2D" uid="uid://bvhwax421fy18" path="res://assets/sprites/Items/InventoryIcons/Inventory_267.png" id="25_3lhjh"]
+[ext_resource type="Texture2D" uid="uid://bvu1deu76admw" path="res://assets/sprites/Items/InventoryIcons/Inventory_268.png" id="26_4vglm"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/fps_display.gd" id="27_3mlqo"]
-[ext_resource type="Texture2D" uid="uid://ck7nsk2ql7ugf" path="res://assets/sprites/Items/Inventory/Inventory_269.png" id="27_736qn"]
-[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="27_ggyg0"]
-[ext_resource type="Texture2D" uid="uid://d0lqa0d5iimar" path="res://assets/sprites/Items/Inventory/Inventory_270.png" id="28_7l3as"]
+[ext_resource type="Texture2D" uid="uid://ck7nsk2ql7ugf" path="res://assets/sprites/Items/InventoryIcons/Inventory_269.png" id="27_736qn"]
+[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SotN.ttf" id="27_ggyg0"]
+[ext_resource type="Texture2D" uid="uid://d0lqa0d5iimar" path="res://assets/sprites/Items/InventoryIcons/Inventory_270.png" id="28_7l3as"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/touchcontrols.gd" id="29_1b3st"]
-[ext_resource type="Texture2D" uid="uid://c57sw7py2gl7q" path="res://assets/sprites/Items/Inventory/Inventory_271.png" id="29_nycxi"]
+[ext_resource type="Texture2D" uid="uid://c57sw7py2gl7q" path="res://assets/sprites/Items/InventoryIcons/Inventory_271.png" id="29_nycxi"]
 [ext_resource type="Texture2D" uid="uid://cfy1rx4d4wjdh" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Cross.png" id="29_ufvnj"]
 [ext_resource type="Texture2D" uid="uid://civpcnwgbu5ky" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Circle.png" id="30_3q31x"]
-[ext_resource type="Texture2D" uid="uid://cud4go0d1igc5" path="res://assets/sprites/Items/Inventory/Inventory_272.png" id="30_yx5no"]
-[ext_resource type="Texture2D" uid="uid://b0w1atcaqhjsv" path="res://assets/sprites/Items/Inventory/Inventory_273.png" id="31_o30at"]
+[ext_resource type="Texture2D" uid="uid://cud4go0d1igc5" path="res://assets/sprites/Items/InventoryIcons/Inventory_272.png" id="30_yx5no"]
+[ext_resource type="Texture2D" uid="uid://b0w1atcaqhjsv" path="res://assets/sprites/Items/InventoryIcons/Inventory_273.png" id="31_o30at"]
 [ext_resource type="Texture2D" uid="uid://dm6vfcwtodame" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Square.png" id="31_tk0s7"]
-[ext_resource type="Texture2D" uid="uid://6p7n4eskpk4c" path="res://assets/sprites/Items/Inventory/Inventory_274.png" id="32_23dgf"]
+[ext_resource type="Texture2D" uid="uid://6p7n4eskpk4c" path="res://assets/sprites/Items/InventoryIcons/Inventory_274.png" id="32_23dgf"]
 [ext_resource type="Texture2D" uid="uid://bjjj12v4g82g4" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Triangle.png" id="32_um34v"]
-[ext_resource type="Texture2D" uid="uid://0dseup6781ic" path="res://assets/sprites/Items/Inventory/Inventory_275.png" id="33_b4hpa"]
+[ext_resource type="Texture2D" uid="uid://0dseup6781ic" path="res://assets/sprites/Items/InventoryIcons/Inventory_275.png" id="33_b4hpa"]
 [ext_resource type="Texture2D" uid="uid://bkttgyeuecjw" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Options.png" id="33_gcngi"]
-[ext_resource type="Texture2D" uid="uid://clu1utyj8cyvs" path="res://assets/sprites/Items/Inventory/Inventory_276.png" id="34_a7efe"]
+[ext_resource type="Texture2D" uid="uid://clu1utyj8cyvs" path="res://assets/sprites/Items/InventoryIcons/Inventory_276.png" id="34_a7efe"]
 [ext_resource type="Texture2D" uid="uid://bw2h7xxdtp31i" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Share.png" id="34_happf"]
-[ext_resource type="Texture2D" uid="uid://dbcpcppmsb0k0" path="res://assets/sprites/Items/Inventory/Inventory_277.png" id="35_8ci27"]
+[ext_resource type="Texture2D" uid="uid://dbcpcppmsb0k0" path="res://assets/sprites/Items/InventoryIcons/Inventory_277.png" id="35_8ci27"]
 [ext_resource type="Texture2D" uid="uid://rwgkfm18pk3l" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_R1.png" id="35_fjwe1"]
 [ext_resource type="Texture2D" uid="uid://cqgpumb0tf5xr" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_L1.png" id="36_bnl1m"]
-[ext_resource type="Texture2D" uid="uid://bnhnnpu6nlg2b" path="res://assets/sprites/Items/Inventory/Inventory_278.png" id="36_u5spk"]
-[ext_resource type="Texture2D" uid="uid://dfcnoqbynj6om" path="res://assets/sprites/Items/Inventory/Inventory_280.png" id="37_fr50l"]
+[ext_resource type="Texture2D" uid="uid://bnhnnpu6nlg2b" path="res://assets/sprites/Items/InventoryIcons/Inventory_278.png" id="36_u5spk"]
+[ext_resource type="Texture2D" uid="uid://dfcnoqbynj6om" path="res://assets/sprites/Items/InventoryIcons/Inventory_280.png" id="37_fr50l"]
 [ext_resource type="Texture2D" uid="uid://gnvoi6u0ffdp" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Down_Unpressed.png" id="38_h6y1l"]
-[ext_resource type="Texture2D" uid="uid://h7oy37mw522s" path="res://assets/sprites/Items/Inventory/Inventory_281.png" id="38_nfihp"]
-[ext_resource type="Texture2D" uid="uid://bwnou6gcrmmx3" path="res://assets/sprites/Items/Inventory/Inventory_282.png" id="39_44bfe"]
+[ext_resource type="Texture2D" uid="uid://h7oy37mw522s" path="res://assets/sprites/Items/InventoryIcons/Inventory_281.png" id="38_nfihp"]
+[ext_resource type="Texture2D" uid="uid://bwnou6gcrmmx3" path="res://assets/sprites/Items/InventoryIcons/Inventory_282.png" id="39_44bfe"]
 [ext_resource type="Texture2D" uid="uid://b3gum7x5yjsbb" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Up_Unpressed.png" id="39_t8vm2"]
 [ext_resource type="Texture2D" uid="uid://br17o8wgwbm6q" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Left_Unpressed.png" id="40_fiphx"]
-[ext_resource type="Texture2D" uid="uid://c74c11xifor65" path="res://assets/sprites/Items/Inventory/Inventory_283.png" id="40_ih3yx"]
+[ext_resource type="Texture2D" uid="uid://c74c11xifor65" path="res://assets/sprites/Items/InventoryIcons/Inventory_283.png" id="40_ih3yx"]
 [ext_resource type="Texture2D" uid="uid://dpll8sp1lw65e" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Dpad_Right_Unpressed.png" id="41_mca3i"]
-[ext_resource type="Texture2D" uid="uid://dxtjc4cxi13qm" path="res://assets/sprites/Items/Inventory/Inventory_284.png" id="41_ubmub"]
-[ext_resource type="Texture2D" uid="uid://c50ps33nritj7" path="res://assets/sprites/Items/Inventory/Inventory_285.png" id="42_in0th"]
+[ext_resource type="Texture2D" uid="uid://dxtjc4cxi13qm" path="res://assets/sprites/Items/InventoryIcons/Inventory_284.png" id="41_ubmub"]
+[ext_resource type="Texture2D" uid="uid://c50ps33nritj7" path="res://assets/sprites/Items/InventoryIcons/Inventory_285.png" id="42_in0th"]
 [ext_resource type="Texture2D" uid="uid://bukgaq1m26bw3" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Right_Stick.png" id="42_iw62n"]
-[ext_resource type="Texture2D" uid="uid://seheewb7knbc" path="res://assets/sprites/Items/Inventory/Inventory_286.png" id="43_qvtt0"]
-[ext_resource type="Texture2D" uid="uid://dj2485ajmbxmt" path="res://assets/sprites/Items/Inventory/Inventory_287.png" id="44_pmr51"]
-[ext_resource type="Texture2D" uid="uid://byto4t4vp78uc" path="res://assets/sprites/Items/Inventory/Inventory_288.png" id="45_c8v55"]
-[ext_resource type="Texture2D" uid="uid://distdgmohnwjj" path="res://assets/sprites/Items/Inventory/Inventory_289.png" id="46_k8mnd"]
-[ext_resource type="Texture2D" uid="uid://cwstihg15g122" path="res://assets/sprites/Items/Inventory/Inventory_290.png" id="47_d5sfi"]
-[ext_resource type="Texture2D" uid="uid://do2lvlkgmwswm" path="res://assets/sprites/Items/Inventory/Inventory_312.png" id="48_aflxp"]
-[ext_resource type="Texture2D" uid="uid://buib8poeof58" path="res://assets/sprites/Items/Inventory/Inventory_310.png" id="49_wnedv"]
-[ext_resource type="Texture2D" uid="uid://xvghj23me31b" path="res://assets/sprites/Items/Inventory/Inventory_508.png" id="50_ox0g4"]
-[ext_resource type="Texture2D" uid="uid://dnxvfxcvixl1q" path="res://assets/sprites/Items/Other/16x16/fa196.png" id="51_cj0u3"]
-[ext_resource type="Texture2D" uid="uid://bd78ypxrcvdx0" path="res://assets/sprites/Items/Other/16x16/fa214.png" id="52_14sym"]
-[ext_resource type="Texture2D" uid="uid://bkercceiayxe6" path="res://assets/sprites/Items/Other/16x16/fa225.png" id="53_tv7ie"]
-[ext_resource type="Texture2D" uid="uid://bcv44kn3yb5wy" path="res://assets/sprites/Items/Other/16x16/fa216.png" id="54_sudpm"]
-[ext_resource type="Texture2D" uid="uid://dy8ocb3wlkud4" path="res://assets/sprites/Items/Other/16x16/fa189.png" id="55_rbfbc"]
-[ext_resource type="Texture2D" uid="uid://daplcoannwghj" path="res://assets/sprites/Items/Other/16x16/fa324.png" id="56_j2uak"]
+[ext_resource type="Texture2D" uid="uid://seheewb7knbc" path="res://assets/sprites/Items/InventoryIcons/Inventory_286.png" id="43_qvtt0"]
+[ext_resource type="Texture2D" uid="uid://dj2485ajmbxmt" path="res://assets/sprites/Items/InventoryIcons/Inventory_287.png" id="44_pmr51"]
+[ext_resource type="Texture2D" uid="uid://byto4t4vp78uc" path="res://assets/sprites/Items/InventoryIcons/Inventory_288.png" id="45_c8v55"]
+[ext_resource type="Texture2D" uid="uid://distdgmohnwjj" path="res://assets/sprites/Items/InventoryIcons/Inventory_289.png" id="46_k8mnd"]
+[ext_resource type="Texture2D" uid="uid://cwstihg15g122" path="res://assets/sprites/Items/InventoryIcons/Inventory_290.png" id="47_d5sfi"]
+[ext_resource type="Texture2D" uid="uid://do2lvlkgmwswm" path="res://assets/sprites/Items/InventoryIcons/Inventory_312.png" id="48_aflxp"]
+[ext_resource type="Texture2D" uid="uid://buib8poeof58" path="res://assets/sprites/Items/InventoryIcons/Inventory_310.png" id="49_wnedv"]
+[ext_resource type="Texture2D" uid="uid://xvghj23me31b" path="res://assets/sprites/Items/InventoryIcons/Inventory_508.png" id="50_ox0g4"]
+[ext_resource type="Texture2D" uid="uid://dnxvfxcvixl1q" path="res://assets/sprites/Items/OtherIcons/16x16/fa196.png" id="51_cj0u3"]
+[ext_resource type="Texture2D" uid="uid://bd78ypxrcvdx0" path="res://assets/sprites/Items/OtherIcons/16x16/fa214.png" id="52_14sym"]
+[ext_resource type="Texture2D" uid="uid://bkercceiayxe6" path="res://assets/sprites/Items/OtherIcons/16x16/fa225.png" id="53_tv7ie"]
+[ext_resource type="Texture2D" uid="uid://bcv44kn3yb5wy" path="res://assets/sprites/Items/OtherIcons/16x16/fa216.png" id="54_sudpm"]
+[ext_resource type="Texture2D" uid="uid://dy8ocb3wlkud4" path="res://assets/sprites/Items/OtherIcons/16x16/fa189.png" id="55_rbfbc"]
+[ext_resource type="Texture2D" uid="uid://daplcoannwghj" path="res://assets/sprites/Items/OtherIcons/16x16/fa324.png" id="56_j2uak"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/item_compendium.gd" id="57_axjbw"]
+[ext_resource type="Texture2D" uid="uid://b6eijjjaxkusx" path="res://assets/sprites/Items/OtherIcons/16x16/fa172.png" id="57_mossm"]
+[ext_resource type="Texture2D" uid="uid://d1lbmy7q7tsus" path="res://assets/sprites/Items/OtherIcons/16x16/fa170.png" id="58_7addw"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/headgear.gd" id="58_johey"]
-[ext_resource type="Texture2D" uid="uid://d1q4qpl8hacrg" path="res://assets/sprites/Items/Inventory/Inventory_78.png" id="59_ohp77"]
-[ext_resource type="Texture2D" uid="uid://bifyy7bgttxhc" path="res://assets/sprites/Items/Inventory/Inventory_79.png" id="60_8ieye"]
-[ext_resource type="Texture2D" uid="uid://d2kun4yp6rsfi" path="res://assets/sprites/Items/Inventory/Inventory_66.png" id="61_tcgyg"]
-[ext_resource type="Texture2D" uid="uid://dv6rs35ycpg0" path="res://assets/sprites/Items/Inventory/Inventory_67.png" id="62_qk5r4"]
-[ext_resource type="Texture2D" uid="uid://diyx848qdddov" path="res://assets/sprites/Items/Inventory/Inventory_70.png" id="63_0h45a"]
-[ext_resource type="Texture2D" uid="uid://che41vuldjiow" path="res://assets/sprites/Items/Inventory/Inventory_69.png" id="64_8bafl"]
-[ext_resource type="Texture2D" uid="uid://wuqes1nmb64x" path="res://assets/sprites/Items/Inventory/Inventory_60.png" id="65_34x47"]
-[ext_resource type="Texture2D" uid="uid://cfdtpsx3s1mxx" path="res://assets/sprites/Items/Inventory/Inventory_77.png" id="66_r7eb7"]
-[ext_resource type="Texture2D" uid="uid://du7q0jejn63ki" path="res://assets/sprites/Items/Inventory/Inventory_64.png" id="67_6wetk"]
-[ext_resource type="Texture2D" uid="uid://tgauhuvp8qi0" path="res://assets/sprites/Items/Inventory/Inventory_46.png" id="68_ygvyd"]
-[ext_resource type="Texture2D" uid="uid://cdr5amg17bhtx" path="res://assets/sprites/Items/Inventory/Inventory_55.png" id="69_awemi"]
-[ext_resource type="Texture2D" uid="uid://bt3pj8mi1e2kk" path="res://assets/sprites/Items/Inventory/Inventory_59.png" id="70_y82h0"]
-[ext_resource type="Texture2D" uid="uid://bdolgtswrmd7w" path="res://assets/sprites/Items/Inventory/Inventory_54.png" id="71_3o35o"]
-[ext_resource type="Texture2D" uid="uid://xfync3n7367c" path="res://assets/sprites/Items/Inventory/Inventory_68.png" id="72_s4a8n"]
-[ext_resource type="Texture2D" uid="uid://cms3xmo4aegq1" path="res://assets/sprites/Items/Inventory/Inventory_53.png" id="73_inar4"]
-[ext_resource type="Texture2D" uid="uid://bas4ui4buuipu" path="res://assets/sprites/Items/Inventory/Inventory_48.png" id="74_0d1bl"]
-[ext_resource type="Texture2D" uid="uid://ce10rtv1eyx3i" path="res://assets/sprites/Items/Inventory/Inventory_52.png" id="75_gkl1g"]
-[ext_resource type="Texture2D" uid="uid://fytr6mixmagk" path="res://assets/sprites/Items/Inventory/Inventory_50.png" id="76_ggh8b"]
-[ext_resource type="Texture2D" uid="uid://ca260687i7ku8" path="res://assets/sprites/Items/Inventory/Inventory_80.png" id="77_6aiax"]
-[ext_resource type="Texture2D" uid="uid://dau4cpys6x85i" path="res://assets/sprites/Items/Inventory/Inventory_45.png" id="78_3rsai"]
-[ext_resource type="Texture2D" uid="uid://bgxaxxp4wl0ca" path="res://assets/sprites/Items/Inventory/Inventory_47.png" id="79_swnd8"]
-[ext_resource type="Texture2D" uid="uid://b2yv4ob3aox11" path="res://assets/sprites/Items/Inventory/Inventory_44.png" id="80_yaah0"]
-[ext_resource type="Texture2D" uid="uid://cbtil3fav8gjr" path="res://assets/sprites/Items/Inventory/Inventory_71.png" id="81_5nrcj"]
-[ext_resource type="Texture2D" uid="uid://ccotd4oo0vq45" path="res://assets/sprites/Items/Inventory/Inventory_74.png" id="82_7bt61"]
-[ext_resource type="Texture2D" uid="uid://daqc6o3saak7g" path="res://assets/sprites/Items/Inventory/Inventory_75.png" id="83_o0gmj"]
-[ext_resource type="Texture2D" uid="uid://doq5uhao1tdr" path="res://assets/sprites/Items/Inventory/Inventory_36.png" id="84_8g33f"]
-[ext_resource type="Texture2D" uid="uid://dr3vvqv5np78o" path="res://assets/sprites/Items/Inventory/Inventory_38.png" id="85_k5iqq"]
+[ext_resource type="Texture2D" uid="uid://d1q4qpl8hacrg" path="res://assets/sprites/Items/InventoryIcons/Inventory_78.png" id="59_ohp77"]
+[ext_resource type="Texture2D" uid="uid://defekss3axp1t" path="res://assets/sprites/Items/OtherIcons/16x16/fa384.png" id="59_rjikq"]
+[ext_resource type="Texture2D" uid="uid://bifyy7bgttxhc" path="res://assets/sprites/Items/InventoryIcons/Inventory_79.png" id="60_8ieye"]
+[ext_resource type="Texture2D" uid="uid://bny8iptv7dab" path="res://assets/sprites/Items/OtherIcons/16x16/fa192.png" id="60_xbdn7"]
+[ext_resource type="Texture2D" uid="uid://dw8io8eaeobf8" path="res://assets/sprites/Items/OtherIcons/16x16/fa186.png" id="61_bmb3y"]
+[ext_resource type="Texture2D" uid="uid://d2kun4yp6rsfi" path="res://assets/sprites/Items/InventoryIcons/Inventory_66.png" id="61_tcgyg"]
+[ext_resource type="Texture2D" uid="uid://bg80km17b3qvo" path="res://assets/sprites/Items/OtherIcons/16x16/fa185.png" id="62_e5ks5"]
+[ext_resource type="Texture2D" uid="uid://dv6rs35ycpg0" path="res://assets/sprites/Items/InventoryIcons/Inventory_67.png" id="62_qk5r4"]
+[ext_resource type="Texture2D" uid="uid://diyx848qdddov" path="res://assets/sprites/Items/InventoryIcons/Inventory_70.png" id="63_0h45a"]
+[ext_resource type="Texture2D" uid="uid://ccgptlhb2v8aa" path="res://assets/sprites/Items/OtherIcons/16x16/fa187.png" id="63_doj45"]
+[ext_resource type="Texture2D" uid="uid://vdc8xjnof21s" path="res://assets/sprites/Items/OtherIcons/16x16/fa235.png" id="64_07b23"]
+[ext_resource type="Texture2D" uid="uid://che41vuldjiow" path="res://assets/sprites/Items/InventoryIcons/Inventory_69.png" id="64_8bafl"]
+[ext_resource type="Texture2D" uid="uid://wuqes1nmb64x" path="res://assets/sprites/Items/InventoryIcons/Inventory_60.png" id="65_34x47"]
+[ext_resource type="Texture2D" uid="uid://bhdvx02ca4k1s" path="res://assets/sprites/Items/OtherIcons/16x16/fa232.png" id="65_khiri"]
+[ext_resource type="Texture2D" uid="uid://bokxnrslrfkp5" path="res://assets/sprites/Items/OtherIcons/16x16/fa322.png" id="66_687i2"]
+[ext_resource type="Texture2D" uid="uid://cfdtpsx3s1mxx" path="res://assets/sprites/Items/InventoryIcons/Inventory_77.png" id="66_r7eb7"]
+[ext_resource type="Texture2D" uid="uid://du7q0jejn63ki" path="res://assets/sprites/Items/InventoryIcons/Inventory_64.png" id="67_6wetk"]
+[ext_resource type="Texture2D" uid="uid://mnxjd1qb4ut5" path="res://assets/sprites/Items/OtherIcons/16x16/fa332.png" id="67_yjmjr"]
+[ext_resource type="Texture2D" uid="uid://pb3fe0plqqpq" path="res://assets/sprites/Items/OtherIcons/16x16/fa174.png" id="68_u7ony"]
+[ext_resource type="Texture2D" uid="uid://tgauhuvp8qi0" path="res://assets/sprites/Items/InventoryIcons/Inventory_46.png" id="68_ygvyd"]
+[ext_resource type="Texture2D" uid="uid://cdr5amg17bhtx" path="res://assets/sprites/Items/InventoryIcons/Inventory_55.png" id="69_awemi"]
+[ext_resource type="Texture2D" uid="uid://b517rga3c480p" path="res://assets/sprites/Items/OtherIcons/16x16/fa173.png" id="69_r7qh1"]
+[ext_resource type="Texture2D" uid="uid://crbhbme57ijxj" path="res://assets/sprites/Items/OtherIcons/16x16/fa175.png" id="70_ensbv"]
+[ext_resource type="Texture2D" uid="uid://bt3pj8mi1e2kk" path="res://assets/sprites/Items/InventoryIcons/Inventory_59.png" id="70_y82h0"]
+[ext_resource type="Texture2D" uid="uid://bkjwpudf38o3w" path="res://assets/sprites/Items/OtherIcons/16x16/fa171.png" id="71_1l3ea"]
+[ext_resource type="Texture2D" uid="uid://bdolgtswrmd7w" path="res://assets/sprites/Items/InventoryIcons/Inventory_54.png" id="71_3o35o"]
+[ext_resource type="Texture2D" uid="uid://lhynq5eiyd67" path="res://assets/sprites/Items/OtherIcons/16x16/fa166.png" id="72_pke36"]
+[ext_resource type="Texture2D" uid="uid://xfync3n7367c" path="res://assets/sprites/Items/InventoryIcons/Inventory_68.png" id="72_s4a8n"]
+[ext_resource type="Texture2D" uid="uid://cms3xmo4aegq1" path="res://assets/sprites/Items/InventoryIcons/Inventory_53.png" id="73_inar4"]
+[ext_resource type="Texture2D" uid="uid://blaifgl02jqdx" path="res://assets/sprites/Items/OtherIcons/16x16/fa165.png" id="73_p55wj"]
+[ext_resource type="Texture2D" uid="uid://bas4ui4buuipu" path="res://assets/sprites/Items/InventoryIcons/Inventory_48.png" id="74_0d1bl"]
+[ext_resource type="Texture2D" uid="uid://btljpx73vxyhx" path="res://assets/sprites/Items/OtherIcons/16x16/fa164.png" id="74_up0aw"]
+[ext_resource type="Texture2D" uid="uid://ce10rtv1eyx3i" path="res://assets/sprites/Items/InventoryIcons/Inventory_52.png" id="75_gkl1g"]
+[ext_resource type="Texture2D" uid="uid://4qhxr4khpyok" path="res://assets/sprites/Items/OtherIcons/16x16/fa190.png" id="75_xoxsy"]
+[ext_resource type="Texture2D" uid="uid://c1ay04u74m10q" path="res://assets/sprites/Items/OtherIcons/16x16/fa197.png" id="76_euf1p"]
+[ext_resource type="Texture2D" uid="uid://fytr6mixmagk" path="res://assets/sprites/Items/InventoryIcons/Inventory_50.png" id="76_ggh8b"]
+[ext_resource type="Texture2D" uid="uid://mn07c51xf6oe" path="res://assets/sprites/Items/OtherIcons/16x16/fa383.png" id="77_1csys"]
+[ext_resource type="Texture2D" uid="uid://ca260687i7ku8" path="res://assets/sprites/Items/InventoryIcons/Inventory_80.png" id="77_6aiax"]
+[ext_resource type="Texture2D" uid="uid://dau4cpys6x85i" path="res://assets/sprites/Items/InventoryIcons/Inventory_45.png" id="78_3rsai"]
+[ext_resource type="Texture2D" uid="uid://b0ycr3hoj5blr" path="res://assets/sprites/Items/OtherIcons/16x16/fa385.png" id="78_fw4ug"]
+[ext_resource type="Texture2D" uid="uid://comebv1erof8t" path="res://assets/sprites/Items/OtherIcons/16x16/fa386.png" id="79_qqfwh"]
+[ext_resource type="Texture2D" uid="uid://bgxaxxp4wl0ca" path="res://assets/sprites/Items/InventoryIcons/Inventory_47.png" id="79_swnd8"]
+[ext_resource type="Texture2D" uid="uid://m2v62otnxc5e" path="res://assets/sprites/Items/OtherIcons/16x16/fa2134.png" id="80_haoqu"]
+[ext_resource type="Texture2D" uid="uid://b2yv4ob3aox11" path="res://assets/sprites/Items/InventoryIcons/Inventory_44.png" id="80_yaah0"]
+[ext_resource type="Texture2D" uid="uid://cbtil3fav8gjr" path="res://assets/sprites/Items/InventoryIcons/Inventory_71.png" id="81_5nrcj"]
+[ext_resource type="Texture2D" uid="uid://cffpabrc2ual3" path="res://assets/sprites/Items/OtherIcons/16x16/fa2133.png" id="81_xgync"]
+[ext_resource type="Texture2D" uid="uid://ccotd4oo0vq45" path="res://assets/sprites/Items/InventoryIcons/Inventory_74.png" id="82_7bt61"]
+[ext_resource type="Texture2D" uid="uid://b07jb2vf4lcnl" path="res://assets/sprites/Items/OtherIcons/16x16/fa2131.png" id="82_w4r4n"]
+[ext_resource type="Texture2D" uid="uid://kdhgkctbnud6" path="res://assets/sprites/Items/OtherIcons/16x16/fa2132.png" id="83_fwwgt"]
+[ext_resource type="Texture2D" uid="uid://daqc6o3saak7g" path="res://assets/sprites/Items/InventoryIcons/Inventory_75.png" id="83_o0gmj"]
+[ext_resource type="Texture2D" uid="uid://doq5uhao1tdr" path="res://assets/sprites/Items/InventoryIcons/Inventory_36.png" id="84_8g33f"]
+[ext_resource type="Texture2D" uid="uid://lqvn5bka1itu" path="res://assets/sprites/Items/OtherIcons/16x16/fa2146.png" id="84_flstf"]
+[ext_resource type="Texture2D" uid="uid://dr3vvqv5np78o" path="res://assets/sprites/Items/InventoryIcons/Inventory_38.png" id="85_k5iqq"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/body.gd" id="86_xt4t6"]
-[ext_resource type="Texture2D" uid="uid://dulay167ldnq7" path="res://assets/sprites/Items/Inventory/Inventory_202.png" id="87_m53ip"]
-[ext_resource type="Texture2D" uid="uid://c8x807n7stg31" path="res://assets/sprites/Items/Inventory/Inventory_205.png" id="88_ejpw7"]
-[ext_resource type="Texture2D" uid="uid://fyun4si328j8" path="res://assets/sprites/Items/Inventory/Inventory_164.png" id="89_ksehf"]
-[ext_resource type="Texture2D" uid="uid://cpl4ojot08g5x" path="res://assets/sprites/Items/Inventory/Inventory_152.png" id="90_bc2oq"]
-[ext_resource type="Texture2D" uid="uid://4smy5odjsp82" path="res://assets/sprites/Items/Inventory/Inventory_153.png" id="91_inejg"]
+[ext_resource type="Texture2D" uid="uid://cb1cnejmkrmqt" path="res://assets/sprites/Items/OtherIcons/16x16/fa176.png" id="87_8svi0"]
+[ext_resource type="Texture2D" uid="uid://dulay167ldnq7" path="res://assets/sprites/Items/InventoryIcons/Inventory_202.png" id="87_m53ip"]
+[ext_resource type="Texture2D" uid="uid://c8x807n7stg31" path="res://assets/sprites/Items/InventoryIcons/Inventory_205.png" id="88_ejpw7"]
+[ext_resource type="Texture2D" uid="uid://fyun4si328j8" path="res://assets/sprites/Items/InventoryIcons/Inventory_164.png" id="89_ksehf"]
+[ext_resource type="Texture2D" uid="uid://cpl4ojot08g5x" path="res://assets/sprites/Items/InventoryIcons/Inventory_152.png" id="90_bc2oq"]
+[ext_resource type="Texture2D" uid="uid://4smy5odjsp82" path="res://assets/sprites/Items/InventoryIcons/Inventory_153.png" id="91_inejg"]
+[ext_resource type="Texture2D" uid="uid://5wrtgjbirp7k" path="res://assets/sprites/Items/OtherIcons/16x16/fa176_alt.png" id="91_kuiux"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/Legs.gd" id="92_10lem"]
-[ext_resource type="Texture2D" uid="uid://cxh1mkg2drx0d" path="res://assets/sprites/Items/Inventory/Inventory_25.png" id="93_1uyoh"]
-[ext_resource type="Texture2D" uid="uid://be0d1qya61rlm" path="res://assets/sprites/Items/Inventory/Inventory_27.png" id="94_j3dc4"]
+[ext_resource type="Texture2D" uid="uid://cxh1mkg2drx0d" path="res://assets/sprites/Items/InventoryIcons/Inventory_25.png" id="93_1uyoh"]
+[ext_resource type="Texture2D" uid="uid://be0d1qya61rlm" path="res://assets/sprites/Items/InventoryIcons/Inventory_27.png" id="94_j3dc4"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/accessory.gd" id="95_xlcm0"]
-[ext_resource type="Texture2D" uid="uid://1i48ghvp3ks1" path="res://assets/sprites/Items/Inventory/Inventory_94.png" id="96_rut34"]
-[ext_resource type="Texture2D" uid="uid://bahg3g30ioiy7" path="res://assets/sprites/Items/Inventory/Inventory_119.png" id="97_stnag"]
-[ext_resource type="Texture2D" uid="uid://due6tuxnssj81" path="res://assets/sprites/Items/Inventory/Inventory_99.png" id="98_7dyjc"]
+[ext_resource type="Texture2D" uid="uid://1i48ghvp3ks1" path="res://assets/sprites/Items/InventoryIcons/Inventory_94.png" id="96_rut34"]
+[ext_resource type="Texture2D" uid="uid://bahg3g30ioiy7" path="res://assets/sprites/Items/InventoryIcons/Inventory_119.png" id="97_stnag"]
+[ext_resource type="Texture2D" uid="uid://due6tuxnssj81" path="res://assets/sprites/Items/InventoryIcons/Inventory_99.png" id="98_7dyjc"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/Skill.gd" id="99_ixwc3"]
-[ext_resource type="Texture2D" uid="uid://bjgxkfscv7xq1" path="res://assets/sprites/Items/Inventory/Inventory_390.png" id="100_p1gfv"]
-[ext_resource type="Texture2D" uid="uid://d2qa62lanx4gy" path="res://assets/sprites/Items/Inventory/Inventory_487.png" id="101_8cul2"]
-[ext_resource type="Texture2D" uid="uid://bxrfi6678x4vs" path="res://assets/sprites/Items/Inventory/Inventory_389.png" id="102_wwspq"]
-[ext_resource type="Texture2D" uid="uid://l21l3i5yfbcu" path="res://assets/sprites/Items/Inventory/Inventory_504.png" id="103_oqpay"]
-[ext_resource type="Texture2D" uid="uid://7w70o4xbesqe" path="res://assets/sprites/Items/Inventory/Inventory_506.png" id="104_ajl63"]
+[ext_resource type="Texture2D" uid="uid://bjgxkfscv7xq1" path="res://assets/sprites/Items/InventoryIcons/Inventory_390.png" id="100_p1gfv"]
+[ext_resource type="Texture2D" uid="uid://d2qa62lanx4gy" path="res://assets/sprites/Items/InventoryIcons/Inventory_487.png" id="101_8cul2"]
+[ext_resource type="Texture2D" uid="uid://bxrfi6678x4vs" path="res://assets/sprites/Items/InventoryIcons/Inventory_389.png" id="102_wwspq"]
+[ext_resource type="Texture2D" uid="uid://l21l3i5yfbcu" path="res://assets/sprites/Items/InventoryIcons/Inventory_504.png" id="103_oqpay"]
+[ext_resource type="Texture2D" uid="uid://7w70o4xbesqe" path="res://assets/sprites/Items/InventoryIcons/Inventory_506.png" id="104_ajl63"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/relic.gd" id="105_7lbas"]
-[ext_resource type="Texture2D" uid="uid://rwjwge6ax26o" path="res://assets/sprites/Items/Inventory/Inventory_88.png" id="106_6nmde"]
+[ext_resource type="Texture2D" uid="uid://rwjwge6ax26o" path="res://assets/sprites/Items/InventoryIcons/Inventory_88.png" id="106_6nmde"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Event/dialogue_entry.gd" id="107_o0dwx"]
+[ext_resource type="Texture2D" uid="uid://g3rg4yxjm2ix" path="res://assets/sprites/Items/InventoryIcons/Inventory_159.png" id="123_yi5bd"]
+[ext_resource type="Texture2D" uid="uid://rsqqd2hbo8s1" path="res://assets/sprites/Items/InventoryIcons/Inventory_148.png" id="124_ys61b"]
+[ext_resource type="Texture2D" uid="uid://da1ytq0c3ur3i" path="res://assets/sprites/Items/InventoryIcons/Inventory_16.png" id="126_e55o8"]
+[ext_resource type="Texture2D" uid="uid://cixw7qr21uivo" path="res://assets/sprites/Items/InventoryIcons/Inventory_33.png" id="127_vwmwg"]
+[ext_resource type="Texture2D" uid="uid://bfei3l66v8kd" path="res://assets/sprites/Items/InventoryIcons/Inventory_4.png" id="128_brjqo"]
+[ext_resource type="Texture2D" uid="uid://dilxp0cqydwqx" path="res://assets/sprites/Items/InventoryIcons/Inventory_112.png" id="129_8w55s"]
+[ext_resource type="Texture2D" uid="uid://u08tbm7csfl3" path="res://assets/sprites/Items/InventoryIcons/Inventory_101.png" id="130_6e8ib"]
+[ext_resource type="Texture2D" uid="uid://b5y83vqsbx85u" path="res://assets/sprites/Items/OtherIcons/16x16/fa2140.png" id="143_ffcf7"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/artifact.gd" id="145_wv42h"]
+[ext_resource type="Texture2D" uid="uid://xkxfw3qnyjar" path="res://assets/sprites/Items/OtherIcons/16x16/fa1557.png" id="146_j32o5"]
+[ext_resource type="PackedScene" uid="uid://dvikboxpt5o45" path="res://SampleProject/extra_scenes/dialogue.tscn" id="149_om524"]
+[ext_resource type="Texture2D" uid="uid://dw2nqmoc6ghcd" path="res://assets/sprites/Items/InventoryIcons/AguniLaurel.png" id="150_e8wvu"]
+[ext_resource type="PackedScene" uid="uid://bsxx7aocrs1f6" path="res://SampleProject/extra_scenes/HUD/weapon_wheel.tscn" id="164_3jxay"]
+[ext_resource type="AudioStream" uid="uid://bi8mk2hewgbxu" path="res://assets/music/ForbiddenArea.ogg" id="170_nmeol"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_6ajcc")
-weapon_name = "Short Sword"
-weapon_description = "A cheap short sword, bad due its poor range."
+weapon_name = "SHORT_SWORD"
+weapon_description = "SHORT_SWORD_DESC"
 type = 0
 element = Array[int]([])
 ATK = 5
@@ -168,16 +219,17 @@ crouch_attack = true
 value = 100
 max_quantity = 99
 icon = ExtResource("3_cc0q7")
-recipe_status = 3
+recipe_status = 2
 recipe = Array[Dictionary]([{
-"id": 0,
-"quantity": 0
+"id": 45,
+"inventory": 3,
+"quantity": 2
 }])
 
 [sub_resource type="Resource" id="Resource_onxks"]
 script = ExtResource("2_6ajcc")
-weapon_name = "Bullova"
-weapon_description = "Axe with a heavy crescent-moon shaped blade."
+weapon_name = "BULLOVA"
+weapon_description = "BULLOVA_DESC"
 type = 2
 element = Array[int]([])
 ATK = 15
@@ -190,20 +242,114 @@ RES = 0
 LCK = 0
 jump_cancel = false
 crouch_attack = false
-value = 0
+value = 300
 max_quantity = 99
 icon = ExtResource("4_5a8ru")
 sprite = ExtResource("5_71vdw")
-recipe_status = 3
+recipe_status = 2
 recipe = Array[Dictionary]([{
-"id": 0,
-"quantity": 0
+"id": 46,
+"inventory": 3,
+"quantity": 1
+}])
+
+[sub_resource type="Resource" id="Resource_a1d76"]
+script = ExtResource("2_6ajcc")
+weapon_name = "CLAYMORE"
+weapon_description = "CLAYMORE_DESC"
+type = 1
+element = Array[int]([2])
+ATK = 12
+DEF = 2
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+jump_cancel = false
+crouch_attack = false
+value = 300
+max_quantity = 99
+icon = ExtResource("6_c5tvp")
+sprite = ExtResource("7_g5tc5")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 46,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 54,
+"inventory": 3,
+"quantity": 1
+}])
+
+[sub_resource type="Resource" id="Resource_nv7yp"]
+script = ExtResource("2_6ajcc")
+weapon_name = "FALCHION"
+weapon_description = "FALCHION_DESC"
+type = 1
+element = Array[int]([2])
+ATK = 15
+DEF = 2
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+jump_cancel = false
+crouch_attack = false
+value = 450
+max_quantity = 99
+icon = ExtResource("8_hgl6s")
+sprite = ExtResource("9_s4pf2")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 3,
+"inventory": 0,
+"quantity": 1
+}, {
+"id": 49,
+"inventory": 3,
+"quantity": 1
+}])
+
+[sub_resource type="Resource" id="Resource_bxxw3"]
+script = ExtResource("2_6ajcc")
+weapon_name = "MACE"
+weapon_description = "MACE_DESC"
+type = 2
+element = Array[int]([1])
+ATK = 15
+DEF = 0
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+jump_cancel = false
+crouch_attack = false
+value = 400
+max_quantity = 99
+icon = ExtResource("10_tph4o")
+sprite = ExtResource("11_u7wty")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 46,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 54,
+"inventory": 3,
+"quantity": 1
 }])
 
 [sub_resource type="Resource" id="Resource_m5ppe"]
 script = ExtResource("6_n752u")
-item_name = "Potion"
-item_description = "Restores 80 HP."
+item_name = "POTION"
+item_description = "POTION_DESC"
 type = 1
 healing_type = 1
 power = 80
@@ -213,8 +359,8 @@ icon = ExtResource("7_oyt25")
 
 [sub_resource type="Resource" id="Resource_448x1"]
 script = ExtResource("6_n752u")
-item_name = "High Potion"
-item_description = "Restores 200 HP."
+item_name = "HIGH_POTION"
+item_description = "HIGH_POTION_DESC"
 type = 1
 healing_type = 1
 power = 200
@@ -235,8 +381,8 @@ icon = ExtResource("9_fjwgd")
 
 [sub_resource type="Resource" id="Resource_tjyd3"]
 script = ExtResource("6_n752u")
-item_name = "Tonic"
-item_description = "Restores 100 MP."
+item_name = "TONIC"
+item_description = "TONIC_DESC"
 type = 1
 healing_type = 2
 power = 100
@@ -246,8 +392,8 @@ icon = ExtResource("10_8v4x6")
 
 [sub_resource type="Resource" id="Resource_0v6et"]
 script = ExtResource("6_n752u")
-item_name = "High Tonic"
-item_description = "Restores 200 MP."
+item_name = "HIGH_TONIC"
+item_description = "HIGH_TONIC_DESC"
 type = 1
 healing_type = 2
 power = 200
@@ -675,8 +821,8 @@ icon = ExtResource("49_wnedv")
 
 [sub_resource type="Resource" id="Resource_4ofp1"]
 script = ExtResource("6_n752u")
-item_name = "Ancient Text 1"
-item_description = "The tombstones hold a secret tied to the tall room with the moving platform..."
+item_name = "ANCIENT_TEXT_1"
+item_description = "ANCIENT_TEXT_1_DESC"
 type = 2
 healing_type = 0
 power = 0
@@ -686,9 +832,8 @@ icon = ExtResource("50_ox0g4")
 
 [sub_resource type="Resource" id="Resource_67oob"]
 script = ExtResource("6_n752u")
-item_name = "Bronze"
-item_description = "This material is often used to craft simple works.
-Cheap and easy to use and find."
+item_name = "BRONZE"
+item_description = "BRONZE_DESC"
 type = 3
 healing_type = 0
 power = 0
@@ -698,8 +843,8 @@ icon = ExtResource("51_cj0u3")
 
 [sub_resource type="Resource" id="Resource_7pn65"]
 script = ExtResource("6_n752u")
-item_name = "Iron"
-item_description = "Some kind of gray metal that is widely used by blacksmiths."
+item_name = "IRON"
+item_description = "IRON_DESC"
 type = 3
 healing_type = 0
 power = 0
@@ -709,9 +854,8 @@ icon = ExtResource("52_14sym")
 
 [sub_resource type="Resource" id="Resource_7inng"]
 script = ExtResource("6_n752u")
-item_name = "Skull"
-item_description = "This is a real human skull.
-It still emanates some dark magic from the inside."
+item_name = "SKULL"
+item_description = "SKULL_DESC"
 type = 3
 healing_type = 0
 power = 0
@@ -721,8 +865,8 @@ icon = ExtResource("53_tv7ie")
 
 [sub_resource type="Resource" id="Resource_24wm7"]
 script = ExtResource("6_n752u")
-item_name = "Aluminum"
-item_description = "A very light material, usually consumed by alchemists."
+item_name = "ALUMINUM"
+item_description = "ALUMINUM_DESC"
 type = 3
 healing_type = 0
 power = 0
@@ -732,8 +876,8 @@ icon = ExtResource("54_sudpm")
 
 [sub_resource type="Resource" id="Resource_4tm77"]
 script = ExtResource("6_n752u")
-item_name = "Steel dust"
-item_description = "Steel reduced to dust, usually used to reinforce some existing gear."
+item_name = "STEEL_DUST"
+item_description = "STEEL_DUST_DESC"
 type = 3
 healing_type = 0
 power = 0
@@ -743,9 +887,8 @@ icon = ExtResource("55_rbfbc")
 
 [sub_resource type="Resource" id="Resource_vylqu"]
 script = ExtResource("6_n752u")
-item_name = "Wild Memory"
-item_description = "A stone fragment with some symbols carved on it.
-Used to create some simple weapons."
+item_name = "WILD_MEMORY"
+item_description = "WILD_MEMORY_DESC"
 type = 3
 healing_type = 0
 power = 0
@@ -753,14 +896,344 @@ value = 15
 max_quantity = 99
 icon = ExtResource("56_j2uak")
 
+[sub_resource type="Resource" id="Resource_54jad"]
+script = ExtResource("6_n752u")
+item_name = "AQUAMARINE"
+item_description = "AQUAMARINE_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 30
+max_quantity = 99
+icon = ExtResource("57_mossm")
+
+[sub_resource type="Resource" id="Resource_oyyy0"]
+script = ExtResource("6_n752u")
+item_name = "JADE"
+item_description = "JADE_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 50
+max_quantity = 99
+icon = ExtResource("58_7addw")
+
+[sub_resource type="Resource" id="Resource_ip0ud"]
+script = ExtResource("6_n752u")
+item_name = "STEEL"
+item_description = "STEEL_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 20
+max_quantity = 99
+icon = ExtResource("59_rjikq")
+
+[sub_resource type="Resource" id="Resource_fcbta"]
+script = ExtResource("6_n752u")
+item_name = "KNIGHTS_VEIN"
+item_description = "KNIGHTS_VEIN_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 20
+max_quantity = 99
+icon = ExtResource("60_xbdn7")
+
+[sub_resource type="Resource" id="Resource_lks4k"]
+script = ExtResource("6_n752u")
+item_name = "DEMONS_VEIN"
+item_description = "DEMONS_VEIN_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 25
+max_quantity = 99
+icon = ExtResource("61_bmb3y")
+
+[sub_resource type="Resource" id="Resource_0nr1e"]
+script = ExtResource("6_n752u")
+item_name = "ETHER"
+item_description = "ETHER_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 40
+max_quantity = 99
+icon = ExtResource("62_e5ks5")
+
+[sub_resource type="Resource" id="Resource_q6a3q"]
+script = ExtResource("6_n752u")
+item_name = "PRINCES_VEIN"
+item_description = "PRINCES_VAIN_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 45
+max_quantity = 99
+icon = ExtResource("63_doj45")
+
+[sub_resource type="Resource" id="Resource_jtq7k"]
+script = ExtResource("6_n752u")
+item_name = "DRAGON_SCALE"
+item_description = "DRAGON_SCALE_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 60
+max_quantity = 99
+icon = ExtResource("64_07b23")
+
+[sub_resource type="Resource" id="Resource_3nrfe"]
+script = ExtResource("6_n752u")
+item_name = "FANG"
+item_description = "FANG_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 20
+max_quantity = 99
+icon = ExtResource("65_khiri")
+
+[sub_resource type="Resource" id="Resource_v6gbv"]
+script = ExtResource("6_n752u")
+item_name = "ANCIENT_MEMORY"
+item_description = "ANCIENT_MEMORY_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 15
+max_quantity = 99
+icon = ExtResource("66_687i2")
+
+[sub_resource type="Resource" id="Resource_r0wqs"]
+script = ExtResource("6_n752u")
+item_name = "FORGOTTEN_MEMORY"
+item_description = "FORGOTTEN_MEMORY_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 25
+max_quantity = 99
+icon = ExtResource("67_yjmjr")
+
+[sub_resource type="Resource" id="Resource_vski3"]
+script = ExtResource("6_n752u")
+item_name = "CRYSTAL"
+item_description = "CRYSTAL_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 30
+max_quantity = 99
+icon = ExtResource("68_u7ony")
+
+[sub_resource type="Resource" id="Resource_ymtgf"]
+script = ExtResource("6_n752u")
+item_name = "PURPLE_GLITTER"
+item_description = "PURPLE_GLITTER_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 200
+max_quantity = 99
+icon = ExtResource("69_r7qh1")
+
+[sub_resource type="Resource" id="Resource_lr80t"]
+script = ExtResource("6_n752u")
+item_name = "LIGHTNING_CRYSTAL"
+item_description = "LIGHTNING_CRYSTAL_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 120
+max_quantity = 99
+icon = ExtResource("70_ensbv")
+
+[sub_resource type="Resource" id="Resource_eveij"]
+script = ExtResource("6_n752u")
+item_name = "SUN_TEARS"
+item_description = "SUN_TEARS_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 40
+max_quantity = 99
+icon = ExtResource("71_1l3ea")
+
+[sub_resource type="Resource" id="Resource_imtxo"]
+script = ExtResource("6_n752u")
+item_name = "SEAL_OF_DARKNESS"
+item_description = "SEAL_OF_DAKNESS_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 400
+max_quantity = 99
+icon = ExtResource("72_pke36")
+
+[sub_resource type="Resource" id="Resource_02h5a"]
+script = ExtResource("6_n752u")
+item_name = "SEAL_OF_COURAGE"
+item_description = "SEAL_OF_COURAGE_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 60
+max_quantity = 99
+icon = ExtResource("73_p55wj")
+
+[sub_resource type="Resource" id="Resource_rbrmq"]
+script = ExtResource("6_n752u")
+item_name = "SEAL_OF_INNOCENCE"
+item_description = "SEAL_OF_INNOCENCE_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 50
+max_quantity = 99
+icon = ExtResource("74_up0aw")
+
+[sub_resource type="Resource" id="Resource_n3kmr"]
+script = ExtResource("6_n752u")
+item_name = "GOLDEN_TEARS"
+item_description = "GOLDEN_TEARS_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 1000
+max_quantity = 99
+icon = ExtResource("75_xoxsy")
+
+[sub_resource type="Resource" id="Resource_cpc8o"]
+script = ExtResource("6_n752u")
+item_name = "JET_BLACK"
+item_description = "JET_BLACK_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 10
+max_quantity = 99
+icon = ExtResource("76_euf1p")
+
+[sub_resource type="Resource" id="Resource_shb8t"]
+script = ExtResource("6_n752u")
+item_name = "WHITE_STEEL"
+item_description = "WHITE_STEEL_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 25
+max_quantity = 99
+icon = ExtResource("77_1csys")
+
+[sub_resource type="Resource" id="Resource_hsura"]
+script = ExtResource("6_n752u")
+item_name = "RED_STEEL"
+item_description = "RED_STEEL_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 90
+max_quantity = 99
+icon = ExtResource("78_fw4ug")
+
+[sub_resource type="Resource" id="Resource_8jthw"]
+script = ExtResource("6_n752u")
+item_name = "ORICHALCUM"
+item_description = "ORICALCHUM_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 160
+max_quantity = 99
+icon = ExtResource("79_qqfwh")
+
+[sub_resource type="Resource" id="Resource_tav1u"]
+script = ExtResource("6_n752u")
+item_name = "CARBON_STEEL"
+item_description = "CARBON_STEEL_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 60
+max_quantity = 99
+icon = ExtResource("80_haoqu")
+
+[sub_resource type="Resource" id="Resource_6uvaf"]
+script = ExtResource("6_n752u")
+item_name = "ADAMANTINE"
+item_description = "ADAMANTINE_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 200
+max_quantity = 99
+icon = ExtResource("81_xgync")
+
+[sub_resource type="Resource" id="Resource_plyb5"]
+script = ExtResource("6_n752u")
+item_name = "DAMASCUS_STEEL"
+item_description = "DAMASCUS_STEEL_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 110
+max_quantity = 99
+icon = ExtResource("82_w4r4n")
+
+[sub_resource type="Resource" id="Resource_8r111"]
+script = ExtResource("6_n752u")
+item_name = "WINDSTONE"
+item_description = "WINDSTONE_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 140
+max_quantity = 99
+icon = ExtResource("83_fwwgt")
+
+[sub_resource type="Resource" id="Resource_22l27"]
+script = ExtResource("6_n752u")
+item_name = "SEA_TEAR"
+item_description = "SEA_TEAR_DESC"
+type = 3
+healing_type = 0
+power = 0
+value = 75
+max_quantity = 99
+icon = ExtResource("84_flstf")
+
+[sub_resource type="Resource" id="Resource_cb8e5"]
+script = ExtResource("6_n752u")
+item_name = "LEFT_SERPENT_EYE"
+item_description = "LEFT_SERPENT_EYE_DESC"
+type = 2
+healing_type = 0
+power = 0
+value = 0
+max_quantity = 1
+icon = ExtResource("87_8svi0")
+
+[sub_resource type="Resource" id="Resource_tl7w1"]
+script = ExtResource("6_n752u")
+item_name = "RIGHT_SERPENT_EYE"
+item_description = "RIGHT_SERPENT_EYE_DESC"
+type = 2
+healing_type = 0
+power = 0
+value = 0
+max_quantity = 1
+icon = ExtResource("91_kuiux")
+
 [sub_resource type="Resource" id="Resource_ksmb3"]
 script = ExtResource("57_axjbw")
-Compendium = Array[ExtResource("6_n752u")]([SubResource("Resource_m5ppe"), SubResource("Resource_448x1"), SubResource("Resource_wrvvh"), SubResource("Resource_tjyd3"), SubResource("Resource_0v6et"), SubResource("Resource_gs8wo"), SubResource("Resource_1poc1"), SubResource("Resource_pn85t"), SubResource("Resource_k7ohu"), SubResource("Resource_fsd3a"), SubResource("Resource_yssgd"), SubResource("Resource_bg36p"), SubResource("Resource_cp0mo"), SubResource("Resource_t6sc3"), SubResource("Resource_otu3b"), SubResource("Resource_yhtqt"), SubResource("Resource_utmnj"), SubResource("Resource_x7euw"), SubResource("Resource_h28u3"), SubResource("Resource_x25q1"), SubResource("Resource_i8haf"), SubResource("Resource_n52ve"), SubResource("Resource_nal7h"), SubResource("Resource_exk3f"), SubResource("Resource_yyval"), SubResource("Resource_fhdrx"), SubResource("Resource_rip4o"), SubResource("Resource_bjtgx"), SubResource("Resource_kubol"), SubResource("Resource_uuqkx"), SubResource("Resource_v8cwp"), SubResource("Resource_8hctt"), SubResource("Resource_dw7gu"), SubResource("Resource_p4rjt"), SubResource("Resource_fw6ao"), SubResource("Resource_6sxfy"), SubResource("Resource_7ld45"), SubResource("Resource_m7xj0"), SubResource("Resource_utthq"), SubResource("Resource_ftwv4"), SubResource("Resource_5j7we"), SubResource("Resource_7qrnh"), SubResource("Resource_1macm"), SubResource("Resource_4ofp1"), SubResource("Resource_67oob"), SubResource("Resource_7pn65"), SubResource("Resource_7inng"), SubResource("Resource_24wm7"), SubResource("Resource_4tm77"), SubResource("Resource_vylqu")])
+Compendium = Array[ExtResource("6_n752u")]([SubResource("Resource_m5ppe"), SubResource("Resource_448x1"), SubResource("Resource_wrvvh"), SubResource("Resource_tjyd3"), SubResource("Resource_0v6et"), SubResource("Resource_gs8wo"), SubResource("Resource_1poc1"), SubResource("Resource_pn85t"), SubResource("Resource_k7ohu"), SubResource("Resource_fsd3a"), SubResource("Resource_yssgd"), SubResource("Resource_bg36p"), SubResource("Resource_cp0mo"), SubResource("Resource_t6sc3"), SubResource("Resource_otu3b"), SubResource("Resource_yhtqt"), SubResource("Resource_utmnj"), SubResource("Resource_x7euw"), SubResource("Resource_h28u3"), SubResource("Resource_x25q1"), SubResource("Resource_i8haf"), SubResource("Resource_n52ve"), SubResource("Resource_nal7h"), SubResource("Resource_exk3f"), SubResource("Resource_yyval"), SubResource("Resource_fhdrx"), SubResource("Resource_rip4o"), SubResource("Resource_bjtgx"), SubResource("Resource_kubol"), SubResource("Resource_uuqkx"), SubResource("Resource_v8cwp"), SubResource("Resource_8hctt"), SubResource("Resource_dw7gu"), SubResource("Resource_p4rjt"), SubResource("Resource_fw6ao"), SubResource("Resource_6sxfy"), SubResource("Resource_7ld45"), SubResource("Resource_m7xj0"), SubResource("Resource_utthq"), SubResource("Resource_ftwv4"), SubResource("Resource_5j7we"), SubResource("Resource_7qrnh"), SubResource("Resource_1macm"), SubResource("Resource_4ofp1"), SubResource("Resource_67oob"), SubResource("Resource_7pn65"), SubResource("Resource_7inng"), SubResource("Resource_24wm7"), SubResource("Resource_4tm77"), SubResource("Resource_vylqu"), SubResource("Resource_54jad"), SubResource("Resource_oyyy0"), SubResource("Resource_ip0ud"), SubResource("Resource_fcbta"), SubResource("Resource_lks4k"), SubResource("Resource_0nr1e"), SubResource("Resource_q6a3q"), SubResource("Resource_jtq7k"), SubResource("Resource_3nrfe"), SubResource("Resource_v6gbv"), SubResource("Resource_r0wqs"), SubResource("Resource_vski3"), SubResource("Resource_ymtgf"), SubResource("Resource_lr80t"), SubResource("Resource_eveij"), SubResource("Resource_imtxo"), SubResource("Resource_02h5a"), SubResource("Resource_rbrmq"), SubResource("Resource_n3kmr"), SubResource("Resource_cpc8o"), SubResource("Resource_shb8t"), SubResource("Resource_hsura"), SubResource("Resource_8jthw"), SubResource("Resource_tav1u"), SubResource("Resource_6uvaf"), SubResource("Resource_plyb5"), SubResource("Resource_8r111"), SubResource("Resource_22l27"), SubResource("Resource_cb8e5"), SubResource("Resource_tl7w1")])
 
 [sub_resource type="Resource" id="Resource_stdwu"]
 script = ExtResource("58_johey")
-headgear_name = "Leather Hat"
-headgear_description = "A cheap hat made with leather."
+headgear_name = "LEATHER_HAT"
+headgear_description = "LEATHER_HAT_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 1
@@ -773,17 +1246,17 @@ LCK = 0
 value = 100
 max_quantity = 99
 icon = ExtResource("59_ohp77")
-recipe_status = 3
+recipe_status = 2
 recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
+"id": 45,
+"inventory": 3,
+"quantity": 1
 }])
 
 [sub_resource type="Resource" id="Resource_hcxc2"]
 script = ExtResource("58_johey")
-headgear_name = "Circlet"
-headgear_description = "A circlet worn by ancient philosophers."
+headgear_name = "CIRCLET"
+headgear_description = "CIRCLET_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 0
@@ -796,17 +1269,21 @@ LCK = 0
 value = 250
 max_quantity = 99
 icon = ExtResource("60_8ieye")
-recipe_status = 3
+recipe_status = 2
 recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
+"id": 45,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 50,
+"inventory": 3,
+"quantity": 1
 }])
 
 [sub_resource type="Resource" id="Resource_qtfvs"]
 script = ExtResource("58_johey")
-headgear_name = "Sunglasses"
-headgear_description = "I don't think these are supposed to protect you in any way, if not from the Sun's light."
+headgear_name = "SUNGLASSES"
+headgear_description = "SUNGLASSES_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 0
@@ -819,11 +1296,15 @@ LCK = 2
 value = 100
 max_quantity = 99
 icon = ExtResource("61_tcgyg")
-recipe_status = 3
+recipe_status = 0
 recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
+"id": 50,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 48,
+"inventory": 3,
+"quantity": 1
 }])
 
 [sub_resource type="Resource" id="Resource_b4qdd"]
@@ -897,8 +1378,8 @@ recipe = Array[Dictionary]([{
 
 [sub_resource type="Resource" id="Resource_b0lhj"]
 script = ExtResource("58_johey")
-headgear_name = "Fedora"
-headgear_description = "Would be perfect with a whip, but you don't seem to be the guy to carry whips..."
+headgear_name = "FEDORA"
+headgear_description = "FEDORA_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 2
@@ -911,11 +1392,15 @@ LCK = 0
 value = 200
 max_quantity = 99
 icon = ExtResource("65_34x47")
-recipe_status = 3
+recipe_status = 0
 recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
+"id": 50,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 1,
+"inventory": 1,
+"quantity": 1
 }])
 
 [sub_resource type="Resource" id="Resource_kh436"]
@@ -943,25 +1428,29 @@ recipe = Array[Dictionary]([{
 
 [sub_resource type="Resource" id="Resource_n53u7"]
 script = ExtResource("58_johey")
-headgear_name = "Protective Helm"
-headgear_description = "Protects the head from heavy attacks. A bit consumed."
+headgear_name = "PROTECTIVE_HELM"
+headgear_description = "PROTECTIVE_HELM_DESC"
 element = Array[int]([])
 ATK = 0
-DEF = 5
+DEF = 4
 STR = 0
 CON = 0
 INT = 0
 SYN = 0
 RES = 0
 LCK = 0
-value = 500
+value = 400
 max_quantity = 99
 icon = ExtResource("67_6wetk")
-recipe_status = 3
+recipe_status = 0
 recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
+"id": 48,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 46,
+"inventory": 3,
+"quantity": 1
 }])
 
 [sub_resource type="Resource" id="Resource_n15bh"]
@@ -1035,25 +1524,29 @@ recipe = Array[Dictionary]([{
 
 [sub_resource type="Resource" id="Resource_fy53e"]
 script = ExtResource("58_johey")
-headgear_name = "Iron Helm"
-headgear_description = "Helm made with the finest iron in Wallachia."
+headgear_name = "STEEL_HELM"
+headgear_description = "STEEL_HELM_DESC"
 element = Array[int]([])
 ATK = 0
-DEF = 8
+DEF = 6
 STR = 0
 CON = 0
 INT = 0
 SYN = 0
 RES = 0
 LCK = 0
-value = 750
+value = 650
 max_quantity = 99
 icon = ExtResource("71_3o35o")
-recipe_status = 3
+recipe_status = 0
 recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
+"id": 9,
+"inventory": 1,
+"quantity": 1
+}, {
+"id": 49,
+"inventory": 3,
+"quantity": 1
 }])
 
 [sub_resource type="Resource" id="Resource_xv0ma"]
@@ -1219,9 +1712,8 @@ recipe = Array[Dictionary]([{
 
 [sub_resource type="Resource" id="Resource_jsrpv"]
 script = ExtResource("58_johey")
-headgear_name = "Skull Mask"
-headgear_description = "Frightening mask used by assassins in the West.
-Made with the skulls of the dead."
+headgear_name = "SKULL_MASK"
+headgear_description = "SKULL_MASK_DESC"
 element = Array[int]([9])
 ATK = 1
 DEF = 3
@@ -1431,8 +1923,8 @@ recipe = Array[Dictionary]([{
 
 [sub_resource type="Resource" id="Resource_qpfcj"]
 script = ExtResource("86_xt4t6")
-body_name = "Leather Armor"
-body_description = "Armor made with cheap quality leather."
+body_name = "LEATHER_ARMOR"
+body_description = "LEATHER_ARMOR_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 5
@@ -1442,20 +1934,20 @@ INT = 0
 SYN = 0
 RES = 0
 LCK = 0
-value = 250
+value = 200
 max_quantity = 99
 icon = ExtResource("89_ksehf")
-recipe_status = 3
+recipe_status = 2
 recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
+"id": 45,
+"inventory": 3,
+"quantity": 2
 }])
 
 [sub_resource type="Resource" id="Resource_nolcn"]
 script = ExtResource("86_xt4t6")
-body_name = "Bronze Cuirass"
-body_description = "Relatively light armor made with cheap bronze."
+body_name = "BRONZE_CUIRASS"
+body_description = "BRONZE_CUIRASS_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 7
@@ -1465,7 +1957,7 @@ INT = 0
 SYN = 0
 RES = 0
 LCK = 0
-value = 0
+value = 250
 max_quantity = 99
 icon = ExtResource("90_bc2oq")
 recipe_status = 0
@@ -1477,9 +1969,8 @@ recipe = Array[Dictionary]([{
 
 [sub_resource type="Resource" id="Resource_o68me"]
 script = ExtResource("86_xt4t6")
-body_name = "Iron Plate"
-body_description = "Armor made with fairly used metal.
-Lightweight and strong at the same time."
+body_name = "IRON_PLATE"
+body_description = "IRON_PLATE_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 10
@@ -1489,7 +1980,7 @@ INT = 0
 SYN = 0
 RES = 0
 LCK = 0
-value = 0
+value = 320
 max_quantity = 99
 icon = ExtResource("91_inejg")
 recipe_status = 0
@@ -1503,10 +1994,72 @@ recipe = Array[Dictionary]([{
 "quantity": 1
 }])
 
+[sub_resource type="Resource" id="Resource_dqisp"]
+script = ExtResource("86_xt4t6")
+body_name = "SCALE_MAIL"
+body_description = "SCALE_MAIL_DESC"
+element = Array[int]([])
+ATK = 0
+DEF = 13
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 350
+max_quantity = 99
+icon = ExtResource("123_yi5bd")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 4,
+"inventory": 2,
+"quantity": 1
+}, {
+"id": 45,
+"inventory": 3,
+"quantity": 3
+}, {
+"id": 46,
+"inventory": 3,
+"quantity": 1
+}])
+
+[sub_resource type="Resource" id="Resource_rngem"]
+script = ExtResource("86_xt4t6")
+body_name = "BREASTPLATE"
+body_description = "BREASTPLATE_DESC"
+element = Array[int]([])
+ATK = 0
+DEF = 15
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 0
+max_quantity = 99
+icon = ExtResource("124_ys61b")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 3,
+"inventory": 2,
+"quantity": 1
+}, {
+"id": 70,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 46,
+"inventory": 3,
+"quantity": 1
+}])
+
 [sub_resource type="Resource" id="Resource_olb5a"]
 script = ExtResource("92_10lem")
-legs_name = "Sandals"
-legs_description = "Comfy sandals made of leather."
+legs_name = "SANDALS"
+legs_description = "SANDALS_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 1
@@ -1519,11 +2072,17 @@ LCK = 0
 value = 100
 max_quantity = 99
 icon = ExtResource("93_1uyoh")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 65,
+"inventory": 3,
+"quantity": 1
+}])
 
 [sub_resource type="Resource" id="Resource_jnr2a"]
 script = ExtResource("92_10lem")
-legs_name = "Wingtips"
-legs_description = "For people with a sense of fashion."
+legs_name = "WINGTIPS"
+legs_description = "WINGTIPS_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 2
@@ -1536,11 +2095,102 @@ LCK = 0
 value = 200
 max_quantity = 99
 icon = ExtResource("94_j3dc4")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 1,
+"inventory": 4,
+"quantity": 1
+}, {
+"id": 45,
+"inventory": 3,
+"quantity": 1
+}])
+
+[sub_resource type="Resource" id="Resource_d35ul"]
+script = ExtResource("92_10lem")
+legs_name = "ENGINEER_BOOTS"
+legs_description = "ENGINEER_BOOTS_DESC"
+element = Array[int]([])
+ATK = 0
+DEF = 4
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 270
+max_quantity = 99
+icon = ExtResource("126_e55o8")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 2,
+"inventory": 4,
+"quantity": 1
+}, {
+"id": 46,
+"inventory": 3,
+"quantity": 1
+}])
+
+[sub_resource type="Resource" id="Resource_4ly5s"]
+script = ExtResource("92_10lem")
+legs_name = "ALUMINUM_LEGGINGS"
+legs_description = "ALUMINUM_LEGGINGS_DESC"
+element = Array[int]([])
+ATK = 0
+DEF = 5
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 300
+max_quantity = 99
+icon = ExtResource("127_vwmwg")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 66,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 68,
+"inventory": 3,
+"quantity": 1
+}])
+
+[sub_resource type="Resource" id="Resource_jd16d"]
+script = ExtResource("92_10lem")
+legs_name = "FEATHER_BOOTS"
+legs_description = "FEATHER_BOOTS_DESC"
+element = Array[int]([])
+ATK = 0
+DEF = 2
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 450
+max_quantity = 99
+icon = ExtResource("128_brjqo")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 50,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 3,
+"inventory": 4,
+"quantity": 1
+}])
 
 [sub_resource type="Resource" id="Resource_fmjl1"]
 script = ExtResource("95_xlcm0")
-accessory_name = "Scarf"
-accessory_description = "Keeps you warm from cold environments."
+accessory_name = "SCARF"
+accessory_description = "SCARF_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 1
@@ -1556,8 +2206,8 @@ icon = ExtResource("96_rut34")
 
 [sub_resource type="Resource" id="Resource_g71f4"]
 script = ExtResource("95_xlcm0")
-accessory_name = "Emerald Ring"
-accessory_description = "A ring with a shiny emerald stone that can be sold at a good price."
+accessory_name = "EMERALD_RING"
+accessory_description = "EMERALD_RING_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 0
@@ -1573,8 +2223,8 @@ icon = ExtResource("97_stnag")
 
 [sub_resource type="Resource" id="Resource_t5f6q"]
 script = ExtResource("95_xlcm0")
-accessory_name = "Talisman"
-accessory_description = "Protects the wearer from evil spirits."
+accessory_name = "TALISMAN"
+accessory_description = "TALISMAN_DESC"
 element = Array[int]([])
 ATK = 0
 DEF = 1
@@ -1588,10 +2238,44 @@ value = 200
 max_quantity = 99
 icon = ExtResource("98_7dyjc")
 
+[sub_resource type="Resource" id="Resource_jiprx"]
+script = ExtResource("95_xlcm0")
+accessory_name = "FORTITUDE_NECKLACE"
+accessory_description = "FORTITUDE_NECKLACE_DESC"
+element = Array[int]([])
+ATK = 0
+DEF = 1
+STR = 0
+CON = 0
+INT = 1
+SYN = 0
+RES = 5
+LCK = 0
+value = 500
+max_quantity = 99
+icon = ExtResource("129_8w55s")
+
+[sub_resource type="Resource" id="Resource_hiqqn"]
+script = ExtResource("95_xlcm0")
+accessory_name = "CONCENTRATION_STUD"
+accessory_description = "CONCENTRATION_STUD_DESC"
+element = Array[int]([])
+ATK = 0
+DEF = 0
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 2000
+max_quantity = 99
+icon = ExtResource("130_6e8ib")
+
 [sub_resource type="Resource" id="Resource_2w4nc"]
 script = ExtResource("99_ixwc3")
-skill_name = "Fortitude Gauntlet"
-skill_description = "Allows the user to guard from attacks by holding [[R1]] down."
+skill_name = "FORTITUDE_GAUNTLET"
+skill_description = "FORTITUDE_GAUNTLET_DESC"
 value = 0
 max_quantity = 1
 type = 0
@@ -1606,8 +2290,8 @@ transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_v2mv7"]
 script = ExtResource("99_ixwc3")
-skill_name = "Holy Manual"
-skill_description = "Displays enemy names."
+skill_name = "HOLY_MANUAL"
+skill_description = "HOLY_MANUAL_DESC"
 value = 0
 max_quantity = 1
 type = 0
@@ -1622,8 +2306,8 @@ transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_u4ub6"]
 script = ExtResource("99_ixwc3")
-skill_name = "Platinum Arm"
-skill_description = "Block an attack at the right time to recover MP and Hearts."
+skill_name = "PLATINUM_ARM"
+skill_description = "PLATINUM_ARM_DESC"
 value = 0
 max_quantity = 1
 type = 0
@@ -1638,9 +2322,8 @@ transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_6o46a"]
 script = ExtResource("99_ixwc3")
-skill_name = "Cyan Orb"
-skill_description = "Enhances Indigo Cross by increasing icicles' endurance and power.
-Unlocks Ice Affinity."
+skill_name = "CYAN_ORB_ITEM"
+skill_description = "CYAN_ORB_ITEM_DESC"
 value = 0
 max_quantity = 1
 type = 1
@@ -1655,8 +2338,8 @@ transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_m10e8"]
 script = ExtResource("99_ixwc3")
-skill_name = "Sword Spin"
-skill_description = "A technique with swords that spins the sword, hitting enemies from afar multiple times."
+skill_name = "SWORD_SPIN"
+skill_description = "SWORD_SPIN_DESC"
 value = 0
 max_quantity = 1
 type = 2
@@ -1670,8 +2353,8 @@ transitions_into_state = "sword_spin"
 
 [sub_resource type="Resource" id="Resource_gsb2m"]
 script = ExtResource("99_ixwc3")
-skill_name = "Axe Throw"
-skill_description = "Throws the currently equipped weapon to hit enemies above Hector. The currently equipped weapon will not be lost."
+skill_name = "AXE_THROW"
+skill_description = "AXE_THROW_DESC"
 value = 0
 max_quantity = 1
 type = 2
@@ -1685,8 +2368,8 @@ transitions_into_state = "throw_axe"
 
 [sub_resource type="Resource" id="Resource_s1o4l"]
 script = ExtResource("99_ixwc3")
-skill_name = "Sword Hand"
-skill_description = "Increases damage dealt with swords by 10%."
+skill_name = "SWORD_HAND"
+skill_description = "SWORD_HAND_DESC"
 value = 0
 max_quantity = 1
 type = 2
@@ -1700,8 +2383,8 @@ transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_d8rda"]
 script = ExtResource("99_ixwc3")
-skill_name = "Executioner's Hand"
-skill_description = "Allows Hector to attack more rapidly with axes."
+skill_name = "EXECUTIONERS_HAND"
+skill_description = "EXECUTIONERS_HAND_DESC"
 value = 0
 max_quantity = 1
 type = 2
@@ -1715,8 +2398,8 @@ transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_fna47"]
 script = ExtResource("99_ixwc3")
-skill_name = "Blacksmith Contract"
-skill_description = "Allows Hector to combine materials in order to create new items."
+skill_name = "BLACKSMITH_CONTRACT"
+skill_description = "BLACKSMITH_CONTRACT_DESC"
 value = 0
 max_quantity = 1
 type = 0
@@ -1729,11 +2412,26 @@ weapon_type = 0
 weapon_rank = 0
 transitions_into_state = ""
 
+[sub_resource type="Resource" id="Resource_vfu6u"]
+script = ExtResource("99_ixwc3")
+skill_name = "WARP_MEDALLION"
+skill_description = "WARP_MEDALLION_DESC"
+value = 0
+max_quantity = 1
+type = 0
+cost_type = 0
+cost_value = 0
+command_input = Array[String]([])
+command_input_serialized = ""
+icon = ExtResource("143_ffcf7")
+weapon_type = 0
+weapon_rank = 0
+transitions_into_state = ""
+
 [sub_resource type="Resource" id="Resource_86suo"]
 script = ExtResource("105_7lbas")
-relic_name = "Indigo Cross"
-relic_description = "The cross of a hunter buried in freezing catacombs.
-Summons a shield that reflects projectiles."
+relic_name = "INDIGO_CROSS"
+relic_description = "INDIGO_CROSS_DESC"
 ATK = 0
 DEF = 0
 STR = 0
@@ -1746,6 +2444,166 @@ value = 0
 glow = Color(0, 0.545098, 0.898039, 1)
 max_quantity = 1
 icon = ExtResource("106_6nmde")
+
+[sub_resource type="Resource" id="Resource_8t8qo"]
+script = ExtResource("105_7lbas")
+relic_name = "AGUNIS_LAUREL"
+relic_description = "AGUNIS_LAUREL_DESC"
+ATK = 0
+DEF = 0
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 0
+glow = Color(1, 0.435294, 0, 1)
+max_quantity = 1
+icon = ExtResource("150_e8wvu")
+
+[sub_resource type="Resource" id="Resource_1ioky"]
+script = ExtResource("145_wv42h")
+artifact_name = "LITTLE_HAMMER"
+artifact_description = "LITTLE_HAMMER_DESC"
+ATK = 0
+DEF = 0
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 0
+glow = Color(0.976471, 0.796078, 0, 1)
+max_quantity = 1
+icon = ExtResource("146_j32o5")
+
+[sub_resource type="Resource" id="Resource_87l3r"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 1
+dialogue_text = "DIALOG_FAGARAS_INTRO_1"
+position = 0
+
+[sub_resource type="Resource" id="Resource_m8frf"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 0
+dialogue_text = "DIALOG_FAGARAS_INTRO_2"
+position = 0
+
+[sub_resource type="Resource" id="Resource_5idyr"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 2
+dialogue_text = "DIALOG_FAGARAS_INTRO_3"
+position = 0
+
+[sub_resource type="Resource" id="Resource_e571n"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 0
+dialogue_text = "DIALOG_FAGARAS_INTRO_4"
+position = 0
+
+[sub_resource type="Resource" id="Resource_25n78"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 1
+dialogue_text = "DIALOG_MONASTERY_1"
+position = 0
+
+[sub_resource type="Resource" id="Resource_ktboo"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 2
+dialogue_text = "DIALOG_MONASTERY_2"
+position = 0
+
+[sub_resource type="Resource" id="Resource_vo88s"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 1
+dialogue_text = "DIALOG_MONASTERY_3"
+position = 0
+
+[sub_resource type="Resource" id="Resource_dctxa"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 2
+dialogue_text = "DIALOG_MONASTERY_4"
+position = 0
+
+[sub_resource type="Resource" id="Resource_spkj4"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 1
+dialogue_text = "DIALOG_MONASTERY_5"
+position = 0
+
+[sub_resource type="Resource" id="Resource_c46ur"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 0
+dialogue_text = "DIALOG_MONASTERY_6"
+position = 0
+
+[sub_resource type="Resource" id="Resource_ohovh"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 1
+dialogue_text = "DIALOG_MONASTERY_FORGING_1"
+position = 0
+
+[sub_resource type="Resource" id="Resource_omcdx"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 5
+dialogue_text = "DIALOG_MONASTERY_FORGING_2"
+position = 0
+
+[sub_resource type="Resource" id="Resource_72dkk"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 2
+dialogue_text = "DIALOG_MONASTERY_FORGING_3"
+position = 0
+
+[sub_resource type="Resource" id="Resource_4f7nn"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 1
+dialogue_text = "DIALOG_MONASTERY_FORGING_4"
+position = 0
+
+[sub_resource type="Resource" id="Resource_mgxho"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 0
+dialogue_text = "DIALOG_MONASTERY_FORGING_5"
+position = 0
+
+[sub_resource type="Resource" id="Resource_8f7hp"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 1
+dialogue_text = "DIALOG_MONASTERY_PUZZLE_1"
+position = 0
+
+[sub_resource type="Resource" id="Resource_o67wt"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 0
+dialogue_text = "DIALOG_MONASTERY_PUZZLE_2"
+position = 0
+
+[sub_resource type="Resource" id="Resource_wtpr2"]
+script = ExtResource("107_o0dwx")
+character = 0
+expression = 2
+dialogue_text = "DIALOG_MONASTERY_PUZZLE_3"
+position = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sngb1"]
 bg_color = Color(0.0593842, 0, 0.585751, 0.270588)
@@ -1946,9 +2804,14 @@ script = ExtResource("10_etx3r")
 Tag = "forest"
 stream = ExtResource("22_2kg4t")
 
+[sub_resource type="Resource" id="Resource_j7yuj"]
+script = ExtResource("10_etx3r")
+Tag = "cave"
+stream = ExtResource("170_nmeol")
+
 [sub_resource type="Resource" id="Resource_8tj7q"]
 script = ExtResource("8_afqo1")
-sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y")])
+sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj")])
 
 [sub_resource type="Gradient" id="Gradient_0dip4"]
 offsets = PackedFloat32Array(0, 0.989418)
@@ -2115,19 +2978,22 @@ size = Vector2(200, 40)
 script = ExtResource("1_xdpfu")
 animation = NodePath("AnimationPlayer")
 world_environment = NodePath("WorldEnvironment")
-weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks")])
+weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3")])
 item_compendium = SubResource("Resource_ksmb3")
 headgear_compendium = Array[ExtResource("58_johey")]([SubResource("Resource_stdwu"), SubResource("Resource_hcxc2"), SubResource("Resource_qtfvs"), SubResource("Resource_b4qdd"), SubResource("Resource_w8tqy"), SubResource("Resource_4iosu"), SubResource("Resource_b0lhj"), SubResource("Resource_kh436"), SubResource("Resource_n53u7"), SubResource("Resource_n15bh"), SubResource("Resource_2gney"), SubResource("Resource_580rm"), SubResource("Resource_fy53e"), SubResource("Resource_xv0ma"), SubResource("Resource_csljy"), SubResource("Resource_nfnn0"), SubResource("Resource_7go8i"), SubResource("Resource_ji887"), SubResource("Resource_nhhcx"), SubResource("Resource_ocbsj"), SubResource("Resource_jsrpv"), SubResource("Resource_qx0f7"), SubResource("Resource_bg2je"), SubResource("Resource_vexyv"), SubResource("Resource_utsap"), SubResource("Resource_itck4"), SubResource("Resource_ms7n0")])
-body_compendium = Array[ExtResource("86_xt4t6")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me")])
-legs_compendium = Array[ExtResource("92_10lem")]([SubResource("Resource_olb5a"), SubResource("Resource_jnr2a")])
-accessory_compendium = Array[ExtResource("95_xlcm0")]([SubResource("Resource_fmjl1"), SubResource("Resource_g71f4"), SubResource("Resource_t5f6q")])
-skill_compendium = Array[ExtResource("99_ixwc3")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_6o46a"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47")])
-relic_compendium = Array[ExtResource("105_7lbas")]([SubResource("Resource_86suo")])
+body_compendium = Array[ExtResource("86_xt4t6")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me"), SubResource("Resource_dqisp"), SubResource("Resource_rngem")])
+legs_compendium = Array[ExtResource("92_10lem")]([SubResource("Resource_olb5a"), SubResource("Resource_jnr2a"), SubResource("Resource_d35ul"), SubResource("Resource_4ly5s"), SubResource("Resource_jd16d")])
+accessory_compendium = Array[ExtResource("95_xlcm0")]([SubResource("Resource_fmjl1"), SubResource("Resource_g71f4"), SubResource("Resource_t5f6q"), SubResource("Resource_jiprx"), SubResource("Resource_hiqqn")])
+skill_compendium = Array[ExtResource("99_ixwc3")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_6o46a"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47"), SubResource("Resource_vfu6u")])
+relic_compendium = Array[ExtResource("105_7lbas")]([SubResource("Resource_86suo"), SubResource("Resource_8t8qo")])
+artifact_compendium = Array[ExtResource("145_wv42h")]([SubResource("Resource_1ioky")])
+dialogue_compendium = [[SubResource("Resource_87l3r"), SubResource("Resource_m8frf"), SubResource("Resource_5idyr"), SubResource("Resource_e571n")], Array[ExtResource("107_o0dwx")]([SubResource("Resource_25n78"), SubResource("Resource_ktboo"), SubResource("Resource_vo88s"), SubResource("Resource_dctxa"), SubResource("Resource_spkj4"), SubResource("Resource_c46ur")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_ohovh"), SubResource("Resource_omcdx"), SubResource("Resource_72dkk"), SubResource("Resource_4f7nn"), SubResource("Resource_mgxho")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_8f7hp"), SubResource("Resource_o67wt"), SubResource("Resource_wtpr2")])]
+compendium_to_print = 3
 starting_map = "FirstLevel/Woods.tscn"
 
 [node name="Player" parent="." instance=ExtResource("5_81k16")]
 z_index = 5
-position = Vector2(47, 386)
+position = Vector2(147, 386)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 process_callback = 0
@@ -2261,6 +3127,11 @@ libraries = {
 [node name="StagePresentation" parent="UI" instance=ExtResource("16_yvhsl")]
 
 [node name="TutorialScreen" parent="UI" instance=ExtResource("20_ra60k")]
+
+[node name="Dialogue" parent="UI" instance=ExtResource("149_om524")]
+z_index = 30
+
+[node name="WeaponWheel" parent="UI" instance=ExtResource("164_3jxay")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

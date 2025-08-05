@@ -11,7 +11,7 @@ class_name Orb
 @export var beat_sound_timer: Timer
 @export var item_id: int
 var spawned: bool = false
-const orb_texture_path: String = "res://assets/sprites/Items/Orbs/"
+const orb_texture_path: String = "res://assets/sprites/Items/Pickups/Orbs/"
 
 enum OrbColor {
 	RED,

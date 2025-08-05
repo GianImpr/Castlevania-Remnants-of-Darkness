@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_48bwb"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_uy0rq"]
-[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="2_pjhkw"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="2_pjhkw"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="3_i13cd"]
 [ext_resource type="PackedScene" uid="uid://126k0dgwv4i3" path="res://SampleProject/enemies/Bat/bat.tscn" id="4_adval"]
 [ext_resource type="PackedScene" uid="uid://cl543nev3n2bf" path="res://SampleProject/enemies/AxeArmor/axe_armor.tscn" id="5_sebu1"]
@@ -851,6 +851,8 @@ position = Vector2(708, 402)
 [node name="Pick-up" parent="Items" instance=ExtResource("6_nx8x0")]
 position = Vector2(878, 431)
 type = 4
+id = 1
+current_item_name = "Leather Hat"
 pickup_flag = 5
 
 [node name="Candles" type="Node" parent="."]
@@ -868,6 +870,5 @@ position = Vector2(774, 410)
 position = Vector2(89, 435)
 scale = Vector2(-5.73014, 0.0372883)
 flag_id = 8
-text = "Press [[Cross]] while crouching to
-drop off the platform."
+text = "HINT_8"
 time = 4.0

@@ -49,14 +49,13 @@ func updateStats():
 	elements.GoldValue.text += str(Global.getStat("GOLD"))
 	
 	if Global.player.pocket_size > 0:
-		default_button.text = "Summon"
+		default_button.text = "SUMMON_BUTTON"
 	else:
 		default_button.text = "? ? ?"
 	default_button.disabled = true
 		
-	#Forgery
-	if Global.player.stats.findItem(9, Global.player.stats.skill_inventory):
-		combine_button.text = "Combine"
+	if Global.player.stats.findItem(Skill.Skills.BLACKSMITH_CONTRACT, Global.player.stats.skill_inventory):
+		combine_button.text = "COMBINE_BUTTON"
 		combine_button.disabled = false
 	else:
 		combine_button.text = "? ? ?"

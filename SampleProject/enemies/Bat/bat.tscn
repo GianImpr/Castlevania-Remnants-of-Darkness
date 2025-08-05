@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://126k0dgwv4i3"]
+[gd_scene load_steps=28 format=3 uid="uid://126k0dgwv4i3"]
 
 [ext_resource type="Script" path="res://SampleProject/enemies/Bat/bat.gd" id="1_t4pbr"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_sndu6"]
@@ -157,7 +157,15 @@ stream = ExtResource("14_gdk68")
 script = ExtResource("12_i40f0")
 sound_effects = Array[ExtResource("13_c63lj")]([SubResource("Resource_o1e8j")])
 
-[node name="Bat" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[sub_resource type="Curve" id="Curve_qkx2p"]
+max_value = 5.0
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_eqdgu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Bat" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 collision_layer = 4
 collision_mask = 0
 floor_block_on_wall = false
@@ -169,10 +177,11 @@ stats = NodePath("EnemyStats")
 damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Area2D/Iframe Timer")
 hitbox_iframe = NodePath("Area2D")
+blood_particles = NodePath("BloodDamage")
 
 [node name="EnemyStats" type="Node" parent="."]
 script = ExtResource("2_sndu6")
-enemy_name = "Bat"
+enemy_name = "BAT"
 LV = 1
 HP = 1
 ATK = 9
@@ -249,6 +258,22 @@ damage_node = ExtResource("4_81pg3")
 volume_db = -15.0
 script = ExtResource("10_nrqdg")
 audio_library = SubResource("Resource_qnkqq")
+
+[node name="BloodDamage" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 12
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_qkx2p")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_eqdgu")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Area2D/Iframe Timer" to="." method="_on_iframe_timer_timeout"]

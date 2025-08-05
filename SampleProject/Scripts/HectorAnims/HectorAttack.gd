@@ -18,10 +18,12 @@ func exit():
 func Update(delta: float):
 	remove_momentum()
 	
-	#Executioner's Hand
-	if player.stats.canApplySkill(8) and animation.current_animation_position > 0.6 and InputBuffer.is_action_press_buffered("attack"):
+	if player.stats.canApplySkill(Skill.Skills.EXECUTIONERS_HAND) and animation.current_animation_position > 0.6 and InputBuffer.is_action_press_buffered("attack"):
 		animation.seek(0)
-		player.sprite.weapon.set_anim_pos(0)
+		if player.sprite.weapon.animation.is_playing():
+			player.sprite.weapon.set_anim_pos(0)
+		else:
+			player.sprite.weapon.play()
 		get_hector_attack_sound()
 		get_attack_sound()
 		enter()

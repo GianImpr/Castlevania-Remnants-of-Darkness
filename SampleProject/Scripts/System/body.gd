@@ -12,7 +12,18 @@ enum Inventory {
 	weapon,
 	headgear,
 	body,
-	item
+	item,
+	legs
+}
+
+enum Bodies {
+	CASUAL_CLOTHES,
+	HOBOS_CLOTHES,
+	LEATHER_ARMOR,
+	BRONZE_CUIRASS,
+	IRON_PLATE,
+	SCALE_MAIL,
+	BREASTPLATE
 }
 
 

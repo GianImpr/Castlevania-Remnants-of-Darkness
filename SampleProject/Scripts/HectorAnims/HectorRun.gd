@@ -6,12 +6,11 @@ const BLEND: float = -1
 const ANIM_NAME: String = "run_start"
 var can_perfect_guard: bool = true
 
-
 func enter():
 	if not player.skip_run_start:
 		animation.play("run_start", BLEND, 1.6)
 	else:
-		animation.play("run", BLEND, 1.5)
+		animation.play("run", BLEND, 1.8)
 	
 func Update(delta: float):
 	pass
@@ -19,7 +18,7 @@ func Update(delta: float):
 func Physics_Update(delta: float):
 	#Continue the run animation if not stopping
 	if not animation.is_playing():
-		animation.play("run", -1, 1.5)
+		animation.play("run", -1, 1.8)
 		
 	can_move_with_momentum(false)
 	can_perform(Actions.JUMP, true)

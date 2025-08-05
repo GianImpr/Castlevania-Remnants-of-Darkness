@@ -2,7 +2,7 @@ extends Node2D
 class_name PlayerProjectile
 
 @export var base_damage: int
-@export var attribute: Global.Attribute = Global.Attribute.HIT
+@export var attribute: Global.Attribute = Global.Attribute.SLASH
 @export var hitbox: CollisionShape2D
 @export var hit_collision_scene: PackedScene
 @export var ice_hit_collision_scene: PackedScene
@@ -114,12 +114,17 @@ func applyDamage(body: Node2D, damage: int) -> void:
 
 # Creates the graphical hit effect and the sound effect of the impact
 func createEffects(body: Node2D) -> void:
-	var hit_sounds = ["hard_slash_sfx", "hit_sfx", "hard_slash_sfx"]
+	var hit_sounds = ["hard_slash_sfx", "hard_slash_sfx", "hard_slash_sfx", "", "hit_sfx"]
 	var weapon = player.stats.equipment["weapon"]
 	var attack_type = 1
 	if weapon != 0:
 		attack_type = player.stats.searchItemInCompendium(weapon, player.stats.weapon_compendium).type	
-	player.sound.play_sound_effect_from_library(hit_sounds[attack_type])
+	if attribute == Global.Attribute.SLASH and body is Enemy and body.blood_particles != null:
+		body.blood_particles.restart()
+		body.blood_particles.emitting = true
+		player.sound.play_sound_effect_from_library("blood_slash_sfx")
+	else:
+		player.sound.play_sound_effect_from_library(hit_sounds[attack_type])
 	createHitEffect(body)
 	
 func applyGlow(body: Node2D, color: Color) -> void:

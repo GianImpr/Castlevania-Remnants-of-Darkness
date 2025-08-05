@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_8f15c"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_rnjcu"]
-[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="3_4nsns"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_4nsns"]
 [ext_resource type="Script" path="res://SampleProject/Objects/illusion_wall.gd" id="4_e4kf1"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="4_vp3ri"]
 [ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="5_ls1p6"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="6_bqy0e"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_5sy1b"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="8_gfqqm"]
-[ext_resource type="AudioStream" uid="uid://b2rp1jojfe45t" path="res://assets/sounds/Effects/MoveStone.MP3" id="9_k71je"]
+[ext_resource type="AudioStream" uid="uid://b2rp1jojfe45t" path="res://assets/sounds/Objects/MoveStone.MP3" id="9_k71je"]
 
 [sub_resource type="Curve" id="Curve_4bk40"]
 max_value = 2.0
@@ -996,8 +996,8 @@ libraries = {
 [node name="HintBoxTrigger" parent="IllusionWall" instance=ExtResource("5_ls1p6")]
 position = Vector2(136, 296)
 scale = Vector2(1, 0.4)
-flag_id = 11
-text = "This wall hides something..."
+flag_id = 6
+text = "HINT_6"
 time = 3.0
 
 [node name="Area2D" type="Area2D" parent="IllusionWall"]

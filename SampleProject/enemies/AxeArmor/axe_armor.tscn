@@ -9,11 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_2ymih"]
 [ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/AxeArmorIdle.gd" id="6_nergd"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_pqr52"]
-[ext_resource type="AudioStream" uid="uid://drbx4eqlp7ibs" path="res://assets/sounds/AxeStep.MP3" id="7_i080y"]
+[ext_resource type="AudioStream" uid="uid://drbx4eqlp7ibs" path="res://assets/sounds/Enemies/AxeArmor/AxeStep.MP3" id="7_i080y"]
 [ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/AxeArmorMoving.gd" id="7_mcxjw"]
-[ext_resource type="AudioStream" uid="uid://d30kdvmwyw1b1" path="res://assets/sounds/AxeSwing.MP3" id="8_v2us2"]
+[ext_resource type="AudioStream" uid="uid://d30kdvmwyw1b1" path="res://assets/sounds/Enemies/AxeArmor/AxeSwing.MP3" id="8_v2us2"]
 [ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/AxeArmorAttack.gd" id="8_yuaeu"]
-[ext_resource type="AudioStream" uid="uid://cmiqrn6b81fqy" path="res://assets/sounds/AxeDead.MP3" id="9_ghak2"]
+[ext_resource type="AudioStream" uid="uid://cmiqrn6b81fqy" path="res://assets/sounds/Enemies/AxeArmor/AxeDead.MP3" id="9_ghak2"]
 [ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/AxeArmorRespawnAxe.gd" id="9_xecj8"]
 [ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/AxeArmorDeath.gd" id="10_6kenr"]
 [ext_resource type="PackedScene" uid="uid://chah0gfmy6gd7" path="res://SampleProject/enemies/AxeArmor/axe.tscn" id="10_mi4c6"]
@@ -438,7 +438,7 @@ hitbox_iframe = NodePath("Area2D")
 
 [node name="EnemyStats" type="Node" parent="."]
 script = ExtResource("2_f44xy")
-enemy_name = "Axe Armor"
+enemy_name = "AXE_ARMOR"
 LV = 3
 HP = 28
 ATK = 5

@@ -41,10 +41,10 @@ func on_focused(which):
 			equip_list.initList(Global.player.stats.acc_inventory)
 			
 func setEquipTextAndIcon(slot: int, text: String, icon: CompressedTexture2D) -> void:
-	if slot < 0 or slot > get_child_count()-1:
+	if slot < 0 or slot > get_child(0).get_child_count()-1:
 		return
-	get_child(slot).text = text
-	get_child(slot).get_child(0).texture = icon
+	#get_child(0).get_child(slot).text = text
+	get_child(0).get_child(slot).get_child(0).texture = icon
 
 func setEquipIcons(icon: Array[CompressedTexture2D]):
 	for button_i in range(0, get_child(0).get_child_count()):

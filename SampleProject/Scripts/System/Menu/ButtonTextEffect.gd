@@ -7,8 +7,8 @@ var controller_scheme: int = 0:
 		setButtons(value)
 @export_multiline var new_text: String:
 	set(value):
-		var parsed_text = parseText(value)
-		new_text = value
+		var parsed_text = parseText(tr(value))
+		new_text = tr(value)
 		text = parsed_text
 const path: String = "res://assets/sprites/HUD/Buttons/"
 var buttons: Dictionary

@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://bri0k8ritevh0"]
+[gd_scene load_steps=13 format=4 uid="uid://bri0k8ritevh0"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_kkk8k"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_7wxcl"]
 [ext_resource type="Texture2D" uid="uid://c0qsvc0xjt6x1" path="res://assets/sprites/Tiles/outsideMonastery.png" id="3_sqrr0"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/Spawners/tutorial_zombie_spawn.gd" id="4_h5hv2"]
 [ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="4_ti87g"]
-[ext_resource type="PackedScene" uid="uid://bpbuc4imoao83" path="res://SampleProject/enemies/zombie.tscn" id="5_hqtya"]
+[ext_resource type="PackedScene" uid="uid://bpbuc4imoao83" path="res://SampleProject/enemies/Zombie/zombie.tscn" id="5_hqtya"]
+[ext_resource type="PackedScene" uid="uid://df43umeqy115k" path="res://SampleProject/extra_scenes/stage_elements/dialogue_box_trigger.tscn" id="7_uirqh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1uv3y"]
 resource_name = "Woods"
@@ -599,9 +600,9 @@ flag_id = 1
 enemy_to_spawn = ExtResource("5_hqtya")
 
 [node name="HintBoxTrigger" parent="." instance=ExtResource("4_ti87g")]
-position = Vector2(420, 7)
+position = Vector2(522, 7)
 flag_id = 1
-text = "Press [[Square]] to attack."
+text = "HINT_1"
 time = 2.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -632,3 +633,7 @@ collision_mask = 15
 position = Vector2(5, 269)
 rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_rjc17")
+
+[node name="DialogueBoxTrigger" parent="." instance=ExtResource("7_uirqh")]
+position = Vector2(235, 10)
+flag_id = 2

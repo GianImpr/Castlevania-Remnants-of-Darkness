@@ -46,6 +46,7 @@ func _ready() -> void:
 		set_physics_process(false)
 		MetSys.settings.theme_changed.connect(update_configuration_warnings)
 		return
+	Global.minimap = self
 	
 	MetSys.map_updated.connect(drawer.queue_redraw)
 	if track_position:

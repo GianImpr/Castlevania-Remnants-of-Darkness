@@ -1,17 +1,32 @@
+@tool
 extends RigidBody2D
 class_name PickUp
-@export var type: ItemType
-@export var id: int
+@export var type: ItemType:
+	set(value):
+		type = value
+		updateItemInformation()
+@export var id: int:
+	set(value):
+		id = value
+		updateItemInformation()
+		
+@export var current_item_name: String
 @export var sprite: Sprite2D
 @export var idle_timer: Timer
 @export var flash_timer: Timer
 @export var animation: AnimationPlayer
 @export var sound: PolyphonicMenuAudio
 @export var item_full_scene: PackedScene
+@export var get_next_flag: bool:
+	set(value):
+		pickup_flag = next_flag_to_use
+		next_flag_to_use += 1
 @export var pickup_flag: int
 @export var boost_message: PackedScene
 @export var auto_equip: bool = false
 var compendium: Array[Dictionary]
+
+static var next_flag_to_use: int
 
 static var change_equipment: Callable
 
@@ -38,6 +53,9 @@ const SlotNames = {
 }
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+		
 	if Global.player.stats.picked_items[pickup_flag]:
 		queue_free()
 	if type != ItemType.SKILL and type != ItemType.ARTIFACT and type != ItemType.RELIC:
@@ -79,18 +97,20 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			#Still need the logic to update player stats
 	if type == ItemType.ITEM:
 		sound.play_sound_effect_from_library("item")
-		Global.item_box.changeColor(0)
+		Global.item_box.changeColor(ItemBox.Type.BLUE)
 	elif type == ItemType.SKILL or type == ItemType.ARTIFACT or type == ItemType.RELIC:
 		var popup = boost_message.instantiate()
 		popup.get_child(0).frame = 3
 		Global.player.sprite.enable_glow = true
 		Global.player.add_child(popup)
 		if type == ItemType.SKILL:
-			Global.item_box.changeColor(1)
-		else:
-			Global.item_box.changeColor(2)
+			Global.item_box.changeColor(ItemBox.Type.ORANGE)
+		elif type == ItemType.RELIC:
+			Global.item_box.changeColor(ItemBox.Type.PURPLE)
 			if not Global.player.unlocked_magic:
 				Global.player.unlockMagic()
+		else:
+			Global.item_box.changeColor(ItemBox.Type.RED)
 	else:
 		sound.play_sound_effect_from_library("equip")
 		Global.item_box.changeColor(0)
@@ -117,6 +137,8 @@ func getCompendium():
 			return Global.player.stats.accessory_compendium
 		ItemType.SKILL:
 			return Global.player.stats.skill_compendium
+		ItemType.ARTIFACT:
+			return Global.player.stats.artifact_compendium
 		_:
 			return null
 			
@@ -172,3 +194,44 @@ func determineSlot() -> String:
 		_:
 			printerr("Unexpected auto-equip slot")
 			return ""
+
+func updateItemInformation():
+	if not Engine.is_editor_hint():
+		return
+	var cur_compendium: Array
+	var name_property: String
+	match type:
+		ItemType.ITEM:
+			cur_compendium = Game.item_compendium_static.Compendium
+			name_property = "item_name"
+		ItemType.WEAPON:
+			cur_compendium = Game.weapon_compendium_static
+			name_property = "weapon_name"
+		ItemType.HEADGEAR:
+			cur_compendium = Game.headgear_compendium_static
+			name_property = "headgear_name"
+		ItemType.RELIC:
+			cur_compendium = Game.relic_compendium_static
+			name_property = "relic_name"
+		ItemType.ARTIFACT:
+			cur_compendium = Game.artifact_compendium_static
+			name_property = "artifact_name"
+		ItemType.BODY:
+			cur_compendium = Game.body_compendium_static
+			name_property = "body_name"
+		ItemType.LEGS:
+			cur_compendium = Game.legs_compendium_static
+			name_property = "legs_name"
+		ItemType.ACCESSORY:
+			cur_compendium = Game.accessory_compendium_static
+			name_property = "accessory_name"
+		ItemType.SKILL:
+			cur_compendium = Game.skill_compendium_static
+			name_property = "skill_name"
+	if id < 1 or id > cur_compendium.size():
+		current_item_name = "<null>"
+		return
+	var item = cur_compendium[id-1]
+	current_item_name = item[name_property]
+	if sprite != null:
+		sprite.texture = item.icon

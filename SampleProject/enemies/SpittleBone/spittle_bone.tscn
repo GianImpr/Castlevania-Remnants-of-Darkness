@@ -1,0 +1,204 @@
+[gd_scene load_steps=16 format=3 uid="uid://did6gwhu81dxh"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/SpittleBone/spittle_bone.gd" id="1_ljovo"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_jq2xn"]
+[ext_resource type="Texture2D" uid="uid://chv1ly7svgkhv" path="res://assets/sprites/Enemies/SpittleBone/SpittleBone.png" id="3_jifip"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_72km8"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="5_87s7w"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_deie6"]
+[ext_resource type="Script" path="res://SampleProject/enemies/SpittleBone/SpittleBoneMoving.gd" id="7_0jykf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amnho"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngb1p"]
+size = Vector2(15.5, 29)
+
+[sub_resource type="Curve" id="Curve_va3vl"]
+max_value = 5.0
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5pg3w"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GDScript" id="GDScript_326py"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="Animation" id="Animation_wqkau"]
+resource_name = "moving"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_pj4sl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_70lv5"]
+_data = {
+"RESET": SubResource("Animation_pj4sl"),
+"moving": SubResource("Animation_wqkau")
+}
+
+[node name="SpittleBone" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+scale = Vector2(2, 2)
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_ljovo")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Hitbox")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Iframes")
+hitbox_iframe = NodePath("Hitbox")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_jq2xn")
+enemy_name = "Spittle Bone"
+LV = 12
+HP = 13
+ATK = 20
+DEF = 3
+RES = 5
+EXP = 5
+weaknesses = Array[int]([1, 6, 8])
+tolerances = Array[int]([9])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_jifip")
+offset = Vector2(6, -6)
+hframes = 6
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.5)
+shape = SubResource("CircleShape2D_amnho")
+
+[node name="Iframes" type="Timer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2(-0.25, -1.5)
+shape = SubResource("RectangleShape2D_ngb1p")
+
+[node name="Vision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("4_72km8")
+
+[node name="BloodDamage" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 12
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_va3vl")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_5pg3w")
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+position = Vector2(0, -20)
+script = ExtResource("5_87s7w")
+damage_node = ExtResource("6_deie6")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_326py")
+initial_state = NodePath("Moving")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("initial_detection_delay_timer", "collision_box")]
+script = ExtResource("7_0jykf")
+SPEED = 200.0
+initial_detection_delay_timer = NodePath("InitialDetectionDelay")
+collision_box = NodePath("../../Hurtbox")
+
+[node name="InitialDetectionDelay" type="Timer" parent="StateMachine/Moving"]
+wait_time = 0.2
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_70lv5")
+}

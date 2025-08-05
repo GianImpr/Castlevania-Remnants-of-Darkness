@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=4 uid="uid://lmehsgtctg15"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_m4qdj"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_1u5xp"]
+[ext_resource type="Texture2D" uid="uid://b4d0xyxsq3tff" path="res://assets/sprites/Tiles/Debug.png" id="3_2ur68"]
+[ext_resource type="PackedScene" uid="uid://c6b7toh8yj33q" path="res://SampleProject/enemies/Ctulhu/ctulhu.tscn" id="4_nctlt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ikyd"]
+texture = ExtResource("3_2ur68")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 0.125, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, 0.353552, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0, 16, 0.125, 16, 16, -16, 16)
+3:0/0/physics_layer_0/polygon_0/one_way = true
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, -1.06066, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -0.125, 16, 16, -16, 16)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, -16, 16, 16, -16, 16)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_cydyx"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 65
+sources/0 = SubResource("TileSetAtlasSource_1ikyd")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d34m2"]
+texture = ExtResource("3_2ur68")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, 0.125, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, 0.353552, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 0, 16, 0.125, 16, 16, -16, 16)
+3:0/0/physics_layer_0/polygon_0/one_way = true
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, -1.06066, 16, 16, -16, 16)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -0.125, 16, 16, -16, 16)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, 16, -16, 16, 16, -16, 16)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, 16, -16, 16)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_t01tf"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_d34m2")
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_m4qdj")
+apply_limits = true
+camera_limit_left = 96
+camera_limit_right = 960
+camera_limit_bottom = 480
+
+[node name="RoomInstance" parent="." instance=ExtResource("2_1u5xp")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAAAAAAAAAAEAAAADAA4AAAAAAAEAAAAEAAAAAAAAAAEAAAAEAA4AAAAAAAEAAAAFAAAAAAAAAAEAAAAFAA4AAAAGAAEAAAAGAAAAAAAAAAEAAAAGAA4AAAAAAAEAAAAHAAAAAAACAAEAAAAHAA4AAAAAAAEAAAAIAAAAAAAAAAEAAAAIAA4AAAAAAAEAAAAJAAAAAAAAAAEAAAAJAA4AAAAAAAEAAAAKAAAAAAAAAAEAAAAKAA4AAAAAAAEAAAALAAAAAAAAAAEAAAALAA4AAAAAAAEAAAAMAAAAAAAAAAEAAAAMAA4AAAAAAAEAAAANAAAAAAAAAAEAAAANAA4AAAAAAAEAAAAOAAAAAAAAAAEAAAAOAA4AAAAAAAEAAAAPAAAAAAAAAAEAAAAPAA4AAAAAAAEAAAAQAAAAAAAAAAEAAAAQAA4AAAAAAAEAAAARAAAAAAAAAAEAAAARAA4AAAAAAAEAAAASAAAAAAAAAAEAAAASAA4AAAAAAAEAAAATAAAAAAAAAAEAAAATAA4AAAAAAAEAAAAUAAAAAAAAAAEAAAAUAA4AAAAAAAEAAAAVAAAAAAAAAAEAAAAVAA4AAAAAAAEAAAAWAAAAAAAAAAEAAAAWAA4AAAAAAAEAAAAXAAAAAAAAAAEAAAAXAA4AAAAAAAEAAAAYAAAAAAAAAAEAAAAYAA4AAAAAAAEAAAAZAAAAAAAAAAEAAAAZAA4AAAAAAAEAAAAaAAAAAAAAAAEAAAAaAA4AAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAADAAQAAAAAAAEAAAADAAUAAAAAAAEAAAADAAYAAAAAAAEAAAADAAcAAAAAAAEAAAADAAgAAAAAAAEAAAADAAkAAAAAAAEAAAADAAoAAAAAAAEAAAADAAsAAAAAAAEAAAADAAwAAAAAAAEAAAADAA0AAAAAAAEAAAAbAAAAAAAAAAEAAAAbAA4AAAAAAAEAAAAcAAAAAAAEAAEAAAAcAAoAAAAAAAAAAAAcAAsAAAAAAAEAAAAcAAwAAAAEAAEAAAAcAA0AAAAAAAEAAAAcAA4AAAAAAAEAAAAdAAAAAAAAAAEAAAAdAAEAAAAAAAEAAAAdAAIAAAAAAAEAAAAdAAMAAAAAAAEAAAAdAAQAAAAAAAEAAAAdAAUAAAAAAAAAAAAdAAoAAAAAAAEAAAAdAAsAAAAAAAEAAAAdAAwAAAAAAAEAAAAdAA0AAAAAAAEAAAAdAA4AAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_cydyx")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAALAAgAAAADAAAAAAAHAAsAAAADAAAAAAAIAAsAAAADAAAAAAAJAAsAAAADAAAAAAAMAAgAAAADAAAAAAANAAgAAAADAAAAAAAOAAgAAAADAAAAAAARAAoAAAADAAAAAAASAAoAAAADAAAAAAATAAoAAAADAAAAAAA=")
+tile_set = SubResource("TileSet_t01tf")
+
+[node name="Ctulhu" parent="." instance=ExtResource("4_nctlt")]
+position = Vector2(759, 366)

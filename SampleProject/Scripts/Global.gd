@@ -9,12 +9,14 @@ static var tutorial_box = null
 static var inventory = null
 static var tutorial_screen: TutorialScreen = null
 static var fade_screen: FadeScreen = null
+static var dialogue_screen: DialogueBox = null
 static var music_player: PolyphonicMenuAudio = null
 static var stage_presentation: StagePresentation = null
 static var boss_bar = null
 static var fps_display = null
 static var settings_node: InvOptions = null
 static var HUD = null
+static var minimap = null
 var load_data: bool = false
 var crazy_mode: bool = false
 var loaded_settings: bool = false
@@ -31,7 +33,8 @@ enum ScreenType {
 	MAP,
 	TRANSITION,
 	TUTORIAL,
-	EVENT
+	EVENT,
+	WHEEL
 }
 enum Attribute {
 	NONE = 0,

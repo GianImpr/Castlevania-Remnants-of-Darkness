@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bvk8m1t7uwv0b"]
+[gd_scene load_steps=23 format=3 uid="uid://bvk8m1t7uwv0b"]
 
 [ext_resource type="Script" path="res://SampleProject/enemies/Une/une.gd" id="1_gjbwa"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_rhebn"]
@@ -143,7 +143,15 @@ func on_child_transition(state, new_state_name):
 	current_state = new_state
 "
 
-[node name="Une" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[sub_resource type="Curve" id="Curve_idtck"]
+max_value = 5.0
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xett1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Une" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_gjbwa")
@@ -154,10 +162,11 @@ stats = NodePath("EnemyStats")
 damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Hitbox/Iframes")
 hitbox_iframe = NodePath("Hitbox")
+blood_particles = NodePath("BloodDamage")
 
 [node name="EnemyStats" type="Node" parent="."]
 script = ExtResource("2_rhebn")
-enemy_name = "Une"
+enemy_name = "UNE"
 LV = 8
 HP = 10
 ATK = 30
@@ -229,6 +238,23 @@ dying_effect = ExtResource("10_1t885")
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("11_p0vwc")
+
+[node name="BloodDamage" type="CPUParticles2D" parent="."]
+position = Vector2(0, -0.5)
+emitting = false
+amount = 12
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_idtck")
+color = Color(4.72283e-07, 0.251677, 0.00736244, 1)
+color_ramp = SubResource("Gradient_xett1")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Hitbox/Iframes" to="." method="_on_iframe_timer_timeout"]

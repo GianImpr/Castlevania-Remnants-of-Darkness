@@ -1,0 +1,71 @@
+[gd_scene load_steps=24 format=3 uid="uid://dscwbere4f0cg"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/Editor/jukebox.gd" id="1_rf6r8"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_m3hgb"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="3_cmmx8"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="4_1bw12"]
+[ext_resource type="AudioStream" uid="uid://b2hhmewc5j580" path="res://assets/music/GaribaldiTemple.ogg" id="5_csxxr"]
+[ext_resource type="AudioStream" uid="uid://bh5hppwruqd0i" path="res://assets/music/YoungNobleman.ogg" id="6_trjjl"]
+[ext_resource type="AudioStream" uid="uid://wfp61kihdjdb" path="res://assets/music/WindSFX.ogg" id="7_5bkv0"]
+[ext_resource type="AudioStream" uid="uid://c2p7yddfxv2it" path="res://assets/music/EnemyEncounter.ogg" id="8_i1f8b"]
+[ext_resource type="AudioStream" uid="uid://cr60u8c82m68u" path="res://assets/music/Followers1.ogg" id="9_0k5hm"]
+[ext_resource type="AudioStream" uid="uid://divaxkj2wapst" path="res://assets/music/InnocentDevil.ogg" id="10_plr6a"]
+[ext_resource type="AudioStream" uid="uid://dt0wjxu3j762s" path="res://assets/music/Castlevania Reincarnation.ogg" id="11_c2xnm"]
+[ext_resource type="AudioStream" uid="uid://cpcb4qwo3spyt" path="res://assets/music/InnerQuarters.ogg" id="12_md5ic"]
+[ext_resource type="AudioStream" uid="uid://bi8mk2hewgbxu" path="res://assets/music/ForbiddenArea.ogg" id="13_7yhpc"]
+
+[sub_resource type="Resource" id="Resource_v1m0x"]
+script = ExtResource("4_1bw12")
+Tag = "garibaldi"
+stream = ExtResource("5_csxxr")
+
+[sub_resource type="Resource" id="Resource_yfkrg"]
+script = ExtResource("4_1bw12")
+Tag = "save_room"
+stream = ExtResource("6_trjjl")
+
+[sub_resource type="Resource" id="Resource_ugwl0"]
+script = ExtResource("4_1bw12")
+Tag = "wind_sfx"
+stream = ExtResource("7_5bkv0")
+
+[sub_resource type="Resource" id="Resource_k0xgh"]
+script = ExtResource("4_1bw12")
+Tag = "encounter"
+stream = ExtResource("8_i1f8b")
+
+[sub_resource type="Resource" id="Resource_ixgba"]
+script = ExtResource("4_1bw12")
+Tag = "followers"
+stream = ExtResource("9_0k5hm")
+
+[sub_resource type="Resource" id="Resource_4wf17"]
+script = ExtResource("4_1bw12")
+Tag = "innocent_devil"
+stream = ExtResource("10_plr6a")
+
+[sub_resource type="Resource" id="Resource_fkqie"]
+script = ExtResource("4_1bw12")
+Tag = "boss_1"
+stream = ExtResource("11_c2xnm")
+
+[sub_resource type="Resource" id="Resource_m0k4y"]
+script = ExtResource("4_1bw12")
+Tag = "forest"
+stream = ExtResource("12_md5ic")
+
+[sub_resource type="Resource" id="Resource_j7yuj"]
+script = ExtResource("4_1bw12")
+Tag = "cave"
+stream = ExtResource("13_7yhpc")
+
+[sub_resource type="Resource" id="Resource_od5s4"]
+script = ExtResource("3_cmmx8")
+sound_effects = Array[ExtResource("4_1bw12")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj")])
+
+[node name="Jukebox" type="Node"]
+script = ExtResource("1_rf6r8")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("2_m3hgb")
+audio_library = SubResource("Resource_od5s4")

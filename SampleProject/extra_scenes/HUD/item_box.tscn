@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://2k1tvl70buqg"]
+[gd_scene load_steps=9 format=3 uid="uid://2k1tvl70buqg"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/item_box.gd" id="1_d8mr8"]
-[ext_resource type="Texture2D" uid="uid://gbcs3e2yhpky" path="res://assets/sprites/HUD/ItemBox.png" id="2_qvc4r"]
-[ext_resource type="Texture2D" uid="uid://brdok712lblw" path="res://assets/sprites/HUD/SkillBox.png" id="3_v843h"]
-[ext_resource type="Texture2D" uid="uid://ovg0jielsica" path="res://assets/sprites/HUD/RelicBox.png" id="4_nvhjh"]
+[ext_resource type="Texture2D" uid="uid://gbcs3e2yhpky" path="res://assets/sprites/HUD/Containers/NameBox/ItemBox.png" id="2_qvc4r"]
+[ext_resource type="Texture2D" uid="uid://brdok712lblw" path="res://assets/sprites/HUD/Containers/NameBox/SkillBox.png" id="3_v843h"]
+[ext_resource type="Texture2D" uid="uid://ovg0jielsica" path="res://assets/sprites/HUD/Containers/NameBox/RelicBox.png" id="4_nvhjh"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="5_0uekx"]
+[ext_resource type="Texture2D" uid="uid://cf86js04xbhqi" path="res://assets/sprites/HUD/Containers/NameBox/ArtifactBox.png" id="5_xd4x8"]
 
 [sub_resource type="Theme" id="Theme_haqnl"]
 default_font = ExtResource("5_0uekx")
@@ -30,7 +31,7 @@ scale = Vector2(2, 2)
 script = ExtResource("1_d8mr8")
 label = NodePath("MarginContainer2/PanelContainer/Label")
 timer = NodePath("Timer")
-textures = Array[CompressedTexture2D]([ExtResource("2_qvc4r"), ExtResource("3_v843h"), ExtResource("4_nvhjh")])
+textures = Array[CompressedTexture2D]([ExtResource("2_qvc4r"), ExtResource("3_v843h"), ExtResource("4_nvhjh"), ExtResource("5_xd4x8")])
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(41, 22)

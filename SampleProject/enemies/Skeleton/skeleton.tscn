@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_k13al"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_ywtg4"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonIdle.gd" id="7_70oni"]
-[ext_resource type="AudioStream" uid="uid://c1mpwbjmbcwi4" path="res://assets/sounds/ThrowBone.MP3" id="7_b6bmt"]
+[ext_resource type="AudioStream" uid="uid://c1mpwbjmbcwi4" path="res://assets/sounds/Enemies/Skeleton/ThrowBone.MP3" id="7_b6bmt"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonMoving.gd" id="8_nu7ki"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonAttack.gd" id="9_ry1cj"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonDying.gd" id="10_hx48s"]
@@ -207,7 +207,7 @@ hitbox_iframe = NodePath("Area2D")
 
 [node name="EnemyStats" type="Node" parent="."]
 script = ExtResource("2_7l8r8")
-enemy_name = "Skeleton"
+enemy_name = "SKELETON"
 LV = 2
 HP = 16
 ATK = 4

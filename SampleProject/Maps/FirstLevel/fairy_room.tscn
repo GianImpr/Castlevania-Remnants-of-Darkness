@@ -1,23 +1,24 @@
-[gd_scene load_steps=43 format=4 uid="uid://be57nauej434c"]
+[gd_scene load_steps=44 format=4 uid="uid://be57nauej434c"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_uf00n"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_4p3d3"]
 [ext_resource type="Texture2D" uid="uid://bx451tat2qr51" path="res://assets/sprites/Tiles/InnocentDevilRoom.png" id="3_hkwvi"]
-[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="3_sfivm"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_sfivm"]
 [ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="5_0ilth"]
-[ext_resource type="Shader" path="res://scenes/aura.gdshader" id="5_dnpec"]
+[ext_resource type="Shader" path="res://SampleProject/Shaders/aura.gdshader" id="5_dnpec"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/devil_forging.gd" id="7_1gwmw"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="7_1iij1"]
-[ext_resource type="Texture2D" uid="uid://biwn5irdj8rpr" path="res://assets/sprites/Objects/DevilDoor.png" id="7_mmtkg"]
+[ext_resource type="Texture2D" uid="uid://biwn5irdj8rpr" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoor.png" id="7_mmtkg"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_g7ffl"]
-[ext_resource type="Texture2D" uid="uid://bpiy0qh3bsdit" path="res://assets/sprites/Objects/DevilDoorAura.png" id="8_jp7sw"]
+[ext_resource type="Texture2D" uid="uid://bpiy0qh3bsdit" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoorAura.png" id="8_jp7sw"]
 [ext_resource type="PackedScene" uid="uid://crov6smdsbwb4" path="res://SampleProject/familiars/Faerie/faerie.tscn" id="8_ns1be"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="9_ewq5u"]
 [ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="9_hrdd7"]
-[ext_resource type="Texture2D" uid="uid://c350vlw6uws2f" path="res://assets/sprites/InnocentDevils/FairySealed.png" id="9_o4ht3"]
-[ext_resource type="AudioStream" uid="uid://ccbtqu8n0yk0n" path="res://assets/sounds/Effects/InnocentForge.MP3" id="10_21tnh"]
+[ext_resource type="Texture2D" uid="uid://c350vlw6uws2f" path="res://assets/sprites/InnocentDevils/Fairy/FairySealed.png" id="9_o4ht3"]
+[ext_resource type="AudioStream" uid="uid://ccbtqu8n0yk0n" path="res://assets/sounds/Effects/Miscellaneous/InnocentForge.MP3" id="10_21tnh"]
 [ext_resource type="AudioStream" uid="uid://pgfes7qej7na" path="res://assets/sounds/InnocentDevils/Faerie/FaerieThankYou.MP3" id="14_takdq"]
 [ext_resource type="PackedScene" uid="uid://q43vbthycopx" path="res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn" id="18_rcncv"]
+[ext_resource type="PackedScene" uid="uid://df43umeqy115k" path="res://SampleProject/extra_scenes/stage_elements/dialogue_box_trigger.tscn" id="19_w2f5c"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_dfmu6"]
 
@@ -1355,7 +1356,7 @@ shape = SubResource("RectangleShape2D_n88jm")
 position = Vector2(-65.5, -51.9998)
 scale = Vector2(1, 0.4)
 flag_id = 10
-text = "Seems like a good place for devil forging."
+text = "HINT_10"
 time = 3.5
 
 [node name="PointLight2D" type="PointLight2D" parent="Background"]
@@ -1436,6 +1437,10 @@ tutorial_id = 6
 [node name="TutorialScreenTrigger3" parent="." instance=ExtResource("18_rcncv")]
 position = Vector2(151, 0)
 tutorial_id = 7
+
+[node name="DialogueBoxTrigger" parent="." instance=ExtResource("19_w2f5c")]
+position = Vector2(186, -6)
+flag_id = 3
 
 [connection signal="body_entered" from="Background/Fairy/ForgeTrigger" to="Background/Fairy" method="_on_forge_trigger_body_entered"]
 [connection signal="body_exited" from="Background/Fairy/ForgeTrigger" to="Background/Fairy" method="_on_forge_trigger_body_exited"]

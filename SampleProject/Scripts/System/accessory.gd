@@ -2,7 +2,7 @@ extends Resource
 class_name Accessory
 
 @export var accessory_name: String
-@export var accessory_description: String
+@export_multiline var accessory_description: String
 @export var element: Array[Global.Attribute]
 @export var ATK: int
 @export var DEF: int
@@ -15,3 +15,11 @@ class_name Accessory
 @export var value: int
 @export var max_quantity: int = 99
 @export var icon: Texture2D
+
+enum Accessories {
+	SCARF = 1,
+	EMERALD_RING = 2,
+	TALISMAN = 3,
+	FORTITUDE_NECKLACE = 4,
+	STUD_OF_CONCENTRATION = 5
+}

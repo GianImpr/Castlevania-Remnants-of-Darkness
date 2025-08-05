@@ -1,9 +1,94 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvikboxpt5o45"]
+[gd_scene load_steps=24 format=3 uid="uid://dvikboxpt5o45"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/dialogue_scene.gd" id="1_2shlh"]
 [ext_resource type="Texture2D" uid="uid://c08sind7c7n8c" path="res://assets/sprites/HUD/Faces/Hector/HalfBody.png" id="1_qijf7"]
-[ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Crop3.png" id="2_mt6ho"]
+[ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="2_mt6ho"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Event/dialogue_entry.gd" id="2_va3t4"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="3_wbmmy"]
+[ext_resource type="AudioStream" uid="uid://cqcf404qofb42" path="res://assets/sounds/Effects/Miscellaneous/TextSpeech.MP3" id="5_i2a1r"]
+[ext_resource type="Texture2D" uid="uid://cmm7ljl15sp6m" path="res://assets/sprites/HUD/Containers/DialogueBox/DialogueCursor.png" id="6_uqomd"]
+
+[sub_resource type="Resource" id="Resource_8f7hp"]
+script = ExtResource("2_va3t4")
+character = 0
+expression = 1
+dialogue_text = "An enigma? There are three tombstones, each with a shape and a number carved into them."
+position = 0
+
+[sub_resource type="Resource" id="Resource_o67wt"]
+script = ExtResource("2_va3t4")
+character = 0
+expression = 0
+dialogue_text = "The first one looks like a bat, the second one a skeleton, and the last one... a helmet."
+position = 0
+
+[sub_resource type="Resource" id="Resource_wtpr2"]
+script = ExtResource("2_va3t4")
+character = 0
+expression = 2
+dialogue_text = "And I must solve this to explore further beyond.
+How bothersome."
+position = 0
+
+[sub_resource type="Animation" id="Animation_f5om2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.607843)]
+}
+
+[sub_resource type="Animation" id="Animation_164q8"]
+resource_name = "change_expression"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6pn1"]
+_data = {
+"RESET": SubResource("Animation_f5om2"),
+"change_expression": SubResource("Animation_164q8")
+}
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a3xlh"]
 texture = ExtResource("2_mt6ho")
@@ -20,14 +105,329 @@ default_font_size = 32
 default_font = ExtResource("3_wbmmy")
 default_font_size = 32
 
-[node name="Dialogue" type="Node2D" node_paths=PackedStringArray("left_character", "right_character", "character_name", "text")]
+[sub_resource type="Animation" id="Animation_opgb0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueBox:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(864, 134)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftCharacter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 226)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightCharacter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(744, 226)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RichTextLabel:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cursor:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("RightCharacter:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LeftCharacter:self_modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("LeftCharacter/PreviousExpression:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("RightCharacter/PreviousExpression:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tm4qh"]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueBox:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(864, 40), Vector2(864, 134)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftCharacter:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-120, 226), Vector2(120, 226)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LeftCharacter:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.166667, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RightCharacter:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.166667, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RightCharacter:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(984, 226), Vector2(744, 226)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("LeftCharacter/PreviousExpression:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.166667, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("RightCharacter/PreviousExpression:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.166667, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xeb01"]
+resource_name = "swap"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftCharacter:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.501961, 0.501961, 0.501961, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightCharacter:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.501961, 0.501961, 0.501961, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bcehj"]
+_data = {
+"RESET": SubResource("Animation_opgb0"),
+"show": SubResource("Animation_tm4qh"),
+"swap": SubResource("Animation_xeb01")
+}
+
+[sub_resource type="Animation" id="Animation_r68bg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(826, 457)]
+}
+
+[sub_resource type="Animation" id="Animation_jq6sf"]
+resource_name = "move"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(826, 450), Vector2(826, 457), Vector2(826, 450)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_deuy4"]
+_data = {
+"RESET": SubResource("Animation_r68bg"),
+"move": SubResource("Animation_jq6sf")
+}
+
+[node name="Dialogue" type="Node2D" node_paths=PackedStringArray("left_character", "right_character", "character_name", "text", "wait_timer", "sound", "animation", "cursor")]
 script = ExtResource("1_2shlh")
+dialogue_test = Array[ExtResource("2_va3t4")]([SubResource("Resource_8f7hp"), SubResource("Resource_o67wt"), SubResource("Resource_wtpr2")])
 left_character = NodePath("LeftCharacter")
 right_character = NodePath("RightCharacter")
 character_name = NodePath("Label")
 text = NodePath("RichTextLabel")
+wait_timer = NodePath("Wait")
+dialogue_text = "So this is the monastery that emanates dark energy.
+How is it possible that the curse returned?"
+sound = NodePath("AudioStreamPlayer")
+animation = NodePath("AnimationPlayer")
+cursor = NodePath("Cursor")
 
 [node name="LeftCharacter" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 texture_filter = 2
 position = Vector2(120, 226)
 scale = Vector2(0.5, 0.5)
@@ -35,23 +435,53 @@ texture = ExtResource("1_qijf7")
 hframes = 5
 frame = 1
 
+[node name="PreviousExpression" type="Sprite2D" parent="LeftCharacter"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 2
+texture = ExtResource("1_qijf7")
+hframes = 5
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LeftCharacter"]
+root_node = NodePath("../PreviousExpression")
+libraries = {
+"": SubResource("AnimationLibrary_m6pn1")
+}
+
 [node name="RightCharacter" type="Sprite2D" parent="."]
 visible = false
-self_modulate = Color(0.5, 0.5, 0.5, 1)
+modulate = Color(0.501961, 0.501961, 0.501961, 1)
+self_modulate = Color(1, 1, 1, 0)
 texture_filter = 2
-position = Vector2(744, 185)
+position = Vector2(744, 226)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_qijf7")
 flip_h = true
 hframes = 5
 
+[node name="PreviousExpression" type="Sprite2D" parent="RightCharacter"]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 2
+texture = ExtResource("1_qijf7")
+flip_h = true
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RightCharacter"]
+root_node = NodePath("../PreviousExpression")
+libraries = {
+"": SubResource("AnimationLibrary_m6pn1")
+}
+
 [node name="DialogueBox" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0.772549)
+self_modulate = Color(1, 1, 1, 0)
 offset_top = 346.0
 offset_right = 864.0
-offset_bottom = 480.0
+offset_bottom = 386.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_a3xlh")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 modulate = Color(1, 0.760784, 0, 1)
 offset_left = 41.0
 offset_top = 362.0
@@ -61,14 +491,42 @@ theme = SubResource("Theme_h8blr")
 text = "Hector"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 offset_left = 59.0
 offset_top = 394.0
 offset_right = 804.0
-offset_bottom = 497.0
+offset_bottom = 461.0
 theme = SubResource("Theme_houn6")
 bbcode_enabled = true
-text = "Carmilla...
-I should've known that you were behind all of this."
-visible_characters = 0
+text = "And I must solve this to explore further beyond.
+How bothersome."
+visible_characters = 64
 visible_characters_behavior = 1
-visible_ratio = 0.0
+
+[node name="Wait" type="Timer" parent="."]
+wait_time = 0.03
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_i2a1r")
+volume_db = -10.0
+max_polyphony = 4
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bcehj")
+}
+
+[node name="Cursor" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(826, 457)
+texture = ExtResource("6_uqomd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cursor"]
+libraries = {
+"": SubResource("AnimationLibrary_deuy4")
+}
+autoplay = "move"
+
+[connection signal="timeout" from="Wait" to="." method="_on_wait_timeout"]

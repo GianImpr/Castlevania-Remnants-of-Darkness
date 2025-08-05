@@ -1,19 +1,19 @@
 [gd_scene load_steps=25 format=3 uid="uid://dp5hxkqh3r2d1"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/save_room_menu.gd" id="1_0kbg0"]
-[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SymphonyoftheNightfont.ttf" id="1_3j664"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/MenuButtons.gd" id="2_ga5p6"]
+[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="2_hg7qs"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_buttons_save_room.gd" id="3_abqqg"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_1w6yx"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_wbt3t"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_gcdub"]
-[ext_resource type="AudioStream" uid="uid://dqyf6u63hcg44" path="res://assets/sounds/Menu/Confirm.wav" id="7_oka46"]
-[ext_resource type="AudioStream" uid="uid://dkncwk1mfb0lp" path="res://assets/sounds/Menu/Cursor.wav" id="8_q7nu8"]
+[ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="7_oka46"]
+[ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="8_q7nu8"]
 [ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="9_63qly"]
 [ext_resource type="AudioStream" uid="uid://k0xc30ehu3h8" path="res://assets/sounds/Menu/HPItem.MP3" id="10_827hi"]
 
 [sub_resource type="Theme" id="Theme_21ors"]
-default_font = ExtResource("1_3j664")
+default_font = ExtResource("2_hg7qs")
 default_font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85b6g"]
@@ -122,22 +122,22 @@ stateless = true
 [node name="Save" type="Button" parent="PanelContainer/MenuButtons"]
 layout_mode = 2
 action_mode = 0
-text = "Save Game"
+text = "SAVE_GAME_BUTTON"
 flat = true
 script = ExtResource("2_ga5p6")
 
-[node name="Register" type="Button" parent="PanelContainer/MenuButtons"]
+[node name="Warp" type="Button" parent="PanelContainer/MenuButtons"]
 layout_mode = 2
 disabled = true
 action_mode = 0
-text = "Register Memorial Ticket"
+text = "? ? ?"
 flat = true
 script = ExtResource("2_ga5p6")
 
 [node name="Exit" type="Button" parent="PanelContainer/MenuButtons"]
 layout_mode = 2
 action_mode = 0
-text = "Exit"
+text = "EXIT_SAVE_BUTTON"
 flat = true
 script = ExtResource("2_ga5p6")
 

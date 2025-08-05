@@ -13,29 +13,29 @@ class_name InvOptions
 var cur_button: InventoryButton
 var functions: Array[Callable] = [changeWindowMode, changeResolution, changeScaling, changeVsync, changeFramerateDisplay, changeMasterVolume, changeSFXVolume, changeMusicVolume, changeVoiceVolume, changeControllerLayout, changeInputBuffer, changeDevice]
 var descriptions: Array[String] = [
-	"Change the window display mode. Objects may not be displayed properly on Stretch mode.",
+	"WINDOW_MODE_DESC",
 	
-	"Change window size, if in Windowed mode. Objects may not be displayed properly on 240p/720p.",
+	"WINDOW_RESOLUTION_DESC",
 	
-	"Change the way the objects are drawn. Viewport increases performance, but reduces image quality.",
+	"SPRITE_SCALING_DESC",
 	
-	"Enable or disable V-Sync. Disabling it might reduce input lag, but it can introduce tearing.",
+	"VERTICAL_SYNC_DESC",
 	
-	"Enable or disable an FPS counter.",
+	"SHOW_FRAMERATE_DESC",
 	
-	"Change the volume of the game.",
+	"MASTER_VOLUME_DESC",
 	
-	"Change the volume of sound effects.",
+	"SFX_VOLUME_DESC",
 	
-	"Change the volume of music.",
+	"MUSIC_VOLUME_DESC",
 	
-	"Change the volume of voices.",
+	"VOICE_VOLUME_DESC",
 	
-	"Pick which controller scheme the game should refer to when showing button icons.",
+	"CONTROLLER_LAYOUT_DESC",
 	
-	"Adjust the size of input buffering. Higher values can improve input feedback.",
+	"INPUT_BUFFERING_DESC",
 	
-	"Press this button to remap buttons on the selected device."
+	"INPUT_DEVICE_DESC"
 ]
 var sub_menu_buttons: Array[InventoryButton]
 var glow_timer: Timer = Timer.new()
@@ -194,15 +194,15 @@ func applySwaps() -> void:
 func updateIcons() -> void:
 	var index = 0
 	for button in binding_buttons.get_children():
-		button.text = button.get_name()
+		button.text = tr(button.get_name())
 		if settings["device"] == 0:
 			button.icon = load(path + button_icons[binding_order[index]] + ".png")
 		else:
 			button.icon = null
-			while (button.text.length()+button_icons[binding_order[index]].length() < 13):
+			while (button.text.length()+button_icons[binding_order[index]].length() < 20):
 				button.text += " "
-			if (button.text.length() > 13-button_icons[binding_order[index]].length()):
-				button.text = button.text.substr(0, 13-button_icons[binding_order[index]].length())
+			if (button.text.length() > 20-button_icons[binding_order[index]].length()):
+				button.text = button.text.substr(0, 20-button_icons[binding_order[index]].length())
 			button.text += button_icons[binding_order[index]]
 		index += 1
 		if index >= binding_order.size():
@@ -360,8 +360,8 @@ func initSubMenuButtons() -> void:
 					sub_menu_buttons.append(button)
 					button.desired_state = self
 					button["theme_override_styles/focus"] = button_glow
-					button.focus_neighbor_bottom = grid.get_child((index+2)%grid.get_child_count()).get_path()
-					button.focus_neighbor_top = grid.get_child((index-2)%grid.get_child_count()).get_path()
+					button.focus_neighbor_bottom = grid.get_child((index+3)%grid.get_child_count()).get_path()
+					button.focus_neighbor_top = grid.get_child((index-3)%grid.get_child_count()).get_path()
 					button.focus_neighbor_right = grid.get_child((index+1)%grid.get_child_count()).get_path()
 					button.focus_neighbor_left = grid.get_child((index-1)%grid.get_child_count()).get_path()
 					if index != grid.get_child_count()-1:
@@ -435,9 +435,9 @@ func on_game_button_pressed(which):
 func on_game_button_focused(which):
 	cur_button = which
 	if which.get_name() == "Quit game":
-		description.new_text = "Closes the game.\nBe sure to save your data before closing."
+		description.new_text = tr("QUIT_GAME_DESC")
 	else:
-		description.new_text = "Return to the title screen.\nBe sure to save your data."
+		description.new_text = tr("TITLE_SCREEN_DESC")
 	sound.play_sound_effect_from_library("cursor")
 
 
@@ -474,10 +474,10 @@ func changeResolution(offset: int, button: InventoryButton) -> void:
 func changeWindowMode(offset: int, button: InventoryButton) -> void:
 	var default_viewport: Vector2i = Vector2i(864, 480)
 	const resolutions: Array[float] = [0.5, 1, 1.5, 2, 3, 4]
-	const modes: Array[String] = ["Windowed", "Fullscreen", "Stretch"]
+	const modes: Array[String] = ["WINDOWED_LABEL", "FULLSCREEN_LABEL", "STRETCH_LABEL"]
 	settings["window_mode"] = posmod(settings["window_mode"]+offset,modes.size())
 	var setting_label: Label = button.get_parent().get_child(2)
-	setting_label.text = modes[settings["window_mode"]]
+	setting_label.text = tr(modes[settings["window_mode"]])
 	match settings["window_mode"]:
 		0:
 			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
@@ -505,27 +505,27 @@ func changeScaling(offset: int, button: InventoryButton) -> void:
 		get_tree().root.content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
 		
 func changeLight(offset: int, button: InventoryButton) -> void:
-	const modes: Array[String] = ["Enabled", "Disabled"]
+	const modes: Array[String] = ["ENABLED_LABEL", "DISABLED_LABEL"]
 	settings["light"] = posmod(settings["light"]+offset,modes.size())
 	var setting_label: Label = button.get_parent().get_child(2)
-	setting_label.text = modes[settings["light"]]
+	setting_label.text = tr(modes[settings["light"]])
 	Global.game.disable_lights = settings["light"] == 1
 
 func changeVsync(offset: int, button: InventoryButton) -> void:
-	const modes: Array[String] = ["Enabled", "Disabled"]
+	const modes: Array[String] = ["ENABLED_LABEL", "DISABLED_LABEL"]
 	settings["vsync"] = posmod(settings["vsync"]+offset,modes.size())
 	var setting_label: Label = button.get_parent().get_child(2)
-	setting_label.text = modes[settings["vsync"]]
+	setting_label.text = tr(modes[settings["vsync"]])
 	if settings["vsync"] == 0:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 		
 func changeFramerateDisplay(offset: int, button: InventoryButton) -> void:
-	const modes: Array[String] = ["No", "Yes"]
+	const modes: Array[String] = ["NO_LABEL", "YES_LABEL"]
 	settings["frames"] = posmod(settings["frames"]+offset,modes.size())
 	var setting_label: Label = button.get_parent().get_child(2)
-	setting_label.text = modes[settings["frames"]]
+	setting_label.text = tr(modes[settings["frames"]])
 	Global.fps_display.visible = settings["frames"] == 1
 	
 func changeMasterVolume(offset: int, button: InventoryButton) -> void:
@@ -567,14 +567,14 @@ func changeInputBuffer(offset: int, button: InventoryButton) -> void:
 	if settings["buffer"] > 0:
 		setting_label.text = str(settings["buffer"]) + " frames"
 	else:
-		setting_label.text = "Disabled"
+		setting_label.text = tr("DISABLED_LABEL")
 	InputBuffer.BUFFER_WINDOW = settings["buffer"]*FRAME_DURATION_MSEC
 
 func changeDevice(offset: int, button: InventoryButton) -> void:
 	settings["device"] = posmod(settings["device"]+offset,2)
 	var setting_label: Label = button.get_parent().get_child(2)
 	if settings["device"] == 0:
-		setting_label.text = "Controller"
+		setting_label.text = tr("CONTROLLER_LABEL")
 		match settings["layout"]:
 			0:
 				Global.game.controller_scheme = Global.game.ControllerScheme.PLAYSTATION
@@ -583,6 +583,6 @@ func changeDevice(offset: int, button: InventoryButton) -> void:
 			2: 
 				Global.game.controller_scheme = Global.game.ControllerScheme.NINTENDO
 	else:
-		setting_label.text = "Keyboard"
+		setting_label.text = tr("KEYBOARD_LABEL")
 		Global.game.controller_scheme = Global.game.ControllerScheme.KEYBOARD
 	setButtons(Global.game.controller_scheme)

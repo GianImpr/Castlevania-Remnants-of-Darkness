@@ -12,12 +12,13 @@ class_name Candle
 func destroy():
 	var explosion = explosion_scene.instantiate()
 	get_parent().get_parent().call_deferred("add_child", explosion)
-	if Global.player.stats.Stats["MP"] == Global.player.stats.Stats["MMP"] and ((Global.player.innocent_devil != null and Global.player.innocent_devil.stats.Stats["Hearts"] == Global.player.innocent_devil.stats.Stats["MHearts"]) or Global.player.innocent_devil == null):
+	if Global.player.stats.Stats["MP"] == Global.player.stats.Stats["MMP"]:
 		var coin = coin_scene.instantiate()
 		get_parent().get_parent().call_deferred("add_child", coin)
 		coin.global_position = global_position
 	else:
 		var heart = heart_scene.instantiate()
+		heart.can_be_red = false
 		get_parent().get_parent().call_deferred("add_child", heart)
 		heart.global_position = global_position
 	explosion.global_position = global_position

@@ -9,12 +9,13 @@ func ready():
 	visible = false
 
 func play():
-	visible = true
 	animation.play("swing")
+
 	
 func play_air():
-	visible = true
 	animation.play("swing_air")
+	visible = true
+
 
 func stop():
 	visible = false

@@ -57,7 +57,7 @@ func can_drop_ledge():
 
 #Allows the player to guard if they have Fortitude Gauntlet (Skill ID 1)
 func can_guard():
-	if player.stats.findItem(1, player.stats.skill_inventory):
+	if player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, player.stats.skill_inventory):
 		can_perform("guard", false)
 		player.stats.Stats["Guard"] = max(player.stats.Stats["Guard"], 1)
 	else:
@@ -203,8 +203,10 @@ func _can_activate_magic():
 		return
 	if InputBuffer.is_action_press_buffered("circle"):
 		if not player.enabled_magic:
+			player.aura.modulate = player.relicColor()
 			player.activating_magic = true
 			player.enabled_magic = true
+			play_relic_sound()
 			sound.play_sound_effect_from_library("activate_relic")
 			var tweener = get_tree().create_tween()
 			tweener.tween_property(player.sprite, "self_modulate", player.relicColor()*STARTING_GLOW_INTENSITY, STARTING_GLOW_DURATION)
@@ -215,16 +217,26 @@ func _can_activate_magic():
 			await tweener.finished
 			player.activating_magic = false
 			return
-		player.enabled_magic = not player.enabled_magic
-		player.aura.visible = player.enabled_magic
+		stop_relic_sound()
+		player.enabled_magic = false
+		player.aura.visible = false
 		var tween = get_tree().create_tween()
 		tween.tween_property(player.sprite, "self_modulate", DEACTIVATING_RELIC_GLOW_COLOR, DEACTIVATING_RELIC_GLOW_DURATION)
 		await tween.finished
 		tween = get_tree().create_tween()
-		player.aura.visible = player.enabled_magic
+		player.aura.visible = false
 		tween.tween_property(player.sprite, "self_modulate", NORMAL_COLOR, TIME_TO_RETURN_TO_NORMAL_COLOR)
 		await tween.finished
 
+# Plays sounds if the relic has any while it stays active
+func play_relic_sound() -> void:
+	match player.stats.equipment["relic"]-1:
+		Relic.Relics.AGUNIS_LAUREL:
+			player.relic_sounds.play_sound_effect_from_library("aguni_laurel")
+			
+# Stops sounds if the relic had any playing while it was active
+func stop_relic_sound() -> void:
+	player.relic_sounds.stop()
 
 func stay_crouched():
 	player.skip_crouch_anim = true
@@ -250,21 +262,21 @@ func can_die():
 		Transitioned.emit(self, "dying")
 		
 func attack_anim_suffix() -> String:
-	var anims = ["", "_fist", "_axe"]
+	var anims = ["", "_greatsword", "_axe", "", "_fist"]
 	if player.stats.equipment["weapon"] == 0:
-		return anims[1]
+		return anims[4]
 	return anims[player.stats.searchItemInCompendium(player.stats.equipment["weapon"], player.stats.weapon_compendium).type]
 
 func get_attack_speed() -> float:
-	var speeds = [2, 2, 1]
+	var speeds = [2, 1, 1, 1, 2]
 	if player.stats.equipment["weapon"] == 0:
-		return speeds[1]
+		return speeds[4]
 	return speeds[player.stats.searchItemInCompendium(player.stats.equipment["weapon"], player.stats.weapon_compendium).type]
 
 func get_attack_sound() -> String:
-	var sounds = ["sword", "punch", "axe"]
+	var sounds = ["sword", "greatsword", "axe", "", "punch"]
 	if player.stats.equipment["weapon"] == 0:
-		return sounds[1]
+		return sounds[4]
 	return sounds[player.stats.searchItemInCompendium(player.stats.equipment["weapon"], player.stats.weapon_compendium).type]
 
 func is_above_player_within_range(horizontal_range: float, min_vertical_distance: float) -> bool:

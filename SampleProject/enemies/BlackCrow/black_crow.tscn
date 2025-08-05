@@ -1,0 +1,417 @@
+[gd_scene load_steps=30 format=3 uid="uid://bcqff14dmgwpf"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/BlackCrow/black_crow.gd" id="1_vciy4"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_cs74y"]
+[ext_resource type="Texture2D" uid="uid://dk1f1le3qu1c1" path="res://assets/sprites/Enemies/BlackCrow.png" id="3_ip7ip"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_s14ig"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_2bmj8"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="6_64tsp"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BlackCrow/BlackCrowWaiting.gd" id="7_o2jy0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_qkj6v"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="8_g61rf"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BlackCrow/BlackCrowIdle.gd" id="8_jn2oy"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BlackCrow/BlackCrowDying.gd" id="9_miact"]
+[ext_resource type="AudioStream" uid="uid://bfh28uhcyxp63" path="res://assets/sounds/Enemies/BlackCrow/CrowMove.MP3" id="9_ti80n"]
+[ext_resource type="AudioStream" uid="uid://c8tebvyyqybof" path="res://assets/sounds/Enemies/BlackCrow/CrowDie.MP3" id="10_okylf"]
+[ext_resource type="Script" path="res://SampleProject/enemies/BlackCrow/BlackCrowMoving.gd" id="10_x6lot"]
+[ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="14_0l4nn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnvxm"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhv3s"]
+size = Vector2(326.5, 107.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30g68"]
+size = Vector2(21.5, 19.5)
+
+[sub_resource type="Animation" id="Animation_6rkau"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0h45y"]
+resource_name = "dead"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hurtbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StateMachine/Dying")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explode"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:rotation")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.72788]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lgidi"]
+resource_name = "fly"
+length = 0.25
+loop_mode = 2
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_shiug"]
+resource_name = "waiting"
+length = 2.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0, 1, 2, 1, 0, 1, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cx2f5"]
+_data = {
+"RESET": SubResource("Animation_6rkau"),
+"dead": SubResource("Animation_0h45y"),
+"fly": SubResource("Animation_lgidi"),
+"waiting": SubResource("Animation_shiug")
+}
+
+[sub_resource type="Resource" id="Resource_sv85p"]
+script = ExtResource("8_g61rf")
+Tag = "move"
+stream = ExtResource("9_ti80n")
+
+[sub_resource type="Resource" id="Resource_iryxi"]
+script = ExtResource("8_g61rf")
+Tag = "die"
+stream = ExtResource("10_okylf")
+
+[sub_resource type="Resource" id="Resource_v6au1"]
+script = ExtResource("7_qkj6v")
+sound_effects = Array[ExtResource("8_g61rf")]([SubResource("Resource_sv85p"), SubResource("Resource_iryxi")])
+
+[sub_resource type="GDScript" id="GDScript_q6pfq"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="Curve" id="Curve_32cqo"]
+max_value = 5.0
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_v1u0i"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="BlackCrow" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_vciy4")
+vision = NodePath("Vision")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Hitbox")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Iframe")
+hitbox_iframe = NodePath("Hitbox")
+blood_particles = NodePath("BloodDamage")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_cs74y")
+enemy_name = "BLACK_CROW"
+LV = 9
+HP = 8
+ATK = 30
+EXP = 5
+weaknesses = Array[int]([1, 2, 6])
+tolerances = Array[int]([7])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_ip7ip")
+offset = Vector2(-7, -76)
+hframes = 3
+vframes = 3
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2(-5, -3.5)
+shape = SubResource("RectangleShape2D_hnvxm")
+
+[node name="Vision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+visible = false
+position = Vector2(0.75, 3.25)
+shape = SubResource("RectangleShape2D_lhv3s")
+debug_color = Color(0.478145, 0.588098, 0, 0.42)
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-4.75, -2.75)
+shape = SubResource("RectangleShape2D_30g68")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cx2f5")
+}
+
+[node name="Iframe" type="Timer" parent="."]
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+position = Vector2(0, -15)
+script = ExtResource("4_s14ig")
+damage_node = ExtResource("5_2bmj8")
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("6_64tsp")
+audio_library = SubResource("Resource_v6au1")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_q6pfq")
+initial_state = NodePath("Waiting")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Waiting" type="Node" parent="StateMachine"]
+script = ExtResource("7_o2jy0")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_duration")]
+script = ExtResource("8_jn2oy")
+idle_duration = NodePath("Duration")
+idle_duration_variation = 0.3
+
+[node name="Duration" type="Timer" parent="StateMachine/Idle"]
+one_shot = true
+
+[node name="Dying" type="Node" parent="StateMachine"]
+script = ExtResource("9_miact")
+explosion_scene = ExtResource("14_0l4nn")
+DESCENDING_SPEED = 100.0
+
+[node name="Moving" type="Node" parent="StateMachine"]
+script = ExtResource("10_x6lot")
+MAX_SPEED = 300.0
+flight_duration = 1.2
+flight_duration_variation = 0.4
+altitude_random_offset = 100.0
+
+[node name="BloodDamage" type="CPUParticles2D" parent="."]
+position = Vector2(-3.5, -3.5)
+emitting = false
+amount = 12
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_32cqo")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_v1u0i")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Vision" to="StateMachine/Waiting" method="_on_vision_body_entered"]
+[connection signal="timeout" from="Iframe" to="." method="_on_hitbox_iframe_timeout"]
+[connection signal="timeout" from="StateMachine/Idle/Duration" to="StateMachine/Idle" method="_on_duration_timeout"]

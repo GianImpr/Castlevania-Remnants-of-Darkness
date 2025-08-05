@@ -1,7 +1,9 @@
+@tool
 extends Node2D
 class_name DialogueBox
 
 enum Emotions {
+	STAY,
 	NEUTRAL,
 	ANNOYED,
 	HAPPY,
@@ -14,14 +16,169 @@ enum Character {
 	RIGHT
 }
 
+@export var test: bool:
+	set(value):
+		dialogue_entries = dialogue_test
+		_startDialogue()
+		
+		
+@export var dialogue_test: Array[Dialogue]
+@export var go_ahead: bool
 @export var left_character: Sprite2D
 @export var right_character: Sprite2D
 @export var character_name: Label
 @export var text: RichTextLabel
+@export var wait_timer: Timer
+@export_multiline var dialogue_text: String
+@export var sound: AudioStreamPlayer
+@export var animation: AnimationPlayer
+@export var cursor: Sprite2D
+static var dialogue_entries: Array
 
-func setEmotion(emotion: Emotions, character: Character) -> void:
-	if character == Character.LEFT:
-		left_character.frame = emotion
-	else:
-		right_character.frame = emotion
+const COMMA_WAIT_TIME: float = 0.3
+const PERIOD_WAIT_TIME: float = 0.6
+const NORMAL_DIALOGUE_WAIT_TIME: float = 0.03
+
+var has_to_release_button: bool = false
+var character_speaking: Character = Character.LEFT
+var current_dialogue_entry: int = 0
+var active: bool = false
+
+func _ready() -> void:
+	if not Engine.is_editor_hint():
+		Global.dialogue_screen = self
+	DialogueBoxTrigger.startDialogue = _startDialogue
+
+func _process(delta: float) -> void:
+	if active and not animation.is_playing() and (go_ahead or Input.is_action_just_pressed("ui_accept")) and text.visible_ratio == 1 and not has_to_release_button:
+		go_ahead = false
+		current_dialogue_entry += 1
+		if current_dialogue_entry < dialogue_entries.size():
+			setDialogueBox()
+		else:
+			_endDialogue()
+			
+	if active and text.visible_characters < text.get_total_character_count() and Input.is_action_just_pressed("ui_accept"):
+		#text.visible_ratio = 0.99
+		has_to_release_button = true
 		
+	if Input.is_action_just_released("ui_accept"):
+		has_to_release_button = false
+
+func setDialogueBox() -> void:
+	var entry: Dialogue = dialogue_entries[current_dialogue_entry]
+	setCharacterName(Dialogue.Names.values()[entry.character])
+	setText(entry.dialogue_text, entry.expression, entry.position)
+	
+
+func setCharacterName(name_text: String) -> void:
+	character_name.text = name_text
+
+func setEmotion(emotion, character) -> void:
+	if emotion == 0:
+		return
+		
+	if character == Character.LEFT:
+		left_character.get_child(0).frame = left_character.frame
+		left_character.frame = emotion-1
+		left_character.get_child(1).play("change_expression")
+	else:
+		right_character.get_child(0).frame = right_character.frame
+		right_character.frame = emotion-1
+		right_character.get_child(1).play("change_expression")
+
+func setText(dialogue: String, emotion: Dialogue.Emotions = Dialogue.Emotions.KEEP_CURRENT, character = character_speaking) -> void:
+	if character != character_speaking:
+		swapChar(character)
+		
+	if emotion != Emotions.STAY:
+		setEmotion(emotion, character)
+		
+	text.visible_characters = 0
+	cursor.visible = false
+	text.text = tr(dialogue)
+	wait_timer.wait_time = NORMAL_DIALOGUE_WAIT_TIME
+	wait_timer.start()
+	
+func swapChar(character: Character) -> void:
+	if character_speaking == character:
+		return
+	
+	character_speaking = character
+	if character == Character.LEFT:
+		animation.play_backwards("swap")
+	else:
+		animation.play("swap")
+		
+func _on_wait_timeout() -> void:
+	if text.get_total_character_count() == text.visible_characters:
+		cursor.visible = true
+		cursor.get_child(0).seek(0)
+		wait_timer.stop()
+		return
+		
+	text.visible_characters += 1
+	
+	match text.text[text.visible_characters-1]:
+		",":
+			wait_timer.wait_time = COMMA_WAIT_TIME
+		".":
+			wait_timer.wait_time = PERIOD_WAIT_TIME
+		"?":
+			if text.get_total_character_count()-1 > text.visible_characters and text.text[text.visible_characters] == "!":
+				wait_timer.wait_time = NORMAL_DIALOGUE_WAIT_TIME
+			else:
+				wait_timer.wait_time = PERIOD_WAIT_TIME
+				
+
+		"!":
+			wait_timer.wait_time = PERIOD_WAIT_TIME
+		_:
+			wait_timer.wait_time = NORMAL_DIALOGUE_WAIT_TIME
+			
+	if text.visible_characters == text.get_total_character_count():
+		wait_timer.wait_time = NORMAL_DIALOGUE_WAIT_TIME
+		
+	if text.visible_characters % 2 == 0:
+		sound.play()
+	wait_timer.start()
+
+func _endDialogue() -> void:
+	left_character.get_child(0).frame = left_character.frame
+	right_character.get_child(0).frame = right_character.frame
+	character_name.visible = false
+	text.visible = false
+	cursor.visible = false
+	animation.play_backwards("show")
+	await animation.animation_finished
+	active = false
+	if not Engine.is_editor_hint():
+		Global.HUD.visible = true
+		Global.player.unfreeze()
+	
+func _startDialogue() -> void:
+	if not Engine.is_editor_hint():
+		Global.player.freeze()
+		Global.HUD.visible = false
+
+	current_dialogue_entry = 0
+	
+	if dialogue_entries.size() == 0:
+		push_error("There are no dialogue entries")
+	
+	setCharacterPortrait()
+	
+	left_character.get_child(0).frame = left_character.frame
+	right_character.get_child(0).frame = right_character.frame
+	animation.play("show")
+	await animation.animation_finished
+	setDialogueBox()
+	character_name.visible = true
+	text.visible = true
+	active = true
+
+func setCharacterPortrait() -> void:
+	if dialogue_entries[current_dialogue_entry].position == Dialogue.Position.LEFT:
+		left_character.texture = load(Dialogue.Sprites.values()[dialogue_entries[current_dialogue_entry].character])
+	else:
+		right_character.texture = load(Dialogue.Sprites.values()[dialogue_entries[current_dialogue_entry].character])

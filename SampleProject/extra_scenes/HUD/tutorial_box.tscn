@@ -7,148 +7,83 @@
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_dp0oq"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="4_ghrps"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_2jnfb"]
-[ext_resource type="Texture2D" uid="uid://dlgbsgjhyq3ii" path="res://assets/sprites/HUD/TutorialImages/Relic.png" id="5_vfp2l"]
+[ext_resource type="Texture2D" uid="uid://dlgbsgjhyq3ii" path="res://assets/images/Relic.png" id="5_vfp2l"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_glbrx"]
 [ext_resource type="Texture2D" uid="uid://cp25oophuxjaq" path="res://assets/images/RedSpark.png" id="6_xnnn0"]
 [ext_resource type="Texture2D" uid="uid://cx1wxmu3nscdw" path="res://assets/images/PerfectGuard.png" id="7_m14ni"]
-[ext_resource type="AudioStream" uid="uid://cr25eu7ste64s" path="res://assets/sounds/Effects/TutorialPopup.MP3" id="7_vu011"]
+[ext_resource type="AudioStream" uid="uid://cr25eu7ste64s" path="res://assets/sounds/Effects/Miscellaneous/TutorialPopup.MP3" id="7_vu011"]
 [ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="8_hwhci"]
 [ext_resource type="Texture2D" uid="uid://ct0h83wstlnl3" path="res://assets/images/Hearts.png" id="8_pxr1b"]
 [ext_resource type="Texture2D" uid="uid://bho5p0s6oes73" path="res://assets/images/InnocentFairy.png" id="9_rfsp2"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="10_ff42d"]
-[ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Crop.png" id="11_ur5mt"]
+[ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="11_ur5mt"]
 [ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="12_48lxj"]
 
 [sub_resource type="Resource" id="Resource_pakqc"]
 script = ExtResource("2_fcv6a")
 title = "GUARDING"
-description = "By holding [[R1]] down, Hector can block incoming attacks, negating most, if not
-all damage.
-
-If the blocked attack's base damage is high, some chip damage will still be taken.
-Hector can only block a couple blows at a time, after which he will suffer a guard
-break, leaving him vulnerable."
+description = "GUARDING_DESC"
 image = ExtResource("3_e0b5c")
 condition = "Global.player.stats.findItem(1, Global.player.stats.skill_inventory)"
 
 [sub_resource type="Resource" id="Resource_v7vry"]
 script = ExtResource("2_fcv6a")
-title = "GUARD HEALTH AND COMBO BREAKS"
-description = "Guard health represents how many hits Hector
-can block before suffering from a guard break.
-
-The two orbs beneath the MP gauge represent
-remaining Guard health, which recovers over
-time.
-
-Enemies can juggle Hector if they sorround him.
-To minimize damage taken, quickly guard the attacks."
+title = "GUARD_HEALTH"
+description = "GUARD_HEALTH_DESC"
 image = ExtResource("3_cyhd6")
 condition = "Global.player.stats.findItem(1, Global.player.stats.skill_inventory)"
 
 [sub_resource type="Resource" id="Resource_ce2tk"]
 script = ExtResource("2_fcv6a")
 title = "RELICS"
-description = "Relics are powerful items that
-allow Hector to trigger special effects, 
-at the cost of some MP.
-
-Press [[Circle]] while guarding to activate the
-currently equipped relic."
+description = "RELICS_DESC"
 image = ExtResource("5_vfp2l")
 condition = "Global.player.stats.relic_inventory.size() > 0 or Global.player.stats.equipment[\"relic\"] > 0"
 
 [sub_resource type="Resource" id="Resource_om33j"]
 script = ExtResource("2_fcv6a")
-title = "RED SPARK ATTACK"
-description = "When an enemy glows red, the attack they're going to
-unleash will instantly break Hector's guard, dealing
-increased damage.
-
-Dodge this kind of attack to avoid taking damage."
+title = "RED_SPARK"
+description = "RED_SPARK_DESC"
 image = ExtResource("6_xnnn0")
 condition = ""
 
 [sub_resource type="Resource" id="Resource_1trho"]
 script = ExtResource("2_fcv6a")
-title = "PERFECT GUARD"
-description = "Platinum Arm is a skill that allows Hector to perfect guard attacks.
-Upon guarding right before an enemy attack, Hector will restore
-some MP and Hearts depending on the strength of the blocked attack.
-
-Perfect guarding Red Spark attacks will increase MP restoration."
+title = "PERFECT_GUARD"
+description = "PERFECT_GUARD_DESC"
 image = ExtResource("7_m14ni")
 condition = "Global.player.stats.findItem(3, Global.player.stats.skill_inventory)"
 
 [sub_resource type="Resource" id="Resource_4uphu"]
 script = ExtResource("2_fcv6a")
-title = "INNOCENT DEVILS"
-description = "Innocent Devils are loyal creatures that
-will follow Hector throughout his journey.
-
-They can help in battle with offensive or
-supportive skills and can aid Hector by
-unlocking some secret paths or treasures.
-
-Similarly to Hector, they can gain EXP and level
-up to become stronger while deployed.
-
-By pressing [[Triangle]], they'll use their special skills."
+title = "INNOCENT_DEVILS"
+description = "INNOCENT_DEVILS_DESC"
 condition = "Global.player.innocent_devil != null"
 
 [sub_resource type="Resource" id="Resource_nl7m1"]
 script = ExtResource("2_fcv6a")
-title = "HEART METER"
-description = "Innocent Devils use hearts as their energy and whenever they use a special skill
-or take damage in combat, their Heart meter decreases.
-
-Switch the current selected skill by moving the right stick
-left or right. (or Left and Right arrows if using a keyboard)
-
-When they run out of Hearts, they will dissolve, and can only come back
-when they've recovered a good amount of Hearts."
+title = "HEART_METER"
+description = "HEART_METER_DESC"
 image = ExtResource("8_pxr1b")
 condition = "Global.player.innocent_devil != null"
 
 [sub_resource type="Resource" id="Resource_j2x7b"]
 script = ExtResource("2_fcv6a")
-title = "FAIRY-TYPE INNOCENT DEVIL"
-description = "Fairy-Type Innocent Devils have the ability to heal Hector and grant him
-some passive buffs during battle.
-
-They can also reveal secret paths or open locked treasure chests.
-
-Cannot be harmed by enemies."
+title = "FAIRY_ID"
+description = "FAIRY_ID_DESC"
 image = ExtResource("9_rfsp2")
 condition = "Global.player.innocent_devil != null"
 
 [sub_resource type="Resource" id="Resource_fl6h1"]
 script = ExtResource("2_fcv6a")
 title = "ORBS"
-description = "Orbs are special objects that enhance the power of Hector's relics
-without needing to equip them, so collecting one of them will automatically
-power up their respective relic's powers.
-
-Relics are enhanced by boosting the effectiveness of their special moves,
-while also unlocking another move.
-
-Check the Orb's description in the Skills section for more information
-about what it actually powers up."
+description = "ORBS_DESC"
 condition = ""
 
 [sub_resource type="Resource" id="Resource_defet"]
 script = ExtResource("2_fcv6a")
-title = "CYAN ORB"
-description = "This orb enhances the strength of Indigo Cross.
-
-Icicles summoned with the frost shield get a 50% damage boost,
-while also having their durability doubled.
-
-By pressing [[R1]]+[[Square]], Hector can use [color=yellow]Ice Affinity[/color], which
-causes all of his normal attacks to inflict ice damage, at the cost
-of 3 MP per hit.
-[color=#ff8080]This technique will not work on weapons that already have an
-elemental attribute.[/color]"
+title = "CYAN_ORB"
+description = "CYAN_ORB_DESC"
 condition = ""
 
 [sub_resource type="Theme" id="Theme_ysinr"]
@@ -301,16 +236,6 @@ stretch_mode = 3
 layout_mode = 2
 theme_override_constants/outline_size = 8
 bbcode_enabled = true
-text = "This orb enhances the strength of Indigo Cross.
-
-Icicles summoned with the frost shield get a 50% damage boost,
-while also having their durability doubled.
-
-By pressing [[R1]]+[[Square]], Hector can use [color=yellow]Ice Affinity[/color], which
-causes all of his normal attacks to inflict ice damage, at the cost
-of 3 MP per hit.
-[color=#ff8080]This technique will not work on weapons that already have an
-elemental attribute.[/color]"
 fit_content = true
 scroll_active = false
 scroll_following = true
@@ -334,7 +259,7 @@ scroll_active = false
 scroll_following = true
 autowrap_mode = 0
 script = ExtResource("4_ghrps")
-new_text = "[right]Press [[Cross]] to continue.[/right]"
+new_text = "TUTORIAL_BOX_CONTINUE"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

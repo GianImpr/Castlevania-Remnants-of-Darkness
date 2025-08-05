@@ -5,6 +5,7 @@ class_name SpawnEnemy
 @export var enemy: PackedScene
 @export var enemy_type: String
 @export var spawn_instantly: bool
+@export var LV_bonus: int = 0
 @export var offset: Vector2
 @export var spawn_range: Vector2
 @export_category("Respawning")
@@ -66,10 +67,14 @@ func _playSpawn():
 func _spawnEnemy():
 	summoned_enemies += 1
 	var enemy_node = enemy.instantiate()
+	enemy_node.stats.LV += LV_bonus
+	enemy_node.stats.ATK += LV_bonus * 2.5
 	get_parent().add_child(enemy_node)
-	enemy_node.global_position = global_position - offset  
+	enemy_node.global_position = global_position - offset
 	if "activated_AI" in enemy_node:
 		enemy_node.activated_AI = true
+	elif "ai_activated" in enemy_node:
+		enemy_node.ai_activated = true
 	enemy_node.modulate = Color(1, 0, 1, 0)
 	enemy_node.process_mode = Node.PROCESS_MODE_DISABLED
 	var tween = get_tree().create_tween()
@@ -94,7 +99,7 @@ func checkAllEnemies():
 func checkSameTypeEnemies():
 	var enemy_number: int
 	for child in get_parent().get_children():
-		if child is Enemy and child.get_name() == enemy_type:
+		if child is Enemy and child.stats.enemy_name == enemy_type:
 			enemy_number += 1
 	return enemy_number
 	

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_eu36r"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_rtol7"]
-[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="2_racxl"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="2_racxl"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="3_sog0l"]
 [ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="5_a46wb"]
 [ext_resource type="PackedScene" uid="uid://doars67ccns6p" path="res://SampleProject/extra_scenes/stage_elements/monastery_platform.tscn" id="5_k0frb"]
@@ -883,10 +883,14 @@ position = Vector2(433, 1561)
 [node name="Pick-up" parent="Items" instance=ExtResource("9_mp7ca")]
 position = Vector2(80, 2026)
 type = 7
+id = 1
+current_item_name = "Scarf"
 pickup_flag = 2
 
 [node name="Pick-up2" parent="Items" instance=ExtResource("9_mp7ca")]
 position = Vector2(80, 462)
+id = 1
+current_item_name = "Potion"
 pickup_flag = 3
 
 [node name="Candles" type="Node" parent="."]
@@ -915,15 +919,14 @@ position = Vector2(196, 342)
 position = Vector2(80, 2001)
 scale = Vector2(1.48208, 0.0877653)
 flag_id = 3
-text = "Press [[Start]] to
-open the inventory."
+text = "HINT_3"
 time = 3.0
 
 [node name="HintBoxTrigger2" parent="Tutorial" instance=ExtResource("11_rxmm7")]
 position = Vector2(156, 2081)
 scale = Vector2(1, 0.68)
 flag_id = 9
-text = "Press [[L1]] to backdash."
+text = "HINT_9"
 time = 2.0
 
 [node name="HardModeOnly" type="Node" parent="."]

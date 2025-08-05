@@ -7,6 +7,7 @@ extends RigidBody2D
 var direction: int
 
 func _ready() -> void:
+	sprite.texture = Global.player.sprite.weapon.texture
 	linear_velocity = SPEED
 	direction = Global.player.facing_position
 	linear_velocity.x *= direction

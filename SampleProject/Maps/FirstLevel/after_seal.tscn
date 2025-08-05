@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_r54ql"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_xfjyp"]
-[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="3_catg0"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_catg0"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="4_sc3ta"]
 [ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="5_uvr8k"]
 [ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="6_dlt6o"]
@@ -840,13 +840,15 @@ tile_set = SubResource("TileSet_2sh7r")
 [node name="Pick-up" parent="." instance=ExtResource("5_uvr8k")]
 position = Vector2(64, 339)
 type = 8
+id = 1
+current_item_name = "Fortitude Gauntlet"
 pickup_flag = 7
 
 [node name="HintBoxTrigger" parent="." instance=ExtResource("6_dlt6o")]
 position = Vector2(64, 339)
 scale = Vector2(1, 0.08)
 flag_id = 5
-text = "You have obtained a skill."
+text = "HINT_5"
 time = 4.0
 
 [node name="Candles" type="Node" parent="."]

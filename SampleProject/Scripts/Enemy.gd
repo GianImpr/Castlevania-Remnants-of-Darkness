@@ -10,21 +10,17 @@ var direction := 1
 @export var hitbox_iframe: Area2D
 @export var ray_cast_2d_left: RayCast2D
 @export var ray_cast_2d_right: RayCast2D
+@export var blood_particles: CPUParticles2D
 static var body_hitbox_on_cooldown: bool = false
-static var body_hitbox_cooldown_timer: Timer
 static var INVULNERABILITY_DURATION: float = 1
 
 func _ready() -> void:
-	if body_hitbox_cooldown_timer != null:
-		body_hitbox_cooldown_timer.autostart = true
-	else:
-		body_hitbox_on_cooldown = false
-		hitbox_iframe.set_collision_mask_value(2, true)
+	body_hitbox_on_cooldown = false
+	hitbox_iframe.set_collision_mask_value(2, true)
 
 
 func _process(delta: float) -> void:
-	if body_hitbox_cooldown_timer != null:
-		hitbox_iframe.set_collision_mask_value(2, (not body_hitbox_on_cooldown or body_hitbox_cooldown_timer.is_stopped()))
+	hitbox_iframe.set_collision_mask_value(2, (not body_hitbox_on_cooldown))
 	
 func turn_on_wall():
 	if ray_cast_2d_right.is_colliding():
@@ -79,12 +75,7 @@ func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float
 func hit_target(multiplier: float, body, attack_hitbox = hitbox_iframe, chip_damage: int = 0, guard_break: bool = false, attribute: Global.Attribute = Global.Attribute.HIT, rehit_time: float = 1):
 	if not body_hitbox_on_cooldown:
 		body_hitbox_on_cooldown = true
-		if body_hitbox_cooldown_timer == null:
-			body_hitbox_cooldown_timer = Timer.new()
-			body_hitbox_cooldown_timer.one_shot = true
-			body_hitbox_cooldown_timer.timeout.connect(resetInvulnerability)
-			add_child(body_hitbox_cooldown_timer)
-		body_hitbox_cooldown_timer.start(INVULNERABILITY_DURATION)
+		get_tree().create_timer(INVULNERABILITY_DURATION).timeout.connect(resetInvulnerability)
 		var damage = calculate_damage(body, multiplier, chip_damage, guard_break, attribute)
 		apply_damage(body, damage, attack_hitbox, rehit_time)
 
@@ -92,5 +83,5 @@ func resetHitbox(attack_hitbox: Area2D) -> void:
 	if stats.HP > 0:
 		attack_hitbox.set_deferred("monitoring", true)
 
-func resetInvulnerability() -> void:
+static func resetInvulnerability() -> void:
 	body_hitbox_on_cooldown = false

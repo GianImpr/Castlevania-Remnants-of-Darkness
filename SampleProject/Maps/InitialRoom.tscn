@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=4 uid="uid://dqb30o5s3aupu"]
 
-[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="1_7nul7"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="1_7nul7"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_47lno"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_qgny4"]
-[ext_resource type="PackedScene" uid="uid://bpbuc4imoao83" path="res://SampleProject/enemies/zombie.tscn" id="3_3mi6o"]
+[ext_resource type="PackedScene" uid="uid://bpbuc4imoao83" path="res://SampleProject/enemies/Zombie/zombie.tscn" id="3_3mi6o"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/Spawners/zombie_spawner.gd" id="4_gmqd0"]
 [ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="4_qd0qw"]
 [ext_resource type="PackedScene" uid="uid://des8o3jbf3a4m" path="res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn" id="7_wimwc"]
@@ -22,7 +22,7 @@ tile_set = ExtResource("1_7nul7")
 
 [node name="RoomInstance" parent="." instance=ExtResource("2_qgny4")]
 show_name_ID = 1
-stage_name = "Abandoned Monastery"
+stage_name = "ABANDONED_MONASTERY_TITLE"
 
 [node name="Enemies" type="Node" parent="."]
 

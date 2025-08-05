@@ -24,6 +24,7 @@ class_name HectorStats
 @export var accessory_compendium: Array[Accessory]
 @export var skill_compendium: Array[Skill]
 @export var relic_compendium: Array[Relic]
+@export var artifact_compendium: Array[Artifact]
 @export var play_time: Hour
 @export var status: Array[int]
 @export var weapon_proficiency: Array[Dictionary]
@@ -34,6 +35,7 @@ var event_flags: Array[bool] #ID list checks for events (combat rooms and bosses
 var stage_name_flags: Array[bool] #ID list checks for stage name display
 var combat_flags: Array[bool] #ID list checks for combat rooms and bosses
 var tutorial_flags: Array[bool] #ID list checks for fullscreen tutorial popups
+var dialogue_flags: Array[bool] #ID list checks for dialogue scenes
 var current_area: String = "???"
 
 enum Status {
@@ -48,6 +50,7 @@ func _ready() -> void:
 		stage_name_flags.append(false)
 		combat_flags.append(false)
 		tutorial_flags.append(false)
+		dialogue_flags.append(false)
 
 func _process(delta: float) -> void:
 	Bases["ATK"] = Stats["STR"]/2
@@ -118,3 +121,9 @@ func getCurrentWeaponType() -> int:
 
 func canApplySkill(id: int) -> bool:
 	return findItem(id, skill_inventory) > 0 and getCurrentWeaponType() == searchItemInCompendium(id, skill_compendium).weapon_type
+
+func accessoryEquipped(id : int) -> bool:
+	return equipment["acc1"] == id or equipment["acc2"] == id
+	
+func itemEquipped(id: int, slot: String) -> bool:
+	return equipment[slot] == id+1

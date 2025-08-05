@@ -4,7 +4,7 @@ class_name MenuSaveRoom
 @onready var chair_node = get_parent().get_parent().get_parent()
 const stand_up_flag_id: int = 12
 const stand_up_hint_time: float = 3
-const stand_up_hint_text: String = "Press [[Circle]] to stand up."
+var stand_up_hint_text: String = tr("HINT_12")
 var needs_to_choose = true
 
 func _ready() -> void:
@@ -22,7 +22,7 @@ func on_button_pressed(which):
 			which.release_focus()
 			_saveGame()
 		1:
-			registerMemorial()
+			warp()
 		2:
 			which.release_focus()
 			_exitMenu()
@@ -45,7 +45,7 @@ func _saveGame():
 		Global.player.stats.hint_flags[stand_up_flag_id] = true
 	resumeGame()
 	
-func registerMemorial():
+func warp():
 	pass
 	
 func _exitMenu():

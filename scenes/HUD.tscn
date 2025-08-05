@@ -1,28 +1,29 @@
-[gd_scene load_steps=45 format=3 uid="uid://yby38f15lji0"]
+[gd_scene load_steps=46 format=3 uid="uid://yby38f15lji0"]
 
-[ext_resource type="Texture2D" uid="uid://5i5nsq4bad0r" path="res://assets/sprites/HUD/Body.png" id="1_r4po5"]
+[ext_resource type="Texture2D" uid="uid://5i5nsq4bad0r" path="res://assets/sprites/HUD/InGameHUD/Body.png" id="1_r4po5"]
 [ext_resource type="Script" path="res://hud.gd" id="1_xhgqi"]
-[ext_resource type="Texture2D" uid="uid://o847yl7lsxpe" path="res://assets/sprites/HUD/Health.png" id="2_6bv25"]
-[ext_resource type="Texture2D" uid="uid://c0vht0ktmkbou" path="res://assets/sprites/HUD/Mana.png" id="3_dpp6q"]
-[ext_resource type="Script" path="res://h_box_container.gd" id="4_iqdk1"]
-[ext_resource type="Texture2D" uid="uid://knwunvou11hb" path="res://assets/sprites/HUD/FocusEmpty.png" id="5_0n8ox"]
-[ext_resource type="Texture2D" uid="uid://22lrwvydkpyk" path="res://assets/sprites/HUD/GuardHealth.png" id="5_j8311"]
+[ext_resource type="Texture2D" uid="uid://o847yl7lsxpe" path="res://assets/sprites/HUD/InGameHUD/Health.png" id="2_6bv25"]
+[ext_resource type="Texture2D" uid="uid://c0vht0ktmkbou" path="res://assets/sprites/HUD/InGameHUD/MPBars/Mana.png" id="3_dpp6q"]
+[ext_resource type="Texture2D" uid="uid://barilar23trfo" path="res://assets/sprites/HUD/InGameHUD/MPBars/ManaFire.png" id="3_x7wcb"]
+[ext_resource type="Script" path="res://ImageNumber.gd" id="4_iqdk1"]
+[ext_resource type="Texture2D" uid="uid://knwunvou11hb" path="res://assets/sprites/HUD/InGameHUD/FocusEmpty.png" id="5_0n8ox"]
+[ext_resource type="Texture2D" uid="uid://22lrwvydkpyk" path="res://assets/sprites/HUD/InGameHUD/GuardHealth.png" id="5_j8311"]
 [ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="6_c6x0a"]
-[ext_resource type="Texture2D" uid="uid://bmw3n1frwb2e8" path="res://assets/sprites/HUD/FocusFull.png" id="6_tc5c0"]
+[ext_resource type="Texture2D" uid="uid://bmw3n1frwb2e8" path="res://assets/sprites/HUD/InGameHUD/FocusFull.png" id="6_tc5c0"]
 [ext_resource type="Script" path="res://scenes/guard_number.gd" id="7_uauha"]
-[ext_resource type="Texture2D" uid="uid://nuq5bvc306w5" path="res://assets/sprites/HUD/GuardLabel.png" id="8_asxhj"]
-[ext_resource type="Texture2D" uid="uid://bkndl4l3y8ril" path="res://assets/sprites/HUD/IDBodyBar.png" id="9_tryvd"]
-[ext_resource type="Texture2D" uid="uid://hiolfbyro5t8" path="res://assets/sprites/HUD/Hearts.png" id="10_gq1nq"]
+[ext_resource type="Texture2D" uid="uid://nuq5bvc306w5" path="res://assets/sprites/HUD/InGameHUD/GuardLabel.png" id="8_asxhj"]
+[ext_resource type="Texture2D" uid="uid://bkndl4l3y8ril" path="res://assets/sprites/HUD/InGameHUD/IDBodyBar.png" id="9_tryvd"]
+[ext_resource type="Texture2D" uid="uid://hiolfbyro5t8" path="res://assets/sprites/HUD/InGameHUD/Hearts.png" id="10_gq1nq"]
 [ext_resource type="Texture2D" uid="uid://cee1lifjtuv01" path="res://assets/sprites/HUD/Numbers/5.png" id="11_sa4fn"]
 [ext_resource type="Texture2D" uid="uid://btru3nul44e6v" path="res://assets/sprites/HUD/IDIcons/Heal1.png" id="12_1kjv5"]
-[ext_resource type="Texture2D" uid="uid://v1ww5xkj2n75" path="res://assets/sprites/HUD/Heart.png" id="12_ao7p4"]
+[ext_resource type="Texture2D" uid="uid://v1ww5xkj2n75" path="res://assets/sprites/HUD/InGameHUD/Heart.png" id="12_ao7p4"]
 [ext_resource type="Texture2D" uid="uid://d3gn4yx3xx5wp" path="res://assets/sprites/HUD/Numbers/0.png" id="12_k0ta4"]
-[ext_resource type="Texture2D" uid="uid://rirxjwqpuh14" path="res://assets/sprites/HUD/BoostLabels.png" id="13_j3vby"]
-[ext_resource type="Texture2D" uid="uid://c0v7wyhaqckvw" path="res://assets/sprites/HUD/BossBodyBar.png" id="15_ycmmf"]
-[ext_resource type="Texture2D" uid="uid://dxvme5jenvhxc" path="res://assets/sprites/HUD/BossBar1.png" id="16_gnktt"]
+[ext_resource type="Texture2D" uid="uid://rirxjwqpuh14" path="res://assets/sprites/HUD/Popups/BoostLabels.png" id="13_j3vby"]
+[ext_resource type="Texture2D" uid="uid://c0v7wyhaqckvw" path="res://assets/sprites/HUD/InGameHUD/BossBodyBar.png" id="15_ycmmf"]
+[ext_resource type="Texture2D" uid="uid://dxvme5jenvhxc" path="res://assets/sprites/HUD/InGameHUD/BossBar1.png" id="16_gnktt"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/BossBar.gd" id="16_jnnjg"]
-[ext_resource type="Texture2D" uid="uid://eqrphxjgkwgm" path="res://assets/sprites/HUD/BossDamage.png" id="17_ffxey"]
-[ext_resource type="Texture2D" uid="uid://bb6kgjvn6w2gp" path="res://assets/sprites/HUD/BossBar2.png" id="17_i1ifg"]
+[ext_resource type="Texture2D" uid="uid://eqrphxjgkwgm" path="res://assets/sprites/HUD/InGameHUD/BossDamage.png" id="17_ffxey"]
+[ext_resource type="Texture2D" uid="uid://bb6kgjvn6w2gp" path="res://assets/sprites/HUD/InGameHUD/BossBar2.png" id="17_i1ifg"]
 
 [sub_resource type="Gradient" id="Gradient_vo48o"]
 colors = PackedColorArray(0.099986, 0.099986, 0.099986, 1, 0.370364, 0.370364, 0.370364, 1)
@@ -92,7 +93,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0.545098, 0.898039, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -553,6 +554,7 @@ scale = Vector2(0.7, 0.7)
 script = ExtResource("1_xhgqi")
 id_level_up_animation = NodePath("IDBody/AnimationPlayer")
 guard_health = NodePath("TextureRect/GuardHealth")
+mana_colors = Array[CompressedTexture2D]([ExtResource("3_dpp6q"), ExtResource("3_x7wcb")])
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -563,6 +565,8 @@ texture = ExtResource("1_r4po5")
 
 [node name="MGlow" type="TextureRect" parent="TextureRect"]
 visible = false
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 0.364706, 0, 1)
 layout_mode = 0
 offset_left = 68.0
 offset_top = 20.0

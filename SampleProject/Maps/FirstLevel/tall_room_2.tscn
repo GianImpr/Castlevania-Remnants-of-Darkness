@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_e3thi"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_oyv1v"]
-[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="3_djlvr"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_djlvr"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="4_07wyj"]
 [ext_resource type="PackedScene" uid="uid://cl543nev3n2bf" path="res://SampleProject/enemies/AxeArmor/axe_armor.tscn" id="5_7lj54"]
 [ext_resource type="PackedScene" uid="uid://d3ojnp2qhy6a3" path="res://SampleProject/extra_scenes/stage_elements/candle.tscn" id="5_cvbha"]
@@ -823,7 +823,7 @@ script = ExtResource("1_e3thi")
 center_camera = true
 apply_limits = true
 camera_limit_right = 960
-camera_limit_top = 20
+camera_limit_top = 29
 camera_limit_bottom = 2880
 
 [node name="RoomInstance" parent="." instance=ExtResource("2_oyv1v")]

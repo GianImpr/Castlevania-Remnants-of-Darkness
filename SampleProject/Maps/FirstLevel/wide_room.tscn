@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_yd54s"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_8djvc"]
-[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://OoE2.tres" id="3_awc2u"]
+[ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_awc2u"]
 [ext_resource type="PackedScene" uid="uid://d3ojnp2qhy6a3" path="res://SampleProject/extra_scenes/stage_elements/candle.tscn" id="4_ixkuf"]
 [ext_resource type="PackedScene" uid="uid://cl543nev3n2bf" path="res://SampleProject/enemies/AxeArmor/axe_armor.tscn" id="5_1aspc"]
 [ext_resource type="PackedScene" uid="uid://des8o3jbf3a4m" path="res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn" id="5_ln0je"]
@@ -86,10 +86,14 @@ position = Vector2(394, 363)
 [node name="Pick-up" parent="Items" instance=ExtResource("7_73ge1")]
 position = Vector2(1747, 390)
 type = 6
+id = 1
+current_item_name = "Sandals"
 pickup_flag = 8
 
 [node name="Pick-up2" parent="Items" instance=ExtResource("7_73ge1")]
 position = Vector2(880, 787)
+id = 1
+current_item_name = "Potion"
 pickup_flag = 9
 
 [node name="GhostSpawner" type="Node" parent="."]

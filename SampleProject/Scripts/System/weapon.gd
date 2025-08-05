@@ -3,6 +3,7 @@ class_name Weapon
 
 enum Type {
 	SWORD = 0,
+	GREATSWORD = 1,
 	FIST = 4,
 	AXE = 2
 }
@@ -18,11 +19,20 @@ enum Inventory {
 	weapon,
 	headgear,
 	body,
-	item
+	item,
+	legs
+}
+
+enum Weapons {
+	SHORT_SWORD,
+	BULLOVA,
+	CLAYMORE,
+	FALCHION,
+	MACE
 }
 
 @export var weapon_name: String
-@export var weapon_description: String
+@export_multiline var weapon_description: String
 @export var type: Type
 @export var element: Array[Global.Attribute]
 @export var ATK: int

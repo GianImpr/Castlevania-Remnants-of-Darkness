@@ -8,6 +8,7 @@ class_name Projectile
 @export var effect_on_destroy: bool
 @export var chip_damage: int = 0
 @export var attribute: Global.Attribute = Global.Attribute.HIT
+@export var guard_break: bool = false
 var thrower_ATK: int = 0
 
 func calculate_damage(body, multiplier: float = 1) -> int:
@@ -26,11 +27,15 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 			return 0
 		if damage < body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1:
 			damage = 0
-		elif damage >= body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1:
+		elif damage >= body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1 and not guard_break:
 			damage = min(damage*0.1, body.stats.Stats["HP"]-1)
-		elif body.stats.Stats["Guard"] == 1:
+		elif body.stats.Stats["Guard"] == 1 or guard_break:
 			damage *= 0.6
-		body.stats.Stats["Guard"] -= 1
+		if not guard_break:
+			body.stats.Stats["Guard"] -= 1
+		else:
+			body.stats.Stats["Guard"] = 0
+		
 	else:
 		body.applyHitEffect(attribute)
 	return damage

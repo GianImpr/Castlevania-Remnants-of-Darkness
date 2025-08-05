@@ -1,13 +1,13 @@
 [gd_scene load_steps=24 format=3 uid="uid://bnsy1kwfc8603"]
 
-[ext_resource type="Texture2D" uid="uid://bvo251myppcop" path="res://assets/sprites/Objects/BossDoor.png" id="1_1pdi4"]
+[ext_resource type="Texture2D" uid="uid://bvo251myppcop" path="res://assets/sprites/Objects/Doors/Combat/BossDoor.png" id="1_1pdi4"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/combat_door.gd" id="1_8e8x8"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/combat_door_node.gd" id="1_wnmjm"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_jdr85"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_l8vw0"]
-[ext_resource type="Texture2D" uid="uid://dc2kbfme7doyx" path="res://assets/sprites/Objects/BossSeal.png" id="4_u7fhh"]
+[ext_resource type="Texture2D" uid="uid://dc2kbfme7doyx" path="res://assets/sprites/Objects/Doors/Combat/BossSeal.png" id="4_u7fhh"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_7yhri"]
-[ext_resource type="Texture2D" uid="uid://tyvxnf27ms2e" path="res://assets/sprites/Objects/BossDoor2.png" id="5_e11eq"]
+[ext_resource type="Texture2D" uid="uid://tyvxnf27ms2e" path="res://assets/sprites/Objects/Doors/Combat/BossDoor2.png" id="5_e11eq"]
 [ext_resource type="AudioStream" uid="uid://dv8cvlp0chhne" path="res://assets/sounds/Door/OpenCombatDoor.MP3" id="6_civa4"]
 [ext_resource type="AudioStream" uid="uid://dgshuccmcc8q0" path="res://assets/sounds/Door/CloseCombatDoor.MP3" id="7_6q3kv"]
 
@@ -413,6 +413,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_u2cmv")
 
 [node name="HorizontalCollision" type="CollisionShape2D" parent="CombatDoor"]
+visible = false
 position = Vector2(-32, -9)
 shape = SubResource("RectangleShape2D_yot3j")
 disabled = true

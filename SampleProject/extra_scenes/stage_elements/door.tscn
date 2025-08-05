@@ -1,9 +1,9 @@
 [gd_scene load_steps=22 format=3 uid="uid://csrmfyxqbrq51"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/door.gd" id="1_7pu62"]
-[ext_resource type="Texture2D" uid="uid://25id4f3caeeo" path="res://assets/sprites/Objects/SaveDoor.png" id="1_cuyk2"]
-[ext_resource type="Shader" path="res://scenes/aura.gdshader" id="2_d1xi3"]
-[ext_resource type="Texture2D" uid="uid://c8wefiqxotjyy" path="res://assets/sprites/Objects/DoorAura.png" id="3_7sakx"]
+[ext_resource type="Texture2D" uid="uid://25id4f3caeeo" path="res://assets/sprites/Objects/Doors/SpecialRooms/SaveDoor.png" id="1_cuyk2"]
+[ext_resource type="Shader" path="res://SampleProject/Shaders/aura.gdshader" id="2_d1xi3"]
+[ext_resource type="Texture2D" uid="uid://c8wefiqxotjyy" path="res://assets/sprites/Objects/Doors/SpecialRooms/DoorAura.png" id="3_7sakx"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_mhjp2"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_nydkd"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="7_g5x71"]
@@ -155,7 +155,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8y6u"]
-size = Vector2(17.5526, 68)
+size = Vector2(21.7631, 68)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4l07o"]
 size = Vector2(24, 128)
@@ -214,12 +214,12 @@ libraries = {
 speed_scale = 2.0
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_mask = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2(3.325, 0)
+position = Vector2(7.32502, 0)
 scale = Vector2(1.9, 1.9)
 shape = SubResource("RectangleShape2D_i8y6u")
 

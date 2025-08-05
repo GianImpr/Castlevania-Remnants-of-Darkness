@@ -1,7 +1,15 @@
 extends Control
+class_name ItemBox
 @export var label: Label
 @export var timer: Timer
 @export var textures: Array[CompressedTexture2D]
+
+enum Type {
+	BLUE,
+	ORANGE,
+	PURPLE,
+	RED
+}
 
 func _ready() -> void:
 	visible = false

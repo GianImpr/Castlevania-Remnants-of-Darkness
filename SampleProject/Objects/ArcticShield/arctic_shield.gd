@@ -37,6 +37,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Candle:
 		return
 	if body is RigidBody2D and Global.player.stats.Stats["MP"] >= cost:
+		if not body.stats.destructible:
+			return
 		if body.stats.effect_on_destroy:
 			create_effects(body)
 		body.destroy()
@@ -49,8 +51,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			icicle.scale.x *= -1
 			icicle.direction = -1
 		icicle.power = power + multiplier*Global.player.stats.Stats["INT"]
-		if Global.player.stats.findItem(4, Global.player.stats.skill_inventory):
-			icicle.power *= 1.5
+		if Global.player.stats.findItem(Skill.Skills.CYAN_ORB, Global.player.stats.skill_inventory):
+			icicle.power *= 1.2
 		call_deferred("add_child", icicle)
 		return
 		

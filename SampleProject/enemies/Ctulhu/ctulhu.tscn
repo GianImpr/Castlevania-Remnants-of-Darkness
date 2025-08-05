@@ -1,0 +1,693 @@
+[gd_scene load_steps=60 format=3 uid="uid://c6b7toh8yj33q"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/ctulhu.gd" id="1_ra40b"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_gry21"]
+[ext_resource type="Texture2D" uid="uid://dnjby5iitj77q" path="res://assets/sprites/Enemies/Ctulhu/Ctulhu.png" id="3_dn3n0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_k7awv"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_5qciq"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_rdul0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_3i0mo"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuWaiting.gd" id="7_1cejh"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="7_2nkjm"]
+[ext_resource type="AudioStream" uid="uid://cp0wlsu0kr46r" path="res://assets/sounds/Effects/HectorHit/HitFire.MP3" id="8_mfnm8"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuIdle.gd" id="8_yamlt"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuStartFlying.gd" id="9_w8yco"]
+[ext_resource type="AudioStream" uid="uid://fnjp1drnvmfe" path="res://assets/sounds/Enemies/Ctulhu/CtulhuIceWaveScream.MP3" id="9_wil0a"]
+[ext_resource type="AudioStream" uid="uid://d03mkkh2i3x8p" path="res://assets/sounds/Enemies/Ctulhu/CtulhuIceWave.MP3" id="10_he1ny"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuFlying.gd" id="10_llltl"]
+[ext_resource type="AudioStream" uid="uid://b43a3my3jjj6b" path="res://assets/sounds/Enemies/Ctulhu/CtulhuScream.MP3" id="11_ndog7"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuLanding.gd" id="11_y15pb"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuFireball.gd" id="12_p5yj3"]
+[ext_resource type="AudioStream" uid="uid://bvgik7md8rprp" path="res://assets/sounds/Enemies/Ctulhu/CtulhuDead.MP3" id="12_rycmy"]
+[ext_resource type="AudioStream" uid="uid://baietjlntt48w" path="res://assets/sounds/Effects/Miscellaneous/Explosion.MP3" id="13_5nkg7"]
+[ext_resource type="PackedScene" uid="uid://2eavo1ohmkqv" path="res://SampleProject/enemies/Ctulhu/ctulhu_fireball.tscn" id="13_pghfi"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuAirFireball.gd" id="14_6qf0f"]
+[ext_resource type="AudioStream" uid="uid://cqjx5um6k1qb0" path="res://assets/sounds/Enemies/Ctulhu/CtulhuDeathExplosion.MP3" id="14_ik845"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuSwinging.gd" id="15_c13as"]
+[ext_resource type="AudioStream" uid="uid://cpsnojuovrfwr" path="res://assets/sounds/Enemies/Ctulhu/CtulhuFlying.MP3" id="15_opy47"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuJumping.gd" id="16_f830n"]
+[ext_resource type="PackedScene" uid="uid://78uag16ilymj" path="res://SampleProject/enemies/Ctulhu/ctulhu_ice_wave.tscn" id="16_q0ek4"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuMocking.gd" id="17_bp8vt"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuDying.gd" id="18_qw821"]
+[ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="27_0yxjs"]
+[ext_resource type="Texture2D" uid="uid://cd5wfc51yc6hf" path="res://assets/sprites/Effects/BigExplosion.png" id="28_856w7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksg3o"]
+size = Vector2(40, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1oga"]
+size = Vector2(40, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11qtw"]
+size = Vector2(380.75, 133.5)
+
+[sub_resource type="Resource" id="Resource_r8fbg"]
+script = ExtResource("7_2nkjm")
+Tag = "fireball"
+stream = ExtResource("8_mfnm8")
+
+[sub_resource type="Resource" id="Resource_3gmrk"]
+script = ExtResource("7_2nkjm")
+Tag = "ice_wave_scream"
+stream = ExtResource("9_wil0a")
+
+[sub_resource type="Resource" id="Resource_lhdfl"]
+script = ExtResource("7_2nkjm")
+Tag = "ice_wave"
+stream = ExtResource("10_he1ny")
+
+[sub_resource type="Resource" id="Resource_wmhoj"]
+script = ExtResource("7_2nkjm")
+Tag = "mocking"
+stream = ExtResource("11_ndog7")
+
+[sub_resource type="Resource" id="Resource_o8opr"]
+script = ExtResource("7_2nkjm")
+Tag = "dying"
+stream = ExtResource("12_rycmy")
+
+[sub_resource type="Resource" id="Resource_kjaga"]
+script = ExtResource("7_2nkjm")
+Tag = "landing"
+stream = ExtResource("13_5nkg7")
+
+[sub_resource type="Resource" id="Resource_wvx2o"]
+script = ExtResource("7_2nkjm")
+Tag = "dying_explosion"
+stream = ExtResource("14_ik845")
+
+[sub_resource type="Resource" id="Resource_tcyhs"]
+script = ExtResource("7_2nkjm")
+Tag = "wings"
+stream = ExtResource("15_opy47")
+
+[sub_resource type="Resource" id="Resource_4af1u"]
+script = ExtResource("6_3i0mo")
+sound_effects = Array[ExtResource("7_2nkjm")]([SubResource("Resource_r8fbg"), SubResource("Resource_3gmrk"), SubResource("Resource_lhdfl"), SubResource("Resource_wmhoj"), SubResource("Resource_o8opr"), SubResource("Resource_kjaga"), SubResource("Resource_wvx2o"), SubResource("Resource_tcyhs")])
+
+[sub_resource type="Curve" id="Curve_va3vl"]
+max_value = 5.0
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5pg3w"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GDScript" id="GDScript_326py"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="Animation" id="Animation_alk7n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FireballLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathExplosion:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fow5m"]
+resource_name = "air_fireball"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shootFireballs"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FireballLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 4.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vtgso"]
+resource_name = "dying"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathExplosion:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.7, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.443137, 0, 1), Color(0.608914, 0.258479, 9.62615e-08, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95, 2, 2.05, 2.1, 2.15, 2.2, 2.25, 2.3, 2.35, 2.4, 2.45, 2.5, 2.55, 2.6, 2.65, 2.7, 2.75, 2.8, 2.85, 2.9, 2.95, 3, 3.05, 3.1, 3.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64, 63, 64]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yvl71"]
+resource_name = "flying"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [84, 85, 86, 87, 84]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PolyphonicAudioPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["wings"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_87we7"]
+resource_name = "ground_fireball"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [147, 148, 149, 150, 151, 152, 153, 150, 148, 147]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shootFireballs"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FireballLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 4.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4y5tf"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 24, 25, 26]
+}
+
+[sub_resource type="Animation" id="Animation_yv1pb"]
+resource_name = "mocking"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [63, 64]
+}
+
+[sub_resource type="Animation" id="Animation_yauyk"]
+resource_name = "start_flying"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [126, 127, 128, 129, 130, 131]
+}
+
+[sub_resource type="Animation" id="Animation_f8om0"]
+resource_name = "swing"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1.8, 1.9, 2, 2.4, 2.45, 2.5, 2.55, 2.6, 2.65, 2.75, 2.85, 2.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 19, 18, 17]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PolyphonicAudioPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.85, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["ice_wave_scream"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["ice_wave"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Swinging")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"generateIceWave"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xaoy7"]
+_data = {
+"RESET": SubResource("Animation_alk7n"),
+"air_fireball": SubResource("Animation_fow5m"),
+"dying": SubResource("Animation_vtgso"),
+"flying": SubResource("Animation_yvl71"),
+"ground_fireball": SubResource("Animation_87we7"),
+"idle": SubResource("Animation_4y5tf"),
+"mocking": SubResource("Animation_yv1pb"),
+"start_flying": SubResource("Animation_yauyk"),
+"swing": SubResource("Animation_f8om0")
+}
+
+[sub_resource type="Gradient" id="Gradient_q4jlg"]
+offsets = PackedFloat32Array(0, 0.522727, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.920455, 0.920455, 0.920455, 0.920455, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o1kll"]
+gradient = SubResource("Gradient_q4jlg")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.517094, 0.525641)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d3fhr"]
+particles_animation = true
+particles_anim_h_frames = 12
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Devil" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sound", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 64
+script = ExtResource("1_ra40b")
+vision = NodePath("Vision")
+fireball_scene = ExtResource("13_pghfi")
+sound = NodePath("PolyphonicAudioPlayer")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Hitbox")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Timer")
+hitbox_iframe = NodePath("Hitbox")
+blood_particles = NodePath("BloodDamage")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_gry21")
+enemy_name = "DEVIL"
+LV = 15
+HP = 400
+ATK = 45
+DEF = 20
+RES = 20
+EXP = 300
+weaknesses = Array[int]([2, 4, 6, 8])
+tolerances = Array[int]([3, 7, 9])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_dn3n0")
+offset = Vector2(-5, -10)
+hframes = 21
+vframes = 9
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(6, 5)
+shape = SubResource("RectangleShape2D_ksg3o")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2(6, 5)
+shape = SubResource("RectangleShape2D_q1oga")
+
+[node name="Vision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+visible = false
+position = Vector2(0, 1.25)
+shape = SubResource("RectangleShape2D_11qtw")
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_k7awv")
+audio_library = SubResource("Resource_4af1u")
+
+[node name="BloodDamage" type="CPUParticles2D" parent="."]
+position = Vector2(8.5, -2)
+emitting = false
+amount = 12
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_va3vl")
+color = Color(0.212744, 0.000209297, 0.292017, 1)
+color_ramp = SubResource("Gradient_5pg3w")
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+position = Vector2(0, -46.5)
+script = ExtResource("4_5qciq")
+damage_node = ExtResource("5_rdul0")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_326py")
+initial_state = NodePath("Waiting")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Waiting" type="Node" parent="StateMachine"]
+script = ExtResource("7_1cejh")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_timer")]
+script = ExtResource("8_yamlt")
+idle_timer = NodePath("Duration")
+duration = 0.4
+random_duration_offset = 0.3
+
+[node name="Duration" type="Timer" parent="StateMachine/Idle"]
+
+[node name="Start_flying" type="Node" parent="StateMachine"]
+script = ExtResource("9_w8yco")
+jump_strength = 400.0
+jump_duration = 0.4
+
+[node name="Flying" type="Node" parent="StateMachine" node_paths=PackedStringArray("flight_timer")]
+script = ExtResource("10_llltl")
+SPEED = 200.0
+flight_duration = 1.0
+random_flight_duration_offset = 0.6
+flight_timer = NodePath("FlightDuration")
+
+[node name="FlightDuration" type="Timer" parent="StateMachine/Flying"]
+
+[node name="Landing" type="Node" parent="StateMachine"]
+script = ExtResource("11_y15pb")
+
+[node name="Fireball" type="Node" parent="StateMachine"]
+script = ExtResource("12_p5yj3")
+
+[node name="Air_fireball" type="Node" parent="StateMachine"]
+script = ExtResource("14_6qf0f")
+
+[node name="Swinging" type="Node" parent="StateMachine"]
+script = ExtResource("15_c13as")
+ice_wave_scene = ExtResource("16_q0ek4")
+red_spark_scene = ExtResource("27_0yxjs")
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource("16_f830n")
+jump_strength = Vector2(300, -700)
+
+[node name="Mocking" type="Node" parent="StateMachine"]
+script = ExtResource("17_bp8vt")
+
+[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("explosion_sound_repeat_timer")]
+script = ExtResource("18_qw821")
+explosion_sound_repeat_timer = NodePath("ExplosionSoundRepeat")
+
+[node name="ExplosionSoundRepeat" type="Timer" parent="StateMachine/Dying"]
+wait_time = 0.13
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xaoy7")
+}
+
+[node name="FireballLight" type="PointLight2D" parent="."]
+position = Vector2(-12.5, -27)
+color = Color(1, 0.247059, 0, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_o1kll")
+
+[node name="DeathExplosion" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_d3fhr")
+emitting = false
+amount = 40
+lifetime = 3.0
+one_shot = true
+texture = ExtResource("28_856w7")
+emission_shape = 1
+emission_sphere_radius = 40.0
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+anim_speed_min = 6.0
+anim_speed_max = 6.0

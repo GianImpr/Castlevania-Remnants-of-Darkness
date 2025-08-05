@@ -16,6 +16,9 @@ extends Control
 @onready var boss_bar: TextureRect = $BossBar
 @export var id_level_up_animation: AnimationPlayer
 @export var guard_health: HBoxContainer
+
+@export var mana_colors: Array[CompressedTexture2D]
+
 var can_change_opacity: bool = true
 var is_transparent: bool = false
 var opacity_trigger_offset: int = 0
@@ -95,6 +98,13 @@ func updateHP(delta):
 		h_box_container.updateHP(int(health.value/10), MHP)
 		
 func updateMP(delta):
+	match Global.player.stats.equipment["relic"]-1:
+		Relic.Relics.INDIGO_CROSS:
+			mana_glow.self_modulate = Color(0, 0.545, 0.898)
+		Relic.Relics.AGUNIS_LAUREL:
+			mana_glow.self_modulate = Color(1, 0.365, 0)
+			
+	mana.texture_progress = mana_colors[max(Global.player.stats.equipment["relic"]-1, 0)]
 	if mana.value < MP*10:
 		mana.value = min(MP*10, mana.value+ceil(5*MMP*delta))
 	elif mana.value > MP*10:
@@ -103,7 +113,7 @@ func updateMP(delta):
 func updateGuardHealth() -> void:
 	if Global.player == null:
 		return
-	guard_health.visible = Global.player.stats.findItem(1, Global.player.stats.skill_inventory)
+	guard_health.visible = Global.player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, Global.player.stats.skill_inventory)
 	var guard_recovery_timer: Timer = Global.player.guard_recovery
 	var guard_hp: float = min(Global.player.stats.Stats["Guard"]+(guard_recovery_timer.wait_time-guard_recovery_timer.time_left)/guard_recovery_timer.wait_time, 3)
 	for i in range(0, guard_health.get_child_count()-1):

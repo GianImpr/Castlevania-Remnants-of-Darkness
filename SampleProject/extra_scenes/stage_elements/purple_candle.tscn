@@ -1,18 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://bkyptgxub2ly0"]
+[gd_scene load_steps=20 format=3 uid="uid://bkyptgxub2ly0"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/grounded_candle.gd" id="1_dvh1h"]
-[ext_resource type="PackedScene" uid="uid://lxr3qjc6ny5a" path="res://SampleProject/extra_scenes/stage_elements/broken_candle.tscn" id="2_3rjak"]
+[ext_resource type="PackedScene" uid="uid://dm7k8iy42xhd1" path="res://SampleProject/extra_scenes/stage_elements/broken_purple_candle.tscn" id="2_0hxjt"]
 [ext_resource type="PackedScene" uid="uid://rum44mjshdlr" path="res://SampleProject/extra_scenes/items/money.tscn" id="3_a2qjh"]
 [ext_resource type="PackedScene" uid="uid://3ypsgown6bve" path="res://SampleProject/extra_scenes/items/heart.tscn" id="4_5lvst"]
-[ext_resource type="Texture2D" uid="uid://nj3ntvmcyrbc" path="res://assets/sprites/Objects/PurpleCandles.png" id="5_km6dl"]
+[ext_resource type="Texture2D" uid="uid://nj3ntvmcyrbc" path="res://assets/sprites/Objects/Candles/GroundPurple/PurpleCandles.png" id="5_km6dl"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="6_odnn7"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_3trbn"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="8_y1gt3"]
-[ext_resource type="AudioStream" uid="uid://cuso1funi7udm" path="res://assets/sounds/Effects/GroundCandleBreak.MP3" id="9_28okg"]
+[ext_resource type="AudioStream" uid="uid://cuso1funi7udm" path="res://assets/sounds/Effects/Destructibles/GroundCandleBreak.MP3" id="9_28okg"]
 
 [sub_resource type="Gradient" id="Gradient_ibokd"]
 offsets = PackedFloat32Array(0, 0.463343, 0.720395, 0.865103, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.868183, 0.364817, 1, 1, 0.529111, 0.0181009, 0.52849, 0.501961, 1, 0.579213, 0.896533, 0, 1, 0.579343, 0.896027, 0)
+colors = PackedColorArray(1, 1, 1, 1, 0.511178, 0.000700495, 0.615798, 1, 0.529111, 0.0181009, 0.52849, 0.501961, 1, 0.579213, 0.896533, 0, 1, 0.579343, 0.896027, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7by2k"]
 gradient = SubResource("Gradient_ibokd")
@@ -117,9 +117,9 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_q3imq"]
 resource_name = "idle"
-length = 0.3
+length = 0.6
 loop_mode = 1
-step = 0.1
+step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -127,7 +127,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
@@ -152,7 +152,12 @@ stream = ExtResource("9_28okg")
 script = ExtResource("7_3trbn")
 sound_effects = Array[ExtResource("8_y1gt3")]([SubResource("Resource_0l0lg")])
 
-[node name="MonasteryCandle" type="RigidBody2D" node_paths=PackedStringArray("light", "sprite", "animation", "sound", "hitbox_iframe")]
+[sub_resource type="Curve" id="Curve_v8ryu"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.494545, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="PurpleCandle" type="RigidBody2D" node_paths=PackedStringArray("light", "sprite", "animation", "sound", "hitbox_iframe")]
 collision_layer = 4
 collision_mask = 0
 freeze = true
@@ -160,7 +165,7 @@ script = ExtResource("1_dvh1h")
 light = NodePath("PointLight2D")
 sprite = NodePath("Sprite2D")
 animation = NodePath("AnimationPlayer")
-explosion_scene = ExtResource("2_3rjak")
+explosion_scene = ExtResource("2_0hxjt")
 coin_scene = ExtResource("3_a2qjh")
 heart_scene = ExtResource("4_5lvst")
 sound = NodePath("PolyphonicAudio")
@@ -192,3 +197,15 @@ shape = SubResource("RectangleShape2D_jl43i")
 [node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("6_odnn7")
 audio_library = SubResource("Resource_jukau")
+
+[node name="Flames" type="CPUParticles2D" parent="."]
+position = Vector2(0, -14)
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 70.0
+scale_amount_curve = SubResource("Curve_v8ryu")
+color = Color(0.143046, 0.000248812, 0.265805, 1)

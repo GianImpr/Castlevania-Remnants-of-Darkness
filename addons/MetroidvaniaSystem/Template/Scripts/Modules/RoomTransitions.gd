@@ -47,10 +47,10 @@ func changeRoom(target_room: String, changing_area: bool, initial_position: Vect
 		prev_room_instance.queue_free()
 	
 	if MetSys.get_current_room_instance().show_name_ID > 0:
-		player.stats.current_area = MetSys.get_current_room_instance().stage_name
+		player.stats.current_area = tr(MetSys.get_current_room_instance().stage_name)
 	
 	if MetSys.get_current_room_instance().show_name_ID > 0 and not Global.player.stats.stage_name_flags[MetSys.get_current_room_instance().show_name_ID]:
-		Global.stage_presentation.play(MetSys.get_current_room_instance().stage_name)
+		Global.stage_presentation.play(tr(MetSys.get_current_room_instance().stage_name))
 		Global.player.stats.stage_name_flags[MetSys.get_current_room_instance().show_name_ID] = true
 		Global.fade_screen.animation.speed_scale = 0.2
 		await Global.stage_presentation.animation.animation_finished
