@@ -50,12 +50,18 @@ Since this project does not contain monetization in any form, it's compliant to 
 
 ### Music
 - BELMONT LEGACY: [YouTube](https://www.youtube.com/@belmontlegacy9959)
+- qwertyGUY: [YouTube](https://www.youtube.com/@QwertyGuy499)
 - Konami
 
 ### Testing
 - Masked Dedede: [YouTube](https://youtube.com/@masked_dedede_?si=8iUp6s7aaM2Wm-NS)
 - Distopia: [YouTube](https://www.youtube.com/@_distopia)
 - MazenK3: [YouTube](https://www.youtube.com/@mazenk3863)
+
+### Localization
+- Me: Italian, English
+- Masked Dedede: Spanish
+- Distopia: Portuguese (Brazil)
 
 ### Godot Addons
 - KoBeWi: [Metroidvania System](https://github.com/KoBeWi/Metroidvania-System)
