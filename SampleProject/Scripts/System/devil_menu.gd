@@ -13,7 +13,7 @@ func enter():
 	updateStats()
 	animation.play_backwards("change")
 	skill_list.setButtons()
-	default_button = skill_list.get_child(0)
+	default_button = skill_list.get_child(0).get_child(0)
 	default_button.grab_focus()
 	
 func exit():
@@ -33,21 +33,38 @@ func updateStats():
 	labels.StatusValue.text = ""
 	for stat in ["LV", "Hearts", "ATK", "DEF", "INT", "MND"]:
 		labels.StatusValue.text += str(devil.stats.Stats[stat]) + "\n"
-	labels.MainStatsMaxValues.text = "/%3d" % devil.stats.Stats["MHearts"]
-	labels.ResourcesValues.text = str(devil.stats.Stats["EXP"]) + "\n"
-	labels.ResourcesValues.text += str(devil.stats.expNeededToLvUp()-devil.stats.Stats["EXP"]) + "\n"
+	labels.SubStatValues.text = "/%3d" % devil.stats.Stats["MHearts"]
+	labels.ExperienceValues.text = str(devil.stats.Stats["EXP"]) + "\n"
+	labels.ExperienceValues.text += str(devil.stats.expNeededToLvUp()-devil.stats.Stats["EXP"]) + "\n"
 	skill_description.text = ""
 	
 func updateSkillList() -> void:
+	const SKILL_PANEL_MINIMUM_SIZE: Vector2 = Vector2(500, 40)
+	const SKILL_BUTTON_MINIMUM_SIZE: Vector2 = Vector2(400, 40)
+	const SKILL_COST_MINIMUM_SIZE: Vector2 = Vector2(50, 0)
+	const BUTTON_FOCUSED_COLOR: Color = Color(1, 0.733, 0)
 	for ability in devil.stats.skills:
+		var skill_panel: HBoxContainer = HBoxContainer.new()
+		skill_panel.custom_minimum_size = SKILL_PANEL_MINIMUM_SIZE
+		
 		var button: InventoryButton = InventoryButton.new()
+		button.custom_minimum_size = SKILL_BUTTON_MINIMUM_SIZE
 		button.text = ability.name
 		button.icon = ability.icon
 		button.flat = true
+		button.add_theme_color_override("font_focus_color", BUTTON_FOCUSED_COLOR)
 		button.state_machine = get_parent()
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		button.desired_state = self
-		skill_list.add_child(button)
+		
+		var cost: Label = Label.new()
+		cost.custom_minimum_size = SKILL_COST_MINIMUM_SIZE
+		cost.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		cost.text = str(ability.cost)
+		
+		skill_panel.add_child(button)
+		skill_panel.add_child(cost)
+		skill_list.add_child(skill_panel)
 
 func deleteSkillList() -> void:
 	for entry in skill_list.get_children():

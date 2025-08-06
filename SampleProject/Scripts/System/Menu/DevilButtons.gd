@@ -7,7 +7,7 @@ func ready() -> void:
 	
 func on_focused(which):
 	sound.play_sound_effect_from_library("cursor")
-	skill_description.text = Global.player.innocent_devil.stats.skills[which.get_index()].description
+	skill_description.text = Global.player.innocent_devil.stats.skills[which.get_parent().get_index()].description
 
 func on_button_pressed(which):
 	sound.play_sound_effect_from_library("denied")

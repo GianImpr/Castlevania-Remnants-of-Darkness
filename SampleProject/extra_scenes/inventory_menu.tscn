@@ -1,4 +1,4 @@
-[gd_scene load_steps=225 format=3 uid="uid://b4f2sbjwt3lf7"]
+[gd_scene load_steps=223 format=3 uid="uid://b4f2sbjwt3lf7"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/inventory_menu.gd" id="1_7csjs"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/MenuStateMachine.gd" id="2_4vawb"]
@@ -299,13 +299,13 @@ fill_to = Vector2(0, 1)
 default_font = ExtResource("11_op056")
 default_font_size = 32
 
-[sub_resource type="Gradient" id="Gradient_5x1cp"]
+[sub_resource type="Gradient" id="Gradient_6cnc5"]
 offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
 colors = PackedColorArray(0.825069, 0.772398, 0, 1, 0.999375, 0.868251, 7.70092e-07, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gwmgf"]
-gradient = SubResource("Gradient_5x1cp")
-width = 150
+gradient = SubResource("Gradient_6cnc5")
+width = 250
 height = 32
 fill_to = Vector2(0, 1)
 
@@ -328,7 +328,7 @@ colors = PackedColorArray(0.825069, 0.772398, 0, 1, 0.999375, 0.868251, 7.70092e
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_gnau5"]
 gradient = SubResource("Gradient_f81f2")
-width = 150
+width = 250
 height = 32
 fill_to = Vector2(0, 1)
 
@@ -338,7 +338,7 @@ colors = PackedColorArray(0.634397, 0.753086, 1, 1, 0.600464, 0.9306, 1, 1, 0.23
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ol4uy"]
 gradient = SubResource("Gradient_s4k03")
-width = 150
+width = 250
 height = 32
 fill_to = Vector2(0, 1)
 
@@ -413,34 +413,39 @@ _data = {
 "change": SubResource("Animation_q00fv")
 }
 
-[sub_resource type="Gradient" id="Gradient_ei6cn"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_bwiba"]
-gradient = SubResource("Gradient_ei6cn")
-
-[sub_resource type="Gradient" id="Gradient_ucdhj"]
-colors = PackedColorArray(0, 0, 0, 1, 0.00226884, 0.11899, 0.578939, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5sy3y"]
-gradient = SubResource("Gradient_ucdhj")
-fill_from = Vector2(1, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k0c86"]
+content_margin_top = 50.0
+texture = ExtResource("41_fe5db")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
 
 [sub_resource type="Theme" id="Theme_ubd1q"]
-default_font = ExtResource("4_awnik")
+default_font = ExtResource("8_vu1np")
 default_font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxlv2"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(0.843137, 0, 0.12549, 0)
 border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Theme" id="Theme_gcc0r"]
-default_font = ExtResource("4_awnik")
+default_font = ExtResource("41_54fqu")
 default_font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06wc2"]
 bg_color = Color(0.339735, 6.22692e-07, 1.08294e-07, 1)
 corner_detail = 1
+
+[sub_resource type="Gradient" id="Gradient_qbs4a"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.985428, 0.908494, 1, 0.596088, 0.468524, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yh4jq"]
+gradient = SubResource("Gradient_qbs4a")
+width = 250
+height = 32
+fill_to = Vector2(0, 1)
 
 [sub_resource type="Animation" id="Animation_ce4rh"]
 length = 0.001
@@ -581,14 +586,6 @@ default_font_size = 16
 [sub_resource type="Theme" id="Theme_s5yqm"]
 default_font = ExtResource("8_vu1np")
 default_font_size = 32
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k0c86"]
-content_margin_top = 50.0
-texture = ExtResource("41_fe5db")
-texture_margin_left = 20.0
-texture_margin_top = 20.0
-texture_margin_right = 20.0
-texture_margin_bottom = 20.0
 
 [sub_resource type="Theme" id="Theme_ro5kl"]
 default_font = ExtResource("14_by7ny")
@@ -1773,65 +1770,132 @@ speed_scale = 1.2
 script = ExtResource("12_kdyk3")
 labels = NodePath("Display/Text")
 id_name = NodePath("Display/Text/Name")
-skill_description = NodePath("Display/DescriptionBackground/Description")
+skill_description = NodePath("Display/Description")
 skill_list = NodePath("Display/PanelContainer/Menu")
 animation = NodePath("AnimationPlayer")
 
 [node name="Display" type="Node2D" parent="MenuStateMachine/Devil"]
 modulate = Color(0, 0, 0, 0)
 
-[node name="Margin" type="TextureRect" parent="MenuStateMachine/Devil/Display"]
-show_behind_parent = true
-offset_left = 11.0
-offset_top = 11.0
+[node name="PanelContainer2" type="PanelContainer" parent="MenuStateMachine/Devil/Display"]
+offset_left = 342.0
+offset_top = 395.0
 offset_right = 852.0
-offset_bottom = 471.0
-texture = SubResource("GradientTexture1D_bwiba")
-metadata/_edit_use_anchors_ = true
+offset_bottom = 468.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
 
-[node name="StatBackground" type="TextureRect" parent="MenuStateMachine/Devil/Display"]
-show_behind_parent = true
-offset_left = 13.0
-offset_top = 13.0
-offset_right = 293.0
-offset_bottom = 469.0
-texture = SubResource("GradientTexture2D_5sy3y")
-metadata/_edit_use_anchors_ = true
-
-[node name="SkillsBackground" type="TextureRect" parent="MenuStateMachine/Devil/Display"]
-show_behind_parent = true
-offset_left = 295.0
-offset_top = 13.0
-offset_right = 850.0
-offset_bottom = 395.0
-texture = SubResource("GradientTexture2D_5sy3y")
-metadata/_edit_use_anchors_ = true
-
-[node name="DescriptionBackground" type="TextureRect" parent="MenuStateMachine/Devil/Display"]
-show_behind_parent = true
-offset_left = 295.0
-offset_top = 397.0
-offset_right = 850.0
-offset_bottom = 469.0
-texture = SubResource("GradientTexture2D_5sy3y")
-metadata/_edit_use_anchors_ = true
-
-[node name="Description" type="Label" parent="MenuStateMachine/Devil/Display/DescriptionBackground"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 7.0
-offset_right = 557.0
-offset_bottom = 76.0
+[node name="Description" type="Label" parent="MenuStateMachine/Devil/Display"]
+offset_left = 357.0
+offset_top = 404.0
+offset_right = 842.0
+offset_bottom = 473.0
 theme = SubResource("Theme_ubd1q")
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 8
 text = "Heals Hector a considerate amount of HP."
 autowrap_mode = 3
 
+[node name="SubStats" type="Control" parent="MenuStateMachine/Devil/Display"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -239.0
+offset_top = 105.0
+offset_right = -199.0
+offset_bottom = 145.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuStateMachine/Devil/Display/SubStats"]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 72.0
+offset_right = 400.0
+offset_bottom = 335.0
+theme_override_constants/separation = 1
+
+[node name="Level" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+clip_children = 1
+layout_mode = 2
+theme = SubResource("Theme_qd4hr")
+text = "MENU_LEVEL"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Level"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_gwmgf")
+
+[node name="Hearts" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+clip_children = 1
+layout_mode = 2
+theme = SubResource("Theme_qd4hr")
+text = "MENU_HEARTS"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Hearts"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_gwmgf")
+
+[node name="Attack" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+clip_children = 1
+layout_mode = 2
+theme = SubResource("Theme_qd4hr")
+text = "ATK_STAT_FULL"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Attack"]
+modulate = Color(1, 0.403922, 1, 1)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_gnau5")
+
+[node name="Defense" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+clip_children = 1
+layout_mode = 2
+theme = SubResource("Theme_qd4hr")
+text = "DEF_STAT_FULL"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Defense"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ol4uy")
+
+[node name="Intelligence" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+clip_children = 1
+layout_mode = 2
+theme = SubResource("Theme_qd4hr")
+text = "INT_STAT_FULL"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Intelligence"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_gwmgf")
+
+[node name="Mind" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+clip_children = 1
+layout_mode = 2
+theme = SubResource("Theme_qd4hr")
+text = "MND_STAT_FULL"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Mind"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_gwmgf")
+
 [node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Devil/Display"]
 z_index = 1
-offset_left = 301.0
-offset_top = 16.0
-offset_right = 846.0
-offset_bottom = 84.0
+offset_left = 342.0
+offset_top = 38.0
+offset_right = 842.0
+offset_bottom = 106.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lxlv2")
 metadata/_edit_use_anchors_ = true
 
@@ -1840,13 +1904,13 @@ layout_mode = 2
 theme = SubResource("Theme_gcc0r")
 theme_override_constants/separation = 0
 script = ExtResource("13_6r6nx")
-skill_description = NodePath("../../DescriptionBackground/Description")
+skill_description = NodePath("../../Description")
 button_glow = SubResource("StyleBoxFlat_06wc2")
 sound = NodePath("../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../..")
 state_machine = NodePath("../../../..")
 
-[node name="Text" type="Control" parent="MenuStateMachine/Devil/Display" node_paths=PackedStringArray("StatusValue")]
+[node name="Text" type="Control" parent="MenuStateMachine/Devil/Display" node_paths=PackedStringArray("StatusValue", "SubStatValues", "ExperienceValues")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 13.0
@@ -1856,41 +1920,32 @@ offset_bottom = 53.0
 theme = SubResource("Theme_o5871")
 script = ExtResource("14_y3mt3")
 StatusValue = NodePath("StatValues")
+SubStatValues = NodePath("MaxHearts")
+ExperienceValues = NodePath("ResourcesValues")
 metadata/_edit_use_anchors_ = true
 
 [node name="Name" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 3.0
-offset_right = 276.0
-offset_bottom = 27.0
-text = "FAIRY"
+clip_children = 1
+offset_left = 46.0
+offset_right = 240.0
+offset_bottom = 32.0
+theme = SubResource("Theme_qd4hr")
+text = "Fairy"
 horizontal_alignment = 1
-uppercase = true
 
-[node name="Stats" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Text/Name"]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 166.0
-offset_right = 131.0
-offset_bottom = 298.0
-text = "LEVEL
-HEART
-ATK
-DEF
-INT
-MND
-
-"
-horizontal_alignment = 1
-uppercase = true
+offset_right = 250.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_yh4jq")
 
 [node name="StatValues" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
 layout_mode = 0
-offset_left = 131.0
-offset_top = 166.0
-offset_right = 191.0
-offset_bottom = 298.0
+offset_left = 150.0
+offset_top = 164.0
+offset_right = 210.0
+offset_bottom = 323.0
+theme_override_constants/line_spacing = 9
 text = "1
 50
 5
@@ -1903,30 +1958,21 @@ uppercase = true
 
 [node name="MaxHearts" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
 layout_mode = 0
-offset_left = 182.0
-offset_top = 193.0
-offset_right = 262.0
-offset_bottom = 325.0
+offset_left = 201.0
+offset_top = 197.0
+offset_right = 281.0
+offset_bottom = 329.0
 text = "/ 50"
 horizontal_alignment = 2
 uppercase = true
 
-[node name="Resources" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
-layout_mode = 0
-offset_left = 51.0
-offset_top = 360.0
-offset_right = 157.0
-offset_bottom = 492.0
-text = "EXP
-NEXT"
-uppercase = true
-
 [node name="ResourcesValues" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
 layout_mode = 0
-offset_left = 131.0
-offset_top = 360.0
-offset_right = 260.0
-offset_bottom = 438.0
+offset_left = 196.0
+offset_top = 361.0
+offset_right = 325.0
+offset_bottom = 439.0
+theme_override_constants/line_spacing = 5
 text = "0
 57"
 horizontal_alignment = 2
@@ -1934,14 +1980,29 @@ uppercase = true
 
 [node name="Hector" type="RichTextLabel" parent="MenuStateMachine/Devil/Display/Text"]
 layout_mode = 0
-offset_left = 35.0
-offset_top = 413.0
-offset_right = 342.0
-offset_bottom = 453.0
+offset_left = 543.0
+offset_top = -13.0
+offset_right = 850.0
+offset_bottom = 27.0
 theme = SubResource("Theme_0pw8i")
 bbcode_enabled = true
 script = ExtResource("30_m47lu")
-new_text = " [[L1]] Hector"
+new_text = "[right][[L1]] Hector[/right]"
+
+[node name="Skills" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+clip_children = 1
+offset_left = 329.0
+offset_top = -7.0
+offset_right = 471.0
+offset_bottom = 25.0
+theme = SubResource("Theme_qd4hr")
+text = "SKILLS_BUTTON"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Text/Skills"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_85ajc")
 
 [node name="InnocentSprite" type="Sprite2D" parent="MenuStateMachine/Devil/Display"]
 position = Vector2(154, 99)
@@ -1969,6 +2030,44 @@ libraries = {
 }
 autoplay = "idle"
 speed_scale = 1.1
+
+[node name="Resources" type="Control" parent="MenuStateMachine/Devil/Display"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Next" type="Label" parent="MenuStateMachine/Devil/Display/Resources"]
+clip_children = 1
+offset_left = 12.0
+offset_top = 403.0
+offset_right = 154.0
+offset_bottom = 435.0
+theme = SubResource("Theme_qd4hr")
+text = "MENU_NEXT"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Resources/Next"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_85ajc")
+
+[node name="Exp" type="Label" parent="MenuStateMachine/Devil/Display/Resources"]
+clip_children = 1
+offset_left = 12.0
+offset_top = 374.0
+offset_right = 142.0
+offset_bottom = 406.0
+theme = SubResource("Theme_qd4hr")
+text = "MENU_EXP"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Resources/Exp"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_85ajc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Devil"]
 libraries = {
