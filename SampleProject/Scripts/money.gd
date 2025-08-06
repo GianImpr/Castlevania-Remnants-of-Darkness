@@ -6,8 +6,17 @@ class_name Money
 var value: int
 @export var sound: PolyphonicMenuAudio
 @export var coin_data: Array[Coin]
+@export var wall_checker: WallChecker
 const HIGHEST_RANDOM_TYPE: CoinType = CoinType.Gold25
 const LOWEST_RANDOM_TYPE: CoinType = CoinType.Gold1
+var min_x: int
+var local_collision_pos: Array[Vector2] = [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+
+const SPAWN_DELAY: int = 0.05
+
+static var isInsideWall: Callable
+static var sort_y: Callable
+static var checkAndSortVertices: Callable
 
 enum CoinType {
 	Gold1,
@@ -41,3 +50,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	Global.player.stats.Stats["GOLD"] += coin_data[type].value
 	Global.item_box.timer.start()
 	animation.play("picked")
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	wall_checker.checkAndSortVertices(state)

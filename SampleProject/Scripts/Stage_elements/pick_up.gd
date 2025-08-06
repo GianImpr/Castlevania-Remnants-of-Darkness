@@ -24,6 +24,7 @@ class_name PickUp
 @export var pickup_flag: int
 @export var boost_message: PackedScene
 @export var auto_equip: bool = false
+@export var wall_checker: WallChecker
 var compendium: Array[Dictionary]
 
 static var next_flag_to_use: int
@@ -235,3 +236,6 @@ func updateItemInformation():
 	current_item_name = item[name_property]
 	if sprite != null:
 		sprite.texture = item.icon
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	wall_checker.checkAndSortVertices(state)

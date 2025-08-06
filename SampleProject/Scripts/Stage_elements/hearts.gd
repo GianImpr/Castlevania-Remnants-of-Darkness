@@ -12,12 +12,15 @@ var can_be_red: bool = true
 const INNOCENT_DEVIL_HEAL_SMALL: int = 5
 
 @export var animation: AnimationPlayer
+@export var wall_checker: WallChecker
+
 enum Type {
 	SOUL,
 	INNOCENT
 }
 
 func _ready():
+	visible = false
 	linear_velocity.x = SPEED
 	if can_be_red:
 		determineType()
@@ -31,7 +34,7 @@ func _physics_process(delta: float) -> void:
 			animation.play("idle")
 			
 func is_on_floor():
-	return linear_velocity.y < 10
+	return get_contact_count() > 0
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -54,3 +57,7 @@ func determineType() -> void:
 		type = Type.SOUL
 	else:
 		type = Type.INNOCENT
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	wall_checker.checkAndSortVertices(state)
+	

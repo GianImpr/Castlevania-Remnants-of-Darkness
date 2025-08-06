@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dosjh5lntu6w1"]
+[gd_scene load_steps=30 format=3 uid="uid://dosjh5lntu6w1"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/pick_up.gd" id="1_sp08q"]
 [ext_resource type="Shader" path="res://SampleProject/Shaders/flash.gdshader" id="1_tf74l"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_uj225"]
 [ext_resource type="AudioStream" uid="uid://cvyrscaciwfd5" path="res://assets/sounds/Pickups/se_sys_get_item.msf.wav" id="7_w6tyi"]
 [ext_resource type="AudioStream" uid="uid://b4bl5bt0uambh" path="res://assets/sounds/Pickups/se_sys_get_wepon.msf.wav" id="8_y24s0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/wall_checker.gd" id="11_vsmat"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3yniq"]
 shader = ExtResource("1_tf74l")
@@ -399,7 +400,7 @@ background_mode = 3
 glow_enabled = true
 glow_blend_mode = 1
 
-[node name="Pick-up" type="RigidBody2D" node_paths=PackedStringArray("sprite", "idle_timer", "flash_timer", "animation", "sound")]
+[node name="Pick-up" type="RigidBody2D" node_paths=PackedStringArray("sprite", "idle_timer", "flash_timer", "animation", "sound", "wall_checker")]
 collision_layer = 0
 lock_rotation = true
 script = ExtResource("1_sp08q")
@@ -412,6 +413,7 @@ animation = NodePath("AnimationPlayer")
 sound = NodePath("PolyphonicMenuAudio")
 item_full_scene = ExtResource("2_ovibg")
 boost_message = ExtResource("3_gagnr")
+wall_checker = NodePath("WallChecker")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_3yniq")
@@ -475,6 +477,12 @@ color_initial_ramp = SubResource("Gradient_3aip7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q43d6")
+
+[node name="CheckWalls" type="RayCast2D" parent="."]
+target_position = Vector2(10, 0)
+
+[node name="WallChecker" type="Node" parent="."]
+script = ExtResource("11_vsmat")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="IdleDuration" to="." method="_on_idle_duration_timeout"]

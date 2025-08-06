@@ -2,7 +2,8 @@ extends Resource
 class_name Dialogue
 
 enum Character {
-	HECTOR
+	HECTOR,
+	CARMILLA
 }
 
 enum Position {
@@ -11,11 +12,13 @@ enum Position {
 }
 
 const Names = {
-	HECTOR = "Hector"
+	HECTOR = "Hector", 
+	CARMILLA = "Carmilla"
 }
 
 const Sprites = {
-	HECTOR = "res://assets/sprites/HUD/Faces/Hector/HalfBody.png"
+	HECTOR = "res://assets/sprites/HUD/Faces/Hector/HalfBody.png",
+	CARMILLA = "res://assets/sprites/HUD/Faces/Carmilla/HalfBody.png"
 }
 
 enum Emotions {
