@@ -6,6 +6,11 @@ class_name DisjointedPlayerHitbox
 
 func _process(delta: float) -> void:
 	super(delta)
+	if Global.player != null and Global.player.sprite.weapon != null:
+		base_attribute = Global.player.sprite.weapon.hitbox.base_attribute
+	else:
+		base_attribute = [Global.Attribute.SLASH]
+
 	
 # Calculates the base damage of the move
 func calculateDamage(body: Node2D) -> int:

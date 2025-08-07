@@ -10,6 +10,7 @@ class_name PlayerHitbox
 @export var ice_hit_collision_scene: PackedScene
 @export var fire_hit_collision_scene: PackedScene
 @export var base_attribute: Array[Global.Attribute]
+@export var adjust_facing_position: bool = true
 static var coin_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/money.tscn")
 var actual_attributes: Array[Global.Attribute]
 
@@ -18,6 +19,9 @@ var frames_passed: float
 
 const INTENDED_FRAMES_PER_SECOND: int = 60
 const AFFINITY_COST: int = 3
+
+const NORMAL_TRAIL = Color(1, 1, 1, 1)
+const ICE_TRAIL = Color(0.3, 0.8, 1.5, 1)
 
 func _ready() -> void:
 	pass
@@ -30,7 +34,10 @@ func _process(delta: float) -> void:
 	
 	if frames_passed >= iframes_on_hit:
 		frames_passed = 0
+		set_deferred("monitoring", false)
 		hit_enemies.clear()
+	else:
+		set_deferred("monitoring", true)
 	
 	if player == null:
 		player = Global.player
@@ -132,6 +139,8 @@ func createHitEffect(body: Node2D) -> void:
 
 # Adjusts hitbox according to Hector's facing position
 func adjustHitboxOrientation() -> void:
+	if not adjust_facing_position:
+		return
 	var reference = get_parent()
 	if reference == null or reference is not Sprite2D:
 		reference = Global.player.sprite
@@ -208,7 +217,7 @@ func isAlive(body) -> bool:
 	return body.stats.HP > 0
 
 func recolorTrail() -> void:
-	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= 3 and Global.player.stats.equipment["relic"] == 1 and Global.player.stats.findItem(4, Global.player.stats.skill_inventory):
-		trail.modulate = Color(0.3, 0.8, 1.5, 1)
+	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= AFFINITY_COST and Global.player.stats.itemEquipped(Relic.Relics.INDIGO_CROSS, "relic") and Global.player.stats.findItem(Skill.Skills.CYAN_ORB, Global.player.stats.skill_inventory):
+		trail.modulate = ICE_TRAIL
 	else:
-		trail.modulate = Color(1, 1, 1, 1)
+		trail.modulate = NORMAL_TRAIL

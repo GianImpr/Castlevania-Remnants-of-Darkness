@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1qte8d156lf4"]
+[gd_scene load_steps=12 format=3 uid="uid://b1qte8d156lf4"]
 
 [ext_resource type="Texture2D" uid="uid://dkxgqvaj0gxh" path="res://assets/sprites/Weapons/Swords/Circle.png" id="1_0v4xv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/player_projectile.gd" id="1_jlgld"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="2_4hu7a"]
 [ext_resource type="Texture2D" uid="uid://1l6uoqc1boky" path="res://assets/sprites/Weapons/Swords/ShortSwordSpinBody.png" id="2_ub72w"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="3_jdvhq"]
 [ext_resource type="Shader" path="res://SampleProject/Shaders/flash.gdshader" id="4_fq4ge"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Powers/disjointed_player_hitbox.gd" id="5_etbsd"]
+[ext_resource type="PackedScene" uid="uid://dt30pxcyq6siw" path="res://SampleProject/extra_scenes/on_hit/hector_fire.tscn" id="8_52i12"]
 
 [sub_resource type="Gradient" id="Gradient_acqb8"]
 colors = PackedColorArray(0.337255, 0.301961, 0.65098, 0.74902, 1, 0.74902, 0.752941, 0.129412)
@@ -26,14 +27,8 @@ shader_parameter/flash_modifier = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf3pb"]
 size = Vector2(22.5, 10)
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("hitbox", "trail")]
+[node name="Node2D" type="Node2D"]
 scale = Vector2(-2, 2)
-script = ExtResource("1_jlgld")
-base_damage = 5
-hitbox = NodePath("Area2D/CollisionShape2D")
-hit_collision_scene = ExtResource("2_4hu7a")
-ice_hit_collision_scene = ExtResource("3_jdvhq")
-trail = NodePath("Sprite2D/Spin")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 clip_children = 1
@@ -55,13 +50,23 @@ texture = ExtResource("2_ub72w")
 flip_h = true
 flip_v = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DisjointedPlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitbox", "trail")]
 collision_layer = 8
 collision_mask = 4
+script = ExtResource("5_etbsd")
+extra_base_damage = 1
+damage_multiplier = 1.05
+iframes_on_hit = 15
+hitbox = NodePath("CollisionShape2D")
+trail = NodePath("../Sprite2D")
+hit_collision_scene = ExtResource("2_4hu7a")
+ice_hit_collision_scene = ExtResource("3_jdvhq")
+fire_hit_collision_scene = ExtResource("8_52i12")
+base_attribute = Array[int]([2])
+adjust_facing_position = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DisjointedPlayerHitbox"]
 position = Vector2(-2.25, -1)
 shape = SubResource("RectangleShape2D_xf3pb")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="DisjointedPlayerHitbox" to="DisjointedPlayerHitbox" method="_on_body_entered"]

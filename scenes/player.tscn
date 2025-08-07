@@ -1,4 +1,4 @@
-[gd_scene load_steps=400 format=3 uid="uid://cenjpg3o6am6u"]
+[gd_scene load_steps=401 format=3 uid="uid://cenjpg3o6am6u"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorStats.gd" id="1_f0ls1"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
@@ -201,6 +201,7 @@
 [ext_resource type="Texture2D" uid="uid://d2yr58nplltvm" path="res://assets/sprites/Effects/SpecialAttackVFX/Sparkles.png" id="181_s2s3l"]
 [ext_resource type="AudioStream" uid="uid://3g6fsxu45dey" path="res://assets/sounds/Effects/EnemyHit/HitFire.MP3" id="182_kyhcv"]
 [ext_resource type="AudioStream" uid="uid://40i2vpps8pdj" path="res://assets/sounds/Powerups/AguniLaurel/AguniLaurelFire.ogg" id="183_bjshn"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/player_projectile.gd" id="200_5r3n4"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_ju6fn")
@@ -2119,7 +2120,7 @@ tracks/21/keys = {
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("SpinNode/Spin:visible")
+tracks/22/path = NodePath("SwordSpin/Spin:visible")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -2131,7 +2132,7 @@ tracks/22/keys = {
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("SpinNode/Spin:position")
+tracks/23/path = NodePath("SwordSpin/Spin:position")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -2143,7 +2144,7 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("SpinNode/Spin/Sprite2D/Spin:rotation")
+tracks/24/path = NodePath("SwordSpin/Spin/Sprite2D/Spin:rotation")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
@@ -2155,7 +2156,7 @@ tracks/24/keys = {
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("SpinNode/Spin/Sprite2D/Spin:self_modulate")
+tracks/25/path = NodePath("SwordSpin/Spin/Sprite2D/Spin:self_modulate")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
@@ -2167,22 +2168,10 @@ tracks/25/keys = {
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("SpinNode/Spin/Area2D:monitoring")
+tracks/26/path = NodePath("SwordSpin/Spin/DisjointedPlayerHitbox/CollisionShape2D:disabled")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/27/type = "value"
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath("SpinNode/Spin/Area2D/CollisionShape2D:disabled")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -3932,7 +3921,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SpinNode/Spin:visible")
+tracks/6/path = NodePath("SwordSpin/Spin:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -3944,7 +3933,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SpinNode/Spin:position")
+tracks/7/path = NodePath("SwordSpin/Spin:position")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -3956,7 +3945,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SpinNode/Spin/Sprite2D/Spin:rotation")
+tracks/8/path = NodePath("SwordSpin/Spin/Sprite2D/Spin:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -3968,7 +3957,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SpinNode/Spin/Sprite2D/Spin:self_modulate")
+tracks/9/path = NodePath("SwordSpin/Spin/Sprite2D/Spin:self_modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -3997,26 +3986,28 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("SpinNode/Spin/Area2D:monitoring")
+tracks/11/path = NodePath("SwordSpin/Spin/DisjointedPlayerHitbox/CollisionShape2D:disabled")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.425, 0.5, 0.65, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.175, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false, true, false, true]
+"values": [true, false, true]
 }
-tracks/12/type = "value"
+tracks/12/type = "method"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("SpinNode/Spin/Area2D/CollisionShape2D:disabled")
+tracks/12/path = NodePath("SwordSpin/Spin/DisjointedPlayerHitbox")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [{
+"args": [],
+"method": &"recolorTrail"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_qkrq3"]
@@ -4703,6 +4694,7 @@ visible = false
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("3_rge3w")
+iframes_on_hit = 8
 player = NodePath("../..")
 sound = NodePath("../../PolyphonicAudioPlayer")
 state_machine = NodePath("../../StateMachine")
@@ -4721,6 +4713,7 @@ visible = false
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("3_rge3w")
+iframes_on_hit = 8
 player = NodePath("../..")
 sound = NodePath("../../PolyphonicAudioPlayer")
 state_machine = NodePath("../../StateMachine")
@@ -4902,7 +4895,7 @@ ignore_landing = NodePath("../Guard_break/Ignore_landing")
 
 [node name="Sword_spin" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_spin")]
 script = ExtResource("138_q0p4k")
-sword_spin = NodePath("../../SpinNode/Spin")
+sword_spin = NodePath("../../SwordSpin/Spin")
 
 [node name="Throw_axe" type="Node" parent="StateMachine"]
 script = ExtResource("141_js2j3")
@@ -5055,10 +5048,10 @@ one_shot = true
 [node name="IframeHitCounterReset" type="Timer" parent="."]
 one_shot = true
 
-[node name="SpinNode" type="Node2D" parent="."]
-scale = Vector2(-1, 1)
+[node name="SwordSpin" type="Node2D" parent="."]
+script = ExtResource("200_5r3n4")
 
-[node name="Spin" parent="SpinNode" instance=ExtResource("176_86i4x")]
+[node name="Spin" parent="SwordSpin" instance=ExtResource("176_86i4x")]
 visible = false
 position = Vector2(23, -1.5)
 rotation = 3.14159
@@ -5101,4 +5094,4 @@ target_position = Vector2(0, 16)
 [connection signal="timeout" from="Guard_recovery" to="." method="_on_guard_recovery_timeout"]
 [connection signal="timeout" from="IframeHitCounterReset" to="." method="_on_iframe_hit_counter_reset_timeout"]
 
-[editable path="SpinNode/Spin"]
+[editable path="SwordSpin/Spin"]

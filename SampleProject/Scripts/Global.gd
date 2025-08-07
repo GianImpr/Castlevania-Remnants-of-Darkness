@@ -1,6 +1,6 @@
 extends Node
 
-static var player = null
+static var player: HectorPlayer = null
 static var game: Game = null
 static var camera: Camera2D = null
 static var item_box = null
