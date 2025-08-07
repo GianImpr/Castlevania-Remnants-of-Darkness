@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dvikboxpt5o45"]
+[gd_scene load_steps=65 format=3 uid="uid://dvikboxpt5o45"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/dialogue_scene.gd" id="1_2shlh"]
 [ext_resource type="Texture2D" uid="uid://c08sind7c7n8c" path="res://assets/sprites/HUD/Faces/Hector/HalfBody.png" id="1_qijf7"]
@@ -19,7 +19,7 @@ position = 1
 [sub_resource type="Resource" id="Resource_wtpr2"]
 script = ExtResource("2_va3t4")
 character = 1
-expression = 3
+expression = 0
 dialogue_text = "I've come to know of your heroic feat.
 You've become a really strong man."
 position = 1
@@ -28,39 +28,67 @@ position = 1
 script = ExtResource("2_va3t4")
 character = 0
 expression = 2
-dialogue_text = "Carmilla...
-Why are you here?"
+dialogue_text = "Who are you?"
 position = 0
 
 [sub_resource type="Resource" id="Resource_55rnv"]
 script = ExtResource("2_va3t4")
 character = 1
-expression = 1
-dialogue_text = "I am here to set things right."
+expression = 3
+dialogue_text = "I am Carmilla, a loyal servant of Lord Dracula.
+And I know everything about you, my dear, sweet Hector."
+position = 1
+
+[sub_resource type="Resource" id="Resource_2wus2"]
+script = ExtResource("2_va3t4")
+character = 0
+expression = 2
+dialogue_text = "And what is it that you want from me?"
+position = 0
+
+[sub_resource type="Resource" id="Resource_bqaak"]
+script = ExtResource("2_va3t4")
+character = 1
+expression = 2
+dialogue_text = "I am here because I want to understand why you side with those scoundrels."
 position = 1
 
 [sub_resource type="Resource" id="Resource_jrgt6"]
 script = ExtResource("2_va3t4")
 character = 1
-expression = 0
-dialogue_text = "Lord Dracula has already fallen twice.
-Resurrecting him a third time would not be beneficial to anyone."
+expression = 1
+dialogue_text = "Why did you abandon and betray us?
+Humans are an ill-suited company for you, so why come back to them?"
 position = 1
 
 [sub_resource type="Resource" id="Resource_gx1rt"]
 script = ExtResource("2_va3t4")
 character = 0
-expression = 1
+expression = 2
 dialogue_text = "...
-So what do you intend to do?"
+You're in no position to judge humans."
 position = 0
+
+[sub_resource type="Resource" id="Resource_u1nhv"]
+script = ExtResource("2_va3t4")
+character = 1
+expression = 1
+dialogue_text = "That may be so, but our Lord Dracula is gone and someone has to take his place. His plan cannot stop here."
+position = 1
 
 [sub_resource type="Resource" id="Resource_v57uc"]
 script = ExtResource("2_va3t4")
 character = 1
 expression = 3
 dialogue_text = "I will take his place, as queen of this land.
-His will shall live on with me."
+His will shall live on!"
+position = 1
+
+[sub_resource type="Resource" id="Resource_eyf3w"]
+script = ExtResource("2_va3t4")
+character = 1
+expression = 2
+dialogue_text = "Because, listen to me, humans prove to be worthless and a danger to us both, again and again."
 position = 1
 
 [sub_resource type="Resource" id="Resource_yuuna"]
@@ -130,14 +158,14 @@ script = ExtResource("2_va3t4")
 character = 1
 expression = 5
 dialogue_text = "Hector, poor Hector.
-I also know about your beloved Rosaly."
+I also know about your beloved woman."
 position = 1
 
 [sub_resource type="Resource" id="Resource_nlgtf"]
 script = ExtResource("2_va3t4")
 character = 1
 expression = 0
-dialogue_text = "A beautiful, lovely maiden, killed by those heartless creatures, only because they believed she was a witch."
+dialogue_text = "A beautiful, lovely maiden, killed by those heartless creatures."
 position = 1
 
 [sub_resource type="Resource" id="Resource_7kcsh"]
@@ -159,7 +187,7 @@ position = 0
 script = ExtResource("2_va3t4")
 character = 0
 expression = 0
-dialogue_text = "It is because of Dracula, that this land is tainted by death.
+dialogue_text = "It is because of Lord Dracula, that this land is tainted by death.
 Famine, misery, violence, grief. All caused by his curse."
 position = 0
 
@@ -167,7 +195,7 @@ position = 0
 script = ExtResource("2_va3t4")
 character = 0
 expression = 0
-dialogue_text = "Rosaly was only a means for Dracula to punish my betrayal."
+dialogue_text = "Her death was only a means for Lord Dracula to punish my betrayal."
 position = 0
 
 [sub_resource type="Resource" id="Resource_lc0k7"]
@@ -211,7 +239,7 @@ script = ExtResource("2_va3t4")
 character = 1
 expression = 2
 dialogue_text = "Because they committed the same injustice to his beloved.
-She suffered the same fate as Rosaly."
+She suffered the same fate as your woman."
 position = 1
 
 [sub_resource type="Resource" id="Resource_2o2y2"]
@@ -278,7 +306,7 @@ position = 1
 script = ExtResource("2_va3t4")
 character = 1
 expression = 0
-dialogue_text = "Since you were so kind to separate Dracula's magic from his body, you've made things easier fo me."
+dialogue_text = "Since you were so kind to separate Dracula's magic from his body, you've made things easier for me."
 position = 1
 
 [sub_resource type="Resource" id="Resource_67xnv"]
@@ -293,8 +321,8 @@ position = 0
 script = ExtResource("2_va3t4")
 character = 1
 expression = 3
-dialogue_text = "Well then, here's your homework.
-Understand where you messed up!"
+dialogue_text = "Well then, here's your mission.
+Understand what you've done!"
 position = 1
 
 [sub_resource type="Resource" id="Resource_ispcp"]
@@ -688,7 +716,7 @@ _data = {
 
 [node name="Dialogue" type="Node2D" node_paths=PackedStringArray("left_character", "right_character", "character_name", "text", "wait_timer", "sound", "animation", "cursor")]
 script = ExtResource("1_2shlh")
-dialogue_test = Array[ExtResource("2_va3t4")]([SubResource("Resource_8f7hp"), SubResource("Resource_wtpr2"), SubResource("Resource_o67wt"), SubResource("Resource_55rnv"), SubResource("Resource_jrgt6"), SubResource("Resource_gx1rt"), SubResource("Resource_v57uc"), SubResource("Resource_yuuna"), SubResource("Resource_pl4eo"), SubResource("Resource_ql2g5"), SubResource("Resource_b1cpc"), SubResource("Resource_yuqnq"), SubResource("Resource_ycdkt"), SubResource("Resource_bft1l"), SubResource("Resource_abke8"), SubResource("Resource_3qvv1"), SubResource("Resource_nlgtf"), SubResource("Resource_7kcsh"), SubResource("Resource_mqejh"), SubResource("Resource_jnrv7"), SubResource("Resource_utlr2"), SubResource("Resource_lc0k7"), SubResource("Resource_hfyhw"), SubResource("Resource_a0e3l"), SubResource("Resource_l4h0p"), SubResource("Resource_15a3r"), SubResource("Resource_4neaj"), SubResource("Resource_2o2y2"), SubResource("Resource_bx3e7"), SubResource("Resource_tsqkx"), SubResource("Resource_7l514"), SubResource("Resource_8x8d0"), SubResource("Resource_upl0l"), SubResource("Resource_awl76"), SubResource("Resource_ni2ni"), SubResource("Resource_ue3r3"), SubResource("Resource_67xnv"), SubResource("Resource_j1ehq"), SubResource("Resource_ispcp")])
+dialogue_test = Array[ExtResource("2_va3t4")]([SubResource("Resource_8f7hp"), SubResource("Resource_wtpr2"), SubResource("Resource_o67wt"), SubResource("Resource_55rnv"), SubResource("Resource_2wus2"), SubResource("Resource_bqaak"), SubResource("Resource_jrgt6"), SubResource("Resource_gx1rt"), SubResource("Resource_u1nhv"), SubResource("Resource_v57uc"), SubResource("Resource_eyf3w"), SubResource("Resource_yuuna"), SubResource("Resource_pl4eo"), SubResource("Resource_ql2g5"), SubResource("Resource_b1cpc"), SubResource("Resource_yuqnq"), SubResource("Resource_ycdkt"), SubResource("Resource_bft1l"), SubResource("Resource_abke8"), SubResource("Resource_3qvv1"), SubResource("Resource_nlgtf"), SubResource("Resource_7kcsh"), SubResource("Resource_mqejh"), SubResource("Resource_jnrv7"), SubResource("Resource_utlr2"), SubResource("Resource_lc0k7"), SubResource("Resource_hfyhw"), SubResource("Resource_a0e3l"), SubResource("Resource_l4h0p"), SubResource("Resource_15a3r"), SubResource("Resource_4neaj"), SubResource("Resource_2o2y2"), SubResource("Resource_bx3e7"), SubResource("Resource_tsqkx"), SubResource("Resource_7l514"), SubResource("Resource_8x8d0"), SubResource("Resource_upl0l"), SubResource("Resource_awl76"), SubResource("Resource_ni2ni"), SubResource("Resource_ue3r3"), SubResource("Resource_67xnv"), SubResource("Resource_j1ehq"), SubResource("Resource_ispcp")])
 left_character = NodePath("LeftCharacter")
 right_character = NodePath("RightCharacter")
 character_name = NodePath("Label")
@@ -708,14 +736,14 @@ position = Vector2(120, 226)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_qijf7")
 hframes = 5
-frame = 3
+frame = 1
 
 [node name="PreviousExpression" type="Sprite2D" parent="LeftCharacter"]
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 2
 texture = ExtResource("1_qijf7")
 hframes = 5
-frame = 3
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LeftCharacter"]
 root_node = NodePath("../PreviousExpression")
@@ -773,9 +801,8 @@ offset_right = 804.0
 offset_bottom = 461.0
 theme = SubResource("Theme_houn6")
 bbcode_enabled = true
-text = "I've come to know of your heroic feat.
-You've become a really strong man."
-visible_characters = 73
+text = "We shall meet again, Hector."
+visible_characters = 28
 visible_characters_behavior = 1
 
 [node name="Wait" type="Timer" parent="."]
