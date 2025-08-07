@@ -929,6 +929,8 @@ sound = NodePath("PolyphonicAudio")
 position = Vector2(-3, -7)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
 scale = Vector2(2, 2)
@@ -952,6 +954,8 @@ libraries = {
 position = Vector2(-8, -14)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Head"]
 position = Vector2(9, -3)
@@ -975,6 +979,8 @@ libraries = {
 position = Vector2(1, -8)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Arm"]
 position = Vector2(10, -1)
@@ -998,6 +1004,8 @@ libraries = {
 position = Vector2(-7, -6)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionBox" type="CollisionShape2D" parent="SecondArm"]
 position = Vector2(6.625, -2)
@@ -1021,6 +1029,8 @@ libraries = {
 position = Vector2(-1, 10)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionBox" type="CollisionShape2D" parent="Leg"]
 position = Vector2(9, -1)
@@ -1044,6 +1054,8 @@ libraries = {
 position = Vector2(0, 9)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionBox" type="CollisionShape2D" parent="SecondLeg"]
 position = Vector2(4.5, 0)
@@ -1067,6 +1079,8 @@ libraries = {
 position = Vector2(-3, -7)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="Sprite" type="Sprite2D" parent="Shield"]
 scale = Vector2(2, 2)

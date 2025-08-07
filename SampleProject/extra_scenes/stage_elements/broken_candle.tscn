@@ -789,6 +789,8 @@ delete_timer = NodePath("DeleteTimer")
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 scale = Vector2(2, 2)
@@ -811,6 +813,8 @@ libraries = {
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
 position = Vector2(-6.5, 17)
@@ -833,6 +837,8 @@ libraries = {
 [node name="RigidBody2D3" type="RigidBody2D" parent="."]
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
 position = Vector2(-4.5, -2)
@@ -855,6 +861,8 @@ libraries = {
 [node name="RigidBody2D4" type="RigidBody2D" parent="."]
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
 position = Vector2(-14.5, -13)
@@ -877,6 +885,8 @@ libraries = {
 [node name="RigidBody2D5" type="RigidBody2D" parent="."]
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
 position = Vector2(6, -15)

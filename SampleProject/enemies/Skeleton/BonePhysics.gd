@@ -11,7 +11,7 @@ var thrower: Enemy
 
 func _physics_process(delta: float) -> void:
 	move_local_x(delta)
-	if abs(linear_velocity) < Vector2(20, 20) or thrower == null:
+	if get_contact_count() > 0 or thrower == null:
 		destroy()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

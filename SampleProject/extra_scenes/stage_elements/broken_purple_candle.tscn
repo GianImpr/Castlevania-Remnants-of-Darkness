@@ -25,6 +25,8 @@ explosion = ExtResource("2_rdjpu")
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(-1.21375, -11)
@@ -39,6 +41,8 @@ hframes = 4
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
 position = Vector2(-1, 3.5)
@@ -54,6 +58,8 @@ frame = 1
 [node name="RigidBody2D3" type="RigidBody2D" parent="."]
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
 position = Vector2(-1, 25)
@@ -69,6 +75,8 @@ frame = 2
 [node name="RigidBody2D4" type="RigidBody2D" parent="."]
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
 position = Vector2(-1, 42)

@@ -829,6 +829,8 @@ sound = NodePath("PolyphonicAudio")
 position = Vector2(-3, -7)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
 scale = Vector2(2, 2)
@@ -852,6 +854,8 @@ libraries = {
 position = Vector2(-8, -14)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="Sprite" type="Sprite2D" parent="Head"]
 scale = Vector2(2, 2)
@@ -875,6 +879,8 @@ libraries = {
 position = Vector2(1, -8)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="Sprite" type="Sprite2D" parent="Arm"]
 scale = Vector2(2, 2)
@@ -898,6 +904,8 @@ libraries = {
 position = Vector2(-7, -6)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="Sprite" type="Sprite2D" parent="SecondArm"]
 scale = Vector2(2, 2)
@@ -921,6 +929,8 @@ libraries = {
 position = Vector2(-1, 10)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="Sprite" type="Sprite2D" parent="Leg"]
 scale = Vector2(2, 2)
@@ -944,6 +954,8 @@ libraries = {
 position = Vector2(0, 9)
 collision_layer = 8
 lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="Sprite" type="Sprite2D" parent="SecondLeg"]
 position = Vector2(-2, 3)

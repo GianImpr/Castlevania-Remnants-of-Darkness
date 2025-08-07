@@ -6,6 +6,7 @@ var children: Array[RigidBody2D]
 @export var explosion: PackedScene
 var facing_position: int = Global.player.facing_position
 const FLAME_POSITION_OFFSET: Vector2 = Vector2(0,-8)
+const ANIMATION_CHILD_INDEX: int = 2
 
 func _ready() -> void:
 	for child in get_children():
@@ -16,9 +17,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	for child in children:
 		child.move_local_x(delta)
-		if child and abs(child.linear_velocity) < Vector2(40, 40):
+		if child and child.get_contact_count() > 0:
 			if explosion == null:
-				child.get_child(2).play("destroy", -1, 2.5)
+				child.get_child(ANIMATION_CHILD_INDEX).play("destroy", -1, 2.5)
 			else:
 				child.visible = false
 				var flame = explosion.instantiate()
