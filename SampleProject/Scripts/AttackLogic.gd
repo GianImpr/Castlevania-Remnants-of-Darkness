@@ -1,5 +1,6 @@
 extends Area2D
 class_name PlayerHitbox
+@export_range(0, 120, 1, "suffix:frames") var iframes_on_hit: int
 @export var player: CharacterBody2D
 @export var sound: PolyphonicAudio
 @export var state_machine: Node
@@ -12,6 +13,10 @@ class_name PlayerHitbox
 static var coin_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/money.tscn")
 var actual_attributes: Array[Global.Attribute]
 
+var hit_enemies: Array[Node2D]
+var frames_passed: float
+
+const INTENDED_FRAMES_PER_SECOND: int = 60
 const AFFINITY_COST: int = 3
 
 func _ready() -> void:
@@ -19,6 +24,13 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	adjustHitboxOrientation()
+	
+	if hit_enemies.size() > 0:
+		frames_passed += delta*INTENDED_FRAMES_PER_SECOND
+	
+	if frames_passed >= iframes_on_hit:
+		frames_passed = 0
+		hit_enemies.clear()
 	
 	if player == null:
 		player = Global.player
@@ -41,6 +53,9 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 			body.destroy()
 		return
 	# Hitting an enemy
+	if body in hit_enemies:
+		return
+		
 	if isAlive(body):
 		var damage = calculateDamage(body)
 		
@@ -62,6 +77,8 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 		damage = applyDamage(body, damage, physical_based_sound)
 		if kills(body, damage):
 			player.addExp(body.stats.EXP)
+		else:
+			hit_enemies.append(body)
 	if isAlive(body):
 		if body.stats.DEF > player.stats.Stats["ATK"]/2.5:
 			applyGlow(body, Color(-1, -1, 1)) # Blue glow => attack is weak

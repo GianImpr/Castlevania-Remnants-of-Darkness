@@ -1,7 +1,8 @@
 extends DisjointedPlayerHitbox
 class_name AguniLaurelHitbox
 static var hitbox_activated: bool = true
-static var hit_enemies: Array[Node2D]
+static var enemies_hit: Array[Node2D]
+@export_range(0, 1, 0.1, "suffix:s") var iframes_duration: float
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -9,14 +10,14 @@ func _process(delta: float) -> void:
 	super(delta)
 	
 func _on_hit(body: Node2D) -> void:
-	if not hitbox_activated and body in hit_enemies:
+	if not hitbox_activated and body in enemies_hit:
 		return
 		
 	hitbox_activated = false
-	hit_enemies.append(body)
+	enemies_hit.append(body)
 	get_tree().create_timer(iframes_duration).timeout.connect(enableHitbox)
 	_on_body_entered(body, false)
 
 static func enableHitbox() -> void:
-	hit_enemies.clear()
+	enemies_hit.clear()
 	hitbox_activated = true
