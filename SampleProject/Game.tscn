@@ -1,4 +1,4 @@
-[gd_scene load_steps=394 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=396 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -199,6 +199,7 @@
 [ext_resource type="Texture2D" uid="uid://dw2nqmoc6ghcd" path="res://assets/sprites/Items/InventoryIcons/AguniLaurel.png" id="150_e8wvu"]
 [ext_resource type="PackedScene" uid="uid://bsxx7aocrs1f6" path="res://SampleProject/extra_scenes/HUD/weapon_wheel.tscn" id="164_3jxay"]
 [ext_resource type="AudioStream" uid="uid://bi8mk2hewgbxu" path="res://assets/music/ForbiddenArea.ogg" id="170_nmeol"]
+[ext_resource type="AudioStream" uid="uid://nhymb1wcqole" path="res://assets/music/Confrontation.ogg" id="177_4qcbo"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_6ajcc")
@@ -2809,9 +2810,14 @@ script = ExtResource("10_etx3r")
 Tag = "cave"
 stream = ExtResource("170_nmeol")
 
+[sub_resource type="Resource" id="Resource_d34sg"]
+script = ExtResource("10_etx3r")
+Tag = "confrontation"
+stream = ExtResource("177_4qcbo")
+
 [sub_resource type="Resource" id="Resource_8tj7q"]
 script = ExtResource("8_afqo1")
-sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj")])
+sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj"), SubResource("Resource_d34sg")])
 
 [sub_resource type="Gradient" id="Gradient_0dip4"]
 offsets = PackedFloat32Array(0, 0.989418)

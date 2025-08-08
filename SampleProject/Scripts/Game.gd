@@ -73,7 +73,7 @@ enum Languages {
 	PORTUGUESE
 }
 
-const langs = ["en", "it", "en", "pt"]
+const langs = ["en", "it", "es", "pt"]
 
 enum ControllerScheme {
 	PLAYSTATION,
