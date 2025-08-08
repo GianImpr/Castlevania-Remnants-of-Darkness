@@ -223,6 +223,7 @@ func save_game():
 	save_manager.set_value("settings", Global.settings_node.settings)
 	save_manager.set_value("key_mapping", InputHelper.serialize_inputs_for_actions(Global.settings_node.Actions.values()))
 	save_manager.set_value("difficulty", Global.game.difficulty)
+	save_manager.set_value("quick_weapons", EquipMenu.serializeQuickWeapons())
 	if player.sprite.weapon != null:
 		save_manager.set_value("weapon", player.sprite.weapon.scene_file_path)
 	save_manager.save_as_text(SAVE_PATH)
@@ -259,6 +260,7 @@ func load_game():
 	Global.inventory.equip_slots.setEquipIcons(equip_icons)
 	Global.settings_node.joypad_binding_swaps = save_manager.get_value("binding_swaps")
 	Global.settings_node.settings = save_manager.get_value("settings")
+	EquipMenu.deserializeQuickWeapons(save_manager.get_value("quick_weapons"))
 	InputHelper.deserialize_inputs_for_actions(save_manager.get_value("key_mapping"))
 	Global.game.difficulty = save_manager.get_value("difficulty")
 	if player.sprite.weapon != null:

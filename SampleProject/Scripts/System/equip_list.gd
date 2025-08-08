@@ -325,6 +325,7 @@ func quickWeaponSwap(weapon_position: int) -> void:
 	if Global.player == null:
 		return
 
+	var new_wpn = quick_weapons[weapon_position]
 	player = Global.player.stats
 	var current_weapon_id = player.equipment["weapon"]
 	var old_weapon = getEquipFromCompendium(current_weapon_id-1, Game.get_singleton().weapon_compendium)
@@ -343,3 +344,17 @@ func quickWeaponSwap(weapon_position: int) -> void:
 			player.addItem(current_weapon_id, player.weapon_inventory)
 		player.equipment["weapon"] = 0
 		equipSlots.get_child(0).get_child(0).get_child(0).texture = defaultIcon()
+
+# Used when saving data
+static func serializeQuickWeapons() -> Array[int]:
+	var serialized_weapons: Array[int] = [0,0,0,0]
+	for i in range(0, quick_weapons.size()):
+		if quick_weapons[i] != null:
+			serialized_weapons[i] = Global.player.stats.getItemIndexInCompendium(quick_weapons[i], Global.player.stats.weapon_compendium)
+	return serialized_weapons
+
+# Used when loading data
+static func deserializeQuickWeapons(serialized_weapons: Array[int]) -> void:
+	for i in range(0, quick_weapons.size()):
+		if serialized_weapons[i] > 0:
+			quick_weapons[i] = Game.get_singleton().weapon_compendium[serialized_weapons[i]-1]
