@@ -10,6 +10,7 @@ func enter():
 	default_button.grab_focus()
 	accessed_menu = 0
 	equip_list.player = Global.player.stats
+	default_button.disabled = Global.player.isAttacking()
 	updateStats(["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
 	updateQuickWeaponIcons()
 	

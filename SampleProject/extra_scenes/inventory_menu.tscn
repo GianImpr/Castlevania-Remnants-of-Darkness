@@ -2099,12 +2099,13 @@ offset_right = 855.0
 offset_bottom = 93.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_7ea2r")
 
-[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Equip/Display/PanelContainer" node_paths=PackedStringArray("equip_list", "sound", "menu", "state_machine")]
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Equip/Display/PanelContainer" node_paths=PackedStringArray("equip_list", "description", "sound", "menu", "state_machine")]
 layout_mode = 2
 theme = SubResource("Theme_pwypc")
 theme_override_constants/separation = 0
 script = ExtResource("11_08wtv")
 equip_list = NodePath("../../EquipList")
+description = NodePath("../../Description")
 button_glow = SubResource("StyleBoxFlat_h2w5a")
 sound = NodePath("../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../..")

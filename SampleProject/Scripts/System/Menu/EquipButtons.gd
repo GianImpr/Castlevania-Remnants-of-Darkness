@@ -2,6 +2,7 @@ extends Menu
 class_name EquipButtons
 @export var equip_list: GridContainer
 @export var slot_type: Label
+@export var description: Control
 var button_index: int
 
 func _ready() -> void:
@@ -25,6 +26,8 @@ func on_focused(which):
 	match which.get_index():
 		0:
 			equip_list.initList(Global.player.stats.weapon_inventory)
+			if Global.player.isAttacking():
+				description.get_child(1).text = tr("CANNOT_CHANGE_WEAPON_MESSAGE")
 		1:
 			equip_list.initList(Global.player.stats.artifact_inventory)
 		2:

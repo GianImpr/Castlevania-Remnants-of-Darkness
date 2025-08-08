@@ -1,9 +1,9 @@
 keys,en,it,es,pt,
 --Menu--,,,,,
-MENU_HP, H P, P V,P S,P V,
+MENU_HP, H P, P V,P S, P V,
 MENU_MP,M P,P M,P M,P M,
 MENU_SP,S P,P S,P S,P S,
-MENU_HEARTS,Hearts,Cuori,,,
+MENU_HEARTS,Hearts,Cuori,,Corações,
 HP_STAT,HP,PV,PS,PV,
 MP_STAT,MP,PM,PM,PM,
 SP_STAT,SP,PS,PS,PS,
@@ -136,6 +136,7 @@ CONTROLLER_LABEL,Controller,Controller,Mando,Controle,
 KEYBOARD_LABEL,Keyboard,Tastiera,Teclado,Teclado,
 ,,,,,
 --Weapons--,,,,,
+CANNOT_CHANGE_WEAPON_MESSAGE,Cannot change weapon while attacking.,Non si può cambiare arma mentre si attacca.,,,
 UNEQUIP_LABEL,Unequip,Rimuovi,Desequipar,Desequipar,
 SHORT_SWORD,Short Sword,Spada Corta,Espada corta,Espada Curta,
 SHORT_SWORD_DESC,"A cheap short sword, bad due its poor range.","Una spada corta economica, scadente a causa della sua scarsa gittata.","Una espada corta barata, es mala debido a su pobre alcance.","Uma espada pequena e barata, ruim devido ao seu curto alcance.",
@@ -146,7 +147,7 @@ CLAYMORE_DESC,"Weapon whose name means ""great sword"".
 Quite difficult to wield as it is heavy.","Arma il cui nome significa ""grande spada"".
 Abbastanza difficile da maneggiare data la sua pesantezza.","Arma cuyo nombre significa ""gran espada"".
 Es difícil de empuñar como lo es pesada.","Uma arma cujo nome significa ""grande espada"".
-É difícil empunhar devido ao peso.",
+É difícil de empunhar devido ao peso.",
 FALCHION,Falchion,Falcione,Bracamarte,Falcione,
 FALCHION_DESC,"Norman sword with a wide, crescent-shaped blade.",Spada normanna con una lama ampia a forma di luna crescente.,Espada normanda con una hoja ancha con forma de creciente.,Espada normanda com lâmina larga em forma de crescente.,
 MACE,Mace,Mazza,Maza,Maça,
@@ -543,7 +544,7 @@ do tempo.
 
 Inimigos podem atingir Hector repetidamente se o cercarem.
 Para minimizar o dano, use a defesa rapidamente.",
-RELICS,RELICS,RELIQUIE,,,
+RELICS,RELICS,RELIQUIE,,RELÍQUIAS,
 RELICS_DESC,"Relics are powerful items that
 allow Hector to trigger special effects, 
 at the cost of some MP.
@@ -553,8 +554,13 @@ currently equipped relic.","Le Reliquie sono oggetti potenti che permettono ad
 Hector di attivare degli effetti speciali, consumando però i PM.
 
 Premere [[Circle]] mentre si sta parando per attivare la 
-reliquia equipaggiata.",,,
-RED_SPARK,RED SPARK ATTACK,ATTACCO CON SCINTILLA ROSSA,,,
+reliquia equipaggiata.",,"Relíquias são itens poderosos que
+permitem que Hector acione efeitos especiais
+ao custo de PM.
+
+Pressione [[Circle]] enquanto estiver em guarda para ativar a
+relíquia equipada no momento.",
+RED_SPARK,RED SPARK ATTACK,ATTACCO CON SCINTILLA ROSSA,,ATAQUE DE CENTELHA VERMELHA,
 RED_SPARK_DESC,"When an enemy glows red, the attack they're going to
 unleash will instantly break Hector's guard, dealing
 increased damage.
@@ -563,8 +569,12 @@ Dodge this kind of attack to avoid taking damage.","Quando un nemico brilla di r
 per fare romperà immediatamente la guardia di Hector,
 incrementando di conseguenza i danni subiti.
 
-Per evitare questo tipo di attacchi, Hector deve schivarli completamente.",,,
-PERFECT_GUARD,PERFECT GUARD,PARATA PERFETTA,,,
+Per evitare questo tipo di attacchi, Hector deve schivarli completamente.",,"Quando um inimigo brilha em vermelho, o ataque que ele vai
+desferir quebrará instantaneamente a guarda de Hector, causando
+dano aumentado.
+
+Desvie desse tipo de ataque para não sofrer dano.",
+PERFECT_GUARD,PERFECT GUARD,PARATA PERFETTA,,DEFESA PERFEITA,
 PERFECT_GUARD_DESC,"Platinum Arm is a skill that allows Hector to perfect guard attacks.
 Upon guarding right before an enemy attack, Hector will restore
 some MP and Hearts depending on the strength of the blocked attack.
@@ -574,8 +584,12 @@ Parando non appena il nemico sta per attaccare,
 Hector recupererà un po' di PM e Cuori, anche in base
 a quanto è potente l'attacco.
 
-Parare perfettamente attacchi con scintilla rossa conferisce ancora più PM.",,,
-INNOCENT_DEVILS,INNOCENT DEVILS,DIAVOLI INNOCENTI,DEMONIOS INOCENTES,,
+Parare perfettamente attacchi con scintilla rossa conferisce ancora più PM.",,"O Braço de Platina é uma habilidade que permite a Hector realizar uma Defesa Perfeita.
+Ao defender imediatamente antes de um ataque inimigo, Hector restaurará
+alguns PM e Corações, dependendo da força do ataque bloqueado.
+
+A Defesa Perfeita de ataques de Centelha Vermelha restaura ainda mais PM.",
+INNOCENT_DEVILS,INNOCENT DEVILS,DIAVOLI INNOCENTI,DEMONIOS INOCENTES,DEMÔNIOS INOCENTES,
 INNOCENT_DEVILS_DESC,"Innocent Devils are loyal creatures that
 will follow Hector throughout his journey.
 
@@ -597,8 +611,18 @@ Proprio come per Hector, anche loro possono
 guadagnare ESP e quindi aumentare di livello,
 ma solo quando sono evocati.
 
-Premendo [[Triangle]], viene ordinato loro di utilizzare la loro abilità.",,,
-HEART_METER,HEART METER,BARRA DEI CUORI,BARRA DE CORAZÓN,,
+Premendo [[Triangle]], viene ordinato loro di utilizzare la loro abilità.",,"Os Demônios Inocentes são criaturas leais que
+seguirão Hector ao longo de sua jornada.
+
+Eles podem ajudar em batalha com habilidades ofensivas ou
+de suporte e também podem ajudar Hector a
+desvendar alguns caminhos ou tesouros escondidos.
+
+Assim como Hector, eles podem ganhar EXP e subir de nível
+para se tornarem mais fortes enquanto estiverem ativos.
+
+Ao pressionar [[Triangle]] eles usarão suas habilidades especiais.",
+HEART_METER,HEART METER,BARRA DEI CUORI,BARRA DE CORAZÓN,MEDIDOR DE CORAÇÕES,
 HEART_METER_DESC,"Innocent Devils use hearts as their energy and whenever they use a special skill
 or take damage in combat, their Heart meter decreases.
 
@@ -615,8 +639,15 @@ e sinistra la levetta destra.
 (oppure le freccette Sinistra e Destra sulla tastiera)
 
 Quando finiscono i Cuori, si dissolvono, e possono
-tornare solo se vengono recuperati un po' di Cuori.",,,
-FAIRY_ID,FAIRY-TYPE INNOCENT DEVIL,DIAVOLO INNOCENTE DI TIPO FATA,,,
+tornare solo se vengono recuperati un po' di Cuori.",,"Os Demônios Inocentes usam corações como energia e sempre que usam uma habilidade especial
+ou sofrem dano em combate, seu medidor de Corações diminui.
+
+Alterne a habilidade selecionada movendo o analógico direito
+para a esquerda ou para a direita. (ou as setas para a esquerda e para a direita se estiver usando um teclado)
+
+Quando os Corações acabam, eles se dissolvem e só podem retornar
+quando recuperarem uma boa quantidade de Corações.",
+FAIRY_ID,FAIRY-TYPE INNOCENT DEVIL,DIAVOLO INNOCENTE DI TIPO FATA,,DEMÔNIO INOCENTE TIPO FADA,
 FAIRY_ID_DESC,"Fairy-Type Innocent Devils have the ability to heal Hector and grant him
 some passive buffs during battle.
 
@@ -627,8 +658,13 @@ Hector e conferirgli bonus passivi durante la battaglia.
 
 Possono anche rivelare cammini segreti o aprire forzieri sigillati.
 
-Non possono essere colpiti dai nemici.",,,
-ORBS,ORBS,GLOBI,,,
+Non possono essere colpiti dai nemici.",,"Os Demônios Inocentes do Tipo Fada têm a habilidade de curar Hector e conceder a ele
+alguns bônus passivos durante a batalha.
+
+Eles também podem revelar caminhos secretos ou abrir baús de tesouro trancados.
+
+Não podem ser feridos por inimigos.",
+ORBS,ORBS,GLOBI,,ORBES,
 ORBS_DESC,"Orbs are special objects that enhance the power of Hector's relics
 without needing to equip them, so collecting one of them will automatically
 power up their respective relic's powers.
@@ -645,8 +681,16 @@ Ogni globo conferisce poteri ad una specifica reliquia.
 Le reliquie migliorano o attraverso il potenziamento delle
 mosse speciali, oppure sbloccando nuove abilità.
 
-Controlla la descrizione del Globo nella sezione Abilità per più informazioni.",,,
-CYAN_ORB,CYAN ORB,GLOBO AZZURRO,,,
+Controlla la descrizione del Globo nella sezione Abilità per più informazioni.",,"Orbes são objetos especiais que aprimoram o poder das relíquias de Hector
+sem a necessidade de equipá-las, portanto, coletar uma delas automaticamente
+aumentará os poderes da respectiva relíquia.
+
+As relíquias são melhoradas aumentando a eficácia de seus movimentos especiais,
+além de desbloquear novas habilidades.
+
+Confira a descrição do Orbe na seção Habilidades para mais informações
+sobre qual relíquia ele realmente potencializa.",
+CYAN_ORB,CYAN ORB,GLOBO AZZURRO,,ORBE CIANO,
 CYAN_ORB_DESC,"This orb enhances the strength of Indigo Cross.
 
 Icicles summoned with the frost shield get a 20% damage boost,
@@ -665,61 +709,74 @@ Inoltre, attivando questa reliquia, Hector può utilizzare
 l'[color=yellow]Affinità Glaciale[/color], che rende tutti gli attacchi
 di tipo ghiaccio, al costo di 3 PM per ogni colpo andato a segno.
 [color=#ff8080]Questa tecnica non funzionerà se
-l'arma equipaggiata possiede già un elemento.[/color]",,,
+l'arma equipaggiata possiede già un elemento.[/color]",,"Este orbe aumenta a força da Cruz Índigo.
+
+Dardos de gelo criados com o escudo de gelo recebem um aumento de 20% no dano,
+além de terem sua durabilidade aumentada em 50%.
+
+Ao ativar a relíquia, Hector pode usar a [color=yellow]Afinidade com Gelo[/color], que
+faz com que todos os seus ataques normais causem dano de gelo, ao custo
+de 3 PM por acerto.
+[color=#ff8080]Esta técnica não funcionará em armas que já possuam um
+atributo elemental.[/color]",
 ,,,,,
 --Hints--,,,,,
-SKILLS_LEARNED_MESSAGE,Learned [color=yellow] %s [/color] and [color=yellow] %s + [/color].,Imparato [color=yellow] %s [/color] e [color=yellow] %s + [/color].,,,
-HINT_1,Press [[Square]] to attack.,Premi [[Square]] per attaccare,,,
-HINT_2,Press [[Cross]] to jump.,Premi [[Cross]] per saltare.,,,
+SKILLS_LEARNED_MESSAGE,Learned [color=yellow] %s [/color] and [color=yellow] %s + [/color].,Imparato [color=yellow] %s [/color] e [color=yellow] %s + [/color].,,Aprendeu [color=yellow] %s [/color] e [color=yellow] %s + [/color].,
+HINT_1,Press [[Square]] to attack.,Premi [[Square]] per attaccare,,Pressione [[Square]] para atacar.,
+HINT_2,Press [[Cross]] to jump.,Premi [[Cross]] per saltare.,,Pressione [[Cross]] para pular.,
 HINT_3,"Press [[Start]] to
-open the inventory.",Premi [[Start]] per aprire l'inventario.,,,
+open the inventory.",Premi [[Start]] per aprire l'inventario.,,"Pressione [[Start]] para
+abrir o inventário.",
 HINT_4,"Press [[Up]] to sit
 on the chair and save the game.","Premi [[Up]] per sederti sulla sedia
-e salvare la partita.",,,
-HINT_5,You have obtained a skill.,Hai ottenuto un'abilità.,,,
-HINT_6,This wall hides something...,Questa parete è sospetta...,,,
-HINT_7,Ice could break this.,Il ghiaccio lo potrebbe rompere.,,,
+e salvare la partita.",,"Pressione [[Up]] para sentar-se
+na cadeira e salvar o jogo.",
+HINT_5,You have obtained a skill.,Hai ottenuto un'abilità.,,Você obteve uma habilidade.,
+HINT_6,This wall hides something...,Questa parete è sospetta...,,Esta parede parece suspeita...,
+HINT_7,Ice could break this.,Il ghiaccio lo potrebbe rompere.,,Gelo pode quebrar isso.,
 HINT_8,"Press [[Cross]] while crouching to
 drop off the platform.","Premi [[Cross]] mentre sei accovacciato
-su una piattaforma per scendere.",,,
-HINT_9,Press [[L1]] to backdash.,Premi [[L1]] per schivare.,,,
+su una piattaforma per scendere.",,"Pressione [[Cross]] enquanto estiver agachado para
+descer da plataforma.",
+HINT_9,Press [[L1]] to backdash.,Premi [[L1]] per schivare.,,Pressione [[L1]] para esquivar.,
 HINT_10,Seems like a good place for devil forging.,"Sembra un buon posto per una
-forgiatura diabolica.",,,
+forgiatura diabolica.",,Parece um bom lugar para forjar um demônio.,
 HINT_11,"Axes are strong weapons, but Hector is
 unable to crouch attack with them.","Le asce sono armi potenti, ma Hector
-non ci può attaccare da accovacciato.",,,
-HINT_12,Press [[Circle]] to stand up.,Premi [[Circle]] per alzarti.,,,
-HINT_13,If only there was a way to get rid of this log...,Se solo ci fosse un modo per sbarazzarsi di questo tronco...,,,
+non ci può attaccare da accovacciato.",,"Machados são armas fortes, mas Hector não consegue
+atacar enquanto está agachado com eles.",
+HINT_12,Press [[Circle]] to stand up.,Premi [[Circle]] per alzarti.,,Pressione [[Circle]] para levantar-se.,
+HINT_13,If only there was a way to get rid of this log...,Se solo ci fosse un modo per sbarazzarsi di questo tronco...,,Se ao menos houvesse uma maneira de se livrar desse tronco...,is this a tree log?
 ,,,,,
 --Save--,,,,,
-SAVE_GAME_BUTTON,Save Game,Salva partita,Guardar partida,,
-WARP_BUTTON,Warp,Teletrasportati,Teletransportar,,
-EXIT_SAVE_BUTTON,Exit,Esci,Salir,,
+SAVE_GAME_BUTTON,Save Game,Salva partita,Guardar partida,Salvar o Jogo,
+WARP_BUTTON,Warp,Teletrasportati,Teletransportar,Teleportar,
+EXIT_SAVE_BUTTON,Exit,Esci,Salir,Sair,
 ,,,,,
 --Enemies--,,,,,
-ZOMBIE,Zombie,Zombie,Zombí,,
-SKELETON,Skeleton,Scheletro,Esqueleto,,
-AXE_ARMOR,Axe Armor,Armigero,Armadura hacha,,
-GHOST,Ghost,Spettro,Fantasma,,
-SLINGER,Slinger,Scheletro costola,Lanza-costillas,,
-BONE_SCIMITAR,Bone Scimitar,Scheletro spadaccino,Hueso cimitarra,,
-ARMOR_KNIGHT,Armor Knight,Cavaliere,Guardia lanza,,
-BONE_PILLAR,Bone Pillar,Teschio di drago,Pilar de hueso,,
-ARMOR_LORD,Armor Lord,Corazzato reale,Señor Armadura,,
-DULLAHAN,Dullahan,Dullahan,Dullahan,,
-UNE,Une,Une,Une,,
-BANSHEE,Banshee,Banshee,Banshee,,
-BLACK_PANTHER,Black Panther,Pantera nera,Pantera negra,,
-BLACK_CROW,Black Crow,Corvo nero,Cuervo negro,,
-SLAUGHTERER,Slaughterer,Assassino,Matarife,,
-FLOATING_SKULL,Floating Skull,Teschio volante,Calavera flotante,,
-WARG,Warg,Warg,Huargo,,
-KAMIKAZE_RAVEN,Kamikaze Raven,Uccello esplosivo,Cuervo kamikaze,,
-MEDUSA_HEAD,Medusa Head,Testa di medusa,Cabeza medusa,,
-DEVIL,Devil,Diavolo,Diablo,,
+ZOMBIE,Zombie,Zombie,Zombí,Zumbi,
+SKELETON,Skeleton,Scheletro,Esqueleto,Esqueleto,
+AXE_ARMOR,Axe Armor,Armigero,Armadura hacha,Armadura de Machado,
+GHOST,Ghost,Spettro,Fantasma,Espectro,
+SLINGER,Slinger,Scheletro costola,Lanza-costillas,Esqueleto Atirador,
+BONE_SCIMITAR,Bone Scimitar,Scheletro spadaccino,Hueso cimitarra,Esqueleto Espadachim,
+ARMOR_KNIGHT,Armor Knight,Cavaliere,Guardia lanza,Armadura de Cavaleiro,
+BONE_PILLAR,Bone Pillar,Teschio di drago,Pilar de hueso,Pilar de Ossos,
+ARMOR_LORD,Armor Lord,Corazzato reale,Señor Armadura,Lorde Blindado,
+DULLAHAN,Dullahan,Dullahan,Dullahan,Cavaleiro sem Cabeça,
+UNE,Une,Une,Une,Une,
+BANSHEE,Banshee,Banshee,Banshee,Lamentadora,
+BLACK_PANTHER,Black Panther,Pantera nera,Pantera negra,Pantera Negra,
+BLACK_CROW,Black Crow,Corvo nero,Cuervo negro,Cuervo Negro,
+SLAUGHTERER,Slaughterer,Assassino,Matarife,Matador,
+FLOATING_SKULL,Floating Skull,Teschio volante,Calavera flotante,Caveira Flutuante,
+WARG,Warg,Warg,Huargo,Feral,
+KAMIKAZE_RAVEN,Kamikaze Raven,Uccello esplosivo,Cuervo kamikaze,Pássaro Explosivo,
+MEDUSA_HEAD,Medusa Head,Testa di medusa,Cabeza medusa,Cabeça de Medusa,
+DEVIL,Devil,Diavolo,Diablo,Demônio,
 ,,,,,
 --Innocent Devil Skills--,,,,,
-HEAL_SKILL_ID,Heal,Guarigione,,,
-HEAL_SKILL_ID_DESC,Heals Hector a moderate amount of HP.,"Guarisce Hector, ripristinando un po' di PV.",,,
-REFRESHING_AIR_SKILL_ID,Refreshing Air,Aria rinfrescante,,,
-REFRESHING_AIR_SKILL_ID_DESC,Temporarily allows Hector to heal MP when attacking a foe.,Permette temporaneamente ad Hector di recuperare i PM quando colpisce un nemico.,,,
+HEAL_SKILL_ID,Heal,Guarigione,,Cura,
+HEAL_SKILL_ID_DESC,Heals Hector a moderate amount of HP.,"Guarisce Hector, ripristinando un po' di PV.",,Cura uma quantidade moderada de PV de Hector.,
+REFRESHING_AIR_SKILL_ID,Refreshing Air,Aria rinfrescante,,Ar Revigorante,
+REFRESHING_AIR_SKILL_ID_DESC,Temporarily allows Hector to heal MP when attacking a foe.,Permette temporaneamente ad Hector di recuperare i PM quando colpisce un nemico.,,Permite temporariamente que Hector recupere PM ao atacar um inimigo.,
