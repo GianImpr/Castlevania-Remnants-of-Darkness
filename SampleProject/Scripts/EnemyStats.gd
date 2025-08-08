@@ -37,8 +37,8 @@ func determineDrop(include_misc_items: bool) -> void:
 	var rare_rate: float = calculateDropRate(rare_drop_rate)
 	const MIN_RANDOM_NUMBER: float = 0
 	const MAX_RANDOM_NUMBER: float = 1
-	const HEART_DROP_RATE: float = 0.25
-	const MONEY_DROP_RATE: float = 0.3
+	const HEART_DROP_RATE: float = 10.25
+	const MONEY_DROP_RATE: float = 10.3
 	var random_number: float = randf_range(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
 	if random_number > common_rate and random_number <= common_rate + rare_rate:
 		dropItem(rare_drop_id, rare_drop_category)
