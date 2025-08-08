@@ -70,7 +70,7 @@ func _process(delta: float) -> void:
 		get_tree().paused = false
 		if cursor_position != Position.ABSENT and not Global.player.isAttacking():
 			quickWeaponSwap.call(cursor_position)
-		else:
+		elif not Global.player.isAttacking():
 			delay_equip = true
 			delayed_position = cursor_position
 		close()
