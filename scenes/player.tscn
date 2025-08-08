@@ -4806,12 +4806,15 @@ wait_time = 0.1
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("12_5kq8s")
+attack_state = true
 
 [node name="Crouch_attack" type="Node" parent="StateMachine"]
 script = ExtResource("13_xjq4u")
+attack_state = true
 
 [node name="Air_attack" type="Node" parent="StateMachine"]
 script = ExtResource("14_4akkl")
+attack_state = true
 
 [node name="Damage" type="Node" parent="StateMachine" node_paths=PackedStringArray("blood")]
 script = ExtResource("17_tstub")
@@ -4896,9 +4899,11 @@ ignore_landing = NodePath("../Guard_break/Ignore_landing")
 [node name="Sword_spin" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_spin")]
 script = ExtResource("138_q0p4k")
 sword_spin = NodePath("../../SwordSpin/Spin")
+attack_state = true
 
 [node name="Throw_axe" type="Node" parent="StateMachine"]
 script = ExtResource("141_js2j3")
+attack_state = true
 
 [node name="PolyphonicAudioPlayer" parent="." instance=ExtResource("15_lipy2")]
 bus = &"SFX"

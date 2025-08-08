@@ -5,6 +5,7 @@ var player: CharacterBody2D
 var animation: AnimationPlayer
 var sound
 var voice
+@export var attack_state: bool = false
 const Actions = {
 	JUMP = "jump",
 	BACKDASH = "backdash",
@@ -128,7 +129,7 @@ func check_is_hurt():
 
 #Tells if the player is currently attacking
 func attacking() -> bool:
-	return (self is HectorAttack or self is HectorAirAttack or self is HectorCrouchAttack)
+	return attack_state
 
 #Allows the player to attack in a certain state
 func can_attack():

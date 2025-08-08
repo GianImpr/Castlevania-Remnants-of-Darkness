@@ -259,6 +259,9 @@ func isPerfectGuarding() -> bool:
 
 func willPerfectGuard() -> bool:
 	return not perfect_guard_timer.is_stopped()
+	
+func isAttacking() -> bool:
+	return state_machine.current_state.attack_state
 
 # Guard health recovery tick
 func _on_guard_recovery_timeout() -> void:

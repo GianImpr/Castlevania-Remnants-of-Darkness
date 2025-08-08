@@ -57,6 +57,8 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("weapon_swap") and Global.screen == Global.ScreenType.NONE:
+		if Global.player.isAttacking():
+			return
 		updateIcons()
 		get_tree().paused = true
 		open()
