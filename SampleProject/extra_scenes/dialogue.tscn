@@ -1,11 +1,9 @@
-[gd_scene load_steps=65 format=3 uid="uid://dvikboxpt5o45"]
+[gd_scene load_steps=64 format=3 uid="uid://dvikboxpt5o45"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/dialogue_scene.gd" id="1_2shlh"]
-[ext_resource type="Texture2D" uid="uid://c08sind7c7n8c" path="res://assets/sprites/HUD/Faces/Hector/HalfBody.png" id="1_qijf7"]
 [ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="2_mt6ho"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/Event/dialogue_entry.gd" id="2_va3t4"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="3_wbmmy"]
-[ext_resource type="Texture2D" uid="uid://bwvk1ef3k8yvj" path="res://assets/sprites/HUD/Faces/Carmilla/HalfBody.png" id="4_6a341"]
 [ext_resource type="AudioStream" uid="uid://cqcf404qofb42" path="res://assets/sounds/Effects/Miscellaneous/TextSpeech.MP3" id="5_i2a1r"]
 [ext_resource type="Texture2D" uid="uid://cmm7ljl15sp6m" path="res://assets/sprites/HUD/Containers/DialogueBox/DialogueCursor.png" id="6_uqomd"]
 
@@ -541,9 +539,85 @@ tracks/10/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("LeftCharacter:texture")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("LeftCharacter/PreviousExpression:texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("RightCharacter/PreviousExpression:texture")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("RightCharacter:texture")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_xeb01"]
+resource_name = "swap"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftCharacter:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.501961, 0.501961, 0.501961, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightCharacter:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.501961, 0.501961, 0.501961, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_tm4qh"]
-resource_name = "show"
+resource_name = "dismiss"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -642,38 +716,39 @@ tracks/7/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_xeb01"]
-resource_name = "swap"
-length = 0.3
+[sub_resource type="Animation" id="Animation_kr0pn"]
+resource_name = "show"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("LeftCharacter:modulate")
+tracks/0/path = NodePath("DialogueBox:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.501961, 0.501961, 0.501961, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RightCharacter:modulate")
+tracks/1/path = NodePath("DialogueBox:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.501961, 0.501961, 0.501961, 1), Color(1, 1, 1, 1)]
+"values": [Vector2(864, 40), Vector2(864, 134)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bcehj"]
 _data = {
 "RESET": SubResource("Animation_opgb0"),
-"show": SubResource("Animation_tm4qh"),
+"dismiss": SubResource("Animation_tm4qh"),
+"show": SubResource("Animation_kr0pn"),
 "swap": SubResource("Animation_xeb01")
 }
 
@@ -729,19 +804,16 @@ animation = NodePath("AnimationPlayer")
 cursor = NodePath("Cursor")
 
 [node name="LeftCharacter" type="Sprite2D" parent="."]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 2
 position = Vector2(120, 226)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_qijf7")
 hframes = 5
 frame = 1
 
 [node name="PreviousExpression" type="Sprite2D" parent="LeftCharacter"]
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 2
-texture = ExtResource("1_qijf7")
 hframes = 5
 frame = 1
 
@@ -752,11 +824,11 @@ libraries = {
 }
 
 [node name="RightCharacter" type="Sprite2D" parent="."]
+modulate = Color(0.501961, 0.501961, 0.501961, 1)
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 2
 position = Vector2(744, 226)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_6a341")
 flip_h = true
 hframes = 5
 frame = 2
@@ -764,10 +836,9 @@ frame = 2
 [node name="PreviousExpression" type="Sprite2D" parent="RightCharacter"]
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 2
-texture = ExtResource("4_6a341")
 flip_h = true
 hframes = 5
-frame = 2
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RightCharacter"]
 root_node = NodePath("../PreviousExpression")
@@ -791,7 +862,7 @@ offset_top = 362.0
 offset_right = 107.0
 offset_bottom = 394.0
 theme = SubResource("Theme_h8blr")
-text = "Carmilla"
+text = "Hector"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 visible = false
@@ -801,8 +872,8 @@ offset_right = 804.0
 offset_bottom = 461.0
 theme = SubResource("Theme_houn6")
 bbcode_enabled = true
-text = "We shall meet again, Hector."
-visible_characters = 28
+text = "Who are you?"
+visible_characters = 12
 visible_characters_behavior = 1
 
 [node name="Wait" type="Timer" parent="."]

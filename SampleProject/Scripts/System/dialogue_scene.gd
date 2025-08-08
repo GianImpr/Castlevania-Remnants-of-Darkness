@@ -38,6 +38,8 @@ static var dialogue_entries: Array
 const COMMA_WAIT_TIME: float = 0.3
 const PERIOD_WAIT_TIME: float = 0.6
 const NORMAL_DIALOGUE_WAIT_TIME: float = 0.03
+const PREVIOUS_EXPRESSION_INDEX: int = 0
+const CHARACTER_ANIMATION_INDEX: int = 1
 
 var has_to_release_button: bool = false
 var character_speaking: Character = Character.LEFT
@@ -79,20 +81,25 @@ func setEmotion(emotion, character) -> void:
 		return
 		
 	if character == Character.LEFT:
-		left_character.get_child(0).frame = left_character.frame
+		left_character.get_child(PREVIOUS_EXPRESSION_INDEX).frame = left_character.frame
 		left_character.frame = emotion-1
-		left_character.get_child(1).play("change_expression")
+		left_character.get_child(CHARACTER_ANIMATION_INDEX).play("change_expression")
 	else:
-		right_character.get_child(0).frame = right_character.frame
+		right_character.get_child(PREVIOUS_EXPRESSION_INDEX).frame = right_character.frame
 		right_character.frame = emotion-1
-		right_character.get_child(1).play("change_expression")
+		right_character.get_child(CHARACTER_ANIMATION_INDEX).play("change_expression")
 
 func setText(dialogue: String, emotion: Dialogue.Emotions = Dialogue.Emotions.KEEP_CURRENT, character = character_speaking) -> void:
 	if character != character_speaking:
 		swapChar(character)
 		
+	if character == Character.LEFT and left_character.texture == null or \
+	character == Character.RIGHT and right_character.texture == null:
+		setCharacterPortrait()
+		
 	if emotion != Emotions.STAY:
 		setEmotion(emotion, character)
+		
 		
 	text.visible_characters = 0
 	cursor.visible = false
@@ -144,14 +151,18 @@ func _on_wait_timeout() -> void:
 	wait_timer.start()
 
 func _endDialogue() -> void:
-	left_character.get_child(0).frame = left_character.frame
-	right_character.get_child(0).frame = right_character.frame
+	left_character.get_child(PREVIOUS_EXPRESSION_INDEX).frame = left_character.frame
+	right_character.get_child(PREVIOUS_EXPRESSION_INDEX).frame = right_character.frame
 	character_name.visible = false
 	text.visible = false
 	cursor.visible = false
-	animation.play_backwards("show")
+	animation.play_backwards("dismiss")
 	await animation.animation_finished
 	active = false
+	left_character.texture = null
+	left_character.get_child(PREVIOUS_EXPRESSION_INDEX).texture = null
+	right_character.texture = null
+	right_character.get_child(PREVIOUS_EXPRESSION_INDEX).texture = null
 	if not Engine.is_editor_hint():
 		Global.HUD.visible = true
 		Global.player.unfreeze()
@@ -168,8 +179,8 @@ func _startDialogue() -> void:
 	
 	setCharacterPortrait()
 	
-	left_character.get_child(0).frame = left_character.frame
-	right_character.get_child(0).frame = right_character.frame
+	left_character.get_child(PREVIOUS_EXPRESSION_INDEX).frame = left_character.frame
+	right_character.get_child(PREVIOUS_EXPRESSION_INDEX).frame = right_character.frame
 	animation.play("show")
 	await animation.animation_finished
 	setDialogueBox()
@@ -178,7 +189,26 @@ func _startDialogue() -> void:
 	active = true
 
 func setCharacterPortrait() -> void:
+	var pos_tween: Tween = get_tree().create_tween()
+	const INITIAL_LEFT_POSITION: Vector2 = Vector2(-120, 226)
+	const INITIAL_RIGHT_POSITION: Vector2 = Vector2(984, 226)
+	const POSITION_OFFSET: float = 240
+	const SELF_MODULATE_DELAY: float = 0.2
+	const POS_TWEEN_DURATION: float = 0.3
+	const SELF_MODULATE_TWEEN_DURATION: float = 0.6
+	
 	if dialogue_entries[current_dialogue_entry].position == Dialogue.Position.LEFT:
 		left_character.texture = load(Dialogue.Sprites.values()[dialogue_entries[current_dialogue_entry].character])
+		if left_character.get_child(PREVIOUS_EXPRESSION_INDEX).texture == null:
+			left_character.self_modulate = Color.TRANSPARENT
+			pos_tween.tween_property(left_character, "position", Vector2(INITIAL_LEFT_POSITION.x+POSITION_OFFSET, INITIAL_LEFT_POSITION.y), POS_TWEEN_DURATION).from(INITIAL_LEFT_POSITION)
+			get_tree().create_timer(SELF_MODULATE_DELAY).timeout.connect(func(): get_tree().create_tween().tween_property(left_character, "self_modulate", Color.WHITE, SELF_MODULATE_TWEEN_DURATION))
+			left_character.get_child(PREVIOUS_EXPRESSION_INDEX).texture = left_character.texture
 	else:
 		right_character.texture = load(Dialogue.Sprites.values()[dialogue_entries[current_dialogue_entry].character])
+		if right_character.get_child(PREVIOUS_EXPRESSION_INDEX).texture == null:
+			right_character.self_modulate = Color.TRANSPARENT
+			pos_tween.tween_property(right_character, "position", Vector2(INITIAL_RIGHT_POSITION.x-POSITION_OFFSET, INITIAL_RIGHT_POSITION.y), POS_TWEEN_DURATION).from(INITIAL_RIGHT_POSITION)
+			get_tree().create_timer(SELF_MODULATE_DELAY).timeout.connect(func(): get_tree().create_tween().tween_property(right_character, "self_modulate", Color.WHITE, SELF_MODULATE_TWEEN_DURATION))
+			right_character.get_child(PREVIOUS_EXPRESSION_INDEX).texture = right_character.texture
+			
