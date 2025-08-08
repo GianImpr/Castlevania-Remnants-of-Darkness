@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	if spawns_left == 0 and not spawned_lord:
 		spawn = spawn_enemy.instantiate()
 		spawn.enemy = armor_lord
-		spawn.enemy_type = "ArmorLord"
+		spawn.enemy_type = "ARMOR_LORD"
 		spawn.spawn_instantly = false
 		spawn.respawn_cooldown = 3
 		spawn.offset.y = 113
@@ -28,7 +28,6 @@ func _process(delta: float) -> void:
 		spawn.condition = spawn.Conditions.SUMMONED_IN_TOTAL
 		spawn.respawn = true
 		spawn.enemy_count = 2
-		spawn.max_at_once = 2
 		spawn.max_at_once = 1
 		spawn.respawn_cooldown = 1
 		add_child(spawn)

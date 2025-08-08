@@ -266,7 +266,7 @@ door2 = NodePath("../CombatDoor2")
 [node name="SpawnEnemy" parent="CombatEvent" instance=ExtResource("6_luxi4")]
 position = Vector2(480, 438)
 enemy = ExtResource("7_ogh4b")
-enemy_type = "Skeleton"
+enemy_type = "SKELETON"
 offset = Vector2(15, 33)
 spawn_range = Vector2(400, 0)
 respawn = true
@@ -278,7 +278,7 @@ max_at_once = 1
 [node name="SpawnEnemy6" parent="CombatEvent" instance=ExtResource("6_luxi4")]
 position = Vector2(480, 288)
 enemy = ExtResource("7_ogh4b")
-enemy_type = "Skeleton"
+enemy_type = "SKELETON"
 offset = Vector2(15, 33)
 spawn_range = Vector2(200, 0)
 respawn = true
@@ -290,7 +290,7 @@ max_at_once = 1
 [node name="SpawnEnemy7" parent="CombatEvent" instance=ExtResource("6_luxi4")]
 position = Vector2(77, 197)
 enemy = ExtResource("10_sq3r5")
-enemy_type = "Slinger"
+enemy_type = "SLINGER"
 offset = Vector2(15, 33)
 respawn = true
 respawn_cooldown = 4.0
@@ -301,7 +301,7 @@ max_at_once = 1
 [node name="SpawnEnemy8" parent="CombatEvent" instance=ExtResource("6_luxi4")]
 position = Vector2(884, 195)
 enemy = ExtResource("10_sq3r5")
-enemy_type = "Slinger"
+enemy_type = "SLINGER"
 offset = Vector2(15, 33)
 respawn = true
 respawn_cooldown = 3.0
@@ -312,7 +312,7 @@ max_at_once = 1
 [node name="SpawnEnemy3" parent="CombatEvent" instance=ExtResource("6_luxi4")]
 position = Vector2(480, 438)
 enemy = ExtResource("8_kg6ei")
-enemy_type = "AxeArmor"
+enemy_type = "AXE_ARMOR"
 offset = Vector2(15, 40)
 spawn_range = Vector2(400, 0)
 respawn = true
@@ -324,7 +324,7 @@ max_at_once = 1
 [node name="SpawnEnemy4" parent="CombatEvent" instance=ExtResource("6_luxi4")]
 position = Vector2(480, 438)
 enemy = ExtResource("9_1pwnx")
-enemy_type = "BoneScimitar"
+enemy_type = "BONE_SCIMITAR"
 offset = Vector2(15, 48)
 spawn_range = Vector2(400, 0)
 respawn = true
@@ -336,7 +336,7 @@ max_at_once = 1
 [node name="SpawnEnemy5" parent="CombatEvent" instance=ExtResource("6_luxi4")]
 position = Vector2(480, 438)
 enemy = ExtResource("9_1pwnx")
-enemy_type = "BoneScimitar"
+enemy_type = "BONE_SCIMITAR"
 offset = Vector2(15, 50)
 spawn_range = Vector2(400, 0)
 respawn = true
