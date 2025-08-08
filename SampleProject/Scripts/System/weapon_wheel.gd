@@ -6,6 +6,8 @@ class_name WeaponWheel
 @export var cursor_sprite: Sprite2D
 @export var weapon_icons: Node2D
 @export var sound: PolyphonicMenuAudio
+var delay_equip: bool = false
+var delayed_position: int = 0
 
 var cursor_position: Position
 const BRIGHT_CURSOR_COLOR: Color = Color(1, 1, 1)
@@ -53,12 +55,12 @@ func _input(event: InputEvent) -> void:
 				cursor_sprite.self_modulate = DARK_CURSOR_COLOR
 			cursor_animation.play("select")
 			break
+			
+		
 
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("weapon_swap") and Global.screen == Global.ScreenType.NONE:
-		if Global.player.isAttacking():
-			return
 		updateIcons()
 		get_tree().paused = true
 		open()
@@ -66,10 +68,18 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_released("weapon_swap") and Global.screen == Global.ScreenType.WHEEL:
 		get_tree().paused = false
-		if cursor_position != Position.ABSENT:
+		if cursor_position != Position.ABSENT and not Global.player.isAttacking():
 			quickWeaponSwap.call(cursor_position)
+		else:
+			delay_equip = true
+			delayed_position = cursor_position
 		close()
 		Global.screen = Global.ScreenType.NONE
+		
+	if delay_equip and not Global.player.isAttacking():
+		delay_equip = false
+		quickWeaponSwap.call(delayed_position)
+
 
 func updateIcons() -> void:
 	for i in range(0, EquipMenu.quick_weapons.size()):
