@@ -1,0 +1,564 @@
+[gd_scene load_steps=40 format=3 uid="uid://2vc38i25e1l"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/Ukoback/ukoback.gd" id="1_8njkw"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_i2bul"]
+[ext_resource type="PackedScene" uid="uid://bwffv0dq76y6k" path="res://SampleProject/enemies/Ukoback/ukoback_fireball.tscn" id="2_ulw53"]
+[ext_resource type="Texture2D" uid="uid://gyf5ulgsym5l" path="res://assets/sprites/Enemies/Ukoback/UkobackFlame.png" id="3_cg2df"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_owlfp"]
+[ext_resource type="Texture2D" uid="uid://c123taoncynk4" path="res://assets/sprites/Enemies/Ukoback/Ukoback.png" id="4_62t6f"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_yyv1i"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_1dhoy"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_qw2nv"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="8_3wkja"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ukoback/UkobackMoving.gd" id="8_kr5a0"]
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="8_sb6ne"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ukoback/UkobackDamage.gd" id="9_23f6s"]
+[ext_resource type="AudioStream" uid="uid://bknt4envywgfg" path="res://assets/sounds/Enemies/Ukoback/UkobackFireball.MP3" id="9_gf7vj"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Ukoback/UkobackDying.gd" id="10_knj4h"]
+[ext_resource type="AudioStream" uid="uid://cqkefmmf78xmq" path="res://assets/sounds/Enemies/Ukoback/UkobackDamage.MP3" id="10_ob215"]
+[ext_resource type="AudioStream" uid="uid://68pqphemf2o5" path="res://assets/sounds/Enemies/Ukoback/UkobackDead.MP3" id="11_8m182"]
+
+[sub_resource type="Animation" id="Animation_e0awq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_lt1vx"]
+resource_name = "moving"
+length = 0.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3pnfy"]
+_data = {
+"RESET": SubResource("Animation_e0awq"),
+"moving": SubResource("Animation_lt1vx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0wi5"]
+size = Vector2(34, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3m6u"]
+size = Vector2(22.5, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_808eh"]
+size = Vector2(10, 11)
+
+[sub_resource type="Resource" id="Resource_0xa61"]
+script = ExtResource("8_3wkja")
+Tag = "fireball"
+stream = ExtResource("9_gf7vj")
+
+[sub_resource type="Resource" id="Resource_twwai"]
+script = ExtResource("8_3wkja")
+Tag = "damage"
+stream = ExtResource("10_ob215")
+
+[sub_resource type="Resource" id="Resource_2wagc"]
+script = ExtResource("8_3wkja")
+Tag = "dead"
+stream = ExtResource("11_8m182")
+
+[sub_resource type="Resource" id="Resource_cpsr3"]
+script = ExtResource("7_qw2nv")
+sound_effects = Array[ExtResource("8_3wkja")]([SubResource("Resource_0xa61"), SubResource("Resource_twwai"), SubResource("Resource_2wagc")])
+
+[sub_resource type="Curve" id="Curve_va3vl"]
+max_value = 5.0
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5pg3w"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GDScript" id="GDScript_326py"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[sub_resource type="Animation" id="Animation_d34yd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanisterFire:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FireEffect:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanisterHitbox/HitboxShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ggn2h"]
+resource_name = "damage"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanisterFire:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_uigpj"]
+resource_name = "dying"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanisterFire:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.321569, 0.121569, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FireEffect:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanisterHitbox/HitboxShape:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PolyphonicAudioPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["damage"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["dead"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rheuk"]
+resource_name = "moving"
+length = 0.42
+loop_mode = 1
+step = 0.042
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0714286, 0.142857, 0.214286, 0.285714, 0.357143),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanisterFire:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5tpx"]
+_data = {
+"RESET": SubResource("Animation_d34yd"),
+"damage": SubResource("Animation_ggn2h"),
+"dying": SubResource("Animation_uigpj"),
+"moving": SubResource("Animation_rheuk")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dp40d"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_ahi68"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0.553557, 0.21062, 0, 1, 0.838245, 0.48309, 1.15514e-06, 1, 0.705549, 0, 0.0260039, 1, 0.711492, 0.48496, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_r0qon"]
+gradient = SubResource("Gradient_ahi68")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_px1f2"]
+emission_shape = 3
+emission_box_extents = Vector3(16, 16, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_max = 30.0
+gravity = Vector3(0, -200, 0)
+color_ramp = SubResource("GradientTexture1D_r0qon")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Ukoback" type="CharacterBody2D" node_paths=PackedStringArray("canister_shape", "raycast_up", "raycast_down", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_right", "blood_particles")]
+scale = Vector2(2, 2)
+collision_layer = 4
+motion_mode = 1
+script = ExtResource("1_8njkw")
+canister_shape = NodePath("CanisterHitbox")
+raycast_up = NodePath("Up")
+raycast_down = NodePath("Down")
+flame_projectile_scene = ExtResource("2_ulw53")
+sprite = NodePath("Body")
+hitbox = NodePath("Hitbox")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Timer")
+hitbox_iframe = NodePath("Hitbox")
+ray_cast_2d_right = NodePath("Forward")
+blood_particles = NodePath("BloodDamage")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_i2bul")
+enemy_name = "UKOBACK"
+LV = 11
+HP = 80
+ATK = 25
+EXP = 15
+rare_drop_id = 65
+rare_drop_rate = 1.6
+weaknesses = Array[int]([1, 2, 4, 6])
+tolerances = Array[int]([3, 7])
+
+[node name="CanisterFire" type="Sprite2D" parent="."]
+self_modulate = Color(1.5, 1, 1, 1)
+texture = ExtResource("3_cg2df")
+offset = Vector2(-16, 0)
+hframes = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanisterFire"]
+libraries = {
+"": SubResource("AnimationLibrary_3pnfy")
+}
+autoplay = "moving"
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("4_62t6f")
+offset = Vector2(-16, 0)
+hframes = 7
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-6, -4.5)
+shape = SubResource("RectangleShape2D_b0wi5")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+visible = false
+position = Vector2(-0.25, -4.5)
+shape = SubResource("RectangleShape2D_a3m6u")
+
+[node name="CanisterHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="CanisterHitbox"]
+visible = false
+position = Vector2(-18, 2.5)
+shape = SubResource("RectangleShape2D_808eh")
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_owlfp")
+audio_library = SubResource("Resource_cpsr3")
+
+[node name="BloodDamage" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 12
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_va3vl")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_5pg3w")
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+position = Vector2(0, -25.5)
+script = ExtResource("4_yyv1i")
+damage_node = ExtResource("5_1dhoy")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = SubResource("GDScript_326py")
+initial_state = NodePath("Moving")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("spawn_fire_timer")]
+script = ExtResource("8_kr5a0")
+speed = Vector2(200, 100)
+spawn_fire_timer = NodePath("SpawnFire")
+spawn_fire_base_time = 1.0
+spawn_fire_random_offset = 0.5
+
+[node name="SpawnFire" type="Timer" parent="StateMachine/Moving"]
+one_shot = true
+
+[node name="Damage" type="Node" parent="StateMachine"]
+script = ExtResource("9_23f6s")
+
+[node name="Dying" type="Node" parent="StateMachine"]
+script = ExtResource("10_knj4h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j5tpx")
+}
+
+[node name="FireEffect" type="GPUParticles2D" parent="."]
+z_index = 20
+material = SubResource("CanvasItemMaterial_dp40d")
+position = Vector2(0, -6.5)
+emitting = false
+amount = 70
+process_material = SubResource("ParticleProcessMaterial_px1f2")
+texture = ExtResource("8_sb6ne")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.4
+fixed_fps = 60
+
+[node name="Down" type="RayCast2D" parent="."]
+position = Vector2(0, 5.5)
+target_position = Vector2(0, 5)
+
+[node name="Up" type="RayCast2D" parent="."]
+position = Vector2(0, -13.5)
+target_position = Vector2(0, -5)
+
+[node name="Forward" type="RayCast2D" parent="."]
+target_position = Vector2(-25, 0)
