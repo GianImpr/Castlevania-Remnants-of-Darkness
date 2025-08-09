@@ -4952,9 +4952,10 @@ script = ExtResource("136_2ccld")
 recoil_speed = Vector2(150, -630)
 ignore_landing = NodePath("../Guard_break/Ignore_landing")
 
-[node name="Sword_spin" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_spin")]
+[node name="Sword_spin" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_spin", "sword_spin_hitbox")]
 script = ExtResource("138_q0p4k")
 sword_spin = NodePath("../../SwordSpin/Spin")
+sword_spin_hitbox = NodePath("../../SwordSpin/Spin/DisjointedPlayerHitbox/CollisionShape2D")
 attack_state = true
 
 [node name="Throw_axe" type="Node" parent="StateMachine"]

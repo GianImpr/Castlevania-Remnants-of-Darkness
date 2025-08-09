@@ -1,6 +1,7 @@
 extends State
 class_name HectorSwordSpin
 @export var sword_spin: Node2D
+@export var sword_spin_hitbox: CollisionShape2D
 var can_perfect_guard: bool = false
 
 func enter():
@@ -9,6 +10,7 @@ func enter():
 
 func exit():
 	sword_spin.visible = false
+	sword_spin_hitbox.disabled = true
 
 func Update(delta: float):
 	can_perform("backdash", true)
