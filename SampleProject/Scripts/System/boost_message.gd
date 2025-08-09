@@ -6,7 +6,11 @@ func _ready() -> void:
 	sound.play_sound_effect_from_library("levelup")
 
 func pause():
-	get_tree().paused = true
+	if Global.screen == Global.ScreenType.NONE:
+		Global.screen = Global.ScreenType.EVENT
+		get_tree().paused = true
 
 func unpause():
-	get_tree().paused = false
+	if Global.screen == Global.ScreenType.EVENT:
+		Global.screen = Global.ScreenType.NONE
+		get_tree().paused = false
