@@ -10,6 +10,7 @@ class_name Orb
 @export var pickup_flag_id: int
 @export var beat_sound_timer: Timer
 @export var item_id: int
+@export var spawn_automatically: bool = false
 var spawned: bool = false
 const orb_texture_path: String = "res://assets/sprites/Items/Pickups/Orbs/"
 
@@ -32,6 +33,9 @@ func _ready() -> void:
 			particles_color = Color(0, 1, 1, 0.75)
 			orb_texture_file = "CyanOrb.png"
 	orb_sprite.texture = load(orb_texture_path + orb_texture_file)
+	
+	if spawn_automatically and not Global.player.stats.picked_items[pickup_flag_id]:
+		_spawnOrb()
 	
 func _process(delta: float) -> void:
 	if animation.is_playing() and animation.current_animation_position < 6 and animation.current_animation == "spawn":
@@ -64,7 +68,8 @@ func collecting() -> void:
 	Global.player.stats.Stats["HP"] = Global.player.stats.Stats["MHP"]
 	Global.player.stats.Stats["MP"] = Global.player.stats.Stats["MMP"]
 	sound.play_sound_effect_from_library("collect")
-	Global.screen = Global.ScreenType.EVENT
+	if Global.screen == Global.ScreenType.NONE:
+		Global.screen = Global.ScreenType.EVENT
 	get_tree().paused = true
 	var freeze_screen_timer: Timer = Timer.new()
 	freeze_screen_timer.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -75,8 +80,9 @@ func collecting() -> void:
 	glowing_particles.emitting = false
 	
 func unfreeze_game() -> void:
-	get_tree().paused = false
-	Global.screen = Global.ScreenType.NONE
+	if Global.screen == Global.ScreenType.EVENT:
+		get_tree().paused = false
+		Global.screen = Global.ScreenType.NONE
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	animation.play("collected")
