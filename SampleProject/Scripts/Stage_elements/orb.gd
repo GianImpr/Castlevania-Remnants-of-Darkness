@@ -13,10 +13,21 @@ class_name Orb
 @export var spawn_automatically: bool = false
 var spawned: bool = false
 const orb_texture_path: String = "res://assets/sprites/Items/Pickups/Orbs/"
+const AUTOMATIC_SPAWN_DELAY: float = 0.1
+const BEFORE_APPEARING: float = 6
+const CAMERA_STRENGTH: float = 1
+const ENERGY_DURATION: float = 1.2
+const MIN_BEAT_ENERGY: float = 1
+const MAX_BEAT_ENERGY: float = 3
 
 enum OrbColor {
 	RED,
 	CYAN
+}
+
+const Colors = {
+	RED = Color(1, 0, 0, 0.75),
+	CYAN = Color(0, 1, 1, 0.75)
 }
 
 func _ready() -> void:
@@ -27,33 +38,35 @@ func _ready() -> void:
 	var orb_texture_file: String
 	match orb_color:
 		OrbColor.RED:
-			particles_color = Color(1, 0, 0, 0.75)
+			particles_color = Colors.RED
 			orb_texture_file = "RedOrb.png"
 		OrbColor.CYAN:
-			particles_color = Color(0, 1, 1, 0.75)
+			particles_color = Colors.CYAN
 			orb_texture_file = "CyanOrb.png"
 	orb_sprite.texture = load(orb_texture_path + orb_texture_file)
 	
 	if spawn_automatically and not Global.player.stats.picked_items[pickup_flag_id]:
-		_spawnOrb()
+		get_tree().create_timer(AUTOMATIC_SPAWN_DELAY).timeout.connect(_spawnOrb)
 	
 func _process(delta: float) -> void:
-	if animation.is_playing() and animation.current_animation_position < 6 and animation.current_animation == "spawn":
-		Global.camera.random_strength = 1
+	if animation.is_playing() and animation.current_animation_position < BEFORE_APPEARING and animation.current_animation == "spawn":
+		Global.camera.random_strength = CAMERA_STRENGTH
 		Global.camera.apply_shake()
 
 func _on_beat_sound_delay_timeout() -> void:
 	sound.play_sound_effect_from_library("beat")
 	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(point_light, "energy", 1, 1.2)
+	tween.tween_property(point_light, "energy", MIN_BEAT_ENERGY, ENERGY_DURATION)
 	await tween.finished
 	tween = get_tree().create_tween()
-	tween.tween_property(point_light, "energy", 3, 1.2)
+	tween.tween_property(point_light, "energy", MAX_BEAT_ENERGY, ENERGY_DURATION)
 	
 func _spawnOrb() -> void:
 	spawned = true
 	animation.play("spawn")
 	Global.player.freeze()
+	if Global.screen == Global.ScreenType.NONE:
+		Global.screen = Global.ScreenType.EVENT
 	await animation.animation_finished
 	beat_sound_timer.start()
 	animation.play("floating")
