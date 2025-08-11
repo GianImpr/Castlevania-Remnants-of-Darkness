@@ -1,18 +1,16 @@
-[gd_scene load_steps=32 format=3 uid="uid://cgnlu6aihtr6r"]
+[gd_scene load_steps=27 format=3 uid="uid://cgnlu6aihtr6r"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/title_screen.gd" id="1_wa1th"]
-[ext_resource type="PackedScene" uid="uid://c3xqaietfgs7l" path="res://SampleProject/Game.tscn" id="2_jg82w"]
+[ext_resource type="PackedScene" uid="uid://bjjk4mm7bkkd5" path="res://SampleProject/extra_scenes/loading_screen.tscn" id="2_hpjsa"]
 [ext_resource type="Texture2D" uid="uid://drvtxptjc62a0" path="res://assets/sprites/HUD/Title/Logo.png" id="4_ejp0b"]
 [ext_resource type="Texture2D" uid="uid://bnambwf21bgi8" path="res://assets/sprites/HUD/Title/PressStart.png" id="4_o6pa4"]
-[ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SotN.ttf" id="5_kt45t"]
+[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="5_2pknv"]
 [ext_resource type="Texture2D" uid="uid://6wd7mmy7y5xn" path="res://assets/sprites/HUD/Title/sky.png" id="5_p8ta0"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="8_xsm36"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="9_rpmvm"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="10_n0xa1"]
 [ext_resource type="AudioStream" uid="uid://cw48nwx7ttnp1" path="res://assets/music/MenuTheme.MP3" id="11_g628w"]
 [ext_resource type="AudioStream" uid="uid://crjwwfg00eh3" path="res://assets/sounds/Menu/MenuSelect.MP3" id="12_ix1y5"]
-[ext_resource type="Texture2D" uid="uid://dtyoud2v5t5ao" path="res://assets/sprites/HUD/Buttons/Back.png" id="13_2poar"]
-[ext_resource type="Texture2D" uid="uid://cxhoxuk5ouguu" path="res://assets/sprites/HUD/Buttons/Forward.png" id="14_yy616"]
 
 [sub_resource type="Animation" id="Animation_uxodi"]
 length = 0.001
@@ -90,7 +88,7 @@ _data = {
 }
 
 [sub_resource type="Theme" id="Theme_wac11"]
-default_font = ExtResource("5_kt45t")
+default_font = ExtResource("5_2pknv")
 default_font_size = 32
 
 [sub_resource type="Animation" id="Animation_8fcej"]
@@ -175,7 +173,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"startGame"
+"method": &"startLoadingScreen"
 }]
 }
 tracks/2/type = "method"
@@ -230,16 +228,7 @@ stream = ExtResource("12_ix1y5")
 script = ExtResource("9_rpmvm")
 sound_effects = Array[ExtResource("10_n0xa1")]([SubResource("Resource_8ssia")])
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_seutv"]
-size = Vector2(700, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vaeb"]
-size = Vector2(500, 60)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8lvt"]
-size = Vector2(200, 70)
-
-[node name="Control" type="Control" node_paths=PackedStringArray("animation", "save_label", "difficulty_label")]
+[node name="Control" type="Control" node_paths=PackedStringArray("animation", "save_label")]
 process_mode = 3
 clip_children = 2
 layout_mode = 3
@@ -250,9 +239,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wa1th")
 animation = NodePath("AnimationPlayer2")
-game = ExtResource("2_jg82w")
-save_label = NodePath("Label")
-difficulty_label = NodePath("Difficulty")
+loading_screen = ExtResource("2_hpjsa")
+save_label = NodePath("Copyright")
 
 [node name="Title" type="TextureRect" parent="."]
 z_index = 1
@@ -305,15 +293,14 @@ libraries = {
 }
 autoplay = "button"
 
-[node name="Label" type="Label" parent="."]
-visible = false
+[node name="Copyright" type="Label" parent="."]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 429.0
-offset_right = 294.0
-offset_bottom = 453.0
+offset_top = 450.0
+offset_right = 864.0
+offset_bottom = 482.0
 theme = SubResource("Theme_wac11")
-text = "PRESS SELECT TO LOAD SAVE DATA"
+text = "Developed by Shuan, all rights reserved to Konami"
+horizontal_alignment = 1
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
@@ -330,45 +317,3 @@ audio_library = SubResource("Resource_8tmy6")
 volume_db = -12.0
 script = ExtResource("8_xsm36")
 audio_library = SubResource("Resource_jfflm")
-
-[node name="Difficulty" type="Label" parent="."]
-layout_mode = 0
-offset_left = 696.0
-offset_top = 429.0
-offset_right = 861.0
-offset_bottom = 480.0
-theme = SubResource("Theme_wac11")
-text = "DIFFICULTY
-NORMAL"
-horizontal_alignment = 1
-
-[node name="Left" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 694.0
-offset_top = 460.0
-offset_right = 714.0
-offset_bottom = 480.0
-texture = ExtResource("13_2poar")
-
-[node name="Right" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 840.0
-offset_top = 460.0
-offset_right = 860.0
-offset_bottom = 480.0
-texture = ExtResource("14_yy616")
-
-[node name="Start" type="TouchScreenButton" parent="."]
-position = Vector2(461, 361)
-shape = SubResource("RectangleShape2D_seutv")
-action = "menu"
-
-[node name="LoadSave" type="TouchScreenButton" parent="."]
-position = Vector2(251, 450)
-shape = SubResource("RectangleShape2D_2vaeb")
-action = "map"
-
-[node name="ChangeDifficulty" type="TouchScreenButton" parent="."]
-position = Vector2(764, 444)
-shape = SubResource("RectangleShape2D_b8lvt")
-action = "move_right"

@@ -1,6 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://bjjk4mm7bkkd5"]
+[gd_scene load_steps=61 format=3 uid="uid://bjjk4mm7bkkd5"]
 
 [ext_resource type="Texture2D" uid="uid://c6oahkcwklotc" path="res://assets/sprites/HUD/Loading/Background.png" id="1_mwlu3"]
+[ext_resource type="Script" path="res://SampleProject/extra_scenes/loading_screen.gd" id="1_s3fxy"]
+[ext_resource type="PackedScene" uid="uid://c3xqaietfgs7l" path="res://SampleProject/Game.tscn" id="2_014f2"]
 [ext_resource type="Texture2D" uid="uid://kh67q8mxxd1y" path="res://assets/sprites/HUD/Loading/AnimatedBackground.png" id="2_asjfv"]
 [ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="3_vdkpo"]
 [ext_resource type="Texture2D" uid="uid://c08sind7c7n8c" path="res://assets/sprites/HUD/Faces/Hector/HalfBody.png" id="4_tmset"]
@@ -8,6 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="6_kqwro"]
 [ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="7_dh6wh"]
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="8_r6g7u"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="11_hjquy"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="12_m3njh"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="13_p7mob"]
+[ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="14_0k4y4"]
+[ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="14_aoirl"]
+[ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="15_mnm0v"]
+[ext_resource type="AudioStream" uid="uid://bk3yytbku0xg2" path="res://assets/sounds/Menu/PopUp.MP3" id="17_ly2eu"]
+[ext_resource type="AudioStream" uid="uid://chygwmoaucxte" path="res://assets/music/Requiem.ogg" id="18_xww6q"]
 
 [sub_resource type="Gradient" id="Gradient_ippbr"]
 offsets = PackedFloat32Array(0, 0.776)
@@ -133,7 +143,91 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DescriptionPanel:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(836, 106)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DescriptionPanel:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Description:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(836, 298)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/ScrollContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MusicPlayer:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-15.0]
 }
 
 [sub_resource type="Animation" id="Animation_4tgns"]
@@ -145,16 +239,188 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.366667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DescriptionPanel:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.233333, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(836, 16), Vector2(836, 106)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DescriptionPanel:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Description:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.466667, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(836, 16), Vector2(836, 298)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/ScrollContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.533333, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MusicPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["requiem"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qkv4d"]
+resource_name = "disappear"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"startGame"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MusicPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_y02sj"]
+resource_name = "disappear_to_title"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"titleScreen"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MusicPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-15.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ww74"]
 _data = {
 "RESET": SubResource("Animation_ilct6"),
-"appear": SubResource("Animation_4tgns")
+"appear": SubResource("Animation_4tgns"),
+"disappear": SubResource("Animation_qkv4d"),
+"disappear_to_title": SubResource("Animation_y02sj")
 }
 
 [sub_resource type="Theme" id="Theme_a85sy"]
@@ -172,14 +438,6 @@ height = 48
 fill_from = Vector2(0.0318471, 0.22293)
 fill_to = Vector2(0, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vndpk"]
-atlas = ExtResource("4_tmset")
-region = Rect2(100, 0, 360, 280)
-
-[sub_resource type="Theme" id="Theme_su86r"]
-default_font = ExtResource("5_p2lme")
-default_font_size = 32
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwt7n"]
 content_margin_top = 50.0
 texture = ExtResource("6_kqwro")
@@ -187,6 +445,14 @@ texture_margin_left = 20.0
 texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vndpk"]
+atlas = ExtResource("4_tmset")
+region = Rect2(100, 0, 360, 280)
+
+[sub_resource type="Theme" id="Theme_su86r"]
+default_font = ExtResource("5_p2lme")
+default_font_size = 32
 
 [sub_resource type="Theme" id="Theme_l45mb"]
 default_font = ExtResource("3_vdkpo")
@@ -218,17 +484,77 @@ default_font_size = 32
 default_font = ExtResource("8_r6g7u")
 default_font_size = 32
 
-[sub_resource type="Theme" id="Theme_oocjw"]
+[sub_resource type="Theme" id="Theme_qqicx"]
 default_font = ExtResource("5_p2lme")
-default_font_size = 32
 
-[node name="LoadingScreen" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4127"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vcxc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ulvd8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ffr4x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv73t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dt47o"]
+
+[sub_resource type="Resource" id="Resource_yp8es"]
+script = ExtResource("13_p7mob")
+Tag = "confirm"
+stream = ExtResource("14_0k4y4")
+
+[sub_resource type="Resource" id="Resource_hc3gt"]
+script = ExtResource("13_p7mob")
+Tag = "denied"
+stream = ExtResource("15_mnm0v")
+
+[sub_resource type="Resource" id="Resource_ft51b"]
+script = ExtResource("13_p7mob")
+Tag = "cursor"
+stream = ExtResource("14_aoirl")
+
+[sub_resource type="Resource" id="Resource_bvuwu"]
+script = ExtResource("13_p7mob")
+Tag = "popup"
+stream = ExtResource("17_ly2eu")
+
+[sub_resource type="Resource" id="Resource_gqarj"]
+script = ExtResource("12_m3njh")
+sound_effects = Array[ExtResource("13_p7mob")]([SubResource("Resource_yp8es"), SubResource("Resource_hc3gt"), SubResource("Resource_ft51b"), SubResource("Resource_bvuwu")])
+
+[sub_resource type="Resource" id="Resource_o54hk"]
+script = ExtResource("13_p7mob")
+Tag = "requiem"
+stream = ExtResource("18_xww6q")
+
+[sub_resource type="Resource" id="Resource_wkgca"]
+script = ExtResource("12_m3njh")
+sound_effects = Array[ExtResource("13_p7mob")]([SubResource("Resource_o54hk")])
+
+[node name="LoadingScreen" type="Control" node_paths=PackedStringArray("save_slots", "displayed_slot_data", "animation", "sound", "file_HP", "file_LV", "file_GOLD", "file_playtime", "file_map_completion", "file_current_stage", "file_character")]
+process_mode = 3
+modulate = Color(0, 0, 0, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s3fxy")
+game_scene = ExtResource("2_014f2")
+save_slots = NodePath("PanelContainer/ScrollContainer/VBoxContainer")
+displayed_slot_data = NodePath("Description")
+animation = NodePath("AnimationPlayer")
+sound = NodePath("MenuSounds")
+hector_portrait = ExtResource("4_tmset")
+file_HP = NodePath("Description/HPValue")
+file_LV = NodePath("Description/LVValue")
+file_GOLD = NodePath("Description/GoldValue")
+file_playtime = NodePath("Description/TimeValue")
+file_map_completion = NodePath("Description/MAPValue")
+file_current_stage = NodePath("Description/CurrentLocation")
+file_character = NodePath("Description/Character")
 
 [node name="Background" type="TextureRect" parent="."]
 clip_children = 2
@@ -316,6 +642,7 @@ autoplay = "background"
 libraries = {
 "": SubResource("AnimationLibrary_4ww74")
 }
+autoplay = "appear"
 
 [node name="Load" type="Label" parent="."]
 clip_children = 1
@@ -334,13 +661,21 @@ offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_vke4q")
 
+[node name="DescriptionPanel" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 362.0
+offset_right = 852.0
+offset_bottom = 468.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vwt7n")
+
 [node name="Description" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Icon" type="TextureRect" parent="Description"]
+[node name="Character" type="TextureRect" parent="Description"]
 z_index = 1
 texture_filter = 6
 layout_mode = 0
@@ -449,14 +784,6 @@ text = "Abandoned Monastery"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="Description"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 362.0
-offset_right = 852.0
-offset_bottom = 468.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_vwt7n")
-
 [node name="HPLabel" type="Label" parent="Description"]
 clip_children = 1
 texture_filter = 2
@@ -556,6 +883,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_4cy5i")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
 layout_mode = 2
+follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
@@ -566,7 +894,7 @@ layout_mode = 2
 modulate = Color(1, 1, 0, 1)
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
 custom_minimum_size = Vector2(48, 32)
@@ -576,20 +904,22 @@ theme_override_constants/outline_size = 8
 text = "1"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-text = "Shüan"
-horizontal_alignment = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+text = "Empty"
+flat = true
 
 [node name="Slot2" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
 custom_minimum_size = Vector2(48, 32)
@@ -599,20 +929,22 @@ theme_override_constants/outline_size = 8
 text = "2"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot3" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
 custom_minimum_size = Vector2(48, 32)
@@ -622,20 +954,22 @@ theme_override_constants/outline_size = 8
 text = "3"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot4" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
 custom_minimum_size = Vector2(48, 32)
@@ -645,20 +979,22 @@ theme_override_constants/outline_size = 8
 text = "4"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot5" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
 custom_minimum_size = Vector2(48, 32)
@@ -668,20 +1004,22 @@ theme_override_constants/outline_size = 8
 text = "5"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot6" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
 custom_minimum_size = Vector2(48, 32)
@@ -691,20 +1029,22 @@ theme_override_constants/outline_size = 8
 text = "6"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot7" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
 custom_minimum_size = Vector2(48, 32)
@@ -714,20 +1054,22 @@ theme_override_constants/outline_size = 8
 text = "7"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot8" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
 custom_minimum_size = Vector2(48, 32)
@@ -737,20 +1079,22 @@ theme_override_constants/outline_size = 8
 text = "8"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot9" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
 custom_minimum_size = Vector2(48, 32)
@@ -760,20 +1104,22 @@ theme_override_constants/outline_size = 8
 text = "9"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot10" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
 custom_minimum_size = Vector2(48, 32)
@@ -783,20 +1129,22 @@ theme_override_constants/outline_size = 8
 text = "10"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot11" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
 custom_minimum_size = Vector2(48, 32)
@@ -806,20 +1154,22 @@ theme_override_constants/outline_size = 8
 text = "11"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot12" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
 custom_minimum_size = Vector2(48, 32)
@@ -829,20 +1179,22 @@ theme_override_constants/outline_size = 8
 text = "12"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ffr4x")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fv73t")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_dt47o")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot13" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
 custom_minimum_size = Vector2(48, 32)
@@ -852,20 +1204,22 @@ theme_override_constants/outline_size = 8
 text = "13"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot14" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
 custom_minimum_size = Vector2(48, 32)
@@ -875,20 +1229,22 @@ theme_override_constants/outline_size = 8
 text = "14"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
 
 [node name="Slot15" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
-theme_override_constants/separation = 32
+theme_override_constants/separation = 20
 
 [node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
 custom_minimum_size = Vector2(48, 32)
@@ -898,10 +1254,24 @@ theme_override_constants/outline_size = 8
 text = "15"
 horizontal_alignment = 2
 
-[node name="Name" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
-custom_minimum_size = Vector2(48, 32)
+[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
 layout_mode = 2
-theme = SubResource("Theme_oocjw")
+theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
-horizontal_alignment = 2
+flat = true
+
+[node name="MenuSounds" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+script = ExtResource("11_hjquy")
+audio_library = SubResource("Resource_gqarj")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+script = ExtResource("11_hjquy")
+audio_library = SubResource("Resource_wkgca")
+
+[node name="Node" type="Node" parent="."]

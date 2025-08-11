@@ -42,7 +42,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if detect_hitbox.monitoring:
 		can_sit = false
-		Global.player.tap_up.dismiss()
+		if Global.player != null:
+			Global.player.tap_up.dismiss()
 		animation.play("idle")
 		setShaderParams(0.5, 1, 2)
 	
