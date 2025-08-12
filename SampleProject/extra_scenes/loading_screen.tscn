@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bjjk4mm7bkkd5"]
+[gd_scene load_steps=74 format=3 uid="uid://bjjk4mm7bkkd5"]
 
 [ext_resource type="Texture2D" uid="uid://c6oahkcwklotc" path="res://assets/sprites/HUD/Loading/Background.png" id="1_mwlu3"]
 [ext_resource type="Script" path="res://SampleProject/extra_scenes/loading_screen.gd" id="1_s3fxy"]
@@ -18,6 +18,329 @@
 [ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="15_mnm0v"]
 [ext_resource type="AudioStream" uid="uid://bk3yytbku0xg2" path="res://assets/sounds/Menu/PopUp.MP3" id="17_ly2eu"]
 [ext_resource type="AudioStream" uid="uid://chygwmoaucxte" path="res://assets/music/Requiem.ogg" id="18_xww6q"]
+[ext_resource type="Texture2D" uid="uid://klewsw4qctn5" path="res://assets/sprites/HUD/NameEntry/NameBox.png" id="19_1mkjf"]
+[ext_resource type="Script" path="res://SampleProject/extra_scenes/name_entry.gd" id="19_ofy3n"]
+[ext_resource type="Texture2D" uid="uid://c2igujqj4dloe" path="res://assets/sprites/HUD/NameEntry/LetterBox.png" id="20_rsd5m"]
+[ext_resource type="Script" path="res://SampleProject/extra_scenes/LetterBox.gd" id="21_oeuxb"]
+[ext_resource type="Texture2D" uid="uid://d68ptw53k0mr" path="res://assets/sprites/HUD/NameEntry/Cursor.png" id="22_7brg1"]
+
+[sub_resource type="Animation" id="Animation_ilct6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DescriptionPanel:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(836, 106)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DescriptionPanel:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Description:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(836, 298)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/ScrollContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4tgns"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DescriptionPanel:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.233333, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(836, 16), Vector2(836, 106)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DescriptionPanel:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Description:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.466667, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(836, 16), Vector2(836, 298)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/ScrollContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.533333, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qkv4d"]
+resource_name = "disappear"
+length = 0.4
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"startGame"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y02sj"]
+resource_name = "disappear_to_title"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"titleScreen"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ww74"]
+_data = {
+"RESET": SubResource("Animation_ilct6"),
+"appear": SubResource("Animation_4tgns"),
+"disappear": SubResource("Animation_qkv4d"),
+"disappear_to_title": SubResource("Animation_y02sj")
+}
+
+[sub_resource type="Theme" id="Theme_a85sy"]
+default_font = ExtResource("3_vdkpo")
+default_font_size = 48
+
+[sub_resource type="Gradient" id="Gradient_kn6ch"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vke4q"]
+gradient = SubResource("Gradient_kn6ch")
+width = 280
+height = 48
+fill_from = Vector2(0.0318471, 0.22293)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwt7n"]
+content_margin_top = 50.0
+texture = ExtResource("6_kqwro")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vndpk"]
+atlas = ExtResource("4_tmset")
+region = Rect2(100, 0, 360, 280)
+
+[sub_resource type="Theme" id="Theme_su86r"]
+default_font = ExtResource("5_p2lme")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_l45mb"]
+default_font = ExtResource("3_vdkpo")
+default_font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_8hstr"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_huhwp"]
+gradient = SubResource("Gradient_8hstr")
+width = 280
+height = 48
+fill_to = Vector2(0, 0.761677)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4cy5i"]
+texture = ExtResource("7_dh6wh")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+modulate_color = Color(1, 1, 1, 0.533333)
+
+[sub_resource type="Theme" id="Theme_p3wiw"]
+default_font = ExtResource("5_p2lme")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_gekwv"]
+default_font = ExtResource("8_r6g7u")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_qqicx"]
+default_font = ExtResource("5_p2lme")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4127"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vcxc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ulvd8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ffr4x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv73t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dt47o"]
 
 [sub_resource type="Gradient" id="Gradient_ippbr"]
 offsets = PackedFloat32Array(0, 0.776)
@@ -39,7 +362,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Animation:position")
+tracks/0/path = NodePath("BackgroundNodes/Animation:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -131,374 +454,6 @@ _data = {
 "background": SubResource("Animation_asb1n")
 }
 
-[sub_resource type="Animation" id="Animation_ilct6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DescriptionPanel:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(836, 106)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DescriptionPanel:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Description:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PanelContainer:size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(836, 298)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("PanelContainer:self_modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("PanelContainer/ScrollContainer:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("MusicPlayer:volume_db")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-15.0]
-}
-
-[sub_resource type="Animation" id="Animation_4tgns"]
-resource_name = "appear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DescriptionPanel:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.233333, 0.533333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(836, 16), Vector2(836, 106)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DescriptionPanel:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.333333, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Description:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.466667, 0.733333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("PanelContainer:size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.3, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(836, 16), Vector2(836, 298)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("PanelContainer/ScrollContainer:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.533333, 0.966667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("PanelContainer:self_modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.3, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("MusicPlayer")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["requiem"],
-"method": &"play_sound_effect_from_library"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_qkv4d"]
-resource_name = "disappear"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"startGame"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MusicPlayer:volume_db")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-15.0, -80.0]
-}
-
-[sub_resource type="Animation" id="Animation_y02sj"]
-resource_name = "disappear_to_title"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"titleScreen"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MusicPlayer:volume_db")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-15.0, -80.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ww74"]
-_data = {
-"RESET": SubResource("Animation_ilct6"),
-"appear": SubResource("Animation_4tgns"),
-"disappear": SubResource("Animation_qkv4d"),
-"disappear_to_title": SubResource("Animation_y02sj")
-}
-
-[sub_resource type="Theme" id="Theme_a85sy"]
-default_font = ExtResource("3_vdkpo")
-default_font_size = 48
-
-[sub_resource type="Gradient" id="Gradient_kn6ch"]
-offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
-colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vke4q"]
-gradient = SubResource("Gradient_kn6ch")
-width = 280
-height = 48
-fill_from = Vector2(0.0318471, 0.22293)
-fill_to = Vector2(0, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vwt7n"]
-content_margin_top = 50.0
-texture = ExtResource("6_kqwro")
-texture_margin_left = 20.0
-texture_margin_top = 20.0
-texture_margin_right = 20.0
-texture_margin_bottom = 20.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vndpk"]
-atlas = ExtResource("4_tmset")
-region = Rect2(100, 0, 360, 280)
-
-[sub_resource type="Theme" id="Theme_su86r"]
-default_font = ExtResource("5_p2lme")
-default_font_size = 32
-
-[sub_resource type="Theme" id="Theme_l45mb"]
-default_font = ExtResource("3_vdkpo")
-default_font_size = 32
-
-[sub_resource type="Gradient" id="Gradient_8hstr"]
-offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
-colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_huhwp"]
-gradient = SubResource("Gradient_8hstr")
-width = 280
-height = 48
-fill_to = Vector2(0, 0.761677)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4cy5i"]
-texture = ExtResource("7_dh6wh")
-texture_margin_left = 20.0
-texture_margin_top = 20.0
-texture_margin_right = 20.0
-texture_margin_bottom = 20.0
-modulate_color = Color(1, 1, 1, 0.533333)
-
-[sub_resource type="Theme" id="Theme_p3wiw"]
-default_font = ExtResource("5_p2lme")
-default_font_size = 32
-
-[sub_resource type="Theme" id="Theme_gekwv"]
-default_font = ExtResource("8_r6g7u")
-default_font_size = 32
-
-[sub_resource type="Theme" id="Theme_qqicx"]
-default_font = ExtResource("5_p2lme")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4127"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vcxc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ulvd8"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ffr4x"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv73t"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dt47o"]
-
 [sub_resource type="Resource" id="Resource_yp8es"]
 script = ExtResource("13_p7mob")
 Tag = "confirm"
@@ -532,10 +487,121 @@ stream = ExtResource("18_xww6q")
 script = ExtResource("12_m3njh")
 sound_effects = Array[ExtResource("13_p7mob")]([SubResource("Resource_o54hk")])
 
-[node name="LoadingScreen" type="Control" node_paths=PackedStringArray("save_slots", "displayed_slot_data", "animation", "sound", "file_HP", "file_LV", "file_GOLD", "file_playtime", "file_map_completion", "file_current_stage", "file_character")]
+[sub_resource type="Animation" id="Animation_itl8p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8obd3"]
+resource_name = "appear"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MusicPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["requiem"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5gmm4"]
+_data = {
+"RESET": SubResource("Animation_itl8p"),
+"appear": SubResource("Animation_8obd3")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycy3a"]
+texture = ExtResource("19_1mkjf")
+texture_margin_left = 70.0
+texture_margin_top = 20.0
+texture_margin_right = 70.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7a7m0"]
+texture = ExtResource("20_rsd5m")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+
+[sub_resource type="Animation" id="Animation_sslbb"]
+resource_name = "shine"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 0.733333, 0.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1.5, 1.5, 1.5, 1), Color(1.5, 1.5, 1.5, 1), Color(2, 2, 2, 1), Color(1.5, 1.5, 1.5, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m3og2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.5, 1.5, 1.5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dn8ty"]
+_data = {
+"RESET": SubResource("Animation_m3og2"),
+"shine": SubResource("Animation_sslbb")
+}
+
+[node name="MainMenu" type="Control"]
 process_mode = 3
 modulate = Color(0, 0, 0, 1)
 layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LoadingScreen" type="Control" parent="." node_paths=PackedStringArray("save_slots", "displayed_slot_data", "animation", "sound", "file_HP", "file_LV", "file_GOLD", "file_playtime", "file_map_completion", "file_current_stage", "file_character")]
+process_mode = 4
+modulate = Color(0, 0, 0, 0)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -546,7 +612,7 @@ game_scene = ExtResource("2_014f2")
 save_slots = NodePath("PanelContainer/ScrollContainer/VBoxContainer")
 displayed_slot_data = NodePath("Description")
 animation = NodePath("AnimationPlayer")
-sound = NodePath("MenuSounds")
+sound = NodePath("../MenuSounds")
 hector_portrait = ExtResource("4_tmset")
 file_HP = NodePath("Description/HPValue")
 file_LV = NodePath("Description/LVValue")
@@ -556,95 +622,13 @@ file_map_completion = NodePath("Description/MAPValue")
 file_current_stage = NodePath("Description/CurrentLocation")
 file_character = NodePath("Description/Character")
 
-[node name="Background" type="TextureRect" parent="."]
-clip_children = 2
-layout_mode = 0
-offset_right = 864.0
-offset_bottom = 564.0
-texture = ExtResource("1_mwlu3")
-
-[node name="Gradient" type="TextureRect" parent="Background"]
-layout_mode = 0
-offset_right = 864.0
-offset_bottom = 564.0
-texture = SubResource("GradientTexture2D_1i321")
-
-[node name="Animation" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0.054902)
-anchors_preset = 0
-offset_left = -35.1892
-offset_right = 4.81081
-offset_bottom = 40.0
-scale = Vector2(1.5, 1)
-
-[node name="Water" type="TextureRect" parent="Animation"]
-texture_repeat = 2
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 640.0
-texture = ExtResource("2_asjfv")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_2crau")
-}
-autoplay = "background"
-
-[node name="Animation2" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0.054902)
-anchors_preset = 0
-offset_left = 36.0
-offset_top = -120.0
-offset_right = 76.0
-offset_bottom = -80.0
-scale = Vector2(1.5, 1)
-
-[node name="Water" type="TextureRect" parent="Animation2"]
-texture_repeat = 2
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 640.0
-texture = ExtResource("2_asjfv")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation2"]
-libraries = {
-"": SubResource("AnimationLibrary_j38d8")
-}
-autoplay = "background"
-
-[node name="Animation3" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0.054902)
-anchors_preset = 0
-offset_left = -206.0
-offset_top = -120.0
-offset_right = -166.0
-offset_bottom = -80.0
-scale = Vector2(1.5, 1)
-
-[node name="Water" type="TextureRect" parent="Animation3"]
-texture_repeat = 2
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 640.0
-texture = ExtResource("2_asjfv")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation3"]
-libraries = {
-"": SubResource("AnimationLibrary_hqp6o")
-}
-autoplay = "background"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingScreen"]
 libraries = {
 "": SubResource("AnimationLibrary_4ww74")
 }
 autoplay = "appear"
 
-[node name="Load" type="Label" parent="."]
+[node name="MenuLabel" type="Label" parent="LoadingScreen"]
 clip_children = 1
 layout_mode = 0
 offset_left = -38.0
@@ -655,13 +639,13 @@ theme = SubResource("Theme_a85sy")
 text = "Load Data"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Load"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/MenuLabel"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_vke4q")
 
-[node name="DescriptionPanel" type="PanelContainer" parent="."]
+[node name="DescriptionPanel" type="PanelContainer" parent="LoadingScreen"]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 362.0
@@ -669,13 +653,13 @@ offset_right = 852.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vwt7n")
 
-[node name="Description" type="Control" parent="."]
+[node name="Description" type="Control" parent="LoadingScreen"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Character" type="TextureRect" parent="Description"]
+[node name="Character" type="TextureRect" parent="LoadingScreen/Description"]
 z_index = 1
 texture_filter = 6
 layout_mode = 0
@@ -687,7 +671,7 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_vndpk")
 expand_mode = 3
 
-[node name="Name" type="Label" parent="Description"]
+[node name="Name" type="Label" parent="LoadingScreen/Description"]
 z_index = 1
 layout_mode = 0
 offset_left = 135.0
@@ -700,7 +684,7 @@ theme_override_constants/outline_size = 8
 text = "Shüan"
 autowrap_mode = 3
 
-[node name="HPValue" type="Label" parent="Description"]
+[node name="HPValue" type="Label" parent="LoadingScreen/Description"]
 z_index = 1
 layout_mode = 0
 offset_left = 284.0
@@ -714,7 +698,7 @@ text = "262"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="GoldValue" type="Label" parent="Description"]
+[node name="GoldValue" type="Label" parent="LoadingScreen/Description"]
 z_index = 1
 layout_mode = 0
 offset_left = 432.0
@@ -728,7 +712,7 @@ text = "1024"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="LVValue" type="Label" parent="Description"]
+[node name="LVValue" type="Label" parent="LoadingScreen/Description"]
 z_index = 1
 layout_mode = 0
 offset_left = 167.0
@@ -742,7 +726,7 @@ text = "10"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="MAPValue" type="Label" parent="Description"]
+[node name="MAPValue" type="Label" parent="LoadingScreen/Description"]
 z_index = 1
 layout_mode = 0
 offset_left = 741.0
@@ -756,7 +740,7 @@ text = "9.25%"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="TimeValue" type="Label" parent="Description"]
+[node name="TimeValue" type="Label" parent="LoadingScreen/Description"]
 z_index = 1
 layout_mode = 0
 offset_left = 416.0
@@ -770,7 +754,7 @@ text = "0:18:36"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="CurrentLocation" type="Label" parent="Description"]
+[node name="CurrentLocation" type="Label" parent="LoadingScreen/Description"]
 z_index = 1
 layout_mode = 0
 offset_left = 588.0
@@ -784,7 +768,7 @@ text = "Abandoned Monastery"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="HPLabel" type="Label" parent="Description"]
+[node name="HPLabel" type="Label" parent="LoadingScreen/Description"]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -796,13 +780,13 @@ theme = SubResource("Theme_l45mb")
 text = "HP"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Description/HPLabel"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/HPLabel"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_huhwp")
 
-[node name="LVLabel" type="Label" parent="Description"]
+[node name="LVLabel" type="Label" parent="LoadingScreen/Description"]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -813,13 +797,13 @@ theme = SubResource("Theme_l45mb")
 text = "LV"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Description/LVLabel"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/LVLabel"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_huhwp")
 
-[node name="GOLDLabel" type="Label" parent="Description"]
+[node name="GOLDLabel" type="Label" parent="LoadingScreen/Description"]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -831,13 +815,13 @@ theme = SubResource("Theme_l45mb")
 text = "Gold"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Description/GOLDLabel"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/GOLDLabel"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_huhwp")
 
-[node name="TimeLabel" type="Label" parent="Description"]
+[node name="TimeLabel" type="Label" parent="LoadingScreen/Description"]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -849,13 +833,13 @@ theme = SubResource("Theme_l45mb")
 text = "Time"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Description/TimeLabel"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/TimeLabel"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_huhwp")
 
-[node name="MAPLabel" type="Label" parent="Description"]
+[node name="MAPLabel" type="Label" parent="LoadingScreen/Description"]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -867,13 +851,13 @@ theme = SubResource("Theme_l45mb")
 text = "MAP"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Description/MAPLabel"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/MAPLabel"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_huhwp")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="LoadingScreen"]
 layout_mode = 2
 offset_left = 16.0
 offset_top = 52.0
@@ -881,22 +865,22 @@ offset_right = 852.0
 offset_bottom = 350.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4cy5i")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="LoadingScreen/PanelContainer"]
 layout_mode = 2
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer"]
 layout_mode = 2
 
-[node name="Slot1" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot1" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(1, 1, 0, 1)
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -904,7 +888,7 @@ theme_override_constants/outline_size = 8
 text = "1"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -914,14 +898,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot2" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot2" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -929,7 +913,7 @@ theme_override_constants/outline_size = 8
 text = "2"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -939,14 +923,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot3" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot3" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -954,7 +938,7 @@ theme_override_constants/outline_size = 8
 text = "3"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -964,14 +948,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot4" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot4" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -979,7 +963,7 @@ theme_override_constants/outline_size = 8
 text = "4"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -989,14 +973,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot5" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot5" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1004,7 +988,7 @@ theme_override_constants/outline_size = 8
 text = "5"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1014,14 +998,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot6" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot6" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1029,7 +1013,7 @@ theme_override_constants/outline_size = 8
 text = "6"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1039,14 +1023,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot7" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot7" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1054,7 +1038,7 @@ theme_override_constants/outline_size = 8
 text = "7"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1064,14 +1048,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot8" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot8" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1079,7 +1063,7 @@ theme_override_constants/outline_size = 8
 text = "8"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1089,14 +1073,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot9" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot9" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1104,7 +1088,7 @@ theme_override_constants/outline_size = 8
 text = "9"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1114,14 +1098,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot10" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot10" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1129,7 +1113,7 @@ theme_override_constants/outline_size = 8
 text = "10"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1139,14 +1123,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot11" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot11" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1154,7 +1138,7 @@ theme_override_constants/outline_size = 8
 text = "11"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1164,14 +1148,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot12" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot12" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1179,7 +1163,7 @@ theme_override_constants/outline_size = 8
 text = "12"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1189,14 +1173,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_dt47o")
 text = "Empty"
 flat = true
 
-[node name="Slot13" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot13" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1204,7 +1188,7 @@ theme_override_constants/outline_size = 8
 text = "13"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1214,14 +1198,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot14" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot14" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1229,7 +1213,7 @@ theme_override_constants/outline_size = 8
 text = "14"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1239,14 +1223,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="Slot15" type="HBoxContainer" parent="PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot15" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1254,7 +1238,7 @@ theme_override_constants/outline_size = 8
 text = "15"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1263,6 +1247,96 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
+
+[node name="BackgroundNodes" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="BackgroundNodes"]
+clip_children = 2
+layout_mode = 0
+offset_right = 864.0
+offset_bottom = 564.0
+texture = ExtResource("1_mwlu3")
+
+[node name="Gradient" type="TextureRect" parent="BackgroundNodes/Background"]
+layout_mode = 0
+offset_right = 864.0
+offset_bottom = 564.0
+texture = SubResource("GradientTexture2D_1i321")
+
+[node name="Animation" type="Control" parent="BackgroundNodes"]
+modulate = Color(1, 1, 1, 0.054902)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -35.1892
+offset_right = 4.81081
+offset_bottom = 40.0
+scale = Vector2(1.5, 1)
+
+[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation"]
+texture_repeat = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 640.0
+texture = ExtResource("2_asjfv")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_2crau")
+}
+autoplay = "background"
+
+[node name="Animation2" type="Control" parent="BackgroundNodes"]
+modulate = Color(1, 1, 1, 0.054902)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 36.0
+offset_top = -120.0
+offset_right = 76.0
+offset_bottom = -80.0
+scale = Vector2(1.5, 1)
+
+[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation2"]
+texture_repeat = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 640.0
+texture = ExtResource("2_asjfv")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation2"]
+libraries = {
+"": SubResource("AnimationLibrary_j38d8")
+}
+autoplay = "background"
+
+[node name="Animation3" type="Control" parent="BackgroundNodes"]
+modulate = Color(1, 1, 1, 0.054902)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -206.0
+offset_top = -120.0
+offset_right = -166.0
+offset_bottom = -80.0
+scale = Vector2(1.5, 1)
+
+[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation3"]
+texture_repeat = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 640.0
+texture = ExtResource("2_asjfv")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation3"]
+libraries = {
+"": SubResource("AnimationLibrary_hqp6o")
+}
+autoplay = "background"
 
 [node name="MenuSounds" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
@@ -1274,4 +1348,83 @@ volume_db = -15.0
 script = ExtResource("11_hjquy")
 audio_library = SubResource("Resource_wkgca")
 
-[node name="Node" type="Node" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5gmm4")
+}
+autoplay = "appear"
+
+[node name="NameEntry" type="Control" parent="." node_paths=PackedStringArray("cursor", "letter_box", "name_container", "sound")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("19_ofy3n")
+cursor = NodePath("Cursor")
+letter_box = NodePath("LetterBox/Letters")
+name_container = NodePath("Name")
+sound = NodePath("../MenuSounds")
+
+[node name="MenuLabel" type="Label" parent="NameEntry"]
+clip_children = 1
+layout_mode = 0
+offset_left = -38.0
+offset_top = 8.0
+offset_right = 272.0
+offset_bottom = 60.0
+theme = SubResource("Theme_a85sy")
+text = "Name Entry"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="NameEntry/MenuLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_vke4q")
+
+[node name="NameBox" type="PanelContainer" parent="NameEntry"]
+modulate = Color(1, 1, 1, 0.894118)
+layout_mode = 0
+offset_left = 210.0
+offset_top = 72.0
+offset_right = 676.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ycy3a")
+
+[node name="Name" type="HBoxContainer" parent="NameEntry"]
+layout_mode = 2
+offset_left = 226.0
+offset_top = 80.0
+offset_right = 635.0
+offset_bottom = 144.0
+theme_override_constants/separation = -12
+
+[node name="LetterBox" type="PanelContainer" parent="NameEntry"]
+modulate = Color(1, 1, 1, 0.894118)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 164.0
+offset_right = 844.0
+offset_bottom = 453.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7a7m0")
+
+[node name="Letters" type="GridContainer" parent="NameEntry/LetterBox"]
+layout_mode = 2
+theme_override_constants/v_separation = 16
+columns = 11
+script = ExtResource("21_oeuxb")
+
+[node name="Cursor" type="TextureRect" parent="NameEntry"]
+modulate = Color(1.5, 1.5, 1.5, 1)
+layout_mode = 0
+offset_left = 151.0
+offset_top = 240.0
+offset_right = 199.0
+offset_bottom = 288.0
+scale = Vector2(2, 2)
+texture = ExtResource("22_7brg1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NameEntry/Cursor"]
+libraries = {
+"": SubResource("AnimationLibrary_dn8ty")
+}
+autoplay = "shine"

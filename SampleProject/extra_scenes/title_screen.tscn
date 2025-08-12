@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cgnlu6aihtr6r"]
+[gd_scene load_steps=29 format=3 uid="uid://cgnlu6aihtr6r"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/title_screen.gd" id="1_wa1th"]
 [ext_resource type="PackedScene" uid="uid://bjjk4mm7bkkd5" path="res://SampleProject/extra_scenes/loading_screen.tscn" id="2_hpjsa"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="10_n0xa1"]
 [ext_resource type="AudioStream" uid="uid://cw48nwx7ttnp1" path="res://assets/music/MenuTheme.MP3" id="11_g628w"]
 [ext_resource type="AudioStream" uid="uid://crjwwfg00eh3" path="res://assets/sounds/Menu/MenuSelect.MP3" id="12_ix1y5"]
+[ext_resource type="FontFile" uid="uid://ma2njl02pxj6" path="res://assets/sprites/Font/Olondona.otf" id="12_wknf4"]
 
 [sub_resource type="Animation" id="Animation_uxodi"]
 length = 0.001
@@ -228,6 +229,10 @@ stream = ExtResource("12_ix1y5")
 script = ExtResource("9_rpmvm")
 sound_effects = Array[ExtResource("10_n0xa1")]([SubResource("Resource_8ssia")])
 
+[sub_resource type="Theme" id="Theme_3askd"]
+default_font = ExtResource("12_wknf4")
+default_font_size = 32
+
 [node name="Control" type="Control" node_paths=PackedStringArray("animation", "save_label")]
 process_mode = 3
 clip_children = 2
@@ -276,6 +281,7 @@ autoplay = "animate"
 speed_scale = 0.2
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 modulate = Color(1, 0, 1, 1)
 self_modulate = Color(1, 0, 1, 1)
 layout_mode = 0
@@ -317,3 +323,46 @@ audio_library = SubResource("Resource_8tmy6")
 volume_db = -12.0
 script = ExtResource("8_xsm36")
 audio_library = SubResource("Resource_jfflm")
+
+[node name="Options" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = 33.0
+offset_right = 69.0
+offset_bottom = 181.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3askd")
+
+[node name="NewGame" type="Button" parent="Options"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+action_mode = 0
+text = "New Game"
+flat = true
+
+[node name="Load" type="Button" parent="Options"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+action_mode = 0
+text = "Continue"
+flat = true
+
+[node name="Options" type="Button" parent="Options"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+action_mode = 0
+text = "Options"
+flat = true
+
+[node name="SoundSelect" type="Button" parent="Options"]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+action_mode = 0
+text = "Sound Select"
+flat = true

@@ -17,6 +17,7 @@ const SAVE_FILE_EXTENSION: String = ".save"
 const SAVE_MANAGER_RESOURCE = preload("res://addons/MetroidvaniaSystem/Template/Scripts/SaveManager.gd")
 const FILE_NAME_INDEX: int = 1
 const NO_SLOT: int = -1
+var start_new_game: bool = false
 
 const FILE_DATA = {
 	STATUS = "STATUS",
