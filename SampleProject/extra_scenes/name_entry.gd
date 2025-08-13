@@ -143,3 +143,6 @@ func _on_no_pressed() -> void:
 	const NO_BUTTON: int = 1
 	closePanel(confirm_panel.get_child(NO_BUTTON))
 	sound.play_sound_effect_from_library("confirm")
+	
+func _on_button_focused() -> void:
+	sound.play_sound_effect_from_library("cursor")

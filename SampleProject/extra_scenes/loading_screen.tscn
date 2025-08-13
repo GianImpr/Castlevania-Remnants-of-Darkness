@@ -2039,5 +2039,7 @@ libraries = {
 }
 autoplay = "appear"
 
+[connection signal="focus_entered" from="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/Yes" to="NameEntry" method="_on_button_focused"]
 [connection signal="pressed" from="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/Yes" to="NameEntry" method="_on_yes_pressed"]
+[connection signal="focus_entered" from="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/No" to="NameEntry" method="_on_button_focused"]
 [connection signal="pressed" from="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/No" to="NameEntry" method="_on_no_pressed"]
