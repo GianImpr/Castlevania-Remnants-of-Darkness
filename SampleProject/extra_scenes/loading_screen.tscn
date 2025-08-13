@@ -392,7 +392,7 @@ colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vke4q"]
 gradient = SubResource("Gradient_kn6ch")
-width = 280
+width = 560
 height = 48
 fill_from = Vector2(0.0318471, 0.22293)
 fill_to = Vector2(0, 1)
@@ -788,7 +788,7 @@ tracks/3/path = NodePath("DifficultyPanel/LabelAndButtons/HBoxContainer/Difficul
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.766667),
+"times": PackedFloat32Array(0.333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -1140,7 +1140,7 @@ offset_top = 8.0
 offset_right = 272.0
 offset_bottom = 60.0
 theme = SubResource("Theme_a85sy")
-text = "Load Data"
+text = "LOAD_DATA_LABEL"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="LoadingScreen/MenuLabel"]
@@ -1773,7 +1773,7 @@ offset_top = 8.0
 offset_right = 272.0
 offset_bottom = 60.0
 theme = SubResource("Theme_a85sy")
-text = "Name Entry"
+text = "NAME_ENTRY_LABEL"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="NameEntry/MenuLabel"]
@@ -1919,7 +1919,7 @@ offset_top = 8.0
 offset_right = 272.0
 offset_bottom = 60.0
 theme = SubResource("Theme_a85sy")
-text = "Difficulty "
+text = "DIFFICULTY_LABEL"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="DifficultySelection/MenuLabel"]
@@ -1930,20 +1930,22 @@ texture = SubResource("GradientTexture2D_vke4q")
 
 [node name="DifficultyPanel" type="PanelContainer" parent="DifficultySelection"]
 self_modulate = Color(1, 1, 1, 0.776471)
+custom_minimum_size = Vector2(626, 360)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 106.0
-offset_top = 76.0
+offset_top = 56.0
 offset_right = 732.0
-offset_bottom = 424.0
+offset_bottom = 416.0
 grow_horizontal = 2
 theme = SubResource("Theme_jtuxx")
 theme_override_styles/panel = SubResource("StyleBoxTexture_ywgbj")
 
 [node name="LabelAndButtons" type="VBoxContainer" parent="DifficultySelection/DifficultyPanel"]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="DifficultyTitle" type="Label" parent="DifficultySelection/DifficultyPanel/LabelAndButtons"]
 custom_minimum_size = Vector2(0, 50)
@@ -1952,8 +1954,10 @@ text = "SELECT_DIFFICULTY_TITLE"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DifficultySelection/DifficultyPanel/LabelAndButtons"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/separation = 40
+alignment = 1
 
 [node name="DifficultyOptions" type="PanelContainer" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer"]
 layout_mode = 2
