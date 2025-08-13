@@ -1867,6 +1867,8 @@ layout_mode = 2
 
 [node name="Yes" type="Button" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../No")
+focus_neighbor_bottom = NodePath("../No")
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
@@ -1878,6 +1880,8 @@ flat = true
 
 [node name="No" type="Button" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Yes")
+focus_neighbor_bottom = NodePath("../Yes")
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_v1tby")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sdm6v")
