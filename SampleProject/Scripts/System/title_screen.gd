@@ -6,7 +6,7 @@ extends Control
 @export var sound: PolyphonicMenuAudio
 
 const TWEEN_DURATION: float = 1
-const BUTTON_QUANTITY: int = 4
+const BUTTON_QUANTITY: int = 2
 var cur_button: int = 0
 var tween: Tween
 
