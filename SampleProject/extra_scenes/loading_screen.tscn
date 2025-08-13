@@ -1,7 +1,8 @@
-[gd_scene load_steps=98 format=3 uid="uid://bjjk4mm7bkkd5"]
+[gd_scene load_steps=99 format=3 uid="uid://bjjk4mm7bkkd5"]
 
 [ext_resource type="Texture2D" uid="uid://c6oahkcwklotc" path="res://assets/sprites/HUD/Loading/Background.png" id="1_mwlu3"]
 [ext_resource type="Script" path="res://SampleProject/extra_scenes/loading_screen.gd" id="1_s3fxy"]
+[ext_resource type="Script" path="res://SampleProject/extra_scenes/main_menu.gd" id="1_xe1my"]
 [ext_resource type="PackedScene" uid="uid://c3xqaietfgs7l" path="res://SampleProject/Game.tscn" id="2_014f2"]
 [ext_resource type="Texture2D" uid="uid://kh67q8mxxd1y" path="res://assets/sprites/HUD/Loading/AnimatedBackground.png" id="2_asjfv"]
 [ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="3_vdkpo"]
@@ -1004,13 +1005,16 @@ _data = {
 "appear": SubResource("Animation_8obd3")
 }
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("loading_screen", "name_entry_screen")]
 process_mode = 3
 modulate = Color(0, 0, 0, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_xe1my")
+loading_screen = NodePath("LoadingScreen")
+name_entry_screen = NodePath("NameEntry")
 
 [node name="BackgroundNodes" type="Control" parent="."]
 anchors_preset = 0
@@ -1140,7 +1144,7 @@ offset_top = 8.0
 offset_right = 459.0
 offset_bottom = 60.0
 theme = SubResource("Theme_a85sy")
-text = "LOAD_DATA_LABEL"
+text = "LOADING_SCREEN_LABEL"
 
 [node name="TextureRect" type="TextureRect" parent="LoadingScreen/MenuLabel"]
 layout_mode = 0

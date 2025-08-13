@@ -10,6 +10,13 @@ const BUTTON_QUANTITY: int = 4
 var cur_button: int = 0
 var tween: Tween
 
+enum COMMANDS {
+	NEW_GAME,
+	CONTINUE,
+	OPTIONS,
+	SOUND_SELECT
+}
+
 func _ready() -> void:
 	highlightFocusedButton(0)
 
@@ -28,10 +35,17 @@ func _process(delta: float) -> void:
 			sound.play_sound_effect_from_library("cursor")
 			highlightFocusedButton(prev_button)
 
-func startLoadingScreen():
+func selectOption():
 	if tween != null:
 		tween.kill()
-	get_tree().change_scene_to_packed(loading_screen)
+		
+	match cur_button:
+		COMMANDS.NEW_GAME:
+			get_tree().change_scene_to_packed(loading_screen)
+			Global.load_data = false
+		COMMANDS.CONTINUE:
+			get_tree().change_scene_to_packed(loading_screen)
+			Global.load_data = true
 	
 func highlightFocusedButton(previous_button: int) -> void:
 	if tween != null:

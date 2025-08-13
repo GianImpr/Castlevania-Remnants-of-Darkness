@@ -34,7 +34,6 @@ func _on_focused(which: Button) -> void:
 	
 func _on_pressed(which: Button) -> void:
 	sound.play_sound_effect_from_library("confirm")
-	Global.load_data = false
 	Global.new_game_difficulty = which.get_index()
 	animation.play("vanish")
 	
