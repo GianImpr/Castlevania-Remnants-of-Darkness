@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="14_0k4y4"]
 [ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="14_aoirl"]
 [ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="15_mnm0v"]
+[ext_resource type="Texture2D" uid="uid://cx1wxmu3nscdw" path="res://assets/images/PerfectGuard.png" id="16_4u8m3"]
 [ext_resource type="AudioStream" uid="uid://bk3yytbku0xg2" path="res://assets/sounds/Menu/PopUp.MP3" id="17_ly2eu"]
 [ext_resource type="AudioStream" uid="uid://chygwmoaucxte" path="res://assets/music/Requiem.ogg" id="18_xww6q"]
 [ext_resource type="Texture2D" uid="uid://klewsw4qctn5" path="res://assets/sprites/HUD/NameEntry/NameBox.png" id="19_1mkjf"]
@@ -506,6 +507,69 @@ _data = {
 "shine": SubResource("Animation_sslbb")
 }
 
+[sub_resource type="Animation" id="Animation_rw5cx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Name:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(226, 80)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Name:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:process_mode")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_wsgyf"]
 resource_name = "confirm"
 length = 1.8
@@ -570,69 +634,6 @@ tracks/4/keys = {
 "values": [4]
 }
 
-[sub_resource type="Animation" id="Animation_rw5cx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Name:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Name:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(226, 80)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Name:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:process_mode")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56nmj"]
 _data = {
 "RESET": SubResource("Animation_rw5cx"),
@@ -643,12 +644,9 @@ _data = {
 default_font = ExtResource("5_p2lme")
 default_font_size = 32
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7s2ks"]
-load_path = "res://.godot/imported/Crop.png-0fa8627228b4991e4beecdf187f598bb.ctex"
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xe16"]
 content_margin_top = 20.0
-texture = SubResource("CompressedTexture2D_7s2ks")
+texture = ExtResource("7_dh6wh")
 texture_margin_left = 20.0
 texture_margin_top = 20.0
 texture_margin_right = 20.0
@@ -670,6 +668,21 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1tby"]
 
+[sub_resource type="Animation" id="Animation_if2xp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
 [sub_resource type="Animation" id="Animation_c7sfr"]
 resource_name = "ask_confirm"
 length = 0.2
@@ -684,21 +697,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_if2xp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6f5xd"]
@@ -1678,6 +1676,118 @@ flat = true
 libraries = {
 "": SubResource("AnimationLibrary_6f5xd")
 }
+
+[node name="DifficultySelection" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MenuLabel" type="Label" parent="DifficultySelection"]
+clip_children = 1
+layout_mode = 0
+offset_left = -38.0
+offset_top = 8.0
+offset_right = 272.0
+offset_bottom = 60.0
+theme = SubResource("Theme_a85sy")
+text = "Difficulty "
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="DifficultySelection/MenuLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_vke4q")
+
+[node name="DifficultyPanel" type="PanelContainer" parent="DifficultySelection"]
+self_modulate = Color(1, 1, 1, 0.776471)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 106.0
+offset_top = 76.0
+offset_right = 732.0
+offset_bottom = 424.0
+grow_horizontal = 2
+scale = Vector2(1e-05, 1e-05)
+theme = SubResource("Theme_jtuxx")
+theme_override_styles/panel = SubResource("StyleBoxTexture_3xe16")
+
+[node name="LabelAndButtons" type="VBoxContainer" parent="DifficultySelection/DifficultyPanel"]
+layout_mode = 2
+
+[node name="DifficultyTitle" type="Label" parent="DifficultySelection/DifficultyPanel/LabelAndButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "SELECT_DIFFICULTY_TITLE"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DifficultySelection/DifficultyPanel/LabelAndButtons"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="DifficultyOptions" type="PanelContainer" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nf3ri")
+
+[node name="Options" type="VBoxContainer" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Simplified" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/normal = SubResource("StyleBoxFlat_80qg0")
+action_mode = 0
+text = "SIMPLIFIED_DIFFICULTY"
+flat = true
+
+[node name="Standard" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/normal = SubResource("StyleBoxFlat_80qg0")
+action_mode = 0
+text = "STANDARD_DIFFICULTY"
+flat = true
+
+[node name="Crazy" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v1tby")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sdm6v")
+action_mode = 0
+text = "CRAZY_DIFFICULTY"
+flat = true
+
+[node name="Image" type="TextureRect" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer"]
+custom_minimum_size = Vector2(300, 160)
+layout_mode = 2
+texture = ExtResource("16_4u8m3")
+expand_mode = 1
+
+[node name="DifficultyExplanation" type="Label" parent="DifficultySelection/DifficultyPanel/LabelAndButtons"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+text = "Difficulty explanation"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ConfirmAnimation" type="AnimationPlayer" parent="DifficultySelection/DifficultyPanel"]
+libraries = {
+"": SubResource("AnimationLibrary_6f5xd")
+}
+
+[node name="DifficultyAnimation" type="AnimationPlayer" parent="DifficultySelection"]
 
 [node name="MenuSounds" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0

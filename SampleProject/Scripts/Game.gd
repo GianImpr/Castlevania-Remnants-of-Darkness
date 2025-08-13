@@ -84,7 +84,8 @@ enum ControllerScheme {
 
 enum Difficulty {
 	NORMAL,
-	CRAZY
+	CRAZY,
+	SIMPLIFIED
 }
 
 # The game starts in this map. Note that it's scene name only, just like MetSys refers to rooms.

@@ -72,7 +72,7 @@ func setButtons(scheme: int) -> void:
 		buttons = Global.settings_node.button_icons
 		
 func parseText(value: String) -> String:
-	if Global.game != null:
+	if not Engine.is_editor_hint() and Global.game != null:
 		controller_scheme = Global.game.controller_scheme
 	setButtons(controller_scheme)
 	var result: String = ""
