@@ -52,6 +52,7 @@ func highlightFocusedButton(previous_button: int) -> void:
 		tween.kill()
 	buttons.get_child(previous_button).modulate = Color.WHITE
 	tween = get_tree().create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(buttons.get_child(cur_button), "modulate", Color.DARK_RED, TWEEN_DURATION).from(Color.RED)
 	tween.tween_property(buttons.get_child(cur_button), "modulate", Color.RED, TWEEN_DURATION).from(Color.DARK_RED)
 	tween.finished.connect(highlightFocusedButton.bind(cur_button-1))
