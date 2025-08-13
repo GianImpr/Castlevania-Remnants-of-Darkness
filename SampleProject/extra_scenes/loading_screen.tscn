@@ -1867,7 +1867,9 @@ layout_mode = 2
 
 [node name="Yes" type="Button" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../No")
+focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../No")
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
@@ -1880,7 +1882,9 @@ flat = true
 
 [node name="No" type="Button" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Yes")
+focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Yes")
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_v1tby")
@@ -1969,7 +1973,9 @@ theme_override_constants/separation = 32
 
 [node name="Simplified" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Crazy")
+focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Standard")
 theme_override_colors/font_focus_color = Color(3.27289e-06, 0.900584, 0.856655, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
@@ -1982,7 +1988,9 @@ flat = true
 
 [node name="Standard" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Simplified")
+focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Crazy")
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
@@ -1995,7 +2003,9 @@ flat = true
 
 [node name="Crazy" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
 layout_mode = 2
+focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Standard")
+focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Simplified")
 theme_override_colors/font_focus_color = Color(1, 0.432004, 0.389221, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_v1tby")
