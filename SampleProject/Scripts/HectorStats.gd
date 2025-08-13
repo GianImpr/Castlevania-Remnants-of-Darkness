@@ -28,6 +28,7 @@ class_name HectorStats
 @export var play_time: Hour
 @export var status: Array[int]
 @export var weapon_proficiency: Array[Dictionary]
+@export var file_name: String
 
 var picked_items: Array[bool] #ID list checks for item pick-up flags
 var hint_flags: Array[bool] #ID list checks for hints

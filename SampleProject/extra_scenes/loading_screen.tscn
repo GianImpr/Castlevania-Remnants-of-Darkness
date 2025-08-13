@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://bjjk4mm7bkkd5"]
+[gd_scene load_steps=98 format=3 uid="uid://bjjk4mm7bkkd5"]
 
 [ext_resource type="Texture2D" uid="uid://c6oahkcwklotc" path="res://assets/sprites/HUD/Loading/Background.png" id="1_mwlu3"]
 [ext_resource type="Script" path="res://SampleProject/extra_scenes/loading_screen.gd" id="1_s3fxy"]
@@ -17,7 +17,10 @@
 [ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="14_aoirl"]
 [ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="15_mnm0v"]
 [ext_resource type="Texture2D" uid="uid://cx1wxmu3nscdw" path="res://assets/images/PerfectGuard.png" id="16_4u8m3"]
+[ext_resource type="Script" path="res://SampleProject/extra_scenes/difficulty_selection.gd" id="16_5m78a"]
+[ext_resource type="Texture2D" uid="uid://b710o80vdsjf" path="res://assets/images/SimplifiedDiff.png" id="17_dllg5"]
 [ext_resource type="AudioStream" uid="uid://bk3yytbku0xg2" path="res://assets/sounds/Menu/PopUp.MP3" id="17_ly2eu"]
+[ext_resource type="Texture2D" uid="uid://c66ba83c33aie" path="res://assets/images/StandardDiff.png" id="18_88xfl"]
 [ext_resource type="AudioStream" uid="uid://chygwmoaucxte" path="res://assets/music/Requiem.ogg" id="18_xww6q"]
 [ext_resource type="Texture2D" uid="uid://klewsw4qctn5" path="res://assets/sprites/HUD/NameEntry/NameBox.png" id="19_1mkjf"]
 [ext_resource type="Script" path="res://SampleProject/extra_scenes/name_entry.gd" id="19_ofy3n"]
@@ -569,6 +572,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../DifficultySelection:process_mode")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
 
 [sub_resource type="Animation" id="Animation_wsgyf"]
 resource_name = "confirm"
@@ -633,6 +648,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [4]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../DifficultySelection:process_mode")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56nmj"]
 _data = {
@@ -644,9 +671,12 @@ _data = {
 default_font = ExtResource("5_p2lme")
 default_font_size = 32
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xe16"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lbnb0"]
+load_path = "res://.godot/imported/Crop.png-e70a332c313b70d2c8db39a0e528fc0f.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c5jnq"]
 content_margin_top = 20.0
-texture = ExtResource("7_dh6wh")
+texture = SubResource("CompressedTexture2D_lbnb0")
 texture_margin_left = 20.0
 texture_margin_top = 20.0
 texture_margin_right = 20.0
@@ -696,13 +726,198 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+"values": [Vector2(1, 0), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6f5xd"]
 _data = {
 "RESET": SubResource("Animation_if2xp"),
 "ask_confirm": SubResource("Animation_c7sfr")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ywgbj"]
+content_margin_top = 20.0
+texture = ExtResource("7_dh6wh")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="Animation" id="Animation_xo6fx"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DifficultyPanel/LabelAndButtons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.333333, 0.766667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DifficultyPanel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options/Standard")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.766667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"grab_focus"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7f2t7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DifficultyPanel/LabelAndButtons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DifficultyPanel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sqbq2"]
+resource_name = "vanish"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DifficultyPanel/LabelAndButtons:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DifficultyPanel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.233333, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"startGame"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_30bmj"]
+_data = {
+"RESET": SubResource("Animation_7f2t7"),
+"appear": SubResource("Animation_xo6fx"),
+"vanish": SubResource("Animation_sqbq2")
 }
 
 [sub_resource type="Resource" id="Resource_yp8es"]
@@ -1632,7 +1847,7 @@ offset_bottom = 293.0
 grow_horizontal = 2
 scale = Vector2(1e-05, 1e-05)
 theme = SubResource("Theme_jtuxx")
-theme_override_styles/panel = SubResource("StyleBoxTexture_3xe16")
+theme_override_styles/panel = SubResource("StyleBoxTexture_c5jnq")
 
 [node name="LabelAndButtons" type="VBoxContainer" parent="NameEntry/ConfirmPanel"]
 layout_mode = 2
@@ -1677,10 +1892,20 @@ libraries = {
 "": SubResource("AnimationLibrary_6f5xd")
 }
 
-[node name="DifficultySelection" type="Control" parent="."]
+[node name="DifficultySelection" type="Control" parent="." node_paths=PackedStringArray("options", "sound", "animation", "difficulty_description", "difficulty_image")]
+process_mode = 4
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("16_5m78a")
+options = NodePath("DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options")
+game_scene = ExtResource("2_014f2")
+sound = NodePath("../MenuSounds")
+animation = NodePath("DifficultyAnimation")
+difficulty_description = NodePath("DifficultyPanel/LabelAndButtons/DifficultyExplanation")
+difficulty_image = NodePath("DifficultyPanel/LabelAndButtons/HBoxContainer/Image")
+difficulty_images = Array[CompressedTexture2D]([ExtResource("17_dllg5"), ExtResource("18_88xfl"), ExtResource("16_4u8m3")])
 
 [node name="MenuLabel" type="Label" parent="DifficultySelection"]
 clip_children = 1
@@ -1710,9 +1935,8 @@ offset_top = 76.0
 offset_right = 732.0
 offset_bottom = 424.0
 grow_horizontal = 2
-scale = Vector2(1e-05, 1e-05)
 theme = SubResource("Theme_jtuxx")
-theme_override_styles/panel = SubResource("StyleBoxTexture_3xe16")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ywgbj")
 
 [node name="LabelAndButtons" type="VBoxContainer" parent="DifficultySelection/DifficultyPanel"]
 layout_mode = 2
@@ -1737,7 +1961,9 @@ theme_override_constants/separation = 32
 
 [node name="Simplified" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
+focus_neighbor_top = NodePath("../Crazy")
+focus_neighbor_bottom = NodePath("../Standard")
+theme_override_colors/font_focus_color = Color(3.27289e-06, 0.900584, 0.856655, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
@@ -1748,6 +1974,8 @@ flat = true
 
 [node name="Standard" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Simplified")
+focus_neighbor_bottom = NodePath("../Crazy")
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
 theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
@@ -1759,7 +1987,9 @@ flat = true
 
 [node name="Crazy" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
 layout_mode = 2
-theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
+focus_neighbor_top = NodePath("../Standard")
+focus_neighbor_bottom = NodePath("../Simplified")
+theme_override_colors/font_focus_color = Color(1, 0.432004, 0.389221, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_v1tby")
 theme_override_styles/hover = SubResource("StyleBoxFlat_sdm6v")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
@@ -1771,7 +2001,7 @@ flat = true
 [node name="Image" type="TextureRect" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer"]
 custom_minimum_size = Vector2(300, 160)
 layout_mode = 2
-texture = ExtResource("16_4u8m3")
+texture = ExtResource("18_88xfl")
 expand_mode = 1
 
 [node name="DifficultyExplanation" type="Label" parent="DifficultySelection/DifficultyPanel/LabelAndButtons"]
@@ -1788,6 +2018,10 @@ libraries = {
 }
 
 [node name="DifficultyAnimation" type="AnimationPlayer" parent="DifficultySelection"]
+libraries = {
+"": SubResource("AnimationLibrary_30bmj")
+}
+autoplay = "appear"
 
 [node name="MenuSounds" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0

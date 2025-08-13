@@ -23,6 +23,11 @@ var loaded_settings: bool = false
 static var screen = ScreenType.NONE
 const TITLE_SCREEN_SCENE: String = "res://SampleProject/extra_scenes/title_screen.tscn"
 
+var new_game_difficulty: Game.Difficulty
+var new_game_player_name: String
+var save_file_to_load: String
+var save_destination: String
+
 #Used in ChangeArea
 @warning_ignore("unused_signal")
 signal change_area(new_room, initial_position)

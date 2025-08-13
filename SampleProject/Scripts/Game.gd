@@ -4,7 +4,6 @@ extends "res://addons/MetroidvaniaSystem/Template/Scripts/MetSysGame.gd"
 class_name Game
 
 const SaveManager = preload("res://addons/MetroidvaniaSystem/Template/Scripts/SaveManager.gd")
-const SAVE_PATH = "user://slot1.save"
 @export var animation: AnimationPlayer
 var load_data: bool = false
 @export var difficulty: Difficulty
@@ -83,9 +82,9 @@ enum ControllerScheme {
 }
 
 enum Difficulty {
+	SIMPLIFIED,
 	NORMAL,
-	CRAZY,
-	SIMPLIFIED
+	CRAZY
 }
 
 # The game starts in this map. Note that it's scene name only, just like MetSys refers to rooms.
@@ -168,10 +167,6 @@ func _ready() -> void:
 		
 		Global.game = self
 		load_data = Global.load_data
-		if Global.crazy_mode:
-			difficulty = Difficulty.CRAZY
-		else:
-			difficulty = Difficulty.NORMAL
 		# A trick for static object reference (before static vars were a thing).
 		get_script().set_meta(&"singleton", self)
 		# Make sure MetSys is in initial state.
@@ -180,11 +175,13 @@ func _ready() -> void:
 		# Assign player for MetSysGame.
 		set_player($Player)
 		
-		if FileAccess.file_exists(SAVE_PATH) and load_data:
+		if FileAccess.file_exists(Global.save_file_to_load) and load_data:
 			load_game()
 		else:
-			# If no data exists, set empty one.
+			# If no data exists, set empty one and set difficulty
 			MetSys.set_save_data()
+			difficulty = Global.new_game_difficulty
+			Global.player.stats.file_name = Global.new_game_player_name
 			
 		player.stats.item_compendium = item_compendium
 		player.stats.weapon_compendium = weapon_compendium
@@ -236,9 +233,10 @@ func save_game():
 	save_manager.set_value("key_mapping", InputHelper.serialize_inputs_for_actions(Global.settings_node.Actions.values()))
 	save_manager.set_value("difficulty", Global.game.difficulty)
 	save_manager.set_value("quick_weapons", EquipMenu.serializeQuickWeapons())
+	save_manager.set_value("file_name", Global.player.stats.file_name)
 	if player.sprite.weapon != null:
 		save_manager.set_value("weapon", player.sprite.weapon.scene_file_path)
-	save_manager.save_as_text(SAVE_PATH)
+	save_manager.save_as_text(Global.save_destination)
 
 func reset_map_starting_coords():
 	$UI/MapWindow.reset_starting_coords()
@@ -250,7 +248,7 @@ func init_room():
 func load_game():
 	# If save data exists, load it using MetSys SaveManager.
 	var save_manager := SaveManager.new()
-	save_manager.load_from_text(SAVE_PATH)
+	save_manager.load_from_text(Global.save_file_to_load)
 	# Assign loaded values.
 	var stats = save_manager.get_value("stats")
 	var old_stats = player.stats
@@ -275,6 +273,7 @@ func load_game():
 	EquipMenu.deserializeQuickWeapons(save_manager.get_value("quick_weapons"))
 	InputHelper.deserialize_inputs_for_actions(save_manager.get_value("key_mapping"))
 	Global.game.difficulty = save_manager.get_value("difficulty")
+	Global.player.stats.file_name = save_manager.get_value("file_name")
 	if player.sprite.weapon != null:
 		player.sprite.weapon.queue_free()
 	

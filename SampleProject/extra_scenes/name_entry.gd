@@ -21,6 +21,7 @@ const BACK_BUTTON_INDEX: int = 31
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	process_mode = PROCESS_MODE_INHERIT
 	cursor.global_position = letter_box.get_child(current_pos).global_position+CURSOR_OFFSET
 	letter_box.get_child(OK_BUTTON_INDEX).modulate = UNAVAILABLE_BUTTON_MODULATE
 	letter_box.get_child(BACK_BUTTON_INDEX).modulate = UNAVAILABLE_BUTTON_MODULATE
@@ -88,7 +89,9 @@ func addLetterToName():
 
 	current_name += letter_box.get_child(current_pos).text
 	name_container.add_child(new_letter)
-	get_tree().create_tween().tween_property(new_letter, "modulate", LETTER_MODULATE, TWEEN_DURATION)
+	var animation_tween: Tween = get_tree().create_tween()
+	animation_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	animation_tween.tween_property(new_letter, "modulate", LETTER_MODULATE, TWEEN_DURATION)
 	
 func removeLetterFromName():
 	if name_container.get_child_count() == 0:
@@ -108,7 +111,9 @@ func updateCursorPosition() -> void:
 	current_pos = max(0, min(current_pos, BUTTON_QUANTITY-1))
 	var new_position: Vector2 = letter_box.get_child(current_pos).global_position-CURSOR_OFFSET
 	const ANIMATION_DURATION: float = 0.2
-	get_tree().create_tween().tween_property(cursor, "global_position", new_position, ANIMATION_DURATION)
+	var animation_tween: Tween = get_tree().create_tween()
+	animation_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	animation_tween.tween_property(cursor, "global_position", new_position, ANIMATION_DURATION)
 
 func askConfirm() -> void:
 	const YES_BUTTON: int = 0
@@ -124,6 +129,7 @@ func closePanel(button: Button) -> void:
 
 func _on_yes_pressed() -> void:
 	const YES_BUTTON: int = 0
+	confirm_panel.get_child(YES_BUTTON).release_focus()
 	closePanel(confirm_panel.get_child(YES_BUTTON))
 	animation.play("confirm")
 	sound.play_sound_effect_from_library("confirm")

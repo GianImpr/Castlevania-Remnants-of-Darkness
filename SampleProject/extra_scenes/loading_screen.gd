@@ -80,6 +80,7 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("ui_accept"):
 		if containsData(focused_slot):
 			Global.load_data = true
+			Global.save_file_to_load = INITIAL_SAVE_PATH + str(focused_slot) + SAVE_FILE_EXTENSION
 			animation.play("disappear")
 			sound.play_sound_effect_from_library("confirm")
 		else:
