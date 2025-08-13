@@ -64,20 +64,24 @@ func _process(delta: float) -> void:
 	
 func addLetterToName():
 	const TWEEN_DURATION: float = 0.3
-	sound.play_sound_effect_from_library("confirm")
 	if letter_box.get_child(current_pos).text == "Back":
+		if current_name.length() > 0:
+			sound.play_sound_effect_from_library("confirm")
 		removeLetterFromName()
 		return
 	elif letter_box.get_child(current_pos).text == "Ok":
 		if current_name.length() == 0:
 			sound.play_sound_effect_from_library("denied")
 		else:
+			sound.play_sound_effect_from_library("confirm")
 			askConfirm()
 		return
 		
 	if name_container.get_child_count() >= MAX_NAME_SIZE:
 		sound.play_sound_effect_from_library("denied")
 		return
+		
+	sound.play_sound_effect_from_library("confirm")
 	var new_letter: TextureRect = TextureRect.new()
 	new_letter.texture = letter_box.get_child(current_pos).icon
 	new_letter.modulate = Color.TRANSPARENT
