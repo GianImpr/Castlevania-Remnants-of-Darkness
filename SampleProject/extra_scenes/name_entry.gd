@@ -45,6 +45,9 @@ func _process(delta: float) -> void:
 		removeLetterFromName()
 	elif Input.is_action_just_pressed("menu"):
 		current_pos = BUTTON_QUANTITY-1
+		sound.play_sound_effect_from_library("cursor")
+		updateCursorPosition()
+
 		
 	
 func addLetterToName():
