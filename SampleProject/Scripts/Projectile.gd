@@ -38,6 +38,10 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 		
 	else:
 		body.applyHitEffect(attribute)
+		
+	if body.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
+		damage = 0
+
 	return damage
 		
 func apply_damage(body, damage):

@@ -2,12 +2,16 @@ extends State
 class_name HectorDamage
 @export var blood: CPUParticles2D
 var can_perfect_guard: bool = false
-
+static var applyMercyInvincibility: Callable
 
 func enter():
 	animation.play("hurt", -1, 1.2)
 	player.velocity.x = 0
 	blood.emitting = true
+	
+func exit():
+	if Global.game != null and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
+		applyMercyInvincibility.call()
 	
 func Update(delta: float):
 	pass

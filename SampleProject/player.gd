@@ -42,6 +42,7 @@ var aguni_on_cooldown: bool = false
 const SPEED = 260.0
 const IFRAMES_HIT_THRESHOLD: int = 3
 const FOCUS_GAIN_RATIO: int = 10
+const GUARD_RECOVERY_TIME: int = 3
 
 var current_hits_taken_before_iframes: int = 0
 var reset_position: Vector2
@@ -59,8 +60,8 @@ var unlocked_magic: bool = false
 var enabled_magic: bool = false
 var activating_magic: bool = false
 var hit_effect_applied: bool = false
-const PERFECT_GUARD_WINDOW_NORMAL: float = 0.096
-const PERFECT_GUARD_WINDOW_CRAZY: float = 0.096
+const PERFECT_GUARD_WINDOW_SIMPLIFIED: float = 0.192
+const PERFECT_GUARD_WINDOW_DEFAULT: float = 0.096
 
 const Animations = {
 	ATTACK_AIR = "air_attack",
@@ -109,10 +110,10 @@ func _process(delta: float) -> void:
 	guarding = isGuarding()
 	
 	if Input.is_action_just_pressed("guard") and can_perfect_guard():
-		if Global.game.difficulty == Global.game.Difficulty.NORMAL:
-			perfect_guard_timer.start(PERFECT_GUARD_WINDOW_NORMAL)
+		if Global.game.difficulty == Global.game.Difficulty.SIMPLIFIED:
+			perfect_guard_timer.start(PERFECT_GUARD_WINDOW_SIMPLIFIED)
 		else:
-			perfect_guard_timer.start(PERFECT_GUARD_WINDOW_CRAZY)
+			perfect_guard_timer.start(PERFECT_GUARD_WINDOW_DEFAULT)
 	
 	if innocent_devil != null:
 		summoned_innocent_devil_id = innocent_devil.id
@@ -121,7 +122,10 @@ func _process(delta: float) -> void:
 	if state_machine.current_state is HectorGuardBreak or stats.Stats["Guard"] == 3:
 		guard_recovery.stop()
 	elif guard_recovery.is_stopped():
-		guard_recovery.start()
+		if Global.game == null or Global.game.difficulty != Game.Difficulty.SIMPLIFIED:
+			guard_recovery.start()
+		else:
+			guard_recovery.start(GUARD_RECOVERY_TIME/2)
 		
 	if stats.Stats["EXP"] >= expNeededToLvUp() and stats.Stats["LV"] < 99:
 		levelUp()
@@ -225,6 +229,11 @@ func levelUp():
 		stats.Stats["MMP"] = stats.Bases["MMP"] + stats.Boosts["MP"]
 	else:
 		stats.Stats["MMP"] = 0
+		
+	if Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
+		stats.Stats["HP"] = stats.Stats["MHP"]
+		stats.Stats["MP"] = stats.Stats["MMP"]
+		stats.Stats["FP"] = stats.Stats["MFP"]
 	
 func expNeededToLvUp() -> int:
 	return (13*pow(stats.Stats["LV"], 3)+39*pow(stats.Stats["LV"], 2)+104*stats.Stats["LV"]+100)/6
