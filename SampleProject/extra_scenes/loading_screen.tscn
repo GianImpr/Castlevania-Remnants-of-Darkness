@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bjjk4mm7bkkd5"]
+[gd_scene load_steps=89 format=3 uid="uid://bjjk4mm7bkkd5"]
 
 [ext_resource type="Texture2D" uid="uid://c6oahkcwklotc" path="res://assets/sprites/HUD/Loading/Background.png" id="1_mwlu3"]
 [ext_resource type="Script" path="res://SampleProject/extra_scenes/loading_screen.gd" id="1_s3fxy"]
@@ -23,6 +23,118 @@
 [ext_resource type="Texture2D" uid="uid://c2igujqj4dloe" path="res://assets/sprites/HUD/NameEntry/LetterBox.png" id="20_rsd5m"]
 [ext_resource type="Script" path="res://SampleProject/extra_scenes/LetterBox.gd" id="21_oeuxb"]
 [ext_resource type="Texture2D" uid="uid://d68ptw53k0mr" path="res://assets/sprites/HUD/NameEntry/Cursor.png" id="22_7brg1"]
+
+[sub_resource type="Gradient" id="Gradient_ippbr"]
+offsets = PackedFloat32Array(0, 0.776)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.956863)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1i321"]
+gradient = SubResource("Gradient_ippbr")
+width = 512
+height = 512
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_kdq1a"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_81ofm"]
+resource_name = "background"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundNodes/Animation:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 0.366021),
+"update": 0,
+"values": [Vector2(-50, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2crau"]
+_data = {
+"RESET": SubResource("Animation_kdq1a"),
+"background": SubResource("Animation_81ofm")
+}
+
+[sub_resource type="Animation" id="Animation_i628r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_jqq2s"]
+resource_name = "background"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 0.366021),
+"update": 0,
+"values": [Vector2(-36, -20), Vector2(-36, -60)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j38d8"]
+_data = {
+"RESET": SubResource("Animation_i628r"),
+"background": SubResource("Animation_jqq2s")
+}
+
+[sub_resource type="Animation" id="Animation_6403w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-206, -120)]
+}
+
+[sub_resource type="Animation" id="Animation_asb1n"]
+resource_name = "background"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-206, -70), Vector2(-156, -120), Vector2(-106, -70), Vector2(-156, -20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqp6o"]
+_data = {
+"RESET": SubResource("Animation_6403w"),
+"background": SubResource("Animation_asb1n")
+}
 
 [sub_resource type="Animation" id="Animation_ilct6"]
 length = 0.001
@@ -342,116 +454,257 @@ default_font = ExtResource("5_p2lme")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dt47o"]
 
-[sub_resource type="Gradient" id="Gradient_ippbr"]
-offsets = PackedFloat32Array(0, 0.776)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.956863)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycy3a"]
+texture = ExtResource("19_1mkjf")
+texture_margin_left = 70.0
+texture_margin_top = 20.0
+texture_margin_right = 70.0
+texture_margin_bottom = 20.0
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1i321"]
-gradient = SubResource("Gradient_ippbr")
-width = 512
-height = 512
-fill_to = Vector2(0, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7a7m0"]
+texture = ExtResource("20_rsd5m")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
 
-[sub_resource type="Animation" id="Animation_kdq1a"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_81ofm"]
-resource_name = "background"
-length = 3.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BackgroundNodes/Animation:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 0.366021),
-"update": 0,
-"values": [Vector2(-50, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2crau"]
-_data = {
-"RESET": SubResource("Animation_kdq1a"),
-"background": SubResource("Animation_81ofm")
-}
-
-[sub_resource type="Animation" id="Animation_i628r"]
+[sub_resource type="Animation" id="Animation_m3og2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(36, -120)]
+"values": [Color(1.5, 1.5, 1.5, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_jqq2s"]
-resource_name = "background"
-length = 4.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 0.366021),
-"update": 0,
-"values": [Vector2(-36, -20), Vector2(-36, -60)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j38d8"]
-_data = {
-"RESET": SubResource("Animation_i628r"),
-"background": SubResource("Animation_jqq2s")
-}
-
-[sub_resource type="Animation" id="Animation_6403w"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-206, -120)]
-}
-
-[sub_resource type="Animation" id="Animation_asb1n"]
-resource_name = "background"
-length = 12.0
+[sub_resource type="Animation" id="Animation_sslbb"]
+resource_name = "shine"
+length = 1.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 6, 9),
+"times": PackedFloat32Array(0, 0.533333, 0.733333, 0.933333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-206, -70), Vector2(-156, -120), Vector2(-106, -70), Vector2(-156, -20)]
+"values": [Color(1.5, 1.5, 1.5, 1), Color(1.5, 1.5, 1.5, 1), Color(2, 2, 2, 1), Color(1.5, 1.5, 1.5, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqp6o"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dn8ty"]
 _data = {
-"RESET": SubResource("Animation_6403w"),
-"background": SubResource("Animation_asb1n")
+"RESET": SubResource("Animation_m3og2"),
+"shine": SubResource("Animation_sslbb")
+}
+
+[sub_resource type="Animation" id="Animation_wsgyf"]
+resource_name = "confirm"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Name:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6, 1.26667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 1.26667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(226, 80), Vector2(126, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Name:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 1.26667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.670588, 0, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:process_mode")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_rw5cx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Name:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Name:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(226, 80)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Name:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:process_mode")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_56nmj"]
+_data = {
+"RESET": SubResource("Animation_rw5cx"),
+"confirm": SubResource("Animation_wsgyf")
+}
+
+[sub_resource type="Theme" id="Theme_jtuxx"]
+default_font = ExtResource("5_p2lme")
+default_font_size = 32
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7s2ks"]
+load_path = "res://.godot/imported/Crop.png-0fa8627228b4991e4beecdf187f598bb.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3xe16"]
+content_margin_top = 20.0
+texture = SubResource("CompressedTexture2D_7s2ks")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf3ri"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ehav"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h40w8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdm6v"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80qg0"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1tby"]
+
+[sub_resource type="Animation" id="Animation_c7sfr"]
+resource_name = "ask_confirm"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_if2xp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6f5xd"]
+_data = {
+"RESET": SubResource("Animation_if2xp"),
+"ask_confirm": SubResource("Animation_c7sfr")
 }
 
 [sub_resource type="Resource" id="Resource_yp8es"]
@@ -538,58 +791,6 @@ _data = {
 "appear": SubResource("Animation_8obd3")
 }
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycy3a"]
-texture = ExtResource("19_1mkjf")
-texture_margin_left = 70.0
-texture_margin_top = 20.0
-texture_margin_right = 70.0
-texture_margin_bottom = 20.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7a7m0"]
-texture = ExtResource("20_rsd5m")
-texture_margin_left = 30.0
-texture_margin_top = 30.0
-texture_margin_right = 30.0
-texture_margin_bottom = 30.0
-
-[sub_resource type="Animation" id="Animation_m3og2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1.5, 1.5, 1.5, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_sslbb"]
-resource_name = "shine"
-length = 1.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.533333, 0.733333, 0.933333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1.5, 1.5, 1.5, 1), Color(1.5, 1.5, 1.5, 1), Color(2, 2, 2, 1), Color(1.5, 1.5, 1.5, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dn8ty"]
-_data = {
-"RESET": SubResource("Animation_m3og2"),
-"shine": SubResource("Animation_sslbb")
-}
-
 [node name="MainMenu" type="Control"]
 process_mode = 3
 modulate = Color(0, 0, 0, 1)
@@ -597,6 +798,96 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="BackgroundNodes" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="BackgroundNodes"]
+clip_children = 2
+layout_mode = 0
+offset_right = 864.0
+offset_bottom = 564.0
+texture = ExtResource("1_mwlu3")
+
+[node name="Gradient" type="TextureRect" parent="BackgroundNodes/Background"]
+layout_mode = 0
+offset_right = 864.0
+offset_bottom = 564.0
+texture = SubResource("GradientTexture2D_1i321")
+
+[node name="Animation" type="Control" parent="BackgroundNodes"]
+modulate = Color(1, 1, 1, 0.054902)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -35.1892
+offset_right = 4.81081
+offset_bottom = 40.0
+scale = Vector2(1.5, 1)
+
+[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation"]
+texture_repeat = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 640.0
+texture = ExtResource("2_asjfv")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_2crau")
+}
+autoplay = "background"
+
+[node name="Animation2" type="Control" parent="BackgroundNodes"]
+modulate = Color(1, 1, 1, 0.054902)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 36.0
+offset_top = -120.0
+offset_right = 76.0
+offset_bottom = -80.0
+scale = Vector2(1.5, 1)
+
+[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation2"]
+texture_repeat = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 640.0
+texture = ExtResource("2_asjfv")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation2"]
+libraries = {
+"": SubResource("AnimationLibrary_j38d8")
+}
+autoplay = "background"
+
+[node name="Animation3" type="Control" parent="BackgroundNodes"]
+modulate = Color(1, 1, 1, 0.054902)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -206.0
+offset_top = -120.0
+offset_right = -166.0
+offset_bottom = -80.0
+scale = Vector2(1.5, 1)
+
+[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation3"]
+texture_repeat = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 640.0
+texture = ExtResource("2_asjfv")
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation3"]
+libraries = {
+"": SubResource("AnimationLibrary_hqp6o")
+}
+autoplay = "background"
 
 [node name="LoadingScreen" type="Control" parent="." node_paths=PackedStringArray("save_slots", "displayed_slot_data", "animation", "sound", "file_HP", "file_LV", "file_GOLD", "file_playtime", "file_map_completion", "file_current_stage", "file_character")]
 process_mode = 4
@@ -1248,113 +1539,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
 text = "Empty"
 flat = true
 
-[node name="BackgroundNodes" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Background" type="TextureRect" parent="BackgroundNodes"]
-clip_children = 2
-layout_mode = 0
-offset_right = 864.0
-offset_bottom = 564.0
-texture = ExtResource("1_mwlu3")
-
-[node name="Gradient" type="TextureRect" parent="BackgroundNodes/Background"]
-layout_mode = 0
-offset_right = 864.0
-offset_bottom = 564.0
-texture = SubResource("GradientTexture2D_1i321")
-
-[node name="Animation" type="Control" parent="BackgroundNodes"]
-modulate = Color(1, 1, 1, 0.054902)
-layout_mode = 3
-anchors_preset = 0
-offset_left = -35.1892
-offset_right = 4.81081
-offset_bottom = 40.0
-scale = Vector2(1.5, 1)
-
-[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation"]
-texture_repeat = 2
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 640.0
-texture = ExtResource("2_asjfv")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation"]
-root_node = NodePath("../../..")
-libraries = {
-"": SubResource("AnimationLibrary_2crau")
-}
-autoplay = "background"
-
-[node name="Animation2" type="Control" parent="BackgroundNodes"]
-modulate = Color(1, 1, 1, 0.054902)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 36.0
-offset_top = -120.0
-offset_right = 76.0
-offset_bottom = -80.0
-scale = Vector2(1.5, 1)
-
-[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation2"]
-texture_repeat = 2
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 640.0
-texture = ExtResource("2_asjfv")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation2"]
-libraries = {
-"": SubResource("AnimationLibrary_j38d8")
-}
-autoplay = "background"
-
-[node name="Animation3" type="Control" parent="BackgroundNodes"]
-modulate = Color(1, 1, 1, 0.054902)
-layout_mode = 3
-anchors_preset = 0
-offset_left = -206.0
-offset_top = -120.0
-offset_right = -166.0
-offset_bottom = -80.0
-scale = Vector2(1.5, 1)
-
-[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation3"]
-texture_repeat = 2
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 640.0
-texture = ExtResource("2_asjfv")
-stretch_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation3"]
-libraries = {
-"": SubResource("AnimationLibrary_hqp6o")
-}
-autoplay = "background"
-
-[node name="MenuSounds" type="AudioStreamPlayer" parent="."]
-volume_db = -10.0
-script = ExtResource("11_hjquy")
-audio_library = SubResource("Resource_gqarj")
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -15.0
-script = ExtResource("11_hjquy")
-audio_library = SubResource("Resource_wkgca")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_5gmm4")
-}
-autoplay = "appear"
-
-[node name="NameEntry" type="Control" parent="." node_paths=PackedStringArray("cursor", "letter_box", "name_container", "sound")]
+[node name="NameEntry" type="Control" parent="." node_paths=PackedStringArray("cursor", "letter_box", "name_container", "sound", "animation", "confirm_panel_animation", "confirm_panel")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1363,6 +1548,9 @@ cursor = NodePath("Cursor")
 letter_box = NodePath("LetterBox/Letters")
 name_container = NodePath("Name")
 sound = NodePath("../MenuSounds")
+animation = NodePath("NameEntryAnimation")
+confirm_panel_animation = NodePath("ConfirmPanel/ConfirmAnimation")
+confirm_panel = NodePath("ConfirmPanel/LabelAndButtons/ConfirmOptions/Options")
 
 [node name="MenuLabel" type="Label" parent="NameEntry"]
 clip_children = 1
@@ -1394,7 +1582,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_ycy3a")
 layout_mode = 2
 offset_left = 226.0
 offset_top = 80.0
-offset_right = 635.0
+offset_right = 654.0
 offset_bottom = 144.0
 theme_override_constants/separation = -12
 
@@ -1423,8 +1611,89 @@ offset_bottom = 288.0
 scale = Vector2(2, 2)
 texture = ExtResource("22_7brg1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NameEntry/Cursor"]
+[node name="CursorAnimation" type="AnimationPlayer" parent="NameEntry/Cursor"]
 libraries = {
 "": SubResource("AnimationLibrary_dn8ty")
 }
 autoplay = "shine"
+
+[node name="NameEntryAnimation" type="AnimationPlayer" parent="NameEntry"]
+libraries = {
+"": SubResource("AnimationLibrary_56nmj")
+}
+
+[node name="ConfirmPanel" type="PanelContainer" parent="NameEntry"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 299.0
+offset_top = 127.0
+offset_right = 571.0
+offset_bottom = 293.0
+grow_horizontal = 2
+scale = Vector2(1e-05, 1e-05)
+theme = SubResource("Theme_jtuxx")
+theme_override_styles/panel = SubResource("StyleBoxTexture_3xe16")
+
+[node name="LabelAndButtons" type="VBoxContainer" parent="NameEntry/ConfirmPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NameEntry/ConfirmPanel/LabelAndButtons"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "CONFIRM_NAME_BUTTON"
+horizontal_alignment = 1
+
+[node name="ConfirmOptions" type="PanelContainer" parent="NameEntry/ConfirmPanel/LabelAndButtons"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nf3ri")
+
+[node name="Options" type="VBoxContainer" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions"]
+layout_mode = 2
+
+[node name="Yes" type="Button" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/normal = SubResource("StyleBoxFlat_80qg0")
+action_mode = 0
+text = "YES_BUTTON"
+flat = true
+
+[node name="No" type="Button" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
+layout_mode = 2
+theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v1tby")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sdm6v")
+action_mode = 0
+text = "NO_BUTTON"
+flat = true
+
+[node name="ConfirmAnimation" type="AnimationPlayer" parent="NameEntry/ConfirmPanel"]
+libraries = {
+"": SubResource("AnimationLibrary_6f5xd")
+}
+
+[node name="MenuSounds" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+script = ExtResource("11_hjquy")
+audio_library = SubResource("Resource_gqarj")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+script = ExtResource("11_hjquy")
+audio_library = SubResource("Resource_wkgca")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5gmm4")
+}
+autoplay = "appear"
+
+[connection signal="pressed" from="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/Yes" to="NameEntry" method="_on_yes_pressed"]
+[connection signal="pressed" from="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/No" to="NameEntry" method="_on_no_pressed"]
