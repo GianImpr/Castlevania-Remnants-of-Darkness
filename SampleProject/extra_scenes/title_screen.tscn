@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cgnlu6aihtr6r"]
+[gd_scene load_steps=31 format=3 uid="uid://cgnlu6aihtr6r"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/title_screen.gd" id="1_wa1th"]
 [ext_resource type="PackedScene" uid="uid://bjjk4mm7bkkd5" path="res://SampleProject/extra_scenes/loading_screen.tscn" id="2_hpjsa"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cw48nwx7ttnp1" path="res://assets/music/MenuTheme.MP3" id="11_g628w"]
 [ext_resource type="AudioStream" uid="uid://crjwwfg00eh3" path="res://assets/sounds/Menu/MenuSelect.MP3" id="12_ix1y5"]
 [ext_resource type="FontFile" uid="uid://ma2njl02pxj6" path="res://assets/sprites/Font/Olondona.otf" id="12_wknf4"]
+[ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="12_wso6p"]
 
 [sub_resource type="Animation" id="Animation_uxodi"]
 length = 0.001
@@ -225,15 +226,20 @@ script = ExtResource("10_n0xa1")
 Tag = "select"
 stream = ExtResource("12_ix1y5")
 
+[sub_resource type="Resource" id="Resource_on222"]
+script = ExtResource("10_n0xa1")
+Tag = "cursor"
+stream = ExtResource("12_wso6p")
+
 [sub_resource type="Resource" id="Resource_jfflm"]
 script = ExtResource("9_rpmvm")
-sound_effects = Array[ExtResource("10_n0xa1")]([SubResource("Resource_8ssia")])
+sound_effects = Array[ExtResource("10_n0xa1")]([SubResource("Resource_8ssia"), SubResource("Resource_on222")])
 
 [sub_resource type="Theme" id="Theme_3askd"]
 default_font = ExtResource("12_wknf4")
 default_font_size = 32
 
-[node name="Control" type="Control" node_paths=PackedStringArray("animation", "save_label")]
+[node name="Control" type="Control" node_paths=PackedStringArray("animation", "save_label", "buttons", "sound")]
 process_mode = 3
 clip_children = 2
 layout_mode = 3
@@ -246,6 +252,8 @@ script = ExtResource("1_wa1th")
 animation = NodePath("AnimationPlayer2")
 loading_screen = ExtResource("2_hpjsa")
 save_label = NodePath("Copyright")
+buttons = NodePath("Options")
+sound = NodePath("Sounds")
 
 [node name="Title" type="TextureRect" parent="."]
 z_index = 1
