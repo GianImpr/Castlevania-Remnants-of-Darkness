@@ -1135,13 +1135,12 @@ autoplay = "appear"
 [node name="MenuLabel" type="Label" parent="LoadingScreen"]
 clip_children = 1
 layout_mode = 0
-offset_left = -38.0
+offset_left = 7.0
 offset_top = 8.0
-offset_right = 272.0
+offset_right = 459.0
 offset_bottom = 60.0
 theme = SubResource("Theme_a85sy")
 text = "LOAD_DATA_LABEL"
-horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="LoadingScreen/MenuLabel"]
 layout_mode = 0
@@ -1768,13 +1767,12 @@ confirm_panel = NodePath("ConfirmPanel/LabelAndButtons/ConfirmOptions/Options")
 [node name="MenuLabel" type="Label" parent="NameEntry"]
 clip_children = 1
 layout_mode = 0
-offset_left = -38.0
+offset_left = 7.0
 offset_top = 8.0
-offset_right = 272.0
+offset_right = 499.0
 offset_bottom = 60.0
 theme = SubResource("Theme_a85sy")
 text = "NAME_ENTRY_LABEL"
-horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="NameEntry/MenuLabel"]
 layout_mode = 0
@@ -1918,13 +1916,12 @@ difficulty_images = Array[CompressedTexture2D]([ExtResource("17_dllg5"), ExtReso
 [node name="MenuLabel" type="Label" parent="DifficultySelection"]
 clip_children = 1
 layout_mode = 0
-offset_left = -38.0
+offset_left = 7.0
 offset_top = 8.0
-offset_right = 272.0
+offset_right = 478.0
 offset_bottom = 60.0
 theme = SubResource("Theme_a85sy")
 text = "DIFFICULTY_LABEL"
-horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="DifficultySelection/MenuLabel"]
 layout_mode = 0
