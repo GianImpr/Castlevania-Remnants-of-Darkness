@@ -21,10 +21,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_right"):
 		current_pos += 1
+		if current_pos % letter_box.columns == 0:
+			current_pos -= letter_box.columns
 		sound.play_sound_effect_from_library("cursor")
 		updateCursorPosition()
 	elif Input.is_action_just_pressed("ui_left"):
 		current_pos -= 1
+		if current_pos % letter_box.columns == letter_box.columns-1 or current_pos == -1:
+			current_pos += letter_box.columns
 		sound.play_sound_effect_from_library("cursor")
 		updateCursorPosition()
 	elif Input.is_action_just_pressed("ui_down"):
