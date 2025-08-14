@@ -40,7 +40,10 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 		body.applyHitEffect(attribute)
 		
 	if body.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
-		damage = 0
+		if guard_break:
+			damage = min(damage*0.6, body.stats.Stats["HP"]/10)
+		else:
+			damage = 0
 
 	return damage
 		

@@ -58,7 +58,11 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 		body.applyHitEffect(attribute)
 		
 	if body.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
-		damage = 0
+		if guard_break:
+			damage = min(damage*0.6, body.stats.Stats["HP"]/10)
+		else:
+			damage = 0
+			
 	return damage
 	
 func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float = 0):
