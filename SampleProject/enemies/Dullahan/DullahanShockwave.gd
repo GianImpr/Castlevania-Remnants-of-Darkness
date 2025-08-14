@@ -26,7 +26,7 @@ func Update(delta: float):
 	if player.phase_two and animation.current_animation_position > 2.6:
 		Transitioned.emit(self, "throw_head")
 		
-	if animation.current_animation_position >= SHOCKWAVE_DISABLE_TIME_NORMAL and Global.game.difficulty == Global.game.Difficulty.NORMAL:
+	if animation.current_animation_position >= SHOCKWAVE_DISABLE_TIME_NORMAL and (Global.game.difficulty == Global.game.Difficulty.NORMAL or Global.game.difficulty == Global.game.Difficulty.SIMPLIFIED):
 		shockwave_hitbox.disabled = true
 	elif animation.current_animation_position >= SHOCKWAVE_DISABLE_TIME_CRAZY and Global.game.difficulty == Global.game.Difficulty.CRAZY:
 		shockwave_hitbox.disabled = true
