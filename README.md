@@ -45,7 +45,7 @@ Since this project does not contain monetization in any form, it's compliant to 
 
 ## Credits
 ### Sprites
-- Donoffrio and EchidKnux: [Deviantart](https://www.deviantart.com/echidknux), [YouTube](https://www.youtube.com/@echidknux6738)
+- Donoffrio
 - ShockPixels: [X](https://x.com/ShockPixels)
 - Konami
 
