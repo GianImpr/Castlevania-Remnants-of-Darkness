@@ -1,7 +1,7 @@
 extends Control
 class_name DifficultySelection
 @export var options: VBoxContainer
-@export var game_scene: PackedScene
+@export var prologue_scene: PackedScene
 @export var sound: PolyphonicMenuAudio
 @export var animation: AnimationPlayer
 
@@ -42,4 +42,4 @@ func updateDescription(which: Button) -> void:
 	difficulty_image.texture = difficulty_images[which.get_index()]
 	
 func startGame():
-	get_tree().change_scene_to_packed(game_scene)
+	get_tree().change_scene_to_packed(prologue_scene)

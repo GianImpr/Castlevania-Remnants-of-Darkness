@@ -1,0 +1,355 @@
+[gd_scene load_steps=29 format=3 uid="uid://b1tuyan1lk1t"]
+
+[ext_resource type="Shader" path="res://SampleProject/Shaders/aura.gdshader" id="1_4duxj"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="1_au8kn"]
+[ext_resource type="Script" path="res://SampleProject/extra_scenes/intro.gd" id="1_fcd3r"]
+[ext_resource type="PackedScene" uid="uid://c3xqaietfgs7l" path="res://SampleProject/Game.tscn" id="2_i1q8y"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="2_pe2ha"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="3_5vynk"]
+[ext_resource type="AudioStream" uid="uid://bi6uvy0wvmj5e" path="res://assets/music/Prologue.mp3" id="5_2awoc"]
+[ext_resource type="AudioStream" uid="uid://c33cmvqjbvw48" path="res://assets/sounds/Effects/Miscellaneous/TitleReveal.ogg" id="6_phajc"]
+[ext_resource type="Texture2D" uid="uid://ull5m2ofoco2" path="res://assets/images/DevilForgemasterCrest.png" id="6_smxxw"]
+[ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="7_vyeo7"]
+[ext_resource type="Texture2D" uid="uid://bmp0rc8hhjoml" path="res://logoresized.png" id="8_7cxo5"]
+
+[sub_resource type="Gradient" id="Gradient_sev68"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hepw1"]
+gradient = SubResource("Gradient_sev68")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3jdm8"]
+noise_type = 2
+frequency = 0.0071
+fractal_type = 3
+fractal_lacunarity = 3.0
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kuona"]
+seamless = true
+noise = SubResource("FastNoiseLite_3jdm8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5srv"]
+shader = ExtResource("1_4duxj")
+shader_parameter/min_intensity = 1.0
+shader_parameter/max_intensity = 1.0
+shader_parameter/speed_x = 100.0
+shader_parameter/speed_y = 5.0
+shader_parameter/fade_start = 0.7
+shader_parameter/fade_end = 1.0
+shader_parameter/n = SubResource("NoiseTexture2D_kuona")
+
+[sub_resource type="Gradient" id="Gradient_qprmd"]
+offsets = PackedFloat32Array(0.00763359, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4gryj"]
+gradient = SubResource("Gradient_qprmd")
+width = 256
+height = 256
+
+[sub_resource type="Resource" id="Resource_6n60e"]
+script = ExtResource("3_5vynk")
+Tag = "prologue"
+stream = ExtResource("5_2awoc")
+
+[sub_resource type="Resource" id="Resource_r23p8"]
+script = ExtResource("3_5vynk")
+Tag = "title"
+stream = ExtResource("6_phajc")
+
+[sub_resource type="Resource" id="Resource_k3gui"]
+script = ExtResource("2_pe2ha")
+sound_effects = Array[ExtResource("3_5vynk")]([SubResource("Resource_6n60e"), SubResource("Resource_r23p8")])
+
+[sub_resource type="Resource" id="Resource_8gmxl"]
+script = ExtResource("3_5vynk")
+Tag = "title"
+stream = ExtResource("6_phajc")
+
+[sub_resource type="Resource" id="Resource_ygxc7"]
+script = ExtResource("2_pe2ha")
+sound_effects = Array[ExtResource("3_5vynk")]([SubResource("Resource_8gmxl")])
+
+[sub_resource type="Animation" id="Animation_eaie6"]
+resource_name = "play"
+length = 86.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(158, 480), Vector2(158, -920)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crest:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(14.9333, 75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.25098)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Logo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(74.3667, 75.9333, 77.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1.5, 1.5, 1.5, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(80, 83),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MusicPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["prologue"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Display/BlackBackground/AnimatedBackground:self_modulate")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sound")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(74),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["title"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(86),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"startGame"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ttw5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(158, 480)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Crest:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.12549)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Logo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Display/BlackBackground/AnimatedBackground:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xf6qs"]
+_data = {
+"RESET": SubResource("Animation_ttw5p"),
+"play": SubResource("Animation_eaie6")
+}
+
+[sub_resource type="Curve" id="Curve_yyruv"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.291925, 2), 0.0, 0.0, 0, 0, Vector2(0.742236, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Theme" id="Theme_e3d25"]
+default_font = ExtResource("7_vyeo7")
+default_font_size = 32
+
+[node name="Intro" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fcd3r")
+game_scene = ExtResource("2_i1q8y")
+
+[node name="Display" type="Node2D" parent="."]
+
+[node name="BlackBackground" type="TextureRect" parent="Display"]
+show_behind_parent = true
+offset_right = 868.0
+offset_bottom = 480.0
+texture = SubResource("GradientTexture1D_hepw1")
+
+[node name="AnimatedBackground" type="TextureRect" parent="Display/BlackBackground"]
+modulate = Color(0.407843, 0, 0, 1)
+material = SubResource("ShaderMaterial_i5srv")
+layout_mode = 0
+offset_right = 865.0
+offset_bottom = 481.0
+texture = SubResource("GradientTexture2D_4gryj")
+flip_v = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+script = ExtResource("1_au8kn")
+audio_library = SubResource("Resource_k3gui")
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -3.0
+script = ExtResource("1_au8kn")
+audio_library = SubResource("Resource_ygxc7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xf6qs")
+}
+autoplay = "play"
+
+[node name="Crest" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.12549)
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 128.0
+offset_top = -58.0
+offset_right = 1628.0
+offset_bottom = 1442.0
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("6_smxxw")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 139.0
+offset_right = 1296.0
+offset_bottom = 573.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_7cxo5")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(436, 481)
+amount = 34
+lifetime = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(480, 1)
+direction = Vector2(0, -1)
+spread = 46.45
+gravity = Vector2(0, 0)
+initial_velocity_max = 200.0
+angular_velocity_max = 90.0
+scale_amount_curve = SubResource("Curve_yyruv")
+color = Color(0.211765, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 480.0
+offset_right = 723.0
+offset_bottom = 1380.0
+theme = SubResource("Theme_e3d25")
+theme_override_constants/line_spacing = 12
+theme_override_constants/outline_size = 8
+text = "1480, Valachia
+
+Four years have passed since the end of the curse that infested the land. Just when it seemed that peace was restored, great forces of the night reawaken, filled with thirst for blood and rage towards all living creatures. Living with torment and courage -- Hector, a man who once embraced the darkness -- seeks to find the source of the rebirth of evil.
+
+With the return of despair, the hearts of humans desperately sink into the endless cesspit of hatred, becoming murderous and ending thousands of miserable, innocent lives. Once again, the weak are slain and the strong prevail -- just as Lord Dracula had ordained time ago.
+
+Even without the presence of the King of the Night, the world has been promised a future of condemnation, as it is inevitably led to the path of destruction.
+
+The morrow is now to be seen differently."
+horizontal_alignment = 1
+autowrap_mode = 2

@@ -237,11 +237,11 @@ _data = {
 "fade_resume": SubResource("Animation_ajekb")
 }
 
-[sub_resource type="Gradient" id="Gradient_sev68"]
+[sub_resource type="Gradient" id="Gradient_hxamm"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_2d6gn"]
-gradient = SubResource("Gradient_sev68")
+gradient = SubResource("Gradient_hxamm")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_m5jc5"]
 noise_type = 2
@@ -250,7 +250,7 @@ fractal_type = 3
 fractal_lacunarity = 3.0
 cellular_distance_function = 1
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kuona"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hetj2"]
 seamless = true
 noise = SubResource("FastNoiseLite_m5jc5")
 
@@ -262,14 +262,14 @@ shader_parameter/speed_x = 100.0
 shader_parameter/speed_y = 5.0
 shader_parameter/fade_start = 0.2
 shader_parameter/fade_end = 1.0
-shader_parameter/n = SubResource("NoiseTexture2D_kuona")
+shader_parameter/n = SubResource("NoiseTexture2D_hetj2")
 
-[sub_resource type="Gradient" id="Gradient_qprmd"]
+[sub_resource type="Gradient" id="Gradient_ehr0e"]
 offsets = PackedFloat32Array(0.00763359, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dwbrd"]
-gradient = SubResource("Gradient_qprmd")
+gradient = SubResource("Gradient_ehr0e")
 width = 256
 height = 256
 
