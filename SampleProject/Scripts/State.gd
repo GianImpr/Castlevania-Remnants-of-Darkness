@@ -321,6 +321,9 @@ func turn_around():
 			player.facing_position *= -1
 
 func can_use_skill() -> void:
+	if Global.player.state_machine.current_state is HectorSitDown or Global.player.state_machine.current_state is HectorWait:
+		return
+		
 	if Input.is_action_just_pressed("innocent_devil_move") and player.stats.Stats["Hearts"] > player.stats.skills[player.current_skill].cost and Global.player.stats.Stats["HP"] > 0:
 		Global.player.sound.play_sound_effect_from_library("innocent_command")
 		Transitioned.emit(self, "Healing")
