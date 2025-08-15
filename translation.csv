@@ -3,7 +3,7 @@ keys,en,it,es,pt
 MENU_HP, H P, P V,P S, P V
 MENU_MP,M P,P M,P M,P M
 MENU_SP,S P,P S,P S,P S
-MENU_HEARTS,Hearts,Cuori,,Corações
+MENU_HEARTS,Hearts,Cuori,Corazones,Corações
 HP_STAT,HP,PV,PS,PV
 MP_STAT,MP,PM,PM,PM
 SP_STAT,SP,PS,PS,PS
@@ -12,6 +12,7 @@ MENU_GOLD,Gold,Oro,Oro,Ouro
 MENU_TIME,Time,Ore,Tiempo,Tempo
 MENU_EXP,Experience,Esperienza,Experiencia,Experiência
 MENU_NEXT,Next,Prossimo Liv.,Próximo nív.,Próximo NV
+MENU_MAP_RATIO,Map,Mappa,,
 ATK_STAT_FULL,Attack,Attacco,Ataque,Ataque
 DEF_STAT_FULL,Defense,Difesa,Defensa,Defesa
 STR_STAT_FULL,Strength,Forza,Fuerza,Força
@@ -154,25 +155,27 @@ MACE,Mace,Mazza,Maza,Maça
 MACE_DESC,"A large club, useful against those resistant to slashes.","Un grande randello, utile contro nemici resistenti al taglio.","Un garrote grande, útil contra aquellos resistentes a cortaduras.","Um porrete grande, útil contra inimigos resistentes a cortes."
 ,,,,
 --Title screen--,,,,
-NEW_GAME_BUTTON,New Game,Nuova partita,,
-CONTINUE_BUTTON,Continue,Continua,,
-OPTIONS_BUTTON,Options,Opzioni,,
-SOUND_SELECT_BUTTON,Sound Select,Ascolta musiche,,
+NEW_GAME_BUTTON,New Game,Nuova partita,Nueva partida,
+CONTINUE_BUTTON,Continue,Continua,Continuar,
+OPTIONS_BUTTON,Options,Opzioni,Opciones,
+SOUND_SELECT_BUTTON,Sound Select,Ascolta musiche,Rocola,
 ,,,,
 --Main menu--,,,,
-LOADING_SCREEN_LABEL,Load data,Carica,,
-NAME_ENTRY_LABEL,Name Entry,Inserisci nome,,
-DIFFICULTY_LABEL,Difficulty,Difficoltà,,
-CONFIRM_NAME_BUTTON,Is this name correct?,Va bene questo nome?,,
-SELECT_DIFFICULTY_TITLE,Select the difficulty level for this game.,Seleziona il livello di difficoltà per questa partita.,,
-SIMPLIFIED_DIFFICULTY,Simplified,Semplificata,,
-SIMPLIFIED_DIFFICULTY_DESC,"Recommended to those who are new to Castlevania, or want to enjoy the story and exploration more than combat.","Consigliato per i neofiti di Castlevania o per chiunque preferisca godersi la storia e l'esplorazione, piuttosto che il combattimento.",,
-STANDARD_DIFFICULTY,Standard,Standard,,
-STANDARD_DIFFICULTY_DESC,"Normal difficulty, recommended to those who are well-trained in the universe of Castlevania.","Difficoltà normale, consigliata per chi è già familiare con la saga.",,
-CRAZY_DIFFICULTY,Crazy,Folle,,
+LOADING_SCREEN_LABEL,Load data,Carica,Cargar datos,
+NAME_ENTRY_LABEL,Name Entry,Inserisci nome,Entrada de nombre,
+DIFFICULTY_LABEL,Difficulty,Difficoltà,Dificultad,
+CONFIRM_NAME_BUTTON,Is this name correct?,Va bene questo nome?,¿Es correcto este nombre?,
+SELECT_DIFFICULTY_TITLE,Select the difficulty level for this game.,Seleziona il livello di difficoltà per questa partita.,Seleccione el nível de dificultad para la partida.,
+SIMPLIFIED_DIFFICULTY,Simplified,Semplificata,Simplificado,
+SIMPLIFIED_DIFFICULTY_DESC,"Recommended to those who are new to Castlevania, or want to enjoy the story and exploration more than combat.","Consigliato per i neofiti di Castlevania o per chiunque preferisca godersi la storia e l'esplorazione, piuttosto che il combattimento.","Recomendado para aquellos que son nuevos a Castlevania, o los que quieren disfrutar de la historia y exploración más que el combate.",
+STANDARD_DIFFICULTY,Standard,Standard,Estándar,
+STANDARD_DIFFICULTY_DESC,"Normal difficulty, recommended to those who are well-trained in the universe of Castlevania.","Difficoltà normale, consigliata per chi è già familiare con la saga.","Dificultad normal, recomendado para aquellos con experiencia en el mundo de Castlevania.",
+CRAZY_DIFFICULTY,Crazy,Folle,Loco,
 CRAZY_DIFFICULTY_DESC,"For those who seek a true challenge and want to experience the combat system to a major extent.
 Enemies are stronger, have new patterns and/or greater attack speed and their placement is more aggressive.","Per chi cerca una vera sfida e vuole portare la frenesia del combattimento ad un livello superiore.
-I nemici sono più forti, hanno modi di combattere diversi e/o sono più veloci e sono posizionati in modo più aggressivo.",,
+I nemici sono più forti, hanno modi di combattere diversi e/o sono più veloci e sono posizionati in modo più aggressivo.","Para aquellos que buscan un verdadero reto y quieren experienciar más ampliamente el combate.
+Los enemigos son más fuertes, tienen nuevos patrones y/o velocidad de ataque y sus posiciones son más agresivas.",
+CONFIRM_SAVE_LABEL,Overwrite data?,Sovrascrivere i dati?,,
 ,,,,
 --Headgear--,,,,
 LEATHER_HAT,Leather Hat,Cappello di cuoio,Sombrero de cuero,Chapéu de Couro
@@ -211,186 +214,209 @@ BREASTPLATE,Breastplate,Corazza per petto,Coraza,Peitoral
 BREASTPLATE_DESC,A tough apron fashioned from a fusion between Iron and Jet Black.,Una corazza realizzata dalla miscela di Ferro e Nero ebano.,Un delantal resistente elaborado a partir de la fusión entre Hierro y Negro Azabache.,Uma bata resistente feita a partir da fusão entre Ferro e Preto Absoluto.
 ,,,,
 --Legs--,,,,
-SANDALS,Sandals,Sandali,,Sandálias
-SANDALS_DESC,Comfy sandals made of leather.,"Sandali confortevoli, fatti con il cuoio.",,Sandálias confortáveis feitas de couro.
-WINGTIPS,Wingtips,Wingtips,,Brogue
-WINGTIPS_DESC,For people with a sense of fashion.,Per persone con un minimo di classe.,,Para pessoas com senso de moda.
-ENGINEER_BOOTS,Engineer Boots,Stivali da lavoro,,Botas de Engenheiro
-ENGINEER_BOOTS_DESC,Sturdy boots which feature iron plating in the toes.,Stivali robusti con una lastra di ferro per proteggere le dita dei piedi.,,Botas resistentes com revestimento de ferro nos dedos.
-ALUMINUM_LEGGINGS,Aluminum Leggings,Gambali d'alluminio,,Perneiras de Alumínio
-ALUMINUM_LEGGINGS_DESC,Armor crafted with aluminum in order to protect the wearer's legs. A bit uncomfortable to wear.,Armatura fatta con alluminio con lo scopo di proteggere le gambe di chi lo indossa. Scomoda.,,Armadura feita de alumínio para proteger as pernas do usuário. Um pouco desconfortável de usar.
-FEATHER_BOOTS,Feather Boots,Stivali Piuma,,Botas de Pena
-FEATHER_BOOTS_DESC,Mystic boots that increase pushback while guarding an attack.,Stivali mistici che incrementano il rinculo subito dopo una parata.,,Botas místicas que aumentam o recuo ao bloquear um ataque.
+SANDALS,Sandals,Sandali,Sandalias,Sandálias
+SANDALS_DESC,Comfy sandals made of leather.,"Sandali confortevoli, fatti con il cuoio.",Sandalias cómodas hechas de cuero.,Sandálias confortáveis feitas de couro.
+WINGTIPS,Wingtips,Wingtips,Pala Vega,Brogue
+WINGTIPS_DESC,For people with a sense of fashion.,Per persone con un minimo di classe.,Para gente con sentido de la moda.,Para pessoas com senso de moda.
+ENGINEER_BOOTS,Engineer Boots,Stivali da lavoro,Botas de ingeniero,Botas de Engenheiro
+ENGINEER_BOOTS_DESC,Sturdy boots which feature iron plating in the toes.,Stivali robusti con una lastra di ferro per proteggere le dita dei piedi.,Botas robustas con revestimiento de hierro en las punteras.,Botas resistentes com revestimento de ferro nos dedos.
+ALUMINUM_LEGGINGS,Aluminum Leggings,Gambali d'alluminio,Polainas de aluminio,Perneiras de Alumínio
+ALUMINUM_LEGGINGS_DESC,Armor crafted with aluminum in order to protect the wearer's legs. A bit uncomfortable to wear.,Armatura fatta con alluminio con lo scopo di proteggere le gambe di chi lo indossa. Scomoda.,Armadura hecha con aluminio para proteger las piernas. Es un poco incómoda.,Armadura feita de alumínio para proteger as pernas do usuário. Um pouco desconfortável de usar.
+FEATHER_BOOTS,Feather Boots,Stivali Piuma,Botas pluma,Botas de Pena
+FEATHER_BOOTS_DESC,Mystic boots that increase pushback while guarding an attack.,Stivali mistici che incrementano il rinculo subito dopo una parata.,Botas místicas que incrementan el retroceso al bloquear un ataque.,Botas místicas que aumentam o recuo ao bloquear um ataque.
 ,,,,
 --Accessories--,,,,
-SCARF,Scarf,Sciarpa,,Lenço
-SCARF_DESC,Keeps you warm from cold environments.,Tiene caldo da ambienti freddi.,,Mantém você aquecido em ambientes frios.
-EMERALD_RING,Emerald Ring,Anello smeraldo,,Anel de Esmeralda
-EMERALD_RING_DESC,A ring with a shiny emerald stone that can be sold at a good price.,Un anello con una luccicosa pietra di smeraldo che può essere venduta ad un buon prezzo.,,Um anel com uma pedra esmeralda brilhante que pode ser vendido por um bom preço.
-TALISMAN,Talisman,Talismano,,Talismã
-TALISMAN_DESC,Protects the wearer from evil spirits.,Protegge chi lo indossa da spiriti maligni.,,Protege o usuário de espíritos malignos.
-FORTITUDE_NECKLACE,Fortitude Necklace,Collana Audace,,Colar da Fortitude
-FORTITUDE_NECKLACE_DESC,A necklace bestowed with the blessing of a witch.,Una collana benedetta da una strega.,,Um colar que recebeu a bênção de uma bruxa.
-CONCENTRATION_STUD,Concentration Stud,Orecchino tensione,,Tacha da Concentração
+SCARF,Scarf,Sciarpa,Bufanda,Lenço
+SCARF_DESC,Keeps you warm from cold environments.,Tiene caldo da ambienti freddi.,Te mantiene cálido en ambientes fríos.,Mantém você aquecido em ambientes frios.
+EMERALD_RING,Emerald Ring,Anello smeraldo,Anillo esmeralda,Anel de Esmeralda
+EMERALD_RING_DESC,A ring with a shiny emerald stone that can be sold at a good price.,Un anello con una luccicosa pietra di smeraldo che può essere venduta ad un buon prezzo.,Un anillo con una brillante esmeralda que puede ser vendido a un buen precio.,Um anel com uma pedra esmeralda brilhante que pode ser vendido por um bom preço.
+TALISMAN,Talisman,Talismano,Talismán,Talismã
+TALISMAN_DESC,Protects the wearer from evil spirits.,Protegge chi lo indossa da spiriti maligni.,Protege al portador de espíritus malignos.,Protege o usuário de espíritos malignos.
+FORTITUDE_NECKLACE,Fortitude Necklace,Collana Audace,Collar de fortaleza,Colar da Fortitude
+FORTITUDE_NECKLACE_DESC,A necklace bestowed with the blessing of a witch.,Una collana benedetta da una strega.,Un collar otorgado con la bendición de una bruja.,Um colar que recebeu a bênção de uma bruxa.
+CONCENTRATION_STUD,Concentration Stud,Orecchino tensione,Arete de concentración,Tacha da Concentração
 CONCENTRATION_STUD_DESC,"Turquoise stud made to transform concentration into energy.
 Increases damage dealt by 7% when the Focus bar is full.","Orecchino turchese che trasforma la concentrazione in energia.
-Aumenta i danni inflitti del 7% quando la barra di Concentrazione è piena.",,"Tacha de turquesa feita para transformar concentração em energia.
+Aumenta i danni inflitti del 7% quando la barra di Concentrazione è piena.","Perno de arete turquesa hecho para transformar la concentración en energía.
+Aumenta el daño infligido un 7% cuando la barra de concentración está llena.","Tacha de turquesa feita para transformar concentração em energia.
 Aumenta o dano causado em 7% quando a barra de Foco está cheia."
 ,,,,
 --Relics--,,,,
-INDIGO_CROSS,Indigo Cross,Rosario Indaco,,Cruz Índigo
+INDIGO_CROSS,Indigo Cross,Rosario Indaco,Cruz índiga,Cruz Índigo
 INDIGO_CROSS_DESC,"The cross of a hunter buried in freezing catacombs.
 Summons a shield that reflects projectiles.","Il rosario di un cacciatore ormai sepolto sotto gelate catacombe.
-Evoca uno scudo che riflette i proiettili.",,"A cruz de um caçador enterrado em catacumbas congelantes.
+Evoca uno scudo che riflette i proiettili.","La cruz de un cazador enterrado en catacumbas gélidas.
+Invoca un escudo que refleja los proyectiles.","A cruz de um caçador enterrado em catacumbas congelantes.
 Invoca um escudo que reflete projéteis."
-AGUNIS_LAUREL,Aguni's Laurel,Alloro di Aguni,,Grinalda de Agni
+AGUNIS_LAUREL,Aguni's Laurel,Alloro di Aguni,Laurel de Agni,Grinalda de Agni
 AGUNIS_LAUREL_DESC,"A laurel imbued with the power of the fire god, Aguni.
 Flames sprout in your footsteps.","Una corona d'alloro intrisa del potere del dio del fuoco, Aguni.
-I tuoi passi producono fiamme.",,"Uma grinalda imbuída com o poder do deus do fogo, Agni.
+I tuoi passi producono fiamme.","Un laurel imbuido con el poder del dios del fuego, Agni.
+Llamas brotan en tus pasos.","Uma grinalda imbuída com o poder do deus do fogo, Agni.
 Chamas emergem dos seus passos."
 ,,,,
 --Artifacts--,,,,
-LITTLE_HAMMER,Little Hammer,Martelletto,,Martelo Pequeno
+LITTLE_HAMMER,Little Hammer,Martelletto,Martillo pequeño,Martelo Pequeno
 LITTLE_HAMMER_DESC,"A golden hammer, said to harbor fortune to the wielder.
 LCK% chance to generate gold when hitting a foe.","Un martello d'oro il quale, si dice, dia fortuna a chi lo possiede.
-Chance pari a FOR% di generare oro quando si colpisce un nemico.",,"Um martelo dourado que dizem trazer riqueza para quem o empunha.
+Chance pari a FOR% di generare oro quando si colpisce un nemico.","Un martillo dorado, se dice que trae fortuna a quien lo porta.
+SRT% de probabilidad de generar oro al golpear un enemigo.","Um martelo dourado que dizem trazer riqueza para quem o empunha.
 Chance de SOR% de gerar ouro ao atingir um inimigo."
 ,,,,
 --Skills--,,,,
-FORTITUDE_GAUNTLET,Fortitude Gauntlet,Guanto dell'Audacia,,Manopla da Fortitude
-FORTITUDE_GAUNTLET_DESC,Allows the user to guard from attacks by holding [[R1]] down.,"Conferisce, a chi lo possiede, la capacità di parare gli attacchi premendo [[R1]].",,Permite que o usuário se proteja de ataques mantendo pressionado [[R1]].
-HOLY_MANUAL,Holy Manual,Manuale sacro,,Manual Sagrado
-HOLY_MANUAL_DESC,Displays enemy names.,Rivela il nome dei nemici.,,Exibe os nomes dos inimigos.
-PLATINUM_ARM,Platinum Arm,Guanto di Platino,,Braço de Platina
-PLATINUM_ARM_DESC,Block an attack at the right time to recover MP and Hearts.,Para un attacco non appena stai per essere colpito per recuperare PM e Cuori.,,Bloqueie um ataque no momento certo para recuperar MP e Corações.
-CYAN_ORB_ITEM,Cyan Orb,Globo azzurro,,Orbe Ciano
+FORTITUDE_GAUNTLET,Fortitude Gauntlet,Guanto dell'Audacia,Guantelete de fortitud,Manopla da Fortitude
+FORTITUDE_GAUNTLET_DESC,Allows the user to guard from attacks by holding [[R1]] down.,"Conferisce, a chi lo possiede, la capacità di parare gli attacchi premendo [[R1]].",Le habilita al usuario protegerse de ataques al mantener [[R1]] presionado.,Permite que o usuário se proteja de ataques mantendo pressionado [[R1]].
+HOLY_MANUAL,Holy Manual,Manuale sacro,Manual sagrado,Manual Sagrado
+HOLY_MANUAL_DESC,Displays enemy names.,Rivela il nome dei nemici.,Muestra los nombres de los enemigos.,Exibe os nomes dos inimigos.
+PLATINUM_ARM,Platinum Arm,Guanto di Platino,Brazo de platíno,Braço de Platina
+PLATINUM_ARM_DESC,Block an attack at the right time to recover MP and Hearts.,Para un attacco non appena stai per essere colpito per recuperare PM e Cuori.,Bloquea un ataque al momento justo para recuperar PM y corazones.,Bloqueie um ataque no momento certo para recuperar MP e Corações.
+CYAN_ORB_ITEM,Cyan Orb,Globo azzurro,Orbe Cian,Orbe Ciano
 CYAN_ORB_ITEM_DESC,"Enhances Indigo Cross by increasing icicles' endurance and power.
-Unlocks Ice Affinity.","Potenzia il Rosario Indaco, aumentando i danni e resistenza degli aculei di ghiaccio. Sblocca Affinità Glaciale.",,"Aprimora a Cruz Índigo aumentando a resistência e o dano dos dardos de gelo.
+Unlocks Ice Affinity.","Potenzia il Rosario Indaco, aumentando i danni e resistenza degli aculei di ghiaccio. Sblocca Affinità Glaciale.","Mejora la cruz índiga aumentando la resistencia y el poder de los carámbanos.
+Desbloquea la Afinidad Glacial.","Aprimora a Cruz Índigo aumentando a resistência e o dano dos dardos de gelo.
 Desbloqueia a Afinidade com Gelo."
-SWORD_SPIN,Sword Spin,Lama Rotante,,Giro de Espada
-SWORD_SPIN_DESC,"A technique with swords that spins the sword, hitting enemies from afar multiple times.","Una tecnica con le spade in cui si lancia una lama rotante, colpendo nemici da lontano molteplici volte.",,"Uma técnica de espada na qual você lança uma lâmina giratória, atingindo inimigos distantes várias vezes."
-AXE_THROW,Axe Throw,Lancia Ascia,,Arremesso de machado
+SWORD_SPIN,Sword Spin,Lama Rotante,Giro de espada,Giro de Espada
+SWORD_SPIN_DESC,"A technique with swords that spins the sword, hitting enemies from afar multiple times.","Una tecnica con le spade in cui si lancia una lama rotante, colpendo nemici da lontano molteplici volte.","Una técnica con las espadas que las hace girar mientras lanzadas, golpeando enemigos desde lejos varias veces.","Uma técnica de espada na qual você lança uma lâmina giratória, atingindo inimigos distantes várias vezes."
+AXE_THROW,Axe Throw,Lancia Ascia,Lanzamiento de hacha,Arremesso de machado
 AXE_THROW_DESC,"Throws the currently equipped weapon to hit enemies above Hector.
 The currently equipped weapon will not be lost.","Lancia l'arma equipaggiata per colpire i nemici sopra Hector.
-L'arma lanciata non viene persa.",,"Arremessa a arma equipada no momento para atingir inimigos acima de Hector.
+L'arma lanciata non viene persa.","Lanza el arma equipada para golpear enemigos por encima de Héctor.
+Esta no se perderá.","Arremessa a arma equipada no momento para atingir inimigos acima de Hector.
 A arma equipada no momento não será perdida."
-SWORD_HAND,Sword Hand,Mano Tagliente,,Punho da Espada
-SWORD_HAND_DESC,Increases damage dealt with swords by 10%.,Aumenta i danni inflitti con le spade del 10%.,,Aumenta o dano causado com espadas em 10%.
-EXECUTIONERS_HAND,Executioner's Hand,Mano da Boia,,Mão do Carrasco
-EXECUTIONERS_HAND_DESC,Allows Hector to attack more rapidly with axes.,Permette ad Hector di attaccare più rapidamente con le asce.,,Permite que Hector ataque mais rapidamente com machados.
-BLACKSMITH_CONTRACT,Blacksmith Contract,Contratto del fabbro,,Contrato do Ferreiro
-BLACKSMITH_CONTRACT_DESC,Allows Hector to combine materials in order to create new items.,Permette ad Hector di combinare materiali per creare nuovi oggetti.,,Permite que Hector combine materiais para criar novos itens.
-WARP_MEDALLION,Warp Medallion,Medaglione del trasporto,,Medalhão de Teleporte
-WARP_MEDALLION_DESC,Allows the wielder to warp between save rooms.,"Permette, a chi lo possiede, di teletrasportarsi tra stanze di salvataggio.",,Permite que o portador se teletransporte entre salas de salvamento.
+SWORD_HAND,Sword Hand,Mano Tagliente,Destreza con la espada,Punho da Espada
+SWORD_HAND_DESC,Increases damage dealt with swords by 10%.,Aumenta i danni inflitti con le spade del 10%.,Incrementa el daño infligido por espadas en un 10%.,Aumenta o dano causado com espadas em 10%.
+EXECUTIONERS_HAND,Executioner's Hand,Mano da Boia,Destreza del verdugo,Mão do Carrasco
+EXECUTIONERS_HAND_DESC,Allows Hector to attack more rapidly with axes.,Permette ad Hector di attaccare più rapidamente con le asce.,Le permite a Héctor atacar más rápidamente con hachas.,Permite que Hector ataque mais rapidamente com machados.
+BLACKSMITH_CONTRACT,Blacksmith Contract,Contratto del fabbro,Contrato de herrero,Contrato do Ferreiro
+BLACKSMITH_CONTRACT_DESC,Allows Hector to combine materials in order to create new items.,Permette ad Hector di combinare materiali per creare nuovi oggetti.,Le permite a Héctor combinar materiales para crear nuevos objetos.,Permite que Hector combine materiais para criar novos itens.
+WARP_MEDALLION,Warp Medallion,Medaglione del trasporto,Medallón de teletransporte,Medalhão de Teleporte
+WARP_MEDALLION_DESC,Allows the wielder to warp between save rooms.,"Permette, a chi lo possiede, di teletrasportarsi tra stanze di salvataggio.",Le habilita al portador a teletransportarse a travéz de salas de guardado.,Permite que o portador se teletransporte entre salas de salvamento.
 ,,,,
 --Consumables--,,,,
-POTION,Potion,Pozione,,Poção
-POTION_DESC,Restores 80 HP.,Ripristina 80 PV.,,Recupera 80 PV.
-HIGH_POTION,High Potion,Pozione alta,,Poção Grande
-HIGH_POTION_DESC,Restores 200 HP.,Ripristina 200 PV.,,Recupera 200 PV.
-TONIC,Tonic,Tonico,,Tônico
-TONIC_DESC,Restores 100 MP.,Ripristina 100 PM.,,Recupera 100 PM.
-HIGH_TONIC,High Tonic,Tonico alto,,Tônico Grande
-HIGH_TONIC_DESC,Restores 200 MP.,Ripristina 200 PM.,,Recupera 200 PM.
+POTION,Potion,Pozione,Poción,Poção
+POTION_DESC,Restores 80 HP.,Ripristina 80 PV.,Recupera 80 PS.,Recupera 80 PV.
+HIGH_POTION,High Potion,Pozione alta,Poción alta,Poção Grande
+HIGH_POTION_DESC,Restores 200 HP.,Ripristina 200 PV.,Recupera 200 PS.,Recupera 200 PV.
+TONIC,Tonic,Tonico,Tónico,Tônico
+TONIC_DESC,Restores 100 MP.,Ripristina 100 PM.,Recupera 100 PM.,Recupera 100 PM.
+HIGH_TONIC,High Tonic,Tonico alto,Tónico alto,Tônico Grande
+HIGH_TONIC_DESC,Restores 200 MP.,Ripristina 200 PM.,Recupera 200 PM.,Recupera 200 PM.
 ,,,,
 --Rare Items--,,,,
-ANCIENT_TEXT_1,Ancient Text 1,Manoscritto antico 1,,Texto Antigo 1
-ANCIENT_TEXT_1_DESC,The tombstones hold a secret tied to the tall room with the moving platform...,Le tombe nascondono un segreto correlato all'alta stanza con la piattaforma magica che si muove...,,As lápides guardam um segredo ligado à sala alta com a plataforma móvel...
-LEFT_SERPENT_EYE,Left Serpent Eye,Occhio Serpente Sinistro,,Olho Esquerdo da Serpente
+ANCIENT_TEXT_1,Ancient Text 1,Manoscritto antico 1,Texto antigüo 1,Texto Antigo 1
+ANCIENT_TEXT_1_DESC,The tombstones hold a secret tied to the tall room with the moving platform...,Le tombe nascondono un segreto correlato all'alta stanza con la piattaforma magica che si muove...,Las lápidas guardan un secreto vinculado a la sala alta con la plataforma móvil...,As lápides guardam um segredo ligado à sala alta com a plataforma móvel...
+LEFT_SERPENT_EYE,Left Serpent Eye,Occhio Serpente Sinistro,Ojo izquierdo de serpiente,Olho Esquerdo da Serpente
 LEFT_SERPENT_EYE_DESC,"A bright jewel that shines crimson.
 Resembles the eye of a snake, perhaps it can fit somewhere...","Un gioiello luccicante che brilla di color cremisi.
-Assomiglia all'occhio di un serpente, forse si può inserire da qualche parte...",,"Uma jóia radiante que brilha em vermelho vivo.
+Assomiglia all'occhio di un serpente, forse si può inserire da qualche parte...","Una joya brillante que brilla en color carmesí.
+Se parece al ojo de una serpiente, quizá pueda encajar en algún lugar...","Uma jóia radiante que brilha em vermelho vivo.
 Lembra o olho de uma cobra, talvez caiba em algum lugar..."
-RIGHT_SERPENT_EYE,Right Serpent Eye,Occhio Serpente Destro,,Olho Direito da Serpente
+RIGHT_SERPENT_EYE,Right Serpent Eye,Occhio Serpente Destro,Ojo derecho de serpiente,Olho Direito da Serpente
 RIGHT_SERPENT_EYE_DESC,"A bright jewel that shines sapphire.
 Resembles the eye of a snake, perhaps it can fit somewhere...","Un gioiello luccicante che brilla di color zaffiro.
-Assomiglia all'occhio di un serpente, forse si può inserire da qualche parte...",,"Uma jóia radiante que brilha como safira.
+Assomiglia all'occhio di un serpente, forse si può inserire da qualche parte...","Una joya brillante que brilla como zafiro.
+Se parece al ojo de una serpiente, quizá pueda encajar en algún lugar...","Uma jóia radiante que brilha como safira.
 Lembra o olho de uma cobra, talvez caiba em algum lugar..."
 ,,,,
 --Materials--,,,,
-BRONZE,Bronze,Bronzo,,Bronze
+BRONZE,Bronze,Bronzo,Bronce,Bronze
 BRONZE_DESC,"This material is often used to craft simple works.
 Cheap and easy to use and find.","Questo materiale è spesso usato per fare semplici lavori.
-Facile ed economico da utilizzare e trovare.",,"Este material é frequentemente usado para criar peças simples.
+Facile ed economico da utilizzare e trovare.","Este material a menudo es usado para elaborar obras simples.
+Barato y fácil de usar y encontrar.","Este material é frequentemente usado para criar peças simples.
 Barato, fácil de usar e de encontrar."
-IRON,Iron,Ferro,,Ferro
-IRON_DESC,Some kind of gray metal that is widely used by blacksmiths.,Un tipo di metallo grigio utilizzato molto spesso dai fabbri.,,Um tipo de metal cinza muito utilizado por ferreiros.
-SKULL,Skull,Teschio,,Crânio
+IRON,Iron,Ferro,Hierro,Ferro
+IRON_DESC,Some kind of gray metal that is widely used by blacksmiths.,Un tipo di metallo grigio utilizzato molto spesso dai fabbri.,Un tipo de metal gris que es ampliamente utilizado por los herreros.,Um tipo de metal cinza muito utilizado por ferreiros.
+SKULL,Skull,Teschio,Cráneo,Crânio
 SKULL_DESC,"This is a real human skull.
 It still emanates some dark magic from the inside.","Questo è un teschio umano vero e proprio.
-Emana ancora un po' di magia oscura da dentro.",,"Este é um crânio humano de verdade.
+Emana ancora un po' di magia oscura da dentro.","Este es un cráneo humano real.
+Aún emana algo de magia oscura desde el interior.","Este é um crânio humano de verdade.
 Ele ainda emana um pouco de magia negra do seu interior."
-ALUMINUM,Aluminum,Alluminio,,Alumínio
-ALUMINUM_DESC,"A very light material, usually consumed by alchemists.","Un materiale molto leggero, utilizzato comunemente dagli alchimisti.",,"Um material muito leve, geralmente usado por alquimistas."
-STEEL_DUST,Steel Dust,Polvere d'acciaio,,Pó de Aço
-STEEL_DUST_DESC,"Steel reduced to dust, usually used to reinforce some existing gear.","Acciaio ridotto in polvere, utilizzato spesso per rafforzare oggetti già creati.",,"Aço reduzido a pó, geralmente usado para reforçar equipamentos."
-WILD_MEMORY,Wild Memory,Memoria selvaggia,,Memória Selvagem
+ALUMINUM,Aluminum,Alluminio,Aluminio,Alumínio
+ALUMINUM_DESC,"A very light material, usually consumed by alchemists.","Un materiale molto leggero, utilizzato comunemente dagli alchimisti.","A very light material, usually consumed by alchemists.
+
+Un material muy ligero, usualmente consumido por alquimistas.","Um material muito leve, geralmente usado por alquimistas."
+STEEL_DUST,Steel Dust,Polvere d'acciaio,Polvo de acero,Pó de Aço
+STEEL_DUST_DESC,"Steel reduced to dust, usually used to reinforce some existing gear.","Acciaio ridotto in polvere, utilizzato spesso per rafforzare oggetti già creati.","Acero reducido a polvo, usualmente usado para reforzar algún equipamiento existente.","Aço reduzido a pó, geralmente usado para reforçar equipamentos."
+WILD_MEMORY,Wild Memory,Memoria selvaggia,Memoria salvaje,Memória Selvagem
 WILD_MEMORY_DESC,"A stone fragment with some symbols carved on it.
 Used to create some simple works.","Un pezzo di pietra con alcuni simboli incisi sopra.
-Utile per creare delle cose semplici.",,"Um fragmento de pedra com alguns símbolos esculpidos.
+Utile per creare delle cose semplici.","Un fragmento de piedra con unos símbolos tallados encima.
+Usado para crear obras simples.","Um fragmento de pedra com alguns símbolos esculpidos.
 Usado para criar algumas obras simples."
-AQUAMARINE,Aquamarine,Acquamarina,,Água-marinha
-AQUAMARINE_DESC,"A blue ore that reminds of the sea, thanks to its color and clearness.","Un minerale blu che fa pensare al mare, grazie alla sua purezza e il suo colore.",,Um minério azul que lembra o mar pela sua cor e transparência.
-JADE,Jade,Giada,,Jade
+AQUAMARINE,Aquamarine,Acquamarina,Aguamarina,Água-marinha
+AQUAMARINE_DESC,"A blue ore that reminds of the sea, thanks to its color and clearness.","Un minerale blu che fa pensare al mare, grazie alla sua purezza e il suo colore.","Un mineral azul que recuerda al mar, gracias a su color y claridad.",Um minério azul que lembra o mar pela sua cor e transparência.
+JADE,Jade,Giada,Jade,Jade
 JADE_DESC,"This material isn't really used to create weapons...
 Perhaps something else can be made with this.","Questo materiale non è spesso usato per creare armi...
-Forse ci si può fare altro.",,"Este material não é realmente usado para criar armas...
+Forse ci si può fare altro.","Este material realmente no se usa para crear armas...
+Quizás se pueda hacer algo más con esto.","Este material não é realmente usado para criar armas...
 Talvez outra coisa possa ser feita com isto."
-STEEL,Steel,Acciaio,,Aço
-STEEL_DESC,"Hardened metal used to make weapons, but also some kind of armor.","Materiale indurito utilizzato per fare armi, ma anche qualche tipo di armatura.",,"Metal endurecido usado para fazer armas, mas também alguns tipos de armaduras."
-KNIGHTS_VEIN,Knight's Vein,Vena del cavaliere,,Veia do Cavaleiro
+STEEL,Steel,Acciaio,Acero,Aço
+STEEL_DESC,"Hardened metal used to make weapons, but also some kind of armor.","Materiale indurito utilizzato per fare armi, ma anche qualche tipo di armatura.","Metal endurecido utilizado para fabricar armas, pero también algún tipo de armadura.","Metal endurecido usado para fazer armas, mas também alguns tipos de armaduras."
+KNIGHTS_VEIN,Knight's Vein,Vena del cavaliere,Vena del caballero,Veia do Cavaleiro
 KNIGHTS_VEIN_DESC,"The blood of a royal knight, solidified by magic.
 Has a weird purple color and is incredibly hot.","Il sangue di un cavaliere reale, solidificato dalla magia.
-Ha uno strano color viola ed è molto bollente.",,"O sangue de um cavaleiro real, solidificado por magia.
+Ha uno strano color viola ed è molto bollente.","La sangre de un caballero real, solidificada por magia.
+Tiene un extraño color morado y es increíblemente caliente.","O sangue de um cavaleiro real, solidificado por magia.
 Tem uma cor roxa estranha e é incrivelmente quente."
-DEMONS_VEIN,Demon's Vein,Vena del demone,,Veia do Demônio
+DEMONS_VEIN,Demon's Vein,Vena del demone,Vena del demonio,Veia do Demônio
 DEMONS_VEIN_DESC,"The blood of a demon solidified by magic.
 Burns hot-red and emanates a dark aura.","Il sangue di un demone solidificato dalla magia.
-Brucia di un color rosso ed emana un'aura oscura.",,"O sangue de um demônio solidificado por magia.
+Brucia di un color rosso ed emana un'aura oscura.","La sangre de un demonio, solidificada por magia.
+Arde al rojo vivo y emana un aura oscura.","O sangue de um demônio solidificado por magia.
 Arde em um vermelho intenso e emana uma aura sombria."
-ETHER,Ether,Etere,,Éter
-ETHER_DESC,"Many question this material's existence, as it is said that it makes up most of the universe.","In molti discutono dell'esistenza di questo materiale, che si dice formi la maggior parte dell'universo.",,Muitos debatem a existência deste material. Dizem que ele compõe a maior parte do universo.
-PRINCES_VEIN,Prince's Vein,Vena del principe,,Veia do Príncipe
+ETHER,Ether,Etere,Éter,Éter
+ETHER_DESC,"Many question this material's existence, as it is said that it makes up most of the universe.","In molti discutono dell'esistenza di questo materiale, che si dice formi la maggior parte dell'universo.","Muchos cuestionan la existencia de este material, ya que se dice que constituye la mayor parte del universo.",Muitos debatem a existência deste material. Dizem que ele compõe a maior parte do universo.
+PRINCES_VEIN,Prince's Vein,Vena del principe,Vena del principe,Veia do Príncipe
 PRINCES_VEIN_DESC,"The blood of a royal member, solidified by magic.
 Emanates a strong, holy power.","Il sangue del membro di una famiglia reale, solidificato dalla magia.
-Emana un potere sacro e forte.",,"O sangue de um membro da realeza, solidificado por magia.
+Emana un potere sacro e forte.","La sangre de un miembro real, solidificada por magia.
+Emana un fuerte poder sagrado.","O sangue de um membro da realeza, solidificado por magia.
 Emana um poder forte e sagrado."
-DRAGON_SCALE,Dragon Scale,Scaglia di drago,,Escama de dragão
+DRAGON_SCALE,Dragon Scale,Scaglia di drago,Escama de dragón,Escama de dragão
 DRAGON_SCALE_DESC,"Scales taken from a deceased dragon.
 Can be useful to create weapons effective against them.","Scaglia presa da un drago deceduto.
-Può essere utile per creare armi efficaci contro i draghi stessi.",,"Escama retirada de um dragão morto.
+Può essere utile per creare armi efficaci contro i draghi stessi.","Escamas sacadas de un dragón muerto.
+Pueden ser útiles para crear armas efectivas contra ellos.","Escama retirada de um dragão morto.
 Ironicamente, pode ser usada para criar armas eficazes contra os próprios dragões."
-FANG,Fang,Zanna,,Presa
+FANG,Fang,Zanna,Colmillo,Presa
 FANG_DESC,"A fang taken from a creature of the night.
 Can be used to create sharp, deadly blades.","Una zanna presa da una creatura della notte.
-Può essere usata per creare lame affilate e letali.",,"Uma presa retirada de uma criatura da noite.
+Può essere usata per creare lame affilate e letali.","Un colmillo sacado de una criatura de la noche.
+Puede ser usado para crear cuchillas afiladas y mortales.","Uma presa retirada de uma criatura da noite.
 Pode ser usada para criar lâminas afiadas e mortais."
-ANCIENT_MEMORY,Ancient Memory,Memoria antica,,Memória Antiga
+ANCIENT_MEMORY,Ancient Memory,Memoria antica,Memoria antigüa,Memória Antiga
 ANCIENT_MEMORY_DESC,"A very old fragment of stone with instructions carved on it.
 Used for primitive gear.","Un pezzo di pietra molto antico, con istruzioni incise sopra.
-Utilizzato per armi ed armature primitive.",,"Um fragmento de pedra muito antigo com instruções esculpidas.
+Utilizzato per armi ed armature primitive.","Un fragmento de piedra muy viejo con instrucciones grabadas.
+Se usaba para equipo primitivo.","Um fragmento de pedra muito antigo com instruções esculpidas.
 Usado para equipamentos primitivos."
-FORGOTTEN_MEMORY,Forgotten Memory,Memoria dimenticata,,Memória Esquecida
-FORGOTTEN_MEMORY_DESC,A stone fragment so old that nobody knows anymore what's carved in it.,Un pezzo di pietra così antico che nessuno sa più cosa ci sia scritto sopra.,,Um fragmento de pedra tão antigo que ninguém mais sabe o que está esculpido nele.
-CRYSTAL,Crystal,Cristallo,,Cristal
+FORGOTTEN_MEMORY,Forgotten Memory,Memoria dimenticata,Memoria olvidada,Memória Esquecida
+FORGOTTEN_MEMORY_DESC,A stone fragment so old that nobody knows anymore what's carved in it.,Un pezzo di pietra così antico che nessuno sa più cosa ci sia scritto sopra.,Un fragmento de piedra tran viejo que ya nadie sabe qué hay tallado en él.,Um fragmento de pedra tão antigo que ninguém mais sabe o que está esculpido nele.
+CRYSTAL,Crystal,Cristallo,Crístal,Cristal
 CRYSTAL_DESC,"A rare material usually found in the depths of some mines.
 Can be used to create strong weapons, but not suited for armor.","Un materiale raro solitamente reperibile nelle profondità di alcune miniere.
-Può essere usato per fabbricare armi potenti, ma non molto per le armi.",,"Um material raro, geralmente encontrado nas profundezas de algumas minas.
+Può essere usato per fabbricare armi potenti, ma non molto per le armi.","Un material raro que suele encontrarse en las profundidaes de algunas minas.
+Puede usarse para crear armas potentes, pero no es apto para armaduras.","Um material raro, geralmente encontrado nas profundezas de algumas minas.
 Pode ser usado para criar armas fortes, mas não é adequado para armaduras."
-PURPLE_GLITTER,Purple Glitter,Splendore violetto,,Brilho Púrpura
+PURPLE_GLITTER,Purple Glitter,Splendore violetto,Brillo púrpura,Brilho Púrpura
 PURPLE_GLITTER_DESC,"A very strange purple crystal, said to have fallen from the sky.
 Used to create legendary weaponry.","Un cristallo viola molto strano: si dice che sia caduto dal cielo.
-Utilizzato per creare armi leggendarie.",,"Um cristal roxo muito estranho, que dizem ter caído do céu.
+Utilizzato per creare armi leggendarie.","Un extrañísimo crístal púrpura, que se dice que cayó del cielo
+Usado para crear armas legendarias.","Um cristal roxo muito estranho, que dizem ter caído do céu.
 Usado para criar armas lendárias."
-LIGHTNING_CRYSTAL,Lightning Crystal,Cristallo di fulmini,,Cristal Relâmpago
+LIGHTNING_CRYSTAL,Lightning Crystal,Cristallo di fulmini,Crístal relámpago,Cristal Relâmpago
 LIGHTNING_CRYSTAL_DESC,"A crystal said to be infused with the power of thunderstorms.
 Some say it contains some godly powers.","Un cristallo che si dice contenga i poteri delle tempeste.
-Alcuni dicono che possegga invece poteri divini.",,"Um cristal que dizem estar imbuído do poder das tempestades.
+Alcuni dicono che possegga invece poteri divini.","Un cristal que se dice estár imbuido con del poder de las tormentas.
+Algunos dicen que contiene poderes divinos.","Um cristal que dizem estar imbuído do poder das tempestades.
 Alguns dizem que ele contém poderes divinos."
-SUN_TEARS,Sun Tears,Lacrime del sole,,Lágrimas do Sol
+SUN_TEARS,Sun Tears,Lacrime del sole,Lagrimas de sol,Lágrimas do Sol
 SUN_TEARS_DESC,"Rays of the sun captured inside amber.
 Shines brightly.","Raggi di sole catturati dentro dell'ambra.
-Molto luccicante.",,"Raios de sol capturados em âmbar.
+Molto luccicante.",HUEVO,"Raios de sol capturados em âmbar.
 Brilha intensamente."
 SEAL_OF_DARKNESS,Seal of Darkness,Sigillo dell'Oscurità,,Selo da Escuridão
 SEAL_OF_DARKNESS_DESC,"A stone that contains remnants of Dracula's Curse.
@@ -712,7 +738,7 @@ além de desbloquear novas habilidades.
 
 Confira a descrição do Orbe na seção Habilidades para mais informações
 sobre qual relíquia ele realmente potencializa."
-CYAN_ORB,CYAN ORB,GLOBO AZZURRO,,ORBE CIANO
+CYAN_ORB,CYAN ORB,GLOBO AZZURRO,ORBE CIAN,ORBE CIANO
 CYAN_ORB_DESC,"This orb enhances the strength of Indigo Cross.
 
 Icicles summoned with the frost shield get a 20% damage boost,
@@ -743,32 +769,36 @@ de 3 PM por acerto.
 atributo elemental.[/color]"
 ,,,,
 --Hints--,,,,
-SKILLS_LEARNED_MESSAGE,Learned [color=yellow] %s [/color] and [color=yellow] %s + [/color].,Imparato [color=yellow] %s [/color] e [color=yellow] %s + [/color].,,Aprendeu [color=yellow] %s [/color] e [color=yellow] %s + [/color].
-HINT_1,Press [[Square]] to attack.,Premi [[Square]] per attaccare,,Pressione [[Square]] para atacar.
-HINT_2,Press [[Cross]] to jump.,Premi [[Cross]] per saltare.,,Pressione [[Cross]] para pular.
+SKILLS_LEARNED_MESSAGE,Learned [color=yellow] %s [/color] and [color=yellow] %s + [/color].,Imparato [color=yellow] %s [/color] e [color=yellow] %s + [/color].,como tengo q conjugar esto,Aprendeu [color=yellow] %s [/color] e [color=yellow] %s + [/color].
+HINT_1,Press [[Square]] to attack.,Premi [[Square]] per attaccare,Presiona [[Square]] para atacar.,Pressione [[Square]] para atacar.
+HINT_2,Press [[Cross]] to jump.,Premi [[Cross]] per saltare.,Presiona [[Cross]] para saltar.,Pressione [[Cross]] para pular.
 HINT_3,"Press [[Start]] to
-open the inventory.",Premi [[Start]] per aprire l'inventario.,,"Pressione [[Start]] para
+open the inventory.",Premi [[Start]] per aprire l'inventario.,"Presiona [[Start]] para
+abrir el inventario.","Pressione [[Start]] para
 abrir o inventário."
 HINT_4,"Press [[Up]] to sit
 on the chair and save the game.","Premi [[Up]] per sederti sulla sedia
-e salvare la partita.",,"Pressione [[Up]] para sentar-se
+e salvare la partita.","Presiona [[Up]] para sentarte
+en la silla y guardar la partida.","Pressione [[Up]] para sentar-se
 na cadeira e salvar o jogo."
-HINT_5,You have obtained a skill.,Hai ottenuto un'abilità.,,Você obteve uma habilidade.
-HINT_6,This wall hides something...,Questa parete è sospetta...,,Esta parede parece suspeita...
-HINT_7,Ice could break this.,Il ghiaccio lo potrebbe rompere.,,Gelo pode quebrar isso.
+HINT_5,You have obtained a skill.,Hai ottenuto un'abilità.,Has obtenido una habilidad.,Você obteve uma habilidade.
+HINT_6,This wall hides something...,Questa parete è sospetta...,Esta pared oculta algo...,Esta parede parece suspeita...
+HINT_7,Ice could break this.,Il ghiaccio lo potrebbe rompere.,Hielo podría romper esto...,Gelo pode quebrar isso.
 HINT_8,"Press [[Cross]] while crouching to
 drop off the platform.","Premi [[Cross]] mentre sei accovacciato
-su una piattaforma per scendere.",,"Pressione [[Cross]] enquanto estiver agachado para
+su una piattaforma per scendere.","Presione [[Cross]] mientras agachado para
+bajarse de la plataforma.","Pressione [[Cross]] enquanto estiver agachado para
 descer da plataforma."
-HINT_9,Press [[L1]] to backdash.,Premi [[L1]] per schivare.,,Pressione [[L1]] para esquivar.
 HINT_10,Seems like a good place for devil forging.,"Sembra un buon posto per una
-forgiatura diabolica.",,Parece um bom lugar para forjar um demônio.
+forgiatura diabolica.",Parece un buen lugar para forjar demonios.,Parece um bom lugar para forjar um demônio.
+,,,,
 HINT_11,"Axes are strong weapons, but Hector is
 unable to crouch attack with them.","Le asce sono armi potenti, ma Hector
-non ci può attaccare da accovacciato.",,"Machados são armas fortes, mas Hector não consegue
+non ci può attaccare da accovacciato.","Las hachas son armas fuertes, pero Héctor
+no puede atacar agachado con ellas.","Machados são armas fortes, mas Hector não consegue
 atacar enquanto está agachado com eles."
-HINT_12,Press [[Circle]] to stand up.,Premi [[Circle]] per alzarti.,,Pressione [[Circle]] para levantar-se.
-HINT_13,If only there was a way to get rid of this log...,Se solo ci fosse un modo per sbarazzarsi di questo tronco...,,Se ao menos houvesse uma maneira de se livrar desse tronco...
+HINT_12,Press [[Circle]] to stand up.,Premi [[Circle]] per alzarti.,Presiona [[Circle]] para levantarte.,Pressione [[Circle]] para levantar-se.
+HINT_13,If only there was a way to get rid of this log...,Se solo ci fosse un modo per sbarazzarsi di questo tronco...,Si tan solo hubiese una forma de deshacerse de este tronco...,Se ao menos houvesse uma maneira de se livrar desse tronco...
 ,,,,
 --Save--,,,,
 SAVE_GAME_BUTTON,Save Game,Salva partita,Guardar partida,Salvar o Jogo
@@ -798,7 +828,7 @@ MEDUSA_HEAD,Medusa Head,Testa di medusa,Cabeza medusa,Cabeça de Medusa
 DEVIL,Devil,Diavolo,Diablo,Demônio
 ,,,,
 --Innocent Devil Skills--,,,,
-HEAL_SKILL_ID,Heal,Guarigione,,Cura
-HEAL_SKILL_ID_DESC,Heals Hector a moderate amount of HP.,"Guarisce Hector, ripristinando un po' di PV.",,Cura uma quantidade moderada de PV de Hector.
-REFRESHING_AIR_SKILL_ID,Refreshing Air,Aria rinfrescante,,Ar Revigorante
-REFRESHING_AIR_SKILL_ID_DESC,Temporarily allows Hector to heal MP when attacking a foe.,Permette temporaneamente ad Hector di recuperare i PM quando colpisce un nemico.,,Permite temporariamente que Hector recupere PM ao atacar um inimigo.
+HEAL_SKILL_ID,Heal,Guarigione,Cura,Cura
+HEAL_SKILL_ID_DESC,Heals Hector a moderate amount of HP.,"Guarisce Hector, ripristinando un po' di PV.",Le cura una cantidad moderada de PS a Héctor.,Cura uma quantidade moderada de PV de Hector.
+REFRESHING_AIR_SKILL_ID,Refreshing Air,Aria rinfrescante,Aire refrescante,Ar Revigorante
+REFRESHING_AIR_SKILL_ID_DESC,Temporarily allows Hector to heal MP when attacking a foe.,Permette temporaneamente ad Hector di recuperare i PM quando colpisce un nemico.,Le permite a Héctor temporalmente curar PM cuando ataca enemigos.,Permite temporariamente que Hector recupere PM ao atacar um inimigo.
