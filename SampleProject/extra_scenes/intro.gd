@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("menu"):
 		tween = get_tree().create_tween()
 		tween.set_parallel()
+		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 		tween.tween_property(self, "modulate", Color.BLACK, FADE_OUT_DURATION)
 		tween.tween_property(sound, "volume_db", SILENT_VOLUME, FADE_OUT_DURATION)
 		tween.tween_property(music_player, "volume_db", SILENT_VOLUME, FADE_OUT_DURATION)

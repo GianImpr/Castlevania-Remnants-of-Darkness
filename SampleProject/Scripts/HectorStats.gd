@@ -38,6 +38,7 @@ var combat_flags: Array[bool] #ID list checks for combat rooms and bosses
 var tutorial_flags: Array[bool] #ID list checks for fullscreen tutorial popups
 var dialogue_flags: Array[bool] #ID list checks for dialogue scenes
 var current_area: String = "???"
+var map_ratio: String
 
 enum Status {
 	REFRESHING_AIR
@@ -54,6 +55,8 @@ func _ready() -> void:
 		dialogue_flags.append(false)
 
 func _process(delta: float) -> void:
+	map_ratio = "%3d%%" % int(MetSys.get_explored_ratio() * 100)
+	print(map_ratio)
 	Bases["ATK"] = Stats["STR"]/2
 	Bases["DEF"] = Stats["CON"]/2
 	for i in range(0, status.size()):

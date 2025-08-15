@@ -93,7 +93,7 @@ func initializeSaveSlots() -> void:
 		var save_file_path: String = INITIAL_SAVE_PATH + str(i) + SAVE_FILE_EXTENSION
 		if FileAccess.file_exists(save_file_path):
 			var save_manager = SAVE_MANAGER_RESOURCE.new()
-			if not save_manager.load_from_text(save_file_path):
+			if not save_manager.load_from_text(save_file_path, false):
 				current_slot.modulate = CORRUPTED_SLOT_COLOR
 				current_slot.get_child(FILE_NAME_INDEX).text = "Invalid"
 				current_file_data[i][FILE_DATA.STATUS] = FILE_DATA_STATUS.INVALID
@@ -115,7 +115,7 @@ func loadSlotData(slot_number: int, save_manager) -> void:
 	current_file_data[slot_number][FILE_DATA.GOLD] = stats.Stats["GOLD"]
 	current_file_data[slot_number][FILE_DATA.TIME] = stats.play_time._to_string()
 	current_file_data[slot_number][FILE_DATA.CURRENT_MAP] = tr(stats.current_area)
-	current_file_data[slot_number][FILE_DATA.MAP_RATIO] = "%3d%%" % int(MetSys.get_explored_ratio() * 100)
+	current_file_data[slot_number][FILE_DATA.MAP_RATIO] = stats.map_ratio
 	stats.play_time.free()
 	stats.free()
 	

@@ -93,6 +93,7 @@ func set_data(data: Dictionary):
 	
 	for property in SIMPLE_STORABLE_PROPERTIES:
 		set(property, data[property])
+
 	
 	for override_string in data.cell_overrides:
 		var override: MetroidvaniaSystem.MapData.CellOverride = MetroidvaniaSystem.MapData.CellOverride.load_from_line(override_string)

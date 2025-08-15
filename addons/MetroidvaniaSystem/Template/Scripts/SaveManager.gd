@@ -82,7 +82,7 @@ func save_as_text(path: String):
 	file.store_string(var_to_str(data))
 
 ## Loads a text saved data. The data can be then retrieved using [method get_value].
-func load_from_text(path: String) -> bool:
+func load_from_text(path: String, load_map: bool = true) -> bool:
 	var file := _setup_load(path)
 	if not file:
 		return false
@@ -93,7 +93,10 @@ func load_from_text(path: String) -> bool:
 		return false
 	
 	data = loaded_data
-	MetSys.set_save_data(data)
+	
+	if load_map:
+		MetSys.set_save_data(data)
+		
 	return true
 
 ## Stores the data as binary using [method FileAccess.store_var].

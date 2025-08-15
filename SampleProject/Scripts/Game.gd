@@ -234,6 +234,7 @@ func save_game():
 	save_manager.set_value("difficulty", Global.game.difficulty)
 	save_manager.set_value("quick_weapons", EquipMenu.serializeQuickWeapons())
 	save_manager.set_value("file_name", Global.player.stats.file_name)
+	save_manager.set_value("map_ratio", Global.player.stats.map_ratio)
 	if player.sprite.weapon != null:
 		save_manager.set_value("weapon", player.sprite.weapon.scene_file_path)
 	save_manager.save_as_text(Global.save_destination)
@@ -274,6 +275,7 @@ func load_game():
 	InputHelper.deserialize_inputs_for_actions(save_manager.get_value("key_mapping"))
 	Global.game.difficulty = save_manager.get_value("difficulty")
 	Global.player.stats.file_name = save_manager.get_value("file_name")
+	Global.player.stats.map_ratio = save_manager.get_value("map_ratio")
 	if player.sprite.weapon != null:
 		player.sprite.weapon.queue_free()
 	
