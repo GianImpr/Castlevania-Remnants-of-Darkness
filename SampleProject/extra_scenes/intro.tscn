@@ -255,7 +255,7 @@ point_count = 4
 default_font = ExtResource("7_vyeo7")
 default_font_size = 32
 
-[node name="Intro" type="Control"]
+[node name="Intro" type="Control" node_paths=PackedStringArray("music_player", "sound")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -265,6 +265,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fcd3r")
 game_scene = ExtResource("2_i1q8y")
+music_player = NodePath("MusicPlayer")
+sound = NodePath("Sound")
 
 [node name="Display" type="Node2D" parent="."]
 
@@ -336,9 +338,9 @@ color = Color(0.211765, 0, 0, 1)
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 158.0
-offset_top = -920.0
+offset_top = 480.0
 offset_right = 723.0
-offset_bottom = -20.0
+offset_bottom = 1380.0
 theme = SubResource("Theme_e3d25")
 theme_override_constants/line_spacing = 12
 theme_override_constants/outline_size = 8
