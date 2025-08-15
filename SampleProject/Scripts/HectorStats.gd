@@ -55,8 +55,6 @@ func _ready() -> void:
 		dialogue_flags.append(false)
 
 func _process(delta: float) -> void:
-	map_ratio = "%3d%%" % int(MetSys.get_explored_ratio() * 100)
-	print(map_ratio)
 	Bases["ATK"] = Stats["STR"]/2
 	Bases["DEF"] = Stats["CON"]/2
 	for i in range(0, status.size()):

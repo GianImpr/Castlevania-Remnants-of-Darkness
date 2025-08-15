@@ -35,6 +35,7 @@ func exitScreen():
 	animation.play_backwards("save_disappear")
 
 func saveData():
+	Global.player.stats.map_ratio = "%3d%%" % int(MetSys.get_explored_ratio() * 100)
 	var destination = INITIAL_SAVE_PATH + str(focused_slot) + SAVE_FILE_EXTENSION
 	Global.save_destination = destination
 	Game.get_singleton().save_game()
