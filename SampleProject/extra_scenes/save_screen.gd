@@ -6,6 +6,7 @@ var saved_with_success: bool = false
 @export var confirm_panel_animation: AnimationPlayer
 @export var confirm_panel: VBoxContainer
 var confirm_panel_opened: bool = false
+var closing: bool = false
 
 enum ButtonIndex {
 	YES,
@@ -32,6 +33,9 @@ func onSlotPressed():
 		exitScreen()
 
 func exitScreen():
+	if closing:
+		return
+	closing = true
 	animation.play_backwards("save_disappear")
 
 func saveData():
@@ -52,11 +56,14 @@ func _on_yes_pressed() -> void:
 	sound.play_sound_effect_from_library("confirm")
 	confirm_panel.get_child(ButtonIndex.YES).release_focus()
 	saveData()
+	confirm_panel_opened = false
 	confirm_panel_animation.play_backwards("ask_confirm")
 	await confirm_panel_animation.animation_finished
+	closing = true
 	animation.play_backwards("save_disappear")
 	
 func _on_no_pressed() -> void:
+	confirm_panel.get_child(ButtonIndex.YES).release_focus()
 	confirm_panel.get_child(ButtonIndex.NO).release_focus()
 	confirm_panel_animation.play_backwards("ask_confirm")
 	await confirm_panel_animation.animation_finished
