@@ -47,6 +47,7 @@ var focused_slot: int = 0
 @export var file_map_completion: Label
 @export var file_current_stage: Label
 @export var file_character: TextureRect
+@export var file_name: Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -61,6 +62,9 @@ func _process(delta: float) -> void:
 	if animation.is_playing():
 		return 
 		
+	checkInput()
+	
+func checkInput() -> void:
 	if Input.is_action_just_pressed("ui_down"):
 		var prev_slot: int = focused_slot
 		focused_slot = posmod((focused_slot+1), save_slots.get_child_count())
@@ -78,15 +82,10 @@ func _process(delta: float) -> void:
 		displaySlotData()
 		
 	elif Input.is_action_just_pressed("ui_accept"):
-		if containsData(focused_slot):
-			Global.save_file_to_load = INITIAL_SAVE_PATH + str(focused_slot) + SAVE_FILE_EXTENSION
-			animation.play("disappear")
-			sound.play_sound_effect_from_library("confirm")
-		else:
-			sound.play_sound_effect_from_library("denied")
+		onSlotPressed()
 			
 	elif Input.is_action_just_pressed("ui_cancel"):
-		animation.play("disappear_to_title")
+		exitScreen()
 
 func initializeSaveSlots() -> void:
 	for i in range(0, save_slots.get_child_count()):
@@ -101,7 +100,7 @@ func initializeSaveSlots() -> void:
 			else:
 				current_slot.modulate = AVAILABLE_SLOT_COLOR
 				loadSlotData(i, save_manager)
-				current_slot.get_child(FILE_NAME_INDEX).text = "SAVE SLOT " + str(i+1)
+				current_slot.get_child(FILE_NAME_INDEX).text = current_file_data[i][FILE_DATA.NAME]
 		else:
 			current_slot.modulate = CLOSED_SLOT_COLOR
 			current_file_data[i][FILE_DATA.STATUS] = FILE_DATA_STATUS.EMPTY
@@ -110,7 +109,7 @@ func initializeSaveSlots() -> void:
 func loadSlotData(slot_number: int, save_manager) -> void:
 	var stats: HectorStats = save_manager.get_value("stats")
 	current_file_data[slot_number][FILE_DATA.STATUS] = FILE_DATA_STATUS.AVAILABLE
-	current_file_data[slot_number][FILE_DATA.NAME] = "PLACEHOLDER"
+	current_file_data[slot_number][FILE_DATA.NAME] = stats.file_name
 	current_file_data[slot_number][FILE_DATA.HP] = stats.Stats["MHP"]
 	current_file_data[slot_number][FILE_DATA.LV] = stats.Stats["LV"]
 	current_file_data[slot_number][FILE_DATA.GOLD] = stats.Stats["GOLD"]
@@ -126,6 +125,10 @@ func displaySlotData() -> void:
 		displayed_slot_data.visible = true
 		file_HP.text = str(slot[FILE_DATA.HP])
 		file_LV.text = str(slot[FILE_DATA.LV])
+		if slot[FILE_DATA.NAME]:
+			file_name.text = slot[FILE_DATA.NAME]
+		else:
+			file_name.text = "Unnamed"
 		file_GOLD.text = str(slot[FILE_DATA.GOLD])
 		file_playtime.text = slot[FILE_DATA.TIME]
 		file_map_completion.text = slot[FILE_DATA.MAP_RATIO]
@@ -159,6 +162,17 @@ func startGame():
 	
 func titleScreen():
 	Global.toTitleScreen()
+	
+func onSlotPressed():
+	if containsData(focused_slot):
+		Global.save_file_to_load = INITIAL_SAVE_PATH + str(focused_slot) + SAVE_FILE_EXTENSION
+		animation.play("disappear")
+		sound.play_sound_effect_from_library("confirm")
+	else:
+		sound.play_sound_effect_from_library("denied")
+		
+func exitScreen():
+	animation.play("disappear_to_title")
 
 	#var SAVE_PATH = "user://slot1.save"
 	#can_load = FileAccess.file_exists(SAVE_PATH)

@@ -133,6 +133,7 @@ func closePanel(button: Button) -> void:
 
 func _on_yes_pressed() -> void:
 	const YES_BUTTON: int = 0
+	Global.new_game_player_name = current_name
 	confirm_panel.get_child(YES_BUTTON).release_focus()
 	closePanel(confirm_panel.get_child(YES_BUTTON))
 	animation.play("confirm")

@@ -400,12 +400,12 @@ _data = {
 default_font = ExtResource("3_vdkpo")
 default_font_size = 48
 
-[sub_resource type="Gradient" id="Gradient_kn6ch"]
+[sub_resource type="Gradient" id="Gradient_ffcim"]
 offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
 colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vke4q"]
-gradient = SubResource("Gradient_kn6ch")
+gradient = SubResource("Gradient_ffcim")
 width = 560
 height = 48
 fill_from = Vector2(0.0318471, 0.22293)
@@ -431,12 +431,12 @@ default_font_size = 32
 default_font = ExtResource("3_vdkpo")
 default_font_size = 32
 
-[sub_resource type="Gradient" id="Gradient_8hstr"]
+[sub_resource type="Gradient" id="Gradient_v2jve"]
 offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
 colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_huhwp"]
-gradient = SubResource("Gradient_8hstr")
+gradient = SubResource("Gradient_v2jve")
 width = 280
 height = 48
 fill_to = Vector2(0, 0.761677)
@@ -1119,7 +1119,7 @@ libraries = {
 }
 autoplay = "background"
 
-[node name="LoadingScreen" type="Control" parent="." node_paths=PackedStringArray("save_slots", "displayed_slot_data", "animation", "sound", "file_HP", "file_LV", "file_GOLD", "file_playtime", "file_map_completion", "file_current_stage", "file_character")]
+[node name="LoadingScreen" type="Control" parent="." node_paths=PackedStringArray("save_slots", "displayed_slot_data", "animation", "sound", "file_HP", "file_LV", "file_GOLD", "file_playtime", "file_map_completion", "file_current_stage", "file_character", "file_name")]
 process_mode = 4
 modulate = Color(0, 0, 0, 0)
 layout_mode = 1
@@ -1142,6 +1142,7 @@ file_playtime = NodePath("Description/TimeValue")
 file_map_completion = NodePath("Description/MAPValue")
 file_current_stage = NodePath("Description/CurrentLocation")
 file_character = NodePath("Description/Character")
+file_name = NodePath("Description/Name")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingScreen"]
 libraries = {
