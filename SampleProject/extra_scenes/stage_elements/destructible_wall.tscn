@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://xh6rfjmy1k2u"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/breakable_wall.gd" id="1_r21u0"]
+[ext_resource type="Texture2D" uid="uid://daenkjvbw5mva" path="res://assets/sprites/Objects/BreakableWalls/Fagaras.png" id="2_25n0b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_32vxx"]
+size = Vector2(32, 96)
+
+[node name="DestructibleBody2D" type="RigidBody2D"]
+script = ExtResource("1_r21u0")
+blocks_impulse = 300.0
+blocks_gravity_scale = 0.7
+debris_max_time = 2.0
+remove_debris = true
+collision_layers = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.533333, 0.670588, 1, 1)
+texture = ExtResource("2_25n0b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_32vxx")

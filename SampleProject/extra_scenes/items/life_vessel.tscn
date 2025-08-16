@@ -120,6 +120,7 @@ sound_effects = Array[ExtResource("9_ysxcq")]([SubResource("Resource_6bnuw")])
 
 [node name="LifeVessel" type="RigidBody2D" node_paths=PackedStringArray("animation", "sound", "area")]
 collision_layer = 0
+lock_rotation = true
 script = ExtResource("1_yx2o4")
 power = 15
 boost_message = ExtResource("2_wyfb2")

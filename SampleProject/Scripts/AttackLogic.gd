@@ -52,6 +52,9 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 		createHitEffect(body)
 		body.destroy()
 		return
+	if body is RigidBody2D and body.get_parent() is BreakableWall:
+		body.get_parent().takeDamage()
+		return
 	# Hitting an object that isn't a candle
 	if body is RigidBody2D or body is StaticBody2D and "stats" in body:
 		if body.stats.effect_on_destroy:

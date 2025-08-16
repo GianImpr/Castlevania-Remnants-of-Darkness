@@ -208,7 +208,7 @@ func weaponRankUp():
 			
 	Global.tutorial_box.activate = true
 	Global.tutorial_box.time = 3
-	Global.tutorial_box.text = tr("SKILLS_LEARNED_MESSAGE") % [skills_learned[0], skills_learned[1]]
+	Global.tutorial_box.text = tr("SKILLS_LEARNED_MESSAGE") % [tr(skills_learned[0]), tr(skills_learned[1])]
 
 func levelUp():
 	var popup = boost_message.instantiate()

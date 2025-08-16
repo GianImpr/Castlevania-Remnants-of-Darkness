@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqcotgixr17x7"]
+
+[ext_resource type="Texture2D" uid="uid://daenkjvbw5mva" path="res://assets/sprites/Objects/BreakableWalls/Fagaras.png" id="1_6n3cn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5w2x"]
+size = Vector2(32, 96)
+
+[node name="object" type="RigidBody2D"]
+collision_layer = 5
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_6n3cn")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_u5w2x")
