@@ -4,6 +4,8 @@ class_name CarmillaEvent
 @export var carmilla_npc: Sprite2D
 var dialogue_started: bool
 var carmilla_animation: AnimationPlayer
+var done: bool = false
+var music_tween: Tween
 
 const CARMILLA_ANIMATION_PLAYER_INDEX: int = 0
 
@@ -15,8 +17,10 @@ func _ready() -> void:
 	carmilla_animation = carmilla_npc.get_child(CARMILLA_ANIMATION_PLAYER_INDEX)
 		
 func _process(delta: float) -> void:
-	if dialogue_started and not DialogueBox.active:
+	if dialogue_started and not DialogueBox.active and not done:
+		done = true
 		Global.player.freeze()
+		fadeMusic()
 		carmilla_animation.play("warp_away")
 		await carmilla_animation.animation_finished
 		Global.player.unfreeze()
@@ -41,10 +45,13 @@ func _on_event_trigger_body_entered(body: Node2D) -> void:
 func fadeMusic() -> void:
 	const NO_VOLUME: int = -80
 	const DURATION: int = 1
-	get_tree().create_tween().tween_property(Global.music_player, "volume_db", NO_VOLUME, DURATION)
+	music_tween = get_tree().create_tween()
+	music_tween.tween_property(Global.music_player, "volume_db", NO_VOLUME, DURATION)
 
 func playMusic(music_name: String) -> void:
 	const DEFAULT_VOLUME: int = -15
+	if music_tween != null and music_tween.is_running():
+		music_tween.kill()
 	Global.music_player.stop()
 	Global.music_player.volume_db = DEFAULT_VOLUME
 	Global.music_player.play_sound_effect_from_library(music_name)

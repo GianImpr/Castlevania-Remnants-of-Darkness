@@ -60,6 +60,10 @@ func _process(delta: float) -> void:
 		else:
 			_endDialogue()
 			
+	elif active and Input.is_action_just_pressed("menu"):
+		wait_timer.stop()
+		_endDialogue()
+			
 	if active and text.visible_characters < text.get_total_character_count() and Input.is_action_just_pressed("ui_accept"):
 		#text.visible_ratio = 0.99
 		has_to_release_button = true
