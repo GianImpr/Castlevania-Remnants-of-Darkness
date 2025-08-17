@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c8r8r170wsi38"]
+[gd_scene load_steps=10 format=4 uid="uid://c8r8r170wsi38"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_nmi6n"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_xbcns"]
@@ -649,6 +649,9 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_3be15")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0yov1"]
+normal = Vector2(-1, 0)
+
 [node name="Room" type="Node2D"]
 script = ExtResource("1_nmi6n")
 apply_limits = true
@@ -729,3 +732,11 @@ type = 7
 id = 6
 current_item_name = "BLACK_BELT"
 pickup_flag = 85
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-22, 786)
+collision_mask = 0
+
+[node name="LimitRight" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1012, -497)
+shape = SubResource("WorldBoundaryShape2D_0yov1")
