@@ -1,4 +1,4 @@
-[gd_scene load_steps=439 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=441 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -192,6 +192,7 @@
 [ext_resource type="Texture2D" uid="uid://bfei3l66v8kd" path="res://assets/sprites/Items/InventoryIcons/Inventory_4.png" id="128_brjqo"]
 [ext_resource type="Texture2D" uid="uid://dilxp0cqydwqx" path="res://assets/sprites/Items/InventoryIcons/Inventory_112.png" id="129_8w55s"]
 [ext_resource type="Texture2D" uid="uid://u08tbm7csfl3" path="res://assets/sprites/Items/InventoryIcons/Inventory_101.png" id="130_6e8ib"]
+[ext_resource type="Texture2D" uid="uid://m2ia05r8abs2" path="res://assets/sprites/Items/InventoryIcons/Inventory_85.png" id="142_awere"]
 [ext_resource type="Texture2D" uid="uid://b5y83vqsbx85u" path="res://assets/sprites/Items/OtherIcons/16x16/fa2140.png" id="143_ffcf7"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/artifact.gd" id="145_wv42h"]
 [ext_resource type="Texture2D" uid="uid://xkxfw3qnyjar" path="res://assets/sprites/Items/OtherIcons/16x16/fa1557.png" id="146_j32o5"]
@@ -2273,6 +2274,23 @@ value = 2000
 max_quantity = 99
 icon = ExtResource("130_6e8ib")
 
+[sub_resource type="Resource" id="Resource_aauoy"]
+script = ExtResource("95_xlcm0")
+accessory_name = "BLACK_BELT"
+accessory_description = "BLACK_BELT_DESC"
+element = Array[int]([])
+ATK = 2
+DEF = 2
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 2
+LCK = 1
+value = 500
+max_quantity = 99
+icon = ExtResource("142_awere")
+
 [sub_resource type="Resource" id="Resource_2w4nc"]
 script = ExtResource("99_ixwc3")
 skill_name = "FORTITUDE_GAUNTLET"
@@ -3314,7 +3332,7 @@ item_compendium = SubResource("Resource_ksmb3")
 headgear_compendium = Array[ExtResource("58_johey")]([SubResource("Resource_stdwu"), SubResource("Resource_hcxc2"), SubResource("Resource_qtfvs"), SubResource("Resource_b4qdd"), SubResource("Resource_w8tqy"), SubResource("Resource_4iosu"), SubResource("Resource_b0lhj"), SubResource("Resource_kh436"), SubResource("Resource_n53u7"), SubResource("Resource_n15bh"), SubResource("Resource_2gney"), SubResource("Resource_580rm"), SubResource("Resource_fy53e"), SubResource("Resource_xv0ma"), SubResource("Resource_csljy"), SubResource("Resource_nfnn0"), SubResource("Resource_7go8i"), SubResource("Resource_ji887"), SubResource("Resource_nhhcx"), SubResource("Resource_ocbsj"), SubResource("Resource_jsrpv"), SubResource("Resource_qx0f7"), SubResource("Resource_bg2je"), SubResource("Resource_vexyv"), SubResource("Resource_utsap"), SubResource("Resource_itck4"), SubResource("Resource_ms7n0")])
 body_compendium = Array[ExtResource("86_xt4t6")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me"), SubResource("Resource_dqisp"), SubResource("Resource_rngem")])
 legs_compendium = Array[ExtResource("92_10lem")]([SubResource("Resource_olb5a"), SubResource("Resource_jnr2a"), SubResource("Resource_d35ul"), SubResource("Resource_4ly5s"), SubResource("Resource_jd16d")])
-accessory_compendium = Array[ExtResource("95_xlcm0")]([SubResource("Resource_fmjl1"), SubResource("Resource_g71f4"), SubResource("Resource_t5f6q"), SubResource("Resource_jiprx"), SubResource("Resource_hiqqn")])
+accessory_compendium = Array[ExtResource("95_xlcm0")]([SubResource("Resource_fmjl1"), SubResource("Resource_g71f4"), SubResource("Resource_t5f6q"), SubResource("Resource_jiprx"), SubResource("Resource_hiqqn"), SubResource("Resource_aauoy")])
 skill_compendium = Array[ExtResource("99_ixwc3")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_6o46a"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47"), SubResource("Resource_vfu6u")])
 relic_compendium = Array[ExtResource("105_7lbas")]([SubResource("Resource_86suo"), SubResource("Resource_8t8qo")])
 artifact_compendium = Array[ExtResource("145_wv42h")]([SubResource("Resource_1ioky")])
