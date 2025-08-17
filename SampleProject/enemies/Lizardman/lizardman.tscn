@@ -1,0 +1,154 @@
+[gd_scene load_steps=9 format=3 uid="uid://c7pwx21lv2ooh"]
+
+[ext_resource type="Script" path="res://SampleProject/enemies/Lizardman/lizardman.gd" id="1_506o0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_cftrc"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_sxphs"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_4jnb1"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_tj0k4"]
+
+[sub_resource type="Curve" id="Curve_va3vl"]
+max_value = 5.0
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5pg3w"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GDScript" id="GDScript_326py"]
+script/source = "extends Node
+class_name StateMachine
+
+@export var initial_state: State
+@export var player: CharacterBody2D
+@export var animation: AnimationPlayer
+@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
+
+var current_state: State
+var states: Dictionary = {}
+
+func _ready():
+	for child in get_children():
+		if child is State:
+			states[child.name.to_lower()] = child
+			child.Transitioned.connect(on_child_transition)
+			child.player = player
+			child.sound = polyphonic_audio_player
+			child.animation = animation
+		
+	if initial_state:
+		initial_state.enter()
+		current_state = initial_state
+	
+func _process(delta):
+	if current_state:
+		current_state.Update(delta)
+	
+func _physics_process(delta: float) -> void:
+	if current_state:
+		current_state.Physics_Update(delta)
+
+func on_child_transition(state, new_state_name):
+	if state != current_state:
+		return
+	
+	var new_state = states.get(new_state_name.to_lower())
+	if !new_state:
+		return
+		
+	if current_state:
+		current_state.exit()
+		
+	new_state.enter()
+	current_state = new_state
+"
+
+[node name="Lizardman" type="CharacterBody2D" node_paths=PackedStringArray("sword_hitbox", "dash_attack_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_506o0")
+sword_chip_damage = 5
+dash_attack_chip_damage = 20
+sword_hitbox = NodePath("Sword")
+dash_attack_hitbox = NodePath("Dash")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("Hitbox")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Timer")
+hitbox_iframe = NodePath("Hitbox")
+blood_particles = NodePath("BloodDamage")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_cftrc")
+enemy_name = "LIZARDMAN"
+LV = 13
+HP = 100
+ATK = 35
+DEF = 15
+RES = 10
+EXP = 20
+common_drop_id = 70
+common_drop_rate = 2.5
+rare_drop_id = 48
+rare_drop_rate = 1.5
+weaknesses = Array[int]([2, 5])
+tolerances = Array[int]([1, 6, 10])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Hurtbox" type="CollisionShape2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+
+[node name="Vision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+
+[node name="Sword" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="SwordShape" type="CollisionShape2D" parent="Sword"]
+
+[node name="Dash" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="DashShape" type="CollisionShape2D" parent="Dash"]
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_sxphs")
+
+[node name="BloodDamage" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 12
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_va3vl")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_5pg3w")
+
+[node name="DamagePopup" type="Marker2D" parent="."]
+script = ExtResource("4_4jnb1")
+damage_node = ExtResource("5_tj0k4")
+
+[node name="StateMachine" type="Node" parent="."]
+script = SubResource("GDScript_326py")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

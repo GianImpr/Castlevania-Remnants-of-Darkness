@@ -526,6 +526,7 @@ spawn_fire_base_time = 1.0
 spawn_fire_random_offset = 0.5
 
 [node name="SpawnFire" type="Timer" parent="StateMachine/Moving"]
+wait_time = 2.0
 one_shot = true
 
 [node name="Damage" type="Node" parent="StateMachine"]
