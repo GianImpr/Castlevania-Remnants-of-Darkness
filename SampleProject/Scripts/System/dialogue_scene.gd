@@ -44,7 +44,7 @@ const CHARACTER_ANIMATION_INDEX: int = 1
 var has_to_release_button: bool = false
 var character_speaking: Character = Character.LEFT
 var current_dialogue_entry: int = 0
-var active: bool = false
+static var active: bool = false
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
@@ -171,7 +171,8 @@ func _startDialogue() -> void:
 	if not Engine.is_editor_hint():
 		Global.player.freeze()
 		Global.HUD.visible = false
-
+		
+	active = true
 	current_dialogue_entry = 0
 	
 	if dialogue_entries.size() == 0:
@@ -186,7 +187,6 @@ func _startDialogue() -> void:
 	setDialogueBox()
 	character_name.visible = true
 	text.visible = true
-	active = true
 
 func setCharacterPortrait() -> void:
 	var pos_tween: Tween = get_tree().create_tween()
