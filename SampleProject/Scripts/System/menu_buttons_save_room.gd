@@ -50,7 +50,12 @@ func _saveGame():
 	resumeGame()
 	
 func warp():
-	pass
+	closeWindow()
+	await animation.animation_finished
+	resumeGame()
+	#chair_node.sound.play_sound_effect_from_library("activate")
+	chair_node.animation.play("warp_flash")
+
 	
 func _exitMenu():
 	closeWindow()
