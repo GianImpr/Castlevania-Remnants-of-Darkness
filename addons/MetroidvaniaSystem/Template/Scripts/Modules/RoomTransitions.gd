@@ -18,6 +18,10 @@ func _on_area_changed(target_room: String, initial_position: Vector2):
 	changeRoom(target_room, true, initial_position)
 
 func changeRoom(target_room: String, changing_area: bool, initial_position: Vector2 = Vector2(0,0)):
+	if target_room == MetSys.get_current_room_name():
+		# This can happen when teleporting to another room.
+		return
+
 	player.get_tree().paused = true
 	player.set_collision_layer_value(2, false)
 	
@@ -25,9 +29,6 @@ func changeRoom(target_room: String, changing_area: bool, initial_position: Vect
 		Global.screen = Global.ScreenType.TRANSITION
 	Global.fade_screen.animation.play("fade_in")
 	await Global.fade_screen.animation.animation_finished
-	if target_room == MetSys.get_current_room_name():
-		# This can happen when teleporting to another room.
-		return
 	
 	var prev_room_instance := MetSys.get_current_room_instance()
 	if prev_room_instance:

@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	if Global.player != null and Global.player.stats.Stats["HP"] > 0:
 		pauseMenu()
 		
-		
+
 func resume():
 	state_machine.current_state.Transitioned.emit(state_machine.current_state, "closed")
 	

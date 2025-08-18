@@ -50,11 +50,14 @@ func _saveGame():
 	resumeGame()
 	
 func warp():
+	var cur_position: Vector2 = Global.player.global_position
 	closeWindow()
 	await animation.animation_finished
-	resumeGame()
 	#chair_node.sound.play_sound_effect_from_library("activate")
 	chair_node.animation.play("warp_flash")
+	await chair_node.animation.animation_finished
+	resumeGame()
+	Global.change_area.emit("res://SampleProject/Maps/SaveRoom/save_room.tscn", cur_position)
 
 	
 func _exitMenu():
