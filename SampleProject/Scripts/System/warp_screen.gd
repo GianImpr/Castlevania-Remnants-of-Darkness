@@ -10,6 +10,7 @@ const BUTTON_DISABLED_COLOR: Color = Color.DIM_GRAY
 var available_destinations: Array[int]
 var destination_selected: String = ""
 var cur_button: int = 0
+var stylebox_empty: StyleBoxEmpty = StyleBoxEmpty.new()
 @warning_ignore("unused_signal")
 signal finished #Emits at the end of disappear animation
 
@@ -21,6 +22,9 @@ func initList() -> void:
 			var destination_button: Button = Button.new()
 			destination_button.flat = true
 			destination_button.text = Game.get_singleton().save_rooms[i]["name"]
+			destination_button.add_theme_stylebox_override("focus", stylebox_empty)
+			destination_button.add_theme_stylebox_override("hover", stylebox_empty)
+			destination_button.add_theme_stylebox_override("pressed", stylebox_empty)
 			destination_button.pressed.connect(_on_button_pressed.bind(destination_button))
 			destination_button.focus_entered.connect(_on_button_focused.bind(destination_button))
 			
@@ -39,7 +43,7 @@ func closeList() -> void:
 	available_destinations.clear()
 	
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel") and not animation.is_playing():
+	if Input.is_action_just_pressed("ui_cancel") and not animation.is_playing() and panel.get_child_count() > 0:
 		panel.get_child(cur_button).release_focus()
 		animation.play_backwards("disappear")
 

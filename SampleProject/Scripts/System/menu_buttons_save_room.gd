@@ -63,9 +63,7 @@ func _openWarpScreen() -> void:
 
 func warp():
 	var cur_position: Vector2 = Global.player.global_position
-	closeWindow()
-	await animation.animation_finished
-	#chair_node.sound.play_sound_effect_from_library("activate")
+	chair_node.sound.play_sound_effect_from_library("activate")
 	chair_node.animation.play("warp_flash")
 	await chair_node.animation.animation_finished
 	resumeGame()
