@@ -3,6 +3,7 @@ class_name MenuSaveRoom
 @export var animation: AnimationPlayer
 @onready var chair_node = get_parent().get_parent().get_parent()
 @export var saving_screen: SavingScreen
+@export var warp_screen: WarpScreen
 const stand_up_flag_id: int = 12
 const stand_up_hint_time: float = 3
 var stand_up_hint_text: String = tr("HINT_12")
@@ -24,7 +25,7 @@ func on_button_pressed(which):
 			which.release_focus()
 			_saveGame()
 		1:
-			warp()
+			_openWarpScreen()
 		2:
 			which.release_focus()
 			_exitMenu()
@@ -49,6 +50,17 @@ func _saveGame():
 			Global.player.stats.hint_flags[stand_up_flag_id] = true
 	resumeGame()
 	
+func _openWarpScreen() -> void:
+	closeWindow()
+	await animation.animation_finished
+	warp_screen.process_mode = Node.PROCESS_MODE_ALWAYS
+	await warp_screen.finished
+	if warp_screen.destination_selected != "":
+		warp()
+	else:
+		resumeGame()
+
+
 func warp():
 	var cur_position: Vector2 = Global.player.global_position
 	closeWindow()
@@ -57,7 +69,7 @@ func warp():
 	chair_node.animation.play("warp_flash")
 	await chair_node.animation.animation_finished
 	resumeGame()
-	Global.change_area.emit("res://SampleProject/Maps/SaveRoom/save_room.tscn", cur_position)
+	Global.change_area.emit(warp_screen.destination_selected, cur_position)
 
 	
 func _exitMenu():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dp5hxkqh3r2d1"]
+[gd_scene load_steps=74 format=3 uid="uid://dp5hxkqh3r2d1"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/save_room_menu.gd" id="1_0kbg0"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/MenuButtons.gd" id="2_ga5p6"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="16_sbk3e"]
 [ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="17_4p3kx"]
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="18_pyfyu"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/warp_screen.gd" id="19_li0op"]
 
 [sub_resource type="Theme" id="Theme_21ors"]
 default_font = ExtResource("2_hg7qs")
@@ -596,6 +597,181 @@ _data = {
 "ask_confirm": SubResource("Animation_c7sfr")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1f42"]
+texture = ExtResource("16_sbk3e")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="Animation" id="Animation_n1yyj"]
+resource_name = "appear"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Destinations:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(402, 0), Vector2(402, 334)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Destinations:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.566667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"initList"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Destinations/ScrollContainer/VBoxContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.566667, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7v4wm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Destinations:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(402, 334)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Destinations:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Destinations/ScrollContainer/VBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_reqa2"]
+resource_name = "disappear"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Destinations:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(402, 0), Vector2(402, 334)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Destinations:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.566667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"closeList"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Destinations/ScrollContainer/VBoxContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.566667, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"finished"],
+"method": &"emit_signal"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a3ufm"]
+_data = {
+"RESET": SubResource("Animation_7v4wm"),
+"appear": SubResource("Animation_n1yyj"),
+"disappear": SubResource("Animation_reqa2")
+}
+
 [node name="InGameMenu" type="CanvasLayer" node_paths=PackedStringArray("default_button", "warp_button")]
 script = ExtResource("1_0kbg0")
 default_button = NodePath("PanelContainer/MenuButtons/Save")
@@ -613,11 +789,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_85b6g")
 layout_mode = 2
 texture = SubResource("GradientTexture2D_bg00p")
 
-[node name="MenuButtons" type="VBoxContainer" parent="PanelContainer" node_paths=PackedStringArray("animation", "saving_screen", "sound")]
+[node name="MenuButtons" type="VBoxContainer" parent="PanelContainer" node_paths=PackedStringArray("animation", "saving_screen", "warp_screen", "sound")]
 layout_mode = 2
 script = ExtResource("3_abqqg")
 animation = NodePath("../../AnimationPlayer")
 saving_screen = NodePath("../../SaveScreen")
+warp_screen = NodePath("../../WarpScreen")
 button_glow = SubResource("StyleBoxFlat_u1jjp")
 sound = NodePath("../../PolyphonicMenuAudio")
 stateless = true
@@ -694,7 +871,7 @@ layout_mode = 0
 offset_left = 16.0
 offset_top = 362.0
 offset_right = 852.0
-offset_bottom = 432.0
+offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ymsfj")
 
 [node name="Description" type="Control" parent="SaveScreen"]
@@ -906,7 +1083,7 @@ layout_mode = 2
 offset_left = 16.0
 offset_top = 52.0
 offset_right = 852.0
-offset_bottom = 92.0
+offset_bottom = 350.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_dcosx")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SaveScreen/PanelContainer"]
@@ -1356,6 +1533,39 @@ flat = true
 libraries = {
 "": SubResource("AnimationLibrary_6f5xd")
 }
+
+[node name="WarpScreen" type="Control" parent="." node_paths=PackedStringArray("sound", "panel", "animation")]
+process_mode = 4
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("19_li0op")
+sound = NodePath("../PolyphonicMenuAudio")
+panel = NodePath("Destinations/ScrollContainer/VBoxContainer")
+animation = NodePath("AnimationPlayer")
+
+[node name="Destinations" type="PanelContainer" parent="WarpScreen"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 420.0
+offset_top = 66.0
+offset_right = 822.0
+offset_bottom = 400.0
+theme = SubResource("Theme_21ors")
+theme_override_styles/panel = SubResource("StyleBoxTexture_i1f42")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="WarpScreen/Destinations"]
+layout_mode = 2
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WarpScreen/Destinations/ScrollContainer"]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WarpScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_a3ufm")
+}
+autoplay = "appear"
 
 [connection signal="focus_entered" from="SaveScreen/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/Yes" to="SaveScreen" method="_on_focused"]
 [connection signal="pressed" from="SaveScreen/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/Yes" to="SaveScreen" method="_on_yes_pressed"]
