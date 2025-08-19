@@ -7,6 +7,7 @@ const BUTTON_DISABLED_COLOR: Color = Color.DIM_GRAY
 @export var sound: PolyphonicMenuAudio
 @export var panel: VBoxContainer
 @export var animation: AnimationPlayer
+@export var preview: TextureRect #950x950
 var available_destinations: Array[int]
 var destination_selected: String = ""
 var cur_button: int = 0
@@ -27,7 +28,8 @@ func initList() -> void:
 			destination_button.add_theme_stylebox_override("pressed", stylebox_empty)
 			destination_button.pressed.connect(_on_button_pressed.bind(destination_button))
 			destination_button.focus_entered.connect(_on_button_focused.bind(destination_button))
-			
+			destination_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			destination_button.action_mode = BaseButton.ACTION_MODE_BUTTON_PRESS
 			#This is the room we're currently in
 			if current_room.save_room_id == i+1:
 				destination_button.disabled = true
@@ -48,6 +50,7 @@ func _process(delta: float) -> void:
 		animation.play_backwards("disappear")
 
 func _on_button_focused(which) -> void:
+	preview.texture = Game.get_singleton().save_rooms[available_destinations[which.get_index()]]["image"]
 	cur_button = which.get_index()
 	sound.play_sound_effect_from_library("cursor")
 	

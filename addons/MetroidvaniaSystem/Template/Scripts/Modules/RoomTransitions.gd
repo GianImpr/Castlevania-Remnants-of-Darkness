@@ -5,6 +5,9 @@ extends "res://addons/MetroidvaniaSystem/Template/Scripts/MetSysModule.gd"
 
 var player: Node2D
 
+const PLAYER_SPRITE_OFFSET_FROM_WARPING: Vector2 = Vector2(0, -50)
+
+
 func _initialize():
 	player = game.player
 	assert(player)
@@ -21,6 +24,17 @@ func changeRoom(target_room: String, changing_area: bool, initial_position: Vect
 	if target_room == MetSys.get_current_room_name():
 		# This can happen when teleporting to another room.
 		return
+		
+	if Global.player.sprite.self_modulate.a == 0:
+		var tween: Tween = player.get_tree().create_tween()
+		const DURATION: float = 0.5
+		const DEFAULT_PLAYER_SCALE: Vector2 = Vector2(2, 2)
+		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		tween.set_parallel(true)
+		tween.tween_property(Global.player.sprite, "position", Vector2.ZERO, DURATION)
+		tween.tween_property(Global.player.sprite, "self_modulate", Color.WHITE, DURATION)
+		tween.tween_property(Global.player.sprite, "global_scale", DEFAULT_PLAYER_SCALE, DURATION)
+		
 
 	player.get_tree().paused = true
 	player.set_collision_layer_value(2, false)

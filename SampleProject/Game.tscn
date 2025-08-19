@@ -1,4 +1,4 @@
-[gd_scene load_steps=441 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=445 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -198,6 +198,10 @@
 [ext_resource type="Texture2D" uid="uid://xkxfw3qnyjar" path="res://assets/sprites/Items/OtherIcons/16x16/fa1557.png" id="146_j32o5"]
 [ext_resource type="PackedScene" uid="uid://dvikboxpt5o45" path="res://SampleProject/extra_scenes/dialogue.tscn" id="149_om524"]
 [ext_resource type="Texture2D" uid="uid://dw2nqmoc6ghcd" path="res://assets/sprites/Items/InventoryIcons/AguniLaurel.png" id="150_e8wvu"]
+[ext_resource type="Texture2D" uid="uid://6r72jxcbvq47" path="res://assets/images/WarpPreviews/AbandonedEntrance.png" id="156_3rde5"]
+[ext_resource type="Texture2D" uid="uid://ctxxn0ruh067u" path="res://assets/images/WarpPreviews/AbandonedGauntlet.png" id="157_wahx8"]
+[ext_resource type="Texture2D" uid="uid://bgsf8dpkpib4k" path="res://assets/images/WarpPreviews/AbandonedTop.png" id="158_8p07p"]
+[ext_resource type="Texture2D" uid="uid://b5pb6poj5elsi" path="res://assets/images/WarpPreviews/FagarasLeft.png" id="159_gniwj"]
 [ext_resource type="PackedScene" uid="uid://bsxx7aocrs1f6" path="res://SampleProject/extra_scenes/HUD/weapon_wheel.tscn" id="164_3jxay"]
 [ext_resource type="AudioStream" uid="uid://bi8mk2hewgbxu" path="res://assets/music/ForbiddenArea.ogg" id="170_nmeol"]
 [ext_resource type="AudioStream" uid="uid://nhymb1wcqole" path="res://assets/music/Confrontation.ogg" id="177_4qcbo"]
@@ -3325,7 +3329,6 @@ size = Vector2(200, 40)
 script = ExtResource("1_xdpfu")
 animation = NodePath("AnimationPlayer")
 difficulty = 1
-language = 1
 world_environment = NodePath("WorldEnvironment")
 weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3")])
 item_compendium = SubResource("Resource_ksmb3")
@@ -3338,15 +3341,19 @@ relic_compendium = Array[ExtResource("105_7lbas")]([SubResource("Resource_86suo"
 artifact_compendium = Array[ExtResource("145_wv42h")]([SubResource("Resource_1ioky")])
 dialogue_compendium = [[SubResource("Resource_87l3r"), SubResource("Resource_m8frf"), SubResource("Resource_5idyr"), SubResource("Resource_e571n")], Array[ExtResource("107_o0dwx")]([SubResource("Resource_25n78"), SubResource("Resource_ktboo"), SubResource("Resource_vo88s"), SubResource("Resource_dctxa"), SubResource("Resource_spkj4"), SubResource("Resource_c46ur")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_ohovh"), SubResource("Resource_omcdx"), SubResource("Resource_72dkk"), SubResource("Resource_4f7nn"), SubResource("Resource_mgxho")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_8f7hp"), SubResource("Resource_o67wt"), SubResource("Resource_wtpr2")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_csyar"), SubResource("Resource_nuqqm"), SubResource("Resource_o1h1j"), SubResource("Resource_55rnv"), SubResource("Resource_2wus2"), SubResource("Resource_bqaak"), SubResource("Resource_jrgt6"), SubResource("Resource_gx1rt"), SubResource("Resource_u1nhv"), SubResource("Resource_v57uc"), SubResource("Resource_eyf3w"), SubResource("Resource_yuuna"), SubResource("Resource_pl4eo"), SubResource("Resource_ql2g5"), SubResource("Resource_b1cpc"), SubResource("Resource_yuqnq"), SubResource("Resource_ycdkt"), SubResource("Resource_bft1l"), SubResource("Resource_abke8"), SubResource("Resource_3qvv1"), SubResource("Resource_nlgtf"), SubResource("Resource_7kcsh"), SubResource("Resource_mqejh"), SubResource("Resource_jnrv7"), SubResource("Resource_utlr2"), SubResource("Resource_lc0k7"), SubResource("Resource_hfyhw"), SubResource("Resource_a0e3l"), SubResource("Resource_l4h0p"), SubResource("Resource_15a3r"), SubResource("Resource_4neaj"), SubResource("Resource_2o2y2"), SubResource("Resource_bx3e7"), SubResource("Resource_tsqkx"), SubResource("Resource_7l514"), SubResource("Resource_8x8d0"), SubResource("Resource_upl0l"), SubResource("Resource_awl76"), SubResource("Resource_ni2ni"), SubResource("Resource_ue3r3"), SubResource("Resource_67xnv"), SubResource("Resource_j1ehq"), SubResource("Resource_ispcp")])]
 save_rooms = Array[Dictionary]([{
+"image": ExtResource("156_3rde5"),
 "name": "Abandoned Monastery - Entrance",
 "path": "SaveRoom/save_room.tscn"
 }, {
-"name": "Abandoned Monastery - Gauntlet Entrance - Gauntlet",
+"image": ExtResource("157_wahx8"),
+"name": "Abandoned Monastery - Gauntlet",
 "path": "FirstLevel/save_before_fire.tscn"
 }, {
+"image": ExtResource("158_8p07p"),
 "name": "Abandoned Monastery - Top floor",
 "path": "FirstLevel/save_before_boss.tscn"
 }, {
+"image": ExtResource("159_gniwj"),
 "name": "Fagaras Forest - Left cave path",
 "path": "Fagaras/left_cave_save.tscn"
 }])

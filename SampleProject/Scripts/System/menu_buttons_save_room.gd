@@ -62,8 +62,20 @@ func _openWarpScreen() -> void:
 
 
 func warp():
+	const FINAL_WARP_COLOR: Color = Color(0.5, 1.5, 0, 0)
+	const FINAL_SCALE: Vector2 = Vector2(0, 4)
+	const POSITION_OFFSET: Vector2 = Vector2(0, -50)
+	const TWEEN_DURATION: float = 1.5
+	const DELAY: float = 1.2
+	var warp_tween: Tween = get_tree().create_tween()
 	var cur_position: Vector2 = Global.player.global_position
 	chair_node.sound.play_sound_effect_from_library("activate")
+	warp_tween.pause()
+	warp_tween.set_parallel(true)
+	warp_tween.tween_property(Global.player.sprite, "self_modulate", FINAL_WARP_COLOR, TWEEN_DURATION)
+	warp_tween.tween_property(Global.player.sprite, "scale", FINAL_SCALE, TWEEN_DURATION)
+	warp_tween.tween_property(Global.player.sprite, "position", position+POSITION_OFFSET, TWEEN_DURATION)
+	get_tree().create_timer(DELAY).timeout.connect(func(): warp_tween.play())
 	chair_node.animation.play("warp_flash")
 	await chair_node.animation.animation_finished
 	resumeGame()
