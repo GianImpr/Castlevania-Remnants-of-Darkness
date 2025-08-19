@@ -37,6 +37,7 @@ var stage_name_flags: Array[bool] #ID list checks for stage name display
 var combat_flags: Array[bool] #ID list checks for combat rooms and bosses
 var tutorial_flags: Array[bool] #ID list checks for fullscreen tutorial popups
 var dialogue_flags: Array[bool] #ID list checks for dialogue scenes
+var save_flags: Array[bool] #ID list checks for visited save rooms
 var current_area: String = "???"
 var map_ratio: String
 
@@ -53,6 +54,7 @@ func _ready() -> void:
 		combat_flags.append(false)
 		tutorial_flags.append(false)
 		dialogue_flags.append(false)
+		save_flags.append(false)
 
 func _process(delta: float) -> void:
 	Bases["ATK"] = Stats["STR"]/2
