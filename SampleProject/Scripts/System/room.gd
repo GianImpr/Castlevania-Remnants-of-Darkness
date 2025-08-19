@@ -9,9 +9,12 @@ class_name Room
 @export var camera_limit_right: int
 @export var camera_limit_top: int
 @export var camera_limit_bottom: int
-@export var save_room: bool
+@export var save_room_id: int
 
 func _ready() -> void:
+	if save_room_id > 0:
+		Global.player.stats.save_flags[save_room_id] = true
+
 	Global.camera.drag_vertical_enabled = not center_camera
 	
 	if apply_limits:
