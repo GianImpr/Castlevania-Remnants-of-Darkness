@@ -23,6 +23,7 @@ var load_data: bool = false
 @export var relic_compendium: Array[Relic]
 @export var artifact_compendium: Array[Artifact]
 @export var dialogue_compendium: Array
+@export var save_rooms: Array[Dictionary]
 
 #These are only used when @tool scripts require information about compendiums.
 #Since compendiums are built with the export tag, which isn't compatible with

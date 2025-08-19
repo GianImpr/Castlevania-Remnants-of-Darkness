@@ -13,7 +13,7 @@ class_name Room
 
 func _ready() -> void:
 	if save_room_id > 0:
-		Global.player.stats.save_flags[save_room_id] = true
+		Global.player.stats.save_flags[save_room_id-1] = true
 
 	Global.camera.drag_vertical_enabled = not center_camera
 	

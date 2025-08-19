@@ -15,12 +15,14 @@ signal finished #Emits at the end of disappear animation
 
 func initList() -> void:
 	var current_room: Room = MetSys.get_current_room_instance().get_parent()
-	for i in range(0, Global.player.stats.save_flags.size()):
+	for i in range(0, Game.get_singleton().save_rooms.size()):
 		if Global.player.stats.save_flags[i]:
 			available_destinations.append(i)
 			var destination_button: Button = Button.new()
 			destination_button.flat = true
-			destination_button.text = Global.player.stats.save_rooms[i]["name"]
+			destination_button.text = Game.get_singleton().save_rooms[i]["name"]
+			destination_button.pressed.connect(_on_button_pressed.bind(destination_button))
+			destination_button.focus_entered.connect(_on_button_focused.bind(destination_button))
 			
 			#This is the room we're currently in
 			if current_room.save_room_id == i+1:
@@ -46,6 +48,6 @@ func _on_button_focused(which) -> void:
 	sound.play_sound_effect_from_library("cursor")
 	
 func _on_button_pressed(which) -> void:
-	destination_selected = Global.player.stats.save_rooms[available_destinations[which.get_index()]]["path"]
+	destination_selected = Game.get_singleton().save_rooms[available_destinations[which.get_index()]]["path"]
 	sound.play_sound_effect_from_library("confirm")
 	animation.play_backwards("disappear")

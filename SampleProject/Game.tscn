@@ -3337,6 +3337,19 @@ skill_compendium = Array[ExtResource("99_ixwc3")]([SubResource("Resource_2w4nc")
 relic_compendium = Array[ExtResource("105_7lbas")]([SubResource("Resource_86suo"), SubResource("Resource_8t8qo")])
 artifact_compendium = Array[ExtResource("145_wv42h")]([SubResource("Resource_1ioky")])
 dialogue_compendium = [[SubResource("Resource_87l3r"), SubResource("Resource_m8frf"), SubResource("Resource_5idyr"), SubResource("Resource_e571n")], Array[ExtResource("107_o0dwx")]([SubResource("Resource_25n78"), SubResource("Resource_ktboo"), SubResource("Resource_vo88s"), SubResource("Resource_dctxa"), SubResource("Resource_spkj4"), SubResource("Resource_c46ur")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_ohovh"), SubResource("Resource_omcdx"), SubResource("Resource_72dkk"), SubResource("Resource_4f7nn"), SubResource("Resource_mgxho")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_8f7hp"), SubResource("Resource_o67wt"), SubResource("Resource_wtpr2")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_csyar"), SubResource("Resource_nuqqm"), SubResource("Resource_o1h1j"), SubResource("Resource_55rnv"), SubResource("Resource_2wus2"), SubResource("Resource_bqaak"), SubResource("Resource_jrgt6"), SubResource("Resource_gx1rt"), SubResource("Resource_u1nhv"), SubResource("Resource_v57uc"), SubResource("Resource_eyf3w"), SubResource("Resource_yuuna"), SubResource("Resource_pl4eo"), SubResource("Resource_ql2g5"), SubResource("Resource_b1cpc"), SubResource("Resource_yuqnq"), SubResource("Resource_ycdkt"), SubResource("Resource_bft1l"), SubResource("Resource_abke8"), SubResource("Resource_3qvv1"), SubResource("Resource_nlgtf"), SubResource("Resource_7kcsh"), SubResource("Resource_mqejh"), SubResource("Resource_jnrv7"), SubResource("Resource_utlr2"), SubResource("Resource_lc0k7"), SubResource("Resource_hfyhw"), SubResource("Resource_a0e3l"), SubResource("Resource_l4h0p"), SubResource("Resource_15a3r"), SubResource("Resource_4neaj"), SubResource("Resource_2o2y2"), SubResource("Resource_bx3e7"), SubResource("Resource_tsqkx"), SubResource("Resource_7l514"), SubResource("Resource_8x8d0"), SubResource("Resource_upl0l"), SubResource("Resource_awl76"), SubResource("Resource_ni2ni"), SubResource("Resource_ue3r3"), SubResource("Resource_67xnv"), SubResource("Resource_j1ehq"), SubResource("Resource_ispcp")])]
+save_rooms = Array[Dictionary]([{
+"name": "Abandoned Monastery - Entrance",
+"path": "SaveRoom/save_room.tscn"
+}, {
+"name": "Abandoned Monastery - Gauntlet Entrance - Gauntlet",
+"path": "FirstLevel/save_before_fire.tscn"
+}, {
+"name": "Abandoned Monastery - Top floor",
+"path": "FirstLevel/save_before_boss.tscn"
+}, {
+"name": "Fagaras Forest - Left cave path",
+"path": "Fagaras/left_cave_save.tscn"
+}])
 starting_map = "FirstLevel/Woods.tscn"
 
 [node name="Player" parent="." instance=ExtResource("5_81k16")]
