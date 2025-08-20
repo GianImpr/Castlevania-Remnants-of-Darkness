@@ -1,0 +1,137 @@
+[gd_scene load_steps=18 format=3 uid="uid://5khcqv67osjw"]
+
+[ext_resource type="Shader" path="res://SampleProject/Shaders/aura.gdshader" id="1_kse8j"]
+[ext_resource type="Texture2D" uid="uid://ull5m2ofoco2" path="res://assets/images/DevilForgemasterCrest.png" id="2_n5c75"]
+[ext_resource type="Script" path="res://ImageNumber.gd" id="3_d7hib"]
+[ext_resource type="Texture2D" uid="uid://c068oovfev4l0" path="res://assets/sprites/HUD/Numbers/1.png" id="4_2b17a"]
+[ext_resource type="Texture2D" uid="uid://dl06jtgjccdna" path="res://assets/sprites/HUD/Numbers/8.png" id="5_wty0x"]
+[ext_resource type="Texture2D" uid="uid://d3gn4yx3xx5wp" path="res://assets/sprites/HUD/Numbers/0.png" id="6_svdht"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0emrn"]
+frequency = 0.0496
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gw2r1"]
+width = 128
+height = 128
+seamless = true
+noise = SubResource("FastNoiseLite_0emrn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8h8d"]
+shader = ExtResource("1_kse8j")
+shader_parameter/min_intensity = 0.6
+shader_parameter/max_intensity = 0.8
+shader_parameter/speed_x = 1000.0
+shader_parameter/speed_y = 10.0
+shader_parameter/fade_start = 1.0
+shader_parameter/fade_end = 1.0
+shader_parameter/n = SubResource("NoiseTexture2D_gw2r1")
+
+[sub_resource type="Gradient" id="Gradient_jjyio"]
+offsets = PackedFloat32Array(0, 0.518152, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.326733, 0.326733, 0.326733, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cptmc"]
+gradient = SubResource("Gradient_jjyio")
+width = 40
+height = 12
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_syd3j"]
+offsets = PackedFloat32Array(0, 0.112211, 0.485149, 0.640264, 1)
+colors = PackedColorArray(0.734373, 0.422029, 5.77569e-07, 1, 0.718887, 0.496897, 0, 1, 0.983277, 0.720631, 0, 1, 0.986831, 0.779997, 0.2125, 1, 0.547651, 0.313216, 1.92523e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ek06y"]
+gradient = SubResource("Gradient_syd3j")
+width = 40
+height = 12
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_323th"]
+offsets = PackedFloat32Array(0, 0.518152, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.326733, 0.326733, 0.326733, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fx40v"]
+gradient = SubResource("Gradient_323th")
+width = 40
+height = 12
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_j6250"]
+offsets = PackedFloat32Array(0, 0.112211, 0.485149, 0.640264, 1)
+colors = PackedColorArray(0, 0.1825, 0.73, 1, 0, 0.0359998, 0.72, 1, 0, 0.816667, 0.98, 1, 0.2178, 0.70686, 0.99, 1, 0, 0.00916679, 0.55, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nme5h"]
+gradient = SubResource("Gradient_j6250")
+width = 40
+height = 12
+fill_to = Vector2(0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HUD"]
+material = SubResource("ShaderMaterial_v8h8d")
+layout_mode = 0
+offset_top = -15.0
+offset_right = 1500.0
+offset_bottom = 1485.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_n5c75")
+
+[node name="Node2D" type="Node2D" parent="HUD"]
+position = Vector2(40, 20)
+skew = 0.785398
+
+[node name="HP" type="TextureProgressBar" parent="HUD/Node2D"]
+offset_left = 85.0
+offset_top = 19.799
+offset_right = 125.0
+offset_bottom = 59.799
+scale = Vector2(2.94, 1.2)
+value = 100.0
+texture_under = SubResource("GradientTexture2D_cptmc")
+texture_progress = SubResource("GradientTexture2D_ek06y")
+
+[node name="MP" type="TextureProgressBar" parent="HUD/Node2D"]
+offset_left = 92.0
+offset_top = 37.7574
+offset_right = 132.0
+offset_bottom = 77.7574
+scale = Vector2(2.5, 1)
+value = 100.0
+texture_under = SubResource("GradientTexture2D_fx40v")
+texture_progress = SubResource("GradientTexture2D_nme5h")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 18.0
+offset_right = 127.0
+offset_bottom = 34.0
+scale = Vector2(2, 2)
+theme_override_constants/separation = 0
+alignment = 1
+script = ExtResource("3_d7hib")
+
+[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer"]
+custom_minimum_size = Vector2(5, 1.4)
+layout_mode = 2
+texture = ExtResource("4_2b17a")
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="HUD/HBoxContainer"]
+custom_minimum_size = Vector2(5, 1.4)
+layout_mode = 2
+texture = ExtResource("5_wty0x")
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="HUD/HBoxContainer"]
+custom_minimum_size = Vector2(5, 1.4)
+layout_mode = 2
+texture = ExtResource("6_svdht")
+stretch_mode = 4
