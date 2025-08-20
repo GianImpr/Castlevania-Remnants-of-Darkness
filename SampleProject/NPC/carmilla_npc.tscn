@@ -1,7 +1,38 @@
-[gd_scene load_steps=12 format=3 uid="uid://c06p7dg4euqwq"]
+[gd_scene load_steps=18 format=3 uid="uid://c06p7dg4euqwq"]
 
 [ext_resource type="Texture2D" uid="uid://dax08a2npeff5" path="res://assets/sprites/Characters/Carmilla/Carmilla.png" id="1_aa7wu"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="2_mge5l"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_gvp7f"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_rx5ld"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_wjpyf"]
+[ext_resource type="AudioStream" uid="uid://drbsnlyige8pb" path="res://assets/sounds/Effects/Miscellaneous/Teleport.mp3" id="6_ej7n8"]
+
+[sub_resource type="Animation" id="Animation_mkabe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserEffect:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_7dc6g"]
 resource_name = "idle"
@@ -33,32 +64,19 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(0.356863, 0.266667, 1, 0), Color(0.698039, 0.658824, 1, 1), Color(1, 1, 1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_mkabe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LaserEffect:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [{
+"args": ["teleport"],
+"method": &"play_sound_effect_from_library"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_xsaa3"]
@@ -102,6 +120,20 @@ tracks/2/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PolyphonicAudio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["teleport"],
+"method": &"play_sound_effect_from_library"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p1k15"]
 _data = {
@@ -138,6 +170,15 @@ color_ramp = SubResource("GradientTexture1D_bdrjn")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
+[sub_resource type="Resource" id="Resource_wb7if"]
+script = ExtResource("5_wjpyf")
+Tag = "teleport"
+stream = ExtResource("6_ej7n8")
+
+[sub_resource type="Resource" id="Resource_sesbo"]
+script = ExtResource("4_rx5ld")
+sound_effects = Array[ExtResource("5_wjpyf")]([SubResource("Resource_wb7if")])
+
 [node name="CarmillaNPC" type="Sprite2D"]
 self_modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.5, 0.5)
@@ -158,3 +199,7 @@ process_material = SubResource("ParticleProcessMaterial_8pl8p")
 texture = ExtResource("2_mge5l")
 lifetime = 1.6
 one_shot = true
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_gvp7f")
+audio_library = SubResource("Resource_sesbo")
