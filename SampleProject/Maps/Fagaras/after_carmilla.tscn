@@ -78,9 +78,11 @@ texture_region_size = Vector2i(32, 32)
 13:4/0 = 0
 13:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 1.75, 16, 1.5, 16, 16, -16, 16)
 13:4/0/physics_layer_0/polygon_0/one_way = true
+13:4/0/physics_layer_0/polygon_0/one_way_margin = 0.5
 14:4/0 = 0
 14:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 1.75, 16, 1.5, 16, 16, -16, 16)
 14:4/0/physics_layer_0/polygon_0/one_way = true
+14:4/0/physics_layer_0/polygon_0/one_way_margin = 0.5
 15:4/0 = 0
 0:5/0 = 0
 1:5/0 = 0
@@ -711,13 +713,13 @@ tile_set = SubResource("TileSet_8dr7c")
 [node name="MedusaLeftSpawner" type="Node" parent="Enemies"]
 script = ExtResource("4_coxew")
 enemy_to_spawn = ExtResource("5_33ufy")
-spawn_frequency_in_seconds = 2.0
+spawn_frequency_in_seconds = 0.7
 min_pos_limits = Vector2(-400, 100)
 max_pos_limits = Vector2(-400, 1200)
 
 [node name="MedusaRightSpawner" type="Node" parent="Enemies"]
 script = ExtResource("4_coxew")
 enemy_to_spawn = ExtResource("5_33ufy")
-spawn_frequency_in_seconds = 2.3
+spawn_frequency_in_seconds = 0.6
 min_pos_limits = Vector2(520, 100)
 max_pos_limits = Vector2(520, 1200)
