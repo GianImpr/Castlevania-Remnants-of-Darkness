@@ -713,13 +713,13 @@ tile_set = SubResource("TileSet_8dr7c")
 [node name="MedusaLeftSpawner" type="Node" parent="Enemies"]
 script = ExtResource("4_coxew")
 enemy_to_spawn = ExtResource("5_33ufy")
-spawn_frequency_in_seconds = 0.7
+spawn_frequency_in_seconds = 1.0
 min_pos_limits = Vector2(-400, 100)
 max_pos_limits = Vector2(-400, 1200)
 
 [node name="MedusaRightSpawner" type="Node" parent="Enemies"]
 script = ExtResource("4_coxew")
 enemy_to_spawn = ExtResource("5_33ufy")
-spawn_frequency_in_seconds = 0.6
+spawn_frequency_in_seconds = 1.0
 min_pos_limits = Vector2(520, 100)
 max_pos_limits = Vector2(520, 1200)
