@@ -2205,6 +2205,8 @@ editor_description = "Object that represents a room in a game.
 Can adjust camera limits and apply music.
 Suggested to put RoomInstance as a child node."
 script = ExtResource("1_n2kap")
+stage_music = "forest"
+change_music = true
 
 [node name="RoomInstance" parent="." instance=ExtResource("2_w1evy")]
 top_level = true

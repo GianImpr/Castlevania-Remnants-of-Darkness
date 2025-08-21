@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cgh6f3rae4i61"]
+[gd_scene load_steps=15 format=4 uid="uid://cgh6f3rae4i61"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_gwt60"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_kikhx"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="4_6783m"]
 [ext_resource type="PackedScene" uid="uid://djw0ueyeiotcq" path="res://SampleProject/enemies/Warg/warg.tscn" id="5_f4usc"]
 [ext_resource type="PackedScene" uid="uid://fld271wig6jo" path="res://SampleProject/enemies/Banshee/banshee.tscn" id="6_38rs8"]
-[ext_resource type="PackedScene" uid="uid://2vc38i25e1l" path="res://SampleProject/enemies/Ukoback/ukoback.tscn" id="7_5wwnh"]
 [ext_resource type="PackedScene" uid="uid://ctg2sggf2ujvj" path="res://SampleProject/enemies/Slaughterer/slaughterer.tscn" id="8_ge76a"]
 [ext_resource type="PackedScene" uid="uid://bn5w03bpeuhmt" path="res://SampleProject/enemies/ArmorKnight/armor_knight.tscn" id="9_5cmgo"]
 [ext_resource type="PackedScene" uid="uid://crkxe62hk26kh" path="res://SampleProject/enemies/BlueRaven/kamikaze_raven.tscn" id="10_d3505"]
@@ -784,9 +783,6 @@ position = Vector2(715, 184)
 
 [node name="Banshee" parent="Enemies" instance=ExtResource("6_38rs8")]
 position = Vector2(505, 478)
-
-[node name="Ukoback" parent="Enemies" instance=ExtResource("7_5wwnh")]
-position = Vector2(998, 156)
 
 [node name="Slaughterer" parent="Enemies" instance=ExtResource("8_ge76a")]
 position = Vector2(594, 868)
