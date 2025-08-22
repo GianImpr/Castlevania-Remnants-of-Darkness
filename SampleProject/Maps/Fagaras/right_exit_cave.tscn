@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cgh6f3rae4i61"]
+[gd_scene load_steps=16 format=4 uid="uid://cgh6f3rae4i61"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_gwt60"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_kikhx"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dfuncyp0yhrbk" path="res://SampleProject/enemies/Slinger/slinger.tscn" id="11_mfn2a"]
 [ext_resource type="PackedScene" uid="uid://bcqff14dmgwpf" path="res://SampleProject/enemies/BlackCrow/black_crow.tscn" id="12_7ct8g"]
 [ext_resource type="PackedScene" uid="uid://bkyptgxub2ly0" path="res://SampleProject/extra_scenes/stage_elements/purple_candle.tscn" id="13_3oowh"]
+[ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="13_os27q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3be15"]
 resource_name = "<TileSet#-9223307123826221705>"
@@ -819,25 +820,31 @@ position = Vector2(1326, 183)
 
 [node name="Candles" type="Node" parent="."]
 
-[node name="Items" type="Node" parent="."]
-
-[node name="PurpleCandle" parent="." instance=ExtResource("13_3oowh")]
+[node name="PurpleCandle" parent="Candles" instance=ExtResource("13_3oowh")]
 position = Vector2(455, 208)
 
-[node name="PurpleCandle2" parent="." instance=ExtResource("13_3oowh")]
+[node name="PurpleCandle2" parent="Candles" instance=ExtResource("13_3oowh")]
 position = Vector2(920, 208)
 
-[node name="PurpleCandle3" parent="." instance=ExtResource("13_3oowh")]
+[node name="PurpleCandle3" parent="Candles" instance=ExtResource("13_3oowh")]
 position = Vector2(186, 880)
 
-[node name="PurpleCandle4" parent="." instance=ExtResource("13_3oowh")]
+[node name="PurpleCandle4" parent="Candles" instance=ExtResource("13_3oowh")]
 position = Vector2(523, 880)
 
-[node name="PurpleCandle5" parent="." instance=ExtResource("13_3oowh")]
+[node name="PurpleCandle5" parent="Candles" instance=ExtResource("13_3oowh")]
 position = Vector2(1140, 880)
 
-[node name="PurpleCandle6" parent="." instance=ExtResource("13_3oowh")]
+[node name="PurpleCandle6" parent="Candles" instance=ExtResource("13_3oowh")]
 position = Vector2(581, 556)
 
-[node name="PurpleCandle7" parent="." instance=ExtResource("13_3oowh")]
+[node name="PurpleCandle7" parent="Candles" instance=ExtResource("13_3oowh")]
 position = Vector2(447, 560)
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Pick-up3" parent="Items" instance=ExtResource("13_os27q")]
+position = Vector2(1354, 171)
+id = 81
+current_item_name = "ANCIENT_TEXT_2"
+pickup_flag = 86
