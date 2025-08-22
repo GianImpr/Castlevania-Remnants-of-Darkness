@@ -295,7 +295,7 @@ func addExp(amount: int) -> void:
 		innocent_devil.stats.Stats["EXP"] += amount
 		
 func addWeaponExp() -> void:
-	var amount_gained = 75
+	var amount_gained = 1
 	var weapon_type: int = 4
 	if stats.equipment["weapon"] != 0:
 		weapon_type = stats.searchItemInCompendium(stats.equipment["weapon"], stats.weapon_compendium).type

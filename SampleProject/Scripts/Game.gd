@@ -176,15 +176,15 @@ func _ready() -> void:
 			for i in range(0, EquipMenu.quick_weapons.size()):
 				EquipMenu.quick_weapons[i] = null
 			
-		player.stats.item_compendium = item_compendium
-		player.stats.weapon_compendium = weapon_compendium
-		player.stats.headgear_compendium = headgear_compendium
-		player.stats.body_compendium = body_compendium
-		player.stats.legs_compendium = legs_compendium
-		player.stats.relic_compendium = relic_compendium
-		player.stats.skill_compendium = skill_compendium
-		player.stats.accessory_compendium = accessory_compendium
-		player.stats.artifact_compendium = artifact_compendium
+		#player.stats.item_compendium = item_compendium
+		#player.stats.weapon_compendium = weapon_compendium
+		#player.stats.headgear_compendium = headgear_compendium
+		#player.stats.body_compendium = body_compendium
+		#player.stats.legs_compendium = legs_compendium
+		#player.stats.relic_compendium = relic_compendium
+		#player.stats.skill_compendium = skill_compendium
+		#player.stats.accessory_compendium = accessory_compendium
+		#player.stats.artifact_compendium = artifact_compendium
 
 		
 		# Initialize room when it changes.
