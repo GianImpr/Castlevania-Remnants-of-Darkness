@@ -358,3 +358,5 @@ static func deserializeQuickWeapons(serialized_weapons: Array[int]) -> void:
 	for i in range(0, quick_weapons.size()):
 		if serialized_weapons[i] > 0:
 			quick_weapons[i] = Game.get_singleton().weapon_compendium[serialized_weapons[i]-1]
+		else:
+			quick_weapons[i] = null
