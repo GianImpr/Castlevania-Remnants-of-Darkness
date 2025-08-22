@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://dm2o7k5jxquf5"]
+[gd_scene load_steps=9 format=4 uid="uid://dm2o7k5jxquf5"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_q6hil"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_t50nj"]
 [ext_resource type="Texture2D" uid="uid://b58ood7hu0g21" path="res://assets/sprites/Tiles/FagarasCave.png" id="3_hnrxo"]
 [ext_resource type="PackedScene" uid="uid://bnsy1kwfc8603" path="res://SampleProject/extra_scenes/stage_elements/combat_door.tscn" id="4_6n15q"]
+[ext_resource type="PackedScene" uid="uid://2vm1bltf25bk" path="res://SampleProject/extra_scenes/stage_elements/ice_block.tscn" id="5_larus"]
+[ext_resource type="Script" path="res://SampleProject/Maps/Fagaras/ice_blocks_event.gd" id="5_rfjxh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3be15"]
 resource_name = "<TileSet#-9223307123826221705>"
@@ -716,3 +718,22 @@ tile_set = SubResource("TileSet_8dr7c")
 [node name="CombatDoor" parent="." instance=ExtResource("4_6n15q")]
 position = Vector2(464, 1280)
 combat_flag_id = 3
+
+[node name="IceBlocks" type="Node" parent="."]
+script = ExtResource("5_rfjxh")
+event_flag = 6
+
+[node name="IceBlock" parent="IceBlocks" instance=ExtResource("5_larus")]
+position = Vector2(51, 434)
+
+[node name="IceBlock2" parent="IceBlocks" instance=ExtResource("5_larus")]
+position = Vector2(88, 434)
+
+[node name="IceBlock3" parent="IceBlocks" instance=ExtResource("5_larus")]
+position = Vector2(124, 434)
+
+[node name="IceBlock4" parent="IceBlocks" instance=ExtResource("5_larus")]
+position = Vector2(160, 434)
+
+[node name="IceBlock5" parent="IceBlocks" instance=ExtResource("5_larus")]
+position = Vector2(198, 434)

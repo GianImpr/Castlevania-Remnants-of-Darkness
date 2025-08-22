@@ -10,6 +10,9 @@ func _process(delta: float) -> void:
 	super(delta)
 	
 func _on_hit(body: Node2D) -> void:
+	if body is IceBlock:
+		body.evaporate()
+		
 	if not hitbox_activated and body in enemies_hit:
 		return
 		
