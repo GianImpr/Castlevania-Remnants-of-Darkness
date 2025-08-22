@@ -36,6 +36,12 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Candle:
 		return
+	if body is UkobackFireball:
+		body.destroy()
+		Global.player.stats.Stats["MP"] -= cost/5
+	if body is KamikazeRaven:
+		body.explode()
+		Global.player.stats.Stats["MP"] -= cost/2
 	if body is RigidBody2D and Global.player.stats.Stats["MP"] >= cost:
 		if not body.stats.destructible:
 			return
