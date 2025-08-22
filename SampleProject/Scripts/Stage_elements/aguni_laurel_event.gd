@@ -16,7 +16,7 @@ const BIRD_STOP_SPAWN_OFFSET: float = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if not Global.player.stats.findItem(Relic.Relics.AGUNIS_LAUREL, Global.player.stats.relic_inventory) and Global.player.stats.event_flags[event_flag]:
+	if not Global.player.stats.findItem(Relic.Relics.AGUNIS_LAUREL+1, Global.player.stats.relic_inventory) and Global.player.stats.event_flags[event_flag]:
 		spawnAguniLaurel()
 
 
