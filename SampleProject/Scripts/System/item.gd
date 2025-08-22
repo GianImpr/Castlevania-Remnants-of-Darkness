@@ -95,7 +95,8 @@ enum Items {
 	ADAMANTINE,
 	DAMASCUS_STEEL,
 	WINDSTONE,
-	SEA_TEAR
+	SEA_TEAR,
+	ANCIENT_TEXT_2
 }
 
 @export var item_name: String
