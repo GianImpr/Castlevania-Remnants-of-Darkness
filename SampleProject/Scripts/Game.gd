@@ -231,6 +231,7 @@ func save_game():
 	save_manager.set_value("quick_weapons", EquipMenu.serializeQuickWeapons())
 	save_manager.set_value("file_name", Global.player.stats.file_name)
 	save_manager.set_value("map_ratio", Global.player.stats.map_ratio)
+	save_manager.set_value("position", Global.player.global_position)
 	if player.sprite.weapon != null:
 		save_manager.set_value("weapon", player.sprite.weapon.scene_file_path)
 	save_manager.save_as_text(Global.save_destination)
@@ -255,7 +256,6 @@ func load_game():
 	player.add_child(stats)
 	stats.add_child(stats.play_time)
 	player.stats = stats
-	player.position = Vector2(259, 287)
 	generated_rooms.assign(save_manager.get_value("generated_rooms"))
 	player.unlocked_magic = save_manager.get_value("unlocked_magic")
 	player.innocent_devil_pocket = save_manager.get_value("innocent_devil_pocket")
@@ -272,6 +272,11 @@ func load_game():
 	Global.game.difficulty = save_manager.get_value("difficulty")
 	Global.player.stats.file_name = save_manager.get_value("file_name")
 	Global.player.stats.map_ratio = save_manager.get_value("map_ratio")
+	if save_manager.get_value("position") != null:
+		Global.player.global_position = save_manager.get_value("position") + Vector2(30, 0)
+	else:
+		player.position = Vector2(259, 287)
+		
 	if player.sprite.weapon != null:
 		player.sprite.weapon.queue_free()
 	
