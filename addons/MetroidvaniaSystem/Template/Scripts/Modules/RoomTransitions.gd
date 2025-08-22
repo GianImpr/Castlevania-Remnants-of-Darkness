@@ -45,6 +45,7 @@ func changeRoom(target_room: String, changing_area: bool, initial_position: Vect
 	await Global.fade_screen.animation.animation_finished
 	
 	var prev_room_instance := MetSys.get_current_room_instance()
+	var prev_room_position: Vector2 = prev_room_instance.position
 	if prev_room_instance:
 		prev_room_instance.get_parent().remove_child(prev_room_instance)
 	
@@ -54,7 +55,7 @@ func changeRoom(target_room: String, changing_area: bool, initial_position: Vect
 	
 	if prev_room_instance:
 		if changing_area:
-			player.position = initial_position
+			player.position = initial_position - prev_room_position + MetSys.get_current_room_instance().position
 		else:
 			player.position -= MetSys.get_current_room_instance().get_room_position_offset(prev_room_instance)
 		if player.innocent_devil != null:
