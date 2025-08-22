@@ -19,6 +19,12 @@ func _ready() -> void:
 	if not Global.player.stats.findItem(Relic.Relics.AGUNIS_LAUREL+1, Global.player.stats.relic_inventory) and Global.player.stats.event_flags[event_flag]:
 		spawnAguniLaurel()
 
+	if Global.player.stats.event_flags[event_flag]:
+		for child in get_children():
+			if child is AguniAirCandle:
+				child.animation.play("idle")
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
