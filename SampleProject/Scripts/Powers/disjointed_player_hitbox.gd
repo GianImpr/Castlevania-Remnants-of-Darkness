@@ -8,7 +8,7 @@ func _process(delta: float) -> void:
 	super(delta)
 	if Global.player != null and Global.player.sprite.weapon != null:
 		base_attribute = Global.player.sprite.weapon.hitbox.base_attribute
-	else:
+	elif self is not AguniLaurelHitbox:
 		base_attribute = [Global.Attribute.SLASH]
 
 	
