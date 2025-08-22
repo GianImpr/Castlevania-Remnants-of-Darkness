@@ -17,6 +17,7 @@ static var fps_display = null
 static var settings_node: InvOptions = null
 static var HUD = null
 static var minimap = null
+var language: Languages = Languages.ITALIAN
 var load_data: bool = false
 var crazy_mode: bool = false
 var loaded_settings: bool = false
@@ -31,6 +32,16 @@ var save_destination: String
 #Used in ChangeArea
 @warning_ignore("unused_signal")
 signal change_area(new_room, initial_position)
+
+enum Languages {
+	ENGLISH,
+	ITALIAN,
+	SPANISH,
+	PORTUGUESE
+}
+
+const langs = ["en", "it", "es", "pt"]
+
 
 enum ScreenType {
 	NONE,
@@ -57,6 +68,9 @@ enum Attribute {
 	STONE = 12,
 	PARALYSIS = 13
 }
+
+func _ready() -> void:
+	TranslationServer.set_locale(langs[language])
 
 func _process(delta: float) -> void:
 	if not Engine.is_editor_hint() and game != null and not loaded_settings:

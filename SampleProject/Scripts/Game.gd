@@ -7,7 +7,6 @@ const SaveManager = preload("res://addons/MetroidvaniaSystem/Template/Scripts/Sa
 @export var animation: AnimationPlayer
 var load_data: bool = false
 @export var difficulty: Difficulty
-@export var language: Languages
 @export var controller_scheme: ControllerScheme
 @export var disable_lights: bool
 @export var world_environment: WorldEnvironment
@@ -66,14 +65,6 @@ enum Compendiums {
 	relic
 }
 
-enum Languages {
-	ENGLISH,
-	ITALIAN,
-	SPANISH,
-	PORTUGUESE
-}
-
-const langs = ["en", "it", "es", "pt"]
 
 enum ControllerScheme {
 	PLAYSTATION,
@@ -157,7 +148,6 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 	else:
-		TranslationServer.set_locale(langs[language])
 		if disable_lights:
 			world_environment.queue_free()
 			
