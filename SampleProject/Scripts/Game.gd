@@ -183,6 +183,8 @@ func _ready() -> void:
 			MetSys.set_save_data()
 			difficulty = Global.new_game_difficulty
 			Global.player.stats.file_name = Global.new_game_player_name
+			for i in range(0, EquipMenu.quick_weapons.size()):
+				EquipMenu.quick_weapons[i] = null
 			
 		player.stats.item_compendium = item_compendium
 		player.stats.weapon_compendium = weapon_compendium
