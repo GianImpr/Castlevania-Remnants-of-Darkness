@@ -33,7 +33,7 @@ func updateStats() -> void:
 		var total_exp_for_next_lv: int = 150*((cur_weapon_lv+1)*1.5)*log((cur_weapon_lv+1)*1.5+2.7)
 		var minimum_exp_for_cur_lv: int = 150*(cur_weapon_lv*1.5)*log(cur_weapon_lv*1.5+2.7)
 		level_label.text = levels[cur_weapon_lv]
-		if cur_weapon_lv < 5:
+		if cur_weapon_lv < Global.player.MAX_WEAPON_RANK:
 			experience_bar.value = cur_weapon_exp-minimum_exp_for_cur_lv
 			experience_bar.max_value = total_exp_for_next_lv-minimum_exp_for_cur_lv
 		else:

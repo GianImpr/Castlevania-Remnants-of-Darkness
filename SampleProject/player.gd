@@ -43,6 +43,7 @@ const SPEED = 260.0
 const IFRAMES_HIT_THRESHOLD: int = 3
 const FOCUS_GAIN_RATIO: int = 10
 const GUARD_RECOVERY_TIME: int = 3
+const MAX_WEAPON_RANK = 5
 
 var current_hits_taken_before_iframes: int = 0
 var reset_position: Vector2
@@ -240,12 +241,13 @@ func expNeededToLvUp() -> int:
 	
 func expNeededToRankUpWeapon() -> int:
 	var weapon_type: int = 4
+	var allowed_weapon_types: Array[Weapon.Type] = [Weapon.Type.SWORD, Weapon.Type.AXE]
 	if stats.equipment["weapon"] != 0:
 		weapon_type = stats.searchItemInCompendium(stats.equipment["weapon"], stats.weapon_compendium).type
 	var next_weapon_lv = stats.weapon_proficiency[weapon_type]["lv"]+1
 	var cur_weapon_exp = stats.weapon_proficiency[weapon_type]["exp"]
 	var remaining_exp: int = 150*next_weapon_lv*1.5*log(next_weapon_lv*1.5+2.7)-cur_weapon_exp
-	if next_weapon_lv == 6:
+	if next_weapon_lv > MAX_WEAPON_RANK or weapon_type not in allowed_weapon_types:
 		return 1
 	return remaining_exp
 	
@@ -293,7 +295,7 @@ func addExp(amount: int) -> void:
 		innocent_devil.stats.Stats["EXP"] += amount
 		
 func addWeaponExp() -> void:
-	var amount_gained = 1
+	var amount_gained = 75
 	var weapon_type: int = 4
 	if stats.equipment["weapon"] != 0:
 		weapon_type = stats.searchItemInCompendium(stats.equipment["weapon"], stats.weapon_compendium).type
