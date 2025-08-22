@@ -9,6 +9,7 @@ var load_data: bool = false
 @export var difficulty: Difficulty
 @export var controller_scheme: ControllerScheme
 @export var disable_lights: bool
+@export var update_player_compendium: bool
 @export var world_environment: WorldEnvironment
 @export var touch_screen_enabled: bool = false
 
@@ -176,15 +177,17 @@ func _ready() -> void:
 			for i in range(0, EquipMenu.quick_weapons.size()):
 				EquipMenu.quick_weapons[i] = null
 			
-		#player.stats.item_compendium = item_compendium
-		#player.stats.weapon_compendium = weapon_compendium
-		#player.stats.headgear_compendium = headgear_compendium
-		#player.stats.body_compendium = body_compendium
-		#player.stats.legs_compendium = legs_compendium
-		#player.stats.relic_compendium = relic_compendium
-		#player.stats.skill_compendium = skill_compendium
-		#player.stats.accessory_compendium = accessory_compendium
-		#player.stats.artifact_compendium = artifact_compendium
+		#Will reset combine. Use only to synchronize player compendium with a new compendium.
+		if update_player_compendium:
+			player.stats.item_compendium = item_compendium
+			player.stats.weapon_compendium = weapon_compendium
+			player.stats.headgear_compendium = headgear_compendium
+			player.stats.body_compendium = body_compendium
+			player.stats.legs_compendium = legs_compendium
+			player.stats.relic_compendium = relic_compendium
+			player.stats.skill_compendium = skill_compendium
+			player.stats.accessory_compendium = accessory_compendium
+			player.stats.artifact_compendium = artifact_compendium
 
 		
 		# Initialize room when it changes.
