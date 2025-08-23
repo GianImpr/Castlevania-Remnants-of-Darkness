@@ -73,12 +73,15 @@ func _process(delta: float) -> void:
 
 func setDialogueBox() -> void:
 	var entry: Dialogue = dialogue_entries[current_dialogue_entry]
-	setCharacterName(Dialogue.Names.values()[entry.character])
+	setCharacterName(Dialogue.Names.values()[entry.character], entry.hide_name)
 	setText(entry.dialogue_text, entry.expression, entry.position)
 	
 
-func setCharacterName(name_text: String) -> void:
-	character_name.text = name_text
+func setCharacterName(name_text: String, hide_name: bool) -> void:
+	if hide_name:
+		character_name.text = "???"
+	else:
+		character_name.text = name_text
 
 func setEmotion(emotion, character) -> void:
 	if emotion == 0:

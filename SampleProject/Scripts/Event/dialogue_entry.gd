@@ -13,7 +13,7 @@ enum Position {
 
 const Names = {
 	HECTOR = "Hector", 
-	CARMILLA = "Carmilla"
+	CARMILLA = "Bella Padula"
 }
 
 const Sprites = {
@@ -31,6 +31,7 @@ enum Emotions {
 }
 
 @export var character: Character
+@export var hide_name: bool
 @export var expression: Emotions
 @export_multiline var dialogue_text: String
 @export var position: Position
