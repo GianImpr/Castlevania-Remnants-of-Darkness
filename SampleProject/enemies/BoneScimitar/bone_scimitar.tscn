@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dd3s67ealy03f" path="res://SampleProject/enemies/BoneScimitar/scimitar_shatter.tscn" id="14_l3b8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cx7u"]
-size = Vector2(15.5652, 41.3043)
+size = Vector2(18.5652, 41.3043)
 
 [sub_resource type="Resource" id="Resource_l68mg"]
 script = ExtResource("6_2nio2")
@@ -234,7 +234,7 @@ hframes = 10
 vframes = 4
 
 [node name="Collision box" type="CollisionShape2D" parent="."]
-position = Vector2(11.7826, 7.17391)
+position = Vector2(10.2826, 7.17391)
 shape = SubResource("RectangleShape2D_5cx7u")
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
