@@ -7,13 +7,13 @@ MENU_HEARTS,Hearts,Cuori,Corazones,Corações
 HP_STAT,HP,PV,PS,PV
 MP_STAT,MP,PM,PM,PM
 SP_STAT,SP,PS,PS,PS
-MENU_LV,LV,LV,,
+MENU_LV,LV,LV,NV,
 MENU_LEVEL,Level,Livello,Nível,Nível
 MENU_GOLD,Gold,Oro,Oro,Ouro
 MENU_TIME,Time,Ore,Tiempo,Tempo
 MENU_EXP,Experience,Esperienza,Experiencia,Experiência
 MENU_NEXT,Next,Prossimo Liv.,Próximo nív.,Próximo NV
-MENU_MAP_RATIO,Map,Mappa,,Mapa
+MENU_MAP_RATIO,Map,Mappa,Mapa,Mapa
 ATK_STAT_FULL,Attack,Attacco,Ataque,Ataque
 DEF_STAT_FULL,Defense,Difesa,Defensa,Defesa
 STR_STAT_FULL,Strength,Forza,Fuerza,Força
@@ -160,7 +160,7 @@ NEW_GAME_BUTTON,New Game,Nuova partita,Nueva partida,Novo jogo
 CONTINUE_BUTTON,Continue,Continua,Continuar,Continuar
 OPTIONS_BUTTON,Options,Opzioni,Opciones,Opções
 SOUND_SELECT_BUTTON,Sound Select,Ascolta musiche,Rocola,Seleção de som
-COPYRIGHT_LABEL,"Developed by Shuan, all rights reserved to Konami","Sviluppato da Shuan, tutti i diritti riservati a Konami",,Desenvolvido por Shuan. Todos os direitos reservados à Konami
+COPYRIGHT_LABEL,"Developed by Shuan, all rights reserved to Konami","Sviluppato da Shuan, tutti i diritti riservati a Konami","Desarollado por Shüan, todos los derechos reservados a Konami",Desenvolvido por Shuan. Todos os direitos reservados à Konami
 ,,,,
 --Main menu--,,,,
 LOADING_SCREEN_LABEL,Load data,Carica,Cargar datos,Carregar dados
@@ -178,7 +178,7 @@ Enemies are stronger, have new patterns and/or greater attack speed and their pl
 I nemici sono più forti, hanno modi di combattere diversi e/o sono più veloci e sono posizionati in modo più aggressivo.","Para aquellos que buscan un verdadero reto y quieren experienciar más ampliamente el combate.
 Los enemigos son más fuertes, tienen nuevos patrones y/o velocidad de ataque y sus posiciones son más agresivas.","Para quem busca um verdadeiro desafio e quer vivenciar o sistema de combate ao máximo.
 Os inimigos estão mais fortes, têm novos padrões e/ou maior velocidade de ataque, e seu posicionamento é mais agressivo."
-CONFIRM_SAVE_LABEL,Overwrite data?,Sovrascrivere i dati?,,Sobrescrever dados?
+CONFIRM_SAVE_LABEL,Overwrite data?,Sovrascrivere i dati?,¿Sobrescribir datos?,Sobrescrever dados?
 ,,,,
 --Headgear--,,,,
 LEATHER_HAT,Leather Hat,Cappello di cuoio,Sombrero de cuero,Chapéu de Couro
@@ -243,8 +243,8 @@ Increases damage dealt by 7% when the Focus bar is full.","Orecchino turchese ch
 Aumenta i danni inflitti del 7% quando la barra di Concentrazione è piena.","Perno de arete turquesa hecho para transformar la concentración en energía.
 Aumenta el daño infligido un 7% cuando la barra de concentración está llena.","Tacha de turquesa feita para transformar concentração em energia.
 Aumenta o dano causado em 7% quando a barra de Foco está cheia."
-BLACK_BELT,Black Belt,Cintura nera,,
-BLACK_BELT_DESC,Worn by a martial artist who used to train inside caves.,Indossata da un esperto di arti marziali che si allenava nelle caverne.,,
+BLACK_BELT,Black Belt,Cintura nera,Cinturón negro,
+BLACK_BELT_DESC,Worn by a martial artist who used to train inside caves.,Indossata da un esperto di arti marziali che si allenava nelle caverne.,Usado por un artista marcial quién solía entrenar dentro de cuevas.,
 ,,,,
 --Relics--,,,,
 INDIGO_CROSS,Indigo Cross,Rosario Indaco,Cruz índiga,Cruz Índigo
@@ -322,8 +322,8 @@ Resembles the eye of a snake, perhaps it can fit somewhere...","Un gioiello lucc
 Assomiglia all'occhio di un serpente, forse si può inserire da qualche parte...","Una joya brillante que brilla como zafiro.
 Se parece al ojo de una serpiente, quizá pueda encajar en algún lugar...","Uma jóia radiante que brilha como safira.
 Lembra o olho de uma cobra, talvez caiba em algum lugar..."
-ANCIENT_TEXT_2,Ancient Text 2,Manoscritto antico 2,,
-ANCIENT_TEXT_2_DESC,Light up the candles and a secret power will be bestowed upon you.,Accendi le candele e un potere segreto ti verrà conferito.,,
+ANCIENT_TEXT_2,Ancient Text 2,Manoscritto antico 2,Texto antigüo 2,
+ANCIENT_TEXT_2_DESC,Light up the candles and a secret power will be bestowed upon you.,Accendi le candele e un potere segreto ti verrà conferito.,Enciende las velas y un poder secréto será otorgado a tí.,
 ,,,,
 --Materials--,,,,
 BRONZE,Bronze,Bronzo,Bronce,Bronze
@@ -423,63 +423,74 @@ Alguns dizem que ele contém poderes divinos."
 SUN_TEARS,Sun Tears,Lacrime del sole,Lagrimas de sol,Lágrimas do Sol
 SUN_TEARS_DESC,"Rays of the sun captured inside amber.
 Shines brightly.","Raggi di sole catturati dentro dell'ambra.
-Molto luccicante.",HUEVO,"Raios de sol capturados em âmbar.
+Molto luccicante.","Rayos del sol capturados dentro de ámbar.
+Brilla intensamente.","Raios de sol capturados em âmbar.
 Brilha intensamente."
-SEAL_OF_DARKNESS,Seal of Darkness,Sigillo dell'Oscurità,,Selo da Escuridão
+SEAL_OF_DARKNESS,Seal of Darkness,Sigillo dell'Oscurità,Sello de la oscuridad,Selo da Escuridão
 SEAL_OF_DARKNESS_DESC,"A stone that contains remnants of Dracula's Curse.
 Can be used to create demonic weapons, but should you?","Una pietra che contiene i resti della maledizione di Dracula.
-Può essere usata per creare armi demoniache, ma dovresti farlo?",,"Uma pedra que contém resquícios da Maldição de Drácula.
+Può essere usata per creare armi demoniache, ma dovresti farlo?","Una piedra que contiene residuos de la maldición de Drácula.
+Puede usarse para crear armas demoniacas, ¿pero deberías?","Uma pedra que contém resquícios da Maldição de Drácula.
 Pode ser usada para criar armas demoníacas, mas seria certo?"
-SEAL_OF_COURAGE,Seal of Courage,Sigillo del Coraggio,,Selo da Coragem
-SEAL_OF_COURAGE_DESC,"A stone that warm to the touch, said to bestow bravery to whoever finds it.",Si dice che sia una pietra così tiepida al tatto tale da conferire audacia a chi la trova.,,"Uma pedra quente ao toque, que dizem conferir bravura a quem a encontra."
-SEAL_OF_INNOCENCE,Seal of Innocence,Sigillo d'Innocenza,,Selo da Inocência
+SEAL_OF_COURAGE,Seal of Courage,Sigillo del Coraggio,Sello de coraje,Selo da Coragem
+SEAL_OF_COURAGE_DESC,"A stone that is warm to the touch, said to bestow bravery to whoever finds it.",Si dice che sia una pietra così tiepida al tatto tale da conferire audacia a chi la trova.,"Una piedra que es cálida al toque, se dice que le otorga valentía a quién la encuentre.","Uma pedra quente ao toque, que dizem conferir bravura a quem a encontra."
+SEAL_OF_INNOCENCE,Seal of Innocence,Sigillo d'Innocenza,Sello de inocencia,Selo da Inocência
 SEAL_OF_INNOCENCE_DESC,"A stone said to be made with the tears of innocent people.
 Its existence proves that this world is cruel.","Si dice che sia una pietra creata con le lacrime di persone innocenti.
-La sua esistenza dimostra la crudeltà di questo mondo.",,"Uma pedra que dizem ter sido feita com lágrimas de pessoas inocentes.
+La sua esistenza dimostra la crudeltà di questo mondo.","Una piedra dicha haber sido creada por lágrimas de gente inocente.
+Su existencia es prueba que este mundo es cruel.","Uma pedra que dizem ter sido feita com lágrimas de pessoas inocentes.
 Sua existência prova que este mundo é cruel."
-GOLDEN_TEARS,Golden Tears,Lacrime d'oro,,Lágrimas Douradas
+GOLDEN_TEARS,Golden Tears,Lacrime d'oro,Lágrimas doradas,Lágrimas Douradas
 GOLDEN_TEARS_DESC,"Gold reduced to dust by some kind of magic.
 Just a bit of it would be enough to satisfy your ambitions.","Oro ridotto in polvere per via di una magia.
-Anche solo un po' di questa polvere basta per soddisfare le tue ambizioni.",,"Ouro reduzido a pó por algum tipo de magia.
+Anche solo un po' di questa polvere basta per soddisfare le tue ambizioni.","Oro reducido a polvo por algún tipo de magia.
+Solo un poco sería suficiente para satisfacer tus ambiciones.","Ouro reduzido a pó por algum tipo de magia.
 Só um pouco dele bastaria para satisfazer suas ambições."
-JET_BLACK,Jet Black,Nero ebano,,Preto Absoluto
-JET_BLACK_DESC,A simple material used since the first days of mankind.,Un materiale semplice utilizzato sin dagli albori dell'umanità.,,Um material simples usado desde os primórdios da humanidade.
-WHITE_STEEL,White Steel,Acciaio bianco,,Aço Branco
+JET_BLACK,Jet Black,Nero ebano,Negro azabache,Preto Absoluto
+JET_BLACK_DESC,A simple material used since the first days of mankind.,Un materiale semplice utilizzato sin dagli albori dell'umanità.,Un material simple usado desde los principios de la humanidad.,Um material simples usado desde os primórdios da humanidade.
+WHITE_STEEL,White Steel,Acciaio bianco,Acero blanco,Aço Branco
 WHITE_STEEL_DESC,"A type of steel that is cheap to use, but weak by itself.
 Works best when combined with other materials.","Un tipo d'acciaio economico da usare, ma debole di base.
-Funziona molto bene quando viene combinato con altri materiali.",,"Um tipo de aço barato de usar, mas fraco por si só.
+Funziona molto bene quando viene combinato con altri materiali.","Un tipo de acero que es barato de usar, débil por sí mismo.
+Funciona mejor cuando es combinado con otros materiales.","Um tipo de aço barato de usar, mas fraco por si só.
 Funciona melhor quando combinado com outros materiais."
-RED_STEEL,Red Steel,Acciaio rosso,,Aço Vermelho
+RED_STEEL,Red Steel,Acciaio rosso,Acero rojo,Aço Vermelho
 RED_STEEL_DESC,"Steel that shines bright red, made from solidified magma.
 Excellent for making armor and weapons.","Acciaio che brilla di rosso chiaro, formato da magma solidificato.
-Ottimo per creare armi ed armature.",,"Aço vermelho brilhante, feito de magma solidificado.
+Ottimo per creare armi ed armature.","Acero que brilla un rojo llamativo, hecho de magma solidificado.
+Excelente para crear armaduras y armas.","Aço vermelho brilhante, feito de magma solidificado.
 Excelente para a fabricação de armas e armaduras."
-ORICHALCUM,Orichalcum,Oricalco,,Oricalco
-ORICHALCUM_DESC,"Some people claim that this is the ultimate material, created on a continent that doesn't exist.","Alcuni dicono che questo sia il materiale per eccellenza, creato su un continente che non esiste.",,"Algumas pessoas afirmam que este é o material supremo, criado em um continente que não existe."
-CARBON_STEEL,Carbon Steel,Acciaio al carbonio,,Aço Carbono
+ORICHALCUM,Orichalcum,Oricalco,Oricalco,Oricalco
+ORICHALCUM_DESC,"Some people claim that this is the ultimate material, created on a continent that doesn't exist.","Alcuni dicono che questo sia il materiale per eccellenza, creato su un continente che non esiste.","Algunas personas afirman que éste es el material definitivo, creado en un continente que no existe.","Algumas pessoas afirmam que este é o material supremo, criado em um continente que não existe."
+CARBON_STEEL,Carbon Steel,Acciaio al carbonio,Acero carbono,Aço Carbono
 CARBON_STEEL_DESC,"A kind of steel that's even tougher.
 It is deemed precious, as it makes strong gear.","Un tipo di acciaio ancora più duro.
-Ritenuto prezioso poiché utile per creare equipaggiamento forte.",,"Um tipo de aço ainda mais resistente.
+Ritenuto prezioso poiché utile per creare equipaggiamento forte.","Un tipo de acero que es aún más resistente.
+Es considerado precioso, ya que permite crear equipamiento fuerte.","Um tipo de aço ainda mais resistente.
 É considerado precioso, pois produz equipamentos resistentes."
-ADAMANTINE,Adamantine,Adamantino,,Adamantina
+ADAMANTINE,Adamantine,Adamantino,Adamantina,Adamantina
 ADAMANTINE_DESC,"The hardest material to be found.
 Makes extremely strong dual-handed weapons.","Il materiale più duro che si possa trovare nel mondo.
-Usato per creare armi a due mani dalla potenza devastante.",,"O material mais duro que se pode encontrar.
+Usato per creare armi a due mani dalla potenza devastante.","El material más duro de todos.
+Fabrica armas de dos manos fuertísimas.","O material mais duro que se pode encontrar.
 Faz armas de duas mãos extremamente fortes."
-DAMASCUS_STEEL,Damascus Steel,Acciaio damasco,,Aço Damasco
+DAMASCUS_STEEL,Damascus Steel,Acciaio damasco,Acero de damasco,Aço Damasco
 DAMASCUS_STEEL_DESC,"Created by combining a selection of layered materials.
 Extremely hard and resistant, you'll never see it rust.","Creato con la combinazione di vari materiali a strati.
-Molto duro e resistente, non lo vedrai mai arrugginire.",,"Criado a partir da combinação de uma seleção de materiais em camadas.
+Molto duro e resistente, non lo vedrai mai arrugginire.","Creado al combinar una selección de materiales en capas
+Extremadamente duro y resistente, nunca se oxidará.","Criado a partir da combinação de uma seleção de materiais em camadas.
 Extremamente duro e resistente, você nunca o verá enferrujar."
-WINDSTONE,Windstone,Pietra del vento,,Pedra do Vento
+WINDSTONE,Windstone,Pietra del vento,Piedra de viento,Pedra do Vento
 WINDSTONE_DESC,"A bright green, fresh material.
 If you listen closely, you can hear the sound of the wind.","Un materiale fresco di color verde chiaro.
-Se la avvicini all'orecchio, puoi sentire il suono del vento.",,"Um material verde-brilhante agradável ao toque.
+Se la avvicini all'orecchio, puoi sentire il suono del vento.","Un material verde brillante y fresco.
+Si escuchas con atención, puedes oír el sonido del viento.","Um material verde-brilhante agradável ao toque.
 Se você prestar atenção, poderá escutar o sussurro do vento."
-SEA_TEAR,Sea Tear,Lacrima del mare,,Lágrima do Mar
+SEA_TEAR,Sea Tear,Lacrima del mare,Lágrima del mar,Lágrima do Mar
 SEA_TEAR_DESC,"A mineral with the shape of a tear which shines bright blue.
 Can be used to make special equipment.","Un minerale a forma di lacrima, che brilla di azzurro.
-Può essere usato per creare equipaggiamento speciale.",,"Um mineral em forma de lágrima que brilha em azul intenso.
+Può essere usato per creare equipaggiamento speciale.","Un mineral con forma de lágrima que brilla un azul llamativo.
+Puede usarse para crear equipamiento especial.","Um mineral em forma de lágrima que brilha em azul intenso.
 Pode ser usado para fabricar equipamentos especiais."
 ,,,,
 --INTRO--,,,,
@@ -501,7 +512,20 @@ La disperazione ritorna, i cuori degli esseri umani sprofondano negli abissi pi�
 Anche senza la presenza del Signore delle Tenebre, il mondo, a cui è stata promessa la dannazione, si sta dirigendo inevitabilmente verso la via della distruzione.
 
 
-Da questo punto in poi, il futuro è visto diversamente.",,"1480, Valáquia
+Da questo punto in poi, il futuro è visto diversamente.","1480, Valaquia
+
+Cuatro años han pasado desde el fin de la maldición que infestó la tierra. Justo cuando parecía que la paz se había restablecido,
+grandes fuerzas de la noche despiertan de nuevo, llenas de sed de sangre e ira hacia todas las criaturas vivientes. Luchando con
+tormento y coraje -- Héctor, alguien que una vez aceptó la oscuridad -- busca encontrar el origen del renacimiento del mal.
+
+Con el retorno de la desesperación, los corazones de los humanos se hunden en un eterno pozo de odio, volviéndose en asesinos
+y acabando con miles de vidas miserables e inocentes. Nuevamente, los débiles son asesinados y los fuertes prevalecen
+-- tal como lo había ordenado el Señor Drácula hace tiempo.
+
+Incluso sin la presencia del rey de la noche, al mundo se le ha sido prometido un futuro de condenación, ya que inevitablemente
+es llevado al camino de la destrucción.
+
+A partir de ahora, el mañana deberá verse de otra manera.","1480, Valáquia
 
 Quatro anos se passaram desde o fim da maldição que assolava estas terras. Quando enfim parecia que a paz havia sido restaurada, grandes forças da noite despertam novamente, tomadas por sede de sangue e ódio contra todas as criaturas vivas. Entre tormento e coragem, Hector — um homem que outrora abraçara as trevas — busca a origem do renascimento do mal.
 
@@ -515,57 +539,69 @@ De agora em diante, o amanhã jamais será visto da mesma forma."
 -Abandoned Monastery entrance-,,,,
 DIALOG_MONASTERY_1,"So this is the monastery that emanates evil power.
 There is no doubt about it then...","Quindi questo è il monastero che emana energia oscura.
-Allora non c'è nessun dubbio a riguardo...",,"Este mosteiro... sinto um poder maligno partindo deste lugar.
+Allora non c'è nessun dubbio a riguardo...","Así que este es el monasterio que emana poder maligno.
+No hay duda al respecto...","Este mosteiro... sinto um poder maligno partindo deste lugar.
 Disso não tenho dúvidas..."
-DIALOG_MONASTERY_2,The curse is returning.,La maledizione è tornata.,,A maldição está voltando.
+DIALOG_MONASTERY_2,The curse is returning.,La maledizione è tornata.,La maldición está regresando.,A maldição está voltando.
 DIALOG_MONASTERY_3,"Yet I can't seem to understand why.
 How is this possible? The curse was supposed to become harmless.","Ma non riesco a capire perché.
-Com'è possibile? La maledizione doveva diventare qualcosa di insignificante.",,"Ainda assim eu não consigo entender.
+Com'è possibile? La maledizione doveva diventare qualcosa di insignificante.","Pero no logro entender por qué.
+¿Cómo es posible? Se suponía que la maldición se volvería inofensiva.","Ainda assim eu não consigo entender.
 Como isso é possível? A maldição deveria ter sido dissipada."
 DIALOG_MONASTERY_4,"I have seen it with my own eyes!
 That demonic power fading away, and the darkness being cast aside.","L'ho visto con i miei occhi!
-Quel potere demoniaco che spariva, e con sé l'oscurità.",,"Eu vi com meus próprios olhos!
+Quel potere demoniaco che spariva, e con sé l'oscurità.","¡Lo había visto con mis propios ojos!
+Ese poder demoníaco desvaneciéndose y la oscuridad disipando.","Eu vi com meus próprios olhos!
 Aquele poder demoníaco desaparecendo, e com ele a escuridão."
 DIALOG_MONASTERY_5,"There must me something else at play here.
 Something out of our minds...","Dev'esserci qualcos'altro in mezzo qui.
-Qualcosa che ci sta sfuggendo di mente...",,"Deve ter algo mais acontecendo aqui.
+Qualcosa che ci sta sfuggendo di mente...","Debe haber algo más en juego aquí.
+Algo fuera de nuestra imaginación...","Deve ter algo mais acontecendo aqui.
 Algo que estamos ignorando..."
 DIALOG_MONASTERY_6,"But first, I shall explore this monastery.
 This place reeks of evil.","Ma prima, esplorerò questo monastero.
-Questo posto puzza di malvagità.",,"Mas primeiro, vou explorar este mosteiro.
+Questo posto puzza di malvagità.","Pero primero, exploraré este monasterio.
+Este lugar apesta a maldad.","Mas primeiro, vou explorar este mosteiro.
 Este lugar fede a maldade."
 ,,,,
 --Abandoned Monastery tombstone puzzle--,,,,
-DIALOG_MONASTERY_PUZZLE_1,"An enigma? There are three tombstones, each with a shape and a number carved into them.","Un enigma? Ci sono 3 tombe, ciascuna con una figura e un numero incise sopra.",,"Uma charada? Existem três lápides, cada uma com um formato e um número esculpidos."
-DIALOG_MONASTERY_PUZZLE_2,"The first one looks like a skeleton, the second one a bat, and the last one... a helmet.","La prima figura sembra uno scheletro, il secondo un pipistrello, e l'ultimo... un elmo.",,"O primeiro parece um esqueleto, o segundo um morcego e o último... um capacete."
+DIALOG_MONASTERY_PUZZLE_1,"An enigma? There are three tombstones, each with a shape and a number carved into them.","Un enigma? Ci sono 3 tombe, ciascuna con una figura e un numero incise sopra.","¿Un enigma? Hay tres lápidas, cada una con una forma y un número tallado.","Uma charada? Existem três lápides, cada uma com um formato e um número esculpidos."
+DIALOG_MONASTERY_PUZZLE_2,"The first one looks like a skeleton, the second one a bat, and the last one... a helmet.","La prima figura sembra uno scheletro, il secondo un pipistrello, e l'ultimo... un elmo.","El primero parece un esqueleto, el segundo un murciélago y el último... un casco.","O primeiro parece um esqueleto, o segundo um morcego e o último... um capacete."
 DIALOG_MONASTERY_PUZZLE_3,"And I must solve this to explore further beyond.
 How bothersome.","E devo risolvere questo enigma per continuare l'esplorazione.
-Che seccatura.",,"E eu preciso resolver isso para explorar mais.
+Che seccatura.","Y debo resolver esto para explorar más allá.
+Qué fastidio.","E eu preciso resolver isso para explorar mais.
 Que inoportuno."
 ,,,,
 --Abandoned Monastery devil forging--,,,,
 DIALOG_MONASTERY_FORGING_1,"Such astonishing power.
 Is it coming from that sculpture?","Che potere straordinario.
-Proviene da quella statua?",,"Que poder incrível.
+Proviene da quella statua?","Qué poder tan asombroso.
+¿Proviene de esa escultura?","Que poder incrível.
 Está vindo daquela escultura?"
 DIALOG_MONASTERY_FORGING_2,"I remember this feeling.
 Devil forging... It seems that I can never get rid of this demonic power.
 ","Ricordo questa sensazione, la forgiatura diabolica...
-Sembra che io non possa mai sbarazzarmi di questo potere demoniaco.",,"Eu me lembro dessa sensação.
+Sembra che io non possa mai sbarazzarmi di questo potere demoniaco.","Recuerdo esa sensación.
+Forja demoníaca... Parece que nunca podré librarme de este poder endemoniado.","Eu me lembro dessa sensação.
 Forja de demônios... Parece que nunca conseguirei me livrar desse poder diabólico."
 DIALOG_MONASTERY_FORGING_3,"But perhaps this is the only way to find out what's going on.
 I can feel the darkness in the air, clinging to the hearts of humans.
 ","Ma forse questo è l'unico modo per scoprire cosa sta succedendo.
-Posso sentire l'oscurità nell'aria, oscurità che tende al cuore delle persone.",,"Mas talvez seja a única forma de descobrir o que está havendo.
+Posso sentire l'oscurità nell'aria, oscurità che tende al cuore delle persone.","Pero quizás esta sea la única manera de averiguar qué está pasando.
+Puedo sentir la oscuridad en el aire, aferrándose a los corazones de los humanos.","Mas talvez seja a única forma de descobrir o que está havendo.
 Consigo sentir a escuridão no ar, agarrando-se aos corações dos homens."
 DIALOG_MONASTERY_FORGING_4,"...I will reclaim this power once again.
 Hopefully, for the last time.
 ","...Riprenderò in possesso questo potere di nuovo.
-Sperando che sia davvero l'ultima volta.",,"...Eu reivindicarei esse poder novamente.
+Sperando che sia davvero l'ultima volta.","...Recuperaré este poder una vez más.
+Ojalá sea por última vez.","...Eu reivindicarei esse poder novamente.
 E dessa vez espero que seja a última."
 DIALOG_MONASTERY_FORGING_5,"Now, how did it work?
-I must remember the procedure for devil forging...","Ora, com'è che funzionava?
-Devo ricordarmi la procedura...",,"Certo... como era mesmo?
+I must remember the procedure for devil forging...
+","Ora, com'è che funzionava?
+Devo ricordarmi la procedura...","Ahora bien, ¿cómo funcionaba?
+Debo recordar el procedimiento para la forja demoníaca...","Certo... como era mesmo?
 Preciso me lembrar como se forja um demônio..."
 ,,,,
 --First encounter with Carmilla--,,,,
@@ -656,21 +692,24 @@ Cerca di capire cosa hai combinato.
 FIRST_CARMILLA_DIALOGUE_43,"We shall meet again, Hector.","Ci rivedremo, Hector.",,
 ,,,,
 --Fagaras forest intro--,,,,
-DIALOG_FAGARAS_INTRO_1,"They say that this forest is infested by the spirits of dead women, who lost their lives here.",Dicono che questa foresta sia infestata dagli spiriti di donne che hanno perso la vita qui.,,Ouvi dizer que esta floresta está tomada por espíritos de mulheres que morreram aqui.
+DIALOG_FAGARAS_INTRO_1,"They say that this forest is infested by the spirits of dead women, who lost their lives here.",Dicono che questa foresta sia infestata dagli spiriti di donne che hanno perso la vita qui.,"Dicen que este bosque está infestado por los espíritus de mujeres muertas, que perdieron la vida aquí.",Ouvi dizer que esta floresta está tomada por espíritos de mulheres que morreram aqui.
 DIALOG_FAGARAS_INTRO_2,"They would take this path to escape the witch hunts.
-Julia told me about this, with fear in her eyes and grief in her heart.","Facevano questo percorso per fuggire dalla caccia alle streghe.
-Julia mi disse ciò, con una pelle d'oca e un cuore addolorato.",,"Elas vinham por este caminho para escapar da caça às bruxas.
+Julia told me about this, with fear in her eyes and grief in her heart.
+","Facevano questo percorso per fuggire dalla caccia alle streghe.
+Julia mi disse ciò, con una pelle d'oca e un cuore addolorato.","Tomarían este camino para escapar de la caza de brujas.
+Julia me contó esto con miedo en los ojos y dolor en su corazón.","Elas vinham por este caminho para escapar da caça às bruxas.
 Julia me contou essa história com medo nos olhos e tristeza no coração."
-DIALOG_FAGARAS_INTRO_3,"Yet humans still do not understand that I am the wielder of such dark powers, not poor defenseless women.","Eppure gli umani non hanno ancora capito che io sono colui che possiede i poteri oscuri, non delle povere donne indifese.",,"Os humanos ainda não entendem que eu sou o portador desses poderes obscuros, e não pobres mulheres indefesas."
-DIALOG_FAGARAS_INTRO_4,"And it is this very accursed power that's going to save countless human lives. Lives that I previously did not care about.",Ed è proprio grazie a questo maledetto potere che molte vite umane si salveranno. Vite di cui non m'importava nulla prima d'ora.,,E é esse poder tão maldito que vai salvar inúmeras vidas humanas. Vidas com as quais eu antes não me importava.
+DIALOG_FAGARAS_INTRO_3,"Yet humans still do not understand that I am the wielder of such dark powers, not poor defenseless women.","Eppure gli umani non hanno ancora capito che io sono colui che possiede i poteri oscuri, non delle povere donne indifese.","Sin embargo, los humanos aún no comprenden que yo soy el portador de esos poderes oscuros, no pobres mujeres indefensas.","Os humanos ainda não entendem que eu sou o portador desses poderes obscuros, e não pobres mulheres indefesas."
+DIALOG_FAGARAS_INTRO_4,"And it is this very accursed power that's going to save countless human lives. Lives that I previously did not care about.
+",Ed è proprio grazie a questo maledetto potere che molte vite umane si salveranno. Vite di cui non m'importava nulla prima d'ora.,Y es este mismo poder maldito el que salvará incontables vidas humanas. Vidas que antes no me importaban.,E é esse poder tão maldito que vai salvar inúmeras vidas humanas. Vidas com as quais eu antes não me importava.
 ,,,,
 --Stage titles--,,,,
-ABANDONED_MONASTERY_TITLE,Abandoned Monastery,Monastero abbandonato,,Mosteiro Abandonado
-FAGARAS_FOREST_TITLE,Fagaras Forest,Foresta Fagaras,,Floresta Fagaras
+ABANDONED_MONASTERY_TITLE,Abandoned Monastery,Monastero abbandonato,Monasterio abandonado,Mosteiro Abandonado
+FAGARAS_FOREST_TITLE,Fagaras Forest,Foresta Fagaras,Bosque Fagaras,Floresta Fagaras
 ,,,,
 --Tutorials--,,,,
-TUTORIAL_BOX_CONTINUE,[right]Press [[Cross]] to continue.[/right],[right]Premi [[Cross]] per continuare.[/right],,[right]Pressione [[Cross]] para continuar.[/right]
-GUARDING,GUARDING,PARARE,,DEFESA
+TUTORIAL_BOX_CONTINUE,[right]Press [[Cross]] to continue.[/right],[right]Premi [[Cross]] per continuare.[/right],[right]Presiona [[Cross]] para continuar.[/right],[right]Pressione [[Cross]] para continuar.[/right]
+GUARDING,GUARDING,PARARE,GUARDIA,DEFESA
 GUARDING_DESC,"By holding [[R1]] down, Hector can block incoming attacks, negating most, if not
 all damage.
 
@@ -682,13 +721,18 @@ nemici, riducendo o negando i danni subiti.
 Se l'attacco parato è molto potente, vengono subiti dei danni in parata.
 Hector può parare solo un paio di attacchi alla volta,
 dopo i quali la sua guardia verrà spezzata,
-lasciandolo vulnerabile.",,"Ao segurar [[R1]], Hector pode bloquear ataques recebidos,
+lasciandolo vulnerabile.","Al mantener [[R1]] presionado, Héctor puede bloquear ataques entrantes, negando
+la mayoría, si no todo el daño.
+
+Si el daño base del ataque bloqueado es alto, se recibirá un poco de daño por astillado.
+Héctor solo puede bloquear un par de golpes a la vez, después de lo cual sufrirá una
+rompida de guardia, dejándolo vulnerable.","Ao segurar [[R1]], Hector pode bloquear ataques recebidos,
 anulando a maior parte, se não todo o dano.
 
 Se o dano base do ataque bloqueado for alto, algum dano residual
 ainda será recebido. Hector só pode bloquear alguns golpes por vez,
 após os quais sofrerá uma quebra de guarda, o que o deixará vulnerável."
-GUARD_HEALTH,GUARD HEALTH AND COMBO BREAKS,DURATA DELLA GUARDIA ED EVITARE COMBO,,SAÚDE DA DEFESA E QUEBRAS DE COMBO
+GUARD_HEALTH,GUARD HEALTH AND COMBO BREAKS,DURATA DELLA GUARDIA ED EVITARE COMBO,AGUANTE DE GUARDIA Y ROMPIDA DE COMBOS,SAÚDE DA DEFESA E QUEBRAS DE COMBO
 GUARD_HEALTH_DESC,"Guard health represents how many hits Hector
 can block before suffering from a guard break.
 
@@ -705,7 +749,7 @@ colpi può ancora parare, e si ripristinano col tempo.
 
 I nemici possono colpire Hector ripetutamente se lo circondano.
 Per evitare di ricevere danni ripetuti, è possibile parare
-immediatamente dopo aver subito un colpo.",,"A saúde da defesa representa quantos golpes Hector
+immediatamente dopo aver subito un colpo.",peanits,"A saúde da defesa representa quantos golpes Hector
 consegue bloquear antes de sofrer uma quebra de guarda.
 
 Os dois orbes abaixo do medidor de PM representam
@@ -892,7 +936,7 @@ de 3 PM por acerto.
 atributo elemental.[/color]"
 ,,,,
 --Hints--,,,,
-SKILLS_LEARNED_MESSAGE,Learned [color=yellow]%s[/color] and [color=yellow]%s[/color].,Imparato [color=yellow]%s[/color] e [color=yellow]%s[/color].,como tengo q conjugar esto,Aprendeu [color=yellow]%s[/color] e [color=yellow] %s[/color].
+SKILLS_LEARNED_MESSAGE,Learned [color=yellow]%s[/color] and [color=yellow]%s[/color].,Imparato [color=yellow]%s[/color] e [color=yellow]%s[/color].,Haz aprendido [color=yellow]%s[/color] y [color=yellow]%s[/color].,Aprendeu [color=yellow]%s[/color] e [color=yellow] %s[/color].
 HINT_1,Press [[Square]] to attack.,Premi [[Square]] per attaccare,Presiona [[Square]] para atacar.,Pressione [[Square]] para atacar.
 HINT_2,Press [[Cross]] to jump.,Premi [[Cross]] per saltare.,Presiona [[Cross]] para saltar.,Pressione [[Cross]] para pular.
 HINT_3,"Press [[Start]] to
@@ -912,9 +956,9 @@ drop off the platform.","Premi [[Cross]] mentre sei accovacciato
 su una piattaforma per scendere.","Presione [[Cross]] mientras agachado para
 bajarse de la plataforma.","Pressione [[Cross]] enquanto estiver agachado para
 descer da plataforma."
-HINT_9,Press [[L1]] to backdash.,Premi [[L1]] per schivare all'indietro.,,
+HINT_9,Press [[L1]] to backdash.,Premi [[L1]] per schivare all'indietro.,Presiona [[L1]] para esquivar hacia atrás.,
 HINT_10,Seems like a good place for devil forging.,"Sembra un buon posto per una
-forgiatura diabolica.",Parece un buen lugar para forjar demonios.,Parece um bom lugar para forjar um demônio.
+forgiatura diabolica.",Parece un buen lugar para forja demoníaca.,Parece um bom lugar para forjar um demônio.
 ,,,,
 HINT_11,"Axes are strong weapons, but Hector is
 unable to crouch attack with them.","Le asce sono armi potenti, ma Hector
@@ -926,8 +970,15 @@ HINT_13,If only there was a way to get rid of this log...,Se solo ci fosse un mo
 ,,,,
 --Save--,,,,
 SAVE_GAME_BUTTON,Save Game,Salva partita,Guardar partida,Salvar o Jogo
-WARP_BUTTON,Warp,Teletrasportati,Teletransportar,Teleportar
+TELEPORT_GAME_BUTTON,Teleport,Teletrasporto,Teletransportar,Teleportar
 EXIT_SAVE_BUTTON,Exit,Esci,Salir,Sair
+,,,,
+--Teleport destinations--,,,,
+ABANDONED_MONASTERY_ENTRANCE,Abandoned Monastery - Entrance,Monastero abbandonato - Entrata,,
+ABANDONED_MONASTERY_GAUNTLET,Abandoned Monastery - Gauntlet,Monastero abbandonato - Arena,,
+ABANDONED_MONASTERY_TOP,Abandoned Monastery - Top floor,Monastero abbandonato - Pinnacolo,,
+FAGARAS_LEFT,Fagaras Forest - Left cave path,Foresta Fagaras - Cammino sinistro,,
+FAGARAS_RIGHT,Fagaras Forest - Right cave path,Foresta Fagaras - Cammino destro,,
 ,,,,
 --Enemies--,,,,
 ZOMBIE,Zombie,Zombie,Zombí,Zumbi
@@ -950,7 +1001,7 @@ WARG,Warg,Warg,Huargo,Feral
 KAMIKAZE_RAVEN,Kamikaze Raven,Uccello esplosivo,Cuervo kamikaze,Pássaro Explosivo
 MEDUSA_HEAD,Medusa Head,Testa di medusa,Cabeza medusa,Cabeça de Medusa
 DEVIL,Devil,Diavolo,Diablo,Demônio
-UKOBACK,Ukoback,Ukoback,,
+UKOBACK,Ukoback,Ukoback,Ukobach,
 ,,,,
 --Innocent Devil Skills--,,,,
 HEAL_SKILL_ID,Heal,Guarigione,Cura,Cura
