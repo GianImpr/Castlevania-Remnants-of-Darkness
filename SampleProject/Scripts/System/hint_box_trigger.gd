@@ -14,4 +14,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	Global.tutorial_box.activate = true
 	Global.tutorial_box.time = time
 	Global.tutorial_box.text = text
-	Global.player.stats.hint_flags[flag_id] = true
+	if flag_id > 0:
+		Global.player.stats.hint_flags[flag_id] = true
