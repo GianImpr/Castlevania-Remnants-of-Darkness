@@ -62,7 +62,6 @@ func enterDoor():
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	can_open_door = false
-	print(body.get_class())
 
 
 
