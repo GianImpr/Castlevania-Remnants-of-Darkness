@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cm67rjq4or1c8" path="res://assets/sprites/Tiles/mountain.png" id="3_nmb73"]
 [ext_resource type="Texture2D" uid="uid://c0qsvc0xjt6x1" path="res://assets/sprites/Tiles/outsideMonastery.png" id="4_mpngg"]
 [ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="5_h2snl"]
-[ext_resource type="Texture2D" uid="uid://dmoq6qwe7jnrw" path="res://assets/sprites/Objects/Doors/SpecialRooms/GoldenDoor.png" id="6_6brl1"]
+[ext_resource type="Texture2D" uid="uid://biwn5irdj8rpr" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoor.png" id="6_dm63n"]
 [ext_resource type="Texture2D" uid="uid://bpiy0qh3bsdit" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoorAura.png" id="7_b5m8g"]
 [ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="8_4kraw"]
 [ext_resource type="PackedScene" uid="uid://bnsy1kwfc8603" path="res://SampleProject/extra_scenes/stage_elements/combat_door.tscn" id="8_dnig2"]
@@ -2270,29 +2270,42 @@ color = Color(0, 1, 1, 1)
 [node name="SaveDoor" parent="." instance=ExtResource("5_h2snl")]
 position = Vector2(496, 353)
 flipped_to_left = true
-spritesheet = ExtResource("6_6brl1")
+spritesheet = ExtResource("6_dm63n")
 aura_sheet = ExtResource("7_b5m8g")
 aura_color = Color(0.75, 0, 0.0124998, 1)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="SnakeDoorEvent" type="StaticBody2D" parent="." node_paths=PackedStringArray("hint_14", "hint_15")]
 position = Vector2(922, 288)
 script = ExtResource("8_iafjq")
+event_flag = 7
+hint_14 = NodePath("HintBoxTrigger")
+hint_15 = NodePath("HintBoxTrigger2")
 
-[node name="HintBoxTrigger" parent="StaticBody2D" instance=ExtResource("8_4kraw")]
-position = Vector2(-441, -298)
+[node name="HintBoxTrigger" parent="SnakeDoorEvent" instance=ExtResource("8_4kraw")]
+position = Vector2(-440, -298)
 text = "HINT_14"
 time = 3.0
 
-[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+[node name="HintBoxTrigger2" parent="SnakeDoorEvent" instance=ExtResource("8_4kraw")]
+position = Vector2(-440, -298)
+flag_id = 15
+text = "HINT_15"
+time = 3.0
+
+[node name="Area2D" type="Area2D" parent="SnakeDoorEvent"]
+position = Vector2(-450, 65)
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
-position = Vector2(-448, 65)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SnakeDoorEvent/Area2D"]
+shape = SubResource("WorldBoundaryShape2D_ap8j6")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SnakeDoorEvent"]
+position = Vector2(-444, 65)
 shape = SubResource("WorldBoundaryShape2D_ap8j6")
 
 [node name="Node2D2" parent="." instance=ExtResource("8_dnig2")]
-position = Vector2(944, 480)
+position = Vector2(944, 352)
 combat_flag_id = 4
 boss_door = true
 
-[connection signal="body_entered" from="StaticBody2D/Area2D" to="StaticBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="SnakeDoorEvent/Area2D" to="SnakeDoorEvent" method="_on_area_2d_body_entered"]
