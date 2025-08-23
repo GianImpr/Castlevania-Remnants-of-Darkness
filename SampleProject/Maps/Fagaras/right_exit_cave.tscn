@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://b58ood7hu0g21" path="res://assets/sprites/Tiles/FagarasCave.png" id="3_f36vx"]
 [ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="4_6783m"]
 [ext_resource type="PackedScene" uid="uid://djw0ueyeiotcq" path="res://SampleProject/enemies/Warg/warg.tscn" id="5_f4usc"]
-[ext_resource type="PackedScene" uid="uid://fld271wig6jo" path="res://SampleProject/enemies/Banshee/banshee.tscn" id="6_38rs8"]
 [ext_resource type="PackedScene" uid="uid://ctg2sggf2ujvj" path="res://SampleProject/enemies/Slaughterer/slaughterer.tscn" id="8_ge76a"]
 [ext_resource type="PackedScene" uid="uid://bn5w03bpeuhmt" path="res://SampleProject/enemies/ArmorKnight/armor_knight.tscn" id="9_5cmgo"]
 [ext_resource type="PackedScene" uid="uid://crkxe62hk26kh" path="res://SampleProject/enemies/BlueRaven/kamikaze_raven.tscn" id="10_d3505"]
 [ext_resource type="PackedScene" uid="uid://dfuncyp0yhrbk" path="res://SampleProject/enemies/Slinger/slinger.tscn" id="11_mfn2a"]
+[ext_resource type="PackedScene" uid="uid://bwr5frmmnkw6y" path="res://SampleProject/enemies/FloatingSkull/floating_skull.tscn" id="11_ptuf2"]
 [ext_resource type="PackedScene" uid="uid://bcqff14dmgwpf" path="res://SampleProject/enemies/BlackCrow/black_crow.tscn" id="12_7ct8g"]
 [ext_resource type="PackedScene" uid="uid://bkyptgxub2ly0" path="res://SampleProject/extra_scenes/stage_elements/purple_candle.tscn" id="13_3oowh"]
 [ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="13_os27q"]
@@ -782,9 +782,6 @@ position = Vector2(31, 189)
 [node name="Warg" parent="Enemies" instance=ExtResource("5_f4usc")]
 position = Vector2(715, 184)
 
-[node name="Banshee" parent="Enemies" instance=ExtResource("6_38rs8")]
-position = Vector2(505, 478)
-
 [node name="Slaughterer" parent="Enemies" instance=ExtResource("8_ge76a")]
 position = Vector2(594, 868)
 
@@ -817,6 +814,18 @@ position = Vector2(1276, 183)
 
 [node name="BlackCrow3" parent="Enemies" instance=ExtResource("12_7ct8g")]
 position = Vector2(1326, 183)
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("11_ptuf2")]
+position = Vector2(640, 451)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("11_ptuf2")]
+position = Vector2(513, 546)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("11_ptuf2")]
+position = Vector2(913, 515)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("11_ptuf2")]
+position = Vector2(1126, 702)
 
 [node name="Candles" type="Node" parent="."]
 
