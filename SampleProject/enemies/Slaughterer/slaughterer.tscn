@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://c0u0mu886ooj5" path="res://SampleProject/enemies/Slaughterer/slaughterer_fireball.tscn" id="11_jli4x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee7qv"]
-size = Vector2(35.5, 53.5)
+size = Vector2(41, 53.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2l8yh"]
 size = Vector2(56.5, 16)
@@ -464,7 +464,7 @@ hframes = 8
 vframes = 6
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
-position = Vector2(11.75, 4.75)
+position = Vector2(9, 4.75)
 shape = SubResource("RectangleShape2D_ee7qv")
 
 [node name="Timer" type="Timer" parent="."]
