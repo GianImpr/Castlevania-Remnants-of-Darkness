@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://ctewc6fnobq21"]
+[gd_scene load_steps=24 format=4 uid="uid://ctewc6fnobq21"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_ajhq2"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_5gxsm"]
@@ -2211,6 +2211,12 @@ max_value = 5.0
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.498567, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1cthr"]
+normal = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3fpl6"]
+size = Vector2(28, 143)
+
 [node name="Room" type="Node2D"]
 script = ExtResource("1_ajhq2")
 stage_music = "forest"
@@ -2324,3 +2330,13 @@ position = Vector2(186, 1360)
 
 [node name="MonasteryCandle2" parent="Candles" instance=ExtResource("10_3evl3")]
 position = Vector2(282, 656)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(940, -143)
+shape = SubResource("WorldBoundaryShape2D_1cthr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(973, -72.5)
+shape = SubResource("RectangleShape2D_3fpl6")
