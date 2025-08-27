@@ -16,6 +16,7 @@ func Physics_Update(delta: float):
 	check_is_blocking()
 	_can_activate_magic()
 	
+	
 	if player.direction:
 		Transitioned.emit(self, "guard_walk")
 	

@@ -12,11 +12,16 @@ func enter():
 	animation.play("guarding", -1, 1.7)
 	sound.play_sound_effect_from_library("block")
 	
+	if player.stats.canApplySkill(Skill.Skills.AWARENESS):
+		player.focus_gain_duration.start()
+		
+	
 func exit():
 	player.is_hurt = false
 	
 func Update(delta: float):
-	pass
+	if player.stats.canApplySkill(Skill.Skills.GUARD_STANCE):
+		can_attack()
 	
 func Physics_Update(delta: float):
 	can_die()

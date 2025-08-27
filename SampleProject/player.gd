@@ -43,7 +43,7 @@ const SPEED = 260.0
 const IFRAMES_HIT_THRESHOLD: int = 3
 const FOCUS_GAIN_RATIO: int = 10
 const GUARD_RECOVERY_TIME: int = 3
-const MAX_WEAPON_RANK = 5
+const MAX_WEAPON_RANK = 1
 
 var current_hits_taken_before_iframes: int = 0
 var reset_position: Vector2
@@ -241,7 +241,7 @@ func expNeededToLvUp() -> int:
 	
 func expNeededToRankUpWeapon() -> int:
 	var weapon_type: int = 4
-	var allowed_weapon_types: Array[Weapon.Type] = [Weapon.Type.SWORD, Weapon.Type.AXE]
+	var allowed_weapon_types: Array[Weapon.Type] = [Weapon.Type.SWORD, Weapon.Type.AXE, Weapon.Type.GREATSWORD]
 	if stats.equipment["weapon"] != 0:
 		weapon_type = stats.searchItemInCompendium(stats.equipment["weapon"], stats.weapon_compendium).type
 	var next_weapon_lv = stats.weapon_proficiency[weapon_type]["lv"]+1

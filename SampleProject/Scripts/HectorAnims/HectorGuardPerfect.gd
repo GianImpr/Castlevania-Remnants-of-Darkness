@@ -8,6 +8,10 @@ func enter():
 	animation.play("perfect_guarding", -1, 2.8)
 	sound.play_sound_effect_from_library("perfect_guard")
 	
+	if player.stats.canApplySkill(Skill.Skills.AWARENESS):
+		player.focus_gain_duration.start()
+
+	
 func exit():
 	player.is_hurt = false
 	
