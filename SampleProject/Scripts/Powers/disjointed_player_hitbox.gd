@@ -6,9 +6,12 @@ class_name DisjointedPlayerHitbox
 
 func _process(delta: float) -> void:
 	super(delta)
+	if self is AguniLaurelHitbox:
+		return
+		
 	if Global.player != null and Global.player.sprite.weapon != null:
 		base_attribute = Global.player.sprite.weapon.hitbox.base_attribute
-	elif self is not AguniLaurelHitbox:
+	else:
 		base_attribute = [Global.Attribute.SLASH]
 
 	

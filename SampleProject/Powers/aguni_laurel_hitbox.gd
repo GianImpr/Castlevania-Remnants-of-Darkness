@@ -18,9 +18,10 @@ func _on_hit(body: Node2D) -> void:
 		
 	hitbox_activated = false
 	enemies_hit.append(body)
-	get_tree().create_timer(iframes_duration).timeout.connect(enableHitbox)
+	get_tree().create_timer(iframes_duration).timeout.connect(enableHitbox.bind(body))
 	_on_body_entered(body, false)
 
-static func enableHitbox() -> void:
-	enemies_hit.clear()
+static func enableHitbox(body) -> void:
+	if body != null:
+		enemies_hit.erase(body)
 	hitbox_activated = true

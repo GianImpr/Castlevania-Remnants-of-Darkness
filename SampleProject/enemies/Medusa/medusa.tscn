@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvl5nkdk3iowa"]
+[gd_scene load_steps=31 format=3 uid="uid://dvl5nkdk3iowa"]
 
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/medusa.gd" id="1_gsdjv"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_vomdi"]
@@ -6,6 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://doii8n6cb153x" path="res://assets/sprites/Enemies/Medusa/Medusa.png" id="3_ftvva"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_f68lk"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_vl7nl"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSpawn.gd" id="7_bfexr"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaIdle.gd" id="8_ij2bj"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSword.gd" id="9_igd4c"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaBeam.gd" id="10_s3igb"]
+[ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="11_m6kje"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/State.gd" id="12_o8c5k"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSummon.gd" id="12_slqe2"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaStoneCircle.gd" id="13_eq2aj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nnb1"]
 size = Vector2(43.5, 59.5)
@@ -178,6 +186,37 @@ tracks/0/keys = {
 "update": 1,
 "values": [11, 12, 13, 14, 13, 12, 11]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Beam")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shootBeam"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xfjkc"]
+resource_name = "magic"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 6, 5]
+}
 
 [sub_resource type="Animation" id="Animation_u4yjj"]
 resource_name = "move"
@@ -212,6 +251,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [5, 6, 5]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Summon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"summonSnakes"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_y4yk6"]
@@ -250,12 +303,13 @@ _data = {
 "die": SubResource("Animation_po0w4"),
 "idle": SubResource("Animation_17pf7"),
 "laser": SubResource("Animation_l8ltl"),
+"magic": SubResource("Animation_xfjkc"),
 "move": SubResource("Animation_u4yjj"),
 "summon": SubResource("Animation_uojy7"),
 "sword": SubResource("Animation_y4yk6")
 }
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[node name="Medusa" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 0
@@ -307,6 +361,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="SwordShape" type="CollisionShape2D" parent="SwordHitbox"]
+visible = false
 position = Vector2(27.5, -18.5)
 shape = SubResource("RectangleShape2D_iexoe")
 disabled = true
@@ -337,6 +392,33 @@ damage_node = ExtResource("5_vl7nl")
 
 [node name="StateMachine" type="Node" parent="."]
 script = SubResource("GDScript_326py")
+
+[node name="Spawn" type="Node" parent="StateMachine"]
+script = ExtResource("7_bfexr")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_timer")]
+script = ExtResource("8_ij2bj")
+idle_duration_time = 0.7
+idle_duration_offset = 0.2
+idle_timer = NodePath("Duration")
+
+[node name="Duration" type="Timer" parent="StateMachine/Idle"]
+
+[node name="Sword" type="Node" parent="StateMachine"]
+script = ExtResource("9_igd4c")
+
+[node name="Beam" type="Node" parent="StateMachine"]
+script = ExtResource("10_s3igb")
+red_spark_scene = ExtResource("11_m6kje")
+
+[node name="Summon" type="Node" parent="StateMachine"]
+script = ExtResource("12_slqe2")
+
+[node name="StoneCircle" type="Node" parent="StateMachine"]
+script = ExtResource("13_eq2aj")
+
+[node name="Dying" type="Node" parent="StateMachine"]
+script = ExtResource("12_o8c5k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

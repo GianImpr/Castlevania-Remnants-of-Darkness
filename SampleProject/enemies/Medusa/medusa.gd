@@ -12,6 +12,7 @@ var facing_position: int
 @export var laser_hitbox: Area2D
 @export var laser_damage_multiplier: float = 0.1
 @export var laser_chip_damage: int = 0
+var max_HP: int
 
 func _ready() -> void:
 	super()
@@ -20,6 +21,7 @@ func _ready() -> void:
 	hitbox_iframe.body_entered.connect(_on_area_2d_body_entered)
 	sword_hitbox.body_entered.connect(_on_sword_body_entered)
 	laser_hitbox.body_exited.connect(_on_laser_body_entered)
+	max_HP = stats.HP
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and motion_mode == MotionMode.MOTION_MODE_GROUNDED:
@@ -41,3 +43,7 @@ func _on_laser_body_entered(body: Node2D) -> void:
 func _on_iframe_timer_timeout() -> void:
 	if stats.HP > 0:
 		hitbox_iframe.get_child(0).set_deferred("disabled", false)
+
+func setBossBar() -> void:
+	#if boss and state_machine.current_state is MedusaIdle and Global.boss_bar.enemy != self:
+		Global.boss_bar.enemy = self

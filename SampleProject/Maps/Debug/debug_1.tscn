@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_m4qdj"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_1u5xp"]
 [ext_resource type="Texture2D" uid="uid://b4d0xyxsq3tff" path="res://assets/sprites/Tiles/Debug.png" id="3_2ur68"]
-[ext_resource type="PackedScene" uid="uid://2vc38i25e1l" path="res://SampleProject/enemies/Ukoback/ukoback.tscn" id="4_m6ivy"]
+[ext_resource type="PackedScene" uid="uid://bn5w03bpeuhmt" path="res://SampleProject/enemies/ArmorKnight/armor_knight.tscn" id="4_hnaih"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ikyd"]
 texture = ExtResource("3_2ur68")
@@ -110,5 +110,14 @@ tile_set = SubResource("TileSet_cydyx")
 tile_map_data = PackedByteArray("AAALAAgAAAADAAAAAAAHAAsAAAADAAAAAAAIAAsAAAADAAAAAAAJAAsAAAADAAAAAAAMAAgAAAADAAAAAAANAAgAAAADAAAAAAAOAAgAAAADAAAAAAARAAoAAAADAAAAAAASAAoAAAADAAAAAAATAAoAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_t01tf")
 
-[node name="Ukoback" parent="." instance=ExtResource("4_m6ivy")]
-position = Vector2(806, 246)
+[node name="ArmorKnight" parent="." instance=ExtResource("4_hnaih")]
+position = Vector2(443, 388)
+
+[node name="ArmorKnight2" parent="." instance=ExtResource("4_hnaih")]
+position = Vector2(491, 388)
+
+[node name="ArmorKnight3" parent="." instance=ExtResource("4_hnaih")]
+position = Vector2(536, 388)
+
+[node name="ArmorKnight4" parent="." instance=ExtResource("4_hnaih")]
+position = Vector2(581, 388)
