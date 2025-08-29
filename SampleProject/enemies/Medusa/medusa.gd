@@ -12,15 +12,23 @@ var facing_position: int
 @export var laser_hitbox: Area2D
 @export var laser_damage_multiplier: float = 0.1
 @export var laser_chip_damage: int = 0
+@export_category("Other")
+@export var state_machine: Node
 var max_HP: int
+
+const ACTIONS = {
+	BEAM = "beam",
+	SUMMON = "summon",
+	STONECIRCLE = "stone_circle"
+}
 
 func _ready() -> void:
 	super()
-	facing_position = -1
+	facing_position = 1
 	iframe_timer.timeout.connect(_on_iframe_timer_timeout)
 	hitbox_iframe.body_entered.connect(_on_area_2d_body_entered)
 	sword_hitbox.body_entered.connect(_on_sword_body_entered)
-	laser_hitbox.body_exited.connect(_on_laser_body_entered)
+	laser_hitbox.body_entered.connect(_on_laser_body_entered)
 	max_HP = stats.HP
 
 func _physics_process(delta: float) -> void:
@@ -37,7 +45,7 @@ func _on_sword_body_entered(body: Node2D) -> void:
 	hit_target(sword_damage_multiplier, body, hitbox_iframe, sword_chip_damage, false, Global.Attribute.SLASH)
 
 func _on_laser_body_entered(body: Node2D) -> void:
-	hit_target(laser_damage_multiplier, body, hitbox_iframe, laser_chip_damage, true, Global.Attribute.STONE)
+	hit_target(laser_damage_multiplier, body, hitbox_iframe, laser_chip_damage, false, Global.Attribute.STONE)
 
 
 func _on_iframe_timer_timeout() -> void:
@@ -45,5 +53,12 @@ func _on_iframe_timer_timeout() -> void:
 		hitbox_iframe.get_child(0).set_deferred("disabled", false)
 
 func setBossBar() -> void:
-	#if boss and state_machine.current_state is MedusaIdle and Global.boss_bar.enemy != self:
+	if boss and Global.boss_bar.enemy != self:
 		Global.boss_bar.enemy = self
+
+func decideAction() -> void:
+	const PLAYER_NEARBY_DISTANCE: float = 50
+	if abs(Global.player.global_position.x - global_position.x) < PLAYER_NEARBY_DISTANCE and abs(Global.player.global_position.y - global_position.y) < PLAYER_NEARBY_DISTANCE and not Global.player.is_on_floor():
+		state_machine.current_state.Transitioned.emit(state_machine.current_state, "sword")
+	var action: String = ACTIONS.values().pick_random()
+	state_machine.current_state.Transitioned.emit(state_machine.current_state, action)
