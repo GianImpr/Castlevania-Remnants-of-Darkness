@@ -130,7 +130,7 @@ _data = {
 "walking": SubResource("Animation_v6umt")
 }
 
-[node name="MedusaSerpent" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "ray_cast_2d_right", "blood_particles")]
+[node name="MedusaSerpent" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("2_wtv1t")
@@ -140,8 +140,7 @@ stats = NodePath("EnemyStats")
 damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Timer")
 hitbox_iframe = NodePath("Hitbox")
-ray_cast_2d_left = NodePath("Left")
-ray_cast_2d_right = NodePath("Right")
+ray_cast_2d_left = NodePath("Collision")
 blood_particles = NodePath("BloodDamage")
 
 [node name="EnemyStats" type="Node" parent="."]
@@ -218,10 +217,5 @@ libraries = {
 "": SubResource("AnimationLibrary_mxhun")
 }
 
-[node name="Left" type="RayCast2D" parent="."]
-visible = false
+[node name="Collision" type="RayCast2D" parent="."]
 target_position = Vector2(-10, 0)
-
-[node name="Right" type="RayCast2D" parent="."]
-visible = false
-target_position = Vector2(10, 0)
