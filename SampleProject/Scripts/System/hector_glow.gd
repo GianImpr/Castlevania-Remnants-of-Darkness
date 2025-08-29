@@ -65,6 +65,9 @@ func editShaderParams(influence: float, speed: float, enabled: bool, color: Colo
 	material.set_shader_parameter("influence", influence)
 	material.set_shader_parameter("speed", speed)
 	material.set_shader_parameter("enabled", enabled)
+	
+func setPetrify(active: bool) -> void:
+	material.set_shader_parameter("petrified", active)
 
 
 func _on_glow_timeout() -> void:

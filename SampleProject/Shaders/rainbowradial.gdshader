@@ -8,6 +8,7 @@ uniform bool mix_colors = false;
 uniform bool enabled;
 uniform int sheet_columns = 20;
 uniform int sheet_rows = 20;
+uniform bool petrified;
 
 const float TWO_PI = 6.28318530718;
 
@@ -29,6 +30,10 @@ vec3 hsv2rgb(vec3 _c) {
 }
 
 void fragment() {
+	if (petrified) {
+		COLOR.rgb = vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114)));
+	}
+
 	if (enabled) {
 	vec2 sprite_sheet_size = vec2(textureSize(TEXTURE,0));
 	vec2 frame_size;
@@ -43,4 +48,5 @@ void fragment() {
 	vec2 pos = vec2(new_uv.x-0.5, new_uv.y-0.6);
 	COLOR.rgb += color * influence * hsv2rgb(vec3(((atan(pos.y, pos.x) + radians(360.0*TIME*speed)) / TWO_PI) + 0.5, length(pos) * 6.0, 1.0));
 	}
+
 }
