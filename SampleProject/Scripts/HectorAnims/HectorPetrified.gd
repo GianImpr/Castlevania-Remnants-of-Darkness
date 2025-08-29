@@ -50,6 +50,7 @@ func Update(delta: float):
 
 	if ticks_left <= 0 and not broken:
 		broken = true
+		player.is_hurt = false
 		animation.play("hurt", -1, 1.2)
 		applyMercyInvincibility.call()
 		player.sprite.setPetrify(false)
