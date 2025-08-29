@@ -13,6 +13,10 @@ class_name DestructibleBody2D
 @export var fake_explosions_group: String = "fake_explosion_particles"
 @export var randomize_seed: bool = false
 @export var debug_mode: bool = false
+@export var SPEED: Vector2
+@export var randomize_speed: bool = false
+@export var extra_z_index: int = 0
+@export var child_fixed_scale: float = 0
 
 var ps = PhysicsServer2D
 
@@ -239,6 +243,8 @@ func detonate():
 		child.gravity_scale = child_gravity_scale
 
 		var child_scale = randf_range(0.5, 1.5)
+		if child_fixed_scale:
+			child_scale = child_fixed_scale
 		child.find_child(object.sprite_name).scale = Vector2(child_scale, child_scale)
 		child.find_child(object.collision_name).scale = Vector2(child_scale, child_scale)
 
@@ -249,9 +255,13 @@ func detonate():
 		child.set_collision_layer_value(1, false)
 		child.set_collision_layer_value(3, false)
 		child.set_collision_mask_value(1, true)
-		child.linear_velocity.x = -400
+		
+		if randomize_speed:
+			child.linear_velocity = Vector2(randf_range(-SPEED.x, SPEED.x), randf_range(0, SPEED.y))
+		else:
+			child.linear_velocity = SPEED
 
-		child.z_index = 0 if randf() < 0.5 else -1
+		child.z_index = extra_z_index+0 if randf() < 0.5 else extra_z_index-1
 
 		var child_color = randf_range(100, 255) / 255
 		var color_tween = create_tween().bind_node(self)

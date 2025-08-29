@@ -148,7 +148,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:	
 	# Add the gravity.
-	if not is_on_floor() and not state_machine.current_state is HectorDying:
+	if not is_on_floor() and not motion_mode == MotionMode.MOTION_MODE_FLOATING:
 		velocity += get_gravity()*2 * delta
 
 	direction = Input.get_axis("move_left", "move_right")
@@ -374,3 +374,6 @@ func throwAxe() -> void:
 	var axe = throw_axe.instantiate()
 	MetSys.get_current_room_instance().add_child(axe)
 	axe.global_position = position + Vector2(98*facing_position, -5)
+
+func petrify() -> void:
+	stats.current_status = stats.Ailment.STONE

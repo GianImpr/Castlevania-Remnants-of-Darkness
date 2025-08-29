@@ -1,0 +1,72 @@
+[gd_scene load_steps=14 format=3 uid="uid://bt0ligyka3p1g"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/hector_statue_break.gd" id="1_jblxq"]
+[ext_resource type="PackedScene" uid="uid://chep82jj08ce4" path="res://SampleProject/extra_scenes/effects/hector_statue.tscn" id="2_qb3ku"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/DestructibleBody.gd" id="3_430xf"]
+[ext_resource type="Texture2D" uid="uid://c04vxsdtq4ws2" path="res://assets/sprites/Effects/Debris2.png" id="3_nvgqd"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_cffw0"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_13jou"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_46ajl"]
+[ext_resource type="AudioStream" uid="uid://ci4gtdwh6bnd0" path="res://assets/sounds/Objects/WallDamage.MP3" id="7_0eswd"]
+[ext_resource type="AudioStream" uid="uid://svjxleypen1h" path="res://assets/sounds/Objects/WallBreak.MP3" id="8_2v1l1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0orsv"]
+particles_animation = true
+particles_anim_h_frames = 11
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Resource" id="Resource_2533x"]
+script = ExtResource("6_46ajl")
+Tag = "damage"
+stream = ExtResource("7_0eswd")
+
+[sub_resource type="Resource" id="Resource_86dg1"]
+script = ExtResource("6_46ajl")
+Tag = "break"
+stream = ExtResource("8_2v1l1")
+
+[sub_resource type="Resource" id="Resource_3ibxi"]
+script = ExtResource("5_13jou")
+sound_effects = Array[ExtResource("6_46ajl")]([SubResource("Resource_2533x"), SubResource("Resource_86dg1")])
+
+[node name="HectorStatue" type="Node2D" node_paths=PackedStringArray("wall", "sound")]
+script = ExtResource("1_jblxq")
+wall = NodePath("Node2D/statue")
+sound = NodePath("PolyphonicAudio")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="statue" parent="Node2D" instance=ExtResource("2_qb3ku")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_430xf")
+blocks_impulse = 300.0
+blocks_gravity_scale = 0.7
+debris_max_time = 2.0
+remove_debris = true
+collision_layers = 12
+SPEED = Vector2(500, -500)
+randomize_speed = true
+extra_z_index = 6
+child_fixed_scale = 2.0
+
+[node name="Breaking" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_0orsv")
+emitting = false
+amount = 24
+lifetime = 0.7
+one_shot = true
+texture = ExtResource("3_nvgqd")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 42)
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = 3.0
+script = ExtResource("4_cffw0")
+audio_library = SubResource("Resource_3ibxi")

@@ -9,6 +9,8 @@ const HEIGHT_DECELERATION: float = 0.95
 const FADE_SCREEN_FADE_IN_COLOR: Color = Color(1,1,1,1)
 const FADE_IN_DURATION: float = 0.5
 
+func _ready() -> void:
+	HectorPetrified.resetGame = _on_reset_timeout
 
 func enter():
 	animation.play("dying", -1)

@@ -37,6 +37,7 @@ func remove_glow_if_glowing():
 func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool = false, attribute: Global.Attribute = Global.Attribute.HIT) -> int:
 	var damage = max((stats.ATK - body.stats.Stats["DEF"]/2)*multiplier, 1)
 	var damage_with_chip = damage + chip_damage
+	const STONE_DAMAGE_MULTIPLIER: float = 2
 		
 	if body.isGuarding():
 		if body.isPerfectGuarding():
@@ -57,12 +58,20 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 	else:
 		body.applyHitEffect(attribute)
 		
+	if not body.isGuarding() or body.stats.Stats["Guard"] == 0:
+		match attribute:
+			Global.Attribute.STONE:
+				body.petrify()
+		
 	if body.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
 		if guard_break:
 			damage = min(damage*0.6, body.stats.Stats["HP"]/10)
 		else:
 			damage = 0
 			
+	if body.state_machine.current_state is HectorPetrified:
+		damage *= STONE_DAMAGE_MULTIPLIER
+		
 	return damage
 	
 func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float = 0):

@@ -30,6 +30,15 @@ class_name HectorStats
 @export var weapon_proficiency: Array[Dictionary]
 @export var file_name: String
 
+enum Ailment {
+	GOOD,
+	POISON,
+	CURSE,
+	STONE
+}
+
+var current_status: Ailment = Ailment.GOOD
+
 var picked_items: Array[bool] #ID list checks for item pick-up flags
 var hint_flags: Array[bool] #ID list checks for hints
 var event_flags: Array[bool] #ID list checks for events (combat rooms and bosses are excluded)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=401 format=3 uid="uid://cenjpg3o6am6u"]
+[gd_scene load_steps=406 format=3 uid="uid://cenjpg3o6am6u"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorStats.gd" id="1_f0ls1"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
@@ -184,7 +184,10 @@
 [ext_resource type="AudioStream" uid="uid://hsx6jf5238fb" path="res://assets/sounds/Powerups/ActivateRelic.MP3" id="148_cgodx"]
 [ext_resource type="AudioStream" uid="uid://bq4ssv07uwxje" path="res://assets/sounds/Effects/Guard/PerfectGuard.MP3" id="151_gu28v"]
 [ext_resource type="PackedScene" uid="uid://dvtteviefcy4t" path="res://SampleProject/Powers/arctic_shield.tscn" id="151_q5ni2"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorPetrified.gd" id="153_8to1u"]
+[ext_resource type="PackedScene" uid="uid://bt0ligyka3p1g" path="res://SampleProject/extra_scenes/effects/hector_statue_break.tscn" id="154_7mmrn"]
 [ext_resource type="AudioStream" uid="uid://c3hff11461yhv" path="res://assets/sounds/InnocentDevils/InnocentCommand.MP3" id="154_q7ikr"]
+[ext_resource type="Texture2D" uid="uid://cdl1ueqd58vuq" path="res://assets/sprites/Effects/StoneDebris.png" id="155_s7xk3"]
 [ext_resource type="AudioStream" uid="uid://cp0wlsu0kr46r" path="res://assets/sounds/Effects/HectorHit/HitFire.MP3" id="156_roqt5"]
 [ext_resource type="AudioStream" uid="uid://bya56k86ttxfv" path="res://assets/sounds/Effects/HectorHit/HitIce.MP3" id="157_an6m8"]
 [ext_resource type="AudioStream" uid="uid://cr3vhib8t4q2a" path="res://assets/sounds/Effects/Swords/SwordSpin.WAV" id="160_oaxy7"]
@@ -4171,6 +4174,16 @@ func on_child_transition(state, new_state_name):
 	current_state = new_state
 "
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j0rjp"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_n1je8"]
+offsets = PackedFloat32Array(0, 0.101852, 0.365741)
+colors = PackedColorArray(1, 1, 1, 0.368627, 1, 1, 1, 0.239216, 1, 1, 1, 0)
+
 [sub_resource type="Resource" id="Resource_hltme"]
 script = ExtResource("17_eidx6")
 Tag = "jump"
@@ -4888,6 +4901,7 @@ FLOATING_SPEED = Vector2(0, -100)
 hurtbox = NodePath("../../CollisionShape2D")
 timer_reset = NodePath("Reset")
 blood = NodePath("../../BloodDamage")
+attack_state = null
 
 [node name="Reset" type="Timer" parent="StateMachine/Dying"]
 wait_time = 3.0
@@ -4952,6 +4966,7 @@ script = ExtResource("136_g7mo7")
 script = ExtResource("136_2ccld")
 recoil_speed = Vector2(150, -630)
 ignore_landing = NodePath("../Guard_break/Ignore_landing")
+attack_state = null
 
 [node name="Sword_spin" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_spin", "sword_spin_hitbox")]
 script = ExtResource("138_q0p4k")
@@ -4962,6 +4977,33 @@ attack_state = true
 [node name="Throw_axe" type="Node" parent="StateMachine"]
 script = ExtResource("141_js2j3")
 attack_state = true
+
+[node name="Petrified" type="Node" parent="StateMachine" node_paths=PackedStringArray("debris", "hurtbox")]
+script = ExtResource("153_8to1u")
+hector_statue_scene = ExtResource("154_7mmrn")
+debris = NodePath("Node2D/Debris")
+hurtbox = NodePath("../../CollisionShape2D")
+
+[node name="Node2D" type="Node2D" parent="StateMachine/Petrified"]
+
+[node name="Debris" type="CPUParticles2D" parent="StateMachine/Petrified/Node2D"]
+z_index = 7
+material = SubResource("CanvasItemMaterial_j0rjp")
+position = Vector2(0, 26)
+emitting = false
+amount = 16
+one_shot = true
+texture = ExtResource("155_s7xk3")
+emission_shape = 3
+emission_rect_extents = Vector2(16, 32)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+color_ramp = SubResource("Gradient_n1je8")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
 
 [node name="PolyphonicAudioPlayer" parent="." instance=ExtResource("15_lipy2")]
 bus = &"SFX"
