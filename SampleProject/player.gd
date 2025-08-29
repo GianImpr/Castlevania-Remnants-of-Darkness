@@ -101,13 +101,7 @@ func _process(delta: float) -> void:
 	#If harmed, become invulnerable for a while
 	set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped())
 	
-	# Update Hector's relic aura glow frame and facing position
-	if aura.frame != sprite.frame and not state_machine.current_state is HectorIdle or aura.frame != 0 and sprite.frame == 0:
-		aura.frame = sprite.frame
-		
-	if aura.flip_h != sprite.flip_h:
-		aura.flip_h = sprite.flip_h
-		
+	
 	guarding = isGuarding()
 	
 	if Input.is_action_just_pressed("guard") and can_perfect_guard():
@@ -343,7 +337,7 @@ func applyHitEffect(type: Global.Attribute) -> void:
 	sprite.influence_glow = 0.2
 	sprite.extra_influence_duration = 0
 	hit_effect_applied = true
-	if type != Global.Attribute.NONE and type != Global.Attribute.SLASH and type != Global.Attribute.HIT:
+	if type != Global.Attribute.NONE and type != Global.Attribute.SLASH and type != Global.Attribute.HIT and type != Global.Attribute.STONE:
 		effects.get_child(int(type)-3).emitting = true
 	match type:
 		Global.Attribute.FIRE:

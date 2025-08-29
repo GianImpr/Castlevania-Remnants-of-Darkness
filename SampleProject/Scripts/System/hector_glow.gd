@@ -48,6 +48,13 @@ func _process(delta: float) -> void:
 	if weapon != null:
 		flipWeapon()
 		
+func _physics_process(delta: float) -> void:
+	if get_parent().aura.frame != frame and not get_parent().state_machine.current_state is HectorIdle or get_parent().aura.frame != 0 and frame == 0:
+		get_parent().aura.frame = frame
+		
+	if get_parent().aura.flip_h != flip_h:
+		get_parent().aura.flip_h = flip_h
+
 	
 func editShaderParams(influence: float, speed: float, enabled: bool, color: Color = Color(1,1,1)) -> void:
 	if color == applied_color and influence == applied_influence and material.get_shader_parameter("enabled"):
