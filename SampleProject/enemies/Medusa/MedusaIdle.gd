@@ -6,7 +6,7 @@ class_name MedusaIdle
 @export var speed: float
 
 func enter():
-	player.velocity.x = speed * player.facing_position * roundf(randf_range(-1, 1))
+	player.velocity.x = speed * player.facing_position * randi_range(0, 1)*2-1
 	can_turnaround_with_scale()
 	animation.play("move")
 	idle_timer.wait_time = idle_duration_time + randf_range(-idle_duration_offset, idle_duration_offset)

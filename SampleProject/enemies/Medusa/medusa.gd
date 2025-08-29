@@ -57,8 +57,9 @@ func setBossBar() -> void:
 		Global.boss_bar.enemy = self
 
 func decideAction() -> void:
-	const PLAYER_NEARBY_DISTANCE: float = 50
+	const PLAYER_NEARBY_DISTANCE: float = 100
 	if abs(Global.player.global_position.x - global_position.x) < PLAYER_NEARBY_DISTANCE and abs(Global.player.global_position.y - global_position.y) < PLAYER_NEARBY_DISTANCE and not Global.player.is_on_floor():
 		state_machine.current_state.Transitioned.emit(state_machine.current_state, "sword")
+		return
 	var action: String = ACTIONS.values().pick_random()
 	state_machine.current_state.Transitioned.emit(state_machine.current_state, action)
