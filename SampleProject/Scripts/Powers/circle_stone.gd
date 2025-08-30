@@ -7,9 +7,11 @@ class_name CircleStone
 @export var animation: AnimationPlayer
 @export var raycast: RayCast2D
 @export var hurtbox: CollisionShape2D
+var hitbox_iframe: CollisionShape2D
 static var on_cooldown: bool = false
 
 func _ready() -> void:
+	hitbox_iframe = hurtbox
 	area.body_entered.connect(_on_area_2d_body_entered)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

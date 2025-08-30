@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dvl5nkdk3iowa"]
+[gd_scene load_steps=71 format=3 uid="uid://dvl5nkdk3iowa"]
 
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/medusa.gd" id="1_gsdjv"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_vomdi"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://t6lypsds827a" path="res://SampleProject/Powers/stone_circle.tscn" id="25_ij3d6"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaDash.gd" id="26_tmq2m"]
 [ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="27_bqh4w"]
+[ext_resource type="AudioStream" uid="uid://hsx6jf5238fb" path="res://assets/sounds/Powerups/ActivateRelic.MP3" id="29_kf7kh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nnb1"]
 size = Vector2(30.5, 61.5)
@@ -290,6 +291,18 @@ tracks/11/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Magic:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_vr6e8"]
 resource_name = "appear"
@@ -501,6 +514,44 @@ tracks/1/keys = {
 "values": [{
 "args": [],
 "method": &"summonStoneCircle"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Magic:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.6, 1.8, 1.5, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MagicSound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["magic"],
+"method": &"play_sound_effect_from_library"
 }]
 }
 
@@ -737,6 +788,26 @@ color_ramp = SubResource("GradientTexture1D_5aeol")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
+[sub_resource type="Curve" id="Curve_c1gay"]
+max_value = 2.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.506897, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ematn"]
+colors = PackedColorArray(0.51, 0.51, 0.51, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_bmg41"]
+colors = PackedColorArray(1, 1, 1, 0, 0.5494, 0.66397, 0.67, 1)
+
+[sub_resource type="Resource" id="Resource_dtcey"]
+script = ExtResource("6_0ie04")
+Tag = "magic"
+stream = ExtResource("29_kf7kh")
+
+[sub_resource type="Resource" id="Resource_35e57"]
+script = ExtResource("5_64g5d")
+sound_effects = Array[ExtResource("6_0ie04")]([SubResource("Resource_dtcey")])
+
 [node name="Medusa" type="CharacterBody2D" node_paths=PackedStringArray("sword_hitbox", "laser_hitbox", "dash_hitbox", "state_machine", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
@@ -920,3 +991,23 @@ process_material = SubResource("ParticleProcessMaterial_co8ia")
 texture = ExtResource("16_rfqid")
 lifetime = 0.4
 fixed_fps = 60
+
+[node name="Magic" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 36
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(30, 30)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, -60)
+angular_velocity_max = 100.0
+radial_accel_max = 30.0
+scale_amount_curve = SubResource("Curve_c1gay")
+color = Color(2, 2, 1, 1)
+color_ramp = SubResource("Gradient_ematn")
+color_initial_ramp = SubResource("Gradient_bmg41")
+
+[node name="MagicSound" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_3m0ml")
+audio_library = SubResource("Resource_35e57")
