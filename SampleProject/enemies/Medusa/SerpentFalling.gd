@@ -9,7 +9,7 @@ func exit():
 
 func Update(delta: float):
 	can_turnaround_with_scale()
-	enemy_can_die()
+	enemy_can_die(false)
 	if player.is_on_floor():
 		Transitioned.emit(self, "walking")
 

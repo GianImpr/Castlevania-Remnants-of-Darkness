@@ -9,6 +9,7 @@ func exit():
 	pass
 
 func Update(delta: float):
+	can_turnaround_with_scale()
 	if not animation.is_playing() and not vision.monitoring:
 		Global.player.unfreeze()
 		Transitioned.emit(self, "idle")

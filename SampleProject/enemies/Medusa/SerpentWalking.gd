@@ -10,7 +10,7 @@ func exit():
 
 func Update(delta: float):
 	player.velocity.x = speed * player.facing_position
-	enemy_can_die()
+	enemy_can_die(false)
 	if player.ray_cast_2d_left.is_colliding():
 		turn_around()
 

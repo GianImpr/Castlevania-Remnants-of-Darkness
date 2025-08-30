@@ -5,7 +5,7 @@ var mini_backdash_tween: Tween
 var dash_speed_tween: Tween
 const BACKDASH_SPEED: float = 150
 const BACKDASH_DURATION: float = 1
-const DASH_SPEED: float = 800
+const DASH_SPEED: float = 1200
 const DASH_DURATION: float = 1.5
 const sword_sounds: Array[String] = ["sword_1", "sword_2"]
 
