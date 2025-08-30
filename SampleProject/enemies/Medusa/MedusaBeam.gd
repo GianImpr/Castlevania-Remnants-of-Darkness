@@ -3,6 +3,7 @@ class_name MedusaBeam
 
 func enter():
 	animation.play("laser")
+	sound.play_sound_effect_from_library("stone")
 
 func exit():
 	pass

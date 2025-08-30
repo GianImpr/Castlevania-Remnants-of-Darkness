@@ -4,6 +4,7 @@ class_name MedusaStoneCircle
 
 func enter():
 	animation.play("magic")
+	sound.play_sound_effect_from_library("damn")
 	
 func exit():
 	pass

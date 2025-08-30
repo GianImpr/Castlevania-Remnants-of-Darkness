@@ -9,6 +9,7 @@ var snakes_summoned: int
 
 func enter():
 	animation.play("summon")
+	sound.play_sound_effect_from_library("serpents")
 	snakes_summoned = 0
 	snake_timer.start()
 	if not snake_timer.timeout.is_connected(summonSnakes):

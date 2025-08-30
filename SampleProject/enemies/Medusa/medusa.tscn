@@ -1,32 +1,92 @@
-[gd_scene load_steps=37 format=3 uid="uid://dvl5nkdk3iowa"]
+[gd_scene load_steps=58 format=3 uid="uid://dvl5nkdk3iowa"]
 
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/medusa.gd" id="1_gsdjv"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_vomdi"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_3m0ml"]
 [ext_resource type="Texture2D" uid="uid://doii8n6cb153x" path="res://assets/sprites/Enemies/Medusa/Medusa.png" id="3_ftvva"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_f68lk"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_64g5d"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_vl7nl"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_0ie04"]
+[ext_resource type="AudioStream" uid="uid://2qlxt0kcr6rt" path="res://assets/sounds/Enemies/Medusa/MedusaSword1.MP3" id="7_aaxb1"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSpawn.gd" id="7_bfexr"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaIdle.gd" id="8_ij2bj"]
+[ext_resource type="AudioStream" uid="uid://ddf6pitk28yn7" path="res://assets/sounds/Enemies/Medusa/MedusaSword2.MP3" id="8_okw4p"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSword.gd" id="9_igd4c"]
+[ext_resource type="AudioStream" uid="uid://b28e4f3niy07g" path="res://assets/sounds/Enemies/Medusa/MedusaClever.MP3" id="9_pws2t"]
+[ext_resource type="AudioStream" uid="uid://d08f535i38bs5" path="res://assets/sounds/Enemies/Medusa/MedusaSerpents.MP3" id="10_mar4y"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaBeam.gd" id="10_s3igb"]
+[ext_resource type="AudioStream" uid="uid://vrqutmdws6ue" path="res://assets/sounds/Enemies/Medusa/MedusaTurnToStone.MP3" id="11_faa04"]
+[ext_resource type="AudioStream" uid="uid://df2xk841iad55" path="res://assets/sounds/Enemies/Medusa/MedusaLaser.MP3" id="12_j8ipy"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/State.gd" id="12_o8c5k"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSummon.gd" id="12_slqe2"]
 [ext_resource type="PackedScene" uid="uid://dy2anuk68qs8g" path="res://SampleProject/enemies/Medusa/medusa_serpent.tscn" id="13_6vr2n"]
+[ext_resource type="AudioStream" uid="uid://c2rix3wcfkj3u" path="res://assets/sounds/Enemies/Medusa/MedusaDamnYou.MP3" id="13_8c1gw"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaStoneCircle.gd" id="13_eq2aj"]
+[ext_resource type="AudioStream" uid="uid://div6u71f6cmbp" path="res://assets/sounds/Enemies/Medusa/MedusaLockIn.MP3" id="14_ewe07"]
+[ext_resource type="AudioStream" uid="uid://b7hpfbmfxiptp" path="res://assets/sounds/Enemies/Medusa/MedusaDead.MP3" id="15_jbuwr"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="16_rfqid"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nnb1"]
 size = Vector2(30.5, 61.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1ylr"]
-size = Vector2(20.5, 59)
+size = Vector2(20.5, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iexoe"]
 size = Vector2(40, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anh8d"]
 size = Vector2(600, 3.5)
+
+[sub_resource type="Resource" id="Resource_rnvkh"]
+script = ExtResource("6_0ie04")
+Tag = "sword_1"
+stream = ExtResource("7_aaxb1")
+
+[sub_resource type="Resource" id="Resource_ehchc"]
+script = ExtResource("6_0ie04")
+Tag = "sword_2"
+stream = ExtResource("8_okw4p")
+
+[sub_resource type="Resource" id="Resource_3d3bo"]
+script = ExtResource("6_0ie04")
+Tag = "clever"
+stream = ExtResource("9_pws2t")
+
+[sub_resource type="Resource" id="Resource_b1wyx"]
+script = ExtResource("6_0ie04")
+Tag = "serpents"
+stream = ExtResource("10_mar4y")
+
+[sub_resource type="Resource" id="Resource_v8sjm"]
+script = ExtResource("6_0ie04")
+Tag = "stone"
+stream = ExtResource("11_faa04")
+
+[sub_resource type="Resource" id="Resource_66y61"]
+script = ExtResource("6_0ie04")
+Tag = "laser"
+stream = ExtResource("12_j8ipy")
+
+[sub_resource type="Resource" id="Resource_2lsjj"]
+script = ExtResource("6_0ie04")
+Tag = "damn"
+stream = ExtResource("13_8c1gw")
+
+[sub_resource type="Resource" id="Resource_n6tbx"]
+script = ExtResource("6_0ie04")
+Tag = "lock_in"
+stream = ExtResource("14_ewe07")
+
+[sub_resource type="Resource" id="Resource_mmy24"]
+script = ExtResource("6_0ie04")
+Tag = "dead"
+stream = ExtResource("15_jbuwr")
+
+[sub_resource type="Resource" id="Resource_umnkv"]
+script = ExtResource("5_64g5d")
+sound_effects = Array[ExtResource("6_0ie04")]([SubResource("Resource_rnvkh"), SubResource("Resource_ehchc"), SubResource("Resource_3d3bo"), SubResource("Resource_b1wyx"), SubResource("Resource_v8sjm"), SubResource("Resource_66y61"), SubResource("Resource_2lsjj"), SubResource("Resource_n6tbx"), SubResource("Resource_mmy24")])
 
 [sub_resource type="Curve" id="Curve_va3vl"]
 max_value = 5.0
@@ -338,6 +398,20 @@ tracks/5/keys = {
 "method": &"restart"
 }]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PolyphonicAudioPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["laser"],
+"method": &"play_sound_effect_from_library"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_xfjkc"]
 resource_name = "magic"
@@ -515,8 +589,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
-visible = false
-position = Vector2(-4.25, 3.5)
+position = Vector2(-4.25, 11.5)
 shape = SubResource("RectangleShape2D_x1ylr")
 
 [node name="SwordHitbox" type="Area2D" parent="."]
@@ -543,7 +616,9 @@ shape = SubResource("RectangleShape2D_anh8d")
 disabled = true
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
 script = ExtResource("3_3m0ml")
+audio_library = SubResource("Resource_umnkv")
 
 [node name="BloodDamage" type="CPUParticles2D" parent="."]
 emitting = false

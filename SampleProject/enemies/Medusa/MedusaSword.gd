@@ -1,7 +1,9 @@
 extends State
 class_name MedusaSword
+const sword_sounds: Array[String] = ["sword_1", "sword_2"]
 
 func enter():
+	sound.play_sound_effect_from_library(sword_sounds.pick_random())
 	animation.play("sword")
 	
 func exit():
