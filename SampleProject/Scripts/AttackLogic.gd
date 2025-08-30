@@ -80,7 +80,7 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 			player.healMP(2+damage/20)
 			player.heal_mp_effect.emitting = true
 			
-		if player.stats.findItem(Skill.Skills.HOLY_MANUAL, player.stats.skill_inventory) and not (body is Enemy and body.boss):
+		if player.stats.findItem(Skill.Skills.HOLY_MANUAL, player.stats.skill_inventory) and not (body is Enemy and (body.boss or body.stats.enemy_name == "")):
 			Global.enemy_box.visible = true
 			Global.enemy_box.label.text = body.stats.enemy_name
 			Global.enemy_box.timer.start()

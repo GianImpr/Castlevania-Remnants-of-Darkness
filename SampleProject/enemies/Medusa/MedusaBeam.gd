@@ -10,10 +10,10 @@ func exit():
 
 func Update(delta: float):
 	if not animation.is_playing():
-		Transitioned.emit(self, "idle")
+		if Global.player.stats.current_status == Global.player.stats.Ailment.STONE:
+			Transitioned.emit(self, "dash")
+		else:
+			Transitioned.emit(self, "idle")
 
 func Physics_Update(delta: float):
-	pass
-
-func shootBeam() -> void:
 	pass
