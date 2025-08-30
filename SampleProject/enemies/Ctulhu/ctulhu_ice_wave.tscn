@@ -16,7 +16,7 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0.00367647, 0.319853, 0.685345, 1)
 colors = PackedColorArray(0.0513022, 0.0962808, 0.976592, 1, 0, 0.614455, 0.941029, 1, 0.00186969, 0.260344, 0.923251, 1, 0, 0.640054, 0.35301, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_gpp5d"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_muket"]
 gradient = SubResource("Gradient_vjvup")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ko4gl"]
@@ -26,7 +26,7 @@ spread = 20.0
 initial_velocity_min = 70.0
 initial_velocity_max = 400.0
 gravity = Vector3(0, 0, 0)
-color_ramp = SubResource("GradientTexture1D_gpp5d")
+color_ramp = SubResource("GradientTexture1D_muket")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 

@@ -12,6 +12,10 @@ var facing_position: int
 @export var laser_hitbox: Area2D
 @export var laser_damage_multiplier: float = 0.1
 @export var laser_chip_damage: int = 0
+@export_category("Dash")
+@export var dash_hitbox: Area2D
+@export var dash_damage_multiplier: float = 2
+@export var dash_chip_damage: int = 30
 @export_category("Other")
 @export var state_machine: Node
 var max_HP: int
@@ -19,7 +23,8 @@ var max_HP: int
 const ACTIONS = {
 	BEAM = "beam",
 	SUMMON = "summon",
-	STONECIRCLE = "stone_circle"
+	STONECIRCLE = "stone_circle",
+	DASH = "dash"
 }
 
 func _ready() -> void:
@@ -29,6 +34,7 @@ func _ready() -> void:
 	hitbox_iframe.body_entered.connect(_on_area_2d_body_entered)
 	sword_hitbox.body_entered.connect(_on_sword_body_entered)
 	laser_hitbox.body_entered.connect(_on_laser_body_entered)
+	dash_hitbox.body_entered.connect(_on_dash_body_entered)
 	max_HP = stats.HP
 
 func _physics_process(delta: float) -> void:
@@ -42,10 +48,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	hit_target(contact_damage_multiplier, body, hitbox_iframe)
 
 func _on_sword_body_entered(body: Node2D) -> void:
-	hit_target(sword_damage_multiplier, body, hitbox_iframe, sword_chip_damage, false, Global.Attribute.SLASH)
+	hit_target(sword_damage_multiplier, body, sword_hitbox, sword_chip_damage, false, Global.Attribute.SLASH)
 
 func _on_laser_body_entered(body: Node2D) -> void:
-	hit_target(laser_damage_multiplier, body, hitbox_iframe, laser_chip_damage, false, Global.Attribute.STONE)
+	hit_target(laser_damage_multiplier, body, laser_hitbox, laser_chip_damage, false, Global.Attribute.STONE)
+
+func _on_dash_body_entered(body: Node2D) -> void:
+	hit_target(dash_damage_multiplier, body, dash_hitbox, dash_chip_damage, true, Global.Attribute.SLASH)
 
 
 func _on_iframe_timer_timeout() -> void:
@@ -60,6 +69,9 @@ func decideAction() -> void:
 	const PLAYER_NEARBY_DISTANCE: float = 100
 	if abs(Global.player.global_position.x - global_position.x) < PLAYER_NEARBY_DISTANCE and abs(Global.player.global_position.y - global_position.y) < PLAYER_NEARBY_DISTANCE and not Global.player.is_on_floor():
 		state_machine.current_state.Transitioned.emit(state_machine.current_state, "sword")
+		return
+	if Global.player.stats.current_status == Global.player.stats.Ailment.STONE:
+		state_machine.current_state.Transitioned.emit(state_machine.current_state, ACTIONS.DASH)
 		return
 	var action: String = ACTIONS.values().pick_random()
 	state_machine.current_state.Transitioned.emit(state_machine.current_state, action)
