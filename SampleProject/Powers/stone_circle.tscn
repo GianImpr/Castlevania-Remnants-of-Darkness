@@ -1,0 +1,527 @@
+[gd_scene load_steps=22 format=3 uid="uid://t6lypsds827a"]
+
+[ext_resource type="Script" path="res://SampleProject/Powers/stone_circle.gd" id="1_rry6n"]
+[ext_resource type="Texture2D" uid="uid://buy7j4unue5es" path="res://assets/sprites/Enemies/Medusa/StoneCircle1.png" id="2_ieu2n"]
+[ext_resource type="Texture2D" uid="uid://b5g5qpwnup6pj" path="res://assets/sprites/Enemies/Medusa/StoneCircle2.png" id="3_nr5lq"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Powers/circle_stone.gd" id="3_xf23y"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="4_2gcfa"]
+[ext_resource type="Texture2D" uid="uid://cdl1ueqd58vuq" path="res://assets/sprites/Effects/StoneDebris.png" id="4_bbc2g"]
+[ext_resource type="Texture2D" uid="uid://gbvyf5ku8jot" path="res://assets/sprites/Enemies/Medusa/StoneCircle4.png" id="4_mvv70"]
+[ext_resource type="Texture2D" uid="uid://df03sl0uu6o3v" path="res://assets/sprites/Enemies/Medusa/StoneCircle3.png" id="5_suh7i"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="9_c2cf2"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="10_4lw8f"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="11_orp8q"]
+[ext_resource type="AudioStream" uid="uid://dtcq3y1c4dxar" path="res://assets/sounds/Enemies/Medusa/MedusaStoneCircle.MP3" id="12_mskkg"]
+[ext_resource type="AudioStream" uid="uid://cstpsvr1e6igs" path="res://assets/sounds/Enemies/Medusa/MedusaThrowStone.MP3" id="13_t743y"]
+
+[sub_resource type="Animation" id="Animation_57sp2"]
+resource_name = "destroy"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StoneSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Debris:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Debris:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Debris:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ywo8y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StoneSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Debris:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Debris:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Debris:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ag1fm"]
+_data = {
+"RESET": SubResource("Animation_ywo8y"),
+"destroy": SubResource("Animation_57sp2")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wony"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58d60"]
+
+[sub_resource type="Resource" id="Resource_imyew"]
+script = ExtResource("11_orp8q")
+Tag = "stone_circle"
+stream = ExtResource("12_mskkg")
+
+[sub_resource type="Resource" id="Resource_lhmc7"]
+script = ExtResource("11_orp8q")
+Tag = "throw"
+stream = ExtResource("13_t743y")
+
+[sub_resource type="Resource" id="Resource_hjebm"]
+script = ExtResource("10_4lw8f")
+sound_effects = Array[ExtResource("11_orp8q")]([SubResource("Resource_imyew"), SubResource("Resource_lhmc7")])
+
+[node name="StoneCircle" type="Node2D" node_paths=PackedStringArray("sound", "free_timer", "throw_timer")]
+scale = Vector2(2, 2)
+script = ExtResource("1_rry6n")
+rotating_speed = 1.5
+sound = NodePath("PolyphonicAudio")
+free_timer = NodePath("Free")
+throw_timer = NodePath("Throw")
+
+[node name="Stone" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+collision_layer = 4
+collision_mask = 0
+freeze = true
+script = ExtResource("3_xf23y")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+sprite = NodePath("StoneSprite")
+iframes_duration = 0.5
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+
+[node name="StoneSprite" type="Sprite2D" parent="Stone"]
+texture = ExtResource("2_ieu2n")
+
+[node name="Debris" type="Sprite2D" parent="Stone"]
+visible = false
+texture = ExtResource("4_bbc2g")
+hframes = 7
+
+[node name="Projectile" type="Node" parent="Stone"]
+script = ExtResource("4_2gcfa")
+base_damage = 20
+destructible = true
+destroy_on_contact = true
+chip_damage = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone"]
+libraries = {
+"": SubResource("AnimationLibrary_ag1fm")
+}
+
+[node name="Hitbox" type="Area2D" parent="Stone"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone/Hitbox"]
+visible = false
+shape = SubResource("RectangleShape2D_8wony")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone"]
+visible = false
+shape = SubResource("RectangleShape2D_58d60")
+disabled = true
+
+[node name="Stone2" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+collision_layer = 4
+collision_mask = 0
+freeze = true
+script = ExtResource("3_xf23y")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+sprite = NodePath("StoneSprite")
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+
+[node name="StoneSprite" type="Sprite2D" parent="Stone2"]
+texture = ExtResource("3_nr5lq")
+
+[node name="Debris" type="Sprite2D" parent="Stone2"]
+visible = false
+texture = ExtResource("4_bbc2g")
+hframes = 7
+
+[node name="Projectile" type="Node" parent="Stone2"]
+script = ExtResource("4_2gcfa")
+base_damage = 20
+destructible = true
+destroy_on_contact = true
+chip_damage = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone2"]
+libraries = {
+"": SubResource("AnimationLibrary_ag1fm")
+}
+
+[node name="Hitbox" type="Area2D" parent="Stone2"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone2/Hitbox"]
+visible = false
+shape = SubResource("RectangleShape2D_8wony")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone2"]
+visible = false
+shape = SubResource("RectangleShape2D_58d60")
+disabled = true
+
+[node name="Stone3" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+collision_layer = 4
+collision_mask = 0
+freeze = true
+script = ExtResource("3_xf23y")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+sprite = NodePath("StoneSprite")
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+
+[node name="StoneSprite" type="Sprite2D" parent="Stone3"]
+texture = ExtResource("5_suh7i")
+
+[node name="Debris" type="Sprite2D" parent="Stone3"]
+visible = false
+texture = ExtResource("4_bbc2g")
+hframes = 7
+
+[node name="Projectile" type="Node" parent="Stone3"]
+script = ExtResource("4_2gcfa")
+base_damage = 20
+destructible = true
+destroy_on_contact = true
+chip_damage = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone3"]
+libraries = {
+"": SubResource("AnimationLibrary_ag1fm")
+}
+
+[node name="Hitbox" type="Area2D" parent="Stone3"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone3/Hitbox"]
+visible = false
+shape = SubResource("RectangleShape2D_8wony")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone3"]
+visible = false
+shape = SubResource("RectangleShape2D_58d60")
+disabled = true
+
+[node name="Stone4" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+collision_layer = 4
+collision_mask = 0
+freeze = true
+script = ExtResource("3_xf23y")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+sprite = NodePath("StoneSprite")
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+
+[node name="StoneSprite" type="Sprite2D" parent="Stone4"]
+texture = ExtResource("4_mvv70")
+
+[node name="Debris" type="Sprite2D" parent="Stone4"]
+visible = false
+texture = ExtResource("4_bbc2g")
+hframes = 7
+
+[node name="Projectile" type="Node" parent="Stone4"]
+script = ExtResource("4_2gcfa")
+base_damage = 20
+destructible = true
+destroy_on_contact = true
+chip_damage = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone4"]
+libraries = {
+"": SubResource("AnimationLibrary_ag1fm")
+}
+
+[node name="Hitbox" type="Area2D" parent="Stone4"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone4/Hitbox"]
+visible = false
+shape = SubResource("RectangleShape2D_8wony")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone4"]
+visible = false
+shape = SubResource("RectangleShape2D_58d60")
+disabled = true
+
+[node name="Stone5" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+collision_layer = 4
+collision_mask = 0
+freeze = true
+script = ExtResource("3_xf23y")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+sprite = NodePath("StoneSprite")
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+
+[node name="StoneSprite" type="Sprite2D" parent="Stone5"]
+texture = ExtResource("2_ieu2n")
+
+[node name="Debris" type="Sprite2D" parent="Stone5"]
+visible = false
+texture = ExtResource("4_bbc2g")
+hframes = 7
+
+[node name="Projectile" type="Node" parent="Stone5"]
+script = ExtResource("4_2gcfa")
+base_damage = 20
+destructible = true
+destroy_on_contact = true
+chip_damage = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone5"]
+libraries = {
+"": SubResource("AnimationLibrary_ag1fm")
+}
+
+[node name="Hitbox" type="Area2D" parent="Stone5"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone5/Hitbox"]
+visible = false
+shape = SubResource("RectangleShape2D_8wony")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone5"]
+visible = false
+shape = SubResource("RectangleShape2D_58d60")
+disabled = true
+
+[node name="Stone6" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+collision_layer = 4
+collision_mask = 0
+freeze = true
+script = ExtResource("3_xf23y")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+sprite = NodePath("StoneSprite")
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+
+[node name="StoneSprite" type="Sprite2D" parent="Stone6"]
+texture = ExtResource("3_nr5lq")
+
+[node name="Debris" type="Sprite2D" parent="Stone6"]
+visible = false
+texture = ExtResource("4_bbc2g")
+hframes = 7
+
+[node name="Projectile" type="Node" parent="Stone6"]
+script = ExtResource("4_2gcfa")
+base_damage = 20
+destructible = true
+destroy_on_contact = true
+chip_damage = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone6"]
+libraries = {
+"": SubResource("AnimationLibrary_ag1fm")
+}
+
+[node name="Hitbox" type="Area2D" parent="Stone6"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone6/Hitbox"]
+visible = false
+shape = SubResource("RectangleShape2D_8wony")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone6"]
+visible = false
+shape = SubResource("RectangleShape2D_58d60")
+disabled = true
+
+[node name="Stone7" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+collision_layer = 4
+collision_mask = 0
+freeze = true
+script = ExtResource("3_xf23y")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+sprite = NodePath("StoneSprite")
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+
+[node name="StoneSprite" type="Sprite2D" parent="Stone7"]
+texture = ExtResource("5_suh7i")
+
+[node name="Debris" type="Sprite2D" parent="Stone7"]
+visible = false
+texture = ExtResource("4_bbc2g")
+hframes = 7
+
+[node name="Projectile" type="Node" parent="Stone7"]
+script = ExtResource("4_2gcfa")
+base_damage = 20
+destructible = true
+destroy_on_contact = true
+chip_damage = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone7"]
+libraries = {
+"": SubResource("AnimationLibrary_ag1fm")
+}
+
+[node name="Hitbox" type="Area2D" parent="Stone7"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone7/Hitbox"]
+visible = false
+shape = SubResource("RectangleShape2D_8wony")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone7"]
+visible = false
+shape = SubResource("RectangleShape2D_58d60")
+disabled = true
+
+[node name="Stone8" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+collision_layer = 4
+collision_mask = 0
+freeze = true
+script = ExtResource("3_xf23y")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+sprite = NodePath("StoneSprite")
+animation = NodePath("AnimationPlayer")
+hurtbox = NodePath("Hurtbox")
+
+[node name="StoneSprite" type="Sprite2D" parent="Stone8"]
+texture = ExtResource("4_mvv70")
+
+[node name="Debris" type="Sprite2D" parent="Stone8"]
+visible = false
+texture = ExtResource("4_bbc2g")
+hframes = 7
+
+[node name="Projectile" type="Node" parent="Stone8"]
+script = ExtResource("4_2gcfa")
+base_damage = 20
+destructible = true
+destroy_on_contact = true
+chip_damage = 10
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone8"]
+libraries = {
+"": SubResource("AnimationLibrary_ag1fm")
+}
+
+[node name="Hitbox" type="Area2D" parent="Stone8"]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone8/Hitbox"]
+visible = false
+shape = SubResource("RectangleShape2D_8wony")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone8"]
+visible = false
+shape = SubResource("RectangleShape2D_58d60")
+disabled = true
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0
+script = ExtResource("9_c2cf2")
+audio_library = SubResource("Resource_hjebm")
+
+[node name="Throw" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Free" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+autostart = true

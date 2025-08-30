@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dvl5nkdk3iowa"]
+[gd_scene load_steps=65 format=3 uid="uid://dvl5nkdk3iowa"]
 
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/medusa.gd" id="1_gsdjv"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_vomdi"]
@@ -16,7 +16,6 @@
 [ext_resource type="AudioStream" uid="uid://b28e4f3niy07g" path="res://assets/sounds/Enemies/Medusa/MedusaClever.MP3" id="9_pws2t"]
 [ext_resource type="AudioStream" uid="uid://d08f535i38bs5" path="res://assets/sounds/Enemies/Medusa/MedusaSerpents.MP3" id="10_mar4y"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaBeam.gd" id="10_s3igb"]
-[ext_resource type="AudioStream" uid="uid://vrqutmdws6ue" path="res://assets/sounds/Enemies/Medusa/MedusaTurnToStone.MP3" id="11_faa04"]
 [ext_resource type="AudioStream" uid="uid://df2xk841iad55" path="res://assets/sounds/Enemies/Medusa/MedusaLaser.MP3" id="12_j8ipy"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/State.gd" id="12_o8c5k"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSummon.gd" id="12_slqe2"]
@@ -26,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://div6u71f6cmbp" path="res://assets/sounds/Enemies/Medusa/MedusaLockIn.MP3" id="14_ewe07"]
 [ext_resource type="AudioStream" uid="uid://b7hpfbmfxiptp" path="res://assets/sounds/Enemies/Medusa/MedusaDead.MP3" id="15_jbuwr"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="16_rfqid"]
+[ext_resource type="PackedScene" uid="uid://t6lypsds827a" path="res://SampleProject/Powers/stone_circle.tscn" id="25_ij3d6"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaDash.gd" id="26_tmq2m"]
 [ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="27_bqh4w"]
 
@@ -64,11 +64,6 @@ script = ExtResource("6_0ie04")
 Tag = "serpents"
 stream = ExtResource("10_mar4y")
 
-[sub_resource type="Resource" id="Resource_v8sjm"]
-script = ExtResource("6_0ie04")
-Tag = "stone"
-stream = ExtResource("11_faa04")
-
 [sub_resource type="Resource" id="Resource_66y61"]
 script = ExtResource("6_0ie04")
 Tag = "laser"
@@ -91,7 +86,7 @@ stream = ExtResource("15_jbuwr")
 
 [sub_resource type="Resource" id="Resource_umnkv"]
 script = ExtResource("5_64g5d")
-sound_effects = Array[ExtResource("6_0ie04")]([SubResource("Resource_rnvkh"), SubResource("Resource_ehchc"), SubResource("Resource_3d3bo"), SubResource("Resource_b1wyx"), SubResource("Resource_v8sjm"), SubResource("Resource_66y61"), SubResource("Resource_2lsjj"), SubResource("Resource_n6tbx"), SubResource("Resource_mmy24")])
+sound_effects = Array[ExtResource("6_0ie04")]([SubResource("Resource_rnvkh"), SubResource("Resource_ehchc"), SubResource("Resource_3d3bo"), SubResource("Resource_b1wyx"), SubResource("Resource_66y61"), SubResource("Resource_2lsjj"), SubResource("Resource_n6tbx"), SubResource("Resource_mmy24")])
 
 [sub_resource type="Curve" id="Curve_va3vl"]
 max_value = 5.0
@@ -480,7 +475,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_xfjkc"]
 resource_name = "magic"
-length = 0.9
+length = 9.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -489,10 +484,24 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [5, 6, 5]
+"values": [5, 6, 5, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Stone_circle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"summonStoneCircle"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_u4yjj"]
@@ -871,8 +880,9 @@ snake_timer = NodePath("SnakeInterval")
 wait_time = 0.1
 one_shot = true
 
-[node name="StoneCircle" type="Node" parent="StateMachine"]
+[node name="Stone_circle" type="Node" parent="StateMachine"]
 script = ExtResource("13_eq2aj")
+stone_circle_scene = ExtResource("25_ij3d6")
 
 [node name="Dying" type="Node" parent="StateMachine"]
 script = ExtResource("12_o8c5k")

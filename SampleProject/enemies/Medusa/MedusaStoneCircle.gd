@@ -15,3 +15,7 @@ func Update(delta: float):
 
 func Physics_Update(delta: float):
 	pass
+
+func summonStoneCircle() -> void:
+	var stone_circle = stone_circle_scene.instantiate()
+	player.add_child(stone_circle)
