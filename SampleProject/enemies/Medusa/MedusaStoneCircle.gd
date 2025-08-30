@@ -11,7 +11,7 @@ func exit():
 
 func Update(delta: float):
 	if not animation.is_playing():
-		Transitioned.emit(self, "idle")
+		Transitioned.emit(self, ["dash", "beam"].pick_random())
 
 func Physics_Update(delta: float):
 	pass

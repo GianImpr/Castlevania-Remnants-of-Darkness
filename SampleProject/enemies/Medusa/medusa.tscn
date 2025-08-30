@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dvl5nkdk3iowa"]
+[gd_scene load_steps=74 format=3 uid="uid://dvl5nkdk3iowa"]
 
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/medusa.gd" id="1_gsdjv"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_vomdi"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://b28e4f3niy07g" path="res://assets/sounds/Enemies/Medusa/MedusaClever.MP3" id="9_pws2t"]
 [ext_resource type="AudioStream" uid="uid://d08f535i38bs5" path="res://assets/sounds/Enemies/Medusa/MedusaSerpents.MP3" id="10_mar4y"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaBeam.gd" id="10_s3igb"]
+[ext_resource type="AudioStream" uid="uid://vrqutmdws6ue" path="res://assets/sounds/Enemies/Medusa/MedusaTurnToStone.MP3" id="11_faa04"]
 [ext_resource type="AudioStream" uid="uid://df2xk841iad55" path="res://assets/sounds/Enemies/Medusa/MedusaLaser.MP3" id="12_j8ipy"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/State.gd" id="12_o8c5k"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSummon.gd" id="12_slqe2"]
@@ -35,6 +36,9 @@ size = Vector2(30.5, 61.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1ylr"]
 size = Vector2(20.5, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6cgv"]
+size = Vector2(578, 166.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iexoe"]
 size = Vector2(40, 16)
@@ -85,9 +89,14 @@ script = ExtResource("6_0ie04")
 Tag = "dead"
 stream = ExtResource("15_jbuwr")
 
+[sub_resource type="Resource" id="Resource_8detw"]
+script = ExtResource("6_0ie04")
+Tag = "stone"
+stream = ExtResource("11_faa04")
+
 [sub_resource type="Resource" id="Resource_umnkv"]
 script = ExtResource("5_64g5d")
-sound_effects = Array[ExtResource("6_0ie04")]([SubResource("Resource_rnvkh"), SubResource("Resource_ehchc"), SubResource("Resource_3d3bo"), SubResource("Resource_b1wyx"), SubResource("Resource_66y61"), SubResource("Resource_2lsjj"), SubResource("Resource_n6tbx"), SubResource("Resource_mmy24")])
+sound_effects = Array[ExtResource("6_0ie04")]([SubResource("Resource_rnvkh"), SubResource("Resource_ehchc"), SubResource("Resource_3d3bo"), SubResource("Resource_b1wyx"), SubResource("Resource_66y61"), SubResource("Resource_2lsjj"), SubResource("Resource_n6tbx"), SubResource("Resource_mmy24"), SubResource("Resource_8detw")])
 
 [sub_resource type="Curve" id="Curve_va3vl"]
 max_value = 5.0
@@ -857,6 +866,14 @@ visible = false
 position = Vector2(-4.25, 11.5)
 shape = SubResource("RectangleShape2D_x1ylr")
 
+[node name="Vision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+position = Vector2(22.5, -50.25)
+shape = SubResource("RectangleShape2D_e6cgv")
+
 [node name="SwordHitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -922,8 +939,9 @@ initial_state = NodePath("Spawn")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Spawn" type="Node" parent="StateMachine"]
+[node name="Spawn" type="Node" parent="StateMachine" node_paths=PackedStringArray("vision")]
 script = ExtResource("7_bfexr")
+vision = NodePath("../../Vision")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_timer")]
 script = ExtResource("8_ij2bj")
@@ -1011,3 +1029,5 @@ color_initial_ramp = SubResource("Gradient_bmg41")
 [node name="MagicSound" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("3_3m0ml")
 audio_library = SubResource("Resource_35e57")
+
+[connection signal="body_entered" from="Vision" to="StateMachine/Spawn" method="_on_vision_body_entered"]
