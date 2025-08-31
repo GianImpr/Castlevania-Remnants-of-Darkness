@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://ceen6vmwpsngt"]
+[gd_scene load_steps=24 format=4 uid="uid://ceen6vmwpsngt"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_57r08"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_8eajs"]
@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://dvl5nkdk3iowa" path="res://SampleProject/enemies/Medusa/medusa.tscn" id="6_lcafj"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/Event/combat_scene_medusa.gd" id="7_iow2l"]
 [ext_resource type="PackedScene" uid="uid://csi3yjrxq4qpx" path="res://SampleProject/extra_scenes/items/orb.tscn" id="8_7hk07"]
+[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="8_t4d84"]
+[ext_resource type="Texture2D" uid="uid://dwjaayjdt0koj" path="res://assets/sprites/Enemies/Warg/Warg.png" id="9_8ylmj"]
+[ext_resource type="Texture2D" uid="uid://6tg0bhd0y3s5" path="res://assets/sprites/Enemies/ArmorLord/ArmorLord.png" id="10_q72pa"]
+[ext_resource type="Texture2D" uid="uid://da7tisvqcrex2" path="res://assets/sprites/Enemies/ArmorKnight.png" id="11_7tp4s"]
+[ext_resource type="Texture2D" uid="uid://brw0a3qn8sv5y" path="res://assets/sprites/Enemies/Banshee.png" id="12_au4yr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m2h0t"]
 resource_name = "Mountains"
@@ -2193,6 +2198,19 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_usvye")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tvpj5"]
+shader = ExtResource("8_t4d84")
+shader_parameter/influence = 0.5
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 1.0
+shader_parameter/mix_colors = false
+shader_parameter/enabled = null
+shader_parameter/sheet_columns = 20
+shader_parameter/sheet_rows = 20
+shader_parameter/petrified = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hrd0g"]
+
 [sub_resource type="Curve" id="Curve_tbvms"]
 min_value = -360.0
 max_value = 360.0
@@ -2243,6 +2261,47 @@ tile_map_data = PackedByteArray("AAAAAAIAAAAAAAIAAAAAAAMAAAAAAAMAAAAAAAQAAAAAAAQ
 tile_set = SubResource("TileSet_18wkf")
 collision_enabled = false
 
+[node name="Node2D2" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_tvpj5")
+position = Vector2(-29, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
+material = SubResource("ShaderMaterial_hrd0g")
+use_parent_material = true
+position = Vector2(408, 348)
+scale = Vector2(-2, 2)
+texture = ExtResource("9_8ylmj")
+hframes = 10
+vframes = 7
+frame = 64
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D2"]
+use_parent_material = true
+position = Vector2(253, 298)
+scale = Vector2(2, 2)
+texture = ExtResource("10_q72pa")
+hframes = 11
+vframes = 6
+frame = 2
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D2"]
+use_parent_material = true
+position = Vector2(610, 355)
+scale = Vector2(-2, 2)
+texture = ExtResource("11_7tp4s")
+hframes = 10
+vframes = 5
+frame = 47
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D2"]
+use_parent_material = true
+position = Vector2(807, 365)
+scale = Vector2(2, 2)
+texture = ExtResource("12_au4yr")
+hframes = 30
+vframes = 6
+frame = 150
+
 [node name="Glooms" type="CPUParticles2D" parent="."]
 modulate = Color(1, 2, 2, 1)
 top_level = true
@@ -2269,7 +2328,7 @@ should_close = true
 boss_door = true
 
 [node name="BossDoor2" parent="." instance=ExtResource("5_fo5an")]
-position = Vector2(15, 352)
+position = Vector2(16, 352)
 combat_flag_id = 4
 should_close = true
 boss_door = true
@@ -2286,6 +2345,6 @@ door1 = NodePath("../BossDoor")
 door2 = NodePath("../BossDoor2")
 
 [node name="Orb" parent="." instance=ExtResource("8_7hk07")]
-position = Vector2(480, 288)
+position = Vector2(480, 233)
 orb_color = 0
 pickup_flag_id = 89
