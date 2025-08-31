@@ -1,6 +1,7 @@
 extends Node2D
 class_name Orb
 @export var animation: AnimationPlayer
+@export var imploding_particles: GPUParticles2D
 @export var glowing_particles: GPUParticles2D
 @export var spawn_particles: GPUParticles2D
 @export var orb_sprite: Sprite2D
@@ -26,22 +27,25 @@ enum OrbColor {
 }
 
 const Colors = {
-	RED = Color(1, 0, 0, 0.75),
-	CYAN = Color(0, 1, 1, 0.75)
+	RED = Color(1, 0, 0, 0.773),
+	CYAN = Color(0, 1, 1, 0.773)
 }
 
 func _ready() -> void:
 	if Global.player.stats.picked_items[pickup_flag_id]:
 		queue_free()
 		
-	var particles_color: Color
 	var orb_texture_file: String
 	match orb_color:
 		OrbColor.RED:
-			particles_color = Colors.RED
+			imploding_particles.self_modulate = Colors.RED
+			spawn_particles.self_modulate = Colors.RED
+			glowing_particles.self_modulate = Colors.RED
 			orb_texture_file = "RedOrb.png"
 		OrbColor.CYAN:
-			particles_color = Colors.CYAN
+			imploding_particles.self_modulate = Colors.CYAN
+			spawn_particles.self_modulate = Colors.CYAN
+			spawn_particles.self_modulate = Colors.CYAN
 			orb_texture_file = "CyanOrb.png"
 	orb_sprite.texture = load(orb_texture_path + orb_texture_file)
 	

@@ -541,10 +541,11 @@ sound_effects = Array[ExtResource("5_llwci")]([SubResource("Resource_gb515"), Su
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7s381"]
 size = Vector2(21, 53)
 
-[node name="Orb" type="Node2D" node_paths=PackedStringArray("animation", "glowing_particles", "spawn_particles", "orb_sprite", "point_light", "sound", "beat_sound_timer")]
+[node name="Orb" type="Node2D" node_paths=PackedStringArray("animation", "imploding_particles", "glowing_particles", "spawn_particles", "orb_sprite", "point_light", "sound", "beat_sound_timer")]
 scale = Vector2(2, 2)
 script = ExtResource("1_dda8v")
 animation = NodePath("AnimationPlayer")
+imploding_particles = NodePath("GPUParticles2D")
 glowing_particles = NodePath("Glowing")
 spawn_particles = NodePath("Spawn")
 orb_sprite = NodePath("Sprite2D")

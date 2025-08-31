@@ -19,9 +19,9 @@ func _process(delta: float) -> void:
 		await orb._spawnOrb()
 		
 	if orb == null and Global.screen == Global.ScreenType.NONE:
-		Global.player.stats.combat_flags[event_ID] = true
+		#Global.player.stats.combat_flags[event_ID] = true
 		thanksScreen()
-		queue_free()
+		#queue_free()
 
 func thanksScreen() -> void:
 	Global.screen = Global.ScreenType.EVENT

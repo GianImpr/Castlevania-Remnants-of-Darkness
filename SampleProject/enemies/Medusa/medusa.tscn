@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://dvl5nkdk3iowa"]
+[gd_scene load_steps=81 format=3 uid="uid://dvl5nkdk3iowa"]
 
 [ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="1_06p1i"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/medusa.gd" id="1_gsdjv"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaDash.gd" id="26_tmq2m"]
 [ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="27_bqh4w"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaDying.gd" id="27_g4cgq"]
+[ext_resource type="PackedScene" uid="uid://bhhgeq5d6tj2h" path="res://SampleProject/enemies/Medusa/medusa_statue_break.tscn" id="28_36aiq"]
 [ext_resource type="AudioStream" uid="uid://hsx6jf5238fb" path="res://assets/sounds/Powerups/ActivateRelic.MP3" id="29_kf7kh"]
 [ext_resource type="Texture2D" uid="uid://cdl1ueqd58vuq" path="res://assets/sprites/Effects/StoneDebris.png" id="32_elr24"]
 
@@ -1124,6 +1125,7 @@ stone_circle_scene = ExtResource("25_ij3d6")
 
 [node name="Dying" type="Node" parent="StateMachine"]
 script = ExtResource("27_g4cgq")
+medusa_statue_scene = ExtResource("28_36aiq")
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("26_tmq2m")
@@ -1188,8 +1190,8 @@ amount = 250
 lifetime = 2.0
 one_shot = true
 texture = ExtResource("32_elr24")
-emission_shape = 3
-emission_rect_extents = Vector2(20, 25)
+emission_shape = 1
+emission_sphere_radius = 29.13
 direction = Vector2(0, -1)
 spread = 0.0
 gravity = Vector2(0, 0)
