@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1w4uuijqkss"]
+
+[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="1_w702k"]
+[ext_resource type="Texture2D" uid="uid://brw0a3qn8sv5y" path="res://assets/sprites/Enemies/Banshee.png" id="2_m3jgl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cnsp"]
+shader = ExtResource("1_w702k")
+shader_parameter/influence = 0.5
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 0.5
+shader_parameter/mix_colors = false
+shader_parameter/enabled = null
+shader_parameter/sheet_columns = 20
+shader_parameter/sheet_rows = 20
+shader_parameter/petrified = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4i72"]
+atlas = ExtResource("2_m3jgl")
+region = Rect2(0, 400, 76, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jphj3"]
+size = Vector2(72, 128)
+
+[node name="object" type="RigidBody2D"]
+collision_layer = 0
+
+[node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2cnsp")
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_w4i72")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(3, -10)
+shape = SubResource("RectangleShape2D_jphj3")

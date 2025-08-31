@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct2m1dmj77wbk"]
+
+[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="1_gwwy1"]
+[ext_resource type="Texture2D" uid="uid://6tg0bhd0y3s5" path="res://assets/sprites/Enemies/ArmorLord/ArmorLord.png" id="2_3wq1p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cnsp"]
+shader = ExtResource("1_gwwy1")
+shader_parameter/influence = 0.5
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 0.5
+shader_parameter/mix_colors = false
+shader_parameter/enabled = null
+shader_parameter/sheet_columns = 20
+shader_parameter/sheet_rows = 20
+shader_parameter/petrified = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ju7to"]
+atlas = ExtResource("2_3wq1p")
+region = Rect2(400, 0, 200, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_613ek"]
+size = Vector2(116, 117)
+
+[node name="object" type="RigidBody2D"]
+collision_layer = 0
+
+[node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2cnsp")
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_ju7to")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-45, 58.5)
+shape = SubResource("RectangleShape2D_613ek")

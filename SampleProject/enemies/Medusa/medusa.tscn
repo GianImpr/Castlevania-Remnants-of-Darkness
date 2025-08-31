@@ -1024,7 +1024,7 @@ position = Vector2(22.5, -50.25)
 shape = SubResource("RectangleShape2D_e6cgv")
 
 [node name="SwordHitbox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 2
 
 [node name="SwordShape" type="CollisionShape2D" parent="SwordHitbox"]
@@ -1034,7 +1034,7 @@ shape = SubResource("RectangleShape2D_iexoe")
 disabled = true
 
 [node name="DashHitbox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 2
 
 [node name="DashShape" type="CollisionShape2D" parent="DashHitbox"]

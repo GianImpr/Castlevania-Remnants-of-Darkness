@@ -1,18 +1,18 @@
-[gd_scene load_steps=24 format=4 uid="uid://ceen6vmwpsngt"]
+[gd_scene load_steps=23 format=4 uid="uid://ceen6vmwpsngt"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_57r08"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_8eajs"]
 [ext_resource type="Texture2D" uid="uid://cm67rjq4or1c8" path="res://assets/sprites/Tiles/mountain.png" id="3_5w06v"]
 [ext_resource type="Texture2D" uid="uid://c0qsvc0xjt6x1" path="res://assets/sprites/Tiles/outsideMonastery.png" id="4_jlnh2"]
 [ext_resource type="PackedScene" uid="uid://bnsy1kwfc8603" path="res://SampleProject/extra_scenes/stage_elements/combat_door.tscn" id="5_fo5an"]
+[ext_resource type="PackedScene" uid="uid://c6rlc4me34hqg" path="res://SampleProject/enemies/ArmorKnight/armor_knight_statue_break.tscn" id="6_8fvng"]
 [ext_resource type="PackedScene" uid="uid://dvl5nkdk3iowa" path="res://SampleProject/enemies/Medusa/medusa.tscn" id="6_lcafj"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/Event/combat_scene_medusa.gd" id="7_iow2l"]
 [ext_resource type="PackedScene" uid="uid://csi3yjrxq4qpx" path="res://SampleProject/extra_scenes/items/orb.tscn" id="8_7hk07"]
+[ext_resource type="PackedScene" uid="uid://dvokd0cau6t0x" path="res://SampleProject/enemies/Warg/warg_statue_break.tscn" id="8_my6hq"]
 [ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="8_t4d84"]
-[ext_resource type="Texture2D" uid="uid://dwjaayjdt0koj" path="res://assets/sprites/Enemies/Warg/Warg.png" id="9_8ylmj"]
-[ext_resource type="Texture2D" uid="uid://6tg0bhd0y3s5" path="res://assets/sprites/Enemies/ArmorLord/ArmorLord.png" id="10_q72pa"]
-[ext_resource type="Texture2D" uid="uid://da7tisvqcrex2" path="res://assets/sprites/Enemies/ArmorKnight.png" id="11_7tp4s"]
-[ext_resource type="Texture2D" uid="uid://brw0a3qn8sv5y" path="res://assets/sprites/Enemies/Banshee.png" id="12_au4yr"]
+[ext_resource type="PackedScene" uid="uid://435ssre82dxc" path="res://SampleProject/enemies/Banshee/banshee_statue_break.tscn" id="9_51idd"]
+[ext_resource type="PackedScene" uid="uid://cbmx7gpwepx0e" path="res://SampleProject/enemies/ArmorLord/armor_lord_statue_break.tscn" id="9_w3pbr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m2h0t"]
 resource_name = "Mountains"
@@ -2209,8 +2209,6 @@ shader_parameter/sheet_columns = 20
 shader_parameter/sheet_rows = 20
 shader_parameter/petrified = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hrd0g"]
-
 [sub_resource type="Curve" id="Curve_tbvms"]
 min_value = -360.0
 max_value = 360.0
@@ -2265,42 +2263,20 @@ collision_enabled = false
 material = SubResource("ShaderMaterial_tvpj5")
 position = Vector2(-29, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
-material = SubResource("ShaderMaterial_hrd0g")
-use_parent_material = true
-position = Vector2(408, 348)
-scale = Vector2(-2, 2)
-texture = ExtResource("9_8ylmj")
-hframes = 10
-vframes = 7
-frame = 64
-
-[node name="Sprite2D2" type="Sprite2D" parent="Node2D2"]
-use_parent_material = true
-position = Vector2(253, 298)
-scale = Vector2(2, 2)
-texture = ExtResource("10_q72pa")
-hframes = 11
-vframes = 6
-frame = 2
-
-[node name="Sprite2D3" type="Sprite2D" parent="Node2D2"]
-use_parent_material = true
+[node name="ArmorKnightStatue" parent="Node2D2" instance=ExtResource("6_8fvng")]
 position = Vector2(610, 355)
-scale = Vector2(-2, 2)
-texture = ExtResource("11_7tp4s")
-hframes = 10
-vframes = 5
-frame = 47
+rotation = 3.14159
+scale = Vector2(1, -1)
 
-[node name="Sprite2D4" type="Sprite2D" parent="Node2D2"]
-use_parent_material = true
-position = Vector2(807, 365)
-scale = Vector2(2, 2)
-texture = ExtResource("12_au4yr")
-hframes = 30
-vframes = 6
-frame = 150
+[node name="WargStatue" parent="Node2D2" instance=ExtResource("8_my6hq")]
+position = Vector2(416, 348)
+scale = Vector2(-1, 1)
+
+[node name="ArmorLordStatue" parent="Node2D2" instance=ExtResource("9_w3pbr")]
+position = Vector2(261, 314)
+
+[node name="BansheeStatue" parent="Node2D2" instance=ExtResource("9_51idd")]
+position = Vector2(754, 365)
 
 [node name="Glooms" type="CPUParticles2D" parent="."]
 modulate = Color(1, 2, 2, 1)

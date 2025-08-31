@@ -18,8 +18,8 @@ shader_parameter/petrified = true
 atlas = ExtResource("2_ut5yj")
 region = Rect2(120, 80, 120, 80)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyart"]
-size = Vector2(48, 95)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4xos"]
+size = Vector2(152, 121)
 
 [node name="object" type="RigidBody2D"]
 
@@ -29,6 +29,5 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_8qt31")
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(3, 23.5)
-shape = SubResource("RectangleShape2D_uyart")
+position = Vector2(-31, 10.5)
+shape = SubResource("RectangleShape2D_v4xos")

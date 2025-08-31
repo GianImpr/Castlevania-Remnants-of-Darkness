@@ -1,0 +1,99 @@
+[gd_scene load_steps=16 format=3 uid="uid://n410tq54nt8e"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/enemy_statue.gd" id="1_q1otb"]
+[ext_resource type="PackedScene" uid="uid://chep82jj08ce4" path="res://SampleProject/extra_scenes/effects/hector_statue.tscn" id="2_d21kv"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/DestructibleBody.gd" id="3_ecu4x"]
+[ext_resource type="Texture2D" uid="uid://c04vxsdtq4ws2" path="res://assets/sprites/Effects/Debris2.png" id="4_wfqvb"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_p2oc8"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_1yx68"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="7_d6agi"]
+[ext_resource type="AudioStream" uid="uid://ci4gtdwh6bnd0" path="res://assets/sounds/Objects/WallDamage.MP3" id="8_xcdqo"]
+[ext_resource type="AudioStream" uid="uid://svjxleypen1h" path="res://assets/sounds/Objects/WallBreak.MP3" id="9_eubs1"]
+[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="10_s861d"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0orsv"]
+particles_animation = true
+particles_anim_h_frames = 11
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Resource" id="Resource_2533x"]
+script = ExtResource("7_d6agi")
+Tag = "damage"
+stream = ExtResource("8_xcdqo")
+
+[sub_resource type="Resource" id="Resource_86dg1"]
+script = ExtResource("7_d6agi")
+Tag = "break"
+stream = ExtResource("9_eubs1")
+
+[sub_resource type="Resource" id="Resource_3ibxi"]
+script = ExtResource("6_1yx68")
+sound_effects = Array[ExtResource("7_d6agi")]([SubResource("Resource_2533x"), SubResource("Resource_86dg1")])
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_swp2i"]
+shader = ExtResource("10_s861d")
+shader_parameter/influence = 0.5
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 1.0
+shader_parameter/mix_colors = false
+shader_parameter/enabled = null
+shader_parameter/sheet_columns = 20
+shader_parameter/sheet_rows = 20
+shader_parameter/petrified = true
+
+[node name="EnemyStatue" type="Node2D" node_paths=PackedStringArray("collision", "sprite", "wall", "sound")]
+script = ExtResource("1_q1otb")
+collision = NodePath("Area2D/CollisionShape2D")
+sprite = NodePath("Sprite2D")
+wall = NodePath("Node2D/statue")
+sound = NodePath("PolyphonicAudio")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="statue" parent="Node2D" instance=ExtResource("2_d21kv")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_ecu4x")
+blocks_impulse = 300.0
+blocks_gravity_scale = 0.7
+debris_max_time = 2.0
+remove_debris = true
+collision_layers = 12
+SPEED = Vector2(500, -500)
+randomize_speed = true
+extra_z_index = 6
+child_fixed_scale = 2.0
+
+[node name="Breaking" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_0orsv")
+emitting = false
+amount = 24
+lifetime = 0.7
+one_shot = true
+texture = ExtResource("4_wfqvb")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 42)
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = 3.0
+script = ExtResource("5_p2oc8")
+audio_library = SubResource("Resource_3ibxi")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 24)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_swp2i")
+scale = Vector2(2, 2)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bau66os25evdh"]
+
+[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="1_h3foc"]
+[ext_resource type="Texture2D" uid="uid://dwjaayjdt0koj" path="res://assets/sprites/Enemies/Warg/Warg.png" id="2_wpykg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cnsp"]
+shader = ExtResource("1_h3foc")
+shader_parameter/influence = 0.5
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 0.5
+shader_parameter/mix_colors = false
+shader_parameter/enabled = null
+shader_parameter/sheet_columns = 20
+shader_parameter/sheet_rows = 20
+shader_parameter/petrified = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xis41"]
+atlas = ExtResource("2_wpykg")
+region = Rect2(484, 648, 121, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf2fr"]
+size = Vector2(182, 174.5)
+
+[node name="object" type="RigidBody2D"]
+collision_layer = 0
+
+[node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2cnsp")
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_xis41")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(27, -18.75)
+shape = SubResource("RectangleShape2D_uf2fr")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://bjjk4mm7bkkd5"]
+[gd_scene load_steps=102 format=3 uid="uid://bjjk4mm7bkkd5"]
 
 [ext_resource type="Texture2D" uid="uid://c6oahkcwklotc" path="res://assets/sprites/HUD/Loading/Background.png" id="1_mwlu3"]
 [ext_resource type="Script" path="res://SampleProject/extra_scenes/loading_screen.gd" id="1_s3fxy"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://c2igujqj4dloe" path="res://assets/sprites/HUD/NameEntry/LetterBox.png" id="20_rsd5m"]
 [ext_resource type="Script" path="res://SampleProject/extra_scenes/LetterBox.gd" id="21_oeuxb"]
 [ext_resource type="Texture2D" uid="uid://d68ptw53k0mr" path="res://assets/sprites/HUD/NameEntry/Cursor.png" id="22_7brg1"]
+[ext_resource type="AudioStream" uid="uid://djntod7cvws4p" path="res://assets/sounds/Effects/Miscellaneous/NameChosen.MP3" id="29_rxu2w"]
 
 [sub_resource type="Gradient" id="Gradient_ippbr"]
 offsets = PackedFloat32Array(0, 0.776)
@@ -674,6 +675,20 @@ tracks/5/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MenuSounds")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["name"],
+"method": &"play_sound_effect_from_library"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56nmj"]
 _data = {
@@ -954,9 +969,14 @@ script = ExtResource("13_p7mob")
 Tag = "popup"
 stream = ExtResource("17_ly2eu")
 
+[sub_resource type="Resource" id="Resource_pf4ae"]
+script = ExtResource("13_p7mob")
+Tag = "name"
+stream = ExtResource("29_rxu2w")
+
 [sub_resource type="Resource" id="Resource_gqarj"]
 script = ExtResource("12_m3njh")
-sound_effects = Array[ExtResource("13_p7mob")]([SubResource("Resource_yp8es"), SubResource("Resource_hc3gt"), SubResource("Resource_ft51b"), SubResource("Resource_bvuwu")])
+sound_effects = Array[ExtResource("13_p7mob")]([SubResource("Resource_yp8es"), SubResource("Resource_hc3gt"), SubResource("Resource_ft51b"), SubResource("Resource_bvuwu"), SubResource("Resource_pf4ae")])
 
 [sub_resource type="Resource" id="Resource_o54hk"]
 script = ExtResource("13_p7mob")
