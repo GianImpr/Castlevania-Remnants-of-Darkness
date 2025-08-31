@@ -19,7 +19,7 @@ func exit():
 	idle_timer.stop()
 
 func Update(delta: float):
-	enemy_can_die()
+	enemy_can_die(false)
 
 func Physics_Update(delta: float):
 	pass

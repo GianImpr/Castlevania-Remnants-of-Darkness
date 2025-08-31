@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://ceen6vmwpsngt"]
+[gd_scene load_steps=17 format=4 uid="uid://ceen6vmwpsngt"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_57r08"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_8eajs"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c0qsvc0xjt6x1" path="res://assets/sprites/Tiles/outsideMonastery.png" id="4_jlnh2"]
 [ext_resource type="PackedScene" uid="uid://bnsy1kwfc8603" path="res://SampleProject/extra_scenes/stage_elements/combat_door.tscn" id="5_fo5an"]
 [ext_resource type="PackedScene" uid="uid://dvl5nkdk3iowa" path="res://SampleProject/enemies/Medusa/medusa.tscn" id="6_lcafj"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/Event/combat_scene_medusa.gd" id="7_iow2l"]
+[ext_resource type="PackedScene" uid="uid://csi3yjrxq4qpx" path="res://SampleProject/extra_scenes/items/orb.tscn" id="8_7hk07"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m2h0t"]
 resource_name = "Mountains"
@@ -2274,3 +2276,16 @@ boss_door = true
 
 [node name="Medusa" parent="." instance=ExtResource("6_lcafj")]
 position = Vector2(786, 353)
+
+[node name="CombatScene" type="Node" parent="." node_paths=PackedStringArray("medusa", "orb", "door1", "door2")]
+script = ExtResource("7_iow2l")
+medusa = NodePath("../Medusa")
+orb = NodePath("../Orb")
+event_ID = 4
+door1 = NodePath("../BossDoor")
+door2 = NodePath("../BossDoor2")
+
+[node name="Orb" parent="." instance=ExtResource("8_7hk07")]
+position = Vector2(480, 288)
+orb_color = 0
+pickup_flag_id = 89

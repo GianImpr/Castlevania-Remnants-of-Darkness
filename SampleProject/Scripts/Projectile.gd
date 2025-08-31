@@ -44,6 +44,9 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 			damage = min(damage*0.6, body.stats.Stats["HP"]/10)
 		else:
 			damage = 0
+	
+	if body.stats.current_status == Global.player.stats.Ailment.STONE:
+		damage *= 2
 
 	return damage
 		

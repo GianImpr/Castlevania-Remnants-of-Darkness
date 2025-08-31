@@ -21,6 +21,9 @@ func exit():
 func Update(delta: float):
 	if not animation.is_playing():
 		Transitioned.emit(self, "idle")
+		
+	if snakes_summoned == SNAKES_TO_SUMMON and player.stats.HP < player.max_HP / 2:
+		Transitioned.emit(self, "beam")
 
 func Physics_Update(delta: float):
 	pass

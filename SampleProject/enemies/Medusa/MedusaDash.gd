@@ -5,11 +5,13 @@ var mini_backdash_tween: Tween
 var dash_speed_tween: Tween
 const BACKDASH_SPEED: float = 150
 const BACKDASH_DURATION: float = 1
-const DASH_SPEED: float = 1200
+const DASH_SPEED: float = 900
 const DASH_DURATION: float = 1.5
 const sword_sounds: Array[String] = ["sword_1", "sword_2"]
+var doing_it_twice: bool = false
 
 func enter():
+	doing_it_twice = false
 	if Global.player.stats.current_status == Global.player.stats.Ailment.STONE:
 		sound.play_sound_effect_from_library("clever")
 	else:
@@ -28,6 +30,11 @@ func exit():
 func Update(delta: float):
 	if not animation.is_playing():
 		Transitioned.emit(self, "idle")
+		
+	if animation.is_playing() and animation.current_animation_position > 2.5 and player.stats.HP < player.max_HP/2 and not doing_it_twice:
+		can_turnaround_with_scale()
+		doing_it_twice = true
+		animation.seek(0.9)
 
 func Physics_Update(delta: float):
 	pass
