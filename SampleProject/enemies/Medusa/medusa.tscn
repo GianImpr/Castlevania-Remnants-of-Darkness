@@ -1,5 +1,6 @@
-[gd_scene load_steps=74 format=3 uid="uid://dvl5nkdk3iowa"]
+[gd_scene load_steps=80 format=3 uid="uid://dvl5nkdk3iowa"]
 
+[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="1_06p1i"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/medusa.gd" id="1_gsdjv"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_vomdi"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_3m0ml"]
@@ -18,7 +19,6 @@
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaBeam.gd" id="10_s3igb"]
 [ext_resource type="AudioStream" uid="uid://vrqutmdws6ue" path="res://assets/sounds/Enemies/Medusa/MedusaTurnToStone.MP3" id="11_faa04"]
 [ext_resource type="AudioStream" uid="uid://df2xk841iad55" path="res://assets/sounds/Enemies/Medusa/MedusaLaser.MP3" id="12_j8ipy"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/State.gd" id="12_o8c5k"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSummon.gd" id="12_slqe2"]
 [ext_resource type="PackedScene" uid="uid://dy2anuk68qs8g" path="res://SampleProject/enemies/Medusa/medusa_serpent.tscn" id="13_6vr2n"]
 [ext_resource type="AudioStream" uid="uid://c2rix3wcfkj3u" path="res://assets/sounds/Enemies/Medusa/MedusaDamnYou.MP3" id="13_8c1gw"]
@@ -29,7 +29,20 @@
 [ext_resource type="PackedScene" uid="uid://t6lypsds827a" path="res://SampleProject/Powers/stone_circle.tscn" id="25_ij3d6"]
 [ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaDash.gd" id="26_tmq2m"]
 [ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="27_bqh4w"]
+[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaDying.gd" id="27_g4cgq"]
 [ext_resource type="AudioStream" uid="uid://hsx6jf5238fb" path="res://assets/sounds/Powerups/ActivateRelic.MP3" id="29_kf7kh"]
+[ext_resource type="Texture2D" uid="uid://cdl1ueqd58vuq" path="res://assets/sprites/Effects/StoneDebris.png" id="32_elr24"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvqus"]
+shader = ExtResource("1_06p1i")
+shader_parameter/influence = 0.5
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 1.0
+shader_parameter/mix_colors = false
+shader_parameter/enabled = null
+shader_parameter/sheet_columns = 20
+shader_parameter/sheet_rows = 20
+shader_parameter/petrified = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nnb1"]
 size = Vector2(30.5, 61.5)
@@ -312,6 +325,30 @@ tracks/12/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Sprite2D:material")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("DeathDebris:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_vr6e8"]
 resource_name = "appear"
@@ -447,9 +484,20 @@ tracks/6/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7712c"]
+shader = ExtResource("1_06p1i")
+shader_parameter/influence = 0.5
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 1.0
+shader_parameter/mix_colors = false
+shader_parameter/enabled = null
+shader_parameter/sheet_columns = 20
+shader_parameter/sheet_rows = 20
+shader_parameter/petrified = true
+
 [sub_resource type="Animation" id="Animation_po0w4"]
 resource_name = "die"
-length = 0.9
+length = 4.5
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -470,6 +518,94 @@ tracks/1/path = NodePath("Hitbox/HitboxShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_7712c")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DeathDebris:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("StateMachine/Dying")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"explode"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SwordHitbox/SwordShape:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DashHitbox/DashShape:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("LaserOrigin/LaserHitbox/LaserShape:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -817,7 +953,18 @@ stream = ExtResource("29_kf7kh")
 script = ExtResource("5_64g5d")
 sound_effects = Array[ExtResource("6_0ie04")]([SubResource("Resource_dtcey")])
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0oofx"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_gvhc5"]
+offsets = PackedFloat32Array(0, 0.101852, 0.365741)
+colors = PackedColorArray(1, 1, 1, 0.368627, 1, 1, 1, 0.239216, 1, 1, 1, 0)
+
 [node name="Medusa" type="CharacterBody2D" node_paths=PackedStringArray("sword_hitbox", "laser_hitbox", "dash_hitbox", "state_machine", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+material = SubResource("ShaderMaterial_kvqus")
 scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_gsdjv")
@@ -871,6 +1018,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+visible = false
 position = Vector2(22.5, -50.25)
 shape = SubResource("RectangleShape2D_e6cgv")
 
@@ -889,6 +1037,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="DashShape" type="CollisionShape2D" parent="DashHitbox"]
+visible = false
 position = Vector2(0, 12.875)
 shape = SubResource("RectangleShape2D_ws48m")
 disabled = true
@@ -974,7 +1123,7 @@ script = ExtResource("13_eq2aj")
 stone_circle_scene = ExtResource("25_ij3d6")
 
 [node name="Dying" type="Node" parent="StateMachine"]
-script = ExtResource("12_o8c5k")
+script = ExtResource("27_g4cgq")
 
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("26_tmq2m")
@@ -1029,5 +1178,25 @@ color_initial_ramp = SubResource("Gradient_bmg41")
 [node name="MagicSound" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("3_3m0ml")
 audio_library = SubResource("Resource_35e57")
+
+[node name="DeathDebris" type="CPUParticles2D" parent="."]
+z_index = 7
+material = SubResource("CanvasItemMaterial_0oofx")
+position = Vector2(-8, 4.5)
+emitting = false
+amount = 250
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("32_elr24")
+emission_shape = 3
+emission_rect_extents = Vector2(20, 25)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+color_ramp = SubResource("Gradient_gvhc5")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
 
 [connection signal="body_entered" from="Vision" to="StateMachine/Spawn" method="_on_vision_body_entered"]

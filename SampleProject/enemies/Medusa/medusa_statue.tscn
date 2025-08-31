@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://m63ujhw7p1ju"]
+
+[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="1_egxv0"]
+[ext_resource type="Texture2D" uid="uid://doii8n6cb153x" path="res://assets/sprites/Enemies/Medusa/Medusa.png" id="2_ut5yj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cnsp"]
+shader = ExtResource("1_egxv0")
+shader_parameter/influence = 0.5
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 0.5
+shader_parameter/mix_colors = false
+shader_parameter/enabled = null
+shader_parameter/sheet_columns = 20
+shader_parameter/sheet_rows = 20
+shader_parameter/petrified = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qt31"]
+atlas = ExtResource("2_ut5yj")
+region = Rect2(120, 80, 120, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyart"]
+size = Vector2(48, 95)
+
+[node name="object" type="RigidBody2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2cnsp")
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_8qt31")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(3, 23.5)
+shape = SubResource("RectangleShape2D_uyart")
