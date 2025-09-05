@@ -55,6 +55,7 @@ Since this project does not contain monetization in any form, it's compliant to 
 ### Music
 - BELMONT LEGACY: [YouTube](https://www.youtube.com/@belmontlegacy9959)
 - qwertyGUY: [YouTube](https://www.youtube.com/@QwertyGuy499)
+- Kassil: [YouTube](https://www.youtube.com/@Kassil)
 - Konami
 
 ### Testing
