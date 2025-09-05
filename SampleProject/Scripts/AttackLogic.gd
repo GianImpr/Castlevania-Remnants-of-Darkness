@@ -1,5 +1,7 @@
 extends Area2D
 class_name PlayerHitbox
+@export var dmg_multiplier: float = 1
+@export var damage_boost: int = 0
 @export_range(0, 120, 1, "suffix:frames") var iframes_on_hit: int
 @export var player: CharacterBody2D
 @export var sound: PolyphonicAudio
@@ -160,7 +162,7 @@ func removeHitboxIfNotAttacking() -> void:
 
 # Calculates the base damage of the move
 func calculateDamage(body: Node2D) -> int:
-	var damage: int = max(player.stats.Stats["ATK"] - body.stats.DEF/2, 1)
+	var damage: int = max(player.stats.Stats["ATK"] - body.stats.DEF/2, 1) * dmg_multiplier + damage_boost
 	const STUD_OF_CONCENTRATION_BOOST: float = 1.07
 	
 	if player.stats.accessoryEquipped(Accessory.Accessories.STUD_OF_CONCENTRATION) and player.stats.Stats["FP"] >= player.stats.Stats["MFP"]:

@@ -10,13 +10,15 @@ func enter():
 	
 	if player.stats.canApplySkill(Skill.Skills.AWARENESS):
 		player.focus_gain_duration.start()
-
 	
 func exit():
 	player.is_hurt = false
 	
 func Update(delta: float):
-	pass
+	if Input.is_action_just_pressed("attack") and player.stats.canApplySkill(Skill.Skills.ELECTRIC_WICKED_GLADIATOR_FIST):
+		HectorUppercut.thunder_version = true
+		Transitioned.emit(self, "uppercut")
+
 	
 func Physics_Update(delta: float):
 	can_die()

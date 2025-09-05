@@ -1,4 +1,4 @@
-[gd_scene load_steps=410 format=3 uid="uid://cenjpg3o6am6u"]
+[gd_scene load_steps=423 format=3 uid="uid://cenjpg3o6am6u"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorStats.gd" id="1_f0ls1"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
@@ -205,7 +205,12 @@
 [ext_resource type="Texture2D" uid="uid://d2yr58nplltvm" path="res://assets/sprites/Effects/SpecialAttackVFX/Sparkles.png" id="181_s2s3l"]
 [ext_resource type="AudioStream" uid="uid://3g6fsxu45dey" path="res://assets/sounds/Effects/EnemyHit/HitFire.MP3" id="182_kyhcv"]
 [ext_resource type="AudioStream" uid="uid://40i2vpps8pdj" path="res://assets/sounds/Powerups/AguniLaurel/AguniLaurelFire.ogg" id="183_bjshn"]
+[ext_resource type="AudioStream" uid="uid://di3mascqu7d00" path="res://assets/sounds/Effects/Miscellaneous/Electric_Wicked_Gladiator_Fist.wav" id="187_tt104"]
+[ext_resource type="AudioStream" uid="uid://c2jfpf888co80" path="res://assets/sounds/Voice/Hector/HeavyAttack2.wav" id="188_dm80c"]
+[ext_resource type="AudioStream" uid="uid://mee3xcbblt6s" path="res://assets/sounds/Voice/Hector/HeavyAttack3.wav" id="189_ckejl"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/player_projectile.gd" id="200_5r3n4"]
+[ext_resource type="Texture2D" uid="uid://1he2rtoahtll" path="res://assets/sprites/Effects/Sparks/Spark1.png" id="207_mg3ag"]
+[ext_resource type="Texture2D" uid="uid://p0swsulobrnj" path="res://assets/sprites/Effects/Sparks/Spark2.png" id="208_5jjpn"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_ju6fn")
@@ -2197,6 +2202,42 @@ tracks/27/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("UppercutLightning/UppercutSpark1:emitting")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("UppercutLightning/UppercutSpark2:emitting")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("UppercutLightning/ThunderLighting:energy")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_lhfeg"]
 resource_name = "air_attack"
@@ -4162,7 +4203,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_d43ik"]
 resource_name = "air_attack_fist"
-length = 0.35
+length = 0.65
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -4171,7 +4212,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.3),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.35, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [71, 72, 73, 74, 72, 71]
@@ -4183,7 +4224,7 @@ tracks/1/path = NodePath("Sprite2D/FistHitbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.25),
+"times": PackedFloat32Array(0, 0.1, 0.35),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -4199,6 +4240,102 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(17.622, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3k6ne"]
+resource_name = "thunder_uppercut"
+length = 0.55
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [226, 227, 228, 229, 230, 231, 232, 233, 234, 235]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Uppercut")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"get_hector_heavy_attack_sound"
+}, {
+"args": [],
+"method": &"shakeCamera"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudioPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["ewgf"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UppercutLightning/UppercutSpark1:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UppercutLightning/UppercutSpark2:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UppercutLightning/ThunderLighting:energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.25, 0.45, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 12.0, 12.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D/ThunderUppercutHitbox/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jttxa"]
@@ -4236,6 +4373,7 @@ _data = {
 "sitting_down": SubResource("Animation_w772u"),
 "sword_throw": SubResource("Animation_b71ut"),
 "throw": SubResource("Animation_qkrq3"),
+"thunder_uppercut": SubResource("Animation_3k6ne"),
 "uppercut": SubResource("Animation_iotq6")
 }
 
@@ -4435,9 +4573,14 @@ script = ExtResource("17_eidx6")
 Tag = "hit_fire_sfx"
 stream = ExtResource("182_kyhcv")
 
+[sub_resource type="Resource" id="Resource_cj1no"]
+script = ExtResource("17_eidx6")
+Tag = "ewgf"
+stream = ExtResource("187_tt104")
+
 [sub_resource type="Resource" id="Resource_uk8xp"]
 script = ExtResource("140_3d8p5")
-sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_fk7mo"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6")])
+sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_fk7mo"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6"), SubResource("Resource_cj1no")])
 
 [sub_resource type="Resource" id="Resource_2oamq"]
 script = ExtResource("17_eidx6")
@@ -4488,9 +4631,19 @@ script = ExtResource("17_eidx6")
 Tag = "Dead"
 stream = ExtResource("87_324sv")
 
+[sub_resource type="Resource" id="Resource_fkwog"]
+script = ExtResource("17_eidx6")
+Tag = "heavy_attack_1"
+stream = ExtResource("188_dm80c")
+
+[sub_resource type="Resource" id="Resource_sobq1"]
+script = ExtResource("17_eidx6")
+Tag = "heavy_attack_2"
+stream = ExtResource("189_ckejl")
+
 [sub_resource type="Resource" id="Resource_xhqmh"]
 script = ExtResource("140_3d8p5")
-sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_fk7mo"), SubResource("Resource_pomuy"), SubResource("Resource_1fd5c"), SubResource("Resource_hk5vy"), SubResource("Resource_jp6yi"), SubResource("Resource_go7i7"), SubResource("Resource_35fxo"), SubResource("Resource_lfj2t"), SubResource("Resource_ryiyx")])
+sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_fk7mo"), SubResource("Resource_pomuy"), SubResource("Resource_1fd5c"), SubResource("Resource_hk5vy"), SubResource("Resource_jp6yi"), SubResource("Resource_go7i7"), SubResource("Resource_35fxo"), SubResource("Resource_lfj2t"), SubResource("Resource_ryiyx"), SubResource("Resource_fkwog"), SubResource("Resource_sobq1")])
 
 [sub_resource type="Curve" id="Curve_t2ule"]
 max_value = 5.0
@@ -4698,6 +4851,24 @@ _data = {
 "trigger": SubResource("Animation_mooh2")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ll2rv"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_bjkx2"]
+offsets = PackedFloat32Array(0, 0.274005)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_pdchl"]
+colors = PackedColorArray(0.123169, 0.416419, 1, 1, 0.102878, 0.418384, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2dre3"]
+gradient = SubResource("Gradient_pdchl")
+fill = 1
+fill_from = Vector2(0.491453, 0.5)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
 scale = Vector2(2, 2)
 collision_layer = 2
@@ -4853,6 +5024,7 @@ weapon_proficiency = Array[Dictionary]([{
 script = ExtResource("93_30li2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.5, 12.5)
 shape = SubResource("RectangleShape2D_mbn21")
 debug_color = Color(0.989477, 0, 0.289978, 0.42)
@@ -4908,6 +5080,7 @@ ice_hit_collision_scene = ExtResource("105_c2fce")
 base_attribute = Array[int]([1])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/FistHitbox"]
+visible = false
 position = Vector2(17.6223, 0.413044)
 shape = SubResource("RectangleShape2D_fu7uc")
 
@@ -4927,6 +5100,28 @@ ice_hit_collision_scene = ExtResource("105_c2fce")
 base_attribute = Array[int]([1])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/UppercutHitbox"]
+position = Vector2(13.25, 2.5)
+shape = SubResource("RectangleShape2D_otvxe")
+disabled = true
+
+[node name="ThunderUppercutHitbox" type="Area2D" parent="Sprite2D" node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
+process_mode = 1
+visible = false
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("3_rge3w")
+dmg_multiplier = 2.0
+damage_boost = 15
+iframes_on_hit = 20
+player = NodePath("../..")
+sound = NodePath("../../PolyphonicAudioPlayer")
+state_machine = NodePath("../../StateMachine")
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("5_7iojt")
+ice_hit_collision_scene = ExtResource("105_c2fce")
+base_attribute = Array[int]([1])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ThunderUppercutHitbox"]
 position = Vector2(13.25, 2.5)
 shape = SubResource("RectangleShape2D_otvxe")
 disabled = true
@@ -5100,6 +5295,7 @@ script = ExtResource("136_g7mo7")
 script = ExtResource("136_2ccld")
 recoil_speed = Vector2(150, -630)
 ignore_landing = NodePath("../Guard_break/Ignore_landing")
+attack_state = null
 
 [node name="Sword_spin" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_spin", "sword_spin_hitbox")]
 script = ExtResource("138_q0p4k")
@@ -5111,8 +5307,9 @@ attack_state = true
 script = ExtResource("141_js2j3")
 attack_state = true
 
-[node name="Uppercut" type="Node" parent="StateMachine"]
+[node name="Uppercut" type="Node" parent="StateMachine" node_paths=PackedStringArray("uppercut_effects")]
 script = ExtResource("156_gp8oi")
+uppercut_effects = NodePath("../../UppercutLightning")
 attack_state = true
 
 [node name="Petrified" type="Node" parent="StateMachine" node_paths=PackedStringArray("debris", "hurtbox")]
@@ -5319,6 +5516,41 @@ libraries = {
 "": SubResource("AnimationLibrary_dojos")
 }
 
+[node name="UppercutLightning" type="Node2D" parent="."]
+position = Vector2(12, -2.5)
+
+[node name="UppercutSpark1" type="CPUParticles2D" parent="UppercutLightning"]
+material = SubResource("CanvasItemMaterial_ll2rv")
+amount = 16
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("207_mg3ag")
+emission_shape = 2
+emission_sphere_radius = 14.0
+gravity = Vector2(0, 0)
+angle_max = 360.0
+color_ramp = SubResource("Gradient_bjkx2")
+anim_speed_min = 4.0
+anim_speed_max = 4.0
+
+[node name="UppercutSpark2" type="CPUParticles2D" parent="UppercutLightning"]
+material = SubResource("CanvasItemMaterial_ll2rv")
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("208_5jjpn")
+emission_shape = 2
+emission_sphere_radius = 14.0
+gravity = Vector2(0, 0)
+angle_max = 360.0
+color_ramp = SubResource("Gradient_bjkx2")
+anim_speed_min = 4.0
+anim_speed_max = 4.0
+
+[node name="ThunderLighting" type="PointLight2D" parent="UppercutLightning"]
+position = Vector2(-5, 2)
+energy = 0.0
+texture = SubResource("GradientTexture2D_2dre3")
+
 [node name="FocusGainDuration" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
@@ -5330,6 +5562,7 @@ target_position = Vector2(0, 16)
 [connection signal="body_entered" from="Sprite2D/SwordHitbox" to="Sprite2D/SwordHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/UppercutHitbox" to="Sprite2D/UppercutHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Sprite2D/ThunderUppercutHitbox" to="Sprite2D/ThunderUppercutHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="Sprite2D/Glow" to="Sprite2D" method="_on_glow_timeout"]
 [connection signal="timeout" from="StateMachine/Backdash/Trail_timer" to="StateMachine/Backdash" method="_on_trail_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Backdash/Debris_timer" to="StateMachine/Backdash" method="_on_debris_timer_timeout"]

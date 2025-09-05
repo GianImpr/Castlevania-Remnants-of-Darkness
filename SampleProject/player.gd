@@ -43,7 +43,7 @@ const SPEED = 260.0
 const IFRAMES_HIT_THRESHOLD: int = 3
 const FOCUS_GAIN_RATIO: int = 10
 const GUARD_RECOVERY_TIME: int = 3
-const MAX_WEAPON_RANK = 1
+const MAX_WEAPON_RANK = 2
 
 var current_hits_taken_before_iframes: int = 0
 var reset_position: Vector2

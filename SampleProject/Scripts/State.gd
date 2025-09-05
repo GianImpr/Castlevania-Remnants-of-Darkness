@@ -184,6 +184,14 @@ func get_hector_attack_sound() -> void:
 	if voice_clip > 0:
 		voice.play_sound_effect_from_library("Attack" + str(voice_clip))
 
+#Plays one of Hector's strong attack grunts
+func get_hector_heavy_attack_sound() -> void:
+	sound.play_sound_effect_from_library(get_attack_sound())
+	var voice_clip = randi_range(1, 2)
+	if voice_clip > 0:
+		voice.play_sound_effect_from_library("heavy_attack_" + str(voice_clip))
+
+
 #Plays the appropriate animation for the currently equipped weapon
 #Crouching attacks are missing
 func swingWeapon(air_anim: bool):
