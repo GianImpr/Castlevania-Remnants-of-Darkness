@@ -12,5 +12,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	sprite.visible = false
 	get_child(0).visible = true
 	collision.set_deferred("disabled", true)
-	wall.detonate()
-	sound.play_sound_effect_from_library("break")
+	if wall != null:
+		get_tree().create_timer(0.05).timeout.connect(wall.detonate)
+		sound.play_sound_effect_from_library("break")

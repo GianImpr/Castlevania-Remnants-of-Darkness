@@ -87,7 +87,11 @@ const Buttons = {
 	UP = "Up",
 	DOWN = "Down",
 	BACK = "Back",
-	FORWARD = "Forward"
+	FORWARD = "Forward",
+	BACKDOWN = "BackDown",
+	BACKUP = "BackUp",
+	FORWARDDOWN = "ForwardDown",
+	FORWARDUP = "ForwardUp"
 }
 
 const binding_order: Array[String] = ["Back", "Forward", "Down", "Up", "Square", "Cross", "Circle", "Triangle", "L1", "R1", "Start", "Select", "L2"]
@@ -163,12 +167,20 @@ func setButtons(scheme: int) -> void:
 		button_icons.get_or_add("Up", Buttons.UP)
 		button_icons.get_or_add("Down", Buttons.DOWN)
 		button_icons.get_or_add("Back", Buttons.BACK)
+		button_icons.get_or_add("BackDown", Buttons.BACKDOWN)
+		button_icons.get_or_add("BackUp", Buttons.BACKUP)
 		button_icons.get_or_add("Forward", Buttons.FORWARD)
+		button_icons.get_or_add("ForwardDown", Buttons.FORWARDDOWN)
+		button_icons.get_or_add("ForwardUp", Buttons.FORWARDUP)
 	else:
 		button_icons.get_or_add("Up", "Up")
 		button_icons.get_or_add("Down", "Down")
 		button_icons.get_or_add("Back", "Left")
 		button_icons.get_or_add("Forward", "Right")
+		button_icons.get_or_add("BackDown", "DB")
+		button_icons.get_or_add("BackUp", "UB")
+		button_icons.get_or_add("ForwardDown", "DF")
+		button_icons.get_or_add("ForwardUp", "UF")
 	joypadbutton_order = initial_joypadbutton_order.duplicate(true)
 	keyboardbutton_order = initial_keyboardbutton_order.duplicate(true)
 	applySwaps()

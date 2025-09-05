@@ -14,7 +14,11 @@ func Update(delta: float):
 	
 	if player.direction != anim_direction * player.facing_position:
 		updateDirection()
-	
+
+	if Input.is_action_just_pressed("attack") and player.stats.canApplySkill(Skill.Skills.WICKED_GLADIATOR_FIST):
+		Transitioned.emit(self, "uppercut")
+
+
 	if player.direction == 0 and Input.is_action_pressed("guard"):
 		Transitioned.emit(self, "guard")
 	elif not Input.is_action_pressed("guard"):

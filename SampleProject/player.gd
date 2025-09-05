@@ -117,10 +117,13 @@ func _process(delta: float) -> void:
 	if state_machine.current_state is HectorGuardBreak or stats.Stats["Guard"] == 3:
 		guard_recovery.stop()
 	elif guard_recovery.is_stopped():
-		if Global.game == null or Global.game.difficulty != Game.Difficulty.SIMPLIFIED:
-			guard_recovery.start()
-		else:
-			guard_recovery.start(GUARD_RECOVERY_TIME/2)
+		var actual_recovery_time: float = GUARD_RECOVERY_TIME
+		if stats.canApplySkill(Skill.Skills.STEADY_FIGHTER):
+			guard_recovery.start(actual_recovery_time*0.9)
+			
+		if Global.game != null and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
+			actual_recovery_time /= 2
+		guard_recovery.start(actual_recovery_time)
 		
 	if stats.Stats["EXP"] >= expNeededToLvUp() and stats.Stats["LV"] < 99:
 		levelUp()
@@ -235,7 +238,7 @@ func expNeededToLvUp() -> int:
 	
 func expNeededToRankUpWeapon() -> int:
 	var weapon_type: int = 4
-	var allowed_weapon_types: Array[Weapon.Type] = [Weapon.Type.SWORD, Weapon.Type.AXE, Weapon.Type.GREATSWORD]
+	var allowed_weapon_types: Array[Weapon.Type] = [Weapon.Type.SWORD, Weapon.Type.AXE, Weapon.Type.GREATSWORD, Weapon.Type.FIST]
 	if stats.equipment["weapon"] != 0:
 		weapon_type = stats.searchItemInCompendium(stats.equipment["weapon"], stats.weapon_compendium).type
 	var next_weapon_lv = stats.weapon_proficiency[weapon_type]["lv"]+1

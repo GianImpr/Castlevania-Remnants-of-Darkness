@@ -13,7 +13,7 @@ enum Position {
 
 const Names = {
 	HECTOR = "Hector", 
-	CARMILLA = "Bella Padula"
+	CARMILLA = "Carmilla"
 }
 
 const Sprites = {

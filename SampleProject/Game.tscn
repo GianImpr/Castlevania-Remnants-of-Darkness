@@ -1,4 +1,4 @@
-[gd_scene load_steps=452 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=454 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -2495,6 +2495,36 @@ weapon_type = 1
 weapon_rank = 1
 transitions_into_state = ""
 
+[sub_resource type="Resource" id="Resource_yrs72"]
+script = ExtResource("99_ixwc3")
+skill_name = "WICKED_GLADIATOR_FIST"
+skill_description = "WICKED_GLADIATOR_FIST_DESC"
+value = 0
+max_quantity = 1
+type = 2
+cost_type = 0
+cost_value = 0
+command_input = Array[String]([])
+command_input_serialized = " [[Square]] while guarding"
+weapon_type = 4
+weapon_rank = 1
+transitions_into_state = ""
+
+[sub_resource type="Resource" id="Resource_awbx6"]
+script = ExtResource("99_ixwc3")
+skill_name = "STEADY_FIGHTER"
+skill_description = "STEADY_FIGHTER_DESC"
+value = 0
+max_quantity = 1
+type = 2
+cost_type = 0
+cost_value = 0
+command_input = Array[String]([])
+command_input_serialized = ""
+weapon_type = 4
+weapon_rank = 1
+transitions_into_state = ""
+
 [sub_resource type="Resource" id="Resource_86suo"]
 script = ExtResource("105_7lbas")
 relic_name = "INDIGO_CROSS"
@@ -3425,7 +3455,7 @@ headgear_compendium = Array[ExtResource("58_johey")]([SubResource("Resource_stdw
 body_compendium = Array[ExtResource("86_xt4t6")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me"), SubResource("Resource_dqisp"), SubResource("Resource_rngem")])
 legs_compendium = Array[ExtResource("92_10lem")]([SubResource("Resource_olb5a"), SubResource("Resource_jnr2a"), SubResource("Resource_d35ul"), SubResource("Resource_4ly5s"), SubResource("Resource_jd16d")])
 accessory_compendium = Array[ExtResource("95_xlcm0")]([SubResource("Resource_fmjl1"), SubResource("Resource_g71f4"), SubResource("Resource_t5f6q"), SubResource("Resource_jiprx"), SubResource("Resource_hiqqn"), SubResource("Resource_aauoy")])
-skill_compendium = Array[ExtResource("99_ixwc3")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_6o46a"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47"), SubResource("Resource_vfu6u"), SubResource("Resource_4ifw5"), SubResource("Resource_lqir6")])
+skill_compendium = Array[ExtResource("99_ixwc3")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_6o46a"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47"), SubResource("Resource_vfu6u"), SubResource("Resource_4ifw5"), SubResource("Resource_lqir6"), SubResource("Resource_yrs72"), SubResource("Resource_awbx6")])
 relic_compendium = Array[ExtResource("105_7lbas")]([SubResource("Resource_86suo"), SubResource("Resource_8t8qo")])
 artifact_compendium = Array[ExtResource("145_wv42h")]([SubResource("Resource_1ioky")])
 dialogue_compendium = [[SubResource("Resource_87l3r"), SubResource("Resource_m8frf"), SubResource("Resource_5idyr"), SubResource("Resource_e571n")], Array[ExtResource("107_o0dwx")]([SubResource("Resource_25n78"), SubResource("Resource_ktboo"), SubResource("Resource_vo88s"), SubResource("Resource_dctxa"), SubResource("Resource_spkj4"), SubResource("Resource_c46ur")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_ohovh"), SubResource("Resource_omcdx"), SubResource("Resource_72dkk"), SubResource("Resource_4f7nn"), SubResource("Resource_mgxho")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_8f7hp"), SubResource("Resource_o67wt"), SubResource("Resource_wtpr2")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_csyar"), SubResource("Resource_nuqqm"), SubResource("Resource_o1h1j"), SubResource("Resource_55rnv"), SubResource("Resource_2wus2"), SubResource("Resource_bqaak"), SubResource("Resource_jrgt6"), SubResource("Resource_gx1rt"), SubResource("Resource_u1nhv"), SubResource("Resource_v57uc"), SubResource("Resource_eyf3w"), SubResource("Resource_yuuna"), SubResource("Resource_pl4eo"), SubResource("Resource_ql2g5"), SubResource("Resource_b1cpc"), SubResource("Resource_yuqnq"), SubResource("Resource_ycdkt"), SubResource("Resource_bft1l"), SubResource("Resource_abke8"), SubResource("Resource_3qvv1"), SubResource("Resource_nlgtf"), SubResource("Resource_7kcsh"), SubResource("Resource_mqejh"), SubResource("Resource_jnrv7"), SubResource("Resource_utlr2"), SubResource("Resource_lc0k7"), SubResource("Resource_hfyhw"), SubResource("Resource_a0e3l"), SubResource("Resource_l4h0p"), SubResource("Resource_15a3r"), SubResource("Resource_4neaj"), SubResource("Resource_2o2y2"), SubResource("Resource_bx3e7"), SubResource("Resource_tsqkx"), SubResource("Resource_7l514"), SubResource("Resource_8x8d0"), SubResource("Resource_upl0l"), SubResource("Resource_awl76"), SubResource("Resource_ni2ni"), SubResource("Resource_ue3r3"), SubResource("Resource_67xnv"), SubResource("Resource_j1ehq"), SubResource("Resource_ispcp")])]
@@ -3450,7 +3480,7 @@ save_rooms = Array[Dictionary]([{
 "name": "FAGARAS_RIGHT",
 "path": "Fagaras/right_cave_save.tscn"
 }])
-starting_map = "Debug/debug_1.tscn"
+starting_map = "FirstLevel/Woods.tscn"
 
 [node name="Player" parent="." instance=ExtResource("5_81k16")]
 z_index = 5
