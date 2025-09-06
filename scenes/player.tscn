@@ -1,4 +1,4 @@
-[gd_scene load_steps=423 format=3 uid="uid://cenjpg3o6am6u"]
+[gd_scene load_steps=426 format=3 uid="uid://cenjpg3o6am6u"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorStats.gd" id="1_f0ls1"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
@@ -187,6 +187,8 @@
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorPetrified.gd" id="153_8to1u"]
 [ext_resource type="PackedScene" uid="uid://bt0ligyka3p1g" path="res://SampleProject/extra_scenes/effects/hector_statue_break.tscn" id="154_7mmrn"]
 [ext_resource type="AudioStream" uid="uid://c3hff11461yhv" path="res://assets/sounds/InnocentDevils/InnocentCommand.MP3" id="154_q7ikr"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorWindstorm.gd" id="154_yfh6y"]
+[ext_resource type="PackedScene" uid="uid://bfnl0roplohkg" path="res://SampleProject/Powers/windstorm.tscn" id="155_6glaw"]
 [ext_resource type="Texture2D" uid="uid://cdl1ueqd58vuq" path="res://assets/sprites/Effects/StoneDebris.png" id="155_s7xk3"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/HectorUppercut.gd" id="156_gp8oi"]
 [ext_resource type="AudioStream" uid="uid://cp0wlsu0kr46r" path="res://assets/sounds/Effects/HectorHit/HitFire.MP3" id="156_roqt5"]
@@ -2212,7 +2214,7 @@ tracks/28/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/29/type = "value"
 tracks/29/imported = false
@@ -2224,7 +2226,7 @@ tracks/29/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/30/type = "value"
 tracks/30/imported = false
@@ -2397,6 +2399,47 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [280, 281, 282, 283, 284, 305, 306, 307, 308, 309, 310]
+}
+
+[sub_resource type="Animation" id="Animation_d43ik"]
+resource_name = "air_attack_fist"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [71, 72, 73, 74, 72, 71]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/FistHitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/FistHitbox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(17.622, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ow16t"]
@@ -4144,104 +4187,6 @@ tracks/0/keys = {
 "values": [128, 129, 130, 131]
 }
 
-[sub_resource type="Animation" id="Animation_iotq6"]
-resource_name = "uppercut"
-length = 0.55
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [226, 227, 228, 229, 230, 231, 232, 233, 234, 235]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("StateMachine/Uppercut")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"get_hector_attack_sound"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PolyphonicAudioPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["punch"],
-"method": &"play_sound_effect_from_library"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/UppercutHitbox/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_d43ik"]
-resource_name = "air_attack_fist"
-length = 0.65
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.35, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [71, 72, 73, 74, 72, 71]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D/FistHitbox/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D/FistHitbox/CollisionShape2D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(17.622, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_3k6ne"]
 resource_name = "thunder_uppercut"
 length = 0.55
@@ -4323,7 +4268,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0.1, 0.25, 0.45, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 12.0, 12.0, 0.0]
+"values": [0.0, 6.0, 6.0, 0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -4336,6 +4281,80 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_iotq6"]
+resource_name = "uppercut"
+length = 0.55
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [226, 227, 228, 229, 230, 231, 232, 233, 234, 235]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Uppercut")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"get_hector_attack_sound"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudioPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["punch"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/UppercutHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_si7n8"]
+resource_name = "windstorm"
+length = 0.95
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.3, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [260, 261, 262, 263, 264, 265]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jttxa"]
@@ -4374,7 +4393,8 @@ _data = {
 "sword_throw": SubResource("Animation_b71ut"),
 "throw": SubResource("Animation_qkrq3"),
 "thunder_uppercut": SubResource("Animation_3k6ne"),
-"uppercut": SubResource("Animation_iotq6")
+"uppercut": SubResource("Animation_iotq6"),
+"windstorm": SubResource("Animation_si7n8")
 }
 
 [sub_resource type="GDScript" id="GDScript_xq16k"]
@@ -4876,6 +4896,7 @@ collision_mask = 17
 floor_constant_speed = true
 floor_max_angle = 1.309
 floor_snap_length = 30.0
+safe_margin = 0.15
 script = ExtResource("1_p2ow1")
 sprite = NodePath("Sprite2D")
 aura = NodePath("Sprite2D/Aura")
@@ -5312,6 +5333,12 @@ script = ExtResource("156_gp8oi")
 uppercut_effects = NodePath("../../UppercutLightning")
 attack_state = true
 
+[node name="Windstorm" type="Node" parent="StateMachine"]
+script = ExtResource("154_yfh6y")
+windstorm_scene = ExtResource("155_6glaw")
+windstorm_spawning_offset = Vector2(15, 0)
+attack_state = true
+
 [node name="Petrified" type="Node" parent="StateMachine" node_paths=PackedStringArray("debris", "hurtbox")]
 script = ExtResource("153_8to1u")
 hector_statue_scene = ExtResource("154_7mmrn")
@@ -5521,6 +5548,7 @@ position = Vector2(12, -2.5)
 
 [node name="UppercutSpark1" type="CPUParticles2D" parent="UppercutLightning"]
 material = SubResource("CanvasItemMaterial_ll2rv")
+emitting = false
 amount = 16
 lifetime = 0.5
 one_shot = true
@@ -5535,6 +5563,7 @@ anim_speed_max = 4.0
 
 [node name="UppercutSpark2" type="CPUParticles2D" parent="UppercutLightning"]
 material = SubResource("CanvasItemMaterial_ll2rv")
+emitting = false
 lifetime = 0.5
 one_shot = true
 texture = ExtResource("208_5jjpn")

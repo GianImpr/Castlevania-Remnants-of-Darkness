@@ -4,6 +4,7 @@ class_name MenuSaveRoom
 @onready var chair_node = get_parent().get_parent().get_parent()
 @export var saving_screen: SavingScreen
 @export var warp_screen: WarpScreen
+@export var default_button: InventoryButton
 const stand_up_flag_id: int = 12
 const stand_up_hint_time: float = 3
 var stand_up_hint_text: String = tr("HINT_12")
@@ -11,8 +12,11 @@ var needs_to_choose = true
 
 func _ready() -> void:
 	super()
+	
+func resetState() -> void:
 	saving_screen.process_mode = Node.PROCESS_MODE_DISABLED
 	chair_node.opened_menu = true
+	default_button.grab_focus()
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("circle") and needs_to_choose:
@@ -35,7 +39,9 @@ func _saveGame():
 	closeWindow()
 	await animation.animation_finished
 	saving_screen.saved_with_success = false
+	saving_screen.closing = false
 	saving_screen.process_mode = Node.PROCESS_MODE_ALWAYS
+	saving_screen.animation.play("appear")
 	await saving_screen.finished
 	if saving_screen.saved_with_success:
 		chair_node.sound.play_sound_effect_from_library("activate")
@@ -53,6 +59,7 @@ func _saveGame():
 func _openWarpScreen() -> void:
 	closeWindow()
 	await animation.animation_finished
+	warp_screen.animation.play("appear")
 	warp_screen.process_mode = Node.PROCESS_MODE_ALWAYS
 	await warp_screen.finished
 	if warp_screen.destination_selected != "":
@@ -89,8 +96,8 @@ func _exitMenu():
 	
 	
 func closeWindow():
-	animation.play_backwards("appear")
+	animation.play_backwards("appear_without_reset")
 	
 func resumeGame():
 	chair_node.opened_menu = false
-	get_parent().get_parent().queue_free()
+	get_parent().get_parent().process_mode = Node.PROCESS_MODE_DISABLED

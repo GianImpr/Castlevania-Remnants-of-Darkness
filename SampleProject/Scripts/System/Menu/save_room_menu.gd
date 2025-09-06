@@ -1,7 +1,8 @@
 extends CanvasLayer
-
+class_name InGameMenu
 @export var default_button: InventoryButton
 @export var warp_button: InventoryButton
+@export var animation: AnimationPlayer
 
 func _ready() -> void:
 	default_button.grab_focus()

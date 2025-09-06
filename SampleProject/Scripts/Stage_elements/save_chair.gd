@@ -8,6 +8,11 @@ var can_sit: bool = false
 var opened_menu: bool = false
 var player_state = Global.player.state_machine.current_state
 @export var save_menu_scene: PackedScene
+var save_menu: InGameMenu
+
+func _ready() -> void:
+	save_menu = save_menu_scene.instantiate()
+	add_child(save_menu)
 
 func _process(delta: float) -> void:
 	player_state = Global.player.state_machine.current_state
@@ -22,8 +27,8 @@ func _process(delta: float) -> void:
 			Global.player.heal_innocent(9999)
 		await player_state.animation.animation_finished
 		opened_menu = true
-		var save_menu = save_menu_scene.instantiate()
-		add_child(save_menu)
+		save_menu.animation.play("appear")
+		save_menu.process_mode = Node.PROCESS_MODE_ALWAYS
 		
 		
 	if player_state is HectorSitDown and not player_state.animation.is_playing() and Input.is_action_just_pressed("circle")  and not opened_menu:

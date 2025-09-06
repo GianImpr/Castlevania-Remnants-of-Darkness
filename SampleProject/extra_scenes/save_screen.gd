@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 			_on_no_pressed()
 		return
 			
-	if animation.is_playing() or confirm_panel_animation.is_playing():
+	if animation.is_playing() or confirm_panel_animation.is_playing() or saved_with_success or closing:
 		return 
 		
 	checkInput()
