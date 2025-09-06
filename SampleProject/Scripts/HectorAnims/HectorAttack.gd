@@ -25,7 +25,6 @@ func Update(delta: float):
 		else:
 			player.sprite.weapon.play()
 		get_hector_attack_sound()
-		get_attack_sound()
 		enter()
 	
 func Physics_Update(delta: float):

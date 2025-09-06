@@ -15,6 +15,10 @@ func play():
 func play_air():
 	animation.play("swing_air")
 	visible = true
+	
+func play_crouch():
+	animation.play("swing_crouch")
+	visible = true
 
 
 func stop():

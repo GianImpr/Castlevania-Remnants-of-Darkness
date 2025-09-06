@@ -1,4 +1,4 @@
-[gd_scene load_steps=429 format=3 uid="uid://cenjpg3o6am6u"]
+[gd_scene load_steps=431 format=3 uid="uid://cenjpg3o6am6u"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorStats.gd" id="1_f0ls1"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
@@ -210,6 +210,7 @@
 [ext_resource type="AudioStream" uid="uid://di3mascqu7d00" path="res://assets/sounds/Effects/Miscellaneous/Electric_Wicked_Gladiator_Fist.wav" id="187_tt104"]
 [ext_resource type="AudioStream" uid="uid://c2jfpf888co80" path="res://assets/sounds/Voice/Hector/HeavyAttack2.wav" id="188_dm80c"]
 [ext_resource type="AudioStream" uid="uid://mee3xcbblt6s" path="res://assets/sounds/Voice/Hector/HeavyAttack3.wav" id="189_ckejl"]
+[ext_resource type="AudioStream" uid="uid://b8wskmq4lwq1g" path="res://assets/sounds/HectorMovement/SpearSwing.MP3" id="190_81mwq"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/player_projectile.gd" id="200_5r3n4"]
 [ext_resource type="Texture2D" uid="uid://1he2rtoahtll" path="res://assets/sprites/Effects/Sparks/Spark1.png" id="207_mg3ag"]
 [ext_resource type="Texture2D" uid="uid://p0swsulobrnj" path="res://assets/sprites/Effects/Sparks/Spark2.png" id="208_5jjpn"]
@@ -4360,7 +4361,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_htusw"]
 resource_name = "attack_spear"
 length = 0.65
-step = 0.05
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4652,9 +4653,14 @@ script = ExtResource("17_eidx6")
 Tag = "ewgf"
 stream = ExtResource("187_tt104")
 
+[sub_resource type="Resource" id="Resource_1q6vw"]
+script = ExtResource("17_eidx6")
+Tag = "spear"
+stream = ExtResource("190_81mwq")
+
 [sub_resource type="Resource" id="Resource_uk8xp"]
 script = ExtResource("140_3d8p5")
-sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_fk7mo"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6"), SubResource("Resource_cj1no")])
+sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_fk7mo"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6"), SubResource("Resource_cj1no"), SubResource("Resource_1q6vw")])
 
 [sub_resource type="Resource" id="Resource_2oamq"]
 script = ExtResource("17_eidx6")

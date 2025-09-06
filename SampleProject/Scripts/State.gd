@@ -12,6 +12,12 @@ const Actions = {
 	CROUCH = "crouch"
 }
 
+enum AttackType {
+	GROUND,
+	AIR,
+	CROUCH
+}
+
 func _ready() -> void:
 	if player == Global.player:
 		HectorCrouchAttack.getWeaponAttackSound = get_attack_sound
@@ -169,12 +175,13 @@ func can_attack():
 	if InputBuffer.is_action_press_buffered("attack"):
 		if (self is HectorCrouch or self is HectorRise) and player.can_crouch_attack:
 			Transitioned.emit(self, "crouch_attack")
+			swingWeapon(AttackType.CROUCH)
 		elif not player.is_on_floor():
 			Transitioned.emit(self, "air_attack")
-			swingWeapon(true)
+			swingWeapon(AttackType.AIR)
 		else:
 			Transitioned.emit(self, "attack")
-			swingWeapon(false)
+			swingWeapon(AttackType.GROUND)
 		get_hector_attack_sound()
 
 #Plays one of Hector's attack grunts
@@ -194,12 +201,14 @@ func get_hector_heavy_attack_sound() -> void:
 
 #Plays the appropriate animation for the currently equipped weapon
 #Crouching attacks are missing
-func swingWeapon(air_anim: bool):
+func swingWeapon(anim_type: int):
 	if player.sprite.weapon != null:
-		if air_anim:
+		if anim_type == AttackType.AIR:
 			player.sprite.weapon.play_air()
-		else:
+		elif anim_type == AttackType.GROUND:
 			player.sprite.weapon.play()
+		elif anim_type == AttackType.CROUCH:
+			player.sprite.weapon.play_crouch()
 
 #Allows the player to activate a relic and handles the activation logic along
 #with visual effects
@@ -287,7 +296,7 @@ func get_attack_speed() -> float:
 	return speeds[player.stats.searchItemInCompendium(player.stats.equipment["weapon"], player.stats.weapon_compendium).type]
 
 func get_attack_sound() -> String:
-	var sounds = ["sword", "greatsword", "axe", "", "punch"]
+	var sounds = ["sword", "greatsword", "axe", "spear", "punch"]
 	if player.stats.equipment["weapon"] == 0:
 		return sounds[4]
 	return sounds[player.stats.searchItemInCompendium(player.stats.equipment["weapon"], player.stats.weapon_compendium).type]

@@ -193,7 +193,7 @@ func applyDamage(body: Node2D, damage: int, physical_based_sound: bool = true) -
 
 # Creates the graphical hit effect and the sound effect of the impact
 func createEffects(body: Node2D, physical_based_sound: bool = true) -> void:
-	var hit_sounds = ["hard_slash_sfx", "hard_slash_sfx", "hard_slash_sfx", "", "hit_sfx"]
+	var hit_sounds = ["hard_slash_sfx", "hard_slash_sfx", "hard_slash_sfx", "hard_slash_sfx", "hit_sfx"]
 	var weapon = player.stats.equipment["weapon"]
 	var attack_type = 4
 	if physical_based_sound:

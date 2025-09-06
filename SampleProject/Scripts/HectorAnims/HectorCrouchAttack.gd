@@ -37,3 +37,4 @@ func playAttackAnimation() -> void:
 		anim_speed += FIST_ANIMATION_SPEED_BOOST
 	animation.play("crouch_attack" + anim_suffix, -1, anim_speed)
 	animation.seek(0)
+	

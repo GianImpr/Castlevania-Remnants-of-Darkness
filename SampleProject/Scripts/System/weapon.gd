@@ -29,7 +29,8 @@ enum Weapons {
 	BULLOVA,
 	CLAYMORE,
 	FALCHION,
-	MACE
+	MACE,
+	BRONZE_SPEAR
 }
 
 @export var weapon_name: String

@@ -63,6 +63,8 @@ func getListType(index = null):
 			return Weapon.Type.GREATSWORD
 		2:
 			return Weapon.Type.AXE
+		3:
+			return Weapon.Type.SPEAR
 		4:
 			return Weapon.Type.FIST
 		6:
@@ -157,7 +159,7 @@ func getItemFromCompendium(index: int, type):
 	
 func getInventory(type):
 	var inventories: HectorStats = Global.player.stats
-	if type is int and (type == Weapon.Type.SWORD or type == Weapon.Type.AXE or type == Weapon.Type.GREATSWORD or type == Weapon.Type.FIST):
+	if type is int and (type == Weapon.Type.SWORD or type == Weapon.Type.AXE or type == Weapon.Type.GREATSWORD or type == Weapon.Type.FIST or type == Weapon.Type.SPEAR):
 		return inventories.weapon_inventory
 	elif type == "Headgear":
 		return inventories.head_inventory
@@ -169,7 +171,7 @@ func getInventory(type):
 	
 func getCompendium(type):
 	var compendiums: HectorStats = Global.player.stats
-	if type is int and (type == Weapon.Type.SWORD or type == Weapon.Type.AXE or type == Weapon.Type.GREATSWORD or type == Weapon.Type.FIST):
+	if type is int and (type == Weapon.Type.SWORD or type == Weapon.Type.AXE or type == Weapon.Type.GREATSWORD or type == Weapon.Type.FIST or type == Weapon.Type.SPEAR):
 		return compendiums.weapon_compendium
 	elif str(type) == "Headgear":
 		return compendiums.headgear_compendium
