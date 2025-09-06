@@ -4,6 +4,7 @@ class_name Weapon
 enum Type {
 	SWORD = 0,
 	GREATSWORD = 1,
+	SPEAR = 3,
 	FIST = 4,
 	AXE = 2
 }

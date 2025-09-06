@@ -1,4 +1,4 @@
-[gd_scene load_steps=426 format=3 uid="uid://cenjpg3o6am6u"]
+[gd_scene load_steps=429 format=3 uid="uid://cenjpg3o6am6u"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/HectorStats.gd" id="1_f0ls1"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
@@ -4357,6 +4357,57 @@ tracks/0/keys = {
 "values": [260, 261, 262, 263, 264, 265]
 }
 
+[sub_resource type="Animation" id="Animation_htusw"]
+resource_name = "attack_spear"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [320, 321, 322, 323, 324, 325]
+}
+
+[sub_resource type="Animation" id="Animation_u31ms"]
+resource_name = "air_attack_spear"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [333, 334, 335, 336, 337]
+}
+
+[sub_resource type="Animation" id="Animation_cufrs"]
+resource_name = "crouch_attack_spear"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [327, 328, 329, 330, 331, 332]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jttxa"]
 _data = {
 "RESET": SubResource("Animation_ilf42"),
@@ -4364,13 +4415,16 @@ _data = {
 "air_attack_axe": SubResource("Animation_1w37a"),
 "air_attack_fist": SubResource("Animation_d43ik"),
 "air_attack_greatsword": SubResource("Animation_ow16t"),
+"air_attack_spear": SubResource("Animation_u31ms"),
 "attack": SubResource("Animation_rol68"),
 "attack_axe": SubResource("Animation_5xsr0"),
 "attack_fist": SubResource("Animation_5xy3g"),
 "attack_greatsword": SubResource("Animation_7hrwj"),
+"attack_spear": SubResource("Animation_htusw"),
 "crouch": SubResource("Animation_v6x1f"),
 "crouch_attack": SubResource("Animation_dlpvv"),
 "crouch_attack_fist": SubResource("Animation_d4fhg"),
+"crouch_attack_spear": SubResource("Animation_cufrs"),
 "damage_mercy": SubResource("Animation_upmxk"),
 "dying": SubResource("Animation_8pt8e"),
 "guard_break": SubResource("Animation_qlkcq"),
@@ -5316,7 +5370,6 @@ script = ExtResource("136_g7mo7")
 script = ExtResource("136_2ccld")
 recoil_speed = Vector2(150, -630)
 ignore_landing = NodePath("../Guard_break/Ignore_landing")
-attack_state = null
 
 [node name="Sword_spin" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_spin", "sword_spin_hitbox")]
 script = ExtResource("138_q0p4k")

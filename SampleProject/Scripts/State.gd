@@ -275,7 +275,7 @@ func can_die():
 		Transitioned.emit(self, "dying")
 		
 func attack_anim_suffix() -> String:
-	var anims = ["", "_greatsword", "_axe", "", "_fist"]
+	var anims = ["", "_greatsword", "_axe", "_spear", "_fist"]
 	if player.stats.equipment["weapon"] == 0:
 		return anims[4]
 	return anims[player.stats.searchItemInCompendium(player.stats.equipment["weapon"], player.stats.weapon_compendium).type]
