@@ -193,7 +193,7 @@ func weaponRankUp():
 	if stats.equipment["weapon"] != 0:
 		weapon_type = stats.searchItemInCompendium(stats.equipment["weapon"], stats.weapon_compendium).type
 	stats.weapon_proficiency[weapon_type]["lv"] += 1
-	var skills_learned: Array[String]
+	var skills_learned: Array[String] = ["", ""]
 	for i in range(0, stats.skill_compendium.size()):
 		var skill: Skill = stats.skill_compendium[i]
 		
