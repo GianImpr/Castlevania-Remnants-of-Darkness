@@ -47,6 +47,7 @@ Since this project does not contain monetization in any form, it's compliant to 
 ### Sprites
 - Donoffrio
 - ShockPixels: [X](https://x.com/ShockPixels)
+- Darren Zcon: [YouTube](https://www.youtube.com/channel/UCeB4QINOUHNhy9zR6sh-2sA)
 - Konami
 
 ### Portraits
