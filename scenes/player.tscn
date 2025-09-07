@@ -2460,6 +2460,23 @@ tracks/0/keys = {
 "values": [281, 282, 283, 284, 305, 306, 307, 308, 309, 310]
 }
 
+[sub_resource type="Animation" id="Animation_u31ms"]
+resource_name = "air_attack_spear"
+length = 0.65
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [333, 334, 335, 336, 337]
+}
+
 [sub_resource type="Animation" id="Animation_rol68"]
 resource_name = "attack"
 length = 0.8
@@ -2665,6 +2682,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [281, 282, 283, 284, 285, 286, 287, 288, 289]
+}
+
+[sub_resource type="Animation" id="Animation_htusw"]
+resource_name = "attack_spear"
+length = 0.65
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [320, 321, 322, 323, 324, 325]
 }
 
 [sub_resource type="Animation" id="Animation_v6x1f"]
@@ -2925,6 +2959,23 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(17.622, 15)]
+}
+
+[sub_resource type="Animation" id="Animation_cufrs"]
+resource_name = "crouch_attack_spear"
+length = 0.65
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [327, 328, 329, 330, 331, 332]
 }
 
 [sub_resource type="Animation" id="Animation_upmxk"]
@@ -4356,57 +4407,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [260, 261, 262, 263, 264, 265]
-}
-
-[sub_resource type="Animation" id="Animation_htusw"]
-resource_name = "attack_spear"
-length = 0.65
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [320, 321, 322, 323, 324, 325]
-}
-
-[sub_resource type="Animation" id="Animation_u31ms"]
-resource_name = "air_attack_spear"
-length = 0.65
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [333, 334, 335, 336, 337]
-}
-
-[sub_resource type="Animation" id="Animation_cufrs"]
-resource_name = "crouch_attack_spear"
-length = 0.65
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [327, 328, 329, 330, 331, 332]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jttxa"]
