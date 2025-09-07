@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cux0psxn6kqhl"]
+[gd_scene load_steps=13 format=3 uid="uid://c0akcai2soq52"]
 
-[ext_resource type="Texture2D" uid="uid://chmyea6xo34is" path="res://assets/sprites/Weapons/Spears/Partisan.png" id="1_lr6kv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/weapon_sprite.gd" id="2_ekyda"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AttackLogic.gd" id="3_si6h0"]
-[ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="4_gm046"]
-[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="5_eqntj"]
-[ext_resource type="Texture2D" uid="uid://bbn7e5gi24eyw" path="res://assets/sprites/Weapons/Spears/Smear.png" id="6_cumci"]
+[ext_resource type="Texture2D" uid="uid://dk05uvi0adkgk" path="res://assets/sprites/Weapons/Spears/Halberd.png" id="1_ao4up"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/weapon_sprite.gd" id="2_f7n8o"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AttackLogic.gd" id="3_wfdwn"]
+[ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="4_uih8y"]
+[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="5_wuvuc"]
+[ext_resource type="Texture2D" uid="uid://bbn7e5gi24eyw" path="res://assets/sprites/Weapons/Spears/Smear.png" id="6_y7icl"]
 
 [sub_resource type="Animation" id="Animation_sud5e"]
 length = 0.001
@@ -486,13 +486,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxj7m"]
 size = Vector2(82, 15)
 
-[node name="Partisan" type="Sprite2D" node_paths=PackedStringArray("animation", "hitbox")]
+[node name="Halberd" type="Sprite2D" node_paths=PackedStringArray("animation", "hitbox")]
 process_mode = 1
 visible = false
-texture = ExtResource("1_lr6kv")
+texture = ExtResource("1_ao4up")
 offset = Vector2(19, 0)
 hframes = 5
-script = ExtResource("2_ekyda")
+script = ExtResource("2_f7n8o")
 animation = NodePath("AnimationPlayer")
 hitbox = NodePath("PlayerHitbox")
 
@@ -504,12 +504,12 @@ libraries = {
 [node name="PlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitbox", "trail")]
 collision_layer = 8
 collision_mask = 4
-script = ExtResource("3_si6h0")
+script = ExtResource("3_wfdwn")
 iframes_on_hit = 30
 hitbox = NodePath("CollisionShape2D")
 trail = NodePath("../Trail")
-hit_collision_scene = ExtResource("4_gm046")
-ice_hit_collision_scene = ExtResource("5_eqntj")
+hit_collision_scene = ExtResource("4_uih8y")
+ice_hit_collision_scene = ExtResource("5_wuvuc")
 base_attribute = Array[int]([2])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
@@ -519,6 +519,6 @@ shape = SubResource("RectangleShape2D_dxj7m")
 disabled = true
 
 [node name="Trail" type="Sprite2D" parent="."]
-texture = ExtResource("6_cumci")
+texture = ExtResource("6_y7icl")
 
 [connection signal="body_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_body_entered"]
