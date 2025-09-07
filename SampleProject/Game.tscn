@@ -1,4 +1,4 @@
-[gd_scene load_steps=461 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=464 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -38,7 +38,9 @@
 [ext_resource type="PackedScene" uid="uid://cgmgx8v6dbp3u" path="res://SampleProject/extra_scenes/HUD/enemy_box.tscn" id="13_uka3k"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/fade_screen.gd" id="13_voup6"]
 [ext_resource type="Texture2D" uid="uid://b5oidu006hp5j" path="res://assets/sprites/Items/InventoryIcons/Inventory_296.png" id="14_cmqwc"]
+[ext_resource type="Texture2D" uid="uid://c4k28q72rde7k" path="res://assets/sprites/Items/InventoryIcons/Inventory_472.png" id="14_uvy2w"]
 [ext_resource type="AudioStream" uid="uid://b2hhmewc5j580" path="res://assets/music/GaribaldiTemple.ogg" id="15_n6l4g"]
+[ext_resource type="PackedScene" uid="uid://cux0psxn6kqhl" path="res://SampleProject/Weapons/partisan.tscn" id="15_naepp"]
 [ext_resource type="Texture2D" uid="uid://dqnxid8kdbq7o" path="res://assets/sprites/Items/InventoryIcons/Inventory_262.png" id="15_s2mtr"]
 [ext_resource type="Texture2D" uid="uid://cs7o2ihn4m8vt" path="res://assets/sprites/Items/InventoryIcons/Inventory_279.png" id="16_aex55"]
 [ext_resource type="AudioStream" uid="uid://bh5hppwruqd0i" path="res://assets/music/YoungNobleman.ogg" id="16_mtiyt"]
@@ -383,6 +385,37 @@ recipe = Array[Dictionary]([{
 "id": 45,
 "inventory": 3,
 "quantity": 2
+}])
+
+[sub_resource type="Resource" id="Resource_3pxt5"]
+script = ExtResource("2_6ajcc")
+weapon_name = "PARTISAN"
+weapon_description = "PARTISAN_DESC"
+type = 3
+element = Array[int]([2])
+ATK = 9
+DEF = 0
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+jump_cancel = false
+crouch_attack = true
+value = 220
+max_quantity = 99
+icon = ExtResource("14_uvy2w")
+sprite = ExtResource("15_naepp")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 6,
+"inventory": 0,
+"quantity": 1
+}, {
+"id": 49,
+"inventory": 3,
+"quantity": 1
 }])
 
 [sub_resource type="Resource" id="Resource_m5ppe"]
@@ -3514,7 +3547,7 @@ animation = NodePath("AnimationPlayer")
 difficulty = 1
 update_player_compendium = true
 world_environment = NodePath("WorldEnvironment")
-weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3"), SubResource("Resource_etedp")])
+weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3"), SubResource("Resource_etedp"), SubResource("Resource_3pxt5")])
 item_compendium = SubResource("Resource_ksmb3")
 headgear_compendium = Array[ExtResource("58_johey")]([SubResource("Resource_stdwu"), SubResource("Resource_hcxc2"), SubResource("Resource_qtfvs"), SubResource("Resource_b4qdd"), SubResource("Resource_w8tqy"), SubResource("Resource_4iosu"), SubResource("Resource_b0lhj"), SubResource("Resource_kh436"), SubResource("Resource_n53u7"), SubResource("Resource_n15bh"), SubResource("Resource_2gney"), SubResource("Resource_580rm"), SubResource("Resource_fy53e"), SubResource("Resource_xv0ma"), SubResource("Resource_csljy"), SubResource("Resource_nfnn0"), SubResource("Resource_7go8i"), SubResource("Resource_ji887"), SubResource("Resource_nhhcx"), SubResource("Resource_ocbsj"), SubResource("Resource_jsrpv"), SubResource("Resource_qx0f7"), SubResource("Resource_bg2je"), SubResource("Resource_vexyv"), SubResource("Resource_utsap"), SubResource("Resource_itck4"), SubResource("Resource_ms7n0")])
 body_compendium = Array[ExtResource("86_xt4t6")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me"), SubResource("Resource_dqisp"), SubResource("Resource_rngem")])
