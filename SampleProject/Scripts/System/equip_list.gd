@@ -122,11 +122,16 @@ func initList(list: Array[Dictionary]):
 		var item_quantity = item["quantity"]
 		var item_icon = item_entry["icon"]
 		var item_name = item_entry[getCurItemProperty("name")]
+		const LARGE_TEXT_MULTIPLIER: float = 1.2
+		const CUSTOM_MINIMUM_WIDTH_BEFORE_RESIZE: float = 122
+		const CUSTOM_MINIMUM_WIDTH_AFTER_RESIZE: float = 162
+		const QUANTITY_LABEL_MIN_WIDTH: float = 80
+		qty_label.custom_minimum_size = Vector2(QUANTITY_LABEL_MIN_WIDTH, 0)
 		qty_label.text = "x" + str(item_quantity)
+		qty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		qty_list.add_child(qty_label)
 		button.icon = item_icon
 		button.text = item_name
-		add_child(button)
 		children.append(button)
 		button["theme_override_styles/focus"] = button_glow
 		button.pressed.connect(self.on_button_pressed.bind(button))
@@ -134,8 +139,13 @@ func initList(list: Array[Dictionary]):
 		button.state_machine = state_machine
 		button.desired_state = equipSlots.menu
 		button.flat = true
-		button.custom_minimum_size.x = 162
+		button.custom_minimum_size.x = CUSTOM_MINIMUM_WIDTH_BEFORE_RESIZE
 		button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+		add_child(button)
+		button.fitTextInBox(LARGE_TEXT_MULTIPLIER)
+		button.custom_minimum_size.x = CUSTOM_MINIMUM_WIDTH_AFTER_RESIZE
+
+
 
 #Deletes the list and resets the labels
 func updateList():

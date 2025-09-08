@@ -143,10 +143,12 @@ func initList(index) -> void:
 		item_button.state_machine = state_machine
 		item_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		item_button.custom_minimum_size.x = 250
+		item_button.custom_minimum_size.y = 32
 		item_button.flat = true
 		item_button["theme_override_styles/focus"] = item_list.button_glow
 		item_button.pressed.connect(self.on_item_button_pressed.bind(item_button))
 		item_button.focus_entered.connect(self.on_item_focused.bind(item_button))
+		item_button.fitTextInBox()
 	
 func getItemsFromCompendium(type):
 	var compendium = getCompendium(type)
@@ -282,11 +284,16 @@ func updateMaterialList(item, type = 0) -> void:
 		var material_icon: TextureRect = TextureRect.new()
 		var material_name: RichTextLabel = RichTextLabel.new()
 		var material_quantity: RichTextLabel = RichTextLabel.new()
+		var text_vbox: VBoxContainer = VBoxContainer.new()
 		
+		material_entry.custom_minimum_size = Vector2(302, 32)
 		material_icon.custom_minimum_size = Vector2(32, 32)
-		material_name.custom_minimum_size = Vector2(200, 32)
+		material_name.custom_minimum_size = Vector2(200, 0)
 		material_quantity.custom_minimum_size = Vector2(70, 32)
+		material_name.autowrap_mode = TextServer.AUTOWRAP_OFF
 		material_name.bbcode_enabled = true
+		material_name.fit_content = true
+		text_vbox.alignment = BoxContainer.ALIGNMENT_CENTER
 		material_quantity.bbcode_enabled = true
 		
 		var hector_stats: HectorStats = Global.player.stats
@@ -327,10 +334,17 @@ func updateMaterialList(item, type = 0) -> void:
 			material_name.text = "[color=#FF8080]" + tr(material_name.text) + "[/color]"
 			material_quantity.text = "[right][color=#FF8080]" + material_quantity.text + "[/color][/right]"
 		
+		text_vbox.add_child(material_name)
 		material_entry.add_child(material_icon)
-		material_entry.add_child(material_name)
+		material_entry.add_child(text_vbox)
 		material_entry.add_child(material_quantity)
 		material_list.add_child(material_entry)
+		
+		if material_name.get_content_width() > material_name.get_custom_minimum_size().x:
+			var new_font_size: int = float(material_name.get_theme_default_font_size())/material_name.get_content_width()*material_name.custom_minimum_size.x
+			var new_font_size_multiplier: float = 1.0
+			material_name.add_theme_font_size_override("normal_font_size", new_font_size*new_font_size_multiplier)
+
 
 
 func _on_yes_pressed() -> void:

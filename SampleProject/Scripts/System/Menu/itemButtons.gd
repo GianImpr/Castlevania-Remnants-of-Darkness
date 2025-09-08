@@ -81,12 +81,18 @@ func deleteList() -> void:
 		label.queue_free()
 
 func initList(itemType: int) -> void:
+	const LARGE_TEXT_MULTIPLIER: float = 1.2
+	const CUSTOM_MINIMUM_WIDTH_BEFORE_RESIZE: float = 152
+	const CUSTOM_MINIMUM_WIDTH_AFTER_RESIZE: float = 192
+	const QUANTITY_LABEL_MIN_WIDTH: float = 80
+
 	for slot in Global.player.stats.item_inventory:
 		var item = getItemFromCompendium(slot["id"])
 		if item.type == itemType:
 			var item_button = InventoryButton.new()
 			if itemType == item.Type.CONSUMABLE or itemType == item.Type.MATERIAL:
 				var qty_label = Label.new()
+				qty_label.custom_minimum_size = Vector2(QUANTITY_LABEL_MIN_WIDTH, 0)
 				qty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 				qty_label.text = "x" + str(slot["quantity"])
 				qty_list.add_child(qty_label)
@@ -97,12 +103,15 @@ func initList(itemType: int) -> void:
 			item_button.desired_state = menu
 			item_button.state_machine = state_machine
 			item_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
-			item_button.custom_minimum_size.x = 192
 			item_button.flat = true
 			item_button["theme_override_styles/focus"] = item_list.button_glow
 			item_button.pressed.connect(self.on_item_button_pressed.bind(item_button))
 			item_button.focus_entered.connect(self.on_item_focused.bind(item_button))
-	
+			item_button.custom_minimum_size.x = CUSTOM_MINIMUM_WIDTH_BEFORE_RESIZE
+			item_button.fitTextInBox(LARGE_TEXT_MULTIPLIER)
+			item_button.custom_minimum_size.x = CUSTOM_MINIMUM_WIDTH_AFTER_RESIZE
+
+			
 func getItemFromCompendium(index: int) -> Item:
 	var item_compendium = Global.player.stats.item_compendium.Compendium
 	if index > 0:

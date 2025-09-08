@@ -81,7 +81,8 @@ func initList(skillType: int) -> void:
 			skill_button["theme_override_styles/focus"] = skill_list.button_glow
 			skill_button.pressed.connect(self.on_skill_button_pressed.bind(skill_button))
 			skill_button.focus_entered.connect(self.on_skill_focused.bind(skill_button))
-	
+			skill_button.fitTextInBox()
+			
 func getSkillFromCompendium(index: int) -> Skill:
 	var item_compendium = Global.player.stats.skill_compendium
 	if index > 0:
