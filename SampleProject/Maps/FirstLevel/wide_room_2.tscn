@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dm0kytus4gnbp"]
+[gd_scene load_steps=12 format=4 uid="uid://dm0kytus4gnbp"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_jxpdd"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_hq167"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://des8o3jbf3a4m" path="res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn" id="4_mwhb7"]
 [ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="5_qpnwk"]
 [ext_resource type="PackedScene" uid="uid://b33buvcvhwwqa" path="res://SampleProject/enemies/BonePillar/bone_pillar.tscn" id="6_w5vj2"]
-[ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="7_vxrt3"]
 [ext_resource type="PackedScene" uid="uid://bxi1h5wf54pjq" path="res://SampleProject/enemies/BoneScimitar/bone_scimitar.tscn" id="8_cuw64"]
 [ext_resource type="PackedScene" uid="uid://dfuncyp0yhrbk" path="res://SampleProject/enemies/Slinger/slinger.tscn" id="9_77ayf"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/hard_mode_node.gd" id="11_ncd8m"]
@@ -82,9 +81,6 @@ position = Vector2(326, 471)
 [node name="BonePillar5" parent="Enemies" instance=ExtResource("6_w5vj2")]
 position = Vector2(326, 520)
 
-[node name="Skeleton" parent="Enemies" instance=ExtResource("7_vxrt3")]
-position = Vector2(709, 700)
-
 [node name="BoneScimitar" parent="Enemies" instance=ExtResource("8_cuw64")]
 position = Vector2(483, 677)
 
@@ -102,6 +98,7 @@ pickup_flag = 18
 position = Vector2(1703, 525)
 type = 4
 id = 2
+current_item_name = "<null>"
 pickup_flag = 19
 
 [node name="HardModeOnly" type="Node" parent="."]
