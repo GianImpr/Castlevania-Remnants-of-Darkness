@@ -3004,7 +3004,7 @@ speed_scale = 1.2
 
 [node name="Skills" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("skill_list", "skill_proficiency", "animation", "default_button")]
 script = ExtResource("23_xewwx")
-skill_list = NodePath("Display/SkillList")
+skill_list = NodePath("Display/ScrollContainer/Control/SkillList")
 skill_proficiency = NodePath("Display/Text/Affinity/Levels")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/PanelContainer/Menu/KeyItems")
@@ -3336,8 +3336,8 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_vl8s6")
 layout_mode = 2
 theme = SubResource("Theme_dvff1")
 script = ExtResource("24_txscp")
-skill_list = NodePath("../../SkillList")
-cost_list = NodePath("../../CostList")
+skill_list = NodePath("../../ScrollContainer/Control/SkillList")
+cost_list = NodePath("../../ScrollContainer/Control/CostList")
 description = NodePath("../../Description")
 labels = NodePath("../../Text")
 command_label = NodePath("../../Description/CommandPanel/CommandInput")
@@ -3392,29 +3392,38 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="SkillList" type="GridContainer" parent="MenuStateMachine/Skills/Display" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Skills/Display"]
+custom_minimum_size = Vector2(804, 205)
 offset_left = 37.0
 offset_top = 166.0
-offset_right = 431.0
-offset_bottom = 267.0
+offset_right = 37.0
+offset_bottom = 166.0
+follow_focus = true
+
+[node name="Control" type="Control" parent="MenuStateMachine/Skills/Display/ScrollContainer"]
+layout_mode = 2
+
+[node name="SkillList" type="GridContainer" parent="MenuStateMachine/Skills/Display/ScrollContainer/Control" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+layout_mode = 2
 scale = Vector2(2, 2)
 theme = SubResource("Theme_uwbuc")
 theme_override_constants/h_separation = 10
 columns = 2
 script = ExtResource("22_4xjdf")
 button_glow = SubResource("StyleBoxFlat_4v5uf")
-sound = NodePath("../../../../PolyphonicMenuAudio")
-menu = NodePath("../..")
-state_machine = NodePath("../../..")
+sound = NodePath("../../../../../../PolyphonicMenuAudio")
+menu = NodePath("../../../..")
+state_machine = NodePath("../../../../..")
 
-[node name="CostList" type="GridContainer" parent="MenuStateMachine/Skills/Display"]
-offset_left = 327.0
-offset_top = 175.0
-offset_right = 780.0
-offset_bottom = 284.0
+[node name="CostList" type="GridContainer" parent="MenuStateMachine/Skills/Display/ScrollContainer/Control"]
+layout_mode = 2
+offset_left = 290.0
+offset_top = 9.0
+offset_right = 290.0
+offset_bottom = 9.0
 theme = SubResource("Theme_t4ucm")
 theme_override_constants/h_separation = 313
-theme_override_constants/v_separation = 27
+theme_override_constants/v_separation = 32
 columns = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Skills"]

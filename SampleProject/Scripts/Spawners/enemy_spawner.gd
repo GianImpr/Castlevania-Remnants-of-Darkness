@@ -17,8 +17,8 @@ func spawn() -> void:
 	var enemy = enemy_to_spawn.instantiate()
 	enemy.position = Vector2(randf_range(min_pos_limits.x, max_pos_limits.x), randf_range(min_pos_limits.y, max_pos_limits.y))
 	if abs(enemy.global_position.x - Global.player.global_position.x) < min_distance_from_player:
-		if (enemy.global_position.x - min_distance_from_player) >= min_pos_limits:
+		if (enemy.global_position.x - min_distance_from_player) >= min_pos_limits.x:
 			enemy.global_position.x -= min_distance_from_player
-		elif (enemy.global_position.x + min_distance_from_player) < min_pos_limits:
+		elif (enemy.global_position.x + min_distance_from_player) < min_pos_limits.x:
 			enemy.global_position.x += min_distance_from_player
 	get_parent().add_child(enemy)
