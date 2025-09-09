@@ -233,6 +233,7 @@ libraries = {
 }
 
 [node name="Collision box" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(3.26087, -1.84783)
 shape = SubResource("RectangleShape2D_m5cfu")
 
@@ -250,6 +251,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(3.26087, 1.52174)
 shape = SubResource("RectangleShape2D_63bul")
 
@@ -295,6 +297,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision"]
+visible = false
 position = Vector2(17.0652, -26.3044)
 shape = SubResource("RectangleShape2D_qovo5")
 
