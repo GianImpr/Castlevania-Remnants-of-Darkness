@@ -129,7 +129,7 @@ tracks/2/path = NodePath("PlayerHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.65),
+"times": PackedFloat32Array(0, 0.133333, 0.65),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -256,7 +256,7 @@ tracks/2/path = NodePath("PlayerHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.65),
+"times": PackedFloat32Array(0, 0.133333, 0.65),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -383,7 +383,7 @@ tracks/2/path = NodePath("PlayerHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.65),
+"times": PackedFloat32Array(0, 0.133333, 0.65),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -422,7 +422,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(21, 11)]
+"values": [Vector2(21, 23)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -490,7 +490,7 @@ size = Vector2(82, 15)
 process_mode = 1
 visible = false
 texture = ExtResource("1_ao4up")
-offset = Vector2(19, 0)
+offset = Vector2(19, 12)
 hframes = 5
 script = ExtResource("2_f7n8o")
 animation = NodePath("AnimationPlayer")
@@ -516,7 +516,6 @@ base_attribute = Array[int]([2])
 visible = false
 position = Vector2(21, 11)
 shape = SubResource("RectangleShape2D_dxj7m")
-disabled = true
 
 [node name="Trail" type="Sprite2D" parent="."]
 texture = ExtResource("6_y7icl")
