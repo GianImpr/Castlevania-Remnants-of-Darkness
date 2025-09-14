@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://beartgufu5i2u"]
+[gd_scene load_steps=12 format=3 uid="uid://beartgufu5i2u"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/floating_numbers.gd" id="1_hhsrs"]
 [ext_resource type="FontFile" uid="uid://ci2tmsivehkf6" path="res://assets/sprites/Font/Caja.ttf" id="2_4b5ty"]
+[ext_resource type="Texture2D" uid="uid://bko5ad88ck8ps" path="res://assets/sprites/HUD/Popups/DamageNumbers.png" id="3_vjnii"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/damage_numbers.gd" id="3_xa5cm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbl7t"]
@@ -86,12 +87,12 @@ _data = {
 "popup": SubResource("Animation_fq4gv")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_66ndt"]
+atlas = ExtResource("3_vjnii")
+region = Rect2(48, 0, 8, 10)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dt85b"]
 load_path = "res://.godot/imported/DamageNumbers.png-c8016333acc0359b420fcdf2ac062c9b.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_66ndt"]
-atlas = SubResource("CompressedTexture2D_dt85b")
-region = Rect2(48, 0, 8, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8dvg"]
 atlas = SubResource("CompressedTexture2D_dt85b")
@@ -145,16 +146,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -38.0
-offset_right = -23.0
-offset_bottom = -38.0
+offset_left = -18.0
+offset_top = -11.0
+offset_right = -18.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.25, 1.25)
 size_flags_horizontal = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control" node_paths=PackedStringArray("damage_numbers")]
+visible = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 0
 offset_right = 20.0

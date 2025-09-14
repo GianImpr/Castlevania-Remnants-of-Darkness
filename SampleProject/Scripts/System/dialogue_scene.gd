@@ -60,7 +60,7 @@ func _process(delta: float) -> void:
 		else:
 			_endDialogue()
 			
-	elif active and Input.is_action_just_pressed("menu"):
+	elif active and Input.is_action_just_pressed("menu") and not animation.is_playing():
 		wait_timer.stop()
 		_endDialogue()
 			
