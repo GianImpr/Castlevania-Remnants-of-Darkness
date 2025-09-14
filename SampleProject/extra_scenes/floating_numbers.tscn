@@ -87,7 +87,7 @@ _data = {
 "popup": SubResource("Animation_fq4gv")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_66ndt"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_k33g6"]
 atlas = ExtResource("3_vjnii")
 region = Rect2(48, 0, 8, 10)
 
@@ -135,11 +135,10 @@ autoplay = "popup"
 visible = false
 offset_right = 8.0
 offset_bottom = 10.0
-texture = SubResource("AtlasTexture_66ndt")
+texture = SubResource("AtlasTexture_k33g6")
 stretch_mode = 2
 
 [node name="Control" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -152,11 +151,10 @@ offset_right = -18.0
 offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.25, 1.25)
+scale = Vector2(5, 0.125)
 size_flags_horizontal = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control" node_paths=PackedStringArray("damage_numbers")]
-visible = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 0
 offset_right = 20.0

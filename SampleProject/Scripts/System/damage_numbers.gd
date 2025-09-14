@@ -11,4 +11,5 @@ func printNumber(value: int, type: int):
 		num.visible = true
 		num.texture = damage_numbers.texture.duplicate(true)
 		num.texture.region = Rect2(int(i)*NUMBER_WIDTH, type*NUMBER_HEIGHT, NUMBER_WIDTH, NUMBER_HEIGHT)
+		var texture = num.texture
 		add_child(num)
