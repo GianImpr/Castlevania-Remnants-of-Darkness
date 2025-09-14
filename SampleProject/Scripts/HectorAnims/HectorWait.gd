@@ -16,7 +16,7 @@ func enter():
 	Global.screen = Global.ScreenType.EVENT
 	player.velocity.x = 0
 	if player.is_on_floor():
-		if animation.current_animation == "run":
+		if animation.current_animation == "run" or animation.current_animation == "run_start":
 			animation.play("run_end", -1, 1.5)
 			await animation.animation_finished
 			animation.play(ANIM_NAME, BLEND, ANIM_SPEED)
