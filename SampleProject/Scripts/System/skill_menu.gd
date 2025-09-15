@@ -25,6 +25,7 @@ func Physics_Update(delta: float):
 func updateStats() -> void:
 	var levels: Array[String] = ["E", "D", "C", "B", "A", "S"]
 	for i in range(0, skill_proficiency.get_child_count()):
+		var extra_level_for: Array[Weapon.Type] = [Weapon.Type.FIST]
 		var category: Control = skill_proficiency.get_child(i)
 		var level_label: Label = category.get_child(1)
 		var experience_bar: TextureProgressBar = category.get_child(0).get_child(0)
@@ -33,7 +34,7 @@ func updateStats() -> void:
 		var total_exp_for_next_lv: int = 150*((cur_weapon_lv+1)*1.5)*log((cur_weapon_lv+1)*1.5+2.7)
 		var minimum_exp_for_cur_lv: int = 150*(cur_weapon_lv*1.5)*log(cur_weapon_lv*1.5+2.7)
 		level_label.text = levels[cur_weapon_lv]
-		if cur_weapon_lv < Global.player.MAX_WEAPON_RANK:
+		if cur_weapon_lv < Global.player.MAX_WEAPON_RANK+int(i in extra_level_for):
 			experience_bar.value = cur_weapon_exp-minimum_exp_for_cur_lv
 			experience_bar.max_value = total_exp_for_next_lv-minimum_exp_for_cur_lv
 		else:

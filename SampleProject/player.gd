@@ -43,7 +43,7 @@ const SPEED = 260.0
 const IFRAMES_HIT_THRESHOLD: int = 3
 const FOCUS_GAIN_RATIO: int = 10
 const GUARD_RECOVERY_TIME: int = 3
-const MAX_WEAPON_RANK = 2
+const MAX_WEAPON_RANK = 1
 
 var current_hits_taken_before_iframes: int = 0
 var reset_position: Vector2
@@ -193,7 +193,7 @@ func weaponRankUp():
 	if stats.equipment["weapon"] != 0:
 		weapon_type = stats.searchItemInCompendium(stats.equipment["weapon"], stats.weapon_compendium).type
 	stats.weapon_proficiency[weapon_type]["lv"] += 1
-	var skills_learned: Array[String] = ["", ""]
+	var skills_learned: Array[String]
 	for i in range(0, stats.skill_compendium.size()):
 		var skill: Skill = stats.skill_compendium[i]
 		
@@ -239,12 +239,13 @@ func expNeededToLvUp() -> int:
 func expNeededToRankUpWeapon() -> int:
 	var weapon_type: int = 4
 	var allowed_weapon_types: Array[Weapon.Type] = [Weapon.Type.SWORD, Weapon.Type.AXE, Weapon.Type.GREATSWORD, Weapon.Type.FIST]
+	var extra_level_for: Array[Weapon.Type] = [Weapon.Type.FIST]
 	if stats.equipment["weapon"] != 0:
 		weapon_type = stats.searchItemInCompendium(stats.equipment["weapon"], stats.weapon_compendium).type
 	var next_weapon_lv = stats.weapon_proficiency[weapon_type]["lv"]+1
 	var cur_weapon_exp = stats.weapon_proficiency[weapon_type]["exp"]
 	var remaining_exp: int = 150*next_weapon_lv*1.5*log(next_weapon_lv*1.5+2.7)-cur_weapon_exp
-	if next_weapon_lv > MAX_WEAPON_RANK or weapon_type not in allowed_weapon_types:
+	if (next_weapon_lv > MAX_WEAPON_RANK and weapon_type not in extra_level_for) or (next_weapon_lv > MAX_WEAPON_RANK+1 and weapon_type in extra_level_for) or weapon_type not in allowed_weapon_types:
 		return 1
 	return remaining_exp
 	

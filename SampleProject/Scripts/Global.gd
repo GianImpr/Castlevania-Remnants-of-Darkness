@@ -107,3 +107,85 @@ func toTitleScreen() -> void:
 	settings_node = null
 	stage_presentation = null
 	HUD = null
+
+static func recursive_duplicate(value: Variant, recursion_count: int = 0) -> Variant:
+	const MAX_RECURSION: int = 100
+
+	if value is Array:
+		var array: Array = value
+		var copy: Array = Array(
+			[],
+			array.get_typed_builtin(),
+			array.get_typed_class_name(),
+			array.get_typed_script(),
+		)
+
+		if recursion_count > MAX_RECURSION:
+			push_error("Max recursion reached.")
+			return copy
+		recursion_count += 1
+
+		for element: Variant in array:
+			copy.append(recursive_duplicate(element, recursion_count))
+
+		return copy
+
+	if value is Dictionary:
+		var dictionary: Dictionary = value
+		var copy: Dictionary = {}
+
+		if recursion_count > MAX_RECURSION:
+			push_error("Max recursion reached.")
+			return copy
+		recursion_count += 1
+
+		for key: Variant in dictionary:
+			copy[recursive_duplicate(key, recursion_count)] \
+					= recursive_duplicate(dictionary[key], recursion_count)
+
+		return copy
+
+	if value is Object:
+		if recursion_count > MAX_RECURSION:
+			push_error("Max recursion reached.")
+			return null
+		recursion_count += 1
+
+		var object: Object = value
+
+		if not is_instance_valid(object):
+			return null # TODO `return object`?
+
+		var object_class: StringName = object.get_class()
+
+		if not ClassDB.can_instantiate(object_class):
+			push_error('Cannot instantiate "%s".' % object_class)
+			return null
+
+		var copy: Object = ClassDB.instantiate(object_class)
+
+		for property: Dictionary in object.get_property_list():
+			var property_name: String = property.name
+			var property_usage: int = property.usage
+
+			# TODO: Check `PROPERTY_USAGE_ALWAYS_DUPLICATE`?
+			if not (property_usage & PROPERTY_USAGE_STORAGE):    continue
+
+			if property_usage & PROPERTY_USAGE_NEVER_DUPLICATE:
+				copy.set(property_name, object.get(property_name))
+			else:
+				copy.set(
+					property_name,
+					recursive_duplicate(object.get(property_name), recursion_count),
+				)
+
+		return copy
+
+	# `Packed*Array`s are pass-by-reference types, but they cannot contain
+	# pass-by-reference elements, so we can use the standard method.
+	if typeof(value) >= TYPE_PACKED_BYTE_ARRAY:
+		@warning_ignore("unsafe_method_access")
+		return value.duplicate()
+
+	# A pass-by-value type.
+	return value

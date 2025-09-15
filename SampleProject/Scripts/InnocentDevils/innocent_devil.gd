@@ -5,11 +5,17 @@ class_name InnocentDevilStats
 @export var Growths: Dictionary #Total stat gains from level 1 to 99
 @export var Boosts: Dictionary #Stat boosts to Hector
 @export var Initial: Dictionary #Initial starting stats
-@export var Bases: Dictionary = Initial.duplicate(true) #Current stats without boosts
+@export var Bases: Dictionary #Current stats without boosts
 @export var skills: Array[IDSkill]
 @export var evo_crystals: Dictionary
 @export var level_up: GPUParticles2D
 @export var sound: PolyphonicAudio
+
+func _ready() -> void:
+	Initial.make_read_only()
+	Bases = Global.recursive_duplicate(Initial)
+	Stats = Global.recursive_duplicate(Initial)
+
 
 func levelUp():
 	while Stats["EXP"] >= expNeededToLvUp():
