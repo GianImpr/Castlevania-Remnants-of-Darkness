@@ -1,7 +1,7 @@
 extends HBoxContainer
 @export var damage_numbers: TextureRect
-const NUMBER_WIDTH: int = 8;
-const NUMBER_HEIGHT: int = 11;
+const NUMBER_WIDTH: int = 8
+const NUMBER_HEIGHT: int = 11
 
 func printNumber(value: int, type: int):
 	for child in get_children():
@@ -11,5 +11,4 @@ func printNumber(value: int, type: int):
 		num.visible = true
 		num.texture = damage_numbers.texture.duplicate(true)
 		num.texture.region = Rect2(int(i)*NUMBER_WIDTH, type*NUMBER_HEIGHT, NUMBER_WIDTH, NUMBER_HEIGHT)
-		var texture = num.texture
 		add_child(num)

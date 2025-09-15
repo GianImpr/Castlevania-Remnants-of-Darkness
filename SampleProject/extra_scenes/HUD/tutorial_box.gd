@@ -21,7 +21,9 @@ enum Tutorial {
 	HEART_METER,
 	FAIRY_ID,
 	ORBS,
-	CYAN_ORB
+	CYAN_ORB,
+	WEAPON_WHEEL_1,
+	WEAPON_WHEEL_2
 }
 
 func _process(delta: float) -> void:

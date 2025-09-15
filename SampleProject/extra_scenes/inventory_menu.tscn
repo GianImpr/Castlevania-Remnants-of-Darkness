@@ -1,4 +1,4 @@
-[gd_scene load_steps=222 format=3 uid="uid://b4f2sbjwt3lf7"]
+[gd_scene load_steps=221 format=3 uid="uid://b4f2sbjwt3lf7"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/inventory_menu.gd" id="1_7csjs"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/MenuStateMachine.gd" id="2_4vawb"]
@@ -788,12 +788,9 @@ bg_color = Color(0.604432, 0, 0.0515223, 1)
 default_font = ExtResource("8_vu1np")
 default_font_size = 32
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u13q1"]
-load_path = "res://.godot/imported/Crop.png-0fa8627228b4991e4beecdf187f598bb.ctex"
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l5xej"]
 content_margin_top = 20.0
-texture = SubResource("CompressedTexture2D_u13q1")
+texture = ExtResource("41_fe5db")
 texture_margin_left = 20.0
 texture_margin_top = 20.0
 texture_margin_right = 20.0
@@ -2706,7 +2703,7 @@ speed_scale = 1.2
 [node name="Items" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("elements", "item_list", "animation", "default_button")]
 script = ExtResource("19_l3hae")
 elements = NodePath("Display/Elements")
-item_list = NodePath("Display/ItemList")
+item_list = NodePath("Display/ScrollContainer/Control/ItemList")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/PanelContainer/Menu/Consumables")
 
@@ -2881,8 +2878,8 @@ focus_neighbor_top = NodePath("Materials")
 focus_neighbor_bottom = NodePath("Consumables")
 theme = SubResource("Theme_e7daa")
 script = ExtResource("21_dn7ys")
-item_list = NodePath("../../ItemList")
-qty_list = NodePath("../../QuantityList")
+item_list = NodePath("../../ScrollContainer/Control/ItemList")
+qty_list = NodePath("../../ScrollContainer/Control/QuantityList")
 description = NodePath("../../Description")
 labels = NodePath("../../Elements")
 button_glow = SubResource("StyleBoxFlat_urtv8")
@@ -2936,26 +2933,35 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="ItemList" type="GridContainer" parent="MenuStateMachine/Items/Display" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Items/Display"]
+custom_minimum_size = Vector2(804, 205)
 offset_left = 37.0
 offset_top = 166.0
-offset_right = 431.0
-offset_bottom = 276.0
+offset_right = 37.0
+offset_bottom = 166.0
+follow_focus = true
+
+[node name="Control" type="Control" parent="MenuStateMachine/Items/Display/ScrollContainer"]
+layout_mode = 2
+
+[node name="ItemList" type="GridContainer" parent="MenuStateMachine/Items/Display/ScrollContainer/Control" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+layout_mode = 2
 scale = Vector2(2, 2)
 theme = SubResource("Theme_uwbuc")
 theme_override_constants/h_separation = 10
 columns = 2
 script = ExtResource("22_4xjdf")
 button_glow = SubResource("StyleBoxFlat_4v5uf")
-sound = NodePath("../../../../PolyphonicMenuAudio")
-menu = NodePath("../..")
-state_machine = NodePath("../../..")
+sound = NodePath("../../../../../../PolyphonicMenuAudio")
+menu = NodePath("../../../..")
+state_machine = NodePath("../../../../..")
 
-[node name="QuantityList" type="GridContainer" parent="MenuStateMachine/Items/Display"]
-offset_left = 340.0
-offset_top = 174.0
-offset_right = 793.0
-offset_bottom = 283.0
+[node name="QuantityList" type="GridContainer" parent="MenuStateMachine/Items/Display/ScrollContainer/Control"]
+layout_mode = 2
+offset_left = 296.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 8.0
 theme = SubResource("Theme_t4ucm")
 theme_override_constants/h_separation = 324
 theme_override_constants/v_separation = 32
@@ -3401,6 +3407,7 @@ offset_bottom = 166.0
 follow_focus = true
 
 [node name="Control" type="Control" parent="MenuStateMachine/Skills/Display/ScrollContainer"]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 
 [node name="SkillList" type="GridContainer" parent="MenuStateMachine/Skills/Display/ScrollContainer/Control" node_paths=PackedStringArray("sound", "menu", "state_machine")]

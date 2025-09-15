@@ -12,24 +12,28 @@ func _process(delta: float) -> void:
 	if menu.accessed_menu == 1 and Input.is_action_just_pressed("ui_cancel"):
 		get_child(button_index).grab_focus()
 		updateDescription(null)
+		skill_list.get_parent().get_parent().scroll_vertical = 0
+		skill_list.get_parent().custom_minimum_size.y = 0
 		menu.accessed_menu = 0
 		
 	if menu.accessed_menu == 1 and Input.is_action_just_pressed("menu"):
 		deleteList()
 		updateDescription(null)
+		skill_list.get_parent().custom_minimum_size.y = 0
 		menu.accessed_menu = 0
 
 func on_focused(button):
 	super(button)
 	deleteList()
 	initList(button.get_index())
-
+	
 func on_button_pressed(which):
 	if skill_list.get_child_count() > 0:
 		sound.play_sound_effect_from_library("confirm")
 		button_index = which.get_index()
 		skill_list.get_child(0).grab_focus()
 		menu.accessed_menu = 1
+		skill_list.get_parent().custom_minimum_size.y = skill_list.size.y*2
 	else:
 		sound.play_sound_effect_from_library("denied")
 		
@@ -82,6 +86,7 @@ func initList(skillType: int) -> void:
 			skill_button.pressed.connect(self.on_skill_button_pressed.bind(skill_button))
 			skill_button.focus_entered.connect(self.on_skill_focused.bind(skill_button))
 			skill_button.fitTextInBox()
+			
 			
 func getSkillFromCompendium(index: int) -> Skill:
 	var item_compendium = Global.player.stats.skill_compendium

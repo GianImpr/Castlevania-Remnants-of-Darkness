@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dogi4hsvyxsgs"]
+[gd_scene load_steps=45 format=3 uid="uid://dogi4hsvyxsgs"]
 
 [ext_resource type="Script" path="res://SampleProject/extra_scenes/HUD/tutorial_box.gd" id="1_1rggr"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/TutorialFormat.gd" id="2_fcv6a"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://ct0h83wstlnl3" path="res://assets/images/Hearts.png" id="8_pxr1b"]
 [ext_resource type="Texture2D" uid="uid://bho5p0s6oes73" path="res://assets/images/InnocentFairy.png" id="9_rfsp2"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="10_ff42d"]
+[ext_resource type="Texture2D" uid="uid://rgl8imwhojdd" path="res://assets/images/MenuWheel.png" id="10_ydg2y"]
+[ext_resource type="Texture2D" uid="uid://debkeiso1pvvn" path="res://assets/images/WeaponWheel.png" id="11_24aic"]
 [ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="11_ur5mt"]
 [ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="12_48lxj"]
 
@@ -85,6 +87,20 @@ script = ExtResource("2_fcv6a")
 title = "CYAN_ORB"
 description = "CYAN_ORB_DESC"
 condition = ""
+
+[sub_resource type="Resource" id="Resource_bbpn6"]
+script = ExtResource("2_fcv6a")
+title = "WEAPON_WHEEL_1"
+description = "WEAPON_WHEEL_1_DESC"
+image = ExtResource("10_ydg2y")
+condition = "Global.player.stats.picked_items[16] == true"
+
+[sub_resource type="Resource" id="Resource_fdnyd"]
+script = ExtResource("2_fcv6a")
+title = "WEAPON_WHEEL_2"
+description = "WEAPON_WHEEL_2_DESC"
+image = ExtResource("11_24aic")
+condition = "Global.player.stats.picked_items[16] == true"
 
 [sub_resource type="Theme" id="Theme_ysinr"]
 default_font = ExtResource("10_ff42d")
@@ -194,7 +210,7 @@ image = NodePath("PanelContainer/VBoxContainer/Image")
 description = NodePath("PanelContainer/VBoxContainer/Description")
 continue_label = NodePath("PanelContainer/VBoxContainer/Continue")
 sound = NodePath("PolyphonicMenuAudio")
-tutorials = Array[ExtResource("2_fcv6a")]([SubResource("Resource_pakqc"), SubResource("Resource_v7vry"), SubResource("Resource_ce2tk"), SubResource("Resource_om33j"), SubResource("Resource_1trho"), SubResource("Resource_4uphu"), SubResource("Resource_nl7m1"), SubResource("Resource_j2x7b"), SubResource("Resource_fl6h1"), SubResource("Resource_defet")])
+tutorials = Array[ExtResource("2_fcv6a")]([SubResource("Resource_pakqc"), SubResource("Resource_v7vry"), SubResource("Resource_ce2tk"), SubResource("Resource_om33j"), SubResource("Resource_1trho"), SubResource("Resource_4uphu"), SubResource("Resource_nl7m1"), SubResource("Resource_j2x7b"), SubResource("Resource_fl6h1"), SubResource("Resource_defet"), SubResource("Resource_bbpn6"), SubResource("Resource_fdnyd")])
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -236,6 +252,15 @@ stretch_mode = 3
 layout_mode = 2
 theme_override_constants/outline_size = 8
 bbcode_enabled = true
+text = "By holding [img]res://assets/sprites/HUD/Buttons/R1.png[/img] down, Hector can block incoming
+attacks, negating most, if not all damage.
+
+If the blocked attack's base damage is high,
+some chip damage will still be taken.
+
+Hector can only block a couple blows at a time,
+after which he will suffer a guard break, leaving
+him vulnerable."
 fit_content = true
 scroll_active = false
 scroll_following = true
@@ -254,6 +279,7 @@ him vulnerable."
 [node name="Continue" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 bbcode_enabled = true
+text = "TUTORIAL_BOX_CONTINUE"
 fit_content = true
 scroll_active = false
 scroll_following = true

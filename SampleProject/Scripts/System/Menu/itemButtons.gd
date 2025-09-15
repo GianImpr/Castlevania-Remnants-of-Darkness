@@ -12,11 +12,16 @@ func _process(delta: float) -> void:
 		get_child(button_index).grab_focus()
 		updateDescription(null)
 		menu.accessed_menu = 0
+		item_list.get_parent().get_parent().scroll_vertical = 0
+		item_list.get_parent().custom_minimum_size.y = 0
 		
 	if menu.accessed_menu == 1 and Input.is_action_just_pressed("menu"):
 		deleteList()
 		updateDescription(null)
 		menu.accessed_menu = 0
+		item_list.get_parent().get_parent().scroll_vertical = 0
+		item_list.get_parent().custom_minimum_size.y = 0
+
 
 func on_focused(button):
 	super(button)
@@ -38,6 +43,7 @@ func on_button_pressed(which):
 		button_index = which.get_index()
 		item_list.get_child(0).grab_focus()
 		menu.accessed_menu = 1
+		item_list.get_parent().custom_minimum_size.y = item_list.size.y*2
 	else:
 		sound.play_sound_effect_from_library("denied")
 		

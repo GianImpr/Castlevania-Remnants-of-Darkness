@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dqo4nkqfgijwb"]
+[gd_scene load_steps=11 format=4 uid="uid://dqo4nkqfgijwb"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_ea64w"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_ly0xb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="5_0relf"]
 [ext_resource type="PackedScene" uid="uid://des8o3jbf3a4m" path="res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn" id="6_i5r3r"]
 [ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="7_isca8"]
+[ext_resource type="PackedScene" uid="uid://q43vbthycopx" path="res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn" id="8_cvvin"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4v5p"]
 texture = ExtResource("4_p24fy")
@@ -850,3 +851,11 @@ scale = Vector2(1, 0.4)
 flag_id = 11
 text = "HINT_11"
 time = 3.5
+
+[node name="TutorialScreenTrigger" parent="." instance=ExtResource("8_cvvin")]
+position = Vector2(374, -3)
+tutorial_id = 10
+
+[node name="TutorialScreenTrigger2" parent="." instance=ExtResource("8_cvvin")]
+position = Vector2(424, -4)
+tutorial_id = 11
