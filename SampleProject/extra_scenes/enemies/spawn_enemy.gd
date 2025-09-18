@@ -52,6 +52,8 @@ func checkCondition(cond_type: Conditions):
 			return checkAllEnemies() <= enemy_count
 		Conditions.SUMMONED_IN_TOTAL:
 			return checkSummonedEnemies() < enemy_count and checkSameTypeEnemies() < max_at_once
+		Conditions.SAME_ENEMY_TYPE_LESS_THAN:
+			return checkSameTypeEnemies() < max_at_once
 
 func _playSpawn():
 	if condition == Conditions.SUMMONED_IN_TOTAL:

@@ -836,18 +836,34 @@ pickup_flag = 88
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Warg" parent="Enemies" instance=ExtResource("4_wuu6n")]
-position = Vector2(428, 860)
-
-[node name="Slaughterer" parent="Enemies" instance=ExtResource("5_2drye")]
-position = Vector2(864, 864)
-
 [node name="SpawnEnemy" parent="Enemies" instance=ExtResource("6_xoowb")]
 position = Vector2(888, 376)
 enemy = ExtResource("7_kcbfy")
 enemy_type = "KAMIKAZE_RAVEN"
 respawn = true
 respawn_cooldown = 2.0
+enemy_count = 1
+max_at_once = 1
+
+[node name="SpawnEnemy2" parent="Enemies" instance=ExtResource("6_xoowb")]
+position = Vector2(888, 919)
+enemy = ExtResource("5_2drye")
+enemy_type = "SLAUGHTERER"
+offset = Vector2(0, 63)
+respawn = true
+respawn_cooldown = 3.0
+condition = 2
+enemy_count = 1
+max_at_once = 1
+
+[node name="SpawnEnemy3" parent="Enemies" instance=ExtResource("6_xoowb")]
+position = Vector2(403, 925)
+enemy = ExtResource("4_wuu6n")
+enemy_type = "WARG"
+offset = Vector2(0, 66)
+respawn = true
+respawn_cooldown = 3.0
+condition = 2
 enemy_count = 1
 max_at_once = 1
 
