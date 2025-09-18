@@ -13,6 +13,11 @@ enum ButtonIndex {
 	NO
 }
 
+func _ready() -> void:
+	super()
+	confirm_panel.get_child(ButtonIndex.YES).disabled = true
+	confirm_panel.get_child(ButtonIndex.NO).disabled = true
+
 func _process(delta: float) -> void:
 	if confirm_panel_opened:
 		if Input.is_action_just_pressed("ui_cancel"):
@@ -44,17 +49,24 @@ func saveData():
 	Global.save_destination = destination
 	Game.get_singleton().save_game()
 	Game.get_singleton().reset_map_starting_coords()
+	confirm_panel.get_child(ButtonIndex.NO).release_focus()
+	confirm_panel.get_child(ButtonIndex.YES).release_focus()
+
 	saved_with_success = true
 
 func askConfirm():
 	confirm_panel_opened = true
 	confirm_panel_animation.play("ask_confirm")
+	confirm_panel.get_child(ButtonIndex.YES).disabled = false
+	confirm_panel.get_child(ButtonIndex.NO).disabled = false
 	confirm_panel.get_child(ButtonIndex.NO).grab_focus()
 	sound.play_sound_effect_from_library("popup")
 
 func _on_yes_pressed() -> void:
 	sound.play_sound_effect_from_library("confirm")
 	confirm_panel.get_child(ButtonIndex.YES).release_focus()
+	confirm_panel.get_child(ButtonIndex.YES).disabled = true
+	confirm_panel.get_child(ButtonIndex.NO).disabled = true
 	saveData()
 	confirm_panel_opened = false
 	confirm_panel_animation.play_backwards("ask_confirm")
@@ -65,9 +77,12 @@ func _on_yes_pressed() -> void:
 func _on_no_pressed() -> void:
 	confirm_panel.get_child(ButtonIndex.YES).release_focus()
 	confirm_panel.get_child(ButtonIndex.NO).release_focus()
+	confirm_panel.get_child(ButtonIndex.YES).disabled = true
+	confirm_panel.get_child(ButtonIndex.NO).disabled = true
 	confirm_panel_animation.play_backwards("ask_confirm")
 	await confirm_panel_animation.animation_finished
 	confirm_panel_opened = false
 
 func _on_focused() -> void:
-	sound.play_sound_effect_from_library("cursor")
+	if not confirm_panel.get_child(ButtonIndex.YES).disabled:
+		sound.play_sound_effect_from_library("cursor")
