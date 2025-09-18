@@ -1,4 +1,5 @@
 extends Node
+class_name StaticGlobal
 
 static var player: HectorPlayer = null
 static var game: Game = null

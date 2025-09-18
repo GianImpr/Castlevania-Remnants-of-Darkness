@@ -3457,6 +3457,25 @@ _data = {
 "fade_in": SubResource("Animation_fw4b4")
 }
 
+[sub_resource type="Theme" id="Theme_o031g"]
+default_font = ExtResource("27_ggyg0")
+default_font_size = 16
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yu22f"]
+radius = 49.64
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kopmc"]
+radius = 70.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3ieb"]
+radius = 70.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_es7rp"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ie6f"]
+size = Vector2(200, 40)
+
 [sub_resource type="Animation" id="Animation_tb3np"]
 length = 0.001
 tracks/0/type = "value"
@@ -3555,29 +3574,11 @@ fog_mode = 1
 fog_density = 1.0
 adjustment_enabled = true
 
-[sub_resource type="Theme" id="Theme_o031g"]
-default_font = ExtResource("27_ggyg0")
-default_font_size = 16
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yu22f"]
-radius = 49.64
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kopmc"]
-radius = 70.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_q3ieb"]
-radius = 70.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_es7rp"]
-radius = 24.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ie6f"]
-size = Vector2(200, 40)
-
 [node name="Game" type="Node2D" node_paths=PackedStringArray("animation", "world_environment")]
 script = ExtResource("1_xdpfu")
 animation = NodePath("AnimationPlayer")
 difficulty = 1
+update_player_compendium = true
 world_environment = NodePath("WorldEnvironment")
 weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3"), SubResource("Resource_etedp"), SubResource("Resource_3pxt5"), SubResource("Resource_kt2e1")])
 item_compendium = SubResource("Resource_ksmb3")
@@ -3610,11 +3611,11 @@ save_rooms = Array[Dictionary]([{
 "name": "FAGARAS_RIGHT",
 "path": "Fagaras/right_cave_save.tscn"
 }])
-starting_map = "FirstLevel/Woods.tscn"
+starting_map = "Fagaras/laurel_room.tscn"
 
 [node name="Player" parent="." instance=ExtResource("5_81k16")]
 z_index = 5
-position = Vector2(147, 386)
+position = Vector2(143, 234)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 process_callback = 0
@@ -3755,18 +3756,9 @@ dialogue_test = Array[ExtResource("107_o0dwx")]([SubResource("Resource_csyar"), 
 
 [node name="WeaponWheel" parent="UI" instance=ExtResource("164_3jxay")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_0cs38")
-}
-
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 
 [node name="InventoryMenu" parent="PauseMenu" instance=ExtResource("6_pokik")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-process_mode = 3
-environment = SubResource("Environment_vusj1")
 
 [node name="Framerate" type="CanvasLayer" parent="."]
 layer = 30
@@ -3930,3 +3922,12 @@ scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_2ie6f")
 passby_press = true
 action = "toggle_touch"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0cs38")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+process_mode = 3
+environment = SubResource("Environment_vusj1")
