@@ -13,6 +13,7 @@ var save_menu: InGameMenu
 func _ready() -> void:
 	save_menu = save_menu_scene.instantiate()
 	add_child(save_menu)
+	get_tree().create_timer(0.1).timeout.connect(detect_hitbox.set_deferred.bind("monitoring", true))
 
 func _process(delta: float) -> void:
 	player_state = Global.player.state_machine.current_state
@@ -39,7 +40,8 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	can_sit = true
-	Global.player.tap_up.appear()
+	if not player_state is HectorSitDown:
+		Global.player.tap_up.appear()
 	animation.play("can_sit")
 	setShaderParams(1.5, 2, 1)
 

@@ -334,11 +334,13 @@ func turnOffRelic() -> void:
 func quickWeaponSwap(weapon_position: int) -> void:
 	if Global.player == null:
 		return
+		
+	var weapon_compendium: Array[Weapon] = determineWeaponCompendium()
 
 	var new_wpn = quick_weapons[weapon_position]
 	player = Global.player.stats
 	var current_weapon_id = player.equipment["weapon"]
-	var old_weapon = getEquipFromCompendium(current_weapon_id-1, Game.get_singleton().weapon_compendium)
+	var old_weapon = getEquipFromCompendium(current_weapon_id-1, weapon_compendium)
 	updateProperties(quick_weapons[weapon_position])
 	updateNewStats(quick_weapons[weapon_position], old_weapon, ["STR", "CON", "INT", "RES", "SYN", "LCK", "ATK", "DEF"])
 	#updateStats(["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
@@ -346,8 +348,8 @@ func quickWeaponSwap(weapon_position: int) -> void:
 	if quick_weapons[weapon_position] != null:
 		if current_weapon_id > 0:
 			player.addItem(current_weapon_id, player.weapon_inventory)
-		player.removeItem(player.getItemIndexInCompendium(quick_weapons[weapon_position], Game.get_singleton().weapon_compendium), player.weapon_inventory)
-		player.equipment["weapon"] = player.getItemIndexInCompendium(quick_weapons[weapon_position], Game.get_singleton().weapon_compendium)
+		player.removeItem(player.getItemIndexInCompendium(quick_weapons[weapon_position], weapon_compendium), player.weapon_inventory)
+		player.equipment["weapon"] = player.getItemIndexInCompendium(quick_weapons[weapon_position], weapon_compendium)
 		equipSlots.get_child(0).get_child(0).get_child(0).texture = quick_weapons[weapon_position].icon
 	else:
 		if current_weapon_id > 0:
@@ -365,8 +367,23 @@ static func serializeQuickWeapons() -> Array[int]:
 
 # Used when loading data
 static func deserializeQuickWeapons(serialized_weapons: Array[int]) -> void:
+	var compendium: Array[Weapon]
+	
+	if Game.get_singleton().update_player_compendium:
+		compendium = Game.get_singleton().weapon_compendium
+	else:
+		compendium = Global.player.stats.weapon_compendium
+	
 	for i in range(0, quick_weapons.size()):
 		if serialized_weapons[i] > 0:
-			quick_weapons[i] = Game.get_singleton().weapon_compendium[serialized_weapons[i]-1]
+			quick_weapons[i] = compendium[serialized_weapons[i]-1]
 		else:
 			quick_weapons[i] = null
+
+
+# Determines if it should search weapons from Game or HectorStats
+static func determineWeaponCompendium() -> Array[Weapon]:
+	if Game.get_singleton().update_player_compendium:
+		return Game.get_singleton().weapon_compendium
+	else:
+		return Global.player.stats.weapon_compendium
