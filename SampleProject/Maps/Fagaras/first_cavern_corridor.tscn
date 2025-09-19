@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://dkuggl77eh8mm"]
+[gd_scene load_steps=10 format=4 uid="uid://dkuggl77eh8mm"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_rbe4p"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_n8lmv"]
 [ext_resource type="Texture2D" uid="uid://b58ood7hu0g21" path="res://assets/sprites/Tiles/FagarasCave.png" id="3_g05wn"]
 [ext_resource type="PackedScene" uid="uid://bkyptgxub2ly0" path="res://SampleProject/extra_scenes/stage_elements/purple_candle.tscn" id="4_hue00"]
 [ext_resource type="PackedScene" uid="uid://djw0ueyeiotcq" path="res://SampleProject/enemies/Warg/warg.tscn" id="5_pnjd3"]
-[ext_resource type="PackedScene" uid="uid://ctg2sggf2ujvj" path="res://SampleProject/enemies/Slaughterer/slaughterer.tscn" id="6_sm116"]
 [ext_resource type="PackedScene" uid="uid://bvk8m1t7uwv0b" path="res://SampleProject/enemies/Une/Une.tscn" id="7_m0j7u"]
 [ext_resource type="PackedScene" uid="uid://bwr5frmmnkw6y" path="res://SampleProject/enemies/FloatingSkull/floating_skull.tscn" id="8_xe6ac"]
 
@@ -723,9 +722,6 @@ position = Vector2(120, 208)
 
 [node name="Warg" parent="Enemies" instance=ExtResource("5_pnjd3")]
 position = Vector2(736, 381)
-
-[node name="Slaughterer" parent="Enemies" instance=ExtResource("6_sm116")]
-position = Vector2(337, 205)
 
 [node name="Une" parent="Enemies" instance=ExtResource("7_m0j7u")]
 position = Vector2(1127, 446)
