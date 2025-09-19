@@ -94,7 +94,7 @@ const Buttons = {
 	FORWARDUP = "ForwardUp"
 }
 
-const binding_order: Array[String] = ["Back", "Forward", "Down", "Up", "Square", "Cross", "Circle", "Triangle", "L1", "R1", "Start", "Select", "L2"]
+const binding_order: Array[String] = ["Back", "Forward", "Down", "Up", "Square", "Cross", "Circle", "Triangle", "L1", "R1", "Start", "Select", "L2", "R2"]
 const initial_joypadbutton_order: Array = [
 	JOY_BUTTON_DPAD_LEFT,
 	JOY_BUTTON_DPAD_RIGHT,
@@ -109,7 +109,7 @@ const initial_joypadbutton_order: Array = [
 	JOY_BUTTON_START,
 	JOY_BUTTON_BACK,
 	JOY_AXIS_TRIGGER_LEFT+20,
-	#JOY_AXIS_TRIGGER_RIGHT+20
+	JOY_AXIS_TRIGGER_RIGHT+20
 ]
 
 const initial_keyboardbutton_order: Array = [
@@ -255,7 +255,8 @@ const Actions = {
 	GUARD = "guard",
 	INVENTORY = "menu",
 	MAP = "map",
-	SWITCH = "l2"
+	SWITCH = "l2",
+	SYNERGY = "synergy"
 }
 
 func enter():

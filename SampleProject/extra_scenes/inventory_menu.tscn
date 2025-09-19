@@ -1,4 +1,4 @@
-[gd_scene load_steps=221 format=3 uid="uid://b4f2sbjwt3lf7"]
+[gd_scene load_steps=224 format=3 uid="uid://b4f2sbjwt3lf7"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/inventory_menu.gd" id="1_7csjs"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/MenuStateMachine.gd" id="2_4vawb"]
@@ -77,7 +77,9 @@
 [ext_resource type="AudioStream" uid="uid://cpi3vmsn423y2" path="res://assets/sounds/Menu/MPHeal.MP3" id="61_xj8br"]
 [ext_resource type="AudioStream" uid="uid://c01e5tvpp3805" path="res://assets/sounds/Menu/OpenMenu.WAV" id="67_0rdd3"]
 [ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="67_47uwl"]
+[ext_resource type="Texture2D" uid="uid://deidqvq0n8mto" path="res://assets/sprites/HUD/Buttons/R2.png" id="68_pjwjw"]
 [ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="69_lm2yr"]
+[ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="70_nf135"]
 [ext_resource type="AudioStream" uid="uid://c4km2ifd4on38" path="res://assets/sounds/Menu/Back.WAV" id="72_o0sxe"]
 [ext_resource type="AudioStream" uid="uid://bk3yytbku0xg2" path="res://assets/sounds/Menu/PopUp.MP3" id="78_vmt14"]
 [ext_resource type="AudioStream" uid="uid://df5y67suewgce" path="res://assets/sounds/Menu/CombineItem.MP3" id="79_7mq7x"]
@@ -1104,6 +1106,13 @@ default_font_size = 32
 [sub_resource type="Theme" id="Theme_eojiu"]
 default_font = ExtResource("8_vu1np")
 default_font_size = 32
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_coau3"]
+texture = ExtResource("70_nf135")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
 
 [sub_resource type="Resource" id="Resource_qjpvw"]
 script = ExtResource("9_rjh3h")
@@ -4644,6 +4653,19 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
+[node name="SYNERGY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(180, 32)
+layout_mode = 2
+text = "SYNERGY_KEY"
+icon = ExtResource("68_pjwjw")
+flat = true
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
 [node name="RESET_KEYS_BUTTON" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
@@ -4749,6 +4771,24 @@ shortcut_keys_enabled = false
 script = ExtResource("30_m47lu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Hints"]
+libraries = {
+"": SubResource("AnimationLibrary_xuig2")
+}
+speed_scale = 1.2
+
+[node name="Bestiary" type="Node" parent="MenuStateMachine"]
+
+[node name="Display" type="Node2D" parent="MenuStateMachine/Bestiary"]
+modulate = Color(0, 0, 0, 0)
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Bestiary/Display"]
+offset_left = 100.0
+offset_top = 16.0
+offset_right = 775.0
+offset_bottom = 451.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_coau3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Bestiary"]
 libraries = {
 "": SubResource("AnimationLibrary_xuig2")
 }
