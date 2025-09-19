@@ -4,6 +4,7 @@ class_name InvMenu
 @export var elements: Control
 @export var id_label: RichTextLabelWithButtons
 @export var combine_button: InventoryButton
+@export var bestiary_button: InventoryButton
 
 func enter():
 	animation.play_backwards("change")
@@ -51,20 +52,17 @@ func updateStats():
 	elements.ExperienceValues.text += str(Global.player.expNeededToLvUp()-Global.getStat("EXP")) + "\n"
 	elements.GoldValue.text += str(Global.getStat("GOLD"))
 	
-	if Global.player.pocket_size > 0:
-		default_button.text = "SUMMON_BUTTON"
-	else:
-		default_button.text = "? ? ?"
-	default_button.disabled = true
-		
-	if Global.player.stats.findItem(Skill.Skills.BLACKSMITH_CONTRACT, Global.player.stats.skill_inventory):
-		combine_button.text = "COMBINE_BUTTON"
-		combine_button.disabled = false
-	else:
-		combine_button.text = "? ? ?"
-		combine_button.disabled = true
-	
+	showButtonWithCondition(default_button, "SUMMON_BUTTON", Global.player.pocket_size > 0)
+	showButtonWithCondition(combine_button, "COMBINE_BUTTON", Global.player.stats.findItem(Skill.Skills.BLACKSMITH_CONTRACT, Global.player.stats.skill_inventory))
+	showButtonWithCondition(bestiary_button, "BESTIARY_BUTTON", Global.player.stats.findItem(Skill.Skills.TOME_OF_MONSTERS, Global.player.stats.skill_inventory))
 		
 	# This line will be decommented in a further update, when there are more than one innocent devil
 	#default_button.disabled = Global.player.pocket_size == 0
 	id_label.visible = Global.player.innocent_devil != null
+
+func showButtonWithCondition(button: InventoryButton, button_name: String, condition: bool):
+	if condition:
+		button.text = button_name
+	else:
+		button.text = "? ? ?"
+	button.disabled = not condition

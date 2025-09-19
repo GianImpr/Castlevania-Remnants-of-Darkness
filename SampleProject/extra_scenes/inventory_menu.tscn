@@ -1200,11 +1200,12 @@ offset_bottom = 481.0
 texture = SubResource("GradientTexture2D_dwbrd")
 flip_v = true
 
-[node name="Menu" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("elements", "id_label", "combine_button", "animation", "default_button")]
+[node name="Menu" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("elements", "id_label", "combine_button", "bestiary_button", "animation", "default_button")]
 script = ExtResource("3_jim0d")
 elements = NodePath("Display/Elements")
 id_label = NodePath("Display/Elements/InnocentDevil")
 combine_button = NodePath("Display/Menu/Combine")
+bestiary_button = NodePath("Display/Menu/Bestiary")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/Menu/Summons")
 
