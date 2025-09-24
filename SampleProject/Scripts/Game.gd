@@ -23,6 +23,7 @@ var load_data: bool = false
 @export var relic_compendium: Array[Relic]
 @export var artifact_compendium: Array[Artifact]
 @export var dialogue_compendium: Array
+@export var enemy_compendium: Array[EnemyEntry]
 @export var save_rooms: Array[Dictionary]
 
 #These are only used when @tool scripts require information about compendiums.
@@ -37,12 +38,18 @@ static var accessory_compendium_static: Array[Accessory]
 static var skill_compendium_static: Array[Skill]
 static var relic_compendium_static: Array[Relic]
 static var artifact_compendium_static: Array
+static var enemy_compendium_static: Array[EnemyEntry]
 
 @export_group("Debug nodes")
 @export var compendium_to_print: Compendiums
 @export var print_compendium: bool = false:
 	set(value):
 		generateEnumListFor(getCompendium(), getCompendiumProperty())
+
+@export var print_enemy_compendium: bool = false:
+	set(value):
+		checkEnemyCompendium()
+
 @export var update_static_compendiums: bool = false:
 	set(value):
 		weapon_compendium_static = weapon_compendium
@@ -54,6 +61,7 @@ static var artifact_compendium_static: Array
 		skill_compendium_static = skill_compendium
 		relic_compendium_static = relic_compendium
 		artifact_compendium_static = artifact_compendium
+		enemy_compendium_static = enemy_compendium
 
 enum Compendiums {
 	item,
@@ -106,6 +114,19 @@ func generateEnumListFor(compendium, property) -> void:
 		item_name = item_name.to_upper()
 		print("\t" + item_name + ",")
 	print("}")
+	
+func checkEnemyCompendium() -> void:
+	update_static_compendiums = true
+	for i in range(0, enemy_compendium_static.size()):
+		var enemy: EnemyEntry = enemy_compendium_static[i]
+		if enemy.enemy_scene == null:
+			printerr("Enemy is missing. Entry: " + str(i))
+			return
+		if not "enemy_name" in enemy.enemy_scene._bundled["names"]:
+			printerr("Enemy name is missing in entry: " + str(i))
+			return
+			
+	print("Enemy Compendium: Everything OK.")
 	
 func getCompendium():
 	match compendium_to_print:

@@ -57,6 +57,7 @@ func updateStats():
 	showButtonWithCondition(bestiary_button, "BESTIARY_BUTTON", Global.player.stats.findItem(Skill.Skills.TOME_OF_MONSTERS, Global.player.stats.skill_inventory))
 		
 	# This line will be decommented in a further update, when there are more than one innocent devil
+	default_button.disabled = true
 	#default_button.disabled = Global.player.pocket_size == 0
 	id_label.visible = Global.player.innocent_devil != null
 

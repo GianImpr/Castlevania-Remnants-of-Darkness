@@ -108,6 +108,12 @@ func toTitleScreen() -> void:
 	settings_node = null
 	stage_presentation = null
 	HUD = null
+	
+static func deep_dictionary_duplicate(value: Dictionary) -> Dictionary:
+	var new_dict: Dictionary = {}
+	for key in value.keys():
+		new_dict[key] = value[key]
+	return new_dict
 
 static func recursive_duplicate(value: Variant, recursion_count: int = 0) -> Variant:
 	const MAX_RECURSION: int = 100

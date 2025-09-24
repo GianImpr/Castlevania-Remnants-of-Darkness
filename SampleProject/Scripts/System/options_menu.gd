@@ -126,7 +126,8 @@ const initial_keyboardbutton_order: Array = [
 	KEY_ENTER,
 	KEY_M,
 	KEY_Y,
-	KEY_P
+	KEY_P,
+	KEY_0
 ]
 
 var joypadbutton_order: Array = initial_joypadbutton_order.duplicate(true)

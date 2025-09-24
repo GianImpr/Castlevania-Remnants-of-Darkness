@@ -1,4 +1,4 @@
-[gd_scene load_steps=469 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=516 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -212,9 +212,33 @@
 [ext_resource type="Texture2D" uid="uid://b5pb6poj5elsi" path="res://assets/images/WarpPreviews/FagarasLeft.png" id="159_gniwj"]
 [ext_resource type="Texture2D" uid="uid://cocqy21dghhhv" path="res://assets/images/WarpPreviews/FagarasRight.png" id="160_rdsmc"]
 [ext_resource type="PackedScene" uid="uid://bsxx7aocrs1f6" path="res://SampleProject/extra_scenes/HUD/weapon_wheel.tscn" id="164_3jxay"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/enemy_entry.gd" id="164_ytub4"]
+[ext_resource type="PackedScene" uid="uid://bpbuc4imoao83" path="res://SampleProject/enemies/Zombie/zombie.tscn" id="165_0pmrv"]
+[ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="166_f1w0o"]
+[ext_resource type="PackedScene" uid="uid://126k0dgwv4i3" path="res://SampleProject/enemies/Bat/bat.tscn" id="167_qgcp7"]
+[ext_resource type="PackedScene" uid="uid://cl543nev3n2bf" path="res://SampleProject/enemies/AxeArmor/axe_armor.tscn" id="168_mn126"]
+[ext_resource type="PackedScene" uid="uid://bn3lg7fw7nbhb" path="res://SampleProject/enemies/Ghost/ghost.tscn" id="169_3r45q"]
+[ext_resource type="PackedScene" uid="uid://bxi1h5wf54pjq" path="res://SampleProject/enemies/BoneScimitar/bone_scimitar.tscn" id="170_l5c75"]
 [ext_resource type="AudioStream" uid="uid://bi8mk2hewgbxu" path="res://assets/music/ForbiddenArea.ogg" id="170_nmeol"]
+[ext_resource type="PackedScene" uid="uid://dfuncyp0yhrbk" path="res://SampleProject/enemies/Slinger/slinger.tscn" id="171_q4vwy"]
+[ext_resource type="PackedScene" uid="uid://bn5w03bpeuhmt" path="res://SampleProject/enemies/ArmorKnight/armor_knight.tscn" id="172_i16j1"]
+[ext_resource type="PackedScene" uid="uid://b33buvcvhwwqa" path="res://SampleProject/enemies/BonePillar/bone_pillar.tscn" id="173_t5ktk"]
+[ext_resource type="PackedScene" uid="uid://cxfeg6jj146ah" path="res://SampleProject/enemies/ArmorLord/armor_lord.tscn" id="174_lx230"]
+[ext_resource type="PackedScene" uid="uid://bvk8m1t7uwv0b" path="res://SampleProject/enemies/Une/Une.tscn" id="175_am3th"]
+[ext_resource type="PackedScene" uid="uid://fld271wig6jo" path="res://SampleProject/enemies/Banshee/banshee.tscn" id="176_nduky"]
+[ext_resource type="PackedScene" uid="uid://dj1w5vx1ut6l3" path="res://SampleProject/enemies/BlackPanther/black_panther.tscn" id="177_1an1y"]
 [ext_resource type="AudioStream" uid="uid://nhymb1wcqole" path="res://assets/music/Confrontation.ogg" id="177_4qcbo"]
+[ext_resource type="PackedScene" uid="uid://bcqff14dmgwpf" path="res://SampleProject/enemies/BlackCrow/black_crow.tscn" id="178_jrmgr"]
+[ext_resource type="PackedScene" uid="uid://crkxe62hk26kh" path="res://SampleProject/enemies/BlueRaven/kamikaze_raven.tscn" id="179_3f0u2"]
+[ext_resource type="PackedScene" uid="uid://ctg2sggf2ujvj" path="res://SampleProject/enemies/Slaughterer/slaughterer.tscn" id="180_mps8y"]
+[ext_resource type="PackedScene" uid="uid://bwr5frmmnkw6y" path="res://SampleProject/enemies/FloatingSkull/floating_skull.tscn" id="181_dbv3g"]
+[ext_resource type="PackedScene" uid="uid://djw0ueyeiotcq" path="res://SampleProject/enemies/Warg/warg.tscn" id="182_flfeq"]
+[ext_resource type="PackedScene" uid="uid://2vc38i25e1l" path="res://SampleProject/enemies/Ukoback/ukoback.tscn" id="183_4f1t6"]
+[ext_resource type="PackedScene" uid="uid://ogpicvjd72hm" path="res://SampleProject/enemies/MedusaHead/medusa_head.tscn" id="184_c24da"]
+[ext_resource type="PackedScene" uid="uid://c6b7toh8yj33q" path="res://SampleProject/enemies/Ctulhu/ctulhu.tscn" id="185_tdp7d"]
 [ext_resource type="AudioStream" uid="uid://cn510sq2avahi" path="res://assets/music/Medusa.ogg" id="185_tuw1e"]
+[ext_resource type="PackedScene" uid="uid://clukty1febu2i" path="res://SampleProject/enemies/Dullahan/Dullahan.tscn" id="186_6v3qe"]
+[ext_resource type="PackedScene" uid="uid://dvl5nkdk3iowa" path="res://SampleProject/enemies/Medusa/medusa.tscn" id="187_ko7o7"]
 [ext_resource type="AudioStream" uid="uid://nsxtan7e3nsq" path="res://assets/music/Fagaras.mp3" id="188_qpi86"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
@@ -3207,6 +3231,98 @@ expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_43"
 position = 1
 
+[sub_resource type="Resource" id="Resource_jsro2"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("165_0pmrv")
+
+[sub_resource type="Resource" id="Resource_s1b6v"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("166_f1w0o")
+
+[sub_resource type="Resource" id="Resource_5r5b6"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("167_qgcp7")
+
+[sub_resource type="Resource" id="Resource_x01mm"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("168_mn126")
+
+[sub_resource type="Resource" id="Resource_1kkh0"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("169_3r45q")
+
+[sub_resource type="Resource" id="Resource_2dl14"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("170_l5c75")
+
+[sub_resource type="Resource" id="Resource_4p2o5"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("171_q4vwy")
+
+[sub_resource type="Resource" id="Resource_nh70w"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("172_i16j1")
+
+[sub_resource type="Resource" id="Resource_wsfvh"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("173_t5ktk")
+
+[sub_resource type="Resource" id="Resource_u0str"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("174_lx230")
+
+[sub_resource type="Resource" id="Resource_emvng"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("175_am3th")
+
+[sub_resource type="Resource" id="Resource_1q2dh"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("176_nduky")
+
+[sub_resource type="Resource" id="Resource_gxf7w"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("177_1an1y")
+
+[sub_resource type="Resource" id="Resource_mt5hv"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("178_jrmgr")
+
+[sub_resource type="Resource" id="Resource_hxq6x"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("179_3f0u2")
+
+[sub_resource type="Resource" id="Resource_ttblo"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("180_mps8y")
+
+[sub_resource type="Resource" id="Resource_myxcv"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("181_dbv3g")
+
+[sub_resource type="Resource" id="Resource_a75hp"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("182_flfeq")
+
+[sub_resource type="Resource" id="Resource_pytra"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("183_4f1t6")
+
+[sub_resource type="Resource" id="Resource_uwo24"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("184_c24da")
+
+[sub_resource type="Resource" id="Resource_2ikh4"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("185_tdp7d")
+
+[sub_resource type="Resource" id="Resource_kiah2"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("186_6v3qe")
+
+[sub_resource type="Resource" id="Resource_ccpe7"]
+script = ExtResource("164_ytub4")
+enemy_scene = ExtResource("187_ko7o7")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sngb1"]
 bg_color = Color(0.0593842, 0, 0.585751, 0.270588)
 
@@ -3595,7 +3711,6 @@ adjustment_enabled = true
 script = ExtResource("1_xdpfu")
 animation = NodePath("AnimationPlayer")
 difficulty = 1
-update_player_compendium = true
 world_environment = NodePath("WorldEnvironment")
 weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3"), SubResource("Resource_etedp"), SubResource("Resource_3pxt5"), SubResource("Resource_kt2e1")])
 item_compendium = SubResource("Resource_ksmb3")
@@ -3607,6 +3722,7 @@ skill_compendium = Array[ExtResource("99_ixwc3")]([SubResource("Resource_2w4nc")
 relic_compendium = Array[ExtResource("105_7lbas")]([SubResource("Resource_86suo"), SubResource("Resource_8t8qo")])
 artifact_compendium = Array[ExtResource("145_wv42h")]([SubResource("Resource_1ioky")])
 dialogue_compendium = [[SubResource("Resource_87l3r"), SubResource("Resource_m8frf"), SubResource("Resource_5idyr"), SubResource("Resource_e571n")], Array[ExtResource("107_o0dwx")]([SubResource("Resource_25n78"), SubResource("Resource_ktboo"), SubResource("Resource_vo88s"), SubResource("Resource_dctxa"), SubResource("Resource_spkj4"), SubResource("Resource_c46ur")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_ohovh"), SubResource("Resource_omcdx"), SubResource("Resource_72dkk"), SubResource("Resource_4f7nn"), SubResource("Resource_mgxho")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_8f7hp"), SubResource("Resource_o67wt"), SubResource("Resource_wtpr2")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_csyar"), SubResource("Resource_nuqqm"), SubResource("Resource_o1h1j"), SubResource("Resource_55rnv"), SubResource("Resource_2wus2"), SubResource("Resource_bqaak"), SubResource("Resource_jrgt6"), SubResource("Resource_gx1rt"), SubResource("Resource_u1nhv"), SubResource("Resource_v57uc"), SubResource("Resource_eyf3w"), SubResource("Resource_yuuna"), SubResource("Resource_pl4eo"), SubResource("Resource_ql2g5"), SubResource("Resource_b1cpc"), SubResource("Resource_yuqnq"), SubResource("Resource_ycdkt"), SubResource("Resource_bft1l"), SubResource("Resource_abke8"), SubResource("Resource_3qvv1"), SubResource("Resource_nlgtf"), SubResource("Resource_7kcsh"), SubResource("Resource_mqejh"), SubResource("Resource_jnrv7"), SubResource("Resource_utlr2"), SubResource("Resource_lc0k7"), SubResource("Resource_hfyhw"), SubResource("Resource_a0e3l"), SubResource("Resource_l4h0p"), SubResource("Resource_15a3r"), SubResource("Resource_4neaj"), SubResource("Resource_2o2y2"), SubResource("Resource_bx3e7"), SubResource("Resource_tsqkx"), SubResource("Resource_7l514"), SubResource("Resource_8x8d0"), SubResource("Resource_upl0l"), SubResource("Resource_awl76"), SubResource("Resource_ni2ni"), SubResource("Resource_ue3r3"), SubResource("Resource_67xnv"), SubResource("Resource_j1ehq"), SubResource("Resource_ispcp")])]
+enemy_compendium = Array[ExtResource("164_ytub4")]([SubResource("Resource_jsro2"), SubResource("Resource_s1b6v"), SubResource("Resource_5r5b6"), SubResource("Resource_x01mm"), SubResource("Resource_1kkh0"), SubResource("Resource_2dl14"), SubResource("Resource_4p2o5"), SubResource("Resource_nh70w"), SubResource("Resource_wsfvh"), SubResource("Resource_u0str"), SubResource("Resource_emvng"), SubResource("Resource_1q2dh"), SubResource("Resource_gxf7w"), SubResource("Resource_mt5hv"), SubResource("Resource_hxq6x"), SubResource("Resource_ttblo"), SubResource("Resource_myxcv"), SubResource("Resource_a75hp"), SubResource("Resource_pytra"), SubResource("Resource_uwo24"), SubResource("Resource_2ikh4"), SubResource("Resource_kiah2"), SubResource("Resource_ccpe7")])
 save_rooms = Array[Dictionary]([{
 "image": ExtResource("156_3rde5"),
 "name": "ABANDONED_MONASTERY_ENTRANCE",
@@ -3628,11 +3744,12 @@ save_rooms = Array[Dictionary]([{
 "name": "FAGARAS_RIGHT",
 "path": "Fagaras/right_cave_save.tscn"
 }])
-starting_map = "Fagaras/laurel_room.tscn"
+print_enemy_compendium = null
+starting_map = "FirstLevel/Woods.tscn"
 
 [node name="Player" parent="." instance=ExtResource("5_81k16")]
 z_index = 5
-position = Vector2(143, 234)
+position = Vector2(103, 400)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 process_callback = 0

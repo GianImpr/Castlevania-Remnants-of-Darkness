@@ -1,4 +1,4 @@
-[gd_scene load_steps=224 format=3 uid="uid://b4f2sbjwt3lf7"]
+[gd_scene load_steps=225 format=3 uid="uid://b4f2sbjwt3lf7"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/inventory_menu.gd" id="1_7csjs"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/MenuStateMachine.gd" id="2_4vawb"]
@@ -1114,6 +1114,10 @@ texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 
+[sub_resource type="Theme" id="Theme_phj2e"]
+default_font = ExtResource("8_vu1np")
+default_font_size = 32
+
 [sub_resource type="Resource" id="Resource_qjpvw"]
 script = ExtResource("9_rjh3h")
 Tag = "confirm"
@@ -1173,6 +1177,7 @@ script = ExtResource("1_7csjs")
 state_machine = NodePath("MenuStateMachine")
 equip_slots = NodePath("MenuStateMachine/Equip/Display/PanelContainer/Menu")
 reset_timer = NodePath("ResetTimer")
+metadata/_edit_vertical_guides_ = [120.0, 756.0]
 
 [node name="MenuStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "menu", "polyphonic_audio_player")]
 script = ExtResource("2_4vawb")
@@ -4787,6 +4792,28 @@ offset_top = 16.0
 offset_right = 775.0
 offset_bottom = 451.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_coau3")
+
+[node name="GridContainer" type="GridContainer" parent="MenuStateMachine/Bestiary/Display/PanelContainer"]
+custom_minimum_size = Vector2(636, 0)
+layout_mode = 2
+theme = SubResource("Theme_phj2e")
+columns = 2
+
+[node name="InventoryButton" type="Button" parent="MenuStateMachine/Bestiary/Display/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(318, 0)
+layout_mode = 2
+text = "Skeleton"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+
+[node name="InventoryButton2" type="Button" parent="MenuStateMachine/Bestiary/Display/PanelContainer/GridContainer"]
+custom_minimum_size = Vector2(318, 0)
+layout_mode = 2
+text = "Skeleton"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Bestiary"]
 libraries = {
