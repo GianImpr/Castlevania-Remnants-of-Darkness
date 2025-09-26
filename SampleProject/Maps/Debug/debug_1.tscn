@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://lmehsgtctg15"]
+[gd_scene load_steps=10 format=4 uid="uid://lmehsgtctg15"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_m4qdj"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_1u5xp"]
 [ext_resource type="Texture2D" uid="uid://b4d0xyxsq3tff" path="res://assets/sprites/Tiles/Debug.png" id="3_2ur68"]
-[ext_resource type="PackedScene" uid="uid://dvl5nkdk3iowa" path="res://SampleProject/enemies/Medusa/medusa.tscn" id="4_4erje"]
+[ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="4_gji8t"]
+[ext_resource type="PackedScene" uid="uid://bcqff14dmgwpf" path="res://SampleProject/enemies/BlackCrow/black_crow.tscn" id="5_vvksa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ikyd"]
 texture = ExtResource("3_2ur68")
@@ -110,5 +111,8 @@ tile_set = SubResource("TileSet_cydyx")
 tile_map_data = PackedByteArray("AAALAAgAAAADAAAAAAAHAAsAAAADAAAAAAAIAAsAAAADAAAAAAAJAAsAAAADAAAAAAAMAAgAAAADAAAAAAANAAgAAAADAAAAAAAOAAgAAAADAAAAAAARAAoAAAADAAAAAAASAAoAAAADAAAAAAATAAoAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_t01tf")
 
-[node name="Medusa" parent="." instance=ExtResource("4_4erje")]
-position = Vector2(721, 391)
+[node name="Skeleton" parent="." instance=ExtResource("4_gji8t")]
+position = Vector2(749, 407)
+
+[node name="BlackCrow" parent="." instance=ExtResource("5_vvksa")]
+position = Vector2(608, 329)

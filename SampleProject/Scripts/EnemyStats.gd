@@ -23,7 +23,10 @@ var pick_up_scene: Resource = preload(PICK_UP_SCENE_PATH)
 var heart_scene: Resource = preload(HEART_SCENE_PATH)
 var money_scene: Resource = preload(MONEY_SCENE_PATH)
 
+var enemy_entry: EnemyEntry
+
 func _ready():
+	enemy_entry = findEntry()
 	if Global.game.difficulty == Global.game.Difficulty.CRAZY:
 		LV += 10
 		DEF *= 1.5
@@ -42,9 +45,11 @@ func determineDrop(include_misc_items: bool) -> void:
 	var random_number: float = randf_range(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
 	if random_number > common_rate and random_number <= common_rate + rare_rate:
 		dropItem(rare_drop_id, rare_drop_category)
+		enemy_entry.rare_drop_revealed = true
 		return
 	elif random_number <= common_rate:
 		dropItem(common_drop_id, common_drop_category)
+		enemy_entry.common_drop_revealed = true
 		return
 		
 	if not include_misc_items:
@@ -56,7 +61,7 @@ func determineDrop(include_misc_items: bool) -> void:
 		dropMisc(money_scene)
 
 # Calculates the drop rate for an item, max 50% chance
-func calculateDropRate(rate: float) -> float:
+static func calculateDropRate(rate: float) -> float:
 	const DROP_RATIO: float = 256
 	const MAX_DROP_RATE: float = 0.5
 	return min(Global.player.stats.Stats["LCK"]*rate/DROP_RATIO, MAX_DROP_RATE)
@@ -77,3 +82,10 @@ func dropMisc(scene: PackedScene) -> void:
 	enemy_parent_node.add_child(misc_drop)
 	misc_drop.global_position = get_parent().global_position
 	
+func findEntry() -> EnemyEntry:
+	for i in range(0, Game.enemy_data.size()):
+		if enemy_name == Game.enemy_data[i][EnemyEntry.Stats.NAME]:
+			return Game.get_singleton().enemy_compendium[i]
+	
+	push_error("No entry found.")
+	return null

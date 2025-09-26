@@ -26,7 +26,7 @@ SUMMON_BUTTON,Summon,Evoca,Convocar,Invocar,Invoquer,Oproeping
 ITEMS_BUTTON,Items,Oggetti,Objetos,Itens,Objets,Voorwerpen
 EQUIP_BUTTON,Equip,Equipaggia,Equipamiento,Equipar,Combiner,Aandoen
 COMBINE_BUTTON,Combine,Combina,Combinar,Combinar,Équiper,Combineren
-BESTIARY_BUTTON,Bestiary,Bestiario,,,,
+BESTIARY_BUTTON,Bestiary,Bestiario,,Bestiário,,
 SKILLS_BUTTON,Skills,Abilità,Habilidades,Habilidades,Talents,Vaardigheden
 OPTIONS_BUTTON,Options,Opzioni,Opciones,Opções,Options,Opties
 HINTS_BUTTON,Hints,Consigli,Pistas,Dicas,Indices,Hints
@@ -346,12 +346,12 @@ STEADY_FIGHTER_DESC,"With knuckles, reduces the amount of time required to resto
 ELECTRIC_WICKED_GLADIATOR_FIST,Electric Wicked Gladiator Fist,Pugno elettrico del crudele gladiatore,,Punho Elétrico do Gladiador Perverso,,
 ELECTRIC_WICKED_GLADIATOR_FIST_DESC,"With knuckles, unleashes a powerful electric uppercut.
 The user remains invincible for a bit after performing this move.","Con i tirapugni, tira un potente montante elettrico.
-Si rimane invincibili per un po' di tempo dopo aver usato questa mossa.",,"Com soqueiras, desfere um poderoso gancho ascendente elétrico.
+Si rimane invincibili per un po' di tempo dopo aver usato questa mossa.",,"Com soqueiras, desfira um poderoso gancho ascendente elétrico.
 O usuário permanece invencível por um tempo após executar este movimento.",,
 WINDSTORM,Windstorm,Vento furioso,,Tempestade de Vento,,
-WINDSTORM_DESC,"With knuckles, unleashes the fury of the wind that hits enemies multiple times from afar.","Con i tirapugni, scatena una furia dei venti che danneggia i nemici da lontano e più volte.",,"Com soqueiras, libera a fúria do vento que atinge os inimigos várias vezes à distância.",,
-TOME_OF_MONSTERS,Tome of Monsters,Tomo dei mostri,,,,
-TOME_OF_MONSTERS_DESC,A tome that contains information regarding all encountered enemies.,Un tomo che contiene informazioni riguardo a tutti i nemici incontrati.,,,,
+WINDSTORM_DESC,"With knuckles, unleashes the fury of the wind that hits enemies multiple times from afar.","Con i tirapugni, scatena una furia dei venti che danneggia i nemici da lontano e più volte.",,"Com soqueiras, libere a fúria do vento que atinge os inimigos várias vezes à distância.",,
+TOME_OF_MONSTERS,Tome of Monsters,Tomo dei mostri,,Tomo de Monstros,,
+TOME_OF_MONSTERS_DESC,A tome that contains information regarding all encountered enemies.,Un tomo che contiene informazioni riguardo a tutti i nemici incontrati.,,Um tomo que contém informações sobre todos os inimigos encontrados.,,
 ,,,,,,
 --Consumables--,,,,,,
 POTION,Potion,Pozione,Poción,Poção,Potion,Drankje
@@ -1405,6 +1405,7 @@ FAGARAS_RIGHT,Fagaras Forest - Right cave path,Foresta Fagaras - Cammino destro,
 --Enemies--,,,,,,
 ZOMBIE,Zombie,Zombie,Zombí,Zumbi,Zombie,Zombie
 SKELETON,Skeleton,Scheletro,Esqueleto,Esqueleto,Squelette,Skelet
+BAT,Bat,Pipistrello,,,,
 AXE_ARMOR,Axe Armor,Armigero,Armadura Hacha,Armadura de Machado,Armure hache,Bijl Harnas
 GHOST,Ghost,Spettro,Fantasma,Espectro,Fantôme,Spook
 SLINGER,Slinger,Scheletro costola,Lanza-costillas,Esqueleto Atirador,Frondeur,Slingeraar
@@ -1424,6 +1425,63 @@ KAMIKAZE_RAVEN,Kamikaze Raven,Uccello esplosivo,Cuervo Kamikaze,Pássaro Explosi
 MEDUSA_HEAD,Medusa Head,Testa di medusa,Cabeza Medusa,Cabeça de Medusa,Tête de Méduse,Medusa Hoofd
 DEVIL,Devil,Diavolo,Diablo,Demônio,Diable,Duivel
 UKOBACK,Ukoback,Ukoback,Ukobach,Ukoback,Ukoback,Ukoback
+MEDUSA,Medusa,Medusa,,,,
+,,,,,,
+--Enemy descriptions--,,,,,,
+ZOMBIE_DESC,"The cadaver of a man brought back to life with dark magic.
+Its body is rotten and has a grotesque aspect.","Il cadavere di un uomo riportato in vita tramite magia nera.
+Il suo corpo è putrefatto ed ha un aspetto grottesco.",,,,
+SKELETON_DESC,"A whole skeleton brought back to life with dark magic.
+Hostile towards any kind of living being, as it throws its bones to harm them.","Un intero scheletro portato in vita tramite magia nera.
+Porta astio verso ogni forma vivente, a cui lancia ossa.",,,,
+BAT_DESC,"A blood-sucking creature.
+Does not harm anyone unless provoked.","Una creatura succhiasangue.
+Non attacca se non provocata.",,,,
+AXE_ARMOR_DESC,"An armor given life with dark magic.
+Throws axes towards whoever comes close to it.","Un'armatura a cui è stata data la vita tramite magia nera.
+Lancia asce a chiunque provi ad avvicinarsi ad essa.",,,,
+GHOST_DESC,The resonance of a soul who rejected eternal rest.,La risonanza di un'anima che ha rifiutato il riposo eterno.,,,,
+SLINGER_DESC,A special kind of skeleton that throws ribs horizontally as a way of harming living creatures.,"Un tipo speciale di scheletro che, come modalità di attacco, decide di lanciare le sue costole.",,,,
+BONE_SCIMITAR_DESC,"A skeleton equipped with shield and sword.
+A bit more resilient than other types of skeleton.","Uno scheletro armato di spada e scudo.
+Un po' più resistente rispetto ad altri tipi di scheletro.",,,,
+ARMOR_KNIGHT_DESC,"An armored guard equipped with a long spear.
+Becomes a threat if challenged from different heights.","Una guardia corazzata ed armata con una lancia lunga.
+Diventa pericoloso se posizionato ad alture diverse.",,,,
+BONE_PILLAR_DESC,"The skull of a dragon which can now shoot fireballs.
+Dangerous when multiple skulls are stacked on top of each other.","Il teschio di un drago che può sputare palle di fuoco.
+Pericoloso quando molti teschi formano una torre.",,,,
+ARMOR_LORD_DESC,"The armor of a high level guardian.
+Its attacks are deadly and can produce waves of fire.","L'armatura di un guardiano di alto livello.
+I suoi attacchi sono micidiali e può produrre onde di fuoco.",,,,
+DULLAHAN_DESC,"The knight of legends, manipulated by a vampire who promised to find a way to attach his head to the body.","Il cavaliere delle leggende, manipolato da un vampiro che ha promesso di trovare un modo per riattaccare la sua testa al corpo.",,,,
+UNE_DESC,"A man-eating plant, commonly found in large forests filled with dark energy.","Una pianta mangiauomini.
+Spesso si trova nelle grandi foreste che emanano energia oscura.",,,,
+BANSHEE_DESC,"The spirit of a woman who once died after being accused of being a witch.
+Its scream releases so much agony that physical defense is pierced.","Lo spirito di una donna uccisa sotto l'accusa di stregoneria.
+Il suo urlo è così pieno di agonia che spezza la guardia fisica.",,,,
+BLACK_PANTHER_DESC,"A fast panther, hard to see due to its pitch-black fur.","Una pantera veloce, difficile da vedere a causa della sua pelliccia nera.",,,,
+BLACK_CROW_DESC,"A crow that appears when there are many lost souls in a single place.
+A clear proof that if you see one, then there has been a catastrophe.","Un corvo che compare soltanto quando tante anime perse si riuniscono in un luogo preciso.
+Se ne trovi uno, vuol dire che si è verificata una catastrofe.",,,,
+SLAUGHTERER_DESC,"A failed experiment of transmutation, resulting in this being.
+Hostile towards everything, punches and spits fireballs.","Il risultato di un esperimento di trasmutazione fallito.
+Feroce contro ogni cosa, tira pugni e sputa palle di fuoco.",,,,
+FLOATING_SKULL_DESC,"This is not a real skull, but a manifestation of an evil being.
+It appears when darkness surrounds a place.","Non è un vero teschio, ma la rappresentazione di un essere malvagio.
+Compare quando un luogo è coperto dalle tenebre.",,,,
+WARG_DESC,"A wild warg who has been blessed with the powers of fire.
+Can summon pillars of fire, which are hard to dodge, but easy to block.","Un lupo selvatico a cui è stato conferito il potere del fuoco.
+Può evocare pilastri di fiamme che sono difficili da evitare, ma facili da parare.",,,,
+KAMIKAZE_RAVEN_DESC,"A bird who has been blessed with the powers of fire.
+Uses its own body to cause an explosion.","Un uccello a cui è stato conferito il potere del fuoco.
+Usa il suo stesso corpo per causare un'esplosione.",,,,
+MEDUSA_HEAD_DESC,"These heads resemble Medusa's head, but they are only a poor recreation of the former. Golden ones petrify.","Queste teste ricordano quelle di Medusa, ma in realtà sono solo una sua mera riproduzione. Quelle dorate pietrificano.",,,,
+DEVIL_DESC,"A grotesque creature summoned from the depths of Hell.
+Moves unpredictably and can attack with both fire and ice.","Un'orribile creatura evocata dalle profondità dell'Inferno.
+Si muove in modo erratico e può attaccare con il fuoco ed il ghiaccio.",,,,
+UKOBACK_DESC,A little gremlin whose only purpose in life is to spread fires.,Un piccolo gremlin il cui unico scopo nella vita è quello di appiccare incendi.,,,,
+MEDUSA_DESC,A beautiful monster cursed with the power of being able to turn anything it sees to stone,Un bellissimo mostro maledetto col potere di poter pietrificare qualsiasi cosa con il suo sguardo.,,,,
 ,,,,,,
 --Innocent Devil Skills--,,,,,,
 HEAL_SKILL_ID,Heal,Guarigione,Cura,Cura,Soin,Genees

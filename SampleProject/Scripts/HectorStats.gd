@@ -25,6 +25,7 @@ class_name HectorStats
 @export var skill_compendium: Array[Skill]
 @export var relic_compendium: Array[Relic]
 @export var artifact_compendium: Array[Artifact]
+@export var enemy_compendium: Array[EnemyEntry]
 @export var play_time: Hour
 @export var status: Array[int]
 @export var weapon_proficiency: Array[Dictionary]

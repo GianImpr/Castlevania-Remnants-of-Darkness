@@ -89,6 +89,7 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 		damage = applyDamage(body, damage, physical_based_sound)
 		if kills(body, damage):
 			player.addExp(body.stats.EXP)
+			updateKillCount(body.stats.enemy_name)
 		else:
 			hit_enemies.append(body)
 	if isAlive(body):
@@ -226,3 +227,8 @@ func recolorTrail() -> void:
 		trail.modulate = ICE_TRAIL
 	else:
 		trail.modulate = NORMAL_TRAIL
+
+func updateKillCount(enemy_name: String) -> void:
+	for i in range(0, Game.enemy_data.size()):
+		if enemy_name == Game.enemy_data[i][EnemyEntry.Stats.NAME]:
+			Game.get_singleton().enemy_compendium[i].killed += 1

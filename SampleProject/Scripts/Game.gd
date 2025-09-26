@@ -26,6 +26,8 @@ var load_data: bool = false
 @export var enemy_compendium: Array[EnemyEntry]
 @export var save_rooms: Array[Dictionary]
 
+@export var element_icons: Array[CompressedTexture2D]
+
 #These are only used when @tool scripts require information about compendiums.
 #Since compendiums are built with the export tag, which isn't compatible with
 #static vars, there is non-static and static compendiums.
@@ -39,6 +41,7 @@ static var skill_compendium_static: Array[Skill]
 static var relic_compendium_static: Array[Relic]
 static var artifact_compendium_static: Array
 static var enemy_compendium_static: Array[EnemyEntry]
+static var enemy_data: Array[Dictionary]
 
 @export_group("Debug nodes")
 @export var compendium_to_print: Compendiums
@@ -46,9 +49,13 @@ static var enemy_compendium_static: Array[EnemyEntry]
 	set(value):
 		generateEnumListFor(getCompendium(), getCompendiumProperty())
 
-@export var print_enemy_compendium: bool = false:
+@export var check_enemy_compendium: bool = false:
 	set(value):
 		checkEnemyCompendium()
+		
+@export var print_enemy_names: bool = false:
+	set(value):
+		checkEnemyData()
 
 @export var update_static_compendiums: bool = false:
 	set(value):
@@ -114,20 +121,42 @@ func generateEnumListFor(compendium, property) -> void:
 		item_name = item_name.to_upper()
 		print("\t" + item_name + ",")
 	print("}")
-	
-func checkEnemyCompendium() -> void:
+
+func initializeEnemyData() -> void:
+	for i in range(0, enemy_compendium.size()):
+		enemy_data.append(enemy_compendium[i].getStats())
+
+
+func checkEnemyCompendium() -> bool:
 	update_static_compendiums = true
 	for i in range(0, enemy_compendium_static.size()):
 		var enemy: EnemyEntry = enemy_compendium_static[i]
 		if enemy.enemy_scene == null:
 			printerr("Enemy is missing. Entry: " + str(i))
-			return
+			return false
 		if not "enemy_name" in enemy.enemy_scene._bundled["names"]:
 			printerr("Enemy name is missing in entry: " + str(i))
-			return
+			return false
 			
 	print("Enemy Compendium: Everything OK.")
+	return true
 	
+func checkEnemyData() -> void:
+	if checkEnemyCompendium():
+		for k in range(0, enemy_compendium_static.size()):
+			var info = enemy_compendium_static[k].enemy_scene.get_state()
+			var stats: Dictionary
+			
+			for stat in EnemyEntry.Stats.values():
+				stats[stat] = 0
+				
+			for i in range(0, info.get_node_count()):
+				var cur_node_type = info.get_node_type(i)
+				if cur_node_type == "Sprite2D":
+					for j in range(0, info.get_node_property_count(i)):
+						print(JSON.stringify(info.get_node_property_name(i, j), " "))
+					
+
 func getCompendium():
 	match compendium_to_print:
 		Compendiums.item:
@@ -172,7 +201,9 @@ func _ready() -> void:
 	else:
 		if disable_lights:
 			world_environment.queue_free()
-			
+		
+		initializeEnemyData()
+		
 		# Fade in when starting the game
 		Global.fade_screen.modulate = Color(1,1,1,1)
 		var fade_in_tween: Tween = get_tree().create_tween()
@@ -206,6 +237,7 @@ func _ready() -> void:
 			player.stats.skill_compendium = skill_compendium
 			player.stats.accessory_compendium = accessory_compendium
 			player.stats.artifact_compendium = artifact_compendium
+			player.stats.enemy_compendium = enemy_compendium
 
 			
 		#Will reset combine. Use only to synchronize player compendium with a new compendium.
@@ -219,6 +251,7 @@ func _ready() -> void:
 			player.stats.skill_compendium = skill_compendium
 			player.stats.accessory_compendium = accessory_compendium
 			player.stats.artifact_compendium = artifact_compendium
+			player.stats.enemy_compendium = enemy_compendium
 
 		
 		# Initialize room when it changes.

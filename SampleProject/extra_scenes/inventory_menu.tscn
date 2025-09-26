@@ -1,4 +1,4 @@
-[gd_scene load_steps=225 format=3 uid="uid://b4f2sbjwt3lf7"]
+[gd_scene load_steps=235 format=3 uid="uid://b4f2sbjwt3lf7"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/inventory_menu.gd" id="1_7csjs"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/MenuStateMachine.gd" id="2_4vawb"]
@@ -80,7 +80,10 @@
 [ext_resource type="Texture2D" uid="uid://deidqvq0n8mto" path="res://assets/sprites/HUD/Buttons/R2.png" id="68_pjwjw"]
 [ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="69_lm2yr"]
 [ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="70_nf135"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/InvBestiary.gd" id="71_jsfmf"]
 [ext_resource type="AudioStream" uid="uid://c4km2ifd4on38" path="res://assets/sounds/Menu/Back.WAV" id="72_o0sxe"]
+[ext_resource type="Texture2D" uid="uid://do2lvlkgmwswm" path="res://assets/sprites/Items/InventoryIcons/Inventory_312.png" id="73_b0muq"]
+[ext_resource type="Texture2D" uid="uid://cf258lfi3stud" path="res://assets/sprites/Items/InventoryIcons/Inventory_295.png" id="74_u2uhr"]
 [ext_resource type="AudioStream" uid="uid://bk3yytbku0xg2" path="res://assets/sounds/Menu/PopUp.MP3" id="78_vmt14"]
 [ext_resource type="AudioStream" uid="uid://df5y67suewgce" path="res://assets/sounds/Menu/CombineItem.MP3" id="79_7mq7x"]
 
@@ -1118,6 +1121,39 @@ texture_margin_bottom = 20.0
 default_font = ExtResource("8_vu1np")
 default_font_size = 32
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_52x07"]
+texture = ExtResource("70_nf135")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="Theme" id="Theme_2xk5h"]
+default_font = ExtResource("14_by7ny")
+default_font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_whknw"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.999375, 0.868251, 7.70092e-07, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_glct2"]
+gradient = SubResource("Gradient_whknw")
+width = 250
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Theme" id="Theme_41430"]
+default_font = ExtResource("11_op056")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_wwnqm"]
+default_font = ExtResource("8_vu1np")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_wbbfc"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
 [sub_resource type="Resource" id="Resource_qjpvw"]
 script = ExtResource("9_rjh3h")
 Tag = "confirm"
@@ -1177,7 +1213,7 @@ script = ExtResource("1_7csjs")
 state_machine = NodePath("MenuStateMachine")
 equip_slots = NodePath("MenuStateMachine/Equip/Display/PanelContainer/Menu")
 reset_timer = NodePath("ResetTimer")
-metadata/_edit_vertical_guides_ = [120.0, 756.0]
+metadata/_edit_vertical_guides_ = [0.0, 0.0]
 
 [node name="MenuStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "menu", "polyphonic_audio_player")]
 script = ExtResource("2_4vawb")
@@ -4781,39 +4817,448 @@ libraries = {
 }
 speed_scale = 1.2
 
-[node name="Bestiary" type="Node" parent="MenuStateMachine"]
+[node name="Bestiary" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("enemy_list", "encyclopedia", "monster_profile", "sprite", "description", "HP", "LV", "Name", "stats", "killed", "drops", "tolerances", "weaknesses", "animation")]
+script = ExtResource("71_jsfmf")
+button_glow = SubResource("StyleBoxFlat_06wc2")
+enemy_list = NodePath("Display/Encyclopedia/PanelContainer/ScrollContainer/GridContainer")
+encyclopedia = NodePath("Display/Encyclopedia")
+monster_profile = NodePath("Display/MonsterProfile")
+sprite = NodePath("Display/MonsterProfile/PortraitPanel/Sprite2D")
+description = NodePath("Display/MonsterProfile/Description")
+HP = NodePath("Display/MonsterProfile/HPValue")
+LV = NodePath("Display/MonsterProfile/LVValue")
+Name = NodePath("Display/MonsterProfile/NameValue")
+stats = NodePath("Display/MonsterProfile/StatValues")
+killed = NodePath("Display/MonsterProfile/Killed/Value")
+drops = NodePath("Display/MonsterProfile/ItemDrops")
+tolerances = NodePath("Display/MonsterProfile/ToleranceTable")
+weaknesses = NodePath("Display/MonsterProfile/WeaknessTable")
+animation = NodePath("AnimationPlayer")
 
 [node name="Display" type="Node2D" parent="MenuStateMachine/Bestiary"]
 modulate = Color(0, 0, 0, 0)
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Bestiary/Display"]
+[node name="Encyclopedia" type="Control" parent="MenuStateMachine/Bestiary/Display"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Bestiary/Display/Encyclopedia"]
+layout_mode = 0
 offset_left = 100.0
 offset_top = 16.0
-offset_right = 775.0
+offset_right = 780.0
 offset_bottom = 451.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_coau3")
 
-[node name="GridContainer" type="GridContainer" parent="MenuStateMachine/Bestiary/Display/PanelContainer"]
-custom_minimum_size = Vector2(636, 0)
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Bestiary/Display/Encyclopedia/PanelContainer"]
+layout_mode = 2
+follow_focus = true
+
+[node name="GridContainer" type="GridContainer" parent="MenuStateMachine/Bestiary/Display/Encyclopedia/PanelContainer/ScrollContainer"]
+custom_minimum_size = Vector2(616, 0)
 layout_mode = 2
 theme = SubResource("Theme_phj2e")
 columns = 2
 
-[node name="InventoryButton" type="Button" parent="MenuStateMachine/Bestiary/Display/PanelContainer/GridContainer"]
-custom_minimum_size = Vector2(318, 0)
-layout_mode = 2
-text = "Skeleton"
-flat = true
-alignment = 0
-script = ExtResource("6_r83iq")
+[node name="MonsterProfile" type="Control" parent="MenuStateMachine/Bestiary/Display"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="InventoryButton2" type="Button" parent="MenuStateMachine/Bestiary/Display/PanelContainer/GridContainer"]
-custom_minimum_size = Vector2(318, 0)
-layout_mode = 2
+[node name="PortraitPanel" type="PanelContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 156.0
+offset_right = 267.0
+offset_bottom = 365.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_52x07")
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/PortraitPanel"]
+position = Vector2(124, 109)
+scale = Vector2(2, 2)
+
+[node name="Description" type="RichTextLabel" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+z_index = 1
+layout_mode = 0
+offset_left = 37.0
+offset_top = 403.0
+offset_right = 835.0
+offset_bottom = 473.0
+theme = SubResource("Theme_vyuey")
+theme_override_constants/outline_size = 8
+theme_override_constants/line_separation = 0
+bbcode_enabled = true
+text = "Bones animated with dark magic, presumably from the remnants of the curse."
+fit_content = true
+scroll_active = false
+scroll_following = true
+custom_effects = [SubResource("RichTextEffect_37m4q")]
+script = ExtResource("30_m47lu")
+
+[node name="DescriptionPanel" type="PanelContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 395.0
+offset_right = 852.0
+offset_bottom = 468.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
+
+[node name="Name" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+clip_children = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 11.0
+offset_right = 113.0
+offset_bottom = 37.0
+theme = SubResource("Theme_2xk5h")
+text = "Name"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Name"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="Stats" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+clip_children = 1
+layout_mode = 0
+offset_left = 312.0
+offset_top = 123.0
+offset_right = 409.0
+offset_bottom = 149.0
+theme = SubResource("Theme_2xk5h")
+text = "Stats"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Stats"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="Attributes" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+clip_children = 1
+layout_mode = 0
+offset_left = 564.0
+offset_top = 123.0
+offset_right = 768.0
+offset_bottom = 149.0
+theme = SubResource("Theme_2xk5h")
+text = "Elemental affinity"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Attributes"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="HP" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+clip_children = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 93.0
+offset_right = 150.0
+offset_bottom = 125.0
+theme = SubResource("Theme_41430")
+text = "H P"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/HP"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="LV" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+clip_children = 1
+layout_mode = 0
+offset_left = 132.0
+offset_top = 93.0
+offset_right = 266.0
+offset_bottom = 125.0
+theme = SubResource("Theme_41430")
+text = "Level"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/LV"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="NameValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 44.0
+offset_right = 105.0
+offset_bottom = 76.0
+theme = SubResource("Theme_wwnqm")
 text = "Skeleton"
-flat = true
-alignment = 0
-script = ExtResource("6_r83iq")
+
+[node name="LVValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 121.0
+offset_right = 172.0
+offset_bottom = 145.0
+theme = SubResource("Theme_wbbfc")
+text = "2"
+
+[node name="HPValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 121.0
+offset_right = 56.0
+offset_bottom = 145.0
+theme = SubResource("Theme_wbbfc")
+text = "15"
+
+[node name="StatValues" type="VBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 161.0
+offset_right = 527.0
+offset_bottom = 405.0
+
+[node name="Atk" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues"]
+layout_mode = 2
+alignment = 1
+
+[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Atk"]
+clip_children = 1
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = SubResource("Theme_41430")
+text = "Attack"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Atk/StatLabel"]
+self_modulate = Color(1, 0.403922, 1, 1)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Atk"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme = SubResource("Theme_wbbfc")
+text = "10"
+horizontal_alignment = 2
+
+[node name="Def" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues"]
+layout_mode = 2
+alignment = 1
+
+[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Def"]
+clip_children = 1
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = SubResource("Theme_41430")
+text = "Defense"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Def/StatLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ol4uy")
+
+[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Def"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme = SubResource("Theme_wbbfc")
+text = "10"
+horizontal_alignment = 2
+
+[node name="Mind" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues"]
+layout_mode = 2
+alignment = 1
+
+[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Mind"]
+clip_children = 1
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = SubResource("Theme_41430")
+text = "Mind"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Mind/StatLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Mind"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme = SubResource("Theme_wbbfc")
+text = "10"
+horizontal_alignment = 2
+
+[node name="Exp" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues"]
+custom_minimum_size = Vector2(0, 170)
+layout_mode = 2
+alignment = 1
+
+[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Exp"]
+clip_children = 1
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme = SubResource("Theme_41430")
+text = "Experience"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Exp/StatLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Exp"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme = SubResource("Theme_wbbfc")
+text = "10"
+horizontal_alignment = 2
+
+[node name="Tolerances" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+clip_children = 1
+layout_mode = 0
+offset_left = 564.0
+offset_top = 159.0
+offset_right = 698.0
+offset_bottom = 191.0
+theme = SubResource("Theme_41430")
+text = "Tolerances"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Tolerances"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="Weaknesses" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+clip_children = 1
+layout_mode = 0
+offset_left = 564.0
+offset_top = 232.0
+offset_right = 718.0
+offset_bottom = 264.0
+theme = SubResource("Theme_41430")
+text = "Weaknesses"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Weaknesses"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="Drops" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+clip_children = 1
+layout_mode = 0
+offset_left = 309.0
+offset_top = 11.0
+offset_right = 406.0
+offset_bottom = 37.0
+theme = SubResource("Theme_2xk5h")
+text = "Drops"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Drops"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="ItemDrops" type="VBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+layout_mode = 0
+offset_left = 318.0
+offset_top = 40.0
+offset_right = 648.0
+offset_bottom = 108.0
+
+[node name="Common" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops"]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Common"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("73_b0muq")
+
+[node name="NameValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Common"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = SubResource("Theme_wwnqm")
+text = "Meat Strip"
+
+[node name="DropRate" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Common"]
+custom_minimum_size = Vector2(90, 32)
+layout_mode = 2
+theme = SubResource("Theme_wbbfc")
+text = "2.6%"
+horizontal_alignment = 2
+
+[node name="Rare" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops"]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Rare"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("74_u2uhr")
+
+[node name="NameValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Rare"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme = SubResource("Theme_wwnqm")
+text = "Uncurse"
+
+[node name="DropRate" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Rare"]
+custom_minimum_size = Vector2(90, 32)
+layout_mode = 2
+theme = SubResource("Theme_wbbfc")
+text = "2.8%"
+horizontal_alignment = 2
+
+[node name="Killed" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 0
+offset_left = 564.0
+offset_top = 305.0
+offset_right = 816.0
+offset_bottom = 405.0
+alignment = 1
+
+[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Killed"]
+clip_children = 1
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = SubResource("Theme_41430")
+text = "Killed"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Killed/StatLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_glct2")
+
+[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Killed"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+theme = SubResource("Theme_wbbfc")
+text = "0"
+horizontal_alignment = 2
+
+[node name="ToleranceTable" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 188.0
+offset_right = 606.0
+offset_bottom = 228.0
+
+[node name="WeaknessTable" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 268.0
+offset_right = 606.0
+offset_bottom = 308.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Bestiary"]
 libraries = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dee6e083n2prt"]
+[gd_scene load_steps=11 format=4 uid="uid://dee6e083n2prt"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_c55co"]
 [ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="2_nr3bm"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="5_6dd2m"]
 [ext_resource type="Texture2D" uid="uid://biwn5irdj8rpr" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoor.png" id="6_lnp1j"]
 [ext_resource type="Texture2D" uid="uid://bpiy0qh3bsdit" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoorAura.png" id="7_1rwy1"]
+[ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="8_etumi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fvl4u"]
 texture = ExtResource("4_1gchu")
@@ -840,3 +841,10 @@ flipped_to_left = true
 spritesheet = ExtResource("6_lnp1j")
 aura_sheet = ExtResource("7_1rwy1")
 aura_color = Color(0.167637, 0.633597, 0, 1)
+
+[node name="Pick-up4" parent="." instance=ExtResource("8_etumi")]
+position = Vector2(481, 372)
+type = 8
+id = 17
+current_item_name = "TOME_OF_MONSTERS"
+pickup_flag = 91
