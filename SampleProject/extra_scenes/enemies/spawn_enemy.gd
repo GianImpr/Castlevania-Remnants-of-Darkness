@@ -8,6 +8,7 @@ class_name SpawnEnemy
 @export var LV_bonus: int = 0
 @export var offset: Vector2
 @export var spawn_range: Vector2
+@export var activate_behavior_instantly: bool = true
 @export_category("Respawning")
 @export var respawn: bool
 @export_range(0, 30, 0.1, "suffix:s") var respawn_cooldown: float = 1
@@ -74,9 +75,9 @@ func _spawnEnemy():
 	get_parent().add_child(enemy_node)
 	enemy_node.global_position = global_position - offset
 	if "activated_AI" in enemy_node:
-		enemy_node.activated_AI = true
+		enemy_node.activated_AI = activate_behavior_instantly
 	elif "ai_activated" in enemy_node:
-		enemy_node.ai_activated = true
+		enemy_node.ai_activated = activate_behavior_instantly
 	enemy_node.modulate = Color(1, 0, 1, 0)
 	enemy_node.process_mode = Node.PROCESS_MODE_DISABLED
 	var tween = get_tree().create_tween()
