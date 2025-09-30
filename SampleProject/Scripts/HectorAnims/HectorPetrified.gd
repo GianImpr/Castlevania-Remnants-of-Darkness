@@ -1,6 +1,6 @@
 extends State
 class_name HectorPetrified
-const PETRIFY_DURATION: float = 30
+const PETRIFY_DURATION: float = 40
 const MINIMUM_TICKS: float = 10
 var ticks_left: float
 const RESISTANCE_COEFFICIENT: int = 5
