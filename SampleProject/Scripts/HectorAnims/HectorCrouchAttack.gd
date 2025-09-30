@@ -4,6 +4,7 @@ var can_perfect_guard: bool = false
 const FIST_ANIMATION_CANCELLABLE_FROM: float = 0.48
 static var getWeaponAttackSound: Callable
 static var getHectorAttackSound: Callable
+const WEAPON_ANIMATION_DELAY: float = 0.01
 
 func enter():
 	playAttackAnimation()
@@ -23,6 +24,8 @@ func Physics_Update(delta: float):
 	if animation.current_animation == "crouch_attack_fist" and animation.current_animation_position >= FIST_ANIMATION_CANCELLABLE_FROM and InputBuffer.is_action_press_buffered("attack"):
 		can_turn()
 		playAttackAnimation()
+		if Global.player.sprite.weapon != null:
+			get_tree().create_timer(WEAPON_ANIMATION_DELAY).timeout.connect(playWeaponAnim)
 		getWeaponAttackSound.call()
 		getHectorAttackSound.call()
 	
@@ -34,4 +37,7 @@ func playAttackAnimation() -> void:
 	var anim_suffix = attack_anim_suffix()
 	animation.play("crouch_attack" + anim_suffix, -1, anim_speed)
 	animation.seek(0)
-	
+
+func playWeaponAnim() -> void:
+	Global.player.sprite.weapon.play_crouch(get_attack_speed(), false)
+	Global.player.sprite.weapon.animation.seek(0)

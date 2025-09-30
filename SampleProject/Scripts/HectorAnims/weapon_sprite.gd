@@ -16,9 +16,9 @@ func play_air(anim_speed: float = 1):
 	animation.play("swing_air", -1, anim_speed)
 	visible = true
 	
-func play_crouch(anim_speed: float = 1):
+func play_crouch(anim_speed: float = 1, visible_from_start: bool = true):
 	animation.play("swing_crouch", -1, anim_speed)
-	visible = true
+	visible = visible_from_start
 
 
 func stop():
