@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c0qsvc0xjt6x1" path="res://assets/sprites/Tiles/outsideMonastery.png" id="4_nc8vx"]
 [ext_resource type="PackedScene" uid="uid://des8o3jbf3a4m" path="res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn" id="5_bu2po"]
 [ext_resource type="PackedScene" uid="uid://bcqff14dmgwpf" path="res://SampleProject/enemies/BlackCrow/black_crow.tscn" id="6_11m71"]
-[ext_resource type="PackedScene" uid="uid://ctg2sggf2ujvj" path="res://SampleProject/enemies/Slaughterer/slaughterer.tscn" id="7_rxyog"]
+[ext_resource type="PackedScene" uid="uid://fld271wig6jo" path="res://SampleProject/enemies/Banshee/banshee.tscn" id="7_u8u3t"]
 [ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="8_osk2v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m2h0t"]
@@ -2291,8 +2291,8 @@ position = Vector2(464, 218)
 [node name="BlackCrow3" parent="Enemies" instance=ExtResource("6_11m71")]
 position = Vector2(503, 122)
 
-[node name="Slaughterer" parent="Enemies" instance=ExtResource("7_rxyog")]
-position = Vector2(804, 353)
+[node name="Banshee" parent="Enemies" instance=ExtResource("7_u8u3t")]
+position = Vector2(816, 287)
 
 [node name="HintBoxTrigger" parent="." instance=ExtResource("8_osk2v")]
 position = Vector2(1018, 0)
