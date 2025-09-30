@@ -1,4 +1,4 @@
-[gd_scene load_steps=577 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=580 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -55,11 +55,13 @@
 [ext_resource type="Texture2D" uid="uid://bt4mqejnab1q7" path="res://assets/sprites/Items/InventoryIcons/Cestus.png" id="18_vwftd"]
 [ext_resource type="AudioStream" uid="uid://cr60u8c82m68u" path="res://assets/music/Followers1.ogg" id="19_3ndk5"]
 [ext_resource type="Texture2D" uid="uid://c5e7abdrgw8fe" path="res://assets/sprites/Items/InventoryIcons/Inventory_260.png" id="19_esy07"]
+[ext_resource type="Texture2D" uid="uid://cnkirtpncmx5" path="res://assets/sprites/Items/InventoryIcons/BrassKnuckles.png" id="20_0fdi8"]
 [ext_resource type="Texture2D" uid="uid://d30dhtcws23nf" path="res://assets/sprites/Items/InventoryIcons/Inventory_261.png" id="20_l5agq"]
 [ext_resource type="PackedScene" uid="uid://dogi4hsvyxsgs" path="res://SampleProject/extra_scenes/HUD/tutorial_box.tscn" id="20_ra60k"]
 [ext_resource type="AudioStream" uid="uid://divaxkj2wapst" path="res://assets/music/InnocentDevil.ogg" id="20_yyavx"]
 [ext_resource type="Texture2D" uid="uid://c82gjyj5jc0u5" path="res://assets/sprites/Items/InventoryIcons/Inventory_263.png" id="21_6kbvk"]
 [ext_resource type="AudioStream" uid="uid://dt0wjxu3j762s" path="res://assets/music/Castlevania Reincarnation.ogg" id="21_u7hil"]
+[ext_resource type="PackedScene" uid="uid://dbh1oiovdmyfq" path="res://SampleProject/Weapons/brass_knuckles.tscn" id="21_xew5h"]
 [ext_resource type="AudioStream" uid="uid://cpcb4qwo3spyt" path="res://assets/music/InnerQuarters.ogg" id="22_2kg4t"]
 [ext_resource type="Texture2D" uid="uid://df1g78v41j8gj" path="res://assets/sprites/Items/InventoryIcons/Inventory_264.png" id="22_vrwsp"]
 [ext_resource type="Texture2D" uid="uid://d3lc0nij607wk" path="res://assets/sprites/Items/InventoryIcons/Inventory_265.png" id="23_e35ff"]
@@ -513,10 +515,10 @@ recipe = Array[Dictionary]([{
 "quantity": 1
 }])
 
-[sub_resource type="Resource" id="Resource_88uus"]
+[sub_resource type="Resource" id="Resource_cm3lq"]
 script = ExtResource("2_6ajcc")
-weapon_name = "CESTUS"
-weapon_description = "CESTUS_DESC"
+weapon_name = "BRASS_KNUCKLES"
+weapon_description = "BRASS_KNUCKLES_DESC"
 type = 4
 element = Array[int]([])
 ATK = 3
@@ -531,13 +533,44 @@ jump_cancel = true
 crouch_attack = true
 value = 100
 max_quantity = 99
+icon = ExtResource("20_0fdi8")
+sprite = ExtResource("21_xew5h")
+recipe_status = 2
+recipe = Array[Dictionary]([{}, {
+"id": 45,
+"inventory": 3,
+"quantity": 2
+}])
+
+[sub_resource type="Resource" id="Resource_88uus"]
+script = ExtResource("2_6ajcc")
+weapon_name = "CESTUS"
+weapon_description = "CESTUS_DESC"
+type = 4
+element = Array[int]([])
+ATK = 5
+DEF = 0
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+jump_cancel = true
+crouch_attack = true
+value = 150
+max_quantity = 99
 icon = ExtResource("18_vwftd")
 sprite = ExtResource("18_br68e")
-recipe_status = 2
+recipe_status = 0
 recipe = Array[Dictionary]([{
-"id": 45,
-"inventory": 2,
+"id": 48,
+"inventory": 1,
 "quantity": 3
+}, {
+"id": 9,
+"inventory": 0,
+"quantity": 1
 }])
 
 [sub_resource type="Resource" id="Resource_m5ppe"]
@@ -3891,7 +3924,7 @@ script = ExtResource("1_xdpfu")
 animation = NodePath("AnimationPlayer")
 difficulty = 1
 world_environment = NodePath("WorldEnvironment")
-weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3"), SubResource("Resource_etedp"), SubResource("Resource_3pxt5"), SubResource("Resource_kt2e1"), SubResource("Resource_88uus")])
+weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3"), SubResource("Resource_etedp"), SubResource("Resource_3pxt5"), SubResource("Resource_kt2e1"), SubResource("Resource_cm3lq"), SubResource("Resource_88uus")])
 item_compendium = SubResource("Resource_ksmb3")
 headgear_compendium = Array[ExtResource("58_johey")]([SubResource("Resource_stdwu"), SubResource("Resource_hcxc2"), SubResource("Resource_qtfvs"), SubResource("Resource_b4qdd"), SubResource("Resource_w8tqy"), SubResource("Resource_4iosu"), SubResource("Resource_b0lhj"), SubResource("Resource_kh436"), SubResource("Resource_n53u7"), SubResource("Resource_n15bh"), SubResource("Resource_2gney"), SubResource("Resource_580rm"), SubResource("Resource_fy53e"), SubResource("Resource_xv0ma"), SubResource("Resource_csljy"), SubResource("Resource_nfnn0"), SubResource("Resource_7go8i"), SubResource("Resource_ji887"), SubResource("Resource_nhhcx"), SubResource("Resource_ocbsj"), SubResource("Resource_jsrpv"), SubResource("Resource_qx0f7"), SubResource("Resource_bg2je"), SubResource("Resource_vexyv"), SubResource("Resource_utsap"), SubResource("Resource_itck4"), SubResource("Resource_ms7n0")])
 body_compendium = Array[ExtResource("86_xt4t6")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me"), SubResource("Resource_dqisp"), SubResource("Resource_rngem")])
