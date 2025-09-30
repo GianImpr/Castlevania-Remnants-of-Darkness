@@ -123,6 +123,7 @@ func generateEnumListFor(compendium, property) -> void:
 	print("}")
 
 func initializeEnemyData() -> void:
+	enemy_data.clear()
 	for i in range(0, enemy_compendium.size()):
 		enemy_data.append(enemy_compendium[i].getStats())
 
