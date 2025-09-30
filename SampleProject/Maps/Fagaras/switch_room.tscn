@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://q4nt5puixrcw"]
+[gd_scene load_steps=18 format=4 uid="uid://q4nt5puixrcw"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_n2kap"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_w1evy"]
@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bcqff14dmgwpf" path="res://SampleProject/enemies/BlackCrow/black_crow.tscn" id="6_11m71"]
 [ext_resource type="PackedScene" uid="uid://fld271wig6jo" path="res://SampleProject/enemies/Banshee/banshee.tscn" id="7_u8u3t"]
 [ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="8_osk2v"]
+[ext_resource type="PackedScene" uid="uid://d1ply4vltsy7l" path="res://SampleProject/extra_scenes/stage_elements/tree_branch.tscn" id="9_7513f"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m2h0t"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uy3v4"]
 resource_name = "Mountains"
 texture = ExtResource("3_cgigf")
 texture_region_size = Vector2i(32, 32)
@@ -1117,7 +1118,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_7o7pl"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_m2h0t")
+sources/0 = SubResource("TileSetAtlasSource_uy3v4")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_maja4"]
 resource_name = "Woods"
@@ -2219,7 +2220,7 @@ top_level = true
 
 [node name="Trees" type="TileMapLayer" parent="Node2D"]
 modulate = Color(0.765231, 0.702341, 0.977022, 1)
-tile_map_data = PackedByteArray("AAAJAAQAAAAEAA8AAAAKAAQAAAAFAA8AAAALAAQAAAAGAA8AAAAMAAEAAAAAAD0AAAAMAAIAAAAAAD4AAAAMAAMAAAACAD4AACAMAAQAAAADAD0AAAAMAAUAAAADAD4AAAAMAAYAAAADAD8AAAAMAAcAAAACAD4AAAAMAAgAAAADAD0AAAAMAAkAAAADAD4AAAAMAAoAAAADAD8AAAAMAAsAAAACAD4AAAAMAAwAAAADAD0AAAAKAAgAAAAEAA8AAAALAAgAAAAFAA8AAAAJAAwAAAABAA8AAAAKAAwAAAACAA8AAAALAAwAAAADAA8AAAANAAQAAAABAA8AAAAOAAQAAAACAA8AAAAPAAQAAAADAA8AAAANAAcAAAACAA8AAAAOAAcAAAADAA8AAAANAAoAAAAAAA8AAAAOAAoAAAABAA8AAAAfAAEAAAAAAD0AABAfAAIAAAAAAD4AABAfAAMAAAACAD4AADAfAAQAAAADAD0AABAfAAUAAAADAD4AABAfAAYAAAADAD8AABAfAAcAAAACAD4AABAfAAgAAAADAD0AABAfAAkAAAADAD4AABAfAAoAAAADAD8AABAfAAsAAAACAD4AABAfAAwAAAADAD0AABA=")
+tile_map_data = PackedByteArray("AAAJAAQAAAAEAA8AAAAKAAQAAAAFAA8AAAALAAQAAAAGAA8AAAAMAAEAAAAAAD0AAAAMAAIAAAAAAD4AAAAMAAMAAAACAD4AACAMAAQAAAADAD0AAAAMAAUAAAADAD4AAAAMAAYAAAADAD8AAAAMAAcAAAACAD4AAAAMAAgAAAADAD0AAAAMAAkAAAADAD4AAAAMAAoAAAADAD8AAAAMAAsAAAACAD4AAAAMAAwAAAADAD0AAAAKAAgAAAAEAA8AAAALAAgAAAAFAA8AAAAJAAwAAAABAA8AAAAKAAwAAAACAA8AAAALAAwAAAADAA8AAAANAAQAAAABAA8AAAAOAAQAAAACAA8AAAAPAAQAAAADAA8AAAANAAcAAAACAA8AAAAOAAcAAAADAA8AAAANAAoAAAAAAA8AAAAOAAoAAAABAA8AAAA=")
 tile_set = SubResource("TileSet_7o7pl")
 
 [node name="Foreground" type="TileMapLayer" parent="Node2D"]
@@ -2300,3 +2301,6 @@ scale = Vector2(9.68, 1)
 flag_id = 13
 text = "HINT_13"
 time = 3.0
+
+[node name="TreeBranch" parent="." instance=ExtResource("9_7513f")]
+position = Vector2(1011, 32)
