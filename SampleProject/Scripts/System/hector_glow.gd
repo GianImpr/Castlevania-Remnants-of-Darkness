@@ -78,9 +78,10 @@ func changeWeapon(new_weapon_scene: PackedScene) -> void:
 	removeWeapon()
 	if new_weapon_scene:
 		var new_weapon = new_weapon_scene.instantiate()
-		new_weapon.hitbox.player = Global.player
-		new_weapon.hitbox.sound = Global.player.sound
-		new_weapon.hitbox.state_machine = Global.player.state_machine
+		if new_weapon.hitbox != null:
+			new_weapon.hitbox.player = Global.player
+			new_weapon.hitbox.sound = Global.player.sound
+			new_weapon.hitbox.state_machine = Global.player.state_machine
 		weapon = new_weapon
 		add_child(new_weapon)
 

@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	if self is AguniLaurelHitbox:
 		return
 		
-	if Global.player != null and Global.player.sprite.weapon != null:
+	if Global.player != null and Global.player.sprite.weapon != null and Global.player.sprite.weapon.hitbox != null:
 		base_attribute = Global.player.sprite.weapon.hitbox.base_attribute
 	else:
 		base_attribute = [Global.Attribute.SLASH]

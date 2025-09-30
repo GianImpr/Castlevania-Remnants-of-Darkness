@@ -1,8 +1,7 @@
 extends State
 class_name HectorCrouchAttack
 var can_perfect_guard: bool = false
-const FIST_ANIMATION_SPEED_BOOST: float = 3
-const FIST_ANIMATION_CANCELLABLE_FROM: float = 1.2
+const FIST_ANIMATION_CANCELLABLE_FROM: float = 0.48
 static var getWeaponAttackSound: Callable
 static var getHectorAttackSound: Callable
 
@@ -33,8 +32,6 @@ func Physics_Update(delta: float):
 func playAttackAnimation() -> void:
 	var anim_speed = get_attack_speed()
 	var anim_suffix = attack_anim_suffix()
-	if anim_suffix == "_fist":
-		anim_speed += FIST_ANIMATION_SPEED_BOOST
 	animation.play("crouch_attack" + anim_suffix, -1, anim_speed)
 	animation.seek(0)
 	

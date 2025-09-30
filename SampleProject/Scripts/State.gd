@@ -204,11 +204,11 @@ func get_hector_heavy_attack_sound() -> void:
 func swingWeapon(anim_type: int):
 	if player.sprite.weapon != null:
 		if anim_type == AttackType.AIR:
-			player.sprite.weapon.play_air()
+			player.sprite.weapon.play_air(get_attack_speed())
 		elif anim_type == AttackType.GROUND:
-			player.sprite.weapon.play()
+			player.sprite.weapon.play(get_attack_speed())
 		elif anim_type == AttackType.CROUCH:
-			player.sprite.weapon.play_crouch()
+			player.sprite.weapon.play_crouch(get_attack_speed())
 
 #Allows the player to activate a relic and handles the activation logic along
 #with visual effects
@@ -290,6 +290,7 @@ func attack_anim_suffix() -> String:
 	return anims[player.stats.searchItemInCompendium(player.stats.equipment["weapon"], player.stats.weapon_compendium).type]
 
 func get_attack_speed() -> float:
+	
 	var speeds = [2, 1, 1, 1, 2]
 	if player.stats.equipment["weapon"] == 0:
 		return speeds[4]

@@ -490,7 +490,7 @@ size = Vector2(82, 15)
 process_mode = 1
 visible = false
 texture = ExtResource("1_n2bpi")
-offset = Vector2(19, 12)
+offset = Vector2(19, 0)
 hframes = 5
 script = ExtResource("2_lx82p")
 animation = NodePath("AnimationPlayer")
@@ -515,6 +515,7 @@ base_attribute = Array[int]([2])
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
 position = Vector2(21, 11)
 shape = SubResource("RectangleShape2D_dxj7m")
+disabled = true
 
 [node name="Trail" type="Sprite2D" parent="."]
 texture = ExtResource("6_6i5x1")
