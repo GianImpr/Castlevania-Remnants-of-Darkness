@@ -58,4 +58,5 @@ func setTutorial(tutorial_id: Tutorial) -> void:
 	continue_label.new_text = "[right]Press [[Cross]] to continue.[/right]"
 	title.text = tutorials[current_tutorial_id].title
 	description.new_text = tutorials[current_tutorial_id].description
+	continue_label.text = tr("TUTORIAL_BOX_CONTINUE")
 	image.texture = tutorials[current_tutorial_id].image
