@@ -55,8 +55,7 @@ func disappear():
 func setTutorial(tutorial_id: Tutorial) -> void:
 	current_tutorial_id = tutorial_id
 	current_tutorial = tutorials[tutorial_id]
-	continue_label.new_text = "[right]Press [[Cross]] to continue.[/right]"
+	continue_label.new_text = tr("TUTORIAL_BOX_CONTINUE")
 	title.text = tutorials[current_tutorial_id].title
 	description.new_text = tutorials[current_tutorial_id].description
-	continue_label.text = tr("TUTORIAL_BOX_CONTINUE")
 	image.texture = tutorials[current_tutorial_id].image

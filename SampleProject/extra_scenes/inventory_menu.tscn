@@ -3890,7 +3890,7 @@ settings = {
 "sfx_volume": 100,
 "voice_volume": 100,
 "vsync": 0,
-"window_mode": 2
+"window_mode": 1
 }
 binding_buttons = NodePath("Controls/Options/Bindings")
 description = NodePath("Display/Description")
@@ -4914,7 +4914,7 @@ offset_top = 11.0
 offset_right = 113.0
 offset_bottom = 37.0
 theme = SubResource("Theme_2xk5h")
-text = "Name"
+text = "NAME_LABEL"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Name"]
 layout_mode = 0
@@ -4930,7 +4930,7 @@ offset_top = 123.0
 offset_right = 409.0
 offset_bottom = 149.0
 theme = SubResource("Theme_2xk5h")
-text = "Stats"
+text = "STATS_LABEL"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Stats"]
 layout_mode = 0
@@ -4946,7 +4946,7 @@ offset_top = 123.0
 offset_right = 768.0
 offset_bottom = 149.0
 theme = SubResource("Theme_2xk5h")
-text = "Elemental affinity"
+text = "ELEMENTAL_LABEL"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Attributes"]
 layout_mode = 0
@@ -4962,7 +4962,7 @@ offset_top = 93.0
 offset_right = 150.0
 offset_bottom = 125.0
 theme = SubResource("Theme_41430")
-text = "H P"
+text = "MENU_HP"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/HP"]
 layout_mode = 0
@@ -4978,7 +4978,7 @@ offset_top = 93.0
 offset_right = 266.0
 offset_bottom = 125.0
 theme = SubResource("Theme_41430")
-text = "Level"
+text = "MENU_LEVEL"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/LV"]
 layout_mode = 0
@@ -5029,7 +5029,7 @@ clip_children = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = SubResource("Theme_41430")
-text = "Attack"
+text = "ATK_STAT_FULL"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Atk/StatLabel"]
 self_modulate = Color(1, 0.403922, 1, 1)
@@ -5054,7 +5054,7 @@ clip_children = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = SubResource("Theme_41430")
-text = "Defense"
+text = "DEF_STAT_FULL"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Def/StatLabel"]
 layout_mode = 0
@@ -5078,7 +5078,7 @@ clip_children = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = SubResource("Theme_41430")
-text = "Mind"
+text = "MND_STAT_FULL"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Mind/StatLabel"]
 layout_mode = 0
@@ -5103,7 +5103,7 @@ clip_children = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = SubResource("Theme_41430")
-text = "Experience"
+text = "MENU_EXP"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Exp/StatLabel"]
 layout_mode = 0
@@ -5126,7 +5126,7 @@ offset_top = 159.0
 offset_right = 698.0
 offset_bottom = 191.0
 theme = SubResource("Theme_41430")
-text = "Tolerances"
+text = "TOLERANCES_LABEL"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Tolerances"]
 layout_mode = 0
@@ -5142,7 +5142,7 @@ offset_top = 232.0
 offset_right = 718.0
 offset_bottom = 264.0
 theme = SubResource("Theme_41430")
-text = "Weaknesses"
+text = "WEAKNESSES_LABEL"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Weaknesses"]
 layout_mode = 0
@@ -5158,7 +5158,7 @@ offset_top = 11.0
 offset_right = 406.0
 offset_bottom = 37.0
 theme = SubResource("Theme_2xk5h")
-text = "Drops"
+text = "DROPS_LABEL"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Drops"]
 layout_mode = 0
@@ -5231,7 +5231,7 @@ clip_children = 1
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme = SubResource("Theme_41430")
-text = "Killed"
+text = "KILLED_LABEL"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Killed/StatLabel"]
 layout_mode = 0
