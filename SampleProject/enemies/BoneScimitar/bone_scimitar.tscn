@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bxi1h5wf54pjq"]
+[gd_scene load_steps=28 format=3 uid="uid://bxi1h5wf54pjq"]
 
 [ext_resource type="Script" path="res://SampleProject/enemies/BoneScimitar/BoneScimitar.gd" id="1_nyag5"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_htfae"]
@@ -17,6 +17,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cx7u"]
 size = Vector2(18.5652, 41.3043)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4nq5"]
+size = Vector2(6.2826, 19.6521)
 
 [sub_resource type="Resource" id="Resource_l68mg"]
 script = ExtResource("6_2nio2")
@@ -236,6 +239,10 @@ vframes = 4
 [node name="Collision box" type="CollisionShape2D" parent="."]
 position = Vector2(10.2826, 7.17391)
 shape = SubResource("RectangleShape2D_5cx7u")
+
+[node name="Collision box2" type="CollisionShape2D" parent="."]
+position = Vector2(-2.3587, -3.32607)
+shape = SubResource("RectangleShape2D_t4nq5")
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource("4_g6mor")
