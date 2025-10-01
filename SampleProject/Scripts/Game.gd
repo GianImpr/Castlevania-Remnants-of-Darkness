@@ -358,9 +358,10 @@ func load_game():
 	var weapon_path = save_manager.get_value("weapon")
 	if weapon_path != null:
 		var weapon = load(weapon_path).instantiate()
-		weapon.hitbox.player = player
-		weapon.hitbox.sound = player.sound
-		weapon.hitbox.state_machine = player.state_machine
+		if weapon.hitbox != null:
+			weapon.hitbox.player = player
+			weapon.hitbox.sound = player.sound
+			weapon.hitbox.state_machine = player.state_machine
 		player.sprite.weapon = weapon
 		player.add_child(player.sprite.weapon)
 	
