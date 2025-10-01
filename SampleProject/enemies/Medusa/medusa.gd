@@ -72,6 +72,6 @@ func decideAction() -> void:
 		state_machine.current_state.Transitioned.emit(state_machine.current_state, "sword")
 		return
 	var action: String = ACTIONS.values().pick_random()
-	if stats.HP > max_HP/2 and action == "stone_circle":
+	if stats.HP > max_HP/1.3 and action == "stone_circle":
 		action = ["sword", "beam", "dash"].pick_random()
 	state_machine.current_state.Transitioned.emit(state_machine.current_state, action)
