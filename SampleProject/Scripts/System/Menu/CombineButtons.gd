@@ -242,7 +242,7 @@ func craftItem(item, type, button_position) -> void:
 				material_inventory = hector_stats.legs_inventory
 				material_compendium = hector_stats.legs_compendium
 
-		hector_stats.removeItemCopies(material_item["id"], material_item["quantity"], material_inventory)
+		hector_stats.removeItemCopies(material_item["id"], material_item["quantity"], material_inventory, true)
 	
 	var item_inventory = getInventory(type)
 	item_data.recipe_status = Weapon.RecipeStatus.REVEALED

@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 		const RSTICK_ACTIONS: Array[String] = ["rstick_up", "next_skill", "rstick_down", "previous_skill"]
 		for i in range(0, RSTICK_ACTIONS.size()):
 			if Input.is_action_just_pressed(RSTICK_ACTIONS[i]):
-				if quick_weapons[i] != cur_selected_item:
+				if quick_weapons[i] != cur_selected_item and cur_selected_item != null:
 					quick_weapons[i] = cur_selected_item
 					quick_weapon_icons.get_child(i).texture = cur_selected_item.icon
 				else:
@@ -67,6 +67,9 @@ func _process(delta: float) -> void:
 #Updating the list by adjust the # of items held after swapping equipment
 #Going back a layer in the menu
 func on_button_pressed(button):
+	if not Global.screen == Global.ScreenType.MENU:
+		return
+		
 	var current_slot = getCurSlot()
 	equipSlots.get_child(0).get_child(equipSlots.button_index).grab_focus()
 	sound.play_sound_effect_from_library("confirm")
@@ -101,6 +104,7 @@ func on_focused(button):
 		weapon_icon.texture = cur_selected_item["icon"]
 		weapon_text.text = cur_selected_item[getCurItemProperty("description")]
 	else:
+		cur_selected_item = null
 		weapon_icon.texture = load("res://assets/sprites/Items/InventoryIcons/Inventory_255.png")
 		weapon_text.text = ""
 		

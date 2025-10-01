@@ -35,3 +35,5 @@ func updateQuickWeaponIcons() -> void:
 	for i in range(0, EquipMenu.quick_weapons.size()):
 		if EquipMenu.quick_weapons[i] != null:
 			quick_weapons_icons.get_child(i).texture = EquipMenu.quick_weapons[i].icon
+		else:
+			quick_weapons_icons.get_child(i).texture = null

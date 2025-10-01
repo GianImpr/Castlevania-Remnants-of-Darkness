@@ -93,24 +93,34 @@ func addItem(id: int, inventory) -> void:
 				item["quantity"] += 1
 
 # Removes 1 copy of a certain item ID in a certain inventory
-func removeItem(id: int, inventory) -> void:
+func removeItem(id: int, inventory, remove_from_wheel: bool = false) -> void:
 	var copies = findItem(id, inventory)
 	if copies == 1:
 		inventory.erase({"id": id, "quantity": copies})
+		if inventory == weapon_inventory and remove_from_wheel:
+			removeWeaponInWheel(id)
 	else:
 		for item in inventory:
 			if item["id"] == id:
 				item["quantity"] -= 1
+	
 				
 # Removes multiple copies of a certain item ID in a certain inventory
-func removeItemCopies(id: int, qty: int, inventory) -> void:
+func removeItemCopies(id: int, qty: int, inventory, remove_from_wheel: bool = false) -> void:
 	var copies = findItem(id, inventory)
 	if copies <= qty:
 		inventory.erase({"id": id, "quantity": copies})
+		if inventory == weapon_inventory and remove_from_wheel:
+			removeWeaponInWheel(id)
 	elif copies > qty:
 		for item in inventory:
 			if item["id"] == id:
 				item["quantity"] -= qty
+				
+func removeWeaponInWheel(id: int) -> void:
+	for i in range(0, EquipMenu.quick_weapons.size()):
+		if EquipMenu.quick_weapons[i] == weapon_compendium[id-1]:
+			EquipMenu.quick_weapons[i] = null
 
 # Finds the item ID in a certain compendium
 func searchItemInCompendium(id: int, compendium):
