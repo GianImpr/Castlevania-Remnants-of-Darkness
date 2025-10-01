@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ctg2sggf2ujvj"]
+[gd_scene load_steps=40 format=3 uid="uid://ctg2sggf2ujvj"]
 
 [ext_resource type="Script" path="res://SampleProject/enemies/Slaughterer/slaughterer.gd" id="1_x7pho"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_bykru"]
@@ -21,6 +21,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee7qv"]
 size = Vector2(41, 53.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8siyg"]
+size = Vector2(13, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2l8yh"]
 size = Vector2(56.5, 16)
@@ -466,6 +469,10 @@ vframes = 6
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2(9, 4.75)
 shape = SubResource("RectangleShape2D_ee7qv")
+
+[node name="Hurtbox2" type="CollisionShape2D" parent="."]
+position = Vector2(-18, -12)
+shape = SubResource("RectangleShape2D_8siyg")
 
 [node name="Timer" type="Timer" parent="."]
 
