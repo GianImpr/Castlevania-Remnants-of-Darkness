@@ -20,6 +20,7 @@ func Physics_Update(delta: float):
 	if not animation.is_playing():
 		Transitioned.emit(self, "idle")
 		player.is_hurt = false
-		
+	
+	
 	can_fall(false)
 	can_die()

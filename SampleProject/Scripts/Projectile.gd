@@ -4,6 +4,7 @@ class_name Projectile
 @export var fixed_damage: bool
 @export var destructible: bool
 @export var destroy_on_contact: bool
+@export var destroy_on_block: bool
 @export var magical: bool
 @export var effect_on_destroy: bool
 @export var chip_damage: int = 0
@@ -19,6 +20,7 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 		damage = max(base_damage + thrower_ATK - body.stats.Stats["DEF"]/2, 1) * multiplier
 		
 	if body.isGuarding():
+		get_parent().destroy()
 		damage = damage + chip_damage
 		if body.isPerfectGuarding():
 			body.stats.Stats["MP"] = min(body.stats.Stats["MMP"], body.stats.Stats["MP"]+floor(damage/10)+10)

@@ -44,6 +44,8 @@ const IFRAMES_HIT_THRESHOLD: int = 3
 const FOCUS_GAIN_RATIO: int = 10
 const GUARD_RECOVERY_TIME: int = 3
 const MAX_WEAPON_RANK = 1
+const LONG_MERCY_INVINCIBILITY_DURATION: float = 1.7
+const SHORT_MERCY_INVINCIBILITY_DURATION: float = 0.8
 
 var current_hits_taken_before_iframes: int = 0
 var reset_position: Vector2

@@ -10,6 +10,7 @@ func _ready() -> void:
 	HectorDamageAir.applyMercyInvincibility = applyMercyInvincibility
 	HectorPetrified.applyMercyInvincibility = applyMercyInvincibility
 	HectorUppercut.applyMercyInvincibility = applyMercyInvincibility
+	HectorHardLanding.applyMercyInvincibility = applyMercyInvincibility
 
 func enter():
 	player.velocity.x = recoil_speed.x * player.facing_position * (-1)
@@ -28,14 +29,15 @@ func Physics_Update(delta: float):
 	applyMercyInvincibility()
 
 #Start the iframes and makes the player blink to indicate invulnerability
-func applyMercyInvincibility() -> void:
+func applyMercyInvincibility(duration: float = player.LONG_MERCY_INVINCIBILITY_DURATION) -> void:
 	if player.is_on_floor() and ignore_landing.is_stopped():
 		Transitioned.emit(self, "hard_landing")
-		player.mercy_invincibility_duration.start()
+		player.mercy_invincibility_duration.start(duration)
 		var tween = get_tree().create_tween()
 		const TWEEN_LOOP_DURATION: float = 0.1
 		const BLINK_SPEED: float = 0.3
 		const NORMAL_COLOR: Color = Color(1,1,1,1)
 		const TRANSPARENT_COLOR: Color = Color(1,1,1,0.5)
-		tween.set_loops(player.mercy_invincibility_duration.wait_time/TWEEN_LOOP_DURATION/2)
+		player.mercy_invincibility_duration.wait_time = duration
+		tween.set_loops(duration/TWEEN_LOOP_DURATION/2)
 		tween.tween_property(player.sprite, "self_modulate", NORMAL_COLOR, BLINK_SPEED).from(TRANSPARENT_COLOR)

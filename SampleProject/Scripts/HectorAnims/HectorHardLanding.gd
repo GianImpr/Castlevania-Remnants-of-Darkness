@@ -2,6 +2,7 @@ extends State
 class_name HectorHardLanding
 var can_perfect_guard: bool = false
 const MOMENTUM_MULTIPLIER: float = 0.3
+static var applyMercyInvincibility: Callable
 
 func enter():
 	animation.play("hard_landing", -1, 1.7)
@@ -14,6 +15,12 @@ func Physics_Update(delta: float):
 	player.velocity.x *= MOMENTUM_MULTIPLIER
 	can_fall(false)
 	can_die()
+	
+	if InputBuffer.is_action_press_buffered("backdash") and player.is_hurt:
+		Transitioned.emit(self, "backdash")
+		player.is_hurt = false
+		applyMercyInvincibility.call(player.SHORT_MERCY_INVINCIBILITY_DURATION)
+
 	if not animation.is_playing():
 		Transitioned.emit(self, "crouch")
 		player.is_hurt = false
