@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dogi4hsvyxsgs"]
+[gd_scene load_steps=47 format=3 uid="uid://dogi4hsvyxsgs"]
 
 [ext_resource type="Script" path="res://SampleProject/extra_scenes/HUD/tutorial_box.gd" id="1_1rggr"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/TutorialFormat.gd" id="2_fcv6a"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://debkeiso1pvvn" path="res://assets/images/WeaponWheel.png" id="11_24aic"]
 [ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="11_ur5mt"]
 [ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="12_48lxj"]
+[ext_resource type="Texture2D" uid="uid://c46g3377o2qj8" path="res://assets/images/BackdashRecovery.png" id="12_uxvf1"]
 
 [sub_resource type="Resource" id="Resource_pakqc"]
 script = ExtResource("2_fcv6a")
@@ -101,6 +102,13 @@ title = "WEAPON_WHEEL_2"
 description = "WEAPON_WHEEL_2_DESC"
 image = ExtResource("11_24aic")
 condition = "Global.player.stats.picked_items[16] == true"
+
+[sub_resource type="Resource" id="Resource_gypgr"]
+script = ExtResource("2_fcv6a")
+title = "RECOVERING_FROM_HARD_LANDING"
+description = "RECOVERING_FROM_HARD_LANDING_DESC"
+image = ExtResource("12_uxvf1")
+condition = ""
 
 [sub_resource type="Theme" id="Theme_ysinr"]
 default_font = ExtResource("10_ff42d")
@@ -210,7 +218,7 @@ image = NodePath("PanelContainer/VBoxContainer/Image")
 description = NodePath("PanelContainer/VBoxContainer/Description")
 continue_label = NodePath("PanelContainer/VBoxContainer/Continue")
 sound = NodePath("PolyphonicMenuAudio")
-tutorials = Array[ExtResource("2_fcv6a")]([SubResource("Resource_pakqc"), SubResource("Resource_v7vry"), SubResource("Resource_ce2tk"), SubResource("Resource_om33j"), SubResource("Resource_1trho"), SubResource("Resource_4uphu"), SubResource("Resource_nl7m1"), SubResource("Resource_j2x7b"), SubResource("Resource_fl6h1"), SubResource("Resource_defet"), SubResource("Resource_bbpn6"), SubResource("Resource_fdnyd")])
+tutorials = Array[ExtResource("2_fcv6a")]([SubResource("Resource_pakqc"), SubResource("Resource_v7vry"), SubResource("Resource_ce2tk"), SubResource("Resource_om33j"), SubResource("Resource_1trho"), SubResource("Resource_4uphu"), SubResource("Resource_nl7m1"), SubResource("Resource_j2x7b"), SubResource("Resource_fl6h1"), SubResource("Resource_defet"), SubResource("Resource_bbpn6"), SubResource("Resource_fdnyd"), SubResource("Resource_gypgr")])
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -235,7 +243,7 @@ layout_mode = 2
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_58ma8")
-text = "CYAN ORB"
+text = "RECOVERING FROM HARD LANDING"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/Title"]
@@ -246,35 +254,28 @@ texture = SubResource("GradientTexture2D_yo6ua")
 
 [node name="Image" type="TextureRect" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+texture = ExtResource("12_uxvf1")
 stretch_mode = 3
 
 [node name="Description" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 bbcode_enabled = true
-text = "By holding [img]res://assets/sprites/HUD/Buttons/R1.png[/img] down, Hector can block incoming
-attacks, negating most, if not all damage.
+text = "Puoi riprenderti velocemente dai danni subiti in aria
+premendo [img]res://assets/sprites/HUD/Buttons/L1.png[/img] non appena atterri.
 
-If the blocked attack's base damage is high,
-some chip damage will still be taken.
-
-Hector can only block a couple blows at a time,
-after which he will suffer a guard break, leaving
-him vulnerable."
+Facendo questo, Hector schiverà all'indietro e sarà
+invincibile per un frangente di tempo."
 fit_content = true
 scroll_active = false
 scroll_following = true
 autowrap_mode = 0
 script = ExtResource("4_ghrps")
-new_text = "By holding [[R1]] down, Hector can block incoming
-attacks, negating most, if not all damage.
+new_text = "Puoi riprenderti velocemente dai danni subiti in aria
+premendo [[L1]] non appena atterri.
 
-If the blocked attack's base damage is high,
-some chip damage will still be taken.
-
-Hector can only block a couple blows at a time,
-after which he will suffer a guard break, leaving
-him vulnerable."
+Facendo questo, Hector schiverà all'indietro e sarà
+invincibile per un frangente di tempo."
 
 [node name="Continue" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

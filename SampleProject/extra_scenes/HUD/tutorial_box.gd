@@ -23,7 +23,8 @@ enum Tutorial {
 	ORBS,
 	CYAN_ORB,
 	WEAPON_WHEEL_1,
-	WEAPON_WHEEL_2
+	WEAPON_WHEEL_2,
+	HARD_LANDING_RECOVERY
 }
 
 func _process(delta: float) -> void:

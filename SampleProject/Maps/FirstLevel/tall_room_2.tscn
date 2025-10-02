@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://ceep2jk4avqcl"]
+[gd_scene load_steps=18 format=4 uid="uid://ceep2jk4avqcl"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_e3thi"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_oyv1v"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/hard_mode_node.gd" id="12_5v7i7"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/Spawners/enemy_spawner.gd" id="13_bqisb"]
 [ext_resource type="PackedScene" uid="uid://bn3lg7fw7nbhb" path="res://SampleProject/enemies/Ghost/ghost.tscn" id="14_lhe07"]
+[ext_resource type="PackedScene" uid="uid://q43vbthycopx" path="res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn" id="15_h8cuj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3tggm"]
 texture = ExtResource("4_07wyj")
@@ -941,3 +942,6 @@ enemy_to_spawn = ExtResource("14_lhe07")
 spawn_frequency_in_seconds = 7.0
 min_pos_limits = Vector2(100, 300)
 max_pos_limits = Vector2(800, 2700)
+
+[node name="TutorialScreenTrigger" parent="." instance=ExtResource("15_h8cuj")]
+position = Vector2(155, 7)
