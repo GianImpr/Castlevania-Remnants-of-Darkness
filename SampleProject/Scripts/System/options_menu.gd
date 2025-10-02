@@ -274,7 +274,9 @@ func _unhandled_input(event) -> void:
 	if registerJoypadInput(event) or registerKeyboardInput(event):
 		updateUIActions()
 		setButtons(Global.game.controller_scheme)
-			
+		#To avoid getting actions held unintentionally, reset all button states
+		for action in InputMap.get_actions():
+			Input.action_release(action)
 			
 func registerJoypadInput(event) -> bool:
 	if registering_input and Global.game.controller_scheme != Global.game.ControllerScheme.KEYBOARD:
