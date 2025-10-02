@@ -113,7 +113,7 @@ func checkCommandInput(command: Array[String], leniency: int, facing_position_ma
 	var input_to_find: int = 0
 	var prev_command: String = ""
 	var actual_command: Array[String] = command.duplicate(true)
-	
+		
 	if facing_position_matters and Global.player != null:
 		for i in range(0, actual_command.size()):
 			if actual_command[i] == "move_right" and Global.player.facing_position == -1:
@@ -124,7 +124,7 @@ func checkCommandInput(command: Array[String], leniency: int, facing_position_ma
 	for buttons in command_history:
 		for button in buttons:
 				
-			if (button["action"] == "ui_right" or button["action"] == "ui_cancel" or button["action"] == "ui_left" or button["action"] == "ui_up") or (button["action"] == "neutral" and input_to_find == 0):
+			if button["action"].begins_with("ui") or (button["action"] == "neutral" and input_to_find == 0):
 				continue
 			if actual_command[input_to_find] == button["action"] and button["duration"] <= leniency and button["action"] != prev_command:
 				inputs_found.append(actual_command[input_to_find])
