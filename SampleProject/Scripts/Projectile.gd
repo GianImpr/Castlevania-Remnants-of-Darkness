@@ -20,7 +20,8 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 		damage = max(base_damage + thrower_ATK - body.stats.Stats["DEF"]/2, 1) * multiplier
 		
 	if body.isGuarding():
-		get_parent().destroy()
+		if destroy_on_block:
+			get_parent().destroy()
 		damage = damage + chip_damage
 		if body.isPerfectGuarding():
 			body.stats.Stats["MP"] = min(body.stats.Stats["MMP"], body.stats.Stats["MP"]+floor(damage/10)+10)
