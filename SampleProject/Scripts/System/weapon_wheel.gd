@@ -60,13 +60,13 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("weapon_swap") and Global.screen == Global.ScreenType.NONE:
+	if Input.is_action_just_pressed("l2") and Global.screen == Global.ScreenType.NONE:
 		updateIcons()
 		get_tree().paused = true
 		open()
 		Global.screen = Global.ScreenType.WHEEL
 		
-	if Input.is_action_just_released("weapon_swap") and Global.screen == Global.ScreenType.WHEEL:
+	if Input.is_action_just_released("l2") and Global.screen == Global.ScreenType.WHEEL:
 		get_tree().paused = false
 		if cursor_position != Position.ABSENT and not Global.player.isAttacking():
 			quickWeaponSwap.call(cursor_position)
