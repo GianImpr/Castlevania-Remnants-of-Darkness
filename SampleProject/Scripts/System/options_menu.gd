@@ -264,7 +264,6 @@ const Actions = {
 }
 
 func enter():
-	print(InputHelper.serialize_inputs_for_actions(Global.settings_node.Actions.values()))
 	animation.play_backwards("change")
 	default_button.grab_focus()
 	

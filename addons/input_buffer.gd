@@ -114,7 +114,6 @@ func checkCommandInput(command: Array[String], leniency: int, facing_position_ma
 	var prev_command: String = ""
 	var actual_command: Array[String] = command.duplicate(true)
 	
-	print(command_history)
 	
 	if facing_position_matters and Global.player != null:
 		for i in range(0, actual_command.size()):
