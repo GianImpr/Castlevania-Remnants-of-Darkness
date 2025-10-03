@@ -144,6 +144,7 @@ func triggerSettings() -> void:
 	for i in range(0, functions.size()-1):
 		functions[i].bind(0,sub_menu_buttons[i]).call()
 	setButtons(Global.game.controller_scheme)
+	updateUIActions()
 
 func setButtons(scheme: int) -> void:
 	match scheme:
@@ -225,10 +226,8 @@ func updateUIActions() -> void:
 	var ui_actions: Array[String] = ["ui_left", "ui_right", "ui_down", "ui_up", "ui_accept", "ui_cancel"]
 	var reference_actions: Array[String] = ["move_left", "move_right", "crouch", "up_arrow", "jump", "circle"]
 	for i in range(0, ui_actions.size()):
-		if Global.game.controller_scheme != Global.game.ControllerScheme.KEYBOARD:
-			InputHelper.set_joypad_input_for_action(ui_actions[i], InputHelper.get_joypad_input_for_action(reference_actions[i]), false)
-		else:
-			InputHelper.set_keyboard_input_for_action(ui_actions[i], InputHelper.get_keyboard_input_for_action(reference_actions[i]), false)
+		InputHelper.set_joypad_input_for_action(ui_actions[i], InputHelper.get_joypad_input_for_action(reference_actions[i]), false)
+		InputHelper.set_keyboard_input_for_action(ui_actions[i], InputHelper.get_keyboard_input_for_action(reference_actions[i]), false)
 
 enum panel {
 	GRAPHICS,
