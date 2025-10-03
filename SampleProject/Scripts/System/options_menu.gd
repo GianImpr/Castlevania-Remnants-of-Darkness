@@ -258,12 +258,13 @@ const Actions = {
 	SWITCH = "l2",
 	SYNERGY = "synergy",
 	RSTICK_UP = "rstick_up",
-	RSTICK_DOWN = "rstick_down"
+	RSTICK_DOWN = "rstick_down",
+	PREV_SKILL = "previous_skill",
+	NEXT_SKILL = "next_skill"
 }
 
 func enter():
 	print(InputHelper.serialize_inputs_for_actions(Global.settings_node.Actions.values()))
-
 	animation.play_backwards("change")
 	default_button.grab_focus()
 	
