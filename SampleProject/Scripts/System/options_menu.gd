@@ -256,10 +256,14 @@ const Actions = {
 	INVENTORY = "menu",
 	MAP = "map",
 	SWITCH = "l2",
-	SYNERGY = "synergy"
+	SYNERGY = "synergy",
+	RSTICK_UP = "rstick_up",
+	RSTICK_DOWN = "rstick_down"
 }
 
 func enter():
+	print(InputHelper.serialize_inputs_for_actions(Global.settings_node.Actions.values()))
+
 	animation.play_backwards("change")
 	default_button.grab_focus()
 	
