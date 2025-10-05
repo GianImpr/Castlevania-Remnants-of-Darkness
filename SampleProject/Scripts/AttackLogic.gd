@@ -231,4 +231,7 @@ func recolorTrail() -> void:
 func updateKillCount(enemy_name: String) -> void:
 	for i in range(0, Game.enemy_data.size()):
 		if enemy_name == Game.enemy_data[i][EnemyEntry.Stats.NAME]:
-			Game.get_singleton().enemy_compendium[i].killed += 1
+			if Game.get_singleton().update_player_compendium:
+				Game.get_singleton().enemy_compendium[i].killed += 1
+			else:
+				Global.player.stats.enemy_compendium[i].killed += 1
