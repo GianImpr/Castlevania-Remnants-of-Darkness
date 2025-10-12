@@ -8,7 +8,7 @@ func enter():
 	animation.play("perfect_guarding", -1, 2.8)
 	sound.play_sound_effect_from_library("perfect_guard")
 
-	if player.accessoryEquipped(Artifact.Artifacts.STONE_OF_ALCHEMY):
+	if player.stats.itemEquipped(Artifact.Artifacts.STONE_OF_ALCHEMY, "artifact"):
 		player.activateStoneOfAlchemy()
 
 	

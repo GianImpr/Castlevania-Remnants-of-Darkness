@@ -8,7 +8,7 @@ func enter():
 	sound.play_sound_effect_from_library("perfect_guard")
 	player.velocity.y = INITIAL_HEIGHT_BOOST
 	
-	if player.accessoryEquipped(Artifact.Artifacts.STONE_OF_ALCHEMY):
+	if player.stats.itemEquipped(Artifact.Artifacts.STONE_OF_ALCHEMY, "artifact"):
 		player.activateStoneOfAlchemy()
 
 	

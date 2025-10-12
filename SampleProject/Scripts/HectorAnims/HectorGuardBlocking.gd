@@ -15,9 +15,10 @@ func enter():
 	if player.stats.canApplySkill(Skill.Skills.AWARENESS):
 		player.focus_gain_duration.start()
 		
-	if player.accessoryEquipped(Artifact.Artifacts.STONE_OF_ALCHEMY):
+	if player.stats.itemEquipped(Artifact.Artifacts.STONE_OF_ALCHEMY, "artifact"):
 		player.activateStoneOfAlchemy()
 		
+	
 	
 func exit():
 	player.is_hurt = false
