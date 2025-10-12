@@ -19,9 +19,9 @@ var enemy_parent_node: Node
 const PICK_UP_SCENE_PATH: String = "res://SampleProject/extra_scenes/items/pick_up.tscn"
 const HEART_SCENE_PATH: String = "res://SampleProject/extra_scenes/items/heart.tscn"
 const MONEY_SCENE_PATH: String = "res://SampleProject/extra_scenes/items/money.tscn"
-var pick_up_scene: Resource = preload(PICK_UP_SCENE_PATH)
-var heart_scene: Resource = preload(HEART_SCENE_PATH)
-var money_scene: Resource = preload(MONEY_SCENE_PATH)
+static var pick_up_scene: Resource = preload(PICK_UP_SCENE_PATH)
+static var heart_scene: Resource = preload(HEART_SCENE_PATH)
+static var money_scene: Resource = preload(MONEY_SCENE_PATH)
 
 var enemy_entry: EnemyEntry
 
