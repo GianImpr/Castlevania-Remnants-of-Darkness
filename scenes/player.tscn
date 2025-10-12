@@ -5645,6 +5645,12 @@ one_shot = true
 position = Vector2(0, 16)
 target_position = Vector2(0, 16)
 
+[node name="GlobalTrail" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="GlobalTrailDuration" type="Timer" parent="."]
+wait_time = 1.5
+
 [connection signal="body_entered" from="Sprite2D/SwordHitbox" to="Sprite2D/SwordHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/UppercutHitbox" to="Sprite2D/UppercutHitbox" method="_on_body_entered"]

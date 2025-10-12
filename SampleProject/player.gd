@@ -37,7 +37,6 @@ var aguni_mp_consumption: float = 0
 const AGUNI_COOLDOWN: float = 0.03
 var aguni_on_cooldown: bool = false
 
-
 const STONE_OF_ALCHEMY_HEAL: int = 5
 const BLOOD_CLOAK_HEAL: int = 2
 const SPEED = 260.0
@@ -103,7 +102,6 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	#If harmed, become invulnerable for a while
 	set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped())
-	
 	
 	guarding = isGuarding()
 	
@@ -384,6 +382,19 @@ func throwAxe() -> void:
 
 func petrify() -> void:
 	stats.current_status = stats.Ailment.STONE
+	
+#Creates one afterimage instance of Hector
+func instantiateScene(scene: PackedScene, get_player_frame: bool, offset: Vector2):
+	var instance: Sprite2D = scene.instantiate()
+	MetSys.get_current_room_instance().add_child(instance)
+	instance.scale = scale
+	instance.global_position = global_position + offset
+	instance.flip_h = sprite.flip_h
+	if get_player_frame:
+		instance.frame = sprite.frame
+		instance.texture = sprite.texture
+		instance.hframes = sprite.hframes
+		instance.vframes = sprite.vframes
 
 func activateBloodCloak() -> void:
 	heal_innocent(BLOOD_CLOAK_HEAL)
