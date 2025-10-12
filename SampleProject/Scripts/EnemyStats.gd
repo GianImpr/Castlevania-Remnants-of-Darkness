@@ -55,7 +55,9 @@ func determineDrop(include_misc_items: bool) -> void:
 	if not include_misc_items:
 		return
 		
-	elif random_number <= HEART_DROP_RATE and (Global.player.unlocked_magic or Global.player.innocent_devil != null):
+	random_number = randf_range(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
+		
+	if random_number <= HEART_DROP_RATE and (Global.player.unlocked_magic or Global.player.innocent_devil != null):
 		dropMisc(heart_scene)
 	elif random_number <= MONEY_DROP_RATE:
 		dropMisc(money_scene)
