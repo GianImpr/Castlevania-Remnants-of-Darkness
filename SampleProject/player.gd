@@ -304,22 +304,29 @@ func addWeaponExp() -> void:
 		
 	stats.weapon_proficiency[weapon_type]["exp"] += amount_gained
 	
-func heal(amount: int) -> void:
+func heal(amount: int, with_particles: bool = true) -> void:
 	if state_machine.current_state is HectorDying:
 		return
+		
+	sprite.influence_glow = 0.2
+	sprite.extra_influence_duration = 0
+	hit_effect_applied = true
+	sprite.editShaderParams(0.2, 4, true, Color(0, 0.766, 0))
 	stats.Stats["HP"] = min(stats.Stats["HP"]+amount, stats.Stats["MHP"])
-	heal_effect.emitting = true
 	damage_popup.popup(amount, 2)
-	var tween = get_tree().create_tween()
-	tween.tween_property(sprite, "self_modulate", Color(0.3,1.4,0.7), 0.3)
-	await tween.finished
-	tween = get_tree().create_tween()
-	tween.tween_property(sprite, "self_modulate", Color(1,1,1), 1)
+
+	if with_particles:
+		heal_effect.emitting = true
+		var tween = get_tree().create_tween()
+		tween.tween_property(sprite, "self_modulate", Color(0.3,1.4,0.7), 0.3)
+		await tween.finished
+		tween = get_tree().create_tween()
+		tween.tween_property(sprite, "self_modulate", Color(1,1,1), 1)
 	
-func healMP(amount: int) -> void:
+func healMP(amount: int, popup_offset: Vector2 = Vector2.ZERO) -> void:
 	stats.Stats["MP"] = min(stats.Stats["MP"]+amount, stats.Stats["MMP"])
 	heal_mp_effect.emitting = true
-	damage_popup.popup(amount, 3)
+	damage_popup.popup(amount, 3, popup_offset)
 
 	
 func heal_innocent(amount: int) -> void:
@@ -400,4 +407,4 @@ func activateBloodCloak() -> void:
 	heal_innocent(BLOOD_CLOAK_HEAL)
 
 func activateStoneOfAlchemy() -> void:
-	healMP(STONE_OF_ALCHEMY_HEAL)
+	healMP(STONE_OF_ALCHEMY_HEAL, Vector2(0,28))

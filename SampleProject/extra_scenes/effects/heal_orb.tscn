@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://41bpn1dm6uol"]
+
+[ext_resource type="Script" path="res://SampleProject/Scripts/Powers/heal_orb.gd" id="1_gfwwr"]
+[ext_resource type="Texture2D" uid="uid://b467qcralib2b" path="res://assets/sprites/PowerUps/HealOrb.png" id="1_l7h7c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1oury"]
+radius = 17.0
+
+[sub_resource type="Animation" id="Animation_vvnak"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_hilba"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dd062"]
+_data = {
+"RESET": SubResource("Animation_hilba"),
+"idle": SubResource("Animation_vvnak")
+}
+
+[node name="HealOrb" type="Node2D" node_paths=PackedStringArray("area")]
+script = ExtResource("1_gfwwr")
+area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_l7h7c")
+hframes = 4
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_1oury")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dd062")
+}
+autoplay = "idle"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
