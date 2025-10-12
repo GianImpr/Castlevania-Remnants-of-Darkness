@@ -11,6 +11,7 @@ const INITIAL_MOMENTUM_DURATION: float = 0.4
 const DISTANCE_THRESHOLD: float = 5
 var initial_momentum_finished: bool = false
 @export var area: Area2D
+@export var sound: PolyphonicAudio
 var turning_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
@@ -42,7 +43,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	(body as HectorPlayer).heal(HEALING_POWER, false)
-	queue_free()
+	visible = false
+	sound.play_sound_effect_from_library("heal")
+	area.set_deferred("monitoring", false)
+	get_tree().create_timer(1.5).timeout.connect(queue_free)
 
 func activateOrb() -> void:
 	initial_momentum_finished = true

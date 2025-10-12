@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://41bpn1dm6uol"]
+[gd_scene load_steps=13 format=3 uid="uid://41bpn1dm6uol"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Powers/heal_orb.gd" id="1_gfwwr"]
 [ext_resource type="Texture2D" uid="uid://b467qcralib2b" path="res://assets/sprites/PowerUps/HealOrb.png" id="1_l7h7c"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_40uhy"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_maj1p"]
+[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_27wur"]
+[ext_resource type="AudioStream" uid="uid://cpi3vmsn423y2" path="res://assets/sounds/Menu/MPHeal.MP3" id="6_055ns"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1oury"]
 radius = 17.0
@@ -45,9 +49,19 @@ _data = {
 "idle": SubResource("Animation_vvnak")
 }
 
-[node name="HealOrb" type="Node2D" node_paths=PackedStringArray("area")]
+[sub_resource type="Resource" id="Resource_2ydot"]
+script = ExtResource("5_27wur")
+Tag = "heal"
+stream = ExtResource("6_055ns")
+
+[sub_resource type="Resource" id="Resource_gruyo"]
+script = ExtResource("4_maj1p")
+sound_effects = Array[ExtResource("5_27wur")]([SubResource("Resource_2ydot")])
+
+[node name="HealOrb" type="Node2D" node_paths=PackedStringArray("area", "sound")]
 script = ExtResource("1_gfwwr")
 area = NodePath("Area2D")
+sound = NodePath("PolyphonicAudio")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -68,5 +82,9 @@ libraries = {
 "": SubResource("AnimationLibrary_dd062")
 }
 autoplay = "idle"
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("3_40uhy")
+audio_library = SubResource("Resource_gruyo")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
