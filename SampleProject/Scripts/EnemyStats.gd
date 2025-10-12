@@ -42,6 +42,8 @@ func determineDrop(include_misc_items: bool) -> void:
 	const MAX_RANDOM_NUMBER: float = 1
 	const HEART_DROP_RATE: float = 0.25
 	const MONEY_DROP_RATE: float = 0.3
+	const RED_SCARF_BONUS_MULTIPLIER: float = 1.3
+	var heart_drop_multiplier: float = 1
 	var random_number: float = randf_range(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
 	if random_number > common_rate and random_number <= common_rate + rare_rate:
 		dropItem(rare_drop_id, rare_drop_category)
@@ -56,8 +58,11 @@ func determineDrop(include_misc_items: bool) -> void:
 		return
 		
 	random_number = randf_range(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER)
+	
+	if Global.player.stats.accessoryEquipped(Accessory.Accessories.RED_SCARF):
+		heart_drop_multiplier = RED_SCARF_BONUS_MULTIPLIER
 		
-	if random_number <= HEART_DROP_RATE and (Global.player.unlocked_magic or Global.player.innocent_devil != null):
+	if random_number <= HEART_DROP_RATE*heart_drop_multiplier and (Global.player.unlocked_magic or Global.player.innocent_devil != null):
 		dropMisc(heart_scene)
 	elif random_number <= MONEY_DROP_RATE:
 		dropMisc(money_scene)
