@@ -17,5 +17,9 @@ class_name Artifact
 @export var icon: Texture2D
 
 enum Artifacts {
-	GOLD_RING
+	LITTLE_HAMMER,
+	MIRACLE_COIN,
+	HEART_BROOCH,
+	STONE_OF_ALCHEMY,
+	BLOOD_STONE
 }

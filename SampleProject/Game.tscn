@@ -1,4 +1,4 @@
-[gd_scene load_steps=580 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=595 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -209,7 +209,11 @@
 [ext_resource type="Texture2D" uid="uid://xkxfw3qnyjar" path="res://assets/sprites/Items/OtherIcons/16x16/fa1557.png" id="146_j32o5"]
 [ext_resource type="PackedScene" uid="uid://dvikboxpt5o45" path="res://SampleProject/extra_scenes/dialogue.tscn" id="149_om524"]
 [ext_resource type="Texture2D" uid="uid://dw2nqmoc6ghcd" path="res://assets/sprites/Items/InventoryIcons/AguniLaurel.png" id="150_e8wvu"]
+[ext_resource type="Texture2D" uid="uid://yx5hgl8pxwjv" path="res://assets/sprites/Items/InventoryIcons/Inventory_236.png" id="154_kh17x"]
+[ext_resource type="Texture2D" uid="uid://cjay83kpbxoek" path="res://assets/sprites/Items/InventoryIcons/Inventory_235.png" id="155_a8hka"]
 [ext_resource type="Texture2D" uid="uid://6r72jxcbvq47" path="res://assets/images/WarpPreviews/AbandonedEntrance.png" id="156_3rde5"]
+[ext_resource type="Texture2D" uid="uid://b62naasdufxrx" path="res://assets/sprites/Items/InventoryIcons/Inventory_226.png" id="156_5x5rq"]
+[ext_resource type="Texture2D" uid="uid://ckn3j5bpeyxx1" path="res://assets/sprites/Items/InventoryIcons/Inventory_92.png" id="157_6vmuw"]
 [ext_resource type="Texture2D" uid="uid://dler8ycprwoac" path="res://assets/sprites/Items/InventoryIcons/BookOfMonsters.png" id="157_qs5p8"]
 [ext_resource type="Texture2D" uid="uid://ctxxn0ruh067u" path="res://assets/images/WarpPreviews/AbandonedGauntlet.png" id="157_wahx8"]
 [ext_resource type="Texture2D" uid="uid://bgsf8dpkpib4k" path="res://assets/images/WarpPreviews/AbandonedTop.png" id="158_8p07p"]
@@ -220,8 +224,10 @@
 [ext_resource type="PackedScene" uid="uid://bpbuc4imoao83" path="res://SampleProject/enemies/Zombie/zombie.tscn" id="165_0pmrv"]
 [ext_resource type="Texture2D" uid="uid://bfbhnh66puau2" path="res://assets/sprites/Enemies/Zombie.png" id="165_m61bb"]
 [ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="166_f1w0o"]
+[ext_resource type="Texture2D" uid="uid://cnbbnf6c345aw" path="res://assets/sprites/Items/OtherIcons/16x16/fa132.png" id="167_5r6wg"]
 [ext_resource type="PackedScene" uid="uid://126k0dgwv4i3" path="res://SampleProject/enemies/Bat/bat.tscn" id="167_qgcp7"]
 [ext_resource type="Texture2D" uid="uid://c11n13r75ggmc" path="res://assets/sprites/Enemies/Skeleton.png" id="167_t7m25"]
+[ext_resource type="Texture2D" uid="uid://171chgc224qn" path="res://assets/sprites/Items/InventoryIcons/Inventory_114.png" id="168_8y21a"]
 [ext_resource type="PackedScene" uid="uid://cl543nev3n2bf" path="res://SampleProject/enemies/AxeArmor/axe_armor.tscn" id="168_mn126"]
 [ext_resource type="PackedScene" uid="uid://bn3lg7fw7nbhb" path="res://SampleProject/enemies/Ghost/ghost.tscn" id="169_3r45q"]
 [ext_resource type="Texture2D" uid="uid://b0wy844sn8xoh" path="res://assets/sprites/Enemies/Bat.png" id="169_dqm3d"]
@@ -230,6 +236,7 @@
 [ext_resource type="Texture2D" uid="uid://ditr8o63awx3g" path="res://assets/sprites/Enemies/AxeArmor.png" id="171_86d4v"]
 [ext_resource type="PackedScene" uid="uid://dfuncyp0yhrbk" path="res://SampleProject/enemies/Slinger/slinger.tscn" id="171_q4vwy"]
 [ext_resource type="PackedScene" uid="uid://bn5w03bpeuhmt" path="res://SampleProject/enemies/ArmorKnight/armor_knight.tscn" id="172_i16j1"]
+[ext_resource type="Texture2D" uid="uid://dbeulcnangbcx" path="res://assets/sprites/Items/OtherIcons/16x16/fa2130.png" id="173_n26vp"]
 [ext_resource type="Texture2D" uid="uid://dkvr4kl120kyv" path="res://assets/sprites/Enemies/Ghost.png" id="173_oja0j"]
 [ext_resource type="PackedScene" uid="uid://b33buvcvhwwqa" path="res://SampleProject/enemies/BonePillar/bone_pillar.tscn" id="173_t5ktk"]
 [ext_resource type="PackedScene" uid="uid://cxfeg6jj146ah" path="res://SampleProject/enemies/ArmorLord/armor_lord.tscn" id="174_lx230"]
@@ -2527,6 +2534,74 @@ value = 500
 max_quantity = 99
 icon = ExtResource("142_awere")
 
+[sub_resource type="Resource" id="Resource_kfktv"]
+script = ExtResource("95_xlcm0")
+accessory_name = "BLOOD_CLOAK"
+accessory_description = "BLOOD_CLOAK_DESC"
+element = Array[int]([])
+ATK = 0
+DEF = 4
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = -2
+value = 3000
+max_quantity = 99
+icon = ExtResource("154_kh17x")
+
+[sub_resource type="Resource" id="Resource_j5jy3"]
+script = ExtResource("95_xlcm0")
+accessory_name = "ADVENTURER_CLOAK"
+accessory_description = "ADVENTURER_CLOAK_DESC"
+element = Array[int]([])
+ATK = 0
+DEF = 3
+STR = 0
+CON = 0
+INT = 1
+SYN = 0
+RES = 3
+LCK = 1
+value = 1300
+max_quantity = 99
+icon = ExtResource("155_a8hka")
+
+[sub_resource type="Resource" id="Resource_wergv"]
+script = ExtResource("95_xlcm0")
+accessory_name = "WIZARD_CLOAK"
+accessory_description = "WIZARD_CLOAK_DESC"
+element = Array[int]([])
+ATK = 0
+DEF = 1
+STR = 0
+CON = 0
+INT = 7
+SYN = 0
+RES = 0
+LCK = 0
+value = 2500
+max_quantity = 99
+icon = ExtResource("156_5x5rq")
+
+[sub_resource type="Resource" id="Resource_dorjh"]
+script = ExtResource("95_xlcm0")
+accessory_name = "RED_SCARF"
+accessory_description = "RED_SCARF_DESC"
+element = Array[int]([])
+ATK = 0
+DEF = 2
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 1500
+max_quantity = 99
+icon = ExtResource("157_6vmuw")
+
 [sub_resource type="Resource" id="Resource_2w4nc"]
 script = ExtResource("99_ixwc3")
 skill_name = "FORTITUDE_GAUNTLET"
@@ -2839,6 +2914,74 @@ value = 0
 glow = Color(0.976471, 0.796078, 0, 1)
 max_quantity = 1
 icon = ExtResource("146_j32o5")
+
+[sub_resource type="Resource" id="Resource_fs6ce"]
+script = ExtResource("145_wv42h")
+artifact_name = "MIRACLE_COIN"
+artifact_description = "MIRACLE_COIN_DESC"
+ATK = 0
+DEF = 0
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 1000
+glow = Color(0, 0.921601, 0.934978, 1)
+max_quantity = 1
+icon = ExtResource("167_5r6wg")
+
+[sub_resource type="Resource" id="Resource_y30nd"]
+script = ExtResource("145_wv42h")
+artifact_name = "HEART_BROOCH"
+artifact_description = "HEART_BROOCH_DESC"
+ATK = 0
+DEF = 0
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 1500
+glow = Color(0.999963, 0.641772, 0.586683, 1)
+max_quantity = 1
+icon = ExtResource("168_8y21a")
+
+[sub_resource type="Resource" id="Resource_1jp3v"]
+script = ExtResource("145_wv42h")
+artifact_name = "STONE_OF_ALCHEMY"
+artifact_description = "STONE_OF_ALCHEMY_DESC"
+ATK = 0
+DEF = 0
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 3000
+glow = Color(0.122313, 0.358631, 1, 1)
+max_quantity = 1
+icon = ExtResource("17_0foon")
+
+[sub_resource type="Resource" id="Resource_bk52o"]
+script = ExtResource("145_wv42h")
+artifact_name = "BLOOD_STONE"
+artifact_description = "BLOOD_STONE_DESC"
+ATK = 0
+DEF = 0
+STR = 0
+CON = 0
+INT = 0
+SYN = 0
+RES = 0
+LCK = 0
+value = 2000
+glow = Color(0.901961, 0, 0, 1)
+max_quantity = 1
+icon = ExtResource("173_n26vp")
 
 [sub_resource type="Resource" id="Resource_87l3r"]
 script = ExtResource("107_o0dwx")
@@ -3929,10 +4072,10 @@ item_compendium = SubResource("Resource_ksmb3")
 headgear_compendium = Array[ExtResource("58_johey")]([SubResource("Resource_stdwu"), SubResource("Resource_hcxc2"), SubResource("Resource_qtfvs"), SubResource("Resource_b4qdd"), SubResource("Resource_w8tqy"), SubResource("Resource_4iosu"), SubResource("Resource_b0lhj"), SubResource("Resource_kh436"), SubResource("Resource_n53u7"), SubResource("Resource_n15bh"), SubResource("Resource_2gney"), SubResource("Resource_580rm"), SubResource("Resource_fy53e"), SubResource("Resource_xv0ma"), SubResource("Resource_csljy"), SubResource("Resource_nfnn0"), SubResource("Resource_7go8i"), SubResource("Resource_ji887"), SubResource("Resource_nhhcx"), SubResource("Resource_ocbsj"), SubResource("Resource_jsrpv"), SubResource("Resource_qx0f7"), SubResource("Resource_bg2je"), SubResource("Resource_vexyv"), SubResource("Resource_utsap"), SubResource("Resource_itck4"), SubResource("Resource_ms7n0")])
 body_compendium = Array[ExtResource("86_xt4t6")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me"), SubResource("Resource_dqisp"), SubResource("Resource_rngem")])
 legs_compendium = Array[ExtResource("92_10lem")]([SubResource("Resource_olb5a"), SubResource("Resource_jnr2a"), SubResource("Resource_d35ul"), SubResource("Resource_4ly5s"), SubResource("Resource_jd16d")])
-accessory_compendium = Array[ExtResource("95_xlcm0")]([SubResource("Resource_fmjl1"), SubResource("Resource_g71f4"), SubResource("Resource_t5f6q"), SubResource("Resource_jiprx"), SubResource("Resource_hiqqn"), SubResource("Resource_aauoy")])
+accessory_compendium = Array[ExtResource("95_xlcm0")]([SubResource("Resource_fmjl1"), SubResource("Resource_g71f4"), SubResource("Resource_t5f6q"), SubResource("Resource_jiprx"), SubResource("Resource_hiqqn"), SubResource("Resource_aauoy"), SubResource("Resource_kfktv"), SubResource("Resource_j5jy3"), SubResource("Resource_wergv"), SubResource("Resource_dorjh")])
 skill_compendium = Array[ExtResource("99_ixwc3")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_6o46a"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47"), SubResource("Resource_vfu6u"), SubResource("Resource_4ifw5"), SubResource("Resource_lqir6"), SubResource("Resource_yrs72"), SubResource("Resource_awbx6"), SubResource("Resource_k5k37"), SubResource("Resource_se88n"), SubResource("Resource_16qt3")])
 relic_compendium = Array[ExtResource("105_7lbas")]([SubResource("Resource_86suo"), SubResource("Resource_8t8qo")])
-artifact_compendium = Array[ExtResource("145_wv42h")]([SubResource("Resource_1ioky")])
+artifact_compendium = Array[ExtResource("145_wv42h")]([SubResource("Resource_1ioky"), SubResource("Resource_fs6ce"), SubResource("Resource_y30nd"), SubResource("Resource_1jp3v"), SubResource("Resource_bk52o")])
 dialogue_compendium = [[SubResource("Resource_87l3r"), SubResource("Resource_m8frf"), SubResource("Resource_5idyr"), SubResource("Resource_e571n")], Array[ExtResource("107_o0dwx")]([SubResource("Resource_25n78"), SubResource("Resource_ktboo"), SubResource("Resource_vo88s"), SubResource("Resource_dctxa"), SubResource("Resource_spkj4"), SubResource("Resource_c46ur")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_ohovh"), SubResource("Resource_omcdx"), SubResource("Resource_72dkk"), SubResource("Resource_4f7nn"), SubResource("Resource_mgxho")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_8f7hp"), SubResource("Resource_o67wt"), SubResource("Resource_wtpr2")]), Array[ExtResource("107_o0dwx")]([SubResource("Resource_csyar"), SubResource("Resource_nuqqm"), SubResource("Resource_o1h1j"), SubResource("Resource_55rnv"), SubResource("Resource_2wus2"), SubResource("Resource_bqaak"), SubResource("Resource_jrgt6"), SubResource("Resource_gx1rt"), SubResource("Resource_u1nhv"), SubResource("Resource_v57uc"), SubResource("Resource_eyf3w"), SubResource("Resource_yuuna"), SubResource("Resource_pl4eo"), SubResource("Resource_ql2g5"), SubResource("Resource_b1cpc"), SubResource("Resource_yuqnq"), SubResource("Resource_ycdkt"), SubResource("Resource_bft1l"), SubResource("Resource_abke8"), SubResource("Resource_3qvv1"), SubResource("Resource_nlgtf"), SubResource("Resource_7kcsh"), SubResource("Resource_mqejh"), SubResource("Resource_jnrv7"), SubResource("Resource_utlr2"), SubResource("Resource_lc0k7"), SubResource("Resource_hfyhw"), SubResource("Resource_a0e3l"), SubResource("Resource_l4h0p"), SubResource("Resource_15a3r"), SubResource("Resource_4neaj"), SubResource("Resource_2o2y2"), SubResource("Resource_bx3e7"), SubResource("Resource_tsqkx"), SubResource("Resource_7l514"), SubResource("Resource_8x8d0"), SubResource("Resource_upl0l"), SubResource("Resource_awl76"), SubResource("Resource_ni2ni"), SubResource("Resource_ue3r3"), SubResource("Resource_67xnv"), SubResource("Resource_j1ehq"), SubResource("Resource_ispcp")])]
 enemy_compendium = Array[ExtResource("164_ytub4")]([SubResource("Resource_jsro2"), SubResource("Resource_s1b6v"), SubResource("Resource_5r5b6"), SubResource("Resource_x01mm"), SubResource("Resource_1kkh0"), SubResource("Resource_2dl14"), SubResource("Resource_4p2o5"), SubResource("Resource_nh70w"), SubResource("Resource_wsfvh"), SubResource("Resource_u0str"), SubResource("Resource_emvng"), SubResource("Resource_1q2dh"), SubResource("Resource_gxf7w"), SubResource("Resource_mt5hv"), SubResource("Resource_hxq6x"), SubResource("Resource_ttblo"), SubResource("Resource_myxcv"), SubResource("Resource_a75hp"), SubResource("Resource_pytra"), SubResource("Resource_uwo24"), SubResource("Resource_2ikh4"), SubResource("Resource_kiah2"), SubResource("Resource_ccpe7")])
 save_rooms = Array[Dictionary]([{
