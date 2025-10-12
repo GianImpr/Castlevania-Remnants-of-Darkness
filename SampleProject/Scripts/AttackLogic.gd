@@ -14,6 +14,7 @@ class_name PlayerHitbox
 @export var base_attribute: Array[Global.Attribute]
 @export var adjust_facing_position: bool = true
 static var coin_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/money.tscn")
+static var heart_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/heart.tscn")
 var actual_attributes: Array[Global.Attribute]
 
 var hit_enemies: Array[Node2D]
@@ -137,11 +138,16 @@ func createHitEffect(body: Node2D) -> void:
 	Global.player.get_parent().add_child(hit_effect)
 	hit_effect.position = Vector2(effect_x, effect_y)
 	
-	if Global.player.stats.itemEquipped(Artifact.Artifacts.GOLD_RING, "artifact") and Global.player.stats.Stats["LCK"] > randi_range(0, 99):
+	if Global.player.stats.itemEquipped(Artifact.Artifacts.LITTLE_HAMMER, "artifact") and Global.player.stats.Stats["LCK"] > randi_range(0, 99):
 		var coin = coin_scene.instantiate()
 		MetSys.get_current_room_instance().call_deferred("add_child", coin)
 		coin.global_position = hit_effect.position
-		
+
+	if Global.player.stats.itemEquipped(Artifact.Artifacts.HEART_BROOCH, "artifact") and Global.player.stats.Stats["LCK"] > randi_range(0, 199):
+		var heart = heart_scene.instantiate()
+		MetSys.get_current_room_instance().call_deferred("add_child", heart)
+		heart.global_position = hit_effect.position
+
 
 # Adjusts hitbox according to Hector's facing position
 func adjustHitboxOrientation() -> void:
