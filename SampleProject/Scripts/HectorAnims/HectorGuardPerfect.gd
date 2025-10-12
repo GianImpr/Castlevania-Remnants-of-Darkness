@@ -7,6 +7,10 @@ func enter():
 	player.velocity.x = 0
 	animation.play("perfect_guarding", -1, 2.8)
 	sound.play_sound_effect_from_library("perfect_guard")
+
+	if player.accessoryEquipped(Artifact.Artifacts.STONE_OF_ALCHEMY):
+		player.activateStoneOfAlchemy()
+
 	
 	if player.stats.canApplySkill(Skill.Skills.AWARENESS):
 		player.focus_gain_duration.start()

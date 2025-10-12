@@ -38,7 +38,8 @@ const AGUNI_COOLDOWN: float = 0.03
 var aguni_on_cooldown: bool = false
 
 
-
+const STONE_OF_ALCHEMY_HEAL: int = 5
+const BLOOD_CLOAK_HEAL: int = 2
 const SPEED = 260.0
 const IFRAMES_HIT_THRESHOLD: int = 3
 const FOCUS_GAIN_RATIO: int = 10
@@ -383,3 +384,9 @@ func throwAxe() -> void:
 
 func petrify() -> void:
 	stats.current_status = stats.Ailment.STONE
+
+func activateBloodCloak() -> void:
+	heal_innocent(BLOOD_CLOAK_HEAL)
+
+func activateStoneOfAlchemy() -> void:
+	healMP(STONE_OF_ALCHEMY_HEAL)

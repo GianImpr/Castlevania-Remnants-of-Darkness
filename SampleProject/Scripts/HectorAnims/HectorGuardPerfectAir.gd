@@ -8,6 +8,10 @@ func enter():
 	sound.play_sound_effect_from_library("perfect_guard")
 	player.velocity.y = INITIAL_HEIGHT_BOOST
 	
+	if player.accessoryEquipped(Artifact.Artifacts.STONE_OF_ALCHEMY):
+		player.activateStoneOfAlchemy()
+
+	
 	if player.stats.canApplySkill(Skill.Skills.AWARENESS):
 		player.focus_gain_duration.start()
 
