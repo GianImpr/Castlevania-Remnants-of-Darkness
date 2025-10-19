@@ -1,16 +1,16 @@
 [gd_scene load_steps=46 format=3 uid="uid://yby38f15lji0"]
 
 [ext_resource type="Texture2D" uid="uid://5i5nsq4bad0r" path="res://assets/sprites/HUD/InGameHUD/Body.png" id="1_r4po5"]
-[ext_resource type="Script" path="res://hud.gd" id="1_xhgqi"]
+[ext_resource type="Script" uid="uid://6vlc7pusrdb2" path="res://hud.gd" id="1_xhgqi"]
 [ext_resource type="Texture2D" uid="uid://o847yl7lsxpe" path="res://assets/sprites/HUD/InGameHUD/Health.png" id="2_6bv25"]
 [ext_resource type="Texture2D" uid="uid://c0vht0ktmkbou" path="res://assets/sprites/HUD/InGameHUD/MPBars/Mana.png" id="3_dpp6q"]
 [ext_resource type="Texture2D" uid="uid://barilar23trfo" path="res://assets/sprites/HUD/InGameHUD/MPBars/ManaFire.png" id="3_x7wcb"]
-[ext_resource type="Script" path="res://ImageNumber.gd" id="4_iqdk1"]
+[ext_resource type="Script" uid="uid://crh4llmldi4eq" path="res://ImageNumber.gd" id="4_iqdk1"]
 [ext_resource type="Texture2D" uid="uid://knwunvou11hb" path="res://assets/sprites/HUD/InGameHUD/FocusEmpty.png" id="5_0n8ox"]
 [ext_resource type="Texture2D" uid="uid://22lrwvydkpyk" path="res://assets/sprites/HUD/InGameHUD/GuardHealth.png" id="5_j8311"]
 [ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="6_c6x0a"]
 [ext_resource type="Texture2D" uid="uid://bmw3n1frwb2e8" path="res://assets/sprites/HUD/InGameHUD/FocusFull.png" id="6_tc5c0"]
-[ext_resource type="Script" path="res://scenes/guard_number.gd" id="7_uauha"]
+[ext_resource type="Script" uid="uid://bodsgvfymt8bo" path="res://scenes/guard_number.gd" id="7_uauha"]
 [ext_resource type="Texture2D" uid="uid://nuq5bvc306w5" path="res://assets/sprites/HUD/InGameHUD/GuardLabel.png" id="8_asxhj"]
 [ext_resource type="Texture2D" uid="uid://bkndl4l3y8ril" path="res://assets/sprites/HUD/InGameHUD/IDBodyBar.png" id="9_tryvd"]
 [ext_resource type="Texture2D" uid="uid://hiolfbyro5t8" path="res://assets/sprites/HUD/InGameHUD/Hearts.png" id="10_gq1nq"]
@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://rirxjwqpuh14" path="res://assets/sprites/HUD/Popups/BoostLabels.png" id="13_j3vby"]
 [ext_resource type="Texture2D" uid="uid://c0v7wyhaqckvw" path="res://assets/sprites/HUD/InGameHUD/BossBodyBar.png" id="15_ycmmf"]
 [ext_resource type="Texture2D" uid="uid://dxvme5jenvhxc" path="res://assets/sprites/HUD/InGameHUD/BossBar1.png" id="16_gnktt"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/BossBar.gd" id="16_jnnjg"]
+[ext_resource type="Script" uid="uid://dqt500baarbqv" path="res://SampleProject/Scripts/System/BossBar.gd" id="16_jnnjg"]
 [ext_resource type="Texture2D" uid="uid://eqrphxjgkwgm" path="res://assets/sprites/HUD/InGameHUD/BossDamage.png" id="17_ffxey"]
 [ext_resource type="Texture2D" uid="uid://bb6kgjvn6w2gp" path="res://assets/sprites/HUD/InGameHUD/BossBar2.png" id="17_i1ifg"]
 
@@ -110,8 +110,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7yhj2"]
 _data = {
-"RESET": SubResource("Animation_id3d2"),
-"glow": SubResource("Animation_mo8w8")
+&"RESET": SubResource("Animation_id3d2"),
+&"glow": SubResource("Animation_mo8w8")
 }
 
 [sub_resource type="Animation" id="Animation_705et"]
@@ -165,9 +165,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vnhn4"]
 _data = {
-"RESET": SubResource("Animation_705et"),
-"full": SubResource("Animation_f1faq"),
-"not_full": SubResource("Animation_pa4og")
+&"RESET": SubResource("Animation_705et"),
+&"full": SubResource("Animation_f1faq"),
+&"not_full": SubResource("Animation_pa4og")
 }
 
 [sub_resource type="Animation" id="Animation_6e8er"]
@@ -228,8 +228,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a42be"]
 _data = {
-"RESET": SubResource("Animation_6e8er"),
-"glow": SubResource("Animation_0e7w3")
+&"RESET": SubResource("Animation_6e8er"),
+&"glow": SubResource("Animation_0e7w3")
 }
 
 [sub_resource type="Animation" id="Animation_0iyl6"]
@@ -289,8 +289,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dqsci"]
 _data = {
-"RESET": SubResource("Animation_0iyl6"),
-"level_up": SubResource("Animation_mtov5")
+&"RESET": SubResource("Animation_0iyl6"),
+&"level_up": SubResource("Animation_mtov5")
 }
 
 [sub_resource type="Animation" id="Animation_uaod1"]
@@ -538,10 +538,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q6yu7"]
 _data = {
-"RESET": SubResource("Animation_uaod1"),
-"initialize": SubResource("Animation_7hxd4"),
-"shake": SubResource("Animation_s2yj0"),
-"vanish": SubResource("Animation_k32vc")
+&"RESET": SubResource("Animation_uaod1"),
+&"initialize": SubResource("Animation_7hxd4"),
+&"shake": SubResource("Animation_s2yj0"),
+&"vanish": SubResource("Animation_k32vc")
 }
 
 [node name="HUD" type="Control" node_paths=PackedStringArray("id_level_up_animation", "guard_health")]
@@ -586,7 +586,7 @@ texture = SubResource("GradientTexture2D_j5d0h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/HGlow"]
 libraries = {
-"": SubResource("AnimationLibrary_7yhj2")
+&"": SubResource("AnimationLibrary_7yhj2")
 }
 autoplay = "glow"
 speed_scale = 1.5
@@ -628,7 +628,7 @@ texture_progress = ExtResource("6_tc5c0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/Focus"]
 libraries = {
-"": SubResource("AnimationLibrary_vnhn4")
+&"": SubResource("AnimationLibrary_vnhn4")
 }
 autoplay = "not_full"
 
@@ -646,7 +646,7 @@ texture = ExtResource("5_j8311")
 stretch_mode = 2
 
 [node name="GuardHealth3" type="TextureRect" parent="TextureRect/GuardHealth/GuardHealth1"]
-layout_mode = 2
+layout_mode = 0
 offset_left = -0.142845
 offset_right = 7.85715
 offset_bottom = 9.0
@@ -659,7 +659,7 @@ texture = ExtResource("5_j8311")
 stretch_mode = 2
 
 [node name="GuardHealth3" type="TextureRect" parent="TextureRect/GuardHealth/GuardHealth2"]
-layout_mode = 2
+layout_mode = 0
 offset_right = 8.0
 offset_bottom = 9.0
 texture = ExtResource("5_j8311")
@@ -667,7 +667,7 @@ stretch_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/GuardHealth"]
 libraries = {
-"": SubResource("AnimationLibrary_a42be")
+&"": SubResource("AnimationLibrary_a42be")
 }
 autoplay = "glow"
 
@@ -683,6 +683,7 @@ alignment = 1
 script = ExtResource("4_iqdk1")
 
 [node name="Minimap" parent="." instance=ExtResource("6_c6x0a")]
+layout_mode = 0
 offset_left = 1342.5
 offset_top = -21.25
 offset_right = 1462.5
@@ -711,16 +712,16 @@ texture = ExtResource("8_asxhj")
 
 [node name="IDBody" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -24.2857
-offset_top = 71.4287
-offset_right = 161.714
-offset_bottom = 113.428
+offset_left = -24.0
+offset_top = 72.0
+offset_right = 161.99971
+offset_bottom = 113.9993
 scale = Vector2(2, 2)
 texture = ExtResource("9_tryvd")
 
 [node name="HeartGlow" type="TextureRect" parent="IDBody"]
 modulate = Color(0.888073, 0.000263179, 0.79548, 1)
-layout_mode = 2
+layout_mode = 0
 offset_left = 62.0
 offset_top = 12.0
 offset_right = 154.0
@@ -768,7 +769,7 @@ frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="IDBody"]
 libraries = {
-"": SubResource("AnimationLibrary_dqsci")
+&"": SubResource("AnimationLibrary_dqsci")
 }
 
 [node name="ImageNumber" type="HBoxContainer" parent="."]
@@ -850,7 +851,7 @@ texture_progress = ExtResource("17_i1ifg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BossBar"]
 libraries = {
-"": SubResource("AnimationLibrary_q6yu7")
+&"": SubResource("AnimationLibrary_q6yu7")
 }
 
 [node name="Damage_display" type="Timer" parent="BossBar"]

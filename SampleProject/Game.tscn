@@ -1,10 +1,10 @@
 [gd_scene load_steps=595 format=3 uid="uid://c3xqaietfgs7l"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
+[ext_resource type="Script" uid="uid://bi427jhyxfyx5" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
+[ext_resource type="Script" uid="uid://1vp87s3hhyhn" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
 [ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="3_a3gfy"]
 [ext_resource type="Texture2D" uid="uid://dvhm565w0bkyu" path="res://assets/sprites/Items/InventoryIcons/Inventory_387.png" id="3_cc0q7"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/camera_2d.gd" id="3_mx3v0"]
+[ext_resource type="Script" uid="uid://c56hcudjs1xrt" path="res://SampleProject/Scripts/camera_2d.gd" id="3_mx3v0"]
 [ext_resource type="Texture2D" uid="uid://bbrtcr6o7o2gi" path="res://assets/sprites/Items/InventoryIcons/Bullova.png" id="4_5a8ru"]
 [ext_resource type="PackedScene" uid="uid://bvh7e1rc12sbj" path="res://SampleProject/Weapons/bullova.tscn" id="5_71vdw"]
 [ext_resource type="PackedScene" uid="uid://cenjpg3o6am6u" path="res://scenes/player.tscn" id="5_81k16"]
@@ -12,20 +12,20 @@
 [ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="6_70wxk"]
 [ext_resource type="Texture2D" uid="uid://bklif37kbg5bs" path="res://assets/sprites/Items/InventoryIcons/Claymore.png" id="6_c5tvp"]
 [ext_resource type="PackedScene" uid="uid://yby38f15lji0" path="res://scenes/HUD.tscn" id="6_mhw4y"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/item.gd" id="6_n752u"]
+[ext_resource type="Script" uid="uid://j2vesgbfbner" path="res://SampleProject/Scripts/System/item.gd" id="6_n752u"]
 [ext_resource type="PackedScene" uid="uid://b4f2sbjwt3lf7" path="res://SampleProject/extra_scenes/inventory_menu.tscn" id="6_pokik"]
 [ext_resource type="PackedScene" uid="uid://2k1tvl70buqg" path="res://SampleProject/extra_scenes/HUD/item_box.tscn" id="7_11rec"]
 [ext_resource type="PackedScene" uid="uid://dhpoigeaf1rv5" path="res://SampleProject/Weapons/claymore.tscn" id="7_g5tc5"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="7_ip71q"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="7_ip71q"]
 [ext_resource type="Texture2D" uid="uid://du0eiy67cnc7d" path="res://assets/sprites/Items/InventoryIcons/Inventory_258.png" id="7_oyt25"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/music_player.gd" id="8_385te"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_afqo1"]
+[ext_resource type="Script" uid="uid://dqfeccpppaddk" path="res://SampleProject/Scripts/System/music_player.gd" id="8_385te"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_afqo1"]
 [ext_resource type="Texture2D" uid="uid://b0pf1n6afknku" path="res://assets/sprites/Items/InventoryIcons/Inventory_257.png" id="8_atld1"]
 [ext_resource type="Texture2D" uid="uid://dil67bbpd26mq" path="res://assets/sprites/Items/InventoryIcons/Falchion.png" id="8_hgl6s"]
 [ext_resource type="Texture2D" uid="uid://baxtph716gnw5" path="res://assets/sprites/Items/InventoryIcons/Inventory_291.png" id="9_fjwgd"]
 [ext_resource type="PackedScene" uid="uid://cankh7clno27c" path="res://SampleProject/Weapons/falchion.tscn" id="9_s4pf2"]
 [ext_resource type="Texture2D" uid="uid://drwi0scdnk2tl" path="res://assets/sprites/Items/InventoryIcons/Inventory_292.png" id="10_8v4x6"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="10_etx3r"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="10_etx3r"]
 [ext_resource type="AudioStream" uid="uid://ce1urfkmutvrd" path="res://assets/sounds/Menu/ShowMap.MP3" id="10_kb15x"]
 [ext_resource type="Texture2D" uid="uid://4kwuakvxtq7" path="res://assets/sprites/Items/InventoryIcons/Mace.png" id="10_tph4o"]
 [ext_resource type="Texture2D" uid="uid://c6ppcg8i6ld1d" path="res://assets/sprites/Items/InventoryIcons/Inventory_293.png" id="11_4mo0k"]
@@ -36,7 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://is8m1bw67k3c" path="res://SampleProject/Weapons/bronze_spear.tscn" id="13_5n1ff"]
 [ext_resource type="Texture2D" uid="uid://cf258lfi3stud" path="res://assets/sprites/Items/InventoryIcons/Inventory_295.png" id="13_re8cm"]
 [ext_resource type="PackedScene" uid="uid://cgmgx8v6dbp3u" path="res://SampleProject/extra_scenes/HUD/enemy_box.tscn" id="13_uka3k"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/fade_screen.gd" id="13_voup6"]
+[ext_resource type="Script" uid="uid://dr6u0epkva4u6" path="res://SampleProject/Scripts/System/fade_screen.gd" id="13_voup6"]
 [ext_resource type="Texture2D" uid="uid://b5oidu006hp5j" path="res://assets/sprites/Items/InventoryIcons/Inventory_296.png" id="14_cmqwc"]
 [ext_resource type="Texture2D" uid="uid://c4k28q72rde7k" path="res://assets/sprites/Items/InventoryIcons/Inventory_472.png" id="14_uvy2w"]
 [ext_resource type="AudioStream" uid="uid://b2hhmewc5j580" path="res://assets/music/GaribaldiTemple.ogg" id="15_n6l4g"]
@@ -68,11 +68,11 @@
 [ext_resource type="Texture2D" uid="uid://djkd5e0fxxt5d" path="res://assets/sprites/Items/InventoryIcons/Inventory_266.png" id="24_nqlpo"]
 [ext_resource type="Texture2D" uid="uid://bvhwax421fy18" path="res://assets/sprites/Items/InventoryIcons/Inventory_267.png" id="25_3lhjh"]
 [ext_resource type="Texture2D" uid="uid://bvu1deu76admw" path="res://assets/sprites/Items/InventoryIcons/Inventory_268.png" id="26_4vglm"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/fps_display.gd" id="27_3mlqo"]
+[ext_resource type="Script" uid="uid://dpjjs67fehqft" path="res://SampleProject/Scripts/System/fps_display.gd" id="27_3mlqo"]
 [ext_resource type="Texture2D" uid="uid://ck7nsk2ql7ugf" path="res://assets/sprites/Items/InventoryIcons/Inventory_269.png" id="27_736qn"]
 [ext_resource type="FontFile" uid="uid://c8ub0nincslom" path="res://assets/sprites/Font/SotN.ttf" id="27_ggyg0"]
 [ext_resource type="Texture2D" uid="uid://d0lqa0d5iimar" path="res://assets/sprites/Items/InventoryIcons/Inventory_270.png" id="28_7l3as"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/touchcontrols.gd" id="29_1b3st"]
+[ext_resource type="Script" uid="uid://crpuwj0dxuojj" path="res://SampleProject/Scripts/System/touchcontrols.gd" id="29_1b3st"]
 [ext_resource type="Texture2D" uid="uid://c57sw7py2gl7q" path="res://assets/sprites/Items/InventoryIcons/Inventory_271.png" id="29_nycxi"]
 [ext_resource type="Texture2D" uid="uid://cfy1rx4d4wjdh" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Cross.png" id="29_ufvnj"]
 [ext_resource type="Texture2D" uid="uid://civpcnwgbu5ky" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Circle.png" id="30_3q31x"]
@@ -115,10 +115,10 @@
 [ext_resource type="Texture2D" uid="uid://dy8ocb3wlkud4" path="res://assets/sprites/Items/OtherIcons/16x16/fa189.png" id="55_rbfbc"]
 [ext_resource type="Texture2D" uid="uid://daplcoannwghj" path="res://assets/sprites/Items/OtherIcons/16x16/fa324.png" id="56_j2uak"]
 [ext_resource type="Texture2D" uid="uid://dyx5s67xdyy3y" path="res://assets/sprites/Items/InventoryIcons/Inventory_505.png" id="56_p4vrr"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/item_compendium.gd" id="57_axjbw"]
+[ext_resource type="Script" uid="uid://dijx5d58wtj03" path="res://SampleProject/Scripts/System/item_compendium.gd" id="57_axjbw"]
 [ext_resource type="Texture2D" uid="uid://b6eijjjaxkusx" path="res://assets/sprites/Items/OtherIcons/16x16/fa172.png" id="57_mossm"]
 [ext_resource type="Texture2D" uid="uid://d1lbmy7q7tsus" path="res://assets/sprites/Items/OtherIcons/16x16/fa170.png" id="58_7addw"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/headgear.gd" id="58_johey"]
+[ext_resource type="Script" uid="uid://ckbvw5jr4n8lq" path="res://SampleProject/Scripts/System/headgear.gd" id="58_johey"]
 [ext_resource type="Texture2D" uid="uid://d1q4qpl8hacrg" path="res://assets/sprites/Items/InventoryIcons/Inventory_78.png" id="59_ohp77"]
 [ext_resource type="Texture2D" uid="uid://defekss3axp1t" path="res://assets/sprites/Items/OtherIcons/16x16/fa384.png" id="59_rjikq"]
 [ext_resource type="Texture2D" uid="uid://bifyy7bgttxhc" path="res://assets/sprites/Items/InventoryIcons/Inventory_79.png" id="60_8ieye"]
@@ -172,7 +172,7 @@
 [ext_resource type="Texture2D" uid="uid://doq5uhao1tdr" path="res://assets/sprites/Items/InventoryIcons/Inventory_36.png" id="84_8g33f"]
 [ext_resource type="Texture2D" uid="uid://lqvn5bka1itu" path="res://assets/sprites/Items/OtherIcons/16x16/fa2146.png" id="84_flstf"]
 [ext_resource type="Texture2D" uid="uid://dr3vvqv5np78o" path="res://assets/sprites/Items/InventoryIcons/Inventory_38.png" id="85_k5iqq"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/body.gd" id="86_xt4t6"]
+[ext_resource type="Script" uid="uid://ye7lgyf1aia7" path="res://SampleProject/Scripts/System/body.gd" id="86_xt4t6"]
 [ext_resource type="Texture2D" uid="uid://cb1cnejmkrmqt" path="res://assets/sprites/Items/OtherIcons/16x16/fa176.png" id="87_8svi0"]
 [ext_resource type="Texture2D" uid="uid://dulay167ldnq7" path="res://assets/sprites/Items/InventoryIcons/Inventory_202.png" id="87_m53ip"]
 [ext_resource type="Texture2D" uid="uid://c8x807n7stg31" path="res://assets/sprites/Items/InventoryIcons/Inventory_205.png" id="88_ejpw7"]
@@ -180,22 +180,22 @@
 [ext_resource type="Texture2D" uid="uid://cpl4ojot08g5x" path="res://assets/sprites/Items/InventoryIcons/Inventory_152.png" id="90_bc2oq"]
 [ext_resource type="Texture2D" uid="uid://4smy5odjsp82" path="res://assets/sprites/Items/InventoryIcons/Inventory_153.png" id="91_inejg"]
 [ext_resource type="Texture2D" uid="uid://5wrtgjbirp7k" path="res://assets/sprites/Items/OtherIcons/16x16/fa176_alt.png" id="91_kuiux"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/Legs.gd" id="92_10lem"]
+[ext_resource type="Script" uid="uid://nhkf3bgthm8c" path="res://SampleProject/Scripts/System/Legs.gd" id="92_10lem"]
 [ext_resource type="Texture2D" uid="uid://cxh1mkg2drx0d" path="res://assets/sprites/Items/InventoryIcons/Inventory_25.png" id="93_1uyoh"]
 [ext_resource type="Texture2D" uid="uid://be0d1qya61rlm" path="res://assets/sprites/Items/InventoryIcons/Inventory_27.png" id="94_j3dc4"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/accessory.gd" id="95_xlcm0"]
+[ext_resource type="Script" uid="uid://bnewa3gbe2njm" path="res://SampleProject/Scripts/System/accessory.gd" id="95_xlcm0"]
 [ext_resource type="Texture2D" uid="uid://1i48ghvp3ks1" path="res://assets/sprites/Items/InventoryIcons/Inventory_94.png" id="96_rut34"]
 [ext_resource type="Texture2D" uid="uid://bahg3g30ioiy7" path="res://assets/sprites/Items/InventoryIcons/Inventory_119.png" id="97_stnag"]
 [ext_resource type="Texture2D" uid="uid://due6tuxnssj81" path="res://assets/sprites/Items/InventoryIcons/Inventory_99.png" id="98_7dyjc"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/Skill.gd" id="99_ixwc3"]
+[ext_resource type="Script" uid="uid://c2jj14rnamo5c" path="res://SampleProject/Scripts/System/Skill.gd" id="99_ixwc3"]
 [ext_resource type="Texture2D" uid="uid://bjgxkfscv7xq1" path="res://assets/sprites/Items/InventoryIcons/Inventory_390.png" id="100_p1gfv"]
 [ext_resource type="Texture2D" uid="uid://d2qa62lanx4gy" path="res://assets/sprites/Items/InventoryIcons/Inventory_487.png" id="101_8cul2"]
 [ext_resource type="Texture2D" uid="uid://bxrfi6678x4vs" path="res://assets/sprites/Items/InventoryIcons/Inventory_389.png" id="102_wwspq"]
 [ext_resource type="Texture2D" uid="uid://l21l3i5yfbcu" path="res://assets/sprites/Items/InventoryIcons/Inventory_504.png" id="103_oqpay"]
 [ext_resource type="Texture2D" uid="uid://7w70o4xbesqe" path="res://assets/sprites/Items/InventoryIcons/Inventory_506.png" id="104_ajl63"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/relic.gd" id="105_7lbas"]
+[ext_resource type="Script" uid="uid://4q5gc0nk15gw" path="res://SampleProject/Scripts/System/relic.gd" id="105_7lbas"]
 [ext_resource type="Texture2D" uid="uid://rwjwge6ax26o" path="res://assets/sprites/Items/InventoryIcons/Inventory_88.png" id="106_6nmde"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Event/dialogue_entry.gd" id="107_o0dwx"]
+[ext_resource type="Script" uid="uid://cngvggw68h5x0" path="res://SampleProject/Scripts/Event/dialogue_entry.gd" id="107_o0dwx"]
 [ext_resource type="Texture2D" uid="uid://g3rg4yxjm2ix" path="res://assets/sprites/Items/InventoryIcons/Inventory_159.png" id="123_yi5bd"]
 [ext_resource type="Texture2D" uid="uid://rsqqd2hbo8s1" path="res://assets/sprites/Items/InventoryIcons/Inventory_148.png" id="124_ys61b"]
 [ext_resource type="Texture2D" uid="uid://da1ytq0c3ur3i" path="res://assets/sprites/Items/InventoryIcons/Inventory_16.png" id="126_e55o8"]
@@ -205,7 +205,7 @@
 [ext_resource type="Texture2D" uid="uid://u08tbm7csfl3" path="res://assets/sprites/Items/InventoryIcons/Inventory_101.png" id="130_6e8ib"]
 [ext_resource type="Texture2D" uid="uid://m2ia05r8abs2" path="res://assets/sprites/Items/InventoryIcons/Inventory_85.png" id="142_awere"]
 [ext_resource type="Texture2D" uid="uid://b5y83vqsbx85u" path="res://assets/sprites/Items/OtherIcons/16x16/fa2140.png" id="143_ffcf7"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/artifact.gd" id="145_wv42h"]
+[ext_resource type="Script" uid="uid://dc2amebtxwnp4" path="res://SampleProject/Scripts/System/artifact.gd" id="145_wv42h"]
 [ext_resource type="Texture2D" uid="uid://xkxfw3qnyjar" path="res://assets/sprites/Items/OtherIcons/16x16/fa1557.png" id="146_j32o5"]
 [ext_resource type="PackedScene" uid="uid://dvikboxpt5o45" path="res://SampleProject/extra_scenes/dialogue.tscn" id="149_om524"]
 [ext_resource type="Texture2D" uid="uid://dw2nqmoc6ghcd" path="res://assets/sprites/Items/InventoryIcons/AguniLaurel.png" id="150_e8wvu"]
@@ -220,7 +220,7 @@
 [ext_resource type="Texture2D" uid="uid://b5pb6poj5elsi" path="res://assets/images/WarpPreviews/FagarasLeft.png" id="159_gniwj"]
 [ext_resource type="Texture2D" uid="uid://cocqy21dghhhv" path="res://assets/images/WarpPreviews/FagarasRight.png" id="160_rdsmc"]
 [ext_resource type="PackedScene" uid="uid://bsxx7aocrs1f6" path="res://SampleProject/extra_scenes/HUD/weapon_wheel.tscn" id="164_3jxay"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/enemy_entry.gd" id="164_ytub4"]
+[ext_resource type="Script" uid="uid://bsculv0s33ivn" path="res://SampleProject/Scripts/System/enemy_entry.gd" id="164_ytub4"]
 [ext_resource type="PackedScene" uid="uid://bpbuc4imoao83" path="res://SampleProject/enemies/Zombie/zombie.tscn" id="165_0pmrv"]
 [ext_resource type="Texture2D" uid="uid://bfbhnh66puau2" path="res://assets/sprites/Enemies/Zombie.png" id="165_m61bb"]
 [ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="166_f1w0o"]
@@ -291,20 +291,11 @@
 script = ExtResource("2_6ajcc")
 weapon_name = "SHORT_SWORD"
 weapon_description = "SHORT_SWORD_DESC"
-type = 0
 element = Array[int]([2])
 ATK = 5
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 jump_cancel = true
 crouch_attack = true
 value = 100
-max_quantity = 99
 icon = ExtResource("3_cc0q7")
 recipe_status = 2
 recipe = Array[Dictionary]([{
@@ -318,19 +309,8 @@ script = ExtResource("2_6ajcc")
 weapon_name = "BULLOVA"
 weapon_description = "BULLOVA_DESC"
 type = 2
-element = Array[int]([])
 ATK = 15
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
-jump_cancel = false
-crouch_attack = false
 value = 300
-max_quantity = 99
 icon = ExtResource("4_5a8ru")
 sprite = ExtResource("5_71vdw")
 recipe_status = 2
@@ -348,16 +328,7 @@ type = 1
 element = Array[int]([2])
 ATK = 12
 DEF = 2
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
-jump_cancel = false
-crouch_attack = false
 value = 300
-max_quantity = 99
 icon = ExtResource("6_c5tvp")
 sprite = ExtResource("7_g5tc5")
 recipe_status = 0
@@ -379,16 +350,7 @@ type = 1
 element = Array[int]([2])
 ATK = 15
 DEF = 2
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
-jump_cancel = false
-crouch_attack = false
 value = 450
-max_quantity = 99
 icon = ExtResource("8_hgl6s")
 sprite = ExtResource("9_s4pf2")
 recipe_status = 0
@@ -409,17 +371,7 @@ weapon_description = "MACE_DESC"
 type = 2
 element = Array[int]([1])
 ATK = 15
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
-jump_cancel = false
-crouch_attack = false
 value = 400
-max_quantity = 99
 icon = ExtResource("10_tph4o")
 sprite = ExtResource("11_u7wty")
 recipe_status = 0
@@ -440,17 +392,8 @@ weapon_description = "BRONZE_SPEAR_DESC"
 type = 3
 element = Array[int]([2])
 ATK = 7
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
-jump_cancel = false
 crouch_attack = true
 value = 150
-max_quantity = 99
 icon = ExtResource("12_pd3d3")
 sprite = ExtResource("13_5n1ff")
 recipe_status = 0
@@ -467,17 +410,8 @@ weapon_description = "PARTISAN_DESC"
 type = 3
 element = Array[int]([2])
 ATK = 9
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
-jump_cancel = false
 crouch_attack = true
 value = 220
-max_quantity = 99
 icon = ExtResource("14_uvy2w")
 sprite = ExtResource("15_naepp")
 recipe_status = 0
@@ -498,17 +432,8 @@ weapon_description = "HALBERD_DESC"
 type = 3
 element = Array[int]([2])
 ATK = 11
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
-jump_cancel = false
 crouch_attack = true
 value = 300
-max_quantity = 99
 icon = ExtResource("16_p712b")
 sprite = ExtResource("17_x334b")
 recipe_status = 0
@@ -527,19 +452,10 @@ script = ExtResource("2_6ajcc")
 weapon_name = "BRASS_KNUCKLES"
 weapon_description = "BRASS_KNUCKLES_DESC"
 type = 4
-element = Array[int]([])
 ATK = 3
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 jump_cancel = true
 crouch_attack = true
 value = 100
-max_quantity = 99
 icon = ExtResource("20_0fdi8")
 sprite = ExtResource("21_xew5h")
 recipe_status = 2
@@ -554,19 +470,10 @@ script = ExtResource("2_6ajcc")
 weapon_name = "CESTUS"
 weapon_description = "CESTUS_DESC"
 type = 4
-element = Array[int]([])
 ATK = 5
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 jump_cancel = true
 crouch_attack = true
 value = 150
-max_quantity = 99
 icon = ExtResource("18_vwftd")
 sprite = ExtResource("18_br68e")
 recipe_status = 0
@@ -652,7 +559,6 @@ item_name = "Uncurse"
 item_description = "Breaks anathemas."
 type = 1
 healing_type = 7
-power = 0
 value = 200
 max_quantity = 9
 icon = ExtResource("13_re8cm")
@@ -663,7 +569,6 @@ item_name = "Antivenom"
 item_description = "Cures poison."
 type = 1
 healing_type = 6
-power = 0
 value = 200
 max_quantity = 9
 icon = ExtResource("14_cmqwc")
@@ -673,7 +578,6 @@ script = ExtResource("6_n752u")
 item_name = "Drive Potion"
 item_description = "Confers more Synergy to the user."
 type = 1
-healing_type = 0
 power = 100
 value = 800
 max_quantity = 3
@@ -991,7 +895,6 @@ icon = ExtResource("43_qvtt0")
 script = ExtResource("6_n752u")
 item_name = "Quiche"
 item_description = "A french specialty, great for its harmony between eggs and crust."
-type = 0
 healing_type = 1
 power = 50
 value = 430
@@ -1058,9 +961,6 @@ script = ExtResource("6_n752u")
 item_name = "ANCIENT_TEXT_1"
 item_description = "ANCIENT_TEXT_1_DESC"
 type = 2
-healing_type = 0
-power = 0
-value = 0
 max_quantity = 1
 icon = ExtResource("50_ox0g4")
 
@@ -1069,8 +969,6 @@ script = ExtResource("6_n752u")
 item_name = "BRONZE"
 item_description = "BRONZE_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 10
 max_quantity = 99
 icon = ExtResource("51_cj0u3")
@@ -1080,8 +978,6 @@ script = ExtResource("6_n752u")
 item_name = "IRON"
 item_description = "IRON_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 20
 max_quantity = 99
 icon = ExtResource("52_14sym")
@@ -1091,8 +987,6 @@ script = ExtResource("6_n752u")
 item_name = "SKULL"
 item_description = "SKULL_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 15
 max_quantity = 99
 icon = ExtResource("53_tv7ie")
@@ -1102,8 +996,6 @@ script = ExtResource("6_n752u")
 item_name = "ALUMINUM"
 item_description = "ALUMINUM_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 20
 max_quantity = 99
 icon = ExtResource("54_sudpm")
@@ -1113,8 +1005,6 @@ script = ExtResource("6_n752u")
 item_name = "STEEL_DUST"
 item_description = "STEEL_DUST_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 25
 max_quantity = 99
 icon = ExtResource("55_rbfbc")
@@ -1124,8 +1014,6 @@ script = ExtResource("6_n752u")
 item_name = "WILD_MEMORY"
 item_description = "WILD_MEMORY_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 15
 max_quantity = 99
 icon = ExtResource("56_j2uak")
@@ -1135,8 +1023,6 @@ script = ExtResource("6_n752u")
 item_name = "AQUAMARINE"
 item_description = "AQUAMARINE_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 30
 max_quantity = 99
 icon = ExtResource("57_mossm")
@@ -1146,8 +1032,6 @@ script = ExtResource("6_n752u")
 item_name = "JADE"
 item_description = "JADE_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 50
 max_quantity = 99
 icon = ExtResource("58_7addw")
@@ -1157,8 +1041,6 @@ script = ExtResource("6_n752u")
 item_name = "STEEL"
 item_description = "STEEL_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 20
 max_quantity = 99
 icon = ExtResource("59_rjikq")
@@ -1168,8 +1050,6 @@ script = ExtResource("6_n752u")
 item_name = "KNIGHTS_VEIN"
 item_description = "KNIGHTS_VEIN_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 20
 max_quantity = 99
 icon = ExtResource("60_xbdn7")
@@ -1179,8 +1059,6 @@ script = ExtResource("6_n752u")
 item_name = "DEMONS_VEIN"
 item_description = "DEMONS_VEIN_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 25
 max_quantity = 99
 icon = ExtResource("61_bmb3y")
@@ -1190,8 +1068,6 @@ script = ExtResource("6_n752u")
 item_name = "ETHER"
 item_description = "ETHER_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 40
 max_quantity = 99
 icon = ExtResource("62_e5ks5")
@@ -1201,8 +1077,6 @@ script = ExtResource("6_n752u")
 item_name = "PRINCES_VEIN"
 item_description = "PRINCES_VAIN_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 45
 max_quantity = 99
 icon = ExtResource("63_doj45")
@@ -1212,8 +1086,6 @@ script = ExtResource("6_n752u")
 item_name = "DRAGON_SCALE"
 item_description = "DRAGON_SCALE_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 60
 max_quantity = 99
 icon = ExtResource("64_07b23")
@@ -1223,8 +1095,6 @@ script = ExtResource("6_n752u")
 item_name = "FANG"
 item_description = "FANG_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 20
 max_quantity = 99
 icon = ExtResource("65_khiri")
@@ -1234,8 +1104,6 @@ script = ExtResource("6_n752u")
 item_name = "ANCIENT_MEMORY"
 item_description = "ANCIENT_MEMORY_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 15
 max_quantity = 99
 icon = ExtResource("66_687i2")
@@ -1245,8 +1113,6 @@ script = ExtResource("6_n752u")
 item_name = "FORGOTTEN_MEMORY"
 item_description = "FORGOTTEN_MEMORY_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 25
 max_quantity = 99
 icon = ExtResource("67_yjmjr")
@@ -1256,8 +1122,6 @@ script = ExtResource("6_n752u")
 item_name = "CRYSTAL"
 item_description = "CRYSTAL_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 30
 max_quantity = 99
 icon = ExtResource("68_u7ony")
@@ -1267,8 +1131,6 @@ script = ExtResource("6_n752u")
 item_name = "PURPLE_GLITTER"
 item_description = "PURPLE_GLITTER_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 200
 max_quantity = 99
 icon = ExtResource("69_r7qh1")
@@ -1278,8 +1140,6 @@ script = ExtResource("6_n752u")
 item_name = "LIGHTNING_CRYSTAL"
 item_description = "LIGHTNING_CRYSTAL_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 120
 max_quantity = 99
 icon = ExtResource("70_ensbv")
@@ -1289,8 +1149,6 @@ script = ExtResource("6_n752u")
 item_name = "SUN_TEARS"
 item_description = "SUN_TEARS_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 40
 max_quantity = 99
 icon = ExtResource("71_1l3ea")
@@ -1300,8 +1158,6 @@ script = ExtResource("6_n752u")
 item_name = "SEAL_OF_DARKNESS"
 item_description = "SEAL_OF_DAKNESS_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 400
 max_quantity = 99
 icon = ExtResource("72_pke36")
@@ -1311,8 +1167,6 @@ script = ExtResource("6_n752u")
 item_name = "SEAL_OF_COURAGE"
 item_description = "SEAL_OF_COURAGE_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 60
 max_quantity = 99
 icon = ExtResource("73_p55wj")
@@ -1322,8 +1176,6 @@ script = ExtResource("6_n752u")
 item_name = "SEAL_OF_INNOCENCE"
 item_description = "SEAL_OF_INNOCENCE_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 50
 max_quantity = 99
 icon = ExtResource("74_up0aw")
@@ -1333,8 +1185,6 @@ script = ExtResource("6_n752u")
 item_name = "GOLDEN_TEARS"
 item_description = "GOLDEN_TEARS_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 1000
 max_quantity = 99
 icon = ExtResource("75_xoxsy")
@@ -1344,8 +1194,6 @@ script = ExtResource("6_n752u")
 item_name = "JET_BLACK"
 item_description = "JET_BLACK_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 10
 max_quantity = 99
 icon = ExtResource("76_euf1p")
@@ -1355,8 +1203,6 @@ script = ExtResource("6_n752u")
 item_name = "WHITE_STEEL"
 item_description = "WHITE_STEEL_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 25
 max_quantity = 99
 icon = ExtResource("77_1csys")
@@ -1366,8 +1212,6 @@ script = ExtResource("6_n752u")
 item_name = "RED_STEEL"
 item_description = "RED_STEEL_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 90
 max_quantity = 99
 icon = ExtResource("78_fw4ug")
@@ -1377,8 +1221,6 @@ script = ExtResource("6_n752u")
 item_name = "ORICHALCUM"
 item_description = "ORICALCHUM_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 160
 max_quantity = 99
 icon = ExtResource("79_qqfwh")
@@ -1388,8 +1230,6 @@ script = ExtResource("6_n752u")
 item_name = "CARBON_STEEL"
 item_description = "CARBON_STEEL_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 60
 max_quantity = 99
 icon = ExtResource("80_haoqu")
@@ -1399,8 +1239,6 @@ script = ExtResource("6_n752u")
 item_name = "ADAMANTINE"
 item_description = "ADAMANTINE_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 200
 max_quantity = 99
 icon = ExtResource("81_xgync")
@@ -1410,8 +1248,6 @@ script = ExtResource("6_n752u")
 item_name = "DAMASCUS_STEEL"
 item_description = "DAMASCUS_STEEL_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 110
 max_quantity = 99
 icon = ExtResource("82_w4r4n")
@@ -1421,8 +1257,6 @@ script = ExtResource("6_n752u")
 item_name = "WINDSTONE"
 item_description = "WINDSTONE_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 140
 max_quantity = 99
 icon = ExtResource("83_fwwgt")
@@ -1432,8 +1266,6 @@ script = ExtResource("6_n752u")
 item_name = "SEA_TEAR"
 item_description = "SEA_TEAR_DESC"
 type = 3
-healing_type = 0
-power = 0
 value = 75
 max_quantity = 99
 icon = ExtResource("84_flstf")
@@ -1443,9 +1275,6 @@ script = ExtResource("6_n752u")
 item_name = "LEFT_SERPENT_EYE"
 item_description = "LEFT_SERPENT_EYE_DESC"
 type = 2
-healing_type = 0
-power = 0
-value = 0
 max_quantity = 1
 icon = ExtResource("87_8svi0")
 
@@ -1454,9 +1283,6 @@ script = ExtResource("6_n752u")
 item_name = "RIGHT_SERPENT_EYE"
 item_description = "RIGHT_SERPENT_EYE_DESC"
 type = 2
-healing_type = 0
-power = 0
-value = 0
 max_quantity = 1
 icon = ExtResource("91_kuiux")
 
@@ -1465,9 +1291,6 @@ script = ExtResource("6_n752u")
 item_name = "ANCIENT_TEXT_2"
 item_description = "ANCIENT_TEXT_2_DESC"
 type = 2
-healing_type = 0
-power = 0
-value = 0
 max_quantity = 1
 icon = ExtResource("56_p4vrr")
 
@@ -1479,17 +1302,8 @@ Compendium = Array[ExtResource("6_n752u")]([SubResource("Resource_m5ppe"), SubRe
 script = ExtResource("58_johey")
 headgear_name = "LEATHER_HAT"
 headgear_description = "LEATHER_HAT_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 1
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 100
-max_quantity = 99
 icon = ExtResource("59_ohp77")
 recipe_status = 2
 recipe = Array[Dictionary]([{
@@ -1502,17 +1316,8 @@ recipe = Array[Dictionary]([{
 script = ExtResource("58_johey")
 headgear_name = "CIRCLET"
 headgear_description = "CIRCLET_DESC"
-element = Array[int]([])
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
 INT = 3
-SYN = 0
-RES = 0
-LCK = 0
 value = 250
-max_quantity = 99
 icon = ExtResource("60_8ieye")
 recipe_status = 2
 recipe = Array[Dictionary]([{
@@ -1529,17 +1334,8 @@ recipe = Array[Dictionary]([{
 script = ExtResource("58_johey")
 headgear_name = "SUNGLASSES"
 headgear_description = "SUNGLASSES_DESC"
-element = Array[int]([])
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
 LCK = 2
 value = 100
-max_quantity = 99
 icon = ExtResource("61_tcgyg")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -1556,86 +1352,34 @@ recipe = Array[Dictionary]([{
 script = ExtResource("58_johey")
 headgear_name = "Thick Glasses"
 headgear_description = "Whoever wears these gains the ability to solve integrals in one second."
-element = Array[int]([])
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
 INT = 5
-SYN = 0
-RES = 0
-LCK = 0
 value = 300
-max_quantity = 99
 icon = ExtResource("62_qk5r4")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_w8tqy"]
 script = ExtResource("58_johey")
 headgear_name = "Ribbon"
 headgear_description = "A lovely ribbon for maidens. You're not a maiden but Julia might still approve..."
-element = Array[int]([])
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
 SYN = 1
-RES = 0
 LCK = 5
 value = 250
-max_quantity = 99
 icon = ExtResource("63_0h45a")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_4iosu"]
 script = ExtResource("58_johey")
 headgear_name = "Glasses"
 headgear_description = "There's \"Made by Gucci\" written on it. Whoever Gucci is..."
-element = Array[int]([])
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
 INT = 2
-SYN = 0
-RES = 0
 LCK = 3
 value = 500
-max_quantity = 99
 icon = ExtResource("64_8bafl")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_b0lhj"]
 script = ExtResource("58_johey")
 headgear_name = "FEDORA"
 headgear_description = "FEDORA_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 2
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 200
-max_quantity = 99
 icon = ExtResource("65_34x47")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -1652,40 +1396,17 @@ recipe = Array[Dictionary]([{
 script = ExtResource("58_johey")
 headgear_name = "Velvet Hat"
 headgear_description = "It makes you look famous."
-element = Array[int]([])
-ATK = 0
 DEF = 1
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
 LCK = 3
 value = 300
-max_quantity = 99
 icon = ExtResource("66_r7eb7")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_n53u7"]
 script = ExtResource("58_johey")
 headgear_name = "PROTECTIVE_HELM"
 headgear_description = "PROTECTIVE_HELM_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 4
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 400
-max_quantity = 99
 icon = ExtResource("67_6wetk")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -1702,86 +1423,40 @@ recipe = Array[Dictionary]([{
 script = ExtResource("58_johey")
 headgear_name = "Silk Hat"
 headgear_description = "Aristocrats always wear this kind of hat."
-element = Array[int]([])
-ATK = 0
 DEF = 1
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
 LCK = 5
 value = 350
-max_quantity = 99
 icon = ExtResource("68_ygvyd")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_2gney"]
 script = ExtResource("58_johey")
 headgear_name = "Monocle"
 headgear_description = "Lens for one eye. Makes you look like a gentleman."
-element = Array[int]([])
-ATK = 0
 DEF = 1
-STR = 0
-CON = 0
 INT = 4
 SYN = 1
-RES = 0
 LCK = 2
 value = 650
-max_quantity = 99
 icon = ExtResource("69_awemi")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_580rm"]
 script = ExtResource("58_johey")
 headgear_name = "Ceremonial Mask"
 headgear_description = "Mask used in dark ceremonies. I don't know if it looks terrible or funny."
-element = Array[int]([])
-ATK = 0
 DEF = 2
-STR = 0
-CON = 0
 INT = 3
 SYN = -1
 RES = 5
 LCK = -2
 value = 500
-max_quantity = 99
 icon = ExtResource("70_y82h0")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_fy53e"]
 script = ExtResource("58_johey")
 headgear_name = "STEEL_HELM"
 headgear_description = "STEEL_HELM_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 6
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 650
-max_quantity = 99
 icon = ExtResource("71_3o35o")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -1798,162 +1473,78 @@ recipe = Array[Dictionary]([{
 script = ExtResource("58_johey")
 headgear_name = "Bandana"
 headgear_description = "Gives you courage and determination."
-element = Array[int]([])
-ATK = 0
 DEF = 1
 STR = 4
-CON = 0
-INT = 0
 SYN = 2
 RES = 2
-LCK = 0
 value = 450
-max_quantity = 99
 icon = ExtResource("72_s4a8n")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_csljy"]
 script = ExtResource("58_johey")
 headgear_name = "Commander's Hat"
 headgear_description = "I have never seen anyone wear this..."
-element = Array[int]([])
-ATK = 0
 DEF = 3
 STR = 6
-CON = 0
-INT = 0
 SYN = 3
-RES = 0
-LCK = 0
 value = 600
-max_quantity = 99
 icon = ExtResource("73_inar4")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_nfnn0"]
 script = ExtResource("58_johey")
 headgear_name = "Traveler's Hat"
 headgear_description = "A hat that reeks of sorcery."
-element = Array[int]([])
-ATK = 0
 DEF = 5
-STR = 0
-CON = 0
 INT = 7
-SYN = 0
 RES = 8
 LCK = 4
 value = 1200
-max_quantity = 99
 icon = ExtResource("74_0d1bl")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_7go8i"]
 script = ExtResource("58_johey")
 headgear_name = "Festival Mask"
 headgear_description = "A mask widely used in aristocratic events."
-element = Array[int]([])
-ATK = 0
 DEF = 1
-STR = 0
-CON = 0
 INT = 6
-SYN = 0
-RES = 0
 LCK = 10
 value = 800
-max_quantity = 99
 icon = ExtResource("75_gkl1g")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_ji887"]
 script = ExtResource("58_johey")
 headgear_name = "Viking's Hat"
 headgear_description = "Worn by Vikings. Makes you look threatening."
-element = Array[int]([])
-ATK = 0
 DEF = 10
 STR = 5
 CON = 5
 INT = -1
 SYN = -1
 RES = -1
-LCK = 0
 value = 1200
-max_quantity = 99
 icon = ExtResource("76_ggh8b")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_nhhcx"]
 script = ExtResource("58_johey")
 headgear_name = "Steel Helm"
 headgear_description = "Helm made with hard steel. It is hard to damage it."
-element = Array[int]([])
-ATK = 0
 DEF = 15
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 1500
-max_quantity = 99
 icon = ExtResource("77_6aiax")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_ocbsj"]
 script = ExtResource("58_johey")
 headgear_name = "Nobunaga's Helm"
 headgear_description = "A helm that emanates hatred."
 element = Array[int]([9])
-ATK = 0
 DEF = 20
 STR = 13
-CON = 0
 INT = 8
 SYN = -5
 RES = -5
 LCK = -5
 value = 2500
-max_quantity = 99
 icon = ExtResource("78_3rsai")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_jsrpv"]
 script = ExtResource("58_johey")
@@ -1962,14 +1553,8 @@ headgear_description = "SKULL_MASK_DESC"
 element = Array[int]([9])
 ATK = 1
 DEF = 3
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
 LCK = -3
 value = 100
-max_quantity = 99
 icon = ExtResource("79_swnd8")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -1986,99 +1571,49 @@ recipe = Array[Dictionary]([{
 script = ExtResource("58_johey")
 headgear_name = "Samurai's Helm"
 headgear_description = "Helm worn by Eastern swordmasters. Gives a sense of courage and strength."
-element = Array[int]([])
-ATK = 0
 DEF = 19
 STR = 8
-CON = 0
 INT = 3
 SYN = 4
 RES = 5
-LCK = 0
 value = 2500
-max_quantity = 99
 icon = ExtResource("80_yaah0")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_bg2je"]
 script = ExtResource("58_johey")
 headgear_name = "Belmont's Bandana"
 headgear_description = "A proof of Belmont's trust in you."
-element = Array[int]([])
-ATK = 0
 DEF = 15
 STR = 15
-CON = 0
 INT = 12
 SYN = 10
 RES = 20
 LCK = 10
 value = 5000
-max_quantity = 99
 icon = ExtResource("81_5nrcj")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_vexyv"]
 script = ExtResource("58_johey")
 headgear_name = "Bloody Goggles"
 headgear_description = "Changes the flow of blood to resist magical attacks."
-element = Array[int]([])
-ATK = 0
 DEF = -30
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
 RES = 30
-LCK = 0
 value = 1500
-max_quantity = 99
 icon = ExtResource("82_7bt61")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_utsap"]
 script = ExtResource("58_johey")
 headgear_name = "Dragon Helm"
 headgear_description = "A frightening helm that scares the enemies."
-element = Array[int]([])
-ATK = 0
 DEF = 25
 STR = 25
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 2500
-max_quantity = 99
 icon = ExtResource("83_o0gmj")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_itck4"]
 script = ExtResource("58_johey")
 headgear_name = "Royal Crown"
 headgear_description = "Crown encrusted with precious jewels from all over the world."
-element = Array[int]([])
 ATK = 8
 DEF = 8
 STR = 8
@@ -2088,99 +1623,39 @@ SYN = 8
 RES = 8
 LCK = 8
 value = 3000
-max_quantity = 99
 icon = ExtResource("84_8g33f")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_ms7n0"]
 script = ExtResource("58_johey")
 headgear_name = "Attica Helmet"
 headgear_description = "Helm made with sparkling silver."
-element = Array[int]([])
-ATK = 0
 DEF = 30
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 3500
-max_quantity = 99
 icon = ExtResource("85_k5iqq")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_0i5km"]
 script = ExtResource("86_xt4t6")
 body_name = "Casual Clothes"
 body_description = "Clothes worn everyday."
-element = Array[int]([])
-ATK = 0
 DEF = 1
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 100
-max_quantity = 99
 icon = ExtResource("87_m53ip")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_ypho0"]
 script = ExtResource("86_xt4t6")
 body_name = "Hobo's Clothes"
 body_description = "Ragged, worn clothes. Don't let Julia see you wear this."
-element = Array[int]([])
-ATK = 0
 DEF = 3
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
 LCK = -1
 value = 150
-max_quantity = 99
 icon = ExtResource("88_ejpw7")
-recipe_status = 3
-recipe = Array[Dictionary]([{
-"id": 0,
-"inventory": 0,
-"quantity": 0
-}])
 
 [sub_resource type="Resource" id="Resource_qpfcj"]
 script = ExtResource("86_xt4t6")
 body_name = "LEATHER_ARMOR"
 body_description = "LEATHER_ARMOR_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 5
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 200
-max_quantity = 99
 icon = ExtResource("89_ksehf")
 recipe_status = 2
 recipe = Array[Dictionary]([{
@@ -2193,17 +1668,8 @@ recipe = Array[Dictionary]([{
 script = ExtResource("86_xt4t6")
 body_name = "BRONZE_CUIRASS"
 body_description = "BRONZE_CUIRASS_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 7
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 250
-max_quantity = 99
 icon = ExtResource("90_bc2oq")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -2216,17 +1682,8 @@ recipe = Array[Dictionary]([{
 script = ExtResource("86_xt4t6")
 body_name = "IRON_PLATE"
 body_description = "IRON_PLATE_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 10
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 320
-max_quantity = 99
 icon = ExtResource("91_inejg")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -2243,17 +1700,8 @@ recipe = Array[Dictionary]([{
 script = ExtResource("86_xt4t6")
 body_name = "SCALE_MAIL"
 body_description = "SCALE_MAIL_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 13
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 350
-max_quantity = 99
 icon = ExtResource("123_yi5bd")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -2274,17 +1722,7 @@ recipe = Array[Dictionary]([{
 script = ExtResource("86_xt4t6")
 body_name = "BREASTPLATE"
 body_description = "BREASTPLATE_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 15
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
-value = 0
-max_quantity = 99
 icon = ExtResource("124_ys61b")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -2305,17 +1743,8 @@ recipe = Array[Dictionary]([{
 script = ExtResource("92_10lem")
 legs_name = "SANDALS"
 legs_description = "SANDALS_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 1
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 100
-max_quantity = 99
 icon = ExtResource("93_1uyoh")
 recipe_status = 2
 recipe = Array[Dictionary]([{
@@ -2328,17 +1757,8 @@ recipe = Array[Dictionary]([{
 script = ExtResource("92_10lem")
 legs_name = "WINGTIPS"
 legs_description = "WINGTIPS_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 2
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 200
-max_quantity = 99
 icon = ExtResource("94_j3dc4")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -2355,17 +1775,8 @@ recipe = Array[Dictionary]([{
 script = ExtResource("92_10lem")
 legs_name = "ENGINEER_BOOTS"
 legs_description = "ENGINEER_BOOTS_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 4
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 270
-max_quantity = 99
 icon = ExtResource("126_e55o8")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -2382,17 +1793,8 @@ recipe = Array[Dictionary]([{
 script = ExtResource("92_10lem")
 legs_name = "ALUMINUM_LEGGINGS"
 legs_description = "ALUMINUM_LEGGINGS_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 5
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 300
-max_quantity = 99
 icon = ExtResource("127_vwmwg")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -2409,17 +1811,8 @@ recipe = Array[Dictionary]([{
 script = ExtResource("92_10lem")
 legs_name = "FEATHER_BOOTS"
 legs_description = "FEATHER_BOOTS_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 2
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 450
-max_quantity = 99
 icon = ExtResource("128_brjqo")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -2436,248 +1829,127 @@ recipe = Array[Dictionary]([{
 script = ExtResource("95_xlcm0")
 accessory_name = "SCARF"
 accessory_description = "SCARF_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 1
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 100
-max_quantity = 99
 icon = ExtResource("96_rut34")
 
 [sub_resource type="Resource" id="Resource_g71f4"]
 script = ExtResource("95_xlcm0")
 accessory_name = "EMERALD_RING"
 accessory_description = "EMERALD_RING_DESC"
-element = Array[int]([])
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 1000
-max_quantity = 99
 icon = ExtResource("97_stnag")
 
 [sub_resource type="Resource" id="Resource_t5f6q"]
 script = ExtResource("95_xlcm0")
 accessory_name = "TALISMAN"
 accessory_description = "TALISMAN_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 1
-STR = 0
-CON = 0
 INT = 1
-SYN = 0
 RES = 2
 LCK = 2
 value = 200
-max_quantity = 99
 icon = ExtResource("98_7dyjc")
 
 [sub_resource type="Resource" id="Resource_jiprx"]
 script = ExtResource("95_xlcm0")
 accessory_name = "FORTITUDE_NECKLACE"
 accessory_description = "FORTITUDE_NECKLACE_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 1
-STR = 0
-CON = 0
 INT = 1
-SYN = 0
 RES = 5
-LCK = 0
 value = 500
-max_quantity = 99
 icon = ExtResource("129_8w55s")
 
 [sub_resource type="Resource" id="Resource_hiqqn"]
 script = ExtResource("95_xlcm0")
 accessory_name = "CONCENTRATION_STUD"
 accessory_description = "CONCENTRATION_STUD_DESC"
-element = Array[int]([])
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 2000
-max_quantity = 99
 icon = ExtResource("130_6e8ib")
 
 [sub_resource type="Resource" id="Resource_aauoy"]
 script = ExtResource("95_xlcm0")
 accessory_name = "BLACK_BELT"
 accessory_description = "BLACK_BELT_DESC"
-element = Array[int]([])
 ATK = 2
 DEF = 2
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
 RES = 2
 LCK = 1
 value = 500
-max_quantity = 99
 icon = ExtResource("142_awere")
 
 [sub_resource type="Resource" id="Resource_kfktv"]
 script = ExtResource("95_xlcm0")
 accessory_name = "BLOOD_CLOAK"
 accessory_description = "BLOOD_CLOAK_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 4
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
 LCK = -2
 value = 3000
-max_quantity = 99
 icon = ExtResource("154_kh17x")
 
 [sub_resource type="Resource" id="Resource_j5jy3"]
 script = ExtResource("95_xlcm0")
 accessory_name = "ADVENTURER_CLOAK"
 accessory_description = "ADVENTURER_CLOAK_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 3
-STR = 0
-CON = 0
 INT = 1
-SYN = 0
 RES = 3
 LCK = 1
 value = 1300
-max_quantity = 99
 icon = ExtResource("155_a8hka")
 
 [sub_resource type="Resource" id="Resource_wergv"]
 script = ExtResource("95_xlcm0")
 accessory_name = "WIZARD_CLOAK"
 accessory_description = "WIZARD_CLOAK_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 1
-STR = 0
-CON = 0
 INT = 7
-SYN = 0
-RES = 0
-LCK = 0
 value = 2500
-max_quantity = 99
 icon = ExtResource("156_5x5rq")
 
 [sub_resource type="Resource" id="Resource_dorjh"]
 script = ExtResource("95_xlcm0")
 accessory_name = "RED_SCARF"
 accessory_description = "RED_SCARF_DESC"
-element = Array[int]([])
-ATK = 0
 DEF = 2
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 1500
-max_quantity = 99
 icon = ExtResource("157_6vmuw")
 
 [sub_resource type="Resource" id="Resource_2w4nc"]
 script = ExtResource("99_ixwc3")
 skill_name = "FORTITUDE_GAUNTLET"
 skill_description = "FORTITUDE_GAUNTLET_DESC"
-value = 0
-max_quantity = 1
-type = 0
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
 icon = ExtResource("100_p1gfv")
-weapon_type = 0
-weapon_rank = 0
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_v2mv7"]
 script = ExtResource("99_ixwc3")
 skill_name = "HOLY_MANUAL"
 skill_description = "HOLY_MANUAL_DESC"
-value = 0
-max_quantity = 1
-type = 0
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
 icon = ExtResource("101_8cul2")
-weapon_type = 0
-weapon_rank = 0
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_u4ub6"]
 script = ExtResource("99_ixwc3")
 skill_name = "PLATINUM_ARM"
 skill_description = "PLATINUM_ARM_DESC"
-value = 0
-max_quantity = 1
-type = 0
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
 icon = ExtResource("102_wwspq")
-weapon_type = 0
-weapon_rank = 0
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_6o46a"]
 script = ExtResource("99_ixwc3")
 skill_name = "CYAN_ORB_ITEM"
 skill_description = "CYAN_ORB_ITEM_DESC"
-value = 0
-max_quantity = 1
 type = 1
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
 icon = ExtResource("103_oqpay")
-weapon_type = 0
-weapon_rank = 0
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_m10e8"]
 script = ExtResource("99_ixwc3")
 skill_name = "SWORD_SPIN"
 skill_description = "SWORD_SPIN_DESC"
-value = 0
-max_quantity = 1
 type = 2
 cost_type = 3
 cost_value = 35
 command_input = Array[String](["move_right", "move_right", "circle"])
 command_input_serialized = " [[Forward]] [[Forward]] + [[Circle]]"
-weapon_type = 0
 weapon_rank = 1
 transitions_into_state = "sword_spin"
 
@@ -2685,8 +1957,6 @@ transitions_into_state = "sword_spin"
 script = ExtResource("99_ixwc3")
 skill_name = "AXE_THROW"
 skill_description = "AXE_THROW_DESC"
-value = 0
-max_quantity = 1
 type = 2
 cost_type = 3
 cost_value = 40
@@ -2700,145 +1970,75 @@ transitions_into_state = "throw_axe"
 script = ExtResource("99_ixwc3")
 skill_name = "SWORD_HAND"
 skill_description = "SWORD_HAND_DESC"
-value = 0
-max_quantity = 1
 type = 2
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
-weapon_type = 0
 weapon_rank = 1
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_d8rda"]
 script = ExtResource("99_ixwc3")
 skill_name = "EXECUTIONERS_HAND"
 skill_description = "EXECUTIONERS_HAND_DESC"
-value = 0
-max_quantity = 1
 type = 2
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
 weapon_type = 2
 weapon_rank = 1
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_fna47"]
 script = ExtResource("99_ixwc3")
 skill_name = "BLACKSMITH_CONTRACT"
 skill_description = "BLACKSMITH_CONTRACT_DESC"
-value = 0
-max_quantity = 1
-type = 0
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
 icon = ExtResource("104_ajl63")
-weapon_type = 0
-weapon_rank = 0
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_vfu6u"]
 script = ExtResource("99_ixwc3")
 skill_name = "WARP_MEDALLION"
 skill_description = "WARP_MEDALLION_DESC"
-value = 0
-max_quantity = 1
-type = 0
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
 icon = ExtResource("143_ffcf7")
-weapon_type = 0
-weapon_rank = 0
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_4ifw5"]
 script = ExtResource("99_ixwc3")
 skill_name = "AWARENESS"
 skill_description = "AWARENESS_DESC"
-value = 0
-max_quantity = 1
 type = 2
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
 weapon_type = 1
 weapon_rank = 1
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_lqir6"]
 script = ExtResource("99_ixwc3")
 skill_name = "GUARD_STANCE"
 skill_description = "GUARD_STANCE_DESC"
-value = 0
-max_quantity = 1
 type = 2
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
 weapon_type = 1
 weapon_rank = 1
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_yrs72"]
 script = ExtResource("99_ixwc3")
 skill_name = "WICKED_GLADIATOR_FIST"
 skill_description = "WICKED_GLADIATOR_FIST_DESC"
-value = 0
-max_quantity = 1
 type = 2
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
 command_input_serialized = " [[Square]] while guarding"
 weapon_type = 4
 weapon_rank = 1
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_awbx6"]
 script = ExtResource("99_ixwc3")
 skill_name = "STEADY_FIGHTER"
 skill_description = "STEADY_FIGHTER_DESC"
-value = 0
-max_quantity = 1
 type = 2
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
 weapon_type = 4
 weapon_rank = 1
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_k5k37"]
 script = ExtResource("99_ixwc3")
 skill_name = "ELECTRIC_WICKED_GLADIATOR_FIST"
 skill_description = "ELECTRIC_WICKED_GLADIATOR_FIST_DESC"
-value = 0
-max_quantity = 1
 type = 2
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
 command_input_serialized = " [[Square]] while perfect guarding"
 weapon_type = 4
 weapon_rank = 2
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_se88n"]
 script = ExtResource("99_ixwc3")
 skill_name = "WINDSTORM"
 skill_description = "WINDSTORM_DESC"
-value = 0
-max_quantity = 1
 type = 2
 cost_type = 3
 cost_value = 50
@@ -2852,280 +2052,145 @@ transitions_into_state = "Windstorm"
 script = ExtResource("99_ixwc3")
 skill_name = "TOME_OF_MONSTERS"
 skill_description = "TOME_OF_MONSTERS_DESC"
-value = 0
-max_quantity = 1
-type = 0
-cost_type = 0
-cost_value = 0
-command_input = Array[String]([])
-command_input_serialized = ""
 icon = ExtResource("157_qs5p8")
-weapon_type = 0
-weapon_rank = 0
-transitions_into_state = ""
 
 [sub_resource type="Resource" id="Resource_86suo"]
 script = ExtResource("105_7lbas")
 relic_name = "INDIGO_CROSS"
 relic_description = "INDIGO_CROSS_DESC"
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
-value = 0
 glow = Color(0, 0.545098, 0.898039, 1)
-max_quantity = 1
 icon = ExtResource("106_6nmde")
 
 [sub_resource type="Resource" id="Resource_8t8qo"]
 script = ExtResource("105_7lbas")
 relic_name = "AGUNIS_LAUREL"
 relic_description = "AGUNIS_LAUREL_DESC"
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
-value = 0
 glow = Color(1, 0.435294, 0, 1)
-max_quantity = 1
 icon = ExtResource("150_e8wvu")
 
 [sub_resource type="Resource" id="Resource_1ioky"]
 script = ExtResource("145_wv42h")
 artifact_name = "LITTLE_HAMMER"
 artifact_description = "LITTLE_HAMMER_DESC"
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
-value = 0
 glow = Color(0.976471, 0.796078, 0, 1)
-max_quantity = 1
 icon = ExtResource("146_j32o5")
 
 [sub_resource type="Resource" id="Resource_fs6ce"]
 script = ExtResource("145_wv42h")
 artifact_name = "MIRACLE_COIN"
 artifact_description = "MIRACLE_COIN_DESC"
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 1000
 glow = Color(0, 0.921601, 0.934978, 1)
-max_quantity = 1
 icon = ExtResource("167_5r6wg")
 
 [sub_resource type="Resource" id="Resource_y30nd"]
 script = ExtResource("145_wv42h")
 artifact_name = "HEART_BROOCH"
 artifact_description = "HEART_BROOCH_DESC"
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 1500
 glow = Color(0.999963, 0.641772, 0.586683, 1)
-max_quantity = 1
 icon = ExtResource("168_8y21a")
 
 [sub_resource type="Resource" id="Resource_1jp3v"]
 script = ExtResource("145_wv42h")
 artifact_name = "STONE_OF_ALCHEMY"
 artifact_description = "STONE_OF_ALCHEMY_DESC"
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 3000
 glow = Color(0.122313, 0.358631, 1, 1)
-max_quantity = 1
 icon = ExtResource("17_0foon")
 
 [sub_resource type="Resource" id="Resource_bk52o"]
 script = ExtResource("145_wv42h")
 artifact_name = "BLOOD_STONE"
 artifact_description = "BLOOD_STONE_DESC"
-ATK = 0
-DEF = 0
-STR = 0
-CON = 0
-INT = 0
-SYN = 0
-RES = 0
-LCK = 0
 value = 2000
 glow = Color(0.901961, 0, 0, 1)
-max_quantity = 1
 icon = ExtResource("173_n26vp")
 
 [sub_resource type="Resource" id="Resource_87l3r"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 1
 dialogue_text = "DIALOG_FAGARAS_INTRO_1"
-position = 0
 
 [sub_resource type="Resource" id="Resource_m8frf"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
-expression = 0
 dialogue_text = "DIALOG_FAGARAS_INTRO_2"
-position = 0
 
 [sub_resource type="Resource" id="Resource_5idyr"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 2
 dialogue_text = "DIALOG_FAGARAS_INTRO_3"
-position = 0
 
 [sub_resource type="Resource" id="Resource_e571n"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
-expression = 0
 dialogue_text = "DIALOG_FAGARAS_INTRO_4"
-position = 0
 
 [sub_resource type="Resource" id="Resource_25n78"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 1
 dialogue_text = "DIALOG_MONASTERY_1"
-position = 0
 
 [sub_resource type="Resource" id="Resource_ktboo"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 2
 dialogue_text = "DIALOG_MONASTERY_2"
-position = 0
 
 [sub_resource type="Resource" id="Resource_vo88s"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 1
 dialogue_text = "DIALOG_MONASTERY_3"
-position = 0
 
 [sub_resource type="Resource" id="Resource_dctxa"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 2
 dialogue_text = "DIALOG_MONASTERY_4"
-position = 0
 
 [sub_resource type="Resource" id="Resource_spkj4"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 1
 dialogue_text = "DIALOG_MONASTERY_5"
-position = 0
 
 [sub_resource type="Resource" id="Resource_c46ur"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
-expression = 0
 dialogue_text = "DIALOG_MONASTERY_6"
-position = 0
 
 [sub_resource type="Resource" id="Resource_ohovh"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 1
 dialogue_text = "DIALOG_MONASTERY_FORGING_1"
-position = 0
 
 [sub_resource type="Resource" id="Resource_omcdx"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 5
 dialogue_text = "DIALOG_MONASTERY_FORGING_2"
-position = 0
 
 [sub_resource type="Resource" id="Resource_72dkk"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 2
 dialogue_text = "DIALOG_MONASTERY_FORGING_3"
-position = 0
 
 [sub_resource type="Resource" id="Resource_4f7nn"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 1
 dialogue_text = "DIALOG_MONASTERY_FORGING_4"
-position = 0
 
 [sub_resource type="Resource" id="Resource_mgxho"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
-expression = 0
 dialogue_text = "DIALOG_MONASTERY_FORGING_5"
-position = 0
 
 [sub_resource type="Resource" id="Resource_8f7hp"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 1
 dialogue_text = "DIALOG_MONASTERY_PUZZLE_1"
-position = 0
 
 [sub_resource type="Resource" id="Resource_o67wt"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
-expression = 0
 dialogue_text = "DIALOG_MONASTERY_PUZZLE_2"
-position = 0
 
 [sub_resource type="Resource" id="Resource_wtpr2"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 2
 dialogue_text = "DIALOG_MONASTERY_PUZZLE_3"
-position = 0
 
 [sub_resource type="Resource" id="Resource_csyar"]
 script = ExtResource("107_o0dwx")
@@ -3139,38 +2204,29 @@ position = 1
 script = ExtResource("107_o0dwx")
 character = 1
 hide_name = true
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_2"
 position = 1
 
 [sub_resource type="Resource" id="Resource_o1h1j"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 2
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_3"
-position = 0
 
 [sub_resource type="Resource" id="Resource_55rnv"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 3
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_4"
 position = 1
 
 [sub_resource type="Resource" id="Resource_2wus2"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 2
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_5"
-position = 0
 
 [sub_resource type="Resource" id="Resource_bqaak"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 2
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_6"
 position = 1
@@ -3178,23 +2234,18 @@ position = 1
 [sub_resource type="Resource" id="Resource_jrgt6"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 1
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_7"
 position = 1
 
 [sub_resource type="Resource" id="Resource_gx1rt"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 2
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_8"
-position = 0
 
 [sub_resource type="Resource" id="Resource_u1nhv"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 1
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_9"
 position = 1
@@ -3202,7 +2253,6 @@ position = 1
 [sub_resource type="Resource" id="Resource_v57uc"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 3
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_10"
 position = 1
@@ -3210,7 +2260,6 @@ position = 1
 [sub_resource type="Resource" id="Resource_eyf3w"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 2
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_11"
 position = 1
@@ -3218,7 +2267,6 @@ position = 1
 [sub_resource type="Resource" id="Resource_yuuna"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 4
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_12"
 position = 1
@@ -3226,63 +2274,47 @@ position = 1
 [sub_resource type="Resource" id="Resource_pl4eo"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_13"
 position = 1
 
 [sub_resource type="Resource" id="Resource_ql2g5"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_14"
 position = 1
 
 [sub_resource type="Resource" id="Resource_b1cpc"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_15"
 position = 1
 
 [sub_resource type="Resource" id="Resource_yuqnq"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_16"
 position = 1
 
 [sub_resource type="Resource" id="Resource_ycdkt"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_17"
 position = 1
 
 [sub_resource type="Resource" id="Resource_bft1l"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_18"
 position = 1
 
 [sub_resource type="Resource" id="Resource_abke8"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 2
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_19"
-position = 0
 
 [sub_resource type="Resource" id="Resource_3qvv1"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 5
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_20"
 position = 1
@@ -3290,63 +2322,41 @@ position = 1
 [sub_resource type="Resource" id="Resource_nlgtf"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_21"
 position = 1
 
 [sub_resource type="Resource" id="Resource_7kcsh"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 2
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_22"
 position = 1
 
 [sub_resource type="Resource" id="Resource_mqejh"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 2
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_23"
-position = 0
 
 [sub_resource type="Resource" id="Resource_jnrv7"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_24"
-position = 0
 
 [sub_resource type="Resource" id="Resource_utlr2"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_25"
-position = 0
 
 [sub_resource type="Resource" id="Resource_lc0k7"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_26"
-position = 0
 
 [sub_resource type="Resource" id="Resource_hfyhw"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 4
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_27"
-position = 0
 
 [sub_resource type="Resource" id="Resource_a0e3l"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 1
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_28"
 position = 1
@@ -3354,23 +2364,18 @@ position = 1
 [sub_resource type="Resource" id="Resource_l4h0p"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_29"
 position = 1
 
 [sub_resource type="Resource" id="Resource_15a3r"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_30"
 position = 1
 
 [sub_resource type="Resource" id="Resource_4neaj"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 2
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_31"
 position = 1
@@ -3378,39 +2383,27 @@ position = 1
 [sub_resource type="Resource" id="Resource_2o2y2"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 4
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_32"
 position = 1
 
 [sub_resource type="Resource" id="Resource_bx3e7"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 5
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_33"
-position = 0
 
 [sub_resource type="Resource" id="Resource_tsqkx"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 1
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_34"
-position = 0
 
 [sub_resource type="Resource" id="Resource_7l514"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_35"
-position = 0
 
 [sub_resource type="Resource" id="Resource_8x8d0"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 3
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_36"
 position = 1
@@ -3418,23 +2411,18 @@ position = 1
 [sub_resource type="Resource" id="Resource_upl0l"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_37"
 position = 1
 
 [sub_resource type="Resource" id="Resource_awl76"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_38"
 position = 1
 
 [sub_resource type="Resource" id="Resource_ni2ni"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 1
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_39"
 position = 1
@@ -3442,23 +2430,17 @@ position = 1
 [sub_resource type="Resource" id="Resource_ue3r3"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_40"
 position = 1
 
 [sub_resource type="Resource" id="Resource_67xnv"]
 script = ExtResource("107_o0dwx")
-character = 0
-hide_name = false
 expression = 2
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_41"
-position = 0
 
 [sub_resource type="Resource" id="Resource_j1ehq"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
 expression = 3
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_42"
 position = 1
@@ -3466,8 +2448,6 @@ position = 1
 [sub_resource type="Resource" id="Resource_ispcp"]
 script = ExtResource("107_o0dwx")
 character = 1
-hide_name = false
-expression = 0
 dialogue_text = "FIRST_CARMILLA_DIALOGUE_43"
 position = 1
 
@@ -3941,8 +2921,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h86rj"]
 _data = {
-"RESET": SubResource("Animation_bqv2o"),
-"fade_in": SubResource("Animation_fw4b4")
+&"RESET": SubResource("Animation_bqv2o"),
+&"fade_in": SubResource("Animation_fw4b4")
 }
 
 [sub_resource type="Theme" id="Theme_o031g"]
@@ -4045,8 +3025,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0cs38"]
 _data = {
-"RESET": SubResource("Animation_tb3np"),
-"blur": SubResource("Animation_xvhwi")
+&"RESET": SubResource("Animation_tb3np"),
+&"blur": SubResource("Animation_xvhwi")
 }
 
 [sub_resource type="Environment" id="Environment_vusj1"]
@@ -4100,7 +3080,7 @@ save_rooms = Array[Dictionary]([{
 "path": "Fagaras/right_cave_save.tscn"
 }])
 element_icons = Array[CompressedTexture2D]([ExtResource("216_wblab"), ExtResource("217_gdkcj"), ExtResource("218_xw0ho"), ExtResource("219_m5fjj"), ExtResource("220_vyah2"), ExtResource("221_n18wm"), ExtResource("222_p6otc"), ExtResource("222_t1r3v"), ExtResource("223_p32iy"), ExtResource("224_b3tfu"), ExtResource("225_v5wqb"), ExtResource("226_krr36")])
-starting_map = "Debug/debug_1.tscn"
+starting_map = "FirstLevel/Woods.tscn"
 
 [node name="Player" parent="." instance=ExtResource("5_81k16")]
 z_index = 5
@@ -4232,7 +3212,7 @@ animation = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/FadeScreen"]
 libraries = {
-"": SubResource("AnimationLibrary_h86rj")
+&"": SubResource("AnimationLibrary_h86rj")
 }
 
 [node name="StagePresentation" parent="UI" instance=ExtResource("16_yvhsl")]
@@ -4414,7 +3394,7 @@ action = "toggle_touch"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_0cs38")
+&"": SubResource("AnimationLibrary_0cs38")
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

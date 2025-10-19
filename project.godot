@@ -17,10 +17,10 @@ metroidvania_system/settings_file="res://SampleProject/Resources/Settings.tres"
 config/name="Castlevania: Remnants of Darkness"
 config/tags=PackedStringArray("2d", "game", "metroidvania", "sequel")
 run/main_scene="res://SampleProject/extra_scenes/title_screen.tscn"
-config/features=PackedStringArray("4.3")
+config/features=PackedStringArray("4.5")
 run/max_fps=144
-boot_splash/image="res://logoresized.png"
 boot_splash/fullsize=false
+boot_splash/image="res://logoresized.png"
 config/icon="res://cas-03.png"
 
 [autoload]
@@ -48,6 +48,8 @@ window/size/viewport_width=864
 window/size/viewport_height=480
 window/size/mode=4
 window/size/resizable=false
+window/size/window_width_override=432
+window/size/window_height_override=240
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 window/per_pixel_transparency/allowed=true
@@ -57,8 +59,8 @@ window/use_filter=false
 
 [editor]
 
-script/search_in_file_extensions=PackedStringArray("gd", "gdshader", "tscn")
 movie_writer/movie_file="/home/gianfranco/Video/preview.avi"
+script/search_in_file_extensions=PackedStringArray("gd", "gdshader", "tscn")
 
 [editor_plugins]
 
@@ -288,12 +290,16 @@ locale/translations=PackedStringArray("res://translation.es.translation", "res:/
 2d_physics/layer_9="Destroy player projectiles"
 2d_physics/layer_10="Candle"
 2d_physics/layer_11="Player projectiles"
+2d_physics/layer_13="Semi-solid floor"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=3
 textures/vram_compression/import_etc2_astc=true
+global_illumination/gi/use_half_resolution=true
+viewport/hdr_2d=true
 textures/decals/filter=2
 textures/light_projectors/filter=2
+lightmapping/lightmap_gi/use_bicubic_filter=false
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
-viewport/hdr_2d=true
+2d/snap/snap_2d_transforms_to_pixel=true

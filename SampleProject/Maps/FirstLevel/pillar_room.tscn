@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://ckb8a8bwkjgg5"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_d85pb"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_d85pb"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_ud02d"]
 [ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_7t5ud"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="4_8ntk0"]
@@ -811,6 +811,9 @@ sources/0 = SubResource("TileSetAtlasSource_h4v5p")
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_d85pb")
+apply_limits = true
+camera_limit_left = -384
+camera_limit_right = 480
 
 [node name="RoomInstance" parent="." instance=ExtResource("2_ud02d")]
 

@@ -42,6 +42,7 @@ func _moveElevator():
 		
 func _moveTo(height_value: float):
 	var tween = get_tree().create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_property(self, "height", height_value, 11)
 	await tween.finished
 	if can_lift and not should_go_up:
