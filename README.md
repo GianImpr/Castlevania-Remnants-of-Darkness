@@ -1,7 +1,7 @@
 # Welcome to the GitHub page of Castlevania: Remnants of Darkness!
 ![Logo](https://github.com/user-attachments/assets/f39b2cb6-3f3a-4ad5-97a5-46462bd2de77)
 ## About this project
-This is a fangame I'm developing in ***Godot Engine 4.3***, and my goal is to create a full game (while also learning how to make games, since this is the first one I'm making) based on the Metroidvania genre.
+This is a fangame I'm developing in ***Godot Engine 4.5.1***, and my goal is to create a full game (while also learning how to make games, since this is the first one I'm making) based on the Metroidvania genre.
 
 I am sharing the source code because this project is open source, as I am not __*monetizing this game in any way*__, and I am more than glad to help people figure out or toy with the code that makes my game run.
 If you would like to help me in any way, please consider contacting me on Discord (tag is .shuan).
@@ -12,13 +12,13 @@ This game aims to take the distinctive elements of ***Castlevania: Curse of Dark
 
 ## What you can find here
 - If you want to play the game, you can get the ```.exe``` or ```.apk``` in the [Releases](https://github.com/GianImpr/Castlevania-Remnants-of-Darkness/releases) page.
-- If you instead want to open the project in Godot, you can download the source code and then open ```project.godot``` in Godot Engine 4.3.
+- If you instead want to open the project in Godot, you can download the source code and then open ```project.godot``` in Godot Engine 4.5.1.
 
 > [!TIP]
 > If you are playing this on Windows, Windows SmartScreen will surely complain. Ignore it, this project is safe. (and if you're not trusting me, just look at the source code)
 
 > [!WARNING]
-> When opening this project, **please use Godot Engine 4.3**, as the project is not compatible with older versions of the engine, and 4.4 *breaks room transitions*.
+> When opening this project, **please use Godot Engine 4.5.1**, as the project is not compatible with older versions of the engine.
 
 > [!NOTE]
 > Currently, the Release page **only contains executables for Windows and Android**, but you *can open the project in Godot on your device and compile it there*, so even if you're on Linux or Mac, you still have a way to play the game.
