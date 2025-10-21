@@ -1,8 +1,8 @@
 [gd_scene load_steps=102 format=3 uid="uid://bjjk4mm7bkkd5"]
 
 [ext_resource type="Texture2D" uid="uid://c6oahkcwklotc" path="res://assets/sprites/HUD/Loading/Background.png" id="1_mwlu3"]
-[ext_resource type="Script" path="res://SampleProject/extra_scenes/loading_screen.gd" id="1_s3fxy"]
-[ext_resource type="Script" path="res://SampleProject/extra_scenes/main_menu.gd" id="1_xe1my"]
+[ext_resource type="Script" uid="uid://1l10ts0ijq8y" path="res://SampleProject/extra_scenes/loading_screen.gd" id="1_s3fxy"]
+[ext_resource type="Script" uid="uid://bddkq1msrwogs" path="res://SampleProject/extra_scenes/main_menu.gd" id="1_xe1my"]
 [ext_resource type="PackedScene" uid="uid://c3xqaietfgs7l" path="res://SampleProject/Game.tscn" id="2_014f2"]
 [ext_resource type="Texture2D" uid="uid://kh67q8mxxd1y" path="res://assets/sprites/HUD/Loading/AnimatedBackground.png" id="2_asjfv"]
 [ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="3_vdkpo"]
@@ -11,23 +11,23 @@
 [ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="6_kqwro"]
 [ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="7_dh6wh"]
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="8_r6g7u"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="11_hjquy"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="12_m3njh"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="13_p7mob"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="11_hjquy"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="12_m3njh"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="13_p7mob"]
 [ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="14_0k4y4"]
 [ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="14_aoirl"]
 [ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="15_mnm0v"]
 [ext_resource type="Texture2D" uid="uid://cx1wxmu3nscdw" path="res://assets/images/PerfectGuard.png" id="16_4u8m3"]
-[ext_resource type="Script" path="res://SampleProject/extra_scenes/difficulty_selection.gd" id="16_5m78a"]
+[ext_resource type="Script" uid="uid://buusu2etg8ti7" path="res://SampleProject/extra_scenes/difficulty_selection.gd" id="16_5m78a"]
 [ext_resource type="Texture2D" uid="uid://b710o80vdsjf" path="res://assets/images/SimplifiedDiff.png" id="17_dllg5"]
 [ext_resource type="AudioStream" uid="uid://bk3yytbku0xg2" path="res://assets/sounds/Menu/PopUp.MP3" id="17_ly2eu"]
 [ext_resource type="Texture2D" uid="uid://c66ba83c33aie" path="res://assets/images/StandardDiff.png" id="18_88xfl"]
 [ext_resource type="PackedScene" uid="uid://b1tuyan1lk1t" path="res://SampleProject/extra_scenes/intro.tscn" id="18_kdr6d"]
 [ext_resource type="AudioStream" uid="uid://chygwmoaucxte" path="res://assets/music/Requiem.ogg" id="18_xww6q"]
 [ext_resource type="Texture2D" uid="uid://klewsw4qctn5" path="res://assets/sprites/HUD/NameEntry/NameBox.png" id="19_1mkjf"]
-[ext_resource type="Script" path="res://SampleProject/extra_scenes/name_entry.gd" id="19_ofy3n"]
+[ext_resource type="Script" uid="uid://djicgpabvwmjf" path="res://SampleProject/extra_scenes/name_entry.gd" id="19_ofy3n"]
 [ext_resource type="Texture2D" uid="uid://c2igujqj4dloe" path="res://assets/sprites/HUD/NameEntry/LetterBox.png" id="20_rsd5m"]
-[ext_resource type="Script" path="res://SampleProject/extra_scenes/LetterBox.gd" id="21_oeuxb"]
+[ext_resource type="Script" uid="uid://cn2gunra8sl6a" path="res://SampleProject/extra_scenes/LetterBox.gd" id="21_oeuxb"]
 [ext_resource type="Texture2D" uid="uid://d68ptw53k0mr" path="res://assets/sprites/HUD/NameEntry/Cursor.png" id="22_7brg1"]
 [ext_resource type="AudioStream" uid="uid://djntod7cvws4p" path="res://assets/sounds/Effects/Miscellaneous/NameChosen.MP3" id="29_rxu2w"]
 
@@ -63,8 +63,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2crau"]
 _data = {
-"RESET": SubResource("Animation_kdq1a"),
-"background": SubResource("Animation_81ofm")
+&"RESET": SubResource("Animation_kdq1a"),
+&"background": SubResource("Animation_81ofm")
 }
 
 [sub_resource type="Animation" id="Animation_i628r"]
@@ -101,8 +101,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j38d8"]
 _data = {
-"RESET": SubResource("Animation_i628r"),
-"background": SubResource("Animation_jqq2s")
+&"RESET": SubResource("Animation_i628r"),
+&"background": SubResource("Animation_jqq2s")
 }
 
 [sub_resource type="Animation" id="Animation_6403w"]
@@ -139,8 +139,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hqp6o"]
 _data = {
-"RESET": SubResource("Animation_6403w"),
-"background": SubResource("Animation_asb1n")
+&"RESET": SubResource("Animation_6403w"),
+&"background": SubResource("Animation_asb1n")
 }
 
 [sub_resource type="Animation" id="Animation_ilct6"]
@@ -391,10 +391,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ww74"]
 _data = {
-"RESET": SubResource("Animation_ilct6"),
-"appear": SubResource("Animation_4tgns"),
-"disappear": SubResource("Animation_qkv4d"),
-"disappear_to_title": SubResource("Animation_y02sj")
+&"RESET": SubResource("Animation_ilct6"),
+&"appear": SubResource("Animation_4tgns"),
+&"disappear": SubResource("Animation_qkv4d"),
+&"disappear_to_title": SubResource("Animation_y02sj")
 }
 
 [sub_resource type="Theme" id="Theme_a85sy"]
@@ -461,17 +461,17 @@ default_font_size = 32
 [sub_resource type="Theme" id="Theme_qqicx"]
 default_font = ExtResource("5_p2lme")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4127"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ulvd8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vcxc"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ulvd8"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4127"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ffr4x"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dt47o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv73t"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dt47o"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ffr4x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycy3a"]
 texture = ExtResource("19_1mkjf")
@@ -521,8 +521,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dn8ty"]
 _data = {
-"RESET": SubResource("Animation_m3og2"),
-"shine": SubResource("Animation_sslbb")
+&"RESET": SubResource("Animation_m3og2"),
+&"shine": SubResource("Animation_sslbb")
 }
 
 [sub_resource type="Animation" id="Animation_rw5cx"]
@@ -692,8 +692,8 @@ tracks/6/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_56nmj"]
 _data = {
-"RESET": SubResource("Animation_rw5cx"),
-"confirm": SubResource("Animation_wsgyf")
+&"RESET": SubResource("Animation_rw5cx"),
+&"confirm": SubResource("Animation_wsgyf")
 }
 
 [sub_resource type="Theme" id="Theme_jtuxx"]
@@ -714,16 +714,16 @@ texture_margin_bottom = 20.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf3ri"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ehav"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h40w8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80qg0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdm6v"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80qg0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h40w8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ehav"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v1tby"]
 
@@ -760,8 +760,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6f5xd"]
 _data = {
-"RESET": SubResource("Animation_if2xp"),
-"ask_confirm": SubResource("Animation_c7sfr")
+&"RESET": SubResource("Animation_if2xp"),
+&"ask_confirm": SubResource("Animation_c7sfr")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ywgbj"]
@@ -944,9 +944,9 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_30bmj"]
 _data = {
-"RESET": SubResource("Animation_7f2t7"),
-"appear": SubResource("Animation_xo6fx"),
-"vanish": SubResource("Animation_sqbq2")
+&"RESET": SubResource("Animation_7f2t7"),
+&"appear": SubResource("Animation_xo6fx"),
+&"vanish": SubResource("Animation_sqbq2")
 }
 
 [sub_resource type="Resource" id="Resource_yp8es"]
@@ -1034,8 +1034,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5gmm4"]
 _data = {
-"RESET": SubResource("Animation_itl8p"),
-"appear": SubResource("Animation_8obd3")
+&"RESET": SubResource("Animation_itl8p"),
+&"appear": SubResource("Animation_8obd3")
 }
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("loading_screen", "name_entry_screen")]
@@ -1069,7 +1069,6 @@ texture = SubResource("GradientTexture2D_1i321")
 
 [node name="Animation" type="Control" parent="BackgroundNodes"]
 modulate = Color(1, 1, 1, 0.054902)
-layout_mode = 3
 anchors_preset = 0
 offset_left = -35.1892
 offset_right = 4.81081
@@ -1087,13 +1086,12 @@ stretch_mode = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation"]
 root_node = NodePath("../../..")
 libraries = {
-"": SubResource("AnimationLibrary_2crau")
+&"": SubResource("AnimationLibrary_2crau")
 }
 autoplay = "background"
 
 [node name="Animation2" type="Control" parent="BackgroundNodes"]
 modulate = Color(1, 1, 1, 0.054902)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 36.0
 offset_top = -120.0
@@ -1111,13 +1109,12 @@ stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation2"]
 libraries = {
-"": SubResource("AnimationLibrary_j38d8")
+&"": SubResource("AnimationLibrary_j38d8")
 }
 autoplay = "background"
 
 [node name="Animation3" type="Control" parent="BackgroundNodes"]
 modulate = Color(1, 1, 1, 0.054902)
-layout_mode = 3
 anchors_preset = 0
 offset_left = -206.0
 offset_top = -120.0
@@ -1135,7 +1132,7 @@ stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation3"]
 libraries = {
-"": SubResource("AnimationLibrary_hqp6o")
+&"": SubResource("AnimationLibrary_hqp6o")
 }
 autoplay = "background"
 
@@ -1166,7 +1163,7 @@ file_name = NodePath("Description/Name")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingScreen"]
 libraries = {
-"": SubResource("AnimationLibrary_4ww74")
+&"": SubResource("AnimationLibrary_4ww74")
 }
 autoplay = "appear"
 
@@ -1195,7 +1192,6 @@ offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vwt7n")
 
 [node name="Description" type="Control" parent="LoadingScreen"]
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1399,7 +1395,7 @@ offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_huhwp")
 
 [node name="PanelContainer" type="PanelContainer" parent="LoadingScreen"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 16.0
 offset_top = 52.0
 offset_right = 852.0
@@ -1433,9 +1429,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1458,9 +1454,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1483,9 +1479,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1508,9 +1504,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1533,9 +1529,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1558,9 +1554,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1583,9 +1579,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1608,9 +1604,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1633,9 +1629,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1658,9 +1654,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1683,9 +1679,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1708,9 +1704,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ffr4x")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_fv73t")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_dt47o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fv73t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ffr4x")
 text = "Empty"
 flat = true
 
@@ -1733,9 +1729,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1758,9 +1754,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1783,9 +1779,9 @@ horizontal_alignment = 2
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ulvd8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0vcxc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
@@ -1828,7 +1824,7 @@ offset_bottom = 152.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ycy3a")
 
 [node name="Name" type="HBoxContainer" parent="NameEntry"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 226.0
 offset_top = 80.0
 offset_right = 654.0
@@ -1862,13 +1858,13 @@ texture = ExtResource("22_7brg1")
 
 [node name="CursorAnimation" type="AnimationPlayer" parent="NameEntry/Cursor"]
 libraries = {
-"": SubResource("AnimationLibrary_dn8ty")
+&"": SubResource("AnimationLibrary_dn8ty")
 }
 autoplay = "shine"
 
 [node name="NameEntryAnimation" type="AnimationPlayer" parent="NameEntry"]
 libraries = {
-"": SubResource("AnimationLibrary_56nmj")
+&"": SubResource("AnimationLibrary_56nmj")
 }
 
 [node name="ConfirmPanel" type="PanelContainer" parent="NameEntry"]
@@ -1908,10 +1904,10 @@ focus_neighbor_top = NodePath("../No")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../No")
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
 theme_override_styles/normal = SubResource("StyleBoxFlat_80qg0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
 action_mode = 0
 text = "YES_BUTTON"
 flat = true
@@ -1923,17 +1919,17 @@ focus_neighbor_top = NodePath("../Yes")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Yes")
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_v1tby")
-theme_override_styles/hover = SubResource("StyleBoxFlat_sdm6v")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v1tby")
 action_mode = 0
 text = "NO_BUTTON"
 flat = true
 
 [node name="ConfirmAnimation" type="AnimationPlayer" parent="NameEntry/ConfirmPanel"]
 libraries = {
-"": SubResource("AnimationLibrary_6f5xd")
+&"": SubResource("AnimationLibrary_6f5xd")
 }
 
 [node name="DifficultySelection" type="Control" parent="." node_paths=PackedStringArray("options", "sound", "animation", "difficulty_description", "difficulty_image")]
@@ -2013,10 +2009,10 @@ focus_neighbor_top = NodePath("../Crazy")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Standard")
 theme_override_colors/font_focus_color = Color(3.27289e-06, 0.900584, 0.856655, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
 theme_override_styles/normal = SubResource("StyleBoxFlat_80qg0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
 action_mode = 0
 text = "SIMPLIFIED_DIFFICULTY"
 flat = true
@@ -2028,10 +2024,10 @@ focus_neighbor_top = NodePath("../Simplified")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Crazy")
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
-theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
 theme_override_styles/normal = SubResource("StyleBoxFlat_80qg0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h40w8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5ehav")
 action_mode = 0
 text = "STANDARD_DIFFICULTY"
 flat = true
@@ -2043,10 +2039,10 @@ focus_neighbor_top = NodePath("../Standard")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Simplified")
 theme_override_colors/font_focus_color = Color(1, 0.432004, 0.389221, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_v1tby")
-theme_override_styles/hover = SubResource("StyleBoxFlat_sdm6v")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
 theme_override_styles/normal = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sdm6v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v1tby")
 action_mode = 0
 text = "CRAZY_DIFFICULTY"
 flat = true
@@ -2067,12 +2063,12 @@ autowrap_mode = 3
 
 [node name="ConfirmAnimation" type="AnimationPlayer" parent="DifficultySelection/DifficultyPanel"]
 libraries = {
-"": SubResource("AnimationLibrary_6f5xd")
+&"": SubResource("AnimationLibrary_6f5xd")
 }
 
 [node name="DifficultyAnimation" type="AnimationPlayer" parent="DifficultySelection"]
 libraries = {
-"": SubResource("AnimationLibrary_30bmj")
+&"": SubResource("AnimationLibrary_30bmj")
 }
 autoplay = "appear"
 
@@ -2088,7 +2084,7 @@ audio_library = SubResource("Resource_wkgca")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_5gmm4")
+&"": SubResource("AnimationLibrary_5gmm4")
 }
 autoplay = "appear"
 

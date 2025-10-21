@@ -76,7 +76,7 @@ func addLetterToName():
 			sound.play_sound_effect_from_library("confirm")
 			askConfirm()
 		return
-		
+
 	if name_container.get_child_count() >= MAX_NAME_SIZE:
 		sound.play_sound_effect_from_library("denied")
 		return
@@ -91,7 +91,10 @@ func addLetterToName():
 		letter_box.get_child(OK_BUTTON_INDEX).modulate = LETTER_MODULATE
 		letter_box.get_child(BACK_BUTTON_INDEX).modulate = LETTER_MODULATE
 
-	current_name += letter_box.get_child(current_pos).text
+	if letter_box.get_child(current_pos).text == '_':
+		current_name += '?'
+	else:
+		current_name += letter_box.get_child(current_pos).text
 	name_container.add_child(new_letter)
 	var animation_tween: Tween = get_tree().create_tween()
 	animation_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)

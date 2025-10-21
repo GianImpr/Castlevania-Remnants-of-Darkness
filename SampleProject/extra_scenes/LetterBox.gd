@@ -5,7 +5,7 @@ const BUTTON_SIZE: Vector2 = Vector2(64, 64)
 const BUTTON_MODULATE: Color = Color(1.5, 1.5, 1.5, 1)
 const BUTTON_PATH: String = "res://assets/sprites/HUD/NameEntry/"
 const BUTTON_EXTENSION: String = ".png"
-const BUTTONS: Array[String] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "@", "&", "!", "?", "-", "Back", "Ok"]
+const BUTTONS: Array[String] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "@", "&", "!", "_", "-", "Back", "Ok"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
