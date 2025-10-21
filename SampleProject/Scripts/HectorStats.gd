@@ -1,12 +1,12 @@
 extends Node
 class_name HectorStats
-@export var Stats: Dictionary #Current stats with boosts
-@export var Growths: Dictionary #Total stat gains from level 1 to 99
-@export var Boosts: Dictionary #Stat boosts from equipment and permanent pick-up upgrades
-@export var Initial: Dictionary #Initial starting stats
-@export var Bases: Dictionary = Initial.duplicate(true) #Current stats without boosts
-@export var Estimated: Dictionary #Stat calculations in the equip menu when selecting an item
-@export var equipment: Dictionary #Currently equipped item slots
+@export var Stats: Dictionary ##Current stats with boosts
+@export var Growths: Dictionary ##Total stat gains from level 1 to 99
+@export var Boosts: Dictionary ##Stat boosts from equipment and permanent pick-up upgrades
+@export var Initial: Dictionary ##Initial starting stats
+@export var Bases: Dictionary = Initial.duplicate(true) ##Current stats without boosts
+@export var Estimated: Dictionary ##Stat calculations in the equip menu when selecting an item
+@export var equipment: Dictionary ##Currently equipped item slots
 @export var item_inventory: Array[Dictionary]
 @export var weapon_inventory: Array[Dictionary]
 @export var artifact_inventory: Array[Dictionary]
@@ -40,14 +40,14 @@ enum Ailment {
 
 var current_status: Ailment = Ailment.GOOD
 
-var picked_items: Array[bool] #ID list checks for item pick-up flags
-var hint_flags: Array[bool] #ID list checks for hints
-var event_flags: Array[bool] #ID list checks for events (combat rooms and bosses are excluded)
-var stage_name_flags: Array[bool] #ID list checks for stage name display
-var combat_flags: Array[bool] #ID list checks for combat rooms and bosses
-var tutorial_flags: Array[bool] #ID list checks for fullscreen tutorial popups
-var dialogue_flags: Array[bool] #ID list checks for dialogue scenes
-var save_flags: Array[bool] #ID list checks for visited save rooms
+var picked_items: Array[bool] ##ID list checks for item pick-up flags
+var hint_flags: Array[bool] ##ID list checks for hints
+var event_flags: Array[bool] ##ID list checks for events (combat rooms and bosses are excluded)
+var stage_name_flags: Array[bool] ##ID list checks for stage name display
+var combat_flags: Array[bool] ##ID list checks for combat rooms and bosses
+var tutorial_flags: Array[bool] ##ID list checks for fullscreen tutorial popups
+var dialogue_flags: Array[bool] ##ID list checks for dialogue scenes
+var save_flags: Array[bool] ##ID list checks for visited save rooms
 var current_area: String = "???"
 var map_ratio: String
 
@@ -75,14 +75,14 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	play_time.count(delta)
 
-# Finds the # of held copies of a certain item ID in a certain inventory
+## Finds the number of held copies of a certain item ID in a certain inventory.
 func findItem(id: int, inventory) -> int:
 	for item in inventory:
 		if id == item["id"]:
 			return item["quantity"]
 	return 0
 
-# Adds 1 copy of a certain item ID in a certain inventory
+## Adds 1 copy of a certain item ID in a certain inventory.
 func addItem(id: int, inventory) -> void:
 	var copies = findItem(id, inventory)
 	if copies == 0:
@@ -92,7 +92,7 @@ func addItem(id: int, inventory) -> void:
 			if item["id"] == id:
 				item["quantity"] += 1
 
-# Removes 1 copy of a certain item ID in a certain inventory
+## Removes 1 copy of a certain item ID in a certain inventory.
 func removeItem(id: int, inventory, remove_from_wheel: bool = false) -> void:
 	var copies = findItem(id, inventory)
 	if copies == 1:
@@ -105,7 +105,7 @@ func removeItem(id: int, inventory, remove_from_wheel: bool = false) -> void:
 				item["quantity"] -= 1
 	
 				
-# Removes multiple copies of a certain item ID in a certain inventory
+## Removes multiple copies of a certain item ID in a certain inventory.
 func removeItemCopies(id: int, qty: int, inventory, remove_from_wheel: bool = false) -> void:
 	var copies = findItem(id, inventory)
 	if copies <= qty:
@@ -116,19 +116,20 @@ func removeItemCopies(id: int, qty: int, inventory, remove_from_wheel: bool = fa
 		for item in inventory:
 			if item["id"] == id:
 				item["quantity"] -= qty
-				
+
+## Removes the specified weapon from the weapon wheel, if present.
 func removeWeaponInWheel(id: int) -> void:
 	for i in range(0, EquipMenu.quick_weapons.size()):
 		if EquipMenu.quick_weapons[i] == weapon_compendium[id-1]:
 			EquipMenu.quick_weapons[i] = null
 
-# Finds the item ID in a certain compendium
+## Finds the item ID in a certain compendium.
 func searchItemInCompendium(id: int, compendium):
 	if id < 1:
 		return null
 	return compendium[id-1]
 
-# Finds the slot number of the item in a certain compendium
+## Finds the slot number of the item in a certain compendium.
 func getItemIndexInCompendium(item, compendium: Array) -> int:
 	var slot = 1
 	for entry in compendium:
@@ -136,18 +137,44 @@ func getItemIndexInCompendium(item, compendium: Array) -> int:
 			return slot
 		slot += 1
 	return 0
-	
+
+## Returns the current weapon type the player has equipped.
 func getCurrentWeaponType() -> int:
 	var weapon_type: int = 4
 	if equipment["weapon"] != 0:
 		weapon_type = searchItemInCompendium(equipment["weapon"], weapon_compendium).type
 	return weapon_type
 
+## Checks if player can use this skill
 func canApplySkill(id: int) -> bool:
 	return findItem(id, skill_inventory) > 0 and getCurrentWeaponType() == searchItemInCompendium(id, skill_compendium).weapon_type
 
+## Checks if the player has this accessory equipped
 func accessoryEquipped(id : int) -> bool:
 	return equipment["acc1"] == id or equipment["acc2"] == id
-	
+
+## Checks if the player has this item equipped, with specified slot.
 func itemEquipped(id: int, slot: String) -> bool:
 	return equipment[slot] == id+1
+
+## Checks if the player has this item equipped.
+func isEquipped(item) -> bool:
+	var inventories: Array = [accessory_compendium, accessory_compendium, artifact_compendium, body_compendium, headgear_compendium, legs_compendium, relic_compendium, weapon_compendium]
+	var slots: Array[String] = equipment.keys()
+	for i in inventories.size():
+		if equipment[slots[i]] > 0:
+			var equipped_item = searchItemInCompendium(equipment[slots[i]], inventories[i])
+			if equipped_item == item:
+				return true
+	return false
+	
+## Removes the item from the player's equipped slot.
+func removeEquippedItem(item) -> void:
+	var inventories: Array = [accessory_compendium, accessory_compendium, artifact_compendium, body_compendium, headgear_compendium, legs_compendium, relic_compendium, weapon_compendium]
+	var slots: Array[String] = equipment.keys()
+	for i in inventories.size():
+		if equipment[slots[i]] > 0:
+			var equipped_item = searchItemInCompendium(equipment[slots[i]], inventories[i])
+			if equipped_item == item:
+				equipment[slots[i]] = 0
+	push_error("removeEquippedItem: Item not found")
