@@ -284,7 +284,15 @@ func play_sound(sfx_name: String):
 	
 func can_die():
 	if player.stats.Stats["HP"] <= 0:
-		Transitioned.emit(self, "dying")
+		if player.stats.accessoryEquipped(Accessory.Accessories.RING_OF_LIFE):
+			var ring_of_life_effect = player.RING_OF_LIFE_SCENE.instantiate()
+			ring_of_life_effect.global_position = player.global_position
+			ring_of_life_effect.z_index = player.z_index
+			MetSys.get_current_room_instance().add_child(ring_of_life_effect)
+			player.heal(player.stats.Stats["MHP"]/4, false)
+			player.stats.removeFromSlots(Accessory.Accessories.RING_OF_LIFE)
+		else:
+			Transitioned.emit(self, "dying")
 		
 func attack_anim_suffix() -> String:
 	var anims = ["", "_greatsword", "_axe", "_spear", "_fist"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=595 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=597 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" uid="uid://bi427jhyxfyx5" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" uid="uid://1vp87s3hhyhn" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -217,6 +217,7 @@
 [ext_resource type="Texture2D" uid="uid://dler8ycprwoac" path="res://assets/sprites/Items/InventoryIcons/BookOfMonsters.png" id="157_qs5p8"]
 [ext_resource type="Texture2D" uid="uid://ctxxn0ruh067u" path="res://assets/images/WarpPreviews/AbandonedGauntlet.png" id="157_wahx8"]
 [ext_resource type="Texture2D" uid="uid://bgsf8dpkpib4k" path="res://assets/images/WarpPreviews/AbandonedTop.png" id="158_8p07p"]
+[ext_resource type="Texture2D" uid="uid://bwygvf5oseir5" path="res://assets/sprites/Items/InventoryIcons/Inventory_133.png" id="158_pi3lu"]
 [ext_resource type="Texture2D" uid="uid://b5pb6poj5elsi" path="res://assets/images/WarpPreviews/FagarasLeft.png" id="159_gniwj"]
 [ext_resource type="Texture2D" uid="uid://cocqy21dghhhv" path="res://assets/images/WarpPreviews/FagarasRight.png" id="160_rdsmc"]
 [ext_resource type="PackedScene" uid="uid://bsxx7aocrs1f6" path="res://SampleProject/extra_scenes/HUD/weapon_wheel.tscn" id="164_3jxay"]
@@ -1916,6 +1917,15 @@ DEF = 2
 value = 1500
 icon = ExtResource("157_6vmuw")
 
+[sub_resource type="Resource" id="Resource_yrj2d"]
+script = ExtResource("95_xlcm0")
+accessory_name = "RING_OF_LIFE"
+accessory_description = "RING_OF_LIFE_DESC"
+value = 3000
+max_quantity = 1
+icon = ExtResource("158_pi3lu")
+metadata/_custom_type_script = "uid://bnewa3gbe2njm"
+
 [sub_resource type="Resource" id="Resource_2w4nc"]
 script = ExtResource("99_ixwc3")
 skill_name = "FORTITUDE_GAUNTLET"
@@ -3052,7 +3062,7 @@ item_compendium = SubResource("Resource_ksmb3")
 headgear_compendium = Array[ExtResource("58_johey")]([SubResource("Resource_stdwu"), SubResource("Resource_hcxc2"), SubResource("Resource_qtfvs"), SubResource("Resource_b4qdd"), SubResource("Resource_w8tqy"), SubResource("Resource_4iosu"), SubResource("Resource_b0lhj"), SubResource("Resource_kh436"), SubResource("Resource_n53u7"), SubResource("Resource_n15bh"), SubResource("Resource_2gney"), SubResource("Resource_580rm"), SubResource("Resource_fy53e"), SubResource("Resource_xv0ma"), SubResource("Resource_csljy"), SubResource("Resource_nfnn0"), SubResource("Resource_7go8i"), SubResource("Resource_ji887"), SubResource("Resource_nhhcx"), SubResource("Resource_ocbsj"), SubResource("Resource_jsrpv"), SubResource("Resource_qx0f7"), SubResource("Resource_bg2je"), SubResource("Resource_vexyv"), SubResource("Resource_utsap"), SubResource("Resource_itck4"), SubResource("Resource_ms7n0")])
 body_compendium = Array[ExtResource("86_xt4t6")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me"), SubResource("Resource_dqisp"), SubResource("Resource_rngem")])
 legs_compendium = Array[ExtResource("92_10lem")]([SubResource("Resource_olb5a"), SubResource("Resource_jnr2a"), SubResource("Resource_d35ul"), SubResource("Resource_4ly5s"), SubResource("Resource_jd16d")])
-accessory_compendium = Array[ExtResource("95_xlcm0")]([SubResource("Resource_fmjl1"), SubResource("Resource_g71f4"), SubResource("Resource_t5f6q"), SubResource("Resource_jiprx"), SubResource("Resource_hiqqn"), SubResource("Resource_aauoy"), SubResource("Resource_kfktv"), SubResource("Resource_j5jy3"), SubResource("Resource_wergv"), SubResource("Resource_dorjh")])
+accessory_compendium = Array[ExtResource("95_xlcm0")]([SubResource("Resource_fmjl1"), SubResource("Resource_g71f4"), SubResource("Resource_t5f6q"), SubResource("Resource_jiprx"), SubResource("Resource_hiqqn"), SubResource("Resource_aauoy"), SubResource("Resource_kfktv"), SubResource("Resource_j5jy3"), SubResource("Resource_wergv"), SubResource("Resource_dorjh"), SubResource("Resource_yrj2d")])
 skill_compendium = Array[ExtResource("99_ixwc3")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_6o46a"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47"), SubResource("Resource_vfu6u"), SubResource("Resource_4ifw5"), SubResource("Resource_lqir6"), SubResource("Resource_yrs72"), SubResource("Resource_awbx6"), SubResource("Resource_k5k37"), SubResource("Resource_se88n"), SubResource("Resource_16qt3")])
 relic_compendium = Array[ExtResource("105_7lbas")]([SubResource("Resource_86suo"), SubResource("Resource_8t8qo")])
 artifact_compendium = Array[ExtResource("145_wv42h")]([SubResource("Resource_1ioky"), SubResource("Resource_fs6ce"), SubResource("Resource_y30nd"), SubResource("Resource_1jp3v"), SubResource("Resource_bk52o")])

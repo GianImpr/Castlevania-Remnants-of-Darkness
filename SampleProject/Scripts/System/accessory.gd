@@ -26,5 +26,6 @@ enum Accessories {
 	BLOOD_CLOAK = 7,
 	ADVENTURER_CLOAK = 8,
 	WIZARD_CLOAK = 9,
-	RED_SCARF = 10
+	RED_SCARF = 10,
+	RING_OF_LIFE = 11
 }

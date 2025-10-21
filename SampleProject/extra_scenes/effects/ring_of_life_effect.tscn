@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckpgc76vp8du"]
+
+[ext_resource type="Shader" uid="uid://ccbusj4pboktl" path="res://SampleProject/Shaders/flash.gdshader" id="1_6a8qb"]
+[ext_resource type="Texture2D" uid="uid://bc22rt5lbfl50" path="res://assets/sprites/Characters/Hector/HectorSprite2D.png" id="2_a0gjo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l46sv"]
+shader = ExtResource("1_6a8qb")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3rr3"]
+atlas = ExtResource("2_a0gjo")
+region = Rect2(270, 420, 90, 70)
+
+[sub_resource type="Animation" id="Animation_2v0j1"]
+resource_name = "idle"
+length = 1.25
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.2333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.2333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_y1odd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b50ll"]
+_data = {
+&"RESET": SubResource("Animation_y1odd"),
+&"idle": SubResource("Animation_2v0j1")
+}
+
+[node name="RingOfLife" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_l46sv")
+texture = SubResource("AtlasTexture_n3rr3")
+offset = Vector2(2, -10)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_b50ll")
+}
