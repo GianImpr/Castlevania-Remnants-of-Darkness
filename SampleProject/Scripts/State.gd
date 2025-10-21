@@ -287,10 +287,11 @@ func can_die():
 		if player.stats.accessoryEquipped(Accessory.Accessories.RING_OF_LIFE):
 			var ring_of_life_effect = player.RING_OF_LIFE_SCENE.instantiate()
 			ring_of_life_effect.global_position = player.global_position
-			ring_of_life_effect.z_index = player.z_index
+			ring_of_life_effect.z_index = player.z_index-1
+			ring_of_life_effect.get_child(0).flip_h = player.sprite.flip_h
 			MetSys.get_current_room_instance().add_child(ring_of_life_effect)
-			player.heal(player.stats.Stats["MHP"]/4, false)
-			player.stats.removeFromSlots(Accessory.Accessories.RING_OF_LIFE)
+			player.stats.Stats["HP"] = player.stats.Stats["MHP"]/4
+			player.stats.removeEquippedItem(player.stats.searchItemInCompendium(Accessory.Accessories.RING_OF_LIFE, player.stats.accessory_compendium))
 		else:
 			Transitioned.emit(self, "dying")
 		

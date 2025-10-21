@@ -5,9 +5,21 @@ class_name EquipButtons
 @export var description: Control
 var button_index: int
 
+enum EquipSlots {
+	WEAPON,
+	ARTIFACT,
+	RELIC,
+	HEADGEAR,
+	BODY,
+	LEGS,
+	ACC_1,
+	ACC_2
+}
+
 func _ready() -> void:
 	super()
 	PickUp.change_equipment = setEquipTextAndIcon
+	HectorStats.change_slot_icon = setEquipTextAndIcon
 
 func on_button_pressed(which):
 	state_machine.current_state.accessed_menu = 1

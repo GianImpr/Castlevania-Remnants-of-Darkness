@@ -10,7 +10,7 @@ shader_parameter/flash_modifier = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n3rr3"]
 atlas = ExtResource("2_a0gjo")
-region = Rect2(270, 420, 90, 70)
+region = Rect2(270, 423, 90, 70)
 
 [sub_resource type="Animation" id="Animation_2v0j1"]
 resource_name = "idle"
@@ -38,7 +38,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -30)]
+"values": [Vector2(0, 0), Vector2(0, -23)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -92,6 +92,7 @@ _data = {
 scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_l46sv")
 texture = SubResource("AtlasTexture_n3rr3")
 offset = Vector2(2, -10)
@@ -101,3 +102,4 @@ root_node = NodePath("../Sprite2D")
 libraries = {
 &"": SubResource("AnimationLibrary_b50ll")
 }
+autoplay = "idle"

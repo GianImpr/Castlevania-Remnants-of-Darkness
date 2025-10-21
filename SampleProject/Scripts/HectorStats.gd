@@ -51,6 +51,8 @@ var save_flags: Array[bool] ##ID list checks for visited save rooms
 var current_area: String = "???"
 var map_ratio: String
 
+static var change_slot_icon: Callable
+
 enum Status {
 	REFRESHING_AIR
 }
@@ -171,10 +173,13 @@ func isEquipped(item) -> bool:
 ## Removes the item from the player's equipped slot.
 func removeEquippedItem(item) -> void:
 	var inventories: Array = [accessory_compendium, accessory_compendium, artifact_compendium, body_compendium, headgear_compendium, legs_compendium, relic_compendium, weapon_compendium]
-	var slots: Array[String] = equipment.keys()
+	var equip_icon_order: Array = [EquipButtons.EquipSlots.ACC_1, EquipButtons.EquipSlots.ACC_2, EquipButtons.EquipSlots.ARTIFACT, EquipButtons.EquipSlots.BODY, EquipButtons.EquipSlots.HEADGEAR, EquipButtons.EquipSlots.LEGS, EquipButtons.EquipSlots.RELIC, EquipButtons.EquipSlots.WEAPON]
+	var slots: Array = equipment.keys()
 	for i in inventories.size():
 		if equipment[slots[i]] > 0:
 			var equipped_item = searchItemInCompendium(equipment[slots[i]], inventories[i])
 			if equipped_item == item:
 				equipment[slots[i]] = 0
+				change_slot_icon.call(equip_icon_order[i], "", null)
+				return
 	push_error("removeEquippedItem: Item not found")
