@@ -1,18 +1,18 @@
 [gd_scene load_steps=29 format=3 uid="uid://b33buvcvhwwqa"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/bone_pillar.gd" id="1_whnnv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_63tft"]
+[ext_resource type="Script" uid="uid://b1hcb3hrue7gv" path="res://SampleProject/enemies/BonePillar/bone_pillar.gd" id="1_whnnv"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_63tft"]
 [ext_resource type="Texture2D" uid="uid://ef0clrhyqt83" path="res://assets/sprites/Enemies/bonePillar.png" id="3_2y5qg"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_gkhun"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_1xuni"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/BonePillarIdle.gd" id="5_4yidx"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="5_wg3yk"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_gkhun"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_1xuni"]
+[ext_resource type="Script" uid="uid://b3lkbuyi11h0e" path="res://SampleProject/enemies/BonePillar/BonePillarIdle.gd" id="5_4yidx"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="5_wg3yk"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_0mqfv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_hylne"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/BonePillarShoot.gd" id="6_wma57"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_hylne"]
+[ext_resource type="Script" uid="uid://dmv3ds04ufl0g" path="res://SampleProject/enemies/BonePillar/BonePillarShoot.gd" id="6_wma57"]
 [ext_resource type="AudioStream" uid="uid://c3katgon2vst" path="res://assets/sounds/Enemies/BonePillar/BonePillarShoot.MP3" id="7_pg1j8"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/BonePillarDying.gd" id="7_vh1xc"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/BonePillarTurning.gd" id="8_6lv8s"]
+[ext_resource type="Script" uid="uid://dqtwg3uvt5v12" path="res://SampleProject/enemies/BonePillar/BonePillarDying.gd" id="7_vh1xc"]
+[ext_resource type="Script" uid="uid://bysuw1kt6dpih" path="res://SampleProject/enemies/BonePillar/BonePillarTurning.gd" id="8_6lv8s"]
 [ext_resource type="AudioStream" uid="uid://biq6cue5ccbc4" path="res://assets/sounds/Enemies/BonePillar/BonePillarDead.wav" id="8_ljfld"]
 [ext_resource type="PackedScene" uid="uid://by2tojgiqqi2u" path="res://SampleProject/enemies/BonePillar/fireball.tscn" id="11_axyld"]
 [ext_resource type="PackedScene" uid="uid://s7fw3ol2hc0h" path="res://SampleProject/enemies/BonePillar/bone_pillar_dead.tscn" id="15_xv7ij"]
@@ -164,11 +164,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_layit"]
 _data = {
-"RESET": SubResource("Animation_rqd7f"),
-"dying": SubResource("Animation_v6k6r"),
-"idle": SubResource("Animation_q1wnq"),
-"shoot": SubResource("Animation_1346x"),
-"turn": SubResource("Animation_4vv74")
+&"RESET": SubResource("Animation_rqd7f"),
+&"dying": SubResource("Animation_v6k6r"),
+&"idle": SubResource("Animation_q1wnq"),
+&"shoot": SubResource("Animation_1346x"),
+&"turn": SubResource("Animation_4vv74")
 }
 
 [sub_resource type="Resource" id="Resource_et0hc"]
@@ -241,7 +241,7 @@ size = Vector2(60, 56)
 
 [node name="BonePillar" type="CharacterBody2D" node_paths=PackedStringArray("vision", "vision_startup_timer", "sprite", "stats", "damage_popup", "hitbox_iframe")]
 collision_layer = 5
-collision_mask = 3
+collision_mask = 4099
 script = ExtResource("1_whnnv")
 vision = NodePath("Vision")
 vision_startup_timer = NodePath("Vision/Timer")
@@ -264,7 +264,7 @@ tolerances = Array[int]([3, 9])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_layit")
+&"": SubResource("AnimationLibrary_layit")
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

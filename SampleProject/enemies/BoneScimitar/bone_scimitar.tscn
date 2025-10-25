@@ -1,18 +1,18 @@
 [gd_scene load_steps=28 format=3 uid="uid://bxi1h5wf54pjq"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/BoneScimitar/BoneScimitar.gd" id="1_nyag5"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_htfae"]
+[ext_resource type="Script" uid="uid://5reg3bmorjna" path="res://SampleProject/enemies/BoneScimitar/BoneScimitar.gd" id="1_nyag5"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_htfae"]
 [ext_resource type="Texture2D" uid="uid://dbqryxsec57ud" path="res://assets/sprites/Enemies/boneScimitar.png" id="3_lgc47"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_g6mor"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_428xb"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_2nio2"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_g6mor"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_428xb"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_2nio2"]
 [ext_resource type="AudioStream" uid="uid://c1mpwbjmbcwi4" path="res://assets/sounds/Enemies/Skeleton/ThrowBone.MP3" id="7_x3lvv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="8_pbxox"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="8_pbxox"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="9_g8e0w"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BoneScimitar/BoneScimitarIdle.gd" id="10_gf0n5"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BoneScimitar/BoneScimitarMoving.gd" id="11_rrmqf"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BoneScimitar/BoneScimitarAttack.gd" id="12_dyui7"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BoneScimitar/BoneScimitarDying.gd" id="13_804yl"]
+[ext_resource type="Script" uid="uid://bv1cauw4qotfx" path="res://SampleProject/enemies/BoneScimitar/BoneScimitarIdle.gd" id="10_gf0n5"]
+[ext_resource type="Script" uid="uid://cviwas5oye3nw" path="res://SampleProject/enemies/BoneScimitar/BoneScimitarMoving.gd" id="11_rrmqf"]
+[ext_resource type="Script" uid="uid://bueoi4f2hvos6" path="res://SampleProject/enemies/BoneScimitar/BoneScimitarAttack.gd" id="12_dyui7"]
+[ext_resource type="Script" uid="uid://dkgbgri8k5m8b" path="res://SampleProject/enemies/BoneScimitar/BoneScimitarDying.gd" id="13_804yl"]
 [ext_resource type="PackedScene" uid="uid://dd3s67ealy03f" path="res://SampleProject/enemies/BoneScimitar/scimitar_shatter.tscn" id="14_l3b8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5cx7u"]
@@ -195,15 +195,16 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ipue8"]
 _data = {
-"RESET": SubResource("Animation_ardas"),
-"attack": SubResource("Animation_bh8w8"),
-"idle": SubResource("Animation_28tq2"),
-"moving": SubResource("Animation_wnuo6")
+&"RESET": SubResource("Animation_ardas"),
+&"attack": SubResource("Animation_bh8w8"),
+&"idle": SubResource("Animation_28tq2"),
+&"moving": SubResource("Animation_wnuo6")
 }
 
 [node name="BoneScimitar" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sword_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 scale = Vector2(2, 2)
 collision_layer = 4
+collision_mask = 4097
 floor_max_angle = 1.309
 floor_snap_length = 20.0
 script = ExtResource("1_nyag5")
@@ -316,7 +317,7 @@ shape = SubResource("RectangleShape2D_vkvec")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ipue8")
+&"": SubResource("AnimationLibrary_ipue8")
 }
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

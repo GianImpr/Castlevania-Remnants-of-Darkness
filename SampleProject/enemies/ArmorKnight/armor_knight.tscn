@@ -1,29 +1,29 @@
 [gd_scene load_steps=51 format=3 uid="uid://bn5w03bpeuhmt"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorKnight/armor_knight.gd" id="1_ospht"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_xremq"]
+[ext_resource type="Script" uid="uid://cwrmssaiaglfq" path="res://SampleProject/enemies/ArmorKnight/armor_knight.gd" id="1_ospht"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_xremq"]
 [ext_resource type="Texture2D" uid="uid://da7tisvqcrex2" path="res://assets/sprites/Enemies/ArmorKnight.png" id="3_6v812"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_7cceu"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_7cceu"]
 [ext_resource type="Texture2D" uid="uid://b14un0hnoriq2" path="res://assets/sprites/Effects/Fire2.png" id="5_8o2d7"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_ecmo2"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="6_8cibn"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_8f38i"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_ecmo2"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="6_8cibn"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_8f38i"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="7_88dri"]
 [ext_resource type="AudioStream" uid="uid://c5hl7my81fgyr" path="res://assets/sounds/Enemies/ArmorKnight/ArmorKnightDead.MP3" id="7_tb26o"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightIdle.gd" id="8_3j61a"]
+[ext_resource type="Script" uid="uid://c1mqytjctgd7w" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightIdle.gd" id="8_3j61a"]
 [ext_resource type="AudioStream" uid="uid://77t5bx6uib4i" path="res://assets/sounds/Enemies/ArmorKnight/Spear.wav" id="8_oj6go"]
 [ext_resource type="AudioStream" uid="uid://c7tos0k772o2n" path="res://assets/sounds/Enemies/ArmorKnight/SpearReady.MP3" id="9_aipx7"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightWalk.gd" id="9_q141s"]
+[ext_resource type="Script" uid="uid://b27xiy8qheyxv" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightWalk.gd" id="9_q141s"]
 [ext_resource type="AudioStream" uid="uid://cwhm5pe168los" path="res://assets/sounds/Enemies/ArmorKnight/Special.wav" id="10_m0e7m"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightReady.gd" id="10_tnuq8"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightAttack.gd" id="11_0seaa"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightSpecial.gd" id="12_i2tji"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightDying.gd" id="19_gm4gb"]
+[ext_resource type="Script" uid="uid://cmh1do5wktvbm" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightReady.gd" id="10_tnuq8"]
+[ext_resource type="Script" uid="uid://cufepgqbfkxyr" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightAttack.gd" id="11_0seaa"]
+[ext_resource type="Script" uid="uid://d1pfsqqp6c5tf" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightSpecial.gd" id="12_i2tji"]
+[ext_resource type="Script" uid="uid://cbopfejnjfvai" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightDying.gd" id="19_gm4gb"]
 [ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="19_tab26"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightSwingUp.gd" id="21_i0cdd"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightSwingDown.gd" id="22_tmref"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/detect_projectiles.gd" id="23_atrjo"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightDeflect.gd" id="23_qqk2f"]
+[ext_resource type="Script" uid="uid://cq7v7e1riqn3s" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightSwingUp.gd" id="21_i0cdd"]
+[ext_resource type="Script" uid="uid://uduxgvm3q8qk" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightSwingDown.gd" id="22_tmref"]
+[ext_resource type="Script" uid="uid://htemc6vfehe8" path="res://SampleProject/Scripts/System/detect_projectiles.gd" id="23_atrjo"]
+[ext_resource type="Script" uid="uid://uf8hsd447gol" path="res://SampleProject/enemies/ArmorKnight/ArmorKnightDeflect.gd" id="23_qqk2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bup83"]
 size = Vector2(68, 85)
@@ -737,16 +737,16 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j1abk"]
 _data = {
-"RESET": SubResource("Animation_yefq4"),
-"attack": SubResource("Animation_jc5n3"),
-"attack_above": SubResource("Animation_lkipy"),
-"attack_below": SubResource("Animation_jrpko"),
-"deflect": SubResource("Animation_b4hbm"),
-"dying": SubResource("Animation_b8qm0"),
-"idle": SubResource("Animation_c53r8"),
-"special_attack": SubResource("Animation_hh4s1"),
-"walk_ready": SubResource("Animation_gnjf8"),
-"walking": SubResource("Animation_g1nuh")
+&"RESET": SubResource("Animation_yefq4"),
+&"attack": SubResource("Animation_jc5n3"),
+&"attack_above": SubResource("Animation_lkipy"),
+&"attack_below": SubResource("Animation_jrpko"),
+&"deflect": SubResource("Animation_b4hbm"),
+&"dying": SubResource("Animation_b8qm0"),
+&"idle": SubResource("Animation_c53r8"),
+&"special_attack": SubResource("Animation_hh4s1"),
+&"walk_ready": SubResource("Animation_gnjf8"),
+&"walking": SubResource("Animation_g1nuh")
 }
 
 [sub_resource type="Resource" id="Resource_korjq"]
@@ -847,6 +847,7 @@ radius = 81.0987
 
 [node name="ArmorKnight" type="CharacterBody2D" node_paths=PackedStringArray("vision", "spear", "special", "vertical_spear_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 collision_layer = 4
+collision_mask = 4097
 script = ExtResource("1_ospht")
 vision = NodePath("Vision")
 spear = NodePath("Spear")
@@ -895,7 +896,7 @@ vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_j1abk")
+&"": SubResource("AnimationLibrary_j1abk")
 }
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -909,8 +910,8 @@ material = SubResource("CanvasItemMaterial_80svb")
 position = Vector2(-0.434783, 30.4348)
 emitting = false
 amount = 80
-one_shot = true
 texture = ExtResource("5_8o2d7")
+one_shot = true
 emission_shape = 1
 emission_sphere_radius = 50.0
 direction = Vector2(0, -1)

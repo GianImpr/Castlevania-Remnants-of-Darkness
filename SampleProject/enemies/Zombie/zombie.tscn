@@ -1,19 +1,19 @@
 [gd_scene load_steps=29 format=3 uid="uid://bpbuc4imoao83"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="1_17sfr"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Zombie/zombie.gd" id="1_vknq3"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="1_17sfr"]
+[ext_resource type="Script" uid="uid://dsmo5e5rvclof" path="res://SampleProject/enemies/Zombie/zombie.gd" id="1_vknq3"]
 [ext_resource type="Texture2D" uid="uid://bfbhnh66puau2" path="res://assets/sprites/Enemies/Zombie.png" id="2_5kk3e"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Zombie/ZombieDying.gd" id="4_grrpx"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Zombie/ZombieSpawning.gd" id="5_dguli"]
+[ext_resource type="Script" uid="uid://d1qe4qctu0l3h" path="res://SampleProject/enemies/Zombie/ZombieDying.gd" id="4_grrpx"]
+[ext_resource type="Script" uid="uid://b8fvjbxppd6tg" path="res://SampleProject/enemies/Zombie/ZombieSpawning.gd" id="5_dguli"]
 [ext_resource type="PackedScene" uid="uid://chsi373nippdo" path="res://SampleProject/extra_scenes/polyphonic_audio_player.tscn" id="6_60l16"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Zombie/ZombieMoving.gd" id="6_de3rd"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_y1k3t"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="8_ile2y"]
+[ext_resource type="Script" uid="uid://d0m57kp4ey2gc" path="res://SampleProject/enemies/Zombie/ZombieMoving.gd" id="6_de3rd"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_y1k3t"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="8_ile2y"]
 [ext_resource type="AudioStream" uid="uid://baubt1rksjbty" path="res://assets/sounds/HectorMovement/jump.MP3" id="9_a80cu"]
 [ext_resource type="AudioStream" uid="uid://cghql4ik4xqao" path="res://assets/sounds/HectorMovement/Backdash.MP3" id="10_hjd37"]
 [ext_resource type="AudioStream" uid="uid://bc2alrbmrk7op" path="res://assets/sounds/HectorMovement/land.MP3" id="11_y0yiq"]
 [ext_resource type="AudioStream" uid="uid://cav4876kfmc7t" path="res://assets/sounds/HectorMovement/Sword.MP3" id="12_kbti4"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="13_eqw15"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="13_eqw15"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="14_klfs4"]
 
 [sub_resource type="Animation" id="Animation_s8eig"]
@@ -181,10 +181,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wmja6"]
 _data = {
-"RESET": SubResource("Animation_s8eig"),
-"dying": SubResource("Animation_idywo"),
-"moving": SubResource("Animation_vx0g8"),
-"spawning": SubResource("Animation_b1n0f")
+&"RESET": SubResource("Animation_s8eig"),
+&"dying": SubResource("Animation_idywo"),
+&"moving": SubResource("Animation_vx0g8"),
+&"spawning": SubResource("Animation_b1n0f")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2c72"]
@@ -268,6 +268,7 @@ size = Vector2(13.4783, 35.4348)
 [node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 scale = Vector2(2, 2)
 collision_layer = 4
+collision_mask = 4097
 collision_priority = 2.0
 script = ExtResource("1_vknq3")
 sprite = NodePath("Sprite2D")
@@ -292,7 +293,7 @@ hframes = 20
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_wmja6")
+&"": SubResource("AnimationLibrary_wmja6")
 }
 
 [node name="Collision box" type="CollisionShape2D" parent="."]

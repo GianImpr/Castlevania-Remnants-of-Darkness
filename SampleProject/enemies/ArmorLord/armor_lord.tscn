@@ -1,11 +1,11 @@
 [gd_scene load_steps=54 format=3 uid="uid://cxfeg6jj146ah"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/armor_lord.gd" id="1_qx3bf"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_g2oj7"]
+[ext_resource type="Script" uid="uid://bhmoor0btevfp" path="res://SampleProject/enemies/ArmorLord/armor_lord.gd" id="1_qx3bf"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_g2oj7"]
 [ext_resource type="Texture2D" uid="uid://6tg0bhd0y3s5" path="res://assets/sprites/Enemies/ArmorLord/ArmorLord.png" id="3_8hn7x"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_bpgqt"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_v8jfn"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_33ghu"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_bpgqt"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_v8jfn"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_33ghu"]
 [ext_resource type="AudioStream" uid="uid://ctvhyi7v5j6yr" path="res://assets/sounds/Enemies/ArmorLord/ArmorLordMince.MP3" id="7_2yukg"]
 [ext_resource type="AudioStream" uid="uid://diltuytw6xnnu" path="res://assets/sounds/Enemies/ArmorLord/ArmorLordSwing.MP3" id="8_br2it"]
 [ext_resource type="AudioStream" uid="uid://bvr5ewwyv5jb" path="res://assets/sounds/Enemies/ArmorLord/ArmorLordFire.MP3" id="9_b1ed3"]
@@ -15,13 +15,13 @@
 [ext_resource type="AudioStream" uid="uid://dfur7knqfp4ho" path="res://assets/sounds/Enemies/ArmorLord/Explosion.MP3" id="11_vqraa"]
 [ext_resource type="Texture2D" uid="uid://cc2xtjhv1qdqd" path="res://assets/sprites/Enemies/ArmorLord/ArmorLordFireTrail.png" id="12_oq3vb"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="13_4q8sp"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="13_rfaak"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordIdle.gd" id="15_jdmar"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordMoving.gd" id="16_cgj71"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordSwing.gd" id="17_y722i"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordFire.gd" id="18_byf6u"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordMince.gd" id="19_syfeh"]
-[ext_resource type="Script" path="res://SampleProject/enemies/ArmorLord/ArmorLordDying.gd" id="20_vield"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="13_rfaak"]
+[ext_resource type="Script" uid="uid://d1rqhdqypelhs" path="res://SampleProject/enemies/ArmorLord/ArmorLordIdle.gd" id="15_jdmar"]
+[ext_resource type="Script" uid="uid://cdqwoou8kxst0" path="res://SampleProject/enemies/ArmorLord/ArmorLordMoving.gd" id="16_cgj71"]
+[ext_resource type="Script" uid="uid://ccfi4643xwhr8" path="res://SampleProject/enemies/ArmorLord/ArmorLordSwing.gd" id="17_y722i"]
+[ext_resource type="Script" uid="uid://meqwryfpxfwc" path="res://SampleProject/enemies/ArmorLord/ArmorLordFire.gd" id="18_byf6u"]
+[ext_resource type="Script" uid="uid://brcvxg680puy1" path="res://SampleProject/enemies/ArmorLord/ArmorLordMince.gd" id="19_syfeh"]
+[ext_resource type="Script" uid="uid://bussss5rb7akf" path="res://SampleProject/enemies/ArmorLord/ArmorLordDying.gd" id="20_vield"]
 [ext_resource type="Texture2D" uid="uid://b14un0hnoriq2" path="res://assets/sprites/Effects/Fire2.png" id="21_jdpwl"]
 
 [sub_resource type="Animation" id="Animation_rla4m"]
@@ -777,13 +777,13 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mij7x"]
 _data = {
-"RESET": SubResource("Animation_rla4m"),
-"dying": SubResource("Animation_n6pw1"),
-"fire_attack": SubResource("Animation_j5ihs"),
-"idle": SubResource("Animation_ywrfs"),
-"mincemeat": SubResource("Animation_si5rc"),
-"step": SubResource("Animation_niihj"),
-"swing_sword": SubResource("Animation_m2fh8")
+&"RESET": SubResource("Animation_rla4m"),
+&"dying": SubResource("Animation_n6pw1"),
+&"fire_attack": SubResource("Animation_j5ihs"),
+&"idle": SubResource("Animation_ywrfs"),
+&"mincemeat": SubResource("Animation_si5rc"),
+&"step": SubResource("Animation_niihj"),
+&"swing_sword": SubResource("Animation_m2fh8")
 }
 
 [sub_resource type="Resource" id="Resource_fwfx2"]
@@ -934,6 +934,7 @@ anim_speed_max = 1.0
 [node name="ArmorLord" type="CharacterBody2D" node_paths=PackedStringArray("vision", "mince", "fire", "swing", "sword_linger", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 scale = Vector2(2, 2)
 collision_layer = 4
+collision_mask = 4097
 script = ExtResource("1_qx3bf")
 vision = NodePath("AreaOfVision")
 mince = NodePath("Mince")
@@ -965,7 +966,7 @@ vframes = 6
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_mij7x")
+&"": SubResource("AnimationLibrary_mij7x")
 }
 speed_scale = 2.0
 
@@ -980,11 +981,11 @@ material = SubResource("CanvasItemMaterial_bb03v")
 position = Vector2(200, 0)
 emitting = false
 amount = 600
-process_material = SubResource("ParticleProcessMaterial_c8cdf")
 texture = ExtResource("10_24fll")
 lifetime = 1.2
 one_shot = true
 explosiveness = 0.07
+process_material = SubResource("ParticleProcessMaterial_c8cdf")
 
 [node name="SwordTrail" type="Sprite2D" parent="."]
 visible = false
@@ -1119,9 +1120,9 @@ material = SubResource("CanvasItemMaterial_uwia0")
 position = Vector2(-0.434783, 30.4348)
 emitting = false
 amount = 16
+texture = ExtResource("21_jdpwl")
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("21_jdpwl")
 emission_shape = 3
 emission_rect_extents = Vector2(10, 30)
 direction = Vector2(0, -1)
@@ -1140,11 +1141,11 @@ material = SubResource("CanvasItemMaterial_bb03v")
 position = Vector2(2.17391, 42.1739)
 emitting = false
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_agiik")
 texture = ExtResource("10_24fll")
 lifetime = 1.5
 one_shot = true
 explosiveness = 0.07
+process_material = SubResource("ParticleProcessMaterial_agiik")
 
 [connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_entered" from="Swing" to="." method="_on_swing_body_entered"]

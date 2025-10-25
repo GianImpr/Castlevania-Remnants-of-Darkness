@@ -1,17 +1,17 @@
 [gd_scene load_steps=27 format=3 uid="uid://dttmy0kvxpsi7"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/Skeleton.gd" id="1_uvuyw"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_7l8r8"]
+[ext_resource type="Script" uid="uid://drkb5era8tevt" path="res://SampleProject/enemies/Skeleton/Skeleton.gd" id="1_uvuyw"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_7l8r8"]
 [ext_resource type="Texture2D" uid="uid://c11n13r75ggmc" path="res://assets/sprites/Enemies/Skeleton.png" id="3_qnxnl"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_xohao"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="5_vorls"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_xohao"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="5_vorls"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_k13al"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_ywtg4"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonIdle.gd" id="7_70oni"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_ywtg4"]
+[ext_resource type="Script" uid="uid://dujhtgjrd3xtt" path="res://SampleProject/enemies/Skeleton/SkeletonIdle.gd" id="7_70oni"]
 [ext_resource type="AudioStream" uid="uid://c1mpwbjmbcwi4" path="res://assets/sounds/Enemies/Skeleton/ThrowBone.MP3" id="7_b6bmt"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonMoving.gd" id="8_nu7ki"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonAttack.gd" id="9_ry1cj"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/SkeletonDying.gd" id="10_hx48s"]
+[ext_resource type="Script" uid="uid://2tv06s4h0u7b" path="res://SampleProject/enemies/Skeleton/SkeletonMoving.gd" id="8_nu7ki"]
+[ext_resource type="Script" uid="uid://bnvv6kcwvqav2" path="res://SampleProject/enemies/Skeleton/SkeletonAttack.gd" id="9_ry1cj"]
+[ext_resource type="Script" uid="uid://dfsqtfxe53u6j" path="res://SampleProject/enemies/Skeleton/SkeletonDying.gd" id="10_hx48s"]
 [ext_resource type="PackedScene" uid="uid://b7tq5olcjkkvy" path="res://SampleProject/enemies/Skeleton/bone.tscn" id="10_pdtoc"]
 [ext_resource type="PackedScene" uid="uid://bnrsmxn5yeru7" path="res://SampleProject/enemies/Skeleton/skeleton_shatter.tscn" id="12_fpe1r"]
 
@@ -98,10 +98,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jdokg"]
 _data = {
-"RESET": SubResource("Animation_aox3l"),
-"idle": SubResource("Animation_8qbeu"),
-"throw": SubResource("Animation_5htpa"),
-"walk": SubResource("Animation_hsncm")
+&"RESET": SubResource("Animation_aox3l"),
+&"idle": SubResource("Animation_8qbeu"),
+&"throw": SubResource("Animation_5htpa"),
+&"walk": SubResource("Animation_hsncm")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5cfu"]
@@ -196,6 +196,7 @@ size = Vector2(418.913, 126.522)
 [node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 scale = Vector2(2, 2)
 collision_layer = 4
+collision_mask = 4097
 script = ExtResource("1_uvuyw")
 vision = NodePath("Area of Vision")
 sprite = NodePath("Sprite2D")
@@ -229,7 +230,7 @@ frame = 6
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_jdokg")
+&"": SubResource("AnimationLibrary_jdokg")
 }
 
 [node name="Collision box" type="CollisionShape2D" parent="."]

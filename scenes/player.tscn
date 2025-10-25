@@ -4365,9 +4365,10 @@ fill_from = Vector2(0.491453, 0.5)
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
 scale = Vector2(2, 2)
 collision_layer = 2
-collision_mask = 17
+collision_mask = 4113
+slide_on_ceiling = false
 floor_constant_speed = true
-floor_max_angle = 1.309
+floor_max_angle = 1.3089969
 floor_snap_length = 30.0
 safe_margin = 0.15
 script = ExtResource("1_p2ow1")
@@ -5055,8 +5056,10 @@ wait_time = 0.5
 one_shot = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, 16)
-target_position = Vector2(0, 16)
+position = Vector2(0, 31)
+target_position = Vector2(0, 5)
+collision_mask = 4096
+hit_from_inside = true
 
 [node name="GlobalTrail" type="Timer" parent="."]
 wait_time = 0.1

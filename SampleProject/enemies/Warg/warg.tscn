@@ -1,25 +1,25 @@
 [gd_scene load_steps=47 format=3 uid="uid://djw0ueyeiotcq"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Warg/warg.gd" id="1_cgj65"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_xuafy"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_hq73f"]
+[ext_resource type="Script" uid="uid://c2biw3aqf4qx1" path="res://SampleProject/enemies/Warg/warg.gd" id="1_cgj65"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_xuafy"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_hq73f"]
 [ext_resource type="Texture2D" uid="uid://dwjaayjdt0koj" path="res://assets/sprites/Enemies/Warg/Warg.png" id="3_vys3q"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_khvj0"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_khvj0"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_15yv7"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_v0oup"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_6dxpd"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_v0oup"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_6dxpd"]
 [ext_resource type="AudioStream" uid="uid://dmse8ctu3lpcf" path="res://assets/sounds/Enemies/Warg/Growling.MP3" id="7_ks6b6"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargIdle.gd" id="7_meydx"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargPreparing.gd" id="8_83122"]
+[ext_resource type="Script" uid="uid://b1hrnfnwxkwvq" path="res://SampleProject/enemies/Warg/WargIdle.gd" id="7_meydx"]
+[ext_resource type="Script" uid="uid://bfitcquyby620" path="res://SampleProject/enemies/Warg/WargPreparing.gd" id="8_83122"]
 [ext_resource type="AudioStream" uid="uid://6875t8vkyr5n" path="res://assets/sounds/Enemies/Warg/Biting.MP3" id="8_uik0v"]
 [ext_resource type="AudioStream" uid="uid://d0fss7pifjyk7" path="res://assets/sounds/Enemies/Warg/Howling.MP3" id="9_126hs"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargBiting.gd" id="9_hajer"]
+[ext_resource type="Script" uid="uid://b2m6sj3m0xbrw" path="res://SampleProject/enemies/Warg/WargBiting.gd" id="9_hajer"]
 [ext_resource type="AudioStream" uid="uid://hsx6jf5238fb" path="res://assets/sounds/Powerups/ActivateRelic.MP3" id="10_rqtjw"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargMoving.gd" id="10_ymwws"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargTurning.gd" id="11_uwv7u"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargDying.gd" id="12_tffoj"]
+[ext_resource type="Script" uid="uid://cm2n2mt7qgbuv" path="res://SampleProject/enemies/Warg/WargMoving.gd" id="10_ymwws"]
+[ext_resource type="Script" uid="uid://d0ibc3bdadd86" path="res://SampleProject/enemies/Warg/WargTurning.gd" id="11_uwv7u"]
+[ext_resource type="Script" uid="uid://bo7uawuj2q1cd" path="res://SampleProject/enemies/Warg/WargDying.gd" id="12_tffoj"]
 [ext_resource type="PackedScene" uid="uid://1fl57luhpu2j" path="res://SampleProject/enemies/Warg/fire_pillars.tscn" id="13_sxqjb"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Warg/WargMagic.gd" id="19_amidd"]
+[ext_resource type="Script" uid="uid://jmwy01whnwmb" path="res://SampleProject/enemies/Warg/WargMagic.gd" id="19_amidd"]
 [ext_resource type="PackedScene" uid="uid://fgrfy7v26ty4" path="res://SampleProject/enemies/Warg/offensive_fire_pillars.tscn" id="20_442vi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lju4n"]
@@ -59,7 +59,7 @@ script = ExtResource("5_v0oup")
 sound_effects = Array[ExtResource("6_6dxpd")]([SubResource("Resource_db220"), SubResource("Resource_5hhqw"), SubResource("Resource_4ugar"), SubResource("Resource_a6uwl")])
 
 [sub_resource type="Curve" id="Curve_va3vl"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -461,19 +461,19 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kkaj5"]
 _data = {
-"RESET": SubResource("Animation_thcpq"),
-"biting": SubResource("Animation_v8weh"),
-"cast_magic": SubResource("Animation_om1xe"),
-"dying": SubResource("Animation_qcud6"),
-"idle": SubResource("Animation_5emmu"),
-"preparing": SubResource("Animation_ywhlu"),
-"targeting": SubResource("Animation_d7vhg"),
-"turn": SubResource("Animation_hp8il"),
-"walking": SubResource("Animation_g6qul")
+&"RESET": SubResource("Animation_thcpq"),
+&"biting": SubResource("Animation_v8weh"),
+&"cast_magic": SubResource("Animation_om1xe"),
+&"dying": SubResource("Animation_qcud6"),
+&"idle": SubResource("Animation_5emmu"),
+&"preparing": SubResource("Animation_ywhlu"),
+&"targeting": SubResource("Animation_d7vhg"),
+&"turn": SubResource("Animation_hp8il"),
+&"walking": SubResource("Animation_g6qul")
 }
 
 [sub_resource type="Curve" id="Curve_01gth"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.506897, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -487,6 +487,7 @@ colors = PackedColorArray(1, 0.6, 0, 0, 0.977332, 0.203058, 0, 1)
 z_index = 1
 scale = Vector2(2, 2)
 collision_layer = 4
+collision_mask = 4097
 script = ExtResource("1_cgj65")
 vision = NodePath("Vision")
 bite_hitbox = NodePath("Bite")
@@ -623,7 +624,7 @@ wait_time = 0.2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_kkaj5")
+&"": SubResource("AnimationLibrary_kkaj5")
 }
 
 [node name="FireMagic" type="CPUParticles2D" parent="."]

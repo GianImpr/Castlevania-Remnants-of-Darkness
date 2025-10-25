@@ -1,22 +1,22 @@
 [gd_scene load_steps=40 format=3 uid="uid://ctg2sggf2ujvj"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Slaughterer/slaughterer.gd" id="1_x7pho"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_bykru"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_3472y"]
+[ext_resource type="Script" uid="uid://8da40xkoodwc" path="res://SampleProject/enemies/Slaughterer/slaughterer.gd" id="1_x7pho"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_bykru"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_3472y"]
 [ext_resource type="Texture2D" uid="uid://bq8nnvn4xiw7j" path="res://assets/sprites/Enemies/Slaughterer/Slaughterer.png" id="3_ikg7l"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_28o5v"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_v6qr4"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_28o5v"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_v6qr4"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_yj5pd"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_4lwyd"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Slaughterer/SlaughtererIdle.gd" id="7_oqd5v"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_4lwyd"]
+[ext_resource type="Script" uid="uid://cgv7ou4kc26js" path="res://SampleProject/enemies/Slaughterer/SlaughtererIdle.gd" id="7_oqd5v"]
 [ext_resource type="Texture2D" uid="uid://b14un0hnoriq2" path="res://assets/sprites/Effects/Fire2.png" id="7_utjnc"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Slaughterer/SlaughtererMoving.gd" id="8_87ony"]
+[ext_resource type="Script" uid="uid://btts6tc4bbo6s" path="res://SampleProject/enemies/Slaughterer/SlaughtererMoving.gd" id="8_87ony"]
 [ext_resource type="AudioStream" uid="uid://ch5j7bdsj05pg" path="res://assets/sounds/Enemies/Slaughterer/SpitFire.MP3" id="8_hqait"]
 [ext_resource type="AudioStream" uid="uid://bvpaak4gkoa6j" path="res://assets/sounds/Enemies/Slaughterer/Punch.wav" id="9_2hnbj"]
 [ext_resource type="AudioStream" uid="uid://cktbee6wn8k3o" path="res://assets/sounds/Enemies/Slaughterer/SmallExplosion.MP3" id="9_ie6gl"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Slaughterer/SlaughtererPunching.gd" id="9_yg8k2"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Slaughterer/SlaughtererSpitting.gd" id="10_3mjcg"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Slaughterer/SlaughtererDying.gd" id="11_8n6l7"]
+[ext_resource type="Script" uid="uid://cvtyswgmvypgf" path="res://SampleProject/enemies/Slaughterer/SlaughtererPunching.gd" id="9_yg8k2"]
+[ext_resource type="Script" uid="uid://cnpk8rgpfky5b" path="res://SampleProject/enemies/Slaughterer/SlaughtererSpitting.gd" id="10_3mjcg"]
+[ext_resource type="Script" uid="uid://5mqy6xmk03w7" path="res://SampleProject/enemies/Slaughterer/SlaughtererDying.gd" id="11_8n6l7"]
 [ext_resource type="PackedScene" uid="uid://c0u0mu886ooj5" path="res://SampleProject/enemies/Slaughterer/slaughterer_fireball.tscn" id="11_jli4x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee7qv"]
@@ -54,7 +54,7 @@ script = ExtResource("5_v6qr4")
 sound_effects = Array[ExtResource("6_4lwyd")]([SubResource("Resource_1adtd"), SubResource("Resource_m4wyk"), SubResource("Resource_2fiik")])
 
 [sub_resource type="Curve" id="Curve_va3vl"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -417,13 +417,13 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o5efr"]
 _data = {
-"RESET": SubResource("Animation_epwy1"),
-"dying": SubResource("Animation_2i8x6"),
-"idle": SubResource("Animation_igu7p"),
-"jump": SubResource("Animation_cjnma"),
-"land": SubResource("Animation_xfdtp"),
-"punch": SubResource("Animation_pci4l"),
-"spit": SubResource("Animation_cflvg")
+&"RESET": SubResource("Animation_epwy1"),
+&"dying": SubResource("Animation_2i8x6"),
+&"idle": SubResource("Animation_igu7p"),
+&"jump": SubResource("Animation_cjnma"),
+&"land": SubResource("Animation_xfdtp"),
+&"punch": SubResource("Animation_pci4l"),
+&"spit": SubResource("Animation_cflvg")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qblxn"]
@@ -435,6 +435,7 @@ particles_anim_loop = false
 [node name="Slaughterer" type="CharacterBody2D" node_paths=PackedStringArray("vision", "punch_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
+collision_mask = 4097
 script = ExtResource("1_x7pho")
 vision = NodePath("Vision")
 punch_hitbox = NodePath("Punch")
@@ -562,7 +563,7 @@ wait_time = 0.12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_o5efr")
+&"": SubResource("AnimationLibrary_o5efr")
 }
 
 [node name="Explosion" type="CPUParticles2D" parent="."]
@@ -570,9 +571,9 @@ material = SubResource("CanvasItemMaterial_qblxn")
 position = Vector2(23, 0)
 emitting = false
 amount = 40
+texture = ExtResource("7_utjnc")
 lifetime = 1.5
 one_shot = true
-texture = ExtResource("7_utjnc")
 emission_shape = 1
 emission_sphere_radius = 30.0
 direction = Vector2(0, -1)

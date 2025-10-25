@@ -1,21 +1,21 @@
 [gd_scene load_steps=36 format=3 uid="uid://cl543nev3n2bf"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/AxeArmor.gd" id="1_iqps0"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_f44xy"]
+[ext_resource type="Script" uid="uid://bgs5m2vrglm8l" path="res://SampleProject/enemies/AxeArmor/AxeArmor.gd" id="1_iqps0"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_f44xy"]
 [ext_resource type="Texture2D" uid="uid://ditr8o63awx3g" path="res://assets/sprites/Enemies/AxeArmor.png" id="3_5np2x"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_d024k"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_6wp6c"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="5_nue23"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_d024k"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_6wp6c"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="5_nue23"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_2ymih"]
-[ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/AxeArmorIdle.gd" id="6_nergd"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_pqr52"]
+[ext_resource type="Script" uid="uid://bj6xxn6b86om0" path="res://SampleProject/enemies/AxeArmor/AxeArmorIdle.gd" id="6_nergd"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_pqr52"]
 [ext_resource type="AudioStream" uid="uid://drbx4eqlp7ibs" path="res://assets/sounds/Enemies/AxeArmor/AxeStep.MP3" id="7_i080y"]
-[ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/AxeArmorMoving.gd" id="7_mcxjw"]
+[ext_resource type="Script" uid="uid://ccpk5wo85ioc1" path="res://SampleProject/enemies/AxeArmor/AxeArmorMoving.gd" id="7_mcxjw"]
 [ext_resource type="AudioStream" uid="uid://d30kdvmwyw1b1" path="res://assets/sounds/Enemies/AxeArmor/AxeSwing.MP3" id="8_v2us2"]
-[ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/AxeArmorAttack.gd" id="8_yuaeu"]
+[ext_resource type="Script" uid="uid://btvij4m7b2g3i" path="res://SampleProject/enemies/AxeArmor/AxeArmorAttack.gd" id="8_yuaeu"]
 [ext_resource type="AudioStream" uid="uid://cmiqrn6b81fqy" path="res://assets/sounds/Enemies/AxeArmor/AxeDead.MP3" id="9_ghak2"]
-[ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/AxeArmorRespawnAxe.gd" id="9_xecj8"]
-[ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/AxeArmorDeath.gd" id="10_6kenr"]
+[ext_resource type="Script" uid="uid://bck1dmlkuc6r7" path="res://SampleProject/enemies/AxeArmor/AxeArmorRespawnAxe.gd" id="9_xecj8"]
+[ext_resource type="Script" uid="uid://c3oldofnylggs" path="res://SampleProject/enemies/AxeArmor/AxeArmorDeath.gd" id="10_6kenr"]
 [ext_resource type="PackedScene" uid="uid://chah0gfmy6gd7" path="res://SampleProject/enemies/AxeArmor/axe.tscn" id="10_mi4c6"]
 
 [sub_resource type="Animation" id="Animation_2p7t8"]
@@ -338,15 +338,15 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r85du"]
 _data = {
-"RESET": SubResource("Animation_2p7t8"),
-"dying_1": SubResource("Animation_nbyeo"),
-"dying_2": SubResource("Animation_2tf0j"),
-"dying_3": SubResource("Animation_dntpb"),
-"idle": SubResource("Animation_b4xm1"),
-"respawn_axe": SubResource("Animation_feohu"),
-"throw_high": SubResource("Animation_mbbol"),
-"throw_low": SubResource("Animation_u6ht4"),
-"walk": SubResource("Animation_aovsd")
+&"RESET": SubResource("Animation_2p7t8"),
+&"dying_1": SubResource("Animation_nbyeo"),
+&"dying_2": SubResource("Animation_2tf0j"),
+&"dying_3": SubResource("Animation_dntpb"),
+&"idle": SubResource("Animation_b4xm1"),
+&"respawn_axe": SubResource("Animation_feohu"),
+&"throw_high": SubResource("Animation_mbbol"),
+&"throw_low": SubResource("Animation_u6ht4"),
+&"walk": SubResource("Animation_aovsd")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jex6e"]
@@ -427,6 +427,7 @@ func on_child_transition(state, new_state_name):
 
 [node name="AxeArmor" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 collision_layer = 4
+collision_mask = 4097
 script = ExtResource("1_iqps0")
 vision = NodePath("Area of Vision")
 sprite = NodePath("Sprite2D")
@@ -459,7 +460,7 @@ frame = 17
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_r85du")
+&"": SubResource("AnimationLibrary_r85du")
 }
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

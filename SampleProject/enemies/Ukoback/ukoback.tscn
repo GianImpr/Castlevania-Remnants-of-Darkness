@@ -1,20 +1,20 @@
 [gd_scene load_steps=40 format=3 uid="uid://2vc38i25e1l"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Ukoback/ukoback.gd" id="1_8njkw"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_i2bul"]
+[ext_resource type="Script" uid="uid://cyus0yotclfsb" path="res://SampleProject/enemies/Ukoback/ukoback.gd" id="1_8njkw"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_i2bul"]
 [ext_resource type="PackedScene" uid="uid://bwffv0dq76y6k" path="res://SampleProject/enemies/Ukoback/ukoback_fireball.tscn" id="2_ulw53"]
 [ext_resource type="Texture2D" uid="uid://gyf5ulgsym5l" path="res://assets/sprites/Enemies/Ukoback/UkobackFlame.png" id="3_cg2df"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_owlfp"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_owlfp"]
 [ext_resource type="Texture2D" uid="uid://c123taoncynk4" path="res://assets/sprites/Enemies/Ukoback/Ukoback.png" id="4_62t6f"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_yyv1i"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_yyv1i"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_1dhoy"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_qw2nv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="8_3wkja"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ukoback/UkobackMoving.gd" id="8_kr5a0"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_qw2nv"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="8_3wkja"]
+[ext_resource type="Script" uid="uid://dasn5iy1db73s" path="res://SampleProject/enemies/Ukoback/UkobackMoving.gd" id="8_kr5a0"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="8_sb6ne"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ukoback/UkobackDamage.gd" id="9_23f6s"]
+[ext_resource type="Script" uid="uid://ddhuwacjauddf" path="res://SampleProject/enemies/Ukoback/UkobackDamage.gd" id="9_23f6s"]
 [ext_resource type="AudioStream" uid="uid://bknt4envywgfg" path="res://assets/sounds/Enemies/Ukoback/UkobackFireball.MP3" id="9_gf7vj"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ukoback/UkobackDying.gd" id="10_knj4h"]
+[ext_resource type="Script" uid="uid://bxtckpjevk0cf" path="res://SampleProject/enemies/Ukoback/UkobackDying.gd" id="10_knj4h"]
 [ext_resource type="AudioStream" uid="uid://cqkefmmf78xmq" path="res://assets/sounds/Enemies/Ukoback/UkobackDamage.MP3" id="10_ob215"]
 [ext_resource type="AudioStream" uid="uid://68pqphemf2o5" path="res://assets/sounds/Enemies/Ukoback/UkobackDead.MP3" id="11_8m182"]
 
@@ -53,8 +53,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3pnfy"]
 _data = {
-"RESET": SubResource("Animation_e0awq"),
-"moving": SubResource("Animation_lt1vx")
+&"RESET": SubResource("Animation_e0awq"),
+&"moving": SubResource("Animation_lt1vx")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0wi5"]
@@ -86,7 +86,7 @@ script = ExtResource("7_qw2nv")
 sound_effects = Array[ExtResource("8_3wkja")]([SubResource("Resource_0xa61"), SubResource("Resource_twwai"), SubResource("Resource_2wagc")])
 
 [sub_resource type="Curve" id="Curve_va3vl"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -385,10 +385,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j5tpx"]
 _data = {
-"RESET": SubResource("Animation_d34yd"),
-"damage": SubResource("Animation_ggn2h"),
-"dying": SubResource("Animation_uigpj"),
-"moving": SubResource("Animation_rheuk")
+&"RESET": SubResource("Animation_d34yd"),
+&"damage": SubResource("Animation_ggn2h"),
+&"dying": SubResource("Animation_uigpj"),
+&"moving": SubResource("Animation_rheuk")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dp40d"]
@@ -418,6 +418,7 @@ anim_speed_max = 1.0
 [node name="Ukoback" type="CharacterBody2D" node_paths=PackedStringArray("canister_shape", "raycast_up", "raycast_down", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_right", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
+collision_mask = 4097
 motion_mode = 1
 script = ExtResource("1_8njkw")
 canister_shape = NodePath("CanisterHitbox")
@@ -453,7 +454,7 @@ hframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanisterFire"]
 libraries = {
-"": SubResource("AnimationLibrary_3pnfy")
+&"": SubResource("AnimationLibrary_3pnfy")
 }
 autoplay = "moving"
 
@@ -537,7 +538,7 @@ script = ExtResource("10_knj4h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_j5tpx")
+&"": SubResource("AnimationLibrary_j5tpx")
 }
 
 [node name="FireEffect" type="GPUParticles2D" parent="."]
@@ -546,12 +547,12 @@ material = SubResource("CanvasItemMaterial_dp40d")
 position = Vector2(0, -6.5)
 emitting = false
 amount = 70
-process_material = SubResource("ParticleProcessMaterial_px1f2")
 texture = ExtResource("8_sb6ne")
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.4
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_px1f2")
 
 [node name="Down" type="RayCast2D" parent="."]
 position = Vector2(0, 5.5)
