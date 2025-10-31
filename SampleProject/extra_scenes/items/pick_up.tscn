@@ -1,16 +1,16 @@
 [gd_scene load_steps=30 format=3 uid="uid://dosjh5lntu6w1"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/pick_up.gd" id="1_sp08q"]
-[ext_resource type="Shader" path="res://SampleProject/Shaders/flash.gdshader" id="1_tf74l"]
+[ext_resource type="Script" uid="uid://d2eosyl6kqlaa" path="res://SampleProject/Scripts/Stage_elements/pick_up.gd" id="1_sp08q"]
+[ext_resource type="Shader" uid="uid://ccbusj4pboktl" path="res://SampleProject/Shaders/flash.gdshader" id="1_tf74l"]
 [ext_resource type="PackedScene" uid="uid://cgv7hp465mehy" path="res://SampleProject/extra_scenes/HUD/item_full.tscn" id="2_ovibg"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="3_gagnr"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_n8vax"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_0hp0c"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_n8vax"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_0hp0c"]
 [ext_resource type="Texture2D" uid="uid://c1ay04u74m10q" path="res://assets/sprites/Items/OtherIcons/16x16/fa197.png" id="5_010kn"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_uj225"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_uj225"]
 [ext_resource type="AudioStream" uid="uid://cvyrscaciwfd5" path="res://assets/sounds/Pickups/se_sys_get_item.msf.wav" id="7_w6tyi"]
 [ext_resource type="AudioStream" uid="uid://b4bl5bt0uambh" path="res://assets/sounds/Pickups/se_sys_get_wepon.msf.wav" id="8_y24s0"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/wall_checker.gd" id="11_vsmat"]
+[ext_resource type="Script" uid="uid://bmdtgap5whiop" path="res://SampleProject/Scripts/System/wall_checker.gd" id="11_vsmat"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3yniq"]
 shader = ExtResource("1_tf74l")
@@ -364,12 +364,12 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_br1xa"]
 _data = {
-"RESET": SubResource("Animation_yya7o"),
-"disappearing": SubResource("Animation_yd47a"),
-"flashing": SubResource("Animation_j6vyk"),
-"idle": SubResource("Animation_5sdgw"),
-"idle_relic": SubResource("Animation_sovbq"),
-"picked": SubResource("Animation_ncxih")
+&"RESET": SubResource("Animation_yya7o"),
+&"disappearing": SubResource("Animation_yd47a"),
+&"flashing": SubResource("Animation_j6vyk"),
+&"idle": SubResource("Animation_5sdgw"),
+&"idle_relic": SubResource("Animation_sovbq"),
+&"picked": SubResource("Animation_ncxih")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v3iyo"]
@@ -402,6 +402,7 @@ glow_blend_mode = 1
 
 [node name="Pick-up" type="RigidBody2D" node_paths=PackedStringArray("sprite", "idle_timer", "flash_timer", "animation", "sound", "wall_checker")]
 collision_layer = 0
+collision_mask = 4097
 lock_rotation = true
 script = ExtResource("1_sp08q")
 id = 70
@@ -433,7 +434,7 @@ shape = SubResource("RectangleShape2D_fe178")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_br1xa")
+&"": SubResource("AnimationLibrary_br1xa")
 }
 
 [node name="Area2D" type="Area2D" parent="."]

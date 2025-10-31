@@ -1,54 +1,48 @@
 [gd_scene load_steps=28 format=3 uid="uid://rum44mjshdlr"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/money.gd" id="1_vli05"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/coin.gd" id="2_4f0fn"]
+[ext_resource type="Script" uid="uid://bmsao5kviu73c" path="res://SampleProject/Scripts/money.gd" id="1_vli05"]
+[ext_resource type="Script" uid="uid://c55s72qp2o4km" path="res://SampleProject/Scripts/System/coin.gd" id="2_4f0fn"]
 [ext_resource type="Texture2D" uid="uid://dcymuvw7on6dk" path="res://assets/sprites/Items/Pickups/Orbs/Coin.png" id="2_kh8ev"]
 [ext_resource type="Texture2D" uid="uid://bh7cvwpoyikx4" path="res://assets/sprites/Items/Pickups/Orbs/BlueCoin.png" id="3_ep0wj"]
 [ext_resource type="Texture2D" uid="uid://b0ptc7whdk1r1" path="res://assets/sprites/Items/Pickups/Orbs/SapphireCoin.png" id="4_54mre"]
 [ext_resource type="Texture2D" uid="uid://ckiopu4qy87wc" path="res://assets/sprites/Items/Pickups/Orbs/BronzeCoin.png" id="5_aflrv"]
 [ext_resource type="Texture2D" uid="uid://kn358rpfckos" path="res://assets/sprites/Items/Pickups/Orbs/PlatinumCoin.png" id="6_adi4m"]
 [ext_resource type="Texture2D" uid="uid://ddvvnc0vodbva" path="res://assets/sprites/Items/Pickups/Orbs/SilverCoin.png" id="7_0oxqv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="9_u44rf"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="10_h61gb"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="11_mgovo"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="9_u44rf"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="10_h61gb"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="11_mgovo"]
 [ext_resource type="AudioStream" uid="uid://4wvxocon6qcv" path="res://assets/sounds/Pickups/GoldGet.MP3" id="12_sgehq"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/wall_checker.gd" id="13_5a84c"]
+[ext_resource type="Script" uid="uid://bmdtgap5whiop" path="res://SampleProject/Scripts/System/wall_checker.gd" id="13_5a84c"]
 
 [sub_resource type="Resource" id="Resource_60yej"]
 script = ExtResource("2_4f0fn")
 value = 1
 texture = ExtResource("3_ep0wj")
-animated = true
 
 [sub_resource type="Resource" id="Resource_vbehf"]
 script = ExtResource("2_4f0fn")
 value = 5
 texture = ExtResource("4_54mre")
-animated = true
 
 [sub_resource type="Resource" id="Resource_q4maf"]
 script = ExtResource("2_4f0fn")
 value = 10
 texture = ExtResource("5_aflrv")
-animated = true
 
 [sub_resource type="Resource" id="Resource_7j8qk"]
 script = ExtResource("2_4f0fn")
 value = 25
 texture = ExtResource("6_adi4m")
-animated = true
 
 [sub_resource type="Resource" id="Resource_putv5"]
 script = ExtResource("2_4f0fn")
 value = 50
 texture = ExtResource("7_0oxqv")
-animated = true
 
 [sub_resource type="Resource" id="Resource_l85ci"]
 script = ExtResource("2_4f0fn")
 value = 100
 texture = ExtResource("2_kh8ev")
-animated = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nj3rc"]
 size = Vector2(8, 8)
@@ -158,9 +152,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s40my"]
 _data = {
-"RESET": SubResource("Animation_y713h"),
-"coin": SubResource("Animation_hq48n"),
-"picked": SubResource("Animation_pp5tc")
+&"RESET": SubResource("Animation_y713h"),
+&"coin": SubResource("Animation_hq48n"),
+&"picked": SubResource("Animation_pp5tc")
 }
 
 [sub_resource type="Resource" id="Resource_2va75"]
@@ -174,6 +168,7 @@ sound_effects = Array[ExtResource("11_mgovo")]([SubResource("Resource_2va75")])
 
 [node name="Money" type="RigidBody2D" node_paths=PackedStringArray("sprite", "animation", "sound", "wall_checker")]
 collision_layer = 0
+collision_mask = 4097
 lock_rotation = true
 script = ExtResource("1_vli05")
 sprite = NodePath("Sprite2D")
@@ -203,7 +198,7 @@ shape = SubResource("RectangleShape2D_evkvh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_s40my")
+&"": SubResource("AnimationLibrary_s40my")
 }
 
 [node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]

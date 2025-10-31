@@ -84,15 +84,15 @@ func findItem(id: int, inventory) -> int:
 			return item["quantity"]
 	return 0
 
-## Adds 1 copy of a certain item ID in a certain inventory.
-func addItem(id: int, inventory) -> void:
+## Adds copies of a certain item ID in a certain inventory.
+func addItem(id: int, inventory, copies_to_add: int = 1) -> void:
 	var copies = findItem(id, inventory)
 	if copies == 0:
-		inventory.append({"id": id, "quantity": 1})
+		inventory.append({"id": id, "quantity": copies_to_add})
 	else:
 		for item in inventory:
 			if item["id"] == id:
-				item["quantity"] += 1
+				item["quantity"] += copies_to_add
 
 ## Removes 1 copy of a certain item ID in a certain inventory.
 func removeItem(id: int, inventory, remove_from_wheel: bool = false) -> void:

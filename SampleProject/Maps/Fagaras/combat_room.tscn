@@ -1,17 +1,17 @@
 [gd_scene load_steps=22 format=4 uid="uid://bt51s4nhxlaj7"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_tibxg"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_tibxg"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_bwksx"]
 [ext_resource type="Texture2D" uid="uid://b58ood7hu0g21" path="res://assets/sprites/Tiles/FagarasCave.png" id="3_06b64"]
 [ext_resource type="PackedScene" uid="uid://bnsy1kwfc8603" path="res://SampleProject/extra_scenes/stage_elements/combat_door.tscn" id="4_eooq3"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Event/combat_scene_fagaras.gd" id="5_stiop"]
+[ext_resource type="Script" uid="uid://dit1bwpvesgyl" path="res://SampleProject/Scripts/Event/combat_scene_fagaras.gd" id="5_stiop"]
 [ext_resource type="PackedScene" uid="uid://cxfeg6jj146ah" path="res://SampleProject/enemies/ArmorLord/armor_lord.tscn" id="6_uq84s"]
 [ext_resource type="PackedScene" uid="uid://pmhfi7gv5sxe" path="res://SampleProject/extra_scenes/spawn_enemy.tscn" id="6_ylmpo"]
 [ext_resource type="PackedScene" uid="uid://bn5w03bpeuhmt" path="res://SampleProject/enemies/ArmorKnight/armor_knight.tscn" id="7_s2o7c"]
 [ext_resource type="PackedScene" uid="uid://dj1w5vx1ut6l3" path="res://SampleProject/enemies/BlackPanther/black_panther.tscn" id="9_ds8go"]
 [ext_resource type="PackedScene" uid="uid://fld271wig6jo" path="res://SampleProject/enemies/Banshee/banshee.tscn" id="10_mnhaw"]
 [ext_resource type="PackedScene" uid="uid://bwr5frmmnkw6y" path="res://SampleProject/enemies/FloatingSkull/floating_skull.tscn" id="11_6ead4"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/hard_mode_node.gd" id="11_hfv7n"]
+[ext_resource type="Script" uid="uid://4t0qttyv0rqn" path="res://SampleProject/Scripts/System/hard_mode_node.gd" id="11_hfv7n"]
 [ext_resource type="PackedScene" uid="uid://bcqff14dmgwpf" path="res://SampleProject/enemies/BlackCrow/black_crow.tscn" id="12_48t74"]
 [ext_resource type="PackedScene" uid="uid://crkxe62hk26kh" path="res://SampleProject/enemies/BlueRaven/kamikaze_raven.tscn" id="13_aywhw"]
 [ext_resource type="PackedScene" uid="uid://ctg2sggf2ujvj" path="res://SampleProject/enemies/Slaughterer/slaughterer.tscn" id="14_l4wyk"]
@@ -1300,7 +1300,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_dd280"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 4096
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_objsb")
 
 [node name="CombatRoom" type="Node2D"]

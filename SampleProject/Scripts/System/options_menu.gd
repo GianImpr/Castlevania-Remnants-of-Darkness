@@ -475,8 +475,9 @@ func on_reset_bind_button_pressed(which):
 
 
 func changeResolution(offset: int, button: InventoryButton) -> void:
-	if get_tree().root.get_window().mode != Window.Mode.MODE_WINDOWED and offset != 0:
-		sound.play_sound_effect_from_library("denied")
+	if get_tree().root.get_window().mode != Window.Mode.MODE_WINDOWED:
+		if offset != 0:
+			sound.play_sound_effect_from_library("denied")
 		return
 	var default_viewport: Vector2i = Vector2i(864, 480)
 	const resolutions: Array[float] = [0.5, 1, 1.5, 2, 3, 4]

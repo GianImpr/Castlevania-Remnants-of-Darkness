@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://2vm1bltf25bk"]
 
 [ext_resource type="Texture2D" uid="uid://cp3hvx8mieha4" path="res://assets/sprites/Objects/Other/IceBlock.png" id="1_ekc7v"]
-[ext_resource type="Script" path="res://SampleProject/extra_scenes/stage_elements/ice_block.gd" id="1_uv5ov"]
+[ext_resource type="Script" uid="uid://cgqukoo0dbytq" path="res://SampleProject/extra_scenes/stage_elements/ice_block.gd" id="1_uv5ov"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_li05t"]
 size = Vector2(37, 34)
@@ -20,9 +20,10 @@ colors = PackedColorArray(0.62, 0.62, 0.62, 0.772549, 0.69, 0.69, 0.69, 0)
 gradient = SubResource("Gradient_g81hg")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8mfov"]
-emission_shape = 1
-emission_sphere_radius = 5.0
+emission_shape = 3
+emission_box_extents = Vector3(4, 1, 1)
 direction = Vector3(0, -1, 0)
+spread = 90.0
 initial_velocity_max = 40.0
 gravity = Vector3(0, 0, 0)
 scale_min = 2.0
@@ -30,60 +31,6 @@ scale_max = 9.0
 color_ramp = SubResource("GradientTexture1D_2rbgg")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
-
-[sub_resource type="Animation" id="Animation_2lhqo"]
-resource_name = "evaporating"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(0.594604, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AguniSpawn:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.966667),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_ojtuu"]
 length = 0.001
@@ -124,10 +71,64 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_2lhqo"]
+resource_name = "evaporating"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5333333),
+"transitions": PackedFloat32Array(0.594604, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AguniSpawn:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2qbu8"]
 _data = {
-"RESET": SubResource("Animation_ojtuu"),
-"evaporating": SubResource("Animation_2lhqo")
+&"RESET": SubResource("Animation_ojtuu"),
+&"evaporating": SubResource("Animation_2lhqo")
 }
 
 [node name="IceBlock" type="StaticBody2D" node_paths=PackedStringArray("animation")]
@@ -145,10 +146,11 @@ shape = SubResource("RectangleShape2D_li05t")
 material = SubResource("CanvasItemMaterial_eum8j")
 emitting = false
 amount = 200
-process_material = SubResource("ParticleProcessMaterial_8mfov")
-lifetime = 2.0
 one_shot = true
+preprocess = 0.3
 explosiveness = 0.24
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_8mfov")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -156,5 +158,5 @@ texture = ExtResource("1_ekc7v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_2qbu8")
+&"": SubResource("AnimationLibrary_2qbu8")
 }

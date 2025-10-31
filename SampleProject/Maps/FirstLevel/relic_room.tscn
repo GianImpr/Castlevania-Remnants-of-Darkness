@@ -1,9 +1,9 @@
 [gd_scene load_steps=16 format=4 uid="uid://tcfhdo1ho6w2"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_oaqre"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_oaqre"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_irmsr"]
 [ext_resource type="Texture2D" uid="uid://bgaqd5rx66d1j" path="res://assets/sprites/Tiles/iceTiles.png" id="3_6a4qq"]
-[ext_resource type="Shader" path="res://SampleProject/Shaders/aura.gdshader" id="3_hnrkb"]
+[ext_resource type="Shader" uid="uid://diku0uk4in6gs" path="res://SampleProject/Shaders/aura.gdshader" id="3_hnrkb"]
 [ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="4_it2w7"]
 [ext_resource type="PackedScene" uid="uid://q43vbthycopx" path="res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn" id="6_m8885"]
 
@@ -13,19 +13,19 @@ noise_type = 4
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5m0lg"]
 width = 256
 height = 256
+noise = SubResource("FastNoiseLite_hs7nk")
 seamless = true
 seamless_blend_skirt = 0.4
-noise = SubResource("FastNoiseLite_hs7nk")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v5nv6"]
 shader = ExtResource("3_hnrkb")
+shader_parameter/n = SubResource("NoiseTexture2D_5m0lg")
 shader_parameter/min_intensity = 0.3
 shader_parameter/max_intensity = 0.4
 shader_parameter/speed_x = 10.0
 shader_parameter/speed_y = 10.0
 shader_parameter/fade_start = 1.0
 shader_parameter/fade_end = 1.0
-shader_parameter/n = SubResource("NoiseTexture2D_5m0lg")
 
 [sub_resource type="Gradient" id="Gradient_5mnut"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -467,9 +467,9 @@ texture_region_size = Vector2i(32, 32)
 10:30/0 = 0
 11:30/0 = 0
 11:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-11:30/0/physics_layer_0/polygon_0/one_way = true
 12:30/0 = 0
 13:30/0 = 0
+13:30/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 14:30/0 = 0
 15:30/0 = 0
 0:31/0 = 0
@@ -490,15 +490,14 @@ texture_region_size = Vector2i(32, 32)
 10:31/0 = 0
 11:31/0 = 0
 11:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-11:31/0/physics_layer_0/polygon_0/one_way = true
 12:31/0 = 0
 13:31/0 = 0
 14:31/0 = 0
-14:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-14:31/0/physics_layer_0/polygon_0/one_way = true
+14:31/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+14:31/0/physics_layer_1/polygon_0/one_way = true
 15:31/0 = 0
-15:31/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-15:31/0/physics_layer_0/polygon_0/one_way = true
+15:31/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+15:31/0/physics_layer_1/polygon_0/one_way = true
 0:32/0 = 0
 1:32/0 = 0
 1:32/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -894,6 +893,8 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_46p71"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 4096
+physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_fpil3")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gd5g2"]
@@ -1720,6 +1721,7 @@ texture = SubResource("GradientTexture1D_vo7an")
 [node name="Foreground" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAADAAAAAAABABkAAAADAAEAAAABABoAAAADAAIAAAABABsAAAADAA0AAAAEAB4AAAADAA4AAAAEAB8AAAAEAAAAAAACABkAAAAEAAEAAAACABoAAAAEAAIAAAACABsAAAAEAA0AAAAFABMAABAEAA4AAAAFABQAABAFAAAAAAADABkAAAAFAAEAAAADABoAAAAFAAIAAAADABsAAAAFAA4AAAAEABQAABAGAAAAAAAEABkAAAAGAAEAAAAEABoAAAAGAAIAAAAEABsAAAAGAA0AAAAGAB4AAAAGAA4AAAAGAB8AAAAHAAAAAAAFABkAAAAHAAEAAAAFABoAAAAHAAIAAAAFABsAAAAHAA0AAAAPADEAAAAHAA4AAAADACAAABAIAAAAAAAGABkAAAAIAAEAAAAGABoAAAAIAAIAAAAGABsAAAAIAA4AAAAEACAAABAJAAAAAAAHABkAAAAJAAEAAAAHABoAAAAJAAIAAAAHABsAAAAJAA0AAAAHAB8AAAAJAA4AAAADACAAABAKAAAAAAAHABkAABAKAAEAAAAHABoAABAKAAIAAAAHABsAABAKAA0AAAAHAB8AABAKAA4AAAADACAAAAALAAAAAAAGABkAABALAAEAAAAGABoAABALAAIAAAAGABsAABALAA0AAAAHABwAAAALAA4AAAAEACAAAAAMAAAAAAAFABkAABAMAAEAAAAFABoAABAMAAIAAAAFABsAABAMAA0AAAAHAB0AAAAMAA4AAAAFACAAAAANAAAAAAAEABkAABANAAEAAAAEABoAABANAAIAAAAEABsAABANAA0AAAAHAB4AAAANAA4AAAAGACAAAAAOAAAAAAAEABkAAAAOAAEAAAAEABoAAAAOAAIAAAAEABsAAAAOAA0AAAAMAB8AAAAOAA4AAAAGACAAABAPAAAAAAAHABkAAAAPAAEAAAAHABoAAAAPAAIAAAAHABsAAAAPAA0AAAANAB8AAAAPAA4AAAAFACAAABAQAAAAAAAHABkAABAQAAEAAAAHABoAABAQAAIAAAAEABsAAAAQAA0AAAAHACAAABAQAA4AAAAEACAAABARAAAAAAAGABkAABARAAEAAAAGABoAABARAAIAAAAGABsAABARAA0AAAAHACAAAAARAA4AAAADACAAABASAAAAAAAFABkAABASAAEAAAAFABoAABASAAIAAAAFABsAABASAA0AAAAHABwAAAASAA4AAAADACAAAAATAAAAAAAFABkAAAATAAEAAAAFABoAAAATAAIAAAAFABsAAAATAA0AAAAHAB0AAAATAA4AAAAEACAAAAAUAAAAAAAGABkAAAAUAAEAAAAGABoAAAAUAAIAAAAGABsAAAAUAA0AAAAHAB4AAAAUAA4AAAAFACAAAAAVAAAAAAAHABkAAAAVAAEAAAAHABoAAAAVAAIAAAAHABsAAAAVAA0AAAAHAB8AAAAVAA4AAAAGACAAAAAWAAAAAAAHABkAABAWAAEAAAAHABoAABAWAAIAAAAHABsAABAWAA0AAAAHAB8AABAWAA4AAAAGACAAABAXAAAAAAAGABkAABAXAAEAAAAGABoAABAXAAIAAAAGABsAABAXAA0AAAANADEAAAAXAA4AAAAFACAAABAYAAAAAAAFABkAABAYAAEAAAAFABoAABAYAAIAAAAFABsAABAYAA0AAAAOADEAAAAYAA4AAAAEACAAABAZAAAAAAAEABkAABAZAAEAAAAEABoAABAZAAIAAAAEABsAABAZAA0AAAAPADEAAAAZAA4AAAADACAAABAaAAAAAAADABkAABAaAAEAAAADABoAABAaAAIAAAADABsAABAaAAoAAAAOAB8AAAAaAA0AAAAGAB4AABAaAA4AAAAGAB8AABADAAMAAAABABwAAAADAAQAAAAEAB0AAAADAAUAAAAEAB0AACADAAYAAAAEABwAACADAAcAAAAEABwAAAADAAgAAAAEAB0AAAADAAkAAAAEAB0AACADAAoAAAAEABwAACADAAsAAAAEABwAAAADAAwAAAAEAB0AAAAFAA0AAAAEABMAABAbAAAAAAACABkAABAbAAEAAAACABoAABAbAAIAAAACABsAABAbAAgAAAAFABwAABAbAAkAAAAFAB0AABAbAAoAAAAPAB8AAAAbAAsAAAAFABwAADAbAAwAAAAFABwAABAbAA0AAAAFAB4AABAbAA4AAAAFAB8AABAcAAAAAAABABkAABAcAAEAAAABABoAABAcAAIAAAABABsAABAcAAMAAAABABwAABAcAAQAAAAKABoAABAcAAUAAAAKABsAABAcAAYAAAAKABwAABAcAAcAAAAKAB0AABAcAAgAAAAEAB0AABAcAAkAAAAEAB0AADAcAAoAAAAEABwAADAcAAsAAAAEABwAABAcAAwAAAAEAB0AABAcAA0AAAAEAB4AABAcAA4AAAAEAB8AABAdAAAAAAAAABkAABAdAAEAAAAAABoAABAdAAIAAAAAABsAABAdAAMAAAAAABwAABAdAAQAAAAJABoAABAdAAUAAAAJABsAABAdAAYAAAAJABwAABAdAAcAAAAJAB0AABAdAAgAAAADAB0AABAdAAkAAAADAB0AADAdAAoAAAADABwAADAdAAsAAAADABwAABAdAAwAAAADAB0AABAdAA0AAAADAB4AABAdAA4AAAADAB8AABA=")
 tile_set = SubResource("TileSet_46p71")
+collision_visibility_mode = 1
 
 [node name="Background" type="TileMapLayer" parent="."]
 modulate = Color(0, 0.403922, 0.556863, 0.458824)

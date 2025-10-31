@@ -66,7 +66,7 @@ func _ready() -> void:
 		flash_timer.stop()
 		idle_timer.stop()
 		
-	sprite.texture = Global.player.stats.searchItemInCompendium(id, getCompendium())["icon"]
+	sprite.texture = Global.player.stats.searchItemInCompendium(id, getCompendium(type))["icon"]
 
 func _on_idle_duration_timeout() -> void:
 	flash_timer.start()
@@ -77,7 +77,7 @@ func _on_flash_duration_timeout() -> void:
 	animation.play("idle")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if Global.player.stats.findItem(id, getInventory()) >= Global.player.stats.searchItemInCompendium(id, getCompendium())["max_quantity"]:
+	if Global.player.stats.findItem(id, getInventory()) >= Global.player.stats.searchItemInCompendium(id, getCompendium(type))["max_quantity"]:
 		var item_full_label = item_full_scene.instantiate()
 		add_child(item_full_label)
 		return
@@ -92,9 +92,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		
 		if old_item_id != 0:
 			Global.player.stats.addItem(old_item_id, getInventory())
-		var item = Global.player.stats.searchItemInCompendium(id, getCompendium())
+		var item = Global.player.stats.searchItemInCompendium(id, getCompendium(type))
 		if change_equipment != null:
-			change_equipment.bind(type-1, item[getItemName()], item["icon"]).call()
+			change_equipment.bind(type-1, item[getItemName(type)], item["icon"]).call()
 			#Still need the logic to update player stats
 	if type == ItemType.ITEM:
 		sound.play_sound_effect_from_library("item")
@@ -116,12 +116,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		sound.play_sound_effect_from_library("equip")
 		Global.item_box.changeColor(0)
 	Global.item_box.visible = true
-	Global.item_box.label.text = Global.player.stats.searchItemInCompendium(id, getCompendium())[getItemName()]
+	Global.item_box.label.text = Global.player.stats.searchItemInCompendium(id, getCompendium(type))[getItemName(type)]
 	Global.item_box.timer.start()
 	animation.play("picked")
 	
-func getCompendium():
-	match type:
+static func getCompendium(item_type: ItemType):
+	match item_type:
 		ItemType.ITEM:
 			return Global.player.stats.item_compendium.Compendium
 		ItemType.WEAPON:
@@ -168,9 +168,9 @@ func getInventory() -> Array[Dictionary]:
 			return []
 
 			
-func getItemName() -> String:
+static func getItemName(item_type: ItemType) -> String:
 	var prefixes = ["item_", "weapon_", "artifact_", "relic_", "headgear_", "body_", "legs_", "accessory_", "skill_"]
-	return prefixes[type] + "name"
+	return prefixes[item_type] + "name"
 	
 func setFlag() -> void:
 	if pickup_flag > 0:

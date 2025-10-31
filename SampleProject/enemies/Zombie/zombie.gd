@@ -65,7 +65,7 @@ func calculate_damage(body, multiplier) -> int:
 		body.stats.Stats["Guard"] -= 1
 	else:
 		body.applyHitEffect(attribute)
-	return damage
+	return max(damage, body.stats.Stats["HP"]-1)
 	
 func apply_damage(body, damage):
 	body.damage_popup.popup(damage, 0)

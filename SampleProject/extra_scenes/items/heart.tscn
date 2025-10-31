@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=3 uid="uid://3ypsgown6bve"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/hearts.gd" id="1_3kv6o"]
+[ext_resource type="Script" uid="uid://csr468jtoewx3" path="res://SampleProject/Scripts/Stage_elements/hearts.gd" id="1_3kv6o"]
 [ext_resource type="Texture2D" uid="uid://cxtf7n57tpwda" path="res://assets/sprites/Items/Pickups/Hearts/SoulHeart.png" id="1_33cq2"]
 [ext_resource type="Texture2D" uid="uid://c6lkn1a8y44rh" path="res://assets/sprites/Items/Pickups/Hearts/Heart.png" id="2_k6pcm"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_tpijv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_y7kkt"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_244dn"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_tpijv"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_y7kkt"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="5_244dn"]
 [ext_resource type="AudioStream" uid="uid://tt23b086nl2r" path="res://assets/sounds/Pickups/Heart.MP3" id="6_emw4u"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/wall_checker.gd" id="8_rwim1"]
+[ext_resource type="Script" uid="uid://bmdtgap5whiop" path="res://SampleProject/Scripts/System/wall_checker.gd" id="8_rwim1"]
 
 [sub_resource type="Animation" id="Animation_vk05w"]
 length = 0.001
@@ -165,10 +165,10 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h8i1f"]
 _data = {
-"RESET": SubResource("Animation_vk05w"),
-"floating": SubResource("Animation_bbpou"),
-"idle": SubResource("Animation_vdsw4"),
-"picked": SubResource("Animation_c5sd6")
+&"RESET": SubResource("Animation_vk05w"),
+&"floating": SubResource("Animation_bbpou"),
+&"idle": SubResource("Animation_vdsw4"),
+&"picked": SubResource("Animation_c5sd6")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0s4b"]
@@ -188,6 +188,7 @@ sound_effects = Array[ExtResource("5_244dn")]([SubResource("Resource_cvlhf")])
 
 [node name="Heart" type="RigidBody2D" node_paths=PackedStringArray("sprite", "animation", "wall_checker")]
 collision_layer = 0
+collision_mask = 4097
 gravity_scale = 0.0
 lock_rotation = true
 contact_monitor = true
@@ -207,7 +208,7 @@ hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_h8i1f")
+&"": SubResource("AnimationLibrary_h8i1f")
 }
 autoplay = "floating"
 

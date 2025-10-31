@@ -1,14 +1,14 @@
 [gd_scene load_steps=23 format=3 uid="uid://cn5udljc46woc"]
 
-[ext_resource type="Shader" path="res://SampleProject/Shaders/flash.gdshader" id="1_vjqmd"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/life_vessel.gd" id="1_yx2o4"]
+[ext_resource type="Shader" uid="uid://ccbusj4pboktl" path="res://SampleProject/Shaders/flash.gdshader" id="1_vjqmd"]
+[ext_resource type="Script" uid="uid://j5iw26g480fu" path="res://SampleProject/Scripts/System/life_vessel.gd" id="1_yx2o4"]
 [ext_resource type="Texture2D" uid="uid://d4il687uurbj1" path="res://assets/sprites/Items/Pickups/Boosters/LifeVessel.png" id="2_m14wy"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="2_wyfb2"]
-[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbow.gdshader" id="3_hfifi"]
+[ext_resource type="Shader" uid="uid://4smg7nuqwfay" path="res://SampleProject/Shaders/rainbow.gdshader" id="3_hfifi"]
 [ext_resource type="Texture2D" uid="uid://hvp2h5n3owjw" path="res://assets/sprites/Items/Pickups/Boosters/LifeVesselEssence.png" id="4_0ccpd"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="7_cxv4q"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_h25pp"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="9_ysxcq"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="7_cxv4q"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_h25pp"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_ysxcq"]
 [ext_resource type="AudioStream" uid="uid://djh3kkwjm0n4f" path="res://assets/sounds/Pickups/LifeUp.wav" id="10_pun3y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3yniq"]
@@ -105,8 +105,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ojjl5"]
 _data = {
-"RESET": SubResource("Animation_piiex"),
-"picked": SubResource("Animation_nge4v")
+&"RESET": SubResource("Animation_piiex"),
+&"picked": SubResource("Animation_nge4v")
 }
 
 [sub_resource type="Resource" id="Resource_6bnuw"]
@@ -120,6 +120,7 @@ sound_effects = Array[ExtResource("9_ysxcq")]([SubResource("Resource_6bnuw")])
 
 [node name="LifeVessel" type="RigidBody2D" node_paths=PackedStringArray("animation", "sound", "area")]
 collision_layer = 0
+collision_mask = 4097
 lock_rotation = true
 script = ExtResource("1_yx2o4")
 power = 15
@@ -162,7 +163,7 @@ environment = SubResource("Environment_q43d6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ojjl5")
+&"": SubResource("AnimationLibrary_ojjl5")
 }
 
 [node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]

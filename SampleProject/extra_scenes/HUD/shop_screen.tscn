@@ -1,0 +1,690 @@
+[gd_scene load_steps=52 format=3 uid="uid://cr4jksx71segk"]
+
+[ext_resource type="Script" uid="uid://4u8elxx42opm" path="res://SampleProject/Scripts/System/Menu/shop_screen.gd" id="1_rq5a2"]
+[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="2_80w3n"]
+[ext_resource type="FontFile" uid="uid://ma2njl02pxj6" path="res://assets/sprites/Font/Olondona.otf" id="2_e852k"]
+[ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="3_e852k"]
+[ext_resource type="Script" uid="uid://3oihmy3l1ctv" path="res://SampleProject/Scripts/System/Menu/buy_screen.gd" id="3_sxp3s"]
+[ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="4_4rfpf"]
+[ext_resource type="Script" uid="uid://ckrs7a0y6d77i" path="res://SampleProject/Scripts/System/shop_entry.gd" id="4_xqvsg"]
+[ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="6_xqvsg"]
+[ext_resource type="Texture2D" uid="uid://cxg68pmrc08kw" path="res://assets/sprites/Items/InventoryIcons/Inventory_2.png" id="7_xqvsg"]
+[ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="8_c4ouk"]
+[ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="9_2pq27"]
+
+[sub_resource type="Theme" id="Theme_vib0y"]
+default_font = ExtResource("2_e852k")
+default_font_size = 32
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_axgji"]
+load_path = "res://.godot/imported/MenuButton.png-2218ea1ce660447b1007ccb1fa85dce2.ctex"
+
+[sub_resource type="Resource" id="Resource_xqvsg"]
+script = ExtResource("4_xqvsg")
+id = 1
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_c4ouk"]
+script = ExtResource("4_xqvsg")
+id = 4
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_2pq27"]
+script = ExtResource("4_xqvsg")
+id = 7
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_xgaue"]
+script = ExtResource("4_xqvsg")
+id = 8
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_oe3a5"]
+script = ExtResource("4_xqvsg")
+type = 1
+id = 1
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_ogxjy"]
+script = ExtResource("4_xqvsg")
+type = 1
+id = 2
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_4e0xj"]
+script = ExtResource("4_xqvsg")
+type = 1
+id = 3
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_ltn54"]
+script = ExtResource("4_xqvsg")
+type = 1
+id = 6
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_i7x1f"]
+script = ExtResource("4_xqvsg")
+type = 1
+id = 9
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_v0lvk"]
+script = ExtResource("4_xqvsg")
+type = 4
+id = 1
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_514lr"]
+script = ExtResource("4_xqvsg")
+type = 5
+id = 3
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_pvot7"]
+script = ExtResource("4_xqvsg")
+type = 6
+id = 1
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_cvd1v"]
+script = ExtResource("4_xqvsg")
+type = 2
+id = 2
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_5wiqe"]
+script = ExtResource("4_xqvsg")
+type = 2
+id = 3
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_qphcq"]
+script = ExtResource("4_xqvsg")
+type = 2
+id = 4
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_atiwv"]
+script = ExtResource("4_xqvsg")
+type = 2
+id = 5
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_ov5w2"]
+script = ExtResource("4_xqvsg")
+type = 7
+id = 8
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_7v0m5"]
+script = ExtResource("4_xqvsg")
+type = 7
+id = 9
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_x2utj"]
+script = ExtResource("4_xqvsg")
+type = 7
+id = 10
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Resource" id="Resource_ekxcn"]
+script = ExtResource("4_xqvsg")
+type = 7
+id = 11
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
+[sub_resource type="Theme" id="Theme_xgaue"]
+default_font = ExtResource("2_80w3n")
+default_font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_oe3a5"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.48, 0.48, 0.48, 1, 0.7, 0.7, 0.7, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ogxjy"]
+gradient = SubResource("Gradient_oe3a5")
+width = 300
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4e0xj"]
+content_margin_top = 50.0
+texture = ExtResource("4_4rfpf")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+modulate_color = Color(1, 1, 1, 0.5019608)
+
+[sub_resource type="Theme" id="Theme_xqvsg"]
+default_font = ExtResource("2_80w3n")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqvsg"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_ltn54"]
+default_font = ExtResource("6_xqvsg")
+default_font_size = 48
+
+[sub_resource type="Gradient" id="Gradient_ffcim"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i7x1f"]
+gradient = SubResource("Gradient_ffcim")
+width = 560
+height = 48
+fill_from = Vector2(0.0318471, 0.22293)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_sxp3s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(836, 326)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Gold:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../GoldValue:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Header:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BuyLabel:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4rfpf"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.16666667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(836, 26), Vector2(836, 326)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Gold:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../GoldValue:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Header:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.26666668, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BuyLabel:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xqvsg"]
+_data = {
+&"RESET": SubResource("Animation_sxp3s"),
+&"show": SubResource("Animation_4rfpf")
+}
+
+[sub_resource type="Theme" id="Theme_a0qgn"]
+default_font = ExtResource("2_80w3n")
+default_font_size = 32
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vib0y"]
+content_margin_top = 50.0
+texture = ExtResource("3_e852k")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="Theme" id="Theme_okf63"]
+default_font = ExtResource("8_c4ouk")
+default_font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_7xs6h"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v0lvk"]
+gradient = SubResource("Gradient_7xs6h")
+width = 300
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Theme" id="Theme_j43w6"]
+default_font = ExtResource("9_2pq27")
+default_font_size = 32
+
+[node name="ShopScreen" type="Control" node_paths=PackedStringArray("initial_screen", "buy_screen", "sell_screen", "description_panel", "description_icon", "description_text")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rq5a2")
+initial_screen = NodePath("InitialScreen")
+buy_screen = NodePath("BuyScreen")
+sell_screen = NodePath("SellScreen")
+description_panel = NodePath("Description/PanelContainer")
+description_icon = NodePath("Description/Icon")
+description_text = NodePath("Description/Text")
+metadata/_edit_vertical_guides_ = [432.0]
+metadata/_edit_horizontal_guides_ = [-45.0]
+
+[node name="InitialScreen" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InitialScreen"]
+visible = false
+layout_mode = 0
+offset_left = 345.0
+offset_top = 129.0
+offset_right = 511.0
+offset_bottom = 239.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Buy" type="Button" parent="InitialScreen/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vib0y")
+theme_override_constants/outline_size = 8
+action_mode = 0
+text = "Buy"
+icon = SubResource("CompressedTexture2D_axgji")
+flat = true
+icon_alignment = 1
+
+[node name="Sell" type="Button" parent="InitialScreen/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vib0y")
+theme_override_constants/outline_size = 8
+disabled = true
+action_mode = 0
+text = "Sell"
+icon = SubResource("CompressedTexture2D_axgji")
+flat = true
+icon_alignment = 1
+
+[node name="ID" type="Button" parent="InitialScreen/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vib0y")
+theme_override_constants/outline_size = 8
+disabled = true
+action_mode = 0
+text = "? ? ?"
+icon = SubResource("CompressedTexture2D_axgji")
+flat = true
+icon_alignment = 1
+
+[node name="BuyScreen" type="Control" parent="." node_paths=PackedStringArray("gold_label", "animation")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_sxp3s")
+purchasable_items = Array[ExtResource("4_xqvsg")]([SubResource("Resource_xqvsg"), SubResource("Resource_c4ouk"), SubResource("Resource_2pq27"), SubResource("Resource_xgaue"), SubResource("Resource_oe3a5"), SubResource("Resource_ogxjy"), SubResource("Resource_4e0xj"), SubResource("Resource_ltn54"), SubResource("Resource_i7x1f"), SubResource("Resource_v0lvk"), SubResource("Resource_514lr"), SubResource("Resource_pvot7"), SubResource("Resource_cvd1v"), SubResource("Resource_5wiqe"), SubResource("Resource_qphcq"), SubResource("Resource_atiwv"), SubResource("Resource_ov5w2"), SubResource("Resource_7v0m5"), SubResource("Resource_x2utj"), SubResource("Resource_ekxcn")])
+preview = {
+"ADVENTURER_CLOAK": 1300,
+"Antivenom": 200,
+"BLOOD_STONE": 2000,
+"BRASS_KNUCKLES": 100,
+"BRONZE_SPEAR": 150,
+"BULLOVA": 300,
+"CLAYMORE": 300,
+"HEART_BROOCH": 1500,
+"LEATHER_ARMOR": 200,
+"LEATHER_HAT": 100,
+"MIRACLE_COIN": 1000,
+"POTION": 500,
+"RED_SCARF": 1500,
+"RING_OF_LIFE": 3000,
+"SANDALS": 100,
+"SHORT_SWORD": 100,
+"STONE_OF_ALCHEMY": 3000,
+"TONIC": 500,
+"Uncurse": 200,
+"WIZARD_CLOAK": 2500
+}
+gold_label = NodePath("../GoldValue")
+animation = NodePath("AnimationPlayer")
+
+[node name="Header" type="HBoxContainer" parent="BuyScreen"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 36.0
+offset_top = 69.0
+offset_right = 832.0
+offset_bottom = 109.0
+theme = SubResource("Theme_xgaue")
+
+[node name="Name" type="Label" parent="BuyScreen/Header"]
+clip_children = 2
+z_index = 1
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Name"
+
+[node name="TextureRect" type="TextureRect" parent="BuyScreen/Header/Name"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ogxjy")
+
+[node name="Type" type="Label" parent="BuyScreen/Header"]
+clip_children = 2
+z_index = 1
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Type"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BuyScreen/Header/Type"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ogxjy")
+
+[node name="Quantity" type="Label" parent="BuyScreen/Header"]
+clip_children = 2
+z_index = 1
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+text = "Quantity"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BuyScreen/Header/Quantity"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ogxjy")
+
+[node name="Held" type="Label" parent="BuyScreen/Header"]
+clip_children = 2
+z_index = 1
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Held"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BuyScreen/Header/Held"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ogxjy")
+
+[node name="Price" type="Label" parent="BuyScreen/Header"]
+clip_children = 2
+z_index = 1
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+text = "Price"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="BuyScreen/Header/Price"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ogxjy")
+
+[node name="PanelContainer" type="PanelContainer" parent="BuyScreen"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 58.0
+offset_right = 852.0
+offset_bottom = 384.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4e0xj")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BuyScreen/PanelContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Items" type="VBoxContainer" parent="BuyScreen/PanelContainer/ScrollContainer"]
+layout_mode = 2
+theme = SubResource("Theme_xqvsg")
+
+[node name="Header" type="HBoxContainer" parent="BuyScreen/PanelContainer/ScrollContainer/Items"]
+layout_mode = 2
+theme = SubResource("Theme_xgaue")
+
+[node name="Name" type="Button" parent="BuyScreen/PanelContainer/ScrollContainer/Items/Header"]
+custom_minimum_size = Vector2(302, 0)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_xqvsg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_xqvsg")
+text = "Potion"
+icon = ExtResource("7_xqvsg")
+flat = true
+alignment = 0
+expand_icon = true
+
+[node name="Type" type="Label" parent="BuyScreen/PanelContainer/ScrollContainer/Items/Header"]
+z_index = 1
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Accessory"
+horizontal_alignment = 1
+
+[node name="Quantity" type="Label" parent="BuyScreen/PanelContainer/ScrollContainer/Items/Header"]
+z_index = 1
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+text = "< 1 >"
+horizontal_alignment = 1
+
+[node name="Held" type="Label" parent="BuyScreen/PanelContainer/ScrollContainer/Items/Header"]
+z_index = 1
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "99"
+horizontal_alignment = 1
+
+[node name="Price" type="Label" parent="BuyScreen/PanelContainer/ScrollContainer/Items/Header"]
+z_index = 1
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+text = "200000"
+horizontal_alignment = 2
+
+[node name="BuyLabel" type="Label" parent="BuyScreen"]
+clip_children = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 508.0
+offset_bottom = 60.0
+theme = SubResource("Theme_ltn54")
+text = "BUY_SCREEN"
+
+[node name="TextureRect" type="TextureRect" parent="BuyScreen/BuyLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_i7x1f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BuyScreen"]
+libraries = {
+&"": SubResource("AnimationLibrary_xqvsg")
+}
+
+[node name="SellScreen" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Description" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="TextureRect" parent="Description"]
+z_index = 1
+layout_mode = 0
+offset_left = 37.0
+offset_top = 410.0
+offset_right = 77.0
+offset_bottom = 450.0
+expand_mode = 3
+
+[node name="Text" type="Label" parent="Description"]
+z_index = 1
+layout_mode = 0
+offset_left = 92.0
+offset_top = 403.0
+offset_right = 846.0
+offset_bottom = 470.0
+theme = SubResource("Theme_a0qgn")
+theme_override_constants/line_spacing = 0
+theme_override_constants/outline_size = 8
+text = "Welcome!"
+autowrap_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Description"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 395.0
+offset_right = 852.0
+offset_bottom = 468.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vib0y")
+
+[node name="Gold" type="Label" parent="."]
+clip_children = 1
+layout_mode = 0
+offset_left = 591.0
+offset_top = 21.0
+offset_right = 733.0
+offset_bottom = 53.0
+theme = SubResource("Theme_okf63")
+text = "MENU_GOLD"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Gold"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_v0lvk")
+
+[node name="GoldValue" type="Label" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 21.0
+offset_right = 848.0
+offset_bottom = 111.0
+theme = SubResource("Theme_j43w6")
+theme_override_constants/line_spacing = 5
+text = "0"
+horizontal_alignment = 2
