@@ -51,7 +51,7 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 	if body.stats.current_status == Global.player.stats.Ailment.STONE:
 		damage *= 2
 
-	return max(damage, body.stats.Stats["HP"]-1)
+	return damage
 		
 func apply_damage(body, damage):
 	body.damage_popup.popup(damage, 0)
