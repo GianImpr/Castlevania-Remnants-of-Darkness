@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=4 uid="uid://pv431ukjxtnj"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_bydly"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_bydly"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_5l5o4"]
 [ext_resource type="Texture2D" uid="uid://b58ood7hu0g21" path="res://assets/sprites/Tiles/FagarasCave.png" id="3_r6d6d"]
 [ext_resource type="PackedScene" uid="uid://bkyptgxub2ly0" path="res://SampleProject/extra_scenes/stage_elements/purple_candle.tscn" id="4_e4a3m"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Spawners/enemy_spawner.gd" id="5_fi616"]
+[ext_resource type="Script" uid="uid://ce8hlv3gh56gm" path="res://SampleProject/Scripts/Spawners/enemy_spawner.gd" id="5_fi616"]
 [ext_resource type="PackedScene" uid="uid://ogpicvjd72hm" path="res://SampleProject/enemies/MedusaHead/medusa_head.tscn" id="6_raq4s"]
 [ext_resource type="PackedScene" uid="uid://dfuncyp0yhrbk" path="res://SampleProject/enemies/Slinger/slinger.tscn" id="8_jc4s1"]
 [ext_resource type="PackedScene" uid="uid://bvk8m1t7uwv0b" path="res://SampleProject/enemies/Une/Une.tscn" id="9_j26jq"]
@@ -323,9 +323,8 @@ texture_region_size = Vector2i(32, 32)
 10:12/0 = 0
 10:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 11:12/0 = 0
-11:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 1.75, 16, 1.5, 16, 16, -16, 16)
-11:12/0/physics_layer_0/polygon_0/one_way = true
-11:12/0/physics_layer_0/polygon_0/one_way_margin = 0.5
+11:12/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, 0, 16, 0, 16, 16, -16, 16)
+11:12/0/physics_layer_1/polygon_0/one_way = true
 12:12/0 = 0
 12:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, 6.5, 16, 16, -16, 16)
 13:12/0 = 0
@@ -373,9 +372,8 @@ texture_region_size = Vector2i(32, 32)
 9:14/0 = 0
 10:14/0 = 0
 11:14/0 = 0
-11:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 1.75, 16, 1.5, 16, 16, -16, 16)
-11:14/0/physics_layer_0/polygon_0/one_way = true
-11:14/0/physics_layer_0/polygon_0/one_way_margin = 0.5
+11:14/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, 0, 16, 0, 16, 16, -16, 16)
+11:14/0/physics_layer_1/polygon_0/one_way = true
 12:14/0 = 0
 12:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 13:14/0 = 0
@@ -455,8 +453,8 @@ texture_region_size = Vector2i(32, 32)
 10:17/0 = 0
 10:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 11:17/0 = 0
-11:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-11:17/0/physics_layer_0/polygon_0/one_way = true
+11:17/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0, -16, 0)
+11:17/0/physics_layer_1/polygon_0/one_way = true
 12:17/0 = 0
 12:17/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 13:17/0 = 0
@@ -485,16 +483,16 @@ texture_region_size = Vector2i(32, 32)
 10:18/0 = 0
 10:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 11:18/0 = 0
-11:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-11:18/0/physics_layer_0/polygon_0/one_way = true
+11:18/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0, -16, 0)
+11:18/0/physics_layer_1/polygon_0/one_way = true
 12:18/0 = 0
 13:18/0 = 0
 14:18/0 = 0
-14:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-14:18/0/physics_layer_0/polygon_0/one_way = true
+14:18/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0, -16, 0)
+14:18/0/physics_layer_1/polygon_0/one_way = true
 15:18/0 = 0
-15:18/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-15:18/0/physics_layer_0/polygon_0/one_way = true
+15:18/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 0, -16, 0)
+15:18/0/physics_layer_1/polygon_0/one_way = true
 0:19/0 = 0
 0:19/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:19/0 = 0
@@ -713,6 +711,8 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_8dr7c"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 4096
+physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_3be15")
 
 [node name="Room" type="Node2D"]
