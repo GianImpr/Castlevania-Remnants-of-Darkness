@@ -543,7 +543,7 @@ default_font_size = 32
 
 [sub_resource type="Theme" id="Theme_pws06"]
 default_font = ExtResource("13_hj8or")
-default_font_size = 33
+default_font_size = 32
 
 [sub_resource type="Theme" id="Theme_j428y"]
 default_font = ExtResource("8_vu1np")
@@ -2306,16 +2306,25 @@ SubArrows = NodePath("SubArrows")
 NewSubStats = NodePath("NewSubStats")
 
 [node name="SubArrows" type="RichTextLabel" parent="MenuStateMachine/Equip/Display/Text"]
+custom_minimum_size = Vector2(0, 254)
 layout_mode = 0
 offset_left = 108.0
 offset_top = 111.0
 offset_right = 127.0
-offset_bottom = 365.0
+offset_bottom = 375.0
 theme = SubResource("Theme_pws06")
-theme_override_constants/line_separation = 6
 bbcode_enabled = true
+text = "↘
+↘
+↘
+↘
+↘
+↘
+↘
+↘"
 fit_content = true
 scroll_active = false
+vertical_alignment = 3
 
 [node name="NewSubStats" type="RichTextLabel" parent="MenuStateMachine/Equip/Display/Text"]
 layout_mode = 0
@@ -2326,6 +2335,7 @@ offset_bottom = 375.0
 theme_override_constants/line_separation = 9
 bbcode_enabled = true
 scroll_active = false
+vertical_alignment = 3
 
 [node name="SubstatsValues" type="Label" parent="MenuStateMachine/Equip/Display/Text"]
 layout_mode = 0
