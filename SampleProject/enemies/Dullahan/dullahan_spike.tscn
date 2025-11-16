@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://btql1r5psei2s"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="1_e1smr"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanSpike.gd" id="1_ifryw"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="1_e1smr"]
+[ext_resource type="Script" uid="uid://ca0aaannp2l3e" path="res://SampleProject/enemies/Dullahan/DullahanSpike.gd" id="1_ifryw"]
 [ext_resource type="Texture2D" uid="uid://cw4h8icayu8fm" path="res://assets/sprites/Enemies/Dullahan/Spike.png" id="2_tosun"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_yihsi"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_esq15"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_mhj6l"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_yihsi"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_esq15"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_mhj6l"]
 [ext_resource type="AudioStream" uid="uid://dxcgrps002omt" path="res://assets/sounds/Enemies/Dullahan/Spike.wav" id="7_o2qfh"]
 
 [sub_resource type="Animation" id="Animation_5wgsr"]
@@ -70,12 +70,12 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pptn1"]
 _data = {
-"RESET": SubResource("Animation_5wgsr"),
-"spawn": SubResource("Animation_tkgqy")
+&"RESET": SubResource("Animation_5wgsr"),
+&"spawn": SubResource("Animation_tkgqy")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3d4gp"]
-size = Vector2(49, 136)
+size = Vector2(35, 129)
 
 [sub_resource type="Resource" id="Resource_qnii7"]
 script = ExtResource("6_mhj6l")
@@ -105,17 +105,16 @@ frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_pptn1")
+&"": SubResource("AnimationLibrary_pptn1")
 }
 autoplay = "spawn"
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1.5, 24)
+position = Vector2(-1.5, 27.5)
 shape = SubResource("RectangleShape2D_3d4gp")
 
 [node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
