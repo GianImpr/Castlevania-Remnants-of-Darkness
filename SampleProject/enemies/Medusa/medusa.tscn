@@ -1,35 +1,35 @@
 [gd_scene load_steps=81 format=3 uid="uid://dvl5nkdk3iowa"]
 
-[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="1_06p1i"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/medusa.gd" id="1_gsdjv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_vomdi"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_3m0ml"]
+[ext_resource type="Shader" uid="uid://dtfxu1jn7ht65" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="1_06p1i"]
+[ext_resource type="Script" uid="uid://cfqa3hnif02dd" path="res://SampleProject/enemies/Medusa/medusa.gd" id="1_gsdjv"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_vomdi"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_3m0ml"]
 [ext_resource type="Texture2D" uid="uid://doii8n6cb153x" path="res://assets/sprites/Enemies/Medusa/Medusa.png" id="3_ftvva"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_f68lk"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_64g5d"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_f68lk"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_64g5d"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_vl7nl"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_0ie04"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_0ie04"]
 [ext_resource type="AudioStream" uid="uid://2qlxt0kcr6rt" path="res://assets/sounds/Enemies/Medusa/MedusaSword1.MP3" id="7_aaxb1"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSpawn.gd" id="7_bfexr"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaIdle.gd" id="8_ij2bj"]
+[ext_resource type="Script" uid="uid://muxldb714flj" path="res://SampleProject/enemies/Medusa/MedusaSpawn.gd" id="7_bfexr"]
+[ext_resource type="Script" uid="uid://d030e1moein00" path="res://SampleProject/enemies/Medusa/MedusaIdle.gd" id="8_ij2bj"]
 [ext_resource type="AudioStream" uid="uid://ddf6pitk28yn7" path="res://assets/sounds/Enemies/Medusa/MedusaSword2.MP3" id="8_okw4p"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSword.gd" id="9_igd4c"]
+[ext_resource type="Script" uid="uid://bdf8tjequtk57" path="res://SampleProject/enemies/Medusa/MedusaSword.gd" id="9_igd4c"]
 [ext_resource type="AudioStream" uid="uid://b28e4f3niy07g" path="res://assets/sounds/Enemies/Medusa/MedusaClever.MP3" id="9_pws2t"]
 [ext_resource type="AudioStream" uid="uid://d08f535i38bs5" path="res://assets/sounds/Enemies/Medusa/MedusaSerpents.MP3" id="10_mar4y"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaBeam.gd" id="10_s3igb"]
+[ext_resource type="Script" uid="uid://c2b7nts4rllt0" path="res://SampleProject/enemies/Medusa/MedusaBeam.gd" id="10_s3igb"]
 [ext_resource type="AudioStream" uid="uid://vrqutmdws6ue" path="res://assets/sounds/Enemies/Medusa/MedusaTurnToStone.MP3" id="11_faa04"]
 [ext_resource type="AudioStream" uid="uid://df2xk841iad55" path="res://assets/sounds/Enemies/Medusa/MedusaLaser.MP3" id="12_j8ipy"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaSummon.gd" id="12_slqe2"]
+[ext_resource type="Script" uid="uid://eyk6u5fokh6j" path="res://SampleProject/enemies/Medusa/MedusaSummon.gd" id="12_slqe2"]
 [ext_resource type="PackedScene" uid="uid://dy2anuk68qs8g" path="res://SampleProject/enemies/Medusa/medusa_serpent.tscn" id="13_6vr2n"]
 [ext_resource type="AudioStream" uid="uid://c2rix3wcfkj3u" path="res://assets/sounds/Enemies/Medusa/MedusaDamnYou.MP3" id="13_8c1gw"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaStoneCircle.gd" id="13_eq2aj"]
+[ext_resource type="Script" uid="uid://cmkoy3k8md6tc" path="res://SampleProject/enemies/Medusa/MedusaStoneCircle.gd" id="13_eq2aj"]
 [ext_resource type="AudioStream" uid="uid://div6u71f6cmbp" path="res://assets/sounds/Enemies/Medusa/MedusaLockIn.MP3" id="14_ewe07"]
 [ext_resource type="AudioStream" uid="uid://b7hpfbmfxiptp" path="res://assets/sounds/Enemies/Medusa/MedusaDead.MP3" id="15_jbuwr"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="16_rfqid"]
 [ext_resource type="PackedScene" uid="uid://t6lypsds827a" path="res://SampleProject/Powers/stone_circle.tscn" id="25_ij3d6"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaDash.gd" id="26_tmq2m"]
+[ext_resource type="Script" uid="uid://j3fu214ls6aw" path="res://SampleProject/enemies/Medusa/MedusaDash.gd" id="26_tmq2m"]
 [ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="27_bqh4w"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/MedusaDying.gd" id="27_g4cgq"]
+[ext_resource type="Script" uid="uid://d1g0hxd77urou" path="res://SampleProject/enemies/Medusa/MedusaDying.gd" id="27_g4cgq"]
 [ext_resource type="PackedScene" uid="uid://bhhgeq5d6tj2h" path="res://SampleProject/enemies/Medusa/medusa_statue_break.tscn" id="28_36aiq"]
 [ext_resource type="AudioStream" uid="uid://hsx6jf5238fb" path="res://assets/sounds/Powerups/ActivateRelic.MP3" id="29_kf7kh"]
 [ext_resource type="Texture2D" uid="uid://cdl1ueqd58vuq" path="res://assets/sprites/Effects/StoneDebris.png" id="32_elr24"]
@@ -40,7 +40,7 @@ shader_parameter/influence = 0.5
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/speed = 1.0
 shader_parameter/mix_colors = false
-shader_parameter/enabled = null
+shader_parameter/enabled = false
 shader_parameter/sheet_columns = 20
 shader_parameter/sheet_rows = 20
 shader_parameter/petrified = true
@@ -113,7 +113,7 @@ script = ExtResource("5_64g5d")
 sound_effects = Array[ExtResource("6_0ie04")]([SubResource("Resource_rnvkh"), SubResource("Resource_ehchc"), SubResource("Resource_3d3bo"), SubResource("Resource_b1wyx"), SubResource("Resource_66y61"), SubResource("Resource_2lsjj"), SubResource("Resource_n6tbx"), SubResource("Resource_mmy24"), SubResource("Resource_8detw")])
 
 [sub_resource type="Curve" id="Curve_va3vl"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -491,7 +491,7 @@ shader_parameter/influence = 0.5
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/speed = 1.0
 shader_parameter/mix_colors = false
-shader_parameter/enabled = null
+shader_parameter/enabled = false
 shader_parameter/sheet_columns = 20
 shader_parameter/sheet_rows = 20
 shader_parameter/petrified = true
@@ -872,16 +872,16 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a78yn"]
 _data = {
-"RESET": SubResource("Animation_kkh13"),
-"appear": SubResource("Animation_vr6e8"),
-"dash": SubResource("Animation_y4yk6"),
-"die": SubResource("Animation_po0w4"),
-"idle": SubResource("Animation_17pf7"),
-"laser": SubResource("Animation_l8ltl"),
-"magic": SubResource("Animation_xfjkc"),
-"move": SubResource("Animation_u4yjj"),
-"summon": SubResource("Animation_uojy7"),
-"sword": SubResource("Animation_p2ten")
+&"RESET": SubResource("Animation_kkh13"),
+&"appear": SubResource("Animation_vr6e8"),
+&"dash": SubResource("Animation_y4yk6"),
+&"die": SubResource("Animation_po0w4"),
+&"idle": SubResource("Animation_17pf7"),
+&"laser": SubResource("Animation_l8ltl"),
+&"magic": SubResource("Animation_xfjkc"),
+&"move": SubResource("Animation_u4yjj"),
+&"summon": SubResource("Animation_uojy7"),
+&"sword": SubResource("Animation_p2ten")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uttb2"]
@@ -935,7 +935,7 @@ anim_speed_min = 1.0
 anim_speed_max = 1.0
 
 [sub_resource type="Curve" id="Curve_c1gay"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.506897, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -1135,7 +1135,7 @@ red_spark_scene = ExtResource("27_bqh4w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_a78yn")
+&"": SubResource("AnimationLibrary_a78yn")
 }
 
 [node name="LaserEffect" type="GPUParticles2D" parent="."]
@@ -1145,12 +1145,12 @@ position = Vector2(6.5, -24)
 rotation = 1.22173
 emitting = false
 amount = 200
-process_material = SubResource("ParticleProcessMaterial_70cxj")
 texture = ExtResource("16_rfqid")
 lifetime = 1.5
 one_shot = true
 fixed_fps = 60
 local_coords = true
+process_material = SubResource("ParticleProcessMaterial_70cxj")
 
 [node name="DashEffect" type="GPUParticles2D" parent="."]
 z_index = -1
@@ -1158,10 +1158,10 @@ material = SubResource("CanvasItemMaterial_s62wi")
 scale = Vector2(0.5, 0.5)
 emitting = false
 amount = 60
-process_material = SubResource("ParticleProcessMaterial_co8ia")
 texture = ExtResource("16_rfqid")
 lifetime = 0.4
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_co8ia")
 
 [node name="Magic" type="CPUParticles2D" parent="."]
 emitting = false
@@ -1189,9 +1189,9 @@ material = SubResource("CanvasItemMaterial_0oofx")
 position = Vector2(-8, 4.5)
 emitting = false
 amount = 250
+texture = ExtResource("32_elr24")
 lifetime = 2.0
 one_shot = true
-texture = ExtResource("32_elr24")
 emission_shape = 1
 emission_sphere_radius = 29.13
 direction = Vector2(0, -1)

@@ -14,7 +14,7 @@ func Update(delta: float):
 		Transitioned.emit(self, ["dash", "beam"].pick_random())
 		
 	if animation.is_playing() and animation.current_animation_position > 6.5 and player.stats.HP < player.max_HP / 2:
-		Transitioned.emit(self, "beam")
+		Transitioned.emit(self, "summon")
 
 func Physics_Update(delta: float):
 	pass
