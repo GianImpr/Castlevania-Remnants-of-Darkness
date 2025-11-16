@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://vnpws4e4sr3f"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_rwv4v"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_rwv4v"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_31apv"]
 [ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_nl8xd"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="4_kbhog"]
@@ -816,6 +816,7 @@ change_music = true
 apply_limits = true
 camera_limit_right = 864
 camera_limit_bottom = 1920
+disable_pixel_snap = true
 
 [node name="RoomInstance" parent="." instance=ExtResource("2_31apv")]
 

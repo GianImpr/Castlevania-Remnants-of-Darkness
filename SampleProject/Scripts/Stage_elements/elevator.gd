@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 		
 	if can_lift and (Input.is_action_just_pressed("up_arrow") and should_go_up or Input.is_action_just_pressed("crouch") and not should_go_up) and not moving:
 		_moveElevator()
-		
+	
 
 	
 func _moveElevator():
@@ -42,7 +42,7 @@ func _moveElevator():
 		
 func _moveTo(height_value: float):
 	var tween = get_tree().create_tween()
-	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	tween.set_process_mode(Tween.TWEEN_PROCESS_IDLE)
 	tween.tween_property(self, "height", height_value, 11)
 	await tween.finished
 	if can_lift and not should_go_up:

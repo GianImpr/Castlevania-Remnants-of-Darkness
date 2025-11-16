@@ -75,8 +75,9 @@ func create_hit_effect(body: Node2D):
 	var effect_x = (coordinatesX[1]+coordinatesX[2])/2
 	var effect_y = (coordinatesY[1]+coordinatesY[2])/2
 	var hit_effect = hit_collision_scene.instantiate()
-	get_parent().get_parent().get_parent().add_child(hit_effect)
 	hit_effect.position = Vector2(effect_x, effect_y)
+	hit_effect.z_index = 15
+	MetSys.get_current_room_instance().add_child(hit_effect)
 	
 func create_effects(body: Node2D):
 	sound.play_sound_effect_from_library("hit_sfx")

@@ -24,8 +24,11 @@ script = ExtResource("5_425cv")
 sound_effects = Array[ExtResource("6_baeg1")]([SubResource("Resource_g2o76")])
 
 [node name="StaticBody2D" type="StaticBody2D"]
+physics_interpolation_mode = 2
+collision_mask = 3
 
 [node name="Elevator" type="Node2D" parent="." node_paths=PackedStringArray("chain", "elevator", "collision_box", "sound")]
+physics_interpolation_mode = 2
 script = ExtResource("1_tht4r")
 height = 852.0
 chain = NodePath("Chain")
@@ -34,6 +37,7 @@ collision_box = NodePath("../CollisionShape2D")
 sound = NodePath("../PolyphonicMenuAudio")
 
 [node name="Chain" type="Sprite2D" parent="Elevator"]
+physics_interpolation_mode = 2
 texture_repeat = 2
 scale = Vector2(2, 2)
 texture = ExtResource("1_5sa8a")
@@ -42,22 +46,26 @@ region_enabled = true
 region_rect = Rect2(0, 0, 5, 852)
 
 [node name="Elevator" type="Sprite2D" parent="Elevator"]
+physics_interpolation_mode = 2
 position = Vector2(4, 1776)
 scale = Vector2(2, 2)
 texture = ExtResource("2_27f6t")
 
 [node name="Area2D" type="Area2D" parent="Elevator/Elevator"]
+physics_interpolation_mode = 2
 position = Vector2(0, 32)
 scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator/Elevator/Area2D"]
+physics_interpolation_mode = 2
 position = Vector2(13, -62)
 shape = SubResource("RectangleShape2D_xc2gm")
 debug_color = Color(0.86548, 0.356066, 7.70092e-07, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+physics_interpolation_mode = 1
 position = Vector2(4, 1840)
 shape = SubResource("RectangleShape2D_80ybh")
 

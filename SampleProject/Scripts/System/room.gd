@@ -10,6 +10,7 @@ class_name Room
 @export var camera_limit_top: int
 @export var camera_limit_bottom: int
 @export var save_room_id: int
+@export var disable_pixel_snap: bool = false
 
 func _ready() -> void:
 	if save_room_id > 0:
@@ -36,3 +37,10 @@ func _ready() -> void:
 		Global.music_player.volume_db = -15
 		Global.music_player.stop()
 		Global.music_player.play_sound_effect_from_library(stage_music)
+		
+	# This is garbage but what can you do. Literally just here for the elevator not jittering like crazy.
+	if disable_pixel_snap:
+		Engine.max_fps = 120
+	else:
+		Engine.max_fps = 144
+	RenderingServer.viewport_set_snap_2d_transforms_to_pixel(Global.get_viewport().get_viewport_rid(), not disable_pixel_snap)

@@ -65,8 +65,8 @@ func create_hit_effect(body: Node2D) -> void:
 	var effect_x = (coordinatesX[1]+coordinatesX[2])/2
 	var effect_y = (coordinatesY[1]+coordinatesY[2])/2
 	var hit_effect = hit_collision_scene.instantiate()
-	Global.player.get_parent().add_child(hit_effect)
 	hit_effect.position = Vector2(effect_x, effect_y)
+	Global.player.get_parent().add_child(hit_effect)
 	
 func calculate_damage(body: Node2D) -> int:
 	if magical:
@@ -110,6 +110,7 @@ func change_parent():
 	get_parent().remove_child(self)
 	MetSys.current_room.add_child(self)
 	global_position = location
+	reset_physics_interpolation()
 
 func take_damage(damage: int) -> void:
 	base_HP -= damage

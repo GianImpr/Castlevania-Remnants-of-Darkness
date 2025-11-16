@@ -1,11 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://d0jg4wghfdqpn"]
 
 [ext_resource type="Texture2D" uid="uid://cx0am10mnr4np" path="res://assets/sprites/PowerUps/Icicle.png" id="1_jgp1w"]
-[ext_resource type="Script" path="res://SampleProject/Objects/ArcticShield/icicle.gd" id="1_mob5w"]
+[ext_resource type="Script" uid="uid://c1qc1k4i0wgx3" path="res://SampleProject/Objects/ArcticShield/icicle.gd" id="1_mob5w"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="2_rbtqm"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_3t8er"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_ptlel"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_3p6t8"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_3t8er"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_ptlel"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_3p6t8"]
 [ext_resource type="AudioStream" uid="uid://dilfjuatytln6" path="res://assets/sounds/Powerups/ArcticShield/OpenShield/Hit.MP3" id="7_sywl1"]
 
 [sub_resource type="Animation" id="Animation_4b7c2"]
@@ -304,18 +304,18 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ep8w1"]
 _data = {
-"RESET": SubResource("Animation_4b7c2"),
-"create": SubResource("Animation_ld0xm"),
-"destroy": SubResource("Animation_t7nul"),
-"dissolve_base": SubResource("Animation_rqpgv"),
-"travel": SubResource("Animation_ihggy")
+&"RESET": SubResource("Animation_4b7c2"),
+&"create": SubResource("Animation_ld0xm"),
+&"destroy": SubResource("Animation_t7nul"),
+&"dissolve_base": SubResource("Animation_rqpgv"),
+&"travel": SubResource("Animation_ihggy")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byaud"]
 size = Vector2(108, 38)
 
 [sub_resource type="Curve" id="Curve_oluk7"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1e-05, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -364,7 +364,7 @@ frame = 14
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Icicle2")
 libraries = {
-"": SubResource("AnimationLibrary_ep8w1")
+&"": SubResource("AnimationLibrary_ep8w1")
 }
 autoplay = "create"
 speed_scale = 3.0

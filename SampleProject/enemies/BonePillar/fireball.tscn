@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://by2tojgiqqi2u"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/fireball.gd" id="1_aa7w3"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="1_nlcup"]
+[ext_resource type="Script" uid="uid://83h2kn4bangk" path="res://SampleProject/enemies/BonePillar/fireball.gd" id="1_aa7w3"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="1_nlcup"]
 [ext_resource type="Texture2D" uid="uid://ef0clrhyqt83" path="res://assets/sprites/Enemies/bonePillar.png" id="2_a1p5o"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="4_ytjqh"]
 
@@ -130,9 +130,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x73cy"]
 _data = {
-"RESET": SubResource("Animation_dy1ew"),
-"destroy": SubResource("Animation_oqc8f"),
-"travel": SubResource("Animation_3ua8e")
+&"RESET": SubResource("Animation_dy1ew"),
+&"destroy": SubResource("Animation_oqc8f"),
+&"travel": SubResource("Animation_3ua8e")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gqff"]
@@ -166,6 +166,7 @@ anim_speed_min = 1.0
 anim_speed_max = 1.0
 
 [node name="Fireball" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "lifespan_timer")]
+z_index = 10
 collision_layer = 4
 collision_mask = 0
 gravity_scale = 0.0
@@ -196,7 +197,7 @@ frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_x73cy")
+&"": SubResource("AnimationLibrary_x73cy")
 }
 autoplay = "travel"
 speed_scale = 2.0
@@ -224,11 +225,11 @@ material = SubResource("CanvasItemMaterial_gyr3f")
 position = Vector2(1, 27)
 emitting = false
 amount = 30
-process_material = SubResource("ParticleProcessMaterial_jeft2")
 texture = ExtResource("4_ytjqh")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_jeft2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]
