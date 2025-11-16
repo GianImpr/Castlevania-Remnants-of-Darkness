@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://chah0gfmy6gd7"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/AxeArmor/Axe.gd" id="1_p7llq"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="1_yupox"]
+[ext_resource type="Script" uid="uid://dfqt6yammxebs" path="res://SampleProject/enemies/AxeArmor/Axe.gd" id="1_p7llq"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="1_yupox"]
 [ext_resource type="Texture2D" uid="uid://ditr8o63awx3g" path="res://assets/sprites/Enemies/AxeArmor.png" id="2_f2f7g"]
 
 [sub_resource type="Animation" id="Animation_qckqd"]
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qsmiq"]
 _data = {
-"RESET": SubResource("Animation_qckqd"),
-"rotate": SubResource("Animation_ipath")
+&"RESET": SubResource("Animation_qckqd"),
+&"rotate": SubResource("Animation_ipath")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8xc7"]
@@ -49,6 +49,7 @@ radius = 6.95652
 radius = 6.95652
 
 [node name="Axe" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "slowdown_timer", "lifespan_timer")]
+z_index = 10
 collision_layer = 4
 collision_mask = 0
 gravity_scale = 0.0
@@ -79,7 +80,7 @@ frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_qsmiq")
+&"": SubResource("AnimationLibrary_qsmiq")
 }
 autoplay = "rotate"
 

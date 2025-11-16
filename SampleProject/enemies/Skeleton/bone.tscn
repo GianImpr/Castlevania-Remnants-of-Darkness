@@ -262,6 +262,7 @@ script = ExtResource("5_r2ukc")
 sound_effects = Array[ExtResource("7_wjqnj")]([SubResource("Resource_jkyud")])
 
 [node name="Bone" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "sound")]
+z_index = 10
 collision_layer = 4
 collision_mask = 4097
 mass = 0.001

@@ -397,6 +397,7 @@ func instantiateScene(scene: PackedScene, get_player_frame: bool, offset: Vector
 	instance.scale = scale
 	instance.global_position = global_position + offset
 	instance.flip_h = sprite.flip_h
+	instance.z_index = z_index-1
 	if get_player_frame:
 		instance.frame = sprite.frame
 		instance.texture = sprite.texture
