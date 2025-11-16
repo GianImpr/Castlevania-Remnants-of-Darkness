@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=3 uid="uid://ogpicvjd72hm"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/MedusaHead/medusa_head.gd" id="1_egwhy"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_knrrq"]
+[ext_resource type="Script" uid="uid://dd846n7cxpon3" path="res://SampleProject/enemies/MedusaHead/medusa_head.gd" id="1_egwhy"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_knrrq"]
 [ext_resource type="Texture2D" uid="uid://tpobaynfjjbs" path="res://assets/sprites/Enemies/MedusaHead.png" id="3_hbmoi"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_ivq61"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_58pjh"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_ivq61"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_58pjh"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_ughfc"]
-[ext_resource type="Script" path="res://SampleProject/enemies/MedusaHead/MedusaHeadMoving.gd" id="7_batcw"]
-[ext_resource type="Script" path="res://SampleProject/enemies/MedusaHead/MedusaHeadDying.gd" id="8_wl1oq"]
+[ext_resource type="Script" uid="uid://bpw7jx6wbitp4" path="res://SampleProject/enemies/MedusaHead/MedusaHeadMoving.gd" id="7_batcw"]
+[ext_resource type="Script" uid="uid://cynk355pl5yav" path="res://SampleProject/enemies/MedusaHead/MedusaHeadDying.gd" id="8_wl1oq"]
 [ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="9_pri0t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7xww"]
@@ -16,7 +16,7 @@
 size = Vector2(15, 6)
 
 [sub_resource type="Curve" id="Curve_va3vl"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -106,8 +106,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bqepi"]
 _data = {
-"RESET": SubResource("Animation_yfx1c"),
-"moving": SubResource("Animation_kfdss")
+&"RESET": SubResource("Animation_yfx1c"),
+&"moving": SubResource("Animation_kfdss")
 }
 
 [node name="MedusaHead" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
@@ -196,6 +196,6 @@ explosion_scene = ExtResource("9_pri0t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bqepi")
+&"": SubResource("AnimationLibrary_bqepi")
 }
 autoplay = "moving"

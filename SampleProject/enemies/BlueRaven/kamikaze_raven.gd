@@ -36,6 +36,6 @@ func _on_vision_body_entered(body: Node2D) -> void:
 
 func explode():
 	var explosion = explosion_scene.instantiate()
-	MetSys.get_current_room_instance().add_child(explosion)
 	explosion.global_position = global_position
+	MetSys.get_current_room_instance().add_child(explosion)
 	queue_free()

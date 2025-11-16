@@ -1,34 +1,34 @@
 [gd_scene load_steps=60 format=3 uid="uid://c6b7toh8yj33q"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/ctulhu.gd" id="1_ra40b"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_gry21"]
+[ext_resource type="Script" uid="uid://daycbh3hdrbn7" path="res://SampleProject/enemies/Ctulhu/ctulhu.gd" id="1_ra40b"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_gry21"]
 [ext_resource type="Texture2D" uid="uid://dnjby5iitj77q" path="res://assets/sprites/Enemies/Ctulhu/Ctulhu.png" id="3_dn3n0"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_k7awv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_5qciq"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_k7awv"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_5qciq"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_rdul0"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_3i0mo"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuWaiting.gd" id="7_1cejh"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="7_2nkjm"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_3i0mo"]
+[ext_resource type="Script" uid="uid://bowyqskrhb7m2" path="res://SampleProject/enemies/Ctulhu/CtulhuWaiting.gd" id="7_1cejh"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_2nkjm"]
 [ext_resource type="AudioStream" uid="uid://cp0wlsu0kr46r" path="res://assets/sounds/Effects/HectorHit/HitFire.MP3" id="8_mfnm8"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuIdle.gd" id="8_yamlt"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuStartFlying.gd" id="9_w8yco"]
+[ext_resource type="Script" uid="uid://bp02ttb4xc8ub" path="res://SampleProject/enemies/Ctulhu/CtulhuIdle.gd" id="8_yamlt"]
+[ext_resource type="Script" uid="uid://brn1ggql7atjm" path="res://SampleProject/enemies/Ctulhu/CtulhuStartFlying.gd" id="9_w8yco"]
 [ext_resource type="AudioStream" uid="uid://fnjp1drnvmfe" path="res://assets/sounds/Enemies/Ctulhu/CtulhuIceWaveScream.MP3" id="9_wil0a"]
 [ext_resource type="AudioStream" uid="uid://d03mkkh2i3x8p" path="res://assets/sounds/Enemies/Ctulhu/CtulhuIceWave.MP3" id="10_he1ny"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuFlying.gd" id="10_llltl"]
+[ext_resource type="Script" uid="uid://psoehgvafqfc" path="res://SampleProject/enemies/Ctulhu/CtulhuFlying.gd" id="10_llltl"]
 [ext_resource type="AudioStream" uid="uid://b43a3my3jjj6b" path="res://assets/sounds/Enemies/Ctulhu/CtulhuScream.MP3" id="11_ndog7"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuLanding.gd" id="11_y15pb"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuFireball.gd" id="12_p5yj3"]
+[ext_resource type="Script" uid="uid://h0bpi65hitcd" path="res://SampleProject/enemies/Ctulhu/CtulhuLanding.gd" id="11_y15pb"]
+[ext_resource type="Script" uid="uid://brhtairypuw1h" path="res://SampleProject/enemies/Ctulhu/CtulhuFireball.gd" id="12_p5yj3"]
 [ext_resource type="AudioStream" uid="uid://bvgik7md8rprp" path="res://assets/sounds/Enemies/Ctulhu/CtulhuDead.MP3" id="12_rycmy"]
 [ext_resource type="AudioStream" uid="uid://baietjlntt48w" path="res://assets/sounds/Effects/Miscellaneous/Explosion.MP3" id="13_5nkg7"]
 [ext_resource type="PackedScene" uid="uid://2eavo1ohmkqv" path="res://SampleProject/enemies/Ctulhu/ctulhu_fireball.tscn" id="13_pghfi"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuAirFireball.gd" id="14_6qf0f"]
+[ext_resource type="Script" uid="uid://7ngpw7ysrtfa" path="res://SampleProject/enemies/Ctulhu/CtulhuAirFireball.gd" id="14_6qf0f"]
 [ext_resource type="AudioStream" uid="uid://cqjx5um6k1qb0" path="res://assets/sounds/Enemies/Ctulhu/CtulhuDeathExplosion.MP3" id="14_ik845"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuSwinging.gd" id="15_c13as"]
+[ext_resource type="Script" uid="uid://bjuh2kqc5ke07" path="res://SampleProject/enemies/Ctulhu/CtulhuSwinging.gd" id="15_c13as"]
 [ext_resource type="AudioStream" uid="uid://cpsnojuovrfwr" path="res://assets/sounds/Enemies/Ctulhu/CtulhuFlying.MP3" id="15_opy47"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuJumping.gd" id="16_f830n"]
+[ext_resource type="Script" uid="uid://dhc35fbf2be1y" path="res://SampleProject/enemies/Ctulhu/CtulhuJumping.gd" id="16_f830n"]
 [ext_resource type="PackedScene" uid="uid://78uag16ilymj" path="res://SampleProject/enemies/Ctulhu/ctulhu_ice_wave.tscn" id="16_q0ek4"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuMocking.gd" id="17_bp8vt"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ctulhu/CtulhuDying.gd" id="18_qw821"]
+[ext_resource type="Script" uid="uid://cj6d7p3j50ybs" path="res://SampleProject/enemies/Ctulhu/CtulhuMocking.gd" id="17_bp8vt"]
+[ext_resource type="Script" uid="uid://b6qupitythqmx" path="res://SampleProject/enemies/Ctulhu/CtulhuDying.gd" id="18_qw821"]
 [ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="27_0yxjs"]
 [ext_resource type="Texture2D" uid="uid://cd5wfc51yc6hf" path="res://assets/sprites/Effects/BigExplosion.png" id="28_856w7"]
 
@@ -86,7 +86,7 @@ script = ExtResource("6_3i0mo")
 sound_effects = Array[ExtResource("7_2nkjm")]([SubResource("Resource_r8fbg"), SubResource("Resource_3gmrk"), SubResource("Resource_lhdfl"), SubResource("Resource_wmhoj"), SubResource("Resource_o8opr"), SubResource("Resource_kjaga"), SubResource("Resource_wvx2o"), SubResource("Resource_tcyhs")])
 
 [sub_resource type="Curve" id="Curve_va3vl"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -492,15 +492,15 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xaoy7"]
 _data = {
-"RESET": SubResource("Animation_alk7n"),
-"air_fireball": SubResource("Animation_fow5m"),
-"dying": SubResource("Animation_vtgso"),
-"flying": SubResource("Animation_yvl71"),
-"ground_fireball": SubResource("Animation_87we7"),
-"idle": SubResource("Animation_4y5tf"),
-"mocking": SubResource("Animation_yv1pb"),
-"start_flying": SubResource("Animation_yauyk"),
-"swing": SubResource("Animation_f8om0")
+&"RESET": SubResource("Animation_alk7n"),
+&"air_fireball": SubResource("Animation_fow5m"),
+&"dying": SubResource("Animation_vtgso"),
+&"flying": SubResource("Animation_yvl71"),
+&"ground_fireball": SubResource("Animation_87we7"),
+&"idle": SubResource("Animation_4y5tf"),
+&"mocking": SubResource("Animation_yv1pb"),
+&"start_flying": SubResource("Animation_yauyk"),
+&"swing": SubResource("Animation_f8om0")
 }
 
 [sub_resource type="Gradient" id="Gradient_q4jlg"]
@@ -666,7 +666,7 @@ wait_time = 0.13
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xaoy7")
+&"": SubResource("AnimationLibrary_xaoy7")
 }
 
 [node name="FireballLight" type="PointLight2D" parent="."]
@@ -679,9 +679,9 @@ texture = SubResource("GradientTexture2D_o1kll")
 material = SubResource("CanvasItemMaterial_d3fhr")
 emitting = false
 amount = 40
+texture = ExtResource("28_856w7")
 lifetime = 3.0
 one_shot = true
-texture = ExtResource("28_856w7")
 emission_shape = 1
 emission_sphere_radius = 40.0
 direction = Vector2(0, -1)

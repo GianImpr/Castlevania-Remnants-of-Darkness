@@ -50,9 +50,9 @@ func Physics_Update(delta: float):
 func spawnFire() -> void:
 	const FLAME_POSITION_OFFSET: Vector2 = Vector2(18, 0)
 	var flame = player.flame_projectile_scene.instantiate()
-	MetSys.get_current_room_instance().add_child(flame)
 	flame.stats.thrower_ATK = player.stats.ATK
 	flame.global_position = player.global_position + FLAME_POSITION_OFFSET*player.facing_position
 	spawn_fire_timer.wait_time = spawn_fire_base_time + randf_range(-spawn_fire_random_offset, spawn_fire_random_offset)
 	spawn_fire_timer.start()
 	sound.play_sound_effect_from_library("fireball")
+	MetSys.get_current_room_instance().add_child(flame)

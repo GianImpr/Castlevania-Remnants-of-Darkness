@@ -23,7 +23,6 @@ func Physics_Update(delta: float):
 func throw_axe():
 	sound.play_sound_effect_from_library("swing")
 	var axe = axe_scene.instantiate()
-	get_parent().get_parent().get_parent().add_child(axe)
 	axe.sprite.scale.x *= player.facing_position
 	axe.hitbox_iframe.scale.x *= player.facing_position
 	axe.hurtbox.scale.x *= player.facing_position
@@ -32,4 +31,5 @@ func throw_axe():
 	axe.direction = player.facing_position
 	axe.linear_velocity.y = axe_speed.y
 	axe.stats.thrower_ATK = player.stats.ATK
+	MetSys.get_current_room_instance().add_child(axe)
 	

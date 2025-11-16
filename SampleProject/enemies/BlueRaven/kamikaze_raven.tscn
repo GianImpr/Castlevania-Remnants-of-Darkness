@@ -1,20 +1,20 @@
 [gd_scene load_steps=30 format=3 uid="uid://crkxe62hk26kh"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/BlueRaven/kamikaze_raven.gd" id="1_8qu1v"]
+[ext_resource type="Script" uid="uid://blto6pf2c42dp" path="res://SampleProject/enemies/BlueRaven/kamikaze_raven.gd" id="1_8qu1v"]
 [ext_resource type="PackedScene" uid="uid://sx5bpu32eldc" path="res://SampleProject/extra_scenes/effects/big_explosion.tscn" id="2_g2x5a"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_vu1oc"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_exibr"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_vu1oc"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_exibr"]
 [ext_resource type="Texture2D" uid="uid://ds4t6bgwqg1d7" path="res://assets/sprites/Enemies/KamikazeBird.png" id="3_njjpr"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_d3kcu"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_d3kcu"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_8towm"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_pp3kr"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_73ml2"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_pp3kr"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_73ml2"]
 [ext_resource type="AudioStream" uid="uid://c8tebvyyqybof" path="res://assets/sounds/Enemies/BlackCrow/CrowDie.MP3" id="7_wani5"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenIdle.gd" id="11_7x4cc"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenPreparing.gd" id="12_c4m40"]
+[ext_resource type="Script" uid="uid://dkbd6ijmtvj5t" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenIdle.gd" id="11_7x4cc"]
+[ext_resource type="Script" uid="uid://ug88a4o7bxtp" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenPreparing.gd" id="12_c4m40"]
 [ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="13_xp8o6"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenMoving.gd" id="14_tcadx"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenDying.gd" id="15_vau70"]
+[ext_resource type="Script" uid="uid://kj4vvdt3wpkw" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenMoving.gd" id="14_tcadx"]
+[ext_resource type="Script" uid="uid://20jprja8yxjp" path="res://SampleProject/enemies/BlueRaven/KamikazeRavenDying.gd" id="15_vau70"]
 [ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="16_whdmx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_078j5"]
@@ -36,7 +36,7 @@ script = ExtResource("5_pp3kr")
 sound_effects = Array[ExtResource("6_73ml2")]([SubResource("Resource_rq4bs")])
 
 [sub_resource type="Curve" id="Curve_va3vl"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -144,9 +144,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_riikq"]
 _data = {
-"RESET": SubResource("Animation_gafs8"),
-"fly": SubResource("Animation_x4j2m"),
-"idle": SubResource("Animation_ouu6a")
+&"RESET": SubResource("Animation_gafs8"),
+&"fly": SubResource("Animation_x4j2m"),
+&"idle": SubResource("Animation_ouu6a")
 }
 
 [sub_resource type="Gradient" id="Gradient_6nwsw"]
@@ -268,7 +268,7 @@ hitbox_shape = NodePath("../../Hitbox/HitboxShape")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_riikq")
+&"": SubResource("AnimationLibrary_riikq")
 }
 
 [node name="HotParticles" type="CPUParticles2D" parent="."]

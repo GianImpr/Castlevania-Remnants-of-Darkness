@@ -80,14 +80,14 @@ func dropItem(id: int, type: PickUp.ItemType) -> void:
 	var pick_up: PickUp = pick_up_scene.instantiate()
 	pick_up.id = id
 	pick_up.type = type
-	enemy_parent_node.add_child(pick_up)
 	pick_up.global_position = get_parent().global_position
+	enemy_parent_node.add_child(pick_up)
 
 # Drops a random heart or money
 func dropMisc(scene: PackedScene) -> void:
 	var misc_drop = scene.instantiate()
-	enemy_parent_node.add_child(misc_drop)
 	misc_drop.global_position = get_parent().global_position
+	enemy_parent_node.add_child(misc_drop)
 	
 func findEntry() -> EnemyEntry:
 	for i in range(0, Game.enemy_data.size()):

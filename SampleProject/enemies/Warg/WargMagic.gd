@@ -35,7 +35,7 @@ func startSpawningFirePillars() -> void:
 func spawnFirePillar() -> void:
 	var fire_pillar = offensive_fire_pillar_scene.instantiate()
 	fire_pillar.stats.thrower_ATK = player.stats.ATK
-	MetSys.get_current_room_instance().add_child(fire_pillar)
 	fire_pillar.global_position.y = player.global_position.y + INITIAL_FIRE_PILLAR_POSITION.y
 	fire_pillar.global_position.x = player.global_position.x + (INITIAL_FIRE_PILLAR_POSITION.x + current_pillar*FIRE_PILLAR_DISTANCE) * player.facing_position
 	current_pillar += 1
+	MetSys.get_current_room_instance().add_child(fire_pillar)

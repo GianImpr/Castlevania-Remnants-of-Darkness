@@ -1,19 +1,19 @@
 [gd_scene load_steps=30 format=3 uid="uid://bcqff14dmgwpf"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/BlackCrow/black_crow.gd" id="1_vciy4"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_cs74y"]
+[ext_resource type="Script" uid="uid://dgtvy24dmuuom" path="res://SampleProject/enemies/BlackCrow/black_crow.gd" id="1_vciy4"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_cs74y"]
 [ext_resource type="Texture2D" uid="uid://dk1f1le3qu1c1" path="res://assets/sprites/Enemies/BlackCrow.png" id="3_ip7ip"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_s14ig"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_s14ig"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_2bmj8"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="6_64tsp"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BlackCrow/BlackCrowWaiting.gd" id="7_o2jy0"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_qkj6v"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="8_g61rf"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BlackCrow/BlackCrowIdle.gd" id="8_jn2oy"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BlackCrow/BlackCrowDying.gd" id="9_miact"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="6_64tsp"]
+[ext_resource type="Script" uid="uid://biu32b1x2jb38" path="res://SampleProject/enemies/BlackCrow/BlackCrowWaiting.gd" id="7_o2jy0"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_qkj6v"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="8_g61rf"]
+[ext_resource type="Script" uid="uid://gtonas87jhrm" path="res://SampleProject/enemies/BlackCrow/BlackCrowIdle.gd" id="8_jn2oy"]
+[ext_resource type="Script" uid="uid://c7qa2xkunhdy7" path="res://SampleProject/enemies/BlackCrow/BlackCrowDying.gd" id="9_miact"]
 [ext_resource type="AudioStream" uid="uid://bfh28uhcyxp63" path="res://assets/sounds/Enemies/BlackCrow/CrowMove.MP3" id="9_ti80n"]
 [ext_resource type="AudioStream" uid="uid://c8tebvyyqybof" path="res://assets/sounds/Enemies/BlackCrow/CrowDie.MP3" id="10_okylf"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BlackCrow/BlackCrowMoving.gd" id="10_x6lot"]
+[ext_resource type="Script" uid="uid://bl5wga0mcxshf" path="res://SampleProject/enemies/BlackCrow/BlackCrowMoving.gd" id="10_x6lot"]
 [ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="14_0l4nn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnvxm"]
@@ -218,10 +218,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cx2f5"]
 _data = {
-"RESET": SubResource("Animation_6rkau"),
-"dead": SubResource("Animation_0h45y"),
-"fly": SubResource("Animation_lgidi"),
-"waiting": SubResource("Animation_shiug")
+&"RESET": SubResource("Animation_6rkau"),
+&"dead": SubResource("Animation_0h45y"),
+&"fly": SubResource("Animation_lgidi"),
+&"waiting": SubResource("Animation_shiug")
 }
 
 [sub_resource type="Resource" id="Resource_sv85p"]
@@ -287,7 +287,7 @@ func on_child_transition(state, new_state_name):
 "
 
 [sub_resource type="Curve" id="Curve_32cqo"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -351,7 +351,7 @@ shape = SubResource("RectangleShape2D_30g68")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_cx2f5")
+&"": SubResource("AnimationLibrary_cx2f5")
 }
 
 [node name="Iframe" type="Timer" parent="."]

@@ -8,7 +8,7 @@ class_name HectorBackdash
 var can_perfect_guard: bool = true
 const STARTING_ANIM_POSITION: float = 0.5
 const DEBRIS_POSITION: Vector2 = Vector2(40,68)
-const DECELERATION_RATE: float = 0.9
+const DECELERATION_RATE: float = 54
 
 
 func enter():
@@ -37,7 +37,7 @@ func Physics_Update(delta: float):
 		debris_timer.stop()
 		
 	if animation.is_playing():
-		player.velocity.x *= DECELERATION_RATE
+		player.velocity.x *= (DECELERATION_RATE*delta)
 	else:
 		player.velocity.x = 0
 		Transitioned.emit(self, "idle")

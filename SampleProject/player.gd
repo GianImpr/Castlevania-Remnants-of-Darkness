@@ -143,8 +143,8 @@ func _process(delta: float) -> void:
 		aguni_on_cooldown = true
 		get_tree().create_timer(AGUNI_COOLDOWN).timeout.connect(func(): aguni_on_cooldown = false)
 		var flame = aguni_flames.instantiate()
-		MetSys.get_current_room_instance().add_child(flame)
 		flame.global_position = global_position + Vector2(20*facing_position,66)
+		MetSys.get_current_room_instance().add_child(flame)
 		aguni_mp_consumption += delta*AGUNI_LAUREL_COST_PER_SECOND
 		if aguni_mp_consumption >= 1:
 			aguni_mp_consumption = 0
@@ -394,7 +394,6 @@ func petrify() -> void:
 #Creates one afterimage instance of Hector
 func instantiateScene(scene: PackedScene, get_player_frame: bool, offset: Vector2):
 	var instance: Sprite2D = scene.instantiate()
-	MetSys.get_current_room_instance().add_child(instance)
 	instance.scale = scale
 	instance.global_position = global_position + offset
 	instance.flip_h = sprite.flip_h
@@ -403,6 +402,7 @@ func instantiateScene(scene: PackedScene, get_player_frame: bool, offset: Vector
 		instance.texture = sprite.texture
 		instance.hframes = sprite.hframes
 		instance.vframes = sprite.vframes
+	MetSys.get_current_room_instance().add_child(instance)
 
 func activateBloodCloak() -> void:
 	heal_innocent(BLOOD_CLOAK_HEAL)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://doars67ccns6p"]
 
 [ext_resource type="Texture2D" uid="uid://5g68arif8m6c" path="res://assets/sprites/Objects/Platforms/MonasteryPlatform.png" id="1_11sag"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/monastery_platform.gd" id="1_mrkvk"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_3w2jj"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_5y7rh"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_tjjr8"]
+[ext_resource type="Script" uid="uid://bk5xeekemubhu" path="res://SampleProject/Scripts/Stage_elements/monastery_platform.gd" id="1_mrkvk"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_3w2jj"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_5y7rh"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="5_tjjr8"]
 [ext_resource type="AudioStream" uid="uid://bxt6p8rg1n288" path="res://assets/sounds/Objects/PlatformActivate.wav" id="6_dlt5u"]
 
 [sub_resource type="Animation" id="Animation_5vxrv"]
@@ -98,10 +98,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kx7g1"]
 _data = {
-"RESET": SubResource("Animation_5vxrv"),
-"activate": SubResource("Animation_708q0"),
-"idle": SubResource("Animation_xdpmb"),
-"move": SubResource("Animation_lhi3o")
+&"RESET": SubResource("Animation_5vxrv"),
+&"activate": SubResource("Animation_708q0"),
+&"idle": SubResource("Animation_xdpmb"),
+&"move": SubResource("Animation_lhi3o")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tg7j"]
@@ -137,7 +137,7 @@ texture = ExtResource("1_11sag")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_kx7g1")
+&"": SubResource("AnimationLibrary_kx7g1")
 }
 autoplay = "idle"
 

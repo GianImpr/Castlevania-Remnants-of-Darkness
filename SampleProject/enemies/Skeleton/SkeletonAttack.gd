@@ -22,7 +22,6 @@ func throw_bone():
 	sound.play_sound_effect_from_library("throw")
 	for i in range(0, bones_thrown):
 		var bone = bone_scene.instantiate()
-		get_parent().get_parent().get_parent().add_child(bone)
 		bone.sprite.scale.x *= player.facing_position
 		bone.hitbox_iframe.scale.x *= player.facing_position
 		bone.hurtbox.scale.x *= player.facing_position
@@ -33,4 +32,5 @@ func throw_bone():
 		bone.linear_velocity.y = bone_speed.y
 		bone.stats.thrower_ATK = player.stats.ATK
 		bone.thrower = player
+		MetSys.get_current_room_instance().add_child(bone)
 	

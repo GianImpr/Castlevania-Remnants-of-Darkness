@@ -33,7 +33,7 @@ func summonSnakes() -> void:
 	if snakes_summoned < SNAKES_TO_SUMMON:
 		snake_timer.start()
 	var snake = snake_scene.instantiate()
-	MetSys.get_current_room_instance().add_child(snake)
 	snake.global_position.x = snake_spawning_point.x * player.facing_position + player.global_position.x
 	snake.global_position.y = snake_spawning_point.y + player.global_position.y
 	snake.velocity = Vector2(randf_range(-snake_flying_random_velocity.x, snake_flying_random_velocity.x), snake_flying_random_velocity.y)
+	MetSys.get_current_room_instance().add_child(snake)

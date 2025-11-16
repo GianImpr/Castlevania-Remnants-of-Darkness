@@ -30,5 +30,5 @@ func spawnFireball() -> void:
 	fireball.facing_position = player.facing_position
 	fireball.stats.thrower_ATK = player.stats.ATK
 	fireball.SPEED.x = abs(Global.player.global_position.x - player.global_position.x) * player.facing_position * FIREBALL_SPEED_MULTIPLIER
-	MetSys.get_current_room_instance().add_child(fireball)
 	fireball.global_position = Vector2(player.global_position.x + FIREBALL_SPAWN_OFFSET.x * player.facing_position, player.global_position.y + FIREBALL_SPAWN_OFFSET.y)
+	MetSys.get_current_room_instance().add_child(fireball)

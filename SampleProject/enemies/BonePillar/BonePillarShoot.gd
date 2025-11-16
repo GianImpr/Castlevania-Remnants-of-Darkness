@@ -19,5 +19,5 @@ func shootFireball():
 	fireball.direction = player.facing_position
 	fireball.stats.thrower_ATK = player.stats.ATK
 	fireball.sprite.scale.x *= player.facing_position * (-1)
-	get_parent().get_parent().get_parent().add_child(fireball)
 	fireball.global_position = player.global_position + fireball_position
+	MetSys.get_current_room_instance().add_child(fireball)

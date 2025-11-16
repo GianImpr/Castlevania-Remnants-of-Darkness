@@ -1,12 +1,12 @@
 [gd_scene load_steps=26 format=3 uid="uid://dvtteviefcy4t"]
 
-[ext_resource type="Script" path="res://SampleProject/Objects/ArcticShield/arctic_shield.gd" id="1_n456d"]
+[ext_resource type="Script" uid="uid://nyb506qef0re" path="res://SampleProject/Objects/ArcticShield/arctic_shield.gd" id="1_n456d"]
 [ext_resource type="Texture2D" uid="uid://bw0f7vlsy565c" path="res://assets/sprites/PowerUps/FrostShield.png" id="1_ppey5"]
 [ext_resource type="PackedScene" uid="uid://d0jg4wghfdqpn" path="res://SampleProject/Powers/icicle.tscn" id="2_kajx5"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="3_vvsm1"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_tjuh1"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_18lq5"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="7_5biwb"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_tjuh1"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_18lq5"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_5biwb"]
 [ext_resource type="AudioStream" uid="uid://dilfjuatytln6" path="res://assets/sounds/Powerups/ArcticShield/OpenShield/Hit.MP3" id="8_4h2vm"]
 [ext_resource type="AudioStream" uid="uid://upn1iepil4or" path="res://assets/sounds/Powerups/ArcticShield/CreateIcicle.MP3" id="9_coih3"]
 [ext_resource type="AudioStream" uid="uid://g6r2s2cp5unw" path="res://assets/sounds/Powerups/ArcticShield/OpenShield/OpenShield.MP3" id="10_bdb6v"]
@@ -209,18 +209,18 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7crtj"]
 _data = {
-"RESET": SubResource("Animation_co7p8"),
-"appear": SubResource("Animation_62o54"),
-"contact": SubResource("Animation_ax02l"),
-"idle": SubResource("Animation_qmbeb"),
-"vanish": SubResource("Animation_s2de1")
+&"RESET": SubResource("Animation_co7p8"),
+&"appear": SubResource("Animation_62o54"),
+&"contact": SubResource("Animation_ax02l"),
+&"idle": SubResource("Animation_qmbeb"),
+&"vanish": SubResource("Animation_s2de1")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7uyui"]
 size = Vector2(15, 26)
 
 [sub_resource type="Curve" id="Curve_ism6b"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0.0100783), 0.0, 0.0, 0, 0, Vector2(0.504298, 2.99832), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -269,7 +269,7 @@ vframes = 4
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_7crtj")
+&"": SubResource("AnimationLibrary_7crtj")
 }
 
 [node name="Area2D" type="Area2D" parent="."]

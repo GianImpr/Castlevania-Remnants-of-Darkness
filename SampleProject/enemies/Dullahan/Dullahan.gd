@@ -73,11 +73,11 @@ func _on_shockwave_body_entered(body: Node2D) -> void:
 
 func spawnSpikes() -> void:
 	var spike = spike_scene.instantiate()
-	get_parent().get_parent().add_child(spike)
 	spike.stats.thrower_ATK = stats.ATK
 	spike.global_position = global_position + Vector2(spike_start_position.x * facing_position, spike_start_position.y)
 	spike.global_position.x = spike.global_position.x + spike_position * facing_position
 	spike.scale.x = facing_position
+	get_parent().get_parent().add_child(spike)
 	spike_position += 30
 	if spike.global_position.x < spike_min_x_position or spike.global_position.x > spike_max_x_position:
 		spike_respawn_timer.stop()
@@ -91,19 +91,19 @@ func initSpikes() -> void:
 	
 func spawnFang() -> void:
 	var fang = fang_scene.instantiate()
-	get_parent().get_parent().add_child(fang)
 	fang.stats.thrower_ATK = stats.ATK
 	fang.on_cooldown = false
 	fang.global_position = Vector2(Global.player.global_position.x, 418)
+	get_parent().get_parent().add_child(fang)
 	
 func spawnProjectiles() -> void:
 	for angle in range(0, 360, 20):
 		var projectile = projectile_scene.instantiate()
-		get_parent().get_parent().add_child(projectile)
 		projectile.stats.thrower_ATK = stats.ATK
 		projectile.global_position = head_sprite.global_position
 		projectile.sprite.rotation_degrees = angle
 		projectile.adjustFlyingDirection()
+		get_parent().get_parent().add_child(projectile)
 		
 	
 

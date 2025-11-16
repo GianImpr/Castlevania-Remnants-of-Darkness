@@ -1,16 +1,16 @@
 [gd_scene load_steps=23 format=3 uid="uid://bvk8m1t7uwv0b"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Une/une.gd" id="1_gjbwa"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_rhebn"]
+[ext_resource type="Script" uid="uid://seojws2cugms" path="res://SampleProject/enemies/Une/une.gd" id="1_gjbwa"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_rhebn"]
 [ext_resource type="Texture2D" uid="uid://clx8we11371aw" path="res://assets/sprites/Enemies/Une.png" id="3_6x6xy"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="4_puevq"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_puevq"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_ju41d"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Une/UneWaiting.gd" id="6_3fqg2"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Une/UneGrowing.gd" id="7_72rcv"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Une/UneIdle.gd" id="8_hxt5t"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Une/UneDying.gd" id="9_vyc26"]
+[ext_resource type="Script" uid="uid://bac4u6temonpu" path="res://SampleProject/enemies/Une/UneWaiting.gd" id="6_3fqg2"]
+[ext_resource type="Script" uid="uid://cg886fic0jqog" path="res://SampleProject/enemies/Une/UneGrowing.gd" id="7_72rcv"]
+[ext_resource type="Script" uid="uid://jn5ufjy3jaii" path="res://SampleProject/enemies/Une/UneIdle.gd" id="8_hxt5t"]
+[ext_resource type="Script" uid="uid://cv501koewgrgo" path="res://SampleProject/enemies/Une/UneDying.gd" id="9_vyc26"]
 [ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="10_1t885"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="11_p0vwc"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="11_p0vwc"]
 
 [sub_resource type="Animation" id="Animation_tv560"]
 length = 0.001
@@ -80,10 +80,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cws8k"]
 _data = {
-"RESET": SubResource("Animation_tv560"),
-"growing": SubResource("Animation_r8gpj"),
-"idle": SubResource("Animation_7t63r"),
-"waiting": SubResource("Animation_rys1t")
+&"RESET": SubResource("Animation_tv560"),
+&"growing": SubResource("Animation_r8gpj"),
+&"idle": SubResource("Animation_7t63r"),
+&"waiting": SubResource("Animation_rys1t")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iatff"]
@@ -144,7 +144,7 @@ func on_child_transition(state, new_state_name):
 "
 
 [sub_resource type="Curve" id="Curve_idtck"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -183,7 +183,7 @@ vframes = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../EnemyStats")
 libraries = {
-"": SubResource("AnimationLibrary_cws8k")
+&"": SubResource("AnimationLibrary_cws8k")
 }
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]

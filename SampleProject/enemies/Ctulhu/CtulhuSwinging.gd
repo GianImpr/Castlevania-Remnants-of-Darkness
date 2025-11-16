@@ -27,10 +27,10 @@ func generateIceWave() -> void:
 	const SPAWN_POSITION_OFFSET: Vector2 = Vector2(-75, 0)
 	const ICE_WAVE_SPEED: float = 800
 	var ice_wave = ice_wave_scene.instantiate()
-	MetSys.get_current_room_instance().add_child(ice_wave)
 	ice_wave.stats.thrower_ATK = player.stats.ATK
 	ice_wave.linear_velocity.x = ICE_WAVE_SPEED * player.facing_position
 	ice_wave.global_position = player.global_position + SPAWN_POSITION_OFFSET*player.facing_position*(-1)
 	ice_wave.direction = player.facing_position
 	if player.facing_position == 1:
 		ice_wave.sprite.scale.x *= -1
+	MetSys.get_current_room_instance().add_child(ice_wave)

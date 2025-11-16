@@ -136,23 +136,23 @@ func createHitEffect(body: Node2D) -> void:
 			Global.Attribute.FIRE:
 				hit_effect = fire_hit_collision_scene.instantiate()
 				
-	Global.player.get_parent().add_child(hit_effect)
 	hit_effect.position = Vector2(effect_x, effect_y)
+	Global.player.get_parent().add_child(hit_effect)
 	
 	if Global.player.stats.itemEquipped(Artifact.Artifacts.LITTLE_HAMMER, "artifact") and Global.player.stats.Stats["LCK"] > randi_range(0, 99):
 		var coin = coin_scene.instantiate()
-		MetSys.get_current_room_instance().call_deferred("add_child", coin)
 		coin.global_position = hit_effect.position
+		MetSys.get_current_room_instance().call_deferred("add_child", coin)
 
 	if Global.player.stats.itemEquipped(Artifact.Artifacts.HEART_BROOCH, "artifact") and Global.player.stats.Stats["LCK"] > randi_range(0, 199):
 		var heart = heart_scene.instantiate()
-		MetSys.get_current_room_instance().call_deferred("add_child", heart)
 		heart.global_position = hit_effect.position
+		MetSys.get_current_room_instance().call_deferred("add_child", heart)
 		
 	if Global.player.stats.itemEquipped(Artifact.Artifacts.BLOOD_STONE, "artifact") and Global.player.stats.Stats["LCK"] > randi_range(0, 1):
 		var orb = orb_scene.instantiate()
-		MetSys.get_current_room_instance().call_deferred("add_child", orb)
 		orb.global_position = hit_effect.position
+		MetSys.get_current_room_instance().call_deferred("add_child", orb)
 
 
 # Adjusts hitbox according to Hector's facing position
