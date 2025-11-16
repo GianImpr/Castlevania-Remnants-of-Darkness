@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://bgqxhdb3bmwpy"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/BonePhysics.gd" id="1_75mj8"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/bone.gd" id="2_lyi3s"]
+[ext_resource type="Script" uid="uid://ddh6uryo2vai7" path="res://SampleProject/enemies/Skeleton/BonePhysics.gd" id="1_75mj8"]
+[ext_resource type="Script" uid="uid://cfsc6nnjqwyup" path="res://SampleProject/enemies/Skeleton/bone.gd" id="2_lyi3s"]
 [ext_resource type="Texture2D" uid="uid://c75kgbqkyn6c5" path="res://assets/sprites/Effects/SmallFire.png" id="3_idk2s"]
 [ext_resource type="Texture2D" uid="uid://dpoe1030fm4ce" path="res://assets/sprites/Enemies/Slinger/Projectile.png" id="3_mqd6d"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_og0ym"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_og0ym"]
 [ext_resource type="AudioStream" uid="uid://cymbbuk0ioone" path="res://assets/sounds/Enemies/Skeleton/SkeletonDrop.MP3" id="7_xb8y1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcnoe"]
@@ -274,13 +274,14 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t1ht4"]
 _data = {
-"RESET": SubResource("Animation_j7t5l"),
-"destroy": SubResource("Animation_t42y4"),
-"rotate": SubResource("Animation_8b3t7")
+&"RESET": SubResource("Animation_j7t5l"),
+&"destroy": SubResource("Animation_t42y4"),
+&"rotate": SubResource("Animation_8b3t7")
 }
 
 [node name="SlingerProjectile" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "sound")]
 collision_layer = 4
+collision_mask = 4097
 mass = 0.001
 gravity_scale = 0.4
 lock_rotation = true
@@ -326,7 +327,7 @@ audio_library = SubResource("Resource_bwgyn")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_t1ht4")
+&"": SubResource("AnimationLibrary_t1ht4")
 }
 autoplay = "rotate"
 

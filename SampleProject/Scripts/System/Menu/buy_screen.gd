@@ -30,6 +30,7 @@ enum ItemEntryChildren {
 
 ## Initializes the buttons of items in the buy list.
 func initializeItemEntries() -> void:
+	const INITIAL_QUANTITY: int = 1
 	base_item_costs.clear()
 	item_quantities.clear()
 	item_max_held.clear()
@@ -49,7 +50,7 @@ func initializeItemEntries() -> void:
 			item_entry.modulate = UNAVAILABLE_COLOR
 			
 		base_item_costs.append(item_data.value)
-		item_quantity.append(1)
+		item_quantity.append(INITIAL_QUANTITY)
 		item_held.append(Global.player.stats.findItem(item.id, getInventory(item.type)) + int(Global.player.stats.isEquipped(item_data)))
 		item_max_held.append(item_data.max_quantity)
 		
@@ -58,8 +59,8 @@ func initializeItemEntries() -> void:
 		item_button.expand_icon = true
 		item_button.icon = item_data.icon
 		item_button.text = item_data[PickUp.getItemName(item.type)]
-		item_quantity.text = "1"
-		item_held_label.text = str()
+		item_quantity.text = str(INITIAL_QUANTITY)
+		item_held_label.text = str(item_held.back())
 		item_price.text = str(item_data.value)
 		item_type.text = PickUp.ItemType.keys()[item.type]
 		
@@ -158,6 +159,18 @@ func buyItem(item: int, type: PickUp.ItemType, quantity: int, cost: int) -> void
 func increaseQuantity(price: int) -> void:
 	if item_quantities[cur_index] < item_max_held[cur_index] - item_held[cur_index]:
 		item_quantities[cur_index] += 1
+		updateCostLabel(cur_index)
 
-func _on_item_selected() -> void:
+## Decrease the quality slider of the currently selected item by 1 and recalculates the total cost.
+func decreaseQuantity(price: int) -> void:
+	if item_quantities[cur_index] > min(item_max_held[cur_index] - item_held[cur_index], 1):
+		item_quantities[cur_index] -= 1
+		updateCostLabel(cur_index)
+
+## Updates the item cost of the currently selected item
+func updateCostLabel(index: int) -> void:
+	item_entries.get_child(index).get_child(ItemEntryChildren.PRICE).text = str(item_quantities[index]*base_item_costs[index])
+
+## Presses the i-th item button in the buy list
+func _onItemSelected() -> void:
 	return

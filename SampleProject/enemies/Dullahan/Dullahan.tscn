@@ -1,36 +1,36 @@
 [gd_scene load_steps=110 format=3 uid="uid://clukty1febu2i"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/Dullahan.gd" id="1_gu5el"]
+[ext_resource type="Script" uid="uid://dwxf8acx30sxk" path="res://SampleProject/enemies/Dullahan/Dullahan.gd" id="1_gu5el"]
 [ext_resource type="PackedScene" uid="uid://btql1r5psei2s" path="res://SampleProject/enemies/Dullahan/dullahan_spike.tscn" id="2_22u3v"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_mi30h"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_mi30h"]
 [ext_resource type="PackedScene" uid="uid://cdbaucja5abn7" path="res://SampleProject/enemies/Dullahan/dullahan_fang.tscn" id="3_axff6"]
 [ext_resource type="Texture2D" uid="uid://bd04xbgb1vwok" path="res://assets/sprites/Enemies/Dullahan/Dullahan.png" id="3_j55ok"]
 [ext_resource type="Texture2D" uid="uid://b4hr0kshcx2us" path="res://assets/sprites/Enemies/Dullahan/Sword_4.png" id="4_8g5hp"]
-[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="4_84ayn"]
+[ext_resource type="Shader" uid="uid://dtfxu1jn7ht65" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="4_84ayn"]
 [ext_resource type="PackedScene" uid="uid://du621xlvbwtno" path="res://SampleProject/enemies/Dullahan/dullahan_projectile.tscn" id="4_538uc"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_dxfhd"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="6_o0djy"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_dxfhd"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="6_o0djy"]
 [ext_resource type="Texture2D" uid="uid://qaeuke7xt5u2" path="res://assets/sprites/Enemies/Dullahan/Head.png" id="7_e1yb8"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_ovcwt"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_ovcwt"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="7_th3gw"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanAppearing.gd" id="8_kh7vg"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="8_ywwwp"]
+[ext_resource type="Script" uid="uid://rv8v7im5ss64" path="res://SampleProject/enemies/Dullahan/DullahanAppearing.gd" id="8_kh7vg"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="8_ywwwp"]
 [ext_resource type="AudioStream" uid="uid://c17jpyl8isnjb" path="res://assets/sounds/Enemies/Dullahan/Levitate.wav" id="9_hmspw"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanIdle.gd" id="9_pawer"]
+[ext_resource type="Script" uid="uid://8yfs35u8wkgh" path="res://SampleProject/enemies/Dullahan/DullahanIdle.gd" id="9_pawer"]
 [ext_resource type="AudioStream" uid="uid://dr5i8rqmq78ol" path="res://assets/sounds/Enemies/Dullahan/Appear.wav" id="10_8kumk"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanWalking.gd" id="10_cdvrk"]
+[ext_resource type="Script" uid="uid://b7ira02hb6rps" path="res://SampleProject/enemies/Dullahan/DullahanWalking.gd" id="10_cdvrk"]
 [ext_resource type="AudioStream" uid="uid://8duivle55mgx" path="res://assets/sounds/Enemies/Dullahan/Rotate.wav" id="11_2swvn"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanThrust.gd" id="11_q1evp"]
+[ext_resource type="Script" uid="uid://bsbndese35758" path="res://SampleProject/enemies/Dullahan/DullahanThrust.gd" id="11_q1evp"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="12_4uvrp"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanShockwave.gd" id="12_gd57p"]
+[ext_resource type="Script" uid="uid://c6mxyb72kqaxh" path="res://SampleProject/enemies/Dullahan/DullahanShockwave.gd" id="12_gd57p"]
 [ext_resource type="AudioStream" uid="uid://dr03s28hk53p3" path="res://assets/sounds/Enemies/Dullahan/Thrust.wav" id="12_wxjgf"]
 [ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="13_5s3hq"]
 [ext_resource type="AudioStream" uid="uid://cihuahwwymbmv" path="res://assets/sounds/Enemies/Dullahan/Jump.wav" id="13_rg1ro"]
 [ext_resource type="AudioStream" uid="uid://hl0gmh8dl8yr" path="res://assets/sounds/Enemies/Dullahan/Step.wav" id="14_corba"]
 [ext_resource type="AudioStream" uid="uid://dg62tn0615n3v" path="res://assets/sounds/Enemies/Dullahan/DullahanFire.MP3" id="15_d6sw2"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanWaiting.gd" id="15_hs7pp"]
+[ext_resource type="Script" uid="uid://bk3mwefh42u60" path="res://SampleProject/enemies/Dullahan/DullahanWaiting.gd" id="15_hs7pp"]
 [ext_resource type="AudioStream" uid="uid://csdotxqi31n2n" path="res://assets/sounds/Enemies/Dullahan/Laser.mp3" id="16_a74c3"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanNeedles.gd" id="16_wjcun"]
+[ext_resource type="Script" uid="uid://b3hygxwqqaeuv" path="res://SampleProject/enemies/Dullahan/DullahanNeedles.gd" id="16_wjcun"]
 [ext_resource type="AudioStream" uid="uid://msyok2a6jert" path="res://assets/sounds/Enemies/Dullahan/Land.wav" id="17_86ytx"]
 [ext_resource type="AudioStream" uid="uid://ce6wcyv31i4gv" path="res://assets/sounds/Enemies/Dullahan/PowerUp.wav" id="20_5p2d2"]
 [ext_resource type="AudioStream" uid="uid://b1qbt2g750xti" path="res://assets/sounds/Enemies/Dullahan/Laugh.wav" id="21_j5b6t"]
@@ -38,14 +38,14 @@
 [ext_resource type="AudioStream" uid="uid://hsx6jf5238fb" path="res://assets/sounds/Powerups/ActivateRelic.MP3" id="23_w5wa8"]
 [ext_resource type="AudioStream" uid="uid://b744h3oqpvpqk" path="res://assets/sounds/Enemies/Dullahan/Dying.wav" id="24_bftbe"]
 [ext_resource type="AudioStream" uid="uid://cnpbdd3832unm" path="res://assets/sounds/Enemies/Dullahan/ThrowProjectiles.MP3" id="25_nj8kq"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanTeleport.gd" id="26_baiok"]
+[ext_resource type="Script" uid="uid://fwygho3iyuge" path="res://SampleProject/enemies/Dullahan/DullahanTeleport.gd" id="26_baiok"]
 [ext_resource type="AudioStream" uid="uid://dnwjo4bv6320f" path="res://assets/sounds/Enemies/Dullahan/Explode.MP3" id="27_ctukx"]
 [ext_resource type="AudioStream" uid="uid://dfur7knqfp4ho" path="res://assets/sounds/Enemies/ArmorLord/Explosion.MP3" id="27_djw73"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanLaser.gd" id="28_tco0d"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanEnterRage.gd" id="33_ys5du"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanThrowHead.gd" id="37_yivsw"]
+[ext_resource type="Script" uid="uid://dguq7vm12vle5" path="res://SampleProject/enemies/Dullahan/DullahanLaser.gd" id="28_tco0d"]
+[ext_resource type="Script" uid="uid://cluakhispe8cf" path="res://SampleProject/enemies/Dullahan/DullahanEnterRage.gd" id="33_ys5du"]
+[ext_resource type="Script" uid="uid://wcblpocnmyov" path="res://SampleProject/enemies/Dullahan/DullahanThrowHead.gd" id="37_yivsw"]
 [ext_resource type="Texture2D" uid="uid://bbvs7ydskelbc" path="res://assets/sprites/Effects/BlueFire.png" id="42_40b4t"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanDying.gd" id="43_qlhxj"]
+[ext_resource type="Script" uid="uid://dqotmc3tdcfr4" path="res://SampleProject/enemies/Dullahan/DullahanDying.gd" id="43_qlhxj"]
 [ext_resource type="PackedScene" uid="uid://sx5bpu32eldc" path="res://SampleProject/extra_scenes/effects/big_explosion.tscn" id="44_418iw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jkbhy"]
@@ -57,6 +57,7 @@ shader_parameter/mix_colors = false
 shader_parameter/enabled = false
 shader_parameter/sheet_columns = 10
 shader_parameter/sheet_rows = 5
+shader_parameter/petrified = false
 
 [sub_resource type="Animation" id="Animation_1tbbu"]
 length = 0.001
@@ -109,9 +110,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8am7o"]
 _data = {
-"RESET": SubResource("Animation_1tbbu"),
-"dying": SubResource("Animation_ympif"),
-"spinning": SubResource("Animation_dmim2")
+&"RESET": SubResource("Animation_1tbbu"),
+&"dying": SubResource("Animation_ympif"),
+&"spinning": SubResource("Animation_dmim2")
 }
 
 [sub_resource type="Gradient" id="Gradient_8lkmh"]
@@ -127,7 +128,7 @@ fill_from = Vector2(0.517094, 0.542735)
 fill_to = Vector2(0.0128205, 0.017094)
 
 [sub_resource type="Curve" id="Curve_o6s6q"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49763, 2), 0.0, 0.0, 0, 0, Vector2(0.995261, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -1468,20 +1469,20 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l14ou"]
 _data = {
-"RESET": SubResource("Animation_rp3ci"),
-"appearing": SubResource("Animation_pmnq5"),
-"catch_head": SubResource("Animation_fmxpu"),
-"dying": SubResource("Animation_kq1mj"),
-"idle": SubResource("Animation_e13kb"),
-"laser": SubResource("Animation_qebt7"),
-"needles": SubResource("Animation_bk7ny"),
-"shockwave": SubResource("Animation_6bogu"),
-"shockwave_land": SubResource("Animation_u3a2x"),
-"teleport": SubResource("Animation_hojae"),
-"teleport_center": SubResource("Animation_to6qo"),
-"throw_head": SubResource("Animation_dnd5y"),
-"thrust": SubResource("Animation_dklvu"),
-"walking": SubResource("Animation_8nvot")
+&"RESET": SubResource("Animation_rp3ci"),
+&"appearing": SubResource("Animation_pmnq5"),
+&"catch_head": SubResource("Animation_fmxpu"),
+&"dying": SubResource("Animation_kq1mj"),
+&"idle": SubResource("Animation_e13kb"),
+&"laser": SubResource("Animation_qebt7"),
+&"needles": SubResource("Animation_bk7ny"),
+&"shockwave": SubResource("Animation_6bogu"),
+&"shockwave_land": SubResource("Animation_u3a2x"),
+&"teleport": SubResource("Animation_hojae"),
+&"teleport_center": SubResource("Animation_to6qo"),
+&"throw_head": SubResource("Animation_dnd5y"),
+&"thrust": SubResource("Animation_dklvu"),
+&"walking": SubResource("Animation_8nvot")
 }
 
 [sub_resource type="Resource" id="Resource_q7t48"]
@@ -1786,7 +1787,7 @@ frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Dullahan/Head"]
 libraries = {
-"": SubResource("AnimationLibrary_8am7o")
+&"": SubResource("AnimationLibrary_8am7o")
 }
 autoplay = "spinning"
 speed_scale = 3.0
@@ -1818,7 +1819,7 @@ color_initial_ramp = SubResource("Gradient_ioo5t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_l14ou")
+&"": SubResource("AnimationLibrary_l14ou")
 }
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -1977,11 +1978,11 @@ material = SubResource("CanvasItemMaterial_0rct7")
 position = Vector2(-5, 145)
 emitting = false
 amount = 1200
-process_material = SubResource("ParticleProcessMaterial_wge43")
 texture = ExtResource("12_4uvrp")
 lifetime = 0.6
 one_shot = true
 explosiveness = 0.4
+process_material = SubResource("ParticleProcessMaterial_wge43")
 
 [node name="LaserEffect" type="GPUParticles2D" parent="."]
 z_index = 20
@@ -1989,10 +1990,10 @@ material = SubResource("CanvasItemMaterial_0rct7")
 position = Vector2(88, 76)
 emitting = false
 amount = 1200
-process_material = SubResource("ParticleProcessMaterial_1qbbt")
 texture = ExtResource("12_4uvrp")
 lifetime = 2.1
 one_shot = true
+process_material = SubResource("ParticleProcessMaterial_1qbbt")
 
 [node name="Spikes" type="Timer" parent="."]
 wait_time = 0.15
@@ -2034,10 +2035,10 @@ material = SubResource("CanvasItemMaterial_cuows")
 position = Vector2(9, 121)
 emitting = false
 amount = 64
+texture = ExtResource("42_40b4t")
 lifetime = 2.0
 one_shot = true
 local_coords = true
-texture = ExtResource("42_40b4t")
 emission_shape = 3
 emission_rect_extents = Vector2(40, 50)
 direction = Vector2(0, -1)
@@ -2056,11 +2057,11 @@ material = SubResource("CanvasItemMaterial_i8ss5")
 position = Vector2(-2, 132)
 emitting = false
 amount = 300
-process_material = SubResource("ParticleProcessMaterial_edw4s")
 texture = ExtResource("12_4uvrp")
 lifetime = 1.5
 one_shot = true
 explosiveness = 0.07
+process_material = SubResource("ParticleProcessMaterial_edw4s")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="IframeTimer" to="." method="_on_iframe_timer_timeout"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=17 format=3 uid="uid://b7tq5olcjkkvy"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/BonePhysics.gd" id="1_l76rm"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/bone.gd" id="1_vkqme"]
+[ext_resource type="Script" uid="uid://ddh6uryo2vai7" path="res://SampleProject/enemies/Skeleton/BonePhysics.gd" id="1_l76rm"]
+[ext_resource type="Script" uid="uid://cfsc6nnjqwyup" path="res://SampleProject/enemies/Skeleton/bone.gd" id="1_vkqme"]
 [ext_resource type="Texture2D" uid="uid://c11n13r75ggmc" path="res://assets/sprites/Enemies/Skeleton.png" id="2_va7mg"]
 [ext_resource type="Texture2D" uid="uid://c75kgbqkyn6c5" path="res://assets/sprites/Effects/SmallFire.png" id="4_om1ku"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_r2ukc"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="7_wjqnj"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_r2ukc"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_wjqnj"]
 [ext_resource type="AudioStream" uid="uid://cymbbuk0ioone" path="res://assets/sounds/Enemies/Skeleton/SkeletonDrop.MP3" id="8_il484"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xcnoe"]
@@ -221,9 +221,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yx1c6"]
 _data = {
-"RESET": SubResource("Animation_1h7ln"),
-"destroy": SubResource("Animation_fqhc6"),
-"rotate": SubResource("Animation_nd5jj")
+&"RESET": SubResource("Animation_1h7ln"),
+&"destroy": SubResource("Animation_fqhc6"),
+&"rotate": SubResource("Animation_nd5jj")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4eam0"]
@@ -263,6 +263,7 @@ sound_effects = Array[ExtResource("7_wjqnj")]([SubResource("Resource_jkyud")])
 
 [node name="Bone" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "sound")]
 collision_layer = 4
+collision_mask = 4097
 mass = 0.001
 lock_rotation = true
 contact_monitor = true
@@ -297,7 +298,7 @@ frame = 8
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_yx1c6")
+&"": SubResource("AnimationLibrary_yx1c6")
 }
 autoplay = "rotate"
 

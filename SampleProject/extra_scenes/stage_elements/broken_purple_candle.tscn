@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dm7k8iy42xhd1"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/broken_candle.gd" id="1_u83di"]
+[ext_resource type="Script" uid="uid://dfu53xgckw6so" path="res://SampleProject/Scripts/Stage_elements/broken_candle.gd" id="1_u83di"]
 [ext_resource type="PackedScene" uid="uid://bneltl27wjbe4" path="res://SampleProject/extra_scenes/effects/candle_explosion.tscn" id="2_rdjpu"]
 [ext_resource type="Texture2D" uid="uid://bihxl3hifq5pi" path="res://assets/sprites/Objects/Candles/GroundPurple/BrokenPurpleCandles.png" id="2_s2pbf"]
 
@@ -24,6 +24,7 @@ explosion = ExtResource("2_rdjpu")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -40,6 +41,7 @@ hframes = 4
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -57,6 +59,7 @@ frame = 1
 
 [node name="RigidBody2D3" type="RigidBody2D" parent="."]
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -74,6 +77,7 @@ frame = 2
 
 [node name="RigidBody2D4" type="RigidBody2D" parent="."]
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1

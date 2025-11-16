@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://lxr3qjc6ny5a"]
 
 [ext_resource type="Texture2D" uid="uid://djhpguwd6mfwx" path="res://assets/sprites/Objects/Candles/GroundBlue/MonasteryCandle.png" id="1_14p6w"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/broken_candle.gd" id="1_qkl08"]
+[ext_resource type="Script" uid="uid://dfu53xgckw6so" path="res://SampleProject/Scripts/Stage_elements/broken_candle.gd" id="1_qkl08"]
 [ext_resource type="Texture2D" uid="uid://c75kgbqkyn6c5" path="res://assets/sprites/Effects/SmallFire.png" id="3_rkjpf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gskk"]
@@ -167,9 +167,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rfr0c"]
 _data = {
-"RESET": SubResource("Animation_4pjmc"),
-"destroy": SubResource("Animation_no6xh"),
-"idle": SubResource("Animation_cpnam")
+&"RESET": SubResource("Animation_4pjmc"),
+&"destroy": SubResource("Animation_no6xh"),
+&"idle": SubResource("Animation_cpnam")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ctqpr"]
@@ -320,8 +320,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qybtf"]
 _data = {
-"RESET": SubResource("Animation_tsys5"),
-"destroy": SubResource("Animation_prcli")
+&"RESET": SubResource("Animation_tsys5"),
+&"destroy": SubResource("Animation_prcli")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nyyx"]
@@ -472,8 +472,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sucuv"]
 _data = {
-"RESET": SubResource("Animation_fdi7e"),
-"destroy": SubResource("Animation_n1c51")
+&"RESET": SubResource("Animation_fdi7e"),
+&"destroy": SubResource("Animation_n1c51")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v3pbi"]
@@ -624,8 +624,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oibqc"]
 _data = {
-"RESET": SubResource("Animation_jekm0"),
-"destroy": SubResource("Animation_6vvto")
+&"RESET": SubResource("Animation_jekm0"),
+&"destroy": SubResource("Animation_6vvto")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2df7t"]
@@ -777,8 +777,8 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hxwj4"]
 resource_local_to_scene = true
 _data = {
-"RESET": SubResource("Animation_ssxcn"),
-"destroy": SubResource("Animation_suywh")
+&"RESET": SubResource("Animation_ssxcn"),
+&"destroy": SubResource("Animation_suywh")
 }
 
 [node name="BrokenCandle" type="Node2D" node_paths=PackedStringArray("delete_timer")]
@@ -788,6 +788,7 @@ delete_timer = NodePath("DeleteTimer")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -807,11 +808,12 @@ shape = SubResource("RectangleShape2D_0gskk")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D"]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_rfr0c")
+&"": SubResource("AnimationLibrary_rfr0c")
 }
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="."]
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -831,11 +833,12 @@ frame = 6
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D2"]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_qybtf")
+&"": SubResource("AnimationLibrary_qybtf")
 }
 
 [node name="RigidBody2D3" type="RigidBody2D" parent="."]
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -855,11 +858,12 @@ frame = 7
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D3"]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_sucuv")
+&"": SubResource("AnimationLibrary_sucuv")
 }
 
 [node name="RigidBody2D4" type="RigidBody2D" parent="."]
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -879,11 +883,12 @@ frame = 8
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D4"]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_oibqc")
+&"": SubResource("AnimationLibrary_oibqc")
 }
 
 [node name="RigidBody2D5" type="RigidBody2D" parent="."]
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -903,7 +908,7 @@ frame = 9
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D5"]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_hxwj4")
+&"": SubResource("AnimationLibrary_hxwj4")
 }
 
 [node name="DeleteTimer" type="Timer" parent="."]

@@ -32,7 +32,7 @@ func Update(delta: float):
 		shockwave_hitbox.disabled = true
 		
 func jump():
-	jumping = true
+	get_tree().create_timer(0.1).timeout.connect(func(): jumping = true)
 	player.velocity.y = jump_strength * (-1)
 	
 func performShockwave():

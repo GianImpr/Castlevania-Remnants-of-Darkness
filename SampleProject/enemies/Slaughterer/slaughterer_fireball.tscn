@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://c0u0mu886ooj5"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Slaughterer/slaughterer_fireball.gd" id="1_ent4r"]
+[ext_resource type="Script" uid="uid://vahhb6gt3xq7" path="res://SampleProject/enemies/Slaughterer/slaughterer_fireball.gd" id="1_ent4r"]
 [ext_resource type="Texture2D" uid="uid://cqna60vlda4jl" path="res://assets/sprites/Enemies/Slaughterer/Fireball.png" id="1_uedwx"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="2_l6oyb"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="2_l6oyb"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="4_ar37s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqhfa"]
@@ -159,9 +159,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ro61f"]
 _data = {
-"RESET": SubResource("Animation_1w5eq"),
-"destroy": SubResource("Animation_7laki"),
-"flying": SubResource("Animation_j8j8k")
+&"RESET": SubResource("Animation_1w5eq"),
+&"destroy": SubResource("Animation_7laki"),
+&"flying": SubResource("Animation_j8j8k")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0gqas"]
@@ -235,7 +235,7 @@ shape = SubResource("RectangleShape2D_2p2xa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ro61f")
+&"": SubResource("AnimationLibrary_ro61f")
 }
 autoplay = "flying"
 
@@ -245,12 +245,13 @@ material = SubResource("CanvasItemMaterial_0gqas")
 position = Vector2(1, 2)
 emitting = false
 amount = 20
-process_material = SubResource("ParticleProcessMaterial_3veh5")
 texture = ExtResource("4_ar37s")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_3veh5")
 
 [node name="DetectGround" type="RayCast2D" parent="."]
 target_position = Vector2(0, 24)
+collision_mask = 4097
