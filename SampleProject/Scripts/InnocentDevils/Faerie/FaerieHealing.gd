@@ -25,7 +25,7 @@ func Physics_Update(delta: float):
 	
 func heal() -> void:
 	setSoundAndParticles("heal_effect", Color(0,1,0))
-	Global.player.heal(50)
+	Global.player.heal(49+player.stats.Stats["INT"]/3)
 
 func refreshingAir() -> void:
 	setSoundAndParticles("heal_effect", Color(0.3,0,1))

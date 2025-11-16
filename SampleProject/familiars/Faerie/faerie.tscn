@@ -1,21 +1,21 @@
 [gd_scene load_steps=62 format=3 uid="uid://crov6smdsbwb4"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/Faerie.gd" id="1_un82i"]
+[ext_resource type="Script" uid="uid://bpb5ipkikk3hr" path="res://SampleProject/Scripts/InnocentDevils/Faerie/Faerie.gd" id="1_un82i"]
 [ext_resource type="Texture2D" uid="uid://cg6xqwlb4rrii" path="res://assets/sprites/InnocentDevils/Fairy/fairywings.png" id="1_x40rn"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/innocent_devil.gd" id="2_fhvse"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/IDSkill.gd" id="3_5jgsh"]
+[ext_resource type="Script" uid="uid://duj1ea88vhssi" path="res://SampleProject/Scripts/InnocentDevils/innocent_devil.gd" id="2_fhvse"]
+[ext_resource type="Script" uid="uid://bin0fbttt1atq" path="res://SampleProject/Scripts/InnocentDevils/IDSkill.gd" id="3_5jgsh"]
 [ext_resource type="Texture2D" uid="uid://sxtc4unu2010" path="res://assets/sprites/InnocentDevils/Fairy/fairy.png" id="3_i28bv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieIdle.gd" id="3_ry4ys"]
+[ext_resource type="Script" uid="uid://di71psgnisnfn" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieIdle.gd" id="3_ry4ys"]
 [ext_resource type="Texture2D" uid="uid://btru3nul44e6v" path="res://assets/sprites/HUD/IDIcons/Heal1.png" id="4_sbpmc"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_u4ig5"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_u4ig5"]
 [ext_resource type="Texture2D" uid="uid://deqm7hrmownqo" path="res://assets/sprites/HUD/IDIcons/RefreshingAir.png" id="5_dnftg"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieRun.gd" id="5_wubor"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieStopMoving.gd" id="6_nci8y"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieHealing.gd" id="7_8u2gj"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_kyyu2"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFreeze.gd" id="8_v045c"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFunnyWall.gd" id="9_0ixtq"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="9_7ueiy"]
+[ext_resource type="Script" uid="uid://1r4g306ipyuc" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieRun.gd" id="5_wubor"]
+[ext_resource type="Script" uid="uid://cowhj5b4jdb44" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieStopMoving.gd" id="6_nci8y"]
+[ext_resource type="Script" uid="uid://c3hrpte6hnnmh" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieHealing.gd" id="7_8u2gj"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_kyyu2"]
+[ext_resource type="Script" uid="uid://7jgukldlniqq" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFreeze.gd" id="8_v045c"]
+[ext_resource type="Script" uid="uid://blognkorla2r8" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFunnyWall.gd" id="9_0ixtq"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_7ueiy"]
 [ext_resource type="AudioStream" uid="uid://c2turxxbo67s2" path="res://assets/sounds/InnocentDevils/Faerie/FairyHeal1.MP3" id="10_jqjld"]
 [ext_resource type="AudioStream" uid="uid://7ia3jv1shxri" path="res://assets/sounds/InnocentDevils/Faerie/FairyHeal2.MP3" id="11_6v3ya"]
 [ext_resource type="AudioStream" uid="uid://c3hvhwhjsbhp8" path="res://assets/sounds/InnocentDevils/Faerie/FairyHeal3.MP3" id="12_0ku5v"]
@@ -34,7 +34,6 @@ cost = 20
 power = 50
 multiplier = 1.0
 type = 2
-synergy_engager = false
 icon = ExtResource("4_sbpmc")
 
 [sub_resource type="Resource" id="Resource_cf336"]
@@ -42,10 +41,7 @@ script = ExtResource("3_5jgsh")
 name = "REFRESHING_AIR_SKILL_ID"
 description = "REFRESHING_AIR_SKILL_ID_DESC"
 cost = 15
-power = 0
-multiplier = 0.0
 type = 2
-synergy_engager = false
 icon = ExtResource("5_dnftg")
 
 [sub_resource type="Curve" id="Curve_mesp0"]
@@ -297,15 +293,15 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_refp3"]
 _data = {
-"RESET": SubResource("Animation_x3b60"),
-"dropping": SubResource("Animation_8kj1f"),
-"heal": SubResource("Animation_uujjc"),
-"idle": SubResource("Animation_3clpc"),
-"move_start": SubResource("Animation_3us23"),
-"open": SubResource("Animation_j27ag"),
-"rising": SubResource("Animation_3f2ob"),
-"running": SubResource("Animation_jpwqi"),
-"stopping": SubResource("Animation_xd0rn")
+&"RESET": SubResource("Animation_x3b60"),
+&"dropping": SubResource("Animation_8kj1f"),
+&"heal": SubResource("Animation_uujjc"),
+&"idle": SubResource("Animation_3clpc"),
+&"move_start": SubResource("Animation_3us23"),
+&"open": SubResource("Animation_j27ag"),
+&"rising": SubResource("Animation_3f2ob"),
+&"running": SubResource("Animation_jpwqi"),
+&"stopping": SubResource("Animation_xd0rn")
 }
 
 [sub_resource type="Animation" id="Animation_dcm6y"]
@@ -361,9 +357,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b676p"]
 _data = {
-"RESET": SubResource("Animation_dcm6y"),
-"normal": SubResource("Animation_awsxv"),
-"running": SubResource("Animation_ftk4c")
+&"RESET": SubResource("Animation_dcm6y"),
+&"normal": SubResource("Animation_awsxv"),
+&"running": SubResource("Animation_ftk4c")
 }
 
 [sub_resource type="GDScript" id="GDScript_x8twt"]
@@ -498,8 +494,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rt05c"]
 _data = {
-"RESET": SubResource("Animation_hbqe7"),
-"glow": SubResource("Animation_x6bix")
+&"RESET": SubResource("Animation_hbqe7"),
+&"glow": SubResource("Animation_x6bix")
 }
 
 [sub_resource type="Curve" id="Curve_ykbwx"]
@@ -609,12 +605,12 @@ vframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_refp3")
+&"": SubResource("AnimationLibrary_refp3")
 }
 
 [node name="WingAnim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_b676p")
+&"": SubResource("AnimationLibrary_b676p")
 }
 speed_scale = 5.0
 
@@ -675,7 +671,7 @@ texture = SubResource("GradientTexture2D_fikny")
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="PointLight2D"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_rt05c")
+&"": SubResource("AnimationLibrary_rt05c")
 }
 autoplay = "glow"
 
@@ -698,11 +694,11 @@ z_index = 20
 material = SubResource("CanvasItemMaterial_gq6fw")
 emitting = false
 amount = 80
-process_material = SubResource("ParticleProcessMaterial_v85tw")
 texture = ExtResource("24_782qj")
 lifetime = 2.5
 one_shot = true
 explosiveness = 0.75
+process_material = SubResource("ParticleProcessMaterial_v85tw")
 
 [connection signal="timeout" from="StateMachine/Freeze/Duration" to="StateMachine/Freeze" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Funny_wall/IdleDuration" to="StateMachine/Funny_wall" method="_on_idle_duration_timeout"]
