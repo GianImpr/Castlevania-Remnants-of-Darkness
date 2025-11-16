@@ -1,16 +1,16 @@
 [gd_scene load_steps=22 format=3 uid="uid://t6lypsds827a"]
 
-[ext_resource type="Script" path="res://SampleProject/Powers/stone_circle.gd" id="1_rry6n"]
+[ext_resource type="Script" uid="uid://blv3eobru7djy" path="res://SampleProject/Powers/stone_circle.gd" id="1_rry6n"]
 [ext_resource type="Texture2D" uid="uid://buy7j4unue5es" path="res://assets/sprites/Enemies/Medusa/StoneCircle1.png" id="2_ieu2n"]
 [ext_resource type="Texture2D" uid="uid://b5g5qpwnup6pj" path="res://assets/sprites/Enemies/Medusa/StoneCircle2.png" id="3_nr5lq"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Powers/circle_stone.gd" id="3_xf23y"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="4_2gcfa"]
+[ext_resource type="Script" uid="uid://i80q5l8hi3tn" path="res://SampleProject/Scripts/Powers/circle_stone.gd" id="3_xf23y"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="4_2gcfa"]
 [ext_resource type="Texture2D" uid="uid://cdl1ueqd58vuq" path="res://assets/sprites/Effects/StoneDebris.png" id="4_bbc2g"]
 [ext_resource type="Texture2D" uid="uid://gbvyf5ku8jot" path="res://assets/sprites/Enemies/Medusa/StoneCircle4.png" id="4_mvv70"]
 [ext_resource type="Texture2D" uid="uid://df03sl0uu6o3v" path="res://assets/sprites/Enemies/Medusa/StoneCircle3.png" id="5_suh7i"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="9_c2cf2"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="10_4lw8f"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="11_orp8q"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="9_c2cf2"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="10_4lw8f"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="11_orp8q"]
 [ext_resource type="AudioStream" uid="uid://dtcq3y1c4dxar" path="res://assets/sounds/Enemies/Medusa/MedusaStoneCircle.MP3" id="12_mskkg"]
 [ext_resource type="AudioStream" uid="uid://cstpsvr1e6igs" path="res://assets/sounds/Enemies/Medusa/MedusaThrowStone.MP3" id="13_t743y"]
 
@@ -120,8 +120,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ag1fm"]
 _data = {
-"RESET": SubResource("Animation_ywo8y"),
-"destroy": SubResource("Animation_57sp2")
+&"RESET": SubResource("Animation_ywo8y"),
+&"destroy": SubResource("Animation_57sp2")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wony"]
@@ -180,7 +180,7 @@ chip_damage = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stone"]
 libraries = {
-"": SubResource("AnimationLibrary_ag1fm")
+&"": SubResource("AnimationLibrary_ag1fm")
 }
 
 [node name="Hitbox" type="Area2D" parent="Stone"]
@@ -226,7 +226,7 @@ chip_damage = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stone2"]
 libraries = {
-"": SubResource("AnimationLibrary_ag1fm")
+&"": SubResource("AnimationLibrary_ag1fm")
 }
 
 [node name="Hitbox" type="Area2D" parent="Stone2"]
@@ -272,7 +272,7 @@ chip_damage = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stone3"]
 libraries = {
-"": SubResource("AnimationLibrary_ag1fm")
+&"": SubResource("AnimationLibrary_ag1fm")
 }
 
 [node name="Hitbox" type="Area2D" parent="Stone3"]
@@ -318,7 +318,7 @@ chip_damage = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stone4"]
 libraries = {
-"": SubResource("AnimationLibrary_ag1fm")
+&"": SubResource("AnimationLibrary_ag1fm")
 }
 
 [node name="Hitbox" type="Area2D" parent="Stone4"]
@@ -364,7 +364,7 @@ chip_damage = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stone5"]
 libraries = {
-"": SubResource("AnimationLibrary_ag1fm")
+&"": SubResource("AnimationLibrary_ag1fm")
 }
 
 [node name="Hitbox" type="Area2D" parent="Stone5"]
@@ -410,7 +410,7 @@ chip_damage = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stone6"]
 libraries = {
-"": SubResource("AnimationLibrary_ag1fm")
+&"": SubResource("AnimationLibrary_ag1fm")
 }
 
 [node name="Hitbox" type="Area2D" parent="Stone6"]
@@ -456,7 +456,7 @@ chip_damage = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stone7"]
 libraries = {
-"": SubResource("AnimationLibrary_ag1fm")
+&"": SubResource("AnimationLibrary_ag1fm")
 }
 
 [node name="Hitbox" type="Area2D" parent="Stone7"]
@@ -502,7 +502,7 @@ chip_damage = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stone8"]
 libraries = {
-"": SubResource("AnimationLibrary_ag1fm")
+&"": SubResource("AnimationLibrary_ag1fm")
 }
 
 [node name="Hitbox" type="Area2D" parent="Stone8"]

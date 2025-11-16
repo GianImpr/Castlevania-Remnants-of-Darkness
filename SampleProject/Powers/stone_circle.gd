@@ -27,10 +27,10 @@ func _ready() -> void:
 	for i in range(0, get_child_count()-3):
 		get_child(i).position = Vector2(radius * cos(deg_to_rad(angle_portion*i)), radius * sin(deg_to_rad(angle_portion*i)))
 		get_child(i).stats.thrower_ATK = get_parent().stats.ATK
-		get_child(i).area.set_deferred("monitoring", true)
+		get_tree().create_timer(TWEEN_DURATION, false).timeout.connect(func(): get_child(i).area.set_deferred("monitoring", true))
 	
 	start_tween.tween_property(self, "scale", FINAL_SCALE, TWEEN_DURATION)
-	start_tween.tween_property(self, "modulate", Color.WHITE, TWEEN_DURATION)
+	start_tween.tween_property(self, "modulate", Color.WHITE, TWEEN_DURATION).from(Color.TRANSPARENT)
 	throw_timer.start(HOVERING_DURATION)
 	throw_timer.timeout.connect(throwStone.bind(target))
 
