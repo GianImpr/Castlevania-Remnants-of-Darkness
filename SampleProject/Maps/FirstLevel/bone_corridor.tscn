@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=4 uid="uid://bfgkuwke7ov07"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_uk38x"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_uk38x"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_awnl1"]
 [ext_resource type="Texture2D" uid="uid://cfgluqvtqwdj6" path="res://assets/sprites/Tiles/OoEMonastery4.png" id="3_c6rti"]
 [ext_resource type="PackedScene" uid="uid://des8o3jbf3a4m" path="res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn" id="4_8ich3"]
 [ext_resource type="PackedScene" uid="uid://b33buvcvhwwqa" path="res://SampleProject/enemies/BonePillar/bone_pillar.tscn" id="4_qbk26"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Spawners/enemy_spawner.gd" id="5_4i1pr"]
+[ext_resource type="Script" uid="uid://ce8hlv3gh56gm" path="res://SampleProject/Scripts/Spawners/enemy_spawner.gd" id="5_4i1pr"]
 [ext_resource type="PackedScene" uid="uid://dfuncyp0yhrbk" path="res://SampleProject/enemies/Slinger/slinger.tscn" id="5_xw7a8"]
 [ext_resource type="PackedScene" uid="uid://bn3lg7fw7nbhb" path="res://SampleProject/enemies/Ghost/ghost.tscn" id="6_5jmhv"]
 [ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="6_7bwhl"]
@@ -1037,3 +1037,4 @@ enemy_to_spawn = ExtResource("6_5jmhv")
 spawn_frequency_in_seconds = 3.0
 min_pos_limits = Vector2(100, 100)
 max_pos_limits = Vector2(1300, 200)
+min_distance_from_player = 300.0

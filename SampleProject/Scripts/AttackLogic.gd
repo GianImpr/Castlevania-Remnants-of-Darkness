@@ -149,7 +149,7 @@ func createHitEffect(body: Node2D) -> void:
 		heart.global_position = hit_effect.position
 		MetSys.get_current_room_instance().call_deferred("add_child", heart)
 		
-	if Global.player.stats.itemEquipped(Artifact.Artifacts.BLOOD_STONE, "artifact") and Global.player.stats.Stats["LCK"] > randi_range(0, 1):
+	if Global.player.stats.itemEquipped(Artifact.Artifacts.BLOOD_STONE, "artifact") and Global.player.stats.Stats["LCK"] > randi_range(0, 199):
 		var orb = orb_scene.instantiate()
 		orb.global_position = hit_effect.position
 		MetSys.get_current_room_instance().call_deferred("add_child", orb)
@@ -177,9 +177,17 @@ func removeHitboxIfNotAttacking() -> void:
 func calculateDamage(body: Node2D) -> int:
 	var damage: int = max(player.stats.Stats["ATK"] - body.stats.DEF/2, 1) * dmg_multiplier + damage_boost
 	const STUD_OF_CONCENTRATION_BOOST: float = 1.07
+	const TIP_DAMAGE_MULTIPLIER: float = 1.2
+	const CHARGE_DAMAGE_MULTIPLIERS: Array[float] = [1.2, 1.3, 1.4]
 	
 	if player.stats.accessoryEquipped(Accessory.Accessories.STUD_OF_CONCENTRATION) and player.stats.Stats["FP"] >= player.stats.Stats["MFP"]:
 		damage *= STUD_OF_CONCENTRATION_BOOST
+	
+	if atTipDistance(body) and Global.player.stats.canApplySkill(Skill.Skills.SHARP_EDGE):
+		damage *= TIP_DAMAGE_MULTIPLIER
+		
+	if player.cur_charge != HectorPlayer.Charge.NONE:
+		damage *= CHARGE_DAMAGE_MULTIPLIERS[player.cur_charge]
 	
 	return damage
 
@@ -247,3 +255,12 @@ func updateKillCount(enemy_name: String) -> void:
 				Game.get_singleton().enemy_compendium[i].killed += 1
 			else:
 				Global.player.stats.enemy_compendium[i].killed += 1
+
+func atTipDistance(target: Node2D) -> bool:
+	const TIP_SIZE: float = 10
+	var enemy_pos: float = target.hitbox_iframe.get_child(0).global_position.x-target.hitbox_iframe.get_child(0).shape.size.x/2
+	if Global.player.facing_position == -1:
+		enemy_pos += target.hitbox_iframe.get_child(0).shape.size.x
+	
+	var hit_pos: float = hitbox.global_position.x+hitbox.shape.size.x*Global.player.facing_position - enemy_pos
+	return (hit_pos < TIP_SIZE and Global.player.facing_position == 1) or (hit_pos > -TIP_SIZE and Global.player.facing_position == -1)

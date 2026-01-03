@@ -21,6 +21,10 @@ class_name HectorPlayer
 @export var mercy_invincibility_duration: Timer
 @export var mercy_invincibility_hit_threshold_reset: Timer
 @export var focus_gain_duration: Timer
+@export_category("Charge nodes")
+@export var charge_sprite: Sprite2D
+@export var charge_anim: AnimationPlayer
+@export var charge_particles: CPUParticles2D
 @export_category("Temporary nodes")
 @export var heal_effect: GPUParticles2D
 @export var heal_mp_effect: GPUParticles2D
@@ -67,6 +71,9 @@ var hit_effect_applied: bool = false
 const PERFECT_GUARD_WINDOW_SIMPLIFIED: float = 0.192
 const PERFECT_GUARD_WINDOW_DEFAULT: float = 0.096
 
+const CHARGE_ONE_COST_RATIO: int = 10
+var cur_charge: Charge = Charge.NONE
+
 const Animations = {
 	ATTACK_AIR = "air_attack",
 	ATTACK = "attack",
@@ -90,6 +97,13 @@ const Animations = {
 	RUN_END = "run_end",
 	RUN_START = "run_start",
 	SITTING = "sitting_down"
+}
+
+enum Charge {
+	ONE,
+	TWO,
+	THREE,
+	NONE
 }
 
 func _ready() -> void:
@@ -133,10 +147,15 @@ func _process(delta: float) -> void:
 	if expNeededToRankUpWeapon() <= 0:
 		weaponRankUp()
 		
-	if not focus_gain_duration.is_stopped():
+	if not focus_gain_duration.is_stopped() and cur_charge == Charge.NONE:
 		if stats.Stats["FP"] < stats.Stats["MFP"] and stats.Stats["FP"]+FOCUS_GAIN_RATIO*delta >= stats.Stats["MFP"]:
 			fullFocusEffect()
 		stats.Stats["FP"] = min(stats.Stats["MFP"], stats.Stats["FP"]+FOCUS_GAIN_RATIO*delta)
+		
+	if cur_charge == Charge.ONE:
+		stats.Stats["FP"] = max(0, stats.Stats["FP"]-CHARGE_ONE_COST_RATIO*delta)
+		if stats.Stats["FP"] == 0:
+			disableCharge()
 
 
 	if enabled_magic and stats.itemEquipped(Relic.Relics.AGUNIS_LAUREL, "relic") and stats.Stats["MP"] > 0 and not aguni_on_cooldown and velocity.x != 0 and is_on_floor():
@@ -240,13 +259,13 @@ func expNeededToLvUp() -> int:
 	
 func expNeededToRankUpWeapon() -> int:
 	var weapon_type: int = 4
-	var allowed_weapon_types: Array[Weapon.Type] = [Weapon.Type.SWORD, Weapon.Type.AXE, Weapon.Type.GREATSWORD, Weapon.Type.FIST]
+	var allowed_weapon_types: Array[Weapon.Type] = [Weapon.Type.SWORD, Weapon.Type.AXE, Weapon.Type.GREATSWORD, Weapon.Type.SPEAR, Weapon.Type.FIST]
 	var extra_level_for: Array[Weapon.Type] = [Weapon.Type.FIST]
 	if stats.equipment["weapon"] != 0:
 		weapon_type = stats.searchItemInCompendium(stats.equipment["weapon"], stats.weapon_compendium).type
 	var next_weapon_lv = stats.weapon_proficiency[weapon_type]["lv"]+1
 	var cur_weapon_exp = stats.weapon_proficiency[weapon_type]["exp"]
-	var remaining_exp: int = 150*next_weapon_lv*1.5*log(next_weapon_lv*1.5+2.7)-cur_weapon_exp
+	var remaining_exp: int = 100*next_weapon_lv*1.5*log(next_weapon_lv*1.5+2.7)-cur_weapon_exp
 	if (next_weapon_lv > MAX_WEAPON_RANK and weapon_type not in extra_level_for) or (next_weapon_lv > MAX_WEAPON_RANK+1 and weapon_type in extra_level_for) or weapon_type not in allowed_weapon_types:
 		return 1
 	return remaining_exp
@@ -395,7 +414,7 @@ func petrify() -> void:
 func instantiateScene(scene: PackedScene, get_player_frame: bool, offset: Vector2):
 	var instance: Sprite2D = scene.instantiate()
 	instance.scale = scale
-	instance.global_position = global_position + offset
+	instance.global_position = global_position + offset - MetSys.get_current_room_instance().position
 	instance.flip_h = sprite.flip_h
 	instance.z_index = z_index-1
 	if get_player_frame:
@@ -410,3 +429,14 @@ func activateBloodCloak() -> void:
 
 func activateStoneOfAlchemy() -> void:
 	healMP(STONE_OF_ALCHEMY_HEAL, Vector2(0,28))
+
+func activateCharge(level: Charge) -> void:
+	const anims = ["charge_lv1", "charge_lv2", "charge_lv3"]
+	sound.play_sound_effect_from_library("charge")
+	charge_particles.one_shot = false
+	charge_anim.play(anims[level])
+	cur_charge = level
+	
+func disableCharge() -> void:
+	charge_particles.one_shot = true
+	cur_charge = Charge.NONE

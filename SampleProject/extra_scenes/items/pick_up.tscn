@@ -400,7 +400,7 @@ background_mode = 3
 glow_enabled = true
 glow_blend_mode = 1
 
-[node name="Pick-up" type="RigidBody2D" node_paths=PackedStringArray("sprite", "idle_timer", "flash_timer", "animation", "sound", "wall_checker")]
+[node name="Pick-up" type="RigidBody2D" node_paths=PackedStringArray("sprite", "idle_timer", "flash_timer", "animation", "sound", "collision", "wall_checker")]
 collision_layer = 0
 collision_mask = 4097
 lock_rotation = true
@@ -414,6 +414,7 @@ animation = NodePath("AnimationPlayer")
 sound = NodePath("PolyphonicMenuAudio")
 item_full_scene = ExtResource("2_ovibg")
 boost_message = ExtResource("3_gagnr")
+collision = NodePath("CollisionShape2D")
 wall_checker = NodePath("WallChecker")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

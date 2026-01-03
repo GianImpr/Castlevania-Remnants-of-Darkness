@@ -1,11 +1,11 @@
 [gd_scene load_steps=39 format=3 uid="uid://dd3s67ealy03f"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/skeleton_shatter.gd" id="1_wj2ps"]
+[ext_resource type="Script" uid="uid://cgue77b2nk6tm" path="res://SampleProject/enemies/Skeleton/skeleton_shatter.gd" id="1_wj2ps"]
 [ext_resource type="Texture2D" uid="uid://c75kgbqkyn6c5" path="res://assets/sprites/Effects/SmallFire.png" id="3_xpvl1"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_a38rl"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_a38rl"]
 [ext_resource type="Texture2D" uid="uid://dbqryxsec57ud" path="res://assets/sprites/Enemies/boneScimitar.png" id="4_xcv8j"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_v4kgk"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_1m0pk"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_v4kgk"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_1m0pk"]
 [ext_resource type="AudioStream" uid="uid://cqnbivel1hcx6" path="res://assets/sounds/Enemies/Skeleton/SkeletonKill.MP3" id="7_cxutc"]
 [ext_resource type="AudioStream" uid="uid://cymbbuk0ioone" path="res://assets/sounds/Enemies/Skeleton/SkeletonDrop.MP3" id="8_rwh5l"]
 
@@ -157,8 +157,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q31yq"]
 _data = {
-"RESET": SubResource("Animation_f74kn"),
-"destroy": SubResource("Animation_ypjf6")
+&"RESET": SubResource("Animation_f74kn"),
+&"destroy": SubResource("Animation_ypjf6")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sj6t"]
@@ -309,8 +309,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wxg48"]
 _data = {
-"RESET": SubResource("Animation_hbco7"),
-"destroy": SubResource("Animation_wppdg")
+&"RESET": SubResource("Animation_hbco7"),
+&"destroy": SubResource("Animation_wppdg")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5ldl"]
@@ -461,8 +461,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gkwjr"]
 _data = {
-"RESET": SubResource("Animation_cglu3"),
-"destroy": SubResource("Animation_kihd6")
+&"RESET": SubResource("Animation_cglu3"),
+&"destroy": SubResource("Animation_kihd6")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brvuo"]
@@ -613,8 +613,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0aohk"]
 _data = {
-"RESET": SubResource("Animation_ty03t"),
-"destroy": SubResource("Animation_50lfl")
+&"RESET": SubResource("Animation_ty03t"),
+&"destroy": SubResource("Animation_50lfl")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2cu3"]
@@ -765,8 +765,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qskqo"]
 _data = {
-"RESET": SubResource("Animation_ogj1p"),
-"destroy": SubResource("Animation_e6a73")
+&"RESET": SubResource("Animation_ogj1p"),
+&"destroy": SubResource("Animation_e6a73")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrjl3"]
@@ -917,8 +917,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1ku70"]
 _data = {
-"RESET": SubResource("Animation_2kv7j"),
-"destroy": SubResource("Animation_r6tg6")
+&"RESET": SubResource("Animation_2kv7j"),
+&"destroy": SubResource("Animation_r6tg6")
 }
 
 [sub_resource type="Animation" id="Animation_ac6xd"]
@@ -1066,8 +1066,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bat4y"]
 _data = {
-"RESET": SubResource("Animation_ac6xd"),
-"destroy": SubResource("Animation_obvo6")
+&"RESET": SubResource("Animation_ac6xd"),
+&"destroy": SubResource("Animation_obvo6")
 }
 
 [sub_resource type="Resource" id="Resource_3o518"]
@@ -1093,6 +1093,7 @@ sound = NodePath("PolyphonicAudio")
 [node name="Body" type="RigidBody2D" parent="."]
 position = Vector2(-3, -7)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -1113,12 +1114,13 @@ shape = SubResource("RectangleShape2D_onnmr")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_q31yq")
+&"": SubResource("AnimationLibrary_q31yq")
 }
 
 [node name="Head" type="RigidBody2D" parent="."]
 position = Vector2(5, 6)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -1139,12 +1141,13 @@ shape = SubResource("RectangleShape2D_1sj6t")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_wxg48")
+&"": SubResource("AnimationLibrary_wxg48")
 }
 
 [node name="Arm" type="RigidBody2D" parent="."]
 position = Vector2(1, -8)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -1165,12 +1168,13 @@ shape = SubResource("RectangleShape2D_e5ldl")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Arm"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_gkwjr")
+&"": SubResource("AnimationLibrary_gkwjr")
 }
 
 [node name="SecondArm" type="RigidBody2D" parent="."]
 position = Vector2(-7, -6)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -1191,12 +1195,13 @@ shape = SubResource("RectangleShape2D_brvuo")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SecondArm"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_0aohk")
+&"": SubResource("AnimationLibrary_0aohk")
 }
 
 [node name="Leg" type="RigidBody2D" parent="."]
 position = Vector2(5, 6)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -1217,12 +1222,13 @@ shape = SubResource("RectangleShape2D_v2cu3")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Leg"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_qskqo")
+&"": SubResource("AnimationLibrary_qskqo")
 }
 
 [node name="SecondLeg" type="RigidBody2D" parent="."]
 position = Vector2(0, 9)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -1243,12 +1249,13 @@ shape = SubResource("RectangleShape2D_hrjl3")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SecondLeg"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_1ku70")
+&"": SubResource("AnimationLibrary_1ku70")
 }
 
 [node name="Shield" type="RigidBody2D" parent="."]
 position = Vector2(-3, -7)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -1269,7 +1276,7 @@ shape = SubResource("RectangleShape2D_onnmr")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_bat4y")
+&"": SubResource("AnimationLibrary_bat4y")
 }
 
 [node name="DeleteTimer" type="Timer" parent="."]

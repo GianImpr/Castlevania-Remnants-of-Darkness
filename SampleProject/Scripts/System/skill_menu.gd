@@ -31,8 +31,8 @@ func updateStats() -> void:
 		var experience_bar: TextureProgressBar = category.get_child(0).get_child(0)
 		var cur_weapon_lv: int = Global.player.stats.weapon_proficiency[i]["lv"]
 		var cur_weapon_exp: int = Global.player.stats.weapon_proficiency[i]["exp"]
-		var total_exp_for_next_lv: int = 150*((cur_weapon_lv+1)*1.5)*log((cur_weapon_lv+1)*1.5+2.7)
-		var minimum_exp_for_cur_lv: int = 150*(cur_weapon_lv*1.5)*log(cur_weapon_lv*1.5+2.7)
+		var total_exp_for_next_lv: int = 100*((cur_weapon_lv+1)*1.5)*log((cur_weapon_lv+1)*1.5+2.7)
+		var minimum_exp_for_cur_lv: int = 100*(cur_weapon_lv*1.5)*log(cur_weapon_lv*1.5+2.7)
 		level_label.text = levels[cur_weapon_lv]
 		if cur_weapon_lv < Global.player.MAX_WEAPON_RANK+int(i in extra_level_for):
 			experience_bar.value = cur_weapon_exp-minimum_exp_for_cur_lv

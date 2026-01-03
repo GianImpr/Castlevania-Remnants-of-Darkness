@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cr4jksx71segk"]
+[gd_scene load_steps=100 format=3 uid="uid://cr4jksx71segk"]
 
 [ext_resource type="Script" uid="uid://4u8elxx42opm" path="res://SampleProject/Scripts/System/Menu/shop_screen.gd" id="1_rq5a2"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="2_80w3n"]
@@ -8,13 +8,38 @@
 [ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="4_4rfpf"]
 [ext_resource type="Script" uid="uid://ckrs7a0y6d77i" path="res://SampleProject/Scripts/System/shop_entry.gd" id="4_xqvsg"]
 [ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="6_xqvsg"]
-[ext_resource type="Texture2D" uid="uid://cxg68pmrc08kw" path="res://assets/sprites/Items/InventoryIcons/Inventory_2.png" id="7_xqvsg"]
+[ext_resource type="Texture2D" uid="uid://du0eiy67cnc7d" path="res://assets/sprites/Items/InventoryIcons/Inventory_258.png" id="7_4e0xj"]
 [ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="8_c4ouk"]
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="9_2pq27"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="12_ogxjy"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="13_4e0xj"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="14_ltn54"]
+[ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="15_i7x1f"]
+[ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="16_okf63"]
+[ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="17_4e0xj"]
+[ext_resource type="AudioStream" uid="uid://bde3gtvpav1k0" path="res://assets/sounds/Voice/Julia/JuliaWelcome.wav" id="17_514lr"]
+[ext_resource type="Shader" uid="uid://diku0uk4in6gs" path="res://SampleProject/Shaders/aura.gdshader" id="18_ltn54"]
+[ext_resource type="AudioStream" uid="uid://blcfscd3uct2u" path="res://assets/sounds/Menu/GoldConsuming.ogg" id="18_okf63"]
+[ext_resource type="AudioStream" uid="uid://bnfqa2ix6rmwd" path="res://assets/sounds/Voice/Julia/JuliaThanks.wav" id="18_pvot7"]
+[ext_resource type="AudioStream" uid="uid://smpln7c28akq" path="res://assets/sounds/Voice/Julia/JuliaComeBack.wav" id="19_cvd1v"]
+[ext_resource type="AudioStream" uid="uid://bkp7rl87344rg" path="res://assets/sounds/Menu/GoldFinished.ogg" id="19_v0lvk"]
+[ext_resource type="AudioStream" uid="uid://diohtt8jma4mp" path="res://assets/sounds/Voice/Julia/JuliaWhat.wav" id="20_pvot7"]
+[ext_resource type="AudioStream" uid="uid://c58syh5qc3uan" path="res://assets/sounds/Voice/Julia/JuliaAnythingElse.wav" id="21_cvd1v"]
+[ext_resource type="AudioStream" uid="uid://dpp6ksuh0cbdw" path="res://assets/sounds/Voice/Julia/JuliaNoMoney.wav" id="22_5wiqe"]
+[ext_resource type="AudioStream" uid="uid://crmkm2vrsxem" path="res://assets/sounds/Voice/Julia/JuliaThankYou.wav" id="23_qphcq"]
+[ext_resource type="AudioStream" uid="uid://c2kuaiyrbdunx" path="res://assets/sounds/Voice/Julia/JuliaComeOnIn.wav" id="24_atiwv"]
 
 [sub_resource type="Theme" id="Theme_vib0y"]
 default_font = ExtResource("2_e852k")
 default_font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_okf63"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0lvk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j43w6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_514lr"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_axgji"]
 load_path = "res://.godot/imported/MenuButton.png-2218ea1ce660447b1007ccb1fa85dce2.ctex"
@@ -151,6 +176,7 @@ fill_to = Vector2(0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4e0xj"]
 content_margin_top = 50.0
+content_margin_bottom = 28.0
 texture = ExtResource("4_4rfpf")
 texture_margin_left = 20.0
 texture_margin_top = 20.0
@@ -204,7 +230,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -216,43 +242,55 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PanelContainer:modulate")
+tracks/3/path = NodePath("Header:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Header:modulate")
+tracks/4/path = NodePath("BuyLabel:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("BuyLabel:self_modulate")
+tracks/5/path = NodePath("PanelContainer:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/ScrollContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_4rfpf"]
@@ -297,11 +335,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PanelContainer:modulate")
+tracks/3/path = NodePath("Header:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.3, 0.5),
+"times": PackedFloat32Array(0.26666668, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -309,11 +347,11 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Header:modulate")
+tracks/4/path = NodePath("BuyLabel:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.26666668, 0.5),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -321,11 +359,23 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("BuyLabel:self_modulate")
+tracks/5/path = NodePath("PanelContainer:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.26666668, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/ScrollContainer:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.20000002, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -367,7 +417,276 @@ fill_to = Vector2(0, 1)
 default_font = ExtResource("9_2pq27")
 default_font_size = 32
 
-[node name="ShopScreen" type="Control" node_paths=PackedStringArray("initial_screen", "buy_screen", "sell_screen", "description_panel", "description_icon", "description_text")]
+[sub_resource type="Animation" id="Animation_c4ouk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Description/PanelContainer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InitialScreen:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Display/BlackBackground:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Display/BlackBackground/AnimatedBackground:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2pq27"]
+resource_name = "hide_initial"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InitialScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xqvsg"]
+resource_name = "shop_start"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Description/PanelContainer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Display/BlackBackground:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Display/BlackBackground/AnimatedBackground:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.13333334, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2pq27"]
+_data = {
+&"RESET": SubResource("Animation_c4ouk"),
+&"hide_initial": SubResource("Animation_2pq27"),
+&"shop_start": SubResource("Animation_xqvsg")
+}
+
+[sub_resource type="Resource" id="Resource_icsxs"]
+script = ExtResource("14_ltn54")
+Tag = "gold_finished"
+stream = ExtResource("19_v0lvk")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_ns41x"]
+script = ExtResource("14_ltn54")
+Tag = "gold_consuming"
+stream = ExtResource("18_okf63")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_thyj8"]
+script = ExtResource("13_4e0xj")
+sound_effects = Array[ExtResource("14_ltn54")]([SubResource("Resource_icsxs"), SubResource("Resource_ns41x")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="Resource" id="Resource_1fkfm"]
+script = ExtResource("14_ltn54")
+Tag = "welcome"
+stream = ExtResource("17_514lr")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_qbsym"]
+script = ExtResource("14_ltn54")
+Tag = "thanks"
+stream = ExtResource("18_pvot7")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_dqv0b"]
+script = ExtResource("14_ltn54")
+Tag = "come_back"
+stream = ExtResource("19_cvd1v")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_flemb"]
+script = ExtResource("14_ltn54")
+Tag = "today"
+stream = ExtResource("20_pvot7")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_sc84e"]
+script = ExtResource("14_ltn54")
+Tag = "anything_else"
+stream = ExtResource("21_cvd1v")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_miak1"]
+script = ExtResource("14_ltn54")
+Tag = "no_money"
+stream = ExtResource("22_5wiqe")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_ob7gj"]
+script = ExtResource("14_ltn54")
+Tag = "thank_you"
+stream = ExtResource("23_qphcq")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_uc1ok"]
+script = ExtResource("14_ltn54")
+Tag = "come_on_in"
+stream = ExtResource("24_atiwv")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_ddipq"]
+script = ExtResource("13_4e0xj")
+sound_effects = Array[ExtResource("14_ltn54")]([SubResource("Resource_1fkfm"), SubResource("Resource_qbsym"), SubResource("Resource_dqv0b"), SubResource("Resource_flemb"), SubResource("Resource_sc84e"), SubResource("Resource_miak1"), SubResource("Resource_ob7gj"), SubResource("Resource_uc1ok")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="Resource" id="Resource_j43w6"]
+script = ExtResource("14_ltn54")
+Tag = "cursor"
+stream = ExtResource("15_i7x1f")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_i2vnw"]
+script = ExtResource("14_ltn54")
+Tag = "confirm"
+stream = ExtResource("16_okf63")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_18uob"]
+script = ExtResource("14_ltn54")
+Tag = "denied"
+stream = ExtResource("17_4e0xj")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_okf63"]
+script = ExtResource("13_4e0xj")
+sound_effects = Array[ExtResource("14_ltn54")]([SubResource("Resource_j43w6"), SubResource("Resource_i2vnw"), SubResource("Resource_18uob")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="Gradient" id="Gradient_hxamm"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i7x1f"]
+gradient = SubResource("Gradient_hxamm")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_okf63"]
+noise_type = 2
+frequency = 0.0071
+fractal_type = 3
+fractal_lacunarity = 3.0
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hetj2"]
+noise = SubResource("FastNoiseLite_okf63")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0lvk"]
+shader = ExtResource("18_ltn54")
+shader_parameter/n = SubResource("NoiseTexture2D_hetj2")
+shader_parameter/min_intensity = 0.7
+shader_parameter/max_intensity = 1.0
+shader_parameter/speed_x = 100.0
+shader_parameter/speed_y = 5.0
+shader_parameter/fade_start = 0.2
+shader_parameter/fade_end = 1.0
+
+[sub_resource type="Gradient" id="Gradient_ehr0e"]
+offsets = PackedFloat32Array(0.00763359, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j43w6"]
+gradient = SubResource("Gradient_ehr0e")
+width = 256
+height = 256
+
+[node name="ShopScreen" type="Control" node_paths=PackedStringArray("initial_screen", "buy_screen", "sell_screen", "description_panel", "description_icon", "description_text", "animation", "default_button", "sound", "julia_voice")]
+modulate = Color(1, 1, 1, 0)
+z_index = 9
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -381,16 +700,20 @@ sell_screen = NodePath("SellScreen")
 description_panel = NodePath("Description/PanelContainer")
 description_icon = NodePath("Description/Icon")
 description_text = NodePath("Description/Text")
+animation = NodePath("InitialScreenAnimation")
+default_button = NodePath("InitialScreen/VBoxContainer/Buy")
+sound = NodePath("PolyphonicMenuAudio")
+julia_voice = NodePath("JuliaVoice")
 metadata/_edit_vertical_guides_ = [432.0]
 metadata/_edit_horizontal_guides_ = [-45.0]
 
 [node name="InitialScreen" type="Control" parent="."]
+z_index = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InitialScreen"]
-visible = false
 layout_mode = 0
 offset_left = 345.0
 offset_top = 129.0
@@ -401,8 +724,13 @@ alignment = 1
 
 [node name="Buy" type="Button" parent="InitialScreen/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../ID")
 theme = SubResource("Theme_vib0y")
 theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_okf63")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v0lvk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j43w6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_514lr")
 action_mode = 0
 text = "Buy"
 icon = SubResource("CompressedTexture2D_axgji")
@@ -413,6 +741,10 @@ icon_alignment = 1
 layout_mode = 2
 theme = SubResource("Theme_vib0y")
 theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_okf63")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v0lvk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j43w6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_514lr")
 disabled = true
 action_mode = 0
 text = "Sell"
@@ -422,8 +754,13 @@ icon_alignment = 1
 
 [node name="ID" type="Button" parent="InitialScreen/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../Buy")
 theme = SubResource("Theme_vib0y")
 theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_okf63")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_v0lvk")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_j43w6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_514lr")
 disabled = true
 action_mode = 0
 text = "? ? ?"
@@ -431,7 +768,8 @@ icon = SubResource("CompressedTexture2D_axgji")
 flat = true
 icon_alignment = 1
 
-[node name="BuyScreen" type="Control" parent="." node_paths=PackedStringArray("gold_label", "animation")]
+[node name="BuyScreen" type="Control" parent="." node_paths=PackedStringArray("scroll_container", "gold_label", "animation", "sound", "text_description", "icon_description", "item_entries", "gold_sound")]
+z_index = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -459,10 +797,17 @@ preview = {
 "Uncurse": 200,
 "WIZARD_CLOAK": 2500
 }
+scroll_container = NodePath("PanelContainer/ScrollContainer")
 gold_label = NodePath("../GoldValue")
 animation = NodePath("AnimationPlayer")
+sound = NodePath("../PolyphonicMenuAudio")
+text_description = NodePath("../Description/Text")
+icon_description = NodePath("../Description/Icon")
+item_entries = NodePath("PanelContainer/ScrollContainer/Items")
+gold_sound = NodePath("../GoldAudio")
 
 [node name="Header" type="HBoxContainer" parent="BuyScreen"]
+modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 36.0
@@ -541,6 +886,7 @@ offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_ogxjy")
 
 [node name="PanelContainer" type="PanelContainer" parent="BuyScreen"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 16.0
 offset_top = 58.0
@@ -549,7 +895,9 @@ offset_bottom = 384.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4e0xj")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BuyScreen/PanelContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
@@ -567,7 +915,7 @@ layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxFlat_xqvsg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_xqvsg")
 text = "Potion"
-icon = ExtResource("7_xqvsg")
+icon = ExtResource("7_4e0xj")
 flat = true
 alignment = 0
 expand_icon = true
@@ -601,6 +949,7 @@ text = "200000"
 horizontal_alignment = 2
 
 [node name="BuyLabel" type="Label" parent="BuyScreen"]
+self_modulate = Color(1, 1, 1, 0)
 clip_children = 1
 layout_mode = 0
 offset_left = 16.0
@@ -608,7 +957,7 @@ offset_top = 8.0
 offset_right = 508.0
 offset_bottom = 60.0
 theme = SubResource("Theme_ltn54")
-text = "BUY_SCREEN"
+text = "Buy"
 
 [node name="TextureRect" type="TextureRect" parent="BuyScreen/BuyLabel"]
 layout_mode = 0
@@ -622,11 +971,13 @@ libraries = {
 }
 
 [node name="SellScreen" type="Control" parent="."]
+z_index = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Description" type="Control" parent="."]
+z_index = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -662,7 +1013,9 @@ offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vib0y")
 
 [node name="Gold" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 clip_children = 1
+z_index = 1
 layout_mode = 0
 offset_left = 591.0
 offset_top = 21.0
@@ -679,6 +1032,8 @@ offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_v0lvk")
 
 [node name="GoldValue" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1
 layout_mode = 0
 offset_left = 704.0
 offset_top = 21.0
@@ -688,3 +1043,52 @@ theme = SubResource("Theme_j43w6")
 theme_override_constants/line_spacing = 5
 text = "0"
 horizontal_alignment = 2
+
+[node name="InitialScreenAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2pq27")
+}
+
+[node name="GoldAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+script = ExtResource("12_ogxjy")
+audio_library = SubResource("Resource_thyj8")
+metadata/_custom_type_script = "uid://db2g34ep3sicd"
+
+[node name="JuliaVoice" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+volume_db = -23.0
+bus = &"Voice"
+script = ExtResource("12_ogxjy")
+audio_library = SubResource("Resource_ddipq")
+custom_max_polyphony = 1
+metadata/_custom_type_script = "uid://db2g34ep3sicd"
+
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+pitch_scale = 0.7
+script = ExtResource("12_ogxjy")
+audio_library = SubResource("Resource_okf63")
+metadata/_custom_type_script = "uid://db2g34ep3sicd"
+
+[node name="Display" type="Node2D" parent="."]
+
+[node name="BlackBackground" type="TextureRect" parent="Display"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_right = 868.0
+offset_bottom = 480.0
+texture = SubResource("GradientTexture1D_i7x1f")
+
+[node name="AnimatedBackground" type="TextureRect" parent="Display/BlackBackground"]
+modulate = Color(1.2333506e-07, 0.18350789, 0.09665657, 1)
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_v0lvk")
+layout_mode = 0
+offset_top = 31.0
+offset_right = 865.0
+offset_bottom = 480.0
+texture = SubResource("GradientTexture2D_j43w6")
+flip_v = true
+
+[connection signal="pressed" from="InitialScreen/VBoxContainer/Buy" to="." method="_on_buy_pressed"]

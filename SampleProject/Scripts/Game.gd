@@ -219,6 +219,7 @@ func _ready() -> void:
 		MetSys.reset_state()
 		# Assign player for MetSysGame.
 		set_player($Player)
+		player.sprite.setPetrify(false)
 		
 		if FileAccess.file_exists(Global.save_file_to_load) and load_data:
 			load_game()

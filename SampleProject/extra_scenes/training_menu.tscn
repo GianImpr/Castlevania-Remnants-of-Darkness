@@ -1,0 +1,634 @@
+[gd_scene load_steps=50 format=3 uid="uid://dk6ln3pa1ra6q"]
+
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="1_a0owa"]
+[ext_resource type="Script" uid="uid://bsr6ixj1h4r5y" path="res://SampleProject/extra_scenes/HUD/training_menu.gd" id="1_c8rss"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="2_rcdex"]
+[ext_resource type="Script" uid="uid://cbg6erhltejbh" path="res://SampleProject/Scripts/System/training_mode.gd" id="2_wsu2r"]
+[ext_resource type="PackedScene" uid="uid://c6b7toh8yj33q" path="res://SampleProject/enemies/Ctulhu/ctulhu.tscn" id="3_2stfb"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="3_cckcb"]
+[ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="4_q8ayk"]
+[ext_resource type="PackedScene" uid="uid://cl543nev3n2bf" path="res://SampleProject/enemies/AxeArmor/axe_armor.tscn" id="4_ygfm7"]
+[ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="5_0d0in"]
+[ext_resource type="PackedScene" uid="uid://bn5w03bpeuhmt" path="res://SampleProject/enemies/ArmorKnight/armor_knight.tscn" id="5_rbbvo"]
+[ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="6_6voui"]
+[ext_resource type="PackedScene" uid="uid://b15fvv131wq0u" path="res://SampleProject/Maps/TrainingRoom/training_room.tscn" id="6_ygfm7"]
+[ext_resource type="Shader" uid="uid://diku0uk4in6gs" path="res://SampleProject/Shaders/aura.gdshader" id="7_4qgc5"]
+[ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="8_rcdex"]
+[ext_resource type="FontFile" uid="uid://ma2njl02pxj6" path="res://assets/sprites/Font/Olondona.otf" id="9_cckcb"]
+[ext_resource type="Texture2D" uid="uid://chgh1icjepfq" path="res://assets/images/Guarding.png" id="10_1qa27"]
+[ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="11_ylbde"]
+[ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="12_c8rss"]
+[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="13_wsu2r"]
+[ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="14_0hsmt"]
+
+[sub_resource type="Resource" id="Resource_0hsmt"]
+script = ExtResource("2_wsu2r")
+title = "GUARD"
+description = "Block incoming attacks by holding down [[R1]].
+
+By doing so, Hector will receive reduced damage or none whatsoever and will block incoming projectiles as well.
+Be careful: using it too much will cause a guard break."
+challenge_beginner = "Block 10 attacks from an Axe Armor."
+challenge_intermediate = "Block 10 attacks from a Armor Knight."
+challenge_advanced = "Block 10 attacks from a Devil."
+icon = ExtResource("10_1qa27")
+enemies_beginner = Array[PackedScene]([ExtResource("4_ygfm7")])
+enemies_intermediate = Array[PackedScene]([ExtResource("5_rbbvo")])
+enemies_advanced = Array[PackedScene]([ExtResource("3_2stfb")])
+damage_upon_hit = 25
+hearts_to_collect = 10
+metadata/_custom_type_script = "uid://cbg6erhltejbh"
+
+[sub_resource type="Resource" id="Resource_j43w6"]
+script = ExtResource("3_cckcb")
+Tag = "cursor"
+stream = ExtResource("4_q8ayk")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_i2vnw"]
+script = ExtResource("3_cckcb")
+Tag = "confirm"
+stream = ExtResource("5_0d0in")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_18uob"]
+script = ExtResource("3_cckcb")
+Tag = "denied"
+stream = ExtResource("6_6voui")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_1qa27"]
+script = ExtResource("2_rcdex")
+sound_effects = Array[ExtResource("3_cckcb")]([SubResource("Resource_j43w6"), SubResource("Resource_i2vnw"), SubResource("Resource_18uob")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="Gradient" id="Gradient_hxamm"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ylbde"]
+gradient = SubResource("Gradient_hxamm")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c8rss"]
+noise_type = 2
+frequency = 0.0071
+fractal_type = 3
+fractal_lacunarity = 3.0
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hetj2"]
+noise = SubResource("FastNoiseLite_c8rss")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wsu2r"]
+shader = ExtResource("7_4qgc5")
+shader_parameter/n = SubResource("NoiseTexture2D_hetj2")
+shader_parameter/min_intensity = 0.7
+shader_parameter/max_intensity = 1.0
+shader_parameter/speed_x = 100.0
+shader_parameter/speed_y = 5.0
+shader_parameter/fade_start = 0.2
+shader_parameter/fade_end = 1.0
+
+[sub_resource type="Gradient" id="Gradient_ehr0e"]
+offsets = PackedFloat32Array(0.00763359, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0hsmt"]
+gradient = SubResource("Gradient_ehr0e")
+width = 256
+height = 256
+
+[sub_resource type="Theme" id="Theme_cckcb"]
+default_font = ExtResource("8_rcdex")
+default_font_size = 48
+
+[sub_resource type="Gradient" id="Gradient_ffcim"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q8ayk"]
+gradient = SubResource("Gradient_ffcim")
+width = 560
+height = 48
+fill_from = Vector2(0.0318471, 0.22293)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Theme" id="Theme_q8ayk"]
+default_font = ExtResource("9_cckcb")
+default_font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0d0in"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6voui"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qgc5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1qa27"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ylbde"]
+load_path = "res://.godot/imported/MenuButton.png-2218ea1ce660447b1007ccb1fa85dce2.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2stfb"]
+content_margin_top = 50.0
+texture = ExtResource("11_ylbde")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="Theme" id="Theme_ygfm7"]
+default_font = ExtResource("12_c8rss")
+default_font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_rbbvo"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pscbs"]
+gradient = SubResource("Gradient_rbbvo")
+width = 560
+height = 32
+fill_from = Vector2(0.02364865, 0)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Theme" id="Theme_iv4ef"]
+default_font = ExtResource("13_wsu2r")
+default_font_size = 32
+
+[sub_resource type="Animation" id="Animation_2stfb"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/BlackBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrainingLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OtherInfo:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.26666665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Description/PanelContainer:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.06666667, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(649, 0), Vector2(649, 400)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Description:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Description/Icon:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4, 0.6666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Description/Title:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.4, 0.6666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Description/Description:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.4, 0.6666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ygfm7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/BlackBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Description/PanelContainer:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(649, 400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Description:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbbvo"]
+_data = {
+&"RESET": SubResource("Animation_ygfm7"),
+&"open": SubResource("Animation_2stfb")
+}
+
+[node name="TrainingMenu" type="Control" node_paths=PackedStringArray("animation")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c8rss")
+trainings = Array[ExtResource("2_wsu2r")]([SubResource("Resource_0hsmt")])
+animation = NodePath("AnimationPlayer")
+training_room = ExtResource("6_ygfm7")
+
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+pitch_scale = 0.7
+script = ExtResource("1_a0owa")
+audio_library = SubResource("Resource_1qa27")
+metadata/_custom_type_script = "uid://db2g34ep3sicd"
+
+[node name="Display" type="Node2D" parent="."]
+
+[node name="BlackBackground" type="TextureRect" parent="Display"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_right = 868.0
+offset_bottom = 480.0
+texture = SubResource("GradientTexture1D_ylbde")
+
+[node name="AnimatedBackground" type="TextureRect" parent="Display/BlackBackground"]
+modulate = Color(0.326448, 0.0011623095, 0.5538954, 1)
+material = SubResource("ShaderMaterial_wsu2r")
+layout_mode = 0
+offset_top = 31.0
+offset_right = 865.0
+offset_bottom = 480.0
+texture = SubResource("GradientTexture2D_0hsmt")
+flip_v = true
+
+[node name="TrainingLabel" type="Label" parent="."]
+clip_children = 1
+layout_mode = 0
+offset_left = 25.0
+offset_top = 8.0
+offset_right = 517.0
+offset_bottom = 60.0
+theme = SubResource("Theme_cckcb")
+text = "Training"
+
+[node name="TextureRect" type="TextureRect" parent="TrainingLabel"]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 559.0
+offset_bottom = 48.0
+texture = SubResource("GradientTexture2D_q8ayk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 71.0
+offset_right = 182.0
+offset_bottom = 197.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Guard" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../QuickRecover")
+theme = SubResource("Theme_q8ayk")
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0d0in")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6voui")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4qgc5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1qa27")
+action_mode = 0
+text = "Guard
+"
+icon = SubResource("CompressedTexture2D_ylbde")
+flat = true
+icon_alignment = 1
+
+[node name="PerfectGuard" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_q8ayk")
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0d0in")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6voui")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4qgc5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1qa27")
+action_mode = 0
+text = "Perfect Guard"
+icon = SubResource("CompressedTexture2D_ylbde")
+flat = true
+icon_alignment = 1
+
+[node name="QuickRecover" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Guard")
+theme = SubResource("Theme_q8ayk")
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0d0in")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6voui")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4qgc5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1qa27")
+action_mode = 0
+text = "Quick Recover"
+icon = SubResource("CompressedTexture2D_ylbde")
+flat = true
+icon_alignment = 1
+
+[node name="QuickGuard" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Guard")
+theme = SubResource("Theme_q8ayk")
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0d0in")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6voui")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4qgc5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1qa27")
+action_mode = 0
+text = "Quick Guard"
+icon = SubResource("CompressedTexture2D_ylbde")
+flat = true
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="ChainGuard" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Guard")
+theme = SubResource("Theme_q8ayk")
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0d0in")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6voui")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4qgc5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1qa27")
+action_mode = 0
+text = "Chain PG"
+icon = SubResource("CompressedTexture2D_ylbde")
+flat = true
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="JumpCancel" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Guard")
+theme = SubResource("Theme_q8ayk")
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0d0in")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6voui")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4qgc5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1qa27")
+action_mode = 0
+text = "Jump Cancel"
+icon = SubResource("CompressedTexture2D_ylbde")
+flat = true
+icon_alignment = 1
+
+[node name="BackdashCancel" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Guard")
+theme = SubResource("Theme_q8ayk")
+theme_override_constants/outline_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0d0in")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6voui")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4qgc5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1qa27")
+action_mode = 0
+text = "Backdash C."
+icon = SubResource("CompressedTexture2D_ylbde")
+flat = true
+text_overrun_behavior = 1
+icon_alignment = 1
+
+[node name="Description" type="Control" parent="."]
+z_index = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="TextureRect" parent="Description"]
+z_index = 1
+layout_mode = 0
+offset_left = 406.0
+offset_top = 61.0
+offset_right = 627.53845
+offset_bottom = 221.0
+texture = ExtResource("10_1qa27")
+expand_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Description"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 20.0
+offset_right = 846.0
+offset_bottom = 420.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2stfb")
+
+[node name="Title" type="Label" parent="Description"]
+clip_children = 1
+layout_mode = 0
+offset_left = 271.0
+offset_top = 31.0
+offset_right = 763.0
+offset_bottom = 79.0
+theme = SubResource("Theme_ygfm7")
+text = "GUARD"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Description/Title"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_pscbs")
+
+[node name="Description" type="RichTextLabel" parent="Description"]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 227.0
+offset_right = 836.0
+offset_bottom = 392.0
+theme = SubResource("Theme_iv4ef")
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "Block incoming attacks by holding down [img]res://assets/sprites/HUD/Buttons/R1.png[/img].
+
+By doing so, Hector will receive reduced damage or none whatsoever and will block incoming projectiles as well.
+Be careful: using it too much will cause a guard break."
+script = ExtResource("14_0hsmt")
+new_text = "Block incoming attacks by holding down [[R1]].
+
+By doing so, Hector will receive reduced damage or none whatsoever and will block incoming projectiles as well.
+Be careful: using it too much will cause a guard break."
+metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rbbvo")
+}
+
+[node name="OtherInfo" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Challenge" type="Label" parent="OtherInfo"]
+clip_children = 1
+layout_mode = 0
+offset_left = 244.0
+offset_top = 423.0
+offset_right = 736.0
+offset_bottom = 471.0
+theme = SubResource("Theme_ygfm7")
+text = "Challenge:"
+
+[node name="TextureRect" type="TextureRect" parent="OtherInfo/Challenge"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_pscbs")
+
+[node name="Level" type="Label" parent="OtherInfo"]
+clip_children = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 423.0
+offset_right = 508.0
+offset_bottom = 471.0
+theme = SubResource("Theme_ygfm7")
+text = "Level:"
+
+[node name="TextureRect" type="TextureRect" parent="OtherInfo/Level"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_pscbs")
+
+[node name="ChallengeDesc" type="RichTextLabel" parent="OtherInfo"]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 423.0
+offset_right = 897.0
+offset_bottom = 455.0
+theme = SubResource("Theme_iv4ef")
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "Block 10 attacks from an Axe Armor."
+script = ExtResource("14_0hsmt")
+new_text = "Block 10 attacks from an Axe Armor."
+metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
+
+[node name="LevelDesc" type="RichTextLabel" parent="OtherInfo"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 423.0
+offset_right = 619.0
+offset_bottom = 455.0
+theme = SubResource("Theme_iv4ef")
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "Beginner"
+script = ExtResource("14_0hsmt")
+new_text = "Beginner"
+metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
+
+[node name="ChangeLevel" type="RichTextLabel" parent="OtherInfo"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 453.0
+offset_right = 535.0
+offset_bottom = 485.0
+theme = SubResource("Theme_iv4ef")
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = " Change level: [img]res://assets/sprites/HUD/Buttons/L1.png[/img]/[img]res://assets/sprites/HUD/Buttons/R1.png[/img]"
+script = ExtResource("14_0hsmt")
+new_text = " Change level: [[L1]]/[[R1]]"
+metadata/_custom_type_script = "uid://diy6tlfq0jpgk"

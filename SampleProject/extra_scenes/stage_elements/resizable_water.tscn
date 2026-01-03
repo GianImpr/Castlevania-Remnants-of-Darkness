@@ -1,0 +1,121 @@
+[gd_scene load_steps=19 format=3 uid="uid://c5b546j52x16h"]
+
+[ext_resource type="Texture2D" uid="uid://utw78hhki22k" path="res://assets/sprites/Objects/Other/WaterSurface.png" id="1_2he32"]
+[ext_resource type="Script" uid="uid://c2xa1t7v5m6yh" path="res://SampleProject/extra_scenes/stage_elements/resizable_water.gd" id="1_7li68"]
+[ext_resource type="PackedScene" uid="uid://dle4vdwj0t34f" path="res://SampleProject/extra_scenes/stage_elements/water_splash.tscn" id="2_y0euv"]
+[ext_resource type="PackedScene" uid="uid://c60jsfrlx85w3" path="res://SampleProject/extra_scenes/stage_elements/small_water_splash.tscn" id="3_ulaal"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_bifbc"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_kw0ln"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_ulaal"]
+[ext_resource type="AudioStream" uid="uid://crv7fk0e66soy" path="res://assets/sounds/Effects/Miscellaneous/BigSplash.wav" id="7_u0pe6"]
+[ext_resource type="AudioStream" uid="uid://iuq41xxsnubj" path="res://assets/sounds/Effects/Miscellaneous/SmallSplash.wav" id="8_kw0ln"]
+
+[sub_resource type="Animation" id="Animation_ki7wd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_te7kb"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eroyy"]
+_data = {
+&"RESET": SubResource("Animation_ki7wd"),
+&"idle": SubResource("Animation_te7kb")
+}
+
+[sub_resource type="Gradient" id="Gradient_n6mno"]
+colors = PackedColorArray(0, 0.145098, 0.4, 0.337255, 0, 0.145098, 0.4, 0.337255)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jqftp"]
+gradient = SubResource("Gradient_n6mno")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0euv"]
+size = Vector2(64.095245, 63)
+
+[sub_resource type="Resource" id="Resource_6nq1p"]
+script = ExtResource("6_ulaal")
+Tag = "big_splash"
+stream = ExtResource("7_u0pe6")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_ulaal"]
+script = ExtResource("6_ulaal")
+Tag = "small_splash"
+stream = ExtResource("8_kw0ln")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_v87x7"]
+script = ExtResource("5_kw0ln")
+sound_effects = Array[ExtResource("6_ulaal")]([SubResource("Resource_6nq1p"), SubResource("Resource_ulaal")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[node name="ResizableWater" type="Node2D" node_paths=PackedStringArray("sound", "collision")]
+z_index = 30
+script = ExtResource("1_7li68")
+big_water_splash = ExtResource("2_y0euv")
+small_water_splash = ExtResource("3_ulaal")
+sound = NodePath("PolyphonicAudio")
+collision = NodePath("Sprite2D2/Area2D/CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_repeat = 2
+texture = ExtResource("1_2he32")
+centered = false
+vframes = 3
+region_enabled = true
+region_rect = Rect2(0, 0, 252, 48)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eroyy")
+}
+autoplay = "idle"
+speed_scale = 0.5
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(126.00001, 34)
+scale = Vector2(3.9375, 1)
+texture = SubResource("GradientTexture2D_jqftp")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D2"]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/Area2D"]
+shape = SubResource("RectangleShape2D_y0euv")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+volume_db = -12.0
+script = ExtResource("4_bifbc")
+audio_library = SubResource("Resource_v87x7")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[connection signal="body_entered" from="Sprite2D2/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Sprite2D2/Area2D" to="." method="_on_area_2d_body_exited"]

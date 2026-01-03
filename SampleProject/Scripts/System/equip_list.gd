@@ -340,11 +340,15 @@ func quickWeaponSwap(weapon_position: int) -> void:
 		return
 		
 	var weapon_compendium: Array[Weapon] = determineWeaponCompendium()
-
+	
 	var new_wpn = quick_weapons[weapon_position]
 	player = Global.player.stats
 	var current_weapon_id = player.equipment["weapon"]
 	var old_weapon = getEquipFromCompendium(current_weapon_id-1, weapon_compendium)
+	
+	if new_wpn != old_weapon:
+		Global.player.disableCharge()
+	
 	updateProperties(quick_weapons[weapon_position])
 	updateNewStats(quick_weapons[weapon_position], old_weapon, ["STR", "CON", "INT", "RES", "SYN", "LCK", "ATK", "DEF"])
 	#updateStats(["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)

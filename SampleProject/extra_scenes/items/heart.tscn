@@ -186,7 +186,7 @@ stream = ExtResource("6_emw4u")
 script = ExtResource("4_y7kkt")
 sound_effects = Array[ExtResource("5_244dn")]([SubResource("Resource_cvlhf")])
 
-[node name="Heart" type="RigidBody2D" node_paths=PackedStringArray("sprite", "animation", "wall_checker")]
+[node name="Heart" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "animation", "wall_checker")]
 collision_layer = 0
 collision_mask = 4097
 gravity_scale = 0.0
@@ -196,6 +196,7 @@ max_contacts_reported = 10
 linear_velocity = Vector2(0, 60)
 script = ExtResource("1_3kv6o")
 innocent_heart_texture = ExtResource("2_k6pcm")
+collision = NodePath("CollisionShape2D")
 SPEED = 100.0
 sprite = NodePath("Sprite2D")
 animation = NodePath("AnimationPlayer")

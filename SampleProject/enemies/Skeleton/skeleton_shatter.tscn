@@ -1,10 +1,10 @@
 [gd_scene load_steps=36 format=3 uid="uid://bnrsmxn5yeru7"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Skeleton/skeleton_shatter.gd" id="1_7quvg"]
+[ext_resource type="Script" uid="uid://cgue77b2nk6tm" path="res://SampleProject/enemies/Skeleton/skeleton_shatter.gd" id="1_7quvg"]
 [ext_resource type="Texture2D" uid="uid://c11n13r75ggmc" path="res://assets/sprites/Enemies/Skeleton.png" id="1_343rd"]
 [ext_resource type="Texture2D" uid="uid://c75kgbqkyn6c5" path="res://assets/sprites/Effects/SmallFire.png" id="3_wu7ds"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_ciauk"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_4126l"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_ciauk"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_4126l"]
 [ext_resource type="AudioStream" uid="uid://cqnbivel1hcx6" path="res://assets/sounds/Enemies/Skeleton/SkeletonKill.MP3" id="7_tyjtq"]
 [ext_resource type="AudioStream" uid="uid://cymbbuk0ioone" path="res://assets/sounds/Enemies/Skeleton/SkeletonDrop.MP3" id="8_67iua"]
 
@@ -131,8 +131,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74uk8"]
 _data = {
-"RESET": SubResource("Animation_326oq"),
-"destroy": SubResource("Animation_gy8bl")
+&"RESET": SubResource("Animation_326oq"),
+&"destroy": SubResource("Animation_gy8bl")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sj6t"]
@@ -258,8 +258,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uredt"]
 _data = {
-"RESET": SubResource("Animation_lyt6b"),
-"destroy": SubResource("Animation_mti6e")
+&"RESET": SubResource("Animation_lyt6b"),
+&"destroy": SubResource("Animation_mti6e")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5ldl"]
@@ -385,8 +385,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1wj4x"]
 _data = {
-"RESET": SubResource("Animation_7woto"),
-"destroy": SubResource("Animation_se7ob")
+&"RESET": SubResource("Animation_7woto"),
+&"destroy": SubResource("Animation_se7ob")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brvuo"]
@@ -512,8 +512,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fkfs3"]
 _data = {
-"RESET": SubResource("Animation_1n6tn"),
-"destroy": SubResource("Animation_r2psg")
+&"RESET": SubResource("Animation_1n6tn"),
+&"destroy": SubResource("Animation_r2psg")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v2cu3"]
@@ -639,8 +639,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t07a8"]
 _data = {
-"RESET": SubResource("Animation_jjv05"),
-"destroy": SubResource("Animation_7eeln")
+&"RESET": SubResource("Animation_jjv05"),
+&"destroy": SubResource("Animation_7eeln")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrjl3"]
@@ -778,8 +778,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q31yq"]
 _data = {
-"RESET": SubResource("Animation_f74kn"),
-"destroy": SubResource("Animation_ypjf6")
+&"RESET": SubResource("Animation_f74kn"),
+&"destroy": SubResource("Animation_ypjf6")
 }
 
 [sub_resource type="GDScript" id="GDScript_10oeh"]
@@ -828,6 +828,7 @@ sound = NodePath("PolyphonicAudio")
 [node name="Body" type="RigidBody2D" parent="."]
 position = Vector2(-3, -7)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -847,12 +848,13 @@ shape = SubResource("RectangleShape2D_onnmr")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_74uk8")
+&"": SubResource("AnimationLibrary_74uk8")
 }
 
 [node name="Head" type="RigidBody2D" parent="."]
 position = Vector2(-8, -14)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -872,12 +874,13 @@ shape = SubResource("RectangleShape2D_1sj6t")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_uredt")
+&"": SubResource("AnimationLibrary_uredt")
 }
 
 [node name="Arm" type="RigidBody2D" parent="."]
 position = Vector2(1, -8)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -897,12 +900,13 @@ shape = SubResource("RectangleShape2D_e5ldl")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Arm"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_1wj4x")
+&"": SubResource("AnimationLibrary_1wj4x")
 }
 
 [node name="SecondArm" type="RigidBody2D" parent="."]
 position = Vector2(-7, -6)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -922,12 +926,13 @@ shape = SubResource("RectangleShape2D_brvuo")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SecondArm"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_fkfs3")
+&"": SubResource("AnimationLibrary_fkfs3")
 }
 
 [node name="Leg" type="RigidBody2D" parent="."]
 position = Vector2(-1, 10)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -947,12 +952,13 @@ shape = SubResource("RectangleShape2D_v2cu3")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Leg"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_t07a8")
+&"": SubResource("AnimationLibrary_t07a8")
 }
 
 [node name="SecondLeg" type="RigidBody2D" parent="."]
 position = Vector2(0, 9)
 collision_layer = 8
+collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
@@ -973,7 +979,7 @@ shape = SubResource("RectangleShape2D_hrjl3")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SecondLeg"]
 root_node = NodePath("../Sprite")
 libraries = {
-"": SubResource("AnimationLibrary_q31yq")
+&"": SubResource("AnimationLibrary_q31yq")
 }
 
 [node name="DeleteTimer" type="Timer" parent="."]

@@ -1,18 +1,18 @@
 [gd_scene load_steps=25 format=3 uid="uid://bn3lg7fw7nbhb"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Ghost/ghost.gd" id="1_4jg88"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_shggr"]
+[ext_resource type="Script" uid="uid://cgdju5appl1re" path="res://SampleProject/enemies/Ghost/ghost.gd" id="1_4jg88"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_shggr"]
 [ext_resource type="Texture2D" uid="uid://dkvr4kl120kyv" path="res://assets/sprites/Enemies/Ghost.png" id="3_4s651"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_n7p7b"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_524ja"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="5_plncu"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_n7p7b"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_524ja"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="5_plncu"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_q4s2a"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_rmf7j"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_rmf7j"]
 [ext_resource type="AudioStream" uid="uid://b0dag7jv7b3ou" path="res://assets/sounds/Enemies/Ghost/GhostDying.MP3" id="7_3q31p"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ghost/GhostIdle.gd" id="7_vwp3b"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ghost/GhostMove.gd" id="8_llm2s"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ghost/GhostBounce.gd" id="9_ki8vk"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Ghost/GhostDying.gd" id="10_ga7yx"]
+[ext_resource type="Script" uid="uid://bpg11v0ly5wcb" path="res://SampleProject/enemies/Ghost/GhostIdle.gd" id="7_vwp3b"]
+[ext_resource type="Script" uid="uid://cv5gdc57eo3ho" path="res://SampleProject/enemies/Ghost/GhostMove.gd" id="8_llm2s"]
+[ext_resource type="Script" uid="uid://cvcaf1e4riyk8" path="res://SampleProject/enemies/Ghost/GhostBounce.gd" id="9_ki8vk"]
+[ext_resource type="Script" uid="uid://c48xrxtvbnh2a" path="res://SampleProject/enemies/Ghost/GhostDying.gd" id="10_ga7yx"]
 [ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="11_ch1nl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ddx2q"]
@@ -116,10 +116,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ef4r7"]
 _data = {
-"RESET": SubResource("Animation_rc1vi"),
-"dead": SubResource("Animation_jnama"),
-"move": SubResource("Animation_ixnpa"),
-"spawn": SubResource("Animation_hn6es")
+&"RESET": SubResource("Animation_rc1vi"),
+&"dead": SubResource("Animation_jnama"),
+&"move": SubResource("Animation_ixnpa"),
+&"spawn": SubResource("Animation_hn6es")
 }
 
 [sub_resource type="Resource" id="Resource_5pstg"]
@@ -212,6 +212,7 @@ shape = SubResource("RectangleShape2D_ddx2q")
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 2)
@@ -223,7 +224,7 @@ debug_color = Color(0.901914, 0.309396, 0, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ef4r7")
+&"": SubResource("AnimationLibrary_ef4r7")
 }
 speed_scale = 1.5
 

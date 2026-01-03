@@ -18,7 +18,7 @@ static var fps_display = null
 static var settings_node: InvOptions = null
 static var HUD = null
 static var minimap = null
-var language: Languages = Languages.ITALIAN
+var language: Languages = Languages.ENGLISH
 var load_data: bool = false
 var crazy_mode: bool = false
 var loaded_settings: bool = false
@@ -51,7 +51,10 @@ enum ScreenType {
 	TRANSITION,
 	TUTORIAL,
 	EVENT,
-	WHEEL
+	WHEEL,
+	SHOP,
+	TRAINING_MENU,
+	TRAINING
 }
 enum Attribute {
 	NONE = 0,

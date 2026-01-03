@@ -1,16 +1,16 @@
 [gd_scene load_steps=28 format=3 uid="uid://bsxx7aocrs1f6"]
 
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="1_maiip"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/weapon_wheel.gd" id="1_rsc42"]
+[ext_resource type="Script" uid="uid://c5a1ot8hqjqch" path="res://SampleProject/Scripts/System/weapon_wheel.gd" id="1_rsc42"]
 [ext_resource type="Texture2D" uid="uid://dheigepcsm2mj" path="res://assets/sprites/HUD/Wheels/WeaponWheel.png" id="2_rtpe5"]
 [ext_resource type="Texture2D" uid="uid://dvhm565w0bkyu" path="res://assets/sprites/Items/InventoryIcons/Inventory_387.png" id="3_56wl6"]
 [ext_resource type="Texture2D" uid="uid://bcm0qbkuikw78" path="res://assets/sprites/Items/InventoryIcons/Inventory_381.png" id="4_gthal"]
 [ext_resource type="Texture2D" uid="uid://bcpk63mrwwmf4" path="res://assets/sprites/Items/InventoryIcons/Inventory_393.png" id="5_slg3w"]
 [ext_resource type="Texture2D" uid="uid://dg5urpor4ntv6" path="res://assets/sprites/Items/InventoryIcons/Inventory_401.png" id="6_0ged2"]
 [ext_resource type="Texture2D" uid="uid://ljne6me6k6jl" path="res://assets/sprites/HUD/Wheels/WeaponSelected.png" id="7_lrhk3"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="9_j4lc6"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="10_e0m5m"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="11_rtylm"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="9_j4lc6"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="10_e0m5m"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="11_rtylm"]
 [ext_resource type="AudioStream" uid="uid://c2svnpn2gfgxc" path="res://assets/sounds/Wheel/Open.mp3" id="12_ljfim"]
 [ext_resource type="AudioStream" uid="uid://cr03hrtvfmt32" path="res://assets/sounds/Wheel/SelectFull.mp3" id="13_acran"]
 [ext_resource type="AudioStream" uid="uid://c601fyv021ce8" path="res://assets/sounds/Wheel/SelectEmpty.mp3" id="14_0mw03"]
@@ -97,10 +97,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r40d8"]
 _data = {
-"RESET": SubResource("Animation_l71xj"),
-"idle": SubResource("Animation_we81c"),
-"off": SubResource("Animation_sdhfk"),
-"select": SubResource("Animation_54w7h")
+&"RESET": SubResource("Animation_l71xj"),
+&"idle": SubResource("Animation_we81c"),
+&"off": SubResource("Animation_sdhfk"),
+&"select": SubResource("Animation_54w7h")
 }
 
 [sub_resource type="Animation" id="Animation_ig0u7"]
@@ -160,8 +160,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xbetg"]
 _data = {
-"RESET": SubResource("Animation_ig0u7"),
-"appear": SubResource("Animation_20doj")
+&"RESET": SubResource("Animation_ig0u7"),
+&"appear": SubResource("Animation_20doj")
 }
 
 [sub_resource type="Resource" id="Resource_reret"]
@@ -232,12 +232,12 @@ texture = ExtResource("7_lrhk3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cursor"]
 libraries = {
-"": SubResource("AnimationLibrary_r40d8")
+&"": SubResource("AnimationLibrary_r40d8")
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xbetg")
+&"": SubResource("AnimationLibrary_xbetg")
 }
 
 [node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]

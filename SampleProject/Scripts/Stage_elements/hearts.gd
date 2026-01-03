@@ -1,6 +1,7 @@
 extends RigidBody2D
 class_name Heart
 @export var innocent_heart_texture: CompressedTexture2D
+@export var collision: CollisionShape2D
 @export var SPEED: float
 @export var sprite: Sprite2D
 @export var type: Type:
@@ -20,7 +21,6 @@ enum Type {
 }
 
 func _ready():
-	visible = false
 	linear_velocity.x = SPEED
 	if can_be_red:
 		determineType()
@@ -57,7 +57,4 @@ func determineType() -> void:
 		type = Type.SOUL
 	else:
 		type = Type.INNOCENT
-
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	wall_checker.checkAndSortVertices(state)
 	

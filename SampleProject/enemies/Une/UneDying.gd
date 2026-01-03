@@ -5,8 +5,8 @@ var explosion
 
 func enter():
 	explosion = dying_effect.instantiate()
-	get_parent().get_parent().add_child(explosion)
-	explosion.scale = Vector2(0.5, 0.5)
+	explosion.global_position = player.global_position - Vector2(0,10)
+	MetSys.get_current_room_instance().add_child(explosion)
 	player.velocity = Vector2(0, 0)
 	player.sprite.visible = false
 	player.hitbox.monitoring = false

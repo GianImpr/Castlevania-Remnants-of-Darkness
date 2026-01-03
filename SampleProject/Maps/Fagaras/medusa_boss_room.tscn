@@ -1,16 +1,16 @@
 [gd_scene load_steps=23 format=4 uid="uid://ceen6vmwpsngt"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_57r08"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_57r08"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_8eajs"]
 [ext_resource type="Texture2D" uid="uid://cm67rjq4or1c8" path="res://assets/sprites/Tiles/mountain.png" id="3_5w06v"]
 [ext_resource type="Texture2D" uid="uid://c0qsvc0xjt6x1" path="res://assets/sprites/Tiles/outsideMonastery.png" id="4_jlnh2"]
 [ext_resource type="PackedScene" uid="uid://bnsy1kwfc8603" path="res://SampleProject/extra_scenes/stage_elements/combat_door.tscn" id="5_fo5an"]
 [ext_resource type="PackedScene" uid="uid://c6rlc4me34hqg" path="res://SampleProject/enemies/ArmorKnight/armor_knight_statue_break.tscn" id="6_8fvng"]
 [ext_resource type="PackedScene" uid="uid://dvl5nkdk3iowa" path="res://SampleProject/enemies/Medusa/medusa.tscn" id="6_lcafj"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Event/combat_scene_medusa.gd" id="7_iow2l"]
+[ext_resource type="Script" uid="uid://b8osrnbjgmfm2" path="res://SampleProject/Scripts/Event/combat_scene_medusa.gd" id="7_iow2l"]
 [ext_resource type="PackedScene" uid="uid://csi3yjrxq4qpx" path="res://SampleProject/extra_scenes/items/orb.tscn" id="8_7hk07"]
 [ext_resource type="PackedScene" uid="uid://dvokd0cau6t0x" path="res://SampleProject/enemies/Warg/warg_statue_break.tscn" id="8_my6hq"]
-[ext_resource type="Shader" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="8_t4d84"]
+[ext_resource type="Shader" uid="uid://dtfxu1jn7ht65" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="8_t4d84"]
 [ext_resource type="PackedScene" uid="uid://435ssre82dxc" path="res://SampleProject/enemies/Banshee/banshee_statue_break.tscn" id="9_51idd"]
 [ext_resource type="PackedScene" uid="uid://cbmx7gpwepx0e" path="res://SampleProject/enemies/ArmorLord/armor_lord_statue_break.tscn" id="9_w3pbr"]
 
@@ -2204,19 +2204,18 @@ shader_parameter/influence = 0.5
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/speed = 1.0
 shader_parameter/mix_colors = false
-shader_parameter/enabled = null
+shader_parameter/enabled = false
 shader_parameter/sheet_columns = 20
 shader_parameter/sheet_rows = 20
 shader_parameter/petrified = true
 
 [sub_resource type="Curve" id="Curve_tbvms"]
-min_value = -360.0
-max_value = 360.0
+_limits = [-360.0, 360.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_xcqwy"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.498567, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -2298,7 +2297,7 @@ scale_amount_curve = SubResource("Curve_xcqwy")
 color = Color(0, 1, 1, 1)
 
 [node name="BossDoor" parent="." instance=ExtResource("5_fo5an")]
-position = Vector2(944, 352)
+position = Vector2(944, 353)
 combat_flag_id = 4
 should_close = true
 boss_door = true

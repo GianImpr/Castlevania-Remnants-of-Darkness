@@ -172,7 +172,7 @@ func can_attack():
 		if cur_skill.command_input.size() == 0 or player.stats.getCurrentWeaponType() != cur_skill.weapon_type or player.stats.Stats[stat_to_consume] < cur_skill.cost_value:
 			continue
 		
-		if InputBuffer.checkCommandInput(cur_skill.command_input, 20):
+		if InputBuffer.checkCommandInput(cur_skill.command_input, 40):
 			Transitioned.emit(self, state_to_transition_to)
 			player.stats.Stats[stat_to_consume] -= cur_skill.cost_value
 			get_hector_attack_sound()

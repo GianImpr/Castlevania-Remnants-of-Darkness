@@ -1,0 +1,139 @@
+[gd_scene load_steps=11 format=3 uid="uid://c60jsfrlx85w3"]
+
+[ext_resource type="Texture2D" uid="uid://bk4p5eu0pmsaj" path="res://assets/sprites/Effects/WaterSplash.png" id="1_n7vsj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yepyw"]
+light_mode = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aensr"]
+light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_yepyw"]
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.105882354)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aensr"]
+gradient = SubResource("Gradient_yepyw")
+fill_from = Vector2(0, 0.36324787)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_1rmmn"]
+colors = PackedColorArray(1, 1, 1, 0.49411765, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_3e8a7"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1rmmn"]
+gradient = SubResource("Gradient_3e8a7")
+
+[sub_resource type="Animation" id="Animation_orond"]
+resource_name = "splash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScaleWater/Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.47487998, 0.53, 0.3233, 0.36862746), Color(0.40970668, 0.46, 0.27140003, 0.21568628), Color(0.40784314, 0.45882353, 0.27058825, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ScaleWater/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.13333333, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(30, -30), Vector2(30, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ScaleWater:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(-2, 2, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 0.5), Vector2(1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_edt7g"]
+_data = {
+&"splash": SubResource("Animation_orond")
+}
+
+[node name="SmallWaterSplash" type="Node2D"]
+z_index = 31
+
+[node name="ScaleWater" type="Node2D" parent="."]
+scale = Vector2(1, 1e-05)
+
+[node name="Sprite2D" type="Sprite2D" parent="ScaleWater"]
+self_modulate = Color(0.40784314, 0.45882353, 0.27058825, 0)
+clip_children = 2
+material = SubResource("CanvasItemMaterial_yepyw")
+position = Vector2(30, -10)
+scale = Vector2(2, 2)
+texture = ExtResource("1_n7vsj")
+
+[node name="TextureRect" type="TextureRect" parent="ScaleWater/Sprite2D"]
+visible = false
+material = SubResource("CanvasItemMaterial_aensr")
+offset_left = -15.0
+offset_top = -35.5
+offset_right = 25.0
+offset_bottom = 4.5
+texture = SubResource("GradientTexture2D_aensr")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(29, 0)
+scale = Vector2(1, 2.97355)
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 0.9
+emission_shape = 3
+emission_rect_extents = Vector2(16, 1)
+direction = Vector2(0, -1)
+spread = 10.0
+gravity = Vector2(0, 650)
+initial_velocity_min = 60.0
+initial_velocity_max = 160.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_1rmmn")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(32, -108)
+scale = Vector2(0.96875, 3.375)
+blend_mode = 2
+texture = SubResource("GradientTexture2D_1rmmn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_edt7g")
+}
+autoplay = "splash"

@@ -24,6 +24,7 @@ class_name PickUp
 @export var pickup_flag: int
 @export var boost_message: PackedScene
 @export var auto_equip: bool = false
+@export var collision: CollisionShape2D
 @export var wall_checker: WallChecker
 var compendium: Array[Dictionary]
 
@@ -172,6 +173,10 @@ static func getItemName(item_type: ItemType) -> String:
 	var prefixes = ["item_", "weapon_", "artifact_", "relic_", "headgear_", "body_", "legs_", "accessory_", "skill_"]
 	return prefixes[item_type] + "name"
 	
+static func getItemDescription(item_type: ItemType) -> String:
+	var prefixes = ["item_", "weapon_", "artifact_", "relic_", "headgear_", "body_", "legs_", "accessory_", "skill_"]
+	return prefixes[item_type] + "description"
+	
 func setFlag() -> void:
 	if pickup_flag > 0:
 		Global.player.stats.picked_items[pickup_flag] = true
@@ -236,6 +241,3 @@ func updateItemInformation():
 	current_item_name = item[name_property]
 	if sprite != null:
 		sprite.texture = item.icon
-
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	wall_checker.checkAndSortVertices(state)

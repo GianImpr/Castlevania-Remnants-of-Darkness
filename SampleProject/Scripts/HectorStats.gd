@@ -162,7 +162,7 @@ func itemEquipped(id: int, slot: String) -> bool:
 ## Checks if the player has this item equipped.
 func isEquipped(item) -> bool:
 	var inventories: Array = [accessory_compendium, accessory_compendium, artifact_compendium, body_compendium, headgear_compendium, legs_compendium, relic_compendium, weapon_compendium]
-	var slots: Array[String] = equipment.keys()
+	var slots: Array = equipment.keys()
 	for i in inventories.size():
 		if equipment[slots[i]] > 0:
 			var equipped_item = searchItemInCompendium(equipment[slots[i]], inventories[i])
