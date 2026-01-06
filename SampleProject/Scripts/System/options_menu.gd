@@ -494,10 +494,11 @@ func changeResolution(offset: int, button: InventoryButton) -> void:
 
 	var setting_label: Label = button.get_parent().get_child(2)
 	if resolutions[settings["resolution"]] != 0:
-		setting_label.text = str(new_viewport.x) + "x" + str(new_viewport.y)
+		setting_label.text = str(int(new_viewport.x)) + "x" + str(int(new_viewport.y))
 	else:
 		setting_label.text = tr("FIT_SCREEN_RESOLUTION")
 	DisplayServer.window_set_size(new_viewport)
+	DisplayServer.window_set_position(DEFAULT_FULL_WINDOW_POSITION)
 	
 func changeWindowMode(offset: int, button: InventoryButton) -> void:
 	var default_viewport: Vector2i = Vector2i(864, 480)
