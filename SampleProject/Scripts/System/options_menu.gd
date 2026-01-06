@@ -496,7 +496,7 @@ func changeResolution(offset: int, button: InventoryButton) -> void:
 	if resolutions[settings["resolution"]] != 0:
 		setting_label.text = str(new_viewport.x) + "x" + str(new_viewport.y)
 	else:
-		setting_label.text = str("Fit Screen")
+		setting_label.text = tr("FIT_SCREEN_RESOLUTION")
 	DisplayServer.window_set_size(new_viewport)
 	
 func changeWindowMode(offset: int, button: InventoryButton) -> void:
