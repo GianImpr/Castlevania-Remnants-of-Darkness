@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://bao10vvn6rpga"]
 
 [ext_resource type="Texture2D" uid="uid://bh5qwwkhg4tf7" path="res://assets/sprites/Weapons/Axes/Bullova.png" id="1_c7po8"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Powers/axe_throw.gd" id="1_q023f"]
+[ext_resource type="Script" uid="uid://bm84mvxqm3hll" path="res://SampleProject/Scripts/Powers/axe_throw.gd" id="1_q023f"]
 [ext_resource type="PackedScene" uid="uid://m6mdjyrpiuny" path="res://SampleProject/extra_scenes/backdash_trail.tscn" id="2_8345f"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Powers/disjointed_player_hitbox.gd" id="2_u8rh7"]
+[ext_resource type="Script" uid="uid://gkvibd7oxi2i" path="res://SampleProject/Scripts/Powers/disjointed_player_hitbox.gd" id="2_u8rh7"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="3_arr67"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="4_v3daj"]
 
@@ -43,7 +43,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s4n8t"]
 _data = {
-"throw": SubResource("Animation_ecxqs")
+&"throw": SubResource("Animation_ecxqs")
 }
 
 [node name="RigidBody2D" type="RigidBody2D" node_paths=PackedStringArray("rotate_node", "sprite", "trail_frequency")]
@@ -82,7 +82,7 @@ shape = SubResource("CircleShape2D_yebif")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_s4n8t")
+&"": SubResource("AnimationLibrary_s4n8t")
 }
 autoplay = "throw"
 

@@ -162,7 +162,7 @@ func _process(delta: float) -> void:
 		aguni_on_cooldown = true
 		get_tree().create_timer(AGUNI_COOLDOWN).timeout.connect(func(): aguni_on_cooldown = false)
 		var flame = aguni_flames.instantiate()
-		flame.global_position = global_position + Vector2(20*facing_position,66)
+		flame.global_position = global_position + Vector2(20*facing_position,66) - MetSys.get_current_room_instance().global_position
 		MetSys.get_current_room_instance().add_child(flame)
 		aguni_mp_consumption += delta*AGUNI_LAUREL_COST_PER_SECOND
 		if aguni_mp_consumption >= 1:
