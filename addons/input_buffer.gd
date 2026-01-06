@@ -5,10 +5,10 @@ extends Node
 
 # How many milliseconds ahead of time the player can make an input and have it still be recognized.
 # I chose the value 150 because it imitates the 9-frame buffer window in the Super Smash Bros. Ultimate game.
-var BUFFER_WINDOW: int = 50
+var BUFFER_WINDOW: int = 150
 # The godot default deadzone is 0.2 so I chose to have it the same
 const JOY_DEADZONE: float = 0.2
-var COMMAND_HISTORY_DURATION: int = 50
+var COMMAND_HISTORY_DURATION: int = 120
 
 var keyboard_timestamps: Dictionary
 var joypad_timestamps: Dictionary

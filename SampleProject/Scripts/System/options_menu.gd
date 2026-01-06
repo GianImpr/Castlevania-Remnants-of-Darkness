@@ -45,8 +45,9 @@ var min_glow_intensity: float = 0.34
 var glow_intensity: float = min_glow_intensity
 var max_glow_intensity: float = 0.44
 var increasing_glow: int = 1
-const MAX_BUFFERED_FRAMES: int = 10
-const FRAME_DURATION_MSEC: float = 16.67
+const MAX_BUFFERED_FRAMES: int = 21
+const FRAME_DURATION_MSEC: float = 6.94
+const DEFAULT_FULL_WINDOW_POSITION: Vector2 = Vector2(0, 28)
 var registering_input: bool = false
 var current_action: int = 0
 var in_bind_menu: bool = false
@@ -480,20 +481,27 @@ func changeResolution(offset: int, button: InventoryButton) -> void:
 			sound.play_sound_effect_from_library("denied")
 		return
 	var default_viewport: Vector2i = Vector2i(864, 480)
-	const resolutions: Array[float] = [0.5, 1, 1.5, 2, 3, 4]
+	const resolutions: Array[float] = [0.5, 1, 1.5, 2, 3, 4, 0]
 	settings["resolution"] = posmod((settings["resolution"]+offset),resolutions.size())
 	if settings["resolution"] == 0 or settings["resolution"] == 2:
 		get_tree().root.content_scale_stretch = Window.CONTENT_SCALE_STRETCH_FRACTIONAL
 	else:
 		get_tree().root.content_scale_stretch = Window.CONTENT_SCALE_STRETCH_INTEGER
 	var new_viewport = default_viewport * resolutions[settings["resolution"]]
+	if resolutions[settings["resolution"]] == 0:
+		new_viewport = DisplayServer.screen_get_size()
+		DisplayServer.window_set_position(DEFAULT_FULL_WINDOW_POSITION)
+
 	var setting_label: Label = button.get_parent().get_child(2)
-	setting_label.text = str(new_viewport.x) + "x" + str(new_viewport.y)
+	if resolutions[settings["resolution"]] != 0:
+		setting_label.text = str(new_viewport.x) + "x" + str(new_viewport.y)
+	else:
+		setting_label.text = str("Fit Screen")
 	DisplayServer.window_set_size(new_viewport)
 	
 func changeWindowMode(offset: int, button: InventoryButton) -> void:
 	var default_viewport: Vector2i = Vector2i(864, 480)
-	const resolutions: Array[float] = [0.5, 1, 1.5, 2, 3, 4]
+	const resolutions: Array[float] = [0.5, 1, 1.5, 2, 3, 4, 0]
 	const modes: Array[String] = ["WINDOWED_LABEL", "FULLSCREEN_LABEL", "STRETCH_LABEL"]
 	settings["window_mode"] = posmod(settings["window_mode"]+offset,modes.size())
 	var setting_label: Label = button.get_parent().get_child(2)
@@ -512,7 +520,11 @@ func changeWindowMode(offset: int, button: InventoryButton) -> void:
 		2: 
 			DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
 			get_tree().root.content_scale_stretch = Window.CONTENT_SCALE_STRETCH_FRACTIONAL
-	DisplayServer.window_set_size(default_viewport * resolutions[settings["resolution"]])
+	if resolutions[settings["resolution"]] != 0:
+		DisplayServer.window_set_size(default_viewport * resolutions[settings["resolution"]])
+	else:
+		DisplayServer.window_set_size(DisplayServer.screen_get_size())
+		DisplayServer.window_set_position(Vector2.ZERO)
 
 func changeScaling(offset: int, button: InventoryButton) -> void:
 	const modes: Array[String] = ["Canvas", "Viewport"]

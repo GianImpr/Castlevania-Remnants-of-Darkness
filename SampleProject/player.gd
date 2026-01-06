@@ -175,7 +175,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor() and not motion_mode == MotionMode.MOTION_MODE_FLOATING:
 		velocity += get_gravity()*2 * delta
 
-	direction = Input.get_axis("move_left", "move_right")
+	direction = round(Input.get_axis("move_left", "move_right"))
 	
 	# Update where Hector is facing
 	if sprite.flip_h:
