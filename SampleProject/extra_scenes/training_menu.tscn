@@ -155,6 +155,45 @@ fill_to = Vector2(0, 1)
 default_font = ExtResource("13_wsu2r")
 default_font_size = 32
 
+[sub_resource type="Animation" id="Animation_ygfm7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/BlackBackground:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Description/PanelContainer:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(649, 400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Description:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_2stfb"]
 resource_name = "open"
 tracks/0/type = "value"
@@ -184,7 +223,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("VBoxContainer:modulate")
+tracks/2/path = NodePath("Buttons:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -266,52 +305,13 @@ tracks/8/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_ygfm7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Display/BlackBackground:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Description/PanelContainer:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(649, 400)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Description:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbbvo"]
 _data = {
 &"RESET": SubResource("Animation_ygfm7"),
 &"open": SubResource("Animation_2stfb")
 }
 
-[node name="TrainingMenu" type="Control" node_paths=PackedStringArray("animation")]
+[node name="TrainingMenu" type="Control" node_paths=PackedStringArray("animation", "default_button", "buttons", "sound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -322,6 +322,9 @@ script = ExtResource("1_c8rss")
 trainings = Array[ExtResource("2_wsu2r")]([SubResource("Resource_0hsmt")])
 animation = NodePath("AnimationPlayer")
 training_room = ExtResource("6_ygfm7")
+default_button = NodePath("Buttons/Guard")
+buttons = NodePath("Buttons")
+sound = NodePath("PolyphonicMenuAudio")
 
 [node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
@@ -366,7 +369,7 @@ offset_right = 559.0
 offset_bottom = 48.0
 texture = SubResource("GradientTexture2D_q8ayk")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Buttons" type="VBoxContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 16.0
@@ -376,7 +379,7 @@ offset_bottom = 197.0
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Guard" type="Button" parent="VBoxContainer"]
+[node name="Guard" type="Button" parent="Buttons"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuickRecover")
 theme = SubResource("Theme_q8ayk")
@@ -392,7 +395,7 @@ icon = SubResource("CompressedTexture2D_ylbde")
 flat = true
 icon_alignment = 1
 
-[node name="PerfectGuard" type="Button" parent="VBoxContainer"]
+[node name="PerfectGuard" type="Button" parent="Buttons"]
 layout_mode = 2
 theme = SubResource("Theme_q8ayk")
 theme_override_constants/outline_size = 8
@@ -406,7 +409,7 @@ icon = SubResource("CompressedTexture2D_ylbde")
 flat = true
 icon_alignment = 1
 
-[node name="QuickRecover" type="Button" parent="VBoxContainer"]
+[node name="QuickRecover" type="Button" parent="Buttons"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Guard")
 theme = SubResource("Theme_q8ayk")
@@ -421,7 +424,7 @@ icon = SubResource("CompressedTexture2D_ylbde")
 flat = true
 icon_alignment = 1
 
-[node name="QuickGuard" type="Button" parent="VBoxContainer"]
+[node name="QuickGuard" type="Button" parent="Buttons"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Guard")
 theme = SubResource("Theme_q8ayk")
@@ -437,7 +440,7 @@ flat = true
 text_overrun_behavior = 1
 icon_alignment = 1
 
-[node name="ChainGuard" type="Button" parent="VBoxContainer"]
+[node name="ChainGuard" type="Button" parent="Buttons"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Guard")
 theme = SubResource("Theme_q8ayk")
@@ -453,7 +456,7 @@ flat = true
 text_overrun_behavior = 1
 icon_alignment = 1
 
-[node name="JumpCancel" type="Button" parent="VBoxContainer"]
+[node name="JumpCancel" type="Button" parent="Buttons"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Guard")
 theme = SubResource("Theme_q8ayk")
@@ -468,7 +471,7 @@ icon = SubResource("CompressedTexture2D_ylbde")
 flat = true
 icon_alignment = 1
 
-[node name="BackdashCancel" type="Button" parent="VBoxContainer"]
+[node name="BackdashCancel" type="Button" parent="Buttons"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Guard")
 theme = SubResource("Theme_q8ayk")

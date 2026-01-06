@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bohp35op2yye6"]
+[gd_scene load_steps=29 format=4 uid="uid://bohp35op2yye6"]
 
 [ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_eyyax"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_syonq"]
@@ -3321,6 +3321,12 @@ _limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.498567, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qo0mo"]
+normal = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03klh"]
+size = Vector2(28, 143)
+
 [node name="Room" type="Node2D"]
 script = ExtResource("1_eyyax")
 center_camera = true
@@ -3482,3 +3488,14 @@ position = Vector2(719, 240)
 
 [node name="MonasteryCandle7" parent="Candles" instance=ExtResource("5_0is06")]
 position = Vector2(332, 240)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(449, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(940, -143)
+shape = SubResource("WorldBoundaryShape2D_qo0mo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(973, -72.5)
+shape = SubResource("RectangleShape2D_03klh")
