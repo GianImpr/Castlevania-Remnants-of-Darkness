@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=4 uid="uid://bri0k8ritevh0"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_kkk8k"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_kkk8k"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_7wxcl"]
 [ext_resource type="Texture2D" uid="uid://c0qsvc0xjt6x1" path="res://assets/sprites/Tiles/outsideMonastery.png" id="3_sqrr0"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Spawners/tutorial_zombie_spawn.gd" id="4_h5hv2"]
+[ext_resource type="Script" uid="uid://dbqia0sbax1sl" path="res://SampleProject/Scripts/Spawners/tutorial_zombie_spawn.gd" id="4_h5hv2"]
 [ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="4_ti87g"]
 [ext_resource type="PackedScene" uid="uid://bpbuc4imoao83" path="res://SampleProject/enemies/Zombie/zombie.tscn" id="5_hqtya"]
 [ext_resource type="PackedScene" uid="uid://df43umeqy115k" path="res://SampleProject/extra_scenes/stage_elements/dialogue_box_trigger.tscn" id="7_uirqh"]
@@ -546,13 +546,12 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_1uv3y")
 
 [sub_resource type="Curve" id="Curve_tbvms"]
-min_value = -360.0
-max_value = 360.0
+_limits = [-360.0, 360.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_xcqwy"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.498567, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 

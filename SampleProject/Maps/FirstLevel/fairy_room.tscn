@@ -1,18 +1,18 @@
 [gd_scene load_steps=44 format=4 uid="uid://be57nauej434c"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_uf00n"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_uf00n"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_4p3d3"]
 [ext_resource type="Texture2D" uid="uid://bx451tat2qr51" path="res://assets/sprites/Tiles/InnocentDevilRoom.png" id="3_hkwvi"]
 [ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_sfivm"]
 [ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="5_0ilth"]
-[ext_resource type="Shader" path="res://SampleProject/Shaders/aura.gdshader" id="5_dnpec"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/InnocentDevils/devil_forging.gd" id="7_1gwmw"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="7_1iij1"]
+[ext_resource type="Shader" uid="uid://diku0uk4in6gs" path="res://SampleProject/Shaders/aura.gdshader" id="5_dnpec"]
+[ext_resource type="Script" uid="uid://o3eqqwjwqve2" path="res://SampleProject/Scripts/InnocentDevils/devil_forging.gd" id="7_1gwmw"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="7_1iij1"]
 [ext_resource type="Texture2D" uid="uid://biwn5irdj8rpr" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoor.png" id="7_mmtkg"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_g7ffl"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_g7ffl"]
 [ext_resource type="Texture2D" uid="uid://bpiy0qh3bsdit" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoorAura.png" id="8_jp7sw"]
 [ext_resource type="PackedScene" uid="uid://crov6smdsbwb4" path="res://SampleProject/familiars/Faerie/faerie.tscn" id="8_ns1be"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="9_ewq5u"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_ewq5u"]
 [ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="9_hrdd7"]
 [ext_resource type="Texture2D" uid="uid://c350vlw6uws2f" path="res://assets/sprites/InnocentDevils/Fairy/FairySealed.png" id="9_o4ht3"]
 [ext_resource type="AudioStream" uid="uid://ccbtqu8n0yk0n" path="res://assets/sounds/Effects/Miscellaneous/InnocentForge.MP3" id="10_21tnh"]
@@ -25,18 +25,18 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_deia1"]
 width = 128
 height = 256
-seamless = true
 noise = SubResource("FastNoiseLite_dfmu6")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ylq07"]
 shader = ExtResource("5_dnpec")
+shader_parameter/n = SubResource("NoiseTexture2D_deia1")
 shader_parameter/min_intensity = 0.4
 shader_parameter/max_intensity = 0.6
 shader_parameter/speed_x = 1000.0
 shader_parameter/speed_y = 10.0
 shader_parameter/fade_start = 1.0
 shader_parameter/fade_end = 1.0
-shader_parameter/n = SubResource("NoiseTexture2D_deia1")
 
 [sub_resource type="Gradient" id="Gradient_ak5p1"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -933,7 +933,7 @@ fill_from = Vector2(0.509506, 0.501901)
 fill_to = Vector2(0.0114068, 1)
 
 [sub_resource type="Curve" id="Curve_07cqy"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.183857, 1.58242), 0.0, 0.0, 0, 0, Vector2(0.843049, 1.54945), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
@@ -1252,9 +1252,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dyiqa"]
 _data = {
-"RESET": SubResource("Animation_6qjin"),
-"forging": SubResource("Animation_5lpdp"),
-"light": SubResource("Animation_74824")
+&"RESET": SubResource("Animation_6qjin"),
+&"forging": SubResource("Animation_5lpdp"),
+&"light": SubResource("Animation_74824")
 }
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pjks5"]
@@ -1263,6 +1263,9 @@ particles_animation = true
 particles_anim_h_frames = 7
 particles_anim_v_frames = 7
 particles_anim_loop = false
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3m2a2"]
+load_path = "res://.godot/imported/floaty_64.png-98c8a1b060829ec7186cfcbd5b433f7e.ctex"
 
 [sub_resource type="Gradient" id="Gradient_6v02t"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 0, 1, 1)
@@ -1282,9 +1285,6 @@ gravity = Vector3(0, -50, 0)
 color_ramp = SubResource("GradientTexture1D_ebr7x")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3m2a2"]
-load_path = "res://.godot/imported/floaty_64.png-98c8a1b060829ec7186cfcbd5b433f7e.ctex"
 
 [sub_resource type="Resource" id="Resource_nxqkd"]
 script = ExtResource("9_ewq5u")
@@ -1399,7 +1399,7 @@ color_ramp = SubResource("Gradient_nvkhl")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
 root_node = NodePath("../PointLight2D")
 libraries = {
-"": SubResource("AnimationLibrary_dyiqa")
+&"": SubResource("AnimationLibrary_dyiqa")
 }
 autoplay = "light"
 
@@ -1409,11 +1409,11 @@ material = SubResource("CanvasItemMaterial_pjks5")
 position = Vector2(609.333, 545.333)
 emitting = false
 amount = 350
-process_material = SubResource("ParticleProcessMaterial_xp4id")
 texture = SubResource("CompressedTexture2D_3m2a2")
 lifetime = 3.0
 one_shot = true
 explosiveness = 0.7
+process_material = SubResource("ParticleProcessMaterial_xp4id")
 
 [node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="Background"]
 volume_db = -5.0

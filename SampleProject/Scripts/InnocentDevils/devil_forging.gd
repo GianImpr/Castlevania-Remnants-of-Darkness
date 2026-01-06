@@ -34,8 +34,8 @@ func _on_forge_trigger_body_exited(body: Node2D) -> void:
 func forgeInnocentDevil():
 	var innocent_devil: Faerie = innocent_devil_scene.instantiate()
 	Global.player.pocket_size += 1
-	get_parent().get_parent().add_child(innocent_devil)
 	innocent_devil.global_position = global_position
+	get_parent().get_parent().add_child(innocent_devil)
 	innocent_devil.state_machine.current_state.Transitioned.emit(innocent_devil.state_machine.current_state, "freeze")
 	if Global.player.innocent_devil == null:
 		Global.player.innocent_devil = innocent_devil

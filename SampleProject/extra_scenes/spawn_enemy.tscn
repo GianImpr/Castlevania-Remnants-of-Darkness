@@ -1,10 +1,10 @@
 [gd_scene load_steps=20 format=3 uid="uid://pmhfi7gv5sxe"]
 
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="1_j32fa"]
-[ext_resource type="Script" path="res://SampleProject/extra_scenes/enemies/spawn_enemy.gd" id="1_liif3"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_vluex"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_y6l26"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_6ll7l"]
+[ext_resource type="Script" uid="uid://dq0diloex14b2" path="res://SampleProject/extra_scenes/enemies/spawn_enemy.gd" id="1_liif3"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_vluex"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_y6l26"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="5_6ll7l"]
 [ext_resource type="AudioStream" uid="uid://cap3q8r1k13kl" path="res://assets/sounds/Effects/Miscellaneous/SpawnEnemy.MP3" id="6_k3qju"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j27em"]
@@ -147,9 +147,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dq8ar"]
 _data = {
-"RESET": SubResource("Animation_alq1m"),
-"spawn": SubResource("Animation_da8nx"),
-"test": SubResource("Animation_serlo")
+&"RESET": SubResource("Animation_alq1m"),
+&"spawn": SubResource("Animation_da8nx"),
+&"test": SubResource("Animation_serlo")
 }
 
 [sub_resource type="Resource" id="Resource_fap5k"]
@@ -189,14 +189,14 @@ z_index = 20
 material = SubResource("CanvasItemMaterial_j27em")
 emitting = false
 amount = 360
-process_material = SubResource("ParticleProcessMaterial_3das4")
 texture = ExtResource("1_j32fa")
 one_shot = true
 explosiveness = 0.07
+process_material = SubResource("ParticleProcessMaterial_3das4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_dq8ar")
+&"": SubResource("AnimationLibrary_dq8ar")
 }
 
 [node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
@@ -211,10 +211,10 @@ z_index = 20
 material = SubResource("CanvasItemMaterial_j27em")
 emitting = false
 amount = 600
-process_material = SubResource("ParticleProcessMaterial_go66r")
 texture = ExtResource("1_j32fa")
 one_shot = true
 explosiveness = 0.07
+process_material = SubResource("ParticleProcessMaterial_go66r")
 
 [node name="DeleteTimer" type="Timer" parent="."]
 wait_time = 4.0

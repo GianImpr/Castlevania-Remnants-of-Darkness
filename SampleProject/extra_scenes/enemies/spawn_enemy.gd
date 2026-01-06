@@ -72,8 +72,8 @@ func _spawnEnemy():
 	var enemy_node = enemy.instantiate()
 	enemy_node.stats.LV += LV_bonus
 	enemy_node.stats.ATK += LV_bonus * 2.5
-	get_parent().add_child(enemy_node)
 	enemy_node.global_position = global_position - offset
+	get_parent().add_child(enemy_node)
 	if "activated_AI" in enemy_node:
 		enemy_node.activated_AI = activate_behavior_instantly
 	elif "ai_activated" in enemy_node:
