@@ -404,8 +404,8 @@ func fullFocusEffect() -> void:
 
 func throwAxe() -> void:
 	var axe = throw_axe.instantiate()
-	MetSys.get_current_room_instance().add_child(axe)
 	axe.global_position = position + Vector2(98*facing_position, -5)
+	MetSys.get_current_room_instance().add_child(axe)
 
 func petrify() -> void:
 	stats.current_status = stats.Ailment.STONE
