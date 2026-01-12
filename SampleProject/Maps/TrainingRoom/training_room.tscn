@@ -1018,6 +1018,10 @@ normal = Vector2(0, 1)
 
 [node name="TrainingRoom" type="Node2D"]
 script = ExtResource("1_r6isx")
+stage_music = "training"
+change_music = true
+camera_limit_right = 864
+camera_limit_bottom = 480
 metadata/_custom_type_script = "uid://cra3c457tg2j7"
 
 [node name="RoomInstance" parent="." instance=ExtResource("2_xkcj3")]

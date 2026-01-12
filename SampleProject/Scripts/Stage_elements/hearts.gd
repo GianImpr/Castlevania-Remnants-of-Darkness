@@ -14,6 +14,7 @@ const INNOCENT_DEVIL_HEAL_SMALL: int = 5
 
 @export var animation: AnimationPlayer
 @export var wall_checker: WallChecker
+var fly_high: bool = false
 
 enum Type {
 	SOUL,
@@ -24,6 +25,12 @@ func _ready():
 	linear_velocity.x = SPEED
 	if can_be_red:
 		determineType()
+	if fly_high:
+		var tween: Tween = get_tree().create_tween()
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "linear_velocity:y", 0, 0.5).from(-500)
+		tween.set_ease(Tween.EASE_IN)
+		tween.tween_property(self, "linear_velocity:y", 60, 0.2)
 
 	
 func _physics_process(delta: float) -> void:

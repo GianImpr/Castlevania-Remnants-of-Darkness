@@ -93,6 +93,8 @@ func dropItem(id: int, type: PickUp.ItemType) -> void:
 # Drops a random heart or money
 func dropMisc(scene: PackedScene) -> void:
 	var misc_drop = scene.instantiate()
+	if "fly_high" in misc_drop:
+		misc_drop.fly_high = true
 	misc_drop.global_position = get_parent().global_position
 	enemy_parent_node.add_child(misc_drop)
 	

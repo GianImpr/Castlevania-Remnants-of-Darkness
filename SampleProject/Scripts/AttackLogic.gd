@@ -146,6 +146,7 @@ func createHitEffect(body: Node2D) -> void:
 
 	if Global.player.stats.itemEquipped(Artifact.Artifacts.HEART_BROOCH, "artifact") and Global.player.stats.Stats["LCK"] > randi_range(0, 199):
 		var heart = heart_scene.instantiate()
+		heart.fly_high = true
 		heart.global_position = hit_effect.position
 		MetSys.get_current_room_instance().call_deferred("add_child", heart)
 		
@@ -188,6 +189,9 @@ func calculateDamage(body: Node2D) -> int:
 		
 	if player.cur_charge != HectorPlayer.Charge.NONE:
 		damage *= CHARGE_DAMAGE_MULTIPLIERS[player.cur_charge]
+	
+	if not TrainingSettings.can_deal_damage and Global.screen == Global.ScreenType.TRAINING:
+		return 0
 	
 	return damage
 

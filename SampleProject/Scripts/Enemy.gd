@@ -72,8 +72,11 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 	if body.state_machine.current_state is HectorPetrified:
 		damage *= STONE_DAMAGE_MULTIPLIER
 	
-	if damage > body.stats.Stats["HP"] and body.stats.Stats["HP"] > 1 and randi_range(0, 1) < body.stats.Stats["LCK"] and Global.player.stats.itemEquipped(Artifact.Artifacts.MIRACLE_COIN, "artifact"):
+	if damage > body.stats.Stats["HP"] and body.stats.Stats["HP"] > 1 and randi_range(0, 99) < body.stats.Stats["LCK"] and Global.player.stats.itemEquipped(Artifact.Artifacts.MIRACLE_COIN, "artifact"):
 		damage = body.stats.Stats["HP"] - 1
+		
+	if Global.screen == Global.ScreenType.TRAINING:
+		return ceil(body.stats.Stats["MHP"] * TrainingSettings.damage_upon_hit / 100)
 	
 	return damage
 	

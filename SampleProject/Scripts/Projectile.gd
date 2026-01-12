@@ -27,11 +27,13 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 			body.stats.Stats["MP"] = min(body.stats.Stats["MMP"], body.stats.Stats["MP"]+floor(damage/10)+10)
 			body.heal_innocent(floor(damage/10)+1)
 			body.stats.Stats["Guard"] = 3
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.PERFECT_GUARD)
 			return 0
 		if damage < body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1:
 			damage = 0
 		elif damage >= body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1 and not guard_break:
 			damage = min(damage*0.1, body.stats.Stats["HP"]-1)
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
 		elif body.stats.Stats["Guard"] == 1 or guard_break:
 			damage *= 0.6
 		if not guard_break:
@@ -50,6 +52,9 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 	
 	if body.stats.current_status == Global.player.stats.Ailment.STONE:
 		damage *= 2
+		
+	if Global.screen == Global.ScreenType.TRAINING:
+		return ceil(body.stats.Stats["MHP"] * TrainingSettings.damage_upon_hit / 100)
 
 	return damage
 		
