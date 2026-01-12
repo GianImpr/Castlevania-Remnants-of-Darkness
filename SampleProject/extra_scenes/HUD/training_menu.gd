@@ -27,7 +27,7 @@ static var cur_training: TrainingMode.Training = TrainingMode.Training.NONE
 func _ready() -> void:
 	for button: Button in buttons.get_children():
 		button.pressed.connect(pressButton.bind(button))
-		button.focused.connect(focusButton.bind(button))
+		button.focus_entered.connect(focusButton.bind(button))
 
 func openMenu():
 	get_tree().paused = true

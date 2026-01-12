@@ -134,7 +134,7 @@ func initMonsterProfile(index: int) -> void:
 	
 
 	HP.text = str(enemy_stats[EnemyEntry.Stats.HP])
-	LV.text = str(enemy_stats[EnemyEntry.Stats.LV] + EnemyStats.CRAZY_MODE_LEVEL_BOOST * int(Global.game.difficulty == Game.Difficulty.CRAZY))
+	LV.text = str(int(enemy_stats[EnemyEntry.Stats.LV] + EnemyStats.CRAZY_MODE_LEVEL_BOOST * int(Global.game.difficulty == Game.Difficulty.CRAZY)))
 	Name.text = str(enemy_stats[EnemyEntry.Stats.NAME])
 
 	description.text = str(enemy_stats[EnemyEntry.Stats.DESCRIPTION])
@@ -143,12 +143,9 @@ func initMonsterProfile(index: int) -> void:
 	for i in range(0, stats.get_child_count()):
 		var current_line: HBoxContainer = stats.get_child(i)
 		if Global.game.difficulty == Game.Difficulty.CRAZY:
-			if STAT_KEYS[i] == EnemyEntry.Stats.ATK:
-				current_line.get_child(STAT_VALUE_INDEX).text = str(enemy_stats[STAT_KEYS[i]] + int(LV.text) * EnemyStats.CRAZY_MODE_STAT_MULTIPLIER)
-			elif STAT_KEYS[i] != EnemyEntry.Stats.EXP:
-				current_line.get_child(STAT_VALUE_INDEX).text = str(enemy_stats[STAT_KEYS[i]] * EnemyStats.CRAZY_MODE_STAT_MULTIPLIER)
-			else:
-				current_line.get_child(STAT_VALUE_INDEX).text = str(enemy_stats[STAT_KEYS[i]])
+			_printStat(enemy_stats, STAT_KEYS, i, STAT_VALUE_INDEX, current_line, EnemyStats.CRAZY_MODE_STAT_MULTIPLIER)
+		elif Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
+			_printStat(enemy_stats, STAT_KEYS, i, STAT_VALUE_INDEX, current_line, EnemyStats.SIMPLIFIED_MODE_STAT_MULTIPLIER)
 		else:
 			current_line.get_child(STAT_VALUE_INDEX).text = str(enemy_stats[STAT_KEYS[i]])
 		
@@ -158,6 +155,14 @@ func initMonsterProfile(index: int) -> void:
 	initializeElementalTable(tolerances, enemy_stats[EnemyEntry.Stats.TOLERANCES])
 	initializeDropLabel(enemy_stats[EnemyEntry.Stats.COMMON_DROP_ID], DropLabel.COMMON, enemy_stats[EnemyEntry.Stats.COMMON_DROP_RATE], enemy_flags.common_drop_revealed)
 	initializeDropLabel(enemy_stats[EnemyEntry.Stats.RARE_DROP_ID], DropLabel.RARE, enemy_stats[EnemyEntry.Stats.RARE_DROP_RATE], enemy_flags.rare_drop_revealed)
+
+func _printStat(enemy_stats, STAT_KEYS, i, STAT_VALUE_INDEX, current_line, stat_multiplier) -> void:
+	if STAT_KEYS[i] == EnemyEntry.Stats.ATK:
+		current_line.get_child(STAT_VALUE_INDEX).text = str(int((enemy_stats[STAT_KEYS[i]] + int(LV.text)*int(Global.game.difficulty == Game.Difficulty.CRAZY)) * stat_multiplier))
+	elif STAT_KEYS[i] != EnemyEntry.Stats.EXP:
+		current_line.get_child(STAT_VALUE_INDEX).text = str(int(enemy_stats[STAT_KEYS[i]] * stat_multiplier))
+	else:
+		current_line.get_child(STAT_VALUE_INDEX).text = str(int(enemy_stats[STAT_KEYS[i]]))
 
 func initializeDropLabel(drop_id: int, drop_label: DropLabel, drop_rate: float, revealed: bool) -> void:
 	var item: Item = Global.player.stats.searchItemInCompendium(drop_id, Global.player.stats.item_compendium.Compendium)
