@@ -132,15 +132,25 @@ func initMonsterProfile(index: int) -> void:
 	else:
 		enemy_flags = Global.player.stats.enemy_compendium[index]
 	
+
 	HP.text = str(enemy_stats[EnemyEntry.Stats.HP])
-	LV.text = str(enemy_stats[EnemyEntry.Stats.LV])
+	LV.text = str(enemy_stats[EnemyEntry.Stats.LV] + EnemyStats.CRAZY_MODE_LEVEL_BOOST * int(Global.game.difficulty == Game.Difficulty.CRAZY))
 	Name.text = str(enemy_stats[EnemyEntry.Stats.NAME])
+
 	description.text = str(enemy_stats[EnemyEntry.Stats.DESCRIPTION])
 	sprite.texture = enemy_flags.enemy_icon
 	
 	for i in range(0, stats.get_child_count()):
 		var current_line: HBoxContainer = stats.get_child(i)
-		current_line.get_child(STAT_VALUE_INDEX).text = str(enemy_stats[STAT_KEYS[i]])
+		if Global.game.difficulty == Game.Difficulty.CRAZY:
+			if STAT_KEYS[i] == EnemyEntry.Stats.ATK:
+				current_line.get_child(STAT_VALUE_INDEX).text = str(enemy_stats[STAT_KEYS[i]] + int(LV.text) * EnemyStats.CRAZY_MODE_STAT_MULTIPLIER)
+			elif STAT_KEYS[i] != EnemyEntry.Stats.EXP:
+				current_line.get_child(STAT_VALUE_INDEX).text = str(enemy_stats[STAT_KEYS[i]] * EnemyStats.CRAZY_MODE_STAT_MULTIPLIER)
+			else:
+				current_line.get_child(STAT_VALUE_INDEX).text = str(enemy_stats[STAT_KEYS[i]])
+		else:
+			current_line.get_child(STAT_VALUE_INDEX).text = str(enemy_stats[STAT_KEYS[i]])
 		
 	killed.text = str(enemy_flags.killed)
 	

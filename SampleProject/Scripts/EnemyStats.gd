@@ -22,16 +22,23 @@ const MONEY_SCENE_PATH: String = "res://SampleProject/extra_scenes/items/money.t
 static var pick_up_scene: Resource = preload(PICK_UP_SCENE_PATH)
 static var heart_scene: Resource = preload(HEART_SCENE_PATH)
 static var money_scene: Resource = preload(MONEY_SCENE_PATH)
+static var CRAZY_MODE_STAT_MULTIPLIER: float = 1.5
+static var CRAZY_MODE_LEVEL_BOOST: float = 10
+static var SIMPLIFIED_MODE_STAT_MULTIPLIER: float = 0.5
 
 var enemy_entry: EnemyEntry
 
 func _ready():
 	enemy_entry = findEntry()
-	if Global.game.difficulty == Global.game.Difficulty.CRAZY:
-		LV += 10
-		DEF *= 1.5
-		RES *= 1.5
-		ATK = (ATK + LV) * 1.5
+	if Global.game.difficulty == Game.Difficulty.CRAZY:
+		LV += CRAZY_MODE_LEVEL_BOOST
+		DEF *= CRAZY_MODE_STAT_MULTIPLIER
+		RES *= CRAZY_MODE_STAT_MULTIPLIER
+		ATK = (ATK + LV) * CRAZY_MODE_STAT_MULTIPLIER
+	elif Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
+		ATK *= SIMPLIFIED_MODE_STAT_MULTIPLIER
+		DEF *= SIMPLIFIED_MODE_STAT_MULTIPLIER
+		RES *= SIMPLIFIED_MODE_STAT_MULTIPLIER
 	enemy_parent_node = get_parent().get_parent()
 
 # Determines what the enemy should drop, should be called when an enemy is dying

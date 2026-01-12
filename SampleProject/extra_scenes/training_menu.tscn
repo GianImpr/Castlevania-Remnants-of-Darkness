@@ -311,7 +311,8 @@ _data = {
 &"open": SubResource("Animation_2stfb")
 }
 
-[node name="TrainingMenu" type="Control" node_paths=PackedStringArray("animation", "default_button", "buttons", "sound")]
+[node name="TrainingMenu" type="Control" node_paths=PackedStringArray("animation", "default_button", "buttons", "sound", "training_icon", "training_description", "training_title", "challenge_level_label", "challenge_description_label")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -325,6 +326,11 @@ training_room = ExtResource("6_ygfm7")
 default_button = NodePath("Buttons/Guard")
 buttons = NodePath("Buttons")
 sound = NodePath("PolyphonicMenuAudio")
+training_icon = NodePath("Description/Icon")
+training_description = NodePath("Description/Description")
+training_title = NodePath("Description/Title")
+challenge_level_label = NodePath("OtherInfo/LevelDesc")
+challenge_description_label = NodePath("OtherInfo/ChallengeDesc")
 
 [node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0

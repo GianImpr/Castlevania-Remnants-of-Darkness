@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b15fvv131wq0u"]
+[gd_scene load_steps=17 format=3 uid="uid://b15fvv131wq0u"]
 
 [ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_r6isx"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_xkcj3"]
 [ext_resource type="Texture2D" uid="uid://dhbbcjcunoxkh" path="res://assets/sprites/Tiles/TrainingTiles.png" id="3_onwft"]
 [ext_resource type="Texture2D" uid="uid://dxeec21cts246" path="res://assets/sprites/Tiles/TrainingRoom.png" id="4_xkcj3"]
+[ext_resource type="Script" uid="uid://d2c6etwtah5dx" path="res://SampleProject/Scripts/Event/training_settings.gd" id="5_onwft"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f6bll"]
 texture = ExtResource("3_onwft")
@@ -1075,3 +1076,6 @@ shape = SubResource("WorldBoundaryShape2D_lh1pq")
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(411, 0)
 shape = SubResource("WorldBoundaryShape2D_lh1pq")
+
+[node name="TrainingSettings" type="Node" parent="."]
+script = ExtResource("5_onwft")

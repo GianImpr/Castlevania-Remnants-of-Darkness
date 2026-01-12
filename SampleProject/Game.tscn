@@ -1,4 +1,4 @@
-[gd_scene load_steps=602 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=603 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" uid="uid://bi427jhyxfyx5" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" uid="uid://1vp87s3hhyhn" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -288,6 +288,7 @@
 [ext_resource type="Texture2D" uid="uid://bugsayuiq2m1v" path="res://assets/sprites/Items/OtherIcons/16x16/fa850.png" id="226_krr36"]
 [ext_resource type="AudioStream" uid="uid://b3io8lqsbl3dv" path="res://assets/music/Sarabande.ogg" id="265_mxxml"]
 [ext_resource type="PackedScene" uid="uid://cr4jksx71segk" path="res://SampleProject/extra_scenes/HUD/shop_screen.tscn" id="271_yrj2d"]
+[ext_resource type="PackedScene" uid="uid://dk6ln3pa1ra6q" path="res://SampleProject/extra_scenes/training_menu.tscn" id="273_66krm"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="274_mxxml"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
@@ -3261,6 +3262,8 @@ dialogue_test = Array[ExtResource("107_o0dwx")]([SubResource("Resource_csyar"), 
 [node name="WeaponWheel" parent="UI" instance=ExtResource("164_3jxay")]
 
 [node name="ShopScreen" parent="UI" instance=ExtResource("271_yrj2d")]
+
+[node name="TrainingMenu" parent="UI" instance=ExtResource("273_66krm")]
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 

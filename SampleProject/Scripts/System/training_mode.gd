@@ -17,14 +17,17 @@ class_name TrainingMode
 @export var remove_hearts: bool = true
 @export_range(1, 100, 1, "suffix:% HP") var damage_upon_hit: int
 @export_range(1, 100, 1) var hearts_to_collect: int
+var max_challenge_level: TrainingLevel = TrainingLevel.BEGINNER
 
 enum TrainingLevel {
 	BEGINNER,
 	INTERMEDIATE,
-	ADVANCED
+	ADVANCED,
+	COMPLETE
 }
 
 enum Training {
+	NONE,
 	GUARD,
 	PERFECT_GUARD,
 	QUICK_RECOVER,
