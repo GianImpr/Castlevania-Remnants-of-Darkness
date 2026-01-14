@@ -128,7 +128,7 @@ func check_is_hurt():
 		player.current_hits_taken_before_iframes += 1
 		player.mercy_invincibility_hit_threshold_reset.start()
 		if player.is_on_floor() and not self is HectorCrouch and player.current_hits_taken_before_iframes != player.IFRAMES_HIT_THRESHOLD:
-			if player.knockback or TrainingSettings.cur_challenge == TrainingMode.Training.QUICK_RECOVER:
+			if player.knockback or (TrainingSettings.cur_challenge == TrainingMode.Training.QUICK_RECOVER and Global.screen == Global.ScreenType.TRAINING):
 				Transitioned.emit(self, "damage_knockback")
 			else:
 				Transitioned.emit(self, "damage")
