@@ -9,14 +9,21 @@ static var can_deal_damage: bool
 static var enemies: Array[PackedScene]
 static var cur_challenge: TrainingMode.Training
 var result: ChallengeResult = ChallengeResult.NONE
-var collected_hearts: int = 0
+static var collected_hearts: int = 0
 static var heart_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/heart.tscn")
+@export var enemy_spawner: SpawnEnemy
+static var player_global_position: Vector2
+static var player_current_room: String
 
 enum ChallengeResult {
 	NONE,
 	WIN,
 	LOSE
 }
+
+func _ready() -> void:
+	enemy_spawner.enemy = enemies[0]
+	enemy_spawner.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _process(delta: float) -> void:
 	if result == ChallengeResult.NONE:
@@ -26,16 +33,34 @@ func _process(delta: float) -> void:
 		if remove_hearts and Global.player.innocent_devil:
 			Global.player.innocent_devil.stats.Stats["Hearts"] = 1
 			
-	if hearts_to_collect == collected_hearts:
+	if hearts_to_collect == collected_hearts and result == ChallengeResult.NONE:
 		result = ChallengeResult.WIN
+		for enemy in get_parent().get_children():
+			if enemy is Enemy:
+				enemy.stats.HP = 0
+		Global.tutorial_box.time = 2
+		if Global.training_menu.trainings[cur_challenge-1].max_challenge_level != TrainingMode.TrainingLevel.ADVANCED:
+			Global.tutorial_box.text = "[color=#00FF00]Challenge completed![/color]"
+		else:
+			Global.tutorial_box.text = "[color=#00FF00]Challenge completed![/color]\nObtained [color=#FFFF00]PRIZE[/color]"
+		if Global.training_menu.trainings[cur_challenge-1].max_challenge_level == Global.training_menu.cur_challenge_level:
+			Global.training_menu.trainings[cur_challenge-1].max_challenge_level = min(Global.training_menu.trainings[cur_challenge-1].max_challenge_level+1, 3)
+		Global.tutorial_box.activate = true
+		Global.player.state_machine.current_state.Transitioned.emit(Global.player.state_machine.current_state, "wait")
+		get_tree().create_timer(2.5, true).timeout.connect(returnToTrainingMenu)
+		Global.player.is_hurt = false
 		
-	if Global.player.stats.Stats["HP"] == 0 and result == ChallengeResult.NONE:
+	if Global.player.stats.Stats["HP"] <= 0 and result == ChallengeResult.NONE:
+		Global.tutorial_box.time = 2
+		Global.tutorial_box.text = "[color=#FF0000]Challenge failed...[/color]"
+		Global.tutorial_box.activate = true
 		result = ChallengeResult.LOSE
-		
+		get_tree().create_timer(2.5, true).timeout.connect(returnToTrainingMenu)
+
 static func _spawnHeart() -> void:
 	var heart = heart_scene.instantiate()
 	heart.fly_high = true
-	heart.global_position = Global.player.global_position+Vector2(0,-20)
+	heart.global_position = Global.player.global_position+Vector2(0,-30)
 	MetSys.get_current_room_instance().call_deferred("add_child", heart)
 
 
@@ -43,3 +68,16 @@ static func _spawnHeart() -> void:
 static func spawnTrainingHeart(cur_training: TrainingMode.Training) -> void:
 	if Global.screen == Global.ScreenType.TRAINING and TrainingSettings.cur_challenge == cur_training:
 		_spawnHeart()
+
+func returnToTrainingMenu() -> void:
+	Global.player.stats.Stats["HP"] = Global.player.stats.Stats["MHP"]
+	Global.player.stats.Stats["MP"] = Global.player.stats.Stats["MMP"]
+	Global.player.heal_innocent(9999)
+	Global.player.is_hurt = false
+	Global.player.velocity = Vector2.ZERO
+	Global.player.state_machine.current_state.Transitioned.emit(Global.player.state_machine.current_state, "idle")
+	get_tree().paused = true
+	await Global.total_fade_screen.fadeOutFor(0.5)
+	Global.change_area.emit(player_current_room, player_global_position)
+	Global.training_menu.openMenu()
+	await Global.total_fade_screen.fadeInFor(2.5)

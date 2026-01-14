@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dk6ln3pa1ra6q"]
+[gd_scene load_steps=59 format=3 uid="uid://dk6ln3pa1ra6q"]
 
 [ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="1_a0owa"]
 [ext_resource type="Script" uid="uid://bsr6ixj1h4r5y" path="res://SampleProject/extra_scenes/HUD/training_menu.gd" id="1_c8rss"]
@@ -14,13 +14,17 @@
 [ext_resource type="PackedScene" uid="uid://b15fvv131wq0u" path="res://SampleProject/Maps/TrainingRoom/training_room.tscn" id="6_ygfm7"]
 [ext_resource type="Shader" uid="uid://diku0uk4in6gs" path="res://SampleProject/Shaders/aura.gdshader" id="7_4qgc5"]
 [ext_resource type="PackedScene" uid="uid://fld271wig6jo" path="res://SampleProject/enemies/Banshee/banshee.tscn" id="7_iv4ef"]
+[ext_resource type="PackedScene" uid="uid://dj1w5vx1ut6l3" path="res://SampleProject/enemies/BlackPanther/black_panther.tscn" id="7_mo7a4"]
 [ext_resource type="Texture2D" uid="uid://cx1wxmu3nscdw" path="res://assets/images/PerfectGuard.png" id="7_rbbvo"]
 [ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="8_hwf47"]
 [ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="8_rcdex"]
 [ext_resource type="FontFile" uid="uid://ma2njl02pxj6" path="res://assets/sprites/Font/Olondona.otf" id="9_cckcb"]
 [ext_resource type="Texture2D" uid="uid://chgh1icjepfq" path="res://assets/images/Guarding.png" id="10_1qa27"]
+[ext_resource type="PackedScene" uid="uid://dfuncyp0yhrbk" path="res://SampleProject/enemies/Slinger/slinger.tscn" id="10_nno0u"]
+[ext_resource type="PackedScene" uid="uid://bcqff14dmgwpf" path="res://SampleProject/enemies/BlackCrow/black_crow.tscn" id="11_mo7a4"]
 [ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="11_ylbde"]
 [ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="12_c8rss"]
+[ext_resource type="Texture2D" uid="uid://c46g3377o2qj8" path="res://assets/images/BackdashRecovery.png" id="12_vfpqg"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="13_wsu2r"]
 [ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="14_0hsmt"]
 
@@ -50,14 +54,33 @@ description = "Press [[R1]] the very instant Hector is going to get hit.
 Perfect guarding attacks restores Hector's MP, the currently deployed Innocent Devil's Hearts and all Guard Health.
 It is also possible to block Red Spark attacks this way."
 challenge_beginner = "Perfect guard 5 attacks from Skeleton."
-challenge_intermediate = "Perfect guard 5 attacks from Armor Knight."
-challenge_advanced = "Perfect guard 5 attacks from Banshee."
+challenge_intermediate = "Perfect guard 6 attacks from Armor Knight."
+challenge_advanced = "Perfect guard 7 attacks from Black Panther."
 icon = ExtResource("7_rbbvo")
 enemies_beginner = Array[PackedScene]([ExtResource("8_hwf47")])
 enemies_intermediate = Array[PackedScene]([ExtResource("5_rbbvo")])
-enemies_advanced = Array[PackedScene]([ExtResource("7_iv4ef")])
+enemies_advanced = Array[PackedScene]([ExtResource("7_mo7a4")])
 damage_upon_hit = 15
 hearts_to_collect = 5
+heart_level_multiplier = 1.2
+metadata/_custom_type_script = "uid://cbg6erhltejbh"
+
+[sub_resource type="Resource" id="Resource_jglwd"]
+script = ExtResource("2_wsu2r")
+title = "QUICK RECOVERY"
+description = "After suffering from any aerial knockback, press [[L1]] while landing to backdash swiftly.
+
+This will give Hector a moment of invincibility, making it easier to escape from cornering scenarios."
+challenge_beginner = "Quick recover 3 times from Slinger."
+challenge_intermediate = "Quick recover 6 times from Black Crow."
+challenge_advanced = "Quick recover 9 times from Banshee."
+icon = ExtResource("12_vfpqg")
+enemies_beginner = Array[PackedScene]([ExtResource("10_nno0u")])
+enemies_intermediate = Array[PackedScene]([ExtResource("11_mo7a4")])
+enemies_advanced = Array[PackedScene]([ExtResource("7_iv4ef")])
+damage_upon_hit = 10
+hearts_to_collect = 3
+heart_level_multiplier = 2.0
 metadata/_custom_type_script = "uid://cbg6erhltejbh"
 
 [sub_resource type="Resource" id="Resource_j43w6"]
@@ -368,7 +391,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c8rss")
-trainings = Array[ExtResource("2_wsu2r")]([SubResource("Resource_0hsmt"), SubResource("Resource_rbbvo")])
+trainings = Array[ExtResource("2_wsu2r")]([SubResource("Resource_0hsmt"), SubResource("Resource_rbbvo"), SubResource("Resource_jglwd")])
 animation = NodePath("AnimationPlayer")
 training_room = ExtResource("6_ygfm7")
 default_button = NodePath("Buttons/Guard")
@@ -575,7 +598,7 @@ offset_top = 31.0
 offset_right = 763.0
 offset_bottom = 79.0
 theme = SubResource("Theme_ygfm7")
-text = "GUARD"
+text = "QUICK RECOVERY"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Description/Title"]
@@ -594,15 +617,13 @@ theme = SubResource("Theme_iv4ef")
 theme_override_constants/line_separation = 0
 theme_override_constants/outline_size = 8
 bbcode_enabled = true
-text = "Press [img]res://assets/sprites/HUD/Buttons/R1.png[/img] the very instant Hector is going to get hit.
+text = "After suffering from any aerial knockback, press [img]res://assets/sprites/HUD/Buttons/L1.png[/img] while landing to backdash swiftly.
 
-Perfect guarding attacks restores Hector's MP, the currently deployed Innocent Devil's Hearts and all Guard Health.
-It is also possible to block Red Spark attacks this way."
+This will give Hector a moment of invincibility, making it easier to escape from cornering scenarios."
 script = ExtResource("14_0hsmt")
-new_text = "Press [[R1]] the very instant Hector is going to get hit.
+new_text = "After suffering from any aerial knockback, press [[L1]] while landing to backdash swiftly.
 
-Perfect guarding attacks restores Hector's MP, the currently deployed Innocent Devil's Hearts and all Guard Health.
-It is also possible to block Red Spark attacks this way."
+This will give Hector a moment of invincibility, making it easier to escape from cornering scenarios."
 metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -13,7 +13,8 @@ func enter():
 	if player.resume_attack:
 		resumeAttackAnimation.call()
 	starting_from_midair = not player.is_on_floor()
-	Global.screen = Global.ScreenType.EVENT
+	if Global.screen != Global.ScreenType.TRAINING:
+		Global.screen = Global.ScreenType.EVENT
 	player.velocity.x = 0
 	if player.is_on_floor():
 		if animation.current_animation == "run" or animation.current_animation == "run_start":

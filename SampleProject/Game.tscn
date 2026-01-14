@@ -1,4 +1,4 @@
-[gd_scene load_steps=603 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=604 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" uid="uid://bi427jhyxfyx5" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" uid="uid://1vp87s3hhyhn" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -287,6 +287,7 @@
 [ext_resource type="Texture2D" uid="uid://cs842etu7d5ij" path="res://assets/sprites/Items/OtherIcons/16x16/fa864.png" id="225_v5wqb"]
 [ext_resource type="Texture2D" uid="uid://bugsayuiq2m1v" path="res://assets/sprites/Items/OtherIcons/16x16/fa850.png" id="226_krr36"]
 [ext_resource type="AudioStream" uid="uid://b3io8lqsbl3dv" path="res://assets/music/Sarabande.ogg" id="265_mxxml"]
+[ext_resource type="Script" uid="uid://bqfroinwvbphr" path="res://SampleProject/Scripts/total_fade_screen.gd" id="268_2rw2m"]
 [ext_resource type="PackedScene" uid="uid://cr4jksx71segk" path="res://SampleProject/extra_scenes/HUD/shop_screen.tscn" id="271_yrj2d"]
 [ext_resource type="PackedScene" uid="uid://dk6ln3pa1ra6q" path="res://SampleProject/extra_scenes/training_menu.tscn" id="273_66krm"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="274_mxxml"]
@@ -2940,6 +2941,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_fw4b4"]
 resource_name = "fade_in"
@@ -2955,6 +2968,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h86rj"]
@@ -3125,6 +3150,7 @@ z_index = 5
 position = Vector2(30, 400)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+process_callback = 0
 drag_vertical_enabled = true
 drag_vertical_offset = 0.39
 script = ExtResource("3_mx3v0")
@@ -3158,7 +3184,7 @@ grow_vertical = 2
 [node name="MapWindow" type="Panel" parent="UI" node_paths=PackedStringArray("sound", "stage_name")]
 process_mode = 3
 visible = false
-z_index = 10
+z_index = 11
 clip_contents = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -3239,7 +3265,7 @@ custom_max_polyphony = 1
 [node name="FadeScreen" type="TextureRect" parent="UI" node_paths=PackedStringArray("animation")]
 process_mode = 3
 modulate = Color(1, 1, 1, 0)
-z_index = 9
+z_index = 10
 offset_right = 869.0
 offset_bottom = 483.0
 texture = SubResource("GradientTexture1D_xll01")
@@ -3250,6 +3276,15 @@ animation = NodePath("AnimationPlayer")
 libraries = {
 &"": SubResource("AnimationLibrary_h86rj")
 }
+
+[node name="TotalFadeScreen" type="TextureRect" parent="UI"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+z_index = 99
+offset_right = 869.0
+offset_bottom = 483.0
+texture = SubResource("GradientTexture1D_xll01")
+script = ExtResource("268_2rw2m")
 
 [node name="StagePresentation" parent="UI" instance=ExtResource("16_yvhsl")]
 

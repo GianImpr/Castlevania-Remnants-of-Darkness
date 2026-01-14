@@ -28,7 +28,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	hit_target(contact_damage_multiplier, body, hitbox_iframe)
 	
 func _on_punch_hitbox_body_entered(body: Node2D) -> void:
-	hit_target(punch_damage_multiplier, body, hitbox_iframe, punch_chip_damage)
+	hit_target(punch_damage_multiplier, body, hitbox_iframe, punch_chip_damage, false, StaticGlobal.Attribute.HIT, 1, true)
 
 
 func _on_iframe_timer_timeout() -> void:

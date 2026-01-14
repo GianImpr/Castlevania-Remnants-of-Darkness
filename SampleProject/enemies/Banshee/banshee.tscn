@@ -1,24 +1,25 @@
 [gd_scene load_steps=43 format=3 uid="uid://fld271wig6jo"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Banshee/banshee.gd" id="1_id2jf"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_v0220"]
+[ext_resource type="Script" uid="uid://wa5vxu4wyq72" path="res://SampleProject/enemies/Banshee/banshee.gd" id="1_id2jf"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_v0220"]
 [ext_resource type="Texture2D" uid="uid://brw0a3qn8sv5y" path="res://assets/sprites/Enemies/Banshee.png" id="3_b27yv"]
 [ext_resource type="Texture2D" uid="uid://cusjmllcmftpa" path="res://assets/sprites/Enemies/Wave.png" id="4_g3p2b"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_poac2"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="5_mdvdf"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_poac2"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="5_mdvdf"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_bbhj0"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_fxtq4"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="7_2uxbo"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_fxtq4"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_2uxbo"]
 [ext_resource type="AudioStream" uid="uid://cbg35c2yqmxvn" path="res://assets/sounds/Enemies/Banshee/Giggle.wav" id="8_qoqir"]
 [ext_resource type="AudioStream" uid="uid://dmvyv0aprk585" path="res://assets/sounds/Enemies/Banshee/Scream.wav" id="9_rn7tx"]
 [ext_resource type="AudioStream" uid="uid://bedoolkcb41cc" path="res://assets/sounds/Enemies/Banshee/Yelling.wav" id="10_u6su5"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Banshee/BansheePreparing.gd" id="11_hgdrt"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Banshee/BansheeAppearing.gd" id="12_5k3sr"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Banshee/BansheeDying.gd" id="12_7aje0"]
+[ext_resource type="Script" uid="uid://dkywu4ntftoqi" path="res://SampleProject/enemies/Banshee/BansheePreparing.gd" id="11_hgdrt"]
+[ext_resource type="Script" uid="uid://d58pydqryyin" path="res://SampleProject/enemies/Banshee/BansheeAppearing.gd" id="12_5k3sr"]
+[ext_resource type="Script" uid="uid://dgrgnkwnpey4j" path="res://SampleProject/enemies/Banshee/BansheeDying.gd" id="12_7aje0"]
 [ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="12_r3mce"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Banshee/BansheeWaiting.gd" id="12_tn4v6"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Banshee/BansheeMoving.gd" id="13_drvay"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Banshee/BansheeYelling.gd" id="13_eq5j4"]
+[ext_resource type="Script" uid="uid://c0pemu0opkcgq" path="res://SampleProject/enemies/Banshee/BansheeWaiting.gd" id="12_tn4v6"]
+[ext_resource type="Script" uid="uid://w4r0mf64dljx" path="res://SampleProject/enemies/Banshee/BansheeMoving.gd" id="13_drvay"]
+[ext_resource type="Script" uid="uid://ymby7hd8p3ai" path="res://SampleProject/enemies/Banshee/BansheeYelling.gd" id="13_eq5j4"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="13_gg4xx"]
 
 [sub_resource type="Animation" id="Animation_jh40u"]
 length = 0.001
@@ -198,8 +199,8 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_72ceo"]
 _data = {
-"RESET": SubResource("Animation_jh40u"),
-"yelling": SubResource("Animation_xv6yu")
+&"RESET": SubResource("Animation_jh40u"),
+&"yelling": SubResource("Animation_xv6yu")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gne6x"]
@@ -480,14 +481,14 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k50y2"]
 _data = {
-"RESET": SubResource("Animation_6en4j"),
-"appearing": SubResource("Animation_2mips"),
-"dying": SubResource("Animation_c2b4t"),
-"moving": SubResource("Animation_kufrd"),
-"preparing": SubResource("Animation_58kj4"),
-"stop_yelling": SubResource("Animation_lllpw"),
-"waiting": SubResource("Animation_hsgbl"),
-"yelling": SubResource("Animation_jstw7")
+&"RESET": SubResource("Animation_6en4j"),
+&"appearing": SubResource("Animation_2mips"),
+&"dying": SubResource("Animation_c2b4t"),
+&"moving": SubResource("Animation_kufrd"),
+&"preparing": SubResource("Animation_58kj4"),
+&"stop_yelling": SubResource("Animation_lllpw"),
+&"waiting": SubResource("Animation_hsgbl"),
+&"yelling": SubResource("Animation_jstw7")
 }
 
 [sub_resource type="Resource" id="Resource_jmprk"]
@@ -510,61 +511,13 @@ script = ExtResource("6_fxtq4")
 sound_effects = Array[ExtResource("7_2uxbo")]([SubResource("Resource_jmprk"), SubResource("Resource_7oswn"), SubResource("Resource_u35gg")])
 
 [sub_resource type="Curve" id="Curve_rgh0g"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.265753, 2), 0.0, 0.0, 0, 0, Vector2(0.473973, 1.94474), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_i0vwy"]
 offsets = PackedFloat32Array(0, 0.522255, 1)
 colors = PackedColorArray(0.273894, 0.000579494, 0.417897, 1, 0.0752997, 1.33082e-05, 0.330151, 1, 0.0628308, 8.024e-05, 0.157376, 1)
-
-[sub_resource type="GDScript" id="GDScript_mgje4"]
-script/source = "extends Node
-class_name StateMachine
-
-@export var initial_state: State
-@export var player: CharacterBody2D
-@export var animation: AnimationPlayer
-@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
-
-var current_state: State
-var states: Dictionary = {}
-
-func _ready():
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
-			child.player = player
-			child.sound = polyphonic_audio_player
-			child.animation = animation
-		
-	if initial_state:
-		initial_state.enter()
-		current_state = initial_state
-	
-func _process(delta):
-	if current_state:
-		current_state.Update(delta)
-	
-func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.Physics_Update(delta)
-
-func on_child_transition(state, new_state_name):
-	if state != current_state:
-		return
-	
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-		
-	if current_state:
-		current_state.exit()
-		
-	new_state.enter()
-	current_state = new_state
-"
 
 [node name="Banshee" type="CharacterBody2D" node_paths=PackedStringArray("vision", "yelling_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 scale = Vector2(2, 2)
@@ -628,11 +581,10 @@ texture = ExtResource("4_g3p2b")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_72ceo")
+&"": SubResource("AnimationLibrary_72ceo")
 }
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(1, -3.5)
 shape = SubResource("RectangleShape2D_gne6x")
 
@@ -664,7 +616,7 @@ shape = SubResource("CircleShape2D_3eeyl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_k50y2")
+&"": SubResource("AnimationLibrary_k50y2")
 }
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
@@ -695,7 +647,7 @@ color_ramp = SubResource("Gradient_i0vwy")
 [node name="Iframes" type="Timer" parent="."]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
-script = SubResource("GDScript_mgje4")
+script = ExtResource("13_gg4xx")
 initial_state = NodePath("Waiting")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")

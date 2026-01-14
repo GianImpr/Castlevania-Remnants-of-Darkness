@@ -1,14 +1,15 @@
 [gd_scene load_steps=23 format=3 uid="uid://dj1w5vx1ut6l3"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/BlackPanther/black_panther.gd" id="1_gwyl7"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_qe57j"]
+[ext_resource type="Script" uid="uid://c0ga2jqionbg4" path="res://SampleProject/enemies/BlackPanther/black_panther.gd" id="1_gwyl7"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_qe57j"]
 [ext_resource type="Texture2D" uid="uid://drjj5v6ma542g" path="res://assets/sprites/Enemies/BlackPanther.png" id="3_uwhgh"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_yjn0g"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="5_1t0ht"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_yjn0g"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="5_1t0ht"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_jgnbr"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BlackPanther/BlackPantherIdle.gd" id="7_y0y6k"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BlackPanther/BlackPantherRunning.gd" id="8_aalk1"]
-[ext_resource type="Script" path="res://SampleProject/enemies/BlackPanther/BlackPantherDying.gd" id="9_2bno5"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="7_4rg5t"]
+[ext_resource type="Script" uid="uid://bh07sfmrok4hr" path="res://SampleProject/enemies/BlackPanther/BlackPantherIdle.gd" id="7_y0y6k"]
+[ext_resource type="Script" uid="uid://y7bh1nnqnbuu" path="res://SampleProject/enemies/BlackPanther/BlackPantherRunning.gd" id="8_aalk1"]
+[ext_resource type="Script" uid="uid://c7cekgg3lb52y" path="res://SampleProject/enemies/BlackPanther/BlackPantherDying.gd" id="9_2bno5"]
 
 [sub_resource type="Animation" id="Animation_5yi8g"]
 length = 0.001
@@ -236,10 +237,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sbpo7"]
 _data = {
-"RESET": SubResource("Animation_5yi8g"),
-"dying": SubResource("Animation_dky6d"),
-"idle": SubResource("Animation_qwnuh"),
-"running": SubResource("Animation_xoe3a")
+&"RESET": SubResource("Animation_5yi8g"),
+&"dying": SubResource("Animation_dky6d"),
+&"idle": SubResource("Animation_qwnuh"),
+&"running": SubResource("Animation_xoe3a")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0m68m"]
@@ -252,7 +253,7 @@ size = Vector2(26, 8)
 size = Vector2(148.5, 22)
 
 [sub_resource type="Curve" id="Curve_v1yfl"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.265753, 2), 0.0, 0.0, 0, 0, Vector2(0.473973, 1.94474), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
@@ -260,56 +261,8 @@ point_count = 4
 offsets = PackedFloat32Array(0, 0.522255, 1)
 colors = PackedColorArray(0.273894, 0.000579494, 0.417897, 1, 0.0752997, 1.33082e-05, 0.330151, 1, 0.0628308, 8.024e-05, 0.157376, 1)
 
-[sub_resource type="GDScript" id="GDScript_usstj"]
-script/source = "extends Node
-class_name StateMachine
-
-@export var initial_state: State
-@export var player: CharacterBody2D
-@export var animation: AnimationPlayer
-@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
-
-var current_state: State
-var states: Dictionary = {}
-
-func _ready():
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
-			child.player = player
-			child.sound = polyphonic_audio_player
-			child.animation = animation
-		
-	if initial_state:
-		initial_state.enter()
-		current_state = initial_state
-	
-func _process(delta):
-	if current_state:
-		current_state.Update(delta)
-	
-func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.Physics_Update(delta)
-
-func on_child_transition(state, new_state_name):
-	if state != current_state:
-		return
-	
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-		
-	if current_state:
-		current_state.exit()
-		
-	new_state.enter()
-	current_state = new_state
-"
-
 [sub_resource type="Curve" id="Curve_ptads"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -350,7 +303,7 @@ hframes = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_sbpo7")
+&"": SubResource("AnimationLibrary_sbpo7")
 }
 
 [node name="Hurtbox" type="CollisionShape2D" parent="."]
@@ -412,7 +365,7 @@ scale_amount_curve = SubResource("Curve_v1yfl")
 color_ramp = SubResource("Gradient_rf5hk")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
-script = SubResource("GDScript_usstj")
+script = ExtResource("7_4rg5t")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")

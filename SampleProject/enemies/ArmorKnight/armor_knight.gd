@@ -24,7 +24,7 @@ func _on_spear_body_entered(body: Node2D) -> void:
 	
 
 func _on_special_body_entered(body: Node2D) -> void:
-	hit_target(3, body, special, 10, true)
+	hit_target(3, body, special, 10, true, StaticGlobal.Attribute.HIT, 1, true)
 
 
 func _on_spear_up_down_body_entered(body: Node2D) -> void:

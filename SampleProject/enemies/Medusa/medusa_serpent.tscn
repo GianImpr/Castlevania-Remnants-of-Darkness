@@ -1,14 +1,15 @@
 [gd_scene load_steps=19 format=3 uid="uid://dy2anuk68qs8g"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_l3xmh"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/medusa_serpent.gd" id="2_wtv1t"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_l3xmh"]
+[ext_resource type="Script" uid="uid://dscdguow3uvm5" path="res://SampleProject/enemies/Medusa/medusa_serpent.gd" id="2_wtv1t"]
 [ext_resource type="Texture2D" uid="uid://dvghfh2h0upfm" path="res://assets/sprites/Enemies/Medusa/Serpent.png" id="3_pb8yn"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_i7qnu"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="5_sjc67"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_i7qnu"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="5_sjc67"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_njjgo"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/SerpentFalling.gd" id="7_vxsd2"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/SerpentWalking.gd" id="8_ctkfy"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Medusa/SerpentDying.gd" id="9_j1h7a"]
+[ext_resource type="Script" uid="uid://cs1ail8x1046t" path="res://SampleProject/enemies/Medusa/SerpentFalling.gd" id="7_vxsd2"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="7_x4hjd"]
+[ext_resource type="Script" uid="uid://b4ceol4mg0f1y" path="res://SampleProject/enemies/Medusa/SerpentWalking.gd" id="8_ctkfy"]
+[ext_resource type="Script" uid="uid://c2vuybyj7bnk" path="res://SampleProject/enemies/Medusa/SerpentDying.gd" id="9_j1h7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k31s3"]
 size = Vector2(16.5, 16)
@@ -17,60 +18,12 @@ size = Vector2(16.5, 16)
 size = Vector2(4.5, 15)
 
 [sub_resource type="Curve" id="Curve_va3vl"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_5pg3w"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GDScript" id="GDScript_326py"]
-script/source = "extends Node
-class_name StateMachine
-
-@export var initial_state: State
-@export var player: CharacterBody2D
-@export var animation: AnimationPlayer
-@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
-
-var current_state: State
-var states: Dictionary = {}
-
-func _ready():
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
-			child.player = player
-			child.sound = polyphonic_audio_player
-			child.animation = animation
-		
-	if initial_state:
-		initial_state.enter()
-		current_state = initial_state
-	
-func _process(delta):
-	if current_state:
-		current_state.Update(delta)
-	
-func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.Physics_Update(delta)
-
-func on_child_transition(state, new_state_name):
-	if state != current_state:
-		return
-	
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-		
-	if current_state:
-		current_state.exit()
-		
-	new_state.enter()
-	current_state = new_state
-"
 
 [sub_resource type="Animation" id="Animation_sn7ju"]
 length = 0.001
@@ -125,9 +78,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mxhun"]
 _data = {
-"RESET": SubResource("Animation_sn7ju"),
-"falling": SubResource("Animation_36paq"),
-"walking": SubResource("Animation_v6umt")
+&"RESET": SubResource("Animation_sn7ju"),
+&"falling": SubResource("Animation_36paq"),
+&"walking": SubResource("Animation_v6umt")
 }
 
 [node name="MedusaSerpent" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "blood_particles")]
@@ -196,7 +149,7 @@ script = ExtResource("5_sjc67")
 damage_node = ExtResource("6_njjgo")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
-script = SubResource("GDScript_326py")
+script = ExtResource("7_x4hjd")
 initial_state = NodePath("Falling")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
@@ -214,7 +167,7 @@ hitbox = NodePath("../../Hitbox/HitboxShape")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_mxhun")
+&"": SubResource("AnimationLibrary_mxhun")
 }
 
 [node name="Collision" type="RayCast2D" parent="."]

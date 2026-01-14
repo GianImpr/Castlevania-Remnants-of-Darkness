@@ -1,19 +1,20 @@
 [gd_scene load_steps=32 format=3 uid="uid://bwr5frmmnkw6y"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/FloatingSkull/floating_skull.gd" id="1_kvchb"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_lg682"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_sex3x"]
+[ext_resource type="Script" uid="uid://rsc2cbayxbor" path="res://SampleProject/enemies/FloatingSkull/floating_skull.gd" id="1_kvchb"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_lg682"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_sex3x"]
 [ext_resource type="Texture2D" uid="uid://drqloa2gpqrc5" path="res://assets/sprites/Enemies/FloatingSkull.png" id="3_iffdl"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="3_roqve"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="3_roqve"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="4_ggdmt"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_ptwk6"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_3kdk6"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_ptwk6"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_3kdk6"]
 [ext_resource type="AudioStream" uid="uid://b0dag7jv7b3ou" path="res://assets/sounds/Enemies/Ghost/GhostDying.MP3" id="7_rdw46"]
 [ext_resource type="AudioStream" uid="uid://bvvxhtgcuuq0n" path="res://assets/sounds/Enemies/FloatingSkull/Bite.MP3" id="8_mymr3"]
-[ext_resource type="Script" path="res://SampleProject/enemies/FloatingSkull/FloatingSkullWaiting.gd" id="10_6c5sr"]
-[ext_resource type="Script" path="res://SampleProject/enemies/FloatingSkull/FloatingSkullIdle.gd" id="11_ml3qo"]
-[ext_resource type="Script" path="res://SampleProject/enemies/FloatingSkull/FloatingSkullMoving.gd" id="12_76ndk"]
-[ext_resource type="Script" path="res://SampleProject/enemies/FloatingSkull/FloatingSkullDying.gd" id="12_xy5nu"]
+[ext_resource type="Script" uid="uid://bi5e65uv2vpqh" path="res://SampleProject/enemies/FloatingSkull/FloatingSkullWaiting.gd" id="10_6c5sr"]
+[ext_resource type="Script" uid="uid://dhtjgxsgfs8xn" path="res://SampleProject/enemies/FloatingSkull/FloatingSkullIdle.gd" id="11_ml3qo"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="11_pnrij"]
+[ext_resource type="Script" uid="uid://db2wqjt154bsm" path="res://SampleProject/enemies/FloatingSkull/FloatingSkullMoving.gd" id="12_76ndk"]
+[ext_resource type="Script" uid="uid://w75bjj8f0umm" path="res://SampleProject/enemies/FloatingSkull/FloatingSkullDying.gd" id="12_xy5nu"]
 
 [sub_resource type="Animation" id="Animation_ah6in"]
 length = 0.001
@@ -73,8 +74,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yjyfq"]
 _data = {
-"RESET": SubResource("Animation_ah6in"),
-"glow": SubResource("Animation_3a4mp")
+&"RESET": SubResource("Animation_ah6in"),
+&"glow": SubResource("Animation_3a4mp")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxu3u"]
@@ -101,60 +102,12 @@ script = ExtResource("5_ptwk6")
 sound_effects = Array[ExtResource("6_3kdk6")]([SubResource("Resource_i6pb5"), SubResource("Resource_28ry8")])
 
 [sub_resource type="Curve" id="Curve_va3vl"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_5pg3w"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GDScript" id="GDScript_326py"]
-script/source = "extends Node
-class_name StateMachine
-
-@export var initial_state: State
-@export var player: CharacterBody2D
-@export var animation: AnimationPlayer
-@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
-
-var current_state: State
-var states: Dictionary = {}
-
-func _ready():
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
-			child.player = player
-			child.sound = polyphonic_audio_player
-			child.animation = animation
-		
-	if initial_state:
-		initial_state.enter()
-		current_state = initial_state
-	
-func _process(delta):
-	if current_state:
-		current_state.Update(delta)
-	
-func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.Physics_Update(delta)
-
-func on_child_transition(state, new_state_name):
-	if state != current_state:
-		return
-	
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-		
-	if current_state:
-		current_state.exit()
-		
-	new_state.enter()
-	current_state = new_state
-"
 
 [sub_resource type="Animation" id="Animation_4pba7"]
 length = 0.001
@@ -363,10 +316,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_01it4"]
 _data = {
-"RESET": SubResource("Animation_4pba7"),
-"biting": SubResource("Animation_gaafj"),
-"dying": SubResource("Animation_ek2hu"),
-"idle": SubResource("Animation_rktta")
+&"RESET": SubResource("Animation_4pba7"),
+&"biting": SubResource("Animation_gaafj"),
+&"dying": SubResource("Animation_ek2hu"),
+&"idle": SubResource("Animation_rktta")
 }
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
@@ -410,7 +363,7 @@ hframes = 3
 
 [node name="AfterimageAnimation" type="AnimationPlayer" parent="Sprite2D/Afterimage"]
 libraries = {
-"": SubResource("AnimationLibrary_yjyfq")
+&"": SubResource("AnimationLibrary_yjyfq")
 }
 autoplay = "glow"
 
@@ -466,7 +419,7 @@ script = ExtResource("3_roqve")
 damage_node = ExtResource("4_ggdmt")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
-script = SubResource("GDScript_326py")
+script = ExtResource("11_pnrij")
 initial_state = NodePath("Waiting")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
@@ -490,6 +443,6 @@ script = ExtResource("12_xy5nu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_01it4")
+&"": SubResource("AnimationLibrary_01it4")
 }
 speed_scale = 2.0

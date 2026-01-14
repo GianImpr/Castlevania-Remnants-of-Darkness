@@ -22,6 +22,5 @@ func _physics_process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	hit_target(1, body, hitbox_iframe, 0, false, Global.Attribute.HIT)
 
-
 func _on_timer_timeout() -> void:
 	hitbox_iframe.set_deferred("monitoring", true)

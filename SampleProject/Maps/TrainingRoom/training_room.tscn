@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://b15fvv131wq0u"]
+[gd_scene load_steps=15 format=3 uid="uid://b15fvv131wq0u"]
 
 [ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_r6isx"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_xkcj3"]
 [ext_resource type="Texture2D" uid="uid://dhbbcjcunoxkh" path="res://assets/sprites/Tiles/TrainingTiles.png" id="3_onwft"]
 [ext_resource type="Texture2D" uid="uid://dxeec21cts246" path="res://assets/sprites/Tiles/TrainingRoom.png" id="4_xkcj3"]
 [ext_resource type="Script" uid="uid://d2c6etwtah5dx" path="res://SampleProject/Scripts/Event/training_settings.gd" id="5_onwft"]
+[ext_resource type="PackedScene" uid="uid://pmhfi7gv5sxe" path="res://SampleProject/extra_scenes/spawn_enemy.tscn" id="6_f6bll"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f6bll"]
 texture = ExtResource("3_onwft")
@@ -978,25 +979,6 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_f6bll")
 
-[sub_resource type="Gradient" id="Gradient_f6bll"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lh1pq"]
-gradient = SubResource("Gradient_f6bll")
-
-[sub_resource type="Environment" id="Environment_r6isx"]
-background_mode = 3
-ambient_light_energy = 4.09
-glow_enabled = true
-glow_levels/2 = 1.0
-glow_levels/4 = 1.0
-glow_levels/6 = 1.0
-glow_levels/7 = 1.0
-glow_blend_mode = 1
-fog_mode = 1
-fog_density = 1.0
-adjustment_enabled = true
-
 [sub_resource type="Curve" id="Curve_r6isx"]
 _limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0.003937006, 0), 0.0, 0.0, 0, 0, Vector2(0.503937, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -1018,10 +1000,12 @@ normal = Vector2(0, 1)
 
 [node name="TrainingRoom" type="Node2D"]
 script = ExtResource("1_r6isx")
-stage_music = "training"
+stage_music = "encounter"
 change_music = true
-camera_limit_right = 864
-camera_limit_bottom = 480
+apply_limits = true
+camera_limit_left = 14
+camera_limit_right = 848
+camera_limit_bottom = 448
 metadata/_custom_type_script = "uid://cra3c457tg2j7"
 
 [node name="RoomInstance" parent="." instance=ExtResource("2_xkcj3")]
@@ -1030,17 +1014,9 @@ metadata/_custom_type_script = "uid://cra3c457tg2j7"
 self_modulate = Color(1, 1, 1, 0.69803923)
 tile_set = SubResource("TileSet_lh1pq")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(428.50003, 183.99998)
-scale = Vector2(5.6718755, 7.7499995)
-texture = SubResource("GradientTexture2D_lh1pq")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-process_mode = 3
-environment = SubResource("Environment_r6isx")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.5294118, 0.654902, 1, 1)
+show_behind_parent = true
 position = Vector2(432, 16)
 scale = Vector2(2, 2)
 texture = ExtResource("4_xkcj3")
@@ -1057,9 +1033,11 @@ initial_velocity_max = 30.0
 scale_amount_min = 2.0
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_r6isx")
+color = Color(1.8247963, 1.8247963, 1.8247963, 1)
 color_ramp = SubResource("Gradient_xkcj3")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(356, 435)
@@ -1081,5 +1059,14 @@ shape = SubResource("WorldBoundaryShape2D_lh1pq")
 position = Vector2(411, 0)
 shape = SubResource("WorldBoundaryShape2D_lh1pq")
 
-[node name="TrainingSettings" type="Node" parent="."]
+[node name="TrainingSettings" type="Node" parent="." node_paths=PackedStringArray("enemy_spawner")]
 script = ExtResource("5_onwft")
+enemy_spawner = NodePath("../SpawnEnemy")
+
+[node name="SpawnEnemy" parent="." instance=ExtResource("6_f6bll")]
+process_mode = 4
+position = Vector2(663, 434)
+spawn_instantly = true
+automatic_offset = true
+enemy_count = 1
+max_at_once = 1

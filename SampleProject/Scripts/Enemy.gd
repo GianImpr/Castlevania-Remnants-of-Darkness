@@ -34,7 +34,7 @@ func remove_glow_if_glowing():
 	if sprite.self_modulate != Color(1,1,1):
 		sprite.self_modulate = Color(min(sprite.self_modulate.r+0.12, 1), min(sprite.self_modulate.g+0.12, 1), min(sprite.self_modulate.b+0.12, 1))
 
-func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool = false, attribute: Global.Attribute = Global.Attribute.HIT) -> int:
+func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool = false, attribute: Global.Attribute = Global.Attribute.HIT, knockback: bool = false) -> int:
 	var damage = max((stats.ATK - body.stats.Stats["DEF"]/2)*multiplier, 1)
 	var damage_with_chip = damage + chip_damage
 	const STONE_DAMAGE_MULTIPLIER: float = 2
@@ -44,9 +44,13 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 			body.stats.Stats["MP"] = min(body.stats.Stats["MMP"], body.stats.Stats["MP"]+floor(damage/10)+10*(int(guard_break)+2))
 			body.heal_innocent(floor(damage/10)+1)
 			body.stats.Stats["Guard"] = 3
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.PERFECT_GUARD)
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
 			return 0
-		if damage_with_chip < body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1 and not guard_break:
-			damage = 0
+		if (damage_with_chip < body.stats.Stats["MHP"]/10 or TrainingSettings.cur_challenge == TrainingMode.Training.GUARD) and body.stats.Stats["Guard"] > 1 and not guard_break:
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
+			body.stats.Stats["Guard"] -= 1
+			return 0
 		elif damage_with_chip >= body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1 and not guard_break:
 			damage = min(damage * 0.1 + chip_damage, body.stats.Stats["HP"]-1)
 		elif body.stats.Stats["Guard"] == 1 or guard_break:
@@ -56,6 +60,7 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 		else:
 			body.stats.Stats["Guard"] = 0
 	else:
+		body.knockback = knockback
 		body.applyHitEffect(attribute)
 		
 	if not body.isGuarding() or body.stats.Stats["Guard"] == 0:
@@ -94,12 +99,14 @@ func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float
 		resetHitbox(attack_hitbox)
 		iframes_timer.queue_free()
 
-func hit_target(multiplier: float, body, attack_hitbox = hitbox_iframe, chip_damage: int = 0, guard_break: bool = false, attribute: Global.Attribute = Global.Attribute.HIT, rehit_time: float = 1):
+func hit_target(multiplier: float, body, attack_hitbox = hitbox_iframe, chip_damage: int = 0, guard_break: bool = false, attribute: Global.Attribute = Global.Attribute.HIT, rehit_time: float = 1, knockback: bool = false):
 	if not body_hitbox_on_cooldown or attack_hitbox != hitbox_iframe:
 		body_hitbox_on_cooldown = true
 		get_tree().create_timer(INVULNERABILITY_DURATION).timeout.connect(resetInvulnerability)
-		var damage = calculate_damage(body, multiplier, chip_damage, guard_break, attribute)
+		var damage = calculate_damage(body, multiplier, chip_damage, guard_break, attribute, knockback)
 		apply_damage(body, damage, attack_hitbox, rehit_time)
+	if "facing_position" in self:
+		body.sprite.flip_h = self.facing_position == 1
 
 func resetHitbox(attack_hitbox: Area2D) -> void:
 	if stats.HP > 0:

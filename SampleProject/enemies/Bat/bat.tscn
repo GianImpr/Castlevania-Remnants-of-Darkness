@@ -1,18 +1,19 @@
 [gd_scene load_steps=28 format=3 uid="uid://126k0dgwv4i3"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Bat/bat.gd" id="1_t4pbr"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_sndu6"]
+[ext_resource type="Script" uid="uid://7btjpwv430w2" path="res://SampleProject/enemies/Bat/bat.gd" id="1_t4pbr"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_sndu6"]
 [ext_resource type="Texture2D" uid="uid://b0wy844sn8xoh" path="res://assets/sprites/Enemies/Bat.png" id="3_bjahf"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="4_1n0re"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="4_81pg3"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Bat/BatIdle.gd" id="5_bdtj8"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Bat/BatFlying.gd" id="6_5b8ur"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/damage_location.gd" id="6_fwwmo"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Bat/BatWaking.gd" id="6_vdxb1"]
-[ext_resource type="Script" path="res://SampleProject/enemies/Bat/BatDying.gd" id="7_nruu7"]
+[ext_resource type="Script" uid="uid://1nh4kjkyd1h2" path="res://SampleProject/enemies/Bat/BatIdle.gd" id="5_bdtj8"]
+[ext_resource type="Script" uid="uid://xgqtfc0xtkdp" path="res://SampleProject/enemies/Bat/BatFlying.gd" id="6_5b8ur"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="6_fwwmo"]
+[ext_resource type="Script" uid="uid://beboteb2odw58" path="res://SampleProject/enemies/Bat/BatWaking.gd" id="6_vdxb1"]
+[ext_resource type="Script" uid="uid://btk60fl0qlu8k" path="res://SampleProject/enemies/Bat/BatDying.gd" id="7_nruu7"]
 [ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="8_hh4ex"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="10_nrqdg"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="12_i40f0"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="13_c63lj"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="10_nrqdg"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="12_i40f0"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="13_c63lj"]
 [ext_resource type="AudioStream" uid="uid://c2ubqq1vrk4vi" path="res://assets/sounds/Enemies/Bat/Bat.wav" id="14_gdk68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gki5g"]
@@ -91,62 +92,14 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pqyyj"]
 _data = {
-"RESET": SubResource("Animation_64vy7"),
-"flying": SubResource("Animation_nvr71"),
-"idle": SubResource("Animation_d8psw"),
-"waking": SubResource("Animation_x26go")
+&"RESET": SubResource("Animation_64vy7"),
+&"flying": SubResource("Animation_nvr71"),
+&"idle": SubResource("Animation_d8psw"),
+&"waking": SubResource("Animation_x26go")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rxwe6"]
 radius = 354.683
-
-[sub_resource type="GDScript" id="GDScript_vowgc"]
-script/source = "extends Node
-class_name StateMachine
-
-@export var initial_state: State
-@export var player: CharacterBody2D
-@export var animation: AnimationPlayer
-@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
-
-var current_state: State
-var states: Dictionary = {}
-
-func _ready():
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
-			child.player = player
-			child.sound = polyphonic_audio_player
-			child.animation = animation
-		
-	if initial_state:
-		initial_state.enter()
-		current_state = initial_state
-	
-func _process(delta):
-	if current_state:
-		current_state.Update(delta)
-	
-func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.Physics_Update(delta)
-
-func on_child_transition(state, new_state_name):
-	if state != current_state:
-		return
-	
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-		
-	if current_state:
-		current_state.exit()
-		
-	new_state.enter()
-	current_state = new_state
-"
 
 [sub_resource type="Resource" id="Resource_o1e8j"]
 script = ExtResource("13_c63lj")
@@ -158,7 +111,7 @@ script = ExtResource("12_i40f0")
 sound_effects = Array[ExtResource("13_c63lj")]([SubResource("Resource_o1e8j")])
 
 [sub_resource type="Curve" id="Curve_qkx2p"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -211,7 +164,7 @@ shape = SubResource("RectangleShape2D_i8mfi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_pqyyj")
+&"": SubResource("AnimationLibrary_pqyyj")
 }
 speed_scale = 2.0
 
@@ -224,7 +177,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_rxwe6")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
-script = SubResource("GDScript_vowgc")
+script = ExtResource("4_1n0re")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")

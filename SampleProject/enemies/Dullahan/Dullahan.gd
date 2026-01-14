@@ -65,11 +65,11 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 
 func _on_thrust_body_entered(body: Node2D) -> void:
-	hit_target(1.5, body, thrust_hitbox, 5)
+	hit_target(1.5, body, thrust_hitbox, 5, false, StaticGlobal.Attribute.HIT, 1, true)
 
 
 func _on_shockwave_body_entered(body: Node2D) -> void:
-	hit_target(3, body, shockwave_hitbox, 30, true, Global.Attribute.ICE)
+	hit_target(3, body, shockwave_hitbox, 30, true, Global.Attribute.ICE, 1, true)
 
 func spawnSpikes() -> void:
 	var spike = spike_scene.instantiate()

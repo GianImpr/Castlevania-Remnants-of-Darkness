@@ -16,11 +16,12 @@ func Physics_Update(delta: float):
 	can_fall(false)
 	can_die()
 	
-	if InputBuffer.is_action_press_buffered("backdash") and player.is_hurt:
+	if InputBuffer.is_action_press_buffered("backdash") and player.is_hurt and (Global.screen != Global.ScreenType.TRAINING or player.stats.Stats["HP"] > 0):
+		TrainingSettings.spawnTrainingHeart(TrainingMode.Training.QUICK_RECOVER)
 		Transitioned.emit(self, "backdash")
 		player.is_hurt = false
 		applyMercyInvincibility.call(player.SHORT_MERCY_INVINCIBILITY_DURATION)
 
-	if not animation.is_playing():
+	if not animation.is_playing() and (Global.screen != Global.ScreenType.TRAINING or player.stats.Stats["HP"] > 0):
 		Transitioned.emit(self, "crouch")
 		player.is_hurt = false

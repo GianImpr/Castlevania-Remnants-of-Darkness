@@ -711,6 +711,7 @@ scale = Vector2(0.44, 0.44)
 texture = ExtResource("8_asxhj")
 
 [node name="IDBody" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -24.0
 offset_top = 72.0
@@ -772,7 +773,74 @@ libraries = {
 &"": SubResource("AnimationLibrary_dqsci")
 }
 
+[node name="Training" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TrainingHearts" type="TextureRect" parent="Training"]
+layout_mode = 0
+offset_left = -77.14283
+offset_top = 58.57142
+offset_right = 108.85688
+offset_bottom = 100.57072
+scale = Vector2(2, 2)
+
+[node name="TextureRect2" type="TextureRect" parent="Training/TrainingHearts"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.027
+offset_left = 60.7142
+offset_top = 20.0
+offset_right = 95.6922
+offset_bottom = 60.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("12_ao7p4")
+
+[node name="TrainingNumber" type="HBoxContainer" parent="Training"]
+layout_mode = 0
+offset_left = 74.28571
+offset_top = 95.714294
+offset_right = 107.28568
+offset_bottom = 111.714294
+scale = Vector2(1.6, 1.6)
+theme_override_constants/separation = 1
+alignment = 2
+script = ExtResource("4_iqdk1")
+
+[node name="TextureRect" type="TextureRect" parent="Training/TrainingNumber"]
+custom_minimum_size = Vector2(9, 1.4)
+layout_mode = 2
+texture = ExtResource("11_sa4fn")
+
+[node name="TextureRect2" type="TextureRect" parent="Training/TrainingNumber"]
+custom_minimum_size = Vector2(9, 0)
+layout_mode = 2
+texture = ExtResource("12_k0ta4")
+
+[node name="TrainingMaxNumber" type="HBoxContainer" parent="Training"]
+layout_mode = 0
+offset_left = 121.42853
+offset_top = 95.714294
+offset_right = 154.4285
+offset_bottom = 111.714294
+scale = Vector2(1.6, 1.6)
+theme_override_constants/separation = 1
+alignment = 2
+script = ExtResource("4_iqdk1")
+
+[node name="TextureRect" type="TextureRect" parent="Training/TrainingMaxNumber"]
+custom_minimum_size = Vector2(9, 1.4)
+layout_mode = 2
+texture = ExtResource("11_sa4fn")
+
+[node name="TextureRect2" type="TextureRect" parent="Training/TrainingMaxNumber"]
+custom_minimum_size = Vector2(9, 0)
+layout_mode = 2
+texture = ExtResource("12_k0ta4")
+
 [node name="ImageNumber" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 245.714
 offset_top = 107.143

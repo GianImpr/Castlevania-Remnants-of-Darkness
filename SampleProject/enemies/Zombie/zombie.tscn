@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dsmo5e5rvclof" path="res://SampleProject/enemies/Zombie/zombie.gd" id="1_vknq3"]
 [ext_resource type="Texture2D" uid="uid://bfbhnh66puau2" path="res://assets/sprites/Enemies/Zombie.png" id="2_5kk3e"]
 [ext_resource type="Script" uid="uid://d1qe4qctu0l3h" path="res://SampleProject/enemies/Zombie/ZombieDying.gd" id="4_grrpx"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="4_xkkvv"]
 [ext_resource type="Script" uid="uid://b8fvjbxppd6tg" path="res://SampleProject/enemies/Zombie/ZombieSpawning.gd" id="5_dguli"]
 [ext_resource type="PackedScene" uid="uid://chsi373nippdo" path="res://SampleProject/extra_scenes/polyphonic_audio_player.tscn" id="6_60l16"]
 [ext_resource type="Script" uid="uid://d0m57kp4ey2gc" path="res://SampleProject/enemies/Zombie/ZombieMoving.gd" id="6_de3rd"]
@@ -190,54 +191,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2c72"]
 size = Vector2(25, 46)
 
-[sub_resource type="GDScript" id="GDScript_dnhlh"]
-script/source = "extends Node
-class_name StateMachine
-
-@export var initial_state: State
-@export var player: CharacterBody2D
-@export var animation: AnimationPlayer
-@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
-
-var current_state: State
-var states: Dictionary = {}
-
-func _ready():
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
-			child.player = player
-			child.sound = polyphonic_audio_player
-			child.animation = animation
-		
-	if initial_state:
-		initial_state.enter()
-		current_state = initial_state
-	
-func _process(delta):
-	if current_state:
-		current_state.Update(delta)
-	
-func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.Physics_Update(delta)
-
-func on_child_transition(state, new_state_name):
-	if state != current_state:
-		return
-	
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-		
-	if current_state:
-		current_state.exit()
-		
-	new_state.enter()
-	current_state = new_state
-"
-
 [sub_resource type="Resource" id="Resource_hltme"]
 script = ExtResource("8_ile2y")
 Tag = "jump"
@@ -301,7 +254,7 @@ position = Vector2(-4.5, 1)
 shape = SubResource("RectangleShape2D_o2c72")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
-script = SubResource("GDScript_dnhlh")
+script = ExtResource("4_xkkvv")
 initial_state = NodePath("Spawning")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")

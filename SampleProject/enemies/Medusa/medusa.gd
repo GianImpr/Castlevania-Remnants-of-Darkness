@@ -54,7 +54,7 @@ func _on_laser_body_entered(body: Node2D) -> void:
 	hit_target(laser_damage_multiplier, body, laser_hitbox, laser_chip_damage, false, Global.Attribute.STONE)
 
 func _on_dash_body_entered(body: Node2D) -> void:
-	hit_target(dash_damage_multiplier, body, dash_hitbox, dash_chip_damage, true, Global.Attribute.SLASH)
+	hit_target(dash_damage_multiplier, body, dash_hitbox, dash_chip_damage, true, Global.Attribute.SLASH, 1, true)
 
 
 func _on_iframe_timer_timeout() -> void:

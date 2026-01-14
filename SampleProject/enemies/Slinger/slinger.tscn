@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cqnbivel1hcx6" path="res://assets/sounds/Enemies/Skeleton/SkeletonKill.MP3" id="7_okkd4"]
 [ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="8_pbqbx"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="9_hi8yh"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="10_i2nqd"]
 [ext_resource type="Script" uid="uid://dujhtgjrd3xtt" path="res://SampleProject/enemies/Skeleton/SkeletonIdle.gd" id="10_xt7jb"]
 [ext_resource type="Script" uid="uid://2tv06s4h0u7b" path="res://SampleProject/enemies/Skeleton/SkeletonMoving.gd" id="11_dmtn2"]
 [ext_resource type="Script" uid="uid://bnvv6kcwvqav2" path="res://SampleProject/enemies/Skeleton/SkeletonAttack.gd" id="12_2jss4"]
@@ -58,54 +59,6 @@ sound_effects = Array[ExtResource("6_0b0j7")]([SubResource("Resource_tqpj4"), Su
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63bul"]
 size = Vector2(17.8261, 33.0435)
-
-[sub_resource type="GDScript" id="GDScript_8q4jf"]
-script/source = "extends Node
-class_name StateMachine
-
-@export var initial_state: State
-@export var player: CharacterBody2D
-@export var animation: AnimationPlayer
-@onready var polyphonic_audio_player = $\"../PolyphonicAudioPlayer\"
-
-var current_state: State
-var states: Dictionary = {}
-
-func _ready():
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
-			child.player = player
-			child.sound = polyphonic_audio_player
-			child.animation = animation
-		
-	if initial_state:
-		initial_state.enter()
-		current_state = initial_state
-	
-func _process(delta):
-	if current_state:
-		current_state.Update(delta)
-	
-func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.Physics_Update(delta)
-
-func on_child_transition(state, new_state_name):
-	if state != current_state:
-		return
-	
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-		
-	if current_state:
-		current_state.exit()
-		
-	new_state.enter()
-	current_state = new_state
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qovo5"]
 size = Vector2(418.913, 126.522)
@@ -260,7 +213,7 @@ shape = SubResource("RectangleShape2D_63bul")
 [node name="Timer" type="Timer" parent="Area2D"]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
-script = SubResource("GDScript_8q4jf")
+script = ExtResource("10_i2nqd")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../SlingerAnim")

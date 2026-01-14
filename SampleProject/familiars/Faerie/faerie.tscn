@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://1r4g306ipyuc" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieRun.gd" id="5_wubor"]
 [ext_resource type="Script" uid="uid://cowhj5b4jdb44" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieStopMoving.gd" id="6_nci8y"]
 [ext_resource type="Script" uid="uid://c3hrpte6hnnmh" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieHealing.gd" id="7_8u2gj"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="8_6o0ma"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_kyyu2"]
 [ext_resource type="Script" uid="uid://7jgukldlniqq" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFreeze.gd" id="8_v045c"]
 [ext_resource type="Script" uid="uid://blognkorla2r8" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFunnyWall.gd" id="9_0ixtq"]
@@ -362,54 +363,6 @@ _data = {
 &"running": SubResource("Animation_ftk4c")
 }
 
-[sub_resource type="GDScript" id="GDScript_x8twt"]
-script/source = "extends Node
-class_name StateMachine
-
-@export var initial_state: State
-@export var player: CharacterBody2D
-@export var animation: AnimationPlayer
-@onready var polyphonic_audio_player = $\"../PolyphonicAudioPlayer\"
-
-var current_state: State
-var states: Dictionary = {}
-
-func _ready():
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
-			child.player = player
-			child.sound = polyphonic_audio_player
-			child.animation = animation
-		
-	if initial_state:
-		initial_state.enter()
-		current_state = initial_state
-	
-func _process(delta):
-	if current_state:
-		current_state.Update(delta)
-	
-func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.Physics_Update(delta)
-
-func on_child_transition(state, new_state_name):
-	if state != current_state:
-		return
-	
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-		
-	if current_state:
-		current_state.exit()
-		
-	new_state.enter()
-	current_state = new_state
-"
-
 [sub_resource type="Resource" id="Resource_aqksd"]
 script = ExtResource("9_7ueiy")
 Tag = "heal1"
@@ -615,7 +568,7 @@ libraries = {
 speed_scale = 5.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
-script = SubResource("GDScript_x8twt")
+script = ExtResource("8_6o0ma")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")

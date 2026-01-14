@@ -63,6 +63,7 @@ var can_jump_cancel: bool = true
 var can_crouch_attack: bool = true
 var resume_attack: bool = false
 var is_hurt: bool = false
+var knockback: bool = false
 var guarding: bool = false
 var unlocked_magic: bool = false
 var enabled_magic: bool = false
@@ -116,7 +117,7 @@ func _input(event: InputEvent) -> void:
 	
 func _process(delta: float) -> void:
 	#If harmed, become invulnerable for a while
-	set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped())
+	set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped() and not state_machine.current_state is HectorWait)
 	
 	guarding = isGuarding()
 	

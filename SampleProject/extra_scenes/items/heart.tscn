@@ -187,6 +187,7 @@ script = ExtResource("4_y7kkt")
 sound_effects = Array[ExtResource("5_244dn")]([SubResource("Resource_cvlhf")])
 
 [node name="Heart" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "animation", "wall_checker")]
+z_index = 8
 collision_layer = 0
 collision_mask = 4097
 gravity_scale = 0.0

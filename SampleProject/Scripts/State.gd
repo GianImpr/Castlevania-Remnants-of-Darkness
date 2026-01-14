@@ -128,7 +128,10 @@ func check_is_hurt():
 		player.current_hits_taken_before_iframes += 1
 		player.mercy_invincibility_hit_threshold_reset.start()
 		if player.is_on_floor() and not self is HectorCrouch and player.current_hits_taken_before_iframes != player.IFRAMES_HIT_THRESHOLD:
-			Transitioned.emit(self, "damage")
+			if player.knockback or TrainingSettings.cur_challenge == TrainingMode.Training.QUICK_RECOVER:
+				Transitioned.emit(self, "damage_knockback")
+			else:
+				Transitioned.emit(self, "damage")
 		elif not player.is_on_floor():
 			Transitioned.emit(self, "damage_air")
 		elif player.current_hits_taken_before_iframes != player.IFRAMES_HIT_THRESHOLD:
@@ -136,7 +139,7 @@ func check_is_hurt():
 		else:
 			Transitioned.emit(self, "damage_mercy")
 		var voice_clip = randi_range(0, 2)
-		if voice_clip > 0 and player.is_on_floor() and player.current_hits_taken_before_iframes != player.IFRAMES_HIT_THRESHOLD:
+		if voice_clip > 0 and player.is_on_floor() and player.current_hits_taken_before_iframes != player.IFRAMES_HIT_THRESHOLD and not player.knockback:
 			voice.play_sound_effect_from_library("Hit" + str(voice_clip))
 		elif voice_clip > 0 and (not player.is_on_floor() or player.current_hits_taken_before_iframes == player.IFRAMES_HIT_THRESHOLD):
 			voice.play_sound_effect_from_library("HeavyHit")
@@ -287,6 +290,10 @@ func play_sound(sfx_name: String):
 	
 func can_die():
 	if player.stats.Stats["HP"] <= 0:
+		if Global.screen == Global.ScreenType.TRAINING:
+			if self is not HectorDamageMercy and self is not HectorHardLanding:
+				Transitioned.emit(self, "damage_mercy")
+			return
 		if player.stats.accessoryEquipped(Accessory.Accessories.RING_OF_LIFE):
 			var ring_of_life_effect = player.RING_OF_LIFE_SCENE.instantiate()
 			ring_of_life_effect.global_position = player.global_position

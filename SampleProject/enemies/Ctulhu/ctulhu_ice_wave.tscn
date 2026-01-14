@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://78uag16ilymj"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/fireball.gd" id="1_355s3"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="2_6xmiu"]
+[ext_resource type="Script" uid="uid://83h2kn4bangk" path="res://SampleProject/enemies/BonePillar/fireball.gd" id="1_355s3"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="2_6xmiu"]
 [ext_resource type="Texture2D" uid="uid://b5ry27lim6y5q" path="res://assets/sprites/Enemies/Ctulhu/IceWave.png" id="3_7mx35"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="4_rgaxg"]
 
@@ -98,9 +98,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wwsah"]
 _data = {
-"RESET": SubResource("Animation_1r132"),
-"destroy": SubResource("Animation_1fhgq"),
-"travel": SubResource("Animation_k0xp8")
+&"RESET": SubResource("Animation_1r132"),
+&"destroy": SubResource("Animation_1fhgq"),
+&"travel": SubResource("Animation_k0xp8")
 }
 
 [node name="CtulhuIceWave" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "lifespan_timer")]
@@ -135,10 +135,10 @@ material = SubResource("CanvasItemMaterial_gyr3f")
 position = Vector2(18, 15)
 scale = Vector2(0.5, 0.5)
 amount = 30
-process_material = SubResource("ParticleProcessMaterial_ko4gl")
 texture = ExtResource("4_rgaxg")
 lifetime = 0.5
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ko4gl")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -164,7 +164,7 @@ texture = SubResource("GradientTexture2D_bqjtj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_wwsah")
+&"": SubResource("AnimationLibrary_wwsah")
 }
 autoplay = "travel"
 

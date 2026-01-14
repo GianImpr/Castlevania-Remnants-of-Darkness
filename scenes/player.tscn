@@ -1,4 +1,4 @@
-[gd_scene load_steps=443 format=3 uid="uid://cenjpg3o6am6u"]
+[gd_scene load_steps=444 format=3 uid="uid://cenjpg3o6am6u"]
 
 [ext_resource type="Script" uid="uid://5351r0u86hvo" path="res://SampleProject/Scripts/HectorStats.gd" id="1_f0ls1"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
@@ -162,7 +162,9 @@
 [ext_resource type="Script" uid="uid://b4fwgrwiusdhn" path="res://SampleProject/Scripts/HectorAnims/HectorStandUp.gd" id="116_3em4l"]
 [ext_resource type="Script" uid="uid://177r2o2kbw6v" path="res://SampleProject/Scripts/HectorAnims/HectorGuard.gd" id="119_m7var"]
 [ext_resource type="Script" uid="uid://bk1ahmconmkly" path="res://SampleProject/Scripts/HectorAnims/HectorGuardDown.gd" id="120_4lii7"]
+[ext_resource type="Script" uid="uid://djsyfeijyf8li" path="res://SampleProject/Scripts/HectorAnims/HectorDamageKnockback.gd" id="121_4sdvf"]
 [ext_resource type="Script" uid="uid://u7wdvrqn0n22" path="res://SampleProject/Scripts/HectorAnims/HectorGuardWalk.gd" id="121_camjn"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="121_xam8b"]
 [ext_resource type="PackedScene" uid="uid://bgau1ae4s0ma8" path="res://SampleProject/Powers/aguni_laurel_fire.tscn" id="122_4xc62"]
 [ext_resource type="AudioStream" uid="uid://dcwejqi3poyp4" path="res://assets/sounds/Effects/Miscellaneous/LevelUp.MP3" id="122_e7mle"]
 [ext_resource type="Script" uid="uid://cf1ppfim3qip6" path="res://SampleProject/Scripts/HectorAnims/HectorGuardBlocking.gd" id="122_uml35"]
@@ -3868,57 +3870,6 @@ _data = {
 &"windstorm": SubResource("Animation_si7n8")
 }
 
-[sub_resource type="GDScript" id="GDScript_xq16k"]
-script/source = "extends Node
-class_name StateMachine
-
-@export var initial_state: State
-@export var player: CharacterBody2D
-@export var animation: AnimationPlayer
-@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
-@onready var voice: PolyphonicAudio = $\"../VoiceClips\"
-
-var new_state: State
-var current_state: State
-var states: Dictionary = {}
-
-func _ready():
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
-			child.player = player
-			child.sound = polyphonic_audio_player
-			child.voice = voice
-			child.animation = animation
-		
-	if initial_state:
-		initial_state.enter()
-		current_state = initial_state
-	
-func _process(delta):
-	if current_state:
-		current_state.Update(delta)
-	
-func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.Physics_Update(delta)
-
-func on_child_transition(state, new_state_name):
-	if state != current_state:
-		return
-	
-	new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-		
-	if current_state:
-		current_state.exit()
-		
-	new_state.enter()
-	current_state = new_state
-"
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_j0rjp"]
 particles_animation = true
 particles_anim_h_frames = 7
@@ -4959,11 +4910,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_jttxa")
 }
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
-script = SubResource("GDScript_xq16k")
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation", "voice")]
+script = ExtResource("121_xam8b")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
+voice = NodePath("../VoiceClips")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_v0unu")
@@ -5028,10 +4980,21 @@ attack_state = true
 script = ExtResource("17_tstub")
 blood = NodePath("../../BloodDamage")
 
+[node name="Damage_knockback" type="Node" parent="StateMachine" node_paths=PackedStringArray("ignore_landing")]
+script = ExtResource("121_4sdvf")
+recoil_speed = Vector2(250, -630)
+ignore_landing = NodePath("../Guard_break/Ignore_landing")
+metadata/_custom_type_script = "uid://djsyfeijyf8li"
+
 [node name="Damage_air" type="Node" parent="StateMachine" node_paths=PackedStringArray("blood")]
 script = ExtResource("18_4s0jq")
 pushback = 400.0
 blood = NodePath("../../BloodDamage")
+
+[node name="Damage_mercy" type="Node" parent="StateMachine" node_paths=PackedStringArray("ignore_landing")]
+script = ExtResource("136_2ccld")
+recoil_speed = Vector2(150, -630)
+ignore_landing = NodePath("../Guard_break/Ignore_landing")
 
 [node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurtbox", "timer_reset", "blood")]
 script = ExtResource("108_egrmx")
@@ -5098,11 +5061,6 @@ script = ExtResource("134_fj7lc")
 
 [node name="Wait" type="Node" parent="StateMachine"]
 script = ExtResource("136_g7mo7")
-
-[node name="Damage_mercy" type="Node" parent="StateMachine" node_paths=PackedStringArray("ignore_landing")]
-script = ExtResource("136_2ccld")
-recoil_speed = Vector2(150, -630)
-ignore_landing = NodePath("../Guard_break/Ignore_landing")
 
 [node name="Sword_spin" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_spin", "sword_spin_hitbox")]
 script = ExtResource("138_q0p4k")

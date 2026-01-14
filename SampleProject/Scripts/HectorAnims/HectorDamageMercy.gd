@@ -11,6 +11,7 @@ func _ready() -> void:
 	HectorPetrified.applyMercyInvincibility = applyMercyInvincibility
 	HectorUppercut.applyMercyInvincibility = applyMercyInvincibility
 	HectorHardLanding.applyMercyInvincibility = applyMercyInvincibility
+	HectorDamageKnockback.applyMercyInvincibility = applyMercyInvincibility
 
 func enter():
 	player.velocity.x = recoil_speed.x * player.facing_position * (-1)

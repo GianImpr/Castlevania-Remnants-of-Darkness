@@ -19,7 +19,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	hit_target(1, body, hitbox_iframe)
 	
 func _on_yelling_body_entered(body: Node2D) -> void:
-	hit_target(1.75, body, yelling_hitbox, 5, true)
+	hit_target(1.75, body, yelling_hitbox, 5, true, StaticGlobal.Attribute.HIT, 1, true)
 		
 func _on_iframe_timer_timeout() -> void:
 	if stats.HP > 0:

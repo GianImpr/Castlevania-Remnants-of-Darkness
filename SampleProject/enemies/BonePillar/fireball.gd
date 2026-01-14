@@ -5,6 +5,7 @@ extends RigidBody2D
 @export var animation: AnimationPlayer
 @export var hurtbox: CollisionShape2D
 @export var lifespan_timer: Timer
+@export var knockback: bool = false
 @export var align_velocity_to_angle: bool = false
 var direction: int
 @export var SPEED: float
@@ -23,7 +24,7 @@ func _physics_process(delta: float) -> void:
 		move_and_collide(linear_velocity*delta)
 
 func calculate_damage(body, multiplier) -> int:
-	return stats.calculate_damage(body, multiplier)
+	return stats.calculate_damage(body, multiplier, knockback)
 
 	
 func apply_damage(body, damage):

@@ -7,6 +7,7 @@ class_name SpawnEnemy
 @export var spawn_instantly: bool
 @export var LV_bonus: int = 0
 @export var offset: Vector2
+@export var automatic_offset: bool = false
 @export var spawn_range: Vector2
 @export var activate_behavior_instantly: bool = true
 @export_category("Respawning")
@@ -74,6 +75,17 @@ func _spawnEnemy():
 	enemy_node.stats.ATK += LV_bonus * 2.5
 	enemy_node.global_position = global_position - offset
 	get_parent().add_child(enemy_node)
+	var hurtbox: CollisionShape2D
+	for child in enemy_node.get_children():
+		if child is CollisionShape2D:
+			hurtbox = child
+			break
+	if hurtbox and automatic_offset:
+		print(global_position.y)
+		print(hurtbox.position.y)
+		print(hurtbox.shape.size.y)
+		print(hurtbox.global_scale.y)
+		enemy_node.global_position = Vector2(global_position.x, global_position.y - (hurtbox.position.y + hurtbox.shape.size.y/2)*hurtbox.global_scale.y)
 	if "activated_AI" in enemy_node:
 		enemy_node.activated_AI = activate_behavior_instantly
 	elif "ai_activated" in enemy_node:

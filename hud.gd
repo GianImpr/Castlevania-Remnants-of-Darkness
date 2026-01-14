@@ -16,6 +16,9 @@ extends Control
 @onready var boss_bar: TextureRect = $BossBar
 @export var id_level_up_animation: AnimationPlayer
 @export var guard_health: HBoxContainer
+@onready var training: Control = $Training
+@onready var training_number: ImageNumber = $Training/TrainingNumber
+@onready var training_max_number: ImageNumber = $Training/TrainingMaxNumber
 
 @export var mana_colors: Array[CompressedTexture2D]
 
@@ -62,13 +65,17 @@ func _process(delta: float) -> void:
 	elif player.stats.Stats["FP"] != player.stats.Stats["MFP"] and not focus_animation.current_animation == "not_full":
 		focus_animation.play("not_full")
 
-	if Global.player.innocent_devil != null:
+	if Global.player.innocent_devil != null and not Global.screen == Global.ScreenType.TRAINING:
 		id_skill.texture = Global.player.innocent_devil.stats.skills[Global.player.innocent_devil.current_skill].icon
 		updateHearts(delta)
 		updateMaxStat(Global.player.innocent_devil.stats.Stats["MHearts"], hearts)
 		heart_glow.visible = Global.player.innocent_devil.stats.Stats["Hearts"] <= Global.player.innocent_devil.stats.Stats["MHearts"]/4
-	id_body.visible = Global.player.innocent_devil != null
-	h_box_container_3.visible = Global.player.innocent_devil != null
+	training.visible = Global.screen == Global.ScreenType.TRAINING
+	if training.visible:
+		training_number.printNumber(TrainingSettings.collected_hearts)
+		training_max_number.printNumber(TrainingSettings.hearts_to_collect)
+	id_body.visible = Global.player.innocent_devil != null and not Global.screen == Global.ScreenType.TRAINING
+	h_box_container_3.visible = Global.player.innocent_devil != null and not Global.screen == Global.ScreenType.TRAINING
 	h_box_container_2.updateGuard()
 	
 	if Global.camera.limit_right - Global.camera.limit_left < 864:

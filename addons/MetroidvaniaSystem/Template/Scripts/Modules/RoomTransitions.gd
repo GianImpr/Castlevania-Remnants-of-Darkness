@@ -74,6 +74,8 @@ func changeRoom(target_room: String, changing_area: bool, initial_position: Vect
 	if Global.screen == Global.ScreenType.TRANSITION or Global.screen == Global.ScreenType.EVENT:
 		Global.screen = Global.ScreenType.NONE
 		player.get_tree().paused = false
+	elif Global.screen == Global.ScreenType.TRAINING:
+		player.get_tree().paused = false
 	Global.fade_screen.animation.play_backwards("fade_in")
 	await Global.fade_screen.animation.animation_finished
 	Global.fade_screen.animation.speed_scale = 1

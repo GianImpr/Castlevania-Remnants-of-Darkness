@@ -45,6 +45,10 @@ func is_on_floor():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if Global.screen == Global.ScreenType.TRAINING and TrainingSettings.cur_challenge != TrainingSettings.ChallengeResult.NONE:
+		TrainingSettings.collected_hearts += 1
+		animation.play("picked")
+		return
 	match type:
 		Type.SOUL:
 			Global.player.stats.Stats["MP"] = min(Global.player.stats.Stats["MP"]+Global.player.stats.Stats["MMP"]/20, Global.player.stats.Stats["MMP"])

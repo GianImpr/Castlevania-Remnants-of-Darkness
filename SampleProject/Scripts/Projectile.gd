@@ -12,7 +12,7 @@ class_name Projectile
 @export var guard_break: bool = false
 var thrower_ATK: int = 0
 
-func calculate_damage(body, multiplier: float = 1) -> int:
+func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> int:
 	var damage
 	if magical:
 		damage = max(base_damage + thrower_ATK - body.stats.Stats["RES"]/2, 1) * multiplier
@@ -28,12 +28,14 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 			body.heal_innocent(floor(damage/10)+1)
 			body.stats.Stats["Guard"] = 3
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.PERFECT_GUARD)
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
 			return 0
-		if damage < body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1:
-			damage = 0
+		if (damage < body.stats.Stats["MHP"]/10 or TrainingSettings.cur_challenge == TrainingMode.Training.GUARD) and body.stats.Stats["Guard"] > 1 and not guard_break:
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
+			body.stats.Stats["Guard"] -= 1
+			return 0
 		elif damage >= body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1 and not guard_break:
 			damage = min(damage*0.1, body.stats.Stats["HP"]-1)
-			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
 		elif body.stats.Stats["Guard"] == 1 or guard_break:
 			damage *= 0.6
 		if not guard_break:
@@ -42,6 +44,7 @@ func calculate_damage(body, multiplier: float = 1) -> int:
 			body.stats.Stats["Guard"] = 0
 		
 	else:
+		body.knockback = knockback
 		body.applyHitEffect(attribute)
 		
 	if body.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:

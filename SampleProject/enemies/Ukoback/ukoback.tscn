@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bxtckpjevk0cf" path="res://SampleProject/enemies/Ukoback/UkobackDying.gd" id="10_knj4h"]
 [ext_resource type="AudioStream" uid="uid://cqkefmmf78xmq" path="res://assets/sounds/Enemies/Ukoback/UkobackDamage.MP3" id="10_ob215"]
 [ext_resource type="AudioStream" uid="uid://68pqphemf2o5" path="res://assets/sounds/Enemies/Ukoback/UkobackDead.MP3" id="11_8m182"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="14_lyyvb"]
 
 [sub_resource type="Animation" id="Animation_e0awq"]
 length = 0.001
@@ -92,54 +93,6 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_5pg3w"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GDScript" id="GDScript_326py"]
-script/source = "extends Node
-class_name StateMachine
-
-@export var initial_state: State
-@export var player: CharacterBody2D
-@export var animation: AnimationPlayer
-@onready var polyphonic_audio_player: PolyphonicAudio = $\"../PolyphonicAudioPlayer\"
-
-var current_state: State
-var states: Dictionary = {}
-
-func _ready():
-	for child in get_children():
-		if child is State:
-			states[child.name.to_lower()] = child
-			child.Transitioned.connect(on_child_transition)
-			child.player = player
-			child.sound = polyphonic_audio_player
-			child.animation = animation
-		
-	if initial_state:
-		initial_state.enter()
-		current_state = initial_state
-	
-func _process(delta):
-	if current_state:
-		current_state.Update(delta)
-	
-func _physics_process(delta: float) -> void:
-	if current_state:
-		current_state.Physics_Update(delta)
-
-func on_child_transition(state, new_state_name):
-	if state != current_state:
-		return
-	
-	var new_state = states.get(new_state_name.to_lower())
-	if !new_state:
-		return
-		
-	if current_state:
-		current_state.exit()
-		
-	new_state.enter()
-	current_state = new_state
-"
 
 [sub_resource type="Animation" id="Animation_d34yd"]
 length = 0.001
@@ -514,7 +467,7 @@ script = ExtResource("4_yyv1i")
 damage_node = ExtResource("5_1dhoy")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
-script = SubResource("GDScript_326py")
+script = ExtResource("14_lyyvb")
 initial_state = NodePath("Moving")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
