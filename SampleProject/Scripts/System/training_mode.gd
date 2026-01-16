@@ -12,7 +12,7 @@ class_name TrainingMode
 @export var enemies_beginner: Array[PackedScene]
 @export var enemies_intermediate: Array[PackedScene]
 @export var enemies_advanced: Array[PackedScene]
-@export var can_deal_damage: bool = false
+@export_range(0, 100, 1, "suffix:s") var HP_depletion_in: float = 0
 @export var remove_MP: bool = true
 @export var remove_hearts: bool = true
 @export_range(1, 100, 1, "suffix:% HP") var damage_upon_hit: int
@@ -32,8 +32,8 @@ enum Training {
 	GUARD,
 	PERFECT_GUARD,
 	QUICK_RECOVER,
-	QUICK_GUARD,
-	CHAIN_GUARD,
+	PROJECTILES,
+	TECHNIQUES,
 	JUMP_CANCEL,
 	BACKDASH_CANCEL
 }

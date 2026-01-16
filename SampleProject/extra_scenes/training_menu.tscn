@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dk6ln3pa1ra6q"]
+[gd_scene load_steps=65 format=3 uid="uid://dk6ln3pa1ra6q"]
 
 [ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="1_a0owa"]
 [ext_resource type="Script" uid="uid://bsr6ixj1h4r5y" path="res://SampleProject/extra_scenes/HUD/training_menu.gd" id="1_c8rss"]
@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://c46g3377o2qj8" path="res://assets/images/BackdashRecovery.png" id="12_vfpqg"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="13_wsu2r"]
 [ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="14_0hsmt"]
+[ext_resource type="PackedScene" uid="uid://2vc38i25e1l" path="res://SampleProject/enemies/Ukoback/ukoback.tscn" id="14_vfpqg"]
+[ext_resource type="PackedScene" uid="uid://bvk8m1t7uwv0b" path="res://SampleProject/enemies/Une/Une.tscn" id="15_jglwd"]
 
 [sub_resource type="Resource" id="Resource_0hsmt"]
 script = ExtResource("2_wsu2r")
@@ -80,6 +82,72 @@ enemies_intermediate = Array[PackedScene]([ExtResource("11_mo7a4")])
 enemies_advanced = Array[PackedScene]([ExtResource("7_iv4ef")])
 damage_upon_hit = 10
 hearts_to_collect = 3
+heart_level_multiplier = 2.0
+metadata/_custom_type_script = "uid://cbg6erhltejbh"
+
+[sub_resource type="Resource" id="Resource_mo7a4"]
+script = ExtResource("2_wsu2r")
+title = "PROJECTILES"
+description = "Most enemy projectiles that aren't unblockable can be destroyed using attacks.
+
+This can prove most useful if Hector wields long ranged weapons as it can keep him from consuming Guard Health."
+challenge_beginner = "Destroy 10 of Ukoback's fireballs."
+challenge_intermediate = "Destroy 15 axes from Axe Armors."
+challenge_advanced = "Destroy 20 bones from Slingers."
+enemies_beginner = Array[PackedScene]([ExtResource("14_vfpqg")])
+enemies_intermediate = Array[PackedScene]([ExtResource("4_ygfm7"), ExtResource("4_ygfm7")])
+enemies_advanced = Array[PackedScene]([ExtResource("10_nno0u"), ExtResource("10_nno0u")])
+damage_upon_hit = 20
+hearts_to_collect = 10
+heart_level_multiplier = 1.5
+metadata/_custom_type_script = "uid://cbg6erhltejbh"
+
+[sub_resource type="Resource" id="Resource_vfpqg"]
+script = ExtResource("2_wsu2r")
+title = "TECHNIQUES"
+description = "Techniques are moves that Hector can use once he gains proficiency with certain weapon types and usually require Focus and command inputs to be used.
+These are much stronger moves than normal attacks and can be used to change the flow of battle in Hector's favor."
+challenge_beginner = "Use command inputs 3 times in 15 seconds."
+challenge_intermediate = "Use command inputs 6 times in 15 seconds."
+challenge_advanced = "Use command inputs 9 times in 15 seconds."
+enemies_beginner = Array[PackedScene]([ExtResource("8_hwf47")])
+enemies_intermediate = Array[PackedScene]([ExtResource("8_hwf47")])
+enemies_advanced = Array[PackedScene]([ExtResource("8_hwf47")])
+HP_depletion_in = 15.0
+hearts_to_collect = 3
+heart_level_multiplier = 2.0
+metadata/_custom_type_script = "uid://cbg6erhltejbh"
+
+[sub_resource type="Resource" id="Resource_ibmff"]
+script = ExtResource("2_wsu2r")
+title = "JUMP CANCEL"
+description = "Jump Cancel is an innate technique that Hector can perform when using Sword and Knuckle-type weapons to recover much more quickly from landed attacks. 
+Perform a short-hop by very briefly pressing [[Cross]], then quickly attack with your weapon: upon landing, the attack is cancelled."
+challenge_beginner = "Perform 5 jump cancels in 5 seconds."
+challenge_intermediate = "Perform 10 jump cancels in 5 seconds."
+challenge_advanced = "Perform 15 jump cancels in 5 seconds."
+enemies_beginner = Array[PackedScene]([ExtResource("8_hwf47")])
+enemies_intermediate = Array[PackedScene]([ExtResource("8_hwf47")])
+enemies_advanced = Array[PackedScene]([ExtResource("8_hwf47")])
+HP_depletion_in = 5.0
+hearts_to_collect = 5
+heart_level_multiplier = 2.0
+metadata/_custom_type_script = "uid://cbg6erhltejbh"
+
+[sub_resource type="Resource" id="Resource_lv2mb"]
+script = ExtResource("2_wsu2r")
+title = "BACKDASH CANCEL"
+description = "Backdash Cancel is an innate technique that Hector can perform with any weapon or action to quickly recover from any animation.
+While performing any action on the ground, press [[L1]].
+The backdash itself can also be cancelled by jumping."
+challenge_beginner = "Backdash cancel 5 times in 10 seconds."
+challenge_intermediate = "Backdash cancel 10 times in 10 seconds."
+challenge_advanced = "Backdash cancel 15 times in 10 seconds."
+enemies_beginner = Array[PackedScene]([ExtResource("15_jglwd")])
+enemies_intermediate = Array[PackedScene]([ExtResource("15_jglwd")])
+enemies_advanced = Array[PackedScene]([ExtResource("15_jglwd")])
+HP_depletion_in = 10.0
+hearts_to_collect = 5
 heart_level_multiplier = 2.0
 metadata/_custom_type_script = "uid://cbg6erhltejbh"
 
@@ -391,7 +459,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c8rss")
-trainings = Array[ExtResource("2_wsu2r")]([SubResource("Resource_0hsmt"), SubResource("Resource_rbbvo"), SubResource("Resource_jglwd")])
+trainings = Array[ExtResource("2_wsu2r")]([SubResource("Resource_0hsmt"), SubResource("Resource_rbbvo"), SubResource("Resource_jglwd"), SubResource("Resource_mo7a4"), SubResource("Resource_vfpqg"), SubResource("Resource_ibmff"), SubResource("Resource_lv2mb")])
 animation = NodePath("AnimationPlayer")
 training_room = ExtResource("6_ygfm7")
 default_button = NodePath("Buttons/Guard")
@@ -499,7 +567,7 @@ icon = SubResource("CompressedTexture2D_ylbde")
 flat = true
 icon_alignment = 1
 
-[node name="QuickGuard" type="Button" parent="Buttons"]
+[node name="Projectiles" type="Button" parent="Buttons"]
 layout_mode = 2
 theme = SubResource("Theme_q8ayk")
 theme_override_constants/outline_size = 8
@@ -508,13 +576,13 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_6voui")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_4qgc5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1qa27")
 action_mode = 0
-text = "Quick Guard"
+text = "Projectiles"
 icon = SubResource("CompressedTexture2D_ylbde")
 flat = true
 text_overrun_behavior = 1
 icon_alignment = 1
 
-[node name="ChainGuard" type="Button" parent="Buttons"]
+[node name="Techniques" type="Button" parent="Buttons"]
 layout_mode = 2
 theme = SubResource("Theme_q8ayk")
 theme_override_constants/outline_size = 8
@@ -523,7 +591,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_6voui")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_4qgc5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1qa27")
 action_mode = 0
-text = "Chain PG"
+text = "Techniques"
 icon = SubResource("CompressedTexture2D_ylbde")
 flat = true
 text_overrun_behavior = 1
@@ -617,13 +685,13 @@ theme = SubResource("Theme_iv4ef")
 theme_override_constants/line_separation = 0
 theme_override_constants/outline_size = 8
 bbcode_enabled = true
-text = "After suffering from any aerial knockback, press [img]res://assets/sprites/HUD/Buttons/L1.png[/img] while landing to backdash swiftly.
-
-This will give Hector a moment of invincibility, making it easier to escape from cornering scenarios."
+text = "Backdash Cancel is an innate technique that Hector can perform with any weapon or action to quickly recover from any animation.
+While performing any action on the ground, press [img]res://assets/sprites/HUD/Buttons/L1.png[/img].
+The backdash itself can also be cancelled by jumping."
 script = ExtResource("14_0hsmt")
-new_text = "After suffering from any aerial knockback, press [[L1]] while landing to backdash swiftly.
-
-This will give Hector a moment of invincibility, making it easier to escape from cornering scenarios."
+new_text = "Backdash Cancel is an innate technique that Hector can perform with any weapon or action to quickly recover from any animation.
+While performing any action on the ground, press [[L1]].
+The backdash itself can also be cancelled by jumping."
 metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

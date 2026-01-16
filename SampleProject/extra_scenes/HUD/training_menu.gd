@@ -15,6 +15,7 @@ class_name TrainingMenu
 const CHALLENGE_LV_LABELS: Array[String] = ["Beginner", "Intermediate", "Advanced"]
 const TRAINING_ROOM_PATH: String = "res://SampleProject/Maps/TrainingRoom/training_room.tscn"
 const TRAINING_ROOM_INITIAL_POSITION: Vector2 = Vector2(100, 364)
+const TRAINING_ROOM_EXTRA_OFFSET: Vector2 = Vector2(430, 0)
 var glow_button_tween: Tween
 var cur_button: Button
 var cur_challenge_level: TrainingMode.TrainingLevel = TrainingMode.TrainingLevel.BEGINNER
@@ -65,12 +66,20 @@ func closeMenu():
 	
 func startTraining():
 	var training: TrainingMode = trainings[cur_button.get_index()]
+	var enemies_number: int
 	TrainingSettings.player_global_position = Global.player.global_position
 	TrainingSettings.player_current_room = MetSys.get_full_room_path(MetSys.get_current_room_name())
 	animation.play_backwards("open")
 	await Global.total_fade_screen.fadeOutFor(0.5)
-	Global.change_area.emit(TRAINING_ROOM_PATH, TRAINING_ROOM_INITIAL_POSITION)
-	TrainingSettings.can_deal_damage = training.can_deal_damage
+	match cur_challenge_level:
+		TrainingMode.TrainingLevel.BEGINNER:
+			enemies_number = training.enemies_beginner.size()
+		TrainingMode.TrainingLevel.INTERMEDIATE:
+			enemies_number = training.enemies_intermediate.size()
+		TrainingMode.TrainingLevel.ADVANCED:
+			enemies_number = training.enemies_advanced.size()
+	Global.change_area.emit(TRAINING_ROOM_PATH, TRAINING_ROOM_INITIAL_POSITION + TRAINING_ROOM_EXTRA_OFFSET*int(enemies_number > 1))
+	TrainingSettings.HP_depletion_in = training.HP_depletion_in
 	TrainingSettings.damage_upon_hit = training.damage_upon_hit
 	TrainingSettings.hearts_to_collect = training.hearts_to_collect + training.hearts_to_collect * (training.heart_level_multiplier-1) * cur_challenge_level
 	TrainingSettings.collected_hearts = 0

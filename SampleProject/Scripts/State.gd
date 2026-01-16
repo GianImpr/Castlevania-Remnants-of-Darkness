@@ -176,6 +176,7 @@ func can_attack():
 			continue
 		
 		if InputBuffer.checkCommandInput(cur_skill.command_input, 50):
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.TECHNIQUES)
 			Transitioned.emit(self, state_to_transition_to)
 			player.stats.Stats[stat_to_consume] -= cur_skill.cost_value
 			get_hector_attack_sound()
@@ -280,6 +281,7 @@ func can_land():
 			player.resume_attack = true
 			Transitioned.emit(self, "attack")
 			return
+		TrainingSettings.spawnTrainingHeart(TrainingMode.Training.JUMP_CANCEL)
 		run_without_start_anim(true)
 		if not player.direction:
 			Transitioned.emit(self, "landing")

@@ -8,12 +8,15 @@ static var damage_upon_hit: int
 static var can_deal_damage: bool
 static var enemies: Array[PackedScene]
 static var cur_challenge: TrainingMode.Training
+static var HP_depletion_in: float
 var result: ChallengeResult = ChallengeResult.NONE
 static var collected_hearts: int = 0
 static var heart_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/heart.tscn")
 @export var enemy_spawner: SpawnEnemy
+@export var enemy_spawner_2: SpawnEnemy
 static var player_global_position: Vector2
 static var player_current_room: String
+var HP_loss_tween: Tween 
 
 enum ChallengeResult {
 	NONE,
@@ -23,7 +26,13 @@ enum ChallengeResult {
 
 func _ready() -> void:
 	enemy_spawner.enemy = enemies[0]
+	if enemies.size() > 1:
+		enemy_spawner_2.enemy = enemies[1]
+		enemy_spawner_2.process_mode = Node.PROCESS_MODE_INHERIT
 	enemy_spawner.process_mode = Node.PROCESS_MODE_INHERIT
+	if HP_depletion_in > 0:
+		HP_loss_tween = get_tree().create_tween()
+		HP_loss_tween.tween_property(Global.player.stats, "Stats:HP", 0, HP_depletion_in)
 
 func _process(delta: float) -> void:
 	if result == ChallengeResult.NONE:
@@ -35,6 +44,8 @@ func _process(delta: float) -> void:
 			
 	if hearts_to_collect == collected_hearts and result == ChallengeResult.NONE:
 		result = ChallengeResult.WIN
+		if HP_loss_tween and HP_loss_tween.is_running():
+			HP_loss_tween.kill()
 		for enemy in get_parent().get_children():
 			if enemy is Enemy:
 				enemy.stats.HP = 0

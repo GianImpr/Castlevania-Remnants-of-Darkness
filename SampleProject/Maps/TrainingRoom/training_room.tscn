@@ -1059,13 +1059,22 @@ shape = SubResource("WorldBoundaryShape2D_lh1pq")
 position = Vector2(411, 0)
 shape = SubResource("WorldBoundaryShape2D_lh1pq")
 
-[node name="TrainingSettings" type="Node" parent="." node_paths=PackedStringArray("enemy_spawner")]
+[node name="TrainingSettings" type="Node" parent="." node_paths=PackedStringArray("enemy_spawner", "enemy_spawner_2")]
 script = ExtResource("5_onwft")
 enemy_spawner = NodePath("../SpawnEnemy")
+enemy_spawner_2 = NodePath("../SpawnEnemy2")
 
 [node name="SpawnEnemy" parent="." instance=ExtResource("6_f6bll")]
 process_mode = 4
-position = Vector2(663, 434)
+position = Vector2(700, 434)
+spawn_instantly = true
+automatic_offset = true
+enemy_count = 1
+max_at_once = 1
+
+[node name="SpawnEnemy2" parent="." instance=ExtResource("6_f6bll")]
+process_mode = 4
+position = Vector2(160, 434)
 spawn_instantly = true
 automatic_offset = true
 enemy_count = 1
