@@ -15,7 +15,7 @@ class_name TrainingMenu
 const CHALLENGE_LV_LABELS: Array[String] = ["Beginner", "Intermediate", "Advanced"]
 const TRAINING_ROOM_PATH: String = "res://SampleProject/Maps/TrainingRoom/training_room.tscn"
 const TRAINING_ROOM_INITIAL_POSITION: Vector2 = Vector2(100, 364)
-const TRAINING_ROOM_EXTRA_OFFSET: Vector2 = Vector2(430, 0)
+const TRAINING_ROOM_EXTRA_OFFSET: Vector2 = Vector2(330, 0)
 var glow_button_tween: Tween
 var cur_button: Button
 var cur_challenge_level: TrainingMode.TrainingLevel = TrainingMode.TrainingLevel.BEGINNER
@@ -85,6 +85,8 @@ func startTraining():
 	TrainingSettings.collected_hearts = 0
 	TrainingSettings.remove_hearts = training.remove_hearts
 	TrainingSettings.remove_MP = training.remove_MP
+	TrainingSettings.reward_id = training.id
+	TrainingSettings.reward_type = training.type
 	TrainingSettings.cur_challenge = TrainingMode.Training.values()[cur_button.get_index()+1]
 	match cur_challenge_level:
 		TrainingMode.TrainingLevel.BEGINNER:

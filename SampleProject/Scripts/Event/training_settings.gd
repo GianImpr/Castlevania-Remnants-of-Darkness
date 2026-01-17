@@ -14,6 +14,9 @@ static var collected_hearts: int = 0
 static var heart_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/heart.tscn")
 @export var enemy_spawner: SpawnEnemy
 @export var enemy_spawner_2: SpawnEnemy
+@export var pick_up_scene: PackedScene
+static var reward_type: PickUp.ItemType
+static var reward_id: int
 static var player_global_position: Vector2
 static var player_current_room: String
 var HP_loss_tween: Tween 
@@ -53,7 +56,8 @@ func _process(delta: float) -> void:
 		if Global.training_menu.trainings[cur_challenge-1].max_challenge_level != TrainingMode.TrainingLevel.ADVANCED:
 			Global.tutorial_box.text = "[color=#00FF00]Challenge completed![/color]"
 		else:
-			Global.tutorial_box.text = "[color=#00FF00]Challenge completed![/color]\nObtained [color=#FFFF00]PRIZE[/color]"
+			Global.tutorial_box.text = "[color=#00FF00]Section completed![/color]"
+			spawnReward()
 		if Global.training_menu.trainings[cur_challenge-1].max_challenge_level == Global.training_menu.cur_challenge_level:
 			Global.training_menu.trainings[cur_challenge-1].max_challenge_level = min(Global.training_menu.trainings[cur_challenge-1].max_challenge_level+1, 3)
 		Global.tutorial_box.activate = true
@@ -77,6 +81,12 @@ static func _spawnHeart(custom_position: Vector2) -> void:
 		heart.global_position = custom_position
 	MetSys.get_current_room_instance().call_deferred("add_child", heart)
 
+func spawnReward() -> void:
+	var reward: PickUp = pick_up_scene.instantiate()
+	reward.id = reward_id
+	reward.type = reward_type
+	reward.global_position = Global.player.global_position+Vector2(0,-480)
+	MetSys.get_current_room_instance().call_deferred("add_child", reward)
 
 ## Spawns a heart if the current training mode is being played.
 static func spawnTrainingHeart(cur_training: TrainingMode.Training, custom_position: Vector2 = Vector2.ZERO) -> void:
