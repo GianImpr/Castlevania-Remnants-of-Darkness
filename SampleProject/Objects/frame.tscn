@@ -1,0 +1,150 @@
+[gd_scene load_steps=12 format=3 uid="uid://5fb0njj5o06d"]
+
+[ext_resource type="Script" uid="uid://cgkm1v8ta1s47" path="res://SampleProject/Scripts/Stage_elements/frame.gd" id="1_h3ehx"]
+[ext_resource type="Texture2D" uid="uid://dxeec21cts246" path="res://assets/sprites/Tiles/TrainingRoom.png" id="1_m23ep"]
+[ext_resource type="Texture2D" uid="uid://cdlb81eg61l2g" path="res://assets/sprites/Objects/Other/Frame.png" id="2_h3ehx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qrt3"]
+atlas = ExtResource("1_m23ep")
+region = Rect2(225, 225, 0, 0)
+margin = Rect2(450, 385, 0, 0)
+
+[sub_resource type="Curve" id="Curve_m23ep"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49523813, 3.9999998), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_h3ehx"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_2qrt3"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_m23ep"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.81960785, 0.8509804, 1), Color(0.74509805, 0.7254902, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h3ehx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h3ehx"]
+_data = {
+&"RESET": SubResource("Animation_h3ehx"),
+&"idle": SubResource("Animation_m23ep")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3ehx"]
+size = Vector2(100, 200)
+
+[node name="Frame" type="Node2D"]
+script = ExtResource("1_h3ehx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-450, -371.20007)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_2qrt3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_h3ehx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 20)
+amount = 20
+lifetime = 2.0
+preprocess = 1.0
+randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(70, 70)
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 60.0
+scale_amount_curve = SubResource("Curve_m23ep")
+color = Color(1, 0.6745098, 0, 1)
+color_ramp = SubResource("Gradient_h3ehx")
+color_initial_ramp = SubResource("Gradient_2qrt3")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+amount = 20
+lifetime = 2.0
+preprocess = 1.0
+randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(70, 90)
+direction = Vector2(0, -1)
+spread = 50.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 60.0
+scale_amount_curve = SubResource("Curve_m23ep")
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("Gradient_h3ehx")
+color_initial_ramp = SubResource("Gradient_2qrt3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_h3ehx")
+}
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 129.01944)
+shape = SubResource("RectangleShape2D_h3ehx")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

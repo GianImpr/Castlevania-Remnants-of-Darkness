@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://cnxqk0y55lrlr"]
+[gd_scene load_steps=10 format=4 uid="uid://cnxqk0y55lrlr"]
 
 [ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_74rki"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_e1o7t"]
 [ext_resource type="Texture2D" uid="uid://bssr2pn08c758" path="res://assets/sprites/Tiles/ShopTiles.png" id="3_qnd7a"]
 [ext_resource type="PackedScene" uid="uid://jwyi0jgsmid6" path="res://SampleProject/NPC/julia.tscn" id="4_e1o7t"]
 [ext_resource type="PackedScene" uid="uid://bfk8x3v12id00" path="res://SampleProject/Objects/julia_candle.tscn" id="5_qnd7a"]
+[ext_resource type="PackedScene" uid="uid://5fb0njj5o06d" path="res://SampleProject/Objects/frame.tscn" id="6_qbyg1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qbyg1"]
 texture = ExtResource("3_qnd7a")
@@ -1102,3 +1103,8 @@ position = Vector2(173, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-173, -1)
 shape = SubResource("WorldBoundaryShape2D_qnd7a")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(757, 283)
+
+[node name="Frame" parent="Node2D" instance=ExtResource("6_qbyg1")]
