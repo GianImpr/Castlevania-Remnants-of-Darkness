@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://yby38f15lji0"]
+[gd_scene load_steps=47 format=3 uid="uid://yby38f15lji0"]
 
 [ext_resource type="Texture2D" uid="uid://5i5nsq4bad0r" path="res://assets/sprites/HUD/InGameHUD/Body.png" id="1_r4po5"]
 [ext_resource type="Script" uid="uid://6vlc7pusrdb2" path="res://hud.gd" id="1_xhgqi"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://dqt500baarbqv" path="res://SampleProject/Scripts/System/BossBar.gd" id="16_jnnjg"]
 [ext_resource type="Texture2D" uid="uid://eqrphxjgkwgm" path="res://assets/sprites/HUD/InGameHUD/BossDamage.png" id="17_ffxey"]
 [ext_resource type="Texture2D" uid="uid://bb6kgjvn6w2gp" path="res://assets/sprites/HUD/InGameHUD/BossBar2.png" id="17_i1ifg"]
+[ext_resource type="Texture2D" uid="uid://daodjdlqn0p18" path="res://assets/sprites/HUD/Numbers/Of.png" id="20_3k6xw"]
 
 [sub_resource type="Gradient" id="Gradient_vo48o"]
 colors = PackedColorArray(0.099986, 0.099986, 0.099986, 1, 0.370364, 0.370364, 0.370364, 1)
@@ -838,6 +839,14 @@ texture = ExtResource("11_sa4fn")
 custom_minimum_size = Vector2(9, 0)
 layout_mode = 2
 texture = ExtResource("12_k0ta4")
+
+[node name="Divider" type="TextureRect" parent="Training"]
+layout_mode = 0
+offset_left = 121.42862
+offset_top = 97.14285
+offset_right = 145.42862
+offset_bottom = 121.14285
+texture = ExtResource("20_3k6xw")
 
 [node name="ImageNumber" type="HBoxContainer" parent="."]
 visible = false
