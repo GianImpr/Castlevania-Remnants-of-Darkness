@@ -64,7 +64,7 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 		if body.stats.effect_on_destroy:
 			createEffects(body, physical_based_sound)
 		if "stats" in body and body.stats.destructible:
-			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.PROJECTILES)
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.PROJECTILES, body.global_position)
 			body.destroy()
 		return
 	# Hitting an enemy

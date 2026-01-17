@@ -18,6 +18,7 @@ class_name TrainingMode
 @export_range(1, 100, 1, "suffix:% HP") var damage_upon_hit: int
 @export_range(1, 100, 1) var hearts_to_collect: int
 @export_range(1, 5, 0.1) var heart_level_multiplier: float = 1
+@export var reward: Accessory.Accessories = Accessory.Accessories.SCARF
 var max_challenge_level: TrainingLevel = TrainingLevel.BEGINNER
 
 enum TrainingLevel {

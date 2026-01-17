@@ -68,17 +68,20 @@ func _process(delta: float) -> void:
 		result = ChallengeResult.LOSE
 		get_tree().create_timer(2.5, true).timeout.connect(returnToTrainingMenu)
 
-static func _spawnHeart() -> void:
+static func _spawnHeart(custom_position: Vector2) -> void:
 	var heart = heart_scene.instantiate()
 	heart.fly_high = true
-	heart.global_position = Global.player.global_position+Vector2(0,-30)
+	if custom_position == Vector2.ZERO:
+		heart.global_position = Global.player.global_position+Vector2(0,-30)
+	else:
+		heart.global_position = custom_position
 	MetSys.get_current_room_instance().call_deferred("add_child", heart)
 
 
 ## Spawns a heart if the current training mode is being played.
-static func spawnTrainingHeart(cur_training: TrainingMode.Training) -> void:
+static func spawnTrainingHeart(cur_training: TrainingMode.Training, custom_position: Vector2 = Vector2.ZERO) -> void:
 	if Global.screen == Global.ScreenType.TRAINING and TrainingSettings.cur_challenge == cur_training:
-		_spawnHeart()
+		_spawnHeart(custom_position)
 
 func returnToTrainingMenu() -> void:
 	Global.player.stats.Stats["HP"] = Global.player.stats.Stats["MHP"]
