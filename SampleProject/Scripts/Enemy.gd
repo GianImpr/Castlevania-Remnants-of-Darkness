@@ -93,7 +93,7 @@ func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float
 	body.damage_popup.popup(damage, 0)
 	body.stats.Stats["HP"] = max(body.stats.Stats["HP"]-damage, 0)
 	body.is_hurt = true
-	if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]/10:
+	if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]*0.07:
 		body.is_hurt = false
 	attack_hitbox.set_deferred("monitoring", false)
 	if rehit_time > 0:

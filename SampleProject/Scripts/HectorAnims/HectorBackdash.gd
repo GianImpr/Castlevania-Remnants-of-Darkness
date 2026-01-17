@@ -9,13 +9,15 @@ var can_perfect_guard: bool = true
 const STARTING_ANIM_POSITION: float = 0.5
 const DEBRIS_POSITION: Vector2 = Vector2(40,68)
 const DECELERATION_RATE: float = 54
-const MOONWALKERS_CANCEL_AT_SECONDS: float = 0.2
+const MOONWALKERS_SPEED_BOOST: float = 1.3
 
 
 func enter():
 	animation.play("run_end", -1, -1, true)
 	animation.seek(STARTING_ANIM_POSITION)
 	player.velocity.x = backdash_speed * player.facing_position * (-1)
+	if Global.player.stats.itemEquipped(Legs.Leg.MOONWALKERS, "legs"):
+		player.velocity.x *= MOONWALKERS_SPEED_BOOST
 	sound.play_sound_effect_from_library("backdash")
 	player.instantiateScene(trail_scene, true, Vector2(0,0))
 	player.instantiateScene(debris_scene, false, Vector2(player.facing_position*DEBRIS_POSITION.x,DEBRIS_POSITION.y))
@@ -37,8 +39,6 @@ func Physics_Update(delta: float):
 	if player.is_on_wall():
 		debris_timer.stop()
 		
-	if Global.player.stats.itemEquipped(Legs.Leg.MOONWALKERS, "legs") and Input.is_action_just_pressed("backdash") and animation.current_animation_position <= MOONWALKERS_CANCEL_AT_SECONDS:
-		enter()
 		
 	if animation.is_playing():
 		player.velocity.x *= (DECELERATION_RATE*delta)
