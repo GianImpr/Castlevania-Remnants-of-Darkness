@@ -85,7 +85,11 @@ func spawnReward() -> void:
 	var reward: PickUp = pick_up_scene.instantiate()
 	reward.id = reward_id
 	reward.type = reward_type
-	reward.global_position = Global.player.global_position+Vector2(0,-480)
+	reward.set_collision_mask_value(1, false)
+	if reward_type != PickUp.ItemType.ARTIFACT:
+		reward.global_position = Global.player.global_position+Vector2(0,-300)
+	else:
+		reward.global_position = Global.player.global_position
 	MetSys.get_current_room_instance().call_deferred("add_child", reward)
 
 ## Spawns a heart if the current training mode is being played.
