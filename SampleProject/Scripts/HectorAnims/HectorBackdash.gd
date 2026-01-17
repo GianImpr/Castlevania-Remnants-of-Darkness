@@ -9,6 +9,7 @@ var can_perfect_guard: bool = true
 const STARTING_ANIM_POSITION: float = 0.5
 const DEBRIS_POSITION: Vector2 = Vector2(40,68)
 const DECELERATION_RATE: float = 54
+const MOONWALKERS_CANCEL_AT_SECONDS: float = 0.2
 
 
 func enter():
@@ -35,6 +36,9 @@ func Physics_Update(delta: float):
 	can_die()
 	if player.is_on_wall():
 		debris_timer.stop()
+		
+	if Global.player.stats.itemEquipped(Legs.Leg.MOONWALKERS, "legs") and Input.is_action_just_pressed("backdash") and animation.current_animation_position <= MOONWALKERS_CANCEL_AT_SECONDS:
+		enter()
 		
 	if animation.is_playing():
 		player.velocity.x *= (DECELERATION_RATE*delta)

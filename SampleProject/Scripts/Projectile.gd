@@ -13,6 +13,7 @@ class_name Projectile
 var thrower_ATK: int = 0
 
 func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> int:
+	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
 	var damage
 	if magical:
 		damage = max(base_damage + thrower_ATK - body.stats.Stats["RES"]/2, 1) * multiplier
@@ -32,14 +33,16 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 			return 0
 		if (damage < body.stats.Stats["MHP"]/10 or TrainingSettings.cur_challenge == TrainingMode.Training.GUARD) and body.stats.Stats["Guard"] > 1 and not guard_break:
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
-			body.stats.Stats["Guard"] -= 1
+			if not Global.player.stats.itemEquipped(Headgear.Headgears.IMPERVIOUS_HELMET, "head"):
+				body.stats.Stats["Guard"] -= 1
 			return 0
 		elif damage >= body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1 and not guard_break:
 			damage = min(damage*0.1, body.stats.Stats["HP"]-1)
-		elif body.stats.Stats["Guard"] == 1 or guard_break:
+		elif (body.stats.Stats["Guard"] == 1 and not Global.player.stats.itemEquipped(Headgear.Headgears.IMPERVIOUS_HELMET, "head")) or guard_break:
 			damage *= 0.6
 		if not guard_break:
-			body.stats.Stats["Guard"] -= 1
+			if not Global.player.stats.itemEquipped(Headgear.Headgears.IMPERVIOUS_HELMET, "head"):
+				body.stats.Stats["Guard"] -= 1
 		else:
 			body.stats.Stats["Guard"] = 0
 		
@@ -56,6 +59,9 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 	if body.stats.current_status == Global.player.stats.Ailment.STONE:
 		damage *= 2
 		
+	if body.stats.accessoryEquipped(Accessory.Accessories.CONFIDENCE_RING):
+		damage *= CONFIDENCE_RING_MULTIPLIER
+		
 	if Global.screen == Global.ScreenType.TRAINING:
 		return ceil(body.stats.Stats["MHP"] * TrainingSettings.damage_upon_hit / 100)
 
@@ -65,3 +71,5 @@ func apply_damage(body, damage):
 	body.damage_popup.popup(damage, 0)
 	body.stats.Stats["HP"] -= damage
 	body.is_hurt = true
+	if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]/10:
+		body.is_hurt = false

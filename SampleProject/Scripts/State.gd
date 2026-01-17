@@ -178,7 +178,8 @@ func can_attack():
 		if InputBuffer.checkCommandInput(cur_skill.command_input, 50):
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.TECHNIQUES)
 			Transitioned.emit(self, state_to_transition_to)
-			player.stats.Stats[stat_to_consume] -= cur_skill.cost_value
+			if not (stat_to_consume == "FP" and Global.player.stats.itemEquipped(Artifact.Artifacts.PRODIGY_NECKLACE, "artifact") and randi_range(0, 99) < Global.player.stats.Stats["LCK"]):
+				player.stats.Stats[stat_to_consume] -= cur_skill.cost_value
 			get_hector_attack_sound()
 			return
 		

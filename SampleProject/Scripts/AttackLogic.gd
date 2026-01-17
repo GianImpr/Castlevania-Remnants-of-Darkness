@@ -181,6 +181,8 @@ func calculateDamage(body: Node2D) -> int:
 	const STUD_OF_CONCENTRATION_BOOST: float = 1.07
 	const TIP_DAMAGE_MULTIPLIER: float = 1.2
 	const CHARGE_DAMAGE_MULTIPLIERS: Array[float] = [1.2, 1.3, 1.4]
+	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
+	const WINGED_RING_MULTIPLIER: float = 1.1
 	
 	if player.stats.accessoryEquipped(Accessory.Accessories.STUD_OF_CONCENTRATION) and player.stats.Stats["FP"] >= player.stats.Stats["MFP"]:
 		damage *= STUD_OF_CONCENTRATION_BOOST
@@ -190,7 +192,13 @@ func calculateDamage(body: Node2D) -> int:
 		
 	if player.cur_charge != HectorPlayer.Charge.NONE:
 		damage *= CHARGE_DAMAGE_MULTIPLIERS[player.cur_charge]
-	
+		
+	if not Global.player.confidence_ring_timer.is_stopped():
+		damage *= CONFIDENCE_RING_MULTIPLIER
+		
+	if player.stats.accessoryEquipped(Accessory.Accessories.WINGED_RING) and not player.is_on_floor():
+		damage *= WINGED_RING_MULTIPLIER
+		
 	if not TrainingSettings.can_deal_damage and Global.screen == Global.ScreenType.TRAINING:
 		return 0
 	

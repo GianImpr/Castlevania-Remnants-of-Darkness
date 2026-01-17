@@ -71,5 +71,8 @@ func apply_damage(body, damage):
 	body.damage_popup.popup(damage, 0)
 	body.stats.Stats["HP"] -= damage
 	body.is_hurt = true
+	if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]/10:
+		body.is_hurt = false
+
 	hitbox_iframe.set_deferred("monitoring", false)
 	iframe_timer.start()

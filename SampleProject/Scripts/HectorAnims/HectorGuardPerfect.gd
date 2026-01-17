@@ -11,6 +11,8 @@ func enter():
 	if player.stats.itemEquipped(Artifact.Artifacts.STONE_OF_ALCHEMY, "artifact"):
 		player.activateStoneOfAlchemy()
 
+	if player.stats.accessoryEquipped(Accessory.Accessories.CONFIDENCE_RING):
+		player.confidence_ring_timer.start()
 	
 	if player.stats.canApplySkill(Skill.Skills.AWARENESS):
 		player.focus_gain_duration.start()

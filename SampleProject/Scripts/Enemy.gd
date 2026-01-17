@@ -38,6 +38,7 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 	var damage = max((stats.ATK - body.stats.Stats["DEF"]/2)*multiplier, 1)
 	var damage_with_chip = damage + chip_damage
 	const STONE_DAMAGE_MULTIPLIER: float = 2
+	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
 		
 	if body.isGuarding():
 		if body.isPerfectGuarding():
@@ -76,6 +77,9 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 			
 	if body.state_machine.current_state is HectorPetrified:
 		damage *= STONE_DAMAGE_MULTIPLIER
+		
+	if body.stats.accessoryEquipped(Accessory.Accessories.CONFIDENCE_RING):
+		damage *= CONFIDENCE_RING_MULTIPLIER
 	
 	if damage > body.stats.Stats["HP"] and body.stats.Stats["HP"] > 1 and randi_range(0, 99) < body.stats.Stats["LCK"] and Global.player.stats.itemEquipped(Artifact.Artifacts.MIRACLE_COIN, "artifact"):
 		damage = body.stats.Stats["HP"] - 1
@@ -89,6 +93,8 @@ func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float
 	body.damage_popup.popup(damage, 0)
 	body.stats.Stats["HP"] = max(body.stats.Stats["HP"]-damage, 0)
 	body.is_hurt = true
+	if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]/10:
+		body.is_hurt = false
 	attack_hitbox.set_deferred("monitoring", false)
 	if rehit_time > 0:
 		var iframes_timer: Timer = Timer.new()

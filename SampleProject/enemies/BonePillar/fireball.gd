@@ -28,9 +28,7 @@ func calculate_damage(body, multiplier) -> int:
 
 	
 func apply_damage(body, damage):
-	body.damage_popup.popup(damage, 0)
-	body.stats.Stats["HP"] -= damage
-	body.is_hurt = true
+	stats.apply_damage(body, damage)
 	
 func destroy():
 	linear_velocity.x = 0

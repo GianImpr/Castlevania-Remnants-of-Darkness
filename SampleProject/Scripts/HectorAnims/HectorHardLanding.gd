@@ -3,6 +3,7 @@ class_name HectorHardLanding
 var can_perfect_guard: bool = false
 const MOMENTUM_MULTIPLIER: float = 0.3
 static var applyMercyInvincibility: Callable
+const SOLDIER_BOOTS_MULTIPLIER: float = 1.5
 
 func enter():
 	animation.play("hard_landing", -1, 1.7)
@@ -20,7 +21,10 @@ func Physics_Update(delta: float):
 		TrainingSettings.spawnTrainingHeart(TrainingMode.Training.QUICK_RECOVER)
 		Transitioned.emit(self, "backdash")
 		player.is_hurt = false
-		applyMercyInvincibility.call(player.SHORT_MERCY_INVINCIBILITY_DURATION)
+		if player.stats.itemEquipped(Legs.Leg.SOLDIER_BOOTS, "legs"):
+			applyMercyInvincibility.call(player.SHORT_MERCY_INVINCIBILITY_DURATION*SOLDIER_BOOTS_MULTIPLIER)
+		else:
+			applyMercyInvincibility.call(player.SHORT_MERCY_INVINCIBILITY_DURATION)
 
 	if not animation.is_playing() and (Global.screen != Global.ScreenType.TRAINING or player.stats.Stats["HP"] > 0):
 		Transitioned.emit(self, "crouch")

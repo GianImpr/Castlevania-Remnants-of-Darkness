@@ -40,9 +40,7 @@ func calculate_damage(body, multiplier) -> int:
 		
 	
 func apply_damage(body, damage):
-	body.damage_popup.popup(damage, 0)
-	body.stats.Stats["HP"] -= damage
-	body.is_hurt = true
+	stats.apply_damage(body, damage)
 	
 func destroy():
 	set_deferred("gravity_scale", 1)

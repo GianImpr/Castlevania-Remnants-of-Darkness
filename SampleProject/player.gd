@@ -21,6 +21,8 @@ class_name HectorPlayer
 @export var mercy_invincibility_duration: Timer
 @export var mercy_invincibility_hit_threshold_reset: Timer
 @export var focus_gain_duration: Timer
+@export_category("Buff nodes")
+@export var confidence_ring_timer: Timer
 @export_category("Charge nodes")
 @export var charge_sprite: Sprite2D
 @export var charge_anim: AnimationPlayer
@@ -147,6 +149,9 @@ func _process(delta: float) -> void:
 		
 	if expNeededToRankUpWeapon() <= 0:
 		weaponRankUp()
+		
+	if Global.screen == Global.ScreenType.TRAINING and TrainingSettings.cur_challenge == TrainingMode.Training.TECHNIQUES:
+		stats.Stats["FP"] = stats.Stats["MFP"]-1
 		
 	if not focus_gain_duration.is_stopped() and cur_charge == Charge.NONE:
 		if stats.Stats["FP"] < stats.Stats["MFP"] and stats.Stats["FP"]+FOCUS_GAIN_RATIO*delta >= stats.Stats["MFP"]:
