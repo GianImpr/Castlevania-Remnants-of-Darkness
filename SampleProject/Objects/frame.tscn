@@ -20,6 +20,33 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="Gradient" id="Gradient_2qrt3"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
+[sub_resource type="Animation" id="Animation_h3ehx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_m23ep"]
 resource_name = "idle"
 length = 3.0
@@ -47,33 +74,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(-2, -2, -2),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0.81960785, 0.8509804, 1), Color(0.74509805, 0.7254902, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_h3ehx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D2:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h3ehx"]
@@ -138,13 +138,16 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Node" type="Node" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Node"]
+position = Vector2(757, 342)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Area2D"]
 position = Vector2(0, 129.01944)
 shape = SubResource("RectangleShape2D_h3ehx")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Node/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Node/Area2D" to="." method="_on_area_2d_body_exited"]
