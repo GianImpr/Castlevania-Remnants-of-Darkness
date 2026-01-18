@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dk6ln3pa1ra6q"]
+[gd_scene load_steps=69 format=3 uid="uid://dk6ln3pa1ra6q"]
 
 [ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="1_a0owa"]
 [ext_resource type="Script" uid="uid://bsr6ixj1h4r5y" path="res://SampleProject/extra_scenes/HUD/training_menu.gd" id="1_c8rss"]
@@ -28,7 +28,11 @@
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="13_wsu2r"]
 [ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="14_0hsmt"]
 [ext_resource type="PackedScene" uid="uid://2vc38i25e1l" path="res://SampleProject/enemies/Ukoback/ukoback.tscn" id="14_vfpqg"]
+[ext_resource type="Texture2D" uid="uid://bnlpxm2lxsvkr" path="res://assets/images/Projectiles.png" id="15_ibmff"]
 [ext_resource type="PackedScene" uid="uid://bvk8m1t7uwv0b" path="res://SampleProject/enemies/Une/Une.tscn" id="15_jglwd"]
+[ext_resource type="Texture2D" uid="uid://crcfhm5rjevsv" path="res://assets/images/Techniques.png" id="16_lv2mb"]
+[ext_resource type="Texture2D" uid="uid://c04tyhgta24qi" path="res://assets/images/BackdashCancel.png" id="19_kkyoe"]
+[ext_resource type="Texture2D" uid="uid://dxpcqr0cq2mja" path="res://assets/images/JumpCancel.png" id="28_r3xt7"]
 
 [sub_resource type="Resource" id="Resource_0hsmt"]
 script = ExtResource("2_wsu2r")
@@ -100,6 +104,7 @@ This can prove most useful if Hector wields long ranged weapons as it can keep h
 challenge_beginner = "Destroy 10 of Ukoback's fireballs."
 challenge_intermediate = "Destroy 15 axes from Axe Armors."
 challenge_advanced = "Destroy 20 bones from Slingers."
+icon = ExtResource("15_ibmff")
 enemies_beginner = Array[PackedScene]([ExtResource("14_vfpqg")])
 enemies_intermediate = Array[PackedScene]([ExtResource("4_ygfm7"), ExtResource("4_ygfm7")])
 enemies_advanced = Array[PackedScene]([ExtResource("10_nno0u"), ExtResource("10_nno0u")])
@@ -118,6 +123,7 @@ These are much stronger moves than normal attacks and can be used to change the 
 challenge_beginner = "Use command inputs 3 times in 15 seconds."
 challenge_intermediate = "Use command inputs 6 times in 15 seconds."
 challenge_advanced = "Use command inputs 9 times in 15 seconds."
+icon = ExtResource("16_lv2mb")
 enemies_beginner = Array[PackedScene]([ExtResource("8_hwf47")])
 enemies_intermediate = Array[PackedScene]([ExtResource("8_hwf47")])
 enemies_advanced = Array[PackedScene]([ExtResource("8_hwf47")])
@@ -136,6 +142,7 @@ Perform a short-hop by very briefly pressing [[Cross]], then quickly attack with
 challenge_beginner = "Perform 5 jump cancels in 5 seconds."
 challenge_intermediate = "Perform 10 jump cancels in 5 seconds."
 challenge_advanced = "Perform 15 jump cancels in 5 seconds."
+icon = ExtResource("28_r3xt7")
 enemies_beginner = Array[PackedScene]([ExtResource("8_hwf47")])
 enemies_intermediate = Array[PackedScene]([ExtResource("8_hwf47")])
 enemies_advanced = Array[PackedScene]([ExtResource("8_hwf47")])
@@ -155,6 +162,7 @@ The backdash itself can also be cancelled by jumping."
 challenge_beginner = "Backdash cancel 5 times in 10 seconds."
 challenge_intermediate = "Backdash cancel 10 times in 10 seconds."
 challenge_advanced = "Backdash cancel 15 times in 10 seconds."
+icon = ExtResource("19_kkyoe")
 enemies_beginner = Array[PackedScene]([ExtResource("15_jglwd")])
 enemies_intermediate = Array[PackedScene]([ExtResource("15_jglwd")])
 enemies_advanced = Array[PackedScene]([ExtResource("15_jglwd")])
@@ -661,7 +669,7 @@ offset_right = 602.53845
 offset_bottom = 203.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_1qa27")
+texture = ExtResource("28_r3xt7")
 expand_mode = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="Description"]
