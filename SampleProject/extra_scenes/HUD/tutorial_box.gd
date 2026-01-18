@@ -14,6 +14,7 @@ static var current_tutorial: TutorialFormat
 enum Tutorial {
 	GUARDING,
 	GUARD_HEALTH,
+	HARD_LANDING_RECOVERY,
 	RELICS,
 	RED_SPARK,
 	PERFECT_GUARD,
@@ -23,8 +24,7 @@ enum Tutorial {
 	ORBS,
 	CYAN_ORB,
 	WEAPON_WHEEL_1,
-	WEAPON_WHEEL_2,
-	HARD_LANDING_RECOVERY
+	WEAPON_WHEEL_2
 }
 
 func _process(delta: float) -> void:

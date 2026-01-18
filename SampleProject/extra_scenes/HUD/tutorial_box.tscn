@@ -1,14 +1,14 @@
 [gd_scene load_steps=47 format=3 uid="uid://dogi4hsvyxsgs"]
 
-[ext_resource type="Script" path="res://SampleProject/extra_scenes/HUD/tutorial_box.gd" id="1_1rggr"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/TutorialFormat.gd" id="2_fcv6a"]
+[ext_resource type="Script" uid="uid://b7jhgr10ts7ea" path="res://SampleProject/extra_scenes/HUD/tutorial_box.gd" id="1_1rggr"]
+[ext_resource type="Script" uid="uid://cwcbsnnimcdek" path="res://SampleProject/Scripts/System/TutorialFormat.gd" id="2_fcv6a"]
 [ext_resource type="Texture2D" uid="uid://dt0pb87xgi3pu" path="res://assets/images/GuardHealth.png" id="3_cyhd6"]
 [ext_resource type="Texture2D" uid="uid://chgh1icjepfq" path="res://assets/images/Guarding.png" id="3_e0b5c"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_dp0oq"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="4_ghrps"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_2jnfb"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_dp0oq"]
+[ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="4_ghrps"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_2jnfb"]
 [ext_resource type="Texture2D" uid="uid://dlgbsgjhyq3ii" path="res://assets/images/Relic.png" id="5_vfp2l"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_glbrx"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_glbrx"]
 [ext_resource type="Texture2D" uid="uid://cp25oophuxjaq" path="res://assets/images/RedSpark.png" id="6_xnnn0"]
 [ext_resource type="Texture2D" uid="uid://cx1wxmu3nscdw" path="res://assets/images/PerfectGuard.png" id="7_m14ni"]
 [ext_resource type="AudioStream" uid="uid://cr25eu7ste64s" path="res://assets/sounds/Effects/Miscellaneous/TutorialPopup.MP3" id="7_vu011"]
@@ -36,6 +36,12 @@ description = "GUARD_HEALTH_DESC"
 image = ExtResource("3_cyhd6")
 condition = "Global.player.stats.findItem(1, Global.player.stats.skill_inventory)"
 
+[sub_resource type="Resource" id="Resource_gypgr"]
+script = ExtResource("2_fcv6a")
+title = "RECOVERING_FROM_HARD_LANDING"
+description = "RECOVERING_FROM_HARD_LANDING_DESC"
+image = ExtResource("12_uxvf1")
+
 [sub_resource type="Resource" id="Resource_ce2tk"]
 script = ExtResource("2_fcv6a")
 title = "RELICS"
@@ -48,7 +54,6 @@ script = ExtResource("2_fcv6a")
 title = "RED_SPARK"
 description = "RED_SPARK_DESC"
 image = ExtResource("6_xnnn0")
-condition = ""
 
 [sub_resource type="Resource" id="Resource_1trho"]
 script = ExtResource("2_fcv6a")
@@ -81,13 +86,11 @@ condition = "Global.player.innocent_devil != null"
 script = ExtResource("2_fcv6a")
 title = "ORBS"
 description = "ORBS_DESC"
-condition = ""
 
 [sub_resource type="Resource" id="Resource_defet"]
 script = ExtResource("2_fcv6a")
 title = "CYAN_ORB"
 description = "CYAN_ORB_DESC"
-condition = ""
 
 [sub_resource type="Resource" id="Resource_bbpn6"]
 script = ExtResource("2_fcv6a")
@@ -102,13 +105,6 @@ title = "WEAPON_WHEEL_2"
 description = "WEAPON_WHEEL_2_DESC"
 image = ExtResource("11_24aic")
 condition = "Global.player.stats.picked_items[92] == true"
-
-[sub_resource type="Resource" id="Resource_gypgr"]
-script = ExtResource("2_fcv6a")
-title = "RECOVERING_FROM_HARD_LANDING"
-description = "RECOVERING_FROM_HARD_LANDING_DESC"
-image = ExtResource("12_uxvf1")
-condition = ""
 
 [sub_resource type="Theme" id="Theme_ysinr"]
 default_font = ExtResource("10_ff42d")
@@ -183,9 +179,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_81h6x"]
 _data = {
-"RESET": SubResource("Animation_1ogn0"),
-"appear": SubResource("Animation_d43i8"),
-"disappear": SubResource("Animation_jueci")
+&"RESET": SubResource("Animation_1ogn0"),
+&"appear": SubResource("Animation_d43i8"),
+&"disappear": SubResource("Animation_jueci")
 }
 
 [sub_resource type="Resource" id="Resource_r3fyu"]
@@ -218,7 +214,7 @@ image = NodePath("PanelContainer/VBoxContainer/Image")
 description = NodePath("PanelContainer/VBoxContainer/Description")
 continue_label = NodePath("PanelContainer/VBoxContainer/Continue")
 sound = NodePath("PolyphonicMenuAudio")
-tutorials = Array[ExtResource("2_fcv6a")]([SubResource("Resource_pakqc"), SubResource("Resource_v7vry"), SubResource("Resource_ce2tk"), SubResource("Resource_om33j"), SubResource("Resource_1trho"), SubResource("Resource_4uphu"), SubResource("Resource_nl7m1"), SubResource("Resource_j2x7b"), SubResource("Resource_fl6h1"), SubResource("Resource_defet"), SubResource("Resource_bbpn6"), SubResource("Resource_fdnyd"), SubResource("Resource_gypgr")])
+tutorials = Array[ExtResource("2_fcv6a")]([SubResource("Resource_pakqc"), SubResource("Resource_v7vry"), SubResource("Resource_gypgr"), SubResource("Resource_ce2tk"), SubResource("Resource_om33j"), SubResource("Resource_1trho"), SubResource("Resource_4uphu"), SubResource("Resource_nl7m1"), SubResource("Resource_j2x7b"), SubResource("Resource_fl6h1"), SubResource("Resource_defet"), SubResource("Resource_bbpn6"), SubResource("Resource_fdnyd")])
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -290,7 +286,7 @@ new_text = "TUTORIAL_BOX_CONTINUE"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_81h6x")
+&"": SubResource("AnimationLibrary_81h6x")
 }
 
 [node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
