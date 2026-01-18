@@ -359,13 +359,13 @@ func heal_innocent(amount: int) -> void:
 	if innocent_devil != null:
 		innocent_devil.stats.Stats["Hearts"] = min(innocent_devil.stats.Stats["Hearts"]+amount, innocent_devil.stats.Stats["MHearts"])
 
-# Player stays in idle animation
+## Player stays in idle animation
 func freeze() -> void:
-	state_machine.current_state.Transitioned.emit(state_machine.current_state, "wait")
+	transitionToState("wait")
 	
-# Player can move again
+## Player can move again
 func unfreeze() -> void:
-	state_machine.current_state.Transitioned.emit(state_machine.current_state, "idle")
+	transitionToState("idle")
 	
 func removeSwordTrail() -> void:
 	if not (state_machine.current_state is HectorAttack or state_machine.current_state is HectorAirAttack or state_machine.current_state is HectorCrouchAttack):

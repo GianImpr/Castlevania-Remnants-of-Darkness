@@ -32,9 +32,7 @@ func _ready() -> void:
 		button.focus_entered.connect(focusButton.bind(button))
 		
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug") and Global.screen == Global.ScreenType.NONE:
-		openMenu()
-	elif Input.is_action_just_pressed("debug") and Global.screen == Global.ScreenType.TRAINING_MENU:
+	if Input.is_action_just_pressed("circle") and Global.screen == Global.ScreenType.TRAINING_MENU:
 		closeMenu()
 		
 	if Global.screen == Global.ScreenType.TRAINING_MENU and not animation.is_playing():
@@ -62,6 +60,8 @@ func closeMenu():
 	await animation.animation_finished
 	visible = false
 	get_tree().paused = false
+	Global.player.unfreeze()
+	Global.player.tap_up.appear()
 	Global.screen = Global.ScreenType.NONE
 	
 func startTraining():

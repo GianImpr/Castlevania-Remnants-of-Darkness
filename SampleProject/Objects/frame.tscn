@@ -237,8 +237,10 @@ stream = ExtResource("7_uo6m7")
 script = ExtResource("5_nnu1a")
 sound_effects = Array[ExtResource("6_877ya")]([SubResource("Resource_d7cj6")])
 
-[node name="Frame" type="Node2D"]
+[node name="Frame" type="Node2D" node_paths=PackedStringArray("animation")]
+process_mode = 3
 script = ExtResource("1_h3ehx")
+animation = NodePath("AnimationPlayer")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(-450, -371.20007)
