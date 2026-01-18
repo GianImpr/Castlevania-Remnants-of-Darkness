@@ -61,7 +61,7 @@ func _process(delta: float) -> void:
 		if Global.training_menu.trainings[cur_challenge-1].max_challenge_level == Global.training_menu.cur_challenge_level:
 			Global.training_menu.trainings[cur_challenge-1].max_challenge_level = min(Global.training_menu.trainings[cur_challenge-1].max_challenge_level+1, 3)
 		Global.tutorial_box.activate = true
-		Global.player.state_machine.current_state.Transitioned.emit(Global.player.state_machine.current_state, "wait")
+		Global.player.transitionToState("wait")
 		get_tree().create_timer(2.5, true).timeout.connect(returnToTrainingMenu)
 		Global.player.is_hurt = false
 		
@@ -103,7 +103,7 @@ func returnToTrainingMenu() -> void:
 	Global.player.heal_innocent(9999)
 	Global.player.is_hurt = false
 	Global.player.velocity = Vector2.ZERO
-	Global.player.state_machine.current_state.Transitioned.emit(Global.player.state_machine.current_state, "idle")
+	Global.player.transitionToState("idle")
 	get_tree().paused = true
 	await Global.total_fade_screen.fadeOutFor(0.5)
 	Global.change_area.emit(player_current_room, player_global_position)

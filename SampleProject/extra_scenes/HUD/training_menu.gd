@@ -95,6 +95,7 @@ func startTraining():
 			TrainingSettings.enemies = training.enemies_intermediate
 		TrainingMode.TrainingLevel.ADVANCED:
 			TrainingSettings.enemies = training.enemies_advanced
+	Global.player.tap_up.dismiss()
 	await get_tree().create_timer(2, true).timeout
 	Global.screen = Global.ScreenType.TRAINING
 	get_tree().paused = false

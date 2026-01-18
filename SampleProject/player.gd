@@ -446,3 +446,6 @@ func activateCharge(level: Charge) -> void:
 func disableCharge() -> void:
 	charge_particles.one_shot = true
 	cur_charge = Charge.NONE
+
+func transitionToState(state: String) -> void:
+	state_machine.current_state.Transitioned.emit(state_machine.current_state, state)
