@@ -2,8 +2,8 @@ extends Control
 class_name Shop
 
 @export var initial_screen: Control
-@export var buy_screen: Control
-@export var sell_screen: Control
+@export var buy_screen: ShopBuy
+@export var sell_screen: ShopSell
 @export var description_panel: PanelContainer
 @export var description_icon: TextureRect
 @export var description_text: Label
@@ -56,7 +56,13 @@ func openBuyMenu() -> void:
 
 ### Opens the sell screen of the shop.
 func openSellMenu() -> void:
-	return
+	julia_voice.play_sound_effect_from_library("today")
+	animation.play("hide_initial")
+	await animation.animation_finished
+	initial_screen.process_mode = Node.PROCESS_MODE_DISABLED
+	sell_screen.initializeSellScreen()
+	sell_screen.process_mode = Node.PROCESS_MODE_ALWAYS
+	sell_screen.animation.play("show")
 
 ### Closes the shop screen, returning to the game.
 func closeShop() -> void:
@@ -77,3 +83,11 @@ func _on_buy_pressed() -> void:
 	
 	sound.play_sound_effect_from_library("confirm")
 	openBuyMenu()
+
+
+func _on_sell_pressed() -> void:
+	if animation.is_playing():
+		return
+	
+	sound.play_sound_effect_from_library("confirm")
+	openSellMenu()

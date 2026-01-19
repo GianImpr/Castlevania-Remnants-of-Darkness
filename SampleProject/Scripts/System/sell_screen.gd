@@ -1,8 +1,7 @@
-@tool
 extends Control
 class_name ShopSell
 
-@export var sellable_items: Array[ShopItem]
+var sellable_items: Array[ShopItem]
 @export var scroll_container: ScrollContainer
 @export var gold_label: Label
 @export var animation: AnimationPlayer
@@ -12,13 +11,12 @@ class_name ShopSell
 @export var item_entries: VBoxContainer
 @export var gold_sound: PolyphonicMenuAudio
 var item_quantities: Array[int]
-var item_max_held: Array[int]
 var item_held: Array[int]
 var item_descriptions: Array[String]
 var base_item_costs: Array[int]
 static var level: int = 0
 var cur_index: int = 0
-var gold_consumption_tween: Tween
+var gold_gain_tween: Tween
 
 enum ItemEntryChildren {
 	BUTTON,
@@ -28,8 +26,8 @@ enum ItemEntryChildren {
 	PRICE
 }
 
-## Initializes the buy screen.
-func initializeBuyScreen() -> void:
+## Initializes the sell screen.
+func initializeSellScreen() -> void:
 	initializeItemEntries()
 	cur_index = 0
 	focusOnButton(true)
@@ -52,7 +50,7 @@ func updateDescription() -> void:
 	
 
 ## Returns to initial screen.
-func closeBuyScreen() -> void:
+func closeSellScreen() -> void:
 	var cur_button: HBoxContainer = item_entries.get_child(cur_index)
 	if cur_button:
 		cur_button.get_child(ItemEntryChildren.BUTTON).release_focus()
@@ -68,7 +66,7 @@ func closeBuyScreen() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 	
 
-## Initializes the buttons of items in the buy list.
+## Initializes the buttons of items in the sell list.
 func initializeItemEntries() -> void:
 	const INITIAL_QUANTITY: int = 1
 	var STYLEBOX_EMPTY: StyleBoxFlat = StyleBoxFlat.new()
@@ -76,27 +74,46 @@ func initializeItemEntries() -> void:
 	for child in item_entries.get_children():
 		child.free()
 	
+	sellable_items.clear()
 	base_item_costs.clear()
 	item_quantities.clear()
-	item_max_held.clear()
 	item_held.clear()
 	item_descriptions.clear()
 	var index: int = 0
+	var inventories: Array = [Global.player.stats.item_inventory, Global.player.stats.weapon_inventory, Global.player.stats.head_inventory, Global.player.stats.body_inventory, Global.player.stats.legs_inventory, Global.player.stats.acc_inventory]
+	const types: Array[PickUp.ItemType] = [PickUp.ItemType.ITEM, PickUp.ItemType.WEAPON, PickUp.ItemType.HEADGEAR, PickUp.ItemType.BODY, PickUp.ItemType.LEGS, PickUp.ItemType.ACCESSORY]
+	for i in range(0, inventories.size()):
+		var cur_inventory = inventories[i]
+		var cur_type = types[i]
+		for item in cur_inventory:
+			var cur_item_value: int = getCompendium(cur_type)[item["id"]-1].value
+			
+			if cur_item_value == 0:
+				continue
+
+			var shop_item: ShopItem = ShopItem.new()
+			shop_item.id = item["id"]
+			shop_item.type = cur_type
+			sellable_items.append(shop_item)
+		
 	for item: ShopItem in sellable_items:
 		if item.show_at_shop_level > level:
 			continue
+		var item_data = getCompendium(item.type)[item.id-1]
+		
+		if item_data.value == 0:
+			continue
+
 		var item_entry: HBoxContainer = HBoxContainer.new()
 		var item_button: Button = Button.new()
 		var item_type: Label = Label.new()
 		var item_quantity: Label = Label.new()
 		var item_held_label: Label = Label.new()
 		var item_price: Label = Label.new()
-		var item_data = getCompendium(item.type)[item.id-1]
 			
 		base_item_costs.append(item_data.value)
-		item_held.append(Global.player.stats.findItem(item.id, getInventory(item.type)) + int(Global.player.stats.isEquipped(item_data)))
-		item_max_held.append(item_data.max_quantity)
-		item_quantities.append(min(INITIAL_QUANTITY, item_data.max_quantity-Global.player.stats.findItem(item.id, getInventory(item.type)) - int(Global.player.stats.isEquipped(item_data))))
+		item_held.append(Global.player.stats.findItem(item.id, getInventory(item.type)))
+		item_quantities.append(INITIAL_QUANTITY)
 		item_descriptions.append(item_data[PickUp.getItemDescription(item.type)])
 		
 		item_button.flat = true
@@ -134,6 +151,7 @@ func initializeItemEntries() -> void:
 		
 		updateQuantityLabel(index)
 		index += 1
+	
 
 ## Given the type of the item, returns the compendium that holds it.
 func getCompendium(type):
@@ -202,7 +220,7 @@ func _process(delta: float) -> void:
 		return
 	
 	if Input.is_action_just_pressed("ui_cancel"):
-		closeBuyScreen()
+		closeSellScreen()
 	elif Input.is_action_just_pressed("ui_right"):
 		increaseQuantity(base_item_costs[cur_index])
 	elif Input.is_action_just_pressed("ui_left"):
@@ -216,37 +234,32 @@ func _process(delta: float) -> void:
 		focusOnButton()
 		updateAvailability()
 
-## Buys a certain number of copies of a certain item with specified type.
-func buyItem(item: int, type: PickUp.ItemType, quantity: int, cost: int) -> void:
+## Sells a certain number of copies of a certain item with specified type.
+func sellItem(item: int, type: PickUp.ItemType, quantity: int, cost: int) -> void:
 	var total_cost: int = cost*quantity
 	
 	if quantity == 0:
 		sound.play_sound_effect_from_library("denied")
 		return
-
-	if total_cost > Global.player.stats.Stats["GOLD"]:
-		sound.play_sound_effect_from_library("denied")
-		get_parent().julia_voice.play_sound_effect_from_library("no_money")
-		return
 	
 	get_parent().julia_voice.play_sound_effect_from_library(["anything_else", "thank_you"].pick_random())
 	sound.play_sound_effect_from_library("confirm")
 	var player_inventory = getInventory(type)
-	item_held[cur_index] += quantity
+	item_held[cur_index] -= quantity
 	item_quantities[cur_index] = 0
 	item_entries.get_child(cur_index).get_child(ItemEntryChildren.HELD).text = str(item_held[cur_index])
 	updateQuantityLabel(cur_index)
 	updateCostLabel(cur_index)
-	Global.player.stats.addItem(item, player_inventory, quantity)
-	Global.player.stats.Stats["GOLD"] -= total_cost
+	Global.player.stats.removeItemCopies(item, quantity, player_inventory, true)
+	Global.player.stats.Stats["GOLD"] += total_cost
 	updateAvailability()
-	if gold_consumption_tween != null and gold_consumption_tween.is_running():
-		gold_consumption_tween.kill()
+	if gold_gain_tween != null and gold_gain_tween.is_running():
+		gold_gain_tween.kill()
 		gold_sound.stop()
-	gold_consumption_tween = get_tree().create_tween()
-	gold_consumption_tween.finished.connect(finishGoldSound)
+	gold_gain_tween = get_tree().create_tween()
+	gold_gain_tween.finished.connect(finishGoldSound)
 	gold_sound.play_sound_effect_from_library("gold_consuming")
-	gold_consumption_tween.tween_property(Shop, "displayed_gold", Global.player.stats.Stats["GOLD"], log(Shop.displayed_gold - Global.player.stats.Stats["GOLD"])*0.1)
+	gold_gain_tween.tween_property(Shop, "displayed_gold", Global.player.stats.Stats["GOLD"], log(Global.player.stats.Stats["GOLD"] - Shop.displayed_gold)*0.1)
 
 func finishGoldSound() -> void:
 	gold_sound.stop()
@@ -254,7 +267,7 @@ func finishGoldSound() -> void:
 
 ## Increases the quality slider of the currently selected item by 1 and recalculates the total cost.
 func increaseQuantity(price: int) -> void:
-	if item_quantities[cur_index] < item_max_held[cur_index] - item_held[cur_index]:
+	if item_quantities[cur_index] < item_held[cur_index]:
 		item_quantities[cur_index] += 1
 		updateQuantityLabel(cur_index)
 		updateCostLabel(cur_index)
@@ -264,7 +277,7 @@ func increaseQuantity(price: int) -> void:
 
 ## Decrease the quality slider of the currently selected item by 1 and recalculates the total cost.
 func decreaseQuantity(price: int) -> void:
-	if item_quantities[cur_index] > min(item_max_held[cur_index] - item_held[cur_index], 1):
+	if item_quantities[cur_index] > min(item_held[cur_index], 1):
 		sound.play_sound_effect_from_library("cursor")
 		item_quantities[cur_index] -= 1
 		updateQuantityLabel(cur_index)
@@ -276,12 +289,12 @@ func decreaseQuantity(price: int) -> void:
 func updateQuantityLabel(index: int) -> void:
 	var qty_label: Label = item_entries.get_child(index).get_child(ItemEntryChildren.QUANTITY)
 	qty_label.text = ""
-	if item_quantities[index] > min(item_max_held[index] - item_held[index], 1):
+	if item_quantities[index] > min(item_held[index], 1):
 		qty_label.text += "< "
 	else:
 		qty_label.text += "   "
 	qty_label.text += str(item_quantities[index])
-	if item_quantities[index] < item_max_held[index] - item_held[index]:
+	if item_quantities[index] < item_held[index]:
 		qty_label.text += " >"
 	else:
 		qty_label.text += "   "
@@ -306,18 +319,13 @@ func updateQuantityLabel(index: int) -> void:
 ## Updates the item cost of the currently selected item
 func updateCostLabel(index: int) -> void:
 	var price_label: Label = item_entries.get_child(index).get_child(ItemEntryChildren.PRICE)
-	
-	if Global.player.stats.Stats["GOLD"] < base_item_costs[index]*item_quantities[index]:
-		price_label.self_modulate = Color.CRIMSON
-	else:
-		price_label.self_modulate = Shop.SELECTED_ITEM_COLOR
-
+	price_label.self_modulate = Shop.SELECTED_ITEM_COLOR
 	price_label.text = str(item_quantities[index]*base_item_costs[index])
 
 ## Updates if each item in the shop is purchasable or not based on how much gold the player has when this function is called.
 func updateAvailability() -> void:
 	for item_entry in item_entries.get_children():
-		if int(item_entry.get_child(ItemEntryChildren.PRICE).text) > Global.player.stats.Stats["GOLD"] or int(item_entry.get_child(ItemEntryChildren.QUANTITY).text) == 0:
+		if int(item_entry.get_child(ItemEntryChildren.QUANTITY).text) == 0:
 			setItemEntryColor(item_entry, Shop.UNAVAILABLE_ITEM_COLOR)
 		else:
 			setItemEntryColor(item_entry, Shop.AVAILABLE_ITEM_COLOR)
@@ -333,13 +341,11 @@ func setItemEntryColor(item_entry: HBoxContainer, color: Color) -> void:
 	for type in ItemEntryChildren.keys():
 		if type != "BUTTON":
 			item_entry.get_child(ItemEntryChildren[type]).self_modulate = color
-		if type == "PRICE" and color == Shop.SELECTED_ITEM_COLOR and Global.player.stats.Stats["GOLD"] < base_item_costs[cur_index]*item_quantities[cur_index]:
-			item_entry.get_child(ItemEntryChildren[type]).self_modulate = Color.CRIMSON
 			
 	(item_entry.get_child(ItemEntryChildren.BUTTON) as Button).add_theme_color_override("font_focus_color", color)
 	(item_entry.get_child(ItemEntryChildren.BUTTON) as Button).add_theme_color_override("font_color", color)
 	(item_entry.get_child(ItemEntryChildren.BUTTON) as Button).add_theme_color_override("font_pressed_color", color)
 
-## Presses the i-th item button in the buy list
+## Presses the i-th item button in the sell list
 func _onItemSelected() -> void:
-	buyItem(sellable_items[cur_index].id, sellable_items[cur_index].type, item_quantities[cur_index], base_item_costs[cur_index])
+	sellItem(sellable_items[cur_index].id, sellable_items[cur_index].type, item_quantities[cur_index], base_item_costs[cur_index])

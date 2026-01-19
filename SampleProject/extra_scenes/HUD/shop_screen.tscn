@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://cr4jksx71segk"]
+[gd_scene load_steps=104 format=3 uid="uid://cr4jksx71segk"]
 
 [ext_resource type="Script" uid="uid://4u8elxx42opm" path="res://SampleProject/Scripts/System/Menu/shop_screen.gd" id="1_rq5a2"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="2_80w3n"]
@@ -208,6 +208,7 @@ fill_from = Vector2(0.0318471, 0.22293)
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Animation" id="Animation_sxp3s"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -260,7 +261,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SellLabel:self_modulate")
+tracks/4/path = NodePath("PanelContainer:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -272,7 +273,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PanelContainer:self_modulate")
+tracks/5/path = NodePath("PanelContainer/ScrollContainer:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -284,7 +285,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("PanelContainer/ScrollContainer:modulate")
+tracks/6/path = NodePath("BuyLabel:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -348,11 +349,11 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SellLabel:self_modulate")
+tracks/4/path = NodePath("PanelContainer:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.26666668, 0.46666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -360,11 +361,11 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PanelContainer:self_modulate")
+tracks/5/path = NodePath("PanelContainer/ScrollContainer:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.26666668, 0.46666667),
+"times": PackedFloat32Array(0.20000002, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -372,11 +373,11 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("PanelContainer/ScrollContainer:modulate")
+tracks/6/path = NodePath("BuyLabel:self_modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.20000002, 0.4),
+"times": PackedFloat32Array(2.9802322e-08, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -386,6 +387,188 @@ tracks/6/keys = {
 _data = {
 &"RESET": SubResource("Animation_sxp3s"),
 &"show": SubResource("Animation_4rfpf")
+}
+
+[sub_resource type="Animation" id="Animation_ov5w2"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.16666667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(836, 26), Vector2(836, 326)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Gold:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../GoldValue:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Header:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.26666668, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.26666668, 0.46666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/ScrollContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.20000002, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SellLabel:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.49999997),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7v0m5"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(836, 326)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Gold:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../GoldValue:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Header:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/ScrollContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SellLabel:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7v0m5"]
+_data = {
+&"RESET": SubResource("Animation_7v0m5"),
+&"show": SubResource("Animation_ov5w2")
 }
 
 [sub_resource type="Theme" id="Theme_a0qgn"]
@@ -746,7 +929,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_okf63")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_v0lvk")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_j43w6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_514lr")
-disabled = true
 action_mode = 0
 text = "Sell"
 icon = SubResource("CompressedTexture2D_axgji")
@@ -971,12 +1153,20 @@ libraries = {
 &"": SubResource("AnimationLibrary_xqvsg")
 }
 
-[node name="SellScreen" type="Control" parent="."]
+[node name="SellScreen" type="Control" parent="." node_paths=PackedStringArray("scroll_container", "gold_label", "animation", "sound", "text_description", "icon_description", "item_entries", "gold_sound")]
 z_index = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("9_ov5w2")
+scroll_container = NodePath("PanelContainer/ScrollContainer")
+gold_label = NodePath("../GoldValue")
+animation = NodePath("AnimationPlayer")
+sound = NodePath("../PolyphonicMenuAudio")
+text_description = NodePath("../Description/Text")
+icon_description = NodePath("../Description/Icon")
+item_entries = NodePath("PanelContainer/ScrollContainer/Items")
+gold_sound = NodePath("../GoldAudio")
 
 [node name="Header" type="HBoxContainer" parent="SellScreen"]
 modulate = Color(1, 1, 1, 0)
@@ -1063,7 +1253,7 @@ layout_mode = 0
 offset_left = 16.0
 offset_top = 58.0
 offset_right = 852.0
-offset_bottom = 136.0
+offset_bottom = 384.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4e0xj")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="SellScreen/PanelContainer"]
@@ -1136,6 +1326,11 @@ layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_i7x1f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SellScreen"]
+libraries = {
+&"": SubResource("AnimationLibrary_7v0m5")
+}
 
 [node name="Description" type="Control" parent="."]
 z_index = 1
@@ -1253,3 +1448,4 @@ texture = SubResource("GradientTexture2D_j43w6")
 flip_v = true
 
 [connection signal="pressed" from="InitialScreen/VBoxContainer/Buy" to="." method="_on_buy_pressed"]
+[connection signal="pressed" from="InitialScreen/VBoxContainer/Sell" to="." method="_on_sell_pressed"]
