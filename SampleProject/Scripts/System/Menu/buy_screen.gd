@@ -100,7 +100,7 @@ func initializeItemEntries() -> void:
 		base_item_costs.append(item_data.value)
 		item_held.append(Global.player.stats.findItem(item.id, getInventory(item.type)) + int(Global.player.stats.isEquipped(item_data)))
 		item_max_held.append(item_data.max_quantity)
-		item_quantities.append(min(INITIAL_QUANTITY, item_data.max_quantity-Global.player.stats.findItem(item.id, getInventory(item.type)) + int(Global.player.stats.isEquipped(item_data))))
+		item_quantities.append(min(INITIAL_QUANTITY, item_data.max_quantity-Global.player.stats.findItem(item.id, getInventory(item.type)) - int(Global.player.stats.isEquipped(item_data))))
 		item_descriptions.append(item_data[PickUp.getItemDescription(item.type)])
 		
 		item_button.flat = true

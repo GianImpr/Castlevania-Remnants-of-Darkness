@@ -41,7 +41,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	sound.play_sound_effect_from_library("collect")
 	Global.item_box.changeColor(0)
 	Global.item_box.visible = true
-	Global.item_box.label.text = "$" + str(coin_data[type].value)
+	Global.item_box.label.text = "$" + str(coin_data[type].value) 
 	Global.player.stats.Stats["GOLD"] += coin_data[type].value
 	Global.item_box.timer.start()
 	animation.play("picked")
