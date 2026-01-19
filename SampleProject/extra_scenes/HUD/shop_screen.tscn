@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://cr4jksx71segk"]
+[gd_scene load_steps=101 format=3 uid="uid://cr4jksx71segk"]
 
 [ext_resource type="Script" uid="uid://4u8elxx42opm" path="res://SampleProject/Scripts/System/Menu/shop_screen.gd" id="1_rq5a2"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="2_80w3n"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://du0eiy67cnc7d" path="res://assets/sprites/Items/InventoryIcons/Inventory_258.png" id="7_4e0xj"]
 [ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="8_c4ouk"]
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="9_2pq27"]
+[ext_resource type="Script" uid="uid://ci4nlniwcbyi5" path="res://SampleProject/Scripts/System/sell_screen.gd" id="9_ov5w2"]
 [ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="12_ogxjy"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="13_4e0xj"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="14_ltn54"]
@@ -259,7 +260,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BuyLabel:self_modulate")
+tracks/4/path = NodePath("SellLabel:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -347,7 +348,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("BuyLabel:self_modulate")
+tracks/4/path = NodePath("SellLabel:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -975,6 +976,166 @@ z_index = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("9_ov5w2")
+
+[node name="Header" type="HBoxContainer" parent="SellScreen"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 36.0
+offset_top = 69.0
+offset_right = 832.0
+offset_bottom = 109.0
+theme = SubResource("Theme_xgaue")
+
+[node name="Name" type="Label" parent="SellScreen/Header"]
+clip_children = 2
+z_index = 1
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Name"
+
+[node name="TextureRect" type="TextureRect" parent="SellScreen/Header/Name"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ogxjy")
+
+[node name="Type" type="Label" parent="SellScreen/Header"]
+clip_children = 2
+z_index = 1
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Type"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="SellScreen/Header/Type"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ogxjy")
+
+[node name="Quantity" type="Label" parent="SellScreen/Header"]
+clip_children = 2
+z_index = 1
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+text = "Quantity"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="SellScreen/Header/Quantity"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ogxjy")
+
+[node name="Held" type="Label" parent="SellScreen/Header"]
+clip_children = 2
+z_index = 1
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Held"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="SellScreen/Header/Held"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ogxjy")
+
+[node name="Price" type="Label" parent="SellScreen/Header"]
+clip_children = 2
+z_index = 1
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+text = "Price"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="SellScreen/Header/Price"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ogxjy")
+
+[node name="PanelContainer" type="PanelContainer" parent="SellScreen"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 58.0
+offset_right = 852.0
+offset_bottom = 136.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4e0xj")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SellScreen/PanelContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Items" type="VBoxContainer" parent="SellScreen/PanelContainer/ScrollContainer"]
+layout_mode = 2
+theme = SubResource("Theme_xqvsg")
+
+[node name="Header" type="HBoxContainer" parent="SellScreen/PanelContainer/ScrollContainer/Items"]
+layout_mode = 2
+theme = SubResource("Theme_xgaue")
+
+[node name="Name" type="Button" parent="SellScreen/PanelContainer/ScrollContainer/Items/Header"]
+custom_minimum_size = Vector2(302, 0)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_xqvsg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_xqvsg")
+text = "Potion"
+icon = ExtResource("7_4e0xj")
+flat = true
+alignment = 0
+expand_icon = true
+
+[node name="Type" type="Label" parent="SellScreen/PanelContainer/ScrollContainer/Items/Header"]
+z_index = 1
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Accessory"
+horizontal_alignment = 1
+
+[node name="Quantity" type="Label" parent="SellScreen/PanelContainer/ScrollContainer/Items/Header"]
+z_index = 1
+custom_minimum_size = Vector2(145, 0)
+layout_mode = 2
+text = "< 1 >"
+horizontal_alignment = 1
+
+[node name="Held" type="Label" parent="SellScreen/PanelContainer/ScrollContainer/Items/Header"]
+z_index = 1
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "99"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="SellScreen/PanelContainer/ScrollContainer/Items/Header"]
+z_index = 1
+custom_minimum_size = Vector2(115, 0)
+layout_mode = 2
+text = "200000"
+horizontal_alignment = 2
+
+[node name="SellLabel" type="Label" parent="SellScreen"]
+self_modulate = Color(1, 1, 1, 0)
+clip_children = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 508.0
+offset_bottom = 60.0
+theme = SubResource("Theme_ltn54")
+text = "Sell"
+
+[node name="TextureRect" type="TextureRect" parent="SellScreen/SellLabel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_i7x1f")
 
 [node name="Description" type="Control" parent="."]
 z_index = 1

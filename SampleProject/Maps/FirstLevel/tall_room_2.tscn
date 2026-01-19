@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=4 uid="uid://ceep2jk4avqcl"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_e3thi"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_e3thi"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_oyv1v"]
 [ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_djlvr"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="4_07wyj"]
@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dfuncyp0yhrbk" path="res://SampleProject/enemies/Slinger/slinger.tscn" id="8_kvuld"]
 [ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="9_n6sxx"]
 [ext_resource type="PackedScene" uid="uid://des8o3jbf3a4m" path="res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn" id="11_d7o5n"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/hard_mode_node.gd" id="12_5v7i7"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Spawners/enemy_spawner.gd" id="13_bqisb"]
+[ext_resource type="Script" uid="uid://4t0qttyv0rqn" path="res://SampleProject/Scripts/System/hard_mode_node.gd" id="12_5v7i7"]
+[ext_resource type="Script" uid="uid://ce8hlv3gh56gm" path="res://SampleProject/Scripts/Spawners/enemy_spawner.gd" id="13_bqisb"]
 [ext_resource type="PackedScene" uid="uid://bn3lg7fw7nbhb" path="res://SampleProject/enemies/Ghost/ghost.tscn" id="14_lhe07"]
 [ext_resource type="PackedScene" uid="uid://q43vbthycopx" path="res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn" id="15_h8cuj"]
 
@@ -945,12 +945,12 @@ max_pos_limits = Vector2(800, 2700)
 
 [node name="TutorialScreenTrigger" parent="." instance=ExtResource("15_h8cuj")]
 position = Vector2(155, 7)
-tutorial_id = 12
+tutorial_id = 2
 
 [node name="TutorialScreenTrigger2" parent="." instance=ExtResource("15_h8cuj")]
 position = Vector2(560, 2047)
-tutorial_id = 10
+tutorial_id = 11
 
 [node name="TutorialScreenTrigger3" parent="." instance=ExtResource("15_h8cuj")]
 position = Vector2(504, 2047)
-tutorial_id = 11
+tutorial_id = 12

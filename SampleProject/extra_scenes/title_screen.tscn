@@ -1,14 +1,14 @@
 [gd_scene load_steps=31 format=3 uid="uid://cgnlu6aihtr6r"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/title_screen.gd" id="1_wa1th"]
+[ext_resource type="Script" uid="uid://ca5x188ifdjwt" path="res://SampleProject/Scripts/System/title_screen.gd" id="1_wa1th"]
 [ext_resource type="PackedScene" uid="uid://bjjk4mm7bkkd5" path="res://SampleProject/extra_scenes/loading_screen.tscn" id="2_hpjsa"]
 [ext_resource type="Texture2D" uid="uid://drvtxptjc62a0" path="res://assets/sprites/HUD/Title/Logo.png" id="4_ejp0b"]
 [ext_resource type="Texture2D" uid="uid://bnambwf21bgi8" path="res://assets/sprites/HUD/Title/PressStart.png" id="4_o6pa4"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="5_2pknv"]
 [ext_resource type="Texture2D" uid="uid://6wd7mmy7y5xn" path="res://assets/sprites/HUD/Title/sky.png" id="5_p8ta0"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="8_xsm36"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="9_rpmvm"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="10_n0xa1"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="8_xsm36"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="9_rpmvm"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="10_n0xa1"]
 [ext_resource type="AudioStream" uid="uid://cw48nwx7ttnp1" path="res://assets/music/MenuTheme.MP3" id="11_g628w"]
 [ext_resource type="AudioStream" uid="uid://crjwwfg00eh3" path="res://assets/sounds/Menu/MenuSelect.MP3" id="12_ix1y5"]
 [ext_resource type="FontFile" uid="uid://ma2njl02pxj6" path="res://assets/sprites/Font/Olondona.otf" id="12_wknf4"]
@@ -48,8 +48,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fardd"]
 _data = {
-"RESET": SubResource("Animation_uxodi"),
-"animate": SubResource("Animation_c71ra")
+&"RESET": SubResource("Animation_uxodi"),
+&"animate": SubResource("Animation_c71ra")
 }
 
 [sub_resource type="Animation" id="Animation_besla"]
@@ -85,8 +85,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ydt5q"]
 _data = {
-"RESET": SubResource("Animation_besla"),
-"button": SubResource("Animation_vnioj")
+&"RESET": SubResource("Animation_besla"),
+&"button": SubResource("Animation_vnioj")
 }
 
 [sub_resource type="Theme" id="Theme_wac11"]
@@ -207,9 +207,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ino1f"]
 _data = {
-"RESET": SubResource("Animation_8fcej"),
-"appear": SubResource("Animation_m3iml"),
-"disappear": SubResource("Animation_tpcl8")
+&"RESET": SubResource("Animation_8fcej"),
+&"appear": SubResource("Animation_m3iml"),
+&"disappear": SubResource("Animation_tpcl8")
 }
 
 [sub_resource type="Resource" id="Resource_bk1s4"]
@@ -283,7 +283,7 @@ expand_mode = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Background")
 libraries = {
-"": SubResource("AnimationLibrary_fardd")
+&"": SubResource("AnimationLibrary_fardd")
 }
 autoplay = "animate"
 speed_scale = 0.2
@@ -303,7 +303,7 @@ texture = ExtResource("4_o6pa4")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
 root_node = NodePath("../../AnimationPlayer")
 libraries = {
-"": SubResource("AnimationLibrary_ydt5q")
+&"": SubResource("AnimationLibrary_ydt5q")
 }
 autoplay = "button"
 
@@ -318,7 +318,7 @@ horizontal_alignment = 1
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ino1f")
+&"": SubResource("AnimationLibrary_ino1f")
 }
 autoplay = "appear"
 

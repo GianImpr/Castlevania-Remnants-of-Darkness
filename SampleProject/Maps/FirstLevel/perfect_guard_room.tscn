@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://h7827f5wvqgt"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_6kqde"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_6kqde"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_7o2mh"]
 [ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_iajqk"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="4_oeft4"]
@@ -839,6 +839,7 @@ tile_set = SubResource("TileSet_2sh7r")
 position = Vector2(64, 339)
 type = 8
 id = 3
+current_item_name = "<null>"
 pickup_flag = 21
 
 [node name="Candles" type="Node" parent="."]
@@ -874,4 +875,4 @@ position = Vector2(138, 424)
 
 [node name="TutorialScreenTrigger" parent="." instance=ExtResource("8_yxpd5")]
 position = Vector2(138, 0)
-tutorial_id = 4
+tutorial_id = 5

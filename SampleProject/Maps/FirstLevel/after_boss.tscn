@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://5d046cmqi6xa"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/room.gd" id="1_r0740"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_r0740"]
 [ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="2_fl5vl"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="3_2uocl"]
 [ext_resource type="Texture2D" uid="uid://d07cares8flha" path="res://assets/sprites/Tiles/OoEMonastery3.png" id="4_wndj2"]
@@ -835,11 +835,11 @@ tile_set = SubResource("TileSet_dgwmw")
 
 [node name="TutorialScreenTrigger" parent="." instance=ExtResource("5_qnpvi")]
 position = Vector2(210, 3)
-tutorial_id = 8
+tutorial_id = 9
 
 [node name="TutorialScreenTrigger2" parent="." instance=ExtResource("5_qnpvi")]
 position = Vector2(244, 3)
-tutorial_id = 9
+tutorial_id = 10
 
 [node name="Pick-up" parent="." instance=ExtResource("6_l48sd")]
 position = Vector2(481, 383)
