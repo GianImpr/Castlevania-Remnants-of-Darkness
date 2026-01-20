@@ -170,7 +170,7 @@ func _process(delta: float) -> void:
 		var flame = aguni_flames.instantiate()
 		flame.global_position = global_position + Vector2(20*facing_position,66) - MetSys.get_current_room_instance().global_position
 		MetSys.get_current_room_instance().add_child(flame)
-		aguni_mp_consumption += delta*AGUNI_LAUREL_COST_PER_SECOND
+		aguni_mp_consumption += delta*AGUNI_LAUREL_COST_PER_SECOND*Engine.get_frames_per_second()
 		if aguni_mp_consumption >= 1:
 			aguni_mp_consumption = 0
 			stats.Stats["MP"] -= 1

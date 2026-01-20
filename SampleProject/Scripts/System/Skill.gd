@@ -58,5 +58,6 @@ enum Skills {
 	WIND_STORM = 16,
 	TOME_OF_MONSTERS = 17,
 	SHARP_EDGE = 18,
-	CHARGE_ONE = 19
+	CHARGE_ONE = 19,
+	RED_ORB = 20
 }

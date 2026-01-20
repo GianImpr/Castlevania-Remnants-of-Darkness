@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bgau1ae4s0ma8"]
 
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="1_03wak"]
-[ext_resource type="Script" path="res://SampleProject/Powers/aguni_laurel_hitbox.gd" id="2_civ2u"]
+[ext_resource type="Script" uid="uid://cjefkx38bim0n" path="res://SampleProject/Powers/aguni_laurel_hitbox.gd" id="2_civ2u"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="3_lfxv2"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="4_pocb7"]
 [ext_resource type="PackedScene" uid="uid://bneltl27wjbe4" path="res://SampleProject/extra_scenes/effects/candle_explosion.tscn" id="5_gwqfp"]
@@ -76,8 +76,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bd6ya"]
 _data = {
-"RESET": SubResource("Animation_oxi3p"),
-"sprout": SubResource("Animation_x0cd3")
+&"RESET": SubResource("Animation_oxi3p"),
+&"sprout": SubResource("Animation_x0cd3")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o33ff"]
@@ -90,24 +90,26 @@ z_index = 20
 material = SubResource("CanvasItemMaterial_a815h")
 emitting = false
 amount = 5
-process_material = SubResource("ParticleProcessMaterial_0cegh")
 texture = ExtResource("1_03wak")
 lifetime = 0.6
 one_shot = true
 explosiveness = 0.07
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_0cegh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bd6ya")
+&"": SubResource("AnimationLibrary_bd6ya")
 }
 autoplay = "sprout"
 
-[node name="DisjointedPlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="DisjointedPlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("effect", "animation", "hitbox")]
 collision_layer = 128
 collision_mask = 4
 script = ExtResource("2_civ2u")
 iframes_duration = 0.5
+effect = NodePath("../FireEffect")
+animation = NodePath("../AnimationPlayer")
 extra_base_damage = 5
 damage_multiplier = 0.9
 magical = true
