@@ -17,6 +17,7 @@ var base_item_costs: Array[int]
 static var level: int = 0
 var cur_index: int = 0
 var gold_gain_tween: Tween
+const SELL_WORTH_MULTIPLIER: float = 0.6
 
 enum ItemEntryChildren {
 	BUTTON,
@@ -111,7 +112,7 @@ func initializeItemEntries() -> void:
 		var item_held_label: Label = Label.new()
 		var item_price: Label = Label.new()
 			
-		base_item_costs.append(item_data.value)
+		base_item_costs.append(int(item_data.value*SELL_WORTH_MULTIPLIER))
 		item_held.append(Global.player.stats.findItem(item.id, getInventory(item.type)))
 		item_quantities.append(INITIAL_QUANTITY)
 		item_descriptions.append(item_data[PickUp.getItemDescription(item.type)])
@@ -130,7 +131,7 @@ func initializeItemEntries() -> void:
 		item_quantity.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		item_held_label.text = str(item_held.back())
 		item_held_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		item_price.text = str(item_data.value * item_quantities.back())
+		item_price.text = str(int(item_data.value * item_quantities.back() * SELL_WORTH_MULTIPLIER))
 		item_price.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 		item_type.text = PickUp.ItemType.keys()[item.type]
 		item_type.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
