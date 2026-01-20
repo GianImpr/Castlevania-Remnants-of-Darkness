@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://dhpoigeaf1rv5"]
 
 [ext_resource type="Texture2D" uid="uid://g4py1okxnp3u" path="res://assets/sprites/Weapons/Greatswords/Claymore.png" id="1_amtlb"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/weapon_sprite.gd" id="2_dv0vu"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AttackLogic.gd" id="3_6ygjd"]
+[ext_resource type="Script" uid="uid://cuc51tpbif06h" path="res://SampleProject/Scripts/HectorAnims/weapon_sprite.gd" id="2_dv0vu"]
+[ext_resource type="Script" uid="uid://bnqfu6md522u3" path="res://SampleProject/Scripts/AttackLogic.gd" id="3_6ygjd"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="4_ecgx1"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="5_r0i00"]
 [ext_resource type="Texture2D" uid="uid://d4f10nq3s01y2" path="res://assets/sprites/Weapons/BigWeaponTrail.png" id="6_jnncq"]
@@ -279,9 +279,9 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eycnm"]
 _data = {
-"RESET": SubResource("Animation_cpbl2"),
-"swing": SubResource("Animation_axufc"),
-"swing_air": SubResource("Animation_v8epl")
+&"RESET": SubResource("Animation_cpbl2"),
+&"swing": SubResource("Animation_axufc"),
+&"swing_air": SubResource("Animation_v8epl")
 }
 
 [node name="Claymore" type="Sprite2D" node_paths=PackedStringArray("animation", "hitbox")]
@@ -320,7 +320,7 @@ vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_eycnm")
+&"": SubResource("AnimationLibrary_eycnm")
 }
 
 [connection signal="body_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_body_entered"]

@@ -26,6 +26,7 @@ const AFFINITY_COST: int = 3
 
 const NORMAL_TRAIL = Color(1, 1, 1, 1)
 const ICE_TRAIL = Color(0.3, 0.8, 1.5, 1)
+const FIRE_TRAIL = Color(1.5, 0.7, 0.3, 1)
 
 func _ready() -> void:
 	pass
@@ -258,6 +259,8 @@ func isAlive(body) -> bool:
 func recolorTrail() -> void:
 	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= AFFINITY_COST and Global.player.stats.itemEquipped(Relic.Relics.INDIGO_CROSS, "relic") and Global.player.stats.findItem(Skill.Skills.CYAN_ORB, Global.player.stats.skill_inventory):
 		trail.modulate = ICE_TRAIL
+	elif Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= AFFINITY_COST and Global.player.stats.itemEquipped(Relic.Relics.AGUNIS_LAUREL, "relic") and Global.player.stats.findItem(Skill.Skills.RED_ORB, Global.player.stats.skill_inventory):
+		trail.modulate = FIRE_TRAIL
 	else:
 		trail.modulate = NORMAL_TRAIL
 
