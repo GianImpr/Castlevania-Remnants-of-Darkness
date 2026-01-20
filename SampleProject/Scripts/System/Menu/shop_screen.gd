@@ -17,13 +17,16 @@ static var SELECTED_ITEM_COLOR: Color = Color.YELLOW
 static var UNAVAILABLE_ITEM_COLOR: Color = Color(0.5, 0.5, 0.5)
 static var can_open: bool = false
 static var is_closed: bool = true
+var cur_button: Button
+var glow_button_tween: Tween
+const TWEEN_DURATION: float = 0.4
 
 func _ready():
 	initial_screen.process_mode = Node.PROCESS_MODE_DISABLED
 	buy_screen.process_mode = Node.PROCESS_MODE_DISABLED
 	sell_screen.process_mode = Node.PROCESS_MODE_DISABLED
 	for button: Button in initial_screen.get_child(0).get_children():
-		button.focus_entered.connect(func(): sound.play_sound_effect_from_library("cursor"))
+		button.focus_entered.connect(focusButton.bind(button))
 		
 func _process(delta: float) -> void:
 	if can_open or true and Input.is_action_just_pressed("ui_up") and is_closed:
@@ -34,6 +37,7 @@ func _process(delta: float) -> void:
 ### Opens the initial shop screen.
 func startShop() -> void:
 	is_closed = false
+	cur_button = default_button
 	displayed_gold = Global.player.stats.Stats["GOLD"]
 	Global.player.freeze()
 	Global.screen = Global.ScreenType.SHOP
@@ -75,6 +79,17 @@ func closeShop() -> void:
 	Global.player.unfreeze()
 	is_closed = true
 
+func focusButton(button: Button) -> void:
+	sound.play_sound_effect_from_library("cursor")
+	if glow_button_tween and glow_button_tween.is_running():
+		glow_button_tween.kill()
+
+	cur_button = button
+	glow_button_tween = get_tree().create_tween()
+	glow_button_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	glow_button_tween.tween_property(cur_button, "self_modulate", Color.WHITE, TWEEN_DURATION).from(Color.DIM_GRAY)
+	glow_button_tween.tween_property(cur_button, "self_modulate", Color.DIM_GRAY, TWEEN_DURATION)
+	glow_button_tween.set_loops()
 
 
 func _on_buy_pressed() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dogi4hsvyxsgs"]
+[gd_scene load_steps=48 format=3 uid="uid://dogi4hsvyxsgs"]
 
 [ext_resource type="Script" uid="uid://b7jhgr10ts7ea" path="res://SampleProject/extra_scenes/HUD/tutorial_box.gd" id="1_1rggr"]
 [ext_resource type="Script" uid="uid://cwcbsnnimcdek" path="res://SampleProject/Scripts/System/TutorialFormat.gd" id="2_fcv6a"]
@@ -105,6 +105,12 @@ title = "WEAPON_WHEEL_2"
 description = "WEAPON_WHEEL_2_DESC"
 image = ExtResource("11_24aic")
 condition = "Global.player.stats.picked_items[92] == true"
+
+[sub_resource type="Resource" id="Resource_114hx"]
+script = ExtResource("2_fcv6a")
+title = "RED_ORB"
+description = "RED_ORB_DESC"
+metadata/_custom_type_script = "uid://cwcbsnnimcdek"
 
 [sub_resource type="Theme" id="Theme_ysinr"]
 default_font = ExtResource("10_ff42d")
@@ -214,7 +220,7 @@ image = NodePath("PanelContainer/VBoxContainer/Image")
 description = NodePath("PanelContainer/VBoxContainer/Description")
 continue_label = NodePath("PanelContainer/VBoxContainer/Continue")
 sound = NodePath("PolyphonicMenuAudio")
-tutorials = Array[ExtResource("2_fcv6a")]([SubResource("Resource_pakqc"), SubResource("Resource_v7vry"), SubResource("Resource_gypgr"), SubResource("Resource_ce2tk"), SubResource("Resource_om33j"), SubResource("Resource_1trho"), SubResource("Resource_4uphu"), SubResource("Resource_nl7m1"), SubResource("Resource_j2x7b"), SubResource("Resource_fl6h1"), SubResource("Resource_defet"), SubResource("Resource_bbpn6"), SubResource("Resource_fdnyd")])
+tutorials = Array[ExtResource("2_fcv6a")]([SubResource("Resource_pakqc"), SubResource("Resource_v7vry"), SubResource("Resource_gypgr"), SubResource("Resource_ce2tk"), SubResource("Resource_om33j"), SubResource("Resource_1trho"), SubResource("Resource_4uphu"), SubResource("Resource_nl7m1"), SubResource("Resource_j2x7b"), SubResource("Resource_fl6h1"), SubResource("Resource_defet"), SubResource("Resource_bbpn6"), SubResource("Resource_fdnyd"), SubResource("Resource_114hx")])
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -250,28 +256,17 @@ texture = SubResource("GradientTexture2D_yo6ua")
 
 [node name="Image" type="TextureRect" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("12_uxvf1")
 stretch_mode = 3
 
 [node name="Description" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 bbcode_enabled = true
-text = "Puoi riprenderti velocemente dai danni subiti in aria
-premendo [img]res://assets/sprites/HUD/Buttons/L1.png[/img] non appena atterri.
-
-Facendo questo, Hector schiverà all'indietro e sarà
-invincibile per un frangente di tempo."
 fit_content = true
 scroll_active = false
 scroll_following = true
 autowrap_mode = 0
 script = ExtResource("4_ghrps")
-new_text = "Puoi riprenderti velocemente dai danni subiti in aria
-premendo [[L1]] non appena atterri.
-
-Facendo questo, Hector schiverà all'indietro e sarà
-invincibile per un frangente di tempo."
 
 [node name="Continue" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
