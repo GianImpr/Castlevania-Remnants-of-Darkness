@@ -52,6 +52,13 @@ func _ready() -> void:
 	DialogueBoxTrigger.startDialogue = _startDialogue
 
 func _process(delta: float) -> void:
+	if active and text.visible_characters != -1 and Input.is_action_just_pressed("ui_accept"):
+		text.visible_ratio = 1
+		has_to_release_button = true
+		cursor.visible = true
+		cursor.get_child(0).seek(0)
+		wait_timer.stop()
+
 	if active and not animation.is_playing() and (go_ahead or Input.is_action_just_pressed("ui_accept")) and text.visible_ratio == 1 and not has_to_release_button:
 		go_ahead = false
 		current_dialogue_entry += 1
@@ -63,11 +70,7 @@ func _process(delta: float) -> void:
 	elif active and Input.is_action_just_pressed("menu") and not animation.is_playing():
 		wait_timer.stop()
 		_endDialogue()
-			
-	if active and text.visible_characters < text.get_total_character_count() and Input.is_action_just_pressed("ui_accept"):
-		#text.visible_ratio = 0.99
-		has_to_release_button = true
-		
+
 	if Input.is_action_just_released("ui_accept"):
 		has_to_release_button = false
 
@@ -125,6 +128,9 @@ func swapChar(character: Character) -> void:
 		animation.play("swap")
 		
 func _on_wait_timeout() -> void:
+	if has_to_release_button:
+		return
+		
 	if text.get_total_character_count() == text.visible_characters:
 		cursor.visible = true
 		cursor.get_child(0).seek(0)
