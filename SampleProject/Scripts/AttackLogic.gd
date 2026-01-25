@@ -10,7 +10,7 @@ class_name PlayerHitbox
 @export var trail: Sprite2D
 @export var hit_collision_scene: PackedScene
 @export var ice_hit_collision_scene: PackedScene
-@export var fire_hit_collision_scene: PackedScene
+@export var fire_hit_collision_scene: PackedScene = preload("res://SampleProject/extra_scenes/effects/candle_explosion.tscn")
 @export var base_attribute: Array[Global.Attribute]
 @export var adjust_facing_position: bool = true
 static var coin_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/money.tscn")
@@ -131,12 +131,13 @@ func createHitEffect(body: Node2D) -> void:
 			if body is not Candle:
 				Global.player.stats.Stats["MP"] -= AFFINITY_COST
 		elif Global.player.stats.itemEquipped(Relic.Relics.AGUNIS_LAUREL, "relic") and Global.player.stats.findItem(Skill.Skills.RED_ORB, Global.player.stats.skill_inventory):
-			actual_attributes.append(Global.Attribute.ICE)
-			hit_effect = ice_hit_collision_scene.instantiate()
+			actual_attributes.append(Global.Attribute.FIRE)
+			hit_effect = fire_hit_collision_scene.instantiate()
+			sound.play_sound_effect_from_library("hit_fire_sfx")
 			using_affinity = true
 			if body is not Candle:
 				Global.player.stats.Stats["MP"] -= AFFINITY_COST
-	elif not using_affinity:
+	if not using_affinity:
 		match base_attribute[0]:
 			Global.Attribute.HIT:
 				hit_effect = hit_collision_scene.instantiate()
