@@ -38,7 +38,7 @@ class_name HectorPlayer
 @export var aguni_flames: PackedScene
 @export var relic_sounds: PolyphonicAudio
 
-const AGUNI_LAUREL_COST_PER_SECOND: int = 40
+const AGUNI_LAUREL_COST_PER_SECOND: int = 10
 var aguni_mp_consumption: float = 0
 const AGUNI_COOLDOWN: float = 0.03
 var aguni_on_cooldown: bool = false

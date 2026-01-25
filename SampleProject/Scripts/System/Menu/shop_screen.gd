@@ -29,7 +29,7 @@ func _ready():
 		button.focus_entered.connect(focusButton.bind(button))
 		
 func _process(delta: float) -> void:
-	if can_open or true and Input.is_action_just_pressed("ui_up") and is_closed:
+	if can_open and Input.is_action_just_pressed("ui_up") and is_closed:
 		startShop()
 	if Input.is_action_just_pressed("ui_cancel") and initial_screen.process_mode == Node.PROCESS_MODE_ALWAYS  and not animation.is_playing():
 		closeShop()
