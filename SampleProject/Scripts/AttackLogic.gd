@@ -122,12 +122,21 @@ func createHitEffect(body: Node2D) -> void:
 	var effect_x = (coordinatesX[1]+coordinatesX[2])/2
 	var effect_y = (coordinatesY[1]+coordinatesY[2])/2
 	var hit_effect
-	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= AFFINITY_COST and Global.player.stats.itemEquipped(Relic.Relics.INDIGO_CROSS, "relic") and Global.player.stats.findItem(Skill.Skills.CYAN_ORB, Global.player.stats.skill_inventory):
-		actual_attributes.append(Global.Attribute.ICE)
-		hit_effect = ice_hit_collision_scene.instantiate()
-		if body is not Candle:
-			Global.player.stats.Stats["MP"] -= AFFINITY_COST
-	else:
+	var using_affinity: bool = false
+	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= AFFINITY_COST:
+		if Global.player.stats.itemEquipped(Relic.Relics.INDIGO_CROSS, "relic") and Global.player.stats.findItem(Skill.Skills.CYAN_ORB, Global.player.stats.skill_inventory):
+			actual_attributes.append(Global.Attribute.ICE)
+			hit_effect = ice_hit_collision_scene.instantiate()
+			using_affinity = true
+			if body is not Candle:
+				Global.player.stats.Stats["MP"] -= AFFINITY_COST
+		elif Global.player.stats.itemEquipped(Relic.Relics.AGUNIS_LAUREL, "relic") and Global.player.stats.findItem(Skill.Skills.RED_ORB, Global.player.stats.skill_inventory):
+			actual_attributes.append(Global.Attribute.ICE)
+			hit_effect = ice_hit_collision_scene.instantiate()
+			using_affinity = true
+			if body is not Candle:
+				Global.player.stats.Stats["MP"] -= AFFINITY_COST
+	elif not using_affinity:
 		match base_attribute[0]:
 			Global.Attribute.HIT:
 				hit_effect = hit_collision_scene.instantiate()
