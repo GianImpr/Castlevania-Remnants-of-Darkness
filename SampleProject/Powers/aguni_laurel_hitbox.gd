@@ -2,7 +2,7 @@ extends DisjointedPlayerHitbox
 class_name AguniLaurelHitbox
 static var hitbox_activated: bool = true
 static var enemies_hit: Array[Node2D]
-@export_range(0, 1, 0.1, "suffix:s") var iframes_duration: float
+@export_range(0, 2, 0.1, "suffix:s") var iframes_duration: float
 @export var effect: GPUParticles2D
 @export var animation: AnimationPlayer
 const RED_ORB_MULTIPLIER: float = 2
@@ -29,10 +29,14 @@ func _on_hit(body: Node2D) -> void:
 		
 	hitbox_activated = false
 	enemies_hit.append(body)
-	get_tree().create_timer(iframes_duration, false).timeout.connect(enableHitbox.bind(body))
+	get_child(0).set_deferred("disabled", true)
+	get_tree().create_timer(iframes_duration, false).timeout.connect(enableHitbox.bind(body, self))
 	_on_body_entered(body, false)
 
-static func enableHitbox(body) -> void:
+static func enableHitbox(body, flame) -> void:
 	if body != null:
 		enemies_hit.erase(body)
 	hitbox_activated = true
+	if flame:
+		flame.get_child(0).set_deferred("disabled", false)
+	

@@ -38,7 +38,7 @@ class_name HectorPlayer
 @export var aguni_flames: PackedScene
 @export var relic_sounds: PolyphonicAudio
 
-const AGUNI_LAUREL_COST_PER_SECOND: int = 20
+const AGUNI_LAUREL_COST_PER_SECOND: int = 15
 var aguni_mp_consumption: float = 0
 const AGUNI_COOLDOWN: float = 0.03
 var aguni_on_cooldown: bool = false
@@ -169,7 +169,7 @@ func _process(delta: float) -> void:
 		aguni_mp_consumption += (delta+AGUNI_COOLDOWN)*AGUNI_LAUREL_COST_PER_SECOND
 		if aguni_mp_consumption >= 1:
 			aguni_mp_consumption = 0
-			stats.Stats["MP"] -= 1
+			stats.Stats["MP"] -= 0
 		var flame = aguni_flames.instantiate()
 		flame.global_position = global_position + Vector2(20*facing_position,66) - MetSys.get_current_room_instance().global_position
 		MetSys.get_current_room_instance().add_child(flame)

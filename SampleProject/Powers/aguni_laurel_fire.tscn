@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgau1ae4s0ma8"]
+[gd_scene load_steps=13 format=3 uid="uid://bgau1ae4s0ma8"]
 
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="1_03wak"]
 [ext_resource type="Script" uid="uid://cjefkx38bim0n" path="res://SampleProject/Powers/aguni_laurel_hitbox.gd" id="2_civ2u"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="3_lfxv2"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="4_pocb7"]
-[ext_resource type="PackedScene" uid="uid://bneltl27wjbe4" path="res://SampleProject/extra_scenes/effects/candle_explosion.tscn" id="5_gwqfp"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a815h"]
 blend_mode = 1
@@ -26,6 +25,7 @@ emission_sphere_radius = 11.81
 direction = Vector3(0, -1, 0)
 initial_velocity_max = 30.0
 gravity = Vector3(0, -60, 0)
+color = Color(1, 1, 1, 0.3764706)
 color_ramp = SubResource("GradientTexture1D_t78ee")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
@@ -47,6 +47,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_x0cd3"]
 resource_name = "sprout"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -66,7 +67,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -86,12 +87,13 @@ size = Vector2(27, 20)
 [node name="AguniLaurelFire" type="Node2D"]
 
 [node name="FireEffect" type="GPUParticles2D" parent="."]
+light_mask = 0
 z_index = 20
 material = SubResource("CanvasItemMaterial_a815h")
 emitting = false
 amount = 5
 texture = ExtResource("1_03wak")
-lifetime = 0.6
+lifetime = 1.5
 one_shot = true
 explosiveness = 0.07
 fixed_fps = 60
@@ -113,11 +115,10 @@ animation = NodePath("../AnimationPlayer")
 extra_base_damage = 5
 damage_multiplier = 0.9
 magical = true
-iframes_on_hit = 20
+iframes_on_hit = 1
 hitbox = NodePath("CollisionShape2D")
 hit_collision_scene = ExtResource("3_lfxv2")
 ice_hit_collision_scene = ExtResource("4_pocb7")
-fire_hit_collision_scene = ExtResource("5_gwqfp")
 base_attribute = Array[int]([3])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DisjointedPlayerHitbox"]

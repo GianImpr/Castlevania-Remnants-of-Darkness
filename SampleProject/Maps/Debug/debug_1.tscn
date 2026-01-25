@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_i41q0"]
 [ext_resource type="AudioStream" uid="uid://crv7fk0e66soy" path="res://assets/sounds/Effects/Miscellaneous/BigSplash.wav" id="10_1mmoy"]
 [ext_resource type="AudioStream" uid="uid://iuq41xxsnubj" path="res://assets/sounds/Effects/Miscellaneous/SmallSplash.wav" id="12_1mmoy"]
-[ext_resource type="PackedScene" uid="uid://djw0ueyeiotcq" path="res://SampleProject/enemies/Warg/warg.tscn" id="13_1mmoy"]
+[ext_resource type="PackedScene" uid="uid://cxfeg6jj146ah" path="res://SampleProject/enemies/ArmorLord/armor_lord.tscn" id="13_1mmoy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ikyd"]
 texture = ExtResource("3_2ur68")
@@ -229,8 +229,8 @@ script = ExtResource("7_rspch")
 audio_library = SubResource("Resource_v87x7")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
-[node name="Warg" parent="." instance=ExtResource("13_1mmoy")]
-position = Vector2(445, 384)
+[node name="ArmorLord" parent="." instance=ExtResource("13_1mmoy")]
+position = Vector2(493, 330)
 
 [connection signal="body_entered" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_exited"]
