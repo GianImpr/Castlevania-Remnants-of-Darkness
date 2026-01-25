@@ -7,7 +7,7 @@ class_name HectorDying
 var can_perfect_guard: bool = false
 const HEIGHT_DECELERATION: float = 0.95
 const FADE_SCREEN_FADE_IN_COLOR: Color = Color(1,1,1,1)
-const FADE_IN_DURATION: float = 0.5
+const FADE_MUSIC_DURATION: float = 2.5
 
 func _ready() -> void:
 	HectorPetrified.resetGame = _on_reset_timeout
@@ -17,6 +17,7 @@ func enter():
 	voice.play_sound_effect_from_library("Dead")
 	player.velocity = FLOATING_SPEED
 	timer_reset.start()
+	Global.music_player.fadeMusic(FADE_MUSIC_DURATION)
 	
 func Update(delta: float):
 	pass
@@ -27,7 +28,10 @@ func Physics_Update(delta: float):
 	hurtbox.disabled = true
 	
 func _on_reset_timeout() -> void:
-	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(Global.fade_screen, "modulate", FADE_SCREEN_FADE_IN_COLOR, FADE_IN_DURATION)
-	await tween.finished
+	Global.game_over_screen.showScreen()
+	get_tree().paused = true
+	await get_tree().create_timer(8).timeout
+	Global.game_over_screen.hideScreen()
+	await get_tree().create_timer(1).timeout
+	get_tree().paused = false
 	Global.toTitleScreen()

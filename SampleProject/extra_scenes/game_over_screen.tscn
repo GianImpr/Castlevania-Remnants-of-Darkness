@@ -1,0 +1,391 @@
+[gd_scene load_steps=24 format=3 uid="uid://jq8urid718wn"]
+
+[ext_resource type="Shader" uid="uid://diku0uk4in6gs" path="res://SampleProject/Shaders/aura.gdshader" id="1_del5l"]
+[ext_resource type="Script" uid="uid://w5g1mha3pwqm" path="res://SampleProject/Scripts/System/game_over_screen.gd" id="1_duvqm"]
+[ext_resource type="FontFile" uid="uid://hl515hf64s3e" path="res://assets/sprites/Font/OldLondonAlternate.ttf" id="2_duvqm"]
+
+[sub_resource type="Gradient" id="Gradient_sev68"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dg3es"]
+gradient = SubResource("Gradient_sev68")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vptbn"]
+noise_type = 2
+frequency = 0.0071
+fractal_type = 3
+fractal_lacunarity = 3.0
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kuona"]
+noise = SubResource("FastNoiseLite_vptbn")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3rxfo"]
+shader = ExtResource("1_del5l")
+shader_parameter/n = SubResource("NoiseTexture2D_kuona")
+shader_parameter/min_intensity = 1.0
+shader_parameter/max_intensity = 1.0
+shader_parameter/speed_x = 100.0
+shader_parameter/speed_y = 5.0
+shader_parameter/fade_start = 0.3
+shader_parameter/fade_end = 1.0
+
+[sub_resource type="Gradient" id="Gradient_qprmd"]
+offsets = PackedFloat32Array(0.00763359, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ndlgd"]
+gradient = SubResource("Gradient_qprmd")
+width = 256
+height = 256
+
+[sub_resource type="Curve" id="Curve_6vnjx"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.291925, 2), 0.0, 0.0, 0, 0, Vector2(0.742236, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_dbjaf"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_asjwm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Theme" id="Theme_sagib"]
+default_font = ExtResource("2_duvqm")
+default_font_size = 64
+
+[sub_resource type="Animation" id="Animation_oqnli"]
+resource_name = "glow"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.77254903, 0.7921569, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_33j7p"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7nh1"]
+_data = {
+&"RESET": SubResource("Animation_33j7p"),
+&"glow": SubResource("Animation_oqnli")
+}
+
+[sub_resource type="Gradient" id="Gradient_ffcim"]
+offsets = PackedFloat32Array(0, 0.16544117, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.47058824, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_duvqm"]
+gradient = SubResource("Gradient_ffcim")
+width = 560
+height = 48
+fill_from = Vector2(0.0318471, 0.22293)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_del5l"]
+resource_name = "start"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/BlackBackground:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1.5333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.5666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Display/BlackBackground/AnimatedBackground:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.1333333, 3.3333333),
+"transitions": PackedFloat32Array(2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_duvqm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/BlackBackground:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BloodDamage:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Display/BlackBackground/AnimatedBackground:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CPUParticles2D:lifetime")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+
+[sub_resource type="Animation" id="Animation_dg3es"]
+resource_name = "hide"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BloodDamage:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Display/BlackBackground/AnimatedBackground:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.1333333),
+"transitions": PackedFloat32Array(-2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D:lifetime")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_duvqm"]
+_data = {
+&"RESET": SubResource("Animation_duvqm"),
+&"hide": SubResource("Animation_dg3es"),
+&"start": SubResource("Animation_del5l")
+}
+
+[node name="GameOverScreen" type="Control" node_paths=PackedStringArray("animation", "black_background")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_duvqm")
+animation = NodePath("AnimationPlayer")
+black_background = NodePath("Display/BlackBackground")
+
+[node name="Display" type="Node2D" parent="."]
+
+[node name="BlackBackground" type="TextureRect" parent="Display"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_right = 868.0
+offset_bottom = 480.0
+texture = SubResource("GradientTexture1D_dg3es")
+
+[node name="AnimatedBackground" type="TextureRect" parent="Display/BlackBackground"]
+modulate = Color(0.407843, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_3rxfo")
+layout_mode = 0
+offset_right = 865.0
+offset_bottom = 481.0
+texture = SubResource("GradientTexture2D_ndlgd")
+flip_v = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(436, 481)
+emitting = false
+amount = 34
+lifetime = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(480, 1)
+direction = Vector2(0, -1)
+spread = 46.45
+gravity = Vector2(0, 0)
+initial_velocity_max = 200.0
+angular_velocity_max = 90.0
+scale_amount_curve = SubResource("Curve_6vnjx")
+color = Color(0.211765, 0, 0, 1)
+
+[node name="BloodDamage" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(425, 214)
+emitting = false
+amount = 32
+lifetime = 0.75
+explosiveness = 0.1
+emission_shape = 3
+emission_rect_extents = Vector2(120, 1)
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_dbjaf")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_asjwm")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.8509804, 0, 0, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1.0
+offset_top = 166.0
+offset_right = -1.0
+offset_bottom = 218.0
+grow_horizontal = 2
+theme = SubResource("Theme_sagib")
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_l7nh1")
+}
+autoplay = "glow"
+
+[node name="TextureRect" type="TextureRect" parent="Label"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 10.0
+offset_right = 689.0
+offset_bottom = 58.0
+texture = SubResource("GradientTexture2D_duvqm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_duvqm")
+}

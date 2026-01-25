@@ -1,4 +1,4 @@
-[gd_scene load_steps=620 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=623 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" uid="uid://bi427jhyxfyx5" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" uid="uid://1vp87s3hhyhn" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -298,7 +298,9 @@
 [ext_resource type="Script" uid="uid://bqfroinwvbphr" path="res://SampleProject/Scripts/total_fade_screen.gd" id="268_2rw2m"]
 [ext_resource type="PackedScene" uid="uid://cr4jksx71segk" path="res://SampleProject/extra_scenes/HUD/shop_screen.tscn" id="271_yrj2d"]
 [ext_resource type="PackedScene" uid="uid://dk6ln3pa1ra6q" path="res://SampleProject/extra_scenes/training_menu.tscn" id="273_66krm"]
+[ext_resource type="AudioStream" uid="uid://btdetdcgv2x4p" path="res://assets/music/GameOver.mp3" id="274_30jyd"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="274_mxxml"]
+[ext_resource type="PackedScene" uid="uid://jq8urid718wn" path="res://SampleProject/extra_scenes/game_over_screen.tscn" id="283_3wcg1"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_6ajcc")
@@ -2826,7 +2828,7 @@ func _draw() -> void:
 		draw_primitive([Vector2(-arrow_size, -arrow_size), Vector2(arrow_size, 0), Vector2(-arrow_size, arrow_size)], [Color.WHITE], [])
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed(\"map\"):
+	if Input.is_action_just_pressed(\"map\") and Global.player.stats.Stats[\"HP\"] > 0:
 		if not visible and Global.screen == Global.ScreenType.NONE:
 			Global.screen = Global.ScreenType.MAP
 			sound.play_sound_effect_from_library(\"map\")
@@ -2994,9 +2996,15 @@ Tag = "sarabande"
 stream = ExtResource("265_mxxml")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
+[sub_resource type="Resource" id="Resource_w5jos"]
+script = ExtResource("10_etx3r")
+Tag = "game_over"
+stream = ExtResource("274_30jyd")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_8tj7q"]
 script = ExtResource("8_afqo1")
-sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj"), SubResource("Resource_d34sg"), SubResource("Resource_b4g4d"), SubResource("Resource_6q42e"), SubResource("Resource_mxxml")])
+sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj"), SubResource("Resource_d34sg"), SubResource("Resource_b4g4d"), SubResource("Resource_6q42e"), SubResource("Resource_mxxml"), SubResource("Resource_w5jos")])
 
 [sub_resource type="Gradient" id="Gradient_0dip4"]
 offsets = PackedFloat32Array(0, 0.989418)
@@ -3378,6 +3386,9 @@ dialogue_test = Array[ExtResource("107_o0dwx")]([SubResource("Resource_csyar"), 
 [node name="ShopScreen" parent="UI" instance=ExtResource("271_yrj2d")]
 
 [node name="TrainingMenu" parent="UI" instance=ExtResource("273_66krm")]
+
+[node name="GameOverScreen" parent="UI" instance=ExtResource("283_3wcg1")]
+z_index = 99
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 

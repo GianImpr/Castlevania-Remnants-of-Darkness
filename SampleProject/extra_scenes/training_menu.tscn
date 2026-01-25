@@ -236,12 +236,12 @@ height = 256
 default_font = ExtResource("8_rcdex")
 default_font_size = 48
 
-[sub_resource type="Gradient" id="Gradient_ffcim"]
+[sub_resource type="Gradient" id="Gradient_kkyoe"]
 offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
 colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_q8ayk"]
-gradient = SubResource("Gradient_ffcim")
+gradient = SubResource("Gradient_kkyoe")
 width = 560
 height = 48
 fill_from = Vector2(0.0318471, 0.22293)
@@ -656,6 +656,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Icon" type="TextureRect" parent="Description"]
+modulate = Color(1, 1, 1, 0.1875)
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -681,6 +682,7 @@ offset_bottom = 420.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2stfb")
 
 [node name="Title" type="Label" parent="Description"]
+modulate = Color(1, 1, 1, 0.1875)
 clip_children = 1
 layout_mode = 0
 offset_left = 271.0
@@ -698,6 +700,7 @@ offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_pscbs")
 
 [node name="Description" type="RichTextLabel" parent="Description"]
+modulate = Color(1, 1, 1, 0.1875)
 layout_mode = 0
 offset_left = 207.0
 offset_top = 227.0
