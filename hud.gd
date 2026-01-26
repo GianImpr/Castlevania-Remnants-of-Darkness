@@ -3,34 +3,53 @@ extends Control
 @onready var health: TextureProgressBar = $TextureRect/Health
 @onready var mana: TextureProgressBar = $TextureRect/Mana
 @onready var focus: TextureProgressBar = $TextureRect/Focus
-@onready var hearts: TextureProgressBar = $IDBody/Hearts
-@onready var health_glow: TextureRect = $TextureRect/HGlow
-@onready var mana_glow: TextureRect = $TextureRect/MGlow
-@onready var heart_glow: TextureRect = $IDBody/HeartGlow
+@onready var hearts: TextureProgressBar = $IDBars/Hearts
 @onready var h_box_container: ImageNumber = $HBoxContainer
 @onready var player = Global.player
 @onready var h_box_container_2: ImageNumber = $HBoxContainer2
 @onready var h_box_container_3: ImageNumber = $ImageNumber
-@onready var id_body: TextureRect = $IDBody
-@onready var id_skill: TextureRect = $IDBody/SkillIcon
+@onready var id_body: TextureRect = $IDBars
+@onready var id_skill: TextureRect = $IDBars/SkillIcon
 @onready var boss_bar: TextureRect = $BossBar
 @export var id_level_up_animation: AnimationPlayer
 @export var guard_health: HBoxContainer
 @onready var training: Control = $Training
 @onready var training_number: ImageNumber = $Training/TrainingNumber
 @onready var training_max_number: ImageNumber = $Training/TrainingMaxNumber
-
+@onready var weapon_icon: TextureRect = $WeaponIcon
+@onready var hud_body: PanelContainer = $Body
+@onready var id_hud_body: PanelContainer = $IDBody
 @export var mana_colors: Array[CompressedTexture2D]
 
 var can_change_opacity: bool = true
 var is_transparent: bool = false
 var opacity_trigger_offset: int = 0
 
+const BASE_BAR_SIZE: int = 48
+const MAX_BAR_SIZE: int = 130
+const BASE_BODY_SIZE: int = 140
+const DEFAULT_BODY_SIZE: int = 163
+
+const ID_BASE_BAR_SIZE: int = 33
+const ID_MAX_BAR_SIZE: int = 90
+const ID_BASE_BODY_SIZE: int = 95
+const ID_DEFAULT_BODY_SIZE: int = 105
 
 var HP
 var MHP
 var MMP
 var MP
+var low_MP_tint: Color
+const low_HP_tint: Color = Color.RED
+const low_Hearts_tint: Color = Color(0.886, 0.0, 0.796)
+var blinking_tweens: Array[Tween] = [null, null, null]
+
+enum BLINKING_TWEEN {
+	HP,
+	MP,
+	HEARTS
+}
+
 
 func _ready():
 	Global.HUD = self
@@ -50,13 +69,17 @@ func _process(delta: float) -> void:
 	MHP = player.stats.Stats["MHP"]
 	MP = player.stats.Stats["MP"]
 	MMP = player.stats.Stats["MMP"]
-	health_glow.visible = HP <= MHP/4
-	mana_glow.visible = MP < 30 and player.unlocked_magic
+	#health_glow.visible = HP <= MHP/4
+	#mana_glow.visible = MP < 30 and player.unlocked_magic
+	mana.visible = player.unlocked_magic
 	updateMaxStat(MHP, health)
 	updateMaxStat(MMP, mana)
+	updateBodySize()
 	updateHP(delta)
 	updateMP(delta)
 	updateGuardHealth()
+	checkBlinking(HP, MHP, health, BLINKING_TWEEN.HP, low_HP_tint)
+	checkBlinking(MP, MMP, mana, BLINKING_TWEEN.MP, low_MP_tint)
 	
 	var focus_animation: AnimationPlayer = focus.get_child(0)
 	focus.value = player.stats.Stats["FP"]/player.stats.Stats["MFP"]*focus.max_value
@@ -68,13 +91,16 @@ func _process(delta: float) -> void:
 	if Global.player.innocent_devil != null and not Global.screen == Global.ScreenType.TRAINING:
 		id_skill.texture = Global.player.innocent_devil.stats.skills[Global.player.innocent_devil.current_skill].icon
 		updateHearts(delta)
-		updateMaxStat(Global.player.innocent_devil.stats.Stats["MHearts"], hearts)
-		heart_glow.visible = Global.player.innocent_devil.stats.Stats["Hearts"] <= Global.player.innocent_devil.stats.Stats["MHearts"]/4
+		updateMaxStat(Global.player.innocent_devil.stats.Stats["MHearts"], hearts, true)
+		updateIDBodySize()
+		checkBlinking(Global.player.innocent_devil.stats.Stats["Hearts"], Global.player.innocent_devil.stats.Stats["MHearts"], hearts, BLINKING_TWEEN.HEARTS, low_Hearts_tint)
+		#heart_glow.visible = Global.player.innocent_devil.stats.Stats["Hearts"] <= Global.player.innocent_devil.stats.Stats["MHearts"]/4
 	training.visible = Global.screen == Global.ScreenType.TRAINING
 	if training.visible:
 		training_number.printNumber(TrainingSettings.collected_hearts)
 		training_max_number.printNumber(TrainingSettings.hearts_to_collect)
 	id_body.visible = Global.player.innocent_devil != null and not Global.screen == Global.ScreenType.TRAINING
+	id_hud_body.visible = id_body.visible
 	h_box_container_3.visible = Global.player.innocent_devil != null and not Global.screen == Global.ScreenType.TRAINING
 	h_box_container_2.updateGuard()
 	
@@ -107,9 +133,9 @@ func updateHP(delta):
 func updateMP(delta):
 	match Global.player.stats.equipment["relic"]-1:
 		Relic.Relics.INDIGO_CROSS:
-			mana_glow.self_modulate = Color(0, 0.545, 0.898)
+			low_MP_tint = Color(0, 0.545, 0.898)
 		Relic.Relics.AGUNIS_LAUREL:
-			mana_glow.self_modulate = Color(1, 0.365, 0)
+			low_MP_tint = Color(1, 0.365, 0)
 			
 	mana.texture_progress = mana_colors[max(Global.player.stats.equipment["relic"]-1, 0)]
 	if mana.value < MP*10:
@@ -136,9 +162,20 @@ func updateHearts(delta):
 		h_box_container_3.updateHP(int(hearts.value/10), Global.player.innocent_devil.stats.Stats["MHearts"])
 
 	
-func updateMaxStat(stat, bar):
+func updateMaxStat(stat, bar, id_stat: bool = false):
 	bar.max_value = max(stat*10, 1)
-
+	if not id_stat:
+		bar.size.x = BASE_BAR_SIZE*lerpf(1, 2.6, float(stat)/999)
+	else:
+		bar.size.x = ID_BASE_BAR_SIZE*lerpf(1, 2.6, float(stat)/999)
+	
+func updateBodySize():
+	var higher_bar_length = max(health.size.x, mana.size.x)
+	hud_body.size.x = BASE_BODY_SIZE-BASE_BAR_SIZE+higher_bar_length
+	
+func updateIDBodySize():
+	id_hud_body.size.x = ID_BASE_BODY_SIZE-ID_BASE_BAR_SIZE+hearts.size.x
+	
 func setOpacity(opacity: float) -> void:
 	if not can_change_opacity:
 		return
@@ -150,3 +187,14 @@ func setOpacity(opacity: float) -> void:
 	
 func isTransparent() -> bool:
 	return modulate.a < 1
+
+func checkBlinking(stat, max_stat, bar: TextureProgressBar, tween_idx: int, color: Color) -> void:
+	if stat <= max_stat / 4 and (blinking_tweens[tween_idx] == null or not blinking_tweens[tween_idx].is_running()):
+		blinking_tweens[tween_idx] = get_tree().create_tween()
+		blinking_tweens[tween_idx].set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		blinking_tweens[tween_idx].set_loops()
+		blinking_tweens[tween_idx].tween_property(bar, "tint_under", color, 0.35)
+		blinking_tweens[tween_idx].tween_property(bar, "tint_under", Color.WHITE, 0.35)
+	elif stat > max_stat / 4 and blinking_tweens[tween_idx] != null and blinking_tweens[tween_idx].is_running():
+		blinking_tweens[tween_idx].kill()
+		bar.tint_under = Color.WHITE

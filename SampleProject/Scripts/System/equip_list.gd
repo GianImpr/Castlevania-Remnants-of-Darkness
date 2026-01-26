@@ -241,6 +241,8 @@ func updateNewStats(selectedWeapon, currentWeapon, stats: Array[String]):
 		elif currentWeapon:
 			player.Boosts[stat] -= currentWeapon[stat]
 		player.Stats[stat] = player.Bases[stat] + player.Boosts[stat]
+	if selectedWeapon is Weapon:
+		Global.HUD.weapon_icon.texture = selectedWeapon.icon
 
 #Updates the labels showing the current stats, but does not update the stats themselves
 func updateStats(stats: Array[String], label: Label):

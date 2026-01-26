@@ -1,7 +1,7 @@
 extends HBoxContainer
 class_name ImageNumber
 
-var path = "res://assets/sprites/HUD/Numbers/"
+var path = "res://assets/sprites/HUD/InGameHUD/New/Numbers/"
 
 func updateHP(_HP, _MHP):
 	if _HP <= _MHP/4:
@@ -16,7 +16,7 @@ func printNumber(value: int):
 	for i in str(value):
 		var num = TextureRect.new()
 		add_child(num)
-		num.custom_minimum_size = Vector2(9, 1.4)
+		num.custom_minimum_size = Vector2(5, 8)
 		num.stretch_mode = TextureRect.STRETCH_SCALE
 		num.texture = load(path + i + ".png")
 		
