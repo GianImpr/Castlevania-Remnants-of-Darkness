@@ -32,7 +32,7 @@ const DEFAULT_BODY_SIZE: int = 163
 
 const ID_BASE_BAR_SIZE: int = 33
 const ID_MAX_BAR_SIZE: int = 90
-const ID_BASE_BODY_SIZE: int = 95
+const ID_BASE_BODY_SIZE: int = 98
 const ID_DEFAULT_BODY_SIZE: int = 105
 
 var HP

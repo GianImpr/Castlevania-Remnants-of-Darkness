@@ -525,9 +525,9 @@ scale = Vector2(2, 2)
 [node name="Health" type="TextureProgressBar" parent="TextureRect"]
 layout_mode = 0
 offset_left = 70.0
-offset_top = 24.0
+offset_top = 23.0
 offset_right = 135.0
-offset_bottom = 28.0
+offset_bottom = 27.0
 max_value = 10.0
 value = 2.0
 nine_patch_stretch = true
@@ -537,9 +537,9 @@ texture_progress = ExtResource("5_cmfcn")
 [node name="Mana" type="TextureProgressBar" parent="TextureRect"]
 layout_mode = 0
 offset_left = 70.0
-offset_top = 29.5
+offset_top = 28.5
 offset_right = 135.0
-offset_bottom = 33.5
+offset_bottom = 32.5
 value = 100.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_ii1cw")
@@ -550,9 +550,9 @@ self_modulate = Color(0, 0.243137, 0.6, 1)
 z_index = -1
 layout_mode = 0
 offset_left = 10.0
-offset_top = 24.0
+offset_top = 22.5
 offset_right = 74.0
-offset_bottom = 88.0
+offset_bottom = 86.5
 scale = Vector2(0.5, 0.4)
 fill_mode = 3
 texture_under = SubResource("GradientTexture2D_ulm54")
@@ -566,11 +566,11 @@ autoplay = "not_full"
 
 [node name="GuardHealth" type="HBoxContainer" parent="TextureRect"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 59.5
-offset_right = 38.0
-offset_bottom = 72.5
-theme_override_constants/separation = -2
+offset_left = 12.0
+offset_top = 57.0
+offset_right = 40.0
+offset_bottom = 70.0
+theme_override_constants/separation = -3
 alignment = 1
 
 [node name="GuardHealth1" type="TextureRect" parent="TextureRect/GuardHealth"]
@@ -607,9 +607,9 @@ autoplay = "glow"
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 96.0
-offset_top = 24.0
+offset_top = 22.0
 offset_right = 116.0
-offset_bottom = 32.0
+offset_bottom = 30.0
 scale = Vector2(2, 2)
 theme_override_constants/separation = 0
 alignment = 1
@@ -894,8 +894,8 @@ one_shot = true
 [node name="WeaponIcon" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 34.0
-offset_top = 32.0
+offset_top = 30.0
 offset_right = 66.0
-offset_bottom = 64.0
+offset_bottom = 62.0
 
 [connection signal="timeout" from="BossBar/Damage_display" to="BossBar" method="_on_damage_display_timeout"]
