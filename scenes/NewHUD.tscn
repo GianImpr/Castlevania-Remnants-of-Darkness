@@ -1,10 +1,11 @@
-[gd_scene load_steps=50 format=3 uid="uid://dhirgelvbmhib"]
+[gd_scene format=3 uid="uid://dhirgelvbmhib"]
 
 [ext_resource type="Script" uid="uid://6vlc7pusrdb2" path="res://hud.gd" id="1_nvkqm"]
 [ext_resource type="Texture2D" uid="uid://c0vht0ktmkbou" path="res://assets/sprites/HUD/InGameHUD/MPBars/Mana.png" id="2_2gb11"]
 [ext_resource type="Texture2D" uid="uid://barilar23trfo" path="res://assets/sprites/HUD/InGameHUD/MPBars/ManaFire.png" id="3_tnaqy"]
 [ext_resource type="Texture2D" uid="uid://sm2qlbwi6wt7" path="res://assets/sprites/HUD/InGameHUD/New/Body.png" id="4_ulm54"]
 [ext_resource type="Texture2D" uid="uid://o847yl7lsxpe" path="res://assets/sprites/HUD/InGameHUD/Health.png" id="5_cmfcn"]
+[ext_resource type="Texture2D" uid="uid://ds2na1xcloxqp" path="res://assets/sprites/HUD/InGameHUD/Fog.png" id="5_ulm54"]
 [ext_resource type="Texture2D" uid="uid://bkqwngl7qxspr" path="res://assets/sprites/HUD/InGameHUD/New/GuardHealth.png" id="6_w6egv"]
 [ext_resource type="Script" uid="uid://crh4llmldi4eq" path="res://ImageNumber.gd" id="7_gxfyg"]
 [ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="8_xgi8v"]
@@ -31,14 +32,19 @@ texture = ExtResource("4_ulm54")
 texture_margin_left = 70.0
 texture_margin_right = 22.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmfcn"]
+atlas = ExtResource("5_ulm54")
+region = Rect2(256, 0, 170, 0)
+
 [sub_resource type="Gradient" id="Gradient_vo48o"]
-colors = PackedColorArray(0.099986, 0.099986, 0.099986, 1, 0.370364, 0.370364, 0.370364, 1)
+colors = PackedColorArray(0.09239706, 0.09239707, 0.092397, 1, 0.34407577, 0.34407577, 0.34407565, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ii1cw"]
 gradient = SubResource("Gradient_vo48o")
 width = 3
 height = 3
-fill_to = Vector2(0, 1)
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="Gradient" id="Gradient_tnaqy"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -497,7 +503,7 @@ _data = {
 &"vanish": SubResource("Animation_k32vc")
 }
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("id_level_up_animation", "guard_health")]
+[node name="HUD" type="Control" unique_id=437600230 node_paths=PackedStringArray("id_level_up_animation", "guard_health")]
 z_index = 5
 layout_mode = 3
 anchors_preset = 0
@@ -508,21 +514,31 @@ id_level_up_animation = NodePath("IDBars/AnimationPlayer")
 guard_health = NodePath("TextureRect/GuardHealth")
 mana_colors = Array[CompressedTexture2D]([ExtResource("2_2gb11"), ExtResource("3_tnaqy")])
 
-[node name="Body" type="PanelContainer" parent="."]
+[node name="Body" type="PanelContainer" parent="." unique_id=1861841537]
 layout_mode = 0
-offset_right = 167.0
+offset_right = 140.0
 offset_bottom = 66.0
 scale = Vector2(2, 2)
 theme_override_styles/panel = SubResource("StyleBoxTexture_tnaqy")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1653320853]
 layout_mode = 0
 offset_top = -26.0
 offset_right = 166.0
 offset_bottom = 41.0
 scale = Vector2(2, 2)
 
-[node name="Health" type="TextureProgressBar" parent="TextureRect"]
+[node name="Fog" type="TextureRect" parent="TextureRect" unique_id=2072618946]
+z_index = -1
+layout_mode = 0
+offset_left = 38.0
+offset_top = 19.5
+offset_right = 208.0
+offset_bottom = 47.5
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_cmfcn")
+
+[node name="Health" type="TextureProgressBar" parent="TextureRect" unique_id=1801904138]
 layout_mode = 0
 offset_left = 70.0
 offset_top = 23.0
@@ -534,7 +550,7 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_ii1cw")
 texture_progress = ExtResource("5_cmfcn")
 
-[node name="Mana" type="TextureProgressBar" parent="TextureRect"]
+[node name="Mana" type="TextureProgressBar" parent="TextureRect" unique_id=288467193]
 layout_mode = 0
 offset_left = 70.0
 offset_top = 28.5
@@ -545,7 +561,7 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_ii1cw")
 texture_progress = ExtResource("2_2gb11")
 
-[node name="Focus" type="TextureProgressBar" parent="TextureRect"]
+[node name="Focus" type="TextureProgressBar" parent="TextureRect" unique_id=479923049]
 self_modulate = Color(0, 0.243137, 0.6, 1)
 z_index = -1
 layout_mode = 0
@@ -558,13 +574,11 @@ fill_mode = 3
 texture_under = SubResource("GradientTexture2D_ulm54")
 texture_progress = SubResource("GradientTexture2D_2gb11")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/Focus"]
-libraries = {
-&"": SubResource("AnimationLibrary_vnhn4")
-}
-autoplay = "not_full"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/Focus" unique_id=1677858680]
+libraries/ = SubResource("AnimationLibrary_vnhn4")
+autoplay = &"not_full"
 
-[node name="GuardHealth" type="HBoxContainer" parent="TextureRect"]
+[node name="GuardHealth" type="HBoxContainer" parent="TextureRect" unique_id=548858788]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 57.0
@@ -573,12 +587,12 @@ offset_bottom = 70.0
 theme_override_constants/separation = -3
 alignment = 1
 
-[node name="GuardHealth1" type="TextureRect" parent="TextureRect/GuardHealth"]
+[node name="GuardHealth1" type="TextureRect" parent="TextureRect/GuardHealth" unique_id=1840894193]
 layout_mode = 2
 texture = ExtResource("6_w6egv")
 stretch_mode = 2
 
-[node name="GuardHealth3" type="TextureRect" parent="TextureRect/GuardHealth/GuardHealth1"]
+[node name="GuardHealth3" type="TextureRect" parent="TextureRect/GuardHealth/GuardHealth1" unique_id=941128565]
 layout_mode = 0
 offset_left = -0.142845
 offset_right = 7.85715
@@ -586,25 +600,23 @@ offset_bottom = 9.0
 texture = ExtResource("6_w6egv")
 stretch_mode = 2
 
-[node name="GuardHealth2" type="TextureRect" parent="TextureRect/GuardHealth"]
+[node name="GuardHealth2" type="TextureRect" parent="TextureRect/GuardHealth" unique_id=1538974020]
 layout_mode = 2
 texture = ExtResource("6_w6egv")
 stretch_mode = 2
 
-[node name="GuardHealth3" type="TextureRect" parent="TextureRect/GuardHealth/GuardHealth2"]
+[node name="GuardHealth3" type="TextureRect" parent="TextureRect/GuardHealth/GuardHealth2" unique_id=1270081339]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 9.0
 texture = ExtResource("6_w6egv")
 stretch_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/GuardHealth"]
-libraries = {
-&"": SubResource("AnimationLibrary_a42be")
-}
-autoplay = "glow"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/GuardHealth" unique_id=1985795701]
+libraries/ = SubResource("AnimationLibrary_a42be")
+autoplay = &"glow"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1332972496]
 layout_mode = 0
 offset_left = 96.0
 offset_top = 22.0
@@ -615,32 +627,32 @@ theme_override_constants/separation = 0
 alignment = 1
 script = ExtResource("7_gxfyg")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1199010268]
 visible = false
 custom_minimum_size = Vector2(5, 8)
 layout_mode = 2
 texture = ExtResource("19_tnaqy")
 
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer" unique_id=94375927]
 visible = false
 custom_minimum_size = Vector2(5, 8)
 layout_mode = 2
 texture = ExtResource("20_ulm54")
 
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer" unique_id=174155773]
 visible = false
 custom_minimum_size = Vector2(5, 8)
 layout_mode = 2
 texture = ExtResource("20_ulm54")
 
-[node name="Minimap" parent="." instance=ExtResource("8_xgi8v")]
+[node name="Minimap" parent="." unique_id=864712459 instance=ExtResource("8_xgi8v")]
 layout_mode = 0
 offset_left = 1342.5
 offset_top = -21.25
 offset_right = 1462.5
 offset_bottom = 98.75
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="." node_paths=PackedStringArray("label")]
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=2071277136 node_paths=PackedStringArray("label")]
 visible = false
 layout_mode = 0
 offset_left = 218.571
@@ -652,7 +664,7 @@ theme_override_constants/separation = 1
 script = ExtResource("9_3c8kx")
 label = NodePath("../GuardLabel")
 
-[node name="GuardLabel" type="TextureRect" parent="."]
+[node name="GuardLabel" type="TextureRect" parent="." unique_id=272465533]
 visible = false
 layout_mode = 0
 offset_left = 158.571
@@ -661,7 +673,7 @@ offset_bottom = 40.0
 scale = Vector2(0.44, 0.44)
 texture = ExtResource("10_n0ew2")
 
-[node name="IDBody" type="PanelContainer" parent="."]
+[node name="IDBody" type="PanelContainer" parent="." unique_id=223919216]
 layout_mode = 0
 offset_left = 94.0
 offset_top = 50.0
@@ -670,7 +682,7 @@ offset_bottom = 76.0
 scale = Vector2(2, 2)
 theme_override_styles/panel = SubResource("StyleBoxTexture_ulm54")
 
-[node name="IDBars" type="TextureRect" parent="."]
+[node name="IDBars" type="TextureRect" parent="." unique_id=1614635468]
 layout_mode = 0
 offset_left = 94.0
 offset_top = 51.0
@@ -678,7 +690,7 @@ offset_right = 199.0
 offset_bottom = 77.0
 scale = Vector2(2, 2)
 
-[node name="HeartGlow" type="TextureRect" parent="IDBars"]
+[node name="HeartGlow" type="TextureRect" parent="IDBars" unique_id=1247149994]
 visible = false
 modulate = Color(0.8862745, 0, 0.79607844, 1)
 layout_mode = 0
@@ -688,19 +700,19 @@ offset_right = 97.5
 offset_bottom = 10.0
 texture = SubResource("GradientTexture2D_j5d0h")
 
-[node name="Hearts" type="TextureProgressBar" parent="IDBars"]
+[node name="Hearts" type="TextureProgressBar" parent="IDBars" unique_id=267268534]
 layout_mode = 0
-offset_left = 52.5
-offset_top = 7.0
-offset_right = 74.5
-offset_bottom = 10.0
+offset_left = 52.0
+offset_top = 10.0
+offset_right = 74.0
+offset_bottom = 14.0
 max_value = 10.0
 value = 5.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_ii1cw")
 texture_progress = ExtResource("12_hd2te")
 
-[node name="SkillIcon" type="TextureRect" parent="IDBars"]
+[node name="SkillIcon" type="TextureRect" parent="IDBars" unique_id=1897695995]
 layout_mode = 0
 offset_left = 6.5
 offset_top = 4.5
@@ -709,7 +721,7 @@ offset_bottom = 36.5
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("13_yybq8")
 
-[node name="LevelUpIcon" type="Sprite2D" parent="IDBars"]
+[node name="LevelUpIcon" type="Sprite2D" parent="IDBars" unique_id=1144404293]
 position = Vector2(33.5, 26)
 scale = Vector2(0.5, 0.5)
 skew = -1.56905
@@ -717,19 +729,17 @@ texture = ExtResource("14_4k87i")
 vframes = 4
 frame = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="IDBars"]
-libraries = {
-&"": SubResource("AnimationLibrary_dqsci")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="IDBars" unique_id=1322251887]
+libraries/ = SubResource("AnimationLibrary_dqsci")
 
-[node name="Training" type="Control" parent="."]
+[node name="Training" type="Control" parent="." unique_id=488452810]
 visible = false
 anchors_preset = 0
 offset_left = 52.0
 offset_top = -40.0
 offset_right = 92.0
 
-[node name="TrainingHearts" type="TextureRect" parent="Training"]
+[node name="TrainingHearts" type="TextureRect" parent="Training" unique_id=785449396]
 layout_mode = 0
 offset_left = -77.14283
 offset_top = 58.57142
@@ -737,7 +747,7 @@ offset_right = 108.85688
 offset_bottom = 100.57072
 scale = Vector2(2, 2)
 
-[node name="TextureRect2" type="TextureRect" parent="Training/TrainingHearts"]
+[node name="TextureRect2" type="TextureRect" parent="Training/TrainingHearts" unique_id=1461679926]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.027
@@ -748,7 +758,7 @@ offset_bottom = 60.0
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("15_7v0mh")
 
-[node name="TrainingNumber" type="HBoxContainer" parent="Training"]
+[node name="TrainingNumber" type="HBoxContainer" parent="Training" unique_id=2084080888]
 layout_mode = 0
 offset_left = 74.28571
 offset_top = 95.714294
@@ -759,17 +769,17 @@ theme_override_constants/separation = 1
 alignment = 2
 script = ExtResource("7_gxfyg")
 
-[node name="TextureRect" type="TextureRect" parent="Training/TrainingNumber"]
+[node name="TextureRect" type="TextureRect" parent="Training/TrainingNumber" unique_id=24512524]
 custom_minimum_size = Vector2(9, 1.4)
 layout_mode = 2
 texture = ExtResource("16_pivd7")
 
-[node name="TextureRect2" type="TextureRect" parent="Training/TrainingNumber"]
+[node name="TextureRect2" type="TextureRect" parent="Training/TrainingNumber" unique_id=1811758933]
 custom_minimum_size = Vector2(9, 0)
 layout_mode = 2
 texture = ExtResource("17_xgc1p")
 
-[node name="TrainingMaxNumber" type="HBoxContainer" parent="Training"]
+[node name="TrainingMaxNumber" type="HBoxContainer" parent="Training" unique_id=1954901711]
 layout_mode = 0
 offset_left = 121.42853
 offset_top = 95.714294
@@ -780,17 +790,17 @@ theme_override_constants/separation = 1
 alignment = 2
 script = ExtResource("7_gxfyg")
 
-[node name="TextureRect" type="TextureRect" parent="Training/TrainingMaxNumber"]
+[node name="TextureRect" type="TextureRect" parent="Training/TrainingMaxNumber" unique_id=957876022]
 custom_minimum_size = Vector2(9, 1.4)
 layout_mode = 2
 texture = ExtResource("16_pivd7")
 
-[node name="TextureRect2" type="TextureRect" parent="Training/TrainingMaxNumber"]
+[node name="TextureRect2" type="TextureRect" parent="Training/TrainingMaxNumber" unique_id=438034638]
 custom_minimum_size = Vector2(9, 0)
 layout_mode = 2
 texture = ExtResource("17_xgc1p")
 
-[node name="Divider" type="TextureRect" parent="Training"]
+[node name="Divider" type="TextureRect" parent="Training" unique_id=19910019]
 layout_mode = 0
 offset_left = 121.42862
 offset_top = 97.14285
@@ -798,7 +808,7 @@ offset_right = 145.42862
 offset_bottom = 121.14285
 texture = ExtResource("18_frmgq")
 
-[node name="ImageNumber" type="HBoxContainer" parent="."]
+[node name="ImageNumber" type="HBoxContainer" parent="." unique_id=1456232172]
 layout_mode = 0
 offset_left = 162.0
 offset_top = 66.0
@@ -809,25 +819,25 @@ theme_override_constants/separation = 0
 alignment = 1
 script = ExtResource("7_gxfyg")
 
-[node name="TextureRect" type="TextureRect" parent="ImageNumber"]
+[node name="TextureRect" type="TextureRect" parent="ImageNumber" unique_id=1574155761]
 visible = false
 custom_minimum_size = Vector2(5, 8)
 layout_mode = 2
 texture = ExtResource("19_tnaqy")
 
-[node name="TextureRect2" type="TextureRect" parent="ImageNumber"]
+[node name="TextureRect2" type="TextureRect" parent="ImageNumber" unique_id=1380696064]
 visible = false
 custom_minimum_size = Vector2(5, 8)
 layout_mode = 2
 texture = ExtResource("20_ulm54")
 
-[node name="TextureRect3" type="TextureRect" parent="ImageNumber"]
+[node name="TextureRect3" type="TextureRect" parent="ImageNumber" unique_id=1572086805]
 visible = false
 custom_minimum_size = Vector2(5, 8)
 layout_mode = 2
 texture = ExtResource("20_ulm54")
 
-[node name="BossBar" type="TextureRect" parent="." node_paths=PackedStringArray("animation", "yellow_bar", "blue_bar", "yellow_damage", "blue_damage", "damage_display_duration")]
+[node name="BossBar" type="TextureRect" parent="." unique_id=1355017553 node_paths=PackedStringArray("animation", "yellow_bar", "blue_bar", "yellow_damage", "blue_damage", "damage_display_duration")]
 layout_mode = 0
 offset_left = 220.0
 offset_top = 650.0
@@ -843,7 +853,7 @@ yellow_damage = NodePath("DamageYellow")
 blue_damage = NodePath("DamageBlue")
 damage_display_duration = NodePath("Damage_display")
 
-[node name="DamageYellow" type="TextureProgressBar" parent="BossBar"]
+[node name="DamageYellow" type="TextureProgressBar" parent="BossBar" unique_id=838716842]
 layout_mode = 0
 offset_left = 4.0
 offset_right = 193.0
@@ -853,7 +863,7 @@ value = 500.0
 nine_patch_stretch = true
 texture_progress = ExtResource("21_ludcq")
 
-[node name="BossBar1" type="TextureProgressBar" parent="BossBar"]
+[node name="BossBar1" type="TextureProgressBar" parent="BossBar" unique_id=567700123]
 layout_mode = 0
 offset_left = 4.0
 offset_right = 193.0
@@ -863,7 +873,7 @@ value = 500.0
 nine_patch_stretch = true
 texture_progress = ExtResource("22_805sf")
 
-[node name="DamageBlue" type="TextureProgressBar" parent="BossBar"]
+[node name="DamageBlue" type="TextureProgressBar" parent="BossBar" unique_id=606971157]
 layout_mode = 0
 offset_left = 4.0
 offset_right = 193.0
@@ -873,7 +883,7 @@ value = 500.0
 nine_patch_stretch = true
 texture_progress = ExtResource("21_ludcq")
 
-[node name="BossBar2" type="TextureProgressBar" parent="BossBar"]
+[node name="BossBar2" type="TextureProgressBar" parent="BossBar" unique_id=320241400]
 layout_mode = 0
 offset_left = 4.0
 offset_right = 193.0
@@ -883,15 +893,13 @@ value = 340.0
 nine_patch_stretch = true
 texture_progress = ExtResource("23_kgt85")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BossBar"]
-libraries = {
-&"": SubResource("AnimationLibrary_q6yu7")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BossBar" unique_id=728341335]
+libraries/ = SubResource("AnimationLibrary_q6yu7")
 
-[node name="Damage_display" type="Timer" parent="BossBar"]
+[node name="Damage_display" type="Timer" parent="BossBar" unique_id=400472714]
 one_shot = true
 
-[node name="WeaponIcon" type="TextureRect" parent="."]
+[node name="WeaponIcon" type="TextureRect" parent="." unique_id=1126412780]
 layout_mode = 0
 offset_left = 34.0
 offset_top = 30.0

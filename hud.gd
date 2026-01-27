@@ -20,6 +20,7 @@ extends Control
 @onready var hud_body: PanelContainer = $Body
 @onready var id_hud_body: PanelContainer = $IDBody
 @export var mana_colors: Array[CompressedTexture2D]
+@onready var HUD_fog: TextureRect = $TextureRect/Fog
 
 var can_change_opacity: bool = true
 var is_transparent: bool = false
@@ -35,6 +36,8 @@ const ID_MAX_BAR_SIZE: int = 90
 const ID_BASE_BODY_SIZE: int = 98
 const ID_DEFAULT_BODY_SIZE: int = 105
 
+const FOG_BASE_BODY_SIZE: int = 170
+
 var HP
 var MHP
 var MMP
@@ -43,6 +46,7 @@ var low_MP_tint: Color
 const low_HP_tint: Color = Color.RED
 const low_Hearts_tint: Color = Color(0.886, 0.0, 0.796)
 var blinking_tweens: Array[Tween] = [null, null, null]
+var fog_tween: Tween
 
 enum BLINKING_TWEEN {
 	HP,
@@ -63,6 +67,11 @@ func _ready():
 		initBar(Global.player.innocent_devil.stats.Stats["Hearts"], Global.player.innocent_devil.stats.Stats["MHearts"], hearts)
 	initBar(HP, MHP, health)
 	initBar(MP, MMP, mana)
+	var atlas: AtlasTexture = HUD_fog.texture
+	fog_tween = get_tree().create_tween()
+	fog_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	fog_tween.set_loops()
+	fog_tween.tween_property(atlas, "region:position:x", 0, 10).from(256)
 	
 func _process(delta: float) -> void:
 	HP = player.stats.Stats["HP"]
@@ -165,13 +174,15 @@ func updateHearts(delta):
 func updateMaxStat(stat, bar, id_stat: bool = false):
 	bar.max_value = max(stat*10, 1)
 	if not id_stat:
-		bar.size.x = BASE_BAR_SIZE*lerpf(1, 2.6, float(stat)/999)
+		bar.size.x = BASE_BAR_SIZE*min(lerpf(1, 2.6, float(stat)/999), 2.6)
 	else:
-		bar.size.x = ID_BASE_BAR_SIZE*lerpf(1, 2.6, float(stat)/999)
+		bar.size.x = ID_BASE_BAR_SIZE*min(lerpf(1, 2.6, float(stat)/999), 2.6)
 	
 func updateBodySize():
 	var higher_bar_length = max(health.size.x, mana.size.x)
 	hud_body.size.x = BASE_BODY_SIZE-BASE_BAR_SIZE+higher_bar_length
+	(HUD_fog.texture as AtlasTexture).region.size.x = FOG_BASE_BODY_SIZE+(hud_body.size.x-BASE_BODY_SIZE)*2
+	HUD_fog.size.x = HUD_fog.texture.region.size.x
 	
 func updateIDBodySize():
 	id_hud_body.size.x = ID_BASE_BODY_SIZE-ID_BASE_BAR_SIZE+hearts.size.x
