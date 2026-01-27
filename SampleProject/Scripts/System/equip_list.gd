@@ -243,6 +243,19 @@ func updateNewStats(selectedWeapon, currentWeapon, stats: Array[String]):
 		player.Stats[stat] = player.Bases[stat] + player.Boosts[stat]
 	if selectedWeapon is Weapon:
 		Global.HUD.weapon_icon.texture = selectedWeapon.icon
+		if not Input.has_joy_light(0):
+			return
+		match (selectedWeapon as Weapon).type:
+			Weapon.Type.SWORD:
+				Input.set_joy_light(0, Color.RED)
+			Weapon.Type.GREATSWORD:
+				Input.set_joy_light(0, Color.ORANGE)
+			Weapon.Type.AXE:
+				Input.set_joy_light(0, Color.BLUE)
+			Weapon.Type.SPEAR:
+				Input.set_joy_light(0, Color.GREEN)
+			Weapon.Type.FIST:
+				Input.set_joy_light(0, Color.YELLOW)
 
 #Updates the labels showing the current stats, but does not update the stats themselves
 func updateStats(stats: Array[String], label: Label):

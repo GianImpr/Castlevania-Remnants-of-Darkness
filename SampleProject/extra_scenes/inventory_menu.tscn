@@ -1,4 +1,4 @@
-[gd_scene load_steps=235 format=3 uid="uid://b4f2sbjwt3lf7"]
+[gd_scene format=3 uid="uid://b4f2sbjwt3lf7"]
 
 [ext_resource type="Script" uid="uid://diuvo1esc2muf" path="res://SampleProject/Scripts/System/inventory_menu.gd" id="1_7csjs"]
 [ext_resource type="Script" uid="uid://bv52p3eqpudco" path="res://SampleProject/Scripts/System/MenuStateMachine.gd" id="2_4vawb"]
@@ -1188,7 +1188,7 @@ stream = ExtResource("67_0rdd3")
 script = ExtResource("26_vtso6")
 sound_effects = Array[ExtResource("9_rjh3h")]([SubResource("Resource_m3lnr")])
 
-[node name="InventoryMenu" type="Node" node_paths=PackedStringArray("state_machine", "equip_slots", "reset_timer")]
+[node name="InventoryMenu" type="Node" unique_id=437061096 node_paths=PackedStringArray("state_machine", "equip_slots", "reset_timer")]
 process_mode = 3
 script = ExtResource("1_7csjs")
 state_machine = NodePath("MenuStateMachine")
@@ -1196,31 +1196,29 @@ equip_slots = NodePath("MenuStateMachine/Equip/Display/PanelContainer/Menu")
 reset_timer = NodePath("ResetTimer")
 metadata/_edit_vertical_guides_ = [0.0, 0.0]
 
-[node name="MenuStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "menu", "polyphonic_audio_player")]
+[node name="MenuStateMachine" type="Node" parent="." unique_id=20221066 node_paths=PackedStringArray("initial_state", "menu", "polyphonic_audio_player")]
 script = ExtResource("2_4vawb")
 initial_state = NodePath("Closed")
 menu = NodePath("..")
 polyphonic_audio_player = NodePath("../PolyphonicMenuAudio")
 
-[node name="Closed" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("animation")]
+[node name="Closed" type="Node" parent="MenuStateMachine" unique_id=1858318075 node_paths=PackedStringArray("animation")]
 script = ExtResource("9_jcvgn")
 animation = NodePath("AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Closed"]
-libraries = {
-&"": SubResource("AnimationLibrary_gvbh1")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Closed" unique_id=711855892]
+libraries/ = SubResource("AnimationLibrary_gvbh1")
 speed_scale = 3.0
 
-[node name="Display" type="Node2D" parent="MenuStateMachine/Closed"]
+[node name="Display" type="Node2D" parent="MenuStateMachine/Closed" unique_id=958578381]
 
-[node name="BlackBackground" type="TextureRect" parent="MenuStateMachine/Closed/Display"]
+[node name="BlackBackground" type="TextureRect" parent="MenuStateMachine/Closed/Display" unique_id=1138571000]
 show_behind_parent = true
 offset_right = 868.0
 offset_bottom = 480.0
 texture = SubResource("GradientTexture1D_2d6gn")
 
-[node name="AnimatedBackground" type="TextureRect" parent="MenuStateMachine/Closed/Display/BlackBackground"]
+[node name="AnimatedBackground" type="TextureRect" parent="MenuStateMachine/Closed/Display/BlackBackground" unique_id=80776580]
 modulate = Color(0.176471, 0, 0.4, 1)
 self_modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_633ty")
@@ -1231,7 +1229,7 @@ offset_bottom = 481.0
 texture = SubResource("GradientTexture2D_dwbrd")
 flip_v = true
 
-[node name="Menu" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("elements", "id_label", "combine_button", "bestiary_button", "animation", "default_button")]
+[node name="Menu" type="Node" parent="MenuStateMachine" unique_id=338369812 node_paths=PackedStringArray("elements", "id_label", "combine_button", "bestiary_button", "animation", "default_button")]
 script = ExtResource("3_jim0d")
 elements = NodePath("Display/Elements")
 id_label = NodePath("Display/Elements/InnocentDevil")
@@ -1240,10 +1238,10 @@ bestiary_button = NodePath("Display/Menu/Bestiary")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/Menu/Summons")
 
-[node name="Display" type="Node2D" parent="MenuStateMachine/Menu"]
+[node name="Display" type="Node2D" parent="MenuStateMachine/Menu" unique_id=1940979872]
 modulate = Color(0, 0, 0, 0)
 
-[node name="Elements" type="Control" parent="MenuStateMachine/Menu/Display" node_paths=PackedStringArray("MainStatsValues", "SubStatValues", "ExperienceValues", "GoldValue", "TimeValue", "health_bar", "mana_bar", "synergy_bar")]
+[node name="Elements" type="Control" parent="MenuStateMachine/Menu/Display" unique_id=989634476 node_paths=PackedStringArray("MainStatsValues", "SubStatValues", "ExperienceValues", "GoldValue", "TimeValue", "health_bar", "mana_bar", "synergy_bar")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 13.0
@@ -1262,7 +1260,7 @@ mana_bar = NodePath("../Stats/MPBar")
 synergy_bar = NodePath("../Stats/SPBar")
 metadata/_edit_use_anchors_ = true
 
-[node name="TimeValue" type="Label" parent="MenuStateMachine/Menu/Display/Elements"]
+[node name="TimeValue" type="Label" parent="MenuStateMachine/Menu/Display/Elements" unique_id=859440127]
 layout_mode = 0
 offset_left = 711.0
 offset_top = -15.0
@@ -1273,7 +1271,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 uppercase = true
 
-[node name="InnocentDevil" type="RichTextLabel" parent="MenuStateMachine/Menu/Display/Elements"]
+[node name="InnocentDevil" type="RichTextLabel" parent="MenuStateMachine/Menu/Display/Elements" unique_id=652435217]
 layout_mode = 0
 offset_left = 624.0
 offset_top = 438.0
@@ -1285,7 +1283,7 @@ text = "INNOCENT_DEVIL_LABEL"
 script = ExtResource("30_m47lu")
 new_text = "INNOCENT_DEVIL_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display" unique_id=677987306]
 texture_filter = 2
 offset_left = 8.0
 offset_top = 41.0
@@ -1295,7 +1293,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_1idha")
 expand_mode = 4
 
-[node name="HectorName" type="Label" parent="MenuStateMachine/Menu/Display"]
+[node name="HectorName" type="Label" parent="MenuStateMachine/Menu/Display" unique_id=1257382889]
 clip_children = 1
 offset_left = 92.0
 offset_top = -1.0
@@ -1304,20 +1302,20 @@ offset_bottom = 38.0
 theme = SubResource("Theme_s3rfh")
 text = "Hector"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/HectorName"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/HectorName" unique_id=1527838387]
 layout_mode = 0
 offset_right = 113.0
 offset_bottom = 64.0
 texture = SubResource("GradientTexture2D_kna7c")
 
-[node name="Stats" type="Control" parent="MenuStateMachine/Menu/Display"]
+[node name="Stats" type="Control" parent="MenuStateMachine/Menu/Display" unique_id=1599116322]
 layout_mode = 3
 anchors_preset = 0
 offset_top = -54.0
 offset_right = 40.0
 offset_bottom = -14.0
 
-[node name="HP" type="Label" parent="MenuStateMachine/Menu/Display/Stats"]
+[node name="HP" type="Label" parent="MenuStateMachine/Menu/Display/Stats" unique_id=815097961]
 clip_children = 1
 layout_mode = 0
 offset_left = 309.0
@@ -1328,13 +1326,13 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_HP"
 horizontal_alignment = 3
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Stats/HP"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Stats/HP" unique_id=1155872887]
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="LV" type="Label" parent="MenuStateMachine/Menu/Display/Stats"]
+[node name="LV" type="Label" parent="MenuStateMachine/Menu/Display/Stats" unique_id=742404985]
 clip_children = 1
 layout_mode = 0
 offset_left = 314.0
@@ -1344,13 +1342,13 @@ offset_bottom = 92.0
 theme = SubResource("Theme_qd4hr")
 text = "MENU_LEVEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Stats/LV"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Stats/LV" unique_id=1880989603]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="MP" type="Label" parent="MenuStateMachine/Menu/Display/Stats"]
+[node name="MP" type="Label" parent="MenuStateMachine/Menu/Display/Stats" unique_id=552036488]
 clip_children = 1
 layout_mode = 0
 offset_left = 314.0
@@ -1361,13 +1359,13 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_MP"
 horizontal_alignment = 3
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Stats/MP"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Stats/MP" unique_id=1159137242]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="SP" type="Label" parent="MenuStateMachine/Menu/Display/Stats"]
+[node name="SP" type="Label" parent="MenuStateMachine/Menu/Display/Stats" unique_id=1639111097]
 clip_children = 1
 layout_mode = 0
 offset_left = 317.0
@@ -1378,13 +1376,13 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_SP"
 horizontal_alignment = 3
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Stats/SP"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Stats/SP" unique_id=1958356094]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Values" type="Label" parent="MenuStateMachine/Menu/Display/Stats"]
+[node name="Values" type="Label" parent="MenuStateMachine/Menu/Display/Stats" unique_id=1336337889]
 layout_mode = 0
 offset_left = 375.0
 offset_top = 60.0
@@ -1397,7 +1395,7 @@ text = "   1
  100/ 100
    0/   0"
 
-[node name="HPBar" type="TextureProgressBar" parent="MenuStateMachine/Menu/Display/Stats"]
+[node name="HPBar" type="TextureProgressBar" parent="MenuStateMachine/Menu/Display/Stats" unique_id=269317445]
 layout_mode = 0
 offset_left = 314.0
 offset_top = 119.0
@@ -1408,7 +1406,7 @@ value = 100.0
 texture_under = SubResource("GradientTexture2D_xtlt0")
 texture_progress = ExtResource("12_33jpi")
 
-[node name="MPBar" type="TextureProgressBar" parent="MenuStateMachine/Menu/Display/Stats"]
+[node name="MPBar" type="TextureProgressBar" parent="MenuStateMachine/Menu/Display/Stats" unique_id=149493606]
 layout_mode = 0
 offset_left = 314.0
 offset_top = 152.0
@@ -1419,7 +1417,7 @@ value = 100.0
 texture_under = SubResource("GradientTexture2D_xtlt0")
 texture_progress = ExtResource("13_jjf0d")
 
-[node name="SPBar" type="TextureProgressBar" parent="MenuStateMachine/Menu/Display/Stats"]
+[node name="SPBar" type="TextureProgressBar" parent="MenuStateMachine/Menu/Display/Stats" unique_id=224712854]
 layout_mode = 0
 offset_left = 314.0
 offset_top = 185.0
@@ -1429,7 +1427,7 @@ scale = Vector2(44, 3)
 texture_under = SubResource("GradientTexture2D_xtlt0")
 texture_progress = ExtResource("13_jjf0d")
 
-[node name="SubStats" type="Control" parent="MenuStateMachine/Menu/Display"]
+[node name="SubStats" type="Control" parent="MenuStateMachine/Menu/Display" unique_id=488959565]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -239.0
@@ -1437,7 +1435,7 @@ offset_top = 105.0
 offset_right = -199.0
 offset_bottom = 145.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuStateMachine/Menu/Display/SubStats"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuStateMachine/Menu/Display/SubStats" unique_id=470102495]
 layout_mode = 0
 offset_left = 525.0
 offset_top = 42.0
@@ -1445,112 +1443,112 @@ offset_right = 667.0
 offset_bottom = 305.0
 theme_override_constants/separation = 1
 
-[node name="Attack" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer"]
+[node name="Attack" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer" unique_id=469869882]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "ATK_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Attack"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Attack" unique_id=414793878]
 modulate = Color(1, 0.403922, 1, 1)
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gnau5")
 
-[node name="Defense" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer"]
+[node name="Defense" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer" unique_id=956691235]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "DEF_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Defense"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Defense" unique_id=1420148056]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_ol4uy")
 
-[node name="Strength" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer"]
+[node name="Strength" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer" unique_id=1889545392]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "STR_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Strength"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Strength" unique_id=462821166]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Constitution" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer"]
+[node name="Constitution" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer" unique_id=514777362]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "CON_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Constitution"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Constitution" unique_id=38604645]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Intelligence" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer"]
+[node name="Intelligence" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer" unique_id=1364065339]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "INT_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Intelligence"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Intelligence" unique_id=992795606]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Mind" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer"]
+[node name="Mind" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer" unique_id=2110589500]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "MND_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Mind"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Mind" unique_id=609892575]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Synergy" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer"]
+[node name="Synergy" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer" unique_id=490739264]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "SYN_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Synergy"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Synergy" unique_id=1843163187]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Luck" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer"]
+[node name="Luck" type="Label" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer" unique_id=357305633]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "LCK_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Luck"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/SubStats/VBoxContainer/Luck" unique_id=41367798]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="SubstatsValues" type="Label" parent="MenuStateMachine/Menu/Display/SubStats"]
+[node name="SubstatsValues" type="Label" parent="MenuStateMachine/Menu/Display/SubStats" unique_id=1993852239]
 layout_mode = 0
 offset_left = 664.0
 offset_top = 43.0
@@ -1568,7 +1566,7 @@ text = "10
 4"
 horizontal_alignment = 2
 
-[node name="Resources" type="Control" parent="MenuStateMachine/Menu/Display"]
+[node name="Resources" type="Control" parent="MenuStateMachine/Menu/Display" unique_id=1702272234]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 573.0
@@ -1576,7 +1574,7 @@ offset_top = 459.0
 offset_right = 744.0
 offset_bottom = 459.0
 
-[node name="Next" type="Label" parent="MenuStateMachine/Menu/Display/Resources"]
+[node name="Next" type="Label" parent="MenuStateMachine/Menu/Display/Resources" unique_id=1997774968]
 clip_children = 1
 layout_mode = 0
 offset_left = -274.0
@@ -1587,13 +1585,13 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_NEXT"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Resources/Next"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Resources/Next" unique_id=1458868473]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="Exp" type="Label" parent="MenuStateMachine/Menu/Display/Resources"]
+[node name="Exp" type="Label" parent="MenuStateMachine/Menu/Display/Resources" unique_id=1058683805]
 clip_children = 1
 layout_mode = 0
 offset_left = -274.0
@@ -1604,13 +1602,13 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_EXP"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Resources/Exp"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Resources/Exp" unique_id=2005736186]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="Gold" type="Label" parent="MenuStateMachine/Menu/Display/Resources"]
+[node name="Gold" type="Label" parent="MenuStateMachine/Menu/Display/Resources" unique_id=1146575956]
 clip_children = 1
 layout_mode = 0
 offset_left = -168.0
@@ -1621,13 +1619,13 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_GOLD"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Resources/Gold"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Resources/Gold" unique_id=525098459]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="Time" type="Label" parent="MenuStateMachine/Menu/Display/Resources"]
+[node name="Time" type="Label" parent="MenuStateMachine/Menu/Display/Resources" unique_id=742112733]
 clip_children = 1
 layout_mode = 0
 offset_left = 29.0
@@ -1638,13 +1636,13 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_TIME"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Resources/Time"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Menu/Display/Resources/Time" unique_id=1865184861]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="Values" type="Label" parent="MenuStateMachine/Menu/Display/Resources"]
+[node name="Values" type="Label" parent="MenuStateMachine/Menu/Display/Resources" unique_id=2073509413]
 layout_mode = 0
 offset_left = -137.0
 offset_top = -49.0
@@ -1656,7 +1654,7 @@ text = "0
 0"
 horizontal_alignment = 2
 
-[node name="GoldValue" type="Label" parent="MenuStateMachine/Menu/Display/Resources"]
+[node name="GoldValue" type="Label" parent="MenuStateMachine/Menu/Display/Resources" unique_id=894569289]
 layout_mode = 0
 offset_left = -55.0
 offset_top = -453.0
@@ -1667,7 +1665,7 @@ theme_override_constants/line_spacing = 5
 text = "0"
 horizontal_alignment = 2
 
-[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Menu/Display" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Menu/Display" unique_id=1455405043 node_paths=PackedStringArray("sound", "menu", "state_machine")]
 offset_left = 630.0
 offset_top = 43.0
 offset_right = 801.0
@@ -1682,7 +1680,7 @@ sound = NodePath("../../../../PolyphonicMenuAudio")
 menu = NodePath("../..")
 state_machine = NodePath("../../..")
 
-[node name="Summons" type="Button" parent="MenuStateMachine/Menu/Display/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Summons" type="Button" parent="MenuStateMachine/Menu/Display/Menu" unique_id=687719646 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Options")
 theme_override_colors/font_color = Color(0.927309, 0.931044, 0.92697, 1)
@@ -1697,7 +1695,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="Items" type="Button" parent="MenuStateMachine/Menu/Display/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Items" type="Button" parent="MenuStateMachine/Menu/Display/Menu" unique_id=1730377501 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.927309, 0.931044, 0.92697, 1)
 theme_override_constants/outline_size = 8
@@ -1710,7 +1708,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="Equip" type="Button" parent="MenuStateMachine/Menu/Display/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Equip" type="Button" parent="MenuStateMachine/Menu/Display/Menu" unique_id=371370901 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.927309, 0.931044, 0.92697, 1)
 theme_override_constants/outline_size = 8
@@ -1723,7 +1721,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="Combine" type="Button" parent="MenuStateMachine/Menu/Display/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Combine" type="Button" parent="MenuStateMachine/Menu/Display/Menu" unique_id=2034920914 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.927309, 0.931044, 0.92697, 1)
 theme_override_constants/outline_size = 8
@@ -1737,7 +1735,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="Bestiary" type="Button" parent="MenuStateMachine/Menu/Display/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Bestiary" type="Button" parent="MenuStateMachine/Menu/Display/Menu" unique_id=2010261862 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.927309, 0.931044, 0.92697, 1)
 theme_override_constants/outline_size = 8
@@ -1751,7 +1749,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="Hints" type="Button" parent="MenuStateMachine/Menu/Display/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Hints" type="Button" parent="MenuStateMachine/Menu/Display/Menu" unique_id=1563007786 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.927309, 0.931044, 0.92697, 1)
 theme_override_constants/outline_size = 8
@@ -1764,7 +1762,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="Skills" type="Button" parent="MenuStateMachine/Menu/Display/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Skills" type="Button" parent="MenuStateMachine/Menu/Display/Menu" unique_id=1269258506 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.927309, 0.931044, 0.92697, 1)
 theme_override_constants/outline_size = 8
@@ -1777,7 +1775,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="Options" type="Button" parent="MenuStateMachine/Menu/Display/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Options" type="Button" parent="MenuStateMachine/Menu/Display/Menu" unique_id=1424788773 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Summons")
 theme_override_colors/font_color = Color(0.927309, 0.931044, 0.92697, 1)
@@ -1791,13 +1789,11 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Menu"]
-libraries = {
-&"": SubResource("AnimationLibrary_xuig2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Menu" unique_id=561504688]
+libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Devil" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("labels", "id_name", "skill_description", "skill_list", "animation")]
+[node name="Devil" type="Node" parent="MenuStateMachine" unique_id=630048566 node_paths=PackedStringArray("labels", "id_name", "skill_description", "skill_list", "animation")]
 script = ExtResource("12_kdyk3")
 labels = NodePath("Display/Text")
 id_name = NodePath("Display/Text/Name")
@@ -1805,17 +1801,17 @@ skill_description = NodePath("Display/Description")
 skill_list = NodePath("Display/PanelContainer/Menu")
 animation = NodePath("AnimationPlayer")
 
-[node name="Display" type="Node2D" parent="MenuStateMachine/Devil"]
+[node name="Display" type="Node2D" parent="MenuStateMachine/Devil" unique_id=2031747453]
 modulate = Color(0, 0, 0, 0)
 
-[node name="PanelContainer2" type="PanelContainer" parent="MenuStateMachine/Devil/Display"]
+[node name="PanelContainer2" type="PanelContainer" parent="MenuStateMachine/Devil/Display" unique_id=636329869]
 offset_left = 342.0
 offset_top = 395.0
 offset_right = 852.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
 
-[node name="Description" type="Label" parent="MenuStateMachine/Devil/Display"]
+[node name="Description" type="Label" parent="MenuStateMachine/Devil/Display" unique_id=1709470712]
 offset_left = 357.0
 offset_top = 404.0
 offset_right = 842.0
@@ -1826,7 +1822,7 @@ theme_override_constants/outline_size = 8
 text = "Heals Hector a considerate amount of HP."
 autowrap_mode = 3
 
-[node name="SubStats" type="Control" parent="MenuStateMachine/Devil/Display"]
+[node name="SubStats" type="Control" parent="MenuStateMachine/Devil/Display" unique_id=2124007800]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -239.0
@@ -1834,7 +1830,7 @@ offset_top = 105.0
 offset_right = -199.0
 offset_bottom = 145.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuStateMachine/Devil/Display/SubStats"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuStateMachine/Devil/Display/SubStats" unique_id=1395056425]
 layout_mode = 0
 offset_left = 206.0
 offset_top = 72.0
@@ -1842,86 +1838,86 @@ offset_right = 400.0
 offset_bottom = 335.0
 theme_override_constants/separation = 1
 
-[node name="Level" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+[node name="Level" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer" unique_id=753474399]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "MENU_LEVEL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Level"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Level" unique_id=1258955204]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Hearts" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+[node name="Hearts" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer" unique_id=909084925]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "MENU_HEARTS"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Hearts"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Hearts" unique_id=1171385253]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Attack" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+[node name="Attack" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer" unique_id=328663467]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "ATK_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Attack"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Attack" unique_id=1025530448]
 modulate = Color(1, 0.403922, 1, 1)
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gnau5")
 
-[node name="Defense" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+[node name="Defense" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer" unique_id=124335396]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "DEF_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Defense"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Defense" unique_id=1004797123]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_ol4uy")
 
-[node name="Intelligence" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+[node name="Intelligence" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer" unique_id=1484968126]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "INT_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Intelligence"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Intelligence" unique_id=271734274]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Mind" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer"]
+[node name="Mind" type="Label" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer" unique_id=1132117770]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "MND_STAT_FULL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Mind"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/SubStats/VBoxContainer/Mind" unique_id=1885918301]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Devil/Display"]
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Devil/Display" unique_id=873152561]
 z_index = 1
 offset_left = 342.0
 offset_top = 38.0
@@ -1930,7 +1926,7 @@ offset_bottom = 106.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lxlv2")
 metadata/_edit_use_anchors_ = true
 
-[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Devil/Display/PanelContainer" node_paths=PackedStringArray("skill_description", "sound", "menu", "state_machine")]
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Devil/Display/PanelContainer" unique_id=1477682678 node_paths=PackedStringArray("skill_description", "sound", "menu", "state_machine")]
 layout_mode = 2
 theme = SubResource("Theme_gcc0r")
 theme_override_constants/separation = 0
@@ -1941,7 +1937,7 @@ sound = NodePath("../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../..")
 state_machine = NodePath("../../../..")
 
-[node name="Text" type="Control" parent="MenuStateMachine/Devil/Display" node_paths=PackedStringArray("StatusValue", "SubStatValues", "ExperienceValues")]
+[node name="Text" type="Control" parent="MenuStateMachine/Devil/Display" unique_id=37455423 node_paths=PackedStringArray("StatusValue", "SubStatValues", "ExperienceValues")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 13.0
@@ -1955,7 +1951,7 @@ SubStatValues = NodePath("MaxHearts")
 ExperienceValues = NodePath("ResourcesValues")
 metadata/_edit_use_anchors_ = true
 
-[node name="Name" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+[node name="Name" type="Label" parent="MenuStateMachine/Devil/Display/Text" unique_id=1227924280]
 clip_children = 1
 layout_mode = 0
 offset_left = 46.0
@@ -1965,13 +1961,13 @@ theme = SubResource("Theme_qd4hr")
 text = "Fairy"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Text/Name"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Text/Name" unique_id=63182567]
 layout_mode = 0
 offset_right = 250.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_yh4jq")
 
-[node name="StatValues" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+[node name="StatValues" type="Label" parent="MenuStateMachine/Devil/Display/Text" unique_id=1176983581]
 layout_mode = 0
 offset_left = 150.0
 offset_top = 164.0
@@ -1988,7 +1984,7 @@ text = "1
 horizontal_alignment = 2
 uppercase = true
 
-[node name="MaxHearts" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+[node name="MaxHearts" type="Label" parent="MenuStateMachine/Devil/Display/Text" unique_id=1678554266]
 layout_mode = 0
 offset_left = 201.0
 offset_top = 197.0
@@ -1998,7 +1994,7 @@ text = "/ 50"
 horizontal_alignment = 2
 uppercase = true
 
-[node name="ResourcesValues" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+[node name="ResourcesValues" type="Label" parent="MenuStateMachine/Devil/Display/Text" unique_id=57426488]
 layout_mode = 0
 offset_left = 196.0
 offset_top = 361.0
@@ -2010,7 +2006,7 @@ text = "0
 horizontal_alignment = 2
 uppercase = true
 
-[node name="Hector" type="RichTextLabel" parent="MenuStateMachine/Devil/Display/Text"]
+[node name="Hector" type="RichTextLabel" parent="MenuStateMachine/Devil/Display/Text" unique_id=1761138610]
 layout_mode = 0
 offset_left = 543.0
 offset_top = -13.0
@@ -2022,7 +2018,7 @@ text = "[right][img]res://assets/sprites/HUD/Buttons/L1.png[/img] Hector[/right]
 script = ExtResource("30_m47lu")
 new_text = "[right][[L1]] Hector[/right]"
 
-[node name="Skills" type="Label" parent="MenuStateMachine/Devil/Display/Text"]
+[node name="Skills" type="Label" parent="MenuStateMachine/Devil/Display/Text" unique_id=2115321726]
 clip_children = 1
 layout_mode = 0
 offset_left = 329.0
@@ -2032,46 +2028,42 @@ offset_bottom = 25.0
 theme = SubResource("Theme_qd4hr")
 text = "SKILLS_BUTTON"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Text/Skills"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Text/Skills" unique_id=1238963686]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="InnocentSprite" type="Sprite2D" parent="MenuStateMachine/Devil/Display"]
+[node name="InnocentSprite" type="Sprite2D" parent="MenuStateMachine/Devil/Display" unique_id=1650431797]
 position = Vector2(154, 99)
 scale = Vector2(3, 3)
 texture = ExtResource("12_nt5t6")
 hframes = 4
 vframes = 10
 
-[node name="Wings" type="Sprite2D" parent="MenuStateMachine/Devil/Display/InnocentSprite"]
+[node name="Wings" type="Sprite2D" parent="MenuStateMachine/Devil/Display/InnocentSprite" unique_id=349033072]
 show_behind_parent = true
 position = Vector2(-0.333356, -13)
 texture = ExtResource("13_vluw8")
 hframes = 4
 vframes = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Devil/Display/InnocentSprite"]
-libraries = {
-&"": SubResource("AnimationLibrary_himjo")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Devil/Display/InnocentSprite" unique_id=135387699]
+libraries/ = SubResource("AnimationLibrary_himjo")
+autoplay = &"idle"
 
-[node name="Wings2" type="AnimationPlayer" parent="MenuStateMachine/Devil/Display/InnocentSprite"]
-libraries = {
-&"": SubResource("AnimationLibrary_tp124")
-}
-autoplay = "idle"
+[node name="Wings2" type="AnimationPlayer" parent="MenuStateMachine/Devil/Display/InnocentSprite" unique_id=1717364816]
+libraries/ = SubResource("AnimationLibrary_tp124")
+autoplay = &"idle"
 speed_scale = 1.1
 
-[node name="Resources" type="Control" parent="MenuStateMachine/Devil/Display"]
+[node name="Resources" type="Control" parent="MenuStateMachine/Devil/Display" unique_id=708043143]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Next" type="Label" parent="MenuStateMachine/Devil/Display/Resources"]
+[node name="Next" type="Label" parent="MenuStateMachine/Devil/Display/Resources" unique_id=2118870070]
 clip_children = 1
 layout_mode = 0
 offset_left = 12.0
@@ -2082,13 +2074,13 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_NEXT"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Resources/Next"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Resources/Next" unique_id=1033874874]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="Exp" type="Label" parent="MenuStateMachine/Devil/Display/Resources"]
+[node name="Exp" type="Label" parent="MenuStateMachine/Devil/Display/Resources" unique_id=536367163]
 clip_children = 1
 layout_mode = 0
 offset_left = 12.0
@@ -2099,30 +2091,28 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_EXP"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Resources/Exp"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Devil/Display/Resources/Exp" unique_id=1356584375]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Devil"]
-libraries = {
-&"": SubResource("AnimationLibrary_xuig2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Devil" unique_id=883169536]
+libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Equip" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("labels", "equip_list", "animation", "default_button")]
+[node name="Equip" type="Node" parent="MenuStateMachine" unique_id=762393775 node_paths=PackedStringArray("labels", "equip_list", "animation", "default_button")]
 script = ExtResource("10_fvj6d")
 labels = NodePath("Display/Text")
 equip_list = NodePath("Display/EquipList")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/PanelContainer/Menu/HBoxContainer/Weapon")
 
-[node name="Display" type="Node2D" parent="MenuStateMachine/Equip"]
+[node name="Display" type="Node2D" parent="MenuStateMachine/Equip" unique_id=1606712000]
 modulate = Color(0, 0, 0, 0)
 z_index = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Equip/Display"]
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Equip/Display" unique_id=451740750]
 z_index = 1
 offset_left = 187.0
 offset_top = 24.0
@@ -2130,7 +2120,7 @@ offset_right = 855.0
 offset_bottom = 93.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_7ea2r")
 
-[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Equip/Display/PanelContainer" node_paths=PackedStringArray("equip_list", "description", "sound", "menu", "state_machine")]
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Equip/Display/PanelContainer" unique_id=131386009 node_paths=PackedStringArray("equip_list", "description", "sound", "menu", "state_machine")]
 layout_mode = 2
 theme = SubResource("Theme_pwypc")
 theme_override_constants/separation = 0
@@ -2142,11 +2132,11 @@ sound = NodePath("../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../..")
 state_machine = NodePath("../../../..")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu" unique_id=1296704040]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Weapon" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" node_paths=PackedStringArray("state_machine")]
+[node name="Weapon" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" unique_id=1385028785 node_paths=PackedStringArray("state_machine")]
 custom_minimum_size = Vector2(80, 48)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Accessory 2")
@@ -2157,7 +2147,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../../..")
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Weapon"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Weapon" unique_id=374678227]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 10.0
@@ -2165,7 +2155,7 @@ offset_right = 60.0
 offset_bottom = 50.0
 texture = ExtResource("14_e4g1x")
 
-[node name="Artifact" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" node_paths=PackedStringArray("state_machine")]
+[node name="Artifact" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" unique_id=1434490436 node_paths=PackedStringArray("state_machine")]
 custom_minimum_size = Vector2(80, 48)
 layout_mode = 2
 icon = ExtResource("26_wptdd")
@@ -2175,7 +2165,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../../..")
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Artifact"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Artifact" unique_id=1829484377]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 12.0
@@ -2183,7 +2173,7 @@ offset_right = 59.0
 offset_bottom = 52.0
 texture = ExtResource("11_qotuu")
 
-[node name="Relic" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" node_paths=PackedStringArray("state_machine")]
+[node name="Relic" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" unique_id=509356818 node_paths=PackedStringArray("state_machine")]
 custom_minimum_size = Vector2(80, 48)
 layout_mode = 2
 icon = ExtResource("26_wptdd")
@@ -2193,7 +2183,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../../..")
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Relic"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Relic" unique_id=1908346426]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 12.0
@@ -2201,7 +2191,7 @@ offset_right = 59.0
 offset_bottom = 52.0
 texture = ExtResource("11_qotuu")
 
-[node name="Head" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" node_paths=PackedStringArray("state_machine")]
+[node name="Head" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" unique_id=108400079 node_paths=PackedStringArray("state_machine")]
 custom_minimum_size = Vector2(80, 48)
 layout_mode = 2
 icon = ExtResource("26_wptdd")
@@ -2211,7 +2201,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../../..")
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Head"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Head" unique_id=1330264118]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 12.0
@@ -2219,7 +2209,7 @@ offset_right = 59.0
 offset_bottom = 52.0
 texture = ExtResource("11_qotuu")
 
-[node name="Body" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" node_paths=PackedStringArray("state_machine")]
+[node name="Body" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" unique_id=1090006979 node_paths=PackedStringArray("state_machine")]
 custom_minimum_size = Vector2(80, 48)
 layout_mode = 2
 icon = ExtResource("26_wptdd")
@@ -2229,7 +2219,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../../..")
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Body"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Body" unique_id=1220583125]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 12.0
@@ -2237,7 +2227,7 @@ offset_right = 59.0
 offset_bottom = 52.0
 texture = ExtResource("11_qotuu")
 
-[node name="Legs" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" node_paths=PackedStringArray("state_machine")]
+[node name="Legs" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" unique_id=1240337573 node_paths=PackedStringArray("state_machine")]
 custom_minimum_size = Vector2(80, 48)
 layout_mode = 2
 icon = ExtResource("26_wptdd")
@@ -2247,7 +2237,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../../..")
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Legs"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Legs" unique_id=661662661]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 12.0
@@ -2255,7 +2245,7 @@ offset_right = 59.0
 offset_bottom = 52.0
 texture = ExtResource("11_qotuu")
 
-[node name="Accessory 1" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" node_paths=PackedStringArray("state_machine")]
+[node name="Accessory 1" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" unique_id=443299363 node_paths=PackedStringArray("state_machine")]
 custom_minimum_size = Vector2(80, 48)
 layout_mode = 2
 icon = ExtResource("26_wptdd")
@@ -2265,7 +2255,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../../..")
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Accessory 1"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Accessory 1" unique_id=772720905]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 12.0
@@ -2273,7 +2263,7 @@ offset_right = 59.0
 offset_bottom = 52.0
 texture = ExtResource("11_qotuu")
 
-[node name="Accessory 2" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" node_paths=PackedStringArray("state_machine")]
+[node name="Accessory 2" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" unique_id=1173021504 node_paths=PackedStringArray("state_machine")]
 custom_minimum_size = Vector2(80, 48)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Weapon")
@@ -2284,7 +2274,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../../..")
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Accessory 2"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer/Accessory 2" unique_id=934049155]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 12.0
@@ -2292,7 +2282,7 @@ offset_right = 59.0
 offset_bottom = 52.0
 texture = ExtResource("11_qotuu")
 
-[node name="Text" type="Control" parent="MenuStateMachine/Equip/Display" node_paths=PackedStringArray("SubStatValues", "SubArrows", "NewSubStats")]
+[node name="Text" type="Control" parent="MenuStateMachine/Equip/Display" unique_id=1190874961 node_paths=PackedStringArray("SubStatValues", "SubArrows", "NewSubStats")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 13.0
@@ -2305,7 +2295,7 @@ SubStatValues = NodePath("SubstatsValues")
 SubArrows = NodePath("SubArrows")
 NewSubStats = NodePath("NewSubStats")
 
-[node name="SubArrows" type="RichTextLabel" parent="MenuStateMachine/Equip/Display/Text"]
+[node name="SubArrows" type="RichTextLabel" parent="MenuStateMachine/Equip/Display/Text" unique_id=727254730]
 custom_minimum_size = Vector2(0, 254)
 layout_mode = 0
 offset_left = 108.0
@@ -2318,7 +2308,7 @@ fit_content = true
 scroll_active = false
 vertical_alignment = 3
 
-[node name="NewSubStats" type="RichTextLabel" parent="MenuStateMachine/Equip/Display/Text"]
+[node name="NewSubStats" type="RichTextLabel" parent="MenuStateMachine/Equip/Display/Text" unique_id=938423782]
 layout_mode = 0
 offset_left = 126.0
 offset_top = 110.0
@@ -2329,7 +2319,7 @@ bbcode_enabled = true
 scroll_active = false
 vertical_alignment = 3
 
-[node name="SubstatsValues" type="Label" parent="MenuStateMachine/Equip/Display/Text"]
+[node name="SubstatsValues" type="Label" parent="MenuStateMachine/Equip/Display/Text" unique_id=1907902462]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 110.0
@@ -2347,7 +2337,7 @@ text = "10
 4"
 horizontal_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuStateMachine/Equip/Display/Text"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuStateMachine/Equip/Display/Text" unique_id=864150099]
 layout_mode = 0
 offset_left = -5.0
 offset_top = 110.0
@@ -2355,112 +2345,112 @@ offset_right = 56.0
 offset_bottom = 373.0
 theme_override_constants/separation = 1
 
-[node name="Attack" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer"]
+[node name="Attack" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer" unique_id=1196677449]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "ATK_STAT"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Attack"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Attack" unique_id=1140758360]
 modulate = Color(1, 0.403922, 1, 1)
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gnau5")
 
-[node name="Defense" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer"]
+[node name="Defense" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer" unique_id=1616201362]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "DEF_STAT"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Defense"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Defense" unique_id=1993093169]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_ol4uy")
 
-[node name="Strength" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer"]
+[node name="Strength" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer" unique_id=1779591861]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "STR_STAT"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Strength"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Strength" unique_id=141880011]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Constitution" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer"]
+[node name="Constitution" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer" unique_id=1697268423]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "CON_STAT"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Constitution"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Constitution" unique_id=1496817743]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Intelligence" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer"]
+[node name="Intelligence" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer" unique_id=539767076]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "INT_STAT"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Intelligence"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Intelligence" unique_id=954771906]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Mind" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer"]
+[node name="Mind" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer" unique_id=986818198]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "MND_STAT"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Mind"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Mind" unique_id=1564151218]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Synergy" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer"]
+[node name="Synergy" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer" unique_id=2033619449]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "SYN_STAT"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Synergy"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Synergy" unique_id=31869712]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Luck" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer"]
+[node name="Luck" type="Label" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer" unique_id=1705456365]
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
 text = "LCK_STAT"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Luck"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/Text/VBoxContainer/Luck" unique_id=2018624386]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="EquipList" type="GridContainer" parent="MenuStateMachine/Equip/Display" node_paths=PackedStringArray("glow_timer", "sound", "equipSlots", "state_machine", "weapon_desc", "qty_list", "labels", "quick_weapon_icons")]
+[node name="EquipList" type="GridContainer" parent="MenuStateMachine/Equip/Display" unique_id=2098074987 node_paths=PackedStringArray("glow_timer", "sound", "equipSlots", "state_machine", "weapon_desc", "qty_list", "labels", "quick_weapon_icons")]
 custom_minimum_size = Vector2(360, 94)
 offset_left = 195.0
 offset_top = 89.0
@@ -2482,7 +2472,7 @@ qty_list = NodePath("../QuantityList")
 labels = NodePath("../Text")
 quick_weapon_icons = NodePath("../QuickWeapons/QuickWeaponIcons")
 
-[node name="Unequip" type="Button" parent="MenuStateMachine/Equip/Display/EquipList"]
+[node name="Unequip" type="Button" parent="MenuStateMachine/Equip/Display/EquipList" unique_id=854954827]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 text = "UNEQUIP_LABEL"
@@ -2491,11 +2481,11 @@ flat = true
 alignment = 0
 clip_text = true
 
-[node name="GlowTimer" type="Timer" parent="MenuStateMachine/Equip/Display/EquipList"]
+[node name="GlowTimer" type="Timer" parent="MenuStateMachine/Equip/Display/EquipList" unique_id=340625716]
 wait_time = 0.1
 autostart = true
 
-[node name="QuantityList" type="GridContainer" parent="MenuStateMachine/Equip/Display"]
+[node name="QuantityList" type="GridContainer" parent="MenuStateMachine/Equip/Display" unique_id=1374871582]
 custom_minimum_size = Vector2(227, 90)
 anchors_preset = 15
 anchor_right = 1.0
@@ -2512,18 +2502,18 @@ theme_override_constants/h_separation = 87
 theme_override_constants/v_separation = 16
 columns = 2
 
-[node name="Unequip" type="Label" parent="MenuStateMachine/Equip/Display/QuantityList"]
+[node name="Unequip" type="Label" parent="MenuStateMachine/Equip/Display/QuantityList" unique_id=698297329]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="Description" type="Control" parent="MenuStateMachine/Equip/Display"]
+[node name="Description" type="Control" parent="MenuStateMachine/Equip/Display" unique_id=217345035]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/Description"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Equip/Display/Description" unique_id=820609019]
 z_index = 1
 layout_mode = 0
 offset_left = 37.0
@@ -2532,7 +2522,7 @@ offset_right = 77.0
 offset_bottom = 450.0
 expand_mode = 3
 
-[node name="Text" type="Label" parent="MenuStateMachine/Equip/Display/Description"]
+[node name="Text" type="Label" parent="MenuStateMachine/Equip/Display/Description" unique_id=395344413]
 z_index = 1
 layout_mode = 0
 offset_left = 92.0
@@ -2544,7 +2534,7 @@ theme_override_constants/line_spacing = 0
 theme_override_constants/outline_size = 8
 autowrap_mode = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Equip/Display/Description"]
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Equip/Display/Description" unique_id=900034506]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 395.0
@@ -2552,13 +2542,13 @@ offset_right = 852.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
 
-[node name="EquipLabels" type="HBoxContainer" parent="MenuStateMachine/Equip/Display"]
+[node name="EquipLabels" type="HBoxContainer" parent="MenuStateMachine/Equip/Display" unique_id=1356406849]
 offset_left = 187.0
 offset_top = -1.0
 offset_right = 836.0
 offset_bottom = 39.0
 
-[node name="Weapon" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels"]
+[node name="Weapon" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels" unique_id=1365550556]
 clip_children = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -2566,13 +2556,13 @@ theme = SubResource("Theme_ro5kl")
 text = "WEAPON_EQUIP_LABEL"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Weapon"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Weapon" unique_id=912999335]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_3vv3o")
 
-[node name="Artifact" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels"]
+[node name="Artifact" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels" unique_id=589952502]
 clip_children = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -2580,13 +2570,13 @@ theme = SubResource("Theme_ro5kl")
 text = "ARTIFACT_EQUIP_LABEL"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Artifact"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Artifact" unique_id=200671919]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_3vv3o")
 
-[node name="Relic" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels"]
+[node name="Relic" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels" unique_id=1576967622]
 clip_children = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -2594,13 +2584,13 @@ theme = SubResource("Theme_ro5kl")
 text = "RELIC_EQUIP_LABEL"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Relic"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Relic" unique_id=92489817]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_3vv3o")
 
-[node name="Head" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels"]
+[node name="Head" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels" unique_id=823698036]
 clip_children = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -2608,13 +2598,13 @@ theme = SubResource("Theme_ro5kl")
 text = "HEAD_EQUIP_LABEL"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Head"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Head" unique_id=919469102]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_3vv3o")
 
-[node name="Body" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels"]
+[node name="Body" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels" unique_id=548113938]
 clip_children = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -2622,13 +2612,13 @@ theme = SubResource("Theme_ro5kl")
 text = "BODY_EQUIP_LABEL"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Body"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Body" unique_id=1435608270]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_3vv3o")
 
-[node name="Legs" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels"]
+[node name="Legs" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels" unique_id=163003613]
 clip_children = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -2636,13 +2626,13 @@ theme = SubResource("Theme_ro5kl")
 text = "LEGS_EQUIP_LABEL"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Legs"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Legs" unique_id=368882734]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_3vv3o")
 
-[node name="Acc1" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels"]
+[node name="Acc1" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels" unique_id=1048936836]
 clip_children = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -2650,13 +2640,13 @@ theme = SubResource("Theme_ro5kl")
 text = "ACC1_EQUIP_LABEL"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Acc1"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Acc1" unique_id=174861458]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_3vv3o")
 
-[node name="Acc2" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels"]
+[node name="Acc2" type="Label" parent="MenuStateMachine/Equip/Display/EquipLabels" unique_id=427333107]
 clip_children = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -2664,89 +2654,87 @@ theme = SubResource("Theme_ro5kl")
 text = "ACC2_EQUIP_LABEL"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Acc2"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Equip/Display/EquipLabels/Acc2" unique_id=796921937]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_3vv3o")
 
-[node name="QuickWeapons" type="Control" parent="MenuStateMachine/Equip/Display"]
+[node name="QuickWeapons" type="Control" parent="MenuStateMachine/Equip/Display" unique_id=1058079255]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Up" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickWeapons"]
+[node name="Up" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickWeapons" unique_id=1289286154]
 position = Vector2(92, 45)
 texture = ExtResource("44_dqurr")
 
-[node name="Right" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickWeapons"]
+[node name="Right" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickWeapons" unique_id=631920549]
 position = Vector2(113, 62)
 texture = ExtResource("40_3pvl0")
 
-[node name="Down" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickWeapons"]
+[node name="Down" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickWeapons" unique_id=424214935]
 position = Vector2(92, 79)
 texture = ExtResource("43_5ev2a")
 
-[node name="Left" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickWeapons"]
+[node name="Left" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickWeapons" unique_id=928489366]
 position = Vector2(73, 62)
 texture = ExtResource("39_lm186")
 
-[node name="RStick" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickWeapons"]
+[node name="RStick" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickWeapons" unique_id=1131561600]
 position = Vector2(93, 62)
 texture = ExtResource("40_7y7h1")
 
-[node name="QuickWeaponIcons" type="Control" parent="MenuStateMachine/Equip/Display/QuickWeapons"]
+[node name="QuickWeaponIcons" type="Control" parent="MenuStateMachine/Equip/Display/QuickWeapons" unique_id=217752432]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Weapon1" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickWeapons/QuickWeaponIcons"]
+[node name="Weapon1" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickWeapons/QuickWeaponIcons" unique_id=669517827]
 layout_mode = 0
 offset_left = 77.0
 offset_top = 3.0
 offset_right = 109.0
 offset_bottom = 35.0
 
-[node name="Weapon2" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickWeapons/QuickWeaponIcons"]
+[node name="Weapon2" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickWeapons/QuickWeaponIcons" unique_id=1184516997]
 layout_mode = 0
 offset_left = 121.0
 offset_top = 44.0
 offset_right = 153.0
 offset_bottom = 76.0
 
-[node name="Weapon3" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickWeapons/QuickWeaponIcons"]
+[node name="Weapon3" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickWeapons/QuickWeaponIcons" unique_id=1706197584]
 layout_mode = 0
 offset_left = 77.0
 offset_top = 87.0
 offset_right = 109.0
 offset_bottom = 119.0
 
-[node name="Weapon4" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickWeapons/QuickWeaponIcons"]
+[node name="Weapon4" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickWeapons/QuickWeaponIcons" unique_id=1071552841]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 45.0
 offset_right = 63.0
 offset_bottom = 77.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Equip"]
-libraries = {
-&"": SubResource("AnimationLibrary_cuwo4")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Equip" unique_id=272173128]
+libraries/ = SubResource("AnimationLibrary_cuwo4")
 speed_scale = 1.2
 
-[node name="Items" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("elements", "item_list", "animation", "default_button")]
+[node name="Items" type="Node" parent="MenuStateMachine" unique_id=1067283479 node_paths=PackedStringArray("elements", "item_list", "animation", "default_button")]
 script = ExtResource("19_l3hae")
 elements = NodePath("Display/Elements")
 item_list = NodePath("Display/ScrollContainer/Control/ItemList")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/PanelContainer/Menu/Consumables")
 
-[node name="Display" type="Node2D" parent="MenuStateMachine/Items"]
+[node name="Display" type="Node2D" parent="MenuStateMachine/Items" unique_id=1504907108]
 modulate = Color(0, 0, 0, 0)
 z_index = 1
 
-[node name="Elements" type="Control" parent="MenuStateMachine/Items/Display" node_paths=PackedStringArray("MainStatsValues", "StatusValue", "SubStatValues", "health_bar", "mana_bar", "synergy_bar")]
+[node name="Elements" type="Control" parent="MenuStateMachine/Items/Display" unique_id=1966910762 node_paths=PackedStringArray("MainStatsValues", "StatusValue", "SubStatValues", "health_bar", "mana_bar", "synergy_bar")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 13.0
@@ -2762,7 +2750,7 @@ health_bar = NodePath("HPBar")
 mana_bar = NodePath("MPBar")
 synergy_bar = NodePath("SPBar")
 
-[node name="ItemProperties" type="Label" parent="MenuStateMachine/Items/Display/Elements"]
+[node name="ItemProperties" type="Label" parent="MenuStateMachine/Items/Display/Elements" unique_id=704008641]
 layout_mode = 0
 offset_left = 665.0
 offset_top = 4.0
@@ -2771,7 +2759,7 @@ offset_bottom = 82.0
 theme = SubResource("Theme_lj5n3")
 uppercase = true
 
-[node name="Status" type="Label" parent="MenuStateMachine/Items/Display/Elements"]
+[node name="Status" type="Label" parent="MenuStateMachine/Items/Display/Elements" unique_id=1257121728]
 clip_children = 1
 layout_mode = 0
 offset_left = 482.0
@@ -2782,13 +2770,13 @@ theme = SubResource("Theme_qd4hr")
 text = "STATUS_LABEL"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Items/Display/Elements/Status"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Items/Display/Elements/Status" unique_id=2027118025]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="StatusValue" type="Label" parent="MenuStateMachine/Items/Display/Elements"]
+[node name="StatusValue" type="Label" parent="MenuStateMachine/Items/Display/Elements" unique_id=1051616775]
 clip_children = 1
 layout_mode = 0
 offset_left = 443.0
@@ -2799,13 +2787,13 @@ theme = SubResource("Theme_qd4hr")
 text = "GOOD_STATUS"
 horizontal_alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Items/Display/Elements/StatusValue"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Items/Display/Elements/StatusValue" unique_id=905446408]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="HP" type="Label" parent="MenuStateMachine/Items/Display/Elements"]
+[node name="HP" type="Label" parent="MenuStateMachine/Items/Display/Elements" unique_id=1057815163]
 clip_children = 1
 layout_mode = 0
 offset_left = 215.0
@@ -2816,13 +2804,13 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_HP"
 horizontal_alignment = 3
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Items/Display/Elements/HP"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Items/Display/Elements/HP" unique_id=1327365661]
 layout_mode = 0
 offset_right = 150.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="MP" type="Label" parent="MenuStateMachine/Items/Display/Elements"]
+[node name="MP" type="Label" parent="MenuStateMachine/Items/Display/Elements" unique_id=738686281]
 clip_children = 1
 layout_mode = 0
 offset_left = 220.0
@@ -2833,13 +2821,13 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_MP"
 horizontal_alignment = 3
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Items/Display/Elements/MP"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Items/Display/Elements/MP" unique_id=1388053826]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="SP" type="Label" parent="MenuStateMachine/Items/Display/Elements"]
+[node name="SP" type="Label" parent="MenuStateMachine/Items/Display/Elements" unique_id=989584548]
 clip_children = 1
 layout_mode = 0
 offset_left = 223.0
@@ -2850,13 +2838,13 @@ theme = SubResource("Theme_qd4hr")
 text = "MENU_SP"
 horizontal_alignment = 3
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Items/Display/Elements/SP"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Items/Display/Elements/SP" unique_id=2058700819]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="Values" type="Label" parent="MenuStateMachine/Items/Display/Elements"]
+[node name="Values" type="Label" parent="MenuStateMachine/Items/Display/Elements" unique_id=1072836382]
 layout_mode = 0
 offset_left = 281.0
 offset_top = 3.0
@@ -2868,7 +2856,7 @@ text = " 180/ 180
  100/ 100
    0/   0"
 
-[node name="HPBar" type="TextureProgressBar" parent="MenuStateMachine/Items/Display/Elements"]
+[node name="HPBar" type="TextureProgressBar" parent="MenuStateMachine/Items/Display/Elements" unique_id=2139618812]
 layout_mode = 0
 offset_left = 220.0
 offset_top = 30.0
@@ -2879,7 +2867,7 @@ value = 100.0
 texture_under = SubResource("GradientTexture2D_xtlt0")
 texture_progress = ExtResource("12_33jpi")
 
-[node name="MPBar" type="TextureProgressBar" parent="MenuStateMachine/Items/Display/Elements"]
+[node name="MPBar" type="TextureProgressBar" parent="MenuStateMachine/Items/Display/Elements" unique_id=1498698458]
 layout_mode = 0
 offset_left = 220.0
 offset_top = 63.0
@@ -2890,7 +2878,7 @@ value = 100.0
 texture_under = SubResource("GradientTexture2D_xtlt0")
 texture_progress = ExtResource("13_jjf0d")
 
-[node name="SPBar" type="TextureProgressBar" parent="MenuStateMachine/Items/Display/Elements"]
+[node name="SPBar" type="TextureProgressBar" parent="MenuStateMachine/Items/Display/Elements" unique_id=317521469]
 layout_mode = 0
 offset_left = 220.0
 offset_top = 96.0
@@ -2900,14 +2888,14 @@ scale = Vector2(44, 3)
 texture_under = SubResource("GradientTexture2D_xtlt0")
 texture_progress = ExtResource("13_jjf0d")
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Items/Display"]
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Items/Display" unique_id=1124597298]
 offset_left = 13.0
 offset_top = 13.0
 offset_right = 222.0
 offset_bottom = 193.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vl8s6")
 
-[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Items/Display/PanelContainer" node_paths=PackedStringArray("item_list", "qty_list", "description", "labels", "sound", "menu", "state_machine")]
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Items/Display/PanelContainer" unique_id=84556668 node_paths=PackedStringArray("item_list", "qty_list", "description", "labels", "sound", "menu", "state_machine")]
 layout_mode = 2
 focus_neighbor_top = NodePath("Materials")
 focus_neighbor_bottom = NodePath("Consumables")
@@ -2922,7 +2910,7 @@ sound = NodePath("../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../..")
 state_machine = NodePath("../../../..")
 
-[node name="Consumables" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Consumables" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" unique_id=404665770 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Materials")
 theme_override_constants/outline_size = 8
@@ -2934,7 +2922,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Collectibles" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Collectibles" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" unique_id=1105429881 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "COLLECTIBLES_BUTTON"
@@ -2945,7 +2933,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Rare" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Rare" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" unique_id=1947851335 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "RARE_ITEMS_BUTTON"
@@ -2956,7 +2944,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Materials" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Materials" type="Button" parent="MenuStateMachine/Items/Display/PanelContainer/Menu" unique_id=162532137 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Consumables")
 theme_override_constants/outline_size = 8
@@ -2968,7 +2956,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Items/Display"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Items/Display" unique_id=1460700290]
 custom_minimum_size = Vector2(804, 205)
 offset_left = 37.0
 offset_top = 166.0
@@ -2976,10 +2964,10 @@ offset_right = 37.0
 offset_bottom = 166.0
 follow_focus = true
 
-[node name="Control" type="Control" parent="MenuStateMachine/Items/Display/ScrollContainer"]
+[node name="Control" type="Control" parent="MenuStateMachine/Items/Display/ScrollContainer" unique_id=1745115017]
 layout_mode = 2
 
-[node name="ItemList" type="GridContainer" parent="MenuStateMachine/Items/Display/ScrollContainer/Control" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+[node name="ItemList" type="GridContainer" parent="MenuStateMachine/Items/Display/ScrollContainer/Control" unique_id=834022226 node_paths=PackedStringArray("sound", "menu", "state_machine")]
 layout_mode = 0
 scale = Vector2(2, 2)
 theme = SubResource("Theme_uwbuc")
@@ -2991,7 +2979,7 @@ sound = NodePath("../../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../../..")
 state_machine = NodePath("../../../../..")
 
-[node name="QuantityList" type="GridContainer" parent="MenuStateMachine/Items/Display/ScrollContainer/Control"]
+[node name="QuantityList" type="GridContainer" parent="MenuStateMachine/Items/Display/ScrollContainer/Control" unique_id=50995381]
 layout_mode = 0
 offset_left = 296.0
 offset_top = 8.0
@@ -3002,13 +2990,13 @@ theme_override_constants/h_separation = 324
 theme_override_constants/v_separation = 32
 columns = 2
 
-[node name="Description" type="Control" parent="MenuStateMachine/Items/Display"]
+[node name="Description" type="Control" parent="MenuStateMachine/Items/Display" unique_id=507046513]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Items/Display/Description"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Items/Display/Description" unique_id=78979484]
 z_index = 1
 layout_mode = 0
 offset_left = 37.0
@@ -3017,7 +3005,7 @@ offset_right = 77.0
 offset_bottom = 450.0
 expand_mode = 3
 
-[node name="Text" type="Label" parent="MenuStateMachine/Items/Display/Description"]
+[node name="Text" type="Label" parent="MenuStateMachine/Items/Display/Description" unique_id=1259828196]
 z_index = 1
 layout_mode = 0
 offset_left = 92.0
@@ -3029,7 +3017,7 @@ theme_override_constants/line_spacing = 0
 theme_override_constants/outline_size = 8
 autowrap_mode = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Items/Display/Description"]
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Items/Display/Description" unique_id=1168497620]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 395.0
@@ -3037,30 +3025,28 @@ offset_right = 852.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Items"]
-libraries = {
-&"": SubResource("AnimationLibrary_xuig2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Items" unique_id=1472868627]
+libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Skills" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("skill_list", "skill_proficiency", "animation", "default_button")]
+[node name="Skills" type="Node" parent="MenuStateMachine" unique_id=1506793619 node_paths=PackedStringArray("skill_list", "skill_proficiency", "animation", "default_button")]
 script = ExtResource("23_xewwx")
 skill_list = NodePath("Display/ScrollContainer/Control/SkillList")
 skill_proficiency = NodePath("Display/Text/Affinity/Levels")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/PanelContainer/Menu/KeyItems")
 
-[node name="Display" type="Node2D" parent="MenuStateMachine/Skills"]
+[node name="Display" type="Node2D" parent="MenuStateMachine/Skills" unique_id=1434985664]
 modulate = Color(0, 0, 0, 0)
 z_index = 1
 
-[node name="Description" type="Control" parent="MenuStateMachine/Skills/Display"]
+[node name="Description" type="Control" parent="MenuStateMachine/Skills/Display" unique_id=1237148572]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Description"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Description" unique_id=1682282310]
 z_index = 1
 layout_mode = 0
 offset_left = 37.0
@@ -3069,7 +3055,7 @@ offset_right = 77.0
 offset_bottom = 450.0
 expand_mode = 3
 
-[node name="RichTextLabelWithButtons" type="RichTextLabel" parent="MenuStateMachine/Skills/Display/Description"]
+[node name="RichTextLabelWithButtons" type="RichTextLabel" parent="MenuStateMachine/Skills/Display/Description" unique_id=1930343788]
 z_index = 1
 layout_mode = 0
 offset_left = 92.0
@@ -3086,7 +3072,7 @@ scroll_following = true
 custom_effects = [SubResource("RichTextEffect_37m4q")]
 script = ExtResource("30_m47lu")
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Skills/Display/Description"]
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Skills/Display/Description" unique_id=1719839312]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 395.0
@@ -3094,7 +3080,7 @@ offset_right = 852.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
 
-[node name="CommandPanel" type="PanelContainer" parent="MenuStateMachine/Skills/Display/Description"]
+[node name="CommandPanel" type="PanelContainer" parent="MenuStateMachine/Skills/Display/Description" unique_id=1083444021]
 visible = false
 layout_mode = 0
 offset_left = 38.0
@@ -3103,7 +3089,7 @@ offset_right = 59.0
 offset_bottom = 392.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_1qicg")
 
-[node name="CommandInput" type="RichTextLabel" parent="MenuStateMachine/Skills/Display/Description/CommandPanel"]
+[node name="CommandInput" type="RichTextLabel" parent="MenuStateMachine/Skills/Display/Description/CommandPanel" unique_id=609447851]
 layout_mode = 2
 theme = SubResource("Theme_w0cua")
 bbcode_enabled = true
@@ -3112,7 +3098,7 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("30_m47lu")
 
-[node name="Text" type="Control" parent="MenuStateMachine/Skills/Display"]
+[node name="Text" type="Control" parent="MenuStateMachine/Skills/Display" unique_id=737423871]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 13.0
@@ -3122,7 +3108,7 @@ offset_bottom = 53.0
 theme = SubResource("Theme_ic6tr")
 script = ExtResource("14_y3mt3")
 
-[node name="Affinity" type="Label" parent="MenuStateMachine/Skills/Display/Text"]
+[node name="Affinity" type="Label" parent="MenuStateMachine/Skills/Display/Text" unique_id=1845955636]
 clip_children = 1
 layout_mode = 0
 offset_left = 215.0
@@ -3131,13 +3117,13 @@ offset_bottom = 32.0
 theme = SubResource("Theme_qd4hr")
 text = "WEAPON_AFFINITY_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity" unique_id=1239524894]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="Levels" type="HBoxContainer" parent="MenuStateMachine/Skills/Display/Text/Affinity"]
+[node name="Levels" type="HBoxContainer" parent="MenuStateMachine/Skills/Display/Text/Affinity" unique_id=1641806690]
 custom_minimum_size = Vector2(900, 100)
 layout_mode = 0
 offset_top = 31.0
@@ -3146,10 +3132,10 @@ offset_bottom = 110.0
 scale = Vector2(0.67, 0.67)
 theme_override_constants/separation = 170
 
-[node name="Swords" type="Control" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels"]
+[node name="Swords" type="Control" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels" unique_id=1482330239]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Swords"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Swords" unique_id=679572729]
 z_index = 1
 layout_mode = 0
 offset_left = 3.05176e-05
@@ -3157,7 +3143,7 @@ offset_right = 76.0
 offset_bottom = 91.0
 texture = ExtResource("41_iem5b")
 
-[node name="Experience" type="TextureProgressBar" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Swords/Icon"]
+[node name="Experience" type="TextureProgressBar" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Swords/Icon" unique_id=437447687]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 8.95514
@@ -3169,7 +3155,7 @@ fill_mode = 3
 texture_under = SubResource("GradientTexture2D_qdvbm")
 texture_progress = SubResource("GradientTexture2D_1au88")
 
-[node name="Level" type="Label" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Swords"]
+[node name="Level" type="Label" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Swords" unique_id=1301824862]
 clip_children = 1
 z_index = 1
 custom_minimum_size = Vector2(19, 32)
@@ -3183,17 +3169,17 @@ theme = SubResource("Theme_ontfa")
 text = "E"
 horizontal_alignment = 1
 
-[node name="Color" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Swords/Level"]
+[node name="Color" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Swords/Level" unique_id=1817880506]
 layout_mode = 0
 offset_top = -0.373135
 offset_right = 200.0
 offset_bottom = 31.6269
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="Greatswords" type="Control" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels"]
+[node name="Greatswords" type="Control" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels" unique_id=439322149]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Greatswords"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Greatswords" unique_id=1908164783]
 z_index = 1
 layout_mode = 0
 offset_left = 3.05176e-05
@@ -3201,7 +3187,7 @@ offset_right = 76.0
 offset_bottom = 91.0
 texture = ExtResource("42_dvgxg")
 
-[node name="Experience" type="TextureProgressBar" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Greatswords/Icon"]
+[node name="Experience" type="TextureProgressBar" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Greatswords/Icon" unique_id=1494609063]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 8.95514
@@ -3213,7 +3199,7 @@ fill_mode = 3
 texture_under = SubResource("GradientTexture2D_qdvbm")
 texture_progress = SubResource("GradientTexture2D_sj8yc")
 
-[node name="Level" type="Label" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Greatswords"]
+[node name="Level" type="Label" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Greatswords" unique_id=805879254]
 clip_children = 1
 z_index = 1
 custom_minimum_size = Vector2(19, 32)
@@ -3227,17 +3213,17 @@ theme = SubResource("Theme_ontfa")
 text = "E"
 horizontal_alignment = 1
 
-[node name="Color" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Greatswords/Level"]
+[node name="Color" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Greatswords/Level" unique_id=370863059]
 layout_mode = 0
 offset_top = -0.373135
 offset_right = 200.0
 offset_bottom = 31.6269
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="Axes" type="Control" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels"]
+[node name="Axes" type="Control" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels" unique_id=1902655092]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Axes"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Axes" unique_id=742035802]
 z_index = 1
 layout_mode = 0
 offset_left = 3.05176e-05
@@ -3245,7 +3231,7 @@ offset_right = 76.0
 offset_bottom = 91.0
 texture = ExtResource("43_rrve7")
 
-[node name="Experience" type="TextureProgressBar" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Axes/Icon"]
+[node name="Experience" type="TextureProgressBar" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Axes/Icon" unique_id=350607025]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 8.95514
@@ -3257,7 +3243,7 @@ fill_mode = 3
 texture_under = SubResource("GradientTexture2D_qdvbm")
 texture_progress = SubResource("GradientTexture2D_tacj3")
 
-[node name="Level" type="Label" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Axes"]
+[node name="Level" type="Label" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Axes" unique_id=2106282962]
 clip_children = 1
 z_index = 1
 custom_minimum_size = Vector2(19, 32)
@@ -3271,17 +3257,17 @@ theme = SubResource("Theme_ontfa")
 text = "E"
 horizontal_alignment = 1
 
-[node name="Color" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Axes/Level"]
+[node name="Color" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Axes/Level" unique_id=692045111]
 layout_mode = 0
 offset_top = -0.373135
 offset_right = 200.0
 offset_bottom = 31.6269
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="Spears" type="Control" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels"]
+[node name="Spears" type="Control" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels" unique_id=860785992]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Spears"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Spears" unique_id=59691363]
 z_index = 1
 layout_mode = 0
 offset_left = 3.05176e-05
@@ -3289,7 +3275,7 @@ offset_right = 76.0
 offset_bottom = 91.0
 texture = ExtResource("44_of820")
 
-[node name="Experience" type="TextureProgressBar" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Spears/Icon"]
+[node name="Experience" type="TextureProgressBar" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Spears/Icon" unique_id=129237796]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 8.95514
@@ -3301,7 +3287,7 @@ fill_mode = 3
 texture_under = SubResource("GradientTexture2D_qdvbm")
 texture_progress = SubResource("GradientTexture2D_np72q")
 
-[node name="Level" type="Label" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Spears"]
+[node name="Level" type="Label" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Spears" unique_id=585414824]
 clip_children = 1
 z_index = 1
 custom_minimum_size = Vector2(19, 32)
@@ -3315,17 +3301,17 @@ theme = SubResource("Theme_ontfa")
 text = "E"
 horizontal_alignment = 1
 
-[node name="Color" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Spears/Level"]
+[node name="Color" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Spears/Level" unique_id=289337180]
 layout_mode = 0
 offset_top = -0.373135
 offset_right = 200.0
 offset_bottom = 31.6269
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="Knuckles" type="Control" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels"]
+[node name="Knuckles" type="Control" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels" unique_id=838627233]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Knuckles"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Knuckles" unique_id=167175567]
 z_index = 1
 layout_mode = 0
 offset_left = 3.05176e-05
@@ -3333,7 +3319,7 @@ offset_right = 76.0
 offset_bottom = 91.0
 texture = ExtResource("45_3b32h")
 
-[node name="Experience" type="TextureProgressBar" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Knuckles/Icon"]
+[node name="Experience" type="TextureProgressBar" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Knuckles/Icon" unique_id=2128861390]
 show_behind_parent = true
 layout_mode = 0
 offset_left = 8.95514
@@ -3345,7 +3331,7 @@ fill_mode = 3
 texture_under = SubResource("GradientTexture2D_qdvbm")
 texture_progress = SubResource("GradientTexture2D_5u56e")
 
-[node name="Level" type="Label" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Knuckles"]
+[node name="Level" type="Label" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Knuckles" unique_id=767872487]
 clip_children = 1
 z_index = 1
 custom_minimum_size = Vector2(19, 32)
@@ -3359,21 +3345,21 @@ theme = SubResource("Theme_ontfa")
 text = "E"
 horizontal_alignment = 1
 
-[node name="Color" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Knuckles/Level"]
+[node name="Color" type="TextureRect" parent="MenuStateMachine/Skills/Display/Text/Affinity/Levels/Knuckles/Level" unique_id=86319115]
 layout_mode = 0
 offset_top = -0.373135
 offset_right = 200.0
 offset_bottom = 31.6269
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Skills/Display"]
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Skills/Display" unique_id=246478836]
 offset_left = 13.0
 offset_top = 13.0
 offset_right = 222.0
 offset_bottom = 135.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vl8s6")
 
-[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Skills/Display/PanelContainer" node_paths=PackedStringArray("skill_list", "cost_list", "description", "labels", "command_label", "sound", "menu", "state_machine")]
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Skills/Display/PanelContainer" unique_id=190482712 node_paths=PackedStringArray("skill_list", "cost_list", "description", "labels", "command_label", "sound", "menu", "state_machine")]
 layout_mode = 2
 theme = SubResource("Theme_dvff1")
 script = ExtResource("24_txscp")
@@ -3387,7 +3373,7 @@ sound = NodePath("../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../..")
 state_machine = NodePath("../../../..")
 
-[node name="KeyItems" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="KeyItems" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" unique_id=20568920 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Other")
 theme_override_constants/outline_size = 8
@@ -3399,7 +3385,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Orbs" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Orbs" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" unique_id=69778636 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "ORBS_BUTTON"
@@ -3410,7 +3396,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="WeaponSkills" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="WeaponSkills" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" unique_id=1288573782 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "TECHNIQUES_BUTTON"
@@ -3421,7 +3407,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Other" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Other" type="Button" parent="MenuStateMachine/Skills/Display/PanelContainer/Menu" unique_id=1486836012 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../KeyItems")
 theme_override_constants/outline_size = 8
@@ -3433,7 +3419,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Skills/Display"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Skills/Display" unique_id=96295959]
 custom_minimum_size = Vector2(804, 205)
 offset_left = 37.0
 offset_top = 166.0
@@ -3441,11 +3427,11 @@ offset_right = 37.0
 offset_bottom = 166.0
 follow_focus = true
 
-[node name="Control" type="Control" parent="MenuStateMachine/Skills/Display/ScrollContainer"]
+[node name="Control" type="Control" parent="MenuStateMachine/Skills/Display/ScrollContainer" unique_id=301621301]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 
-[node name="SkillList" type="GridContainer" parent="MenuStateMachine/Skills/Display/ScrollContainer/Control" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+[node name="SkillList" type="GridContainer" parent="MenuStateMachine/Skills/Display/ScrollContainer/Control" unique_id=457052940 node_paths=PackedStringArray("sound", "menu", "state_machine")]
 layout_mode = 0
 scale = Vector2(2, 2)
 theme = SubResource("Theme_uwbuc")
@@ -3457,7 +3443,7 @@ sound = NodePath("../../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../../..")
 state_machine = NodePath("../../../../..")
 
-[node name="CostList" type="GridContainer" parent="MenuStateMachine/Skills/Display/ScrollContainer/Control"]
+[node name="CostList" type="GridContainer" parent="MenuStateMachine/Skills/Display/ScrollContainer/Control" unique_id=405103477]
 layout_mode = 0
 offset_left = 290.0
 offset_top = 9.0
@@ -3468,23 +3454,21 @@ theme_override_constants/h_separation = 313
 theme_override_constants/v_separation = 32
 columns = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Skills"]
-libraries = {
-&"": SubResource("AnimationLibrary_xuig2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Skills" unique_id=1334740293]
+libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Combine" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("item_list", "animation", "default_button")]
+[node name="Combine" type="Node" parent="MenuStateMachine" unique_id=169432579 node_paths=PackedStringArray("item_list", "animation", "default_button")]
 script = ExtResource("47_2nqhj")
 item_list = NodePath("Display/PanelContainer/Menu")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/PanelContainer/Menu/Swords")
 
-[node name="Display" type="Node2D" parent="MenuStateMachine/Combine"]
+[node name="Display" type="Node2D" parent="MenuStateMachine/Combine" unique_id=1483310186]
 modulate = Color(0, 0, 0, 0)
 z_index = 1
 
-[node name="Recipe" type="Control" parent="MenuStateMachine/Combine/Display"]
+[node name="Recipe" type="Control" parent="MenuStateMachine/Combine/Display" unique_id=1689428686]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 13.0
@@ -3494,7 +3478,7 @@ offset_bottom = 53.0
 theme = SubResource("Theme_ic6tr")
 script = ExtResource("14_y3mt3")
 
-[node name="Window" type="PanelContainer" parent="MenuStateMachine/Combine/Display/Recipe"]
+[node name="Window" type="PanelContainer" parent="MenuStateMachine/Combine/Display/Recipe" unique_id=1593398165]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3508,14 +3492,14 @@ grow_vertical = 2
 theme = SubResource("Theme_nw0lr")
 theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
 
-[node name="Materials" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/Recipe/Window"]
+[node name="Materials" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/Recipe/Window" unique_id=1810050398]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="MaterialEntry" type="HBoxContainer" parent="MenuStateMachine/Combine/Display/Recipe/Window/Materials"]
+[node name="MaterialEntry" type="HBoxContainer" parent="MenuStateMachine/Combine/Display/Recipe/Window/Materials" unique_id=2011323733]
 layout_mode = 2
 
-[node name="Required" type="Label" parent="MenuStateMachine/Combine/Display"]
+[node name="Required" type="Label" parent="MenuStateMachine/Combine/Display" unique_id=1200191290]
 clip_children = 1
 offset_left = 525.0
 offset_top = 23.0
@@ -3525,20 +3509,20 @@ theme = SubResource("Theme_qd4hr")
 text = "REQUIRED_MATERIALS_LABEL"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Combine/Display/Required"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Combine/Display/Required" unique_id=831124076]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_85ajc")
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Combine/Display"]
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Combine/Display" unique_id=424114003]
 offset_left = 13.0
 offset_top = 13.0
 offset_right = 222.0
 offset_bottom = 135.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vl8s6")
 
-[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/PanelContainer" node_paths=PackedStringArray("item_list", "material_list", "confirm_animation", "confirm_panel_button", "craft_icon", "craft_text", "sound", "menu", "state_machine")]
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/PanelContainer" unique_id=528048671 node_paths=PackedStringArray("item_list", "material_list", "confirm_animation", "confirm_panel_button", "craft_icon", "craft_text", "sound", "menu", "state_machine")]
 layout_mode = 2
 theme = SubResource("Theme_dvff1")
 script = ExtResource("48_etb2t")
@@ -3553,7 +3537,7 @@ sound = NodePath("../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../..")
 state_machine = NodePath("../../../..")
 
-[node name="Swords" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Swords" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=1432947275 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Legs")
 theme_override_constants/outline_size = 8
@@ -3565,7 +3549,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Greatswords" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Greatswords" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=1821109615 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "GREATSWORDS_BUTTON"
@@ -3576,7 +3560,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Axes" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Axes" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=1530180360 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "AXES_BUTTON"
@@ -3587,7 +3571,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Spears" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Spears" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=154159114 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "SPEARS_BUTTON"
@@ -3598,7 +3582,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Knuckles" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Knuckles" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=1336502253 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "KNUCKLES_BUTTON"
@@ -3609,7 +3593,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Special" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Special" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=1719070711 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "SPECIAL_BUTTON"
@@ -3620,7 +3604,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Head" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Head" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=58583506 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "HEADGEAR_BUTTON"
@@ -3631,7 +3615,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Armor" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Armor" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=1249420728 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "BODY_BUTTON"
@@ -3642,7 +3626,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Legs" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" node_paths=PackedStringArray("state_machine")]
+[node name="Legs" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=159567776 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Swords")
 theme_override_constants/outline_size = 8
@@ -3654,14 +3638,14 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Combine/Display"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Combine/Display" unique_id=1305385868]
 custom_minimum_size = Vector2(300, 448)
 offset_left = 222.0
 offset_top = 11.0
 offset_right = 522.0
 offset_bottom = 459.0
 
-[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/ScrollContainer" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/ScrollContainer" unique_id=1377752305 node_paths=PackedStringArray("sound", "menu", "state_machine")]
 layout_mode = 2
 theme = SubResource("Theme_acxt3")
 script = ExtResource("48_sp8v3")
@@ -3670,7 +3654,7 @@ sound = NodePath("../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../..")
 state_machine = NodePath("../../../..")
 
-[node name="ConfirmPanel" type="PanelContainer" parent="MenuStateMachine/Combine/Display"]
+[node name="ConfirmPanel" type="PanelContainer" parent="MenuStateMachine/Combine/Display" unique_id=737681915]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -3683,23 +3667,23 @@ scale = Vector2(1e-05, 1e-05)
 theme = SubResource("Theme_i1ekd")
 theme_override_styles/panel = SubResource("StyleBoxTexture_l5xej")
 
-[node name="LabelAndButtons" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/ConfirmPanel"]
+[node name="LabelAndButtons" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/ConfirmPanel" unique_id=131902296]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons"]
+[node name="Label" type="Label" parent="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons" unique_id=242382859]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "CONFIRM_CRAFT_BUTTON"
 horizontal_alignment = 1
 
-[node name="ConfirmOptions" type="PanelContainer" parent="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons"]
+[node name="ConfirmOptions" type="PanelContainer" parent="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons" unique_id=2101074700]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_baad0")
 
-[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons/ConfirmOptions"]
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons/ConfirmOptions" unique_id=554494995]
 layout_mode = 2
 
-[node name="Yes" type="Button" parent="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
+[node name="Yes" type="Button" parent="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options" unique_id=141328356]
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_rkhbn")
@@ -3710,7 +3694,7 @@ action_mode = 0
 text = "YES_BUTTON"
 flat = true
 
-[node name="No" type="Button" parent="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
+[node name="No" type="Button" parent="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options" unique_id=1773326914]
 layout_mode = 2
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_122ij")
@@ -3721,12 +3705,10 @@ action_mode = 0
 text = "NO_BUTTON"
 flat = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Combine/Display/ConfirmPanel"]
-libraries = {
-&"": SubResource("AnimationLibrary_5qv8n")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Combine/Display/ConfirmPanel" unique_id=213491697]
+libraries/ = SubResource("AnimationLibrary_5qv8n")
 
-[node name="CraftPanel" type="PanelContainer" parent="MenuStateMachine/Combine/Display"]
+[node name="CraftPanel" type="PanelContainer" parent="MenuStateMachine/Combine/Display" unique_id=141554659]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -3744,11 +3726,11 @@ size_flags_vertical = 4
 theme = SubResource("Theme_i1ekd")
 theme_override_styles/panel = SubResource("StyleBoxTexture_l5xej")
 
-[node name="CraftElements" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/CraftPanel"]
+[node name="CraftElements" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/CraftPanel" unique_id=1236903168]
 layout_mode = 2
 alignment = 1
 
-[node name="CraftIcon" type="TextureRect" parent="MenuStateMachine/Combine/Display/CraftPanel/CraftElements"]
+[node name="CraftIcon" type="TextureRect" parent="MenuStateMachine/Combine/Display/CraftPanel/CraftElements" unique_id=1500478908]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
@@ -3756,7 +3738,7 @@ texture = ExtResource("50_yhbm7")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="CraftText" type="RichTextLabel" parent="MenuStateMachine/Combine/Display/CraftPanel/CraftElements"]
+[node name="CraftText" type="RichTextLabel" parent="MenuStateMachine/Combine/Display/CraftPanel/CraftElements" unique_id=1441716216]
 clip_contents = false
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
@@ -3768,14 +3750,14 @@ visible_characters = 0
 visible_characters_behavior = 1
 visible_ratio = 0.0
 
-[node name="CraftLight" type="PointLight2D" parent="MenuStateMachine/Combine"]
+[node name="CraftLight" type="PointLight2D" parent="MenuStateMachine/Combine" unique_id=1947246399]
 visible = false
 position = Vector2(424, 197)
 energy = 0.0
 blend_mode = 2
 texture = SubResource("GradientTexture2D_7vj6e")
 
-[node name="CraftParticles" type="CPUParticles2D" parent="MenuStateMachine/Combine"]
+[node name="CraftParticles" type="CPUParticles2D" parent="MenuStateMachine/Combine" unique_id=1371196613]
 self_modulate = Color(1.7, 1.5, 0.7, 1)
 z_index = 1
 position = Vector2(421, 205)
@@ -3791,13 +3773,11 @@ initial_velocity_min = 200.0
 initial_velocity_max = 300.0
 scale_amount_curve = SubResource("Curve_e50mf")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Combine"]
-libraries = {
-&"": SubResource("AnimationLibrary_xuig2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Combine" unique_id=639345749]
+libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Summons" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("id_panel", "buttons", "animation")]
+[node name="Summons" type="Node" parent="MenuStateMachine" unique_id=1950013848 node_paths=PackedStringArray("id_panel", "buttons", "animation")]
 script = ExtResource("33_8wvtw")
 empty_ID_bar = SubResource("GradientTexture2D_q1aj5")
 fill_ID_bar = SubResource("GradientTexture2D_4qo27")
@@ -3805,11 +3785,11 @@ id_panel = NodePath("Display/IDPanels")
 buttons = NodePath("Display/Summons")
 animation = NodePath("AnimationPlayer")
 
-[node name="Display" type="Node2D" parent="MenuStateMachine/Summons"]
+[node name="Display" type="Node2D" parent="MenuStateMachine/Summons" unique_id=1949357809]
 modulate = Color(0, 0, 0, 0)
 z_index = 1
 
-[node name="Margin" type="TextureRect" parent="MenuStateMachine/Summons/Display"]
+[node name="Margin" type="TextureRect" parent="MenuStateMachine/Summons/Display" unique_id=991254222]
 show_behind_parent = true
 offset_left = 11.0
 offset_top = 11.0
@@ -3817,7 +3797,7 @@ offset_right = 852.0
 offset_bottom = 471.0
 texture = SubResource("GradientTexture1D_r37ge")
 
-[node name="ListBackground" type="TextureRect" parent="MenuStateMachine/Summons/Display"]
+[node name="ListBackground" type="TextureRect" parent="MenuStateMachine/Summons/Display" unique_id=1223095824]
 show_behind_parent = true
 offset_left = 13.0
 offset_top = 13.0
@@ -3825,7 +3805,7 @@ offset_right = 850.0
 offset_bottom = 469.0
 texture = SubResource("GradientTexture2D_1o7wn")
 
-[node name="IDPanels" type="VBoxContainer" parent="MenuStateMachine/Summons/Display"]
+[node name="IDPanels" type="VBoxContainer" parent="MenuStateMachine/Summons/Display" unique_id=1907557813]
 z_index = 1
 offset_left = 21.0
 offset_top = 23.0
@@ -3833,7 +3813,7 @@ offset_right = 833.0
 offset_bottom = 83.0
 theme = SubResource("Theme_0h0bh")
 
-[node name="Summons" type="VBoxContainer" parent="MenuStateMachine/Summons/Display" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+[node name="Summons" type="VBoxContainer" parent="MenuStateMachine/Summons/Display" unique_id=207618147 node_paths=PackedStringArray("sound", "menu", "state_machine")]
 custom_minimum_size = Vector2(820, 0)
 offset_left = 21.0
 offset_top = 25.0
@@ -3846,13 +3826,11 @@ sound = NodePath("../../../../PolyphonicMenuAudio")
 menu = NodePath("../..")
 state_machine = NodePath("../../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Summons"]
-libraries = {
-&"": SubResource("AnimationLibrary_xuig2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Summons" unique_id=382178099]
+libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Options" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("buttons", "graphics_menu", "audio_menu", "controller_menu", "game_menu", "binding_buttons", "description", "animation", "default_button")]
+[node name="Options" type="Node" parent="MenuStateMachine" unique_id=676869685 node_paths=PackedStringArray("buttons", "graphics_menu", "audio_menu", "controller_menu", "game_menu", "binding_buttons", "description", "animation", "default_button")]
 script = ExtResource("39_fbvxh")
 buttons = NodePath("Display/OptionList")
 graphics_menu = NodePath("Graphics/Options")
@@ -3880,11 +3858,11 @@ description = NodePath("Display/Description")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/OptionList/Window")
 
-[node name="Display" type="Node2D" parent="MenuStateMachine/Options"]
+[node name="Display" type="Node2D" parent="MenuStateMachine/Options" unique_id=926537236]
 modulate = Color(0, 0, 0, 0)
 z_index = 1
 
-[node name="Description" type="RichTextLabel" parent="MenuStateMachine/Options/Display"]
+[node name="Description" type="RichTextLabel" parent="MenuStateMachine/Options/Display" unique_id=1953752008]
 z_index = 1
 offset_left = 37.0
 offset_top = 401.0
@@ -3900,21 +3878,21 @@ scroll_following = true
 custom_effects = [SubResource("RichTextEffect_37m4q")]
 script = ExtResource("30_m47lu")
 
-[node name="OptionsCrop" type="PanelContainer" parent="MenuStateMachine/Options/Display"]
+[node name="OptionsCrop" type="PanelContainer" parent="MenuStateMachine/Options/Display" unique_id=1119893952]
 offset_left = 195.0
 offset_top = 6.0
 offset_right = 852.0
 offset_bottom = 385.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
 
-[node name="DescriptionCrop" type="PanelContainer" parent="MenuStateMachine/Options/Display"]
+[node name="DescriptionCrop" type="PanelContainer" parent="MenuStateMachine/Options/Display" unique_id=5364882]
 offset_left = 16.0
 offset_top = 395.0
 offset_right = 852.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
 
-[node name="OptionList" type="VBoxContainer" parent="MenuStateMachine/Options/Display" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+[node name="OptionList" type="VBoxContainer" parent="MenuStateMachine/Options/Display" unique_id=1607702542 node_paths=PackedStringArray("sound", "menu", "state_machine")]
 z_index = 1
 offset_left = 21.0
 offset_top = 6.0
@@ -3929,7 +3907,7 @@ sound = NodePath("../../../../PolyphonicMenuAudio")
 menu = NodePath("../..")
 state_machine = NodePath("../../..")
 
-[node name="Window" type="Button" parent="MenuStateMachine/Options/Display/OptionList" node_paths=PackedStringArray("state_machine")]
+[node name="Window" type="Button" parent="MenuStateMachine/Options/Display/OptionList" unique_id=115375093 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Game")
 theme_override_constants/outline_size = 8
@@ -3940,7 +3918,7 @@ icon_alignment = 1
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="Audio" type="Button" parent="MenuStateMachine/Options/Display/OptionList" node_paths=PackedStringArray("state_machine")]
+[node name="Audio" type="Button" parent="MenuStateMachine/Options/Display/OptionList" unique_id=886496386 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "AUDIO_BUTTON"
@@ -3950,7 +3928,7 @@ icon_alignment = 1
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="Controls" type="Button" parent="MenuStateMachine/Options/Display/OptionList" node_paths=PackedStringArray("state_machine")]
+[node name="Controls" type="Button" parent="MenuStateMachine/Options/Display/OptionList" unique_id=1431688961 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 text = "CONTROLS_BUTTON"
@@ -3960,7 +3938,7 @@ icon_alignment = 1
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="Game" type="Button" parent="MenuStateMachine/Options/Display/OptionList" node_paths=PackedStringArray("state_machine")]
+[node name="Game" type="Button" parent="MenuStateMachine/Options/Display/OptionList" unique_id=1484904281 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Window")
 theme_override_constants/outline_size = 8
@@ -3971,41 +3949,39 @@ icon_alignment = 1
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
 
-[node name="Audio" type="Node" parent="MenuStateMachine/Options/Display"]
+[node name="Audio" type="Node" parent="MenuStateMachine/Options/Display" unique_id=2035521327]
 
-[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Display/Audio"]
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Display/Audio" unique_id=85198230]
 offset_left = 204.0
 offset_top = 49.0
 offset_right = 841.0
 offset_bottom = 416.0
 
-[node name="Controls" type="Node" parent="MenuStateMachine/Options/Display"]
+[node name="Controls" type="Node" parent="MenuStateMachine/Options/Display" unique_id=1316990639]
 
-[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Display/Controls"]
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Display/Controls" unique_id=776506591]
 offset_left = 204.0
 offset_top = 49.0
 offset_right = 841.0
 offset_bottom = 416.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Options"]
-libraries = {
-&"": SubResource("AnimationLibrary_xuig2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Options" unique_id=2090307717]
+libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Graphics" type="Node2D" parent="MenuStateMachine/Options"]
+[node name="Graphics" type="Node2D" parent="MenuStateMachine/Options" unique_id=712836353]
 
-[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Graphics"]
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Graphics" unique_id=383287179]
 visible = false
 offset_left = 204.0
 offset_top = 18.0
 offset_right = 846.0
 offset_bottom = 385.0
 
-[node name="Mode" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options"]
+[node name="Mode" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options" unique_id=1130418883]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Mode" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Mode" unique_id=1990120885 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4016,7 +3992,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Mode"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Mode" unique_id=1011216027]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4025,7 +4001,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Mode"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Mode" unique_id=648253487]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4033,7 +4009,7 @@ theme = SubResource("Theme_idane")
 text = "Windowed"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Mode"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Mode" unique_id=2132425507]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4042,10 +4018,10 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Resolution" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options"]
+[node name="Resolution" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options" unique_id=220907954]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Resolution" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Resolution" unique_id=272475583 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4056,7 +4032,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Resolution"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Resolution" unique_id=1159527488]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4065,7 +4041,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Resolution"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Resolution" unique_id=978340821]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4073,7 +4049,7 @@ theme = SubResource("Theme_idane")
 text = "864x480"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Resolution"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Resolution" unique_id=790780575]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4082,10 +4058,10 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Scaling" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options"]
+[node name="Scaling" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options" unique_id=1855390595]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Scaling" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Scaling" unique_id=1669215445 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4096,7 +4072,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Scaling"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Scaling" unique_id=1113373440]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4105,7 +4081,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Scaling"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Scaling" unique_id=50622003]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4113,7 +4089,7 @@ theme = SubResource("Theme_idane")
 text = "Canvas"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Scaling"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Scaling" unique_id=1851835539]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4122,10 +4098,10 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Vsync" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options"]
+[node name="Vsync" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options" unique_id=806391642]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Vsync" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Vsync" unique_id=370819339 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4136,7 +4112,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Vsync"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Vsync" unique_id=365825794]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4145,7 +4121,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Vsync"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Vsync" unique_id=1489890991]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4153,7 +4129,7 @@ theme = SubResource("Theme_idane")
 text = "Enabled"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Vsync"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Vsync" unique_id=1162900247]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4162,10 +4138,10 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Framerate" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options"]
+[node name="Framerate" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options" unique_id=99015428]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Framerate" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Framerate" unique_id=2048365736 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4176,7 +4152,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Framerate"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Framerate" unique_id=66365793]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4185,7 +4161,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Framerate"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Framerate" unique_id=2093913471]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4193,7 +4169,7 @@ theme = SubResource("Theme_idane")
 text = "No"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Framerate"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Framerate" unique_id=439339454]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4202,19 +4178,19 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Audio" type="Node2D" parent="MenuStateMachine/Options"]
+[node name="Audio" type="Node2D" parent="MenuStateMachine/Options" unique_id=930683902]
 
-[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Audio"]
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Audio" unique_id=2131909232]
 visible = false
 offset_left = 204.0
 offset_top = 18.0
 offset_right = 846.0
 offset_bottom = 385.0
 
-[node name="Master" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options"]
+[node name="Master" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options" unique_id=1573970544]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/Master" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/Master" unique_id=1998992481 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4225,7 +4201,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Master"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Master" unique_id=879272065]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4234,7 +4210,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/Master"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/Master" unique_id=1797146043]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4242,7 +4218,7 @@ theme = SubResource("Theme_idane")
 text = "100%"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Master"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Master" unique_id=1538457970]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4251,10 +4227,10 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="SFX" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options"]
+[node name="SFX" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options" unique_id=1994184256]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/SFX" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/SFX" unique_id=739235311 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4265,7 +4241,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/SFX"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/SFX" unique_id=495202509]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4274,7 +4250,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/SFX"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/SFX" unique_id=855515288]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4282,7 +4258,7 @@ theme = SubResource("Theme_idane")
 text = "100%"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/SFX"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/SFX" unique_id=930609805]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4291,10 +4267,10 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Music" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options"]
+[node name="Music" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options" unique_id=75027324]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/Music" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/Music" unique_id=1518064761 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4305,7 +4281,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Music"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Music" unique_id=1403644715]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4314,7 +4290,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/Music"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/Music" unique_id=2086822523]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4322,7 +4298,7 @@ theme = SubResource("Theme_idane")
 text = "100%"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Music"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Music" unique_id=56107618]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4331,10 +4307,10 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Voice" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options"]
+[node name="Voice" type="HBoxContainer" parent="MenuStateMachine/Options/Audio/Options" unique_id=910925419]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/Voice" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Audio/Options/Voice" unique_id=1248459550 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4345,7 +4321,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Voice"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Voice" unique_id=1953930993]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4354,7 +4330,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/Voice"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Audio/Options/Voice" unique_id=170629345]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4362,7 +4338,7 @@ theme = SubResource("Theme_idane")
 text = "100%"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Voice"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Audio/Options/Voice" unique_id=758349887]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4371,19 +4347,19 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Controls" type="Node2D" parent="MenuStateMachine/Options"]
+[node name="Controls" type="Node2D" parent="MenuStateMachine/Options" unique_id=398274766]
 
-[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Controls"]
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Controls" unique_id=80392286]
 visible = false
 offset_left = 204.0
 offset_top = 18.0
 offset_right = 846.0
 offset_bottom = 385.0
 
-[node name="Layout" type="HBoxContainer" parent="MenuStateMachine/Options/Controls/Options"]
+[node name="Layout" type="HBoxContainer" parent="MenuStateMachine/Options/Controls/Options" unique_id=1459815502]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Controls/Options/Layout" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Controls/Options/Layout" unique_id=948017739 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4394,7 +4370,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Layout"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Layout" unique_id=842399548]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4403,7 +4379,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Controls/Options/Layout"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Controls/Options/Layout" unique_id=2146533676]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4411,7 +4387,7 @@ theme = SubResource("Theme_idane")
 text = "Playstation"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Layout"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Layout" unique_id=1273426724]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4420,10 +4396,10 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Buffering" type="HBoxContainer" parent="MenuStateMachine/Options/Controls/Options"]
+[node name="Buffering" type="HBoxContainer" parent="MenuStateMachine/Options/Controls/Options" unique_id=688254375]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Controls/Options/Buffering" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Controls/Options/Buffering" unique_id=1332810338 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4434,7 +4410,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Buffering"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Buffering" unique_id=534553090]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4443,7 +4419,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Controls/Options/Buffering"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Controls/Options/Buffering" unique_id=789348934]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4451,7 +4427,7 @@ theme = SubResource("Theme_idane")
 text = "9 frames"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Buffering"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Buffering" unique_id=1590451425]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4460,10 +4436,10 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Device" type="HBoxContainer" parent="MenuStateMachine/Options/Controls/Options"]
+[node name="Device" type="HBoxContainer" parent="MenuStateMachine/Options/Controls/Options" unique_id=480343763]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Controls/Options/Device" node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Controls/Options/Device" unique_id=1346016110 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4474,7 +4450,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Device"]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Device" unique_id=1980446725]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4483,7 +4459,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Controls/Options/Device"]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Controls/Options/Device" unique_id=2142624593]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4491,7 +4467,7 @@ theme = SubResource("Theme_idane")
 text = "Controller"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Device"]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Controls/Options/Device" unique_id=1974992638]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4500,7 +4476,7 @@ texture = ExtResource("40_3pvl0")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Bindings" type="GridContainer" parent="MenuStateMachine/Options/Controls/Options"]
+[node name="Bindings" type="GridContainer" parent="MenuStateMachine/Options/Controls/Options" unique_id=2098465024]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -4508,7 +4484,7 @@ theme = SubResource("Theme_4f1bd")
 theme_override_constants/h_separation = 32
 columns = 3
 
-[node name="LEFT_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="LEFT_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=1122061117 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4521,7 +4497,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="RIGHT_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="RIGHT_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=616288078 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4534,7 +4510,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="DOWN_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="DOWN_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=373820933 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4547,7 +4523,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="UP_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="UP_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=960880763 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4560,7 +4536,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="ATTACK_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="ATTACK_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=2103155158 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4573,7 +4549,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="JUMP_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="JUMP_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=371314379 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4586,7 +4562,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="SKILL_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="SKILL_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=1517124304 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4599,7 +4575,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="ID_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="ID_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=267203167 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4612,7 +4588,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="BACKDASH_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="BACKDASH_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=32898795 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4625,7 +4601,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="GUARD_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="GUARD_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=1027383729 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4638,7 +4614,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="INVENTORY_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="INVENTORY_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=1664873119 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4651,7 +4627,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="MAP_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="MAP_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=450336265 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4664,7 +4640,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="SWITCH_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="SWITCH_KEY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=1800355958 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4677,7 +4653,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="SYNERGY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="SYNERGY" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=806639616 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4690,7 +4666,7 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="RESET_KEYS_BUTTON" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" node_paths=PackedStringArray("state_machine")]
+[node name="RESET_KEYS_BUTTON" type="Button" parent="MenuStateMachine/Options/Controls/Options/Bindings" unique_id=1807471898 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(180, 32)
 layout_mode = 2
@@ -4702,19 +4678,19 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Game" type="Node2D" parent="MenuStateMachine/Options"]
+[node name="Game" type="Node2D" parent="MenuStateMachine/Options" unique_id=1754635096]
 
-[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Game"]
+[node name="Options" type="VBoxContainer" parent="MenuStateMachine/Options/Game" unique_id=1693970234]
 visible = false
 offset_left = 204.0
 offset_top = 18.0
 offset_right = 841.0
 offset_bottom = 385.0
 
-[node name="Title" type="HBoxContainer" parent="MenuStateMachine/Options/Game/Options"]
+[node name="Title" type="HBoxContainer" parent="MenuStateMachine/Options/Game/Options" unique_id=47684547]
 layout_mode = 2
 
-[node name="Title screen" type="Button" parent="MenuStateMachine/Options/Game/Options/Title" node_paths=PackedStringArray("state_machine")]
+[node name="Title screen" type="Button" parent="MenuStateMachine/Options/Game/Options/Title" unique_id=957548059 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 layout_mode = 2
 theme = SubResource("Theme_pvykr")
@@ -4724,10 +4700,10 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Quit" type="HBoxContainer" parent="MenuStateMachine/Options/Game/Options"]
+[node name="Quit" type="HBoxContainer" parent="MenuStateMachine/Options/Game/Options" unique_id=1639398077]
 layout_mode = 2
 
-[node name="Quit game" type="Button" parent="MenuStateMachine/Options/Game/Options/Quit" node_paths=PackedStringArray("state_machine")]
+[node name="Quit game" type="Button" parent="MenuStateMachine/Options/Game/Options/Quit" unique_id=145723430 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 layout_mode = 2
 theme = SubResource("Theme_pvykr")
@@ -4737,25 +4713,25 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Hints" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("buttons", "tutorial_box", "animation")]
+[node name="Hints" type="Node" parent="MenuStateMachine" unique_id=966418296 node_paths=PackedStringArray("buttons", "tutorial_box", "animation")]
 script = ExtResource("54_nkih0")
 button_glow = SubResource("StyleBoxFlat_06wc2")
 buttons = NodePath("Display/PanelContainer/ScrollContainer/HintButtons")
 tutorial_box = NodePath("Display/TutorialBox")
 animation = NodePath("AnimationPlayer")
 
-[node name="Display" type="Node2D" parent="MenuStateMachine/Hints"]
+[node name="Display" type="Node2D" parent="MenuStateMachine/Hints" unique_id=1935543583]
 modulate = Color(0, 0, 0, 0)
 z_index = 1
 
-[node name="OptionsCrop" type="PanelContainer" parent="MenuStateMachine/Hints/Display"]
+[node name="OptionsCrop" type="PanelContainer" parent="MenuStateMachine/Hints/Display" unique_id=1035645621]
 offset_left = 277.0
 offset_top = 6.0
 offset_right = 848.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Hints/Display"]
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Hints/Display" unique_id=1129286799]
 custom_minimum_size = Vector2(250, 0)
 offset_left = 16.0
 offset_top = 6.0
@@ -4764,11 +4740,11 @@ offset_bottom = 462.0
 theme = SubResource("Theme_n6p2h")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_673n5")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Hints/Display/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Hints/Display/PanelContainer" unique_id=222308541]
 layout_mode = 2
 follow_focus = true
 
-[node name="HintButtons" type="VBoxContainer" parent="MenuStateMachine/Hints/Display/PanelContainer/ScrollContainer" node_paths=PackedStringArray("sound", "menu", "state_machine")]
+[node name="HintButtons" type="VBoxContainer" parent="MenuStateMachine/Hints/Display/PanelContainer/ScrollContainer" unique_id=638903556 node_paths=PackedStringArray("sound", "menu", "state_machine")]
 layout_mode = 2
 script = ExtResource("55_v1gb1")
 button_glow = SubResource("StyleBoxFlat_06wc2")
@@ -4776,17 +4752,17 @@ sound = NodePath("../../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../../..")
 state_machine = NodePath("../../../../..")
 
-[node name="TutorialBox" type="VBoxContainer" parent="MenuStateMachine/Hints/Display"]
+[node name="TutorialBox" type="VBoxContainer" parent="MenuStateMachine/Hints/Display" unique_id=2095366563]
 offset_left = 286.0
 offset_top = 25.0
 offset_right = 842.0
 offset_bottom = 464.0
 theme = SubResource("Theme_eojiu")
 
-[node name="Image" type="TextureRect" parent="MenuStateMachine/Hints/Display/TutorialBox"]
+[node name="Image" type="TextureRect" parent="MenuStateMachine/Hints/Display/TutorialBox" unique_id=356408017]
 layout_mode = 2
 
-[node name="Description" type="RichTextLabel" parent="MenuStateMachine/Hints/Display/TutorialBox"]
+[node name="Description" type="RichTextLabel" parent="MenuStateMachine/Hints/Display/TutorialBox" unique_id=894428878]
 layout_mode = 2
 bbcode_enabled = true
 fit_content = true
@@ -4794,13 +4770,11 @@ scroll_following = true
 shortcut_keys_enabled = false
 script = ExtResource("30_m47lu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Hints"]
-libraries = {
-&"": SubResource("AnimationLibrary_xuig2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Hints" unique_id=863588603]
+libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Bestiary" type="Node" parent="MenuStateMachine" node_paths=PackedStringArray("enemy_list", "encyclopedia", "monster_profile", "sprite", "description", "HP", "LV", "Name", "stats", "killed", "drops", "tolerances", "weaknesses", "animation")]
+[node name="Bestiary" type="Node" parent="MenuStateMachine" unique_id=742663810 node_paths=PackedStringArray("enemy_list", "encyclopedia", "monster_profile", "sprite", "description", "HP", "LV", "Name", "stats", "killed", "drops", "tolerances", "weaknesses", "animation")]
 script = ExtResource("71_jsfmf")
 button_glow = SubResource("StyleBoxFlat_06wc2")
 enemy_list = NodePath("Display/Encyclopedia/PanelContainer/ScrollContainer/GridContainer")
@@ -4818,16 +4792,16 @@ tolerances = NodePath("Display/MonsterProfile/ToleranceTable")
 weaknesses = NodePath("Display/MonsterProfile/WeaknessTable")
 animation = NodePath("AnimationPlayer")
 
-[node name="Display" type="Node2D" parent="MenuStateMachine/Bestiary"]
+[node name="Display" type="Node2D" parent="MenuStateMachine/Bestiary" unique_id=1477305971]
 modulate = Color(0, 0, 0, 0)
 
-[node name="Encyclopedia" type="Control" parent="MenuStateMachine/Bestiary/Display"]
+[node name="Encyclopedia" type="Control" parent="MenuStateMachine/Bestiary/Display" unique_id=1222724590]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Bestiary/Display/Encyclopedia"]
+[node name="PanelContainer" type="PanelContainer" parent="MenuStateMachine/Bestiary/Display/Encyclopedia" unique_id=1644127288]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 16.0
@@ -4835,23 +4809,23 @@ offset_right = 780.0
 offset_bottom = 451.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_coau3")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Bestiary/Display/Encyclopedia/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Bestiary/Display/Encyclopedia/PanelContainer" unique_id=1854634621]
 layout_mode = 2
 follow_focus = true
 
-[node name="GridContainer" type="GridContainer" parent="MenuStateMachine/Bestiary/Display/Encyclopedia/PanelContainer/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="MenuStateMachine/Bestiary/Display/Encyclopedia/PanelContainer/ScrollContainer" unique_id=1866714709]
 custom_minimum_size = Vector2(616, 0)
 layout_mode = 2
 theme = SubResource("Theme_phj2e")
 columns = 2
 
-[node name="MonsterProfile" type="Control" parent="MenuStateMachine/Bestiary/Display"]
+[node name="MonsterProfile" type="Control" parent="MenuStateMachine/Bestiary/Display" unique_id=1656829586]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PortraitPanel" type="PanelContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="PortraitPanel" type="PanelContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=995675603]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 156.0
@@ -4859,11 +4833,11 @@ offset_right = 267.0
 offset_bottom = 365.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_52x07")
 
-[node name="Sprite2D" type="Sprite2D" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/PortraitPanel"]
+[node name="Sprite2D" type="Sprite2D" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/PortraitPanel" unique_id=1576087280]
 position = Vector2(124, 109)
 scale = Vector2(2, 2)
 
-[node name="Description" type="RichTextLabel" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="Description" type="RichTextLabel" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=1881094772]
 z_index = 1
 layout_mode = 0
 offset_left = 37.0
@@ -4881,7 +4855,7 @@ scroll_following = true
 custom_effects = [SubResource("RichTextEffect_37m4q")]
 script = ExtResource("30_m47lu")
 
-[node name="DescriptionPanel" type="PanelContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="DescriptionPanel" type="PanelContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=2015014746]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 395.0
@@ -4889,7 +4863,7 @@ offset_right = 852.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
 
-[node name="Name" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="Name" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=773269039]
 clip_children = 1
 layout_mode = 0
 offset_left = 16.0
@@ -4899,13 +4873,13 @@ offset_bottom = 37.0
 theme = SubResource("Theme_2xk5h")
 text = "NAME_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Name"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Name" unique_id=2093708511]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="Stats" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="Stats" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=1958398624]
 clip_children = 1
 layout_mode = 0
 offset_left = 312.0
@@ -4915,13 +4889,13 @@ offset_bottom = 149.0
 theme = SubResource("Theme_2xk5h")
 text = "STATS_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Stats"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Stats" unique_id=964605850]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="Attributes" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="Attributes" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=1982639203]
 clip_children = 1
 layout_mode = 0
 offset_left = 564.0
@@ -4931,13 +4905,13 @@ offset_bottom = 149.0
 theme = SubResource("Theme_2xk5h")
 text = "ELEMENTAL_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Attributes"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Attributes" unique_id=53074665]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="HP" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="HP" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=1353254270]
 clip_children = 1
 layout_mode = 0
 offset_left = 16.0
@@ -4947,13 +4921,13 @@ offset_bottom = 125.0
 theme = SubResource("Theme_41430")
 text = "MENU_HP"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/HP"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/HP" unique_id=1765546245]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="LV" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="LV" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=367753548]
 clip_children = 1
 layout_mode = 0
 offset_left = 132.0
@@ -4963,13 +4937,13 @@ offset_bottom = 125.0
 theme = SubResource("Theme_41430")
 text = "MENU_LEVEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/LV"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/LV" unique_id=276882547]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="NameValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="NameValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=1848923355]
 layout_mode = 0
 offset_left = 21.0
 offset_top = 44.0
@@ -4978,7 +4952,7 @@ offset_bottom = 76.0
 theme = SubResource("Theme_wwnqm")
 text = "Skeleton"
 
-[node name="LVValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="LVValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=1067221456]
 layout_mode = 0
 offset_left = 132.0
 offset_top = 121.0
@@ -4987,7 +4961,7 @@ offset_bottom = 145.0
 theme = SubResource("Theme_wbbfc")
 text = "2"
 
-[node name="HPValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="HPValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=1296258943]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 121.0
@@ -4996,112 +4970,112 @@ offset_bottom = 145.0
 theme = SubResource("Theme_wbbfc")
 text = "15"
 
-[node name="StatValues" type="VBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="StatValues" type="VBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=329746765]
 layout_mode = 0
 offset_left = 309.0
 offset_top = 161.0
 offset_right = 527.0
 offset_bottom = 405.0
 
-[node name="Atk" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues"]
+[node name="Atk" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues" unique_id=767446125]
 layout_mode = 2
 alignment = 1
 
-[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Atk"]
+[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Atk" unique_id=1775383684]
 clip_children = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = SubResource("Theme_41430")
 text = "ATK_STAT_FULL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Atk/StatLabel"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Atk/StatLabel" unique_id=556381098]
 self_modulate = Color(1, 0.403922, 1, 1)
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Atk"]
+[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Atk" unique_id=2032885397]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 theme = SubResource("Theme_wbbfc")
 text = "10"
 horizontal_alignment = 2
 
-[node name="Def" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues"]
+[node name="Def" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues" unique_id=535029527]
 layout_mode = 2
 alignment = 1
 
-[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Def"]
+[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Def" unique_id=1550661798]
 clip_children = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = SubResource("Theme_41430")
 text = "DEF_STAT_FULL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Def/StatLabel"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Def/StatLabel" unique_id=582869350]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_ol4uy")
 
-[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Def"]
+[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Def" unique_id=156677958]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 theme = SubResource("Theme_wbbfc")
 text = "10"
 horizontal_alignment = 2
 
-[node name="Mind" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues"]
+[node name="Mind" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues" unique_id=1591012293]
 layout_mode = 2
 alignment = 1
 
-[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Mind"]
+[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Mind" unique_id=1666319976]
 clip_children = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = SubResource("Theme_41430")
 text = "MND_STAT_FULL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Mind/StatLabel"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Mind/StatLabel" unique_id=87550336]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Mind"]
+[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Mind" unique_id=1835997558]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 theme = SubResource("Theme_wbbfc")
 text = "10"
 horizontal_alignment = 2
 
-[node name="Exp" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues"]
+[node name="Exp" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues" unique_id=887186061]
 custom_minimum_size = Vector2(0, 170)
 layout_mode = 2
 alignment = 1
 
-[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Exp"]
+[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Exp" unique_id=339979148]
 clip_children = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme = SubResource("Theme_41430")
 text = "MENU_EXP"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Exp/StatLabel"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Exp/StatLabel" unique_id=536238904]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Exp"]
+[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/StatValues/Exp" unique_id=1019782528]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 theme = SubResource("Theme_wbbfc")
 text = "10"
 horizontal_alignment = 2
 
-[node name="Tolerances" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="Tolerances" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=1266012091]
 clip_children = 1
 layout_mode = 0
 offset_left = 564.0
@@ -5111,13 +5085,13 @@ offset_bottom = 191.0
 theme = SubResource("Theme_41430")
 text = "TOLERANCES_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Tolerances"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Tolerances" unique_id=1333813469]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="Weaknesses" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="Weaknesses" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=773249648]
 clip_children = 1
 layout_mode = 0
 offset_left = 564.0
@@ -5127,13 +5101,13 @@ offset_bottom = 264.0
 theme = SubResource("Theme_41430")
 text = "WEAKNESSES_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Weaknesses"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Weaknesses" unique_id=1510311346]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="Drops" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="Drops" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=924536098]
 clip_children = 1
 layout_mode = 0
 offset_left = 309.0
@@ -5143,64 +5117,64 @@ offset_bottom = 37.0
 theme = SubResource("Theme_2xk5h")
 text = "DROPS_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Drops"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Drops" unique_id=1001288462]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="ItemDrops" type="VBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="ItemDrops" type="VBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=372473544]
 layout_mode = 0
 offset_left = 318.0
 offset_top = 40.0
 offset_right = 648.0
 offset_bottom = 108.0
 
-[node name="Common" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops"]
+[node name="Common" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops" unique_id=399543508]
 layout_mode = 2
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Common"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Common" unique_id=1831219422]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("73_b0muq")
 
-[node name="NameValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Common"]
+[node name="NameValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Common" unique_id=1726772657]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = SubResource("Theme_wwnqm")
 text = "Meat Strip"
 
-[node name="DropRate" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Common"]
+[node name="DropRate" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Common" unique_id=1194555112]
 custom_minimum_size = Vector2(90, 32)
 layout_mode = 2
 theme = SubResource("Theme_wbbfc")
 text = "2.6%"
 horizontal_alignment = 2
 
-[node name="Rare" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops"]
+[node name="Rare" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops" unique_id=561930570]
 layout_mode = 2
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Rare"]
+[node name="Icon" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Rare" unique_id=680529044]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("74_u2uhr")
 
-[node name="NameValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Rare"]
+[node name="NameValue" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Rare" unique_id=568168058]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme = SubResource("Theme_wwnqm")
 text = "Uncurse"
 
-[node name="DropRate" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Rare"]
+[node name="DropRate" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/ItemDrops/Rare" unique_id=373462334]
 custom_minimum_size = Vector2(90, 32)
 layout_mode = 2
 theme = SubResource("Theme_wbbfc")
 text = "2.8%"
 horizontal_alignment = 2
 
-[node name="Killed" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="Killed" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=1549042955]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 0
 offset_left = 564.0
@@ -5209,60 +5183,58 @@ offset_right = 816.0
 offset_bottom = 405.0
 alignment = 1
 
-[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Killed"]
+[node name="StatLabel" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Killed" unique_id=531419336]
 clip_children = 1
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme = SubResource("Theme_41430")
 text = "KILLED_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Killed/StatLabel"]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Killed/StatLabel" unique_id=1437078914]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_glct2")
 
-[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Killed"]
+[node name="Value" type="Label" parent="MenuStateMachine/Bestiary/Display/MonsterProfile/Killed" unique_id=2088982670]
 custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 theme = SubResource("Theme_wbbfc")
 text = "0"
 horizontal_alignment = 2
 
-[node name="ToleranceTable" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="ToleranceTable" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=1745218423]
 layout_mode = 0
 offset_left = 566.0
 offset_top = 188.0
 offset_right = 606.0
 offset_bottom = 228.0
 
-[node name="WeaknessTable" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile"]
+[node name="WeaknessTable" type="HBoxContainer" parent="MenuStateMachine/Bestiary/Display/MonsterProfile" unique_id=271608490]
 layout_mode = 0
 offset_left = 566.0
 offset_top = 268.0
 offset_right = 606.0
 offset_bottom = 308.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Bestiary"]
-libraries = {
-&"": SubResource("AnimationLibrary_xuig2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Bestiary" unique_id=1401686858]
+libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="." unique_id=497622641]
 volume_db = -80.0
 max_polyphony = 5
 bus = &"SFX"
 script = ExtResource("7_6qbgg")
 audio_library = SubResource("Resource_qfoex")
 
-[node name="OpenMenuAudio" type="AudioStreamPlayer" parent="."]
+[node name="OpenMenuAudio" type="AudioStreamPlayer" parent="." unique_id=1775062570]
 volume_db = -10.0
 bus = &"SFX"
 script = ExtResource("7_6qbgg")
 audio_library = SubResource("Resource_dt3v6")
 
-[node name="ResetTimer" type="Timer" parent="."]
+[node name="ResetTimer" type="Timer" parent="." unique_id=925123246]
 one_shot = true
 
 [connection signal="timeout" from="MenuStateMachine/Equip/Display/EquipList/GlowTimer" to="MenuStateMachine/Equip/Display/EquipList" method="_on_glow_timer_timeout"]

@@ -117,12 +117,14 @@ func check_is_blocking():
 func check_is_hurt():
 	if player.state_machine.current_state is HectorGuardPerfectAir:
 		return
-		
+	
 	if player.stats.current_status == player.stats.Ailment.STONE:
+		Input.start_joy_vibration(0, 0.8, 0, 0.4)
 		Transitioned.emit(self, "petrified")
 		return
 		
 	if player.is_hurt and player.stats.Stats["HP"] > 0:
+		Input.start_joy_vibration(0, 0.5, 0, 0.4)
 		if player.stats.accessoryEquipped(Accessory.Accessories.BLOOD_CLOAK):
 			player.activateBloodCloak()
 		player.current_hits_taken_before_iframes += 1

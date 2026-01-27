@@ -1,4 +1,4 @@
-[gd_scene load_steps=444 format=3 uid="uid://cenjpg3o6am6u"]
+[gd_scene format=3 uid="uid://cenjpg3o6am6u"]
 
 [ext_resource type="Script" uid="uid://5351r0u86hvo" path="res://SampleProject/Scripts/HectorStats.gd" id="1_f0ls1"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
@@ -4623,7 +4623,7 @@ _limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.5, 0.0049916506), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "confidence_ring_timer", "charge_sprite", "charge_anim", "charge_particles", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
+[node name="Player" type="CharacterBody2D" unique_id=935233281 node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "confidence_ring_timer", "charge_sprite", "charge_anim", "charge_particles", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
 scale = Vector2(2, 2)
 collision_layer = 524290
 collision_mask = 4113
@@ -4661,7 +4661,7 @@ raycast = NodePath("RayCast2D")
 aguni_flames = ExtResource("122_4xc62")
 relic_sounds = NodePath("RelicSounds")
 
-[node name="HectorStats" type="Node" parent="." node_paths=PackedStringArray("play_time")]
+[node name="HectorStats" type="Node" parent="." unique_id=1348586030 node_paths=PackedStringArray("play_time")]
 script = ExtResource("1_f0ls1")
 Stats = {
 "ATK": 8,
@@ -4780,21 +4780,21 @@ weapon_proficiency = Array[Dictionary]([{
 "lv": 0
 }])
 
-[node name="Playtime" type="Node" parent="HectorStats"]
+[node name="Playtime" type="Node" parent="HectorStats" unique_id=1199637380]
 script = ExtResource("93_30li2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=899107974]
 visible = false
 position = Vector2(0.5, 12.5)
 shape = SubResource("RectangleShape2D_mbn21")
 debug_color = Color(0.989477, 0, 0.289978, 0.42)
 
-[node name="Hector noises" type="AudioStreamPlayer2D" parent="."]
+[node name="Hector noises" type="AudioStreamPlayer2D" parent="." unique_id=1879403796]
 volume_db = 9.905
 max_polyphony = 3
 bus = &"SFX"
 
-[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("glow_timer", "weapon_trail")]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=20858256 node_paths=PackedStringArray("glow_timer", "weapon_trail")]
 process_mode = 3
 material = SubResource("ShaderMaterial_a8u0y")
 texture = ExtResource("3_hkpj0")
@@ -4806,7 +4806,7 @@ glow_speed = 0.17
 glow_timer = NodePath("Glow")
 weapon_trail = NodePath("WeaponTrail")
 
-[node name="SwordHitbox" type="Area2D" parent="Sprite2D" node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
+[node name="SwordHitbox" type="Area2D" parent="Sprite2D" unique_id=1715648843 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1
 visible = false
 collision_layer = 8
@@ -4821,11 +4821,11 @@ hit_collision_scene = ExtResource("5_7iojt")
 ice_hit_collision_scene = ExtResource("105_c2fce")
 base_attribute = Array[int]([2])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/SwordHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/SwordHitbox" unique_id=1154734210]
 position = Vector2(35, 9.16667)
 shape = SubResource("RectangleShape2D_em0oi")
 
-[node name="FistHitbox" type="Area2D" parent="Sprite2D" node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
+[node name="FistHitbox" type="Area2D" parent="Sprite2D" unique_id=1015260105 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1
 collision_layer = 8
 collision_mask = 4
@@ -4839,12 +4839,12 @@ hit_collision_scene = ExtResource("5_7iojt")
 ice_hit_collision_scene = ExtResource("105_c2fce")
 base_attribute = Array[int]([1])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/FistHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/FistHitbox" unique_id=1002873315]
 visible = false
 position = Vector2(17.6223, 0.413044)
 shape = SubResource("RectangleShape2D_fu7uc")
 
-[node name="UppercutHitbox" type="Area2D" parent="Sprite2D" node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
+[node name="UppercutHitbox" type="Area2D" parent="Sprite2D" unique_id=225684329 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1
 visible = false
 collision_layer = 8
@@ -4859,12 +4859,12 @@ hit_collision_scene = ExtResource("5_7iojt")
 ice_hit_collision_scene = ExtResource("105_c2fce")
 base_attribute = Array[int]([1])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/UppercutHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/UppercutHitbox" unique_id=1340441218]
 position = Vector2(13.25, 2.5)
 shape = SubResource("RectangleShape2D_otvxe")
 disabled = true
 
-[node name="ThunderUppercutHitbox" type="Area2D" parent="Sprite2D" node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
+[node name="ThunderUppercutHitbox" type="Area2D" parent="Sprite2D" unique_id=1067574499 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1
 visible = false
 collision_layer = 8
@@ -4881,12 +4881,12 @@ hit_collision_scene = ExtResource("5_7iojt")
 ice_hit_collision_scene = ExtResource("105_c2fce")
 base_attribute = Array[int]([1])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ThunderUppercutHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ThunderUppercutHitbox" unique_id=1669297029]
 position = Vector2(13.25, 2.5)
 shape = SubResource("RectangleShape2D_otvxe")
 disabled = true
 
-[node name="Aura" type="Sprite2D" parent="Sprite2D"]
+[node name="Aura" type="Sprite2D" parent="Sprite2D" unique_id=1648085649]
 visible = false
 modulate = Color(0, 0.545098, 0.898039, 1)
 show_behind_parent = true
@@ -4896,62 +4896,60 @@ texture = ExtResource("92_8s8fj")
 hframes = 20
 vframes = 20
 
-[node name="Glow" type="Timer" parent="Sprite2D"]
+[node name="Glow" type="Timer" parent="Sprite2D" unique_id=1881607956]
 one_shot = true
 
-[node name="WeaponTrail" type="Sprite2D" parent="Sprite2D"]
+[node name="WeaponTrail" type="Sprite2D" parent="Sprite2D" unique_id=1697505921]
 modulate = Color(1, 1, 1, 0.25098)
 position = Vector2(3.91304, 0.434783)
 texture = ExtResource("97_n5l36")
 hframes = 4
 frame = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_jttxa")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=344604728]
+libraries/ = SubResource("AnimationLibrary_jttxa")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation", "voice")]
+[node name="StateMachine" type="Node" parent="." unique_id=1228552358 node_paths=PackedStringArray("initial_state", "player", "animation", "voice")]
 script = ExtResource("121_xam8b")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 voice = NodePath("../VoiceClips")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1451050343]
 script = ExtResource("3_v0unu")
 
-[node name="Run" type="Node" parent="StateMachine"]
+[node name="Run" type="Node" parent="StateMachine" unique_id=1221518485]
 script = ExtResource("4_lgawh")
 
-[node name="Run_end" type="Node" parent="StateMachine"]
+[node name="Run_end" type="Node" parent="StateMachine" unique_id=819984129]
 script = ExtResource("5_dh0o4")
 
-[node name="Jump" type="Node" parent="StateMachine"]
+[node name="Jump" type="Node" parent="StateMachine" unique_id=629654892]
 script = ExtResource("6_j6jni")
 JUMP_VELOCITY = -700.0
 
-[node name="Landing" type="Node" parent="StateMachine"]
+[node name="Landing" type="Node" parent="StateMachine" unique_id=404474392]
 script = ExtResource("7_klxgc")
 
-[node name="Hard_landing" type="Node" parent="StateMachine"]
+[node name="Hard_landing" type="Node" parent="StateMachine" unique_id=427431254]
 script = ExtResource("10_nclcr")
 
-[node name="Falling" type="Node" parent="StateMachine" node_paths=PackedStringArray("coyote_timer")]
+[node name="Falling" type="Node" parent="StateMachine" unique_id=1998513268 node_paths=PackedStringArray("coyote_timer")]
 script = ExtResource("8_ofjce")
 coyote_timer = NodePath("Coyote_timer")
 
-[node name="Coyote_timer" type="Timer" parent="StateMachine/Falling"]
+[node name="Coyote_timer" type="Timer" parent="StateMachine/Falling" unique_id=1442314063]
 wait_time = 0.1
 one_shot = true
 
-[node name="Crouch" type="Node" parent="StateMachine"]
+[node name="Crouch" type="Node" parent="StateMachine" unique_id=2096603577]
 script = ExtResource("9_eobwp")
 
-[node name="Rise" type="Node" parent="StateMachine"]
+[node name="Rise" type="Node" parent="StateMachine" unique_id=637213449]
 script = ExtResource("10_6lx6a")
 
-[node name="Backdash" type="Node" parent="StateMachine" node_paths=PackedStringArray("trail_timer", "debris_timer")]
+[node name="Backdash" type="Node" parent="StateMachine" unique_id=1834992025 node_paths=PackedStringArray("trail_timer", "debris_timer")]
 script = ExtResource("11_hdkwr")
 backdash_speed = 800.0
 trail_scene = ExtResource("15_2ye6y")
@@ -4959,140 +4957,140 @@ debris_scene = ExtResource("16_8e2oa")
 trail_timer = NodePath("Trail_timer")
 debris_timer = NodePath("Debris_timer")
 
-[node name="Trail_timer" type="Timer" parent="StateMachine/Backdash"]
+[node name="Trail_timer" type="Timer" parent="StateMachine/Backdash" unique_id=747251017]
 wait_time = 0.08
 
-[node name="Debris_timer" type="Timer" parent="StateMachine/Backdash"]
+[node name="Debris_timer" type="Timer" parent="StateMachine/Backdash" unique_id=1182653179]
 wait_time = 0.1
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1224426198]
 script = ExtResource("12_5kq8s")
 attack_state = true
 
-[node name="Crouch_attack" type="Node" parent="StateMachine"]
+[node name="Crouch_attack" type="Node" parent="StateMachine" unique_id=876133017]
 script = ExtResource("13_xjq4u")
 attack_state = true
 
-[node name="Air_attack" type="Node" parent="StateMachine"]
+[node name="Air_attack" type="Node" parent="StateMachine" unique_id=1255109090]
 script = ExtResource("14_4akkl")
 attack_state = true
 
-[node name="Damage" type="Node" parent="StateMachine" node_paths=PackedStringArray("blood")]
+[node name="Damage" type="Node" parent="StateMachine" unique_id=1524856899 node_paths=PackedStringArray("blood")]
 script = ExtResource("17_tstub")
 blood = NodePath("../../BloodDamage")
 
-[node name="Damage_knockback" type="Node" parent="StateMachine" node_paths=PackedStringArray("ignore_landing")]
+[node name="Damage_knockback" type="Node" parent="StateMachine" unique_id=2072712276 node_paths=PackedStringArray("ignore_landing")]
 script = ExtResource("121_4sdvf")
 recoil_speed = Vector2(250, -630)
 ignore_landing = NodePath("../Guard_break/Ignore_landing")
 metadata/_custom_type_script = "uid://djsyfeijyf8li"
 
-[node name="Damage_air" type="Node" parent="StateMachine" node_paths=PackedStringArray("blood")]
+[node name="Damage_air" type="Node" parent="StateMachine" unique_id=96101769 node_paths=PackedStringArray("blood")]
 script = ExtResource("18_4s0jq")
 pushback = 400.0
 blood = NodePath("../../BloodDamage")
 
-[node name="Damage_mercy" type="Node" parent="StateMachine" node_paths=PackedStringArray("ignore_landing")]
+[node name="Damage_mercy" type="Node" parent="StateMachine" unique_id=1799364436 node_paths=PackedStringArray("ignore_landing")]
 script = ExtResource("136_2ccld")
 recoil_speed = Vector2(150, -630)
 ignore_landing = NodePath("../Guard_break/Ignore_landing")
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hurtbox", "timer_reset", "blood")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1245412073 node_paths=PackedStringArray("hurtbox", "timer_reset", "blood")]
 script = ExtResource("108_egrmx")
 FLOATING_SPEED = Vector2(0, -100)
 hurtbox = NodePath("../../CollisionShape2D")
 timer_reset = NodePath("Reset")
 blood = NodePath("../../BloodDamage")
 
-[node name="Reset" type="Timer" parent="StateMachine/Dying"]
+[node name="Reset" type="Timer" parent="StateMachine/Dying" unique_id=178538165]
 wait_time = 3.0
 one_shot = true
 
-[node name="Opening_door" type="Node" parent="StateMachine" node_paths=PackedStringArray("run_timer", "idle_timer", "final_timer")]
+[node name="Opening_door" type="Node" parent="StateMachine" unique_id=92955556 node_paths=PackedStringArray("run_timer", "idle_timer", "final_timer")]
 script = ExtResource("114_cgcp8")
 run_timer = NodePath("RunDuration")
 idle_timer = NodePath("IdleDuration")
 final_timer = NodePath("FinalDuration")
 
-[node name="RunDuration" type="Timer" parent="StateMachine/Opening_door"]
+[node name="RunDuration" type="Timer" parent="StateMachine/Opening_door" unique_id=726855085]
 wait_time = 0.5
 one_shot = true
 
-[node name="IdleDuration" type="Timer" parent="StateMachine/Opening_door"]
+[node name="IdleDuration" type="Timer" parent="StateMachine/Opening_door" unique_id=2143510366]
 wait_time = 0.8
 one_shot = true
 
-[node name="FinalDuration" type="Timer" parent="StateMachine/Opening_door"]
+[node name="FinalDuration" type="Timer" parent="StateMachine/Opening_door" unique_id=1341438484]
 wait_time = 0.5
 one_shot = true
 
-[node name="Sit_down" type="Node" parent="StateMachine"]
+[node name="Sit_down" type="Node" parent="StateMachine" unique_id=726121216]
 script = ExtResource("115_efwyv")
 
-[node name="Stand_up" type="Node" parent="StateMachine"]
+[node name="Stand_up" type="Node" parent="StateMachine" unique_id=1778110851]
 script = ExtResource("116_3em4l")
 
-[node name="Guard" type="Node" parent="StateMachine"]
+[node name="Guard" type="Node" parent="StateMachine" unique_id=351279261]
 script = ExtResource("119_m7var")
 
-[node name="Guard_down" type="Node" parent="StateMachine"]
+[node name="Guard_down" type="Node" parent="StateMachine" unique_id=8974841]
 script = ExtResource("120_4lii7")
 
-[node name="Guard_walk" type="Node" parent="StateMachine"]
+[node name="Guard_walk" type="Node" parent="StateMachine" unique_id=893462367]
 script = ExtResource("121_camjn")
 
-[node name="Guard_blocking" type="Node" parent="StateMachine"]
+[node name="Guard_blocking" type="Node" parent="StateMachine" unique_id=686127425]
 script = ExtResource("122_uml35")
 recoil_speed = 400.0
 
-[node name="Guard_break" type="Node" parent="StateMachine" node_paths=PackedStringArray("ignore_landing")]
+[node name="Guard_break" type="Node" parent="StateMachine" unique_id=260069116 node_paths=PackedStringArray("ignore_landing")]
 script = ExtResource("123_h7cmy")
 recoil_speed = Vector2(150, -630)
 ignore_landing = NodePath("Ignore_landing")
 
-[node name="Ignore_landing" type="Timer" parent="StateMachine/Guard_break"]
+[node name="Ignore_landing" type="Timer" parent="StateMachine/Guard_break" unique_id=1768322205]
 wait_time = 0.1
 one_shot = true
 
-[node name="Guard_perfect" type="Node" parent="StateMachine"]
+[node name="Guard_perfect" type="Node" parent="StateMachine" unique_id=615163960]
 script = ExtResource("133_qno2k")
 
-[node name="Guard_perfect_air" type="Node" parent="StateMachine"]
+[node name="Guard_perfect_air" type="Node" parent="StateMachine" unique_id=1565213761]
 script = ExtResource("134_fj7lc")
 
-[node name="Wait" type="Node" parent="StateMachine"]
+[node name="Wait" type="Node" parent="StateMachine" unique_id=436270177]
 script = ExtResource("136_g7mo7")
 
-[node name="Sword_spin" type="Node" parent="StateMachine" node_paths=PackedStringArray("sword_spin", "sword_spin_hitbox")]
+[node name="Sword_spin" type="Node" parent="StateMachine" unique_id=1794057669 node_paths=PackedStringArray("sword_spin", "sword_spin_hitbox")]
 script = ExtResource("138_q0p4k")
 sword_spin = NodePath("../../SwordSpin/Spin")
 sword_spin_hitbox = NodePath("../../SwordSpin/Spin/DisjointedPlayerHitbox/CollisionShape2D")
 attack_state = true
 
-[node name="Throw_axe" type="Node" parent="StateMachine"]
+[node name="Throw_axe" type="Node" parent="StateMachine" unique_id=386797734]
 script = ExtResource("141_js2j3")
 attack_state = true
 
-[node name="Uppercut" type="Node" parent="StateMachine" node_paths=PackedStringArray("uppercut_effects")]
+[node name="Uppercut" type="Node" parent="StateMachine" unique_id=857178468 node_paths=PackedStringArray("uppercut_effects")]
 script = ExtResource("156_gp8oi")
 uppercut_effects = NodePath("../../UppercutLightning")
 attack_state = true
 
-[node name="Windstorm" type="Node" parent="StateMachine"]
+[node name="Windstorm" type="Node" parent="StateMachine" unique_id=1503880525]
 script = ExtResource("154_yfh6y")
 windstorm_scene = ExtResource("155_6glaw")
 windstorm_spawning_offset = Vector2(15, 0)
 attack_state = true
 
-[node name="Petrified" type="Node" parent="StateMachine" node_paths=PackedStringArray("debris", "hurtbox")]
+[node name="Petrified" type="Node" parent="StateMachine" unique_id=273081627 node_paths=PackedStringArray("debris", "hurtbox")]
 script = ExtResource("153_8to1u")
 hector_statue_scene = ExtResource("154_7mmrn")
 debris = NodePath("Node2D/Debris")
 hurtbox = NodePath("../../CollisionShape2D")
 
-[node name="Node2D" type="Node2D" parent="StateMachine/Petrified"]
+[node name="Node2D" type="Node2D" parent="StateMachine/Petrified" unique_id=1897387228]
 
-[node name="Debris" type="CPUParticles2D" parent="StateMachine/Petrified/Node2D"]
+[node name="Debris" type="CPUParticles2D" parent="StateMachine/Petrified/Node2D" unique_id=1089179578]
 z_index = 7
 material = SubResource("CanvasItemMaterial_j0rjp")
 position = Vector2(0, 26)
@@ -5111,25 +5109,25 @@ color_ramp = SubResource("Gradient_n1je8")
 anim_speed_min = 2.0
 anim_speed_max = 2.0
 
-[node name="PolyphonicAudioPlayer" parent="." instance=ExtResource("15_lipy2")]
+[node name="PolyphonicAudioPlayer" parent="." unique_id=578139678 instance=ExtResource("15_lipy2")]
 bus = &"SFX"
 audio_library = SubResource("Resource_uk8xp")
 
-[node name="RelicSounds" parent="." instance=ExtResource("15_lipy2")]
+[node name="RelicSounds" parent="." unique_id=558159140 instance=ExtResource("15_lipy2")]
 bus = &"SFX"
 audio_library = SubResource("Resource_biklv")
 
-[node name="VoiceClips" parent="." instance=ExtResource("15_lipy2")]
+[node name="VoiceClips" parent="." unique_id=1626614355 instance=ExtResource("15_lipy2")]
 volume_db = -18.0
 bus = &"Voice"
 audio_library = SubResource("Resource_xhqmh")
 
-[node name="DamageLocation" type="Marker2D" parent="."]
+[node name="DamageLocation" type="Marker2D" parent="." unique_id=1066619420]
 position = Vector2(0, -18.6957)
 script = ExtResource("23_fwax5")
 damage_node = ExtResource("24_txt38")
 
-[node name="BloodDamage" type="CPUParticles2D" parent="."]
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=28058517]
 emitting = false
 amount = 12
 lifetime = 0.75
@@ -5145,7 +5143,7 @@ scale_amount_curve = SubResource("Curve_t2ule")
 color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
 color_ramp = SubResource("Gradient_w31mb")
 
-[node name="GuardSparkle" type="CPUParticles2D" parent="."]
+[node name="GuardSparkle" type="CPUParticles2D" parent="." unique_id=224789309]
 self_modulate = Color(2, 2, 1.2, 1)
 emitting = false
 amount = 25
@@ -5165,7 +5163,7 @@ color_ramp = SubResource("Gradient_rs04j")
 color_initial_ramp = SubResource("Gradient_guf7x")
 script = ExtResource("148_5d06q")
 
-[node name="Label" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
+[node name="Label" type="Label" parent="." unique_id=348030609 node_paths=PackedStringArray("state_machine")]
 visible = false
 offset_left = -20.8696
 offset_top = -33.913
@@ -5174,19 +5172,19 @@ offset_bottom = -10.913
 script = ExtResource("129_k7aot")
 state_machine = NodePath("../StateMachine")
 
-[node name="Guard_recovery" type="Timer" parent="."]
+[node name="Guard_recovery" type="Timer" parent="." unique_id=1035582403]
 wait_time = 3.0
 autostart = true
 
-[node name="ArcticShield" parent="." instance=ExtResource("151_q5ni2")]
+[node name="ArcticShield" parent="." unique_id=735291937 instance=ExtResource("151_q5ni2")]
 visible = false
 position = Vector2(38, 9)
 
-[node name="Perfect_timer" type="Timer" parent="."]
+[node name="Perfect_timer" type="Timer" parent="." unique_id=1659129690]
 wait_time = 0.064
 one_shot = true
 
-[node name="Heal" type="GPUParticles2D" parent="."]
+[node name="Heal" type="GPUParticles2D" parent="." unique_id=327372729]
 z_index = 20
 material = SubResource("CanvasItemMaterial_mx2i2")
 position = Vector2(0, 12.6087)
@@ -5197,7 +5195,7 @@ lifetime = 0.7
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_7cy8a")
 
-[node name="HealMP" type="GPUParticles2D" parent="."]
+[node name="HealMP" type="GPUParticles2D" parent="." unique_id=1234529401]
 z_index = 20
 material = SubResource("CanvasItemMaterial_mx2i2")
 position = Vector2(0, 12.6087)
@@ -5208,12 +5206,12 @@ lifetime = 0.7
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_d5cvh")
 
-[node name="PressUp" parent="." instance=ExtResource("170_moyg6")]
+[node name="PressUp" parent="." unique_id=1077824572 instance=ExtResource("170_moyg6")]
 position = Vector2(0, -25)
 
-[node name="HitEffect" type="Node2D" parent="."]
+[node name="HitEffect" type="Node2D" parent="." unique_id=784955305]
 
-[node name="Fire" type="CPUParticles2D" parent="HitEffect"]
+[node name="Fire" type="CPUParticles2D" parent="HitEffect" unique_id=793638857]
 material = SubResource("CanvasItemMaterial_i6sdk")
 position = Vector2(1.73913, 17.8261)
 emitting = false
@@ -5233,7 +5231,7 @@ scale_amount_max = 2.0
 anim_speed_min = 3.0
 anim_speed_max = 3.0
 
-[node name="Ice" type="CPUParticles2D" parent="HitEffect"]
+[node name="Ice" type="CPUParticles2D" parent="HitEffect" unique_id=531563444]
 material = SubResource("CanvasItemMaterial_6yi6r")
 position = Vector2(1.73913, 17.8261)
 emitting = false
@@ -5251,17 +5249,17 @@ scale_amount_max = 2.0
 anim_speed_min = 6.0
 anim_speed_max = 6.0
 
-[node name="MercyInvincibility" type="Timer" parent="."]
+[node name="MercyInvincibility" type="Timer" parent="." unique_id=694863750]
 wait_time = 1.7
 one_shot = true
 
-[node name="IframeHitCounterReset" type="Timer" parent="."]
+[node name="IframeHitCounterReset" type="Timer" parent="." unique_id=1227640365]
 one_shot = true
 
-[node name="SwordSpin" type="Node2D" parent="."]
+[node name="SwordSpin" type="Node2D" parent="." unique_id=408445569]
 script = ExtResource("200_5r3n4")
 
-[node name="Spin" parent="SwordSpin" instance=ExtResource("176_86i4x")]
+[node name="Spin" parent="SwordSpin" unique_id=96565700 instance=ExtResource("176_86i4x")]
 visible = false
 position = Vector2(23, -1.5)
 rotation = 3.14159
@@ -5270,27 +5268,25 @@ scale = Vector2(2, -2)
 [node name="CollisionShape2D" parent="SwordSpin/Spin/DisjointedPlayerHitbox" index="0"]
 disabled = true
 
-[node name="SpecialAttackEffect" type="Node2D" parent="."]
+[node name="SpecialAttackEffect" type="Node2D" parent="." unique_id=1325300270]
 
-[node name="SparklesExploding" type="Sprite2D" parent="SpecialAttackEffect"]
+[node name="SparklesExploding" type="Sprite2D" parent="SpecialAttackEffect" unique_id=921172931]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(3, 13.5)
 texture = ExtResource("181_s2s3l")
 
-[node name="SparklesImploding" type="Sprite2D" parent="SpecialAttackEffect"]
+[node name="SparklesImploding" type="Sprite2D" parent="SpecialAttackEffect" unique_id=521799962]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(0, 7.5)
 texture = ExtResource("181_s2s3l")
 
-[node name="SpecialAnim" type="AnimationPlayer" parent="SpecialAttackEffect"]
-libraries = {
-&"": SubResource("AnimationLibrary_dojos")
-}
+[node name="SpecialAnim" type="AnimationPlayer" parent="SpecialAttackEffect" unique_id=915477777]
+libraries/ = SubResource("AnimationLibrary_dojos")
 
-[node name="UppercutLightning" type="Node2D" parent="."]
+[node name="UppercutLightning" type="Node2D" parent="." unique_id=1737293647]
 position = Vector2(12, -2.5)
 
-[node name="UppercutSpark1" type="CPUParticles2D" parent="UppercutLightning"]
+[node name="UppercutSpark1" type="CPUParticles2D" parent="UppercutLightning" unique_id=201953040]
 material = SubResource("CanvasItemMaterial_ll2rv")
 emitting = false
 amount = 16
@@ -5305,7 +5301,7 @@ color_ramp = SubResource("Gradient_bjkx2")
 anim_speed_min = 4.0
 anim_speed_max = 4.0
 
-[node name="UppercutSpark2" type="CPUParticles2D" parent="UppercutLightning"]
+[node name="UppercutSpark2" type="CPUParticles2D" parent="UppercutLightning" unique_id=264373938]
 material = SubResource("CanvasItemMaterial_ll2rv")
 emitting = false
 texture = ExtResource("208_5jjpn")
@@ -5319,40 +5315,38 @@ color_ramp = SubResource("Gradient_bjkx2")
 anim_speed_min = 4.0
 anim_speed_max = 4.0
 
-[node name="ThunderLighting" type="PointLight2D" parent="UppercutLightning"]
+[node name="ThunderLighting" type="PointLight2D" parent="UppercutLightning" unique_id=1723060847]
 position = Vector2(-5, 2)
 energy = 0.0
 texture = SubResource("GradientTexture2D_2dre3")
 
-[node name="FocusGainDuration" type="Timer" parent="."]
+[node name="FocusGainDuration" type="Timer" parent="." unique_id=541489045]
 wait_time = 0.5
 one_shot = true
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1964086306]
 position = Vector2(0, 31)
 target_position = Vector2(0, 5)
 collision_mask = 4096
 hit_from_inside = true
 
-[node name="GlobalTrail" type="Timer" parent="."]
+[node name="GlobalTrail" type="Timer" parent="." unique_id=1717606656]
 wait_time = 0.1
 
-[node name="GlobalTrailDuration" type="Timer" parent="."]
+[node name="GlobalTrailDuration" type="Timer" parent="." unique_id=1794505324]
 wait_time = 1.5
 
-[node name="ChargeWave" type="Sprite2D" parent="."]
+[node name="ChargeWave" type="Sprite2D" parent="." unique_id=1219850881]
 visible = false
 modulate = Color(1, 1, 1, 0.45882353)
 position = Vector2(0, 9)
 texture = ExtResource("215_iee07")
 hframes = 5
 
-[node name="ChargeAnim" type="AnimationPlayer" parent="ChargeWave"]
-libraries = {
-&"": SubResource("AnimationLibrary_4sdvf")
-}
+[node name="ChargeAnim" type="AnimationPlayer" parent="ChargeWave" unique_id=1819158367]
+libraries/ = SubResource("AnimationLibrary_4sdvf")
 
-[node name="ChargeParticles" type="CPUParticles2D" parent="."]
+[node name="ChargeParticles" type="CPUParticles2D" parent="." unique_id=829268998]
 material = SubResource("CanvasItemMaterial_hhfsc")
 position = Vector2(1, 15.5)
 emitting = false
@@ -5369,7 +5363,7 @@ anim_speed_min = 1.0
 anim_speed_max = 1.0
 anim_speed_curve = SubResource("Curve_hhfsc")
 
-[node name="ConfidenceRing" type="Timer" parent="."]
+[node name="ConfidenceRing" type="Timer" parent="." unique_id=2016017621]
 wait_time = 3.0
 one_shot = true
 
