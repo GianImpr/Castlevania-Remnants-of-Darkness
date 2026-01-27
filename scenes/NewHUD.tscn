@@ -36,6 +36,13 @@ texture_margin_right = 22.0
 atlas = ExtResource("5_ulm54")
 region = Rect2(256, 0, 170, 0)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ulm54"]
+load_path = "res://.godot/imported/Fog.png-b493090003ca7a60b5e6dd677bafdfbf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6egv"]
+atlas = SubResource("CompressedTexture2D_ulm54")
+region = Rect2(256, 0, 116, 0)
+
 [sub_resource type="Gradient" id="Gradient_vo48o"]
 colors = PackedColorArray(0.09239706, 0.09239707, 0.092397, 1, 0.34407577, 0.34407577, 0.34407565, 1)
 
@@ -538,6 +545,16 @@ offset_bottom = 47.5
 scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_cmfcn")
 
+[node name="IDFog" type="TextureRect" parent="TextureRect" unique_id=427451558]
+z_index = -1
+layout_mode = 0
+offset_left = 81.0
+offset_top = 43.0
+offset_right = 197.0
+offset_bottom = 71.0
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_w6egv")
+
 [node name="Health" type="TextureProgressBar" parent="TextureRect" unique_id=1801904138]
 layout_mode = 0
 offset_left = 70.0
@@ -722,8 +739,7 @@ scale = Vector2(0.45, 0.45)
 texture = ExtResource("13_yybq8")
 
 [node name="LevelUpIcon" type="Sprite2D" parent="IDBars" unique_id=1144404293]
-position = Vector2(33.5, 26)
-scale = Vector2(0.5, 0.5)
+position = Vector2(33, 26.5)
 skew = -1.56905
 texture = ExtResource("14_4k87i")
 vframes = 4

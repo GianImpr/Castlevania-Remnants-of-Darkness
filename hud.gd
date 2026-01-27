@@ -21,6 +21,7 @@ extends Control
 @onready var id_hud_body: PanelContainer = $IDBody
 @export var mana_colors: Array[CompressedTexture2D]
 @onready var HUD_fog: TextureRect = $TextureRect/Fog
+@onready var id_hud_fog: TextureRect = $TextureRect/IDFog
 
 var can_change_opacity: bool = true
 var is_transparent: bool = false
@@ -35,6 +36,7 @@ const ID_BASE_BAR_SIZE: int = 33
 const ID_MAX_BAR_SIZE: int = 90
 const ID_BASE_BODY_SIZE: int = 98
 const ID_DEFAULT_BODY_SIZE: int = 105
+const ID_FOG_BASE_SIZE: int = 116
 
 const FOG_BASE_BODY_SIZE: int = 170
 
@@ -68,10 +70,13 @@ func _ready():
 	initBar(HP, MHP, health)
 	initBar(MP, MMP, mana)
 	var atlas: AtlasTexture = HUD_fog.texture
+	var id_atlas: AtlasTexture = id_hud_fog.texture
 	fog_tween = get_tree().create_tween()
 	fog_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	fog_tween.set_loops()
+	fog_tween.set_parallel()
 	fog_tween.tween_property(atlas, "region:position:x", 0, 10).from(256)
+	fog_tween.tween_property(id_atlas, "region:position:x", 0, 10).from(256)
 	
 func _process(delta: float) -> void:
 	HP = player.stats.Stats["HP"]
@@ -110,6 +115,7 @@ func _process(delta: float) -> void:
 		training_max_number.printNumber(TrainingSettings.hearts_to_collect)
 	id_body.visible = Global.player.innocent_devil != null and not Global.screen == Global.ScreenType.TRAINING
 	id_hud_body.visible = id_body.visible
+	id_hud_fog.visible = id_body.visible
 	h_box_container_3.visible = Global.player.innocent_devil != null and not Global.screen == Global.ScreenType.TRAINING
 	h_box_container_2.updateGuard()
 	
@@ -186,7 +192,9 @@ func updateBodySize():
 	
 func updateIDBodySize():
 	id_hud_body.size.x = ID_BASE_BODY_SIZE-ID_BASE_BAR_SIZE+hearts.size.x
-	
+	(id_hud_fog.texture as AtlasTexture).region.size.x = ID_FOG_BASE_SIZE+(id_hud_body.size.x-ID_BASE_BODY_SIZE)*2
+	id_hud_fog.size.x = id_hud_fog.texture.region.size.x
+
 func setOpacity(opacity: float) -> void:
 	if not can_change_opacity:
 		return
