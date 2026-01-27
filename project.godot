@@ -1,26 +1,42 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [addons]
 
 metroidvania_system/settings_file="res://SampleProject/Resources/Settings.tres"
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Castlevania: Remnants of Darkness (4.6)"
 config/tags=PackedStringArray("2d", "game", "metroidvania", "sequel")
 run/main_scene="res://SampleProject/extra_scenes/title_screen.tscn"
-config/features=PackedStringArray("4.5")
+config/features=PackedStringArray("4.6")
 run/max_fps=144
-boot_splash/fullsize=false
+boot_splash/stretch_mode=0
 boot_splash/image="res://logoresized.png"
 config/icon="res://cas-03.png"
+
+[audio]
+
+buses/default_bus_layout="uid://bmwxdyx4p5r30"
 
 [autoload]
 
 MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 Global="*res://SampleProject/Scripts/Global.gd"
 InputBuffer="*res://addons/input_buffer.gd"
-InputHelper="*res://addons/input_helper/input_helper.gd"
+InputHelper="*uid://cholww48njaeh"
 
 [debug]
 
