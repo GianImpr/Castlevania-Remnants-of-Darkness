@@ -37,22 +37,29 @@ func initializeSellScreen() -> void:
 
 ## Focuses on the current button.
 func focusOnButton(silent: bool = false) -> void:
+	if item_entries.get_child_count() == 0:
+		return
 	var cur_button: HBoxContainer = item_entries.get_child(cur_index)
-	cur_button.get_child(ItemEntryChildren.BUTTON).grab_focus()
-	updateDescription()
-	if not silent:
-		sound.play_sound_effect_from_library("cursor")
+	if cur_button != null:
+		cur_button.get_child(ItemEntryChildren.BUTTON).grab_focus()
+		updateDescription()
+		if not silent:
+			sound.play_sound_effect_from_library("cursor")
 	
 ## Updates the panel description.
 func updateDescription() -> void:
-	var cur_button: HBoxContainer = item_entries.get_child(cur_index)
+	var cur_button: HBoxContainer
+	if item_entries.get_child_count() > 0:
+		cur_button = item_entries.get_child(cur_index)
 	text_description.text = item_descriptions[cur_index]
 	icon_description.texture = cur_button.get_child(ItemEntryChildren.BUTTON).icon
 	
 
 ## Returns to initial screen.
 func closeSellScreen() -> void:
-	var cur_button: HBoxContainer = item_entries.get_child(cur_index)
+	var cur_button: HBoxContainer
+	if item_entries.get_child_count() > 0:
+		cur_button = item_entries.get_child(cur_index)
 	if cur_button:
 		cur_button.get_child(ItemEntryChildren.BUTTON).release_focus()
 	animation.play_backwards("show")
@@ -223,17 +230,21 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		closeSellScreen()
 	elif Input.is_action_just_pressed("ui_right"):
-		increaseQuantity(base_item_costs[cur_index])
+		if item_entries.get_child_count() > 0:
+			increaseQuantity(base_item_costs[cur_index])
 	elif Input.is_action_just_pressed("ui_left"):
-		decreaseQuantity(base_item_costs[cur_index])
+		if item_entries.get_child_count() > 0:
+			decreaseQuantity(base_item_costs[cur_index])
 	elif Input.is_action_just_pressed("ui_up"):
-		cur_index = posmod(cur_index-1, item_entries.get_child_count())
-		focusOnButton()
-		updateAvailability()
+		if item_entries.get_child_count() > 0:
+			cur_index = posmod(cur_index-1, item_entries.get_child_count())
+			focusOnButton()
+			updateAvailability()
 	elif Input.is_action_just_pressed("ui_down"):
-		cur_index = posmod(cur_index+1, item_entries.get_child_count())
-		focusOnButton()
-		updateAvailability()
+		if item_entries.get_child_count() > 0:
+			cur_index = posmod(cur_index+1, item_entries.get_child_count())
+			focusOnButton()
+			updateAvailability()
 
 ## Sells a certain number of copies of a certain item with specified type.
 func sellItem(item: int, type: PickUp.ItemType, quantity: int, cost: int) -> void:
