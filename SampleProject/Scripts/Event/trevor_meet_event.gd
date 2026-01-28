@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 		trevor_npc.turnLeft()
 
 func _on_dialogue_box_trigger_2_tree_exited() -> void:
-	if Global.player.stats.event_flags[event_id]:
+	if Global.player == null or Global.player.stats.event_flags[event_id]:
 		return
 	Global.player.freeze()
 	await Global.total_fade_screen.fadeOutFor(WAIT_TIME_SECONDS)

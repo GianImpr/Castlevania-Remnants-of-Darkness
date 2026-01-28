@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://bjjk4mm7bkkd5"]
+[gd_scene format=3 uid="uid://bjjk4mm7bkkd5"]
 
 [ext_resource type="Texture2D" uid="uid://c6oahkcwklotc" path="res://assets/sprites/HUD/Loading/Background.png" id="1_mwlu3"]
 [ext_resource type="Script" uid="uid://1l10ts0ijq8y" path="res://SampleProject/extra_scenes/loading_screen.gd" id="1_s3fxy"]
@@ -1038,7 +1038,7 @@ _data = {
 &"appear": SubResource("Animation_8obd3")
 }
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("loading_screen", "name_entry_screen")]
+[node name="MainMenu" type="Control" unique_id=1648363818 node_paths=PackedStringArray("loading_screen", "name_entry_screen")]
 process_mode = 3
 modulate = Color(0, 0, 0, 1)
 layout_mode = 3
@@ -1049,25 +1049,25 @@ script = ExtResource("1_xe1my")
 loading_screen = NodePath("LoadingScreen")
 name_entry_screen = NodePath("NameEntry")
 
-[node name="BackgroundNodes" type="Control" parent="."]
+[node name="BackgroundNodes" type="Control" parent="." unique_id=444545254]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Background" type="TextureRect" parent="BackgroundNodes"]
+[node name="Background" type="TextureRect" parent="BackgroundNodes" unique_id=653367549]
 clip_children = 2
 layout_mode = 0
 offset_right = 864.0
 offset_bottom = 564.0
 texture = ExtResource("1_mwlu3")
 
-[node name="Gradient" type="TextureRect" parent="BackgroundNodes/Background"]
+[node name="Gradient" type="TextureRect" parent="BackgroundNodes/Background" unique_id=1272587664]
 layout_mode = 0
 offset_right = 864.0
 offset_bottom = 564.0
 texture = SubResource("GradientTexture2D_1i321")
 
-[node name="Animation" type="Control" parent="BackgroundNodes"]
+[node name="Animation" type="Control" parent="BackgroundNodes" unique_id=2097065896]
 modulate = Color(1, 1, 1, 0.054902)
 anchors_preset = 0
 offset_left = -35.1892
@@ -1075,7 +1075,7 @@ offset_right = 4.81081
 offset_bottom = 40.0
 scale = Vector2(1.5, 1)
 
-[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation"]
+[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation" unique_id=2101913974]
 texture_repeat = 2
 layout_mode = 0
 offset_right = 1280.0
@@ -1083,14 +1083,12 @@ offset_bottom = 640.0
 texture = ExtResource("2_asjfv")
 stretch_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation" unique_id=1871794075]
 root_node = NodePath("../../..")
-libraries = {
-&"": SubResource("AnimationLibrary_2crau")
-}
-autoplay = "background"
+libraries/ = SubResource("AnimationLibrary_2crau")
+autoplay = &"background"
 
-[node name="Animation2" type="Control" parent="BackgroundNodes"]
+[node name="Animation2" type="Control" parent="BackgroundNodes" unique_id=707714151]
 modulate = Color(1, 1, 1, 0.054902)
 anchors_preset = 0
 offset_left = 36.0
@@ -1099,7 +1097,7 @@ offset_right = 76.0
 offset_bottom = -80.0
 scale = Vector2(1.5, 1)
 
-[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation2"]
+[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation2" unique_id=401185494]
 texture_repeat = 2
 layout_mode = 0
 offset_right = 1280.0
@@ -1107,13 +1105,11 @@ offset_bottom = 640.0
 texture = ExtResource("2_asjfv")
 stretch_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation2"]
-libraries = {
-&"": SubResource("AnimationLibrary_j38d8")
-}
-autoplay = "background"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation2" unique_id=1381523029]
+libraries/ = SubResource("AnimationLibrary_j38d8")
+autoplay = &"background"
 
-[node name="Animation3" type="Control" parent="BackgroundNodes"]
+[node name="Animation3" type="Control" parent="BackgroundNodes" unique_id=1913556429]
 modulate = Color(1, 1, 1, 0.054902)
 anchors_preset = 0
 offset_left = -206.0
@@ -1122,7 +1118,7 @@ offset_right = -166.0
 offset_bottom = -80.0
 scale = Vector2(1.5, 1)
 
-[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation3"]
+[node name="Water" type="TextureRect" parent="BackgroundNodes/Animation3" unique_id=1138422735]
 texture_repeat = 2
 layout_mode = 0
 offset_right = 1280.0
@@ -1130,13 +1126,11 @@ offset_bottom = 640.0
 texture = ExtResource("2_asjfv")
 stretch_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation3"]
-libraries = {
-&"": SubResource("AnimationLibrary_hqp6o")
-}
-autoplay = "background"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BackgroundNodes/Animation3" unique_id=836237176]
+libraries/ = SubResource("AnimationLibrary_hqp6o")
+autoplay = &"background"
 
-[node name="LoadingScreen" type="Control" parent="." node_paths=PackedStringArray("save_slots", "displayed_slot_data", "animation", "sound", "file_HP", "file_LV", "file_GOLD", "file_playtime", "file_map_completion", "file_current_stage", "file_character", "file_name")]
+[node name="LoadingScreen" type="Control" parent="." unique_id=1445313663 node_paths=PackedStringArray("save_slots", "displayed_slot_data", "animation", "sound", "file_HP", "file_LV", "file_GOLD", "file_playtime", "file_map_completion", "file_current_stage", "file_character", "file_name")]
 process_mode = 4
 modulate = Color(0, 0, 0, 0)
 layout_mode = 1
@@ -1161,13 +1155,11 @@ file_current_stage = NodePath("Description/CurrentLocation")
 file_character = NodePath("Description/Character")
 file_name = NodePath("Description/Name")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingScreen"]
-libraries = {
-&"": SubResource("AnimationLibrary_4ww74")
-}
-autoplay = "appear"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadingScreen" unique_id=713672961]
+libraries/ = SubResource("AnimationLibrary_4ww74")
+autoplay = &"appear"
 
-[node name="MenuLabel" type="Label" parent="LoadingScreen"]
+[node name="MenuLabel" type="Label" parent="LoadingScreen" unique_id=1616038076]
 clip_children = 1
 layout_mode = 0
 offset_left = 7.0
@@ -1177,13 +1169,13 @@ offset_bottom = 60.0
 theme = SubResource("Theme_a85sy")
 text = "LOADING_SCREEN_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="LoadingScreen/MenuLabel"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/MenuLabel" unique_id=431800759]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_vke4q")
 
-[node name="DescriptionPanel" type="PanelContainer" parent="LoadingScreen"]
+[node name="DescriptionPanel" type="PanelContainer" parent="LoadingScreen" unique_id=1070181070]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 362.0
@@ -1191,12 +1183,12 @@ offset_right = 852.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vwt7n")
 
-[node name="Description" type="Control" parent="LoadingScreen"]
+[node name="Description" type="Control" parent="LoadingScreen" unique_id=1511490893]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Character" type="TextureRect" parent="LoadingScreen/Description"]
+[node name="Character" type="TextureRect" parent="LoadingScreen/Description" unique_id=1802746658]
 z_index = 1
 texture_filter = 6
 layout_mode = 0
@@ -1208,7 +1200,7 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_vndpk")
 expand_mode = 3
 
-[node name="Name" type="Label" parent="LoadingScreen/Description"]
+[node name="Name" type="Label" parent="LoadingScreen/Description" unique_id=169061939]
 z_index = 1
 layout_mode = 0
 offset_left = 135.0
@@ -1221,7 +1213,7 @@ theme_override_constants/outline_size = 8
 text = "Shüan"
 autowrap_mode = 3
 
-[node name="HPValue" type="Label" parent="LoadingScreen/Description"]
+[node name="HPValue" type="Label" parent="LoadingScreen/Description" unique_id=1714442747]
 z_index = 1
 layout_mode = 0
 offset_left = 284.0
@@ -1235,7 +1227,7 @@ text = "262"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="GoldValue" type="Label" parent="LoadingScreen/Description"]
+[node name="GoldValue" type="Label" parent="LoadingScreen/Description" unique_id=1956130761]
 z_index = 1
 layout_mode = 0
 offset_left = 432.0
@@ -1249,7 +1241,7 @@ text = "1024"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="LVValue" type="Label" parent="LoadingScreen/Description"]
+[node name="LVValue" type="Label" parent="LoadingScreen/Description" unique_id=1447232794]
 z_index = 1
 layout_mode = 0
 offset_left = 167.0
@@ -1263,7 +1255,7 @@ text = "10"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="MAPValue" type="Label" parent="LoadingScreen/Description"]
+[node name="MAPValue" type="Label" parent="LoadingScreen/Description" unique_id=649692853]
 z_index = 1
 layout_mode = 0
 offset_left = 741.0
@@ -1277,7 +1269,7 @@ text = "9.25%"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="TimeValue" type="Label" parent="LoadingScreen/Description"]
+[node name="TimeValue" type="Label" parent="LoadingScreen/Description" unique_id=1481210652]
 z_index = 1
 layout_mode = 0
 offset_left = 416.0
@@ -1291,7 +1283,7 @@ text = "0:18:36"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="CurrentLocation" type="Label" parent="LoadingScreen/Description"]
+[node name="CurrentLocation" type="Label" parent="LoadingScreen/Description" unique_id=1679352777]
 z_index = 1
 layout_mode = 0
 offset_left = 588.0
@@ -1305,7 +1297,7 @@ text = "Abandoned Monastery"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="HPLabel" type="Label" parent="LoadingScreen/Description"]
+[node name="HPLabel" type="Label" parent="LoadingScreen/Description" unique_id=2047067336]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -1317,13 +1309,13 @@ theme = SubResource("Theme_l45mb")
 text = "HP_STAT"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/HPLabel"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/HPLabel" unique_id=1512427327]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_huhwp")
 
-[node name="LVLabel" type="Label" parent="LoadingScreen/Description"]
+[node name="LVLabel" type="Label" parent="LoadingScreen/Description" unique_id=349583750]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -1334,13 +1326,13 @@ theme = SubResource("Theme_l45mb")
 text = "MENU_LV"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/LVLabel"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/LVLabel" unique_id=732327181]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_huhwp")
 
-[node name="GOLDLabel" type="Label" parent="LoadingScreen/Description"]
+[node name="GOLDLabel" type="Label" parent="LoadingScreen/Description" unique_id=1474362019]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -1352,13 +1344,13 @@ theme = SubResource("Theme_l45mb")
 text = "MENU_GOLD"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/GOLDLabel"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/GOLDLabel" unique_id=965441197]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_huhwp")
 
-[node name="TimeLabel" type="Label" parent="LoadingScreen/Description"]
+[node name="TimeLabel" type="Label" parent="LoadingScreen/Description" unique_id=1846168197]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -1370,13 +1362,13 @@ theme = SubResource("Theme_l45mb")
 text = "MENU_TIME"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/TimeLabel"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/TimeLabel" unique_id=1822319299]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_huhwp")
 
-[node name="MAPLabel" type="Label" parent="LoadingScreen/Description"]
+[node name="MAPLabel" type="Label" parent="LoadingScreen/Description" unique_id=1695859537]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -1388,13 +1380,13 @@ theme = SubResource("Theme_l45mb")
 text = "MENU_MAP_RATIO"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/MAPLabel"]
+[node name="TextureRect" type="TextureRect" parent="LoadingScreen/Description/MAPLabel" unique_id=1479454309]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_huhwp")
 
-[node name="PanelContainer" type="PanelContainer" parent="LoadingScreen"]
+[node name="PanelContainer" type="PanelContainer" parent="LoadingScreen" unique_id=850220103]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 52.0
@@ -1402,22 +1394,22 @@ offset_right = 852.0
 offset_bottom = 350.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4cy5i")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="LoadingScreen/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="LoadingScreen/PanelContainer" unique_id=1714915357]
 layout_mode = 2
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer" unique_id=524600985]
 layout_mode = 2
 
-[node name="Slot1" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot1" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=2062276465]
 modulate = Color(1, 1, 0, 1)
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot1" unique_id=756491501]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1425,7 +1417,7 @@ theme_override_constants/outline_size = 8
 text = "1"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot1" unique_id=1672071431]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1435,14 +1427,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot2" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot2" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1250057827]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot2" unique_id=738403352]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1450,7 +1442,7 @@ theme_override_constants/outline_size = 8
 text = "2"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot2" unique_id=1754636697]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1460,14 +1452,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot3" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot3" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=829399221]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot3" unique_id=2079826510]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1475,7 +1467,7 @@ theme_override_constants/outline_size = 8
 text = "3"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot3" unique_id=1136671946]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1485,14 +1477,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot4" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot4" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=362379621]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot4" unique_id=1105576263]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1500,7 +1492,7 @@ theme_override_constants/outline_size = 8
 text = "4"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot4" unique_id=457456790]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1510,14 +1502,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot5" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot5" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1324985132]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot5" unique_id=1955093537]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1525,7 +1517,7 @@ theme_override_constants/outline_size = 8
 text = "5"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot5" unique_id=1666392695]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1535,14 +1527,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot6" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot6" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=975945263]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot6" unique_id=383945037]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1550,7 +1542,7 @@ theme_override_constants/outline_size = 8
 text = "6"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot6" unique_id=1654888220]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1560,14 +1552,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot7" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot7" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=2033187769]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot7" unique_id=152288885]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1575,7 +1567,7 @@ theme_override_constants/outline_size = 8
 text = "7"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot7" unique_id=760861009]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1585,14 +1577,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot8" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot8" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1252845532]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot8" unique_id=708957018]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1600,7 +1592,7 @@ theme_override_constants/outline_size = 8
 text = "8"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot8" unique_id=2083554652]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1610,14 +1602,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot9" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot9" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1331455750]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot9" unique_id=1766724802]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1625,7 +1617,7 @@ theme_override_constants/outline_size = 8
 text = "9"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot9" unique_id=1961443320]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1635,14 +1627,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot10" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot10" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=376823609]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot10" unique_id=1804107040]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1650,7 +1642,7 @@ theme_override_constants/outline_size = 8
 text = "10"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot10" unique_id=1534993190]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1660,14 +1652,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot11" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot11" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1401922398]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot11" unique_id=2106098709]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1675,7 +1667,7 @@ theme_override_constants/outline_size = 8
 text = "11"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot11" unique_id=201500419]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1685,14 +1677,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot12" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot12" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=181582639]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot12" unique_id=771178540]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1700,7 +1692,7 @@ theme_override_constants/outline_size = 8
 text = "12"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot12" unique_id=1175319334]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1710,14 +1702,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ffr4x")
 text = "Empty"
 flat = true
 
-[node name="Slot13" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot13" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1887822728]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot13" unique_id=2033675578]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1725,7 +1717,7 @@ theme_override_constants/outline_size = 8
 text = "13"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot13" unique_id=626209453]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1735,14 +1727,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot14" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot14" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=991200683]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot14" unique_id=1616614580]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1750,7 +1742,7 @@ theme_override_constants/outline_size = 8
 text = "14"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot14" unique_id=550791406]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1760,14 +1752,14 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="Slot15" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot15" type="HBoxContainer" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1659799542]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_p3wiw")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
+[node name="ID" type="Label" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot15" unique_id=2005334955]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_gekwv")
@@ -1775,7 +1767,7 @@ theme_override_constants/outline_size = 8
 text = "15"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
+[node name="Button" type="Button" parent="LoadingScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot15" unique_id=1517426984]
 layout_mode = 2
 theme = SubResource("Theme_qqicx")
 theme_override_constants/outline_size = 8
@@ -1785,7 +1777,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_y4127")
 text = "Empty"
 flat = true
 
-[node name="NameEntry" type="Control" parent="." node_paths=PackedStringArray("cursor", "letter_box", "name_container", "sound", "animation", "confirm_panel_animation", "confirm_panel")]
+[node name="NameEntry" type="Control" parent="." unique_id=1064181805 node_paths=PackedStringArray("cursor", "letter_box", "name_container", "sound", "animation", "confirm_panel_animation", "confirm_panel")]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -1798,7 +1790,7 @@ animation = NodePath("NameEntryAnimation")
 confirm_panel_animation = NodePath("ConfirmPanel/ConfirmAnimation")
 confirm_panel = NodePath("ConfirmPanel/LabelAndButtons/ConfirmOptions/Options")
 
-[node name="MenuLabel" type="Label" parent="NameEntry"]
+[node name="MenuLabel" type="Label" parent="NameEntry" unique_id=243323751]
 clip_children = 1
 layout_mode = 0
 offset_left = 7.0
@@ -1808,13 +1800,13 @@ offset_bottom = 60.0
 theme = SubResource("Theme_a85sy")
 text = "NAME_ENTRY_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="NameEntry/MenuLabel"]
+[node name="TextureRect" type="TextureRect" parent="NameEntry/MenuLabel" unique_id=1798388070]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_vke4q")
 
-[node name="NameBox" type="PanelContainer" parent="NameEntry"]
+[node name="NameBox" type="PanelContainer" parent="NameEntry" unique_id=1931285853]
 modulate = Color(1, 1, 1, 0.894118)
 layout_mode = 0
 offset_left = 210.0
@@ -1823,7 +1815,7 @@ offset_right = 676.0
 offset_bottom = 152.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ycy3a")
 
-[node name="Name" type="HBoxContainer" parent="NameEntry"]
+[node name="Name" type="HBoxContainer" parent="NameEntry" unique_id=214681218]
 layout_mode = 0
 offset_left = 226.0
 offset_top = 80.0
@@ -1831,7 +1823,7 @@ offset_right = 654.0
 offset_bottom = 144.0
 theme_override_constants/separation = -12
 
-[node name="LetterBox" type="PanelContainer" parent="NameEntry"]
+[node name="LetterBox" type="PanelContainer" parent="NameEntry" unique_id=1154216633]
 modulate = Color(1, 1, 1, 0.894118)
 layout_mode = 0
 offset_left = 25.0
@@ -1840,13 +1832,13 @@ offset_right = 844.0
 offset_bottom = 453.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_7a7m0")
 
-[node name="Letters" type="GridContainer" parent="NameEntry/LetterBox"]
+[node name="Letters" type="GridContainer" parent="NameEntry/LetterBox" unique_id=1468445698]
 layout_mode = 2
 theme_override_constants/v_separation = 16
 columns = 11
 script = ExtResource("21_oeuxb")
 
-[node name="Cursor" type="TextureRect" parent="NameEntry"]
+[node name="Cursor" type="TextureRect" parent="NameEntry" unique_id=1159320798]
 modulate = Color(1.5, 1.5, 1.5, 1)
 layout_mode = 0
 offset_left = 151.0
@@ -1856,18 +1848,14 @@ offset_bottom = 288.0
 scale = Vector2(2, 2)
 texture = ExtResource("22_7brg1")
 
-[node name="CursorAnimation" type="AnimationPlayer" parent="NameEntry/Cursor"]
-libraries = {
-&"": SubResource("AnimationLibrary_dn8ty")
-}
-autoplay = "shine"
+[node name="CursorAnimation" type="AnimationPlayer" parent="NameEntry/Cursor" unique_id=223677368]
+libraries/ = SubResource("AnimationLibrary_dn8ty")
+autoplay = &"shine"
 
-[node name="NameEntryAnimation" type="AnimationPlayer" parent="NameEntry"]
-libraries = {
-&"": SubResource("AnimationLibrary_56nmj")
-}
+[node name="NameEntryAnimation" type="AnimationPlayer" parent="NameEntry" unique_id=1391621997]
+libraries/ = SubResource("AnimationLibrary_56nmj")
 
-[node name="ConfirmPanel" type="PanelContainer" parent="NameEntry"]
+[node name="ConfirmPanel" type="PanelContainer" parent="NameEntry" unique_id=1582761934]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1881,23 +1869,23 @@ scale = Vector2(1e-05, 1e-05)
 theme = SubResource("Theme_jtuxx")
 theme_override_styles/panel = SubResource("StyleBoxTexture_c5jnq")
 
-[node name="LabelAndButtons" type="VBoxContainer" parent="NameEntry/ConfirmPanel"]
+[node name="LabelAndButtons" type="VBoxContainer" parent="NameEntry/ConfirmPanel" unique_id=552307026]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="NameEntry/ConfirmPanel/LabelAndButtons"]
+[node name="Label" type="Label" parent="NameEntry/ConfirmPanel/LabelAndButtons" unique_id=890702221]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "CONFIRM_NAME_BUTTON"
 horizontal_alignment = 1
 
-[node name="ConfirmOptions" type="PanelContainer" parent="NameEntry/ConfirmPanel/LabelAndButtons"]
+[node name="ConfirmOptions" type="PanelContainer" parent="NameEntry/ConfirmPanel/LabelAndButtons" unique_id=898908491]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nf3ri")
 
-[node name="Options" type="VBoxContainer" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions"]
+[node name="Options" type="VBoxContainer" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions" unique_id=1925302069]
 layout_mode = 2
 
-[node name="Yes" type="Button" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
+[node name="Yes" type="Button" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options" unique_id=304635643]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../No")
@@ -1912,7 +1900,7 @@ action_mode = 0
 text = "YES_BUTTON"
 flat = true
 
-[node name="No" type="Button" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
+[node name="No" type="Button" parent="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options" unique_id=564848658]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Yes")
@@ -1927,12 +1915,10 @@ action_mode = 0
 text = "NO_BUTTON"
 flat = true
 
-[node name="ConfirmAnimation" type="AnimationPlayer" parent="NameEntry/ConfirmPanel"]
-libraries = {
-&"": SubResource("AnimationLibrary_6f5xd")
-}
+[node name="ConfirmAnimation" type="AnimationPlayer" parent="NameEntry/ConfirmPanel" unique_id=2131780084]
+libraries/ = SubResource("AnimationLibrary_6f5xd")
 
-[node name="DifficultySelection" type="Control" parent="." node_paths=PackedStringArray("options", "sound", "animation", "difficulty_description", "difficulty_image")]
+[node name="DifficultySelection" type="Control" parent="." unique_id=1041708731 node_paths=PackedStringArray("options", "sound", "animation", "difficulty_description", "difficulty_image")]
 process_mode = 4
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
@@ -1947,7 +1933,7 @@ difficulty_description = NodePath("DifficultyPanel/LabelAndButtons/DifficultyExp
 difficulty_image = NodePath("DifficultyPanel/LabelAndButtons/HBoxContainer/Image")
 difficulty_images = Array[CompressedTexture2D]([ExtResource("17_dllg5"), ExtResource("18_88xfl"), ExtResource("16_4u8m3")])
 
-[node name="MenuLabel" type="Label" parent="DifficultySelection"]
+[node name="MenuLabel" type="Label" parent="DifficultySelection" unique_id=1862590319]
 clip_children = 1
 layout_mode = 0
 offset_left = 7.0
@@ -1957,13 +1943,13 @@ offset_bottom = 60.0
 theme = SubResource("Theme_a85sy")
 text = "DIFFICULTY_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="DifficultySelection/MenuLabel"]
+[node name="TextureRect" type="TextureRect" parent="DifficultySelection/MenuLabel" unique_id=675770618]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_vke4q")
 
-[node name="DifficultyPanel" type="PanelContainer" parent="DifficultySelection"]
+[node name="DifficultyPanel" type="PanelContainer" parent="DifficultySelection" unique_id=1648826972]
 self_modulate = Color(1, 1, 1, 0.776471)
 custom_minimum_size = Vector2(626, 360)
 layout_mode = 1
@@ -1978,31 +1964,31 @@ grow_horizontal = 2
 theme = SubResource("Theme_jtuxx")
 theme_override_styles/panel = SubResource("StyleBoxTexture_ywgbj")
 
-[node name="LabelAndButtons" type="VBoxContainer" parent="DifficultySelection/DifficultyPanel"]
+[node name="LabelAndButtons" type="VBoxContainer" parent="DifficultySelection/DifficultyPanel" unique_id=1277961725]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="DifficultyTitle" type="Label" parent="DifficultySelection/DifficultyPanel/LabelAndButtons"]
+[node name="DifficultyTitle" type="Label" parent="DifficultySelection/DifficultyPanel/LabelAndButtons" unique_id=1306796701]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "SELECT_DIFFICULTY_TITLE"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DifficultySelection/DifficultyPanel/LabelAndButtons"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DifficultySelection/DifficultyPanel/LabelAndButtons" unique_id=570577307]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="DifficultyOptions" type="PanelContainer" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer"]
+[node name="DifficultyOptions" type="PanelContainer" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer" unique_id=2132818754]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nf3ri")
 
-[node name="Options" type="VBoxContainer" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions"]
+[node name="Options" type="VBoxContainer" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions" unique_id=1137358276]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="Simplified" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
+[node name="Simplified" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options" unique_id=2076963690]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Crazy")
@@ -2017,7 +2003,7 @@ action_mode = 0
 text = "SIMPLIFIED_DIFFICULTY"
 flat = true
 
-[node name="Standard" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
+[node name="Standard" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options" unique_id=598236961]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Simplified")
@@ -2032,7 +2018,7 @@ action_mode = 0
 text = "STANDARD_DIFFICULTY"
 flat = true
 
-[node name="Crazy" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options"]
+[node name="Crazy" type="Button" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer/DifficultyOptions/Options" unique_id=755287598]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Standard")
@@ -2047,13 +2033,13 @@ action_mode = 0
 text = "CRAZY_DIFFICULTY"
 flat = true
 
-[node name="Image" type="TextureRect" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer"]
+[node name="Image" type="TextureRect" parent="DifficultySelection/DifficultyPanel/LabelAndButtons/HBoxContainer" unique_id=1916719169]
 custom_minimum_size = Vector2(300, 160)
 layout_mode = 2
 texture = ExtResource("18_88xfl")
 expand_mode = 1
 
-[node name="DifficultyExplanation" type="Label" parent="DifficultySelection/DifficultyPanel/LabelAndButtons"]
+[node name="DifficultyExplanation" type="Label" parent="DifficultySelection/DifficultyPanel/LabelAndButtons" unique_id=149905523]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 text = "Difficulty explanation"
@@ -2061,32 +2047,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="ConfirmAnimation" type="AnimationPlayer" parent="DifficultySelection/DifficultyPanel"]
-libraries = {
-&"": SubResource("AnimationLibrary_6f5xd")
-}
+[node name="ConfirmAnimation" type="AnimationPlayer" parent="DifficultySelection/DifficultyPanel" unique_id=825712827]
+libraries/ = SubResource("AnimationLibrary_6f5xd")
 
-[node name="DifficultyAnimation" type="AnimationPlayer" parent="DifficultySelection"]
-libraries = {
-&"": SubResource("AnimationLibrary_30bmj")
-}
-autoplay = "appear"
+[node name="DifficultyAnimation" type="AnimationPlayer" parent="DifficultySelection" unique_id=293781764]
+libraries/ = SubResource("AnimationLibrary_30bmj")
+autoplay = &"appear"
 
-[node name="MenuSounds" type="AudioStreamPlayer" parent="."]
+[node name="MenuSounds" type="AudioStreamPlayer" parent="." unique_id=1344771355]
 volume_db = -10.0
 script = ExtResource("11_hjquy")
 audio_library = SubResource("Resource_gqarj")
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1428622356]
 volume_db = -15.0
 script = ExtResource("11_hjquy")
 audio_library = SubResource("Resource_wkgca")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_5gmm4")
-}
-autoplay = "appear"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1044038052]
+libraries/ = SubResource("AnimationLibrary_5gmm4")
+autoplay = &"appear"
 
 [connection signal="focus_entered" from="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/Yes" to="NameEntry" method="_on_button_focused"]
 [connection signal="pressed" from="NameEntry/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/Yes" to="NameEntry" method="_on_yes_pressed"]

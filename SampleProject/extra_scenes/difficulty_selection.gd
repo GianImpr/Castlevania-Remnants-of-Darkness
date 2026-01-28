@@ -29,10 +29,14 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_focused(which: Button) -> void:
+	if animation.is_playing() and animation.current_animation == "vanish":
+		return
 	sound.play_sound_effect_from_library("cursor")
 	updateDescription(which)
 	
 func _on_pressed(which: Button) -> void:
+	if animation.is_playing() and animation.current_animation == "vanish":
+		return
 	sound.play_sound_effect_from_library("confirm")
 	Global.new_game_difficulty = which.get_index()
 	animation.play("vanish")
