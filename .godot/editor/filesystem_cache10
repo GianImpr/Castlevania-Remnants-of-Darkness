@@ -1,5 +1,5 @@
 72322a848ab928aa5c89f0cb78209805
-::res://::1769623053
+::res://::1769627893
 breakable_wall.tscn::PackedScene::8435993362890173544::1769508418::0::1::::<><><>0<>0<><>::uid://bnxx66pvx38ud::::res://SampleProject/Scripts/Stage_elements/breakable_wall.gd<>uid://cqcotgixr17x7::::res://SampleProject/extra_scenes/stage_elements/wall.tscn<>uid://co2dffa7rp4qa::::res://SampleProject/Scripts/Stage_elements/DestructibleBody.gd<>uid://c04vxsdtq4ws2::::res://assets/sprites/Effects/Debris2.png<>uid://b6rmc6evqalxh::::res://SampleProject/Scripts/polyphonic_audio_player.gd<>uid://c8movixc3pc7b::::res://SampleProject/Scripts/AudioLibrary.gd<>uid://o0uxsdxy5fxd::::res://SampleProject/Scripts/soundEffect.gd<>uid://ci4gtdwh6bnd0::::res://assets/sounds/Objects/WallDamage.MP3<>uid://svjxleypen1h::::res://assets/sounds/Objects/WallBreak.MP3
 canvas_layer.tscn::PackedScene::2126738551485071648::1769508418::0::1::::<><><>0<>0<><>::res://SampleProject/Shaders/aura.gdshader<>uid://ull5m2ofoco2::::res://assets/images/DevilForgemasterCrest.png<>res://ImageNumber.gd<>uid://c068oovfev4l0::::res://assets/sprites/HUD/Numbers/1.png<>uid://dl06jtgjccdna::::res://assets/sprites/HUD/Numbers/8.png<>uid://d3gn4yx3xx5wp::::res://assets/sprites/HUD/Numbers/0.png
 cas-03.ico::OtherFile::-1::1769508418::0::1::::<><><>0<>0<><>::
@@ -19,10 +19,10 @@ translation - Foglio1.nl.translation::OptimizedTranslation::3747774829168431451:
 translation - Foglio1.pt_BR.translation::OptimizedTranslation::984996542869255426::1769508418::0::1::::<><><>0<>0<><>::
 translation.ar.translation::OptimizedTranslation::8695833200653545785::1769623054::0::1::::<><><>0<>0<><>::
 translation.csv::Translation::4986747039676051340::1769623037::1769623054::1::::<><><>0<>0<>4510633bec97c607f1bb1d4ac3da8e31<>res://translation.en.translation<*>res://translation.it.translation<*>res://translation.es.translation<*>res://translation.pt_BR.translation<*>res://translation.fr.translation<*>res://translation.nl.translation<*>res://translation.ar.translation::
-translation.en.translation::OptimizedTranslation::3832091039272587425::1769623054::0::1::::<><><>0<>0<><>::
-translation.es.translation::OptimizedTranslation::6955823496246625619::1769623054::0::1::::<><><>0<>0<><>::
+translation.en.translation::OptimizedTranslation::3832091039272587425::1769627848::0::1::::<><><>0<>0<><>::
+translation.es.translation::OptimizedTranslation::6955823496246625619::1769627848::0::1::::<><><>0<>0<><>::
 translation.fr.translation::OptimizedTranslation::5152016542525908789::1769623054::0::1::::<><><>0<>0<><>::
-translation.it.translation::OptimizedTranslation::8962972914853507142::1769623054::0::1::::<><><>0<>0<><>::
+translation.it.translation::OptimizedTranslation::8962972914853507142::1769627848::0::1::::<><><>0<>0<><>::
 translation.nl.translation::OptimizedTranslation::8393763320249034578::1769623054::0::1::::<><><>0<>0<><>::
 translation.pt.translation::OptimizedTranslation::472181589771030689::1769508418::0::1::::<><><>0<>0<><>::
 translation.pt_BR.translation::OptimizedTranslation::8695617752936959123::1769623054::0::1::::<><><>0<>0<><>::
@@ -48,7 +48,7 @@ godot-rapier2d.gdextension::GDExtension::6464857025447911873::1769508427::0::1::
 logo_square_2d.png::CompressedTexture2D::9002049772566657075::1769508427::1769508427::1::::<><><>0<>0<>b503ebbccf6e6a46955b8200090051e5<>res://.godot/imported/logo_square_2d.png-ee7cb55fd9c4d1815ce7e83cd5401198.ctex::
 plugin.info.cfg::TextFile::-1::1769508427::0::1::::<><><>0<>0<><>::
 Radial2D.svg::CompressedTexture2D::5294797171325615259::1769508427::1769508427::1::::<><><>0<>0<>1bc62197614fc00072e42040575d98c4<>res://.godot/imported/Radial2D.svg-4380d9841bddc115105cff2016be7c6a.ctex::
-rapier_state_2d.gd::GDScript::4465174199345931049::1769508427::0::1::::Rapier2DState<>Node<><>0<>0<><>::
+rapier_state_2d.gd::GDScript::4465174199345931049::1769508427::0::1::::Rapier2DState<>Node<>res://addons/godot-rapier2d/logo_square_2d.png<>0<>0<><>::
 THIRDPARTY.txt::TextFile::-1::1769508427::0::1::::<><><>0<>0<><>::
 water_shader.gdshader::Shader::5244640210084459761::1769508427::0::1::::<><><>0<>0<><>::
 water_shader.tres::ShaderMaterial::6495341302912672044::1769508427::0::1::::<><><>0<>0<><>::res://addons/godot-rapier2d/water_shader.gdshader
@@ -61,13 +61,13 @@ water_shader.tres::ShaderMaterial::6495341302912672044::1769508427::0::1::::<><>
 ::res://addons/godot-rapier2d/bin/wasm-nothreads/::1769508427
 ::res://addons/guide/::1769508427
 guide.gd::GDScript::7961751595368466056::1769508426::0::1::::<>Node<><>0<>0<><>::
-guide_action.gd::GDScript::6968805055263433177::1769508426::0::1::::GUIDEAction<>Resource<><>0<>1<><>::
+guide_action.gd::GDScript::6968805055263433177::1769508426::0::1::::GUIDEAction<>Resource<>res://addons/guide/guide_action.svg<>0<>1<><>::
 guide_action.svg::CompressedTexture2D::2685638792534833501::1769508426::1769508426::1::::<><><>0<>0<>0fed95861f97a8b6e491d08eebdea50e<>res://.godot/imported/guide_action.svg-4d1dfb47183d95c4796078798ce2d0ab.ctex::
-guide_action_mapping.gd::GDScript::553374204553767024::1769508426::0::1::::GUIDEActionMapping<>Resource<><>0<>1<><>::
-guide_input_mapping.gd::GDScript::643699426688067958::1769508426::0::1::::GUIDEInputMapping<>Resource<><>0<>1<><>::
+guide_action_mapping.gd::GDScript::553374204553767024::1769508426::0::1::::GUIDEActionMapping<>Resource<>res://addons/guide/guide_internal.svg<>0<>1<><>::
+guide_input_mapping.gd::GDScript::643699426688067958::1769508426::0::1::::GUIDEInputMapping<>Resource<>res://addons/guide/guide_internal.svg<>0<>1<><>::
 guide_input_tracker.gd::GDScript::1185423574407867587::1769508426::0::1::::<>Node<><>0<>0<><>::
 guide_internal.svg::CompressedTexture2D::7391076504055567055::1769508426::1769508426::1::::<><><>0<>0<>9f61183331f90c5fddd88d5c084d8ac6<>res://.godot/imported/guide_internal.svg-560a143a1e289215e72d8844f5173844.ctex::
-guide_mapping_context.gd::GDScript::5671391302114196629::1769508426::0::1::::GUIDEMappingContext<>Resource<><>0<>1<><>::
+guide_mapping_context.gd::GDScript::5671391302114196629::1769508426::0::1::::GUIDEMappingContext<>Resource<>res://addons/guide/guide_mapping_context.svg<>0<>1<><>::
 guide_mapping_context.svg::CompressedTexture2D::2573154166349567085::1769508426::1769508426::1::::<><><>0<>0<>176f380c1d1f54fbda57217e7536f1ff<>res://.godot/imported/guide_mapping_context.svg-025f10fbbdb2bb11a96754ab9b725bea.ctex::
 guide_reset.gd::GDScript::7536934122636886585::1769508426::0::1::::<>Node<><>0<>0<><>::
 guide_set.gd::GDScript::3919054051141789275::1769508426::0::1::::<>RefCounted<><>0<>0<><>::
@@ -113,7 +113,7 @@ resource_slot.gd::GDScript::8918492135691781045::1769508426::0::1::::<>LineEdit<
 trigger_slot.gd::GDScript::5519452129944946528::1769508426::0::1::::<><><>0<>1<><>::
 trigger_slot.tscn::PackedScene::1355977703747753604::1769508426::0::1::::<><><>0<>0<><>::res://addons/guide/editor/trigger_slot/trigger_slot.gd
 ::res://addons/guide/inputs/::1769508426
-guide_input.gd::GDScript::5971743508039715557::1769508426::0::1::::GUIDEInput<>Resource<><>0<>1<><>::
+guide_input.gd::GDScript::5971743508039715557::1769508426::0::1::::GUIDEInput<>Resource<>res://addons/guide/inputs/guide_input.svg<>0<>1<><>::
 guide_input.svg::CompressedTexture2D::1004559383591479557::1769508426::1769508426::1::::<><><>0<>0<>ea7eb335b2dc8714ae9627b1fefcc9f8<>res://.godot/imported/guide_input.svg-d7e8ae255db039e6a02cccc3f844cc0e.ctex::
 guide_input_action.gd::GDScript::8878924520297522365::1769508426::0::1::::GUIDEInputAction<>GUIDEInput<><>0<>1<><>::
 guide_input_any.gd::GDScript::584268894291456813::1769508426::0::1::::GUIDEInputAny<>GUIDEInput<><>0<>1<><>::
@@ -135,7 +135,7 @@ guide_input_touch_distance.gd::GDScript::2801592272420398063::1769508426::0::1::
 guide_input_touch_position.gd::GDScript::5935325384903437151::1769508426::0::1::::GUIDEInputTouchPosition<>GUIDEInputTouchBase<><>0<>1<><>::
 guide_touch_state.gd::GDScript::6482003543203505327::1769508426::0::1::::<>RefCounted<><>0<>1<><>::
 ::res://addons/guide/modifiers/::1769508427
-guide_modifier.gd::GDScript::555635425821291685::1769508426::0::1::::GUIDEModifier<>Resource<><>0<>1<><>::
+guide_modifier.gd::GDScript::555635425821291685::1769508426::0::1::::GUIDEModifier<>Resource<>res://addons/guide/modifiers/guide_modifier.svg<>0<>1<><>::
 guide_modifier.svg::CompressedTexture2D::697463207961229659::1769508426::1769508426::1::::<><><>0<>0<>db7194ca7685c9ad895debf14b82c7e9<>res://.godot/imported/guide_modifier.svg-8cf939ca3244410aba00f7b558561d72.ctex::
 guide_modifier_3d_coordinates.gd::GDScript::406413438333405077::1769508426::0::1::::GUIDEModifier3DCoordinates<>GUIDEModifier<><>0<>1<><>::
 guide_modifier_8_way_direction.gd::GDScript::7626520626868581721::1769508426::0::1::::GUIDEModifier8WayDirection<>GUIDEModifier<><>0<>1<><>::
@@ -153,14 +153,14 @@ guide_modifier_window_relative.gd::GDScript::6735252657152398572::1769508426::0:
 ::res://addons/guide/remapping/::1769508427
 guide_input_detector.gd::GDScript::8488057241567090907::1769508427::0::1::::GUIDEInputDetector<>Node<><>0<>1<><>::
 guide_remapper.gd::GDScript::7110669679026124530::1769508427::0::1::::GUIDERemapper<>RefCounted<><>0<>0<><>::
-guide_remapping_config.gd::GDScript::5262005121882259101::1769508427::0::1::::GUIDERemappingConfig<>Resource<><>0<>0<><>::
+guide_remapping_config.gd::GDScript::5262005121882259101::1769508427::0::1::::GUIDERemappingConfig<>Resource<>res://addons/guide/guide_internal.svg<>0<>0<><>::
 ::res://addons/guide/triggers/::1769508427
-guide_trigger.gd::GDScript::4265041206171666289::1769508427::0::1::::GUIDETrigger<>Resource<><>0<>1<><>::
+guide_trigger.gd::GDScript::4265041206171666289::1769508427::0::1::::GUIDETrigger<>Resource<>res://addons/guide/triggers/guide_trigger.svg<>0<>1<><>::
 guide_trigger.svg::CompressedTexture2D::4826772353684548122::1769508427::1769508427::1::::<><><>0<>0<>3192cfcc6212f9dd511c39b2bf93c0e1<>res://.godot/imported/guide_trigger.svg-cd87acbd491929cf49a255f8481b0b63.ctex::
 guide_trigger_chorded_action.gd::GDScript::9035152643151219882::1769508427::0::1::::GUIDETriggerChordedAction<>GUIDETrigger<><>0<>1<><>::
 guide_trigger_combo.gd::GDScript::5080804815930180748::1769508427::0::1::::GUIDETriggerCombo<>GUIDETrigger<><>0<>1<><>::
-guide_trigger_combo_cancel_action.gd::GDScript::8127751976605227237::1769508427::0::1::::GUIDETriggerComboCancelAction<>Resource<><>0<>0<><>::
-guide_trigger_combo_step.gd::GDScript::3106588257731950570::1769508427::0::1::::GUIDETriggerComboStep<>Resource<><>0<>0<><>::
+guide_trigger_combo_cancel_action.gd::GDScript::8127751976605227237::1769508427::0::1::::GUIDETriggerComboCancelAction<>Resource<>res://addons/guide/guide_internal.svg<>0<>0<><>::
+guide_trigger_combo_step.gd::GDScript::3106588257731950570::1769508427::0::1::::GUIDETriggerComboStep<>Resource<>res://addons/guide/guide_internal.svg<>0<>0<><>::
 guide_trigger_down.gd::GDScript::1423923568299295834::1769508427::0::1::::GUIDETriggerDown<>GUIDETrigger<><>0<>1<><>::
 guide_trigger_hold.gd::GDScript::8776368646886971175::1769508427::0::1::::GUIDETriggerHold<>GUIDETrigger<><>0<>1<><>::
 guide_trigger_pressed.gd::GDScript::4343436064825759563::1769508427::0::1::::GUIDETriggerPressed<>GUIDETrigger<><>0<>1<><>::
@@ -391,7 +391,7 @@ LayerSelector.tscn::PackedScene::1603762317928415869::1769508426::0::1::::<><><>
 RoomInstance.tscn::PackedScene::3663775679193023938::1769508426::0::1::::<><><>0<>0<><>::res://addons/MetroidvaniaSystem/Scripts/RoomInstance.gd
 RoomPreview.tscn::PackedScene::4068944844568016361::1769508426::0::1::::<><><>0<>0<><>::uid://dfyoc5jqnnpf5::::res://addons/MetroidvaniaSystem/Database/DatabaseTheme.tres
 Singleton.tscn::PackedScene::6581724622763281895::1769508426::0::1::::<><><>0<>0<><>::res://addons/MetroidvaniaSystem/Scripts/MetroidvaniaSystem.gd
-::res://addons/MetroidvaniaSystem/Scripts/::1769622630
+::res://addons/MetroidvaniaSystem/Scripts/::1769627848
 CollectibleElement.gd::GDScript::969482064618913033::1769508426::0::1::::<>PanelContainer<><>0<>1<><>::
 CollectibleFoundItem.gd::GDScript::3338267424669454406::1769508426::0::1::::<>PanelContainer<><>0<>1<><>::
 CustomElementManager.gd::GDScript::3852648036449741707::1769508426::0::1::::<>RefCounted<><>0<>1<><>::
@@ -402,7 +402,7 @@ MapTheme.gd::GDScript::6907644970177278778::1769508426::0::1::::MapTheme<>Resour
 MapView.gd::GDScript::2478158829044146818::1769508426::0::1::::<>Control<><>0<>0<><>::
 MetroidvaniaSystem.gd::GDScript::8066990969320856052::1769508426::0::1::::MetroidvaniaSystem<>Node<><>0<>1<><>::
 PlayerLocationInstance.gd::GDScript::6053203407991720849::1769508426::0::1::::<>Node2D<><>0<>0<><>::
-RoomDrawer.gd::GDScript::6386391390382310419::1769622630::0::1::::<>RefCounted<><>0<>0<><>::
+RoomDrawer.gd::GDScript::6386391390382310419::1769627848::0::1::::<>RefCounted<><>0<>0<><>::
 RoomInstance.gd::GDScript::7013694037238847126::1769508426::0::1::::<>Node2D<><>0<>1<><>::
 SaveData.gd::GDScript::1748208338740919780::1769508426::0::1::::<>RefCounted<><>0<>0<><>::
 Settings.gd::GDScript::4581076565415496368::1769508426::0::1::::<>Resource<><>0<>1<><>::
@@ -3985,7 +3985,7 @@ HealOrb.png::CompressedTexture2D::4487864507366289995::1769508428::1769508428::1
 Icicle.png::CompressedTexture2D::6438817049229813845::1769508428::1769508428::1::::<><><>0<>0<>eb2a1cd30215e4176ae09902f68612bc<>res://.godot/imported/Icicle.png-1c5837b4dd4c72fda1e23643387d59dd.ctex::
 ::res://assets/sprites/Spells/::1769508428
 IceFang.png::CompressedTexture2D::6958290466033833842::1769508428::1769508428::1::::<><><>0<>0<>6df5fa7c1d7db9ccf01396eaf0d22ab2<>res://.godot/imported/IceFang.png-bdb4a632e362b72bde056336e178189a.ctex::
-::res://assets/sprites/Tiles/::1769508428
+::res://assets/sprites/Tiles/::1769627848
 BossBackground.png::CompressedTexture2D::2066825631857899472::1769508428::1769508428::1::::<><><>0<>0<>cd7e896a3513c6a3194d9b7d7ce69974<>res://.godot/imported/BossBackground.png-08154022c6df6521d283f76dc93f85fb.ctex::
 Debug.png::CompressedTexture2D::4429650577468440411::1769508428::1769508428::1::::<><><>0<>0<>7d86af3dbc3ddea5dba20fdb0b4a8b69<>res://.godot/imported/Debug.png-170a2977bb502448d3055e17ec6d9086.ctex::
 Entrance.png::CompressedTexture2D::6800406969450566938::1769508428::1769508428::1::::<><><>0<>0<>8ce322254463c0f051e1e022f9d0ab44<>res://.godot/imported/Entrance.png-86266f84008a16a5aeafe54dfbc5d23d.ctex::
@@ -3993,7 +3993,7 @@ FagarasCave.png::CompressedTexture2D::4561085705081001136::1769508428::176950842
 iceTiles.png::CompressedTexture2D::2808532177837116817::1769508428::1769508428::1::::<><><>0<>0<>ad06dd8031fc7f3684f9e5a028610b7e<>res://.godot/imported/iceTiles.png-e94d8be1c6fff3ab43ee5c3cc344698f.ctex::
 InnocentDevilRoom.png::CompressedTexture2D::4062499981503757034::1769508428::1769508428::1::::<><><>0<>0<>1c66d4f1b9d020a8b16e25d99a1d8eb1<>res://.godot/imported/InnocentDevilRoom.png-7e1dff8fd9d630ecb8e4275ebbc0abb3.ctex::
 mountain.png::CompressedTexture2D::5681077002447410133::1769508428::1769508428::1::::<><><>0<>0<>de04c6f311beceede6368cd6754ac64d<>res://.godot/imported/mountain.png-79998728cb5e591322057ca745d2eb8e.ctex::
-OoE2.tres::TileSet::2264448660006116234::1769508428::0::1::::<><><>0<>0<><>::uid://tydwgmunujtg::::res://SampleProject/Resources/OoEMonastery2.png
+OoE2.tres::TileSet::2264448660006116234::1769627848::0::1::::<><><>0<>0<><>::uid://tydwgmunujtg::::res://SampleProject/Resources/OoEMonastery2.png
 OoEMonastery1.png::CompressedTexture2D::410975295177139281::1769508428::1769508428::1::::<><><>0<>0<>a1d5dbd8d3b15e6856f7920276d78bf0<>res://.godot/imported/OoEMonastery1.png-4a0eaa32ee6aa9f8b016d73741e17a1b.ctex::
 OoEMonastery3.png::CompressedTexture2D::8980165564083874834::1769508428::1769508428::1::::<><><>0<>0<>089447dce92a1c5f2976305081bb55ea<>res://.godot/imported/OoEMonastery3.png-6ae56a05bc85143a6e2e7e3ceb3eb170.ctex::
 OoEMonastery4.png::CompressedTexture2D::5136876328599269677::1769508428::1769508428::1::::<><><>0<>0<>01df44a12e72d363ccd2b01017775519<>res://.godot/imported/OoEMonastery4.png-fd767dd6358aa9bfe3347911c739373b.ctex::
@@ -4584,7 +4584,7 @@ water_splash.tscn::PackedScene::7941395328574983703::1769508426::0::1::::<><><>0
 ::res://SampleProject/familiars/Faerie/::1769508426
 faerie.tscn::PackedScene::5996284378367117727::1769508426::0::1::::<><><>0<>0<><>::uid://bpb5ipkikk3hr::::res://SampleProject/Scripts/InnocentDevils/Faerie/Faerie.gd<>uid://cg6xqwlb4rrii::::res://assets/sprites/InnocentDevils/Fairy/fairywings.png<>uid://duj1ea88vhssi::::res://SampleProject/Scripts/InnocentDevils/innocent_devil.gd<>uid://bin0fbttt1atq::::res://SampleProject/Scripts/InnocentDevils/IDSkill.gd<>uid://sxtc4unu2010::::res://assets/sprites/InnocentDevils/Fairy/fairy.png<>uid://di71psgnisnfn::::res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieIdle.gd<>uid://btru3nul44e6v::::res://assets/sprites/HUD/IDIcons/Heal1.png<>uid://b6rmc6evqalxh::::res://SampleProject/Scripts/polyphonic_audio_player.gd<>uid://deqm7hrmownqo::::res://assets/sprites/HUD/IDIcons/RefreshingAir.png<>uid://1r4g306ipyuc::::res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieRun.gd<>uid://cowhj5b4jdb44::::res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieStopMoving.gd<>uid://c3hrpte6hnnmh::::res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieHealing.gd<>uid://d2kqkdfhgcbi7::::res://SampleProject/Scripts/System/state_machine.gd<>uid://c8movixc3pc7b::::res://SampleProject/Scripts/AudioLibrary.gd<>uid://7jgukldlniqq::::res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFreeze.gd<>uid://blognkorla2r8::::res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFunnyWall.gd<>uid://o0uxsdxy5fxd::::res://SampleProject/Scripts/soundEffect.gd<>uid://c2turxxbo67s2::::res://assets/sounds/InnocentDevils/Faerie/FairyHeal1.MP3<>uid://7ia3jv1shxri::::res://assets/sounds/InnocentDevils/Faerie/FairyHeal2.MP3<>uid://c3hvhwhjsbhp8::::res://assets/sounds/InnocentDevils/Faerie/FairyHeal3.MP3<>uid://b85mrm6ht3kgn::::res://SampleProject/extra_scenes/effects/refreshing_air.tscn<>uid://dmygyfdvwkny8::::res://assets/sounds/InnocentDevils/Faerie/HealEffect.MP3<>uid://o8xb73wudmam::::res://assets/sounds/InnocentDevils/Faerie/FaerieFunnyWall.MP3<>uid://dlmhl7dysb8lh::::res://assets/sounds/InnocentDevils/IDLevelUp.MP3<>uid://p1t5i4sxhu71::::res://assets/sprites/Effects/floaty_64.png<>uid://rpogipl0n7kv::::res://assets/sounds/Powerups/RefreshingAir.MP3
 ::res://SampleProject/items/::1769508426
-::res://SampleProject/Maps/::1769622797
+::res://SampleProject/Maps/::1769627848
 Corridor2.tscn::PackedScene::6515512536995609144::1769508426::0::1::::<><><>0<>0<><>::uid://bwpcg2opya34n::::res://SampleProject/Resources/Tileset.tres<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn
 Corridor3.tscn::PackedScene::3316586699880196902::1769508426::0::1::::<><><>0<>0<><>::uid://bwpcg2opya34n::::res://SampleProject/Resources/Tileset.tres<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn
 Corridor4.tscn::PackedScene::385703113800067749::1769508426::0::1::::<><><>0<>0<><>::uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://mprmq4li685x::::res://SampleProject/Resources/OoE.tres
@@ -4601,7 +4601,7 @@ Junction.tscn::PackedScene::2968976783298876325::1769508426::0::1::::<><><>0<>0<
 LavaCorridor.tscn::PackedScene::387556252286673926::1769508426::0::1::::<><><>0<>0<><>::uid://bwpcg2opya34n::::res://SampleProject/Resources/Tileset.tres<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://2pmbr0eamtud::::res://SampleProject/Sprites/Lava.png<>uid://c8j6i3fx8p758::::res://SampleProject/Objects/Collectible.tscn<>uid://cuo3rbw43trj4::::res://SampleProject/Objects/Pipe.tscn
 LavaCorridorAfterwater.tscn::PackedScene::7891632810020442221::1769508426::0::1::::<><><>0<>0<><>::uid://bwpcg2opya34n::::res://SampleProject/Resources/Tileset.tres<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://cuo3rbw43trj4::::res://SampleProject/Objects/Pipe.tscn<>uid://c8j6i3fx8p758::::res://SampleProject/Objects/Collectible.tscn
 LeftStaircase.tscn::PackedScene::4238191952050854776::1769508426::0::1::::<><><>0<>0<><>::uid://bwpcg2opya34n::::res://SampleProject/Resources/Tileset.tres<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://d165fnekqr5ex::::res://SampleProject/Objects/Button.tscn<>uid://cuo3rbw43trj4::::res://SampleProject/Objects/Pipe.tscn
-MapData.txt::TextFile::-1::1769622797::0::1::::<><><>0<>0<><>::
+MapData.txt::TextFile::-1::1769627848::0::1::::<><><>0<>0<><>::
 PortalRoom.tscn::PackedScene::7170574772712051384::1769508426::0::1::::<><><>0<>0<><>::uid://bwpcg2opya34n::::res://SampleProject/Resources/Tileset.tres<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://cwrf84g5mlucd::::res://SampleProject/Objects/Portal.tscn
 RelicRoom.tscn::PackedScene::6529747996325820864::1769508426::0::1::::<><><>0<>0<><>::uid://bwpcg2opya34n::::res://SampleProject/Resources/Tileset.tres<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://c8j6i3fx8p758::::res://SampleProject/Objects/Collectible.tscn
 RightStaircase.tscn::PackedScene::8142202152790103164::1769508426::0::1::::<><><>0<>0<><>::uid://bwpcg2opya34n::::res://SampleProject/Resources/Tileset.tres<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://d0hyimq1tkfa2::::res://SampleProject/Objects/MapItem.tscn
@@ -4646,7 +4646,7 @@ switch_room.tscn::PackedScene::1183713303859302166::1769508426::0::1::::<><><>0<
 ukoback_room.tscn::PackedScene::2462465365203393429::1769508426::0::1::::<><><>0<>0<><>::uid://cra3c457tg2j7::::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://b58ood7hu0g21::::res://assets/sprites/Tiles/FagarasCave.png<>uid://bkyptgxub2ly0::::res://SampleProject/extra_scenes/stage_elements/purple_candle.tscn<>uid://2vc38i25e1l::::res://SampleProject/enemies/Ukoback/ukoback.tscn<>uid://bvk8m1t7uwv0b::::res://SampleProject/enemies/Une/Une.tscn<>uid://bwr5frmmnkw6y::::res://SampleProject/enemies/FloatingSkull/floating_skull.tscn<>uid://ctg2sggf2ujvj::::res://SampleProject/enemies/Slaughterer/slaughterer.tscn<>uid://djw0ueyeiotcq::::res://SampleProject/enemies/Warg/warg.tscn<>uid://dosjh5lntu6w1::::res://SampleProject/extra_scenes/items/pick_up.tscn<>uid://fld271wig6jo::::res://SampleProject/enemies/Banshee/banshee.tscn
 warp_unlock_room.tscn::PackedScene::1926067291875309122::1769508426::0::1::::<><><>0<>0<><>::uid://cra3c457tg2j7::::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://b58ood7hu0g21::::res://assets/sprites/Tiles/FagarasCave.png<>uid://bkyptgxub2ly0::::res://SampleProject/extra_scenes/stage_elements/purple_candle.tscn<>uid://dosjh5lntu6w1::::res://SampleProject/extra_scenes/items/pick_up.tscn
 zigzag_room.tscn::PackedScene::3384477494071156695::1769508426::0::1::::<><><>0<>0<><>::uid://cra3c457tg2j7::::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://cm67rjq4or1c8::::res://assets/sprites/Tiles/mountain.png<>uid://c0qsvc0xjt6x1::::res://assets/sprites/Tiles/outsideMonastery.png<>uid://des8o3jbf3a4m::::res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn<>uid://dosjh5lntu6w1::::res://SampleProject/extra_scenes/items/pick_up.tscn<>uid://dj1w5vx1ut6l3::::res://SampleProject/enemies/BlackPanther/black_panther.tscn<>uid://bcqff14dmgwpf::::res://SampleProject/enemies/BlackCrow/black_crow.tscn<>uid://crkxe62hk26kh::::res://SampleProject/enemies/BlueRaven/kamikaze_raven.tscn<>uid://dfuncyp0yhrbk::::res://SampleProject/enemies/Slinger/slinger.tscn<>uid://bn5w03bpeuhmt::::res://SampleProject/enemies/ArmorKnight/armor_knight.tscn<>uid://fld271wig6jo::::res://SampleProject/enemies/Banshee/banshee.tscn<>uid://ctg2sggf2ujvj::::res://SampleProject/enemies/Slaughterer/slaughterer.tscn<>uid://bxi1h5wf54pjq::::res://SampleProject/enemies/BoneScimitar/bone_scimitar.tscn<>uid://dttmy0kvxpsi7::::res://SampleProject/enemies/Skeleton/skeleton.tscn<>uid://bvk8m1t7uwv0b::::res://SampleProject/enemies/Une/Une.tscn
-::res://SampleProject/Maps/FirstLevel/::1769508426
+::res://SampleProject/Maps/FirstLevel/::1769627848
 after_boss.tscn::PackedScene::2113429787125975242::1769508426::0::1::::<><><>0<>0<><>::uid://cra3c457tg2j7::::res://SampleProject/Scripts/System/room.gd<>uid://7i6eyhfdabdq::::res://assets/sprites/Tiles/OoE2.tres<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://d07cares8flha::::res://assets/sprites/Tiles/OoEMonastery3.png<>uid://q43vbthycopx::::res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn<>uid://dosjh5lntu6w1::::res://SampleProject/extra_scenes/items/pick_up.tscn
 after_elevator.tscn::PackedScene::6996533217930431403::1769508426::0::1::::<><><>0<>0<><>::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://7i6eyhfdabdq::::res://assets/sprites/Tiles/OoE2.tres<>uid://d07cares8flha::::res://assets/sprites/Tiles/OoEMonastery3.png<>uid://dosjh5lntu6w1::::res://SampleProject/extra_scenes/items/pick_up.tscn<>uid://des8o3jbf3a4m::::res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn
 after_elevator_2.tscn::PackedScene::723911726123880610::1769508426::0::1::::<><><>0<>0<><>::uid://cra3c457tg2j7::::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://7i6eyhfdabdq::::res://assets/sprites/Tiles/OoE2.tres<>uid://d07cares8flha::::res://assets/sprites/Tiles/OoEMonastery3.png<>uid://bn5w03bpeuhmt::::res://SampleProject/enemies/ArmorKnight/armor_knight.tscn<>uid://cl543nev3n2bf::::res://SampleProject/enemies/AxeArmor/axe_armor.tscn<>uid://dfuncyp0yhrbk::::res://SampleProject/enemies/Slinger/slinger.tscn<>uid://bxi1h5wf54pjq::::res://SampleProject/enemies/BoneScimitar/bone_scimitar.tscn<>uid://b33buvcvhwwqa::::res://SampleProject/enemies/BonePillar/bone_pillar.tscn<>uid://q43vbthycopx::::res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn
@@ -4673,7 +4673,7 @@ life_vessel_room.tscn::PackedScene::5386809292423182870::1769508426::0::1::::<><
 perfect_guard_room.tscn::PackedScene::559435560657397927::1769508426::0::1::::<><><>0<>0<><>::uid://cra3c457tg2j7::::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://7i6eyhfdabdq::::res://assets/sprites/Tiles/OoE2.tres<>uid://d07cares8flha::::res://assets/sprites/Tiles/OoEMonastery3.png<>uid://dosjh5lntu6w1::::res://SampleProject/extra_scenes/items/pick_up.tscn<>uid://des8o3jbf3a4m::::res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn<>uid://b33buvcvhwwqa::::res://SampleProject/enemies/BonePillar/bone_pillar.tscn<>uid://q43vbthycopx::::res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn
 pillar_room.tscn::PackedScene::5478799578110541802::1769508426::0::1::::<><><>0<>0<><>::uid://cra3c457tg2j7::::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://7i6eyhfdabdq::::res://assets/sprites/Tiles/OoE2.tres<>uid://d07cares8flha::::res://assets/sprites/Tiles/OoEMonastery3.png<>uid://b33buvcvhwwqa::::res://SampleProject/enemies/BonePillar/bone_pillar.tscn
 pre_boss.tscn::PackedScene::8038599674280014145::1769508426::0::1::::<><><>0<>0<><>::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://7i6eyhfdabdq::::res://assets/sprites/Tiles/OoE2.tres<>uid://d07cares8flha::::res://assets/sprites/Tiles/OoEMonastery3.png<>uid://csrmfyxqbrq51::::res://SampleProject/extra_scenes/stage_elements/door.tscn<>uid://bnsy1kwfc8603::::res://SampleProject/extra_scenes/stage_elements/combat_door.tscn<>uid://dosjh5lntu6w1::::res://SampleProject/extra_scenes/items/pick_up.tscn<>uid://des8o3jbf3a4m::::res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn<>uid://cl543nev3n2bf::::res://SampleProject/enemies/AxeArmor/axe_armor.tscn
-relic_room.tscn::PackedScene::1338033050540475939::1769508426::0::1::::<><><>0<>0<><>::uid://cra3c457tg2j7::::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://bgaqd5rx66d1j::::res://assets/sprites/Tiles/iceTiles.png<>uid://diku0uk4in6gs::::res://SampleProject/Shaders/aura.gdshader<>uid://dosjh5lntu6w1::::res://SampleProject/extra_scenes/items/pick_up.tscn<>uid://q43vbthycopx::::res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn
+relic_room.tscn::PackedScene::1338033050540475939::1769627848::0::1::::<><><>0<>0<><>::uid://cra3c457tg2j7::::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://bgaqd5rx66d1j::::res://assets/sprites/Tiles/iceTiles.png<>uid://diku0uk4in6gs::::res://SampleProject/Shaders/aura.gdshader<>uid://dosjh5lntu6w1::::res://SampleProject/extra_scenes/items/pick_up.tscn<>uid://q43vbthycopx::::res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn
 Room3.tscn::PackedScene::7979426226044191247::1769508426::0::1::::<><><>0<>0<><>::uid://cra3c457tg2j7::::res://SampleProject/Scripts/System/room.gd<>uid://7i6eyhfdabdq::::res://assets/sprites/Tiles/OoE2.tres<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://dttmy0kvxpsi7::::res://SampleProject/enemies/Skeleton/skeleton.tscn<>uid://126k0dgwv4i3::::res://SampleProject/enemies/Bat/bat.tscn<>uid://des8o3jbf3a4m::::res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn
 save_before_boss.tscn::PackedScene::7736783547322052238::1769508426::0::1::::<><><>0<>0<><>::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://dsp65fy27xlyw::::res://assets/sprites/Tiles/sotnRoom.png<>uid://dtgg2nujcdn1o::::res://SampleProject/Objects/save_chair.tscn<>uid://csrmfyxqbrq51::::res://SampleProject/extra_scenes/stage_elements/door.tscn<>uid://7vmwu2087apy::::res://SampleProject/extra_scenes/stage_elements/water.tscn<>uid://b1s5cb6jv4cm::::res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn<>uid://cfulexp2leb83::::res://SampleProject/Objects/save_candle.tscn<>uid://dy27uo3o3n7h4::::res://SampleProject/Objects/save_air_candle.tscn
 save_before_fire.tscn::PackedScene::7483478087307318553::1769508426::0::1::::<><><>0<>0<><>::res://SampleProject/Scripts/System/room.gd<>uid://bsg0351mx3b4u::::res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn<>uid://dsp65fy27xlyw::::res://assets/sprites/Tiles/sotnRoom.png<>uid://dtgg2nujcdn1o::::res://SampleProject/Objects/save_chair.tscn<>uid://csrmfyxqbrq51::::res://SampleProject/extra_scenes/stage_elements/door.tscn<>uid://7vmwu2087apy::::res://SampleProject/extra_scenes/stage_elements/water.tscn<>uid://b1s5cb6jv4cm::::res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn<>uid://cfulexp2leb83::::res://SampleProject/Objects/save_candle.tscn<>uid://dy27uo3o3n7h4::::res://SampleProject/Objects/save_air_candle.tscn
@@ -4789,8 +4789,8 @@ combat_scene_fagaras.gd::GDScript::7761577584762504835::1769508426::0::1::::<>Co
 combat_scene_medusa.gd::GDScript::4732677761436957159::1769508426::0::1::::<>CombatScene<><>0<>0<><>::
 dialogue_entry.gd::GDScript::5698968723395212743::1769615637::0::1::::Dialogue<>Resource<><>0<>0<><>::
 julia_shopgd.gd::GDScript::7389308685814533772::1769508426::0::1::::JuliaShop<>Node2D<><>0<>0<><>::
-trevor_meet_event.gd::GDScript::7522918656790148914::1769618712::0::1::::<>Node<><>0<>0<><>::
 training_settings.gd::GDScript::9060379987558609933::1769508426::0::1::::TrainingSettings<>Node<><>0<>0<><>::
+trevor_meet_event.gd::GDScript::7522918656790148914::1769618712::0::1::::<>Node<><>0<>0<><>::
 ::res://SampleProject/Scripts/HectorAnims/::1769508426
 HectorAirAttack.gd::GDScript::7674285266636685286::1769508426::0::1::::HectorAirAttack<>State<><>0<>0<><>::
 HectorAttack.gd::GDScript::1897930301880728822::1769508426::0::1::::HectorAttack<>State<><>0<>0<><>::
