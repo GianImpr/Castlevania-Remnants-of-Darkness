@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://q43vbthycopx" path="res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn" id="6_gkmfq"]
 [ext_resource type="PackedScene" uid="uid://dkm3kcg1gq2kf" path="res://SampleProject/NPC/trevor_npc.tscn" id="7_48to8"]
 [ext_resource type="PackedScene" uid="uid://df43umeqy115k" path="res://SampleProject/extra_scenes/stage_elements/dialogue_box_trigger.tscn" id="8_e2kyj"]
+[ext_resource type="Script" uid="uid://dfgfmvcjmsit3" path="res://SampleProject/Scripts/Event/trevor_meet_event.gd" id="9_hmr6u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1uv3y"]
 resource_name = "Woods"
@@ -1747,3 +1748,11 @@ flag_id = 6
 [node name="DialogueBoxTrigger2" parent="." unique_id=690994312 instance=ExtResource("8_e2kyj")]
 position = Vector2(419, 6)
 flag_id = 7
+
+[node name="TrevorMeetEvent" type="Node" parent="." unique_id=1813030222 node_paths=PackedStringArray("dialogue_1", "dialogue_2", "trevor_npc")]
+process_mode = 3
+script = ExtResource("9_hmr6u")
+dialogue_1 = NodePath("../DialogueBoxTrigger")
+dialogue_2 = NodePath("../DialogueBoxTrigger2")
+trevor_npc = NodePath("../TrevorNPC")
+event_id = 6

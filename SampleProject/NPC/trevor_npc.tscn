@@ -42,11 +42,13 @@ _data = {
 &"idle": SubResource("Animation_yardy")
 }
 
-[node name="TrevorNPC" type="Sprite2D" unique_id=694709324]
+[node name="TrevorNPC" type="Sprite2D" unique_id=694709324 node_paths=PackedStringArray("sprite", "animation")]
 scale = Vector2(2, 2)
 texture = ExtResource("1_bs615")
 hframes = 4
 script = ExtResource("2_m6j1y")
+sprite = NodePath(".")
+animation = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=174107207]
 libraries/ = SubResource("AnimationLibrary_g1gag")
