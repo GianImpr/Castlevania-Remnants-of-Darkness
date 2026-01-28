@@ -149,9 +149,6 @@ func updateHP(delta):
 		h_box_container.updateHP(int(health.value/10), MHP)
 		
 func updateMP(delta):
-	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
-		return
-
 	match Global.player.stats.equipment["relic"]-1:
 		Relic.Relics.INDIGO_CROSS:
 			low_MP_tint = Color(0, 0.545, 0.898)
@@ -159,6 +156,9 @@ func updateMP(delta):
 			low_MP_tint = Color(1, 0.365, 0)
 			
 	mana.texture_progress = mana_colors[max(Global.player.stats.equipment["relic"]-1, 0)]
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+		return
+
 	if mana.value < MP*10:
 		mana.value = min(MP*10, mana.value+ceil(5*MMP*delta))
 	elif mana.value > MP*10:
