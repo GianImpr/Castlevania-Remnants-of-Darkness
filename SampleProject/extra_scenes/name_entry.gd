@@ -102,7 +102,7 @@ func addLetterToName():
 	
 func removeLetterFromName():
 	if name_container.get_child_count() == 0:
-		sound.play_sound_effect_from_library("denied")
+		exitScreen()
 		return
 	var last_letter: TextureRect = name_container.get_child(name_container.get_child_count()-1)
 	name_container.remove_child(last_letter)
@@ -150,3 +150,9 @@ func _on_no_pressed() -> void:
 	
 func _on_button_focused() -> void:
 	sound.play_sound_effect_from_library("cursor")
+
+func titleScreen():
+	Global.toTitleScreen()
+	
+func exitScreen():
+	animation.play("disappear_to_title")
