@@ -242,27 +242,8 @@ func updateNewStats(selectedWeapon, currentWeapon, stats: Array[String]):
 			player.Boosts[stat] -= currentWeapon[stat]
 		player.Stats[stat] = player.Bases[stat] + player.Boosts[stat]
 	
-	## Empty hand
-	if selectedWeapon == null and equipSlots.button_index == 0:
-		Global.HUD.weapon_icon.texture = null
-		Input.set_joy_light(0, Color.YELLOW)
-	
-	## Change weapon icon in the HUD and joypad color according to weapon type
-	if selectedWeapon is Weapon:
-		Global.HUD.weapon_icon.texture = selectedWeapon.icon
-		if not Input.has_joy_light(0):
-			return
-		match (selectedWeapon as Weapon).type:
-			Weapon.Type.SWORD:
-				Input.set_joy_light(0, Color.RED)
-			Weapon.Type.GREATSWORD:
-				Input.set_joy_light(0, Color.ORANGE)
-			Weapon.Type.AXE:
-				Input.set_joy_light(0, Color.BLUE)
-			Weapon.Type.SPEAR:
-				Input.set_joy_light(0, Color.GREEN)
-			Weapon.Type.FIST:
-				Input.set_joy_light(0, Color.YELLOW)
+	if (selectedWeapon == null and equipSlots.button_index == 0) or selectedWeapon is Weapon:
+		Global.HUD.updateWeaponIconAndLight(selectedWeapon)
 
 #Updates the labels showing the current stats, but does not update the stats themselves
 func updateStats(stats: Array[String], label: Label):

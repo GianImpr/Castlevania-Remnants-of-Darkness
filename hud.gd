@@ -1,4 +1,5 @@
 extends Control
+class_name HeadsUpDisplay
 
 @onready var health: TextureProgressBar = $TextureRect/Health
 @onready var mana: TextureProgressBar = $TextureRect/Mana
@@ -217,3 +218,28 @@ func checkBlinking(stat, max_stat, bar: TextureProgressBar, tween_idx: int, colo
 	elif stat > max_stat / 4 and blinking_tweens[tween_idx] != null and blinking_tweens[tween_idx].is_running():
 		blinking_tweens[tween_idx].kill()
 		bar.tint_under = Color.WHITE
+
+## Updates the weapon icon in the HUD on top of the Focus bar and changes joypad's light color
+## according to the current weapon type used.
+func updateWeaponIconAndLight(weapon: Weapon) -> void:
+	if weapon == null:
+		if Input.has_joy_light(0):
+			weapon_icon.texture = null
+			Input.set_joy_light(0, Color.YELLOW)
+			return
+			
+	weapon_icon.texture = weapon.icon
+
+	if not Input.has_joy_light(0):
+		return
+	match weapon.type:
+		Weapon.Type.SWORD:
+			Input.set_joy_light(0, Color.RED)
+		Weapon.Type.GREATSWORD:
+			Input.set_joy_light(0, Color.ORANGE)
+		Weapon.Type.AXE:
+			Input.set_joy_light(0, Color.BLUE)
+		Weapon.Type.SPEAR:
+			Input.set_joy_light(0, Color.GREEN)
+		Weapon.Type.FIST:
+			Input.set_joy_light(0, Color.YELLOW)
