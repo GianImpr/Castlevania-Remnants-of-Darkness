@@ -39,7 +39,8 @@ const Actions = {
 func _ready() -> void:
 	super()
 	max_HP = stats.HP
-	
+	var body_hitbox: CollisionShape2D = hitbox.get_child(0)
+	body_hitbox.set_deferred("disabled", false)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and not hurtbox.disabled:
