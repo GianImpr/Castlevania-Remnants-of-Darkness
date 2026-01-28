@@ -295,7 +295,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(220, 650)]
+"values": [Vector2(155, 450)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -383,7 +383,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(220, 650)]
+"values": [Vector2(155, 450)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -459,7 +459,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(220, 650), Vector2(220, 655), Vector2(220, 645), Vector2(220, 654), Vector2(220, 646), Vector2(220, 653), Vector2(220, 647), Vector2(220, 652), Vector2(220, 648), Vector2(220, 651), Vector2(220, 649), Vector2(220, 650)]
+"values": [Vector2(155, 450), Vector2(155, 455), Vector2(155, 445), Vector2(155, 454), Vector2(155, 446), Vector2(155, 453), Vector2(155, 447), Vector2(155, 452), Vector2(155, 448), Vector2(155, 451), Vector2(155, 449), Vector2(155, 450)]
 }
 
 [sub_resource type="Animation" id="Animation_k32vc"]
@@ -475,7 +475,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(220, 650), Vector2(220, 660)]
+"values": [Vector2(155, 450), Vector2(155, 460)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -496,10 +496,10 @@ tracks/2/path = NodePath(".:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q6yu7"]
@@ -854,11 +854,11 @@ layout_mode = 2
 texture = ExtResource("20_ulm54")
 
 [node name="BossBar" type="TextureRect" parent="." unique_id=1355017553 node_paths=PackedStringArray("animation", "yellow_bar", "blue_bar", "yellow_damage", "blue_damage", "damage_display_duration")]
-layout_mode = 0
-offset_left = 220.0
-offset_top = 650.0
-offset_right = 415.0
-offset_bottom = 653.0
+layout_mode = 1
+offset_left = 155.0
+offset_top = 450.0
+offset_right = 350.00003
+offset_bottom = 453.0
 scale = Vector2(2.8, 2.8)
 texture = ExtResource("19_hlm7p")
 script = ExtResource("20_oxp7a")
