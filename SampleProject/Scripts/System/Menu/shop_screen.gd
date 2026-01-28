@@ -84,6 +84,7 @@ func focusButton(button: Button) -> void:
 	if glow_button_tween and glow_button_tween.is_running():
 		glow_button_tween.kill()
 
+	cur_button.self_modulate = Color.WHITE
 	cur_button = button
 	glow_button_tween = get_tree().create_tween()
 	glow_button_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
