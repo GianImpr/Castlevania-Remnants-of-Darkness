@@ -87,8 +87,8 @@ func _process(delta: float) -> void:
 	#health_glow.visible = HP <= MHP/4
 	#mana_glow.visible = MP < 30 and player.unlocked_magic
 	mana.visible = player.unlocked_magic
-	updateMaxStat(MHP, health)
-	updateMaxStat(MMP, mana)
+	updateMaxStat(MHP, health, delta)
+	updateMaxStat(MMP, mana, delta)
 	updateBodySize()
 	updateHP(delta)
 	updateMP(delta)
@@ -106,7 +106,7 @@ func _process(delta: float) -> void:
 	if Global.player.innocent_devil != null and not Global.screen == Global.ScreenType.TRAINING:
 		id_skill.texture = Global.player.innocent_devil.stats.skills[Global.player.innocent_devil.current_skill].icon
 		updateHearts(delta)
-		updateMaxStat(Global.player.innocent_devil.stats.Stats["MHearts"], hearts, true)
+		updateMaxStat(Global.player.innocent_devil.stats.Stats["MHearts"], hearts, delta, true)
 		updateIDBodySize()
 		checkBlinking(Global.player.innocent_devil.stats.Stats["Hearts"], Global.player.innocent_devil.stats.Stats["MHearts"], hearts, BLINKING_TWEEN.HEARTS, low_Hearts_tint)
 		#heart_glow.visible = Global.player.innocent_devil.stats.Stats["Hearts"] <= Global.player.innocent_devil.stats.Stats["MHearts"]/4
@@ -139,6 +139,8 @@ func updateHPNumber():
 	h_box_container_3.updateHP(Global.player.innocent_devil.stats.Stats["Hearts"], Global.player.innocent_devil.stats.Stats["MHearts"])
 	
 func updateHP(delta):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+		return
 	if health.value < HP*10:
 		health.value = min(HP*10, health.value+ceil(5*MHP*delta))
 		h_box_container.updateHP(int(health.value/10), MHP)
@@ -147,6 +149,9 @@ func updateHP(delta):
 		h_box_container.updateHP(int(health.value/10), MHP)
 		
 func updateMP(delta):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+		return
+
 	match Global.player.stats.equipment["relic"]-1:
 		Relic.Relics.INDIGO_CROSS:
 			low_MP_tint = Color(0, 0.545, 0.898)
@@ -162,6 +167,8 @@ func updateMP(delta):
 func updateGuardHealth() -> void:
 	if Global.player == null:
 		return
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+		return
 	guard_health.visible = Global.player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, Global.player.stats.skill_inventory)
 	var guard_recovery_timer: Timer = Global.player.guard_recovery
 	var guard_hp: float = min(Global.player.stats.Stats["Guard"]+(guard_recovery_timer.wait_time-guard_recovery_timer.time_left)/guard_recovery_timer.wait_time, 3)
@@ -170,6 +177,9 @@ func updateGuardHealth() -> void:
 		guard_health.get_child(i).get_child(0).visible = min(guard_hp-1-i, 1) == 1
 	
 func updateHearts(delta):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+		return
+
 	if hearts.value < Global.player.innocent_devil.stats.Stats["Hearts"]*10:
 		hearts.value = min(Global.player.innocent_devil.stats.Stats["Hearts"]*10, hearts.value+ceil(5*Global.player.innocent_devil.stats.Stats["MHearts"]*delta))
 		h_box_container_3.updateHP(int(hearts.value/10), Global.player.innocent_devil.stats.Stats["MHearts"])
@@ -178,12 +188,18 @@ func updateHearts(delta):
 		h_box_container_3.updateHP(int(hearts.value/10), Global.player.innocent_devil.stats.Stats["MHearts"])
 
 	
-func updateMaxStat(stat, bar, id_stat: bool = false):
-	bar.max_value = max(stat*10, 1)
+func updateMaxStat(stat, bar, delta, id_stat: bool = false):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+		return
+
+	if bar.max_value < stat*10:
+		bar.max_value = min(stat*10, bar.max_value+ceil(stat*5*delta))
+	elif bar.max_value > stat*10:
+		bar.max_value = max(stat*10, bar.max_value-ceil(stat*5*delta))
 	if not id_stat:
-		bar.size.x = BASE_BAR_SIZE*min(lerpf(1, 2.6, float(stat)/999), 2.6)
+		bar.size.x = BASE_BAR_SIZE*min(lerpf(1, 2.6, float(bar.max_value/10)/999), 2.6)
 	else:
-		bar.size.x = ID_BASE_BAR_SIZE*min(lerpf(1, 2.6, float(stat)/999), 2.6)
+		bar.size.x = ID_BASE_BAR_SIZE*min(lerpf(1, 2.6, float(bar.max_value/10)/999), 2.6)
 	
 func updateBodySize():
 	var higher_bar_length = max(health.size.x, mana.size.x)
