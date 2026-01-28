@@ -46,6 +46,7 @@ var MHP
 var MMP
 var MP
 var low_MP_tint: Color
+var cur_low_MP_tint: int
 const low_HP_tint: Color = Color.RED
 const low_Hearts_tint: Color = Color(0.886, 0.0, 0.796)
 var blinking_tweens: Array[Tween] = [null, null, null]
@@ -86,7 +87,7 @@ func _process(delta: float) -> void:
 	MMP = player.stats.Stats["MMP"]
 	#health_glow.visible = HP <= MHP/4
 	#mana_glow.visible = MP < 30 and player.unlocked_magic
-	mana.visible = player.unlocked_magic
+	mana.visible = player.unlocked_magic and Global.player.stats.equipment["relic"] > 0
 	updateMaxStat(MHP, health, delta)
 	updateMaxStat(MMP, mana, delta)
 	updateBodySize()
@@ -149,13 +150,17 @@ func updateHP(delta):
 		h_box_container.updateHP(int(health.value/10), MHP)
 		
 func updateMP(delta):
+	if Global.player.stats.equipment["relic"]-1 != cur_low_MP_tint and blinking_tweens[BLINKING_TWEEN.MP]:
+		cur_low_MP_tint = Global.player.stats.equipment["relic"]-1
+		blinking_tweens[BLINKING_TWEEN.MP].kill()
+		
 	match Global.player.stats.equipment["relic"]-1:
 		Relic.Relics.INDIGO_CROSS:
 			low_MP_tint = Color(0, 0.545, 0.898)
 		Relic.Relics.AGUNIS_LAUREL:
 			low_MP_tint = Color(1, 0.365, 0)
 			
-	mana.texture_progress = mana_colors[max(Global.player.stats.equipment["relic"]-1, 0)]
+	mana.texture_progress = mana_colors[Global.player.stats.equipment["relic"]]
 	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
 		return
 
@@ -234,6 +239,7 @@ func checkBlinking(stat, max_stat, bar: TextureProgressBar, tween_idx: int, colo
 	elif stat > max_stat / 4 and blinking_tweens[tween_idx] != null and blinking_tweens[tween_idx].is_running():
 		blinking_tweens[tween_idx].kill()
 		bar.tint_under = Color.WHITE
+		
 
 ## Updates the weapon icon in the HUD on top of the Focus bar and changes joypad's light color
 ## according to the current weapon type used.

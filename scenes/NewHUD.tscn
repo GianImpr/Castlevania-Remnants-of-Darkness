@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6vlc7pusrdb2" path="res://hud.gd" id="1_nvkqm"]
 [ext_resource type="Texture2D" uid="uid://c0vht0ktmkbou" path="res://assets/sprites/HUD/InGameHUD/MPBars/Mana.png" id="2_2gb11"]
+[ext_resource type="Texture2D" uid="uid://cdehh07kp5jn6" path="res://assets/sprites/HUD/InGameHUD/MPBars/ManaUnequipped.png" id="2_cmfcn"]
 [ext_resource type="Texture2D" uid="uid://barilar23trfo" path="res://assets/sprites/HUD/InGameHUD/MPBars/ManaFire.png" id="3_tnaqy"]
 [ext_resource type="Texture2D" uid="uid://sm2qlbwi6wt7" path="res://assets/sprites/HUD/InGameHUD/New/Body.png" id="4_ulm54"]
 [ext_resource type="Texture2D" uid="uid://o847yl7lsxpe" path="res://assets/sprites/HUD/InGameHUD/Health.png" id="5_cmfcn"]
@@ -520,7 +521,7 @@ offset_bottom = 129.0
 script = ExtResource("1_nvkqm")
 id_level_up_animation = NodePath("IDBars/AnimationPlayer")
 guard_health = NodePath("TextureRect/GuardHealth")
-mana_colors = Array[CompressedTexture2D]([ExtResource("2_2gb11"), ExtResource("3_tnaqy")])
+mana_colors = Array[CompressedTexture2D]([ExtResource("2_cmfcn"), ExtResource("2_2gb11"), ExtResource("3_tnaqy")])
 
 [node name="Body" type="PanelContainer" parent="." unique_id=1861841537]
 layout_mode = 0
