@@ -52,7 +52,7 @@ func _ready() -> void:
 	DialogueBoxTrigger.startDialogue = _startDialogue
 
 func _process(delta: float) -> void:
-	if active and text.visible_characters != -1 and Input.is_action_just_pressed("ui_accept"):
+	if active and text.visible_ratio != 1 and Input.is_action_just_pressed("ui_accept"):
 		text.visible_ratio = 1
 		has_to_release_button = true
 		cursor.visible = true

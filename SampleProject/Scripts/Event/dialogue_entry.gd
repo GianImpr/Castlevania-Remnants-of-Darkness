@@ -3,7 +3,9 @@ class_name Dialogue
 
 enum Character {
 	HECTOR,
-	CARMILLA
+	CARMILLA,
+	TREVOR,
+	JULIA
 }
 
 enum Position {
@@ -13,12 +15,14 @@ enum Position {
 
 const Names = {
 	HECTOR = "Hector", 
-	CARMILLA = "Carmilla"
+	CARMILLA = "Carmilla",
+	TREVOR = "Trevor"
 }
 
 const Sprites = {
 	HECTOR = "res://assets/sprites/HUD/Faces/Hector/HalfBody.png",
-	CARMILLA = "res://assets/sprites/HUD/Faces/Carmilla/HalfBody.png"
+	CARMILLA = "res://assets/sprites/HUD/Faces/Carmilla/HalfBody.png",
+	TREVOR = "res://assets/sprites/HUD/Faces/Trevor/HalfBody.png"
 }
 
 enum Emotions {
