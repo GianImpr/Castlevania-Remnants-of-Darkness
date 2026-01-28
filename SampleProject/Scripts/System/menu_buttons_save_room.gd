@@ -90,6 +90,7 @@ func warp():
 
 	
 func _exitMenu():
+	get_viewport().gui_release_focus()
 	closeWindow()
 	await animation.animation_finished
 	resumeGame()

@@ -1,24 +1,24 @@
-[gd_scene load_steps=76 format=3 uid="uid://dp5hxkqh3r2d1"]
+[gd_scene format=3 uid="uid://dp5hxkqh3r2d1"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/save_room_menu.gd" id="1_0kbg0"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/MenuButtons.gd" id="2_ga5p6"]
+[ext_resource type="Script" uid="uid://tndkdrww5ck1" path="res://SampleProject/Scripts/System/Menu/save_room_menu.gd" id="1_0kbg0"]
+[ext_resource type="Script" uid="uid://jg6jw4e4n33d" path="res://SampleProject/Scripts/MenuButtons.gd" id="2_ga5p6"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="2_hg7qs"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_buttons_save_room.gd" id="3_abqqg"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_1w6yx"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_wbt3t"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_gcdub"]
+[ext_resource type="Script" uid="uid://d2nfthm7yt6ap" path="res://SampleProject/Scripts/System/menu_buttons_save_room.gd" id="3_abqqg"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_1w6yx"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_wbt3t"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_gcdub"]
 [ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="7_oka46"]
 [ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="8_q7nu8"]
 [ext_resource type="AudioStream" uid="uid://8ki0ee60uegc" path="res://assets/sounds/Menu/Denied.MP3" id="9_63qly"]
 [ext_resource type="AudioStream" uid="uid://k0xc30ehu3h8" path="res://assets/sounds/Menu/HPItem.MP3" id="10_827hi"]
 [ext_resource type="AudioStream" uid="uid://bk3yytbku0xg2" path="res://assets/sounds/Menu/PopUp.MP3" id="12_3shgo"]
-[ext_resource type="Script" path="res://SampleProject/extra_scenes/save_screen.gd" id="12_lguvn"]
+[ext_resource type="Script" uid="uid://nkewmt6p1vo3" path="res://SampleProject/extra_scenes/save_screen.gd" id="12_lguvn"]
 [ext_resource type="Texture2D" uid="uid://c08sind7c7n8c" path="res://assets/sprites/HUD/Faces/Hector/HalfBody.png" id="14_uuo22"]
 [ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="15_q3r37"]
 [ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="16_sbk3e"]
 [ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="17_4p3kx"]
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="18_pyfyu"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/warp_screen.gd" id="19_li0op"]
+[ext_resource type="Script" uid="uid://ddhqrwm8juyjr" path="res://SampleProject/Scripts/System/warp_screen.gd" id="19_li0op"]
 
 [sub_resource type="Theme" id="Theme_21ors"]
 default_font = ExtResource("2_hg7qs")
@@ -143,9 +143,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e20sr"]
 _data = {
-"RESET": SubResource("Animation_mu7pr"),
-"appear": SubResource("Animation_xrtdc"),
-"appear_without_reset": SubResource("Animation_08es6")
+&"RESET": SubResource("Animation_mu7pr"),
+&"appear": SubResource("Animation_xrtdc"),
+&"appear_without_reset": SubResource("Animation_08es6")
 }
 
 [sub_resource type="Resource" id="Resource_oqor7"]
@@ -529,12 +529,12 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ww74"]
 _data = {
-"RESET": SubResource("Animation_ilct6"),
-"appear": SubResource("Animation_4tgns"),
-"disappear": SubResource("Animation_qkv4d"),
-"disappear_save": SubResource("Animation_efwts"),
-"disappear_to_title": SubResource("Animation_y02sj"),
-"save_disappear": SubResource("Animation_36mlo")
+&"RESET": SubResource("Animation_ilct6"),
+&"appear": SubResource("Animation_4tgns"),
+&"disappear": SubResource("Animation_qkv4d"),
+&"disappear_save": SubResource("Animation_efwts"),
+&"disappear_to_title": SubResource("Animation_y02sj"),
+&"save_disappear": SubResource("Animation_36mlo")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ymsfj"]
@@ -586,17 +586,17 @@ default_font_size = 32
 [sub_resource type="Theme" id="Theme_lpxtf"]
 default_font = ExtResource("2_hg7qs")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u3gae"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_we522"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1li0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_we522"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u3gae"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_javhb"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_it1ve"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1nl4t"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_it1ve"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_javhb"]
 
 [sub_resource type="Theme" id="Theme_egbe3"]
 default_font = ExtResource("2_hg7qs")
@@ -616,16 +616,16 @@ texture_margin_bottom = 20.0
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j8uc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lgjjw"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k0vf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5etxh"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xybcs"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5etxh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k0vf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lgjjw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_un4e5"]
 
@@ -662,8 +662,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6f5xd"]
 _data = {
-"RESET": SubResource("Animation_if2xp"),
-"ask_confirm": SubResource("Animation_c7sfr")
+&"RESET": SubResource("Animation_if2xp"),
+&"ask_confirm": SubResource("Animation_c7sfr")
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1f42"]
@@ -871,19 +871,19 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a3ufm"]
 _data = {
-"RESET": SubResource("Animation_7v4wm"),
-"appear": SubResource("Animation_n1yyj"),
-"disappear": SubResource("Animation_reqa2")
+&"RESET": SubResource("Animation_7v4wm"),
+&"appear": SubResource("Animation_n1yyj"),
+&"disappear": SubResource("Animation_reqa2")
 }
 
-[node name="InGameMenu" type="CanvasLayer" node_paths=PackedStringArray("default_button", "warp_button", "animation")]
+[node name="InGameMenu" type="CanvasLayer" unique_id=2044090097 node_paths=PackedStringArray("default_button", "warp_button", "animation")]
 process_mode = 4
 script = ExtResource("1_0kbg0")
 default_button = NodePath("PanelContainer/MenuButtons/Save")
 warp_button = NodePath("PanelContainer/MenuButtons/Warp")
 animation = NodePath("AnimationPlayer")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1253549819]
 offset_left = 362.0
 offset_top = 162.0
 offset_right = 764.0
@@ -892,11 +892,11 @@ scale = Vector2(1, 1e-05)
 theme = SubResource("Theme_21ors")
 theme_override_styles/panel = SubResource("StyleBoxFlat_85b6g")
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer" unique_id=1300600448]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_bg00p")
 
-[node name="MenuButtons" type="VBoxContainer" parent="PanelContainer" node_paths=PackedStringArray("animation", "saving_screen", "warp_screen", "default_button", "sound")]
+[node name="MenuButtons" type="VBoxContainer" parent="PanelContainer" unique_id=1124426585 node_paths=PackedStringArray("animation", "saving_screen", "warp_screen", "default_button", "sound")]
 layout_mode = 2
 script = ExtResource("3_abqqg")
 animation = NodePath("../../AnimationPlayer")
@@ -907,14 +907,14 @@ button_glow = SubResource("StyleBoxFlat_u1jjp")
 sound = NodePath("../../PolyphonicMenuAudio")
 stateless = true
 
-[node name="Save" type="Button" parent="PanelContainer/MenuButtons"]
+[node name="Save" type="Button" parent="PanelContainer/MenuButtons" unique_id=593229540]
 layout_mode = 2
 action_mode = 0
 text = "SAVE_GAME_BUTTON"
 flat = true
 script = ExtResource("2_ga5p6")
 
-[node name="Warp" type="Button" parent="PanelContainer/MenuButtons"]
+[node name="Warp" type="Button" parent="PanelContainer/MenuButtons" unique_id=1923101576]
 layout_mode = 2
 disabled = true
 action_mode = 0
@@ -922,26 +922,24 @@ text = "? ? ?"
 flat = true
 script = ExtResource("2_ga5p6")
 
-[node name="Exit" type="Button" parent="PanelContainer/MenuButtons"]
+[node name="Exit" type="Button" parent="PanelContainer/MenuButtons" unique_id=277495298]
 layout_mode = 2
 action_mode = 0
 text = "EXIT_SAVE_BUTTON"
 flat = true
 script = ExtResource("2_ga5p6")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_e20sr")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2104727005]
+libraries/ = SubResource("AnimationLibrary_e20sr")
 
-[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="." unique_id=134977750]
 volume_db = -80.0
 max_polyphony = 5
 bus = &"SFX"
 script = ExtResource("4_1w6yx")
 audio_library = SubResource("Resource_f55ah")
 
-[node name="SaveScreen" type="Control" parent="." node_paths=PackedStringArray("confirm_panel_animation", "confirm_panel", "save_slots", "displayed_slot_data", "animation", "sound", "file_HP", "file_LV", "file_GOLD", "file_playtime", "file_map_completion", "file_current_stage", "file_character", "file_name")]
+[node name="SaveScreen" type="Control" parent="." unique_id=65416244 node_paths=PackedStringArray("confirm_panel_animation", "confirm_panel", "save_slots", "displayed_slot_data", "animation", "sound", "file_HP", "file_LV", "file_GOLD", "file_playtime", "file_map_completion", "file_current_stage", "file_character", "file_name")]
 process_mode = 4
 modulate = Color(0, 0, 0, 0)
 layout_mode = 3
@@ -967,12 +965,10 @@ file_current_stage = NodePath("Description/CurrentLocation")
 file_character = NodePath("Description/Character")
 file_name = NodePath("Description/Name")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SaveScreen"]
-libraries = {
-"": SubResource("AnimationLibrary_4ww74")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SaveScreen" unique_id=1237539295]
+libraries/ = SubResource("AnimationLibrary_4ww74")
 
-[node name="DescriptionPanel" type="PanelContainer" parent="SaveScreen"]
+[node name="DescriptionPanel" type="PanelContainer" parent="SaveScreen" unique_id=465203870]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 362.0
@@ -980,13 +976,12 @@ offset_right = 852.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ymsfj")
 
-[node name="Description" type="Control" parent="SaveScreen"]
-layout_mode = 3
+[node name="Description" type="Control" parent="SaveScreen" unique_id=486723913]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Character" type="TextureRect" parent="SaveScreen/Description"]
+[node name="Character" type="TextureRect" parent="SaveScreen/Description" unique_id=92009902]
 z_index = 1
 texture_filter = 6
 layout_mode = 0
@@ -998,7 +993,7 @@ scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_6ssan")
 expand_mode = 3
 
-[node name="Name" type="Label" parent="SaveScreen/Description"]
+[node name="Name" type="Label" parent="SaveScreen/Description" unique_id=817500130]
 z_index = 1
 layout_mode = 0
 offset_left = 135.0
@@ -1011,7 +1006,7 @@ theme_override_constants/outline_size = 8
 text = "Shüan"
 autowrap_mode = 3
 
-[node name="HPValue" type="Label" parent="SaveScreen/Description"]
+[node name="HPValue" type="Label" parent="SaveScreen/Description" unique_id=691850503]
 z_index = 1
 layout_mode = 0
 offset_left = 284.0
@@ -1025,7 +1020,7 @@ text = "262"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="GoldValue" type="Label" parent="SaveScreen/Description"]
+[node name="GoldValue" type="Label" parent="SaveScreen/Description" unique_id=580389800]
 z_index = 1
 layout_mode = 0
 offset_left = 432.0
@@ -1039,7 +1034,7 @@ text = "1024"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="LVValue" type="Label" parent="SaveScreen/Description"]
+[node name="LVValue" type="Label" parent="SaveScreen/Description" unique_id=550693644]
 z_index = 1
 layout_mode = 0
 offset_left = 167.0
@@ -1053,7 +1048,7 @@ text = "10"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="MAPValue" type="Label" parent="SaveScreen/Description"]
+[node name="MAPValue" type="Label" parent="SaveScreen/Description" unique_id=1016605807]
 z_index = 1
 layout_mode = 0
 offset_left = 741.0
@@ -1067,7 +1062,7 @@ text = "9.25%"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="TimeValue" type="Label" parent="SaveScreen/Description"]
+[node name="TimeValue" type="Label" parent="SaveScreen/Description" unique_id=1897467876]
 z_index = 1
 layout_mode = 0
 offset_left = 416.0
@@ -1081,7 +1076,7 @@ text = "0:18:36"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="CurrentLocation" type="Label" parent="SaveScreen/Description"]
+[node name="CurrentLocation" type="Label" parent="SaveScreen/Description" unique_id=162426991]
 z_index = 1
 layout_mode = 0
 offset_left = 534.0
@@ -1095,7 +1090,7 @@ text = "Abandoned Monastery"
 horizontal_alignment = 2
 autowrap_mode = 3
 
-[node name="HPLabel" type="Label" parent="SaveScreen/Description"]
+[node name="HPLabel" type="Label" parent="SaveScreen/Description" unique_id=1004402552]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -1107,13 +1102,13 @@ theme = SubResource("Theme_l2gmd")
 text = "HP_STAT"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SaveScreen/Description/HPLabel"]
+[node name="TextureRect" type="TextureRect" parent="SaveScreen/Description/HPLabel" unique_id=583803330]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_yayud")
 
-[node name="LVLabel" type="Label" parent="SaveScreen/Description"]
+[node name="LVLabel" type="Label" parent="SaveScreen/Description" unique_id=1510837185]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -1124,13 +1119,13 @@ theme = SubResource("Theme_l2gmd")
 text = "MENU_LV"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SaveScreen/Description/LVLabel"]
+[node name="TextureRect" type="TextureRect" parent="SaveScreen/Description/LVLabel" unique_id=830874547]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_yayud")
 
-[node name="GOLDLabel" type="Label" parent="SaveScreen/Description"]
+[node name="GOLDLabel" type="Label" parent="SaveScreen/Description" unique_id=1587279227]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -1142,13 +1137,13 @@ theme = SubResource("Theme_l2gmd")
 text = "MENU_GOLD"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SaveScreen/Description/GOLDLabel"]
+[node name="TextureRect" type="TextureRect" parent="SaveScreen/Description/GOLDLabel" unique_id=30435658]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_yayud")
 
-[node name="TimeLabel" type="Label" parent="SaveScreen/Description"]
+[node name="TimeLabel" type="Label" parent="SaveScreen/Description" unique_id=257851638]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -1160,13 +1155,13 @@ theme = SubResource("Theme_l2gmd")
 text = "MENU_TIME"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SaveScreen/Description/TimeLabel"]
+[node name="TextureRect" type="TextureRect" parent="SaveScreen/Description/TimeLabel" unique_id=367182891]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_yayud")
 
-[node name="MAPLabel" type="Label" parent="SaveScreen/Description"]
+[node name="MAPLabel" type="Label" parent="SaveScreen/Description" unique_id=422430866]
 clip_children = 1
 texture_filter = 2
 layout_mode = 0
@@ -1178,36 +1173,36 @@ theme = SubResource("Theme_l2gmd")
 text = "MENU_MAP_RATIO"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SaveScreen/Description/MAPLabel"]
+[node name="TextureRect" type="TextureRect" parent="SaveScreen/Description/MAPLabel" unique_id=1098994613]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_yayud")
 
-[node name="PanelContainer" type="PanelContainer" parent="SaveScreen"]
-layout_mode = 2
+[node name="PanelContainer" type="PanelContainer" parent="SaveScreen" unique_id=539923933]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 52.0
 offset_right = 852.0
 offset_bottom = 350.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_dcosx")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="SaveScreen/PanelContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="SaveScreen/PanelContainer" unique_id=899241840]
 layout_mode = 2
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer" unique_id=311519257]
 layout_mode = 2
 
-[node name="Slot1" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot1" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=428756595]
 modulate = Color(1, 1, 0, 1)
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot1" unique_id=570737277]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1215,24 +1210,24 @@ theme_override_constants/outline_size = 8
 text = "1"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot1"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot1" unique_id=1765718178]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot2" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot2" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=232977810]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot2" unique_id=2083395073]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1240,24 +1235,24 @@ theme_override_constants/outline_size = 8
 text = "2"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot2"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot2" unique_id=322970597]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot3" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot3" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=2104225509]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot3" unique_id=158837027]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1265,24 +1260,24 @@ theme_override_constants/outline_size = 8
 text = "3"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot3"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot3" unique_id=2080643363]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot4" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot4" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=625517757]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot4" unique_id=1647972921]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1290,24 +1285,24 @@ theme_override_constants/outline_size = 8
 text = "4"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot4"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot4" unique_id=959412684]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot5" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot5" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=194732493]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot5" unique_id=1527084314]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1315,24 +1310,24 @@ theme_override_constants/outline_size = 8
 text = "5"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot5"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot5" unique_id=968651080]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot6" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot6" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=813594437]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot6" unique_id=1078678402]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1340,24 +1335,24 @@ theme_override_constants/outline_size = 8
 text = "6"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot6"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot6" unique_id=891294391]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot7" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot7" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1226356258]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot7" unique_id=643861411]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1365,24 +1360,24 @@ theme_override_constants/outline_size = 8
 text = "7"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot7"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot7" unique_id=1624020810]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot8" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot8" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=594811484]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot8" unique_id=1221271038]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1390,24 +1385,24 @@ theme_override_constants/outline_size = 8
 text = "8"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot8"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot8" unique_id=1580610626]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot9" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot9" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=439170931]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot9" unique_id=1232251010]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1415,24 +1410,24 @@ theme_override_constants/outline_size = 8
 text = "9"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot9"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot9" unique_id=181424448]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot10" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot10" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=2069073236]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot10" unique_id=1525842109]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1440,24 +1435,24 @@ theme_override_constants/outline_size = 8
 text = "10"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot10"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot10" unique_id=57976515]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot11" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot11" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=2097974260]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot11" unique_id=1169832425]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1465,24 +1460,24 @@ theme_override_constants/outline_size = 8
 text = "11"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot11"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot11" unique_id=698604429]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot12" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot12" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=725522425]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot12" unique_id=1462513448]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1490,24 +1485,24 @@ theme_override_constants/outline_size = 8
 text = "12"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot12"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot12" unique_id=988671310]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_javhb")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_1nl4t")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_it1ve")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1nl4t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_javhb")
 text = "Empty"
 flat = true
 
-[node name="Slot13" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot13" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=864329909]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot13" unique_id=903068001]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1515,24 +1510,24 @@ theme_override_constants/outline_size = 8
 text = "13"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot13"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot13" unique_id=2007859158]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot14" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot14" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1881733879]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot14" unique_id=892097397]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1540,24 +1535,24 @@ theme_override_constants/outline_size = 8
 text = "14"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot14"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot14" unique_id=1398774098]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="Slot15" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="Slot15" type="HBoxContainer" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer" unique_id=1820691165]
 modulate = Color(0.31, 0.31, 0.31, 1)
 show_behind_parent = true
 layout_mode = 2
 theme = SubResource("Theme_wklx2")
 theme_override_constants/separation = 20
 
-[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
+[node name="ID" type="Label" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot15" unique_id=237882660]
 custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 theme = SubResource("Theme_djnin")
@@ -1565,17 +1560,17 @@ theme_override_constants/outline_size = 8
 text = "15"
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot15"]
+[node name="Button" type="Button" parent="SaveScreen/PanelContainer/ScrollContainer/VBoxContainer/Slot15" unique_id=1377098479]
 layout_mode = 2
 theme = SubResource("Theme_lpxtf")
 theme_override_constants/outline_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_we522")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n1li0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u3gae")
 text = "Empty"
 flat = true
 
-[node name="ConfirmPanel" type="PanelContainer" parent="SaveScreen"]
+[node name="ConfirmPanel" type="PanelContainer" parent="SaveScreen" unique_id=1217437409]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1589,58 +1584,56 @@ scale = Vector2(1e-05, 1e-05)
 theme = SubResource("Theme_egbe3")
 theme_override_styles/panel = SubResource("StyleBoxTexture_njl70")
 
-[node name="LabelAndButtons" type="VBoxContainer" parent="SaveScreen/ConfirmPanel"]
+[node name="LabelAndButtons" type="VBoxContainer" parent="SaveScreen/ConfirmPanel" unique_id=1248147269]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SaveScreen/ConfirmPanel/LabelAndButtons"]
+[node name="Label" type="Label" parent="SaveScreen/ConfirmPanel/LabelAndButtons" unique_id=1164276300]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "CONFIRM_SAVE_LABEL"
 horizontal_alignment = 1
 
-[node name="ConfirmOptions" type="PanelContainer" parent="SaveScreen/ConfirmPanel/LabelAndButtons"]
+[node name="ConfirmOptions" type="PanelContainer" parent="SaveScreen/ConfirmPanel/LabelAndButtons" unique_id=391872905]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5j8uc")
 
-[node name="Options" type="VBoxContainer" parent="SaveScreen/ConfirmPanel/LabelAndButtons/ConfirmOptions"]
+[node name="Options" type="VBoxContainer" parent="SaveScreen/ConfirmPanel/LabelAndButtons/ConfirmOptions" unique_id=1616846456]
 layout_mode = 2
 
-[node name="Yes" type="Button" parent="SaveScreen/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
+[node name="Yes" type="Button" parent="SaveScreen/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options" unique_id=1231554259]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../No")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../No")
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_lgjjw")
-theme_override_styles/hover = SubResource("StyleBoxFlat_3k0vf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xybcs")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5etxh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xybcs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3k0vf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lgjjw")
 action_mode = 0
 text = "YES_BUTTON"
 flat = true
 
-[node name="No" type="Button" parent="SaveScreen/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options"]
+[node name="No" type="Button" parent="SaveScreen/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options" unique_id=1573802160]
 layout_mode = 2
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Yes")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Yes")
 theme_override_colors/font_focus_color = Color(1, 0.733333, 0, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_un4e5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xybcs")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xybcs")
 theme_override_styles/normal = SubResource("StyleBoxFlat_xybcs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xybcs")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xybcs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_un4e5")
 action_mode = 0
 text = "NO_BUTTON"
 flat = true
 
-[node name="ConfirmAnimation" type="AnimationPlayer" parent="SaveScreen/ConfirmPanel"]
-libraries = {
-"": SubResource("AnimationLibrary_6f5xd")
-}
+[node name="ConfirmAnimation" type="AnimationPlayer" parent="SaveScreen/ConfirmPanel" unique_id=280556878]
+libraries/ = SubResource("AnimationLibrary_6f5xd")
 
-[node name="WarpScreen" type="Control" parent="." node_paths=PackedStringArray("sound", "panel", "animation", "preview")]
+[node name="WarpScreen" type="Control" parent="." unique_id=729817666 node_paths=PackedStringArray("sound", "panel", "animation", "preview")]
 process_mode = 4
 layout_mode = 3
 anchors_preset = 0
@@ -1652,7 +1645,7 @@ panel = NodePath("Destinations/ScrollContainer/VBoxContainer")
 animation = NodePath("AnimationPlayer")
 preview = NodePath("Preview/TextureRect")
 
-[node name="Destinations" type="PanelContainer" parent="WarpScreen"]
+[node name="Destinations" type="PanelContainer" parent="WarpScreen" unique_id=1016626569]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 374.0
@@ -1662,14 +1655,14 @@ offset_bottom = 400.0
 theme = SubResource("Theme_21ors")
 theme_override_styles/panel = SubResource("StyleBoxTexture_i1f42")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="WarpScreen/Destinations"]
+[node name="ScrollContainer" type="ScrollContainer" parent="WarpScreen/Destinations" unique_id=783809668]
 layout_mode = 2
 follow_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="WarpScreen/Destinations/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="WarpScreen/Destinations/ScrollContainer" unique_id=1606326634]
 layout_mode = 2
 
-[node name="Preview" type="PanelContainer" parent="WarpScreen"]
+[node name="Preview" type="PanelContainer" parent="WarpScreen" unique_id=867918088]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 79.0
@@ -1679,14 +1672,12 @@ offset_bottom = 336.0
 theme = SubResource("Theme_21ors")
 theme_override_styles/panel = SubResource("StyleBoxTexture_6oaaq")
 
-[node name="TextureRect" type="TextureRect" parent="WarpScreen/Preview"]
+[node name="TextureRect" type="TextureRect" parent="WarpScreen/Preview" unique_id=975535198]
 layout_mode = 2
 expand_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="WarpScreen"]
-libraries = {
-"": SubResource("AnimationLibrary_a3ufm")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WarpScreen" unique_id=2085820249]
+libraries/ = SubResource("AnimationLibrary_a3ufm")
 
 [connection signal="focus_entered" from="SaveScreen/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/Yes" to="SaveScreen" method="_on_focused"]
 [connection signal="pressed" from="SaveScreen/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/Yes" to="SaveScreen" method="_on_yes_pressed"]
