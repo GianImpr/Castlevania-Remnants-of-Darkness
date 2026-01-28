@@ -346,10 +346,13 @@ func load_game():
 		
 	if player.sprite.weapon != null:
 		player.sprite.weapon.queue_free()
+		
+	Global.HUD.initialize_bars_instantly = 4
 	
 	if player.summoned_innocent_devil_id >= 0:
 		if player.innocent_devil != null:
 			player.innocent_devil.free()
+		Global.HUD.initialize_bars_instantly += 2
 		player.innocent_devil_scene = player.innocent_devil_pocket[player.summoned_innocent_devil_id].innocent_devil_scene
 		player.innocent_devil = player.innocent_devil_scene.instantiate()
 		player.innocent_devil_pocket[player.summoned_innocent_devil_id].applyStats(player.innocent_devil)

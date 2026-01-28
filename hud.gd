@@ -51,6 +51,7 @@ const low_HP_tint: Color = Color.RED
 const low_Hearts_tint: Color = Color(0.886, 0.0, 0.796)
 var blinking_tweens: Array[Tween] = [null, null, null]
 var fog_tween: Tween
+var initialize_bars_instantly: int = 0
 
 enum BLINKING_TWEEN {
 	HP,
@@ -106,8 +107,8 @@ func _process(delta: float) -> void:
 
 	if Global.player.innocent_devil != null and not Global.screen == Global.ScreenType.TRAINING:
 		id_skill.texture = Global.player.innocent_devil.stats.skills[Global.player.innocent_devil.current_skill].icon
-		updateHearts(delta)
 		updateMaxStat(Global.player.innocent_devil.stats.Stats["MHearts"], hearts, delta, true)
+		updateHearts(delta)
 		updateIDBodySize()
 		checkBlinking(Global.player.innocent_devil.stats.Stats["Hearts"], Global.player.innocent_devil.stats.Stats["MHearts"], hearts, BLINKING_TWEEN.HEARTS, low_Hearts_tint)
 		#heart_glow.visible = Global.player.innocent_devil.stats.Stats["Hearts"] <= Global.player.innocent_devil.stats.Stats["MHearts"]/4
@@ -142,6 +143,13 @@ func updateHPNumber():
 func updateHP(delta):
 	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
 		return
+		
+	if initialize_bars_instantly:
+		health.value = HP*10
+		h_box_container.updateHP(int(health.value/10), MHP)
+		initialize_bars_instantly -= 1
+		return
+		
 	if health.value < HP*10:
 		health.value = min(HP*10, health.value+ceil(5*MHP*delta))
 		h_box_container.updateHP(int(health.value/10), MHP)
@@ -162,6 +170,11 @@ func updateMP(delta):
 			
 	mana.texture_progress = mana_colors[Global.player.stats.equipment["relic"]]
 	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+		return
+		
+	if initialize_bars_instantly:
+		mana.value = MP*10
+		initialize_bars_instantly -= 1
 		return
 
 	if mana.value < MP*10:
@@ -184,6 +197,12 @@ func updateGuardHealth() -> void:
 func updateHearts(delta):
 	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
 		return
+		
+	if initialize_bars_instantly:
+		hearts.value = Global.player.innocent_devil.stats.Stats["Hearts"]*10
+		h_box_container_3.updateHP(int(hearts.value/10), Global.player.innocent_devil.stats.Stats["MHearts"])
+		initialize_bars_instantly -= 1
+		return
 
 	if hearts.value < Global.player.innocent_devil.stats.Stats["Hearts"]*10:
 		hearts.value = min(Global.player.innocent_devil.stats.Stats["Hearts"]*10, hearts.value+ceil(5*Global.player.innocent_devil.stats.Stats["MHearts"]*delta))
@@ -195,6 +214,11 @@ func updateHearts(delta):
 	
 func updateMaxStat(stat, bar, delta, id_stat: bool = false):
 	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+		return
+		
+	if initialize_bars_instantly > 0:
+		bar.max_value = max(stat*10, 1)
+		initialize_bars_instantly -= 1
 		return
 
 	if bar.max_value < stat*10:
