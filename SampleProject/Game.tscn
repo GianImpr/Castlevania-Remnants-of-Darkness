@@ -1,4 +1,4 @@
-[gd_scene load_steps=623 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" uid="uid://bi427jhyxfyx5" path="res://SampleProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="Script" uid="uid://1vp87s3hhyhn" path="res://SampleProject/Scripts/System/weapon.gd" id="2_6ajcc"]
@@ -3186,12 +3186,11 @@ glow_levels/2 = 1.0
 glow_levels/4 = 1.0
 glow_levels/6 = 1.0
 glow_levels/7 = 1.0
-glow_blend_mode = 1
 fog_mode = 1
 fog_density = 1.0
 adjustment_enabled = true
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("animation", "world_environment")]
+[node name="Game" type="Node2D" unique_id=2094542193 node_paths=PackedStringArray("animation", "world_environment")]
 script = ExtResource("1_xdpfu")
 animation = NodePath("AnimationPlayer")
 difficulty = 1
@@ -3232,19 +3231,19 @@ save_rooms = Array[Dictionary]([{
 element_icons = Array[CompressedTexture2D]([ExtResource("216_wblab"), ExtResource("217_gdkcj"), ExtResource("218_xw0ho"), ExtResource("219_m5fjj"), ExtResource("220_vyah2"), ExtResource("221_n18wm"), ExtResource("222_p6otc"), ExtResource("222_t1r3v"), ExtResource("223_p32iy"), ExtResource("224_b3tfu"), ExtResource("225_v5wqb"), ExtResource("226_krr36")])
 starting_map = "FirstLevel/Woods.tscn"
 
-[node name="Player" parent="." instance=ExtResource("5_81k16")]
+[node name="Player" parent="." unique_id=2045510482 instance=ExtResource("5_81k16")]
 z_index = 5
 position = Vector2(360, 400)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=887735576]
 process_callback = 0
 drag_vertical_enabled = true
 drag_vertical_offset = 0.39
 script = ExtResource("3_mx3v0")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=69459301]
 
-[node name="Minimap" parent="UI" instance=ExtResource("3_a3gfy")]
+[node name="Minimap" parent="UI" unique_id=1316997910 instance=ExtResource("3_a3gfy")]
 unique_name_in_owner = true
 z_index = 8
 anchors_preset = 1
@@ -3259,7 +3258,7 @@ scale = Vector2(0.5, 0.5)
 display_player_location = true
 area = Vector2i(7, 7)
 
-[node name="Background" type="Panel" parent="UI/Minimap"]
+[node name="Background" type="Panel" parent="UI/Minimap" unique_id=89531614]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -3268,7 +3267,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapWindow" type="Panel" parent="UI" node_paths=PackedStringArray("sound", "stage_name")]
+[node name="MapWindow" type="Panel" parent="UI" unique_id=1202555402 node_paths=PackedStringArray("sound", "stage_name")]
 process_mode = 3
 visible = false
 z_index = 11
@@ -3289,7 +3288,7 @@ script = SubResource("GDScript_u7odr")
 sound = NodePath("MapSound")
 stage_name = NodePath("StageName")
 
-[node name="Percent" type="Label" parent="UI/MapWindow"]
+[node name="Percent" type="Label" parent="UI/MapWindow" unique_id=2102450162]
 layout_mode = 0
 offset_left = 749.0
 offset_top = 5.0
@@ -3299,7 +3298,7 @@ theme = SubResource("Theme_j0fso")
 text = "9%"
 script = SubResource("GDScript_66suq")
 
-[node name="StageName" type="Label" parent="UI/MapWindow"]
+[node name="StageName" type="Label" parent="UI/MapWindow" unique_id=128371481]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = 5
@@ -3316,28 +3315,28 @@ theme_override_constants/shadow_offset_y = 2
 text = "Abandoned Monastery"
 horizontal_alignment = 1
 
-[node name="MapSound" type="AudioStreamPlayer" parent="UI/MapWindow"]
+[node name="MapSound" type="AudioStreamPlayer" parent="UI/MapWindow" unique_id=386208450]
 process_mode = 3
 volume_db = -10.0
 bus = &"SFX"
 script = ExtResource("7_ip71q")
 audio_library = SubResource("Resource_k7wl7")
 
-[node name="HUD2" parent="UI" instance=ExtResource("257_30jyd")]
+[node name="HUD2" parent="UI" unique_id=250061 instance=ExtResource("257_30jyd")]
 
-[node name="ItemBox" parent="UI" instance=ExtResource("7_11rec")]
+[node name="ItemBox" parent="UI" unique_id=798629577 instance=ExtResource("7_11rec")]
 offset_left = 16.0
 offset_top = 424.0
 offset_right = 16.0
 offset_bottom = 424.0
 
-[node name="EnemyBox" parent="UI" instance=ExtResource("13_uka3k")]
+[node name="EnemyBox" parent="UI" unique_id=1984694917 instance=ExtResource("13_uka3k")]
 offset_left = -16.0
 offset_top = 424.0
 offset_right = -448.0
 offset_bottom = 184.0
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="UI"]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="UI" unique_id=1200797640]
 process_mode = 3
 stream = SubResource("AudioStreamPolyphonic_00yi7")
 volume_db = -27.0
@@ -3347,9 +3346,9 @@ script = ExtResource("8_385te")
 audio_library = SubResource("Resource_8tj7q")
 custom_max_polyphony = 1
 
-[node name="HintBox" parent="UI" instance=ExtResource("12_nov2h")]
+[node name="HintBox" parent="UI" unique_id=398133010 instance=ExtResource("12_nov2h")]
 
-[node name="FadeScreen" type="TextureRect" parent="UI" node_paths=PackedStringArray("animation")]
+[node name="FadeScreen" type="TextureRect" parent="UI" unique_id=703463433 node_paths=PackedStringArray("animation")]
 process_mode = 3
 modulate = Color(1, 1, 1, 0)
 z_index = 10
@@ -3359,12 +3358,10 @@ texture = SubResource("GradientTexture1D_xll01")
 script = ExtResource("13_voup6")
 animation = NodePath("AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/FadeScreen"]
-libraries = {
-&"": SubResource("AnimationLibrary_h86rj")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/FadeScreen" unique_id=987974006]
+libraries/ = SubResource("AnimationLibrary_h86rj")
 
-[node name="TotalFadeScreen" type="TextureRect" parent="UI"]
+[node name="TotalFadeScreen" type="TextureRect" parent="UI" unique_id=119560641]
 process_mode = 3
 self_modulate = Color(1, 1, 1, 0)
 z_index = 99
@@ -3373,31 +3370,31 @@ offset_bottom = 483.0
 texture = SubResource("GradientTexture1D_xll01")
 script = ExtResource("268_2rw2m")
 
-[node name="StagePresentation" parent="UI" instance=ExtResource("16_yvhsl")]
+[node name="StagePresentation" parent="UI" unique_id=1336323715 instance=ExtResource("16_yvhsl")]
 
-[node name="TutorialScreen" parent="UI" instance=ExtResource("20_ra60k")]
+[node name="TutorialScreen" parent="UI" unique_id=154992535 instance=ExtResource("20_ra60k")]
 
-[node name="Dialogue" parent="UI" instance=ExtResource("149_om524")]
+[node name="Dialogue" parent="UI" unique_id=376195970 instance=ExtResource("149_om524")]
 z_index = 30
 dialogue_test = Array[ExtResource("107_o0dwx")]([SubResource("Resource_csyar"), SubResource("Resource_nuqqm"), SubResource("Resource_o1h1j"), SubResource("Resource_55rnv"), SubResource("Resource_2wus2"), SubResource("Resource_bqaak"), SubResource("Resource_jrgt6"), SubResource("Resource_gx1rt"), SubResource("Resource_u1nhv"), SubResource("Resource_v57uc"), SubResource("Resource_eyf3w"), SubResource("Resource_yuuna"), SubResource("Resource_pl4eo"), SubResource("Resource_ql2g5"), SubResource("Resource_b1cpc"), SubResource("Resource_yuqnq"), SubResource("Resource_ycdkt"), SubResource("Resource_bft1l"), SubResource("Resource_abke8"), SubResource("Resource_3qvv1"), SubResource("Resource_nlgtf"), SubResource("Resource_7kcsh"), SubResource("Resource_mqejh"), SubResource("Resource_jnrv7"), SubResource("Resource_utlr2"), SubResource("Resource_lc0k7"), SubResource("Resource_hfyhw"), SubResource("Resource_a0e3l"), SubResource("Resource_l4h0p"), SubResource("Resource_15a3r"), SubResource("Resource_4neaj"), SubResource("Resource_2o2y2"), SubResource("Resource_bx3e7"), SubResource("Resource_tsqkx"), SubResource("Resource_7l514"), SubResource("Resource_8x8d0"), SubResource("Resource_upl0l"), SubResource("Resource_awl76"), SubResource("Resource_ni2ni"), SubResource("Resource_ue3r3"), SubResource("Resource_67xnv"), SubResource("Resource_j1ehq"), SubResource("Resource_ispcp")])
 
-[node name="WeaponWheel" parent="UI" instance=ExtResource("164_3jxay")]
+[node name="WeaponWheel" parent="UI" unique_id=1685314891 instance=ExtResource("164_3jxay")]
 
-[node name="ShopScreen" parent="UI" instance=ExtResource("271_yrj2d")]
+[node name="ShopScreen" parent="UI" unique_id=197850938 instance=ExtResource("271_yrj2d")]
 
-[node name="TrainingMenu" parent="UI" instance=ExtResource("273_66krm")]
+[node name="TrainingMenu" parent="UI" unique_id=1441335964 instance=ExtResource("273_66krm")]
 
-[node name="GameOverScreen" parent="UI" instance=ExtResource("283_3wcg1")]
+[node name="GameOverScreen" parent="UI" unique_id=1255094470 instance=ExtResource("283_3wcg1")]
 z_index = 99
 
-[node name="PauseMenu" type="CanvasLayer" parent="."]
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=808949865]
 
-[node name="InventoryMenu" parent="PauseMenu" instance=ExtResource("6_pokik")]
+[node name="InventoryMenu" parent="PauseMenu" unique_id=1521344533 instance=ExtResource("6_pokik")]
 
-[node name="Framerate" type="CanvasLayer" parent="."]
+[node name="Framerate" type="CanvasLayer" parent="." unique_id=892442911]
 layer = 30
 
-[node name="Frames" type="RichTextLabel" parent="Framerate"]
+[node name="Frames" type="RichTextLabel" parent="Framerate" unique_id=1908041875]
 process_mode = 3
 visible = false
 offset_top = -1.0
@@ -3408,82 +3405,82 @@ bbcode_enabled = true
 text = "60 FPS"
 script = ExtResource("27_3mlqo")
 
-[node name="TouchScreenControls" type="CanvasLayer" parent="."]
+[node name="TouchScreenControls" type="CanvasLayer" parent="." unique_id=1326257107]
 process_mode = 3
 layer = 31
 visible = false
 
-[node name="Node2D" type="Node2D" parent="TouchScreenControls"]
+[node name="Node2D" type="Node2D" parent="TouchScreenControls" unique_id=1254669617]
 modulate = Color(1, 1, 1, 0.3)
 script = ExtResource("29_1b3st")
 
-[node name="Cross" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Cross" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=409745300]
 position = Vector2(731, 406)
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("29_ufvnj")
 shape = SubResource("CircleShape2D_yu22f")
 action = "jump"
 
-[node name="Cross2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Cross2" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=431667084]
 position = Vector2(769, 443)
 scale = Vector2(0.75, 0.75)
 shape = SubResource("CircleShape2D_yu22f")
 action = "ui_accept"
 
-[node name="Circle" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Circle" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=449950079]
 position = Vector2(785, 352)
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("30_3q31x")
 shape = SubResource("CircleShape2D_yu22f")
 action = "ui_cancel"
 
-[node name="Circle2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Circle2" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=669796775]
 position = Vector2(823, 390)
 scale = Vector2(0.75, 0.75)
 shape = SubResource("CircleShape2D_yu22f")
 action = "circle"
 
-[node name="Square" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Square" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=749416224]
 position = Vector2(677, 352)
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("31_tk0s7")
 shape = SubResource("CircleShape2D_yu22f")
 action = "attack"
 
-[node name="Triangle" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Triangle" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=758016985]
 position = Vector2(731, 298)
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("32_um34v")
 shape = SubResource("CircleShape2D_yu22f")
 action = "innocent_devil_move"
 
-[node name="Options" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Options" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=858894385]
 position = Vector2(444, 406)
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("33_gcngi")
 shape = SubResource("CircleShape2D_yu22f")
 action = "menu"
 
-[node name="Share" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Share" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=1261853524]
 position = Vector2(363, 406)
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("34_happf")
 shape = SubResource("CircleShape2D_yu22f")
 action = "map"
 
-[node name="R1" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="R1" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=1088274902]
 position = Vector2(743, 101)
 texture_normal = ExtResource("35_fjwe1")
 shape = SubResource("CircleShape2D_kopmc")
 action = "guard"
 
-[node name="L1" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="L1" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=705459460]
 position = Vector2(20, 103)
 texture_normal = ExtResource("36_bnl1m")
 shape = SubResource("CircleShape2D_q3ieb")
 action = "backdash"
 
-[node name="Down" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Down" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=1643568783]
 position = Vector2(69, 397)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("38_h6y1l")
@@ -3491,14 +3488,14 @@ shape = SubResource("CircleShape2D_es7rp")
 passby_press = true
 action = "crouch"
 
-[node name="Down2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Down2" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=1931996305]
 position = Vector2(105, 439)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_es7rp")
 passby_press = true
 action = "ui_down"
 
-[node name="Up" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Up" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=906283921]
 position = Vector2(69, 297)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("39_t8vm2")
@@ -3506,14 +3503,14 @@ shape = SubResource("CircleShape2D_es7rp")
 passby_press = true
 action = "up_arrow"
 
-[node name="Up2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Up2" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=2146238315]
 position = Vector2(105, 339)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_es7rp")
 passby_press = true
 action = "ui_up"
 
-[node name="Left" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Left" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=1002541878]
 position = Vector2(5, 353)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("40_fiphx")
@@ -3521,14 +3518,14 @@ shape = SubResource("CircleShape2D_es7rp")
 passby_press = true
 action = "move_left"
 
-[node name="Left2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Left2" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=1547710235]
 position = Vector2(46, 389)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_es7rp")
 passby_press = true
 action = "ui_left"
 
-[node name="Right" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Right" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=1237498144]
 position = Vector2(122, 351)
 scale = Vector2(2, 2)
 texture_normal = ExtResource("41_mca3i")
@@ -3536,32 +3533,30 @@ shape = SubResource("CircleShape2D_es7rp")
 passby_press = true
 action = "move_right"
 
-[node name="Right2" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Right2" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=951433070]
 position = Vector2(164, 388)
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_es7rp")
 passby_press = true
 action = "ui_right"
 
-[node name="ChangeIDSkill" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="ChangeIDSkill" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=576477478]
 position = Vector2(516, 400)
 texture_normal = ExtResource("42_iw62n")
 shape = SubResource("CircleShape2D_es7rp")
 passby_press = true
 action = "next_skill"
 
-[node name="Touch" type="TouchScreenButton" parent="TouchScreenControls/Node2D"]
+[node name="Touch" type="TouchScreenButton" parent="TouchScreenControls/Node2D" unique_id=1056304080]
 position = Vector2(153, 30)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_2ie6f")
 passby_press = true
 action = "toggle_touch"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0cs38")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1645334878]
+libraries/ = SubResource("AnimationLibrary_0cs38")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1287582875]
 process_mode = 3
 environment = SubResource("Environment_vusj1")
