@@ -4,6 +4,12 @@ class_name EquipButtons
 @export var slot_type: Label
 @export var description: Control
 var button_index: int
+const EQUIPPED_LABELS = ["EQUIPPED_WEAPON", "EQUIPPED_ARTIFACT", "EQUIPPED_RELIC", "EQUIPPED_HEADGEAR", "EQUIPPED_BODY", "EQUIPPED_LEGS", "EQUIPPED_ACC1", "EQUIPPED_ACC2"]
+
+enum DESCRIPTION_CHILDREN {
+	ICON,
+	TEXT
+}
 
 enum EquipSlots {
 	WEAPON,
@@ -31,6 +37,7 @@ func on_focused(which):
 	button_index = which.get_index() 
 	equip_list.updateList()
 	var unequip_button = equip_list.get_child(0)
+	setEquippedGearDescription(button_index)
 	
 	# Knuckles are not complete yet, so disable empty hands for now
 	#unequip_button.disabled = which.get_index() == 0
@@ -71,4 +78,15 @@ func saveEquipIcons() -> Array[CompressedTexture2D]:
 	for button_i in range(0, get_child(0).get_child_count()):
 		icon.append(get_child(0).get_child(button_i).get_child(0).texture)
 	return icon
-	
+
+func setEquippedGearDescription(index: int) -> void:
+	var item_type: int = min(index+1, 7) # Caps at 7 because every slot after 7 is accessory, +1 to skip Item type
+	var gear_id: int = Global.player.stats.equipment[Global.player.stats.EQUIPMENT_SLOTS.values()[index]]
+	var gear = null
+	if gear_id > 0:
+		gear = PickUp.getCompendium(item_type)[gear_id-1]
+		description.get_child(DESCRIPTION_CHILDREN.ICON).texture = gear.icon
+		description.get_child(DESCRIPTION_CHILDREN.TEXT).text = EQUIPPED_LABELS[index] + "\n    " + tr(gear[PickUp.getItemName(item_type)])
+	else:
+		description.get_child(DESCRIPTION_CHILDREN.ICON).texture = null
+		description.get_child(DESCRIPTION_CHILDREN.TEXT).text = EQUIPPED_LABELS[index] + "\n    "

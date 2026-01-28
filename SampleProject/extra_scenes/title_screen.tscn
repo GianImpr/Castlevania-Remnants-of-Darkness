@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cgnlu6aihtr6r"]
+[gd_scene format=3 uid="uid://cgnlu6aihtr6r"]
 
 [ext_resource type="Script" uid="uid://ca5x188ifdjwt" path="res://SampleProject/Scripts/System/title_screen.gd" id="1_wa1th"]
 [ext_resource type="PackedScene" uid="uid://bjjk4mm7bkkd5" path="res://SampleProject/extra_scenes/loading_screen.tscn" id="2_hpjsa"]
@@ -239,7 +239,7 @@ sound_effects = Array[ExtResource("10_n0xa1")]([SubResource("Resource_8ssia"), S
 default_font = ExtResource("12_wknf4")
 default_font_size = 32
 
-[node name="Control" type="Control" node_paths=PackedStringArray("animation", "save_label", "buttons", "sound")]
+[node name="Control" type="Control" unique_id=791659487 node_paths=PackedStringArray("animation", "save_label", "buttons", "sound")]
 process_mode = 3
 clip_children = 2
 layout_mode = 3
@@ -255,7 +255,7 @@ save_label = NodePath("Copyright")
 buttons = NodePath("Options")
 sound = NodePath("Sounds")
 
-[node name="Title" type="TextureRect" parent="."]
+[node name="Title" type="TextureRect" parent="." unique_id=1986862799]
 z_index = 1
 layout_mode = 0
 offset_left = 87.0
@@ -265,14 +265,14 @@ offset_bottom = 447.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_ejp0b")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=546107514]
 layout_mode = 0
 offset_right = 864.0
 offset_bottom = 480.0
 texture = ExtResource("5_p8ta0")
 expand_mode = 1
 
-[node name="Background2" type="TextureRect" parent="Background"]
+[node name="Background2" type="TextureRect" parent="Background" unique_id=1510153832]
 layout_mode = 0
 offset_left = 864.0
 offset_right = 1728.0
@@ -280,15 +280,13 @@ offset_bottom = 480.0
 texture = ExtResource("5_p8ta0")
 expand_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1196798006]
 root_node = NodePath("../Background")
-libraries = {
-&"": SubResource("AnimationLibrary_fardd")
-}
-autoplay = "animate"
+libraries/ = SubResource("AnimationLibrary_fardd")
+autoplay = &"animate"
 speed_scale = 0.2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=124571729]
 visible = false
 modulate = Color(1, 0, 1, 1)
 self_modulate = Color(1, 0, 1, 1)
@@ -300,14 +298,12 @@ offset_bottom = 371.0
 scale = Vector2(1.5, 2)
 texture = ExtResource("4_o6pa4")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=1548733469]
 root_node = NodePath("../../AnimationPlayer")
-libraries = {
-&"": SubResource("AnimationLibrary_ydt5q")
-}
-autoplay = "button"
+libraries/ = SubResource("AnimationLibrary_ydt5q")
+autoplay = &"button"
 
-[node name="Copyright" type="Label" parent="."]
+[node name="Copyright" type="Label" parent="." unique_id=844343196]
 layout_mode = 0
 offset_top = 450.0
 offset_right = 864.0
@@ -316,23 +312,21 @@ theme = SubResource("Theme_wac11")
 text = "COPYRIGHT_LABEL"
 horizontal_alignment = 1
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ino1f")
-}
-autoplay = "appear"
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=967296375]
+libraries/ = SubResource("AnimationLibrary_ino1f")
+autoplay = &"appear"
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=329036911]
 volume_db = -15.0
 script = ExtResource("8_xsm36")
 audio_library = SubResource("Resource_8tmy6")
 
-[node name="Sounds" type="AudioStreamPlayer" parent="."]
+[node name="Sounds" type="AudioStreamPlayer" parent="." unique_id=531611097]
 volume_db = -12.0
 script = ExtResource("8_xsm36")
 audio_library = SubResource("Resource_jfflm")
 
-[node name="Options" type="VBoxContainer" parent="."]
+[node name="Options" type="VBoxContainer" parent="." unique_id=765925039]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -347,21 +341,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_3askd")
 
-[node name="NewGame" type="Button" parent="Options"]
+[node name="NewGame" type="Button" parent="Options" unique_id=1901230593]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 action_mode = 0
 text = "NEW_GAME_BUTTON"
 flat = true
 
-[node name="Load" type="Button" parent="Options"]
+[node name="Load" type="Button" parent="Options" unique_id=420530083]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 action_mode = 0
 text = "CONTINUE_BUTTON"
 flat = true
 
-[node name="Options" type="Button" parent="Options"]
+[node name="Options" type="Button" parent="Options" unique_id=312419967]
 visible = false
 layout_mode = 2
 theme_override_constants/outline_size = 8
@@ -369,7 +363,7 @@ action_mode = 0
 text = "OPTIONS_BUTTON"
 flat = true
 
-[node name="SoundSelect" type="Button" parent="Options"]
+[node name="SoundSelect" type="Button" parent="Options" unique_id=1506299458]
 visible = false
 layout_mode = 2
 theme_override_constants/outline_size = 8

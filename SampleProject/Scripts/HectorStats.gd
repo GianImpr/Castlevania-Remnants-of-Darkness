@@ -38,6 +38,17 @@ enum Ailment {
 	STONE
 }
 
+const EQUIPMENT_SLOTS = {
+	WEAPON = "weapon",
+	ARTIFACT = "artifact",
+	RELIC = "relic",
+	HEADGEAR = "head",
+	BODY = "body",
+	LEGS = "legs",
+	ACC_1 = "acc1",
+	ACC_2 = "acc2"
+}
+
 var current_status: Ailment = Ailment.GOOD
 
 var picked_items: Array[bool] ##ID list checks for item pick-up flags
