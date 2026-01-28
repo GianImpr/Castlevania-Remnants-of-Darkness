@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://dk6ln3pa1ra6q"]
+[gd_scene format=3 uid="uid://dk6ln3pa1ra6q"]
 
 [ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="1_a0owa"]
 [ext_resource type="Script" uid="uid://bsr6ixj1h4r5y" path="res://SampleProject/extra_scenes/HUD/training_menu.gd" id="1_c8rss"]
@@ -470,7 +470,7 @@ _data = {
 &"open": SubResource("Animation_2stfb")
 }
 
-[node name="TrainingMenu" type="Control" node_paths=PackedStringArray("animation", "default_button", "buttons", "sound", "training_icon", "training_description", "training_title", "challenge_level_label", "challenge_description_label")]
+[node name="TrainingMenu" type="Control" unique_id=1901934013 node_paths=PackedStringArray("animation", "default_button", "buttons", "sound", "training_icon", "training_description", "training_title", "challenge_level_label", "challenge_description_label")]
 process_mode = 3
 visible = false
 z_index = 9
@@ -493,22 +493,21 @@ training_title = NodePath("Description/Title")
 challenge_level_label = NodePath("OtherInfo/LevelDesc")
 challenge_description_label = NodePath("OtherInfo/ChallengeDesc")
 
-[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="." unique_id=1532390462]
 volume_db = -10.0
-pitch_scale = 0.7
 script = ExtResource("1_a0owa")
 audio_library = SubResource("Resource_1qa27")
 metadata/_custom_type_script = "uid://db2g34ep3sicd"
 
-[node name="Display" type="Node2D" parent="."]
+[node name="Display" type="Node2D" parent="." unique_id=2070323736]
 
-[node name="BlackBackground" type="TextureRect" parent="Display"]
+[node name="BlackBackground" type="TextureRect" parent="Display" unique_id=1833107795]
 show_behind_parent = true
 offset_right = 868.0
 offset_bottom = 480.0
 texture = SubResource("GradientTexture1D_ylbde")
 
-[node name="AnimatedBackground" type="TextureRect" parent="Display/BlackBackground"]
+[node name="AnimatedBackground" type="TextureRect" parent="Display/BlackBackground" unique_id=1010415938]
 modulate = Color(0.326448, 0.0011623095, 0.5538954, 1)
 material = SubResource("ShaderMaterial_wsu2r")
 layout_mode = 0
@@ -518,7 +517,7 @@ offset_bottom = 480.0
 texture = SubResource("GradientTexture2D_0hsmt")
 flip_v = true
 
-[node name="TrainingLabel" type="Label" parent="."]
+[node name="TrainingLabel" type="Label" parent="." unique_id=2126107852]
 clip_children = 1
 layout_mode = 0
 offset_left = 25.0
@@ -528,14 +527,14 @@ offset_bottom = 60.0
 theme = SubResource("Theme_cckcb")
 text = "Training"
 
-[node name="TextureRect" type="TextureRect" parent="TrainingLabel"]
+[node name="TextureRect" type="TextureRect" parent="TrainingLabel" unique_id=851935009]
 layout_mode = 0
 offset_left = -1.0
 offset_right = 559.0
 offset_bottom = 48.0
 texture = SubResource("GradientTexture2D_q8ayk")
 
-[node name="Buttons" type="VBoxContainer" parent="."]
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=1952934830]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 16.0
@@ -545,7 +544,7 @@ offset_bottom = 197.0
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Guard" type="Button" parent="Buttons"]
+[node name="Guard" type="Button" parent="Buttons" unique_id=640489457]
 layout_mode = 2
 focus_neighbor_top = NodePath("../BackdashCancel")
 theme = SubResource("Theme_q8ayk")
@@ -561,7 +560,7 @@ icon = SubResource("CompressedTexture2D_ylbde")
 flat = true
 icon_alignment = 1
 
-[node name="PerfectGuard" type="Button" parent="Buttons"]
+[node name="PerfectGuard" type="Button" parent="Buttons" unique_id=1353484356]
 layout_mode = 2
 theme = SubResource("Theme_q8ayk")
 theme_override_constants/outline_size = 8
@@ -575,7 +574,7 @@ icon = SubResource("CompressedTexture2D_ylbde")
 flat = true
 icon_alignment = 1
 
-[node name="QuickRecover" type="Button" parent="Buttons"]
+[node name="QuickRecover" type="Button" parent="Buttons" unique_id=1330689322]
 layout_mode = 2
 theme = SubResource("Theme_q8ayk")
 theme_override_constants/outline_size = 8
@@ -589,7 +588,7 @@ icon = SubResource("CompressedTexture2D_ylbde")
 flat = true
 icon_alignment = 1
 
-[node name="Projectiles" type="Button" parent="Buttons"]
+[node name="Projectiles" type="Button" parent="Buttons" unique_id=1013543508]
 layout_mode = 2
 theme = SubResource("Theme_q8ayk")
 theme_override_constants/outline_size = 8
@@ -604,7 +603,7 @@ flat = true
 text_overrun_behavior = 1
 icon_alignment = 1
 
-[node name="Techniques" type="Button" parent="Buttons"]
+[node name="Techniques" type="Button" parent="Buttons" unique_id=1143142968]
 layout_mode = 2
 theme = SubResource("Theme_q8ayk")
 theme_override_constants/outline_size = 8
@@ -619,7 +618,7 @@ flat = true
 text_overrun_behavior = 1
 icon_alignment = 1
 
-[node name="JumpCancel" type="Button" parent="Buttons"]
+[node name="JumpCancel" type="Button" parent="Buttons" unique_id=95787876]
 layout_mode = 2
 theme = SubResource("Theme_q8ayk")
 theme_override_constants/outline_size = 8
@@ -633,7 +632,7 @@ icon = SubResource("CompressedTexture2D_ylbde")
 flat = true
 icon_alignment = 1
 
-[node name="BackdashCancel" type="Button" parent="Buttons"]
+[node name="BackdashCancel" type="Button" parent="Buttons" unique_id=1959719995]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Guard")
 theme = SubResource("Theme_q8ayk")
@@ -649,13 +648,13 @@ flat = true
 text_overrun_behavior = 1
 icon_alignment = 1
 
-[node name="Description" type="Control" parent="."]
+[node name="Description" type="Control" parent="." unique_id=39891574]
 z_index = 1
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Icon" type="TextureRect" parent="Description"]
+[node name="Icon" type="TextureRect" parent="Description" unique_id=1321725207]
 modulate = Color(1, 1, 1, 0.1875)
 z_index = 1
 layout_mode = 1
@@ -673,7 +672,7 @@ grow_vertical = 2
 texture = ExtResource("28_r3xt7")
 expand_mode = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="Description"]
+[node name="PanelContainer" type="PanelContainer" parent="Description" unique_id=1708780157]
 layout_mode = 0
 offset_left = 197.0
 offset_top = 20.0
@@ -681,7 +680,7 @@ offset_right = 846.0
 offset_bottom = 420.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2stfb")
 
-[node name="Title" type="Label" parent="Description"]
+[node name="Title" type="Label" parent="Description" unique_id=1894907878]
 modulate = Color(1, 1, 1, 0.1875)
 clip_children = 1
 layout_mode = 0
@@ -693,13 +692,13 @@ theme = SubResource("Theme_ygfm7")
 text = "QUICK RECOVERY"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Description/Title"]
+[node name="TextureRect" type="TextureRect" parent="Description/Title" unique_id=1225012414]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_pscbs")
 
-[node name="Description" type="RichTextLabel" parent="Description"]
+[node name="Description" type="RichTextLabel" parent="Description" unique_id=1227804265]
 modulate = Color(1, 1, 1, 0.1875)
 layout_mode = 0
 offset_left = 207.0
@@ -719,17 +718,15 @@ While performing any action on the ground, press [[L1]].
 The backdash itself can also be cancelled by jumping."
 metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_rbbvo")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=412362268]
+libraries/ = SubResource("AnimationLibrary_rbbvo")
 
-[node name="OtherInfo" type="Control" parent="."]
+[node name="OtherInfo" type="Control" parent="." unique_id=870932340]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Challenge" type="Label" parent="OtherInfo"]
+[node name="Challenge" type="Label" parent="OtherInfo" unique_id=361709190]
 clip_children = 1
 layout_mode = 0
 offset_left = 244.0
@@ -739,13 +736,13 @@ offset_bottom = 471.0
 theme = SubResource("Theme_ygfm7")
 text = "Challenge:"
 
-[node name="TextureRect" type="TextureRect" parent="OtherInfo/Challenge"]
+[node name="TextureRect" type="TextureRect" parent="OtherInfo/Challenge" unique_id=1676033979]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_pscbs")
 
-[node name="Level" type="Label" parent="OtherInfo"]
+[node name="Level" type="Label" parent="OtherInfo" unique_id=215373511]
 clip_children = 1
 layout_mode = 0
 offset_left = 16.0
@@ -755,13 +752,13 @@ offset_bottom = 471.0
 theme = SubResource("Theme_ygfm7")
 text = "Level:"
 
-[node name="TextureRect" type="TextureRect" parent="OtherInfo/Level"]
+[node name="TextureRect" type="TextureRect" parent="OtherInfo/Level" unique_id=952563810]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_pscbs")
 
-[node name="ChallengeDesc" type="RichTextLabel" parent="OtherInfo"]
+[node name="ChallengeDesc" type="RichTextLabel" parent="OtherInfo" unique_id=1596616018]
 layout_mode = 0
 offset_left = 372.0
 offset_top = 423.0
@@ -776,7 +773,7 @@ script = ExtResource("14_0hsmt")
 new_text = "Block 10 attacks from an Axe Armor."
 metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
 
-[node name="LevelDesc" type="RichTextLabel" parent="OtherInfo"]
+[node name="LevelDesc" type="RichTextLabel" parent="OtherInfo" unique_id=2143391875]
 layout_mode = 0
 offset_left = 94.0
 offset_top = 423.0
@@ -791,7 +788,7 @@ script = ExtResource("14_0hsmt")
 new_text = "Beginner"
 metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
 
-[node name="ChangeLevel" type="RichTextLabel" parent="OtherInfo"]
+[node name="ChangeLevel" type="RichTextLabel" parent="OtherInfo" unique_id=1449334940]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 453.0
