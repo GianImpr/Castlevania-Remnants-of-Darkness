@@ -3,6 +3,7 @@ class_name InvItems
 
 @export var elements: Control
 @export var item_list: GridContainer
+@export var MP_bar: TextureProgressBar
 var accessed_menu: int
 
 func enter():
@@ -10,6 +11,7 @@ func enter():
 	updateStats()
 	default_button.grab_focus()
 	accessed_menu = 0
+	MP_bar.texture_progress = Global.HUD.mana.texture_progress
 	
 func exit():
 	animation.play("change")

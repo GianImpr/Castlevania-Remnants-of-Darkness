@@ -1229,12 +1229,13 @@ offset_bottom = 481.0
 texture = SubResource("GradientTexture2D_dwbrd")
 flip_v = true
 
-[node name="Menu" type="Node" parent="MenuStateMachine" unique_id=338369812 node_paths=PackedStringArray("elements", "id_label", "combine_button", "bestiary_button", "animation", "default_button")]
+[node name="Menu" type="Node" parent="MenuStateMachine" unique_id=338369812 node_paths=PackedStringArray("elements", "id_label", "combine_button", "bestiary_button", "MP_bar", "animation", "default_button")]
 script = ExtResource("3_jim0d")
 elements = NodePath("Display/Elements")
 id_label = NodePath("Display/Elements/InnocentDevil")
 combine_button = NodePath("Display/Menu/Combine")
 bestiary_button = NodePath("Display/Menu/Bestiary")
+MP_bar = NodePath("Display/Stats/MPBar")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/Menu/Summons")
 
@@ -2723,10 +2724,11 @@ offset_bottom = 77.0
 libraries/ = SubResource("AnimationLibrary_cuwo4")
 speed_scale = 1.2
 
-[node name="Items" type="Node" parent="MenuStateMachine" unique_id=1067283479 node_paths=PackedStringArray("elements", "item_list", "animation", "default_button")]
+[node name="Items" type="Node" parent="MenuStateMachine" unique_id=1067283479 node_paths=PackedStringArray("elements", "item_list", "MP_bar", "animation", "default_button")]
 script = ExtResource("19_l3hae")
 elements = NodePath("Display/Elements")
 item_list = NodePath("Display/ScrollContainer/Control/ItemList")
+MP_bar = NodePath("Display/Elements/MPBar")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/PanelContainer/Menu/Consumables")
 

@@ -5,8 +5,10 @@ class_name InvMenu
 @export var id_label: RichTextLabelWithButtons
 @export var combine_button: InventoryButton
 @export var bestiary_button: InventoryButton
+@export var MP_bar: TextureProgressBar
 
 func enter():
+	MP_bar.texture_progress = Global.HUD.mana.texture_progress
 	animation.play_backwards("change")
 	if last_button == null:
 		default_button.grab_focus()
