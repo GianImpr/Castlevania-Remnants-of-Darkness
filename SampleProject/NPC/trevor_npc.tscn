@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dkm3kcg1gq2kf"]
+
+[ext_resource type="Texture2D" uid="uid://c8goftbu4unje" path="res://assets/sprites/Characters/Trevor.png" id="1_bs615"]
+[ext_resource type="Script" uid="uid://d0r4wuj7sd0ga" path="res://SampleProject/Scripts/npc.gd" id="2_m6j1y"]
+
+[sub_resource type="Animation" id="Animation_m6j1y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_yardy"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1gag"]
+_data = {
+&"RESET": SubResource("Animation_m6j1y"),
+&"idle": SubResource("Animation_yardy")
+}
+
+[node name="TrevorNPC" type="Sprite2D" unique_id=694709324]
+scale = Vector2(2, 2)
+texture = ExtResource("1_bs615")
+hframes = 4
+script = ExtResource("2_m6j1y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=174107207]
+libraries/ = SubResource("AnimationLibrary_g1gag")
+autoplay = &"idle"

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cow3qaei4a10n" path="res://SampleProject/extra_scenes/stage_elements/change_area_trigger.tscn" id="4_e2kyj"]
 [ext_resource type="Texture2D" uid="uid://cm67rjq4or1c8" path="res://assets/sprites/Tiles/mountain.png" id="5_bjrii"]
 [ext_resource type="PackedScene" uid="uid://q43vbthycopx" path="res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn" id="6_gkmfq"]
+[ext_resource type="PackedScene" uid="uid://dkm3kcg1gq2kf" path="res://SampleProject/NPC/trevor_npc.tscn" id="7_48to8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1uv3y"]
 resource_name = "Woods"
@@ -1734,3 +1735,6 @@ tile_set = SubResource("TileSet_48to8")
 [node name="TutorialScreenTrigger" parent="." unique_id=444585271 instance=ExtResource("6_gkmfq")]
 position = Vector2(78, 5)
 tutorial_id = 13
+
+[node name="TrevorNPC" parent="." unique_id=694709324 instance=ExtResource("7_48to8")]
+position = Vector2(889, 368)
