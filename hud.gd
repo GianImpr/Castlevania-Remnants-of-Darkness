@@ -126,9 +126,9 @@ func _process(delta: float) -> void:
 	else:
 		opacity_trigger_offset = 0
 	
-	if Global.player.position.x + opacity_trigger_offset <= size.x*0.7 and Global.player.position.y - Global.camera.limit_top <= size.y*0.7 and not isTransparent():
-		setOpacity(0.3)
-	elif (Global.player.position.x + opacity_trigger_offset > size.x*0.7 or Global.player.position.y - Global.camera.limit_top > size.y*0.7) and isTransparent():
+	if Global.player.position.x + opacity_trigger_offset <= hud_body.size.x*2 and Global.player.position.y - Global.camera.limit_top <= hud_body.size.y*2 and not isTransparent():
+		setOpacity(0.2)
+	elif (Global.player.position.x + opacity_trigger_offset > hud_body.size.x*2 or Global.player.position.y - Global.camera.limit_top > hud_body.size.y*2) and isTransparent():
 		setOpacity(1)
 
 func initBar(stat, maxStat, bar):
