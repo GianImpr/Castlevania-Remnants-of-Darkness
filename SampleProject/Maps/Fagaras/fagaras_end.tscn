@@ -1738,21 +1738,23 @@ tile_set = SubResource("TileSet_48to8")
 position = Vector2(78, 5)
 tutorial_id = 13
 
-[node name="TrevorNPC" parent="." unique_id=694709324 instance=ExtResource("7_48to8")]
-position = Vector2(531, 368)
-
-[node name="DialogueBoxTrigger" parent="." unique_id=982596917 instance=ExtResource("8_e2kyj")]
-position = Vector2(294, 6)
-flag_id = 6
-
-[node name="DialogueBoxTrigger2" parent="." unique_id=690994312 instance=ExtResource("8_e2kyj")]
-position = Vector2(419, 6)
-flag_id = 7
-
 [node name="TrevorMeetEvent" type="Node" parent="." unique_id=1813030222 node_paths=PackedStringArray("dialogue_1", "dialogue_2", "trevor_npc")]
 process_mode = 3
 script = ExtResource("9_hmr6u")
-dialogue_1 = NodePath("../DialogueBoxTrigger")
-dialogue_2 = NodePath("../DialogueBoxTrigger2")
-trevor_npc = NodePath("../TrevorNPC")
+dialogue_1 = NodePath("DialogueBoxTrigger")
+dialogue_2 = NodePath("DialogueBoxTrigger2")
+trevor_npc = NodePath("TrevorNPC")
 event_id = 6
+
+[node name="TrevorNPC" parent="TrevorMeetEvent" unique_id=694709324 instance=ExtResource("7_48to8")]
+position = Vector2(531, 368)
+
+[node name="DialogueBoxTrigger" parent="TrevorMeetEvent" unique_id=982596917 instance=ExtResource("8_e2kyj")]
+position = Vector2(294, 6)
+flag_id = 6
+
+[node name="DialogueBoxTrigger2" parent="TrevorMeetEvent" unique_id=690994312 instance=ExtResource("8_e2kyj")]
+position = Vector2(419, 6)
+flag_id = 7
+
+[connection signal="tree_exited" from="TrevorMeetEvent/DialogueBoxTrigger2" to="TrevorMeetEvent" method="_on_dialogue_box_trigger_2_tree_exited"]
