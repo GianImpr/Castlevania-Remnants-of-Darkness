@@ -86,7 +86,7 @@ func setEquippedGearDescription(index: int) -> void:
 	if gear_id > 0:
 		gear = PickUp.getCompendium(item_type)[gear_id-1]
 		description.get_child(DESCRIPTION_CHILDREN.ICON).texture = gear.icon
-		description.get_child(DESCRIPTION_CHILDREN.TEXT).text = EQUIPPED_LABELS[index] + "\n    " + tr(gear[PickUp.getItemName(item_type)])
+		description.get_child(DESCRIPTION_CHILDREN.TEXT).text = tr(EQUIPPED_LABELS[index]) + "\n    " + tr(gear[PickUp.getItemName(item_type)])
 	else:
 		description.get_child(DESCRIPTION_CHILDREN.ICON).texture = null
-		description.get_child(DESCRIPTION_CHILDREN.TEXT).text = EQUIPPED_LABELS[index] + "\n    "
+		description.get_child(DESCRIPTION_CHILDREN.TEXT).text = tr(EQUIPPED_LABELS[index]) + "\n    "
