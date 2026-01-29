@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b4d0xyxsq3tff" path="res://assets/sprites/Tiles/Debug.png" id="3_qvvab"]
 [ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="4_mrvfp"]
 [ext_resource type="PackedScene" uid="uid://csi3yjrxq4qpx" path="res://SampleProject/extra_scenes/items/orb.tscn" id="5_72oba"]
+[ext_resource type="PackedScene" uid="uid://cn5udljc46woc" path="res://SampleProject/extra_scenes/items/life_vessel.tscn" id="6_7kxeq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ikyd"]
 texture = ExtResource("3_qvvab")
@@ -134,3 +135,7 @@ current_item_name = "Dragon Helm"
 position = Vector2(427, 333)
 orb_color = 0
 pickup_flag_id = 0
+
+[node name="LifeVessel" parent="." unique_id=1296082091 instance=ExtResource("6_7kxeq")]
+position = Vector2(857, 308)
+pickup_flag = 200

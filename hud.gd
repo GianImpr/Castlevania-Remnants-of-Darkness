@@ -141,7 +141,7 @@ func updateHPNumber():
 	h_box_container_3.updateHP(Global.player.innocent_devil.stats.Stats["Hearts"], Global.player.innocent_devil.stats.Stats["MHearts"])
 	
 func updateHP(delta):
-	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT):
 		return
 		
 	if initialize_bars_instantly:
@@ -169,7 +169,7 @@ func updateMP(delta):
 			low_MP_tint = Color(1, 0.365, 0)
 			
 	mana.texture_progress = mana_colors[Global.player.stats.equipment["relic"]]
-	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT):
 		return
 		
 	if initialize_bars_instantly:
@@ -185,7 +185,7 @@ func updateMP(delta):
 func updateGuardHealth() -> void:
 	if Global.player == null:
 		return
-	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT):
 		return
 	guard_health.visible = Global.player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, Global.player.stats.skill_inventory)
 	var guard_recovery_timer: Timer = Global.player.guard_recovery
@@ -195,7 +195,7 @@ func updateGuardHealth() -> void:
 		guard_health.get_child(i).get_child(0).visible = min(guard_hp-1-i, 1) == 1
 	
 func updateHearts(delta):
-	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT):
 		return
 		
 	if initialize_bars_instantly:
@@ -213,7 +213,7 @@ func updateHearts(delta):
 
 	
 func updateMaxStat(stat, bar, delta, id_stat: bool = false):
-	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT):
 		return
 		
 	if initialize_bars_instantly > 0:
