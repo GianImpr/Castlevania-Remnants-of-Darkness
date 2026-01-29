@@ -33,8 +33,8 @@ func Physics_Update(delta: float):
 	can_perform("jump", true)
 	can_perform("crouch", false)
 	can_fall(true)
-	check_is_hurt()
 	can_guard()
+	check_is_hurt()
 	can_die()
 	if player.is_on_wall():
 		debris_timer.stop()

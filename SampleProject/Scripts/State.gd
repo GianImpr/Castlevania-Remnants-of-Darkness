@@ -107,6 +107,7 @@ func check_is_blocking():
 			return
 			
 		if player.willPerfectGuard():
+			print("Transition to perfect guard")
 			Transitioned.emit(self, "Guard_perfect")
 		elif player.stats.Stats["Guard"] > 0:
 			Transitioned.emit(self, "Guard_blocking")
@@ -117,13 +118,15 @@ func check_is_blocking():
 func check_is_hurt():
 	if player.state_machine.current_state is HectorGuardPerfectAir:
 		return
+		
 	
 	if player.stats.current_status == player.stats.Ailment.STONE:
 		Input.start_joy_vibration(0, 0.8, 0, 0.4)
 		Transitioned.emit(self, "petrified")
 		return
 		
-	if player.is_hurt and player.stats.Stats["HP"] > 0:
+	if player.is_hurt and player.stats.Stats["HP"] > 0 and not player.willPerfectGuard():
+		print("hit: " + str(player.willPerfectGuard()))
 		Input.start_joy_vibration(0, 0.5, 0, 0.4)
 		if player.stats.accessoryEquipped(Accessory.Accessories.BLOOD_CLOAK):
 			player.activateBloodCloak()
@@ -142,6 +145,7 @@ func check_is_hurt():
 			Transitioned.emit(self, "damage_mercy")
 		var voice_clip = randi_range(0, 2)
 		if voice_clip > 0 and player.is_on_floor() and player.current_hits_taken_before_iframes != player.IFRAMES_HIT_THRESHOLD and not player.knockback:
+			print("hit voice")
 			voice.play_sound_effect_from_library("Hit" + str(voice_clip))
 		elif voice_clip > 0 and (not player.is_on_floor() or player.current_hits_taken_before_iframes == player.IFRAMES_HIT_THRESHOLD):
 			voice.play_sound_effect_from_library("HeavyHit")

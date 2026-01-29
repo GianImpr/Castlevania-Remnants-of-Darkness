@@ -128,6 +128,7 @@ func _process(delta: float) -> void:
 			perfect_guard_timer.start(PERFECT_GUARD_WINDOW_SIMPLIFIED)
 		else:
 			perfect_guard_timer.start(PERFECT_GUARD_WINDOW_DEFAULT)
+			print("Started guarding")
 	
 	if innocent_devil != null:
 		summoned_innocent_devil_id = innocent_devil.id
