@@ -21,6 +21,7 @@ class_name HectorPlayer
 @export var mercy_invincibility_duration: Timer
 @export var mercy_invincibility_hit_threshold_reset: Timer
 @export var focus_gain_duration: Timer
+@export var reset_guard_presses_timer: Timer
 @export_category("Buff nodes")
 @export var confidence_ring_timer: Timer
 @export_category("Charge nodes")
@@ -52,6 +53,7 @@ const GUARD_RECOVERY_TIME: int = 3
 const MAX_WEAPON_RANK = 1
 const LONG_MERCY_INVINCIBILITY_DURATION: float = 1.7
 const SHORT_MERCY_INVINCIBILITY_DURATION: float = 0.8
+const MAX_GUARD_PRESS_PER_HALF_SECOND: int = 3
 const RING_OF_LIFE_SCENE: PackedScene = preload("res://SampleProject/extra_scenes/effects/ring_of_life_effect.tscn")
 
 var current_hits_taken_before_iframes: int = 0
@@ -76,6 +78,7 @@ const PERFECT_GUARD_WINDOW_DEFAULT: float = 0.096
 
 const CHARGE_ONE_COST_RATIO: int = 10
 var cur_charge: Charge = Charge.NONE
+var times_guard_pressed: int = 0
 
 const Animations = {
 	ATTACK_AIR = "air_attack",
@@ -111,6 +114,7 @@ enum Charge {
 
 func _ready() -> void:
 	Global.player = self
+	reset_guard_presses_timer.timeout.connect(func(): times_guard_pressed = 0)
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -124,10 +128,14 @@ func _process(delta: float) -> void:
 	guarding = isGuarding()
 	
 	if Input.is_action_just_pressed("guard") and can_perfect_guard():
-		if Global.game.difficulty == Global.game.Difficulty.SIMPLIFIED:
-			perfect_guard_timer.start(PERFECT_GUARD_WINDOW_SIMPLIFIED)
+		times_guard_pressed += 1
+		if times_guard_pressed <= MAX_GUARD_PRESS_PER_HALF_SECOND:
+			if Global.game.difficulty == Global.game.Difficulty.SIMPLIFIED:
+				perfect_guard_timer.start(PERFECT_GUARD_WINDOW_SIMPLIFIED)
+			else:
+				perfect_guard_timer.start(PERFECT_GUARD_WINDOW_DEFAULT)
 		else:
-			perfect_guard_timer.start(PERFECT_GUARD_WINDOW_DEFAULT)
+			reset_guard_presses_timer.start()
 	elif not Input.is_action_pressed("guard") and not perfect_guard_timer.is_stopped():
 		perfect_guard_timer.stop()
 		

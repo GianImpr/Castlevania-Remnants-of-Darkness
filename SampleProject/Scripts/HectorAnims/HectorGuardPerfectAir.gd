@@ -4,6 +4,7 @@ var can_perfect_guard: bool = true
 const INITIAL_HEIGHT_BOOST: float = -300
 
 func enter():
+	player.times_guard_pressed = 0
 	animation.play("perfect_guarding_air", -1, 2.8)
 	sound.play_sound_effect_from_library("perfect_guard")
 	player.velocity.y = INITIAL_HEIGHT_BOOST
