@@ -151,7 +151,7 @@ func createHitEffect(body: Node2D) -> void:
 	hit_effect.position = Vector2(effect_x, effect_y)
 	Global.player.get_parent().add_child(hit_effect)
 	
-	if body is not Enemy or body is not Zombie:
+	if body is not Enemy and body is not Zombie:
 		return
 	
 	if Global.player.stats.itemEquipped(Artifact.Artifacts.LITTLE_HAMMER, "artifact") and Global.player.stats.Stats["LCK"] > randi_range(0, 99):
