@@ -41,9 +41,7 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
 		
 	if body.isGuarding():
-		print("guarding")
 		if body.isPerfectGuarding():
-			print("perfect guarding")
 			body.stats.Stats["MP"] = min(body.stats.Stats["MMP"], body.stats.Stats["MP"]+floor(damage/10)+10*(int(guard_break)+2))
 			body.heal_innocent(floor(damage/10)+1)
 			body.stats.Stats["Guard"] = 3
@@ -63,7 +61,6 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 		else:
 			body.stats.Stats["Guard"] = 0
 	else:
-		print("no perfect guard")
 		body.knockback = knockback
 		body.applyHitEffect(attribute)
 		
