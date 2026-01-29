@@ -128,7 +128,7 @@ func _process(delta: float) -> void:
 			perfect_guard_timer.start(PERFECT_GUARD_WINDOW_SIMPLIFIED)
 		else:
 			perfect_guard_timer.start(PERFECT_GUARD_WINDOW_DEFAULT)
-	elif not Input.is_action_just_pressed("guard") and can_perfect_guard() and not perfect_guard_timer.is_stopped():
+	elif not Input.is_action_pressed("guard") and not perfect_guard_timer.is_stopped():
 		perfect_guard_timer.stop()
 		
 	if innocent_devil != null:

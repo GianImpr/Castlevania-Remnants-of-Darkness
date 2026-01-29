@@ -124,9 +124,7 @@ func check_is_hurt():
 		Transitioned.emit(self, "petrified")
 		return
 		
-	print(Global.player.perfect_guard_timer.time_left)
 	if player.is_hurt and player.stats.Stats["HP"] > 0 and not player.willPerfectGuard():
-		print("here hurt")
 		Input.start_joy_vibration(0, 0.5, 0, 0.4)
 		if player.stats.accessoryEquipped(Accessory.Accessories.BLOOD_CLOAK):
 			player.activateBloodCloak()
@@ -148,6 +146,8 @@ func check_is_hurt():
 			voice.play_sound_effect_from_library("Hit" + str(voice_clip))
 		elif voice_clip > 0 and (not player.is_on_floor() or player.current_hits_taken_before_iframes == player.IFRAMES_HIT_THRESHOLD):
 			voice.play_sound_effect_from_library("HeavyHit")
+	elif player.is_hurt and player.willPerfectGuard():
+		check_is_blocking()
 	elif player.stats.Stats["HP"] == 0:
 		sound.play_sound_effect_from_library("damage")
 

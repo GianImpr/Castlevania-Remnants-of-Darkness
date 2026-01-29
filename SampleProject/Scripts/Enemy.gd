@@ -39,7 +39,7 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 	var damage_with_chip = damage + chip_damage
 	const STONE_DAMAGE_MULTIPLIER: float = 2
 	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
-		
+
 	if body.isGuarding():
 		if body.isPerfectGuarding():
 			body.stats.Stats["MP"] = min(body.stats.Stats["MMP"], body.stats.Stats["MP"]+floor(damage/10)+10*(int(guard_break)+2))
