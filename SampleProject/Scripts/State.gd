@@ -70,7 +70,7 @@ func can_guard():
 	if player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, player.stats.skill_inventory) and not player.is_hurt:
 		can_perform("guard", false)
 		player.stats.Stats["Guard"] = max(player.stats.Stats["Guard"], 1)
-	else:
+	elif not player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, player.stats.skill_inventory):
 		player.stats.Stats["Guard"] = 0
 
 #Allows the player to turnaround
@@ -101,7 +101,7 @@ func remove_momentum():
 func check_is_blocking():
 	if player.is_hurt and player.stats.Stats["HP"] > 0:
 		if (self is HectorJump or self is HectorFalling) and player.willPerfectGuard():
-			Transitioned.emit(self, "Guard_perfect_air")
+			Global.player.transitionToState("Guard_perfect_air")
 			return
 		elif self is HectorJump or self is HectorFalling:
 			return
@@ -124,7 +124,9 @@ func check_is_hurt():
 		Transitioned.emit(self, "petrified")
 		return
 		
+	print(Global.player.perfect_guard_timer.time_left)
 	if player.is_hurt and player.stats.Stats["HP"] > 0 and not player.willPerfectGuard():
+		print("here hurt")
 		Input.start_joy_vibration(0, 0.5, 0, 0.4)
 		if player.stats.accessoryEquipped(Accessory.Accessories.BLOOD_CLOAK):
 			player.activateBloodCloak()
