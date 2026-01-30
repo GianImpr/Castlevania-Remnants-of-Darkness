@@ -3,6 +3,10 @@ class_name InvCombine
 
 @export var item_list: Menu
 var accessed_menu: int
+static var verifyNewRecipe: Callable
+
+func _ready() -> void:
+	verifyNewRecipe = verifyNewRecipes
 
 func enter():
 	animation.play_backwards("change")
@@ -19,3 +23,6 @@ func Update(delta: float):
 	
 func Physics_Update(delta: float):
 	pass
+	
+func verifyNewRecipes() -> void:
+	item_list.verifyNewRecipes()

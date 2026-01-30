@@ -11,6 +11,7 @@ func on_button_pressed(which):
 			menu.Transitioned.emit(menu, "equip")
 		3:
 			menu.Transitioned.emit(menu, "combine")
+			
 		4:
 			menu.Transitioned.emit(menu, "bestiary")
 		5:

@@ -12,6 +12,7 @@ class_name CombineButtons
 var button_index: int
 var item_id_list: Array[int]
 var item_to_craft: int
+static var new_craftable_items: bool = false
 
 func _ready() -> void:
 	super()
@@ -32,6 +33,7 @@ func _process(delta: float) -> void:
 	if menu.accessed_menu == 3 and Input.is_action_just_pressed("ui_accept"):
 		sound.play_sound_effect_from_library("confirm")
 		confirm_animation.play("close_craft")
+		verifyNewRecipes()
 		menu.accessed_menu = 1
 		item_list.get_child(item_to_craft).grab_focus()
 
@@ -95,8 +97,10 @@ func deleteList() -> void:
 	for crafting_material in material_list.get_children():
 		crafting_material.queue_free()
 
-func initList(index) -> void:
+func initList(index, check_only_new_icons: bool = false) -> void:
+	var new_icon: TextureRect = get_child(index).get_child(0)
 	var type = getListType(index)
+	var new_stuff_to_craft_in_this_list: bool = false
 	var item_number: int = 0
 	for item in getItemsFromCompendium(type):
 		item_number += 1
@@ -128,14 +132,24 @@ func initList(index) -> void:
 		elif item is Legs:
 			item_name = item.legs_name
 		
+		var available_materials: bool = checkMaterials(item, type)
+		if item.recipe_status == Weapon.RecipeStatus.UNLOCKED and available_materials:
+			new_craftable_items = true
+			new_stuff_to_craft_in_this_list = true
+			if check_only_new_icons:
+				break
+			
+		if check_only_new_icons:
+			continue
+
 		var item_button = InventoryButton.new()
 		if item.recipe_status == Weapon.RecipeStatus.REVEALED:
 			item_button.text = item_name
 		else:
 			item_button.text = "??????"
 			
-		item_button.disabled = not checkMaterials(item, type)
-		
+		item_button.disabled = not available_materials
+			
 		item_id_list.append(item_number)
 		item_list.add_child(item_button)
 		item_list.children.append(item_button)
@@ -149,6 +163,7 @@ func initList(index) -> void:
 		item_button.pressed.connect(self.on_item_button_pressed.bind(item_button))
 		item_button.focus_entered.connect(self.on_item_focused.bind(item_button))
 		item_button.fitTextInBox()
+	new_icon.visible = new_stuff_to_craft_in_this_list
 	
 func getItemsFromCompendium(type):
 	var compendium = getCompendium(type)
@@ -368,3 +383,9 @@ func _on_no_pressed() -> void:
 		updateMaterialList(null)
 		item_list.get_child(item_to_craft).grab_focus()
 		menu.accessed_menu = 1
+
+func verifyNewRecipes() -> void:
+	for index in range(0, get_child_count()):
+		if index == 5:
+			continue
+		initList(index, true)

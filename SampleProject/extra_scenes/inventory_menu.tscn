@@ -71,6 +71,7 @@
 [ext_resource type="Texture2D" uid="uid://cpl4ojot08g5x" path="res://assets/sprites/Items/InventoryIcons/Inventory_152.png" id="50_yhbm7"]
 [ext_resource type="Texture2D" uid="uid://dfrygpb4tnhda" path="res://assets/sprites/HUD/Buttons/Options.png" id="51_voiot"]
 [ext_resource type="Texture2D" uid="uid://krdtf7rdenp4" path="res://assets/sprites/HUD/Buttons/Select.png" id="52_nmcq0"]
+[ext_resource type="Texture2D" uid="uid://cgcoj5eo7vehf" path="res://assets/sprites/HUD/Menu/New.png" id="53_alrji"]
 [ext_resource type="Texture2D" uid="uid://dxdefq0sl6148" path="res://assets/sprites/HUD/Buttons/L2.png" id="53_ij3vk"]
 [ext_resource type="Script" uid="uid://cleptkjw23hpj" path="res://SampleProject/Scripts/System/Menu/InvHints.gd" id="54_nkih0"]
 [ext_resource type="Script" uid="uid://cea2wd677vq2g" path="res://SampleProject/Scripts/System/Menu/HintButtons.gd" id="55_v1gb1"]
@@ -1735,6 +1736,14 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../..")
+
+[node name="New" type="TextureRect" parent="MenuStateMachine/Menu/Display/Menu/Combine" unique_id=1434016555]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 33.0
+offset_bottom = 14.0
+texture = ExtResource("53_alrji")
 
 [node name="Bestiary" type="Button" parent="MenuStateMachine/Menu/Display/Menu" unique_id=2010261862 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
@@ -3552,6 +3561,15 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
+[node name="New" type="TextureRect" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu/Swords" unique_id=1648446892]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = -2.0
+offset_right = 47.0
+offset_bottom = 14.0
+texture = ExtResource("53_alrji")
+
 [node name="Greatswords" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=1821109615 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
@@ -3562,6 +3580,15 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
+
+[node name="New" type="TextureRect" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu/Greatswords" unique_id=995172299]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = -2.0
+offset_right = 47.0
+offset_bottom = 14.0
+texture = ExtResource("53_alrji")
 
 [node name="Axes" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=1530180360 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
@@ -3574,6 +3601,15 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
+[node name="New" type="TextureRect" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu/Axes" unique_id=374016151]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = -2.0
+offset_right = 47.0
+offset_bottom = 14.0
+texture = ExtResource("53_alrji")
+
 [node name="Spears" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=154159114 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
@@ -3584,6 +3620,15 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
+
+[node name="New" type="TextureRect" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu/Spears" unique_id=1682420583]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = -2.0
+offset_right = 47.0
+offset_bottom = 14.0
+texture = ExtResource("53_alrji")
 
 [node name="Knuckles" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=1336502253 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
@@ -3596,6 +3641,15 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
+[node name="New" type="TextureRect" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu/Knuckles" unique_id=1802195723]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = -2.0
+offset_right = 47.0
+offset_bottom = 14.0
+texture = ExtResource("53_alrji")
+
 [node name="Special" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=1719070711 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
@@ -3606,6 +3660,15 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
+
+[node name="New" type="TextureRect" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu/Special" unique_id=973401266]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = -2.0
+offset_right = 47.0
+offset_bottom = 14.0
+texture = ExtResource("53_alrji")
 
 [node name="Head" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=58583506 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
@@ -3618,6 +3681,15 @@ expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
+[node name="New" type="TextureRect" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu/Head" unique_id=19066209]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = -2.0
+offset_right = 47.0
+offset_bottom = 14.0
+texture = ExtResource("53_alrji")
+
 [node name="Armor" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=1249420728 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
 theme_override_constants/outline_size = 8
@@ -3628,6 +3700,15 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
+
+[node name="New" type="TextureRect" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu/Armor" unique_id=1790696841]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = -2.0
+offset_right = 47.0
+offset_bottom = 14.0
+texture = ExtResource("53_alrji")
 
 [node name="Legs" type="Button" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu" unique_id=159567776 node_paths=PackedStringArray("state_machine")]
 layout_mode = 2
@@ -3640,6 +3721,15 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
+
+[node name="New" type="TextureRect" parent="MenuStateMachine/Combine/Display/PanelContainer/Menu/Legs" unique_id=519888812]
+visible = false
+layout_mode = 0
+offset_left = 15.0
+offset_top = -2.0
+offset_right = 47.0
+offset_bottom = 14.0
+texture = ExtResource("53_alrji")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MenuStateMachine/Combine/Display" unique_id=1305385868]
 custom_minimum_size = Vector2(300, 448)
