@@ -11,8 +11,10 @@ class_name CombineButtons
 
 var button_index: int
 var item_id_list: Array[int]
+var uses_equipment_list: Array[bool]
 var item_to_craft: int
 static var new_craftable_items: bool = false
+static var equipItem: Callable
 
 func _ready() -> void:
 	super()
@@ -201,32 +203,42 @@ func checkMaterials(item, type) -> bool:
 	var hector_stats: HectorStats = Global.player.stats
 	var material_inventory
 	var material_compendium
+	var uses_equipment: bool = false
+	var equipment_slot_to_use: String = ""
+	var is_material_equipped: bool = false
 	
 	for material_item in item.recipe:
 		match material_item["inventory"]:
 			Weapon.Inventory.weapon:
 				material_inventory = hector_stats.weapon_inventory
 				material_compendium = hector_stats.weapon_compendium
+				equipment_slot_to_use = hector_stats.EQUIPMENT_SLOTS.WEAPON
 			Weapon.Inventory.headgear:
 				material_inventory = hector_stats.head_inventory
 				material_compendium = hector_stats.headgear_compendium
-
+				equipment_slot_to_use = hector_stats.EQUIPMENT_SLOTS.HEADGEAR
 			Weapon.Inventory.body:
 				material_inventory = hector_stats.body_inventory
 				material_compendium = hector_stats.body_compendium
-			
+				equipment_slot_to_use = hector_stats.EQUIPMENT_SLOTS.BODY
 			Weapon.Inventory.item:
 				material_inventory = hector_stats.item_inventory
 				material_compendium = hector_stats.item_compendium.Compendium
-				
 			Weapon.Inventory.legs:
 				material_inventory = hector_stats.legs_inventory
 				material_compendium = hector_stats.legs_compendium
-				
+				equipment_slot_to_use = hector_stats.EQUIPMENT_SLOTS.LEGS
 
-				
-		if hector_stats.findItem(material_item["id"], material_inventory) < material_item["quantity"]:
-			return false
+		if equipment_slot_to_use != "":
+			is_material_equipped = hector_stats.itemEquipped(material_item["id"]-1, equipment_slot_to_use)
+		
+		var copies_held: int = hector_stats.findItem(material_item["id"], material_inventory)
+		
+		if material_item["quantity"] > copies_held:
+			if material_item["quantity"] == copies_held+int(is_material_equipped):
+				uses_equipment = true
+			else:
+				return false
 			
 	return true
 
@@ -235,29 +247,33 @@ func craftItem(item, type, button_position) -> void:
 	var material_inventory
 	var material_compendium
 	var item_data = hector_stats.searchItemInCompendium(item, getCompendium(type))
+	var equipment_slot: String
 	
 	for material_item in item_data.recipe:
 		match material_item["inventory"]:
 			Weapon.Inventory.weapon:
 				material_inventory = hector_stats.weapon_inventory
 				material_compendium = hector_stats.weapon_compendium
+				equipment_slot = hector_stats.EQUIPMENT_SLOTS.WEAPON
 			Weapon.Inventory.headgear:
 				material_inventory = hector_stats.head_inventory
 				material_compendium = hector_stats.headgear_compendium
-
+				equipment_slot = hector_stats.EQUIPMENT_SLOTS.HEADGEAR
 			Weapon.Inventory.body:
 				material_inventory = hector_stats.body_inventory
 				material_compendium = hector_stats.body_compendium
-
+				equipment_slot = hector_stats.EQUIPMENT_SLOTS.BODY
 			Weapon.Inventory.item:
 				material_inventory = hector_stats.item_inventory
 				material_compendium = hector_stats.item_compendium
-				
 			Weapon.Inventory.legs:
 				material_inventory = hector_stats.legs_inventory
 				material_compendium = hector_stats.legs_compendium
+				equipment_slot = hector_stats.EQUIPMENT_SLOTS.LEGS
 
-		hector_stats.removeItemCopies(material_item["id"], material_item["quantity"], material_inventory, true)
+		if not hector_stats.removeItemCopies(material_item["id"], material_item["quantity"], material_inventory, true):
+			equipItem.call(equipment_slot, null, material_compendium, material_inventory)
+			hector_stats.removeWeaponInWheel(material_item["id"])
 	
 	var item_inventory = getInventory(type)
 	item_data.recipe_status = Weapon.RecipeStatus.REVEALED
@@ -316,20 +332,24 @@ func updateMaterialList(item, type = 0) -> void:
 		var material_compendium
 		var name_property: String
 		var possessed_quantity: int = 0
+		var equipment_slot_to_use: String = ""
 		
 		match material_item["inventory"]:
 			Weapon.Inventory.weapon:
 				material_inventory = hector_stats.weapon_inventory
 				material_compendium = hector_stats.weapon_compendium
 				name_property = "weapon_name"
+				equipment_slot_to_use = hector_stats.EQUIPMENT_SLOTS.WEAPON
 			Weapon.Inventory.headgear:
 				material_inventory = hector_stats.head_inventory
 				material_compendium = hector_stats.headgear_compendium
 				name_property = "headgear_name"
+				equipment_slot_to_use = hector_stats.EQUIPMENT_SLOTS.HEADGEAR
 			Weapon.Inventory.body:
 				material_inventory = hector_stats.body_inventory
 				material_compendium = hector_stats.body_compendium
 				name_property = "body_name"
+				equipment_slot_to_use = hector_stats.EQUIPMENT_SLOTS.BODY
 			Weapon.Inventory.item:
 				material_inventory = hector_stats.item_inventory
 				material_compendium = hector_stats.item_compendium.Compendium
@@ -338,8 +358,11 @@ func updateMaterialList(item, type = 0) -> void:
 				material_inventory = hector_stats.legs_inventory
 				material_compendium = hector_stats.legs_compendium
 				name_property = "legs_name"
+				equipment_slot_to_use = hector_stats.EQUIPMENT_SLOTS.LEGS
 		var material_data = hector_stats.searchItemInCompendium(material_item["id"], material_compendium)
 		possessed_quantity = hector_stats.findItem(material_item["id"], material_inventory)
+		if equipment_slot_to_use != "":
+			possessed_quantity += int(hector_stats.itemEquipped(material_item["id"]-1, equipment_slot_to_use)) 
 
 		material_icon.texture = material_data.icon
 		material_name.text = material_data[name_property]

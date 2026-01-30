@@ -30,6 +30,7 @@ class_name HectorStats
 @export var status: Array[int]
 @export var weapon_proficiency: Array[Dictionary]
 @export var file_name: String
+static var equipItem: Callable
 
 enum Ailment {
 	GOOD,
@@ -119,16 +120,20 @@ func removeItem(id: int, inventory, remove_from_wheel: bool = false) -> void:
 	
 				
 ## Removes multiple copies of a certain item ID in a certain inventory.
-func removeItemCopies(id: int, qty: int, inventory, remove_from_wheel: bool = false) -> void:
+## Returns true if held copies >= qty, else returns false.
+func removeItemCopies(id: int, qty: int, inventory, remove_from_wheel: bool = false) -> bool:
 	var copies = findItem(id, inventory)
 	if copies <= qty:
 		inventory.erase({"id": id, "quantity": copies})
 		if inventory == weapon_inventory and remove_from_wheel:
 			removeWeaponInWheel(id)
-	elif copies > qty:
+		return copies == qty
+	else:
 		for item in inventory:
 			if item["id"] == id:
 				item["quantity"] -= qty
+		return true
+				
 
 ## Removes the specified weapon from the weapon wheel, if present.
 func removeWeaponInWheel(id: int) -> void:

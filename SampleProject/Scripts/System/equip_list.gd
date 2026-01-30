@@ -28,6 +28,7 @@ func _ready() -> void:
 	get_child(0).pressed.connect(self.on_button_pressed.bind(get_child(0)))
 	get_child(0).focus_entered.connect(self.on_focused.bind(get_child(0)))
 	WeaponWheel.quickWeaponSwap = quickWeaponSwap
+	CombineButtons.equipItem = equipItem
 
 func _process(delta: float) -> void:
 	if weapon_desc:
@@ -96,6 +97,28 @@ func on_button_pressed(button):
 	equipSlots.on_focused(equipSlots.get_child(0).get_child(equipSlots.button_index))
 	equipSlots.menu.accessed_menu = 0
 	
+func equipItem(slot: String, item: Variant, compendium: Variant, inventory: Variant):
+	var stats: HectorStats = Global.player.stats
+	var slot_index: int = stats.EQUIPMENT_SLOTS.values().find(slot)
+	var current_slot: int = stats.equipment[slot]
+	if slot == stats.EQUIPMENT_SLOTS.WEAPON:
+		updateProperties(item)
+	elif slot == stats.EQUIPMENT_SLOTS.RELIC:
+		turnOffRelic()
+	updateNewStats(item, getEquipFromCompendium(stats.equipment[slot], compendium), ["STR", "CON", "INT", "RES", "SYN", "LCK", "ATK", "DEF"])
+	updateStats(["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
+	updateWeaponSprite(item)
+	if item == null:
+		if current_slot > 0:
+			player.addItem(current_slot, inventory)
+		stats.equipment[slot] = 0
+		equipSlots.get_child(0).get_child(slot_index).get_child(0).texture = defaultIcon()
+	else:
+		if current_slot > 0:
+			stats.addItem(stats.equipment[slot], inventory)
+		stats.equipment[slot] = stats.getItemIndexInCompendium(item, compendium)
+		player.removeItem(current_slot, inventory)
+		equipSlots.get_child(0).get_child(slot_index).get_child(0).texture = item.icon
 
 #Retrieves information about the currently highlighted equipment piece
 func on_focused(button):
