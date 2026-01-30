@@ -47,14 +47,14 @@ BODY_EQUIP_LABEL,Body,Corpo,Torso,Corpo,Corps,Lichaam,
 LEGS_EQUIP_LABEL,Legs,Gambe,Pier.,Pernas,Jambes,Benen,
 ACC1_EQUIP_LABEL,Acc.1,Acc.1,Acc.1,Acs. 1,Acc.1,Acc.1,
 ACC2_EQUIP_LABEL,Acc.2,Acc.2,Acc.2,Acs. 2,Acc.2,Acc.2,
-EQUIPPED_WEAPON,Equipped Weapon,Arma equipaggiata,,,,,
-EQUIPPED_ARTIFACT,Equipped Artifact,Artefatto equipaggiato,,,,,
-EQUIPPED_RELIC,Equipped Relic,Reliquia equipaggiata,,,,,
-EQUIPPED_HEADGEAR,Equipped Headgear,Elmo equipaggiato,,,,,
-EQUIPPED_BODY,Equipped Armor,Armatura equipaggiata,,,,,
-EQUIPPED_LEGS,Equipped Legs,Armatura inferiore equipaggiata,,,,,
-EQUIPPED_ACC1,Equipped Accessory 1,Accessorio 1 equipaggiato,,,,,
-EQUIPPED_ACC2,Equipped Accessory 2,Accessorio 2 equipaggiato,,,,,
+EQUIPPED_WEAPON,Equipped Weapon,Arma equipaggiata,,Arma Equipada,,,
+EQUIPPED_ARTIFACT,Equipped Artifact,Artefatto equipaggiato,,Artefato Equipado,,,
+EQUIPPED_RELIC,Equipped Relic,Reliquia equipaggiata,,Relíquia Equipada,,,
+EQUIPPED_HEADGEAR,Equipped Headgear,Elmo equipaggiato,,Capacete Equipado,,,
+EQUIPPED_BODY,Equipped Armor,Armatura equipaggiata,,Armadura Equipada,,,
+EQUIPPED_LEGS,Equipped Legs,Armatura inferiore equipaggiata,,Botas Equipadas,,,
+EQUIPPED_ACC1,Equipped Accessory 1,Accessorio 1 equipaggiato,,Acessório Equipado 1,,,
+EQUIPPED_ACC2,Equipped Accessory 2,Accessorio 2 equipaggiato,,Acessório Equipado 2,,,
 CONSUMABLES_BUTTON,Consumables,Consumabili,Consumibles,Consumíveis,Consommables,Gebruiksvoorwerpen,
 COLLECTIBLES_BUTTON,Collectibles,Collezionabili,Coleccioables,Colecionáveis,Collectibles,Verzamelobjecten,
 RARE_ITEMS_BUTTON,Rare Items,Oggetti rari,Objetos raros,Itens Raros,Objets rares,Zeldzame Voorwerpen,
@@ -79,6 +79,7 @@ HEADGEAR_BUTTON,Headgear,Copricapo,Tocado,Elmo,Couvre-chefs,Hoofdgerei,
 BODY_BUTTON,Body,Corpo,Torso,Corpo,Corps,Lichaam,
 LEGS_BUTTON,Legs,Gambe,Piernas,Pernas,Jambes,Benen,
 CONFIRM_CRAFT_BUTTON,Proceed with the combination?,Procedere con la combinazione?,¿Proceder con la combinación?,Prosseguir com a combinação?,Procéder à la combinaison ?,Voltooi de combinatie?,
+EQUIPPED_ITEM_FOR_CRAFTING_WARNING,You will lose your currently equipped gear highlighted in yellow.,Perderai i pezzi di equipaggiamento evidenziati in giallo.,,,,,
 YES_BUTTON,Yes,Sì,Sí,Sim,Oui,Ja,
 NO_BUTTON,No,No,No,Não,Non,Nee,
 PRODUCED_PREFIX_MESSAGE,Produced,Ottenuto,Producido/a,Produziu,Fabriqué :,Gemaakt,
@@ -850,7 +851,7 @@ Preciso me lembrar como se forja um demônio...","Alors. Qu'est-ce qu'il fallait
 Il faut que je me rappelle de la procédure pour forger...","Nou, hoe werkte het?
 Ik moet toch iets van het duivel smeden herinneren...",
 ,,,,,,,
---First encounter with Carmilla--,451,,,,,,
+--First encounter with Carmilla--,452,,,,,,
 FIRST_CARMILLA_DIALOGUE_1,"Ah, if it isn't Hector: the most interesting man in Dracula's court.","Ah, se non è Hector: l'uomo più interessante nella corte di Dracula.","Ah, si no es Héctor: el hombre más interesante de la corte de Drácula.","Ah, se não é Hector: o homem mais interessante da corte de Drácula.","Ah, si ce n'est pas Hector, l'homme le plus intéressant de la cour de Dracula.","Ah, als het Hector wel niet is: de meest interessante man in Dracula's hof.",
 FIRST_CARMILLA_DIALOGUE_2,"I've come to know of your heroic feat.
 You've become a really strong man.","Sono venuta a conoscenza della tua grande impresa.
@@ -1035,168 +1036,190 @@ DIALOG_FAGARAS_INTRO_4,"And it is this very accursed power that's going to save 
 ",Ed è proprio grazie a questo maledetto potere che molte vite umane si salveranno. Vite di cui non m'importava nulla prima d'ora.,Y es este mismo poder maldito el que salvará incontables vidas humanas. Vidas que antes no me importaban.,E é esse poder tão maldito que vai salvar inúmeras vidas humanas. Vidas com as quais eu antes não me importava.,Et ce même pouvoir maudit va maintenant sauver d'innombrables vies. Des vies qui ne comptaient pas pour moi auparavant.,En deze heel vervloekte kracht heb die talloze mensenlevens zal redden. Levens die hiervoor niet ertoe deden voor mij.,
 ,,,,,,,
 --Meeting Trevor part 1--,,,,,,,
-MEETING_TREVOR_INTRO_1,Is that...?,Ma è...,,,,,
-MEETING_TREVOR_INTRO_2,It's Belmont.,È Belmont.,,,,,
+MEETING_TREVOR_INTRO_1,Is that...?,Ma è...,,Aquele é...?,,,
+MEETING_TREVOR_INTRO_2,It's Belmont.,È Belmont.,,É o Belmont.,,,
 ,,,,,,,
 --Meeting Trevor part 2--,,,,,,,
-MEETING_TREVOR_DIALOGUE_1,"It's been a long time, Belmont.","Ne è passato di tempo, Belmont.",,,,,
-MEETING_TREVOR_DIALOGUE_2,"Is that you, Hector?","Sei tu, Hector?",,,,,
+MEETING_TREVOR_DIALOGUE_1,"It's been a long time, Belmont.","Ne è passato di tempo, Belmont.",,"Há quanto tempo, Belmont.",,,
+MEETING_TREVOR_DIALOGUE_2,"Is that you, Hector?","Sei tu, Hector?",,"É você, Hector?",,,
 MEETING_TREVOR_DIALOGUE_3,"It is.
 For what reason are you here?","Sì.
-Per quale motivo sei qui?",,,,,
+Per quale motivo sei qui?",,"Sim, sou eu.
+O que você faz aqui?",,,
 MEETING_TREVOR_DIALOGUE_4,I have been tasked to track down a cult.,"Ho ricevuto un incarico.
-Sono alla ricerca di una setta.",,,,,
-MEETING_TREVOR_DIALOGUE_5,A cult?,Una setta?,,,,,
-MEETING_TREVOR_DIALOGUE_6,"Yes, they go by Dracula's Grace.","Sì, si chiama Grazia di Dracula.",,,,,
+Sono alla ricerca di una setta.",,Recebi a missão de rastrear um culto.,,,
+MEETING_TREVOR_DIALOGUE_5,A cult?,Una setta?,,Um culto?,,,
+MEETING_TREVOR_DIALOGUE_6,"Yes, they go by Dracula's Grace.","Sì, si chiama Grazia di Dracula.",,"Sim, eles se intitulam "" A Bênção de Drácula"".",,,
 MEETING_TREVOR_DIALOGUE_7,"I want to share as much information as I can since I will need your aid, Hector.","Ho bisogno del tuo aiuto, Hector.
-Cercherò di condividere ogni singolo dettaglio a riguardo.",,,,,
+Cercherò di condividere ogni singolo dettaglio a riguardo.",,"Vou te passar todos os detalhes, pois precisarei da sua ajuda, Hector.",,,
 MEETING_TREVOR_DIALOGUE_8,"But first, I suggest we head back to Julia. I would like to hear from her as well.","Ma prima, è meglio se torniamo da Julia.
-Vorrei anche il suo parere in questione.",,,,,
+Vorrei anche il suo parere in questione.",,"Mas primeiro, sugiro que voltemos para Julia. Eu gostaria de falar com ela também.",,,
 MEETING_TREVOR_DIALOGUE_9,"I understand, she's fortunately not that far from here.
 Let's go.","Capisco, non è molto lontana da qui.
-Andiamo.",,,,,
+Andiamo.",,"Entendo, felizmente ela não está muito longe daqui.
+Vamos.",,,
 ,,,,,,,
-"--Hector, Julia and Trevor first time--",517,,,,,,
-TRIO_FIRST_DIALOGUE_1,Welcome back.,Bentornati.,,,,,
-TRIO_FIRST_DIALOGUE_2,"Is everything ok, Julia?","Tutto bene, Julia?",,,,,
-TRIO_FIRST_DIALOGUE_3,Yes. I have been practicing some magic as of lately.,"Sì, ho fatto un po' di pratica con la magia ultimamente?",,,,,
+"--Hector, Julia and Trevor first time--",518,,,,,,
+TRIO_FIRST_DIALOGUE_1,Welcome back.,Bentornati.,,Bem vindo de volta.,,,
+TRIO_FIRST_DIALOGUE_2,"Is everything ok, Julia?","Tutto bene, Julia?",,"Está tudo bem, Julia?",,,
+TRIO_FIRST_DIALOGUE_3,Yes. I have been practicing some magic as of lately.,"Sì, ho fatto un po' di pratica con la magia ultimamente?",,"Sim. Estive praticando um pouco de magia, como de costume.",,,
 TRIO_FIRST_DIALOGUE_4,"I understand.
 What about the visions?","Capisco.
-E invece le visioni?",,,,,
-TRIO_FIRST_DIALOGUE_5,...,...,,,,,
-TRIO_FIRST_DIALOGUE_6,We'll talk about that another time.,Ne parleremo un'altra volta.,,,,,
-TRIO_FIRST_DIALOGUE_7,I see...,D'accordo...,,,,,
-TRIO_FIRST_DIALOGUE_8,...,...,,,,,
+E invece le visioni?",,"Certo.
+E quanto às visões?",,,
+TRIO_FIRST_DIALOGUE_5,...,...,,...,,,
+TRIO_FIRST_DIALOGUE_6,We'll talk about that another time.,Ne parleremo un'altra volta.,,Falaremos disso em um outro momento.,,,
+TRIO_FIRST_DIALOGUE_7,I see...,D'accordo...,,Tudo bem...,,,
+TRIO_FIRST_DIALOGUE_8,...,...,,...,,,
 TRIO_FIRST_DIALOGUE_9,"I see that sir Belmont is here too.
 I hope all is well.","Vedo che c'è anche il signor Belmont.
-Spero che stiate bene.",,,,,
+Spero che stiate bene.",,"Vejo que o senhor Belmont também está aqui.
+Espero que esteja tudo bem.",,,
 TRIO_FIRST_DIALOGUE_10,"You flatter me with your kindness, m'lady.
 You can call me Trevor.","Mi lusinga con la sua gentilezza.
-Puoi chiamarmi semplicemente Trevor.",,,,,
-TRIO_FIRST_DIALOGUE_11,"As you wish, Trevor.","D'accordo, Trevor.",,,,,
-TRIO_FIRST_DIALOGUE_12,I assume there's a reason why both of you are here.,Immagino siate venuti qui per un motivo.,,,,,
-TRIO_FIRST_DIALOGUE_13,"Yes, Belmont had to tell us about this new cult that has arisen.","Sì, Belmont vorrebbe dirci qualcosa riguardo alla fondazione di una nuova setta.",,,,,
-TRIO_FIRST_DIALOGUE_14,A cult...,Una setta...,,,,,
+Puoi chiamarmi semplicemente Trevor.",,"Fico lisonjeado com sua gentileza, minha senhora.
+Pode me chamar de Trevor.",,,
+TRIO_FIRST_DIALOGUE_11,"As you wish, Trevor.","D'accordo, Trevor.",,"Como quiser, Trevor.",,,
+TRIO_FIRST_DIALOGUE_12,I assume there's a reason why both of you are here.,Immagino siate venuti qui per un motivo.,,Deve haver um motivo para que os dois estejam aqui.,,,
+TRIO_FIRST_DIALOGUE_13,"Yes, Belmont had to tell us about this new cult that has arisen.","Sì, Belmont vorrebbe dirci qualcosa riguardo alla fondazione di una nuova setta.",,Sim. O Belmont precisava nos contar sobre esse novo culto que surgiu.,,,
+TRIO_FIRST_DIALOGUE_14,A cult...,Una setta...,,Um culto...,,,
 TRIO_FIRST_DIALOGUE_15,"That's right.
 I have gathered some information regarding it.","Proprio così.
-Ho un po' di informazioni a riguardo.",,,,,
-TRIO_FIRST_DIALOGUE_16,"It's called Dracula's Grace, and their plan might surprise you.","Si chiama Grazia di Dracula, e vi sorprenderanno le loro intenzioni.",,,,,
-TRIO_FIRST_DIALOGUE_17,They do not intend to resurrect Lord Dracula.,Non vogliono la resurrezione del Conte Dracula.,,,,,
-TRIO_FIRST_DIALOGUE_18,...,...,,,,,
+Ho un po' di informazioni a riguardo.",,"Exato.
+Eu consegui algumas informações a respeito.",,,
+TRIO_FIRST_DIALOGUE_16,"It's called Dracula's Grace, and their plan might surprise you.","Si chiama Grazia di Dracula, e vi sorprenderanno le loro intenzioni.",,"Se chamam ""A Bênção de Drácula"" e você ficará surpresa ao saber dos planos deles.",,,
+TRIO_FIRST_DIALOGUE_17,They do not intend to resurrect Lord Dracula.,Non vogliono la resurrezione del Conte Dracula.,,Eles não pretendem reviver Lorde Drácula.,,,
+TRIO_FIRST_DIALOGUE_18,...,...,,...,,,
 TRIO_FIRST_DIALOGUE_19,"What?
 Then what are they after?","No?
-Allora cosa vogliono?",,,,,
-TRIO_FIRST_DIALOGUE_20,"From what I know, they want to do the same thing as Lord Dracula: bring an end to mankind.","Da quel che so, vogliono comunque steriminare l'umanità.",,,,,
-TRIO_FIRST_DIALOGUE_21,"But with his powers and the curse gone, they don't seem nearly as powerful as Lord Dracula's former army of the night.","Ma senza i poteri di Dracula e senza la maledizione, non sembrano minimamente forti quanto l'esercito del Conte.",,,,,
-TRIO_FIRST_DIALOGUE_22,Meaning that we have a chance to stop them.,Quindi li possiamo fermare.,,,,,
+Allora cosa vogliono?",,"Quê?
+Então, o que estão procurando?",,,
+TRIO_FIRST_DIALOGUE_20,"From what I know, they want to do the same thing as Lord Dracula: bring an end to mankind.","Da quel che so, vogliono comunque steriminare l'umanità.",,"Pelo que eu descobri, eles querem o mesmo que Lorde Drácula: pôr um fim à humanidade.",,,
+TRIO_FIRST_DIALOGUE_21,"But with his powers and the curse gone, they don't seem nearly as powerful as Lord Dracula's former army of the night.","Ma senza i poteri di Dracula e senza la maledizione, non sembrano minimamente forti quanto l'esercito del Conte.",,"Porém, com a maldição findada e sem seus poderes, eles não se comparam ao antigo exército da noite de Lorde Drácula.",,,
+TRIO_FIRST_DIALOGUE_22,Meaning that we have a chance to stop them.,Quindi li possiamo fermare.,,Isso significa que temos uma chance de impedi-los.,,,
 TRIO_FIRST_DIALOGUE_23,"...You look ghastly, Hector.
 Is something troubling you?","...Hai un aspetto spaventoso, Hector.
-C'è qualcosa che ti turba?",,,,,
-TRIO_FIRST_DIALOGUE_24,Quite so.,Decisamente.,,,,,
-TRIO_FIRST_DIALOGUE_25,"Belmont, you said that this cult doesn't want to resurrect Dracula, but only follow his ambition of destroying humanity?","Belmont, hai detto che questa setta non vuole far risorgere Dracula, ma solo seguire il suo desiderio di sterminio?",,,,,
-TRIO_FIRST_DIALOGUE_26,"Yes, what about it?","Sì, perché?",,,,,
-TRIO_FIRST_DIALOGUE_27,"Before meeting you, I had the luxury of encountering a vampire.","Prima di incontrarti, ho avuto il lusso di imbattermi in una vampira.",,,,,
+C'è qualcosa che ti turba?",,"...O que você tem, Hector?
+Algo está te incomodando?",,,
+TRIO_FIRST_DIALOGUE_24,Quite so.,Decisamente.,,Exatamente isso.,,,
+TRIO_FIRST_DIALOGUE_25,"Belmont, you said that this cult doesn't want to resurrect Dracula, but only follow his ambition of destroying humanity?","Belmont, hai detto che questa setta non vuole far risorgere Dracula, ma solo seguire il suo desiderio di sterminio?",,"Belmont, você disse que esse culto não pretende reviver Drácula, mas apenas seguir seu desejo de destruir a humanidade.",,,
+TRIO_FIRST_DIALOGUE_26,"Yes, what about it?","Sì, perché?",,"Sim, e?",,,
+TRIO_FIRST_DIALOGUE_27,"Before meeting you, I had the luxury of encountering a vampire.","Prima di incontrarti, ho avuto il lusso di imbattermi in una vampira.",,"Antes de achar você, eu tive o luxo de me encontrar com uma vampira.",,,
 TRIO_FIRST_DIALOGUE_28,"Her name is Carmilla.
 She said she wants to bring an end to all of us.","Il suo nome è Carmilla.
-Mi ha riferito che vuole porre fine a tutti noi.",,,,,
+Mi ha riferito che vuole porre fine a tutti noi.",,"O nome dela é Carmilla.
+Ela me disse que deseja dar um fim à todos nós.",,,
 TRIO_FIRST_DIALOGUE_29,"One of Lord Dracula's subordinates?
 Do you know more about her?","Uno dei comandanti del Conte Dracula?
-Ne sai di più su di lei?",,,,,
+Ne sai di più su di lei?",,"Uma subordidada de Lorde Drácula?
+Você sabe mais sobre ela?",,,
 TRIO_FIRST_DIALOGUE_30,"I never spoke to her while I was in Lord Dracula's court.
-I only know that she is a very ambitious creature.","Non proprio, non le ho mai parlato quando eravamo insieme nella corte di Dracula. So solo che è molto ambiziosa.",,,,,
-TRIO_FIRST_DIALOGUE_31,"But most importantly, she said that Lord Dracula should not be involved in this anymore.","In ogni caso, ha detto che non vuole mettere il Conte in mezzo a questa storia.",,,,,
-TRIO_FIRST_DIALOGUE_32,So that means she must be a member of that cult.,Quindi fa parte della setta.,,,,,
-TRIO_FIRST_DIALOGUE_33,"I think so, yes.",Credo di sì.,,,,,
-TRIO_FIRST_DIALOGUE_34,She also said something about the curse still existing.,"Ha anche menzionato la maledizione, dicendo che esiste ancora.",,,,,
-TRIO_FIRST_DIALOGUE_35,What?!,Come?!,,,,,
-TRIO_FIRST_DIALOGUE_36,Didn't you transform it into something completely harmless?,Ma non l'avevi trasformata in qualcosa di innocuo?,,,,,
+I only know that she is a very ambitious creature.","Non proprio, non le ho mai parlato quando eravamo insieme nella corte di Dracula. So solo che è molto ambiziosa.",,"Nunca falei com ela enquanto fazia parte da corte de Drácula.
+Só o que eu sei é que ela é uma criatura muito ambiciosa.",,,
+TRIO_FIRST_DIALOGUE_31,"But most importantly, she said that Lord Dracula should not be involved in this anymore.","In ogni caso, ha detto che non vuole mettere il Conte in mezzo a questa storia.",,"Mas, o mais importante, ela disse que Lorde Drácula não estaria envolvido nisso.",,,
+TRIO_FIRST_DIALOGUE_32,So that means she must be a member of that cult.,Quindi fa parte della setta.,,Então isso significa que ela faz parte desse culto.,,,
+TRIO_FIRST_DIALOGUE_33,"I think so, yes.",Credo di sì.,,"Faz sentido, sim.",,,
+TRIO_FIRST_DIALOGUE_34,She also said something about the curse still existing.,"Ha anche menzionato la maledizione, dicendo che esiste ancora.",,Ela também mencionou algo sobre a maldição ainda existir.,,,
+TRIO_FIRST_DIALOGUE_35,What?!,Come?!,,O quê?!,,,
+TRIO_FIRST_DIALOGUE_36,Didn't you transform it into something completely harmless?,Ma non l'avevi trasformata in qualcosa di innocuo?,,Achei que você a tivesse transformado em algo totalmente inofensivo?,,,
 TRIO_FIRST_DIALOGUE_37,"I did.
 It's the power of a devil forgemaster.","L'ho fatto.
-Questo è il potere della forgiatura diabolica.",,,,,
-TRIO_FIRST_DIALOGUE_38,"I transformed the curse into something else, completely harmless as is.","Ho trasformato la maledizione in qualcosa di innocuo, di per sé.",,,,,
-TRIO_FIRST_DIALOGUE_39,"But into what, exactly?","Ma in che cosa, esattamente?",,,,,
-TRIO_FIRST_DIALOGUE_40,A stone.,Una pietra.,,,,,
-TRIO_FIRST_DIALOGUE_41,A stone?,Una pietra?,,,,,
+Questo è il potere della forgiatura diabolica.",,"Foi o que eu fiz.
+Este é o poder de um forjador de demônios.",,,
+TRIO_FIRST_DIALOGUE_38,"I transformed the curse into something else, completely harmless as is.","Ho trasformato la maledizione in qualcosa di innocuo, di per sé.",,"Eu transformei a maldição em algo completamente inofensivo, do jeito que está.",,,
+TRIO_FIRST_DIALOGUE_39,"But into what, exactly?","Ma in che cosa, esattamente?",,"Mas em quê, exatamente?",,,
+TRIO_FIRST_DIALOGUE_40,A stone.,Una pietra.,,Uma pedra.,,,
+TRIO_FIRST_DIALOGUE_41,A stone?,Una pietra?,,Uma pedra?,,,
 TRIO_FIRST_DIALOGUE_42,"Indeed.
-All of the curse's energy was solidified and transformed into a stone.",Proprio così. Tutta l'energia della maledizione è stata solidificata e trasformata in una pietra.,,,,,
-TRIO_FIRST_DIALOGUE_43,"And where is that stone, right now?","E dov'è quella pietra, in questo momento?",,,,,
-TRIO_FIRST_DIALOGUE_44,Julia has it.,Ce l'ha Julia.,,,,,
+All of the curse's energy was solidified and transformed into a stone.",Proprio così. Tutta l'energia della maledizione è stata solidificata e trasformata in una pietra.,,"De fato.
+Toda a energia da maldição foi solidificada e transformada em uma pedra.",,,
+TRIO_FIRST_DIALOGUE_43,"And where is that stone, right now?","E dov'è quella pietra, in questo momento?",,E onde essa pedra está neste momento?,,,
+TRIO_FIRST_DIALOGUE_44,Julia has it.,Ce l'ha Julia.,,Julia está com ela.,,,
 TRIO_FIRST_DIALOGUE_45,"Yes, I have it hidden here.
 I'll show you.","Sì, l'ho nascosta qui.
-Te la mostro.",,,,,
-TRIO_FIRST_DIALOGUE_46,This feeling... are you sure this is harmless?,Questa sensazione... sei sicuro che sia innocua?,,,,,
-TRIO_FIRST_DIALOGUE_47,"This stone essentially acts as a seal. I cannot completely delete something from existence, only transform it.","Questa pietra agisce essenzialmente come sigillo. Non posso cancellare dall'esistenza qualcosa, ma posso trasformarla.",,,,,
-TRIO_FIRST_DIALOGUE_48,I understand.,Capisco.,,,,,
-TRIO_FIRST_DIALOGUE_49,But allow me to question you this.,Ma fammi fare una domanda.,,,,,
-TRIO_FIRST_DIALOGUE_50,What happens if I destroy the stone?,Cosa succederebbe se distruggessi la pietra?,,,,,
-TRIO_FIRST_DIALOGUE_51,"The curse would be unleashed upon this land, again.",La maledizione verrebbe rilasciata di nuovo.,,,,,
-TRIO_FIRST_DIALOGUE_52,...!,...!,,,,,
-TRIO_FIRST_DIALOGUE_53,...,...,,,,,
-TRIO_FIRST_DIALOGUE_54,"Even if in our hands, such power will eventually be released.","Anche se è nelle nostre mani, prima o poi questo potere si scatenerà.",,,,,
-TRIO_FIRST_DIALOGUE_55,Especially now that Carmilla already knows about its existence...,Specialmente ora che Carmilla sa della sua esistenza...,,,,,
-TRIO_FIRST_DIALOGUE_56,"...and now that I feel the curse in the air, again.",...ed ora che la sento sempre di più nell'aria che respiriamo.,,,,,
-TRIO_FIRST_DIALOGUE_57,"I tried to act clueless when she mentioned the curse being separated from Dracula's influence, but to no avail.","Ho fatto finta di non sapere di che cosa stesse parlando Carmilla quando parlò della maledizione, ma non è servito a niente.",,,,,
-TRIO_FIRST_DIALOGUE_58,What can we do to stop that from ever happening?,Cosa possiamo fare per evitare una catastrofe del genere?,,,,,
+Te la mostro.",,"Sim. Eu a escondi aqui.
+Venha, vou lhe mostrar.",,,
+TRIO_FIRST_DIALOGUE_46,This feeling... are you sure this is harmless?,Questa sensazione... sei sicuro che sia innocua?,,Essa sensação... você tem certeza que é seguro?,,,
+TRIO_FIRST_DIALOGUE_47,"This stone essentially acts as a seal. I cannot completely delete something from existence, only transform it.","Questa pietra agisce essenzialmente come sigillo. Non posso cancellare dall'esistenza qualcosa, ma posso trasformarla.",,"Esta pedra basicamente aje como um selo. Eu não consigo simplesmente apagar algo da existência, apenas transformá-lo.",,,
+TRIO_FIRST_DIALOGUE_48,I understand.,Capisco.,,Entendo.,,,
+TRIO_FIRST_DIALOGUE_49,But allow me to question you this.,Ma fammi fare una domanda.,,Mas permita-me fazer-lhe esta pergunta.,,,
+TRIO_FIRST_DIALOGUE_50,What happens if I destroy the stone?,Cosa succederebbe se distruggessi la pietra?,,O que acontece se eu destruir esta pedra?,,,
+TRIO_FIRST_DIALOGUE_51,"The curse would be unleashed upon this land, again.",La maledizione verrebbe rilasciata di nuovo.,,A maldição seria liberada novamente sobre a terra.,,,
+TRIO_FIRST_DIALOGUE_52,...!,...!,,...!,,,
+TRIO_FIRST_DIALOGUE_53,...,...,,...,,,
+TRIO_FIRST_DIALOGUE_54,"Even if in our hands, such power will eventually be released.","Anche se è nelle nostre mani, prima o poi questo potere si scatenerà.",,"Mesmo que esteja em nossas mãos, esse poder acabará sendo liberado.",,,
+TRIO_FIRST_DIALOGUE_55,Especially now that Carmilla already knows about its existence...,Specialmente ora che Carmilla sa della sua esistenza...,,Especialmente agora que Carmilla sabe da sua existência...,,,
+TRIO_FIRST_DIALOGUE_56,"...and now that I feel the curse in the air, again.",...ed ora che la sento sempre di più nell'aria che respiriamo.,,"...e agora que sinto a maldição no ar, novamente.",,,
+TRIO_FIRST_DIALOGUE_57,"I tried to act clueless when she mentioned the curse being separated from Dracula's influence, but to no avail.","Ho fatto finta di non sapere di che cosa stesse parlando Carmilla quando parlò della maledizione, ma non è servito a niente.",,"Tentei fingir que não sabia de nada quando ela mencionou que a maldição estava separada da influência de Drácula, mas foi em vão.",,,
+TRIO_FIRST_DIALOGUE_58,What can we do to stop that from ever happening?,Cosa possiamo fare per evitare una catastrofe del genere?,,O que podemos fazer para impedir que isso aconteça?,,,
 TRIO_FIRST_DIALOGUE_59,"Nothing. This is a stalemate.
 The stone can never be erased from existence.","Nulla. Siamo in una situazione di stallo.
-Questa pietra non può essere eliminata in alcun modo.",,,,,
-TRIO_FIRST_DIALOGUE_60,I see...,Ho capito...,,,,,
-TRIO_FIRST_DIALOGUE_61,"If Dracula's Grace wants to destroy mankind, they will need this.","Se la Grazia di Dracula vuole sterminare gli esseri umani, vorranno sicuramente questa pietra.",,,,,
-TRIO_FIRST_DIALOGUE_62,Have you considered the possibility that they know about this stone in particular?,Hai considerato la possibilità che loro sappiano esattamente di questo oggetto?,,,,,
-TRIO_FIRST_DIALOGUE_63,"Unfortunately, we had to find out the hard way.",La risposta a questa domanda l'abbiamo dovuta scoprire nel peggiore dei modi.,,,,,
+Questa pietra non può essere eliminata in alcun modo.",,"Nada. Isto é um impasse.
+A pedra jamais poderá ser apagada da existência.",,,
+TRIO_FIRST_DIALOGUE_60,I see...,Ho capito...,,Sei...,,,
+TRIO_FIRST_DIALOGUE_61,"If Dracula's Grace wants to destroy mankind, they will need this.","Se la Grazia di Dracula vuole sterminare gli esseri umani, vorranno sicuramente questa pietra.",,"Se a Bênção de Drácula quer destruir a humanidade, eles vão precisar disso.",,,
+TRIO_FIRST_DIALOGUE_62,Have you considered the possibility that they know about this stone in particular?,Hai considerato la possibilità che loro sappiano esattamente di questo oggetto?,,Você já considerou a possibilidade de eles saberem especificamente sobre essa pedra?,,,
+TRIO_FIRST_DIALOGUE_63,"Unfortunately, we had to find out the hard way.",La risposta a questa domanda l'abbiamo dovuta scoprire nel peggiore dei modi.,,"Infelizmente, tivemos que descobrir isso do modo mais difícil.",,,
 TRIO_FIRST_DIALOGUE_64,"We had to abandon our previous home, to settle here.
 We were being hunted.","Abbiamo dovuto abbandonare la nostra vecchia casa, per stabilirci qui.
-Continuavamo ad essere perseguitati.",,,,,
-TRIO_FIRST_DIALOGUE_65,By who?,Da chi?,,,,,
-TRIO_FIRST_DIALOGUE_66,"Creatures of the night, vampires... some humans as well.","Creature della notte, vampri... anche alcuni esseri umani.",,,,,
-TRIO_FIRST_DIALOGUE_67,"Come to think of it, I am sure they will know about our new hiding place soon enough.","Ora che ci penso, sono sicuro che verranno anche qui prima o poi.",,,,,
-TRIO_FIRST_DIALOGUE_68,...,...,,,,,
-TRIO_FIRST_DIALOGUE_69,...,...,,,,,
-TRIO_FIRST_DIALOGUE_70,...,...,,,,,
-TRIO_FIRST_DIALOGUE_71,"So it seems our goals align again, Hector.","Quindi i nostri obiettivi si intersecano nuovamente, Hector.",,,,,
-TRIO_FIRST_DIALOGUE_72,"What do you mean, Belmont?","Cosa intendi dire, Belmont?",,,,,
-TRIO_FIRST_DIALOGUE_73,I mean that this stone is exactly what we need to accomplish this task.,Intendo dire che questa pietra è esattamente ciò che ci serve.,,,,,
-TRIO_FIRST_DIALOGUE_74,How so?,In che modo?,,,,,
-TRIO_FIRST_DIALOGUE_75,"Since they will be searching for this, we can lure them here and strike them down.","Siccome la staranno sicuramente cercando, potremmo attirarli qui e sconfiggerli.",,,,,
-TRIO_FIRST_DIALOGUE_76,What?,Cosa?,,,,,
-TRIO_FIRST_DIALOGUE_77,I cannot afford Julia to be in danger.,Non posso permettere di mettere in pericolo Julia.,,,,,
+Continuavamo ad essere perseguitati.",,"Tivemos que abandonar nossa antiga casa para nos estabelecermos aqui.
+Estávamos sendo caçados.",,,
+TRIO_FIRST_DIALOGUE_65,By who?,Da chi?,,Por quem?,,,
+TRIO_FIRST_DIALOGUE_66,"Creatures of the night, vampires... some humans as well.","Creature della notte, vampri... anche alcuni esseri umani.",,"Criaturas da noite, vampiros... e até mesmo humanos.",,,
+TRIO_FIRST_DIALOGUE_67,"Come to think of it, I am sure they will know about our new hiding place soon enough.","Ora che ci penso, sono sicuro che verranno anche qui prima o poi.",,"Pensando nisso, eu tenho certeza que logo irão descobrir o nosso esconderijo.",,,
+TRIO_FIRST_DIALOGUE_68,...,...,,...,,,
+TRIO_FIRST_DIALOGUE_69,...,...,,...,,,
+TRIO_FIRST_DIALOGUE_70,...,...,,...,,,
+TRIO_FIRST_DIALOGUE_71,"So it seems our goals align again, Hector.","Quindi i nostri obiettivi si intersecano nuovamente, Hector.",,"Parece que nossos objetivos estão de acordo, Hector.",,,
+TRIO_FIRST_DIALOGUE_72,"What do you mean, Belmont?","Cosa intendi dire, Belmont?",,"O que quer dizer, Belmont?",,,
+TRIO_FIRST_DIALOGUE_73,I mean that this stone is exactly what we need to accomplish this task.,Intendo dire che questa pietra è esattamente ciò che ci serve.,,Quero dizer que esta pedra é exatamente o que precisamos para cumprir essa tarefa.,,,
+TRIO_FIRST_DIALOGUE_74,How so?,In che modo?,,Como assim?,,,
+TRIO_FIRST_DIALOGUE_75,"Since they will be searching for this, we can lure them here and strike them down.","Siccome la staranno sicuramente cercando, potremmo attirarli qui e sconfiggerli.",,"Já que eles estarão procurando por isso, nós podemos atraí-los para cá e atacá-los.",,,
+TRIO_FIRST_DIALOGUE_76,What?,Cosa?,,O quê?,,,
+TRIO_FIRST_DIALOGUE_77,I cannot afford Julia to be in danger.,Non posso permettere di mettere in pericolo Julia.,,Não colocarei Julia em perigo.,,,
 TRIO_FIRST_DIALOGUE_78,"I have already suffered a great tragedy once the same way.
 I refuse to through all of that again!","Ho già sofferto una gran tragedia nello stesso modo.
-Mi rifiuto di correre il rischio che riaccada!",,,,,
-TRIO_FIRST_DIALOGUE_79,Then what do you propose we do?,Allora che cosa proponi di fare?,,,,,
-TRIO_FIRST_DIALOGUE_80,...,...,,,,,
+Mi rifiuto di correre il rischio che riaccada!",,"Já sofri uma grande tragédia dessa mesma forma.
+Eu me recuso a passar por tudo isso novamente!",,,
+TRIO_FIRST_DIALOGUE_79,Then what do you propose we do?,Allora che cosa proponi di fare?,,Então o que você propõe?,,,
+TRIO_FIRST_DIALOGUE_80,...,...,,...,,,
 TRIO_FIRST_DIALOGUE_81,"We can lure them elsewhere.
 But in doing so, we have to know more about the enemy first.","Potremmo attirarli da un'altra parte.
-Per farlo avremo bisogno di più informazioni su di loro, però...",,,,,
+Per farlo avremo bisogno di più informazioni su di loro, però...",,"Podemos atraí-los para outro lugar.
+Mas, ao fazer isso, precisamos saber mais sobre nosso inimigo.",,,
 TRIO_FIRST_DIALOGUE_82,"I see.
 Collecting more clues is what you want to do.","Capisco.
-Quello che vuoi fare è cercare indizi.",,,,,
-TRIO_FIRST_DIALOGUE_83,"What do you think about that, Julia?","Cosa ne pensi, Julia?",,,,,
+Quello che vuoi fare è cercare indizi.",,"Certo.
+Você quer coletar mais pistas primeiro.",,,
+TRIO_FIRST_DIALOGUE_83,"What do you think about that, Julia?","Cosa ne pensi, Julia?",,"O que você acha disso, Julia?",,,
 TRIO_FIRST_DIALOGUE_84,"You should be careful, Trevor.
 This recklessness of yours has almost cost you your life.","Dovresti fare attenzione, Trevor.
-Questo tuo modo frettoloso di fare le cose ti è quasi costato la vita.",,,,,
-TRIO_FIRST_DIALOGUE_85,"As Hector said, we need a strategy.","Come dice Hector, abbiamo bisogno di una strategia.",,,,,
-TRIO_FIRST_DIALOGUE_86,We must act accordingly to who stands before us.,Dobbiamo agire in base a chi abbiamo di fronte a noi.,,,,,
-TRIO_FIRST_DIALOGUE_87,I understand.,Capisco.,,,,,
-TRIO_FIRST_DIALOGUE_88,I know of two places of where to find clues.,Ho in mente due luoghi nei quali potreste cercare indizi.,,,,,
-TRIO_FIRST_DIALOGUE_89,"Speaking with a couple of villagers and using my envisioning powers, I can predict that a vampire will show up.","Parlando con un paio di persone e usando i miei poteri da veggente, prevedo che si farà avanti un vampiro.",,,,,
-TRIO_FIRST_DIALOGUE_90,"I don't exactly know where, but to the north from here, after the temple.","Non so esattamente dove, ma a nord da qui, dopo il tempio.",,,,,
+Questo tuo modo frettoloso di fare le cose ti è quasi costato la vita.",,"Você deveria ter cuidado, Trevor.
+Essa sua imprudência quase lhe custou a vida.",,,
+TRIO_FIRST_DIALOGUE_85,"As Hector said, we need a strategy.","Come dice Hector, abbiamo bisogno di una strategia.",,"Como Hector disse, nós precisamos de uma estratégia.",,,
+TRIO_FIRST_DIALOGUE_86,We must act accordingly to who stands before us.,Dobbiamo agire in base a chi abbiamo di fronte a noi.,,Devemos agir de acordo com quem estiver diante de nós.,,,
+TRIO_FIRST_DIALOGUE_87,I understand.,Capisco.,,Eu entendo.,,,
+TRIO_FIRST_DIALOGUE_88,I know of two places of where to find clues.,Ho in mente due luoghi nei quali potreste cercare indizi.,,Eu sei de dois locais onde podemos encontrar pistas.,,,
+TRIO_FIRST_DIALOGUE_89,"Speaking with a couple of villagers and using my envisioning powers, I can predict that a vampire will show up.","Parlando con un paio di persone e usando i miei poteri da veggente, prevedo che si farà avanti un vampiro.",,"Conversando com alguns moradores e usando meus poderes de premonição, posso prever que um vampiro aparecerá.",,,
+TRIO_FIRST_DIALOGUE_90,"I don't exactly know where, but to the north from here, after the temple.","Non so esattamente dove, ma a nord da qui, dopo il tempio.",,"Não sei exatamente onde, mas fica ao norte daqui, após o templo.",,,
 TRIO_FIRST_DIALOGUE_91,"And to the east, there will be a reunion. Many candles, torches and lamps vanquishing the darkness of an infested manor.","Mentre ad est si terrà un convento.
-Tante candele, torce e lampioni che scacciano le tenebre di una villa infestata.",,,,,
+Tante candele, torce e lampioni che scacciano le tenebre di una villa infestata.",,"E ao leste, haverá um reencontro. Muitas velas, tochas e lâmpadas dissipando a escuridão de uma mansão infestada.",,,
 TRIO_FIRST_DIALOGUE_92,"I understand.
 Sounds like we have to split up.","D'accordo.
-Credo che dovremo dividerci.",,,,,
-TRIO_FIRST_DIALOGUE_93,I'll go to the north while you take the east path.,"Andrò a nord, mentre tu andrai ad est.",,,,,
-TRIO_FIRST_DIALOGUE_94,Then it is settled.,Allora è deciso.,,,,,
+Credo che dovremo dividerci.",,"Entendido.
+Ao que parece, teremos que nos separar.",,,
+TRIO_FIRST_DIALOGUE_93,I'll go to the north while you take the east path.,"Andrò a nord, mentre tu andrai ad est.",,Eu irei para o norte enquanto você segue para o leste.,,,
+TRIO_FIRST_DIALOGUE_94,Then it is settled.,Allora è deciso.,,Então está decidido.,,,
 TRIO_FIRST_DIALOGUE_95,"I will depart immediately.
 May good fortune bless your journey, Hector.","Parto subito.
-Che la buona sorte sia dalla tua parte, Hector.",,,,,
-TRIO_FIRST_DIALOGUE_96,"You as well, Belmont.","Anche a te, Belmont.",,,,,
-TRIO_FIRST_DIALOGUE_97,"You know, speaking for so long without sitting on a chair vexes me so.","Sai, detesto parlare per così tanto tempo senza potermi sedere.",,,,,
-TRIO_FIRST_DIALOGUE_98,*giggles*,*ridacchia*,,,,,
-TRIO_FIRST_DIALOGUE_99,Then perhaps your first quest is to find a chair to bring here when there's small talk to do.,Allora forse la prima cosa che dovresti fare è trovare una sedia e portarla qui.,,,,,
-TRIO_FIRST_DIALOGUE_100,"As wise as ever, Julia.","Saggia come sempre, Julia.",,,,,
-TRIO_FIRST_DIALOGUE_101,Let's get to work.,Ora di metterci al lavoro.,,,,,
+Che la buona sorte sia dalla tua parte, Hector.",,"Partirei imediatamente.
+Que a boa sorte abençoe sua jornada, Hector.",,,
+TRIO_FIRST_DIALOGUE_96,"You as well, Belmont.","Anche a te, Belmont.",,"A você também, Belmont.",,,
+TRIO_FIRST_DIALOGUE_97,"You know, speaking for so long without sitting on a chair vexes me so.","Sai, detesto parlare per così tanto tempo senza potermi sedere.",,"Sabe, ficar falando por tanto tempo sem sentar em uma cadeira me irrita profundamente.",,,
+TRIO_FIRST_DIALOGUE_98,*giggles*,*ridacchia*,,*risinhos*,,,
+TRIO_FIRST_DIALOGUE_99,Then perhaps your first quest is to find a chair to bring here when there's small talk to do.,Allora forse la prima cosa che dovresti fare è trovare una sedia e portarla qui.,,Então talvez sua primeira missão seja encontrar uma cadeira e trazer para cá para quando precisarmos conversar um pouco.,,,
+TRIO_FIRST_DIALOGUE_100,"As wise as ever, Julia.","Saggia come sempre, Julia.",,"Sábia como sempre, Julia.",,,
+TRIO_FIRST_DIALOGUE_101,Let's get to work.,Ora di metterci al lavoro.,,Vamos ao trabalho.,,,
 ,,,,,,,
 --Stage titles--,,,,,,,
 ABANDONED_MONASTERY_TITLE,Abandoned Monastery,Monastero abbandonato,Monasterio Abandonado,Mosteiro Abandonado,Monastère abandonné,Verlaten Klooster,
@@ -1655,7 +1678,7 @@ invencível por um curto período de tempo.",,"Je kunt snel herstellen van neerh
 
 Als je dat doet zal Hector achteruitschuiven en blijft
 hij onschaadbaar voor een korte tijd.",
-RED_ORB,RED ORB,GLOBO ROSSO,ORBE ROJO,ORBE VERMELHA,,,
+RED_ORB,RED ORB,GLOBO ROSSO,ORBE ROJO,ORBE VERMELHO,,,
 RED_ORB_DESC,"This orb enhances the strength of Aguni's Laurel.
 
 Flames produced have their lifespan extended by 100% while

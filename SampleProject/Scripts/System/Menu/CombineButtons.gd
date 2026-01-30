@@ -3,16 +3,16 @@ class_name CombineButtons
 
 @export var item_list: Menu
 @export var material_list: VBoxContainer
-@export var description: Node
 @export var confirm_animation: AnimationPlayer
+@export var confirm_panel_label: Label
 @export var confirm_panel_button: Button
 @export var craft_icon: TextureRect
 @export var craft_text: RichTextLabel
 
 var button_index: int
 var item_id_list: Array[int]
-var uses_equipment_list: Array[bool]
 var item_to_craft: int
+var uses_equipment_slots: int
 static var new_craftable_items: bool = false
 static var equipItem: Callable
 
@@ -83,6 +83,9 @@ func getListType(index = null):
 func on_item_button_pressed(which):
 	sound.play_sound_effect_from_library("confirm")
 	menu.accessed_menu = 2
+	confirm_panel_label.text = tr("CONFIRM_CRAFT_BUTTON")
+	if uses_equipment_slots:
+		confirm_panel_label.text = tr("EQUIPPED_ITEM_FOR_CRAFTING_WARNING") + "\n" + confirm_panel_label.text
 	confirm_animation.play("show")
 	sound.play_sound_effect_from_library("popup")
 	item_to_craft = which.get_index()
@@ -309,7 +312,8 @@ func updateMaterialList(item, type = 0) -> void:
 		
 	if item == null:
 		return
-		
+	
+	uses_equipment_slots = false
 	for material_item in item.recipe:
 		var material_entry: HBoxContainer = HBoxContainer.new()
 		var material_icon: TextureRect = TextureRect.new()
@@ -371,6 +375,10 @@ func updateMaterialList(item, type = 0) -> void:
 		if possessed_quantity < material_item["quantity"]:
 			material_name.text = "[color=#FF8080]" + tr(material_name.text) + "[/color]"
 			material_quantity.text = "[right][color=#FF8080]" + material_quantity.text + "[/color][/right]"
+		elif possessed_quantity == material_item["quantity"] and equipment_slot_to_use != "" and hector_stats.itemEquipped(material_item["id"]-1, equipment_slot_to_use):
+			uses_equipment_slots = true
+			material_name.text = "[color=#FFBB40]" + tr(material_name.text) + "[/color]"
+			material_quantity.text = "[right][color=#FFBB40]" + material_quantity.text + "[/color][/right]"
 		
 		text_vbox.add_child(material_name)
 		material_entry.add_child(material_icon)

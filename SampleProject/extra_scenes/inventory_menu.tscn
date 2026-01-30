@@ -3534,13 +3534,14 @@ offset_right = 222.0
 offset_bottom = 135.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vl8s6")
 
-[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/PanelContainer" unique_id=528048671 node_paths=PackedStringArray("item_list", "material_list", "confirm_animation", "confirm_panel_button", "craft_icon", "craft_text", "sound", "menu", "state_machine")]
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Combine/Display/PanelContainer" unique_id=528048671 node_paths=PackedStringArray("item_list", "material_list", "confirm_animation", "confirm_panel_label", "confirm_panel_button", "craft_icon", "craft_text", "sound", "menu", "state_machine")]
 layout_mode = 2
 theme = SubResource("Theme_dvff1")
 script = ExtResource("48_etb2t")
 item_list = NodePath("../../ScrollContainer/Menu")
 material_list = NodePath("../../Recipe/Window/Materials")
 confirm_animation = NodePath("../../ConfirmPanel/AnimationPlayer")
+confirm_panel_label = NodePath("../../ConfirmPanel/LabelAndButtons/Label")
 confirm_panel_button = NodePath("../../ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/Yes")
 craft_icon = NodePath("../../CraftPanel/CraftElements/CraftIcon")
 craft_text = NodePath("../../CraftPanel/CraftElements/CraftText")
