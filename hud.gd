@@ -141,7 +141,7 @@ func updateHPNumber():
 	h_box_container_3.updateHP(Global.player.innocent_devil.stats.Stats["Hearts"], Global.player.innocent_devil.stats.Stats["MHearts"])
 	
 func updateHP(delta):
-	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT or Global.screen == Global.ScreenType.TRAINING):
 		return
 		
 	if initialize_bars_instantly:
@@ -169,7 +169,7 @@ func updateMP(delta):
 			low_MP_tint = Color(1, 0.365, 0)
 			
 	mana.texture_progress = mana_colors[Global.player.stats.equipment["relic"]]
-	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT or Global.screen == Global.ScreenType.TRAINING):
 		return
 		
 	if initialize_bars_instantly:
