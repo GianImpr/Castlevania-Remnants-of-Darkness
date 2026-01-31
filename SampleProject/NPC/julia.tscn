@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=4 uid="uid://jwyi0jgsmid6"]
+[gd_scene format=4 uid="uid://jwyi0jgsmid6"]
 
-[ext_resource type="Texture2D" uid="uid://c7rcg8o86p0d4" path="res://assets/sprites/Characters/Julia.png" id="1_hf8hs"]
 [ext_resource type="Script" uid="uid://ddjo3mv1dcvo3" path="res://SampleProject/Scripts/Event/julia_shopgd.gd" id="1_nh6dn"]
+[ext_resource type="Texture2D" uid="uid://cfttraa4r82w" path="res://assets/sprites/Characters/Julia2.png" id="2_nh6dn"]
 [ext_resource type="Texture2D" uid="uid://bssr2pn08c758" path="res://assets/sprites/Tiles/ShopTiles.png" id="3_f3y8a"]
 [ext_resource type="Texture2D" uid="uid://jbub1qlbinrk" path="res://assets/sprites/Items/InventoryIcons/Inventory_7.png" id="4_5svtf"]
 [ext_resource type="Texture2D" uid="uid://dqnxid8kdbq7o" path="res://assets/sprites/Items/InventoryIcons/Inventory_262.png" id="4_r3dig"]
@@ -1084,87 +1084,91 @@ fill_to = Vector2(1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5svtf"]
 size = Vector2(50.5, 10)
 
-[node name="Julia" type="Node2D"]
+[node name="Julia" type="Node2D" unique_id=1576004327 node_paths=PackedStringArray("julia_sprite")]
 scale = Vector2(2, 2)
 script = ExtResource("1_nh6dn")
+julia_sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(11, 0)
-texture = ExtResource("1_hf8hs")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=787619289]
+position = Vector2(15, 0)
+texture = ExtResource("2_nh6dn")
+offset = Vector2(-4, 0)
+hframes = 3
+frame = 2
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=894831530]
 position = Vector2(1, 0)
 scale = Vector2(0.5, 0.5)
 tile_map_data = PackedByteArray("AAD+/wAAAAAFADoAAAD+/wEAAAAFADsAAAD//wAAAAAGADoAAAD//wEAAAAGADsAAAAAAAAAAAAHADoAAAAAAAEAAAAHADsAAAABAAAAAAAIADoAAAABAAEAAAAIADsAAAACAAAAAAAJADoAAAACAAEAAAAJADsAAAA=")
 tile_set = SubResource("TileSet_mdepf")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1661087561]
 position = Vector2(1, 0)
 scale = Vector2(0.5, 0.5)
 tile_map_data = PackedByteArray("AAD+/wEAAAAFAD0AAAD//wEAAAAGAD0AAAAAAAEAAAAHAD0AAAABAAEAAAAIAD0AAAACAAEAAAAJAD0AAAA=")
 tile_set = SubResource("TileSet_mdepf")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=316235536]
 offset_left = -22.0
 offset_top = 4.0
 offset_right = 42.0
 offset_bottom = 26.0
 texture = SubResource("GradientTexture1D_ol55l")
 
-[node name="ExposedItems" type="Node2D" parent="."]
+[node name="ExposedItems" type="Node2D" parent="." unique_id=1633167672]
 position = Vector2(8, 0)
 
-[node name="Sprite2D9" type="Sprite2D" parent="ExposedItems"]
+[node name="Sprite2D9" type="Sprite2D" parent="ExposedItems" unique_id=1565079441]
 modulate = Color(0.8047426, 0.80474263, 0.8047425, 1)
 position = Vector2(-16.5, 18)
 texture = ExtResource("4_5svtf")
 
-[node name="Sprite2D10" type="Sprite2D" parent="ExposedItems"]
+[node name="Sprite2D10" type="Sprite2D" parent="ExposedItems" unique_id=958021088]
 modulate = Color(0.8047426, 0.80474263, 0.8047425, 1)
 position = Vector2(-2.5, 18)
 texture = ExtResource("5_nh6dn")
 
-[node name="Sprite2D11" type="Sprite2D" parent="ExposedItems"]
+[node name="Sprite2D11" type="Sprite2D" parent="ExposedItems" unique_id=896885995]
 modulate = Color(0.8047426, 0.80474263, 0.8047425, 1)
 position = Vector2(15, 19.5)
 texture = ExtResource("6_ol55l")
 
-[node name="Sprite2D3" type="Sprite2D" parent="ExposedItems"]
+[node name="Sprite2D3" type="Sprite2D" parent="ExposedItems" unique_id=2029501025]
 modulate = Color(0.8047426, 0.80474263, 0.8047425, 1)
 position = Vector2(-24.5, 18)
 texture = ExtResource("4_r3dig")
 
-[node name="Sprite2D4" type="Sprite2D" parent="ExposedItems"]
+[node name="Sprite2D4" type="Sprite2D" parent="ExposedItems" unique_id=920889532]
 modulate = Color(0.8047426, 0.80474263, 0.8047425, 1)
 position = Vector2(-9.5, 17.5)
 texture = ExtResource("5_nqb10")
 
-[node name="Sprite2D6" type="Sprite2D" parent="ExposedItems"]
+[node name="Sprite2D6" type="Sprite2D" parent="ExposedItems" unique_id=1906041283]
 modulate = Color(0.8047426, 0.80474263, 0.8047425, 1)
 position = Vector2(5.5, 17.5)
 texture = ExtResource("6_t0o5b")
 
-[node name="Sprite2D5" type="Sprite2D" parent="ExposedItems"]
+[node name="Sprite2D5" type="Sprite2D" parent="ExposedItems" unique_id=487668664]
 modulate = Color(0.8047426, 0.80474263, 0.8047425, 1)
 position = Vector2(25, 17.5)
 texture = ExtResource("7_5svtf")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=66674986]
 offset_left = -22.5
 offset_top = 3.5
 offset_right = 41.5
 offset_bottom = 25.5
 texture = SubResource("GradientTexture2D_nqb10")
 
-[node name="Books" type="Sprite2D" parent="."]
+[node name="Books" type="Sprite2D" parent="." unique_id=36953134]
 position = Vector2(-14.5, -4)
 texture = ExtResource("11_nh6dn")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=2015860040]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2036890356]
 position = Vector2(10.25, 23.5)
 shape = SubResource("RectangleShape2D_5svtf")
 

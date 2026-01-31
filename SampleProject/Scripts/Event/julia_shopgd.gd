@@ -1,5 +1,9 @@
 extends Node2D
 class_name JuliaShop
+@export var julia_sprite: Sprite2D
+
+func _process(delta: float) -> void:
+	julia_sprite.flip_h = Global.player.global_position > global_position
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body == Global.player:
