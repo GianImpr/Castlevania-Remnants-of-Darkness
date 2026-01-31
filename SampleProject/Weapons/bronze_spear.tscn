@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://is8m1bw67k3c"]
+[gd_scene format=3 uid="uid://is8m1bw67k3c"]
 
 [ext_resource type="Texture2D" uid="uid://dr0xhygoa4gny" path="res://assets/sprites/Weapons/Spears/BronzeSpear.png" id="1_n2bpi"]
 [ext_resource type="Script" uid="uid://cuc51tpbif06h" path="res://SampleProject/Scripts/HectorAnims/weapon_sprite.gd" id="2_lx82p"]
@@ -486,22 +486,21 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxj7m"]
 size = Vector2(82, 15)
 
-[node name="BronzeSpear" type="Sprite2D" node_paths=PackedStringArray("animation", "hitbox")]
+[node name="BronzeSpear" type="Sprite2D" unique_id=633006835 node_paths=PackedStringArray("animation", "hitbox")]
 process_mode = 1
 visible = false
 texture = ExtResource("1_n2bpi")
-offset = Vector2(19, 0)
+offset = Vector2(19, 12)
 hframes = 5
 script = ExtResource("2_lx82p")
 animation = NodePath("AnimationPlayer")
 hitbox = NodePath("PlayerHitbox")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_fyiql")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=736437627]
+libraries/ = SubResource("AnimationLibrary_fyiql")
 
-[node name="PlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitbox", "trail")]
+[node name="PlayerHitbox" type="Area2D" parent="." unique_id=682679828 node_paths=PackedStringArray("hitbox", "trail")]
+visible = false
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("3_ri5bs")
@@ -512,11 +511,12 @@ hit_collision_scene = ExtResource("4_upak3")
 ice_hit_collision_scene = ExtResource("5_o6btw")
 base_attribute = Array[int]([2])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox" unique_id=309027142]
 position = Vector2(21, 11)
 shape = SubResource("RectangleShape2D_dxj7m")
+disabled = true
 
-[node name="Trail" type="Sprite2D" parent="."]
+[node name="Trail" type="Sprite2D" parent="." unique_id=1303136237]
 texture = ExtResource("6_6i5x1")
 
 [connection signal="body_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_body_entered"]

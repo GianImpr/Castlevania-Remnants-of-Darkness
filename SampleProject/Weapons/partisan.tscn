@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cux0psxn6kqhl"]
+[gd_scene format=3 uid="uid://cux0psxn6kqhl"]
 
 [ext_resource type="Texture2D" uid="uid://chmyea6xo34is" path="res://assets/sprites/Weapons/Spears/Partisan.png" id="1_lr6kv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/HectorAnims/weapon_sprite.gd" id="2_ekyda"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AttackLogic.gd" id="3_si6h0"]
+[ext_resource type="Script" uid="uid://cuc51tpbif06h" path="res://SampleProject/Scripts/HectorAnims/weapon_sprite.gd" id="2_ekyda"]
+[ext_resource type="Script" uid="uid://bnqfu6md522u3" path="res://SampleProject/Scripts/AttackLogic.gd" id="3_si6h0"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="4_gm046"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="5_eqntj"]
 [ext_resource type="Texture2D" uid="uid://bbn7e5gi24eyw" path="res://assets/sprites/Weapons/Spears/Smear.png" id="6_cumci"]
@@ -477,16 +477,16 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fyiql"]
 _data = {
-"RESET": SubResource("Animation_sud5e"),
-"swing": SubResource("Animation_kl2w3"),
-"swing_air": SubResource("Animation_bifun"),
-"swing_crouch": SubResource("Animation_obrxj")
+&"RESET": SubResource("Animation_sud5e"),
+&"swing": SubResource("Animation_kl2w3"),
+&"swing_air": SubResource("Animation_bifun"),
+&"swing_crouch": SubResource("Animation_obrxj")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxj7m"]
 size = Vector2(82, 15)
 
-[node name="Partisan" type="Sprite2D" node_paths=PackedStringArray("animation", "hitbox")]
+[node name="Partisan" type="Sprite2D" unique_id=903116261 node_paths=PackedStringArray("animation", "hitbox")]
 process_mode = 1
 visible = false
 texture = ExtResource("1_lr6kv")
@@ -496,12 +496,10 @@ script = ExtResource("2_ekyda")
 animation = NodePath("AnimationPlayer")
 hitbox = NodePath("PlayerHitbox")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_fyiql")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=691664311]
+libraries/ = SubResource("AnimationLibrary_fyiql")
 
-[node name="PlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitbox", "trail")]
+[node name="PlayerHitbox" type="Area2D" parent="." unique_id=1024096777 node_paths=PackedStringArray("hitbox", "trail")]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("3_si6h0")
@@ -512,13 +510,13 @@ hit_collision_scene = ExtResource("4_gm046")
 ice_hit_collision_scene = ExtResource("5_eqntj")
 base_attribute = Array[int]([2])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox" unique_id=1654191198]
 visible = false
 position = Vector2(21, 11)
 shape = SubResource("RectangleShape2D_dxj7m")
 disabled = true
 
-[node name="Trail" type="Sprite2D" parent="."]
+[node name="Trail" type="Sprite2D" parent="." unique_id=1419666143]
 texture = ExtResource("6_cumci")
 
 [connection signal="body_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_body_entered"]

@@ -16,7 +16,6 @@ func checkOverlap() -> bool:
 	var query = PhysicsShapeQueryParameters2D.new()
 	query.shape = parent.collision.shape
 	query.transform = parent.transform.scaled_local(Vector2(0.8,0.8))
-	#query.transform.origin = Vector2(0,0)
 	
 	query.collision_mask = parent.collision_mask 
 	
