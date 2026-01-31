@@ -43,6 +43,8 @@ const CHARACTER_ANIMATION_INDEX: int = 1
 
 var has_to_release_button: bool = false
 var character_speaking: Character = Character.LEFT
+var character_left: Dialogue.Character
+var character_right: Dialogue.Character
 var current_dialogue_entry: int = 0
 static var active: bool = false
 
@@ -78,7 +80,15 @@ func setDialogueBox() -> void:
 	var entry: Dialogue = dialogue_entries[current_dialogue_entry]
 	setCharacterName(Dialogue.Names.values()[entry.character], entry.hide_name)
 	setText(entry.dialogue_text, entry.expression, entry.position)
-	
+	if (entry.position == Character.LEFT and character_left != entry.character) or (entry.position == Character.RIGHT and character_right != entry.character):
+		if entry.position == Character.LEFT:
+			left_character.get_child(PREVIOUS_EXPRESSION_INDEX).texture = null
+			character_left = entry.character
+		else:
+			character_right = entry.character
+			right_character.get_child(PREVIOUS_EXPRESSION_INDEX).texture = null
+		setCharacterPortrait()
+
 
 func setCharacterName(name_text: String, hide_name: bool) -> void:
 	if hide_name:
@@ -107,9 +117,11 @@ func setText(dialogue: String, emotion: Dialogue.Emotions = Dialogue.Emotions.KE
 	character == Character.RIGHT and right_character.texture == null:
 		setCharacterPortrait()
 		
+		
 	if emotion != Emotions.STAY:
 		setEmotion(emotion, character)
-		
+	
+
 		
 	text.visible_characters = 0
 	cursor.visible = false

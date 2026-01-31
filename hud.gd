@@ -273,8 +273,11 @@ func updateWeaponIconAndLight(weapon: Weapon) -> void:
 			weapon_icon.texture = null
 			Input.set_joy_light(0, Color.YELLOW)
 			return
-			
-	weapon_icon.texture = weapon.icon
+	
+	if weapon:
+		weapon_icon.texture = weapon.icon
+	else:
+		weapon_icon.texture = null
 
 	if not Input.has_joy_light(0):
 		return
