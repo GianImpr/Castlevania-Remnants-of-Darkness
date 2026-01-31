@@ -127,7 +127,7 @@ func _process(delta: float) -> void:
 	
 	guarding = isGuarding()
 	
-	if Input.is_action_just_pressed("guard") and can_perfect_guard():
+	if Input.is_action_just_pressed("guard") and can_perfect_guard() and not is_hurt:
 		times_guard_pressed += 1
 		if times_guard_pressed <= MAX_GUARD_PRESS_PER_HALF_SECOND:
 			if Global.game.difficulty == Global.game.Difficulty.SIMPLIFIED:
