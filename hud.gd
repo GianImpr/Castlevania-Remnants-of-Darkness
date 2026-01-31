@@ -185,7 +185,7 @@ func updateMP(delta):
 func updateGuardHealth() -> void:
 	if Global.player == null:
 		return
-	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT):
+	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT or Global.screen == Global.ScreenType.TRAINING):
 		return
 	guard_health.visible = Global.player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, Global.player.stats.skill_inventory)
 	var guard_recovery_timer: Timer = Global.player.guard_recovery
