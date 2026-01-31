@@ -16,13 +16,15 @@ enum Position {
 const Names = {
 	HECTOR = "Hector", 
 	CARMILLA = "Carmilla",
-	TREVOR = "Trevor"
+	TREVOR = "Trevor",
+	JULIA = "Julia"
 }
 
 const Sprites = {
 	HECTOR = "res://assets/sprites/HUD/Faces/Hector/HalfBody.png",
 	CARMILLA = "res://assets/sprites/HUD/Faces/Carmilla/HalfBody.png",
-	TREVOR = "res://assets/sprites/HUD/Faces/Trevor/HalfBody.png"
+	TREVOR = "res://assets/sprites/HUD/Faces/Trevor/HalfBody.png",
+	JULIA = "res://assets/sprites/HUD/Faces/Carmilla/HalfBody.png"
 }
 
 enum Emotions {
