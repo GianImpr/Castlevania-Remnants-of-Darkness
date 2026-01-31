@@ -82,8 +82,8 @@ func setDialogueBox() -> void:
 	setText(entry.dialogue_text, entry.expression, entry.position)
 	if (entry.position == Character.LEFT and character_left != entry.character) or (entry.position == Character.RIGHT and character_right != entry.character):
 		if entry.position == Character.LEFT:
-			left_character.get_child(PREVIOUS_EXPRESSION_INDEX).texture = null
 			character_left = entry.character
+			left_character.get_child(PREVIOUS_EXPRESSION_INDEX).texture = null
 		else:
 			character_right = entry.character
 			right_character.get_child(PREVIOUS_EXPRESSION_INDEX).texture = null
