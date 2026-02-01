@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5b546j52x16h"]
+[gd_scene format=3 uid="uid://c5b546j52x16h"]
 
 [ext_resource type="Texture2D" uid="uid://utw78hhki22k" path="res://assets/sprites/Objects/Other/WaterSurface.png" id="1_2he32"]
 [ext_resource type="Script" uid="uid://c2xa1t7v5m6yh" path="res://SampleProject/extra_scenes/stage_elements/resizable_water.gd" id="1_7li68"]
@@ -75,7 +75,7 @@ script = ExtResource("5_kw0ln")
 sound_effects = Array[ExtResource("6_ulaal")]([SubResource("Resource_6nq1p"), SubResource("Resource_ulaal")])
 metadata/_custom_type_script = "uid://c8movixc3pc7b"
 
-[node name="ResizableWater" type="Node2D" node_paths=PackedStringArray("sound", "collision")]
+[node name="ResizableWater" type="Node2D" unique_id=2122667391 node_paths=PackedStringArray("sound", "collision")]
 z_index = 30
 script = ExtResource("1_7li68")
 big_water_splash = ExtResource("2_y0euv")
@@ -83,7 +83,8 @@ small_water_splash = ExtResource("3_ulaal")
 sound = NodePath("PolyphonicAudio")
 collision = NodePath("Sprite2D2/Area2D/CollisionShape2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1514111186]
+self_modulate = Color(1, 1, 1, 0.6039216)
 texture_repeat = 2
 texture = ExtResource("1_2he32")
 centered = false
@@ -91,27 +92,25 @@ vframes = 3
 region_enabled = true
 region_rect = Rect2(0, 0, 252, 48)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_eroyy")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1697137272]
+libraries/ = SubResource("AnimationLibrary_eroyy")
+autoplay = &"idle"
 speed_scale = 0.5
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=543616230]
 position = Vector2(126.00001, 34)
 scale = Vector2(3.9375, 1)
 texture = SubResource("GradientTexture2D_jqftp")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D2"]
+[node name="Area2D" type="Area2D" parent="Sprite2D2" unique_id=509478667]
 visible = false
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D2/Area2D" unique_id=1022448687]
 shape = SubResource("RectangleShape2D_y0euv")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=508420230]
 volume_db = -12.0
 script = ExtResource("4_bifbc")
 audio_library = SubResource("Resource_v87x7")
