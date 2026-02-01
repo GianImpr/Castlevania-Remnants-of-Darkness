@@ -48,6 +48,9 @@ var character_right: Dialogue.Character
 var current_dialogue_entry: int = 0
 static var active: bool = false
 
+signal entry_changed(current_dialogue_entry)
+signal dialogue_ended
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		Global.dialogue_screen = self
@@ -78,6 +81,7 @@ func _process(delta: float) -> void:
 
 func setDialogueBox() -> void:
 	var entry: Dialogue = dialogue_entries[current_dialogue_entry]
+	entry_changed.emit(current_dialogue_entry)
 	if entry.dismiss_for > 0:
 		var dismiss_tween: Tween = get_tree().create_tween()
 		const DISMISS_ANIMATION_DURATION: float = 0.2
@@ -198,6 +202,7 @@ func _endDialogue() -> void:
 	if not Engine.is_editor_hint():
 		Global.HUD.visible = true
 		Global.player.unfreeze()
+		dialogue_ended.emit()
 	
 func _startDialogue() -> void:
 	if not Engine.is_editor_hint():

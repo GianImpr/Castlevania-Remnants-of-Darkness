@@ -1155,10 +1155,11 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_p5a4i"]
 colors = PackedColorArray(0.2538002, 0.0007395771, 0.45130628, 1, 1, 0, 1, 1)
 
-[node name="Julia" type="Node2D" unique_id=1576004327 node_paths=PackedStringArray("julia_sprite")]
+[node name="Julia" type="Node2D" unique_id=1576004327 node_paths=PackedStringArray("julia_sprite", "animation")]
 scale = Vector2(2, 2)
 script = ExtResource("1_nh6dn")
 julia_sprite = NodePath("Sprite2D")
+animation = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=787619289]
 position = Vector2(15, 0)
@@ -1248,6 +1249,7 @@ libraries/ = SubResource("AnimationLibrary_y3mxr")
 
 [node name="Stone" type="Node2D" parent="." unique_id=570011138]
 modulate = Color(1, 1, 1, 0)
+position = Vector2(26.5, 0)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Stone" unique_id=801494721]
 position = Vector2(-2.5, -13.5)

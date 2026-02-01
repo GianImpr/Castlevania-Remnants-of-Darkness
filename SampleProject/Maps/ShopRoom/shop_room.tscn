@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bfk8x3v12id00" path="res://SampleProject/Objects/julia_candle.tscn" id="5_qnd7a"]
 [ext_resource type="PackedScene" uid="uid://5fb0njj5o06d" path="res://SampleProject/Objects/frame.tscn" id="6_qbyg1"]
 [ext_resource type="PackedScene" uid="uid://df43umeqy115k" path="res://SampleProject/extra_scenes/stage_elements/dialogue_box_trigger.tscn" id="7_yw74t"]
+[ext_resource type="PackedScene" uid="uid://dkm3kcg1gq2kf" path="res://SampleProject/NPC/trevor_npc.tscn" id="8_fit4m"]
+[ext_resource type="Script" uid="uid://bb1wcg3jk85n7" path="res://SampleProject/Scripts/Event/first_trio_dialogue_event.gd" id="8_thvg5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qbyg1"]
 texture = ExtResource("3_qnd7a")
@@ -1111,5 +1113,14 @@ position = Vector2(757, 283)
 [node name="Frame" parent="Node2D" unique_id=1720659166 instance=ExtResource("6_qbyg1")]
 
 [node name="DialogueBoxTrigger" parent="." unique_id=68830867 instance=ExtResource("7_yw74t")]
-position = Vector2(555, 34)
+position = Vector2(489, 27)
 flag_id = 8
+
+[node name="FirstTrioDialogueEvent" type="Node" parent="." unique_id=762260308 node_paths=PackedStringArray("dialogue", "trevor_npc", "julia_npc")]
+script = ExtResource("8_thvg5")
+dialogue = NodePath("../DialogueBoxTrigger")
+trevor_npc = NodePath("TrevorNPC")
+julia_npc = NodePath("../Julia")
+
+[node name="TrevorNPC" parent="FirstTrioDialogueEvent" unique_id=694709324 instance=ExtResource("8_fit4m")]
+position = Vector2(367, 368)
