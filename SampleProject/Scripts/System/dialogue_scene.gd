@@ -78,6 +78,13 @@ func _process(delta: float) -> void:
 
 func setDialogueBox() -> void:
 	var entry: Dialogue = dialogue_entries[current_dialogue_entry]
+	if entry.dismiss_for > 0:
+		var dismiss_tween: Tween = get_tree().create_tween()
+		const DISMISS_ANIMATION_DURATION: float = 0.2
+		dismiss_tween.tween_property(self, "modulate", Color.TRANSPARENT, DISMISS_ANIMATION_DURATION)
+		await get_tree().create_timer(entry.dismiss_for).timeout
+		dismiss_tween = get_tree().create_tween()
+		dismiss_tween.tween_property(self, "modulate", Color.WHITE, DISMISS_ANIMATION_DURATION)
 	setCharacterName(Dialogue.Names.values()[entry.character], entry.hide_name)
 	setText(entry.dialogue_text, entry.expression, entry.position)
 	if (entry.position == Character.LEFT and character_left != entry.character) or (entry.position == Character.RIGHT and character_right != entry.character):
@@ -99,7 +106,7 @@ func setCharacterName(name_text: String, hide_name: bool) -> void:
 func setEmotion(emotion, character) -> void:
 	if emotion == 0:
 		return
-		
+	
 	if character == Character.LEFT:
 		left_character.get_child(PREVIOUS_EXPRESSION_INDEX).frame = left_character.frame
 		left_character.frame = emotion-1

@@ -41,3 +41,4 @@ enum Emotions {
 @export var expression: Emotions
 @export_multiline var dialogue_text: String
 @export var position: Position
+@export_range(0, 20, 0.1, "suffix:s") var dismiss_for: float = 0
