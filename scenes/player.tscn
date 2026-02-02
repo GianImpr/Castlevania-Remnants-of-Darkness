@@ -4669,8 +4669,9 @@ raycast = NodePath("RayCast2D")
 aguni_flames = ExtResource("122_4xc62")
 relic_sounds = NodePath("RelicSounds")
 
-[node name="HectorStats" type="Node" parent="." unique_id=1348586030 node_paths=PackedStringArray("play_time")]
+[node name="HectorStats" type="Node" parent="." unique_id=1348586030 node_paths=PackedStringArray("poison_tick_timer", "play_time")]
 script = ExtResource("1_f0ls1")
+poison_tick_timer = NodePath("PoisonTick")
 Stats = {
 "ATK": 8,
 "CON": 4,
@@ -4790,6 +4791,8 @@ weapon_proficiency = Array[Dictionary]([{
 
 [node name="Playtime" type="Node" parent="HectorStats" unique_id=1199637380]
 script = ExtResource("93_30li2")
+
+[node name="PoisonTick" type="Timer" parent="HectorStats" unique_id=1874319816]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=899107974]
 visible = false

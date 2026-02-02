@@ -1,5 +1,6 @@
 extends Node
 class_name HectorStats
+@export var poison_tick_timer: Timer
 @export var Stats: Dictionary ##Current stats with boosts
 @export var Growths: Dictionary ##Total stat gains from level 1 to 99
 @export var Boosts: Dictionary ##Stat boosts from equipment and permanent pick-up upgrades
@@ -75,6 +76,7 @@ enum Status {
 }
 
 func _ready() -> void:
+	poison_tick_timer.timeout.connect(poisonTick)
 	for i in range(0, 1000):
 		picked_items.append(false)
 		hint_flags.append(false)
@@ -93,9 +95,22 @@ func _process(delta: float) -> void:
 		
 	if Global.player.stats.status[Global.player.stats.Status.CURSE] > 0:
 		Stats["MP"] = max(Stats["MP"]-delta*CURSE_MP_DRAIN_PER_SECOND, 0)
-	
+		
+	if Global.player.stats.status[Global.player.stats.Status.POISON] > 0 and poison_tick_timer.is_stopped():
+		poison_tick_timer.start()
+	elif Global.player.stats.status[Global.player.stats.Status.POISON] == 0 and not poison_tick_timer.is_stopped():
+		poison_tick_timer.stop()
+
 func _physics_process(delta: float) -> void:
 	play_time.count(delta)
+
+func poisonTick() -> void:
+	if Stats["HP"] == 1 or Global.player.stats.status[Global.player.stats.Status.POISON] == 0:
+		return
+
+	var damage: int = min(max(round(Stats["MHP"]/100.0), 1), Stats["HP"]-1)
+	Stats["HP"] -= damage
+	Global.player.damage_popup.popup(damage, 0)
 
 ## Finds the number of held copies of a certain item ID in a certain inventory.
 func findItem(id: int, inventory) -> int:

@@ -17,6 +17,8 @@ func _process(delta: float) -> void:
 	if not enable_glow and not get_parent().hit_effect_applied:
 		if Global.player.stats.status[Global.player.stats.Status.CURSE] > 0:
 			editShaderParams(0.2, 6, true, Color.YELLOW, true)
+		elif Global.player.stats.status[Global.player.stats.Status.POISON] > 0:
+			editShaderParams(0.2, 6, true, Color.MAGENTA, true)
 		elif Global.player.stats.status[Global.player.stats.Status.REFRESHING_AIR] > 0:
 			editShaderParams(0.2, 2, true, Color(0.5, 0, 1))
 		else:

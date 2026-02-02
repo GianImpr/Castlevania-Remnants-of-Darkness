@@ -428,10 +428,17 @@ func petrify() -> void:
 	stats.current_status = stats.Ailment.STONE
 
 func curse() -> void:
-	const CURSE_DURATION_SECONDS: float = 15
+	const CURSE_DURATION_SECONDS: float = 25
 	var actual_curse_duration: float = CURSE_DURATION_SECONDS/(1-min(float(stats.Stats["CON"])/100, 99))
 	stats.current_status = stats.Ailment.CURSE
 	stats.status[HectorStats.Status.CURSE] = actual_curse_duration
+	state_machine.voice.play_sound_effect_from_library("what")
+	
+func poison() -> void:
+	const POISON_DURATION_SECONDS: float = 25
+	var actual_poison_duration: float = POISON_DURATION_SECONDS/(1-min(float(stats.Stats["CON"])/100, 99))
+	stats.current_status = stats.Ailment.POISON
+	stats.status[HectorStats.Status.POISON] = actual_poison_duration
 	state_machine.voice.play_sound_effect_from_library("what")
 
 #Creates one afterimage instance of Hector

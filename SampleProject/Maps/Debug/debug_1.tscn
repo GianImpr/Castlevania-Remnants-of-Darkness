@@ -13,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://crv7fk0e66soy" path="res://assets/sounds/Effects/Miscellaneous/BigSplash.wav" id="10_1mmoy"]
 [ext_resource type="AudioStream" uid="uid://iuq41xxsnubj" path="res://assets/sounds/Effects/Miscellaneous/SmallSplash.wav" id="12_1mmoy"]
 [ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="13_1mmoy"]
-[ext_resource type="PackedScene" uid="uid://cxfeg6jj146ah" path="res://SampleProject/enemies/ArmorLord/armor_lord.tscn" id="14_ggluv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ikyd"]
 texture = ExtResource("3_2ur68")
@@ -230,9 +229,6 @@ metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
 [node name="Skeleton" parent="." unique_id=1605914885 instance=ExtResource("13_1mmoy")]
 position = Vector2(630, 410)
-
-[node name="ArmorLord" parent="." unique_id=533250913 instance=ExtResource("14_ggluv")]
-position = Vector2(358, 326)
 
 [connection signal="body_entered" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_exited"]

@@ -282,12 +282,16 @@ func stay_crouched():
 	
 func can_land():
 	if player.is_on_floor():
-		sound.play_sound_effect_from_library("land")
+		if Global.player.stats.status[Global.player.stats.Status.POISON] == 0:
+			sound.play_sound_effect_from_library("land")
 		if attacking() and not player.can_jump_cancel:
 			player.resume_attack = true
 			Transitioned.emit(self, "attack")
 			return
 		TrainingSettings.spawnTrainingHeart(TrainingMode.Training.JUMP_CANCEL)
+		if Global.player.stats.status[Global.player.stats.Status.POISON] > 0:
+			Transitioned.emit(self, "hard_landing")
+			return
 		run_without_start_anim(true)
 		if not player.direction:
 			Transitioned.emit(self, "landing")
