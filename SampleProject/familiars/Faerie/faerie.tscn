@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://crov6smdsbwb4"]
+[gd_scene format=3 uid="uid://crov6smdsbwb4"]
 
 [ext_resource type="Script" uid="uid://bpb5ipkikk3hr" path="res://SampleProject/Scripts/InnocentDevils/Faerie/Faerie.gd" id="1_un82i"]
 [ext_resource type="Texture2D" uid="uid://cg6xqwlb4rrii" path="res://assets/sprites/InnocentDevils/Fairy/fairywings.png" id="1_x40rn"]
@@ -483,7 +483,7 @@ color_ramp = SubResource("GradientTexture1D_2y65o")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[node name="Faerie" type="CharacterBody2D" node_paths=PackedStringArray("stats", "state_machine")]
+[node name="Faerie" type="CharacterBody2D" unique_id=928786545 node_paths=PackedStringArray("stats", "state_machine")]
 z_index = 7
 scale = Vector2(2, 2)
 script = ExtResource("1_un82i")
@@ -491,7 +491,7 @@ id_name = "Fairy"
 stats = NodePath("InnocentDevil")
 state_machine = NodePath("StateMachine")
 
-[node name="InnocentDevil" type="Node" parent="." node_paths=PackedStringArray("level_up", "sound")]
+[node name="InnocentDevil" type="Node" parent="." unique_id=1548762419 node_paths=PackedStringArray("level_up", "sound")]
 script = ExtResource("2_fhvse")
 Stats = {
 "ATK": 5,
@@ -531,12 +531,12 @@ skills = Array[ExtResource("3_5jgsh")]([SubResource("Resource_afldu"), SubResour
 level_up = NodePath("../LevelUp")
 sound = NodePath("../PolyphonicAudioPlayer")
 
-[node name="WingSprite" type="Sprite2D" parent="."]
+[node name="WingSprite" type="Sprite2D" parent="." unique_id=1792098350]
 texture = ExtResource("1_x40rn")
 hframes = 4
 vframes = 6
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=131348754]
 modulate = Color(3, 1, 3, 1)
 position = Vector2(0, -5.21739)
 amount = 15
@@ -551,84 +551,78 @@ initial_velocity_max = 5.0
 scale_amount_curve = SubResource("Curve_mesp0")
 color = Color(0.913065, 0.000749685, 0.925435, 1)
 
-[node name="Body" type="Sprite2D" parent="."]
+[node name="Body" type="Sprite2D" parent="." unique_id=573037453]
 texture = ExtResource("3_i28bv")
 hframes = 4
 vframes = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_refp3")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1033765711]
+libraries/ = SubResource("AnimationLibrary_refp3")
 
-[node name="WingAnim" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_b676p")
-}
+[node name="WingAnim" type="AnimationPlayer" parent="." unique_id=281348156]
+libraries/ = SubResource("AnimationLibrary_b676p")
 speed_scale = 5.0
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=1155396269 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("8_6o0ma")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1994607704 node_paths=PackedStringArray("wings")]
 script = ExtResource("3_ry4ys")
 wings = NodePath("../../WingAnim")
 
-[node name="Run" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings")]
+[node name="Run" type="Node" parent="StateMachine" unique_id=1019590699 node_paths=PackedStringArray("wings")]
 script = ExtResource("5_wubor")
 wings = NodePath("../../WingAnim")
 
-[node name="Stop_moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings")]
+[node name="Stop_moving" type="Node" parent="StateMachine" unique_id=2027639327 node_paths=PackedStringArray("wings")]
 script = ExtResource("6_nci8y")
 wings = NodePath("../../WingAnim")
 
-[node name="Healing" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings", "magic_particles")]
+[node name="Healing" type="Node" parent="StateMachine" unique_id=620160420 node_paths=PackedStringArray("wings", "magic_particles")]
 script = ExtResource("7_8u2gj")
 wings = NodePath("../../WingAnim")
 refreshing_air_scene = ExtResource("13_aa5on")
 magic_particles = NodePath("../../Magic")
 
-[node name="Freeze" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings", "timer", "glow")]
+[node name="Freeze" type="Node" parent="StateMachine" unique_id=694473913 node_paths=PackedStringArray("wings", "timer", "glow")]
 script = ExtResource("8_v045c")
 wings = NodePath("../../WingAnim")
 timer = NodePath("Duration")
 glow = NodePath("../../PointLight2D")
 
-[node name="Duration" type="Timer" parent="StateMachine/Freeze"]
+[node name="Duration" type="Timer" parent="StateMachine/Freeze" unique_id=572289631]
 wait_time = 5.0
 
-[node name="Funny_wall" type="Node" parent="StateMachine" node_paths=PackedStringArray("wings", "idle_duration")]
+[node name="Funny_wall" type="Node" parent="StateMachine" unique_id=1983194091 node_paths=PackedStringArray("wings", "idle_duration")]
 script = ExtResource("9_0ixtq")
 wings = NodePath("../../WingAnim")
 idle_duration = NodePath("IdleDuration")
 
-[node name="IdleDuration" type="Timer" parent="StateMachine/Funny_wall"]
+[node name="IdleDuration" type="Timer" parent="StateMachine/Funny_wall" unique_id=1090983632]
 wait_time = 3.0
 one_shot = true
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1620416710]
 volume_db = -5.0
 bus = &"Voice"
 script = ExtResource("4_u4ig5")
 audio_library = SubResource("Resource_g1eeh")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1140653282]
 position = Vector2(-0.434783, -3.04348)
 scale = Vector2(0.0815217, 0.0883152)
 energy = 2.0
 texture = SubResource("GradientTexture2D_fikny")
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="PointLight2D"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="PointLight2D" unique_id=1389167450]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_rt05c")
-}
-autoplay = "glow"
+libraries/ = SubResource("AnimationLibrary_rt05c")
+autoplay = &"glow"
 
-[node name="Magic" type="CPUParticles2D" parent="."]
+[node name="Magic" type="CPUParticles2D" parent="." unique_id=1990383961]
 self_modulate = Color(0, 1, 0, 1)
 position = Vector2(-14, -11.5)
 emitting = false
@@ -642,7 +636,7 @@ gravity = Vector2(0, 300)
 initial_velocity_max = 40.0
 scale_amount_curve = SubResource("Curve_ykbwx")
 
-[node name="LevelUp" type="GPUParticles2D" parent="."]
+[node name="LevelUp" type="GPUParticles2D" parent="." unique_id=2144761511]
 z_index = 20
 material = SubResource("CanvasItemMaterial_gq6fw")
 emitting = false

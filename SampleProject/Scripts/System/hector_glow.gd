@@ -15,7 +15,9 @@ var weapon: WeaponSprite
 func _process(delta: float) -> void:
 	# Apply glow according to the buff/debuff
 	if not enable_glow and not get_parent().hit_effect_applied:
-		if Global.player.stats.status[Global.player.stats.Status.REFRESHING_AIR] > 0:
+		if Global.player.stats.status[Global.player.stats.Status.CURSE] > 0:
+			editShaderParams(0.2, 6, true, Color.YELLOW, true)
+		elif Global.player.stats.status[Global.player.stats.Status.REFRESHING_AIR] > 0:
 			editShaderParams(0.2, 2, true, Color(0.5, 0, 1))
 		else:
 			editShaderParams(0, 0, false)
@@ -56,11 +58,12 @@ func _physics_process(delta: float) -> void:
 		get_parent().aura.flip_h = flip_h
 
 	
-func editShaderParams(influence: float, speed: float, enabled: bool, color: Color = Color(1,1,1)) -> void:
+func editShaderParams(influence: float, speed: float, enabled: bool, color: Color = Color(1,1,1), mix_colors: bool = false) -> void:
 	if color == applied_color and influence == applied_influence and material.get_shader_parameter("enabled"):
 		return
 	applied_color = color
 	applied_influence = influence
+	material.set_shader_parameter("mix_colors", mix_colors)
 	material.set_shader_parameter("color", color)
 	material.set_shader_parameter("influence", influence)
 	material.set_shader_parameter("speed", speed)

@@ -29,7 +29,7 @@ func heal() -> void:
 
 func refreshingAir() -> void:
 	setSoundAndParticles("heal_effect", Color(0.3,0,1))
-	Global.player.stats.status[Global.player.stats.Status.REFRESHING_AIR] = 900
+	Global.player.stats.status[Global.player.stats.Status.REFRESHING_AIR] = 15
 	var refreshing_air = refreshing_air_scene.instantiate()
 	Global.player.add_child(refreshing_air)
 	refreshing_air.position.y += 30

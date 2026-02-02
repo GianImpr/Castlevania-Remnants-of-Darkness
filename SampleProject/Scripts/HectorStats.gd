@@ -27,7 +27,7 @@ class_name HectorStats
 @export var artifact_compendium: Array[Artifact]
 @export var enemy_compendium: Array[EnemyEntry]
 @export var play_time: Hour
-@export var status: Array[int]
+@export var status: Array[float]
 @export var weapon_proficiency: Array[Dictionary]
 @export var file_name: String
 static var equipItem: Callable
@@ -66,7 +66,10 @@ var map_ratio: String
 static var change_slot_icon: Callable
 
 enum Status {
-	REFRESHING_AIR
+	REFRESHING_AIR,
+	POISON,
+	CURSE,
+	STONE
 }
 
 func _ready() -> void:
@@ -84,7 +87,7 @@ func _process(delta: float) -> void:
 	Bases["ATK"] = Stats["STR"]/2
 	Bases["DEF"] = Stats["CON"]/2
 	for i in range(0, status.size()):
-		status[i] = max(status[i]-1, 0)
+		status[i] = max(status[i]-delta, 0)
 	
 func _physics_process(delta: float) -> void:
 	play_time.count(delta)
