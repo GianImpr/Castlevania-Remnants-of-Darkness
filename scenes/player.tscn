@@ -215,6 +215,7 @@
 [ext_resource type="AudioStream" uid="uid://b8wskmq4lwq1g" path="res://assets/sounds/HectorMovement/SpearSwing.MP3" id="190_81mwq"]
 [ext_resource type="AudioStream" uid="uid://cl4j2bbjfny20" path="res://assets/sounds/Effects/Spears/Charge.wav" id="191_hhfsc"]
 [ext_resource type="Script" uid="uid://domtd5cul57yy" path="res://SampleProject/Scripts/System/player_projectile.gd" id="200_5r3n4"]
+[ext_resource type="AudioStream" uid="uid://dy51w6vjm6bnf" path="res://assets/sounds/Voice/Hector/GuardBreak.wav" id="205_xy0l7"]
 [ext_resource type="Texture2D" uid="uid://1he2rtoahtll" path="res://assets/sprites/Effects/Sparks/Spark1.png" id="207_mg3ag"]
 [ext_resource type="Texture2D" uid="uid://p0swsulobrnj" path="res://assets/sprites/Effects/Sparks/Spark2.png" id="208_5jjpn"]
 [ext_resource type="Texture2D" uid="uid://dcmexpqewqyki" path="res://assets/sprites/Effects/Charge.png" id="215_iee07"]
@@ -4094,9 +4095,15 @@ script = ExtResource("17_eidx6")
 Tag = "heavy_attack_2"
 stream = ExtResource("189_ckejl")
 
+[sub_resource type="Resource" id="Resource_um52d"]
+script = ExtResource("17_eidx6")
+Tag = "what"
+stream = ExtResource("205_xy0l7")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_xhqmh"]
 script = ExtResource("140_3d8p5")
-sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_fk7mo"), SubResource("Resource_pomuy"), SubResource("Resource_1fd5c"), SubResource("Resource_hk5vy"), SubResource("Resource_jp6yi"), SubResource("Resource_go7i7"), SubResource("Resource_35fxo"), SubResource("Resource_lfj2t"), SubResource("Resource_ryiyx"), SubResource("Resource_fkwog"), SubResource("Resource_sobq1")])
+sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_fk7mo"), SubResource("Resource_pomuy"), SubResource("Resource_1fd5c"), SubResource("Resource_hk5vy"), SubResource("Resource_jp6yi"), SubResource("Resource_go7i7"), SubResource("Resource_35fxo"), SubResource("Resource_lfj2t"), SubResource("Resource_ryiyx"), SubResource("Resource_fkwog"), SubResource("Resource_sobq1"), SubResource("Resource_um52d")])
 
 [sub_resource type="Curve" id="Curve_t2ule"]
 _limits = [0.0, 5.0, 0.0, 1.0]
@@ -4763,7 +4770,7 @@ accessory_compendium = Array[ExtResource("83_i53lv")]([SubResource("Resource_fmj
 skill_compendium = Array[ExtResource("88_j2qrq")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_6o46a"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47")])
 relic_compendium = Array[ExtResource("91_ci5jh")]([SubResource("Resource_86suo")])
 play_time = NodePath("Playtime")
-status = Array[int]([0])
+status = Array[int]([0, 0, 0])
 weapon_proficiency = Array[Dictionary]([{
 "exp": 0,
 "lv": 0

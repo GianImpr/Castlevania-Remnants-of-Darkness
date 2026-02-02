@@ -65,6 +65,8 @@ var map_ratio: String
 
 static var change_slot_icon: Callable
 
+const CURSE_MP_DRAIN_PER_SECOND: int = 50
+
 enum Status {
 	REFRESHING_AIR,
 	POISON,
@@ -88,6 +90,9 @@ func _process(delta: float) -> void:
 	Bases["DEF"] = Stats["CON"]/2
 	for i in range(0, status.size()):
 		status[i] = max(status[i]-delta, 0)
+		
+	if Global.player.stats.status[Global.player.stats.Status.CURSE] > 0:
+		Stats["MP"] = max(Stats["MP"]-delta*CURSE_MP_DRAIN_PER_SECOND, 0)
 	
 func _physics_process(delta: float) -> void:
 	play_time.count(delta)

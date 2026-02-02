@@ -68,6 +68,8 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 		match attribute:
 			Global.Attribute.STONE:
 				body.petrify()
+			Global.Attribute.CURSE:
+				body.curse()
 		
 	if body.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
 		if guard_break:

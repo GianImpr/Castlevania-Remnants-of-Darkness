@@ -384,8 +384,9 @@ func removeSwordTrail() -> void:
 func applyHitEffect(type: Global.Attribute) -> void:
 	sprite.influence_glow = 0.2
 	sprite.extra_influence_duration = 0
-	hit_effect_applied = true
-	if type != Global.Attribute.NONE and type != Global.Attribute.SLASH and type != Global.Attribute.HIT and type != Global.Attribute.STONE:
+	if Global.player.stats.status[Global.player.stats.Status.CURSE] == 0 and Global.player.stats.status[Global.player.stats.Status.POISON] == 0 and type != Global.Attribute.CURSE and type != Global.Attribute.POISON :
+		hit_effect_applied = true
+	if type != Global.Attribute.NONE and type != Global.Attribute.SLASH and type != Global.Attribute.HIT and type != Global.Attribute.STONE and type != Global.Attribute.CURSE and type != Global.Attribute.POISON:
 		effects.get_child(int(type)-3).emitting = true
 	match type:
 		Global.Attribute.FIRE:
@@ -425,7 +426,14 @@ func throwAxe() -> void:
 
 func petrify() -> void:
 	stats.current_status = stats.Ailment.STONE
-	
+
+func curse() -> void:
+	const CURSE_DURATION_SECONDS: float = 15
+	var actual_curse_duration: float = CURSE_DURATION_SECONDS/(1-min(float(stats.Stats["CON"])/100, 99))
+	stats.current_status = stats.Ailment.CURSE
+	stats.status[HectorStats.Status.CURSE] = actual_curse_duration
+	state_machine.voice.play_sound_effect_from_library("what")
+
 #Creates one afterimage instance of Hector
 func instantiateScene(scene: PackedScene, get_player_frame: bool, offset: Vector2):
 	var instance: Sprite2D = scene.instantiate()

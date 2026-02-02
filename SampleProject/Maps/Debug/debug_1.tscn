@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://lmehsgtctg15"]
+[gd_scene format=4 uid="uid://lmehsgtctg15"]
 
 [ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_m4qdj"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_1u5xp"]
@@ -12,7 +12,8 @@
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_i41q0"]
 [ext_resource type="AudioStream" uid="uid://crv7fk0e66soy" path="res://assets/sounds/Effects/Miscellaneous/BigSplash.wav" id="10_1mmoy"]
 [ext_resource type="AudioStream" uid="uid://iuq41xxsnubj" path="res://assets/sounds/Effects/Miscellaneous/SmallSplash.wav" id="12_1mmoy"]
-[ext_resource type="PackedScene" uid="uid://cxfeg6jj146ah" path="res://SampleProject/enemies/ArmorLord/armor_lord.tscn" id="13_1mmoy"]
+[ext_resource type="PackedScene" uid="uid://dttmy0kvxpsi7" path="res://SampleProject/enemies/Skeleton/skeleton.tscn" id="13_1mmoy"]
+[ext_resource type="PackedScene" uid="uid://cxfeg6jj146ah" path="res://SampleProject/enemies/ArmorLord/armor_lord.tscn" id="14_ggluv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ikyd"]
 texture = ExtResource("3_2ur68")
@@ -169,24 +170,24 @@ script = ExtResource("8_6bfpa")
 sound_effects = Array[ExtResource("9_i41q0")]([SubResource("Resource_6nq1p"), SubResource("Resource_ulaal")])
 metadata/_custom_type_script = "uid://c8movixc3pc7b"
 
-[node name="Room" type="Node2D"]
+[node name="Room" type="Node2D" unique_id=999051135]
 script = ExtResource("1_m4qdj")
 apply_limits = true
 camera_limit_left = 96
 camera_limit_right = 960
 camera_limit_bottom = 480
 
-[node name="RoomInstance" parent="." instance=ExtResource("2_1u5xp")]
+[node name="RoomInstance" parent="." unique_id=120776826 instance=ExtResource("2_1u5xp")]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=101558941]
 tile_map_data = PackedByteArray("AAADAAAAAAAAAAEAAAADAA4AAAAAAAEAAAAEAAAAAAAAAAEAAAAEAA4AAAAAAAEAAAAFAAAAAAAAAAEAAAAFAA4AAAAGAAEAAAAGAAAAAAAAAAEAAAAGAA4AAAAAAAEAAAAHAAAAAAACAAEAAAAHAA4AAAAAAAEAAAAIAAAAAAAAAAEAAAAIAA4AAAAAAAEAAAAJAAAAAAAAAAEAAAAJAA4AAAAAAAEAAAAKAAAAAAAAAAEAAAAKAA4AAAAAAAEAAAALAAAAAAAAAAEAAAALAA4AAAAAAAEAAAAMAAAAAAAAAAEAAAAMAA4AAAAAAAEAAAANAAAAAAAAAAEAAAANAA4AAAAAAAEAAAAOAAAAAAAAAAEAAAAOAA4AAAAAAAEAAAAPAAAAAAAAAAEAAAAPAA4AAAAAAAEAAAAQAAAAAAAAAAEAAAAQAA4AAAAAAAEAAAARAAAAAAAAAAEAAAARAA4AAAAAAAEAAAASAAAAAAAAAAEAAAASAA4AAAAAAAEAAAATAAAAAAAAAAEAAAATAA4AAAAAAAEAAAAUAAAAAAAAAAEAAAAUAA4AAAAAAAEAAAAVAAAAAAAAAAEAAAAVAA4AAAAAAAEAAAAWAAAAAAAAAAEAAAAWAA4AAAAAAAEAAAAXAAAAAAAAAAEAAAAXAA4AAAAAAAEAAAAYAAAAAAAAAAEAAAAYAA4AAAAAAAEAAAAZAAAAAAAAAAEAAAAZAA4AAAAAAAEAAAAaAAAAAAAAAAEAAAAaAA4AAAAAAAEAAAADAAEAAAAAAAEAAAADAAIAAAAAAAEAAAADAAMAAAAAAAEAAAADAAQAAAAAAAEAAAADAAUAAAAAAAEAAAADAAYAAAAAAAEAAAADAAcAAAAAAAEAAAADAAgAAAAAAAEAAAADAAkAAAAAAAEAAAADAAoAAAAAAAEAAAADAAsAAAAAAAEAAAADAAwAAAAAAAEAAAADAA0AAAAAAAEAAAAbAAAAAAAAAAEAAAAbAA4AAAAAAAEAAAAcAAAAAAAEAAEAAAAcAAoAAAAAAAAAAAAcAAsAAAAAAAEAAAAcAAwAAAAEAAEAAAAcAA0AAAAAAAEAAAAcAA4AAAAAAAEAAAAdAAAAAAAAAAEAAAAdAAEAAAAAAAEAAAAdAAIAAAAAAAEAAAAdAAMAAAAAAAEAAAAdAAQAAAAAAAEAAAAdAAUAAAAAAAAAAAAdAAoAAAAAAAEAAAAdAAsAAAAAAAEAAAAdAAwAAAAAAAEAAAAdAA0AAAAAAAEAAAAdAA4AAAAAAAEAAAA=")
 tile_set = SubResource("TileSet_cydyx")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=2137451868]
 tile_map_data = PackedByteArray("AAALAAgAAAADAAAAAAAHAAsAAAADAAAAAAAIAAsAAAADAAAAAAAJAAsAAAADAAAAAAAMAAgAAAADAAAAAAANAAgAAAADAAAAAAAOAAgAAAADAAAAAAARAAoAAAADAAAAAAASAAoAAAADAAAAAAATAAoAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_t01tf")
 
-[node name="ResizableWater" type="Node2D" parent="." node_paths=PackedStringArray("sound", "collision")]
+[node name="ResizableWater" type="Node2D" parent="." unique_id=1143357429 node_paths=PackedStringArray("sound", "collision")]
 z_index = 30
 position = Vector2(126, 414)
 script = ExtResource("4_rjj1q")
@@ -195,7 +196,7 @@ small_water_splash = ExtResource("6_i41q0")
 sound = NodePath("PolyphonicAudio")
 collision = NodePath("Sprite2D2/Area2D/CollisionShape2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="ResizableWater"]
+[node name="Sprite2D" type="Sprite2D" parent="ResizableWater" unique_id=999073275]
 texture_repeat = 2
 texture = ExtResource("4_ejr6v")
 centered = false
@@ -203,34 +204,35 @@ vframes = 3
 region_enabled = true
 region_rect = Rect2(0, 0, 770, 48)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ResizableWater"]
-libraries = {
-&"": SubResource("AnimationLibrary_eroyy")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ResizableWater" unique_id=843658693]
+libraries/ = SubResource("AnimationLibrary_eroyy")
+autoplay = &"idle"
 speed_scale = 0.5
 
-[node name="Sprite2D2" type="Sprite2D" parent="ResizableWater"]
+[node name="Sprite2D2" type="Sprite2D" parent="ResizableWater" unique_id=1865934326]
 position = Vector2(386, 18)
 scale = Vector2(12, 0.5)
 texture = SubResource("GradientTexture2D_jqftp")
 
-[node name="Area2D" type="Area2D" parent="ResizableWater/Sprite2D2"]
+[node name="Area2D" type="Area2D" parent="ResizableWater/Sprite2D2" unique_id=143048597]
 collision_layer = 0
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizableWater/Sprite2D2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizableWater/Sprite2D2/Area2D" unique_id=1808212824]
 visible = false
 shape = SubResource("RectangleShape2D_y0euv")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="ResizableWater"]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="ResizableWater" unique_id=8018818]
 volume_db = -12.0
 script = ExtResource("7_rspch")
 audio_library = SubResource("Resource_v87x7")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
-[node name="ArmorLord" parent="." instance=ExtResource("13_1mmoy")]
-position = Vector2(493, 330)
+[node name="Skeleton" parent="." unique_id=1605914885 instance=ExtResource("13_1mmoy")]
+position = Vector2(630, 410)
+
+[node name="ArmorLord" parent="." unique_id=533250913 instance=ExtResource("14_ggluv")]
+position = Vector2(358, 326)
 
 [connection signal="body_entered" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_exited"]
