@@ -76,7 +76,8 @@ enum Status {
 }
 
 func _ready() -> void:
-	poison_tick_timer.timeout.connect(poisonTick)
+	if poison_tick_timer.get_parent() == null:
+		add_child(poison_tick_timer)
 	for i in range(0, 1000):
 		picked_items.append(false)
 		hint_flags.append(false)
@@ -97,6 +98,8 @@ func _process(delta: float) -> void:
 		Stats["MP"] = max(Stats["MP"]-delta*CURSE_MP_DRAIN_PER_SECOND, 0)
 		
 	if Global.player.stats.status[Global.player.stats.Status.POISON] > 0 and poison_tick_timer.is_stopped():
+		if not poison_tick_timer.timeout.is_connected(poisonTick):
+				poison_tick_timer.timeout.connect(poisonTick)
 		poison_tick_timer.start()
 	elif Global.player.stats.status[Global.player.stats.Status.POISON] == 0 and not poison_tick_timer.is_stopped():
 		poison_tick_timer.stop()

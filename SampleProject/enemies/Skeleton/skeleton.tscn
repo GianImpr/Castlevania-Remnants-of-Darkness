@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dttmy0kvxpsi7"]
+[gd_scene format=3 uid="uid://dttmy0kvxpsi7"]
 
 [ext_resource type="Script" uid="uid://drkb5era8tevt" path="res://SampleProject/enemies/Skeleton/Skeleton.gd" id="1_uvuyw"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_7l8r8"]
@@ -146,7 +146,7 @@ size = Vector2(30, 31.7391)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qovo5"]
 size = Vector2(418.913, 126.522)
 
-[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[node name="Skeleton" type="CharacterBody2D" unique_id=1384686886 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 4097
@@ -159,7 +159,7 @@ damage_popup = NodePath("DamageLocation")
 iframe_timer = NodePath("Area2D/Timer")
 hitbox_iframe = NodePath("Area2D")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=739609263]
 script = ExtResource("2_7l8r8")
 enemy_name = "SKELETON"
 LV = 2
@@ -174,53 +174,51 @@ rare_drop_rate = 2.6
 weaknesses = Array[int]([1, 3, 8])
 tolerances = Array[int]([9])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2037497186]
 texture = ExtResource("3_qnxnl")
 hframes = 6
 vframes = 4
 frame = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2145426644]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_jdokg")
-}
+libraries/ = SubResource("AnimationLibrary_jdokg")
 
-[node name="Collision box" type="CollisionShape2D" parent="."]
+[node name="Collision box" type="CollisionShape2D" parent="." unique_id=234802429]
 position = Vector2(3.26087, -1.84783)
 shape = SubResource("RectangleShape2D_m5cfu")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1828429073]
 script = SubResource("GDScript_10oeh")
 audio_library = SubResource("Resource_2gemw")
 
-[node name="DamageLocation" type="Marker2D" parent="."]
+[node name="DamageLocation" type="Marker2D" parent="." unique_id=1926331214]
 position = Vector2(1.30435, -23.913)
 script = ExtResource("5_vorls")
 damage_node = ExtResource("6_k13al")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1979611514]
 collision_layer = 2
 collision_mask = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=1386167857]
 visible = false
 position = Vector2(3.26087, 1.52174)
 shape = SubResource("RectangleShape2D_63bul")
 
-[node name="Timer" type="Timer" parent="Area2D"]
+[node name="Timer" type="Timer" parent="Area2D" unique_id=856885669]
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=1489759076 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("9_t1ige")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=83604883 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("7_70oni")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 
-[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe", "timer_attack", "timer_direction")]
+[node name="Moving" type="Node" parent="StateMachine" unique_id=1635537328 node_paths=PackedStringArray("hitbox_iframe", "timer_attack", "timer_direction")]
 script = ExtResource("8_nu7ki")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 timer_attack = NodePath("Attack")
@@ -228,28 +226,28 @@ timer_direction = NodePath("SwitchDirection")
 SPEED = 4000.0
 aggro_distance = Vector2(200, 50)
 
-[node name="Attack" type="Timer" parent="StateMachine/Moving"]
+[node name="Attack" type="Timer" parent="StateMachine/Moving" unique_id=1967290564]
 wait_time = 0.5
 
-[node name="SwitchDirection" type="Timer" parent="StateMachine/Moving"]
+[node name="SwitchDirection" type="Timer" parent="StateMachine/Moving" unique_id=2096142270]
 wait_time = 0.5
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=550180746 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("9_ry1cj")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 bone_scene = ExtResource("10_pdtoc")
 bone_speed = Vector2(40, -500)
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=590600485 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("10_hx48s")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 dying_scene = ExtResource("12_fpe1r")
 
-[node name="Area of Vision" type="Area2D" parent="."]
+[node name="Area of Vision" type="Area2D" parent="." unique_id=779432401]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision" unique_id=169443416]
 visible = false
 position = Vector2(17.0652, -26.3044)
 shape = SubResource("RectangleShape2D_qovo5")

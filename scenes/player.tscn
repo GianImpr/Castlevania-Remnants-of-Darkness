@@ -4671,7 +4671,7 @@ relic_sounds = NodePath("RelicSounds")
 
 [node name="HectorStats" type="Node" parent="." unique_id=1348586030 node_paths=PackedStringArray("poison_tick_timer", "play_time")]
 script = ExtResource("1_f0ls1")
-poison_tick_timer = NodePath("PoisonTick")
+poison_tick_timer = NodePath("../PoisonTick")
 Stats = {
 "ATK": 8,
 "CON": 4,
@@ -4771,7 +4771,7 @@ accessory_compendium = Array[ExtResource("83_i53lv")]([SubResource("Resource_fmj
 skill_compendium = Array[ExtResource("88_j2qrq")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_6o46a"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47")])
 relic_compendium = Array[ExtResource("91_ci5jh")]([SubResource("Resource_86suo")])
 play_time = NodePath("Playtime")
-status = Array[int]([0, 0, 0])
+status = Array[float]([0.0, 0.0, 0.0])
 weapon_proficiency = Array[Dictionary]([{
 "exp": 0,
 "lv": 0
@@ -4791,8 +4791,6 @@ weapon_proficiency = Array[Dictionary]([{
 
 [node name="Playtime" type="Node" parent="HectorStats" unique_id=1199637380]
 script = ExtResource("93_30li2")
-
-[node name="PoisonTick" type="Timer" parent="HectorStats" unique_id=1874319816]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=899107974]
 visible = false
@@ -5381,6 +5379,8 @@ anim_speed_curve = SubResource("Curve_hhfsc")
 [node name="ConfidenceRing" type="Timer" parent="." unique_id=2016017621]
 wait_time = 3.0
 one_shot = true
+
+[node name="PoisonTick" type="Timer" parent="." unique_id=1874319816]
 
 [connection signal="body_entered" from="Sprite2D/SwordHitbox" to="Sprite2D/SwordHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
