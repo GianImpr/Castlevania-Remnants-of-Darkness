@@ -1,0 +1,349 @@
+[gd_scene format=3 uid="uid://cmjvajpmsltsp"]
+
+[ext_resource type="Script" uid="uid://ck7rg6pjc12iq" path="res://SampleProject/enemies/Ectoplasm/ectoplasm.gd" id="1_06ypy"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_06ypy"]
+[ext_resource type="Texture2D" uid="uid://cmx46b11r4y1h" path="res://assets/sprites/Enemies/Ectoplasm/EctoplasmParticlesGreen.png" id="2_hj0p0"]
+[ext_resource type="Texture2D" uid="uid://c30yxyby05u6" path="res://assets/sprites/Enemies/Ectoplasm/EctoplasmParticlesPink.png" id="3_2flw8"]
+[ext_resource type="Texture2D" uid="uid://b13w7awd5hp3u" path="res://assets/sprites/Enemies/Ectoplasm/Ectoplasm.png" id="3_06ypy"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="3_w58aj"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_t5d0v"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_7uhbj"]
+[ext_resource type="Script" uid="uid://b57icy0h6q6kj" path="res://SampleProject/enemies/Ectoplasm/EctoplasmIdle.gd" id="6_com5y"]
+[ext_resource type="Script" uid="uid://ck3vnrxrvgw22" path="res://SampleProject/enemies/Ectoplasm/EctoplasmHit.gd" id="7_hj0p0"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="7_xfxt1"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_2flw8"]
+[ext_resource type="Script" uid="uid://b48sk1s7eov4" path="res://SampleProject/enemies/Ectoplasm/EctoplasmFlying.gd" id="8_y2riy"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_48k1e"]
+[ext_resource type="Script" uid="uid://coqw77c4g72fc" path="res://SampleProject/enemies/Ectoplasm/EctoplasmDying.gd" id="9_tf6c6"]
+[ext_resource type="AudioStream" uid="uid://lr4bfdng8wtp" path="res://assets/sounds/Enemies/Ectoplasm/EctoplasmHit.ogg" id="10_qihle"]
+[ext_resource type="AudioStream" uid="uid://c27vo3d6udcum" path="res://assets/sounds/Enemies/Ectoplasm/EctoplasmDead.ogg" id="11_6v60w"]
+[ext_resource type="Texture2D" uid="uid://b14un0hnoriq2" path="res://assets/sprites/Effects/Fire2.png" id="13_48k1e"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_48k1e"]
+particles_animation = true
+particles_anim_h_frames = 12
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Animation" id="Animation_06ypy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame_coords:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_w58aj"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_tf6c6"]
+resource_name = "idle_green"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame_coords:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t5d0v"]
+_data = {
+&"RESET": SubResource("Animation_06ypy"),
+&"idle": SubResource("Animation_w58aj"),
+&"idle_green": SubResource("Animation_tf6c6")
+}
+
+[sub_resource type="Animation" id="Animation_com5y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_y2riy"]
+resource_name = "dying"
+length = 0.55
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 1.3), Vector2(1, 1), Vector2(0.7, 1.3), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hj0p0"]
+resource_name = "hit"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.4, 0.53333336),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 1.3), Vector2(1, 1), Vector2(0.7, 1.3), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y2riy"]
+_data = {
+&"RESET": SubResource("Animation_com5y"),
+&"dying": SubResource("Animation_y2riy"),
+&"hit": SubResource("Animation_hj0p0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06ypy"]
+size = Vector2(23, 25.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w58aj"]
+size = Vector2(31.5, 32.5)
+
+[sub_resource type="Resource" id="Resource_43sau"]
+script = ExtResource("9_48k1e")
+Tag = "hit"
+stream = ExtResource("10_qihle")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_com5y"]
+script = ExtResource("9_48k1e")
+Tag = "dead"
+stream = ExtResource("11_6v60w")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_hj0p0"]
+script = ExtResource("8_2flw8")
+sound_effects = Array[ExtResource("9_48k1e")]([SubResource("Resource_43sau"), SubResource("Resource_com5y")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qihle"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[node name="Ectoplasm" type="CharacterBody2D" unique_id=708054389 node_paths=PackedStringArray("aura", "shining_animation", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_06ypy")
+aura = NodePath("Aura")
+shining_animation = NodePath("Sprite2D/Shining")
+GREEN_PARTICLES = ExtResource("2_hj0p0")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("HitboxArea")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Iframe")
+hitbox_iframe = NodePath("HitboxArea")
+register_knockback = true
+metadata/_custom_type_script = "uid://jpd31rlnmjom"
+
+[node name="EnemyStats" type="Node" parent="." unique_id=1247808426]
+script = ExtResource("2_06ypy")
+enemy_name = "ECTOPLASM"
+LV = 12
+HP = 20
+ATK = 30
+EXP = 6
+weaknesses = Array[int]([3, 8])
+tolerances = Array[int]([1, 2, 9])
+metadata/_custom_type_script = "uid://dwqs3a3odtwne"
+
+[node name="Aura" type="CPUParticles2D" parent="." unique_id=497071334]
+material = SubResource("CanvasItemMaterial_48k1e")
+position = Vector2(0, -8)
+amount = 32
+texture = ExtResource("3_2flw8")
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(15, 10)
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=718172476]
+texture = ExtResource("3_06ypy")
+hframes = 4
+vframes = 2
+
+[node name="Shining" type="AnimationPlayer" parent="Sprite2D" unique_id=412178356]
+libraries/ = SubResource("AnimationLibrary_t5d0v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=860896346]
+libraries/ = SubResource("AnimationLibrary_y2riy")
+
+[node name="HitboxArea" type="Area2D" parent="." unique_id=1813096177]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=2081800601]
+position = Vector2(-2.5, -1.25)
+shape = SubResource("RectangleShape2D_06ypy")
+debug_color = Color(0.9717571, 0, 0.4490255, 0.41960785)
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=541386625]
+visible = false
+position = Vector2(-2.75, -1.25)
+shape = SubResource("RectangleShape2D_w58aj")
+
+[node name="StateMachine" type="Node" parent="." unique_id=618287638 node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = ExtResource("3_w58aj")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+metadata/_custom_type_script = "uid://d2kqkdfhgcbi7"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=2000674640]
+script = ExtResource("6_com5y")
+IDLE_SPEED = Vector2(80, 30)
+NAVIGATION_CYCLE_DURATION = 3.0
+metadata/_custom_type_script = "uid://b57icy0h6q6kj"
+
+[node name="Hit" type="Node" parent="StateMachine" unique_id=1566265782]
+script = ExtResource("7_hj0p0")
+metadata/_custom_type_script = "uid://ck3vnrxrvgw22"
+
+[node name="Flying" type="Node" parent="StateMachine" unique_id=1133419482]
+script = ExtResource("8_y2riy")
+FLYING_SPEED = Vector2(240, 90)
+NAVIGATION_CYCLE_DURATION = 1.0
+FLOATING_DURATION = 5.0
+metadata/_custom_type_script = "uid://b48sk1s7eov4"
+
+[node name="Dying" type="Node" parent="StateMachine" unique_id=866736514 node_paths=PackedStringArray("explosion_particles", "sprite")]
+script = ExtResource("9_tf6c6")
+explosion_particles = NodePath("../../Explosion")
+sprite = NodePath("../../Sprite2D")
+metadata/_custom_type_script = "uid://coqw77c4g72fc"
+
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=728058174]
+position = Vector2(-2, -23)
+script = ExtResource("4_t5d0v")
+damage_node = ExtResource("5_7uhbj")
+metadata/_custom_type_script = "uid://d0ffw2f0aswn"
+
+[node name="Iframe" type="Timer" parent="." unique_id=1368517077]
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=57316369]
+volume_db = -5.0
+script = ExtResource("7_xfxt1")
+audio_library = SubResource("Resource_hj0p0")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="Explosion" type="CPUParticles2D" parent="." unique_id=1565427663]
+material = SubResource("CanvasItemMaterial_qihle")
+position = Vector2(-1.5, 0)
+emitting = false
+amount = 32
+texture = ExtResource("13_48k1e")
+emission_shape = 3
+emission_rect_extents = Vector2(16, 16)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+anim_speed_min = 4.0
+anim_speed_max = 4.0

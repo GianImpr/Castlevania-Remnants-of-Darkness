@@ -75,6 +75,9 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 	if isAlive(body):
 		var damage = calculateDamage(body)
 		
+		if body is Enemy and body.register_knockback:
+			body.is_hurt = true
+		
 		if player.stats.canApplySkill(Skill.Skills.SWORD_HAND):
 			damage *= 1.1
 		

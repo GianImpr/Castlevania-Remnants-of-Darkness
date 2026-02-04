@@ -369,6 +369,11 @@ func enemy_can_die(with_misc_items: bool = true) -> void:
 	if player.stats.HP <= 0:
 		Transitioned.emit(self, "dying")
 		player.stats.determineDrop(with_misc_items)
+		
+func enemy_check_is_hurt(new_state_on_damage: String) -> void:
+	if player.is_hurt and player.stats.HP > 0:
+		player.is_hurt = false
+		Transitioned.emit(self, new_state_on_damage)
 
 func turn_around():
 	player.scale.x *= (-1)

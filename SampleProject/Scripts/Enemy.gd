@@ -11,6 +11,8 @@ var direction := 1
 @export var ray_cast_2d_left: RayCast2D
 @export var ray_cast_2d_right: RayCast2D
 @export var blood_particles: CPUParticles2D
+@export var register_knockback: bool = false
+var is_hurt: bool = false
 static var body_hitbox_on_cooldown: bool = false
 static var INVULNERABILITY_DURATION: float = 1
 

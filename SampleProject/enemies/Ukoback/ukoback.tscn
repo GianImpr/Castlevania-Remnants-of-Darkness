@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://2vc38i25e1l"]
+[gd_scene format=3 uid="uid://2vc38i25e1l"]
 
 [ext_resource type="Script" uid="uid://cyus0yotclfsb" path="res://SampleProject/enemies/Ukoback/ukoback.gd" id="1_8njkw"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_i2bul"]
@@ -368,7 +368,7 @@ color_ramp = SubResource("GradientTexture1D_r0qon")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[node name="Ukoback" type="CharacterBody2D" node_paths=PackedStringArray("canister_shape", "raycast_up", "raycast_down", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_right", "blood_particles")]
+[node name="Ukoback" type="CharacterBody2D" unique_id=1233787564 node_paths=PackedStringArray("canister_shape", "raycast_up", "raycast_down", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_right", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 4097
@@ -387,7 +387,7 @@ hitbox_iframe = NodePath("Hitbox")
 ray_cast_2d_right = NodePath("Forward")
 blood_particles = NodePath("BloodDamage")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=851720219]
 script = ExtResource("2_i2bul")
 enemy_name = "UKOBACK"
 LV = 11
@@ -399,53 +399,51 @@ rare_drop_rate = 1.6
 weaknesses = Array[int]([1, 2, 4, 6])
 tolerances = Array[int]([3, 7])
 
-[node name="CanisterFire" type="Sprite2D" parent="."]
+[node name="CanisterFire" type="Sprite2D" parent="." unique_id=1944224938]
 self_modulate = Color(1.5, 1, 1, 1)
 texture = ExtResource("3_cg2df")
 offset = Vector2(-16, 0)
 hframes = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanisterFire"]
-libraries = {
-&"": SubResource("AnimationLibrary_3pnfy")
-}
-autoplay = "moving"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanisterFire" unique_id=1475812983]
+libraries/ = SubResource("AnimationLibrary_3pnfy")
+autoplay = &"moving"
 
-[node name="Body" type="Sprite2D" parent="."]
+[node name="Body" type="Sprite2D" parent="." unique_id=1061198020]
 texture = ExtResource("4_62t6f")
 offset = Vector2(-16, 0)
 hframes = 7
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=422890801]
 visible = false
 position = Vector2(-6, -4.5)
 shape = SubResource("RectangleShape2D_b0wi5")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=481219681]
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1220572078]
 collision_layer = 0
 collision_mask = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=1062451269]
 visible = false
 position = Vector2(-0.25, -4.5)
 shape = SubResource("RectangleShape2D_a3m6u")
 
-[node name="CanisterHitbox" type="Area2D" parent="."]
+[node name="CanisterHitbox" type="Area2D" parent="." unique_id=293783753]
 collision_layer = 0
 collision_mask = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="CanisterHitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="CanisterHitbox" unique_id=338794839]
 visible = false
 position = Vector2(-18, 2.5)
 shape = SubResource("RectangleShape2D_808eh")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1615764335]
 script = ExtResource("3_owlfp")
 audio_library = SubResource("Resource_cpsr3")
 
-[node name="BloodDamage" type="CPUParticles2D" parent="."]
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=1199875080]
 emitting = false
 amount = 12
 lifetime = 0.75
@@ -461,40 +459,38 @@ scale_amount_curve = SubResource("Curve_va3vl")
 color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
 color_ramp = SubResource("Gradient_5pg3w")
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=2100500156]
 position = Vector2(0, -25.5)
 script = ExtResource("4_yyv1i")
 damage_node = ExtResource("5_1dhoy")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=1530210536 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("14_lyyvb")
 initial_state = NodePath("Moving")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("spawn_fire_timer")]
+[node name="Moving" type="Node" parent="StateMachine" unique_id=1142940738 node_paths=PackedStringArray("spawn_fire_timer")]
 script = ExtResource("8_kr5a0")
 speed = Vector2(200, 100)
 spawn_fire_timer = NodePath("SpawnFire")
 spawn_fire_base_time = 1.0
 spawn_fire_random_offset = 0.5
 
-[node name="SpawnFire" type="Timer" parent="StateMachine/Moving"]
+[node name="SpawnFire" type="Timer" parent="StateMachine/Moving" unique_id=1552647128]
 wait_time = 2.0
 one_shot = true
 
-[node name="Damage" type="Node" parent="StateMachine"]
+[node name="Damage" type="Node" parent="StateMachine" unique_id=1625861089]
 script = ExtResource("9_23f6s")
 
-[node name="Dying" type="Node" parent="StateMachine"]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=295610012]
 script = ExtResource("10_knj4h")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_j5tpx")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1824426927]
+libraries/ = SubResource("AnimationLibrary_j5tpx")
 
-[node name="FireEffect" type="GPUParticles2D" parent="."]
+[node name="FireEffect" type="GPUParticles2D" parent="." unique_id=1989576166]
 z_index = 20
 material = SubResource("CanvasItemMaterial_dp40d")
 position = Vector2(0, -6.5)
@@ -507,13 +503,13 @@ explosiveness = 0.4
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_px1f2")
 
-[node name="Down" type="RayCast2D" parent="."]
+[node name="Down" type="RayCast2D" parent="." unique_id=1903657956]
 position = Vector2(0, 5.5)
 target_position = Vector2(0, 5)
 
-[node name="Up" type="RayCast2D" parent="."]
+[node name="Up" type="RayCast2D" parent="." unique_id=75023980]
 position = Vector2(0, -13.5)
 target_position = Vector2(0, -5)
 
-[node name="Forward" type="RayCast2D" parent="."]
+[node name="Forward" type="RayCast2D" parent="." unique_id=471568804]
 target_position = Vector2(-25, 0)
