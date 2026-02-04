@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://by2tojgiqqi2u"]
+[gd_scene format=3 uid="uid://by2tojgiqqi2u"]
 
 [ext_resource type="Script" uid="uid://83h2kn4bangk" path="res://SampleProject/enemies/BonePillar/fireball.gd" id="1_aa7w3"]
 [ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="1_nlcup"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="4_ytjqh"]
 
 [sub_resource type="Animation" id="Animation_dy1ew"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -148,24 +149,24 @@ particles_anim_h_frames = 7
 particles_anim_v_frames = 7
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id="Gradient_gwynj"]
+[sub_resource type="Gradient" id="Gradient_wso81"]
 offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
 colors = PackedColorArray(0.589035, 0.184031, 4.81308e-08, 1, 0.92549, 0.403922, 0, 1, 0.68224, 0.113402, 1.92523e-07, 1, 1, 0.0117647, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_154uc"]
-gradient = SubResource("Gradient_gwynj")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_16rhe"]
+gradient = SubResource("Gradient_wso81")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jeft2"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wtam1"]
 emission_shape = 3
 emission_box_extents = Vector3(30, 16, 1)
 direction = Vector3(0, -1, 0)
 initial_velocity_max = 30.0
 gravity = Vector3(0, -200, 0)
-color_ramp = SubResource("GradientTexture1D_154uc")
+color_ramp = SubResource("GradientTexture1D_16rhe")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[node name="Fireball" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "lifespan_timer")]
+[node name="Fireball" type="RigidBody2D" unique_id=841905040 node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "lifespan_timer")]
 z_index = 10
 collision_layer = 4
 collision_mask = 0
@@ -180,7 +181,7 @@ hurtbox = NodePath("Hurtbox")
 lifespan_timer = NodePath("Lifespan")
 SPEED = 600.0
 
-[node name="Projectile" type="Node" parent="."]
+[node name="Projectile" type="Node" parent="." unique_id=795070446]
 script = ExtResource("1_nlcup")
 base_damage = 10
 destructible = true
@@ -188,38 +189,36 @@ destroy_on_contact = true
 magical = true
 attribute = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1759319478]
 scale = Vector2(2, 2)
 texture = ExtResource("2_a1p5o")
 hframes = 6
 vframes = 4
 frame = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_x73cy")
-}
-autoplay = "travel"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=724066034]
+libraries/ = SubResource("AnimationLibrary_x73cy")
+autoplay = &"travel"
 speed_scale = 2.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1504675633]
 collision_layer = 2
 collision_mask = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=1631458050]
 visible = false
 position = Vector2(-3.5, 28)
 shape = SubResource("RectangleShape2D_2gqff")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=176530509]
 visible = false
 position = Vector2(-4, 28)
 shape = SubResource("RectangleShape2D_36603")
 
-[node name="Lifespan" type="Timer" parent="."]
+[node name="Lifespan" type="Timer" parent="." unique_id=560014113]
 wait_time = 5.0
 
-[node name="FireEffect" type="GPUParticles2D" parent="."]
+[node name="FireEffect" type="GPUParticles2D" parent="." unique_id=138456337]
 z_index = 20
 material = SubResource("CanvasItemMaterial_gyr3f")
 position = Vector2(1, 27)
@@ -229,7 +228,7 @@ texture = ExtResource("4_ytjqh")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_jeft2")
+process_material = SubResource("ParticleProcessMaterial_wtam1")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]
