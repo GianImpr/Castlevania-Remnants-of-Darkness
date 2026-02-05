@@ -1,0 +1,733 @@
+[gd_scene format=3 uid="uid://uwi6xl1yswg7"]
+
+[ext_resource type="Script" uid="uid://bwcwsc5wotmum" path="res://SampleProject/enemies/Procel/procel.gd" id="1_6sdmo"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_ccoj6"]
+[ext_resource type="Texture2D" uid="uid://bgtowspfsflr7" path="res://assets/sprites/Enemies/Procel/ProcelBody.png" id="3_5r78p"]
+[ext_resource type="Shader" uid="uid://d16s7fbtr08rl" path="res://SampleProject/Shaders/wavy.gdshader" id="3_evu0j"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="3_rsfh4"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="4_5r78p"]
+[ext_resource type="Texture2D" uid="uid://kwi6t3b0rwut" path="res://assets/sprites/Enemies/Procel/ProcelFace.png" id="4_afof4"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_afof4"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_lb4x7"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_evu0j"]
+[ext_resource type="AudioStream" uid="uid://db0w71jkpf4y0" path="res://assets/sounds/Enemies/Procel/Bubble.wav" id="10_uk2kw"]
+[ext_resource type="AudioStream" uid="uid://c12h8dka8vhk8" path="res://assets/sounds/Voice/Procel/ProcelDead.wav" id="11_1ok6f"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="13_uk2kw"]
+[ext_resource type="Texture2D" uid="uid://sy66dqk72fgc" path="res://assets/sprites/Enemies/Procel/ProcelBubble.png" id="14_1ok6f"]
+[ext_resource type="Script" uid="uid://1t8ko84k7wvm" path="res://SampleProject/enemies/Procel/ProcelHidden.gd" id="14_eifay"]
+[ext_resource type="Script" uid="uid://ds0j2d15m8d2y" path="res://SampleProject/enemies/Procel/ProcelIdle.gd" id="15_nibkl"]
+[ext_resource type="Script" uid="uid://c7m4hnwlihyfw" path="res://SampleProject/enemies/Procel/ProcelAppearing.gd" id="16_wji0l"]
+[ext_resource type="Script" uid="uid://ddiokd6yljt62" path="res://SampleProject/enemies/Procel/ProcelDisappearing.gd" id="17_cyspk"]
+[ext_resource type="Script" uid="uid://5u4mutvhrdfh" path="res://SampleProject/enemies/Procel/ProcelMoving.gd" id="18_dc3ga"]
+[ext_resource type="Script" uid="uid://de8h135wipd1s" path="res://SampleProject/enemies/Procel/ProcelDying.gd" id="19_r3ti2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_evu0j"]
+shader = ExtResource("3_evu0j")
+shader_parameter/applyModulate = false
+shader_parameter/waveAmplitude = 0.030000001425
+shader_parameter/correctVertex = false
+shader_parameter/waveFrequency = 20.00000095
+shader_parameter/verticalWave = true
+shader_parameter/keepTransparency = true
+shader_parameter/useTime = true
+shader_parameter/waveSpeed = 8.00000038
+shader_parameter/progress = 0.0
+shader_parameter/firstHalf = 0.50000002375
+shader_parameter/secondHalf = 0.50000002375
+shader_parameter/freezeFirstHalf = false
+shader_parameter/freezeSecondHalf = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb4x7"]
+atlas = ExtResource("3_5r78p")
+region = Rect2(0, 0, 0, 45)
+
+[sub_resource type="Animation" id="Animation_lb4x7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Body/Face:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hurtbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite/Body/Face:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bubbles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BubblesSmall:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1ok6f"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Body/Face:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hurtbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PolyphonicAudioPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.40000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BubblesSmall:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bxd1t"]
+resource_name = "bubbles"
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Body/Face:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.071428575, 0.14285715, 0.21428573),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_uk2kw"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Body/Face:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hurtbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PolyphonicAudioPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 0.73333335, 0.8666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BubblesSmall:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_54gvk"]
+resource_name = "dying"
+length = 2.0
+step = 0.033
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite/Body/Face:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.071428575, 0.14285715, 0.21428573),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hurtbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Voice")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["scream"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bubbles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PolyphonicAudioPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.40000004, 0.53333336, 0.6666667, 0.8000001, 0.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["bubble"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_idlqx"]
+resource_name = "hidden"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Body/Face:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_evu0j"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite/Body/Face:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uk2kw"]
+_data = {
+&"RESET": SubResource("Animation_lb4x7"),
+&"appear": SubResource("Animation_1ok6f"),
+&"bubbles": SubResource("Animation_bxd1t"),
+&"disappear": SubResource("Animation_uk2kw"),
+&"dying": SubResource("Animation_54gvk"),
+&"hidden": SubResource("Animation_idlqx"),
+&"idle": SubResource("Animation_evu0j")
+}
+
+[sub_resource type="Resource" id="Resource_bxd1t"]
+script = ExtResource("9_evu0j")
+Tag = "bubble"
+stream = ExtResource("10_uk2kw")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_54gvk"]
+script = ExtResource("8_lb4x7")
+sound_effects = Array[ExtResource("9_evu0j")]([SubResource("Resource_bxd1t")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="Resource" id="Resource_idlqx"]
+script = ExtResource("9_evu0j")
+Tag = "scream"
+stream = ExtResource("11_1ok6f")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_qkruf"]
+script = ExtResource("8_lb4x7")
+sound_effects = Array[ExtResource("9_evu0j")]([SubResource("Resource_idlqx")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lb4x7"]
+size = Vector2(464, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evu0j"]
+size = Vector2(22.5, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk2kw"]
+size = Vector2(48, 43)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bxd1t"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_54gvk"]
+offsets = PackedFloat32Array(0, 0.21978022, 0.46153846)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.36100003, 1, 1, 1, 0)
+
+[node name="Procel" type="CharacterBody2D" unique_id=331350288 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_6sdmo")
+vision = NodePath("VisionArea")
+sprite = NodePath("Sprite/Body/Face")
+hitbox = NodePath("HitboxArea")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Timer")
+hitbox_iframe = NodePath("HitboxArea")
+metadata/_custom_type_script = "uid://jpd31rlnmjom"
+
+[node name="EnemyStats" type="Node" parent="." unique_id=1119845802]
+script = ExtResource("2_ccoj6")
+enemy_name = "PROCEL"
+LV = 14
+HP = 30
+ATK = 50
+DEF = 15
+RES = 30
+EXP = 20
+weaknesses = Array[int]([3, 5, 6])
+tolerances = Array[int]([1, 2, 4])
+metadata/_custom_type_script = "uid://dwqs3a3odtwne"
+
+[node name="Sprite" type="Node2D" parent="." unique_id=1270421860]
+position = Vector2(30, 0)
+
+[node name="Body" type="TextureRect" parent="Sprite" unique_id=57021426]
+material = SubResource("ShaderMaterial_evu0j")
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("AtlasTexture_lb4x7")
+
+[node name="Face" type="Sprite2D" parent="Sprite/Body" unique_id=1044912030]
+texture = ExtResource("4_afof4")
+centered = false
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1618307153]
+libraries/ = SubResource("AnimationLibrary_uk2kw")
+
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=2037996865]
+position = Vector2(3, -47)
+script = ExtResource("3_rsfh4")
+damage_node = ExtResource("4_5r78p")
+metadata/_custom_type_script = "uid://d0ffw2f0aswn"
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=362290656]
+volume_db = -15.0
+script = ExtResource("5_afof4")
+audio_library = SubResource("Resource_54gvk")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="Voice" type="AudioStreamPlayer2D" parent="." unique_id=500039335]
+volume_db = -15.0
+bus = &"Voice"
+script = ExtResource("5_afof4")
+audio_library = SubResource("Resource_qkruf")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="VisionArea" type="Area2D" parent="." unique_id=975084892]
+visible = false
+position = Vector2(-10, -28.5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Vision" type="CollisionShape2D" parent="VisionArea" unique_id=1723907378]
+position = Vector2(203, -7.5)
+shape = SubResource("RectangleShape2D_lb4x7")
+debug_color = Color(0, 0.6391856, 0.372684, 0.41960785)
+
+[node name="HitboxArea" type="Area2D" parent="." unique_id=964981267]
+position = Vector2(-11, -18.5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=545293186]
+visible = false
+position = Vector2(15.25, 0.5)
+shape = SubResource("RectangleShape2D_evu0j")
+disabled = true
+debug_color = Color(0.9393679, 0.2481274, 0, 0.41960785)
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=88193183]
+visible = false
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_uk2kw")
+disabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=871385765]
+
+[node name="StateMachine" type="Node" parent="." unique_id=932360843 node_paths=PackedStringArray("initial_state", "player", "animation", "voice")]
+script = ExtResource("13_uk2kw")
+initial_state = NodePath("Hidden")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+voice = NodePath("../Voice")
+metadata/_custom_type_script = "uid://d2kqkdfhgcbi7"
+
+[node name="Hidden" type="Node" parent="StateMachine" unique_id=1318296059]
+script = ExtResource("14_eifay")
+metadata/_custom_type_script = "uid://1t8ko84k7wvm"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=2037782749]
+script = ExtResource("15_nibkl")
+metadata/_custom_type_script = "uid://ds0j2d15m8d2y"
+
+[node name="Appearing" type="Node" parent="StateMachine" unique_id=92010890]
+script = ExtResource("16_wji0l")
+metadata/_custom_type_script = "uid://c7m4hnwlihyfw"
+
+[node name="Disappearing" type="Node" parent="StateMachine" unique_id=1981091060]
+script = ExtResource("17_cyspk")
+metadata/_custom_type_script = "uid://ddiokd6yljt62"
+
+[node name="Moving" type="Node" parent="StateMachine" unique_id=1003584266]
+script = ExtResource("18_dc3ga")
+metadata/_custom_type_script = "uid://5u4mutvhrdfh"
+
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1967169349]
+script = ExtResource("19_r3ti2")
+metadata/_custom_type_script = "uid://de8h135wipd1s"
+
+[node name="Bubbles" type="CPUParticles2D" parent="." unique_id=22765355]
+material = SubResource("CanvasItemMaterial_bxd1t")
+position = Vector2(-7, -24.5)
+emitting = false
+amount = 48
+texture = ExtResource("14_1ok6f")
+lifetime = 0.9
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(30, 1)
+direction = Vector2(0, -1)
+spread = 75.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+angular_velocity_min = 30.0
+angular_velocity_max = 60.0
+radial_accel_min = 5.0
+radial_accel_max = 70.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_54gvk")
+anim_offset_max = 1.0
+
+[node name="BubblesSmall" type="CPUParticles2D" parent="." unique_id=490564754]
+material = SubResource("CanvasItemMaterial_bxd1t")
+position = Vector2(-13, -18)
+emitting = false
+amount = 24
+texture = ExtResource("14_1ok6f")
+lifetime = 0.5
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(30, 1)
+direction = Vector2(0, -1)
+spread = 75.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 40.0
+angular_velocity_min = 30.0
+angular_velocity_max = 60.0
+radial_accel_min = 5.0
+radial_accel_max = 70.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_54gvk")
+anim_offset_max = 1.0

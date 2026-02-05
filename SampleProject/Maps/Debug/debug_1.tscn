@@ -12,8 +12,7 @@
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_i41q0"]
 [ext_resource type="AudioStream" uid="uid://crv7fk0e66soy" path="res://assets/sounds/Effects/Miscellaneous/BigSplash.wav" id="10_1mmoy"]
 [ext_resource type="AudioStream" uid="uid://iuq41xxsnubj" path="res://assets/sounds/Effects/Miscellaneous/SmallSplash.wav" id="12_1mmoy"]
-[ext_resource type="PackedScene" uid="uid://cafkf0jti8wad" path="res://SampleProject/enemies/Merman/merman.tscn" id="13_1mmoy"]
-[ext_resource type="PackedScene" uid="uid://cmjvajpmsltsp" path="res://SampleProject/enemies/Ectoplasm/ectoplasm.tscn" id="14_ggluv"]
+[ext_resource type="PackedScene" uid="uid://uwi6xl1yswg7" path="res://SampleProject/enemies/Procel/procel.tscn" id="13_1mmoy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ikyd"]
 texture = ExtResource("3_2ur68")
@@ -228,20 +227,8 @@ script = ExtResource("7_rspch")
 audio_library = SubResource("Resource_v87x7")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
-[node name="Merman" parent="." unique_id=570366689 instance=ExtResource("13_1mmoy")]
-position = Vector2(483, 414)
-
-[node name="Merman2" parent="." unique_id=582295449 instance=ExtResource("13_1mmoy")]
-position = Vector2(548, 414)
-
-[node name="Merman3" parent="." unique_id=88045119 instance=ExtResource("13_1mmoy")]
-position = Vector2(411, 414)
-
-[node name="Merman4" parent="." unique_id=731763873 instance=ExtResource("13_1mmoy")]
-position = Vector2(339, 415)
-
-[node name="Ectoplasm2" parent="." unique_id=428238054 instance=ExtResource("14_ggluv")]
-position = Vector2(569, 152)
+[node name="Procel" parent="." unique_id=331350288 instance=ExtResource("13_1mmoy")]
+position = Vector2(285, 414)
 
 [connection signal="body_entered" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_exited"]

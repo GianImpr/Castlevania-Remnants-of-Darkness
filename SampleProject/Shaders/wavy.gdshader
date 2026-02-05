@@ -1,5 +1,6 @@
 shader_type canvas_item;
 
+uniform bool applyModulate = false;
 // The amplitude of the wave.
 uniform float waveAmplitude: hint_range(0.0, 1.0) = 0.25;
 // If true corrects the Vertexes to adjust for the UV displacement
@@ -66,10 +67,16 @@ void fragment() {
 			if (againstWaveUv <= 0.0 || againstWaveUv >= 1.0) {
 				COLOR.a = 0.0;
 			} else {
-				COLOR = texColor;
+				if (!applyModulate)
+					COLOR = texColor;
+				else
+					COLOR *= texColor;
 			}
 		} else {
-			COLOR = texColor;
+				if (!applyModulate)
+					COLOR = texColor;
+				else
+					COLOR *= texColor;
 		}
 	}
 }
