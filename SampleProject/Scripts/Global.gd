@@ -41,7 +41,9 @@ enum Languages {
 	ENGLISH,
 	ITALIAN,
 	SPANISH,
-	PORTUGUESE
+	PORTUGUESE,
+	FRENCH,
+	DUTCH
 }
 
 const langs = ["en", "it", "es", "pt"]

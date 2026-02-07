@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://djw0ueyeiotcq"]
+[gd_scene format=3 uid="uid://djw0ueyeiotcq"]
 
 [ext_resource type="Script" uid="uid://c2biw3aqf4qx1" path="res://SampleProject/enemies/Warg/warg.gd" id="1_cgj65"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_xuafy"]
@@ -436,7 +436,7 @@ colors = PackedColorArray(1, 0.435294, 0, 1, 1, 0, 0, 1)
 [sub_resource type="Gradient" id="Gradient_0y7r6"]
 colors = PackedColorArray(1, 0.6, 0, 0, 0.977332, 0.203058, 0, 1)
 
-[node name="Warg" type="CharacterBody2D" node_paths=PackedStringArray("vision", "bite_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[node name="Warg" type="CharacterBody2D" unique_id=2019177669 node_paths=PackedStringArray("vision", "bite_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 z_index = 1
 scale = Vector2(2, 2)
 collision_layer = 4
@@ -452,7 +452,7 @@ iframe_timer = NodePath("Timer")
 hitbox_iframe = NodePath("Hitbox")
 blood_particles = NodePath("BloodDamage")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=1892953806]
 script = ExtResource("2_xuafy")
 enemy_name = "WARG"
 LV = 11
@@ -465,52 +465,52 @@ common_drop_rate = 2.25
 weaknesses = Array[int]([1, 2, 4])
 tolerances = Array[int]([3, 6])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=531449952]
 texture = ExtResource("3_vys3q")
 hframes = 10
 vframes = 7
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=2124088129]
 position = Vector2(-6.25, 4.25)
 shape = SubResource("RectangleShape2D_lju4n")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1180884009]
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1332764984]
 collision_layer = 0
 collision_mask = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=1595656670]
 visible = false
 position = Vector2(-5.5, 7.5)
 shape = SubResource("RectangleShape2D_6ahje")
 
-[node name="Bite" type="Area2D" parent="."]
+[node name="Bite" type="Area2D" parent="." unique_id=1341734551]
 position = Vector2(-0.5, 5.75)
 collision_layer = 0
 collision_mask = 2
 
-[node name="BiteShape" type="CollisionShape2D" parent="Bite"]
+[node name="BiteShape" type="CollisionShape2D" parent="Bite" unique_id=1017211405]
 visible = false
 position = Vector2(-45.25, -3.75)
 shape = SubResource("RectangleShape2D_p6348")
 disabled = true
 
-[node name="Vision" type="Area2D" parent="."]
+[node name="Vision" type="Area2D" parent="." unique_id=1593089556]
 collision_layer = 0
 collision_mask = 2
 
-[node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+[node name="VisionShape" type="CollisionShape2D" parent="Vision" unique_id=17089201]
 visible = false
 position = Vector2(0.5, -14.75)
 shape = SubResource("RectangleShape2D_hbiqm")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=611093521]
 volume_db = -3.0
 script = ExtResource("3_hq73f")
 audio_library = SubResource("Resource_5hka2")
 
-[node name="BloodDamage" type="CPUParticles2D" parent="."]
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=1335681126]
 position = Vector2(-15.5, 0)
 emitting = false
 amount = 36
@@ -527,59 +527,57 @@ scale_amount_curve = SubResource("Curve_va3vl")
 color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
 color_ramp = SubResource("Gradient_5pg3w")
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=570419691]
 position = Vector2(-21, -34.5)
 script = ExtResource("4_khvj0")
 damage_node = ExtResource("5_15yv7")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=571617457 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("13_p3wy1")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=444323983]
 script = ExtResource("7_meydx")
 
-[node name="Preparing" type="Node" parent="StateMachine"]
+[node name="Preparing" type="Node" parent="StateMachine" unique_id=1491202941]
 script = ExtResource("8_83122")
 ANIM_DURATION = 0.7
 
-[node name="Biting" type="Node" parent="StateMachine"]
+[node name="Biting" type="Node" parent="StateMachine" unique_id=1585822908]
 script = ExtResource("9_hajer")
 BITING_SPEED = 410.0
 DECELERATION_DURATION = 0.6
 
-[node name="Moving" type="Node" parent="StateMachine"]
+[node name="Moving" type="Node" parent="StateMachine" unique_id=406163214]
 script = ExtResource("10_ymwws")
 SPEED = 100.0
 
-[node name="Turning" type="Node" parent="StateMachine"]
+[node name="Turning" type="Node" parent="StateMachine" unique_id=1694931476]
 script = ExtResource("11_uwv7u")
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("flame_pillar_timer")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=783808641 node_paths=PackedStringArray("flame_pillar_timer")]
 script = ExtResource("12_tffoj")
 fire_pillar_scene = ExtResource("13_sxqjb")
 fire_pillar_offset = 90.0
 flame_pillar_timer = NodePath("FlamePillarFrequency")
 
-[node name="FlamePillarFrequency" type="Timer" parent="StateMachine/Dying"]
+[node name="FlamePillarFrequency" type="Timer" parent="StateMachine/Dying" unique_id=119497581]
 wait_time = 0.2
 
-[node name="Magic" type="Node" parent="StateMachine" node_paths=PackedStringArray("fire_pillar_respawn_timer")]
+[node name="Magic" type="Node" parent="StateMachine" unique_id=1568861857 node_paths=PackedStringArray("fire_pillar_respawn_timer")]
 script = ExtResource("19_amidd")
 offensive_fire_pillar_scene = ExtResource("20_442vi")
 fire_pillar_respawn_timer = NodePath("FlamePillarRespawn")
 
-[node name="FlamePillarRespawn" type="Timer" parent="StateMachine/Magic"]
+[node name="FlamePillarRespawn" type="Timer" parent="StateMachine/Magic" unique_id=246969987]
 wait_time = 0.2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_kkaj5")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=812190300]
+libraries/ = SubResource("AnimationLibrary_kkaj5")
 
-[node name="FireMagic" type="CPUParticles2D" parent="."]
+[node name="FireMagic" type="CPUParticles2D" parent="." unique_id=1503566714]
 emitting = false
 amount = 36
 one_shot = true

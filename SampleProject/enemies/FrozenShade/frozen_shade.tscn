@@ -1,0 +1,517 @@
+[gd_scene format=3 uid="uid://drs0b6varamj6"]
+
+[ext_resource type="Script" uid="uid://c2up0iihcv0uu" path="res://SampleProject/enemies/FrozenShade/frozen_shade.gd" id="1_ocmly"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_ocmly"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_syxs8"]
+[ext_resource type="Texture2D" uid="uid://i86slqx2dqo0" path="res://assets/sprites/Enemies/FrozenShade/FrozenShade.png" id="3_dv5bh"]
+[ext_resource type="Texture2D" uid="uid://oulw7jv122ht" path="res://assets/sprites/Enemies/FrozenShade/Charge.png" id="3_g2bq4"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="3_n6imb"]
+[ext_resource type="Shader" uid="uid://d1l8jwuyx7b4m" path="res://SampleProject/Shaders/ethereal_dissolve.gdshader" id="4_m68qi"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_ocmly"]
+[ext_resource type="Script" uid="uid://c8ld3ieoh066e" path="res://SampleProject/enemies/FrozenShade/FrozenShadeIdle.gd" id="5_6aitc"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_d3gpv"]
+[ext_resource type="Script" uid="uid://dw7lp4e0cvbmj" path="res://SampleProject/enemies/FrozenShade/FrozenShadeIcicle.gd" id="6_dv5bh"]
+[ext_resource type="Script" uid="uid://b24caewscuks8" path="res://SampleProject/enemies/FrozenShade/FrozenShadeTurning.gd" id="7_qilh5"]
+[ext_resource type="Script" uid="uid://i84owdik6ymn" path="res://SampleProject/enemies/FrozenShade/FrozenShadeFreeze.gd" id="8_g2bq4"]
+[ext_resource type="Script" uid="uid://cs4eldj2v3jgl" path="res://SampleProject/enemies/FrozenShade/FrozenShadeDying.gd" id="9_m68qi"]
+[ext_resource type="Texture2D" uid="uid://kxtxr8j427dd" path="res://assets/sprites/Enemies/FrozenShade/Particle.png" id="13_qilh5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m68qi"]
+shader = ExtResource("4_m68qi")
+shader_parameter/progress = 0.0
+shader_parameter/expansion_amount = 2.000000095
+shader_parameter/center_x = 0.0570000027075
+shader_parameter/feather = 0.04000000120148
+
+[sub_resource type="Animation" id="Animation_dv5bh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Freeze:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Freeze:one_shot")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Snowflake:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.569051]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Snowflake:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hurtbox:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite2D:material:shader_parameter/progress")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Dying:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m68qi"]
+resource_name = "dying"
+length = 1.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [36]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Snowflake:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Freeze:one_shot")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hurtbox:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:material:shader_parameter/progress")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.2000000095]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Dying:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_g2bq4"]
+resource_name = "freeze"
+length = 5.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9999999, 2.1, 2.1999998, 2.2999997, 2.6999998, 2.7999997, 2.8999999, 2.9999998, 3.1, 3.1999998, 3.2999997, 3.4, 3.5, 3.6, 3.6999998, 3.7999997, 3.8999996, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.7999997, 4.9, 5, 5.3, 5.4000006),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 9, 10, 11, 13, 12, 14, 15, 16, 17, 15, 16, 17, 15, 16, 17, 15, 16, 17, 15, 16, 17, 14, 18, 19, 20, 19, 18, 12, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Freeze:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.7999997),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Freeze:one_shot")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.6, 3.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Snowflake:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.23, 0.5, 0.53000003, 0.8, 0.83, 1.1, 1.13, 1.4, 1.43, 1.7, 1.73, 2, 2.03),
+"transitions": PackedFloat32Array(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1),
+"update": 0,
+"values": [-1.569051, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Snowflake:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qilh5"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.28571427, 0.42857146, 0.5714286, 0.71428573, 0.85714287),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 3, 2]
+}
+
+[sub_resource type="Animation" id="Animation_mnd3t"]
+resource_name = "turning"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [27, 28, 29, 30, 31]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g2bq4"]
+_data = {
+&"RESET": SubResource("Animation_dv5bh"),
+&"dying": SubResource("Animation_m68qi"),
+&"freeze": SubResource("Animation_g2bq4"),
+&"idle": SubResource("Animation_qilh5"),
+&"turning": SubResource("Animation_mnd3t")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv5bh"]
+size = Vector2(275.5, 61.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qilh5"]
+size = Vector2(7, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2bq4"]
+size = Vector2(15, 47)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g2bq4"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_m68qi"]
+offsets = PackedFloat32Array(0, 0.5302198, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="FrozenShade" type="CharacterBody2D" unique_id=272423195 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_ocmly")
+vision = NodePath("VisionArea")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("HitboxArea")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Iframe")
+hitbox_iframe = NodePath("HitboxArea")
+metadata/_custom_type_script = "uid://jpd31rlnmjom"
+
+[node name="EnemyStats" type="Node" parent="." unique_id=895349931]
+script = ExtResource("2_ocmly")
+enemy_name = "FROZEN_SHADE"
+LV = 15
+HP = 60
+ATK = 38
+DEF = 5
+RES = 20
+EXP = 25
+weaknesses = Array[int]([3, 6])
+tolerances = Array[int]([4])
+metadata/_custom_type_script = "uid://dwqs3a3odtwne"
+
+[node name="Snowflake" type="Node2D" parent="." unique_id=716778463]
+position = Vector2(-0.99999994, 5.5)
+rotation = 1.5707964
+skew = -1.569051
+
+[node name="Charge" type="Sprite2D" parent="Snowflake" unique_id=1127002197]
+self_modulate = Color(1, 1, 1, 0.25300002)
+rotation = -0.7853982
+texture = ExtResource("3_g2bq4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=994690032]
+material = SubResource("ShaderMaterial_m68qi")
+texture = ExtResource("3_dv5bh")
+hframes = 9
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1565035825]
+libraries/ = SubResource("AnimationLibrary_g2bq4")
+
+[node name="Iframe" type="Timer" parent="." unique_id=724233028]
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=922416605]
+bus = &"SFX"
+script = ExtResource("2_syxs8")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="Voice" type="AudioStreamPlayer2D" parent="." unique_id=1918650527]
+bus = &"Voice"
+script = ExtResource("2_syxs8")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="StateMachine" type="Node" parent="." unique_id=28068794 node_paths=PackedStringArray("initial_state", "player", "animation", "voice")]
+script = ExtResource("3_n6imb")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+voice = NodePath("../Voice")
+metadata/_custom_type_script = "uid://d2kqkdfhgcbi7"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=869376257]
+script = ExtResource("5_6aitc")
+metadata/_custom_type_script = "uid://c8ld3ieoh066e"
+
+[node name="Icicle" type="Node" parent="StateMachine" unique_id=736527932]
+script = ExtResource("6_dv5bh")
+metadata/_custom_type_script = "uid://dw7lp4e0cvbmj"
+
+[node name="Turning" type="Node" parent="StateMachine" unique_id=949959949]
+script = ExtResource("7_qilh5")
+metadata/_custom_type_script = "uid://b24caewscuks8"
+
+[node name="Freeze" type="Node" parent="StateMachine" unique_id=346603172]
+script = ExtResource("8_g2bq4")
+metadata/_custom_type_script = "uid://i84owdik6ymn"
+
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1857960808]
+script = ExtResource("9_m68qi")
+metadata/_custom_type_script = "uid://cs4eldj2v3jgl"
+
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=1810803759]
+position = Vector2(-0.5, -28.5)
+script = ExtResource("4_ocmly")
+damage_node = ExtResource("5_d3gpv")
+metadata/_custom_type_script = "uid://d0ffw2f0aswn"
+
+[node name="VisionArea" type="Area2D" parent="." unique_id=1299825060]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Vision" type="CollisionShape2D" parent="VisionArea" unique_id=1286557127]
+visible = false
+position = Vector2(-0.75, 3.25)
+shape = SubResource("RectangleShape2D_dv5bh")
+debug_color = Color(0, 0.6364619, 0.40852782, 0.41960785)
+
+[node name="HitboxArea" type="Area2D" parent="." unique_id=1125416957]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=1050695074]
+visible = false
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_qilh5")
+debug_color = Color(0.86811054, 0.35365856, 1.92523e-07, 0.41960785)
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1094536070]
+visible = false
+position = Vector2(0.5, 6.5)
+shape = SubResource("RectangleShape2D_g2bq4")
+
+[node name="Freeze" type="CPUParticles2D" parent="." unique_id=1998938931]
+material = SubResource("CanvasItemMaterial_g2bq4")
+position = Vector2(-12.5, -8)
+amount = 144
+texture = ExtResource("13_qilh5")
+lifetime = 0.5
+direction = Vector2(-1, 0)
+spread = 33.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 120.0
+initial_velocity_max = 200.0
+color_ramp = SubResource("Gradient_m68qi")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Dying" type="CPUParticles2D" parent="." unique_id=1437288265]
+material = SubResource("CanvasItemMaterial_g2bq4")
+position = Vector2(-1, 6)
+emitting = false
+amount = 20
+texture = ExtResource("13_qilh5")
+lifetime = 0.7
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(13, 15)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+color_ramp = SubResource("Gradient_m68qi")
+anim_speed_min = 1.0
+anim_speed_max = 1.0

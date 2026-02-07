@@ -12,7 +12,15 @@
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_i41q0"]
 [ext_resource type="AudioStream" uid="uid://crv7fk0e66soy" path="res://assets/sounds/Effects/Miscellaneous/BigSplash.wav" id="10_1mmoy"]
 [ext_resource type="AudioStream" uid="uid://iuq41xxsnubj" path="res://assets/sounds/Effects/Miscellaneous/SmallSplash.wav" id="12_1mmoy"]
-[ext_resource type="PackedScene" uid="uid://uwi6xl1yswg7" path="res://SampleProject/enemies/Procel/procel.tscn" id="13_1mmoy"]
+[ext_resource type="PackedScene" uid="uid://djw0ueyeiotcq" path="res://SampleProject/enemies/Warg/warg.tscn" id="13_1mmoy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phwp3"]
+
+[sub_resource type="Gradient" id="Gradient_2prqw"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j3l0a"]
+gradient = SubResource("Gradient_2prqw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ikyd"]
 texture = ExtResource("3_2ur68")
@@ -176,6 +184,14 @@ camera_limit_left = 96
 camera_limit_right = 960
 camera_limit_bottom = 480
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1675095145]
+material = SubResource("ShaderMaterial_phwp3")
+offset_left = 126.0
+offset_top = 31.0
+offset_right = 959.0
+offset_bottom = 447.0
+texture = SubResource("GradientTexture2D_j3l0a")
+
 [node name="RoomInstance" parent="." unique_id=120776826 instance=ExtResource("2_1u5xp")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=101558941]
@@ -187,6 +203,7 @@ tile_map_data = PackedByteArray("AAALAAgAAAADAAAAAAAHAAsAAAADAAAAAAAIAAsAAAADAAA
 tile_set = SubResource("TileSet_t01tf")
 
 [node name="ResizableWater" type="Node2D" parent="." unique_id=1143357429 node_paths=PackedStringArray("sound", "collision")]
+visible = false
 z_index = 30
 position = Vector2(126, 414)
 script = ExtResource("4_rjj1q")
@@ -227,8 +244,8 @@ script = ExtResource("7_rspch")
 audio_library = SubResource("Resource_v87x7")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
-[node name="Procel" parent="." unique_id=331350288 instance=ExtResource("13_1mmoy")]
-position = Vector2(285, 414)
+[node name="Warg" parent="." unique_id=1914837598 instance=ExtResource("13_1mmoy")]
+position = Vector2(503, 380)
 
 [connection signal="body_entered" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_exited"]
