@@ -558,6 +558,8 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0, 0.5302198, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="Curve2D" id="Curve2D_g815w"]
+
 [node name="FrozenShade" type="CharacterBody2D" unique_id=272423195 node_paths=PackedStringArray("vision", "freeze_area", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 scale = Vector2(2, 2)
 collision_layer = 4
@@ -721,3 +723,6 @@ initial_velocity_max = 30.0
 color_ramp = SubResource("Gradient_m68qi")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
+
+[node name="Path2D" type="Path2D" parent="." unique_id=51136593]
+curve = SubResource("Curve2D_g815w")
