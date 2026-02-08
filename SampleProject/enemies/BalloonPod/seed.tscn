@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://d0ce1qiqcyepd"]
+
+[ext_resource type="Script" uid="uid://siolorxnhrr1" path="res://SampleProject/enemies/BalloonPod/BalloonPodSeed.gd" id="1_2svv4"]
+[ext_resource type="Texture2D" uid="uid://drbkf57jj03ct" path="res://assets/sprites/Enemies/BalloonPod/Seed.png" id="2_vqn2g"]
+[ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="2_y62fa"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="3_gk7vk"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_fyqve"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_56s5r"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_3gjvu"]
+[ext_resource type="AudioStream" uid="uid://cpbiur4t1mkqj" path="res://assets/sounds/Enemies/BalloonPod/SeedExplode.ogg" id="7_2svv4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqhfa"]
+size = Vector2(3, 5.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2p2xa"]
+size = Vector2(6.5, 9)
+
+[sub_resource type="Resource" id="Resource_y62fa"]
+script = ExtResource("6_3gjvu")
+Tag = "destroy"
+stream = ExtResource("7_2svv4")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_vqn2g"]
+script = ExtResource("5_56s5r")
+sound_effects = Array[ExtResource("6_3gjvu")]([SubResource("Resource_y62fa")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[node name="Seed" type="RigidBody2D" unique_id=1591811216 node_paths=PackedStringArray("stats", "area", "sprite", "sound", "shape")]
+collision_layer = 4
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_2svv4")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+sprite = NodePath("Sprite2D")
+sound = NodePath("PolyphonicAudio")
+SPAWNING_SPEED = Vector2(75, -500)
+FALLING_SPEED = Vector2(60, 100)
+shape = NodePath("Hurtbox")
+small_explosion_scene = ExtResource("2_y62fa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1079144758]
+position = Vector2(-7, -8)
+scale = Vector2(2, 2)
+texture = ExtResource("2_vqn2g")
+
+[node name="Projectile" type="Node" parent="." unique_id=502236627]
+script = ExtResource("3_gk7vk")
+base_damage = 5
+destructible = true
+destroy_on_contact = true
+attribute = 10
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=449090954]
+collision_layer = 4
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=811099130]
+visible = false
+position = Vector2(0, 2.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_lqhfa")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=112008053]
+visible = false
+position = Vector2(-0.5, 2)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_2p2xa")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=79371271]
+volume_db = -12.0
+bus = &"SFX"
+script = ExtResource("4_fyqve")
+audio_library = SubResource("Resource_vqn2g")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=57036174]

@@ -49,6 +49,15 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 	else:
 		body.knockback = knockback
 		body.applyHitEffect(attribute)
+	
+	if not body.isGuarding() or body.stats.Stats["Guard"] == 0:
+		match attribute:
+			Global.Attribute.STONE:
+				body.petrify()
+			Global.Attribute.CURSE:
+				body.curse()
+			Global.Attribute.POISON:
+				body.poison()
 		
 	if body.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
 		if guard_break:
