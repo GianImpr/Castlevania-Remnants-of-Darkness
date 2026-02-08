@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c0u0mu886ooj5"]
+[gd_scene format=3 uid="uid://c0u0mu886ooj5"]
 
 [ext_resource type="Script" uid="uid://vahhb6gt3xq7" path="res://SampleProject/enemies/Slaughterer/slaughterer_fireball.gd" id="1_ent4r"]
 [ext_resource type="Texture2D" uid="uid://cqna60vlda4jl" path="res://assets/sprites/Enemies/Slaughterer/Fireball.png" id="1_uedwx"]
@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="4_ar37s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqhfa"]
-size = Vector2(24.5, 26)
+size = Vector2(14.5, 34.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2p2xa"]
-size = Vector2(25, 36.5)
+size = Vector2(25, 52.125)
 
 [sub_resource type="Animation" id="Animation_1w5eq"]
 length = 0.001
@@ -178,7 +178,7 @@ colors = PackedColorArray(0.638271, 0, 0.0312583, 1, 1, 0.279246, 0.324821, 1, 0
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_85ldu"]
 gradient = SubResource("Gradient_gkukc")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3veh5"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ergkr"]
 emission_shape = 3
 emission_box_extents = Vector3(16, 16, 1)
 direction = Vector3(0, -1, 0)
@@ -188,7 +188,7 @@ color_ramp = SubResource("GradientTexture1D_85ldu")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[node name="SlaughterFireball" type="RigidBody2D" node_paths=PackedStringArray("stats", "area", "sprite", "animation", "raycast")]
+[node name="SlaughterFireball" type="RigidBody2D" unique_id=1931345496 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "raycast")]
 collision_layer = 4
 collision_mask = 0
 gravity_scale = 0.4
@@ -200,7 +200,7 @@ animation = NodePath("AnimationPlayer")
 raycast = NodePath("DetectGround")
 SPEED = Vector2(2000, -200)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1411151420]
 rotation = 0.785398
 scale = Vector2(2, 2)
 texture = ExtResource("1_uedwx")
@@ -208,7 +208,7 @@ offset = Vector2(20, -30)
 flip_h = true
 hframes = 6
 
-[node name="Projectile" type="Node" parent="."]
+[node name="Projectile" type="Node" parent="." unique_id=254356660]
 script = ExtResource("2_l6oyb")
 base_damage = 12
 destructible = true
@@ -217,29 +217,27 @@ magical = true
 chip_damage = 5
 attribute = 3
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=288281720]
 collision_layer = 4
 collision_mask = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=618196262]
 visible = false
 position = Vector2(1.25, 2)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_lqhfa")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1441438821]
 visible = false
 position = Vector2(1, -3.75)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_2p2xa")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ro61f")
-}
-autoplay = "flying"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=466188264]
+libraries/ = SubResource("AnimationLibrary_ro61f")
+autoplay = &"flying"
 
-[node name="FireEffect" type="GPUParticles2D" parent="."]
+[node name="FireEffect" type="GPUParticles2D" parent="." unique_id=1831123720]
 z_index = 20
 material = SubResource("CanvasItemMaterial_0gqas")
 position = Vector2(1, 2)
@@ -250,8 +248,8 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_3veh5")
+process_material = SubResource("ParticleProcessMaterial_ergkr")
 
-[node name="DetectGround" type="RayCast2D" parent="."]
+[node name="DetectGround" type="RayCast2D" parent="." unique_id=251677817]
 target_position = Vector2(0, 24)
 collision_mask = 4097

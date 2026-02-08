@@ -5,23 +5,33 @@
 [ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_syxs8"]
 [ext_resource type="Texture2D" uid="uid://i86slqx2dqo0" path="res://assets/sprites/Enemies/FrozenShade/FrozenShade.png" id="3_dv5bh"]
 [ext_resource type="Texture2D" uid="uid://oulw7jv122ht" path="res://assets/sprites/Enemies/FrozenShade/Charge.png" id="3_g2bq4"]
+[ext_resource type="Shader" uid="uid://udeo12ds7opi" path="res://SampleProject/enemies/FrozenShade/better_skew.gdshader" id="3_g815w"]
 [ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="3_n6imb"]
 [ext_resource type="Shader" uid="uid://d1l8jwuyx7b4m" path="res://SampleProject/Shaders/ethereal_dissolve.gdshader" id="4_m68qi"]
 [ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_ocmly"]
 [ext_resource type="Script" uid="uid://c8ld3ieoh066e" path="res://SampleProject/enemies/FrozenShade/FrozenShadeIdle.gd" id="5_6aitc"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_d3gpv"]
 [ext_resource type="Script" uid="uid://dw7lp4e0cvbmj" path="res://SampleProject/enemies/FrozenShade/FrozenShadeIcicle.gd" id="6_dv5bh"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_5qvft"]
 [ext_resource type="Script" uid="uid://b24caewscuks8" path="res://SampleProject/enemies/FrozenShade/FrozenShadeTurning.gd" id="7_qilh5"]
 [ext_resource type="Script" uid="uid://i84owdik6ymn" path="res://SampleProject/enemies/FrozenShade/FrozenShadeFreeze.gd" id="8_g2bq4"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="8_th5i8"]
 [ext_resource type="Script" uid="uid://cs4eldj2v3jgl" path="res://SampleProject/enemies/FrozenShade/FrozenShadeDying.gd" id="9_m68qi"]
+[ext_resource type="AudioStream" uid="uid://dg08wiotrrbs3" path="res://assets/sounds/Enemies/FrozenShade/FrozenCharge.ogg" id="9_ra2jg"]
+[ext_resource type="AudioStream" uid="uid://dtqy60auw1foc" path="res://assets/sounds/Enemies/FrozenShade/FrozenDead.ogg" id="10_7hf5h"]
+[ext_resource type="AudioStream" uid="uid://yhidjwlcvmjc" path="res://assets/sounds/Enemies/FrozenShade/FrozenFade.ogg" id="11_g815w"]
+[ext_resource type="AudioStream" uid="uid://ccwixbs6dfr5r" path="res://assets/sounds/Enemies/FrozenShade/IcicleSummon.ogg" id="12_th5i8"]
 [ext_resource type="Texture2D" uid="uid://kxtxr8j427dd" path="res://assets/sprites/Enemies/FrozenShade/Particle.png" id="13_qilh5"]
+[ext_resource type="AudioStream" uid="uid://desn8611uv22s" path="res://assets/sounds/Enemies/FrozenShade/FrozenGale.ogg" id="13_ra2jg"]
+[ext_resource type="PackedScene" uid="uid://cs21jfei43f66" path="res://SampleProject/enemies/FrozenShade/icicle.tscn" id="17_7hf5h"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m68qi"]
-shader = ExtResource("4_m68qi")
-shader_parameter/progress = 0.0
-shader_parameter/expansion_amount = 2.000000095
-shader_parameter/center_x = 0.0570000027075
-shader_parameter/feather = 0.04000000120148
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uhwd"]
+shader = ExtResource("3_g815w")
+shader_parameter/fov = 1.0
+shader_parameter/cull_back = false
+shader_parameter/y_rot = -180.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
 
 [sub_resource type="Animation" id="Animation_dv5bh"]
 length = 0.001
@@ -47,7 +57,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -64,31 +74,31 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Snowflake:skew")
+tracks/3/path = NodePath("Snowflake:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.569051]
+"update": 1,
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Snowflake:visible")
+tracks/4/path = NodePath("HitboxArea/Hitbox:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/5/path = NodePath("Hurtbox:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -100,39 +110,94 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Hurtbox:disabled")
+tracks/6/path = NodePath("Sprite2D:material:shader_parameter/progress")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Sprite2D:material:shader_parameter/progress")
+tracks/7/path = NodePath("Dying:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Dying:emitting")
+tracks/8/path = NodePath("Sprite2D:material")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [null]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Snowflake/Charge:material:shader_parameter/y_rot")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-180.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Snowflake/Charge:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("FreezeArea/CollisionPolygon2D:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("FreezeArea/CollisionPolygon2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m68qi"]
+shader = ExtResource("4_m68qi")
+shader_parameter/progress = 0.0
+shader_parameter/expansion_amount = 2.000000095
+shader_parameter/center_x = 0.0570000027075
+shader_parameter/feather = 0.04000000120148
 
 [sub_resource type="Animation" id="Animation_m68qi"]
 resource_name = "dying"
@@ -236,10 +301,51 @@ tracks/7/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PolyphonicAudioPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["dying"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["fade"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sprite2D:material")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_m68qi")]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("FreezeArea/CollisionPolygon2D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_g2bq4"]
 resource_name = "freeze"
-length = 5.5
+length = 5.2
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -248,10 +354,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.9999999, 2.1, 2.1999998, 2.2999997, 2.6999998, 2.7999997, 2.8999999, 2.9999998, 3.1, 3.1999998, 3.2999997, 3.4, 3.5, 3.6, 3.6999998, 3.7999997, 3.8999996, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.7999997, 4.9, 5, 5.3, 5.4000006),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.9999999, 2.1, 2.1999998, 2.2999997, 2.6999998, 2.7999997, 2.8999999, 2.9999998, 3.1, 3.1999998, 3.2999997, 3.4, 3.5, 3.6, 3.6999998, 3.7999997, 3.8999996, 4, 4.1, 4.2, 4.2999997, 4.3999996, 4.4999995, 4.6, 4.7, 5, 5.1000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 9, 10, 11, 13, 12, 14, 15, 16, 17, 15, 16, 17, 15, 16, 17, 15, 16, 17, 15, 16, 17, 14, 18, 19, 20, 19, 18, 12, 1, 0]
+"values": [0, 9, 10, 11, 13, 12, 14, 15, 16, 17, 15, 16, 17, 15, 16, 17, 15, 16, 17, 14, 18, 19, 20, 19, 18, 12, 1, 0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -272,30 +378,83 @@ tracks/2/path = NodePath("Freeze:one_shot")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(2.6, 3.9),
+"times": PackedFloat32Array(2.6, 3.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Snowflake:skew")
+tracks/3/path = NodePath("PolyphonicAudioPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.23, 0.5, 0.53000003, 0.8, 0.83, 1.1, 1.13, 1.4, 1.43, 1.7, 1.73, 2, 2.03),
-"transitions": PackedFloat32Array(1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1),
-"update": 0,
-"values": [-1.569051, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023, 1.5690509975429023, -1.5690509975429023]
+"times": PackedFloat32Array(0, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["charge"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["gale"],
+"method": &"play_sound_effect_from_library"
+}]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Snowflake:visible")
+tracks/4/path = NodePath("Snowflake/Charge:material:shader_parameter/y_rot")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.61, 1.21, 1.22, 1.8, 1.81, 1.99),
+"transitions": PackedFloat32Array(1, 0, 1, 0, 1, 0, 1, 1),
+"update": 0,
+"values": [-180.0, 180.0, -180.0, 180.0, -180.0, 180.0, -180.0, -89.999995725]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Snowflake/Charge:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.17, 1.81, 1.99),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FreezeArea/CollisionPolygon2D:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.79, 3.24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0.5), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FreezeArea/CollisionPolygon2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.8, 3.24, 4.2700057),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Snowflake:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -345,8 +504,43 @@ _data = {
 &"turning": SubResource("Animation_mnd3t")
 }
 
+[sub_resource type="Resource" id="Resource_7uhwd"]
+script = ExtResource("8_th5i8")
+Tag = "charge"
+stream = ExtResource("9_ra2jg")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_g0ot6"]
+script = ExtResource("8_th5i8")
+Tag = "dying"
+stream = ExtResource("10_7hf5h")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_av6bx"]
+script = ExtResource("8_th5i8")
+Tag = "fade"
+stream = ExtResource("11_g815w")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_ra2jg"]
+script = ExtResource("8_th5i8")
+Tag = "icicles"
+stream = ExtResource("12_th5i8")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_7hf5h"]
+script = ExtResource("8_th5i8")
+Tag = "gale"
+stream = ExtResource("13_ra2jg")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_qlq0n"]
+script = ExtResource("7_5qvft")
+sound_effects = Array[ExtResource("8_th5i8")]([SubResource("Resource_7uhwd"), SubResource("Resource_g0ot6"), SubResource("Resource_av6bx"), SubResource("Resource_ra2jg"), SubResource("Resource_7hf5h")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv5bh"]
-size = Vector2(275.5, 61.5)
+size = Vector2(485.5, 61.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qilh5"]
 size = Vector2(7, 28)
@@ -364,13 +558,14 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0, 0.5302198, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="FrozenShade" type="CharacterBody2D" unique_id=272423195 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[node name="FrozenShade" type="CharacterBody2D" unique_id=272423195 node_paths=PackedStringArray("vision", "freeze_area", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_ocmly")
 vision = NodePath("VisionArea")
+freeze_area = NodePath("FreezeArea")
 sprite = NodePath("Sprite2D")
 hitbox = NodePath("HitboxArea")
 stats = NodePath("EnemyStats")
@@ -393,17 +588,15 @@ tolerances = Array[int]([4])
 metadata/_custom_type_script = "uid://dwqs3a3odtwne"
 
 [node name="Snowflake" type="Node2D" parent="." unique_id=716778463]
+visible = false
 position = Vector2(-0.99999994, 5.5)
-rotation = 1.5707964
-skew = -1.569051
 
 [node name="Charge" type="Sprite2D" parent="Snowflake" unique_id=1127002197]
 self_modulate = Color(1, 1, 1, 0.25300002)
-rotation = -0.7853982
+material = SubResource("ShaderMaterial_7uhwd")
 texture = ExtResource("3_g2bq4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=994690032]
-material = SubResource("ShaderMaterial_m68qi")
 texture = ExtResource("3_dv5bh")
 hframes = 9
 vframes = 5
@@ -414,8 +607,10 @@ libraries/ = SubResource("AnimationLibrary_g2bq4")
 [node name="Iframe" type="Timer" parent="." unique_id=724233028]
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=922416605]
+volume_db = -10.0
 bus = &"SFX"
 script = ExtResource("2_syxs8")
+audio_library = SubResource("Resource_qlq0n")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
 [node name="Voice" type="AudioStreamPlayer2D" parent="." unique_id=1918650527]
@@ -437,6 +632,7 @@ metadata/_custom_type_script = "uid://c8ld3ieoh066e"
 
 [node name="Icicle" type="Node" parent="StateMachine" unique_id=736527932]
 script = ExtResource("6_dv5bh")
+icicle_scene = ExtResource("17_7hf5h")
 metadata/_custom_type_script = "uid://dw7lp4e0cvbmj"
 
 [node name="Turning" type="Node" parent="StateMachine" unique_id=949959949]
@@ -463,7 +659,7 @@ collision_mask = 2
 
 [node name="Vision" type="CollisionShape2D" parent="VisionArea" unique_id=1286557127]
 visible = false
-position = Vector2(-0.75, 3.25)
+position = Vector2(18.75, 3.25)
 shape = SubResource("RectangleShape2D_dv5bh")
 debug_color = Color(0, 0.6364619, 0.40852782, 0.41960785)
 
@@ -477,6 +673,15 @@ position = Vector2(0, 11.5)
 shape = SubResource("RectangleShape2D_qilh5")
 debug_color = Color(0.86811054, 0.35365856, 1.92523e-07, 0.41960785)
 
+[node name="FreezeArea" type="Area2D" parent="." unique_id=88021285]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FreezeArea" unique_id=997531684]
+position = Vector2(-12.5, -9)
+polygon = PackedVector2Array(-85, -55, 0, 0, -85, 45)
+disabled = true
+
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1094536070]
 visible = false
 position = Vector2(0.5, 6.5)
@@ -485,6 +690,7 @@ shape = SubResource("RectangleShape2D_g2bq4")
 [node name="Freeze" type="CPUParticles2D" parent="." unique_id=1998938931]
 material = SubResource("CanvasItemMaterial_g2bq4")
 position = Vector2(-12.5, -8)
+emitting = false
 amount = 144
 texture = ExtResource("13_qilh5")
 lifetime = 0.5

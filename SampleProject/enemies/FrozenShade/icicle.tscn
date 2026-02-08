@@ -1,0 +1,282 @@
+[gd_scene format=3 uid="uid://cs21jfei43f66"]
+
+[ext_resource type="Script" uid="uid://dfxn64uirbphf" path="res://SampleProject/enemies/FrozenShade/icicle.gd" id="1_3xbfm"]
+[ext_resource type="Texture2D" uid="uid://qew6d7gevaa7" path="res://assets/sprites/Enemies/FrozenShade/Icicle.png" id="2_3xbfm"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="3_kxxs6"]
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="4_4kxev"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_6smss"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_bk6v7"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_320vt"]
+[ext_resource type="AudioStream" uid="uid://c18u2n8gcdir5" path="res://assets/sounds/Enemies/FrozenShade/IcicleBreak.ogg" id="8_4w8p1"]
+[ext_resource type="AudioStream" uid="uid://1eyc20ikiagf" path="res://assets/sounds/Enemies/FrozenShade/IcicleBreak2.ogg" id="9_3hbxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqhfa"]
+size = Vector2(14.5, 34.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2p2xa"]
+size = Vector2(25, 52.125)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0gqas"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_gkukc"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0, 0.31122667, 0.6837581, 1, 0.38261643, 0.5547566, 1, 1, 0, 0.34727222, 0.75305617, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_85ldu"]
+gradient = SubResource("Gradient_gkukc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3veh5"]
+emission_shape = 3
+emission_box_extents = Vector3(16, 48, 1)
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 100.0
+initial_velocity_max = 350.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_85ldu")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="Animation" id="Animation_6smss"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shatter:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_3xbfm"]
+resource_name = "destroy"
+length = 1.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shatter:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kxxs6"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4kxev"]
+_data = {
+&"RESET": SubResource("Animation_6smss"),
+&"destroy": SubResource("Animation_3xbfm"),
+&"idle": SubResource("Animation_kxxs6")
+}
+
+[sub_resource type="Resource" id="Resource_w13o0"]
+script = ExtResource("7_320vt")
+Tag = "throw"
+stream = ExtResource("8_4w8p1")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_jbdr5"]
+script = ExtResource("7_320vt")
+Tag = "destroy"
+stream = ExtResource("9_3hbxf")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_53vc1"]
+script = ExtResource("6_bk6v7")
+sound_effects = Array[ExtResource("7_320vt")]([SubResource("Resource_w13o0"), SubResource("Resource_jbdr5")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[node name="FrozenShadeIcicle" type="RigidBody2D" unique_id=1591811216 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "sound")]
+collision_layer = 4
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_3xbfm")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+sprite = NodePath("Sprite2D")
+iframes_duration = 0.2
+animation = NodePath("AnimationPlayer")
+sound = NodePath("PolyphonicAudio")
+SPEED = 250.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1079144758]
+scale = Vector2(2, 2)
+texture = ExtResource("2_3xbfm")
+hframes = 3
+
+[node name="Projectile" type="Node" parent="." unique_id=502236627]
+script = ExtResource("3_kxxs6")
+base_damage = 15
+destructible = true
+destroy_on_contact = true
+magical = true
+chip_damage = 5
+attribute = 4
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=449090954]
+collision_layer = 4
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=811099130]
+visible = false
+position = Vector2(2.5, 1.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_lqhfa")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=112008053]
+visible = false
+position = Vector2(1, 11.875)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_2p2xa")
+
+[node name="Shatter" type="GPUParticles2D" parent="." unique_id=1083258050]
+z_index = 20
+material = SubResource("CanvasItemMaterial_0gqas")
+position = Vector2(1, 2)
+emitting = false
+amount = 80
+texture = ExtResource("4_4kxev")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_3veh5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1496467178]
+libraries/ = SubResource("AnimationLibrary_4kxev")
+autoplay = &"idle"
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=79371271]
+volume_db = -10.0
+bus = &"SFX"
+script = ExtResource("5_6smss")
+audio_library = SubResource("Resource_53vc1")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"

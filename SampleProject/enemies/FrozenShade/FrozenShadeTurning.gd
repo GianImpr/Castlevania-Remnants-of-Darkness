@@ -4,7 +4,7 @@ const IDLE_FRAME: int = 0
 
 func enter():
 	player.velocity.x = 0
-	animation.play("turn")
+	animation.play("turning")
 	
 func exit():
 	pass
