@@ -1,0 +1,336 @@
+[gd_scene format=3 uid="uid://dkluix876vcql"]
+
+[ext_resource type="Script" uid="uid://or4motudjcbo" path="res://SampleProject/enemies/SkeletonArcher/skeleton_archer.gd" id="1_qwjf7"]
+[ext_resource type="PackedScene" uid="uid://bjtq1ijv42ejq" path="res://SampleProject/enemies/SkeletonArcher/skeleton_arrow.tscn" id="2_1rnnx"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_8bay2"]
+[ext_resource type="Texture2D" uid="uid://bgduqkm3s2c87" path="res://assets/sprites/Enemies/SkeletonArcher/SkeletonArcher.png" id="3_8bay2"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="3_c5pyh"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_q1be0"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="5_8k7ev"]
+[ext_resource type="Script" uid="uid://b7c8vtr3i8wls" path="res://SampleProject/enemies/SkeletonArcher/SkeletonArcherIdle.gd" id="5_p31th"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_0rk3e"]
+[ext_resource type="Script" uid="uid://b1dx1srrqf3xg" path="res://SampleProject/enemies/SkeletonArcher/SkeletonArcherWalking.gd" id="6_1rnnx"]
+[ext_resource type="Script" uid="uid://dixvaei2u80gg" path="res://SampleProject/enemies/SkeletonArcher/SkeletonArcherCrouching.gd" id="6_pnoqs"]
+[ext_resource type="Script" uid="uid://4mrbf1kix71" path="res://SampleProject/enemies/SkeletonArcher/SkeletonArcherThrowing.gd" id="7_1rnnx"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_kht5t"]
+[ext_resource type="AudioStream" uid="uid://bir3n0gjhwbqu" path="res://assets/sounds/Enemies/SkeletonArcher/Bow.ogg" id="8_mhvew"]
+[ext_resource type="Script" uid="uid://c84qmrtxr136c" path="res://SampleProject/enemies/SkeletonArcher/SkeletonArcherCrouchThrowing.gd" id="8_yqert"]
+[ext_resource type="AudioStream" uid="uid://bdlclgxi7h8ia" path="res://assets/sounds/Enemies/SkeletonArcher/Arrow.ogg" id="9_1e1st"]
+[ext_resource type="Script" uid="uid://st752oyuqpak" path="res://SampleProject/enemies/SkeletonArcher/SkeletonArcherDying.gd" id="9_ws1j7"]
+[ext_resource type="AudioStream" uid="uid://cqnbivel1hcx6" path="res://assets/sounds/Enemies/Skeleton/SkeletonKill.MP3" id="10_kf75h"]
+[ext_resource type="PackedScene" uid="uid://dvn5c7vewpdx2" path="res://SampleProject/enemies/SkeletonArcher/archer_shatter.tscn" id="12_ws1j7"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="19_yqert"]
+
+[sub_resource type="Animation" id="Animation_8bay2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8k7ev"]
+resource_name = "crouch"
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_cqu7o"]
+resource_name = "crouch_throwing"
+length = 2.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.40000004, 0.5, 0.8, 0.84999996, 0.90000004, 0.95, 1, 1.05, 1.1, 1.15, 1.5, 1.6, 1.7, 1.8000001, 1.9000001, 2, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 16, 17, 16, 17, 16, 17, 16, 17, 18, 19, 14, 13, 12, 11, 10]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [Vector2(22, 22)],
+"method": &"throwArrow"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudioPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["bow"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["arrow"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_c5pyh"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0rk3e"]
+resource_name = "throwing"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.7, 0.75, 0.8, 0.85, 0.90000004, 0.95000005, 1, 1.05, 1.4, 1.5, 1.6, 1.7, 1.8000001, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44, 45, 44, 45, 44, 45, 44, 45, 46, 47, 43, 42, 41, 40]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [Vector2(18, -4)],
+"method": &"throwArrow"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudioPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["bow"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["arrow"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_q1be0"]
+resource_name = "walking"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.42857143),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8k7ev"]
+_data = {
+&"RESET": SubResource("Animation_8bay2"),
+&"crouch": SubResource("Animation_8k7ev"),
+&"crouch_throwing": SubResource("Animation_cqu7o"),
+&"idle": SubResource("Animation_c5pyh"),
+&"throwing": SubResource("Animation_0rk3e"),
+&"walking": SubResource("Animation_q1be0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bay2"]
+size = Vector2(493.5, 53.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5pyh"]
+size = Vector2(11, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1be0"]
+size = Vector2(27, 44)
+
+[sub_resource type="Resource" id="Resource_p31th"]
+script = ExtResource("7_kht5t")
+Tag = "bow"
+stream = ExtResource("8_mhvew")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_pnoqs"]
+script = ExtResource("7_kht5t")
+Tag = "arrow"
+stream = ExtResource("9_1e1st")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_1rnnx"]
+script = ExtResource("7_kht5t")
+Tag = "dead"
+stream = ExtResource("10_kf75h")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_yqert"]
+script = ExtResource("6_0rk3e")
+sound_effects = Array[ExtResource("7_kht5t")]([SubResource("Resource_p31th"), SubResource("Resource_pnoqs"), SubResource("Resource_1rnnx")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[node name="SkeletonArcher" type="CharacterBody2D" unique_id=551919217 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+scale = Vector2(2, 2)
+collision_layer = 4
+script = ExtResource("1_qwjf7")
+vision = NodePath("VisionArea")
+arrow_scene = ExtResource("2_1rnnx")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("HitboxArea")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Iframe")
+hitbox_iframe = NodePath("HitboxArea")
+metadata/_custom_type_script = "uid://jpd31rlnmjom"
+
+[node name="EnemyStats" type="Node" parent="." unique_id=717925095]
+script = ExtResource("2_8bay2")
+enemy_name = "SKELETON_ARCHER"
+LV = 14
+HP = 20
+ATK = 25
+DEF = 5
+EXP = 15
+common_drop_id = 47
+common_drop_rate = 3.0
+rare_drop_id = 45
+rare_drop_rate = 2.6
+weaknesses = Array[int]([1, 3, 8])
+tolerances = Array[int]([9])
+metadata/_custom_type_script = "uid://dwqs3a3odtwne"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=664595147]
+position = Vector2(-10, 0)
+texture = ExtResource("3_8bay2")
+hframes = 10
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=789308335]
+libraries/ = SubResource("AnimationLibrary_8k7ev")
+
+[node name="VisionArea" type="Area2D" parent="." unique_id=2016763019]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Vision" type="CollisionShape2D" parent="VisionArea" unique_id=977632076]
+visible = false
+position = Vector2(-4.25, 0.75)
+shape = SubResource("RectangleShape2D_8bay2")
+debug_color = Color(0, 0.6379015, 0.3901196, 0.41960785)
+
+[node name="HitboxArea" type="Area2D" parent="." unique_id=666112522]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=2030068323]
+visible = false
+position = Vector2(1.5, 15.5)
+shape = SubResource("RectangleShape2D_c5pyh")
+debug_color = Color(0.87405646, 0.3466156, 0, 0.41960785)
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1237245751]
+visible = false
+position = Vector2(-2, 6.5)
+shape = SubResource("RectangleShape2D_q1be0")
+
+[node name="StateMachine" type="Node" parent="." unique_id=306134204 node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = ExtResource("3_c5pyh")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+metadata/_custom_type_script = "uid://d2kqkdfhgcbi7"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1671609758]
+script = ExtResource("5_p31th")
+metadata/_custom_type_script = "uid://b7c8vtr3i8wls"
+
+[node name="Walking" type="Node" parent="StateMachine" unique_id=1822707265]
+script = ExtResource("6_1rnnx")
+SPEED = 100.0
+metadata/_custom_type_script = "uid://b1dx1srrqf3xg"
+
+[node name="Crouching" type="Node" parent="StateMachine" unique_id=14902094]
+script = ExtResource("6_pnoqs")
+metadata/_custom_type_script = "uid://dixvaei2u80gg"
+
+[node name="Throwing" type="Node" parent="StateMachine" unique_id=25756784]
+script = ExtResource("7_1rnnx")
+metadata/_custom_type_script = "uid://4mrbf1kix71"
+
+[node name="Crouch_throwing" type="Node" parent="StateMachine" unique_id=2040520479]
+script = ExtResource("8_yqert")
+metadata/_custom_type_script = "uid://c84qmrtxr136c"
+
+[node name="Dying" type="Node" parent="StateMachine" unique_id=470311720 node_paths=PackedStringArray("hitbox_iframe")]
+script = ExtResource("9_ws1j7")
+hitbox_iframe = NodePath("../../HitboxArea/Hitbox")
+dying_scene = ExtResource("12_ws1j7")
+metadata/_custom_type_script = "uid://st752oyuqpak"
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1927688562]
+volume_db = -10.0
+script = ExtResource("4_q1be0")
+audio_library = SubResource("Resource_yqert")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=337125513]
+position = Vector2(0, -20.5)
+script = ExtResource("5_8k7ev")
+damage_node = ExtResource("19_yqert")
+metadata/_custom_type_script = "uid://d0ffw2f0aswn"
+
+[node name="Iframe" type="Timer" parent="." unique_id=2095775296]

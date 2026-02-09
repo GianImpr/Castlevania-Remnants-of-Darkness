@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bnrsmxn5yeru7"]
+[gd_scene format=3 uid="uid://bnrsmxn5yeru7"]
 
 [ext_resource type="Script" uid="uid://cgue77b2nk6tm" path="res://SampleProject/enemies/Skeleton/skeleton_shatter.gd" id="1_7quvg"]
 [ext_resource type="Texture2D" uid="uid://c11n13r75ggmc" path="res://assets/sprites/Enemies/Skeleton.png" id="1_343rd"]
@@ -819,13 +819,13 @@ stream = ExtResource("8_67iua")
 script = ExtResource("4_ciauk")
 sound_effects = Array[ExtResource("6_4126l")]([SubResource("Resource_3o518"), SubResource("Resource_vmruv")])
 
-[node name="SkeletonShatter" type="Node2D" node_paths=PackedStringArray("delete_timer", "sound")]
+[node name="SkeletonShatter" type="Node2D" unique_id=1544433610 node_paths=PackedStringArray("delete_timer", "sound")]
 script = ExtResource("1_7quvg")
 base_velocity = Vector2(350, -340)
 delete_timer = NodePath("DeleteTimer")
 sound = NodePath("PolyphonicAudio")
 
-[node name="Body" type="RigidBody2D" parent="."]
+[node name="Body" type="RigidBody2D" parent="." unique_id=293655814]
 position = Vector2(-3, -7)
 collision_layer = 8
 collision_mask = 4097
@@ -833,25 +833,23 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="Sprite" type="Sprite2D" parent="Body"]
+[node name="Sprite" type="Sprite2D" parent="Body" unique_id=1942963654]
 scale = Vector2(2, 2)
 texture = ExtResource("1_343rd")
 hframes = 6
 vframes = 4
 frame = 23
 
-[node name="CollisionBox" type="CollisionShape2D" parent="Body"]
+[node name="CollisionBox" type="CollisionShape2D" parent="Body" unique_id=1005871275]
 position = Vector2(12, -1)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_onnmr")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Body"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Body" unique_id=1117811193]
 root_node = NodePath("../Sprite")
-libraries = {
-&"": SubResource("AnimationLibrary_74uk8")
-}
+libraries/ = SubResource("AnimationLibrary_74uk8")
 
-[node name="Head" type="RigidBody2D" parent="."]
+[node name="Head" type="RigidBody2D" parent="." unique_id=682640368]
 position = Vector2(-8, -14)
 collision_layer = 8
 collision_mask = 4097
@@ -859,25 +857,23 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="Sprite" type="Sprite2D" parent="Head"]
+[node name="Sprite" type="Sprite2D" parent="Head" unique_id=1432853871]
 scale = Vector2(2, 2)
 texture = ExtResource("1_343rd")
 hframes = 6
 vframes = 4
 frame = 22
 
-[node name="CollisionBox" type="CollisionShape2D" parent="Head"]
+[node name="CollisionBox" type="CollisionShape2D" parent="Head" unique_id=240104709]
 position = Vector2(9, -3)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_1sj6t")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head" unique_id=1013596301]
 root_node = NodePath("../Sprite")
-libraries = {
-&"": SubResource("AnimationLibrary_uredt")
-}
+libraries/ = SubResource("AnimationLibrary_uredt")
 
-[node name="Arm" type="RigidBody2D" parent="."]
+[node name="Arm" type="RigidBody2D" parent="." unique_id=1463353997]
 position = Vector2(1, -8)
 collision_layer = 8
 collision_mask = 4097
@@ -885,25 +881,23 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="Sprite" type="Sprite2D" parent="Arm"]
+[node name="Sprite" type="Sprite2D" parent="Arm" unique_id=570952335]
 scale = Vector2(2, 2)
 texture = ExtResource("1_343rd")
 hframes = 6
 vframes = 4
 frame = 21
 
-[node name="CollisionBox" type="CollisionShape2D" parent="Arm"]
+[node name="CollisionBox" type="CollisionShape2D" parent="Arm" unique_id=1325983471]
 position = Vector2(10, -1)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_e5ldl")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Arm"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Arm" unique_id=1487279308]
 root_node = NodePath("../Sprite")
-libraries = {
-&"": SubResource("AnimationLibrary_1wj4x")
-}
+libraries/ = SubResource("AnimationLibrary_1wj4x")
 
-[node name="SecondArm" type="RigidBody2D" parent="."]
+[node name="SecondArm" type="RigidBody2D" parent="." unique_id=429209038]
 position = Vector2(-7, -6)
 collision_layer = 8
 collision_mask = 4097
@@ -911,25 +905,23 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="Sprite" type="Sprite2D" parent="SecondArm"]
+[node name="Sprite" type="Sprite2D" parent="SecondArm" unique_id=548314563]
 scale = Vector2(2, 2)
 texture = ExtResource("1_343rd")
 hframes = 6
 vframes = 4
 frame = 20
 
-[node name="CollisionBox" type="CollisionShape2D" parent="SecondArm"]
+[node name="CollisionBox" type="CollisionShape2D" parent="SecondArm" unique_id=638397990]
 position = Vector2(6.625, -2)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_brvuo")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SecondArm"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SecondArm" unique_id=1118373016]
 root_node = NodePath("../Sprite")
-libraries = {
-&"": SubResource("AnimationLibrary_fkfs3")
-}
+libraries/ = SubResource("AnimationLibrary_fkfs3")
 
-[node name="Leg" type="RigidBody2D" parent="."]
+[node name="Leg" type="RigidBody2D" parent="." unique_id=123971032]
 position = Vector2(-1, 10)
 collision_layer = 8
 collision_mask = 4097
@@ -937,25 +929,23 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="Sprite" type="Sprite2D" parent="Leg"]
+[node name="Sprite" type="Sprite2D" parent="Leg" unique_id=716271575]
 scale = Vector2(2, 2)
 texture = ExtResource("1_343rd")
 hframes = 6
 vframes = 4
 frame = 18
 
-[node name="CollisionBox" type="CollisionShape2D" parent="Leg"]
+[node name="CollisionBox" type="CollisionShape2D" parent="Leg" unique_id=1104312973]
 position = Vector2(9, -1)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_v2cu3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Leg"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Leg" unique_id=659180187]
 root_node = NodePath("../Sprite")
-libraries = {
-&"": SubResource("AnimationLibrary_t07a8")
-}
+libraries/ = SubResource("AnimationLibrary_t07a8")
 
-[node name="SecondLeg" type="RigidBody2D" parent="."]
+[node name="SecondLeg" type="RigidBody2D" parent="." unique_id=50345379]
 position = Vector2(0, 9)
 collision_layer = 8
 collision_mask = 4097
@@ -963,7 +953,7 @@ lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="Sprite" type="Sprite2D" parent="SecondLeg"]
+[node name="Sprite" type="Sprite2D" parent="SecondLeg" unique_id=278887107]
 position = Vector2(-2, 3)
 scale = Vector2(2, 2)
 texture = ExtResource("1_343rd")
@@ -971,21 +961,19 @@ hframes = 6
 vframes = 4
 frame = 19
 
-[node name="CollisionBox" type="CollisionShape2D" parent="SecondLeg"]
+[node name="CollisionBox" type="CollisionShape2D" parent="SecondLeg" unique_id=662107796]
 position = Vector2(4.5, 0)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_hrjl3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SecondLeg"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SecondLeg" unique_id=942281592]
 root_node = NodePath("../Sprite")
-libraries = {
-&"": SubResource("AnimationLibrary_q31yq")
-}
+libraries/ = SubResource("AnimationLibrary_q31yq")
 
-[node name="DeleteTimer" type="Timer" parent="."]
+[node name="DeleteTimer" type="Timer" parent="." unique_id=591292455]
 wait_time = 1.5
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=475054592]
 volume_db = -10.0
 script = SubResource("GDScript_10oeh")
 audio_library = SubResource("Resource_8ig65")
