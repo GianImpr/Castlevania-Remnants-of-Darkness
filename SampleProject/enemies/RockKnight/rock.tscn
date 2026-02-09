@@ -1,0 +1,222 @@
+[gd_scene format=3 uid="uid://db40jx18aifxx"]
+
+[ext_resource type="Script" uid="uid://dya1n5ndd78df" path="res://SampleProject/enemies/RockKnight/rock.gd" id="1_j5fo4"]
+[ext_resource type="PackedScene" uid="uid://cdt1hfxex1yde" path="res://SampleProject/enemies/RockKnight/rock_shatter.tscn" id="2_6o1fl"]
+[ext_resource type="Texture2D" uid="uid://bb3tjpobfkmvb" path="res://assets/sprites/Enemies/RockKnight/Rock.png" id="2_j5fo4"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="3_rv503"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_cl7dx"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_6o1fl"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_yuq8w"]
+[ext_resource type="AudioStream" uid="uid://dybmgsgw8ayhw" path="res://assets/sounds/Enemies/RockKnight/RockExploding.ogg" id="7_81c8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqhfa"]
+size = Vector2(13.125, 8.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2p2xa"]
+size = Vector2(22, 17.5)
+
+[sub_resource type="Animation" id="Animation_j5fo4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ouj44"]
+resource_name = "destroy"
+step = 0.033
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"rockShatter"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hitbox/HitboxShape:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PolyphonicAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["break"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.06666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rv503"]
+_data = {
+&"RESET": SubResource("Animation_j5fo4"),
+&"destroy": SubResource("Animation_ouj44")
+}
+
+[sub_resource type="Resource" id="Resource_o20p7"]
+script = ExtResource("6_yuq8w")
+Tag = "break"
+stream = ExtResource("7_81c8u")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_ibxmr"]
+script = ExtResource("5_6o1fl")
+sound_effects = Array[ExtResource("6_yuq8w")]([SubResource("Resource_o20p7")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[node name="Rock" type="RigidBody2D" unique_id=1931345496 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "raycast")]
+collision_layer = 4
+collision_mask = 0
+gravity_scale = 0.4
+script = ExtResource("1_j5fo4")
+stats = NodePath("Projectile")
+area = NodePath("Hitbox")
+sprite = NodePath("Sprite2D")
+animation = NodePath("AnimationPlayer")
+raycast = NodePath("DetectGround")
+SPEED = Vector2(2000, -200)
+rock_shatter_scene = ExtResource("2_6o1fl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1411151420]
+scale = Vector2(2, 2)
+texture = ExtResource("2_j5fo4")
+offset = Vector2(-1, -8)
+hframes = 4
+
+[node name="Projectile" type="Node" parent="." unique_id=254356660]
+script = ExtResource("3_rv503")
+base_damage = 40
+destructible = true
+chip_damage = 15
+guard_break = true
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=288281720]
+collision_layer = 4
+collision_mask = 2
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=618196262]
+visible = false
+position = Vector2(-0.125, 0.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_lqhfa")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1441438821]
+visible = false
+position = Vector2(-2, -1.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_2p2xa")
+
+[node name="DetectGround" type="RayCast2D" parent="." unique_id=251677817]
+target_position = Vector2(0, 24)
+collision_mask = 4097
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=703215905]
+libraries/ = SubResource("AnimationLibrary_rv503")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1540616597]
+volume_db = -10.0
+script = ExtResource("4_cl7dx")
+audio_library = SubResource("Resource_ibxmr")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"

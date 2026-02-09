@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_i41q0"]
 [ext_resource type="AudioStream" uid="uid://crv7fk0e66soy" path="res://assets/sounds/Effects/Miscellaneous/BigSplash.wav" id="10_1mmoy"]
 [ext_resource type="AudioStream" uid="uid://iuq41xxsnubj" path="res://assets/sounds/Effects/Miscellaneous/SmallSplash.wav" id="12_1mmoy"]
-[ext_resource type="PackedScene" uid="uid://dkluix876vcql" path="res://SampleProject/enemies/SkeletonArcher/skeleton_archer.tscn" id="13_1mmoy"]
+[ext_resource type="PackedScene" uid="uid://dalkv4b0fnk62" path="res://SampleProject/enemies/RockKnight/rock_knight.tscn" id="13_1mmoy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_phwp3"]
 
@@ -243,8 +243,8 @@ script = ExtResource("7_rspch")
 audio_library = SubResource("Resource_v87x7")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
-[node name="SkeletonArcher" parent="." unique_id=551919217 instance=ExtResource("13_1mmoy")]
-position = Vector2(763, 390)
+[node name="RockKnight" parent="." unique_id=723503461 instance=ExtResource("13_1mmoy")]
+position = Vector2(694, 350)
 
 [connection signal="body_entered" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_exited"]

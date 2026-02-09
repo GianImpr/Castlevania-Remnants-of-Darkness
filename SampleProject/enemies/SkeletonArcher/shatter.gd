@@ -12,10 +12,13 @@ const MIN_SPEED_MULTIPLIER: float = 0.5
 const MAX_SPEED_MULTIPLIER: float = 1.5
 const VISIBILITY_DELAY: float = 0.02
 const ANIMATION_DURATION: float = 0.44
-const LAST_ANIM_FRAME: float = 10
+@export var LAST_ANIM_FRAME: int = 10
+@export var dying_noise: bool = true
+@export var collision_noise: bool = true
 
 func _ready() -> void:
-	sound.play_sound_effect_from_library("dying")
+	if dying_noise:
+		sound.play_sound_effect_from_library("dying")
 	for child in get_children():
 		if child is RigidBody2D:
 			child.linear_velocity = base_velocity * Vector2(randf_range(MIN_SPEED_MULTIPLIER, MAX_SPEED_MULTIPLIER)*facing_position*(-1), randf_range(MIN_SPEED_MULTIPLIER, MAX_SPEED_MULTIPLIER))
@@ -25,7 +28,10 @@ func _physics_process(delta: float) -> void:
 	for child in children:
 		child.move_local_x(delta)
 		if child and child.get_contact_count() > 0:
-			sound.play_sound_effect_from_library("drop")
+			if collision_noise:
+				sound.play_sound_effect_from_library("drop")
+			child.linear_velocity = Vector2.ZERO
+			child.gravity_scale = 0
 			var child_sprite: Sprite2D = child.get_child(SPRITE_INDEX)
 			var child_collision: CollisionShape2D = child.get_child(COLLISION_INDEX)
 			child_sprite.visible = false
@@ -41,7 +47,17 @@ func _physics_process(delta: float) -> void:
 			children.erase(child)
 	if children.size() == 0:
 		delete_timer.start()
-		
+
+func turnAround() -> void:
+	await ready
+	for child in get_children():
+		if child is not RigidBody2D:
+			continue
+		var child_sprite: Sprite2D = child.get_child(SPRITE_INDEX)
+		var child_collision: CollisionShape2D = child.get_child(COLLISION_INDEX)
+		child_sprite.scale.x *= -1
+		child_collision.scale.x *= -1
+
 
 func _on_delete_timer_timeout() -> void:
 	queue_free()
