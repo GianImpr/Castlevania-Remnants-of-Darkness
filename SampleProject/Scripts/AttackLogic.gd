@@ -290,7 +290,11 @@ func updateKillCount(enemy_name: String) -> void:
 
 func atTipDistance(target: Node2D) -> bool:
 	const TIP_SIZE: float = 10
-	var enemy_pos: float = target.hitbox_iframe.get_child(0).global_position.x-target.hitbox_iframe.get_child(0).shape.size.x/2
+	var enemy_pos: float
+	if target.hitbox_iframe.get_child(0).shape is RectangleShape2D:
+		enemy_pos = target.hitbox_iframe.get_child(0).global_position.x-target.hitbox_iframe.get_child(0).shape.size.x/2
+	else:
+		return false
 	if Global.player.facing_position == -1:
 		enemy_pos += target.hitbox_iframe.get_child(0).shape.size.x
 	

@@ -1,0 +1,448 @@
+[gd_scene format=3 uid="uid://qoqq8avm8hvu"]
+
+[ext_resource type="Script" uid="uid://524u2rg3yt6j" path="res://SampleProject/enemies/Decarabia/decarabia.gd" id="1_0qcrc"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_jx1xt"]
+[ext_resource type="Texture2D" uid="uid://cvsmmxay5d576" path="res://assets/sprites/Enemies/Decarabia/Dash.png" id="3_arm6e"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="3_el8i2"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_h3ju1"]
+[ext_resource type="Texture2D" uid="uid://sk41khilrjio" path="res://assets/sprites/Enemies/Decarabia/Decarabia.png" id="4_srgf1"]
+[ext_resource type="Texture2D" uid="uid://dfjkv4pu4y3gm" path="res://assets/sprites/Enemies/Decarabia/Bubbles.png" id="5_amc8p"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="5_h3ju1"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="6_vvypc"]
+[ext_resource type="Script" uid="uid://c32b5d851tk0k" path="res://SampleProject/enemies/Decarabia/DecarabiaIdle.gd" id="7_y36n7"]
+[ext_resource type="Script" uid="uid://c0i5rd34u7b86" path="res://SampleProject/enemies/Decarabia/DecarabiaTurbo.gd" id="8_nrdbs"]
+[ext_resource type="Script" uid="uid://ctjtsfse2wllc" path="res://SampleProject/enemies/Decarabia/DecarabiaDying.gd" id="9_6olao"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="11_ed843"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="12_gloaw"]
+[ext_resource type="AudioStream" uid="uid://lk0une6725ll" path="res://assets/sounds/Enemies/Decarabia/DecarabiaBubble.wav" id="13_u5psc"]
+[ext_resource type="AudioStream" uid="uid://cfqtxxipnf2s0" path="res://assets/sounds/Enemies/Decarabia/DecarabiaSplash.wav" id="14_sr7yc"]
+
+[sub_resource type="Animation" id="Animation_arm6e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_srgf1"]
+resource_name = "animation"
+length = 0.15
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_amc8p"]
+_data = {
+&"RESET": SubResource("Animation_arm6e"),
+&"animation": SubResource("Animation_srgf1")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y36n7"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_nrdbs"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_y36n7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DashEffect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bubbles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bubbles:one_shot")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_layer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_nrdbs"]
+resource_name = "dying"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [8, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DashEffect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bubbles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bubbles:one_shot")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.4, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:collision_layer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_amc8p"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y36n7"]
+_data = {
+&"RESET": SubResource("Animation_y36n7"),
+&"dying": SubResource("Animation_nrdbs"),
+&"idle": SubResource("Animation_amc8p")
+}
+
+[sub_resource type="Resource" id="Resource_8g2sl"]
+script = ExtResource("12_gloaw")
+Tag = "bubble"
+stream = ExtResource("13_u5psc")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_2d2ig"]
+script = ExtResource("12_gloaw")
+Tag = "splash"
+stream = ExtResource("14_sr7yc")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_c0aqm"]
+script = ExtResource("11_ed843")
+sound_effects = Array[ExtResource("12_gloaw")]([SubResource("Resource_8g2sl"), SubResource("Resource_2d2ig")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_srgf1"]
+radius = 23.521267
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_arm6e"]
+radius = 173.64908
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amc8p"]
+
+[node name="Decarabia" type="CharacterBody2D" unique_id=452054061 node_paths=PackedStringArray("vision", "state_machine", "turn_cooldown_timer", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "ray_cast_2d_right")]
+scale = Vector2(2, 2)
+collision_layer = 4
+script = ExtResource("1_0qcrc")
+vision = NodePath("VisionArea")
+state_machine = NodePath("StateMachine")
+turn_cooldown_timer = NodePath("TurnCooldown")
+sprite = NodePath("Sprite2D")
+hitbox = NodePath("HitboxArea")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Iframe")
+hitbox_iframe = NodePath("HitboxArea")
+ray_cast_2d_left = NodePath("RayCast2DLeft")
+ray_cast_2d_right = NodePath("RayCast2DRight")
+metadata/_custom_type_script = "uid://jpd31rlnmjom"
+
+[node name="EnemyStats" type="Node" parent="." unique_id=1617747511]
+script = ExtResource("2_jx1xt")
+enemy_name = "DECARABIA"
+LV = 15
+HP = 35
+ATK = 40
+EXP = 20
+weaknesses = Array[int]([2, 3, 5])
+tolerances = Array[int]([4])
+metadata/_custom_type_script = "uid://dwqs3a3odtwne"
+
+[node name="DashEffect" type="Sprite2D" parent="." unique_id=1518342277]
+visible = false
+position = Vector2(-5, -1)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_arm6e")
+offset = Vector2(10, 0)
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DashEffect" unique_id=1312128242]
+libraries/ = SubResource("AnimationLibrary_amc8p")
+autoplay = &"animation"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1096808322]
+texture = ExtResource("4_srgf1")
+offset = Vector2(9, -24)
+hframes = 4
+vframes = 3
+
+[node name="Bubbles" type="CPUParticles2D" parent="." unique_id=1744992945]
+material = SubResource("CanvasItemMaterial_y36n7")
+position = Vector2(4, -24)
+emitting = false
+amount = 4
+texture = ExtResource("5_amc8p")
+emission_shape = 3
+emission_rect_extents = Vector2(16, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_nrdbs")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="StateMachine" type="Node" parent="." unique_id=40354365 node_paths=PackedStringArray("initial_state", "player", "animation", "voice")]
+script = ExtResource("3_el8i2")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+voice = NodePath("../PolyphonicAudioPlayer")
+metadata/_custom_type_script = "uid://d2kqkdfhgcbi7"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=481119961]
+script = ExtResource("7_y36n7")
+metadata/_custom_type_script = "uid://c32b5d851tk0k"
+
+[node name="Turbo" type="Node" parent="StateMachine" unique_id=2116738617 node_paths=PackedStringArray("dash", "sound_interval_timer")]
+script = ExtResource("8_nrdbs")
+dash = NodePath("../../DashEffect")
+sound_interval_timer = NodePath("SoundInterval")
+metadata/_custom_type_script = "uid://c0i5rd34u7b86"
+
+[node name="SoundInterval" type="Timer" parent="StateMachine/Turbo" unique_id=1141282480]
+wait_time = 0.14
+
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1621168733 node_paths=PackedStringArray("sound_interval_timer")]
+script = ExtResource("9_6olao")
+sound_interval_timer = NodePath("SoundInterval")
+metadata/_custom_type_script = "uid://ctjtsfse2wllc"
+
+[node name="SoundInterval" type="Timer" parent="StateMachine/Dying" unique_id=1295025828]
+wait_time = 0.3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1065706290]
+libraries/ = SubResource("AnimationLibrary_y36n7")
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1931211849]
+volume_db = -13.0
+script = ExtResource("4_h3ju1")
+audio_library = SubResource("Resource_c0aqm")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1613556983]
+shape = SubResource("CircleShape2D_srgf1")
+
+[node name="VisionArea" type="Area2D" parent="." unique_id=1391903479]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="Vision" type="CollisionShape2D" parent="VisionArea" unique_id=569444513]
+visible = false
+position = Vector2(2, 21)
+shape = SubResource("CircleShape2D_arm6e")
+debug_color = Color(0.10538485, 0.6483274, 0, 0.41960785)
+
+[node name="HitboxArea" type="Area2D" parent="." unique_id=1963933064]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=2133692894]
+visible = false
+shape = SubResource("CircleShape2D_amc8p")
+debug_color = Color(0.86601394, 0.35608864, 0, 0.41960785)
+
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=753172908]
+position = Vector2(0, -39)
+script = ExtResource("5_h3ju1")
+damage_node = ExtResource("6_vvypc")
+metadata/_custom_type_script = "uid://d0ffw2f0aswn"
+
+[node name="Iframe" type="Timer" parent="." unique_id=1154435119]
+
+[node name="RayCast2DRight" type="RayCast2D" parent="." unique_id=523270956]
+position = Vector2(-3.47826, 0)
+target_position = Vector2(32, 0)
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="." unique_id=875532646]
+position = Vector2(-3.47826, 0)
+target_position = Vector2(-25, 0)
+
+[node name="TurnCooldown" type="Timer" parent="." unique_id=69006301]
+wait_time = 0.1
