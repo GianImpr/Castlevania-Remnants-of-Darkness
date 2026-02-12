@@ -406,10 +406,10 @@ audio_library = SubResource("Resource_c0aqm")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1613556983]
+visible = false
 shape = SubResource("CircleShape2D_srgf1")
 
 [node name="VisionArea" type="Area2D" parent="." unique_id=1391903479]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -437,10 +437,12 @@ metadata/_custom_type_script = "uid://d0ffw2f0aswn"
 [node name="Iframe" type="Timer" parent="." unique_id=1154435119]
 
 [node name="RayCast2DRight" type="RayCast2D" parent="." unique_id=523270956]
+visible = false
 position = Vector2(-3.47826, 0)
 target_position = Vector2(32, 0)
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="." unique_id=875532646]
+visible = false
 position = Vector2(-3.47826, 0)
 target_position = Vector2(-25, 0)
 

@@ -1,0 +1,353 @@
+[gd_scene format=3 uid="uid://cusnbk2hu8jr"]
+
+[ext_resource type="Script" uid="uid://bf8elsu0c2e77" path="res://SampleProject/enemies/Frog/frog.gd" id="1_pd6i1"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_rxb1f"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_sg8a5"]
+[ext_resource type="Texture2D" uid="uid://c442x253bm3nb" path="res://assets/sprites/Enemies/Frog/Frog.png" id="3_snpah"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="4_snpah"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="5_rxb1f"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_v58hs"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_ik72o"]
+[ext_resource type="AudioStream" uid="uid://c6ch870udbs1t" path="res://assets/sounds/Enemies/Frog/Noise.ogg" id="7_qtfwg"]
+[ext_resource type="AudioStream" uid="uid://dcl7a58eyl5r2" path="res://assets/sounds/Enemies/Frog/Tongue.ogg" id="8_h2lho"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="9_dhirg"]
+[ext_resource type="AudioStream" uid="uid://d2x7w2fop8rw6" path="res://assets/sounds/Enemies/Frog/Jump.ogg" id="9_vm034"]
+[ext_resource type="Script" uid="uid://be4xijov1pqj4" path="res://SampleProject/enemies/Frog/FrogIdle.gd" id="10_wumyy"]
+[ext_resource type="Script" uid="uid://bqde5r4mxj3bu" path="res://SampleProject/enemies/Frog/FrogJump.gd" id="11_dt8ka"]
+[ext_resource type="Script" uid="uid://cj77l60y0p7po" path="res://SampleProject/enemies/Frog/FrogTongue.gd" id="12_qtfwg"]
+[ext_resource type="Script" uid="uid://2pwonlgnh3xc" path="res://SampleProject/enemies/Frog/FrogDying.gd" id="13_h2lho"]
+[ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="14_vm034"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sg8a5"]
+size = Vector2(320, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snpah"]
+size = Vector2(18, 9.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ik72o"]
+size = Vector2(45, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v58hs"]
+size = Vector2(24, 20.5)
+
+[sub_resource type="Animation" id="Animation_snpah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TongueArea/Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TongueArea/Hitbox:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(45, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TongueArea/Hitbox:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-25.5, 4.5)]
+}
+
+[sub_resource type="Animation" id="Animation_sg8a5"]
+resource_name = "idle"
+length = 0.2857
+loop_mode = 1
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.071428575, 0.14285715, 0.21428573),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_v58hs"]
+resource_name = "jump"
+length = 0.71
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.6428572),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [14, 15, 14]
+}
+
+[sub_resource type="Animation" id="Animation_ik72o"]
+resource_name = "tongue"
+length = 1.42
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.071428575, 0.14285715, 0.21428573, 0.2857143, 0.35714287, 0.42857146, 0.5, 0.5714286, 0.6428572, 0.71428573, 0.7857143, 0.8571429, 0.92857146, 1, 1.0714287, 1.1428572, 1.2142857, 1.2857144, 1.3571429),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 7, 1, 2, 1, 8, 9, 10, 11, 12, 13, 12, 11, 10, 9, 8, 1, 2, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TongueArea/Hitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85714287),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TongueArea/Hitbox:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.64285713),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(15, 3), Vector2(45, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TongueArea/Hitbox:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 0.64285713),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-11, 4.5), Vector2(-25.5, 4.5)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PolyphonicAudioPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.35714287),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["tongue"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_snpah"]
+_data = {
+&"RESET": SubResource("Animation_snpah"),
+&"idle": SubResource("Animation_sg8a5"),
+&"jump": SubResource("Animation_v58hs"),
+&"tongue": SubResource("Animation_ik72o")
+}
+
+[sub_resource type="Resource" id="Resource_0iae4"]
+script = ExtResource("6_ik72o")
+Tag = "noise"
+stream = ExtResource("7_qtfwg")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_yn10l"]
+script = ExtResource("6_ik72o")
+Tag = "tongue"
+stream = ExtResource("8_h2lho")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_t2ffq"]
+script = ExtResource("6_ik72o")
+Tag = "jump"
+stream = ExtResource("9_vm034")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_6dwtb"]
+script = ExtResource("5_v58hs")
+sound_effects = Array[ExtResource("6_ik72o")]([SubResource("Resource_0iae4"), SubResource("Resource_yn10l"), SubResource("Resource_t2ffq")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="Curve" id="Curve_rxb1f"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_sg8a5"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Frog" type="CharacterBody2D" unique_id=808718436 node_paths=PackedStringArray("vision", "tongue_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+scale = Vector2(2, 2)
+collision_layer = 4
+script = ExtResource("1_pd6i1")
+vision = NodePath("VisionArea")
+tongue_hitbox = NodePath("TongueArea")
+tongue_attribute = 10
+sprite = NodePath("Body")
+hitbox = NodePath("HitboxArea")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Timer")
+hitbox_iframe = NodePath("HitboxArea")
+blood_particles = NodePath("BloodDamage")
+metadata/_custom_type_script = "uid://jpd31rlnmjom"
+
+[node name="EnemyStats" type="Node" parent="." unique_id=923461122]
+script = ExtResource("2_rxb1f")
+enemy_name = "FROG"
+LV = 14
+HP = 1
+ATK = 25
+EXP = 8
+weaknesses = Array[int]([1, 2, 3])
+metadata/_custom_type_script = "uid://dwqs3a3odtwne"
+
+[node name="Body" type="Sprite2D" parent="." unique_id=513741702]
+texture = ExtResource("3_snpah")
+offset = Vector2(-13, -4)
+hframes = 7
+vframes = 3
+
+[node name="VisionArea" type="Area2D" parent="." unique_id=2124717257]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Vision" type="CollisionShape2D" parent="VisionArea" unique_id=416151469]
+visible = false
+position = Vector2(0.5, -9.5)
+shape = SubResource("RectangleShape2D_sg8a5")
+debug_color = Color(0.19320506, 0.6420329, 0, 0.41960785)
+
+[node name="HitboxArea" type="Area2D" parent="." unique_id=2008563375]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=1134782651]
+visible = false
+position = Vector2(-0.25, 1.625)
+shape = SubResource("RectangleShape2D_snpah")
+debug_color = Color(0.9773577, 0.15208563, 0, 0.41960785)
+
+[node name="TongueArea" type="Area2D" parent="." unique_id=2046894737]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="TongueArea" unique_id=645845974]
+visible = false
+position = Vector2(-25.5, 4.5)
+shape = SubResource("RectangleShape2D_ik72o")
+disabled = true
+debug_color = Color(0.94274306, 0.24144435, 0, 0.41960785)
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1616814822]
+position = Vector2(0.25, -3)
+shape = SubResource("RectangleShape2D_v58hs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=902658416]
+libraries/ = SubResource("AnimationLibrary_snpah")
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=229113555]
+volume_db = -10.0
+max_polyphony = 32
+script = ExtResource("3_sg8a5")
+audio_library = SubResource("Resource_6dwtb")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=583247063]
+script = ExtResource("4_snpah")
+damage_node = ExtResource("5_rxb1f")
+metadata/_custom_type_script = "uid://d0ffw2f0aswn"
+
+[node name="Timer" type="Timer" parent="." unique_id=1323091530]
+
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=1158297521]
+emitting = false
+amount = 7
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_rxb1f")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_sg8a5")
+
+[node name="StateMachine" type="Node" parent="." unique_id=82632562 node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = ExtResource("9_dhirg")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+metadata/_custom_type_script = "uid://d2kqkdfhgcbi7"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=397249422 node_paths=PackedStringArray("noise_timer_interval")]
+script = ExtResource("10_wumyy")
+noise_timer_interval = NodePath("Noise")
+metadata/_custom_type_script = "uid://be4xijov1pqj4"
+
+[node name="Noise" type="Timer" parent="StateMachine/Idle" unique_id=745828248]
+wait_time = 0.32
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=216393596]
+script = ExtResource("11_dt8ka")
+metadata/_custom_type_script = "uid://bqde5r4mxj3bu"
+
+[node name="Tongue" type="Node" parent="StateMachine" unique_id=272142952 node_paths=PackedStringArray("tongue_hitbox")]
+script = ExtResource("12_qtfwg")
+tongue_hitbox = NodePath("../../TongueArea/Hitbox")
+metadata/_custom_type_script = "uid://cj77l60y0p7po"
+
+[node name="Dying" type="Node" parent="StateMachine" unique_id=440556028 node_paths=PackedStringArray("hitbox")]
+script = ExtResource("13_h2lho")
+explosion_scene = ExtResource("14_vm034")
+hitbox = NodePath("../../HitboxArea/Hitbox")
+metadata/_custom_type_script = "uid://2pwonlgnh3xc"
