@@ -365,6 +365,9 @@ func can_turnaround_with_scale() -> void:
 	if old_facing_position != player.facing_position:
 		player.scale.x *= (-1)
 
+func horizontal_distance_from_player() -> float:
+	return abs(Global.player.global_position.x - player.global_position.x)
+
 func enemy_can_die(with_misc_items: bool = true) -> void:
 	if player.stats.HP <= 0:
 		Transitioned.emit(self, "dying")

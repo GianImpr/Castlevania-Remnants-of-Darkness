@@ -1,0 +1,311 @@
+[gd_scene format=3 uid="uid://ihnmxos5kfg"]
+
+[ext_resource type="Script" uid="uid://duqwcssmcq86k" path="res://SampleProject/enemies/SkeletonArcher/shatter.gd" id="1_kxrwh"]
+[ext_resource type="Texture2D" uid="uid://dl0hfuivrtb0x" path="res://assets/sprites/Enemies/DeadPirate/DeadPiratePieces.png" id="2_4j8dn"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_i3rqa"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_0gofw"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="5_nar3m"]
+[ext_resource type="AudioStream" uid="uid://lhvvjm8aucp0" path="res://assets/sounds/Enemies/DeadPirate/DeadPiratePieceDrop.wav" id="6_0ioqn"]
+[ext_resource type="Texture2D" uid="uid://ckbcpuuldqor0" path="res://assets/sprites/Effects/SmallFireBlue.png" id="7_0ioqn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxrwh"]
+size = Vector2(12.5, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myeh4"]
+size = Vector2(8.5, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4j8dn"]
+size = Vector2(12.625, 7.543475)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3rqa"]
+size = Vector2(6, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gofw"]
+size = Vector2(7.5, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2cu3"]
+size = Vector2(7, 4.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nar3m"]
+size = Vector2(8.75, 11.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrjl3"]
+size = Vector2(8, 12.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oifc"]
+size = Vector2(33, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xk3td"]
+size = Vector2(21, 7.75)
+
+[sub_resource type="Resource" id="Resource_vmruv"]
+script = ExtResource("5_nar3m")
+Tag = "drop"
+stream = ExtResource("6_0ioqn")
+
+[sub_resource type="Resource" id="Resource_5avr8"]
+script = ExtResource("4_0gofw")
+sound_effects = Array[ExtResource("5_nar3m")]([SubResource("Resource_vmruv")])
+
+[node name="PirateShatter" type="Node2D" unique_id=639978895 node_paths=PackedStringArray("delete_timer", "sound", "flame_texture")]
+script = ExtResource("1_kxrwh")
+base_velocity = Vector2(350, -350)
+delete_timer = NodePath("DeleteTimer")
+sound = NodePath("PolyphonicAudio")
+flame_texture = NodePath("Sprite2D")
+dying_noise = false
+
+[node name="Body" type="RigidBody2D" parent="." unique_id=1055295221]
+position = Vector2(0, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Body" unique_id=672216550]
+position = Vector2(-20, -13)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 9
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Body" unique_id=250372316]
+position = Vector2(-23.5, -19)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_kxrwh")
+
+[node name="Head" type="RigidBody2D" parent="." unique_id=1652359294]
+position = Vector2(-2, 16)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Head" unique_id=430049521]
+position = Vector2(-18, -19)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 10
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Head" unique_id=971206784]
+position = Vector2(-22.5, -42.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_myeh4")
+
+[node name="Belt" type="RigidBody2D" parent="." unique_id=1485961062]
+position = Vector2(-3, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Belt" unique_id=1252940030]
+position = Vector2(-16, -13)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 8
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Belt" unique_id=576291348]
+position = Vector2(-18.625, -14.543475)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_4j8dn")
+
+[node name="SecondArm" type="RigidBody2D" parent="." unique_id=1994916372]
+position = Vector2(4, 8)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="SecondArm" unique_id=850303038]
+position = Vector2(-15, -5)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 6
+
+[node name="CollisionBox" type="CollisionShape2D" parent="SecondArm" unique_id=1387228923]
+position = Vector2(-45, -31)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_i3rqa")
+
+[node name="FirstArm" type="RigidBody2D" parent="." unique_id=888173514]
+position = Vector2(4, 8)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="FirstArm" unique_id=76217801]
+position = Vector2(-28, -13)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 7
+
+[node name="CollisionBox" type="CollisionShape2D" parent="FirstArm" unique_id=240641930]
+position = Vector2(-7.5, -25)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_0gofw")
+
+[node name="SecondBelt" type="RigidBody2D" parent="." unique_id=1710299992]
+position = Vector2(0, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="SecondBelt" unique_id=415814318]
+position = Vector2(-18, -14)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 5
+
+[node name="CollisionBox" type="CollisionShape2D" parent="SecondBelt" unique_id=1415614579]
+position = Vector2(-24, -3)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_v2cu3")
+
+[node name="Leg" type="RigidBody2D" parent="." unique_id=803659041]
+position = Vector2(0, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Leg" unique_id=1205234714]
+position = Vector2(-20, -15)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 3
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Leg" unique_id=1018195490]
+position = Vector2(-33, 12)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_nar3m")
+
+[node name="SecondLeg" type="RigidBody2D" parent="." unique_id=1650727945]
+position = Vector2(0, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="SecondLeg" unique_id=714266428]
+position = Vector2(-20, -15)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 2
+
+[node name="CollisionBox" type="CollisionShape2D" parent="SecondLeg" unique_id=285444306]
+position = Vector2(-14, 12)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hrjl3")
+
+[node name="Boot" type="RigidBody2D" parent="." unique_id=1663191601]
+position = Vector2(0, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Boot" unique_id=1455132688]
+position = Vector2(-20, -15)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 1
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Boot" unique_id=895364469]
+position = Vector2(-6, 40)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hrjl3")
+
+[node name="SecondBoot" type="RigidBody2D" parent="." unique_id=1229535590]
+position = Vector2(0, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="SecondBoot" unique_id=1211882834]
+position = Vector2(-20, -15)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 4
+
+[node name="CollisionBox" type="CollisionShape2D" parent="SecondBoot" unique_id=764789623]
+position = Vector2(-38, 41)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hrjl3")
+
+[node name="Sword" type="RigidBody2D" parent="." unique_id=2043842883]
+position = Vector2(0, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Sword" unique_id=1056840137]
+position = Vector2(-20, -15)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 12
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Sword" unique_id=490981182]
+position = Vector2(-17, -49.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_1oifc")
+
+[node name="Shoulders" type="RigidBody2D" parent="." unique_id=2096604019]
+position = Vector2(0, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Shoulders" unique_id=1360897322]
+position = Vector2(-20, -11)
+scale = Vector2(2, 2)
+texture = ExtResource("2_4j8dn")
+hframes = 13
+frame = 11
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Shoulders" unique_id=1415089747]
+position = Vector2(-23, -26.75)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_xk3td")
+
+[node name="DeleteTimer" type="Timer" parent="." unique_id=700136013]
+wait_time = 1.5
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=324230311]
+volume_db = -15.0
+script = ExtResource("3_i3rqa")
+audio_library = SubResource("Resource_5avr8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=904613014]
+visible = false
+texture = ExtResource("7_0ioqn")
+hframes = 11
+
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]
