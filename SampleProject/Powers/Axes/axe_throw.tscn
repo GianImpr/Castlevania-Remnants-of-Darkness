@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bao10vvn6rpga"]
+[gd_scene format=3 uid="uid://bao10vvn6rpga"]
 
 [ext_resource type="Texture2D" uid="uid://bh5qwwkhg4tf7" path="res://assets/sprites/Weapons/Axes/Bullova.png" id="1_c7po8"]
 [ext_resource type="Script" uid="uid://bm84mvxqm3hll" path="res://SampleProject/Scripts/Powers/axe_throw.gd" id="1_q023f"]
@@ -46,7 +46,7 @@ _data = {
 &"throw": SubResource("Animation_ecxqs")
 }
 
-[node name="RigidBody2D" type="RigidBody2D" node_paths=PackedStringArray("rotate_node", "sprite", "trail_frequency")]
+[node name="RigidBody2D" type="RigidBody2D" unique_id=12354070 node_paths=PackedStringArray("rotate_node", "sprite", "trail_frequency")]
 script = ExtResource("1_q023f")
 SPEED = Vector2(170, -610)
 rotate_node = NodePath("Rotate")
@@ -54,19 +54,18 @@ sprite = NodePath("Rotate/Sprite2D")
 trail_scene = ExtResource("2_8345f")
 trail_frequency = NodePath("Trail")
 
-[node name="Rotate" type="Node2D" parent="."]
+[node name="Rotate" type="Node2D" parent="." unique_id=1130498791]
 
-[node name="Sprite2D" type="Sprite2D" parent="Rotate"]
+[node name="Sprite2D" type="Sprite2D" parent="Rotate" unique_id=1095904398]
 z_index = 10
-rotation = 6.65008
 scale = Vector2(2, 2)
 texture = ExtResource("1_c7po8")
 offset = Vector2(10, -17)
 hframes = 10
 vframes = 2
 
-[node name="PlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitbox")]
-collision_layer = 0
+[node name="PlayerHitbox" type="Area2D" parent="." unique_id=1237393596 node_paths=PackedStringArray("hitbox")]
+collision_layer = 1024
 collision_mask = 4
 script = ExtResource("2_u8rh7")
 extra_base_damage = 5
@@ -76,17 +75,15 @@ hitbox = NodePath("CollisionShape2D")
 hit_collision_scene = ExtResource("3_arr67")
 ice_hit_collision_scene = ExtResource("4_v3daj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox" unique_id=763120918]
 scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_yebif")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_s4n8t")
-}
-autoplay = "throw"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=170087749]
+libraries/ = SubResource("AnimationLibrary_s4n8t")
+autoplay = &"throw"
 
-[node name="Trail" type="Timer" parent="."]
+[node name="Trail" type="Timer" parent="." unique_id=1802020158]
 wait_time = 0.07
 autostart = true
 

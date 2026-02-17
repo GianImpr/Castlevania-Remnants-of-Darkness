@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1qte8d156lf4"]
+[gd_scene format=3 uid="uid://b1qte8d156lf4"]
 
 [ext_resource type="Texture2D" uid="uid://dkxgqvaj0gxh" path="res://assets/sprites/Weapons/Swords/Circle.png" id="1_0v4xv"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="2_4hu7a"]
@@ -26,21 +26,21 @@ shader_parameter/flash_modifier = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf3pb"]
 size = Vector2(22.5, 10)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=154280268]
 scale = Vector2(-2, 2)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=890512895]
 clip_children = 1
 scale = Vector2(0.04, 0.04)
 skew = 1.19904
 texture = ExtResource("1_0v4xv")
 
-[node name="Spin" type="TextureRect" parent="Sprite2D"]
+[node name="Spin" type="TextureRect" parent="Sprite2D" unique_id=1609616718]
 offset_right = 512.0
 offset_bottom = 512.0
 texture = SubResource("GradientTexture2D_5c8hu")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Spin"]
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D/Spin" unique_id=993925385]
 material = SubResource("ShaderMaterial_kmdi8")
 position = Vector2(73.6851, 19.2452)
 rotation = -1.5708
@@ -49,7 +49,7 @@ texture = ExtResource("2_ub72w")
 flip_h = true
 flip_v = true
 
-[node name="DisjointedPlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitbox", "trail")]
+[node name="DisjointedPlayerHitbox" type="Area2D" parent="." unique_id=472308292 node_paths=PackedStringArray("hitbox", "trail")]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("5_etbsd")
@@ -63,7 +63,7 @@ ice_hit_collision_scene = ExtResource("3_jdvhq")
 base_attribute = Array[int]([2])
 adjust_facing_position = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DisjointedPlayerHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DisjointedPlayerHitbox" unique_id=1154747824]
 position = Vector2(-2.25, -1)
 shape = SubResource("RectangleShape2D_xf3pb")
 

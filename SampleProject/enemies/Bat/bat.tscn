@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://126k0dgwv4i3"]
+[gd_scene format=3 uid="uid://126k0dgwv4i3"]
 
 [ext_resource type="Script" uid="uid://7btjpwv430w2" path="res://SampleProject/enemies/Bat/bat.gd" id="1_t4pbr"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_sndu6"]
@@ -118,7 +118,7 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_eqdgu"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="Bat" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[node name="Bat" type="CharacterBody2D" unique_id=1543598078 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 collision_layer = 4
 collision_mask = 0
 floor_block_on_wall = false
@@ -132,7 +132,7 @@ iframe_timer = NodePath("Area2D/Iframe Timer")
 hitbox_iframe = NodePath("Area2D")
 blood_particles = NodePath("BloodDamage")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=904139375]
 script = ExtResource("2_sndu6")
 enemy_name = "BAT"
 LV = 1
@@ -141,78 +141,76 @@ ATK = 9
 EXP = 1
 weaknesses = Array[int]([2])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1545573589]
 scale = Vector2(2, 2)
 texture = ExtResource("3_bjahf")
 hframes = 10
 vframes = 2
 frame = 10
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1173286868]
 position = Vector2(-0.5, 21)
 shape = SubResource("RectangleShape2D_gki5g")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=2101466466]
 collision_layer = 2
 collision_mask = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=774211326]
 position = Vector2(-1, 9)
 shape = SubResource("RectangleShape2D_i8mfi")
 
-[node name="Iframe Timer" type="Timer" parent="Area2D"]
+[node name="Iframe Timer" type="Timer" parent="Area2D" unique_id=135275744]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_pqyyj")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2052325599]
+libraries/ = SubResource("AnimationLibrary_pqyyj")
 speed_scale = 2.0
 
-[node name="Area of Vision" type="Area2D" parent="."]
+[node name="Area of Vision" type="Area2D" parent="." unique_id=1692126256]
 visible = false
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision" unique_id=686709895]
 shape = SubResource("CircleShape2D_rxwe6")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=500153939 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("4_1n0re")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=713085082 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("5_bdtj8")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 
-[node name="Waking" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe", "wake_duration")]
+[node name="Waking" type="Node" parent="StateMachine" unique_id=1604153122 node_paths=PackedStringArray("hitbox_iframe", "wake_duration")]
 script = ExtResource("6_vdxb1")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 wake_duration = NodePath("WakeDuration")
 
-[node name="WakeDuration" type="Timer" parent="StateMachine/Waking"]
+[node name="WakeDuration" type="Timer" parent="StateMachine/Waking" unique_id=987315760]
 
-[node name="Flying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Flying" type="Node" parent="StateMachine" unique_id=1481168531 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("6_5b8ur")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 SPEED = Vector2(200, 300)
 
-[node name="Dying" type="Node" parent="StateMachine"]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=212951835]
 script = ExtResource("7_nruu7")
 dying_effect = ExtResource("8_hh4ex")
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=1490605053]
 position = Vector2(0, -57)
 script = ExtResource("6_fwwmo")
 damage_node = ExtResource("4_81pg3")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1861572644]
 volume_db = -15.0
 script = ExtResource("10_nrqdg")
 audio_library = SubResource("Resource_qnkqq")
 
-[node name="BloodDamage" type="CPUParticles2D" parent="."]
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=2083858119]
 emitting = false
 amount = 12
 lifetime = 0.75

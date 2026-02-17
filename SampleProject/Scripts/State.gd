@@ -373,6 +373,10 @@ func enemy_can_die(with_misc_items: bool = true) -> void:
 		Transitioned.emit(self, "dying")
 		player.stats.determineDrop(with_misc_items)
 		
+func enemy_can_guard(flag: bool) -> void:
+	if flag:
+		Transitioned.emit(self, "guard")
+		
 func enemy_check_is_hurt(new_state_on_damage: String) -> void:
 	if player.is_hurt and player.stats.HP > 0:
 		player.is_hurt = false

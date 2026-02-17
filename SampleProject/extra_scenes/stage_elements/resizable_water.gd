@@ -28,14 +28,16 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		triggerBigSplash(body)
+		if body.velocity.y > 0:
+			triggerBigSplash(body)
 		track_bodies.append(body)
 	else:
 		triggerSmallSplash(body)
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is CharacterBody2D:
-		triggerBigSplash(body)
+		if body.velocity.y < 0:
+			triggerBigSplash(body)
 		track_bodies.erase(body)
 
 func triggerBigSplash(body: Node2D) -> void:

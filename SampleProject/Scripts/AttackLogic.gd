@@ -99,7 +99,7 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 			updateKillCount(body.stats.enemy_name)
 		else:
 			hit_enemies.append(body)
-	if isAlive(body):
+	if isAlive(body) and not ("is_guarding" in body and body.is_guarding):
 		if body.stats.DEF > player.stats.Stats["ATK"]/2.5:
 			applyGlow(body, Color(-1, -1, 1)) # Blue glow => attack is weak
 		else:
@@ -193,13 +193,22 @@ func removeHitboxIfNotAttacking() -> void:
 		hitbox.set_deferred("disabled", true)
 
 # Calculates the base damage of the move
-func calculateDamage(body: Node2D) -> int:
-	var damage: int = max(player.stats.Stats["ATK"] - body.stats.DEF/2, 1) * dmg_multiplier + damage_boost
+func calculateDamage(body: Node2D, magical: bool = false) -> int:
+	var offensive_stat: int
+	var defensive_stat: int
+	if magical:
+		defensive_stat = body.stats.RES
+		offensive_stat = player.stats.Stats["INT"]
+	else:
+		defensive_stat = body.stats.DEF
+		offensive_stat = player.stats.Stats["ATK"]
+	var damage: int = max(offensive_stat - defensive_stat/2, 1) * dmg_multiplier + damage_boost
 	const STUD_OF_CONCENTRATION_BOOST: float = 1.07
 	const TIP_DAMAGE_MULTIPLIER: float = 1.2
 	const CHARGE_DAMAGE_MULTIPLIERS: Array[float] = [1.2, 1.3, 1.4]
 	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
 	const WINGED_RING_MULTIPLIER: float = 1.1
+	const BLOCKED_DAMAGE_MULTIPLIER: float = 0.1
 	
 	if player.stats.accessoryEquipped(Accessory.Accessories.STUD_OF_CONCENTRATION) and player.stats.Stats["FP"] >= player.stats.Stats["MFP"]:
 		damage *= STUD_OF_CONCENTRATION_BOOST
@@ -218,6 +227,9 @@ func calculateDamage(body: Node2D) -> int:
 		
 	if not TrainingSettings.can_deal_damage and Global.screen == Global.ScreenType.TRAINING:
 		return 0
+		
+	if "is_guarding" in body and body.is_guarding:
+		damage *= BLOCKED_DAMAGE_MULTIPLIER
 	
 	return damage
 
@@ -227,7 +239,8 @@ func kills(body: Node2D, damage) -> bool:
 
 # Generates the effect and applies the damage to the target
 func applyDamage(body: Node2D, damage: int, physical_based_sound: bool = true) -> int:
-	createEffects(body, physical_based_sound)
+	if not ("is_guarding" in body and body.is_guarding):
+		createEffects(body, physical_based_sound)
 	var multiplier_rate: float = 2
 	for element in actual_attributes:
 		if element in body.stats.weaknesses:
