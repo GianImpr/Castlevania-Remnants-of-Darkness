@@ -1,15 +1,16 @@
 extends State
 class_name LizardmanDash
-const STOP_AT_DISTANCE: float = 130
+const STOP_AT_DISTANCE: float = 100
 var phase: int = -1
 @export var sword_hitbox: CollisionShape2D
 @export var trail: Sprite2D
 @export var red_spark_scene: PackedScene
 @export var max_duration_timer: Timer
 const TRAIL_DEFAULT_FRAME: int = 170
-const DECELERATION_TWEEN_DURATION: float = 0.6
+const DECELERATION_TWEEN_DURATION: float = 1
 const INITIAL_SWING_TIME: float = 0.35
-const DASH_SPEED: float = 300
+const DASH_SPEED: float = 370
+const INITIAL_DELAY: float = 1
 
 func enter():
 	if not max_duration_timer.timeout.is_connected(dashAttack):
@@ -19,7 +20,7 @@ func enter():
 	can_turnaround_with_scale()
 	var red_spark = red_spark_scene.instantiate()
 	player.add_child(red_spark)
-	await get_tree().create_timer(1, false).timeout
+	await get_tree().create_timer(INITIAL_DELAY, false).timeout
 	if player.stats.HP <= 0:
 		return
 	animation.play("dashing")
