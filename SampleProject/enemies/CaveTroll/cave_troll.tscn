@@ -1,0 +1,730 @@
+[gd_scene format=3 uid="uid://bp5nipcdx63vb"]
+
+[ext_resource type="Script" uid="uid://c4d2cqoh3o8c6" path="res://SampleProject/enemies/CaveTroll/cave_troll.gd" id="1_ht84p"]
+[ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_enile"]
+[ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="3_bybig"]
+[ext_resource type="Texture2D" uid="uid://cjtg3vr6oqk42" path="res://assets/sprites/Enemies/CaveTroll/CaveTroll.png" id="3_enile"]
+[ext_resource type="Texture2D" uid="uid://dvqovat5rjuaa" path="res://assets/sprites/Enemies/CaveTroll/CaveTrollAura.png" id="3_vtdge"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_vtdge"]
+[ext_resource type="Texture2D" uid="uid://o5apa2s01wi3" path="res://assets/sprites/Enemies/CaveTroll/CaveTrollTongue.png" id="6_8gbce"]
+[ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="7_l1fq1"]
+[ext_resource type="Texture2D" uid="uid://dpjc4kfalwmpo" path="res://assets/sprites/Enemies/CaveTroll/CaveTrollAuraWhite.png" id="9_8gbce"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="9_fj5we"]
+[ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="10_00w22"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="10_8sufn"]
+[ext_resource type="Script" uid="uid://bc57kqe01ftqs" path="res://SampleProject/enemies/CaveTroll/CaveTrollIdle.gd" id="11_8wn8d"]
+[ext_resource type="AudioStream" uid="uid://bxdwma218yy6j" path="res://assets/sounds/Enemies/CaveTrollTongue.wav" id="11_vitrr"]
+[ext_resource type="Script" uid="uid://dfteb451ny3yf" path="res://SampleProject/enemies/CaveTroll/CaveTrollJumping.gd" id="12_oq6yd"]
+[ext_resource type="AudioStream" uid="uid://b1cyvx8li8t6k" path="res://assets/sounds/Enemies/CaveTrollDying.wav" id="12_rnp10"]
+[ext_resource type="Script" uid="uid://ngi71opooer4" path="res://SampleProject/enemies/CaveTroll/CaveTrollTurning.gd" id="13_3yaf3"]
+[ext_resource type="AudioStream" uid="uid://b2bf1s32twbja" path="res://assets/sounds/Enemies/CaveTrollCircle.wav" id="13_hcsp5"]
+[ext_resource type="Script" uid="uid://bew58vn2rpgjs" path="res://SampleProject/enemies/CaveTroll/CaveTrollTongue.gd" id="14_7hdsk"]
+[ext_resource type="AudioStream" uid="uid://rwxqjbbv8um5" path="res://assets/sounds/Enemies/CaveTrollLightning.wav" id="14_8sufn"]
+[ext_resource type="Script" uid="uid://cojn2gltkjycp" path="res://SampleProject/enemies/CaveTroll/CaveTrollCircle.gd" id="15_d1kqg"]
+[ext_resource type="Script" uid="uid://bv5d3jafc7cu0" path="res://SampleProject/enemies/CaveTroll/CaveTrollDying.gd" id="16_fj5we"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8gbce"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dh0x0"]
+load_path = "res://.godot/imported/CaveTrollTongue.png-2044deee976c860cbc347e23946b454c.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w75q"]
+atlas = SubResource("CompressedTexture2D_dh0x0")
+region = Rect2(118, 69, 2, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bybig"]
+atlas = ExtResource("6_8gbce")
+region = Rect2(39, 69, 1, 2)
+
+[sub_resource type="Animation" id="Animation_l1fq1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Aura:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Aura:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Dying:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Body:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Body:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AuraArea/Aura:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Tongue/Length:custom_minimum_size")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("TongueArea/CollisionPolygon2D:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Tongue:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8gbce"]
+resource_name = "aura"
+length = 4.0
+step = 0.033
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.4, 0.45, 0.5, 1.4, 3.5666666, 3.6166666, 3.6666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17, 18, 15, 16, 17]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.43333337, 0.4666667, 0.5, 0.53333336, 0.5666667, 0.6, 0.6333334, 0.6666667, 0.70000005, 0.73333335, 0.76666665, 0.8000001, 0.8333334, 0.8666667, 0.9000001, 1.4000001, 1.4333333, 1.4666667, 1.5000001, 1.5333333, 1.5666667, 1.6, 1.6333334, 1.6666666, 1.7, 1.7333333, 1.7666668, 1.8000001, 1.8333333, 1.8666667, 1.9000001, 1.9333333, 1.9666667, 2, 2.0333333, 2.0666666, 2.1, 2.1333332, 2.1666667, 2.2, 2.233333, 2.2666667, 2.3000002, 2.3333333, 2.3666668, 2.4, 2.4333334, 2.4666667, 2.5, 2.5333333, 2.5666668, 2.6000001, 2.6333332, 2.6666667, 2.7000003, 2.7333333, 2.766667, 2.8000002, 2.8333335, 2.8666668, 2.9, 2.9333334, 2.966667, 3.0000002, 3.0333333, 3.0666668, 3.1000004, 3.1333334, 3.166667, 3.2000003, 3.2333336, 3.266667, 3.3000002, 3.3333335, 3.3666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, 3, 4, 5, 6, 7, 8, 15, 9, 15, 10, 15, 11, 15, 12, 15, 13, 15, 8, 15, 9, 15, 10, 15, 11, 15, 12, 15, 13, 15, 8, 15, 9, 15, 10, 15, 11, 15, 12, 15, 13, 15, 8, 15, 9, 15, 10, 15, 11, 15, 12, 15, 13, 15, 8, 15, 9, 15, 10, 15, 11, 15, 12, 15, 13, 15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Aura:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.93333334, 1.4000001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Aura:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.4000001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.4, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AuraArea/Aura:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.4, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PolyphonicAudioPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.4, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["lightning"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["circle"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_00w22"]
+resource_name = "dying"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dying:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitboxArea/Hitbox:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AuraArea/Aura:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PolyphonicAudioPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dying"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dh0x0"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8w75q"]
+resource_name = "tongue"
+length = 0.4
+step = 0.0167
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tongue/Length:custom_minimum_size")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.016666668, 0.033333335, 0.050000004, 0.06666667, 0.083333336, 0.10000001, 0.116666675, 0.13333334, 0.15, 0.16666667, 0.18333334, 0.20000002, 0.21666668, 0.23333335, 0.25, 0.26666668, 0.28333336, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 2,
+"values": [Vector2(0, 0), Vector2(4, 0), Vector2(8, 0), Vector2(12, 0), Vector2(16, 0), Vector2(20, 0), Vector2(24, 0), Vector2(28, 0), Vector2(32, 0), Vector2(36, 0), Vector2(40, 0), Vector2(44, 0), Vector2(48, 0), Vector2(52, 0), Vector2(56, 0), Vector2(60, 0), Vector2(64, 0), Vector2(68, 0), Vector2(72, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TongueArea/CollisionPolygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1e68r"]
+resource_name = "turning"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8w75q"]
+_data = {
+&"RESET": SubResource("Animation_l1fq1"),
+&"aura": SubResource("Animation_8gbce"),
+&"dying": SubResource("Animation_00w22"),
+&"idle": SubResource("Animation_dh0x0"),
+&"tongue": SubResource("Animation_8w75q"),
+&"turning": SubResource("Animation_1e68r")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dh0x0"]
+size = Vector2(188.5, 48.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00w22"]
+size = Vector2(14, 20.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l1fq1"]
+radius = 24.505102
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1fq1"]
+size = Vector2(20.5, 37)
+
+[sub_resource type="Resource" id="Resource_5typw"]
+script = ExtResource("10_8sufn")
+Tag = "tongue"
+stream = ExtResource("11_vitrr")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_xsmcy"]
+script = ExtResource("10_8sufn")
+Tag = "dying"
+stream = ExtResource("12_rnp10")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_ib4ch"]
+script = ExtResource("10_8sufn")
+Tag = "circle"
+stream = ExtResource("13_hcsp5")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_ncrp7"]
+script = ExtResource("10_8sufn")
+Tag = "lightning"
+stream = ExtResource("14_8sufn")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_s3861"]
+script = ExtResource("9_fj5we")
+sound_effects = Array[ExtResource("10_8sufn")]([SubResource("Resource_5typw"), SubResource("Resource_xsmcy"), SubResource("Resource_ib4ch"), SubResource("Resource_ncrp7")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="Curve" id="Curve_l1fq1"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8gbce"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1e68r"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xl7h"]
+atlas = ExtResource("9_8gbce")
+region = Rect2(0, 103, 632, 103)
+margin = Rect2(0, -20, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_00w22"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="CaveTroll" type="CharacterBody2D" unique_id=429861966 node_paths=PackedStringArray("vision", "tongue", "aura", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 4097
+script = ExtResource("1_ht84p")
+vision = NodePath("VisionArea")
+tongue = NodePath("TongueArea")
+aura = NodePath("AuraArea")
+aura_damage_multiplier = 3.0
+sprite = NodePath("Body")
+hitbox = NodePath("HitboxArea")
+stats = NodePath("EnemyStats")
+damage_popup = NodePath("DamagePopup")
+iframe_timer = NodePath("Iframe")
+hitbox_iframe = NodePath("HitboxArea")
+blood_particles = NodePath("BloodDamage")
+metadata/_custom_type_script = "uid://jpd31rlnmjom"
+
+[node name="EnemyStats" type="Node" parent="." unique_id=1776926721]
+script = ExtResource("2_enile")
+enemy_name = "CAVE_TROLL"
+LV = 17
+HP = 90
+ATK = 40
+EXP = 35
+weaknesses = Array[int]([1, 2, 3, 4])
+tolerances = Array[int]([7])
+metadata/_custom_type_script = "uid://dwqs3a3odtwne"
+
+[node name="Aura" type="Sprite2D" parent="." unique_id=1997347008]
+self_modulate = Color(1, 1, 1, 0.7058824)
+texture = ExtResource("3_vtdge")
+offset = Vector2(0, -25)
+hframes = 8
+vframes = 2
+frame = 15
+
+[node name="Body" type="Sprite2D" parent="." unique_id=611083324]
+material = SubResource("ShaderMaterial_8gbce")
+texture = ExtResource("3_enile")
+offset = Vector2(0, -25)
+hframes = 6
+vframes = 5
+
+[node name="Tongue" type="HBoxContainer" parent="." unique_id=260277714]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -81.0
+offset_top = -8.0
+offset_right = -7.0
+offset_bottom = -6.0
+grow_horizontal = 0
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="Tip" type="TextureRect" parent="Tongue" unique_id=1183105263]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8w75q")
+flip_h = true
+
+[node name="Length" type="TextureRect" parent="Tongue" unique_id=1370549750]
+layout_mode = 2
+texture = SubResource("AtlasTexture_bybig")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1163161706]
+libraries/ = SubResource("AnimationLibrary_8w75q")
+
+[node name="VisionArea" type="Area2D" parent="." unique_id=651026663]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Vision" type="CollisionShape2D" parent="VisionArea" unique_id=1247663716]
+visible = false
+position = Vector2(-71.25, -2.375)
+shape = SubResource("RectangleShape2D_dh0x0")
+debug_color = Color(2.5990605e-06, 0.6303416, 0.47674876, 0.41960785)
+
+[node name="HitboxArea" type="Area2D" parent="." unique_id=322052339]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=296628921]
+visible = false
+position = Vector2(1, 8.5)
+shape = SubResource("RectangleShape2D_00w22")
+debug_color = Color(0.9999998, 0.015547556, 0.027506532, 0.41960785)
+
+[node name="AuraArea" type="Area2D" parent="." unique_id=573779995]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Aura" type="CollisionShape2D" parent="AuraArea" unique_id=1710244267]
+visible = false
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_l1fq1")
+disabled = true
+debug_color = Color(0.79187274, 0.42814645, 0, 0.41960785)
+
+[node name="TongueArea" type="Area2D" parent="." unique_id=1286844860]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TongueArea" unique_id=1330382913]
+visible = false
+position = Vector2(-7, 11)
+polygon = PackedVector2Array(0, 0, 0, 2, -72, 2, -72, 0)
+disabled = true
+
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=2010587540]
+visible = false
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_l1fq1")
+
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=1295349400]
+script = ExtResource("3_bybig")
+damage_node = ExtResource("7_l1fq1")
+metadata/_custom_type_script = "uid://d0ffw2f0aswn"
+
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=237169516]
+volume_db = -10.0
+bus = &"SFX"
+script = ExtResource("4_vtdge")
+audio_library = SubResource("Resource_s3861")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="Iframe" type="Timer" parent="." unique_id=980034695]
+
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=268580473]
+position = Vector2(0.5, -3.5)
+emitting = false
+amount = 12
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_l1fq1")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_8gbce")
+
+[node name="Dying" type="CPUParticles2D" parent="." unique_id=169233781]
+self_modulate = Color(1, 0, 0, 0.5529412)
+material = SubResource("CanvasItemMaterial_1e68r")
+position = Vector2(0.5, -2)
+emitting = false
+texture = SubResource("AtlasTexture_2xl7h")
+one_shot = true
+speed_scale = 2.0
+randomness = 1.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 60.0
+angular_velocity_min = 180.0
+angular_velocity_max = 180.0
+color_ramp = SubResource("Gradient_00w22")
+anim_offset_max = 0.6
+
+[node name="StateMachine" type="Node" parent="." unique_id=333045264 node_paths=PackedStringArray("initial_state", "player", "animation")]
+script = ExtResource("10_00w22")
+initial_state = NodePath("Idle")
+player = NodePath("..")
+animation = NodePath("../AnimationPlayer")
+metadata/_custom_type_script = "uid://d2kqkdfhgcbi7"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=210516366]
+script = ExtResource("11_8wn8d")
+metadata/_custom_type_script = "uid://bc57kqe01ftqs"
+
+[node name="Jumping" type="Node" parent="StateMachine" unique_id=1704986871]
+script = ExtResource("12_oq6yd")
+metadata/_custom_type_script = "uid://dfteb451ny3yf"
+
+[node name="Turning" type="Node" parent="StateMachine" unique_id=1753525636]
+script = ExtResource("13_3yaf3")
+metadata/_custom_type_script = "uid://ngi71opooer4"
+
+[node name="Tongue" type="Node" parent="StateMachine" unique_id=624184970 node_paths=PackedStringArray("tongue", "tongue_sprite")]
+script = ExtResource("14_7hdsk")
+tongue = NodePath("../../TongueArea/CollisionPolygon2D")
+tongue_sprite = NodePath("../../Tongue")
+metadata/_custom_type_script = "uid://bew58vn2rpgjs"
+
+[node name="Magic" type="Node" parent="StateMachine" unique_id=380468316 node_paths=PackedStringArray("aura", "aura_sprite")]
+script = ExtResource("15_d1kqg")
+aura = NodePath("../../AuraArea/Aura")
+aura_sprite = NodePath("../../Aura")
+metadata/_custom_type_script = "uid://cojn2gltkjycp"
+
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1146217094]
+script = ExtResource("16_fj5we")
+metadata/_custom_type_script = "uid://bv5d3jafc7cu0"
