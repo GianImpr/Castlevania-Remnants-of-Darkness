@@ -1249,11 +1249,11 @@ size = Vector2(15, 45)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8u0y"]
 shader = ExtResource("88_t7gcy")
-shader_parameter/influence = 0.0999999977648
-shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/influence = 0.1999999955296
+shader_parameter/color = Color(0.998305, 0.009149969, 3.85046e-07, 1)
 shader_parameter/speed = 4.0000000596048
-shader_parameter/mix_colors = false
-shader_parameter/enabled = false
+shader_parameter/mix_colors = true
+shader_parameter/enabled = true
 shader_parameter/sheet_columns = 20
 shader_parameter/sheet_rows = 20
 shader_parameter/petrified = false
@@ -4771,7 +4771,7 @@ accessory_compendium = Array[ExtResource("83_i53lv")]([SubResource("Resource_fmj
 skill_compendium = Array[ExtResource("88_j2qrq")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_6o46a"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47")])
 relic_compendium = Array[ExtResource("91_ci5jh")]([SubResource("Resource_86suo")])
 play_time = NodePath("Playtime")
-status = Array[float]([0.0, 0.0, 0.0])
+status = Array[float]([0.0, 0.0, 0.0, 0.0])
 weapon_proficiency = Array[Dictionary]([{
 "exp": 0,
 "lv": 0
@@ -5278,7 +5278,7 @@ position = Vector2(23, -1.5)
 rotation = 3.14159
 scale = Vector2(2, -2)
 
-[node name="CollisionShape2D" parent="SwordSpin/Spin/DisjointedPlayerHitbox" index="0"]
+[node name="CollisionShape2D" parent="SwordSpin/Spin/DisjointedPlayerHitbox" parent_id_path=PackedInt32Array(96565700, 472308292) index="0" unique_id=1154747824]
 disabled = true
 
 [node name="SpecialAttackEffect" type="Node2D" parent="." unique_id=1325300270]

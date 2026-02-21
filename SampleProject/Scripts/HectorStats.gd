@@ -37,7 +37,8 @@ enum Ailment {
 	GOOD,
 	POISON,
 	CURSE,
-	STONE
+	STONE,
+	ENFEEBLE
 }
 
 const EQUIPMENT_SLOTS = {
@@ -72,6 +73,7 @@ enum Status {
 	REFRESHING_AIR,
 	POISON,
 	CURSE,
+	ENFEEBLE,
 	STONE
 }
 
@@ -93,15 +95,18 @@ func _process(delta: float) -> void:
 	Bases["DEF"] = Stats["CON"]/2
 	for i in range(0, status.size()):
 		status[i] = max(status[i]-delta, 0)
-		
-	if Global.player.stats.status[Global.player.stats.Status.CURSE] > 0:
+
+	if status[Status.ENFEEBLE] > 0:
+		Stats["Guard"] = 0
+
+	if status[Status.CURSE] > 0:
 		Stats["MP"] = max(Stats["MP"]-delta*CURSE_MP_DRAIN_PER_SECOND, 0)
 		
-	if Global.player.stats.status[Global.player.stats.Status.POISON] > 0 and poison_tick_timer.is_stopped():
+	if status[Status.POISON] > 0 and poison_tick_timer.is_stopped():
 		if not poison_tick_timer.timeout.is_connected(poisonTick):
 				poison_tick_timer.timeout.connect(poisonTick)
 		poison_tick_timer.start()
-	elif Global.player.stats.status[Global.player.stats.Status.POISON] == 0 and not poison_tick_timer.is_stopped():
+	elif status[Status.POISON] == 0 and not poison_tick_timer.is_stopped():
 		poison_tick_timer.stop()
 
 func _physics_process(delta: float) -> void:

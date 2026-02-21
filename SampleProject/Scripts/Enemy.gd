@@ -41,6 +41,7 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 	var damage_with_chip = damage + chip_damage
 	const STONE_DAMAGE_MULTIPLIER: float = 2
 	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
+	const ENFEEBLE_DAMAGE_MULTIPLIER: float = 1.3
 
 	if body.isGuarding():
 		if body.isPerfectGuarding():
@@ -74,6 +75,8 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 				body.curse()
 			Global.Attribute.POISON:
 				body.poison()
+			Global.Attribute.ENFEEBLE:
+				body.enfeeble()
 		
 	if body.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
 		if guard_break:
@@ -86,6 +89,9 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 		
 	if body.stats.accessoryEquipped(Accessory.Accessories.CONFIDENCE_RING):
 		damage *= CONFIDENCE_RING_MULTIPLIER
+		
+	if body.stats.status[body.stats.Status.ENFEEBLE] > 0:
+		damage *= ENFEEBLE_DAMAGE_MULTIPLIER
 	
 	if damage > body.stats.Stats["HP"] and body.stats.Stats["HP"] > 1 and randi_range(0, 99) < body.stats.Stats["LCK"] and Global.player.stats.itemEquipped(Artifact.Artifacts.MIRACLE_COIN, "artifact"):
 		damage = body.stats.Stats["HP"] - 1

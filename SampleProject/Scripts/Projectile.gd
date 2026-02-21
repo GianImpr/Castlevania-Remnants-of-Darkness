@@ -14,6 +14,7 @@ var thrower_ATK: int = 0
 
 func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> int:
 	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
+	const ENFEEBLE_DAMAGE_MULTIPLIER: float = 1.3
 	var damage
 	if magical:
 		damage = max(base_damage + thrower_ATK - body.stats.Stats["RES"]/2, 1) * multiplier
@@ -58,6 +59,8 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 				body.curse()
 			Global.Attribute.POISON:
 				body.poison()
+			Global.Attribute.ENFEEBLE:
+				body.enfeeble()
 		
 	if body.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
 		if guard_break:
@@ -70,6 +73,9 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 		
 	if body.stats.accessoryEquipped(Accessory.Accessories.CONFIDENCE_RING):
 		damage *= CONFIDENCE_RING_MULTIPLIER
+		
+	if body.stats.status[body.stats.Status.ENFEEBLE] > 0:
+		damage *= ENFEEBLE_DAMAGE_MULTIPLIER
 		
 	if Global.screen == Global.ScreenType.TRAINING:
 		return ceil(body.stats.Stats["MHP"] * TrainingSettings.damage_upon_hit / 100)

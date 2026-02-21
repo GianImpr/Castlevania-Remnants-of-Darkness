@@ -190,6 +190,8 @@ func updateGuardHealth() -> void:
 	guard_health.visible = Global.player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, Global.player.stats.skill_inventory)
 	var guard_recovery_timer: Timer = Global.player.guard_recovery
 	var guard_hp: float = min(Global.player.stats.Stats["Guard"]+(guard_recovery_timer.wait_time-guard_recovery_timer.time_left)/guard_recovery_timer.wait_time, 3)
+	if Global.player.stats.status[Global.player.stats.Status.ENFEEBLE] > 0:
+		guard_hp = 0
 	for i in range(0, guard_health.get_child_count()-1):
 		guard_health.get_child(i).self_modulate = Color(1,1,1, min(guard_hp-1-i, 1))
 		guard_health.get_child(i).get_child(0).visible = min(guard_hp-1-i, 1) == 1

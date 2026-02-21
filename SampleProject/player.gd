@@ -127,7 +127,7 @@ func _process(delta: float) -> void:
 	
 	guarding = isGuarding()
 	
-	if Input.is_action_just_pressed("guard") and can_perfect_guard() and not is_hurt:
+	if Input.is_action_just_pressed("guard") and can_perfect_guard():
 		times_guard_pressed += 1
 		if times_guard_pressed <= MAX_GUARD_PRESS_PER_HALF_SECOND:
 			if Global.game.difficulty == Global.game.Difficulty.SIMPLIFIED:
@@ -141,9 +141,9 @@ func _process(delta: float) -> void:
 		
 	if innocent_devil != null:
 		summoned_innocent_devil_id = innocent_devil.id
-	
+		
 	# Can't recover guard health while guard broken
-	if state_machine.current_state is HectorGuardBreak or stats.Stats["Guard"] == 3:
+	if state_machine.current_state is HectorGuardBreak or stats.Stats["Guard"] == 3 or stats.status[stats.Status.ENFEEBLE] > 0:
 		guard_recovery.stop()
 	elif guard_recovery.is_stopped():
 		var actual_recovery_time: float = GUARD_RECOVERY_TIME
@@ -384,9 +384,9 @@ func removeSwordTrail() -> void:
 func applyHitEffect(type: Global.Attribute) -> void:
 	sprite.influence_glow = 0.2
 	sprite.extra_influence_duration = 0
-	if Global.player.stats.status[Global.player.stats.Status.CURSE] == 0 and Global.player.stats.status[Global.player.stats.Status.POISON] == 0 and type != Global.Attribute.CURSE and type != Global.Attribute.POISON :
+	if Global.player.stats.status[Global.player.stats.Status.CURSE] == 0 and Global.player.stats.status[Global.player.stats.Status.POISON] == 0 and Global.player.stats.status[Global.player.stats.Status.ENFEEBLE] == 0 and type != Global.Attribute.CURSE and type != Global.Attribute.POISON and type != Global.Attribute.ENFEEBLE:
 		hit_effect_applied = true
-	if type != Global.Attribute.NONE and type != Global.Attribute.SLASH and type != Global.Attribute.HIT and type != Global.Attribute.STONE and type != Global.Attribute.CURSE and type != Global.Attribute.POISON:
+	if type != Global.Attribute.NONE and type != Global.Attribute.SLASH and type != Global.Attribute.HIT and type != Global.Attribute.STONE and type != Global.Attribute.CURSE and type != Global.Attribute.POISON and type != Global.Attribute.ENFEEBLE:
 		effects.get_child(int(type)-3).emitting = true
 	match type:
 		Global.Attribute.FIRE:
@@ -439,6 +439,13 @@ func poison() -> void:
 	var actual_poison_duration: float = POISON_DURATION_SECONDS/(1-min(float(stats.Stats["CON"])/100, 99))
 	stats.current_status = stats.Ailment.POISON
 	stats.status[HectorStats.Status.POISON] = actual_poison_duration
+	state_machine.voice.play_sound_effect_from_library("what")
+	
+func enfeeble() -> void:
+	const ENFEEBLE_DURATION_SECONDS: float = 25
+	var actual_enfeeble_duration: float = ENFEEBLE_DURATION_SECONDS/(1-min(float(stats.Stats["CON"])/100, 99))
+	stats.current_status = stats.Ailment.ENFEEBLE
+	stats.status[HectorStats.Status.ENFEEBLE] = actual_enfeeble_duration
 	state_machine.voice.play_sound_effect_from_library("what")
 
 #Creates one afterimage instance of Hector

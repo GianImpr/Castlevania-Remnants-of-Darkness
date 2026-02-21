@@ -7,7 +7,6 @@ var phase: int
 func enter():
 	animation.play("tongue")
 	sound.play_sound_effect_from_library("tongue")
-	tongue.set_deferred("disabled", false)
 	phase = 0
 	tongue_sprite.visible = true
 	

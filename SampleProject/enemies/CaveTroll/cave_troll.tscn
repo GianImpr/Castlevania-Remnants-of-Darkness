@@ -182,6 +182,18 @@ tracks/11/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TongueArea/CollisionPolygon2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_8gbce"]
 resource_name = "aura"
@@ -274,6 +286,62 @@ tracks/6/keys = {
 }, {
 "args": ["circle"],
 "method": &"play_sound_effect_from_library"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("StateMachine/Magic")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.4, 1.5333334, 1.6666667, 1.8000001, 1.9333334, 2.0666668, 2.2, 2.3333335, 2.4666667, 2.6000001, 2.7333336, 2.8666668, 3.0000002, 3.1333334, 3.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
+}, {
+"args": [],
+"method": &"circleTrail"
 }]
 }
 
@@ -437,6 +505,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, 1), Vector2(1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TongueArea/CollisionPolygon2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.03333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1e68r"]
 resource_name = "turning"
@@ -472,7 +552,7 @@ size = Vector2(188.5, 48.75)
 size = Vector2(14, 20.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1fq1"]
-radius = 24.505102
+radius = 31.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1fq1"]
 size = Vector2(20.5, 37)
@@ -536,7 +616,7 @@ script = ExtResource("1_ht84p")
 vision = NodePath("VisionArea")
 tongue = NodePath("TongueArea")
 aura = NodePath("AuraArea")
-aura_damage_multiplier = 3.0
+aura_damage_multiplier = 1.5
 sprite = NodePath("Body")
 hitbox = NodePath("HitboxArea")
 stats = NodePath("EnemyStats")
@@ -624,7 +704,7 @@ collision_mask = 2
 
 [node name="Aura" type="CollisionShape2D" parent="AuraArea" unique_id=1710244267]
 visible = false
-position = Vector2(0, -3)
+position = Vector2(0.5, -4.5)
 shape = SubResource("CircleShape2D_l1fq1")
 disabled = true
 debug_color = Color(0.79187274, 0.42814645, 0, 0.41960785)
@@ -645,6 +725,7 @@ position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_l1fq1")
 
 [node name="DamagePopup" type="Marker2D" parent="." unique_id=1295349400]
+position = Vector2(0, -24)
 script = ExtResource("3_bybig")
 damage_node = ExtResource("7_l1fq1")
 metadata/_custom_type_script = "uid://d0ffw2f0aswn"

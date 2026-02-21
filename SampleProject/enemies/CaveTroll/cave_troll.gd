@@ -36,7 +36,7 @@ func _on_tongue_2d_body_entered(body: Node2D) -> void:
 	hit_target(tongue_damage_multiplier, body, hitbox_iframe, tongue_chip_damage)
 	
 func _on_aura_2d_body_entered(body: Node2D) -> void:
-	hit_target(aura_damage_multiplier, body, aura, aura_chip_damage, false, Global.Attribute.HIT, aura_rehit_time)
+	hit_target(aura_damage_multiplier, body, aura, aura_chip_damage, false, Global.Attribute.ENFEEBLE, aura_rehit_time)
 
 func _on_iframe_timer_timeout() -> void:
 	if stats.HP > 0:

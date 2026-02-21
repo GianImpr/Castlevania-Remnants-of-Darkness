@@ -75,7 +75,8 @@ enum Attribute {
 	POISON = 10,
 	CURSE = 11,
 	STONE = 12,
-	PARALYSIS = 13
+	PARALYSIS = 13,
+	ENFEEBLE = 14
 }
 
 func _ready() -> void:

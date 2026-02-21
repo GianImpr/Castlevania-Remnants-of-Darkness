@@ -209,6 +209,7 @@ func calculateDamage(body: Node2D, magical: bool = false) -> int:
 	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
 	const WINGED_RING_MULTIPLIER: float = 1.1
 	const BLOCKED_DAMAGE_MULTIPLIER: float = 0.1
+	const ENFEEBLE_DAMAGE_MULTIPLIER: float = 0.7
 	
 	if player.stats.accessoryEquipped(Accessory.Accessories.STUD_OF_CONCENTRATION) and player.stats.Stats["FP"] >= player.stats.Stats["MFP"]:
 		damage *= STUD_OF_CONCENTRATION_BOOST
@@ -224,6 +225,9 @@ func calculateDamage(body: Node2D, magical: bool = false) -> int:
 		
 	if player.stats.accessoryEquipped(Accessory.Accessories.WINGED_RING) and not player.is_on_floor():
 		damage *= WINGED_RING_MULTIPLIER
+		
+	if player.stats.status[player.stats.Status.ENFEEBLE] > 0:
+		damage *= ENFEEBLE_DAMAGE_MULTIPLIER
 		
 	if not TrainingSettings.can_deal_damage and Global.screen == Global.ScreenType.TRAINING:
 		return 0

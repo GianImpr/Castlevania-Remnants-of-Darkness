@@ -19,6 +19,8 @@ func _process(delta: float) -> void:
 			editShaderParams(0.2, 6, true, Color.YELLOW, true)
 		elif Global.player.stats.status[Global.player.stats.Status.POISON] > 0:
 			editShaderParams(0.2, 6, true, Color.MAGENTA, true)
+		elif Global.player.stats.status[Global.player.stats.Status.ENFEEBLE] > 0:
+			editShaderParams(0.2, 6, true, Color.RED, true)
 		elif Global.player.stats.status[Global.player.stats.Status.REFRESHING_AIR] > 0:
 			editShaderParams(0.2, 2, true, Color(0.5, 0, 1))
 		else:
