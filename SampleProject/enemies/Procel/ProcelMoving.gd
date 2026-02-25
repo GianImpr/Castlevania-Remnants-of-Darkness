@@ -9,7 +9,7 @@ func enter():
 	moving_tween.finished.connect(Transitioned.emit.bind(self, "disappearing"))
 	moving_tween.set_trans(Tween.TRANS_SINE)
 	moving_tween.tween_property(player, "global_position:x", player.default_position.x+DISTANCE*player.facing_position, DURATION_SECONDS)
-	
+
 func exit():
 	if moving_tween.is_running():
 		moving_tween.kill()

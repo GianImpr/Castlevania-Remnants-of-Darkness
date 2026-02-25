@@ -1,8 +1,9 @@
 extends Camera2D
-
+class_name GameCamera
 @export var random_strength: float = 10.0
 @export var shake_fade: float = 5.0
 
+const DEFAULT_RANDOM_STRENGTH: float = 10.0
 var shake_strength: float = 0.0
 
 func _ready() -> void:

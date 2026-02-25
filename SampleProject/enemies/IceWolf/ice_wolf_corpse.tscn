@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://drbrgjphxixiq"]
+
+[ext_resource type="Texture2D" uid="uid://du0pw3yr45jd6" path="res://assets/sprites/Enemies/IceWolf/IceWolf.png" id="1_plvvm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1epiq"]
+atlas = ExtResource("1_plvvm")
+region = Rect2(612, 840, 102, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf2fr"]
+size = Vector2(44, 39)
+
+[node name="object" type="RigidBody2D" unique_id=1371264753]
+collision_layer = 0
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=1187964480]
+self_modulate = Color(0, 1.8247963, 1.8247963, 1)
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_1epiq")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=318641840]
+visible = false
+position = Vector2(25, 61)
+shape = SubResource("RectangleShape2D_uf2fr")
+one_way_collision = true
