@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhpoigeaf1rv5"]
+[gd_scene format=3 uid="uid://dhpoigeaf1rv5"]
 
 [ext_resource type="Texture2D" uid="uid://g4py1okxnp3u" path="res://assets/sprites/Weapons/Greatswords/Claymore.png" id="1_amtlb"]
 [ext_resource type="Script" uid="uid://cuc51tpbif06h" path="res://SampleProject/Scripts/HectorAnims/weapon_sprite.gd" id="2_dv0vu"]
@@ -35,6 +35,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(15, 35)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_axufc"]
@@ -122,7 +134,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(29, -3), Vector2(29, -3)]
+"values": [Vector2(27, -3), Vector2(27, -3)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -161,6 +173,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_v8epl"]
@@ -248,7 +272,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(29, -3), Vector2(29, -3)]
+"values": [Vector2(27, -7), Vector2(27, -7)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -276,26 +300,176 @@ tracks/8/keys = {
 "method": &"recolorTrail"
 }]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6evbk"]
+resource_name = "swing_crouch"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 4, 5, 6, 7, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerHitbox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-12, 20), Vector2(-27, 16), Vector2(-24, 10), Vector2(-20, -8), Vector2(15, -18), Vector2(35, -2), Vector2(41, 34)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerHitbox/CollisionShape2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, -0.775416, -0.00568026, -0.00568026, 0.798368, 1.5708]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerHitbox/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.35, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.894118, 0.501961, 0.443137, 0.376471), Color(0.894118, 0.501961, 0.443137, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(25, 0), Vector2(25, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerHitbox/CollisionShape2D:shape:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(54, 20), Vector2(50, 15), Vector2(45, 35), Vector2(15, 35)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PlayerHitbox")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"recolorTrail"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 9), Vector2(-2, 4)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eycnm"]
 _data = {
 &"RESET": SubResource("Animation_cpbl2"),
 &"swing": SubResource("Animation_axufc"),
-&"swing_air": SubResource("Animation_v8epl")
+&"swing_air": SubResource("Animation_v8epl"),
+&"swing_crouch": SubResource("Animation_6evbk")
 }
 
-[node name="Claymore" type="Sprite2D" node_paths=PackedStringArray("animation", "hitbox")]
+[node name="Claymore" type="Sprite2D" unique_id=1608474890 node_paths=PackedStringArray("animation", "hitbox")]
 process_mode = 1
 visible = false
 texture = ExtResource("1_amtlb")
 hframes = 11
 vframes = 2
-frame = 20
 script = ExtResource("2_dv0vu")
 animation = NodePath("AnimationPlayer")
 hitbox = NodePath("PlayerHitbox")
 
-[node name="PlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("hitbox", "trail")]
+[node name="PlayerHitbox" type="Area2D" parent="." unique_id=1197219596 node_paths=PackedStringArray("hitbox", "trail")]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("3_6ygjd")
@@ -306,21 +480,19 @@ hit_collision_scene = ExtResource("4_ecgx1")
 ice_hit_collision_scene = ExtResource("5_r0i00")
 base_attribute = Array[int]([2])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(41, 25)
-rotation = 1.5708
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox" unique_id=1280816527]
+position = Vector2(-12, 11)
 shape = SubResource("RectangleShape2D_i1dwb")
+disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 5.96046e-08)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=16646798]
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(29, -3)
 scale = Vector2(0.727273, 1)
 texture = ExtResource("6_jnncq")
 vframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_eycnm")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=701726801]
+libraries/ = SubResource("AnimationLibrary_eycnm")
 
 [connection signal="body_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_body_entered"]
