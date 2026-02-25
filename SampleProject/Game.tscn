@@ -202,18 +202,26 @@
 [ext_resource type="Texture2D" uid="uid://u08tbm7csfl3" path="res://assets/sprites/Items/InventoryIcons/Inventory_101.png" id="130_6e8ib"]
 [ext_resource type="Texture2D" uid="uid://de0c62bdb6r4j" path="res://assets/sprites/Items/InventoryIcons/Inventory_238.png" id="133_wmlt3"]
 [ext_resource type="Texture2D" uid="uid://m2ia05r8abs2" path="res://assets/sprites/Items/InventoryIcons/Inventory_85.png" id="142_awere"]
+[ext_resource type="Texture2D" uid="uid://cavxict3jcw3c" path="res://assets/sprites/Items/InventoryIcons/Inventory_199.png" id="142_i1n6y"]
+[ext_resource type="Texture2D" uid="uid://quldn52n360c" path="res://assets/sprites/Items/InventoryIcons/Inventory_156.png" id="143_4kc0v"]
+[ext_resource type="Texture2D" uid="uid://cvjxxh674kw8p" path="res://assets/sprites/Items/InventoryIcons/Inventory_201.png" id="143_e2gqc"]
 [ext_resource type="Texture2D" uid="uid://b5y83vqsbx85u" path="res://assets/sprites/Items/OtherIcons/16x16/fa2140.png" id="143_ffcf7"]
+[ext_resource type="Texture2D" uid="uid://ck23lj1r1n7rk" path="res://assets/sprites/Items/InventoryIcons/Inventory_145.png" id="145_hkkbe"]
 [ext_resource type="Script" uid="uid://dc2amebtxwnp4" path="res://SampleProject/Scripts/System/artifact.gd" id="145_wv42h"]
 [ext_resource type="Texture2D" uid="uid://xkxfw3qnyjar" path="res://assets/sprites/Items/OtherIcons/16x16/fa1557.png" id="146_j32o5"]
+[ext_resource type="Texture2D" uid="uid://s4ichgidfwou" path="res://assets/sprites/Items/InventoryIcons/Inventory_140.png" id="146_ttd3q"]
 [ext_resource type="Texture2D" uid="uid://ckruwirv15vgo" path="res://assets/sprites/Items/InventoryIcons/Inventory_10.png" id="148_n1ytd"]
 [ext_resource type="Texture2D" uid="uid://bsfce8lw7q22a" path="res://assets/sprites/Items/InventoryIcons/Inventory_9.png" id="149_f3126"]
 [ext_resource type="PackedScene" uid="uid://dvikboxpt5o45" path="res://SampleProject/extra_scenes/dialogue.tscn" id="149_om524"]
 [ext_resource type="Texture2D" uid="uid://dw2nqmoc6ghcd" path="res://assets/sprites/Items/InventoryIcons/AguniLaurel.png" id="150_e8wvu"]
 [ext_resource type="Texture2D" uid="uid://yx5hgl8pxwjv" path="res://assets/sprites/Items/InventoryIcons/Inventory_236.png" id="154_kh17x"]
 [ext_resource type="Texture2D" uid="uid://cjay83kpbxoek" path="res://assets/sprites/Items/InventoryIcons/Inventory_235.png" id="155_a8hka"]
+[ext_resource type="Texture2D" uid="uid://bqobnrykl4jpq" path="res://assets/sprites/Items/InventoryIcons/Inventory_15.png" id="155_cm0wp"]
 [ext_resource type="Texture2D" uid="uid://6r72jxcbvq47" path="res://assets/images/WarpPreviews/AbandonedEntrance.png" id="156_3rde5"]
 [ext_resource type="Texture2D" uid="uid://b62naasdufxrx" path="res://assets/sprites/Items/InventoryIcons/Inventory_226.png" id="156_5x5rq"]
+[ext_resource type="Texture2D" uid="uid://d2abys5bqfelm" path="res://assets/sprites/Items/InventoryIcons/Inventory_14.png" id="156_a1tmt"]
 [ext_resource type="Texture2D" uid="uid://ckn3j5bpeyxx1" path="res://assets/sprites/Items/InventoryIcons/Inventory_92.png" id="157_6vmuw"]
+[ext_resource type="Texture2D" uid="uid://c0efoejk2p57w" path="res://assets/sprites/Items/InventoryIcons/Inventory_31.png" id="157_a1tmt"]
 [ext_resource type="Texture2D" uid="uid://dler8ycprwoac" path="res://assets/sprites/Items/InventoryIcons/BookOfMonsters.png" id="157_qs5p8"]
 [ext_resource type="Texture2D" uid="uid://ctxxn0ruh067u" path="res://assets/images/WarpPreviews/AbandonedGauntlet.png" id="157_wahx8"]
 [ext_resource type="Texture2D" uid="uid://bgsf8dpkpib4k" path="res://assets/images/WarpPreviews/AbandonedTop.png" id="158_8p07p"]
@@ -1746,7 +1754,7 @@ script = ExtResource("86_xt4t6")
 body_name = "IRON_PLATE"
 body_description = "IRON_PLATE_DESC"
 DEF = 10
-value = 320
+value = 280
 icon = ExtResource("91_inejg")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -1764,7 +1772,7 @@ script = ExtResource("86_xt4t6")
 body_name = "SCALE_MAIL"
 body_description = "SCALE_MAIL_DESC"
 DEF = 13
-value = 350
+value = 290
 icon = ExtResource("123_yi5bd")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -1786,6 +1794,7 @@ script = ExtResource("86_xt4t6")
 body_name = "BREASTPLATE"
 body_description = "BREASTPLATE_DESC"
 DEF = 15
+value = 300
 icon = ExtResource("124_ys61b")
 recipe_status = 0
 recipe = Array[Dictionary]([{
@@ -1801,6 +1810,109 @@ recipe = Array[Dictionary]([{
 "inventory": 3,
 "quantity": 1
 }])
+
+[sub_resource type="Resource" id="Resource_excnl"]
+script = ExtResource("86_xt4t6")
+body_name = "PONCHO"
+body_description = "PONCHO_DESC"
+DEF = 5
+INT = 2
+RES = 2
+LCK = 4
+value = 200
+icon = ExtResource("142_i1n6y")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 45,
+"inventory": 3,
+"quantity": 2
+}, {
+"id": 60,
+"inventory": 3,
+"quantity": 1
+}])
+metadata/_custom_type_script = "uid://ye7lgyf1aia7"
+
+[sub_resource type="Resource" id="Resource_54pao"]
+script = ExtResource("86_xt4t6")
+body_name = "STEEL_MAIL"
+body_description = "STEEL_MAIL_DESC"
+DEF = 17
+value = 350
+icon = ExtResource("143_4kc0v")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 53,
+"inventory": 3,
+"quantity": 2
+}])
+metadata/_custom_type_script = "uid://ye7lgyf1aia7"
+
+[sub_resource type="Resource" id="Resource_7vfvr"]
+script = ExtResource("86_xt4t6")
+body_name = "SURCOAT"
+body_description = "SURCOAT_DESC"
+DEF = 20
+value = 400
+icon = ExtResource("143_e2gqc")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 6,
+"inventory": 2,
+"quantity": 1
+}, {
+"id": 53,
+"inventory": 3,
+"quantity": 1
+}])
+metadata/_custom_type_script = "uid://ye7lgyf1aia7"
+
+[sub_resource type="Resource" id="Resource_1lj8y"]
+script = ExtResource("86_xt4t6")
+body_name = "CHAIN_MAIL"
+body_description = "CHAIN_MAIL_DESC"
+DEF = 25
+value = 450
+icon = ExtResource("145_hkkbe")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 6,
+"inventory": 2,
+"quantity": 1
+}, {
+"id": 49,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 54,
+"inventory": 3,
+"quantity": 1
+}])
+metadata/_custom_type_script = "uid://ye7lgyf1aia7"
+
+[sub_resource type="Resource" id="Resource_81t7d"]
+script = ExtResource("86_xt4t6")
+body_name = "SERENITY_ROBE"
+body_description = "SERENITY_ROBE_DESC"
+DEF = 12
+RES = 20
+value = 500
+icon = ExtResource("146_ttd3q")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 54,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 60,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 8,
+"inventory": 2,
+"quantity": 1
+}])
+metadata/_custom_type_script = "uid://ye7lgyf1aia7"
 
 [sub_resource type="Resource" id="Resource_olb5a"]
 script = ExtResource("92_10lem")
@@ -1904,6 +2016,69 @@ legs_description = "MOONWALKERS_DESC"
 DEF = 5
 value = 1500
 icon = ExtResource("149_f3126")
+metadata/_custom_type_script = "uid://nhkf3bgthm8c"
+
+[sub_resource type="Resource" id="Resource_w5q25"]
+script = ExtResource("92_10lem")
+legs_name = "COMBAT_BOOTS"
+legs_description = "COMBAT_BOOTS_DESC"
+ATK = 1
+DEF = 6
+value = 500
+icon = ExtResource("155_cm0wp")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 3,
+"inventory": 4,
+"quantity": 1
+}, {
+"id": 60,
+"inventory": 3,
+"quantity": 1
+}])
+metadata/_custom_type_script = "uid://nhkf3bgthm8c"
+
+[sub_resource type="Resource" id="Resource_v45l6"]
+script = ExtResource("92_10lem")
+legs_name = "STEEL_LEGGINGS"
+legs_description = "STEEL_LEGGINGS_DESC"
+DEF = 8
+value = 550
+icon = ExtResource("156_a1tmt")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 46,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 53,
+"inventory": 3,
+"quantity": 1
+}])
+metadata/_custom_type_script = "uid://nhkf3bgthm8c"
+
+[sub_resource type="Resource" id="Resource_887wf"]
+script = ExtResource("92_10lem")
+legs_name = "WINGED_BOOTS"
+legs_description = "WINGED_BOOTS_DESC"
+DEF = 6
+INT = 3
+RES = 5
+icon = ExtResource("157_a1tmt")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 5,
+"inventory": 4,
+"quantity": 1
+}, {
+"id": 60,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 49,
+"inventory": 3,
+"quantity": 1
+}])
 metadata/_custom_type_script = "uid://nhkf3bgthm8c"
 
 [sub_resource type="Resource" id="Resource_fmjl1"]
@@ -4148,8 +4323,8 @@ world_environment = NodePath("WorldEnvironment")
 weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3"), SubResource("Resource_etedp"), SubResource("Resource_3pxt5"), SubResource("Resource_kt2e1"), SubResource("Resource_cm3lq"), SubResource("Resource_88uus")])
 item_compendium = SubResource("Resource_ksmb3")
 headgear_compendium = Array[ExtResource("58_johey")]([SubResource("Resource_stdwu"), SubResource("Resource_hcxc2"), SubResource("Resource_qtfvs"), SubResource("Resource_b4qdd"), SubResource("Resource_w8tqy"), SubResource("Resource_4iosu"), SubResource("Resource_b0lhj"), SubResource("Resource_kh436"), SubResource("Resource_n53u7"), SubResource("Resource_n15bh"), SubResource("Resource_2gney"), SubResource("Resource_580rm"), SubResource("Resource_fy53e"), SubResource("Resource_xv0ma"), SubResource("Resource_csljy"), SubResource("Resource_nfnn0"), SubResource("Resource_7go8i"), SubResource("Resource_ji887"), SubResource("Resource_nhhcx"), SubResource("Resource_ocbsj"), SubResource("Resource_jsrpv"), SubResource("Resource_qx0f7"), SubResource("Resource_bg2je"), SubResource("Resource_vexyv"), SubResource("Resource_utsap"), SubResource("Resource_itck4"), SubResource("Resource_ms7n0"), SubResource("Resource_chuqd")])
-body_compendium = Array[ExtResource("86_xt4t6")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me"), SubResource("Resource_dqisp"), SubResource("Resource_rngem")])
-legs_compendium = Array[ExtResource("92_10lem")]([SubResource("Resource_olb5a"), SubResource("Resource_jnr2a"), SubResource("Resource_d35ul"), SubResource("Resource_4ly5s"), SubResource("Resource_jd16d"), SubResource("Resource_eg1o3"), SubResource("Resource_gx541")])
+body_compendium = Array[ExtResource("86_xt4t6")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me"), SubResource("Resource_dqisp"), SubResource("Resource_rngem"), SubResource("Resource_excnl"), SubResource("Resource_54pao"), SubResource("Resource_7vfvr"), SubResource("Resource_1lj8y"), SubResource("Resource_81t7d")])
+legs_compendium = Array[ExtResource("92_10lem")]([SubResource("Resource_olb5a"), SubResource("Resource_jnr2a"), SubResource("Resource_d35ul"), SubResource("Resource_4ly5s"), SubResource("Resource_jd16d"), SubResource("Resource_eg1o3"), SubResource("Resource_gx541"), SubResource("Resource_w5q25"), SubResource("Resource_v45l6"), SubResource("Resource_887wf")])
 accessory_compendium = Array[ExtResource("95_xlcm0")]([SubResource("Resource_fmjl1"), SubResource("Resource_g71f4"), SubResource("Resource_t5f6q"), SubResource("Resource_jiprx"), SubResource("Resource_hiqqn"), SubResource("Resource_aauoy"), SubResource("Resource_kfktv"), SubResource("Resource_j5jy3"), SubResource("Resource_wergv"), SubResource("Resource_dorjh"), SubResource("Resource_yrj2d"), SubResource("Resource_n1ytd"), SubResource("Resource_df72d"), SubResource("Resource_f3126")])
 skill_compendium = Array[ExtResource("99_ixwc3")]([SubResource("Resource_2w4nc"), SubResource("Resource_v2mv7"), SubResource("Resource_u4ub6"), SubResource("Resource_3wcg1"), SubResource("Resource_m10e8"), SubResource("Resource_gsb2m"), SubResource("Resource_s1o4l"), SubResource("Resource_d8rda"), SubResource("Resource_fna47"), SubResource("Resource_vfu6u"), SubResource("Resource_4ifw5"), SubResource("Resource_lqir6"), SubResource("Resource_yrs72"), SubResource("Resource_awbx6"), SubResource("Resource_k5k37"), SubResource("Resource_se88n"), SubResource("Resource_16qt3"), SubResource("Resource_66krm"), SubResource("Resource_2rw2m"), SubResource("Resource_6o46a")])
 relic_compendium = Array[ExtResource("105_7lbas")]([SubResource("Resource_86suo"), SubResource("Resource_8t8qo")])

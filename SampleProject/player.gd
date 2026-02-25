@@ -75,6 +75,8 @@ var activating_magic: bool = false
 var hit_effect_applied: bool = false
 const PERFECT_GUARD_WINDOW_SIMPLIFIED: float = 0.192
 const PERFECT_GUARD_WINDOW_DEFAULT: float = 0.096
+const NORMAL_GRAVITY_MULTIPLIER: float = 2
+const WINGED_BOOTS_GRAVITY_MULTIPLIER: float = 1.7
 
 const CHARGE_ONE_COST_RATIO: int = 10
 var cur_charge: Charge = Charge.NONE
@@ -189,7 +191,9 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:	
 	# Add the gravity.
 	if not is_on_floor() and not motion_mode == MotionMode.MOTION_MODE_FLOATING:
-		velocity += get_gravity()*2 * delta
+		var gravity_multiplier: float
+		gravity_multiplier = WINGED_BOOTS_GRAVITY_MULTIPLIER if stats.itemEquipped(Legs.Leg.WINGED_BOOTS, stats.EQUIPMENT_SLOTS.LEGS) else NORMAL_GRAVITY_MULTIPLIER
+		velocity += get_gravity() * gravity_multiplier * delta
 
 	direction = round(Input.get_axis("move_left", "move_right"))
 	
