@@ -2114,7 +2114,7 @@ speed_scale = 1.2
 [node name="Equip" type="Node" parent="MenuStateMachine" unique_id=762393775 node_paths=PackedStringArray("labels", "equip_list", "animation", "default_button")]
 script = ExtResource("10_fvj6d")
 labels = NodePath("Display/Text")
-equip_list = NodePath("Display/EquipList")
+equip_list = NodePath("Display/EquipScroll/EquipList")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/PanelContainer/Menu/HBoxContainer/Weapon")
 
@@ -2135,7 +2135,7 @@ layout_mode = 2
 theme = SubResource("Theme_pwypc")
 theme_override_constants/separation = 0
 script = ExtResource("11_08wtv")
-equip_list = NodePath("../../EquipList")
+equip_list = NodePath("../../EquipScroll/EquipList")
 description = NodePath("../../Description")
 button_glow = SubResource("StyleBoxFlat_h2w5a")
 sound = NodePath("../../../../../PolyphonicMenuAudio")
@@ -2461,29 +2461,35 @@ offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gwmgf")
 
-[node name="EquipList" type="GridContainer" parent="MenuStateMachine/Equip/Display" unique_id=2098074987 node_paths=PackedStringArray("glow_timer", "sound", "equipSlots", "state_machine", "weapon_desc", "qty_list", "labels", "quick_weapon_icons")]
-custom_minimum_size = Vector2(360, 94)
+[node name="EquipScroll" type="ScrollContainer" parent="MenuStateMachine/Equip/Display" unique_id=1833888987]
 offset_left = 195.0
 offset_top = 89.0
-offset_right = 555.0
-offset_bottom = 234.0
+offset_right = 563.0
+offset_bottom = 225.0
 scale = Vector2(2, 2)
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="EquipList" type="GridContainer" parent="MenuStateMachine/Equip/Display/EquipScroll" unique_id=2098074987 node_paths=PackedStringArray("glow_timer", "sound", "equipSlots", "state_machine", "weapon_desc", "qty_list", "labels", "quick_weapon_icons", "qty_scroll")]
+custom_minimum_size = Vector2(360, 94)
+layout_mode = 2
 theme = SubResource("Theme_j428y")
 theme_override_constants/h_separation = 5
 columns = 2
 script = ExtResource("12_7vum4")
 button_glow = SubResource("StyleBoxFlat_amko3")
 glow_timer = NodePath("GlowTimer")
-sound = NodePath("../../../../PolyphonicMenuAudio")
+sound = NodePath("../../../../../PolyphonicMenuAudio")
 weapons = SubResource("Resource_s8k7j")
-equipSlots = NodePath("../PanelContainer/Menu")
-state_machine = NodePath("../../..")
-weapon_desc = NodePath("../Description")
-qty_list = NodePath("../QuantityList")
-labels = NodePath("../Text")
-quick_weapon_icons = NodePath("../QuickWeapons/QuickWeaponIcons")
+equipSlots = NodePath("../../PanelContainer/Menu")
+state_machine = NodePath("../../../..")
+weapon_desc = NodePath("../../Description")
+qty_list = NodePath("../../QuantityScroll/QuantityList")
+labels = NodePath("../../Text")
+quick_weapon_icons = NodePath("../../QuickWeapons/QuickWeaponIcons")
+qty_scroll = NodePath("../../QuantityScroll")
 
-[node name="Unequip" type="Button" parent="MenuStateMachine/Equip/Display/EquipList" unique_id=854954827]
+[node name="Unequip" type="Button" parent="MenuStateMachine/Equip/Display/EquipScroll/EquipList" unique_id=854954827]
 custom_minimum_size = Vector2(162, 0)
 layout_mode = 2
 text = "UNEQUIP_LABEL"
@@ -2492,28 +2498,27 @@ flat = true
 alignment = 0
 clip_text = true
 
-[node name="GlowTimer" type="Timer" parent="MenuStateMachine/Equip/Display/EquipList" unique_id=340625716]
+[node name="GlowTimer" type="Timer" parent="MenuStateMachine/Equip/Display/EquipScroll/EquipList" unique_id=340625716]
 wait_time = 0.1
 autostart = true
 
-[node name="QuantityList" type="GridContainer" parent="MenuStateMachine/Equip/Display" unique_id=1374871582]
-custom_minimum_size = Vector2(227, 90)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="QuantityScroll" type="ScrollContainer" parent="MenuStateMachine/Equip/Display" unique_id=2135279972]
 offset_left = 355.0
 offset_top = 97.0
 offset_right = 650.0
-offset_bottom = 187.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_bottom = 233.0
 scale = Vector2(2, 2)
+horizontal_scroll_mode = 0
+
+[node name="QuantityList" type="GridContainer" parent="MenuStateMachine/Equip/Display/QuantityScroll" unique_id=1374871582]
+custom_minimum_size = Vector2(227, 94)
+layout_mode = 2
 theme = SubResource("Theme_hr12r")
 theme_override_constants/h_separation = 87
 theme_override_constants/v_separation = 16
 columns = 2
 
-[node name="Unequip" type="Label" parent="MenuStateMachine/Equip/Display/QuantityList" unique_id=698297329]
+[node name="Unequip" type="Label" parent="MenuStateMachine/Equip/Display/QuantityScroll/QuantityList" unique_id=698297329]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 horizontal_alignment = 2
@@ -5331,7 +5336,7 @@ audio_library = SubResource("Resource_dt3v6")
 [node name="ResetTimer" type="Timer" parent="." unique_id=925123246]
 one_shot = true
 
-[connection signal="timeout" from="MenuStateMachine/Equip/Display/EquipList/GlowTimer" to="MenuStateMachine/Equip/Display/EquipList" method="_on_glow_timer_timeout"]
+[connection signal="timeout" from="MenuStateMachine/Equip/Display/EquipScroll/EquipList/GlowTimer" to="MenuStateMachine/Equip/Display/EquipScroll/EquipList" method="_on_glow_timer_timeout"]
 [connection signal="pressed" from="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/Yes" to="MenuStateMachine/Combine/Display/PanelContainer/Menu" method="_on_yes_pressed"]
 [connection signal="pressed" from="MenuStateMachine/Combine/Display/ConfirmPanel/LabelAndButtons/ConfirmOptions/Options/No" to="MenuStateMachine/Combine/Display/PanelContainer/Menu" method="_on_no_pressed"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

@@ -17,6 +17,7 @@ var player
 @export var qty_list: GridContainer
 @export var labels: Control
 @export var quick_weapon_icons: Control
+@export var qty_scroll: ScrollContainer
 var weapon_text: Label
 var weapon_icon: TextureRect
 var cur_selected_item = null
@@ -130,7 +131,10 @@ func on_focused(button):
 		cur_selected_item = null
 		weapon_icon.texture = load("res://assets/sprites/Items/InventoryIcons/Inventory_255.png")
 		weapon_text.text = ""
-		
+	
+	if qty_list.size.y < size.y:
+		qty_list.custom_minimum_size.y = size.y
+	qty_scroll.scroll_vertical = get_parent().scroll_vertical
 	var selectedEquip = getEquipFromInventory(button.get_index()-2)
 	var currentEquip = getCurEquip()
 		
@@ -156,6 +160,8 @@ func initList(list: Array[Dictionary]):
 		qty_label.custom_minimum_size = Vector2(QUANTITY_LABEL_MIN_WIDTH, 0)
 		qty_label.text = "x" + str(item_quantity)
 		qty_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		get_parent().scroll_vertical = 0
+		qty_scroll.scroll_vertical = 0
 		qty_list.add_child(qty_label)
 		button.icon = item_icon
 		button.text = item_name
