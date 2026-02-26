@@ -1,13 +1,15 @@
-[gd_scene format=3 uid="uid://c0akcai2soq52"]
+[gd_scene format=3 uid="uid://h51m8jwkc78e"]
 
-[ext_resource type="Texture2D" uid="uid://dk05uvi0adkgk" path="res://assets/sprites/Weapons/Spears/Halberd.png" id="1_ao4up"]
-[ext_resource type="Script" uid="uid://cuc51tpbif06h" path="res://SampleProject/Scripts/HectorAnims/weapon_sprite.gd" id="2_f7n8o"]
-[ext_resource type="Script" uid="uid://bnqfu6md522u3" path="res://SampleProject/Scripts/AttackLogic.gd" id="3_wfdwn"]
-[ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="4_uih8y"]
-[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="5_wuvuc"]
-[ext_resource type="Texture2D" uid="uid://bbn7e5gi24eyw" path="res://assets/sprites/Weapons/Spears/Smear.png" id="6_y7icl"]
+[ext_resource type="Texture2D" uid="uid://bfo0w2edi8ank" path="res://assets/sprites/Weapons/Spears/Trident.png" id="1_h72dh"]
+[ext_resource type="Script" uid="uid://cuc51tpbif06h" path="res://SampleProject/Scripts/HectorAnims/weapon_sprite.gd" id="2_kv3cy"]
+[ext_resource type="Script" uid="uid://bnqfu6md522u3" path="res://SampleProject/Scripts/AttackLogic.gd" id="3_l2d23"]
+[ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="4_fe1b5"]
+[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="5_mqj7x"]
+[ext_resource type="Texture2D" uid="uid://bbn7e5gi24eyw" path="res://assets/sprites/Weapons/Spears/Smear.png" id="6_klgca"]
+[ext_resource type="Texture2D" uid="uid://sy66dqk72fgc" path="res://assets/sprites/Enemies/Procel/ProcelBubble.png" id="7_kv3cy"]
 
-[sub_resource type="Animation" id="Animation_sud5e"]
+[sub_resource type="Animation" id="Animation_l2d23"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -93,8 +95,44 @@ tracks/6/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bubbles:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Bubbles:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(46, -8)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Bubbles:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="Animation" id="Animation_kl2w3"]
+[sub_resource type="Animation" id="Animation_fe1b5"]
 resource_name = "swing"
 length = 0.65
 step = 0.0666667
@@ -220,8 +258,58 @@ tracks/9/keys = {
 "method": &"recolorTrail"
 }]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Bubbles:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Bubbles:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(46, -8)]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Bubbles")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Bubbles:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
-[sub_resource type="Animation" id="Animation_bifun"]
+[sub_resource type="Animation" id="Animation_mqj7x"]
 resource_name = "swing_air"
 length = 0.65
 step = 0.0666667
@@ -347,8 +435,58 @@ tracks/9/keys = {
 "method": &"recolorTrail"
 }]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Bubbles:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Bubbles:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(46, -8)]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Bubbles")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Bubbles:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
-[sub_resource type="Animation" id="Animation_obrxj"]
+[sub_resource type="Animation" id="Animation_klgca"]
 resource_name = "swing_crouch"
 length = 0.65
 step = 0.0666667
@@ -474,48 +612,131 @@ tracks/9/keys = {
 "method": &"recolorTrail"
 }]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Bubbles:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Bubbles:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(46, 4)]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Bubbles")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Bubbles:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fyiql"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3n7v5"]
 _data = {
-&"RESET": SubResource("Animation_sud5e"),
-&"swing": SubResource("Animation_kl2w3"),
-&"swing_air": SubResource("Animation_bifun"),
-&"swing_crouch": SubResource("Animation_obrxj")
+&"RESET": SubResource("Animation_l2d23"),
+&"swing": SubResource("Animation_fe1b5"),
+&"swing_air": SubResource("Animation_mqj7x"),
+&"swing_crouch": SubResource("Animation_klgca")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxj7m"]
 size = Vector2(82, 15)
 
-[node name="Halberd" type="Sprite2D" unique_id=1264411155 node_paths=PackedStringArray("animation", "hitbox")]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fo03c"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_kv3cy"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Trident" type="Sprite2D" unique_id=1336296905 node_paths=PackedStringArray("animation", "hitbox")]
 process_mode = 1
 visible = false
-texture = ExtResource("1_ao4up")
-offset = Vector2(19, 12)
+texture = ExtResource("1_h72dh")
+offset = Vector2(19, 0)
 hframes = 5
-script = ExtResource("2_f7n8o")
+script = ExtResource("2_kv3cy")
 animation = NodePath("AnimationPlayer")
 hitbox = NodePath("PlayerHitbox")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1496501339]
-libraries/ = SubResource("AnimationLibrary_fyiql")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=36950009]
+libraries/ = SubResource("AnimationLibrary_3n7v5")
 
-[node name="PlayerHitbox" type="Area2D" parent="." unique_id=1090267961 node_paths=PackedStringArray("hitbox", "trail")]
+[node name="PlayerHitbox" type="Area2D" parent="." unique_id=610219837 node_paths=PackedStringArray("hitbox", "trail")]
 collision_layer = 8
 collision_mask = 4
-script = ExtResource("3_wfdwn")
+script = ExtResource("3_l2d23")
 iframes_on_hit = 30
 hitbox = NodePath("CollisionShape2D")
 trail = NodePath("../Trail")
-hit_collision_scene = ExtResource("4_uih8y")
-ice_hit_collision_scene = ExtResource("5_wuvuc")
+hit_collision_scene = ExtResource("4_fe1b5")
+ice_hit_collision_scene = ExtResource("5_mqj7x")
 base_attribute = Array[int]([2])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox" unique_id=575356067]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox" unique_id=2060136593]
 visible = false
 position = Vector2(21, 11)
 shape = SubResource("RectangleShape2D_dxj7m")
+disabled = true
 
-[node name="Trail" type="Sprite2D" parent="." unique_id=729938871]
-texture = ExtResource("6_y7icl")
+[node name="Trail" type="Sprite2D" parent="." unique_id=1291135433]
+position = Vector2(-2, 0)
+texture = ExtResource("6_klgca")
+
+[node name="Bubbles" type="CPUParticles2D" parent="." unique_id=892563380]
+self_modulate = Color(0.59000057, 0.8238249, 1, 0.56)
+material = SubResource("CanvasItemMaterial_fo03c")
+position = Vector2(46, -8)
+emitting = false
+texture = ExtResource("7_kv3cy")
+lifetime = 0.3
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(7, 6)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_kv3cy")
+anim_speed_min = -2.0
+anim_speed_max = -2.0
+anim_offset_min = 0.1
+anim_offset_max = 0.5
 
 [connection signal="body_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_body_entered"]

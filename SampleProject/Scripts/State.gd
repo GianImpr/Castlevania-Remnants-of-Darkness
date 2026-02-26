@@ -334,6 +334,10 @@ func get_attack_sound() -> String:
 	var sounds = ["sword", "greatsword", "axe", "spear", "punch"]
 	if player.stats.equipment["weapon"] == 0:
 		return sounds[4]
+		
+	if player.stats.itemEquipped(Weapon.Weapons.BAHG_NAHK, player.stats.EQUIPMENT_SLOTS.WEAPON):
+		return "nahk_punch"
+		
 	return sounds[player.stats.searchItemInCompendium(player.stats.equipment["weapon"], player.stats.weapon_compendium).type]
 
 func is_above_player_within_range(horizontal_range: float, min_vertical_distance: float) -> bool:
