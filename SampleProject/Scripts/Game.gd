@@ -299,8 +299,10 @@ func save_game():
 	save_manager.set_value("file_name", Global.player.stats.file_name)
 	save_manager.set_value("map_ratio", Global.player.stats.map_ratio)
 	save_manager.set_value("position", Global.player.global_position)
-	if player.sprite.weapon != null:
+	if player.sprite.weapon != null and not player.sprite.weapon.has_parent_node:
 		save_manager.set_value("weapon", player.sprite.weapon.scene_file_path)
+	elif player.sprite.weapon != null and player.sprite.weapon.has_parent_node:
+		save_manager.set_value("weapon", player.sprite.weapon.get_parent().scene_file_path)
 	save_manager.save_as_text(Global.save_destination)
 
 func reset_map_starting_coords():

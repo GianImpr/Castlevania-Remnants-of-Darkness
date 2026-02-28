@@ -157,6 +157,7 @@
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="105_c2fce"]
 [ext_resource type="Script" uid="uid://bfvlehne5pigl" path="res://SampleProject/Scripts/HectorAnims/HectorDying.gd" id="108_egrmx"]
 [ext_resource type="Script" uid="uid://b8wqvvxjwq6oh" path="res://SampleProject/Scripts/HectorAnims/HectorOpeningDoor.gd" id="114_cgcp8"]
+[ext_resource type="PackedScene" uid="uid://jda48nrn12d2" path="res://SampleProject/Weapons/short_sword.tscn" id="115_5uixd"]
 [ext_resource type="Script" uid="uid://c5vneiixbxi0f" path="res://SampleProject/Scripts/HectorAnims/HectorSitDown.gd" id="115_efwyv"]
 [ext_resource type="Script" uid="uid://b4fwgrwiusdhn" path="res://SampleProject/Scripts/HectorAnims/HectorStandUp.gd" id="116_3em4l"]
 [ext_resource type="Script" uid="uid://177r2o2kbw6v" path="res://SampleProject/Scripts/HectorAnims/HectorGuard.gd" id="119_m7var"]
@@ -4604,6 +4605,7 @@ region_rect = Rect2(0, 0, 0, 70)
 script = ExtResource("91_toel8")
 glow_speed = 0.17
 glow_timer = NodePath("Glow")
+initial_weapon_sprite = ExtResource("115_5uixd")
 
 [node name="FistHitbox" type="Area2D" parent="Sprite2D" unique_id=1015260105 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1

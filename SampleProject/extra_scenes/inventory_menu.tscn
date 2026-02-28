@@ -42,6 +42,7 @@
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="26_vtso6"]
 [ext_resource type="Texture2D" uid="uid://ga8ynw0tyb5d" path="res://assets/sprites/HUD/Menu/EquipSlot.png" id="26_wptdd"]
 [ext_resource type="AudioStream" uid="uid://k0xc30ehu3h8" path="res://assets/sounds/Menu/HPItem.MP3" id="29_h17r3"]
+[ext_resource type="Texture2D" uid="uid://y13sdm3voch4" path="res://assets/sprites/Weapons/Swords/Short Sword/Short_Sword_icon_new.png" id="29_wmt0a"]
 [ext_resource type="Script" uid="uid://d1ldq1md6cv5h" path="res://SampleProject/Scripts/System/Menu/RichTextEffectVAlign.gd" id="30_itkm0"]
 [ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="30_m47lu"]
 [ext_resource type="Script" uid="uid://dhtgbq716ur1h" path="res://SampleProject/Scripts/System/summon_menu.gd" id="33_8wvtw"]
@@ -2164,7 +2165,7 @@ offset_left = 20.0
 offset_top = 10.0
 offset_right = 60.0
 offset_bottom = 50.0
-texture = ExtResource("14_e4g1x")
+texture = ExtResource("29_wmt0a")
 
 [node name="Artifact" type="Button" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu/HBoxContainer" unique_id=1434490436 node_paths=PackedStringArray("state_machine")]
 custom_minimum_size = Vector2(80, 48)

@@ -117,6 +117,8 @@ enum Charge {
 func _ready() -> void:
 	Global.player = self
 	reset_guard_presses_timer.timeout.connect(func(): times_guard_pressed = 0)
+	if not Global.load_data:
+		sprite.changeWeapon(sprite.initial_weapon_sprite)
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:

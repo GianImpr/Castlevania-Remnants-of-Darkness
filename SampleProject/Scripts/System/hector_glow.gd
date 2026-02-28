@@ -10,6 +10,7 @@ var applied_color: Color
 var applied_influence: float
 var trail_direction: int = 1
 var weapon: WeaponSprite
+@export var initial_weapon_sprite: PackedScene
 
 func _process(delta: float) -> void:
 	# Apply glow according to the buff/debuff
