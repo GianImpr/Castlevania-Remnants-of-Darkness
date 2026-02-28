@@ -51,10 +51,11 @@ func run_without_start_anim(skip_run_start_animation: bool):
 		Transitioned.emit(self, "run")
 
 #Allows the player to fall in a certain state
-func can_fall(coyote_effect: bool):
+func can_fall(coyote_effect: bool, extra_height: float = 0):
 	if not player.is_on_floor():
 		if coyote_effect:
 			player.coyote_timer.start()
+		player.velocity.y -= extra_height
 		Transitioned.emit(self, "falling")
 
 #Allows the player to drop from ledges in a certain state
@@ -83,10 +84,13 @@ func can_turn():
 #Allows the player to move, with possibility to retain momentum
 #This only applies movement, without changing animation, so it is different than
 #can_run_without_anim
-func can_move_with_momentum(keep_momentum: bool):
-	const MOMENTUM_DECELERATION: float = 0.91
+func can_move_with_momentum(keep_momentum: bool, with_speed_boost: bool = false):
+	const MOMENTUM_DECELERATION: float = 0.93
 	if player.direction:
-		player.velocity.x = player.direction * player.SPEED
+		if with_speed_boost:
+			player.velocity.x = max(player.SPEED, abs(player.velocity.x)) * player.direction
+		else:
+			player.velocity.x = player.direction * player.SPEED
 	else:
 		if keep_momentum:
 			player.velocity.x *= MOMENTUM_DECELERATION

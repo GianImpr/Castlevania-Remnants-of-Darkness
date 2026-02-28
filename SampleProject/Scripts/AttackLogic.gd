@@ -13,6 +13,7 @@ class_name PlayerHitbox
 @export var fire_hit_collision_scene: PackedScene = preload("res://SampleProject/extra_scenes/effects/candle_explosion.tscn")
 @export var base_attribute: Array[Global.Attribute]
 @export var adjust_facing_position: bool = true
+@export var direct_physical_hit: bool = false
 static var coin_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/money.tscn")
 static var heart_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/heart.tscn")
 static var orb_scene: PackedScene = preload("res://SampleProject/extra_scenes/effects/heal_orb.tscn")
@@ -201,7 +202,10 @@ func calculateDamage(body: Node2D, magical: bool = false) -> int:
 		offensive_stat = player.stats.Stats["INT"]
 	else:
 		defensive_stat = body.stats.DEF
-		offensive_stat = player.stats.Stats["ATK"]
+		if direct_physical_hit:
+			offensive_stat = player.stats.Stats["STR"]/2
+		else:
+			offensive_stat = player.stats.Stats["ATK"]
 	var damage: int = max(offensive_stat - defensive_stat/2, 1) * dmg_multiplier + damage_boost
 	const STUD_OF_CONCENTRATION_BOOST: float = 1.07
 	const TIP_DAMAGE_MULTIPLIER: float = 1.2
@@ -265,7 +269,7 @@ func createEffects(body: Node2D, physical_based_sound: bool = true) -> void:
 	var weapon = player.stats.equipment["weapon"]
 	var attack_type = 4
 	if physical_based_sound:
-		if weapon != 0:
+		if weapon != 0 and not direct_physical_hit:
 			attack_type = player.stats.searchItemInCompendium(weapon, player.stats.weapon_compendium).type
 			
 		if Global.Attribute.SLASH in actual_attributes and body is Enemy and body.blood_particles != null:
@@ -273,7 +277,10 @@ func createEffects(body: Node2D, physical_based_sound: bool = true) -> void:
 			body.blood_particles.emitting = true
 			sound.play_sound_effect_from_library("blood_slash_sfx")
 		else:
-			sound.play_sound_effect_from_library(hit_sounds[attack_type])
+			if not direct_physical_hit:
+				sound.play_sound_effect_from_library(hit_sounds[attack_type])
+			else:
+				sound.play_sound_effect_from_library("hit_sfx")
 	else:
 		match base_attribute[0]:
 			Global.Attribute.FIRE:

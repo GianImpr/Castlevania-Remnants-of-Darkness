@@ -1,6 +1,7 @@
 extends State
 class_name HectorFalling
 @export var coyote_timer: Timer
+@export var trail_timer: Timer
 static var cur_falling_speed: float
 var can_perfect_guard: bool = false
 const FALL_STARTING_ANIM_TIME: float = 0.5
@@ -10,12 +11,17 @@ func enter():
 	animation.play("jump", -1, 1.3)
 	animation.seek(FALL_STARTING_ANIM_TIME)
 	cur_falling_speed = 0
+	if abs(player.velocity.x) > abs(player.SPEED):
+		trail_timer.start()
+		
+func exit():
+	trail_timer.stop()
 	
 func Update(delta: float):
 	pass
 	
 func Physics_Update(delta: float):
-	can_move_with_momentum(false)
+	can_move_with_momentum(true, true)
 	can_turn()
 	can_attack()
 	check_is_hurt()

@@ -448,12 +448,15 @@ func enfeeble() -> void:
 	state_machine.voice.play_sound_effect_from_library("what")
 
 #Creates one afterimage instance of Hector
-func instantiateScene(scene: PackedScene, get_player_frame: bool, offset: Vector2):
+func instantiateScene(scene: PackedScene, get_player_frame: bool, offset: Vector2, on_top: bool = false):
 	var instance: Sprite2D = scene.instantiate()
 	instance.scale = scale
 	instance.global_position = global_position + offset - MetSys.get_current_room_instance().position
 	instance.flip_h = sprite.flip_h
-	instance.z_index = z_index-1
+	if not on_top:
+		instance.z_index = z_index-1
+	else:
+		instance.z_index = z_index+1
 	if get_player_frame:
 		instance.frame = sprite.frame
 		instance.texture = sprite.texture

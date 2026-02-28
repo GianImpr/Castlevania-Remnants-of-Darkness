@@ -54,4 +54,4 @@ func _on_trail_timer_timeout() -> void:
 	player.instantiateScene(trail_scene, true, Vector2(0,0))
 	
 func _on_debris_timer_timeout() -> void:
-	player.instantiateScene(debris_scene, false, Vector2(player.facing_position*DEBRIS_POSITION.x,DEBRIS_POSITION.y))
+	player.instantiateScene(debris_scene, false, Vector2(player.facing_position*DEBRIS_POSITION.x,DEBRIS_POSITION.y), true)

@@ -169,6 +169,7 @@
 [ext_resource type="Script" uid="uid://cf1ppfim3qip6" path="res://SampleProject/Scripts/HectorAnims/HectorGuardBlocking.gd" id="122_uml35"]
 [ext_resource type="Script" uid="uid://qj13jt40ymnd" path="res://SampleProject/Scripts/HectorAnims/HectorGuardBreak.gd" id="123_h7cmy"]
 [ext_resource type="Script" uid="uid://1xoxget7b8n6" path="res://SampleProject/Scripts/stateTest.gd" id="129_k7aot"]
+[ext_resource type="Script" uid="uid://bu6a0jaceyaa4" path="res://SampleProject/Scripts/HectorAnims/HectorSlide.gd" id="129_w5oev"]
 [ext_resource type="Script" uid="uid://bvobps123ifnc" path="res://SampleProject/Scripts/HectorAnims/HectorGuardPerfect.gd" id="133_qno2k"]
 [ext_resource type="Script" uid="uid://brqvednbfqkfp" path="res://SampleProject/Scripts/HectorAnims/HectorGuardPerfectAir.gd" id="134_fj7lc"]
 [ext_resource type="AudioStream" uid="uid://cqn0ukglajys6" path="res://assets/sounds/Effects/Guard/Block.wav" id="135_oqc8j"]
@@ -214,13 +215,14 @@
 [ext_resource type="AudioStream" uid="uid://b8wskmq4lwq1g" path="res://assets/sounds/HectorMovement/SpearSwing.MP3" id="190_81mwq"]
 [ext_resource type="AudioStream" uid="uid://cl4j2bbjfny20" path="res://assets/sounds/Effects/Spears/Charge.wav" id="191_hhfsc"]
 [ext_resource type="AudioStream" uid="uid://clsvxh22fs3fm" path="res://assets/sounds/HectorMovement/BahgNahkPunch.ogg" id="194_um52d"]
+[ext_resource type="AudioStream" uid="uid://cnov0eaq02j57" path="res://assets/sounds/HectorMovement/Slide.wav" id="195_w5oev"]
+[ext_resource type="AudioStream" uid="uid://d271jlatj7cyx" path="res://assets/sounds/HectorMovement/SlideJump.wav" id="196_w5oev"]
 [ext_resource type="Script" uid="uid://domtd5cul57yy" path="res://SampleProject/Scripts/System/player_projectile.gd" id="200_5r3n4"]
 [ext_resource type="AudioStream" uid="uid://dy51w6vjm6bnf" path="res://assets/sounds/Voice/Hector/GuardBreak.wav" id="205_xy0l7"]
 [ext_resource type="Texture2D" uid="uid://1he2rtoahtll" path="res://assets/sprites/Effects/Sparks/Spark1.png" id="207_mg3ag"]
 [ext_resource type="Texture2D" uid="uid://p0swsulobrnj" path="res://assets/sprites/Effects/Sparks/Spark2.png" id="208_5jjpn"]
 [ext_resource type="Texture2D" uid="uid://dcmexpqewqyki" path="res://assets/sprites/Effects/Charge.png" id="215_iee07"]
 [ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="216_rbo1h"]
-[ext_resource type="Texture2D" uid="uid://dbtaw1nob3bu7" path="res://assets/sprites/Weapons/Swords/Short Sword/Short_Sword_boomerang.png" id="216_um52d"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_ju6fn")
@@ -1262,6 +1264,9 @@ shader_parameter/petrified = false
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu7uc"]
 size = Vector2(27, 10.478)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oke0v"]
+size = Vector2(22, 10)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otvxe"]
 size = Vector2(49.5, 50)
 
@@ -1609,6 +1614,18 @@ tracks/26/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Sprite2D/SlideHitbox/CollisionShape2D:disabled")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_lhfeg"]
@@ -3198,6 +3215,35 @@ tracks/0/keys = {
 "values": [200, 201, 202, 203, 204, 205, 204]
 }
 
+[sub_resource type="Animation" id="Animation_oke0v"]
+resource_name = "slide"
+length = 0.633
+step = 0.033
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.13333334, 0.16666667, 0.20000002, 0.23333335, 0.26666668, 0.3, 0.33333337, 0.36666667, 0.40000004, 0.43333334, 0.4666667, 0.50000006, 0.53333336, 0.56666666, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [85, 86, 87, 88, 89, 88, 89, 88, 89, 88, 89, 88, 89, 88, 89, 90, 91, 92]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/SlideHitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="Animation" id="Animation_b71ut"]
 resource_name = "sword_throw"
 length = 1.1
@@ -3591,6 +3637,7 @@ _data = {
 &"run_end": SubResource("Animation_rcift"),
 &"run_start": SubResource("Animation_xave1"),
 &"sitting_down": SubResource("Animation_w772u"),
+&"slide": SubResource("Animation_oke0v"),
 &"sword_throw": SubResource("Animation_b71ut"),
 &"throw": SubResource("Animation_qkrq3"),
 &"thunder_uppercut": SubResource("Animation_3k6ne"),
@@ -3765,9 +3812,21 @@ Tag = "nahk_punch"
 stream = ExtResource("194_um52d")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
+[sub_resource type="Resource" id="Resource_w5oev"]
+script = ExtResource("17_eidx6")
+Tag = "slide"
+stream = ExtResource("195_w5oev")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_5uixd"]
+script = ExtResource("17_eidx6")
+Tag = "slide_jump"
+stream = ExtResource("196_w5oev")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_uk8xp"]
 script = ExtResource("140_3d8p5")
-sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_fk7mo"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6"), SubResource("Resource_cj1no"), SubResource("Resource_1q6vw"), SubResource("Resource_4sdvf"), SubResource("Resource_oke0v")])
+sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_fk7mo"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6"), SubResource("Resource_cj1no"), SubResource("Resource_1q6vw"), SubResource("Resource_4sdvf"), SubResource("Resource_oke0v"), SubResource("Resource_w5oev"), SubResource("Resource_5uixd")])
 
 [sub_resource type="Resource" id="Resource_2oamq"]
 script = ExtResource("17_eidx6")
@@ -4526,7 +4585,6 @@ weapon_proficiency = Array[Dictionary]([{
 script = ExtResource("93_30li2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=899107974]
-visible = false
 position = Vector2(0.5, 12.5)
 shape = SubResource("RectangleShape2D_mbn21")
 debug_color = Color(0.989477, 0, 0.289978, 0.42)
@@ -4565,6 +4623,28 @@ base_attribute = Array[int]([1])
 visible = false
 position = Vector2(17.6223, 0.413044)
 shape = SubResource("RectangleShape2D_fu7uc")
+
+[node name="SlideHitbox" type="Area2D" parent="Sprite2D" unique_id=967335963 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
+process_mode = 1
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("3_rge3w")
+dmg_multiplier = 0.2
+damage_boost = 10
+iframes_on_hit = 30
+player = NodePath("../..")
+sound = NodePath("../../PolyphonicAudioPlayer")
+state_machine = NodePath("../../StateMachine")
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("5_7iojt")
+ice_hit_collision_scene = ExtResource("105_c2fce")
+base_attribute = Array[int]([1])
+direct_physical_hit = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/SlideHitbox" unique_id=548015876]
+position = Vector2(19.5, 30)
+shape = SubResource("RectangleShape2D_oke0v")
+disabled = true
 
 [node name="UppercutHitbox" type="Area2D" parent="Sprite2D" unique_id=225684329 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1
@@ -4650,16 +4730,43 @@ script = ExtResource("7_klxgc")
 [node name="Hard_landing" type="Node" parent="StateMachine" unique_id=427431254]
 script = ExtResource("10_nclcr")
 
-[node name="Falling" type="Node" parent="StateMachine" unique_id=1998513268 node_paths=PackedStringArray("coyote_timer")]
+[node name="Falling" type="Node" parent="StateMachine" unique_id=1998513268 node_paths=PackedStringArray("coyote_timer", "trail_timer")]
 script = ExtResource("8_ofjce")
 coyote_timer = NodePath("Coyote_timer")
+trail_timer = NodePath("../Slide/Trail_timer")
 
 [node name="Coyote_timer" type="Timer" parent="StateMachine/Falling" unique_id=1442314063]
 wait_time = 0.1
 one_shot = true
 
-[node name="Crouch" type="Node" parent="StateMachine" unique_id=2096603577]
+[node name="Crouch" type="Node" parent="StateMachine" unique_id=2096603577 node_paths=PackedStringArray("slide_after_timer")]
 script = ExtResource("9_eobwp")
+slide_after_timer = NodePath("Slide_after")
+
+[node name="Slide_after" type="Timer" parent="StateMachine/Crouch" unique_id=911142316]
+wait_time = 0.02
+one_shot = true
+
+[node name="Slide" type="Node" parent="StateMachine" unique_id=874481497 node_paths=PackedStringArray("trail_timer", "debris_timer", "turn_timer")]
+script = ExtResource("129_w5oev")
+slide_speed = 600.0
+trail_scene = ExtResource("15_2ye6y")
+debris_scene = ExtResource("16_8e2oa")
+trail_timer = NodePath("Trail_timer")
+debris_timer = NodePath("Debris_timer")
+turn_timer = NodePath("Turn_timer")
+attack_state = true
+metadata/_custom_type_script = "uid://bu6a0jaceyaa4"
+
+[node name="Trail_timer" type="Timer" parent="StateMachine/Slide" unique_id=384082923]
+wait_time = 0.08
+
+[node name="Debris_timer" type="Timer" parent="StateMachine/Slide" unique_id=2107521112]
+wait_time = 0.1
+
+[node name="Turn_timer" type="Timer" parent="StateMachine/Slide" unique_id=649680210]
+wait_time = 0.02
+one_shot = true
 
 [node name="Rise" type="Node" parent="StateMachine" unique_id=637213449]
 script = ExtResource("10_6lx6a")
@@ -4984,9 +5091,6 @@ position = Vector2(23, -1.5)
 rotation = 3.14159
 scale = Vector2(2, -2)
 
-[node name="Sprite2D2" parent="SwordSpin/Spin/Sprite2D/Spin" parent_id_path=PackedInt32Array(96565700, 1609616718) index="0" unique_id=993925385]
-texture = ExtResource("216_um52d")
-
 [node name="CollisionShape2D" parent="SwordSpin/Spin/DisjointedPlayerHitbox" parent_id_path=PackedInt32Array(96565700, 472308292) index="0" unique_id=1154747824]
 disabled = true
 
@@ -5092,9 +5196,12 @@ one_shot = true
 [node name="PoisonTick" type="Timer" parent="." unique_id=1874319816]
 
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Sprite2D/SlideHitbox" to="Sprite2D/SlideHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/UppercutHitbox" to="Sprite2D/UppercutHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/ThunderUppercutHitbox" to="Sprite2D/ThunderUppercutHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="Sprite2D/Glow" to="Sprite2D" method="_on_glow_timeout"]
+[connection signal="timeout" from="StateMachine/Slide/Trail_timer" to="StateMachine/Slide" method="_on_trail_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Slide/Debris_timer" to="StateMachine/Slide" method="_on_debris_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Backdash/Trail_timer" to="StateMachine/Backdash" method="_on_trail_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Backdash/Debris_timer" to="StateMachine/Backdash" method="_on_debris_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Dying/Reset" to="StateMachine/Dying" method="_on_reset_timeout"]
