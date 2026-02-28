@@ -153,7 +153,6 @@
 [ext_resource type="Texture2D" uid="uid://4smy5odjsp82" path="res://assets/sprites/Items/InventoryIcons/Inventory_153.png" id="93_uanbt"]
 [ext_resource type="Texture2D" uid="uid://bxrfi6678x4vs" path="res://assets/sprites/Items/InventoryIcons/Inventory_389.png" id="95_c15jr"]
 [ext_resource type="Texture2D" uid="uid://l21l3i5yfbcu" path="res://assets/sprites/Items/InventoryIcons/Inventory_504.png" id="96_pcxc3"]
-[ext_resource type="Texture2D" uid="uid://r2n0ylgg3jx2" path="res://assets/sprites/Weapons/Swords/SwordTrail.png" id="97_n5l36"]
 [ext_resource type="Texture2D" uid="uid://7w70o4xbesqe" path="res://assets/sprites/Items/InventoryIcons/Inventory_506.png" id="98_asytc"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="105_c2fce"]
 [ext_resource type="Script" uid="uid://bfvlehne5pigl" path="res://SampleProject/Scripts/HectorAnims/HectorDying.gd" id="108_egrmx"]
@@ -221,6 +220,7 @@
 [ext_resource type="Texture2D" uid="uid://p0swsulobrnj" path="res://assets/sprites/Effects/Sparks/Spark2.png" id="208_5jjpn"]
 [ext_resource type="Texture2D" uid="uid://dcmexpqewqyki" path="res://assets/sprites/Effects/Charge.png" id="215_iee07"]
 [ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="216_rbo1h"]
+[ext_resource type="Texture2D" uid="uid://dbtaw1nob3bu7" path="res://assets/sprites/Weapons/Swords/Short Sword/Short_Sword_boomerang.png" id="216_um52d"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_ju6fn")
@@ -1259,9 +1259,6 @@ shader_parameter/sheet_columns = 20
 shader_parameter/sheet_rows = 20
 shader_parameter/petrified = false
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_em0oi"]
-size = Vector2(56, 24)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu7uc"]
 size = Vector2(27, 10.478)
 
@@ -1340,175 +1337,175 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D/SwordHitbox/CollisionShape2D:disabled")
+tracks/4/path = NodePath("Sprite2D:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D/SwordHitbox/CollisionShape2D:position")
+tracks/5/path = NodePath("CollisionShape2D:shape")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(35, 9.16667)]
+"update": 1,
+"values": [SubResource("RectangleShape2D_mbn21")]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Sprite2D:self_modulate")
+tracks/6/path = NodePath("CollisionShape2D:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector2(0.5, 12.5)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CollisionShape2D:shape")
+tracks/7/path = NodePath("CollisionShape2D:shape:size")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("RectangleShape2D_mbn21")]
+"update": 0,
+"values": [Vector2(15, 45)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CollisionShape2D:position")
+tracks/8/path = NodePath("BloodDamage:emitting")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 12.5)]
+"update": 1,
+"values": [false]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("CollisionShape2D:shape:size")
+tracks/9/path = NodePath("BloodDamage:one_shot")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(15, 45)]
+"update": 1,
+"values": [true]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("BloodDamage:emitting")
+tracks/10/path = NodePath("BloodDamage:explosiveness")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.9]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("BloodDamage:one_shot")
+tracks/11/path = NodePath("BloodDamage:amount")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [12]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("BloodDamage:explosiveness")
+tracks/12/path = NodePath("BloodDamage:direction")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.9]
+"values": [Vector2(1, 0)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("BloodDamage:amount")
+tracks/13/path = NodePath("BloodDamage:gravity")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [12]
+"update": 0,
+"values": [Vector2(0, 250)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("BloodDamage:direction")
+tracks/14/path = NodePath("GuardSparkle:emitting")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("BloodDamage:gravity")
+tracks/15/path = NodePath("GuardSparkle:self_modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 250)]
+"values": [Color(2, 2, 1.2, 1)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Sprite2D/WeaponTrail:frame")
+tracks/16/path = NodePath("Sprite2D/FistHitbox/CollisionShape2D:disabled")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [false]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Sprite2D/WeaponTrail:position")
+tracks/17/path = NodePath("Sprite2D/FistHitbox/CollisionShape2D:position")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(3.91304, 0.434783)]
+"values": [Vector2(17.6223, 0.413044)]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("GuardSparkle:emitting")
+tracks/18/path = NodePath("SwordSpin/Spin:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
@@ -1520,142 +1517,94 @@ tracks/18/keys = {
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("GuardSparkle:self_modulate")
+tracks/19/path = NodePath("SwordSpin/Spin:position")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(2, 2, 1.2, 1)]
+"values": [Vector2(23, -1.5)]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("Sprite2D/FistHitbox/CollisionShape2D:disabled")
+tracks/20/path = NodePath("SwordSpin/Spin/Sprite2D/Spin:rotation")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("Sprite2D/FistHitbox/CollisionShape2D:position")
+tracks/21/path = NodePath("SwordSpin/Spin/Sprite2D/Spin:self_modulate")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(17.6223, 0.413044)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("SwordSpin/Spin:visible")
+tracks/22/path = NodePath("SwordSpin/Spin/DisjointedPlayerHitbox/CollisionShape2D:disabled")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("SwordSpin/Spin:position")
+tracks/23/path = NodePath("Sprite2D/UppercutHitbox/CollisionShape2D:disabled")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(23, -1.5)]
+"update": 1,
+"values": [true]
 }
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("SwordSpin/Spin/Sprite2D/Spin:rotation")
+tracks/24/path = NodePath("UppercutLightning/UppercutSpark1:emitting")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
 }
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("SwordSpin/Spin/Sprite2D/Spin:self_modulate")
+tracks/25/path = NodePath("UppercutLightning/UppercutSpark2:emitting")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false]
 }
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("SwordSpin/Spin/DisjointedPlayerHitbox/CollisionShape2D:disabled")
+tracks/26/path = NodePath("UppercutLightning/ThunderLighting:energy")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/27/type = "value"
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath("Sprite2D/UppercutHitbox/CollisionShape2D:disabled")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/28/type = "value"
-tracks/28/imported = false
-tracks/28/enabled = true
-tracks/28/path = NodePath("UppercutLightning/UppercutSpark1:emitting")
-tracks/28/interp = 1
-tracks/28/loop_wrap = true
-tracks/28/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/29/type = "value"
-tracks/29/imported = false
-tracks/29/enabled = true
-tracks/29/path = NodePath("UppercutLightning/UppercutSpark2:emitting")
-tracks/29/interp = 1
-tracks/29/loop_wrap = true
-tracks/29/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/30/type = "value"
-tracks/30/imported = false
-tracks/30/enabled = true
-tracks/30/path = NodePath("UppercutLightning/ThunderLighting:energy")
-tracks/30/interp = 1
-tracks/30/loop_wrap = true
-tracks/30/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1713,97 +1662,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [180, 181, 182, 183, 184, 185]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D/SwordHitbox/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D/SwordHitbox/CollisionShape2D:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(23, -0.833)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CollisionShape2D:shape:size")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(15, 45)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CollisionShape2D:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 12.5)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Sprite2D/WeaponTrail:frame")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Sprite2D")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"recolorTrail"
-}, {
-"args": [],
-"method": &"alignTrail"
-}]
-}
-tracks/10/type = "method"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Sprite2D")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"repositionTrail"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_1w37a"]
@@ -1948,85 +1806,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [140, 141, 142, 143, 144, 145]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D/SwordHitbox/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D/SwordHitbox/CollisionShape2D:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(23, 4)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CollisionShape2D:shape:size")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(15, 45)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Sprite2D/WeaponTrail:frame")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Sprite2D")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"recolorTrail"
-}, {
-"args": [],
-"method": &"alignTrail"
-}]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Sprite2D")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"repositionTrail"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_5xsr0"]
@@ -2249,95 +2028,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [160, 161, 162, 163, 164, 165]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D/SwordHitbox/CollisionShape2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape2D:shape:size")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(15, 27.1739)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CollisionShape2D:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 21.413)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Sprite2D/SwordHitbox/CollisionShape2D:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(23, 17.826)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Sprite2D/WeaponTrail:frame")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Sprite2D/WeaponTrail:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Vector2(-1.26087, 10), Vector2(-2.56522, 10.8696), Vector2(-3.86957, 7.82609)]
-}
-tracks/10/type = "method"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Sprite2D")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"recolorTrail"
-}, {
-"args": [],
-"method": &"alignTrail"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_xy0l7"]
@@ -4846,7 +4536,7 @@ volume_db = 9.905
 max_polyphony = 3
 bus = &"SFX"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=20858256 node_paths=PackedStringArray("glow_timer", "weapon_trail")]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=20858256 node_paths=PackedStringArray("glow_timer")]
 process_mode = 3
 material = SubResource("ShaderMaterial_a8u0y")
 texture = ExtResource("3_hkpj0")
@@ -4856,26 +4546,6 @@ region_rect = Rect2(0, 0, 0, 70)
 script = ExtResource("91_toel8")
 glow_speed = 0.17
 glow_timer = NodePath("Glow")
-weapon_trail = NodePath("WeaponTrail")
-
-[node name="SwordHitbox" type="Area2D" parent="Sprite2D" unique_id=1715648843 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
-process_mode = 1
-visible = false
-collision_layer = 8
-collision_mask = 4
-script = ExtResource("3_rge3w")
-iframes_on_hit = 8
-player = NodePath("../..")
-sound = NodePath("../../PolyphonicAudioPlayer")
-state_machine = NodePath("../../StateMachine")
-hitbox = NodePath("CollisionShape2D")
-hit_collision_scene = ExtResource("5_7iojt")
-ice_hit_collision_scene = ExtResource("105_c2fce")
-base_attribute = Array[int]([2])
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/SwordHitbox" unique_id=1154734210]
-position = Vector2(35, 9.16667)
-shape = SubResource("RectangleShape2D_em0oi")
 
 [node name="FistHitbox" type="Area2D" parent="Sprite2D" unique_id=1015260105 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1
@@ -4950,13 +4620,6 @@ vframes = 20
 
 [node name="Glow" type="Timer" parent="Sprite2D" unique_id=1881607956]
 one_shot = true
-
-[node name="WeaponTrail" type="Sprite2D" parent="Sprite2D" unique_id=1697505921]
-modulate = Color(1, 1, 1, 0.25098)
-position = Vector2(3.91304, 0.434783)
-texture = ExtResource("97_n5l36")
-hframes = 4
-frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=344604728]
 libraries/ = SubResource("AnimationLibrary_jttxa")
@@ -5321,6 +4984,9 @@ position = Vector2(23, -1.5)
 rotation = 3.14159
 scale = Vector2(2, -2)
 
+[node name="Sprite2D2" parent="SwordSpin/Spin/Sprite2D/Spin" parent_id_path=PackedInt32Array(96565700, 1609616718) index="0" unique_id=993925385]
+texture = ExtResource("216_um52d")
+
 [node name="CollisionShape2D" parent="SwordSpin/Spin/DisjointedPlayerHitbox" parent_id_path=PackedInt32Array(96565700, 472308292) index="0" unique_id=1154747824]
 disabled = true
 
@@ -5425,7 +5091,6 @@ one_shot = true
 
 [node name="PoisonTick" type="Timer" parent="." unique_id=1874319816]
 
-[connection signal="body_entered" from="Sprite2D/SwordHitbox" to="Sprite2D/SwordHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/UppercutHitbox" to="Sprite2D/UppercutHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/ThunderUppercutHitbox" to="Sprite2D/ThunderUppercutHitbox" method="_on_body_entered"]

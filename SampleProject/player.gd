@@ -186,8 +186,6 @@ func _process(delta: float) -> void:
 		flame.global_position = global_position + Vector2(20*facing_position,66) - MetSys.get_current_room_instance().global_position
 		MetSys.get_current_room_instance().add_child(flame)
 
-	removeSwordTrail()
-
 func _physics_process(delta: float) -> void:	
 	# Add the gravity.
 	if not is_on_floor() and not motion_mode == MotionMode.MOTION_MODE_FLOATING:
@@ -381,9 +379,6 @@ func freeze() -> void:
 func unfreeze() -> void:
 	transitionToState("idle")
 	
-func removeSwordTrail() -> void:
-	if not (state_machine.current_state is HectorAttack or state_machine.current_state is HectorAirAttack or state_machine.current_state is HectorCrouchAttack):
-		sprite.weapon_trail.frame = 3
 		
 func applyHitEffect(type: Global.Attribute) -> void:
 	sprite.influence_glow = 0.2

@@ -2,6 +2,7 @@ extends Sprite2D
 class_name WeaponSprite
 @export var animation: AnimationPlayer
 @export var hitbox: PlayerHitbox
+@export var has_parent_node: bool = false
 var facing_position: int = 1
 var anim_position: float
 
@@ -33,4 +34,7 @@ func set_anim_pos(seconds: float):
 
 func flip():
 	facing_position *= -1
-	scale.x *= -1
+	if has_parent_node:
+		get_parent().scale.x *= -1
+	else:
+		scale.x *= -1

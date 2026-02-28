@@ -345,7 +345,7 @@ func load_game():
 		player.position = Vector2(259, 287)
 		
 	if player.sprite.weapon != null:
-		player.sprite.weapon.queue_free()
+		player.sprite.removeWeapon()
 		
 	Global.HUD.initialize_bars_instantly = 4
 	
@@ -362,13 +362,18 @@ func load_game():
 	player.pocket_size = save_manager.get_value("pocket_size")
 	var weapon_path = save_manager.get_value("weapon")
 	if weapon_path != null:
-		var weapon = load(weapon_path).instantiate()
+		var weapon_node = load(weapon_path).instantiate()
+		var weapon: WeaponSprite
+		if weapon_node is WeaponSprite:
+			weapon = weapon_node
+		else:
+			weapon = weapon_node.get_child(0)
 		if weapon.hitbox != null:
 			weapon.hitbox.player = player
 			weapon.hitbox.sound = player.sound
 			weapon.hitbox.state_machine = player.state_machine
 		player.sprite.weapon = weapon
-		player.add_child(player.sprite.weapon)
+		player.add_child(weapon_node)
 	
 	if not custom_run:
 		var loaded_starting_map: String = save_manager.get_value("current_room")

@@ -6,7 +6,6 @@ var influence_glow: float = 0
 var extra_influence_duration: float = 0
 @export var glow_speed: float
 @export var glow_timer: Timer
-@export var weapon_trail: Sprite2D
 var applied_color: Color
 var applied_influence: float
 var trail_direction: int = 1
@@ -84,41 +83,30 @@ func _on_glow_timeout() -> void:
 func changeWeapon(new_weapon_scene: PackedScene) -> void:
 	removeWeapon()
 	if new_weapon_scene:
-		var new_weapon = new_weapon_scene.instantiate()
+		var new_weapon_node = new_weapon_scene.instantiate()
+		var new_weapon: WeaponSprite
+		if new_weapon_node is WeaponSprite:
+			new_weapon = new_weapon_node
+		else:
+			new_weapon = new_weapon_node.get_child(0)
 		if new_weapon.hitbox != null:
 			new_weapon.hitbox.player = Global.player
 			new_weapon.hitbox.sound = Global.player.sound
 			new_weapon.hitbox.state_machine = Global.player.state_machine
 		weapon = new_weapon
-		add_child(new_weapon)
+		if weapon.has_parent_node:
+			add_child(new_weapon_node)
+		else:
+			add_child(new_weapon)
 
 # Removes the currently loaded weapon
 func removeWeapon() -> void:
-	if weapon != null:
+	if weapon != null and not weapon.has_parent_node:
 		weapon.queue_free()
+	elif weapon != null and weapon.has_parent_node:
+		weapon.get_parent().queue_free()
 
 # Flips the weapon animation accordingly to the player's facing position
 func flipWeapon() -> void:
 	if Global.player.facing_position != weapon.facing_position:
 		weapon.flip()
-
-# Flips the trail animation accordingly to the weapon's facing position
-func alignTrail() -> void:
-	if Global.player.facing_position != trail_direction:
-		trail_direction = Global.player.facing_position
-		weapon_trail.scale.x *= (-1)
-		weapon_trail.position.x *= (-1)
-
-func repositionTrail() -> void:
-	if Global.player.state_machine.current_state is HectorAirAttack:
-		weapon_trail.position = Vector2(3.9*trail_direction, -10)
-	elif Global.player.state_machine.current_state is HectorAttack:
-		weapon_trail.position = Vector2(3.9*trail_direction, 0.4)
-
-func recolorTrail() -> void:
-	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= 3 and Global.player.stats.itemEquipped(Relic.Relics.INDIGO_CROSS, "relic") and Global.player.stats.findItem(Skill.Skills.CYAN_ORB, Global.player.stats.skill_inventory):
-		weapon_trail.modulate = Color(0.25, 0.6, 1, 0.6)
-	elif Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= 3 and Global.player.stats.itemEquipped(Relic.Relics.AGUNIS_LAUREL, "relic") and Global.player.stats.findItem(Skill.Skills.RED_ORB, Global.player.stats.skill_inventory):
-		weapon_trail.modulate = Color(1, 0.6, 0.25, 0.6)
-	else:
-		weapon_trail.modulate = Color(1, 1, 1, 0.251)
