@@ -1,20 +1,26 @@
 extends State
-class_name HectorJump
+class_name HectorDoubleJump
 @export var JUMP_VELOCITY: float
 var can_perfect_guard: bool = true
 var snapped_on_platform: bool
-const DOUBLE_JUMP_AFTER: float = 0.1
-var double_jump_ready: bool
+var cur_facing_position: int
 
 func enter():
+	player.can_double_jump = false
 	snapped_on_platform = false
-	double_jump_ready = false
-	get_tree().create_timer(DOUBLE_JUMP_AFTER, false).timeout.connect(func(): double_jump_ready = true)
-	animation.play("jump", -1, 1.3)
+	if player.facing_position == 1:
+		animation.play("double_jump", -1, 1.3)
+	else:
+		animation.play("double_jump_reverse", -1, 1.3)
+	cur_facing_position = player.facing_position
 	animation.seek(0)
 	player.velocity.y = JUMP_VELOCITY
-	sound.play_sound_effect_from_library("jump")
+	sound.play_sound_effect_from_library("double_jump")
 
+
+func exit():
+	animation.stop()
+	player.sprite.rotation = 0
 	
 func Physics_Update(delta: float):
 		
@@ -34,10 +40,19 @@ func Physics_Update(delta: float):
 	
 	can_move_with_momentum(player.velocity.y < 200)
 	can_turn()
+	updateFacingPosition()
 	can_attack()
 	can_land()
 	can_die()
-	if double_jump_ready:
-		can_double_jump()
 	check_is_blocking()
 	check_is_hurt()
+
+func updateFacingPosition() -> void:
+	var cur_animation_pos: float = animation.current_animation_position
+	if player.facing_position != cur_facing_position:
+		if player.facing_position == 1:
+			animation.play("double_jump", -1, 1.3)
+		else:
+			animation.play("double_jump_reverse", -1, 1.3)
+		animation.seek(cur_animation_pos)
+		cur_facing_position = player.facing_position

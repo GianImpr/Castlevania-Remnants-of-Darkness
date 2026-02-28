@@ -24,6 +24,7 @@ func Physics_Update(delta: float):
 	can_move_with_momentum(true, true)
 	can_turn()
 	can_attack()
+	can_double_jump()
 	check_is_hurt()
 	can_die()
 	if not coyote_timer.is_stopped():

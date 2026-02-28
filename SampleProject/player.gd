@@ -81,6 +81,7 @@ const WINGED_BOOTS_GRAVITY_MULTIPLIER: float = 1.7
 const CHARGE_ONE_COST_RATIO: int = 10
 var cur_charge: Charge = Charge.NONE
 var times_guard_pressed: int = 0
+var can_double_jump: bool = true
 
 const Animations = {
 	ATTACK_AIR = "air_attack",
@@ -206,6 +207,10 @@ func _physics_process(delta: float) -> void:
 	# Debug features
 	if Input.is_action_just_pressed("reset"): # and Global.is_debug_mode:
 		get_tree().reload_current_scene()
+		
+	if is_on_floor():
+		can_double_jump = true
+
 	
 	
 	# Respawn Innocent Devil if not yet present in the scene

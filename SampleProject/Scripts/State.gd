@@ -104,10 +104,10 @@ func remove_momentum():
 #and transition to the appropriate new state
 func check_is_blocking():
 	if player.is_hurt and player.stats.Stats["HP"] > 0:
-		if (self is HectorJump or self is HectorFalling) and player.willPerfectGuard():
+		if (self is HectorJump or self is HectorFalling or self is HectorDoubleJump) and player.willPerfectGuard():
 			Global.player.transitionToState("Guard_perfect_air")
 			return
-		elif self is HectorJump or self is HectorFalling:
+		elif self is HectorJump or self is HectorFalling or self is HectorDoubleJump:
 			return
 			
 		if player.willPerfectGuard():
@@ -283,6 +283,10 @@ func stop_relic_sound() -> void:
 func stay_crouched():
 	player.skip_crouch_anim = true
 	Transitioned.emit(self, "crouch")
+	
+func can_double_jump():
+	if Input.is_action_just_pressed("jump") and player.can_double_jump:
+		Transitioned.emit(self, "double_jump")
 	
 func can_land():
 	if player.is_on_floor():
