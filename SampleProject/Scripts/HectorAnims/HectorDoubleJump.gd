@@ -43,6 +43,7 @@ func Physics_Update(delta: float):
 	updateFacingPosition()
 	can_attack()
 	can_land()
+	can_dive_kick()
 	can_die()
 	check_is_blocking()
 	check_is_hurt()

@@ -170,6 +170,7 @@
 [ext_resource type="Script" uid="uid://cf1ppfim3qip6" path="res://SampleProject/Scripts/HectorAnims/HectorGuardBlocking.gd" id="122_uml35"]
 [ext_resource type="Script" uid="uid://qj13jt40ymnd" path="res://SampleProject/Scripts/HectorAnims/HectorGuardBreak.gd" id="123_h7cmy"]
 [ext_resource type="Script" uid="uid://dv6ffl8lnhe18" path="res://SampleProject/Scripts/HectorAnims/HectorDoubleJump.gd" id="126_god42"]
+[ext_resource type="Script" uid="uid://yg6mkbqnmoey" path="res://SampleProject/Scripts/HectorAnims/HectorDiveKick.gd" id="127_3rsyo"]
 [ext_resource type="Script" uid="uid://1xoxget7b8n6" path="res://SampleProject/Scripts/stateTest.gd" id="129_k7aot"]
 [ext_resource type="Script" uid="uid://bu6a0jaceyaa4" path="res://SampleProject/Scripts/HectorAnims/HectorSlide.gd" id="129_w5oev"]
 [ext_resource type="Script" uid="uid://bvobps123ifnc" path="res://SampleProject/Scripts/HectorAnims/HectorGuardPerfect.gd" id="133_qno2k"]
@@ -221,6 +222,7 @@
 [ext_resource type="AudioStream" uid="uid://d271jlatj7cyx" path="res://assets/sounds/HectorMovement/SlideJump.wav" id="196_w5oev"]
 [ext_resource type="AudioStream" uid="uid://ce0cgved27m6l" path="res://assets/sounds/HectorMovement/DoubleJump.wav" id="198_p6pc0"]
 [ext_resource type="Script" uid="uid://domtd5cul57yy" path="res://SampleProject/Scripts/System/player_projectile.gd" id="200_5r3n4"]
+[ext_resource type="AudioStream" uid="uid://dcrqspyri6gso" path="res://assets/sounds/HectorMovement/DiveKick.wav" id="200_m4v07"]
 [ext_resource type="AudioStream" uid="uid://dy51w6vjm6bnf" path="res://assets/sounds/Voice/Hector/GuardBreak.wav" id="205_xy0l7"]
 [ext_resource type="Texture2D" uid="uid://1he2rtoahtll" path="res://assets/sprites/Effects/Sparks/Spark1.png" id="207_mg3ag"]
 [ext_resource type="Texture2D" uid="uid://p0swsulobrnj" path="res://assets/sprites/Effects/Sparks/Spark2.png" id="208_5jjpn"]
@@ -1273,6 +1275,12 @@ size = Vector2(27, 10.478)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oke0v"]
 size = Vector2(22, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4v07"]
+size = Vector2(23, 15.999998)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rsyo"]
+size = Vector2(23.500004, 15.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otvxe"]
 size = Vector2(49.5, 50)
 
@@ -1668,6 +1676,30 @@ tracks/30/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(13, 45)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Sprite2D/DiveStraightHitbox/CollisionShape2D:disabled")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Sprite2D/DiveDiagonalHitbox/CollisionShape2D:disabled")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_lhfeg"]
@@ -2304,6 +2336,114 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(),
 "update": 0,
 "values": []
+}
+
+[sub_resource type="Animation" id="Animation_3rsyo"]
+resource_name = "dive_kick_diagonal"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [109, 110, 111]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtboxArea/Hurtbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, -8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtboxArea/Hurtbox:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, 15)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/DiveDiagonalHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m4v07"]
+resource_name = "dive_kick_straight"
+length = 0.1
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [106, 107, 108]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtboxArea/Hurtbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtboxArea/Hurtbox:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, 25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/DiveStraightHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_p6pc0"]
@@ -2975,7 +3115,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(13, 41), Vector2(13, 26), Vector2(13, 41)]
+"values": [Vector2(13, 26), Vector2(13, 26), Vector2(13, 41)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -2987,7 +3127,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.4, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.5, 6), Vector2(0.5, 0), Vector2(0.5, 6)]
+"values": [Vector2(0.5, 0), Vector2(0.5, 0), Vector2(0.5, 6)]
 }
 
 [sub_resource type="Animation" id="Animation_453o6"]
@@ -4007,6 +4147,8 @@ _data = {
 &"crouch_attack_greatsword": SubResource("Animation_um52d"),
 &"crouch_attack_spear": SubResource("Animation_cufrs"),
 &"damage_mercy": SubResource("Animation_upmxk"),
+&"dive_kick_diagonal": SubResource("Animation_3rsyo"),
+&"dive_kick_straight": SubResource("Animation_m4v07"),
 &"double_jump": SubResource("Animation_p6pc0"),
 &"double_jump_reverse": SubResource("Animation_god42"),
 &"dying": SubResource("Animation_8pt8e"),
@@ -4220,9 +4362,15 @@ Tag = "double_jump"
 stream = ExtResource("198_p6pc0")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
+[sub_resource type="Resource" id="Resource_3rsyo"]
+script = ExtResource("17_eidx6")
+Tag = "dive_kick"
+stream = ExtResource("200_m4v07")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_uk8xp"]
 script = ExtResource("140_3d8p5")
-sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_p6pc0"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6"), SubResource("Resource_cj1no"), SubResource("Resource_1q6vw"), SubResource("Resource_4sdvf"), SubResource("Resource_oke0v"), SubResource("Resource_w5oev"), SubResource("Resource_5uixd"), SubResource("Resource_god42")])
+sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_p6pc0"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6"), SubResource("Resource_cj1no"), SubResource("Resource_1q6vw"), SubResource("Resource_4sdvf"), SubResource("Resource_oke0v"), SubResource("Resource_w5oev"), SubResource("Resource_5uixd"), SubResource("Resource_god42"), SubResource("Resource_3rsyo")])
 
 [sub_resource type="Resource" id="Resource_2oamq"]
 script = ExtResource("17_eidx6")
@@ -4823,7 +4971,7 @@ _limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.5, 0.0049916506), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Player" type="CharacterBody2D" unique_id=935233281 node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "reset_guard_presses_timer", "confidence_ring_timer", "charge_sprite", "charge_anim", "charge_particles", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
+[node name="Player" type="CharacterBody2D" unique_id=935233281 node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "hurtbox_area", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "reset_guard_presses_timer", "confidence_ring_timer", "charge_sprite", "charge_anim", "charge_particles", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
 scale = Vector2(2, 2)
 collision_layer = 524288
 collision_mask = 4113
@@ -4839,6 +4987,7 @@ state_machine = NodePath("StateMachine")
 damage_popup = NodePath("DamageLocation")
 stats = NodePath("HectorStats")
 hurtbox = NodePath("Collision")
+hurtbox_area = NodePath("HurtboxArea")
 sound = NodePath("PolyphonicAudioPlayer")
 boost_message = ExtResource("1_l85l3")
 guard_recovery = NodePath("Guard_recovery")
@@ -5059,6 +5208,53 @@ position = Vector2(19.5, 30)
 shape = SubResource("RectangleShape2D_oke0v")
 disabled = true
 
+[node name="DiveStraightHitbox" type="Area2D" parent="Sprite2D" unique_id=1076983486 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
+process_mode = 1
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("3_rge3w")
+dmg_multiplier = 0.1
+damage_boost = 5
+iframes_on_hit = 5
+player = NodePath("../..")
+sound = NodePath("../../PolyphonicAudioPlayer")
+state_machine = NodePath("../../StateMachine")
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("5_7iojt")
+ice_hit_collision_scene = ExtResource("105_c2fce")
+base_attribute = Array[int]([1])
+direct_physical_hit = true
+dive_kick = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/DiveStraightHitbox" unique_id=2000259751]
+position = Vector2(0.50000405, 20.5)
+shape = SubResource("RectangleShape2D_m4v07")
+disabled = true
+
+[node name="DiveDiagonalHitbox" type="Area2D" parent="Sprite2D" unique_id=1870934282 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
+process_mode = 1
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("3_rge3w")
+dmg_multiplier = 0.1
+damage_boost = 5
+iframes_on_hit = 5
+player = NodePath("../..")
+sound = NodePath("../../PolyphonicAudioPlayer")
+state_machine = NodePath("../../StateMachine")
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("5_7iojt")
+ice_hit_collision_scene = ExtResource("105_c2fce")
+base_attribute = Array[int]([1])
+direct_physical_hit = true
+dive_kick = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/DiveDiagonalHitbox" unique_id=1792035636]
+visible = false
+position = Vector2(6.2500052, 20.749996)
+shape = SubResource("RectangleShape2D_3rsyo")
+disabled = true
+
 [node name="UppercutHitbox" type="Area2D" parent="Sprite2D" unique_id=225684329 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1
 visible = false
@@ -5141,6 +5337,12 @@ JUMP_VELOCITY = -700.0
 script = ExtResource("126_god42")
 JUMP_VELOCITY = -700.0
 metadata/_custom_type_script = "uid://dv6ffl8lnhe18"
+
+[node name="Dive_kick" type="Node" parent="StateMachine" unique_id=299728918]
+script = ExtResource("127_3rsyo")
+FALLING_SPEED = Vector2(500, 800)
+attack_state = true
+metadata/_custom_type_script = "uid://yg6mkbqnmoey"
 
 [node name="Landing" type="Node" parent="StateMachine" unique_id=404474392]
 script = ExtResource("7_klxgc")
@@ -5615,6 +5817,8 @@ one_shot = true
 
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/SlideHitbox" to="Sprite2D/SlideHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Sprite2D/DiveStraightHitbox" to="Sprite2D/DiveStraightHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Sprite2D/DiveDiagonalHitbox" to="Sprite2D/DiveDiagonalHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/UppercutHitbox" to="Sprite2D/UppercutHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/ThunderUppercutHitbox" to="Sprite2D/ThunderUppercutHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="Sprite2D/Glow" to="Sprite2D" method="_on_glow_timeout"]

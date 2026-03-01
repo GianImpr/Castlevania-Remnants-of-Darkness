@@ -13,6 +13,7 @@ class_name HectorPlayer
 @export var damage_popup: DamagePopup
 @export var stats: HectorStats
 @export var hurtbox: CollisionShape2D
+@export var hurtbox_area: Area2D
 @export var sound: PolyphonicAudio
 @export var boost_message: PackedScene
 @export var guard_recovery: Timer
@@ -73,6 +74,7 @@ var unlocked_magic: bool = false
 var enabled_magic: bool = false
 var activating_magic: bool = false
 var hit_effect_applied: bool = false
+var dive_kicking: bool = false
 const PERFECT_GUARD_WINDOW_SIMPLIFIED: float = 0.192
 const PERFECT_GUARD_WINDOW_DEFAULT: float = 0.096
 const NORMAL_GRAVITY_MULTIPLIER: float = 2
@@ -128,7 +130,7 @@ func _input(event: InputEvent) -> void:
 	
 func _process(delta: float) -> void:
 	#If harmed, become invulnerable for a while
-	set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped() and not state_machine.current_state is HectorWait)
+	hurtbox_area.set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped() and not state_machine.current_state is HectorWait)
 	
 	guarding = isGuarding()
 	
@@ -197,6 +199,8 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * gravity_multiplier * delta
 
 	direction = round(Input.get_axis("move_left", "move_right"))
+	
+	print(get_collision_layer_value(2))
 	
 	# Update where Hector is facing
 	if sprite.flip_h:

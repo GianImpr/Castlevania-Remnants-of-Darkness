@@ -13,12 +13,18 @@ func enter():
 	animation.play("jump", -1, 1.3)
 	animation.seek(0)
 	player.velocity.y = JUMP_VELOCITY
-	sound.play_sound_effect_from_library("jump")
+	if not player.dive_kicking:
+		sound.play_sound_effect_from_library("jump")
+	else:
+		player.can_double_jump = true
+
+func exit():
+	player.dive_kicking = false
 
 	
 func Physics_Update(delta: float):
 		
-	if not Input.is_action_pressed("jump") and player.velocity.y < 0 and not snapped_on_platform:
+	if not Input.is_action_pressed("jump") and player.velocity.y < 0 and not snapped_on_platform and not player.dive_kicking:
 		player.velocity.y *= 0.95*delta
 		
 	#Check if player should get pushed above a one-way platform

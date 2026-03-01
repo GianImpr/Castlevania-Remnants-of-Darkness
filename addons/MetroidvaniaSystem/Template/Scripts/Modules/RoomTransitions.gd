@@ -37,7 +37,7 @@ func changeRoom(target_room: String, changing_area: bool, initial_position: Vect
 		
 
 	player.get_tree().paused = true
-	player.set_collision_layer_value(2, false)
+	player.hurtbox_area.set_collision_layer_value(2, false)
 	
 	if Global.screen == Global.ScreenType.NONE:
 		Global.screen = Global.ScreenType.TRANSITION
@@ -80,4 +80,4 @@ func changeRoom(target_room: String, changing_area: bool, initial_position: Vect
 	await Global.fade_screen.animation.animation_finished
 	Global.fade_screen.animation.speed_scale = 1
 	
-	player.set_collision_layer_value(2, true)
+	player.hurtbox_area.set_collision_layer_value(2, true)

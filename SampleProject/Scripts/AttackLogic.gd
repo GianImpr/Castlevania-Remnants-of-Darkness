@@ -14,6 +14,7 @@ class_name PlayerHitbox
 @export var base_attribute: Array[Global.Attribute]
 @export var adjust_facing_position: bool = true
 @export var direct_physical_hit: bool = false
+@export var dive_kick: bool = false
 static var coin_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/money.tscn")
 static var heart_scene: PackedScene = preload("res://SampleProject/extra_scenes/items/heart.tscn")
 static var orb_scene: PackedScene = preload("res://SampleProject/extra_scenes/effects/heal_orb.tscn")
@@ -54,6 +55,9 @@ func _process(delta: float) -> void:
 		
 func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 	actual_attributes = base_attribute.duplicate(true)
+	if dive_kick:
+		player.dive_kicking = true
+		player.transitionToState("jump")
 	if body is Candle or body is Canister:
 		createHitEffect(body)
 		body.destroy()
