@@ -15,7 +15,7 @@ func _ready() -> void:
 		hint_14.queue_free()
 	
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	if hasEyes():
 		Global.player.stats.event_flags[event_flag] = true
 		queue_free()
