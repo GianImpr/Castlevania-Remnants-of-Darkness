@@ -5338,8 +5338,9 @@ script = ExtResource("126_god42")
 JUMP_VELOCITY = -700.0
 metadata/_custom_type_script = "uid://dv6ffl8lnhe18"
 
-[node name="Dive_kick" type="Node" parent="StateMachine" unique_id=299728918]
+[node name="Dive_kick" type="Node" parent="StateMachine" unique_id=299728918 node_paths=PackedStringArray("trail_timer")]
 script = ExtResource("127_3rsyo")
+trail_timer = NodePath("../Slide/Trail_timer")
 FALLING_SPEED = Vector2(500, 800)
 attack_state = true
 metadata/_custom_type_script = "uid://yg6mkbqnmoey"

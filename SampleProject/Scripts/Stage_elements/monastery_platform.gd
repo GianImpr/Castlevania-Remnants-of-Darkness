@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 		
 	
 
-func _on_activationbox_body_entered(body: Node2D) -> void:
+func _on_activationbox_area_entered(area: Area2D) -> void:
 	if current_state == "idle":
 		animation.play("activate")
 		current_state = "activate"

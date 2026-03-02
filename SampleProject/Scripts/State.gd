@@ -285,11 +285,11 @@ func stay_crouched():
 	Transitioned.emit(self, "crouch")
 	
 func can_double_jump():
-	if Input.is_action_just_pressed("jump") and player.can_double_jump:
+	if InputBuffer.is_action_press_buffered("jump") and player.can_double_jump:
 		Transitioned.emit(self, "double_jump")
 		
 func can_dive_kick():
-	if Input.is_action_just_pressed("jump") and Input.is_action_pressed("crouch"):
+	if InputBuffer.is_action_press_buffered("jump") and Input.is_action_pressed("crouch"):
 		Transitioned.emit(self, "dive_kick")
 	
 func can_land():

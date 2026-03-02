@@ -1,12 +1,14 @@
 extends State
 class_name HectorDiveKick
+@export var trail_timer: Timer
 @export var FALLING_SPEED: Vector2
-const HARD_LAND_AFTER_SECONDS: float = 0.2
+const HARD_LAND_AFTER_SECONDS: float = 0.14
 var hard_land: bool
 var can_perfect_guard: bool = false
 
 func enter():
 	hard_land = false
+	trail_timer.start()
 	get_tree().create_timer(HARD_LAND_AFTER_SECONDS, false).timeout.connect(func(): hard_land = true)
 	if player.direction == 0:
 		animation.play("dive_kick_straight")
@@ -15,6 +17,9 @@ func enter():
 	player.velocity = FALLING_SPEED
 	player.velocity.x *= player.direction
 	sound.play_sound_effect_from_library("dive_kick")
+	
+func exit():
+	trail_timer.stop()
 
 func Physics_Update(delta: float):
 	can_die()

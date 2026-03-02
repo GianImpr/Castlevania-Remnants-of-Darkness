@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://doars67ccns6p"]
+[gd_scene format=3 uid="uid://doars67ccns6p"]
 
 [ext_resource type="Texture2D" uid="uid://5g68arif8m6c" path="res://assets/sprites/Objects/Platforms/MonasteryPlatform.png" id="1_11sag"]
 [ext_resource type="Script" uid="uid://bk5xeekemubhu" path="res://SampleProject/Scripts/Stage_elements/monastery_platform.gd" id="1_mrkvk"]
@@ -122,33 +122,31 @@ stream = ExtResource("6_dlt5u")
 script = ExtResource("4_5y7rh")
 sound_effects = Array[ExtResource("5_tjjr8")]([SubResource("Resource_aghvp")])
 
-[node name="MovingPlatform" type="Node2D"]
+[node name="MovingPlatform" type="Node2D" unique_id=474761867]
 
-[node name="Platform" type="AnimatableBody2D" parent="." node_paths=PackedStringArray("animation", "sound")]
+[node name="Platform" type="AnimatableBody2D" parent="." unique_id=1627151008 node_paths=PackedStringArray("animation", "sound")]
 scale = Vector2(2, 2)
 script = ExtResource("1_mrkvk")
 animation = NodePath("AnimationPlayer")
 sound = NodePath("../PolyphonicAudio")
 
-[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+[node name="Sprite2D" type="Sprite2D" parent="Platform" unique_id=2036280527]
 self_modulate = Color(0.682353, 0.74902, 1, 1)
 texture = ExtResource("1_11sag")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform" unique_id=707941172]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_kx7g1")
-}
-autoplay = "idle"
+libraries/ = SubResource("AnimationLibrary_kx7g1")
+autoplay = &"idle"
 
-[node name="Collision" type="CollisionShape2D" parent="Platform"]
+[node name="Collision" type="CollisionShape2D" parent="Platform" unique_id=296207811]
 visible = false
 position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_7tg7j")
 one_way_collision = true
 one_way_collision_margin = 3.0
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Platform"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Platform" unique_id=49749137]
 emitting = false
 amount = 60
 lifetime = 2.0
@@ -166,17 +164,18 @@ linear_accel_max = 5.0
 scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_t5dxf")
 
-[node name="Activationbox" type="Area2D" parent="Platform"]
-collision_mask = 3
+[node name="Activationbox" type="Area2D" parent="Platform" unique_id=1766933101]
+collision_layer = 0
+collision_mask = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Platform/Activationbox"]
+[node name="Hitbox" type="CollisionShape2D" parent="Platform/Activationbox" unique_id=352632254]
 visible = false
 position = Vector2(-1.5, -55)
 shape = SubResource("RectangleShape2D_pwbyh")
 one_way_collision_margin = 3.0
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=665865484]
 script = ExtResource("3_3w2jj")
 audio_library = SubResource("Resource_rpkod")
 
-[connection signal="body_entered" from="Platform/Activationbox" to="Platform" method="_on_activationbox_body_entered"]
+[connection signal="area_entered" from="Platform/Activationbox" to="Platform" method="_on_activationbox_area_entered"]
