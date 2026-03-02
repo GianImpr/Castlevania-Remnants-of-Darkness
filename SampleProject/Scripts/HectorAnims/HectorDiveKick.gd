@@ -2,7 +2,7 @@ extends State
 class_name HectorDiveKick
 @export var trail_timer: Timer
 @export var FALLING_SPEED: Vector2
-const HARD_LAND_AFTER_SECONDS: float = 0.14
+const HARD_LAND_AFTER_SECONDS: float = 0.2
 var hard_land: bool
 var can_perfect_guard: bool = false
 
