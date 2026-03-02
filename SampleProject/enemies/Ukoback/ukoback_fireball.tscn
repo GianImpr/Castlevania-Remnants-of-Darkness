@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwffv0dq76y6k"]
+[gd_scene format=3 uid="uid://bwffv0dq76y6k"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Ukoback/ukoback_fireball.gd" id="1_ilr7u"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="2_0k1t1"]
+[ext_resource type="Script" uid="uid://c37rl1dux4r30" path="res://SampleProject/enemies/Ukoback/ukoback_fireball.gd" id="1_ilr7u"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="2_0k1t1"]
 [ext_resource type="Texture2D" uid="uid://bjfh08de6xy2e" path="res://assets/sprites/Enemies/Ukoback/UkobackProjectile.png" id="3_rvpbf"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="4_olfyj"]
 
@@ -155,9 +155,9 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xgt6b"]
 _data = {
-"RESET": SubResource("Animation_le5kp"),
-"burning": SubResource("Animation_a7nw1"),
-"destroy": SubResource("Animation_p4eb2")
+&"RESET": SubResource("Animation_le5kp"),
+&"burning": SubResource("Animation_a7nw1"),
+&"destroy": SubResource("Animation_p4eb2")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hv6ft"]
@@ -190,7 +190,7 @@ color_ramp = SubResource("GradientTexture1D_gf2x0")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[node name="StaticBody2D" type="StaticBody2D" node_paths=PackedStringArray("stats", "area", "animation")]
+[node name="StaticBody2D" type="StaticBody2D" unique_id=2000570052 node_paths=PackedStringArray("stats", "area", "animation")]
 z_index = 1
 scale = Vector2(2, 2)
 collision_layer = 4
@@ -200,7 +200,7 @@ stats = NodePath("Projectile")
 area = NodePath("Area2D")
 animation = NodePath("AnimationPlayer")
 
-[node name="Projectile" type="Node" parent="."]
+[node name="Projectile" type="Node" parent="." unique_id=1593349128]
 script = ExtResource("2_0k1t1")
 base_damage = 25
 destructible = true
@@ -208,40 +208,38 @@ destroy_on_contact = true
 magical = true
 attribute = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=163251824]
 texture = ExtResource("3_rvpbf")
 offset = Vector2(-9, 0)
 hframes = 7
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_xgt6b")
-}
-autoplay = "burning"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=798418863]
+libraries/ = SubResource("AnimationLibrary_xgt6b")
+autoplay = &"burning"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1609436204]
 visible = false
 position = Vector2(1, -5)
 shape = SubResource("RectangleShape2D_hv6ft")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1475082353]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1352166711]
 visible = false
 position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_xgg71")
 
-[node name="FireEffect" type="GPUParticles2D" parent="."]
+[node name="FireEffect" type="GPUParticles2D" parent="." unique_id=1252400376]
 z_index = 20
 material = SubResource("CanvasItemMaterial_vm404")
 position = Vector2(1, -1)
 emitting = false
 amount = 20
-process_material = SubResource("ParticleProcessMaterial_p8pon")
 texture = ExtResource("4_olfyj")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_p8pon")

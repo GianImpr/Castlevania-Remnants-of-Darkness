@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dy2anuk68qs8g"]
+[gd_scene format=3 uid="uid://dy2anuk68qs8g"]
 
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_l3xmh"]
 [ext_resource type="Script" uid="uid://dscdguow3uvm5" path="res://SampleProject/enemies/Medusa/medusa_serpent.gd" id="2_wtv1t"]
@@ -83,7 +83,7 @@ _data = {
 &"walking": SubResource("Animation_v6umt")
 }
 
-[node name="MedusaSerpent" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "blood_particles")]
+[node name="MedusaSerpent" type="CharacterBody2D" unique_id=733991020 node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("2_wtv1t")
@@ -96,37 +96,37 @@ hitbox_iframe = NodePath("Hitbox")
 ray_cast_2d_left = NodePath("Collision")
 blood_particles = NodePath("BloodDamage")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=1478361740]
 script = ExtResource("2_l3xmh")
 LV = 15
 HP = 1
 ATK = 50
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2011598240]
 texture = ExtResource("3_pb8yn")
 offset = Vector2(3, 0)
 hframes = 7
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1316925506]
 visible = false
 position = Vector2(0.75, 0)
 shape = SubResource("RectangleShape2D_k31s3")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=567156872]
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1058082098]
 collision_layer = 0
 collision_mask = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=70461744]
 visible = false
 position = Vector2(0.75, 0.5)
 shape = SubResource("RectangleShape2D_k8uy6")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1406906655]
 script = ExtResource("4_i7qnu")
 
-[node name="BloodDamage" type="CPUParticles2D" parent="."]
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=1891686457]
 emitting = false
 amount = 12
 lifetime = 0.75
@@ -142,33 +142,31 @@ scale_amount_curve = SubResource("Curve_va3vl")
 color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
 color_ramp = SubResource("Gradient_5pg3w")
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=47456772]
 visible = false
 position = Vector2(-99999, 0)
 script = ExtResource("5_sjc67")
 damage_node = ExtResource("6_njjgo")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=1221147752 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("7_x4hjd")
 initial_state = NodePath("Falling")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Falling" type="Node" parent="StateMachine"]
+[node name="Falling" type="Node" parent="StateMachine" unique_id=1714235628]
 script = ExtResource("7_vxsd2")
 
-[node name="Walking" type="Node" parent="StateMachine"]
+[node name="Walking" type="Node" parent="StateMachine" unique_id=1278641765]
 script = ExtResource("8_ctkfy")
 speed = 270.0
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1116101374 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("9_j1h7a")
 hitbox = NodePath("../../Hitbox/HitboxShape")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_mxhun")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=745396614]
+libraries/ = SubResource("AnimationLibrary_mxhun")
 
-[node name="Collision" type="RayCast2D" parent="."]
+[node name="Collision" type="RayCast2D" parent="." unique_id=48100121]
 target_position = Vector2(-10, 0)

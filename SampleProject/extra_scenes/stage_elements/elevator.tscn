@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ca4vreioqht4h"]
+[gd_scene format=3 uid="uid://ca4vreioqht4h"]
 
 [ext_resource type="Texture2D" uid="uid://c2yqyahqgxlxg" path="res://assets/sprites/Objects/Elevator/Chain.png" id="1_5sa8a"]
 [ext_resource type="Script" uid="uid://b6iwkkl3c4ryb" path="res://SampleProject/Scripts/Stage_elements/elevator.gd" id="1_tht4r"]
@@ -23,11 +23,11 @@ stream = ExtResource("7_h1rk2")
 script = ExtResource("5_425cv")
 sound_effects = Array[ExtResource("6_baeg1")]([SubResource("Resource_g2o76")])
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" unique_id=347377315]
 physics_interpolation_mode = 2
 collision_mask = 3
 
-[node name="Elevator" type="Node2D" parent="." node_paths=PackedStringArray("chain", "elevator", "collision_box", "sound")]
+[node name="Elevator" type="Node2D" parent="." unique_id=246290962 node_paths=PackedStringArray("chain", "elevator", "collision_box", "sound")]
 physics_interpolation_mode = 2
 script = ExtResource("1_tht4r")
 height = 852.0
@@ -36,7 +36,7 @@ elevator = NodePath("Elevator")
 collision_box = NodePath("../CollisionShape2D")
 sound = NodePath("../PolyphonicMenuAudio")
 
-[node name="Chain" type="Sprite2D" parent="Elevator"]
+[node name="Chain" type="Sprite2D" parent="Elevator" unique_id=1695721444]
 physics_interpolation_mode = 2
 texture_repeat = 2
 scale = Vector2(2, 2)
@@ -45,34 +45,34 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 5, 852)
 
-[node name="Elevator" type="Sprite2D" parent="Elevator"]
+[node name="Elevator" type="Sprite2D" parent="Elevator" unique_id=1490865457]
 physics_interpolation_mode = 2
 position = Vector2(4, 1776)
 scale = Vector2(2, 2)
 texture = ExtResource("2_27f6t")
 
-[node name="Area2D" type="Area2D" parent="Elevator/Elevator"]
+[node name="Area2D" type="Area2D" parent="Elevator/Elevator" unique_id=1412034921]
 physics_interpolation_mode = 2
 position = Vector2(0, 32)
 scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator/Elevator/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator/Elevator/Area2D" unique_id=107133629]
 physics_interpolation_mode = 2
 position = Vector2(13, -62)
 shape = SubResource("RectangleShape2D_xc2gm")
 debug_color = Color(0.86548, 0.356066, 7.70092e-07, 0.42)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=404768433]
 physics_interpolation_mode = 1
 position = Vector2(4, 1840)
 shape = SubResource("RectangleShape2D_80ybh")
 
-[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="." unique_id=1391885550]
 volume_db = -10.0
 script = ExtResource("4_plx5k")
 audio_library = SubResource("Resource_0up5w")
 
-[connection signal="body_entered" from="Elevator/Elevator/Area2D" to="Elevator" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Elevator/Elevator/Area2D" to="Elevator" method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="Elevator/Elevator/Area2D" to="Elevator" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Elevator/Elevator/Area2D" to="Elevator" method="_on_area_2d_area_exited"]

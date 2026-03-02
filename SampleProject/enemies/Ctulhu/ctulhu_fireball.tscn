@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://2eavo1ohmkqv"]
+[gd_scene format=3 uid="uid://2eavo1ohmkqv"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/BonePillar/fireball.gd" id="1_f2saa"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="2_g3b0c"]
+[ext_resource type="Script" uid="uid://83h2kn4bangk" path="res://SampleProject/enemies/BonePillar/fireball.gd" id="1_f2saa"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="2_g3b0c"]
 [ext_resource type="Texture2D" uid="uid://csebr4l1km117" path="res://assets/sprites/Enemies/Ctulhu/Fireball.png" id="3_hmwfi"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="4_b7c2u"]
 
@@ -136,12 +136,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fos3a"]
 _data = {
-"RESET": SubResource("Animation_36t8a"),
-"destroy": SubResource("Animation_qtugk"),
-"travel": SubResource("Animation_10l4q")
+&"RESET": SubResource("Animation_36t8a"),
+&"destroy": SubResource("Animation_qtugk"),
+&"travel": SubResource("Animation_10l4q")
 }
 
-[node name="CtulhuFireball" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "lifespan_timer")]
+[node name="CtulhuFireball" type="RigidBody2D" unique_id=228776003 node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "lifespan_timer")]
 collision_layer = 4
 collision_mask = 0
 gravity_scale = 0.0
@@ -156,7 +156,7 @@ lifespan_timer = NodePath("Lifespan")
 align_velocity_to_angle = true
 SPEED = 200.0
 
-[node name="Projectile" type="Node" parent="."]
+[node name="Projectile" type="Node" parent="." unique_id=363118563]
 script = ExtResource("2_g3b0c")
 base_damage = 25
 destructible = true
@@ -164,48 +164,46 @@ destroy_on_contact = true
 magical = true
 attribute = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1204709877]
 z_index = 1
 scale = Vector2(2, 2)
 texture = ExtResource("3_hmwfi")
 offset = Vector2(-8, -12)
 hframes = 5
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=282628893]
 collision_layer = 2
 collision_mask = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=1877240296]
 visible = false
 position = Vector2(2.75, 1)
 shape = SubResource("RectangleShape2D_fdqp0")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=680664241]
 visible = false
 position = Vector2(2.5, 1)
 shape = SubResource("RectangleShape2D_th556")
 
-[node name="Lifespan" type="Timer" parent="."]
+[node name="Lifespan" type="Timer" parent="." unique_id=1935087368]
 wait_time = 5.0
 
-[node name="FireEffect" type="GPUParticles2D" parent="."]
+[node name="FireEffect" type="GPUParticles2D" parent="." unique_id=62937176]
 z_index = 20
 material = SubResource("CanvasItemMaterial_gyr3f")
 position = Vector2(0, 1)
 emitting = false
 amount = 15
-process_material = SubResource("ParticleProcessMaterial_mr34j")
 texture = ExtResource("4_b7c2u")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_mr34j")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_fos3a")
-}
-autoplay = "travel"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1638202719]
+libraries/ = SubResource("AnimationLibrary_fos3a")
+autoplay = &"travel"
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

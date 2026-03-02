@@ -8,7 +8,7 @@ func _ready() -> void:
 	super()
 	facing_position = -1
 	iframe_timer.timeout.connect(_on_iframe_timer_timeout)
-	hitbox_iframe.body_entered.connect(_on_area_2d_body_entered)
+	hitbox_iframe.area_entered.connect(_on_area_2d_area_entered)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and motion_mode == MotionMode.MOTION_MODE_GROUNDED:
@@ -17,7 +17,8 @@ func _physics_process(delta: float) -> void:
 	remove_glow_if_glowing()
 	move_and_slide()
 	
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(contact_damage_multiplier, body, hitbox_iframe)
 
 

@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		open_delay.start()
 
 # Open door when Hector is touching them to enter the room
-func _on_detection_area_body_entered(body: Node2D) -> void:
+func _on_detection_area_area_entered(area: Area2D) -> void:
 	if not get_parent().should_close:
 		if get_parent().boss_door:
 			animation.play("open_boss")

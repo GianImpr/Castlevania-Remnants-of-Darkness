@@ -101,5 +101,5 @@ func unfreeze_game() -> void:
 		get_tree().paused = false
 		Global.screen = Global.ScreenType.NONE
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	animation.play("collected")

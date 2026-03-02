@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://btql1r5psei2s"]
+[gd_scene format=3 uid="uid://btql1r5psei2s"]
 
 [ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="1_e1smr"]
 [ext_resource type="Script" uid="uid://ca0aaannp2l3e" path="res://SampleProject/enemies/Dullahan/DullahanSpike.gd" id="1_ifryw"]
@@ -86,45 +86,43 @@ stream = ExtResource("7_o2qfh")
 script = ExtResource("5_esq15")
 sound_effects = Array[ExtResource("6_mhj6l")]([SubResource("Resource_qnii7")])
 
-[node name="DullahanSpike" type="Node2D" node_paths=PackedStringArray("stats", "area", "iframes")]
+[node name="DullahanSpike" type="Node2D" unique_id=752158653 node_paths=PackedStringArray("stats", "area", "iframes")]
 script = ExtResource("1_ifryw")
 stats = NodePath("Projectile")
 area = NodePath("Area2D")
 iframes = NodePath("Iframe_timer")
 
-[node name="Projectile" type="Node" parent="."]
+[node name="Projectile" type="Node" parent="." unique_id=1561539463]
 script = ExtResource("1_e1smr")
 base_damage = 20
 chip_damage = -25
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1227491379]
 scale = Vector2(2, 2)
 texture = ExtResource("2_tosun")
 hframes = 9
 frame = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_pptn1")
-}
-autoplay = "spawn"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2138797977]
+libraries/ = SubResource("AnimationLibrary_pptn1")
+autoplay = &"spawn"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1453098660]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=262135613]
 position = Vector2(-1.5, 27.5)
 shape = SubResource("RectangleShape2D_3d4gp")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=316031454]
 volume_db = -19.0
 script = ExtResource("4_yihsi")
 audio_library = SubResource("Resource_nv0be")
 
-[node name="Iframe_timer" type="Timer" parent="."]
+[node name="Iframe_timer" type="Timer" parent="." unique_id=1401005471]
 wait_time = 2.0
 one_shot = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Iframe_timer" to="." method="_on_iframe_timer_timeout"]

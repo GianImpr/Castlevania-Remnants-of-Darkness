@@ -1,31 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://cow3qaei4a10n"]
+[gd_scene format=3 uid="uid://cow3qaei4a10n"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/Event/change_area.gd" id="1_bo1cl"]
+[ext_resource type="Script" uid="uid://bd076tmnrychq" path="res://SampleProject/Scripts/Event/change_area.gd" id="1_bo1cl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5are"]
 size = Vector2(489, 20)
 
-[node name="TutorialScreenTrigger" type="StaticBody2D" node_paths=PackedStringArray("area", "presentation_duration")]
+[node name="TutorialScreenTrigger" type="StaticBody2D" unique_id=836693443 node_paths=PackedStringArray("area", "presentation_duration")]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_bo1cl")
 area = NodePath("Area2D")
 presentation_duration = NodePath("Timer")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1774273649]
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=309112869]
 position = Vector2(-1.02503e-05, 234.5)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_y5are")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=738295648]
 wait_time = 0.2
 one_shot = true
 autostart = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

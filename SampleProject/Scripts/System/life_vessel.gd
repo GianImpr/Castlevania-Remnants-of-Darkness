@@ -11,7 +11,7 @@ func _ready():
 		queue_free()
 		
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area_body: Area2D) -> void:
 	var popup = boost_message.instantiate()
 	popup.get_child(0).frame = 0
 	Global.player.stats.Stats["MHP"] += power

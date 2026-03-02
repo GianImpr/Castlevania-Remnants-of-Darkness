@@ -2013,7 +2013,7 @@ one_shot = true
 explosiveness = 0.07
 process_material = SubResource("ParticleProcessMaterial_edw4s")
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="IframeTimer" to="." method="_on_iframe_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Appearing/Trail_frequency" to="StateMachine/Appearing" method="_on_trail_frequency_timeout"]
 [connection signal="timeout" from="StateMachine/Idle/Idle_duration" to="StateMachine/Idle" method="_on_duration_timeout"]
@@ -2021,10 +2021,10 @@ process_material = SubResource("ParticleProcessMaterial_edw4s")
 [connection signal="timeout" from="StateMachine/Enter_rage/Rage_delay" to="StateMachine/Enter_rage" method="_on_rage_delay_timeout"]
 [connection signal="timeout" from="StateMachine/Dying/Head_disappear_delay" to="StateMachine/Dying" method="_on_head_disappear_delay_timeout"]
 [connection signal="timeout" from="StateMachine/Dying/Free_delay" to="StateMachine/Dying" method="_on_free_delay_timeout"]
-[connection signal="body_entered" from="Thrust" to="." method="_on_thrust_body_entered"]
-[connection signal="body_entered" from="Shockwave" to="." method="_on_shockwave_body_entered"]
+[connection signal="area_entered" from="Thrust" to="." method="_on_thrust_area_entered"]
+[connection signal="area_entered" from="Shockwave" to="." method="_on_shockwave_area_entered"]
 [connection signal="timeout" from="Spikes" to="." method="_on_spikes_timeout"]
 [connection signal="timeout" from="Fangs" to="StateMachine/Throw_head" method="_on_fangs_timeout"]
-[connection signal="body_entered" from="TriggerBoss" to="StateMachine/Waiting" method="_on_trigger_boss_body_entered"]
+[connection signal="area_entered" from="TriggerBoss" to="StateMachine/Waiting" method="_on_trigger_boss_area_entered"]
 [connection signal="timeout" from="TriggerBoss/StartCooldown" to="." method="_on_start_cooldown_timeout"]
 [connection signal="body_entered" from="LaserHitbox" to="." method="_on_laser_2_body_entered"]

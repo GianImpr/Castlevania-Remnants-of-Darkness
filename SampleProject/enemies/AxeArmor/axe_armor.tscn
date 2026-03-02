@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cl543nev3n2bf"]
+[gd_scene format=3 uid="uid://cl543nev3n2bf"]
 
 [ext_resource type="Script" uid="uid://bgs5m2vrglm8l" path="res://SampleProject/enemies/AxeArmor/AxeArmor.gd" id="1_iqps0"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_f44xy"]
@@ -378,7 +378,7 @@ size = Vector2(37, 86)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cida7"]
 size = Vector2(683, 238)
 
-[node name="AxeArmor" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[node name="AxeArmor" type="CharacterBody2D" unique_id=436702056 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 collision_layer = 4
 collision_mask = 4097
 script = ExtResource("1_iqps0")
@@ -390,7 +390,7 @@ damage_popup = NodePath("DamageLocation")
 iframe_timer = NodePath("Area2D/Timer")
 hitbox_iframe = NodePath("Area2D")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=2114298230]
 script = ExtResource("2_f44xy")
 enemy_name = "AXE_ARMOR"
 LV = 3
@@ -403,20 +403,18 @@ common_drop_rate = 2.6
 weaknesses = Array[int]([1, 5])
 tolerances = Array[int]([6])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1438397541]
 scale = Vector2(2, 2)
 texture = ExtResource("3_5np2x")
 hframes = 17
 vframes = 7
 frame = 17
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=43044372]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_r85du")
-}
+libraries/ = SubResource("AnimationLibrary_r85du")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=377471788]
 position = Vector2(0, 40)
 emitting = false
 amount = 50
@@ -430,65 +428,65 @@ scale_amount_min = 2.0
 scale_amount_max = 3.0
 color = Color(0, 0, 0, 1)
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1233198276]
 position = Vector2(0.5, -10.5)
 shape = SubResource("RectangleShape2D_jex6e")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=180562909]
 script = ExtResource("4_d024k")
 audio_library = SubResource("Resource_i5r3b")
 
-[node name="DamageLocation" type="Marker2D" parent="."]
+[node name="DamageLocation" type="Marker2D" parent="." unique_id=210564256]
 position = Vector2(0, -93)
 script = ExtResource("5_nue23")
 damage_node = ExtResource("6_2ymih")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Area2D" type="Area2D" parent="." unique_id=305353556]
+collision_layer = 0
 collision_mask = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=430047815]
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_hxc08")
 
-[node name="Timer" type="Timer" parent="Area2D"]
+[node name="Timer" type="Timer" parent="Area2D" unique_id=2055732923]
 
-[node name="Area of Vision" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Area of Vision" type="Area2D" parent="." unique_id=189491389]
+collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision" unique_id=1300848933]
 position = Vector2(-12.5, -39)
 shape = SubResource("RectangleShape2D_cida7")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=1472392822 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("12_wa4wn")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1301757588 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("6_nergd")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 
-[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Moving" type="Node" parent="StateMachine" unique_id=147381567 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("7_mcxjw")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 SPEED = 4500.0
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1158440685 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("8_yuaeu")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 axe_scene = ExtResource("10_mi4c6")
 axe_speed = Vector2(400, 0)
 
-[node name="Respawn_axe" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Respawn_axe" type="Node" parent="StateMachine" unique_id=1964799424 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("9_xecj8")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1034681452 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("10_6kenr")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Area of Vision" to="StateMachine/Idle" method="_on_area_of_vision_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area of Vision" to="StateMachine/Idle" method="_on_area_of_vision_area_entered"]

@@ -192,7 +192,7 @@ shape = SubResource("RectangleShape2D_nj3rc")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1069466436]
 collision_layer = 0
-collision_mask = 524288
+collision_mask = 524290
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=904888094]
 position = Vector2(0, -4)
@@ -210,4 +210,4 @@ audio_library = SubResource("Resource_xx3d8")
 [node name="WallChecker" type="Node" parent="." unique_id=643212753]
 script = ExtResource("13_5a84c")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

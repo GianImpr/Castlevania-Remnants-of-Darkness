@@ -31,10 +31,10 @@ func _ready() -> void:
 	super()
 	facing_position = 1
 	iframe_timer.timeout.connect(_on_iframe_timer_timeout)
-	hitbox_iframe.body_entered.connect(_on_area_2d_body_entered)
-	sword_hitbox.body_entered.connect(_on_sword_body_entered)
-	laser_hitbox.body_entered.connect(_on_laser_body_entered)
-	dash_hitbox.body_entered.connect(_on_dash_body_entered)
+	hitbox_iframe.area_entered.connect(_on_area_2d_area_entered)
+	sword_hitbox.area_entered.connect(_on_sword_area_entered)
+	laser_hitbox.area_entered.connect(_on_laser_area_entered)
+	dash_hitbox.area_entered.connect(_on_dash_area_entered)
 	max_HP = stats.HP
 
 func _physics_process(delta: float) -> void:
@@ -44,16 +44,20 @@ func _physics_process(delta: float) -> void:
 	remove_glow_if_glowing()
 	move_and_slide()
 	
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(contact_damage_multiplier, body, hitbox_iframe)
 
-func _on_sword_body_entered(body: Node2D) -> void:
+func _on_sword_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(sword_damage_multiplier, body, sword_hitbox, sword_chip_damage, false, Global.Attribute.SLASH)
 
-func _on_laser_body_entered(body: Node2D) -> void:
+func _on_laser_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(laser_damage_multiplier, body, laser_hitbox, laser_chip_damage, false, Global.Attribute.STONE)
 
-func _on_dash_body_entered(body: Node2D) -> void:
+func _on_dash_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(dash_damage_multiplier, body, dash_hitbox, dash_chip_damage, true, Global.Attribute.SLASH, 1, true)
 
 

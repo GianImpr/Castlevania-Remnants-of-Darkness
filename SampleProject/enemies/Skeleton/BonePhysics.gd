@@ -14,7 +14,8 @@ func _physics_process(delta: float) -> void:
 	if get_contact_count() > 0 or thrower == null:
 		destroy()
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	if not body.is_hurt:
 		var damage = calculate_damage(body)
 		apply_damage(body, damage)

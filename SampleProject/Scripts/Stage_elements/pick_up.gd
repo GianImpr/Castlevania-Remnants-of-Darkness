@@ -77,7 +77,7 @@ func _on_flash_duration_timeout() -> void:
 	idle_timer.start()
 	animation.play("idle")
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	if Global.player.stats.findItem(id, getInventory()) >= Global.player.stats.searchItemInCompendium(id, getCompendium(type))["max_quantity"]:
 		var item_full_label = item_full_scene.instantiate()
 		add_child(item_full_label)

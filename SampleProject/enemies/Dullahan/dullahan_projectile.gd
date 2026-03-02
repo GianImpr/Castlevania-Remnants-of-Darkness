@@ -19,7 +19,8 @@ func _on_lifetime_timeout() -> void:
 func destroy():
 	queue_free()
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	if not body.is_hurt:
 		stats.apply_damage(body, stats.calculate_damage(body))
 	if stats.destroy_on_contact:

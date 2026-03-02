@@ -19,7 +19,8 @@ func _physics_process(delta: float) -> void:
 	
 
 	
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(1, body)
 
 
@@ -27,5 +28,6 @@ func _on_timer_timeout() -> void:
 	hitbox_iframe.set_deferred("monitoring", true)
 
 
-func _on_sword_body_entered(body: Node2D) -> void:
+func _on_sword_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(1.5, body, sword_hitbox)

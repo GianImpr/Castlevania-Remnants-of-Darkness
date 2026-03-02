@@ -1154,4 +1154,4 @@ color_ramp = SubResource("Gradient_gvhc5")
 anim_speed_min = 2.0
 anim_speed_max = 2.0
 
-[connection signal="body_entered" from="Vision" to="StateMachine/Spawn" method="_on_vision_body_entered"]
+[connection signal="area_entered" from="Vision" to="StateMachine/Spawn" method="_on_vision_area_entered"]

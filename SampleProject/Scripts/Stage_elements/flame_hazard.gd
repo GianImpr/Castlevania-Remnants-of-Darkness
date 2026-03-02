@@ -37,7 +37,8 @@ func apply_damage(body, damage):
 func _on_iframe_timer_timeout() -> void:
 	hitbox_iframe.set_deferred("disabled", false)
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	var multiplier = 1
 	if not body.is_hurt:
 		var damage = calculate_damage(body, multiplier)

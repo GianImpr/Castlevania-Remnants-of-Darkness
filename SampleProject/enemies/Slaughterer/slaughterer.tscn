@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ctg2sggf2ujvj"]
+[gd_scene format=3 uid="uid://ctg2sggf2ujvj"]
 
 [ext_resource type="Script" uid="uid://8da40xkoodwc" path="res://SampleProject/enemies/Slaughterer/slaughterer.gd" id="1_x7pho"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_bykru"]
@@ -385,7 +385,7 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="Slaughterer" type="CharacterBody2D" node_paths=PackedStringArray("vision", "punch_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[node name="Slaughterer" type="CharacterBody2D" unique_id=1019077976 node_paths=PackedStringArray("vision", "punch_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 4097
@@ -400,7 +400,7 @@ iframe_timer = NodePath("Timer")
 hitbox_iframe = NodePath("Hitbox")
 blood_particles = NodePath("BloodDamage")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=668869103]
 script = ExtResource("2_bykru")
 enemy_name = "SLAUGHTERER"
 LV = 11
@@ -414,55 +414,55 @@ common_drop_rate = 2.6
 weaknesses = Array[int]([2])
 tolerances = Array[int]([3, 9, 7])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1468569927]
 texture = ExtResource("3_ikg7l")
 offset = Vector2(-10, 0)
 hframes = 8
 vframes = 6
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1982558492]
 position = Vector2(9, 4.75)
 shape = SubResource("RectangleShape2D_ee7qv")
 
-[node name="Hurtbox2" type="CollisionShape2D" parent="."]
+[node name="Hurtbox2" type="CollisionShape2D" parent="." unique_id=1743414472]
 position = Vector2(-18, 1.25)
 shape = SubResource("RectangleShape2D_8siyg")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1204862218]
 
-[node name="Punch" type="Area2D" parent="."]
+[node name="Punch" type="Area2D" parent="." unique_id=780537340]
 collision_layer = 0
 collision_mask = 2
 
-[node name="PunchShape" type="CollisionShape2D" parent="Punch"]
+[node name="PunchShape" type="CollisionShape2D" parent="Punch" unique_id=1451027407]
 position = Vector2(-46.25, -7.5)
 shape = SubResource("RectangleShape2D_2l8yh")
 disabled = true
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1591527598]
 collision_layer = 0
 collision_mask = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=570489087]
 visible = false
 position = Vector2(3.75, 4.75)
 shape = SubResource("RectangleShape2D_duwns")
 
-[node name="Vision" type="Area2D" parent="."]
+[node name="Vision" type="Area2D" parent="." unique_id=391012202]
 collision_layer = 0
 collision_mask = 2
 
-[node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+[node name="VisionShape" type="CollisionShape2D" parent="Vision" unique_id=1083569893]
 visible = false
 position = Vector2(5, -4)
 shape = SubResource("RectangleShape2D_eyyy3")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=720852631]
 volume_db = 5.0
 script = ExtResource("3_3472y")
 audio_library = SubResource("Resource_qw8l2")
 
-[node name="BloodDamage" type="CPUParticles2D" parent="."]
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=880063163]
 emitting = false
 amount = 12
 lifetime = 0.75
@@ -478,48 +478,46 @@ scale_amount_curve = SubResource("Curve_va3vl")
 color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
 color_ramp = SubResource("Gradient_5pg3w")
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=1216342524]
 position = Vector2(0, -33.5)
 script = ExtResource("4_28o5v")
 damage_node = ExtResource("5_yj5pd")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=579607285 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("12_idftg")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1412658220]
 script = ExtResource("7_oqd5v")
 MAX_DISTANCE_FROM_PLAYER = 120.0
 FIREBALL_SHOOTING_FREQUENCY_FROM_DISTANCE = 3
 
-[node name="Moving" type="Node" parent="StateMachine"]
+[node name="Moving" type="Node" parent="StateMachine" unique_id=1631428083]
 script = ExtResource("8_87ony")
 JUMP_SPEED = Vector2(100, -200)
 
-[node name="Punching" type="Node" parent="StateMachine"]
+[node name="Punching" type="Node" parent="StateMachine" unique_id=2065824008]
 script = ExtResource("9_yg8k2")
 
-[node name="Spitting" type="Node" parent="StateMachine"]
+[node name="Spitting" type="Node" parent="StateMachine" unique_id=859449725]
 script = ExtResource("10_3mjcg")
 fireball_scene = ExtResource("11_jli4x")
 FIREBALL_SPEED_MULTIPLIER = 0.4
 FIREBALL_SPAWN_OFFSET = Vector2(30, -45)
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("explosion_sound_timer")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1547545358 node_paths=PackedStringArray("explosion_sound_timer")]
 script = ExtResource("11_8n6l7")
 explosion_sound_timer = NodePath("ExplosionSoundDelay")
 
-[node name="ExplosionSoundDelay" type="Timer" parent="StateMachine/Dying"]
+[node name="ExplosionSoundDelay" type="Timer" parent="StateMachine/Dying" unique_id=2057593981]
 wait_time = 0.12
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_o5efr")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1399933937]
+libraries/ = SubResource("AnimationLibrary_o5efr")
 
-[node name="Explosion" type="CPUParticles2D" parent="."]
+[node name="Explosion" type="CPUParticles2D" parent="." unique_id=214291388]
 material = SubResource("CanvasItemMaterial_qblxn")
 position = Vector2(23, 0)
 emitting = false

@@ -25,13 +25,13 @@ func _ready() -> void:
 	super()
 	facing_position = -1
 	iframe_timer.timeout.connect(_on_iframe_timer_timeout)
-	hitbox_iframe.body_entered.connect(_on_area_2d_body_entered)
-	vision.body_entered.connect(_on_vision_body_entered)
-	punch.body_entered.connect(_on_punch_2d_body_entered)
-	last_punch.body_entered.connect(_on_final_punch_2d_body_entered)
-	slide.body_entered.connect(_on_slide_2d_body_entered)
-	dash.body_entered.connect(_on_dash_2d_body_entered)
-	shockwave.body_entered.connect(_on_shockwave_2d_body_entered)
+	hitbox_iframe.area_entered.connect(_on_area_2d_area_entered)
+	vision.area_entered.connect(_on_vision_area_entered)
+	punch.area_entered.connect(_on_punch_2d_area_entered)
+	last_punch.area_entered.connect(_on_final_punch_2d_area_entered)
+	slide.area_entered.connect(_on_slide_2d_area_entered)
+	dash.area_entered.connect(_on_dash_2d_area_entered)
+	shockwave.area_entered.connect(_on_shockwave_2d_area_entered)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor() and motion_mode == MotionMode.MOTION_MODE_GROUNDED:
@@ -40,28 +40,34 @@ func _physics_process(delta: float) -> void:
 	remove_glow_if_glowing()
 	move_and_slide()
 	
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(contact_damage_multiplier, body, hitbox_iframe)
 	
-func _on_punch_2d_body_entered(body: Node2D) -> void:
+func _on_punch_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(PUNCH_DAMAGE_MULTIPLIER, body, punch, 0, false, Global.Attribute.HIT, PUNCH_REHIT_RATE, false)
 	
-func _on_final_punch_2d_body_entered(body: Node2D) -> void:
+func _on_final_punch_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(LAST_PUNCH_DAMAGE_MULTIPLIER, body, last_punch, 0, false, Global.Attribute.HIT, PUNCH_REHIT_RATE, true)
 	
-func _on_slide_2d_body_entered(body: Node2D) -> void:
+func _on_slide_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(SLIDE_DAMAGE_MULTIPLIER, body, hitbox_iframe, SLIDE_CHIP_DAMAGE, false, Global.Attribute.HIT, REHIT_RATE, true)
 	
-func _on_dash_2d_body_entered(body: Node2D) -> void:
+func _on_dash_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(DASH_DAMAGE_MULTIPLIER, body, hitbox_iframe, DASH_CHIP_DAMAGE, true, Global.Attribute.HIT, REHIT_RATE, true)
 
-func _on_shockwave_2d_body_entered(body: Node2D) -> void:
+func _on_shockwave_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(SHOCKWAVE_DAMAGE_MULTIPLIER, body, hitbox_iframe, SHOCKWAVE_CHIP_DAMAGE, true, Global.Attribute.ICE, REHIT_RATE, true)
 
 func _on_iframe_timer_timeout() -> void:
 	if stats.HP > 0:
 		hitbox_iframe.get_child(0).set_deferred("disabled", false)
 
-func _on_vision_body_entered(body: Node2D) -> void:
+func _on_vision_area_entered(area: Area2D) -> void:
 	activated_AI = true
 	vision.set_deferred("monitoring", false)

@@ -1,12 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://bnsy1kwfc8603"]
+[gd_scene format=3 uid="uid://bnsy1kwfc8603"]
 
 [ext_resource type="Texture2D" uid="uid://bvo251myppcop" path="res://assets/sprites/Objects/Doors/Combat/BossDoor.png" id="1_1pdi4"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/combat_door.gd" id="1_8e8x8"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/combat_door_node.gd" id="1_wnmjm"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_jdr85"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_l8vw0"]
+[ext_resource type="Script" uid="uid://d4ld1fjixwaer" path="res://SampleProject/Scripts/Stage_elements/combat_door.gd" id="1_8e8x8"]
+[ext_resource type="Script" uid="uid://cp8nuxjfwg20b" path="res://SampleProject/Scripts/Stage_elements/combat_door_node.gd" id="1_wnmjm"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_jdr85"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_l8vw0"]
 [ext_resource type="Texture2D" uid="uid://dc2kbfme7doyx" path="res://assets/sprites/Objects/Doors/Combat/BossSeal.png" id="4_u7fhh"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_7yhri"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="5_7yhri"]
 [ext_resource type="Texture2D" uid="uid://tyvxnf27ms2e" path="res://assets/sprites/Objects/Doors/Combat/BossDoor2.png" id="5_e11eq"]
 [ext_resource type="AudioStream" uid="uid://dv8cvlp0chhne" path="res://assets/sounds/Door/OpenCombatDoor.MP3" id="6_civa4"]
 [ext_resource type="AudioStream" uid="uid://dgshuccmcc8q0" path="res://assets/sounds/Door/CloseCombatDoor.MP3" id="7_6q3kv"]
@@ -332,12 +332,12 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_11822"]
 _data = {
-"RESET": SubResource("Animation_hiwn8"),
-"close": SubResource("Animation_3mye4"),
-"close_boss": SubResource("Animation_v3h54"),
-"idle": SubResource("Animation_3pxgt"),
-"open": SubResource("Animation_3j4hm"),
-"open_boss": SubResource("Animation_73k6k")
+&"RESET": SubResource("Animation_hiwn8"),
+&"close": SubResource("Animation_3mye4"),
+&"close_boss": SubResource("Animation_v3h54"),
+&"idle": SubResource("Animation_3pxgt"),
+&"open": SubResource("Animation_3j4hm"),
+&"open_boss": SubResource("Animation_73k6k")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3ty1"]
@@ -363,12 +363,12 @@ stream = ExtResource("7_6q3kv")
 script = ExtResource("4_l8vw0")
 sound_effects = Array[ExtResource("5_7yhri")]([SubResource("Resource_hfuc5"), SubResource("Resource_mn6qn")])
 
-[node name="Node2D" type="Node2D" node_paths=PackedStringArray("init_cooldown", "detection")]
+[node name="Node2D" type="Node2D" unique_id=404924252 node_paths=PackedStringArray("init_cooldown", "detection")]
 script = ExtResource("1_wnmjm")
 init_cooldown = NodePath("InitCooldown")
 detection = NodePath("CombatDoor/DetectionArea")
 
-[node name="CombatDoor" type="StaticBody2D" parent="." node_paths=PackedStringArray("animation", "open_delay", "close_delay", "door_sprite", "seal_sprite")]
+[node name="CombatDoor" type="StaticBody2D" parent="." unique_id=495463410 node_paths=PackedStringArray("animation", "open_delay", "close_delay", "door_sprite", "seal_sprite")]
 z_index = -1
 position = Vector2(0, -128)
 collision_layer = 17
@@ -383,58 +383,56 @@ boss_door_texture = ExtResource("5_e11eq")
 door_sprite = NodePath("Door")
 seal_sprite = NodePath("Door/Seal")
 
-[node name="Door" type="Sprite2D" parent="CombatDoor"]
+[node name="Door" type="Sprite2D" parent="CombatDoor" unique_id=1490522530]
 scale = Vector2(2, 2)
 texture = ExtResource("1_1pdi4")
 
-[node name="Seal" type="Sprite2D" parent="CombatDoor/Door"]
+[node name="Seal" type="Sprite2D" parent="CombatDoor/Door" unique_id=104763260]
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_u7fhh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CombatDoor"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CombatDoor" unique_id=1605820276]
 root_node = NodePath("../Door")
-libraries = {
-"": SubResource("AnimationLibrary_11822")
-}
-autoplay = "idle"
+libraries/ = SubResource("AnimationLibrary_11822")
+autoplay = &"idle"
 
-[node name="VerticalCollision" type="CollisionShape2D" parent="CombatDoor"]
+[node name="VerticalCollision" type="CollisionShape2D" parent="CombatDoor" unique_id=1010307499]
 visible = false
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_s3ty1")
 
-[node name="DetectionArea" type="Area2D" parent="CombatDoor"]
+[node name="DetectionArea" type="Area2D" parent="CombatDoor" unique_id=845437707]
 collision_mask = 2
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatDoor/DetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CombatDoor/DetectionArea" unique_id=804163779]
 visible = false
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_u2cmv")
 
-[node name="HorizontalCollision" type="CollisionShape2D" parent="CombatDoor"]
+[node name="HorizontalCollision" type="CollisionShape2D" parent="CombatDoor" unique_id=888749410]
 visible = false
 position = Vector2(-32, -9)
 shape = SubResource("RectangleShape2D_yot3j")
 disabled = true
 debug_color = Color(1.92523e-06, 0.632613, 0.449587, 0.42)
 
-[node name="OpenDelay" type="Timer" parent="."]
+[node name="OpenDelay" type="Timer" parent="." unique_id=1332497444]
 one_shot = true
 
-[node name="CloseDelay" type="Timer" parent="."]
+[node name="CloseDelay" type="Timer" parent="." unique_id=1961460818]
 wait_time = 0.5
 one_shot = true
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1999613145]
 script = ExtResource("3_jdr85")
 audio_library = SubResource("Resource_lxtvt")
 
-[node name="InitCooldown" type="Timer" parent="."]
+[node name="InitCooldown" type="Timer" parent="." unique_id=1466326251]
 one_shot = true
 autostart = true
 
-[connection signal="body_entered" from="CombatDoor/DetectionArea" to="CombatDoor" method="_on_detection_area_body_entered"]
+[connection signal="area_entered" from="CombatDoor/DetectionArea" to="CombatDoor" method="_on_detection_area_area_entered"]
 [connection signal="timeout" from="OpenDelay" to="CombatDoor" method="_on_animation_delay_timeout"]
 [connection signal="timeout" from="CloseDelay" to="CombatDoor" method="_on_close_delay_timeout"]
 [connection signal="timeout" from="InitCooldown" to="." method="_on_init_cooldown_timeout"]

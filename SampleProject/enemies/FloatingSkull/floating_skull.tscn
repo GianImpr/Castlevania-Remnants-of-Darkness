@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bwr5frmmnkw6y"]
+[gd_scene format=3 uid="uid://bwr5frmmnkw6y"]
 
 [ext_resource type="Script" uid="uid://rsc2cbayxbor" path="res://SampleProject/enemies/FloatingSkull/floating_skull.gd" id="1_kvchb"]
 [ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_lg682"]
@@ -322,7 +322,7 @@ _data = {
 &"idle": SubResource("Animation_rktta")
 }
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[node name="Enemy" type="CharacterBody2D" unique_id=2041339201 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 modulate = Color(1, 1, 1, 0.501961)
 scale = Vector2(2, 2)
 collision_layer = 4
@@ -337,7 +337,7 @@ damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Timer")
 hitbox_iframe = NodePath("Hitbox")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=1252852781]
 script = ExtResource("2_sex3x")
 enemy_name = "FLOATING_SKULL"
 LV = 9
@@ -349,55 +349,53 @@ common_drop_rate = 1.0
 weaknesses = Array[int]([8])
 tolerances = Array[int]([9])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1978377846]
 self_modulate = Color(1, 1, 1, 0.529412)
 texture = ExtResource("3_iffdl")
 offset = Vector2(-2, -27)
 hframes = 3
 
-[node name="Afterimage" type="Sprite2D" parent="Sprite2D"]
+[node name="Afterimage" type="Sprite2D" parent="Sprite2D" unique_id=1614188087]
 self_modulate = Color(1, 1, 1, 0.501961)
 texture = ExtResource("3_iffdl")
 offset = Vector2(-2, -27)
 hframes = 3
 
-[node name="AfterimageAnimation" type="AnimationPlayer" parent="Sprite2D/Afterimage"]
-libraries = {
-&"": SubResource("AnimationLibrary_yjyfq")
-}
-autoplay = "glow"
+[node name="AfterimageAnimation" type="AnimationPlayer" parent="Sprite2D/Afterimage" unique_id=586902408]
+libraries/ = SubResource("AnimationLibrary_yjyfq")
+autoplay = &"glow"
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=803024556]
 visible = false
 position = Vector2(1.25, -0.5)
 shape = SubResource("RectangleShape2D_qxu3u")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1240047725]
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1234572165]
 collision_layer = 0
 collision_mask = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=681499179]
 visible = false
 position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_vcug6")
 
-[node name="Vision" type="Area2D" parent="."]
+[node name="Vision" type="Area2D" parent="." unique_id=898076873]
 collision_layer = 0
 collision_mask = 2
 
-[node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+[node name="VisionShape" type="CollisionShape2D" parent="Vision" unique_id=271673198]
 visible = false
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_q2d17")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=264524788]
 volume_db = -5.0
 script = ExtResource("2_lg682")
 audio_library = SubResource("Resource_qad70")
 
-[node name="BloodDamage" type="CPUParticles2D" parent="."]
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=19598106]
 emitting = false
 amount = 12
 lifetime = 0.75
@@ -413,36 +411,34 @@ scale_amount_curve = SubResource("Curve_va3vl")
 color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
 color_ramp = SubResource("Gradient_5pg3w")
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=504591288]
 position = Vector2(0, -25)
 script = ExtResource("3_roqve")
 damage_node = ExtResource("4_ggdmt")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=628581706 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("11_pnrij")
 initial_state = NodePath("Waiting")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Waiting" type="Node" parent="StateMachine"]
+[node name="Waiting" type="Node" parent="StateMachine" unique_id=1385194327]
 script = ExtResource("10_6c5sr")
 SPEED = Vector2(20, 20)
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=249334753]
 script = ExtResource("11_ml3qo")
 
-[node name="Moving" type="Node" parent="StateMachine"]
+[node name="Moving" type="Node" parent="StateMachine" unique_id=526321274]
 script = ExtResource("12_76ndk")
 MIN_SPEED = 100.0
 MAX_SPEED = 200.0
 MIN_DURATION = 2.0
 MAX_DURATION = 3.0
 
-[node name="Dying" type="Node" parent="StateMachine"]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1704734229]
 script = ExtResource("12_xy5nu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_01it4")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1470226883]
+libraries/ = SubResource("AnimationLibrary_01it4")
 speed_scale = 2.0

@@ -60,16 +60,19 @@ func decide_action(from_index: int = 0, to_index: int = Actions.size()-1) -> Str
 	return action
 
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	if state_machine.current_state is not DullahanTeleport:
 		hit_target(1, body, hitbox_iframe, 0, false, Global.Attribute.HIT, 1)
 
 
-func _on_thrust_body_entered(body: Node2D) -> void:
+func _on_thrust_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(1.5, body, thrust_hitbox, 5, false, StaticGlobal.Attribute.HIT, 1, true)
 
 
-func _on_shockwave_body_entered(body: Node2D) -> void:
+func _on_shockwave_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(3, body, shockwave_hitbox, 30, true, Global.Attribute.ICE, 1, true)
 
 func spawnSpikes() -> void:
@@ -118,7 +121,8 @@ func isCorneringPlayer() -> bool:
 	return abs(Global.player.global_position.x - global_position.x) < 140 and (global_position.x < 220 or global_position.x > 740)
 
 
-func _on_laser_2_body_entered(body: Node2D) -> void:
+func _on_laser_2_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(2.8, body, laser_hitbox, 25, true, Global.Attribute.FIRE, 1)
 	
 func setBossBar() -> void:

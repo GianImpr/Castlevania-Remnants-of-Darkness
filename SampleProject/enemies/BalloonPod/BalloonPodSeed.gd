@@ -21,7 +21,7 @@ var speed_set: bool = false
 var random_initial_speed_direction: int
 
 func _ready() -> void:
-	area.body_entered.connect(_on_area_2d_body_entered)
+	area.area_entered.connect(_on_area_2d_area_entered)
 	if randi_range(0,1):
 		random_initial_speed_direction = -1
 	else:
@@ -37,7 +37,8 @@ func _ready() -> void:
 	falling_speed.tween_property(self, "linear_velocity:x", FALLING_SPEED.x*random_initial_speed_direction, TWEEN_DURATION)
 	falling_speed.tween_property(self, "linear_velocity:x", -FALLING_SPEED.x*random_initial_speed_direction, TWEEN_DURATION)
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area_node: Area2D) -> void:
+	var body = area_node.get_parent()
 	if not body.is_hurt and not on_cooldown:
 		stats.apply_damage(body, stats.calculate_damage(body))
 		on_cooldown = true

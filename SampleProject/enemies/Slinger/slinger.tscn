@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dfuncyp0yhrbk"]
+[gd_scene format=3 uid="uid://dfuncyp0yhrbk"]
 
 [ext_resource type="Script" uid="uid://drkb5era8tevt" path="res://SampleProject/enemies/Skeleton/Skeleton.gd" id="1_vg00r"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_q8su5"]
@@ -153,7 +153,7 @@ _data = {
 &"walk": SubResource("Animation_ng0ac")
 }
 
-[node name="Slinger" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[node name="Slinger" type="CharacterBody2D" unique_id=989756248 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 4097
@@ -166,7 +166,7 @@ damage_popup = NodePath("DamageLocation")
 iframe_timer = NodePath("Area2D/Timer")
 hitbox_iframe = NodePath("Area2D")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=2077260693]
 script = ExtResource("2_q8su5")
 enemy_name = "SLINGER"
 LV = 4
@@ -181,48 +181,48 @@ rare_drop_rate = 2.6
 weaknesses = Array[int]([1, 3, 8])
 tolerances = Array[int]([9])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1090416874]
 texture = ExtResource("3_cikg3")
 hframes = 11
 vframes = 3
 frame = 22
 
-[node name="Collision box" type="CollisionShape2D" parent="."]
+[node name="Collision box" type="CollisionShape2D" parent="." unique_id=634344022]
 visible = false
 position = Vector2(3.26087, 1.30435)
 shape = SubResource("RectangleShape2D_dg1j5")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=86014995]
 script = SubResource("GDScript_10oeh")
 audio_library = SubResource("Resource_7cys7")
 
-[node name="DamageLocation" type="Marker2D" parent="."]
+[node name="DamageLocation" type="Marker2D" parent="." unique_id=2052503149]
 position = Vector2(1.30435, -23.913)
 script = ExtResource("8_pbqbx")
 damage_node = ExtResource("9_hi8yh")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Area2D" type="Area2D" parent="." unique_id=633994445]
+collision_layer = 0
 collision_mask = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=7566456]
 visible = false
 position = Vector2(3.26087, 0.869568)
 shape = SubResource("RectangleShape2D_63bul")
 
-[node name="Timer" type="Timer" parent="Area2D"]
+[node name="Timer" type="Timer" parent="Area2D" unique_id=480142797]
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=811983508 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("10_i2nqd")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../SlingerAnim")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1374067457 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("10_xt7jb")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 
-[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe", "timer_attack", "timer_direction")]
+[node name="Moving" type="Node" parent="StateMachine" unique_id=1497825443 node_paths=PackedStringArray("hitbox_iframe", "timer_attack", "timer_direction")]
 script = ExtResource("11_dmtn2")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 timer_attack = NodePath("Attack")
@@ -230,39 +230,37 @@ timer_direction = NodePath("SwitchDirection")
 SPEED = 4000.0
 aggro_distance = Vector2(450, 50)
 
-[node name="Attack" type="Timer" parent="StateMachine/Moving"]
+[node name="Attack" type="Timer" parent="StateMachine/Moving" unique_id=1471771066]
 wait_time = 0.5
 
-[node name="SwitchDirection" type="Timer" parent="StateMachine/Moving"]
+[node name="SwitchDirection" type="Timer" parent="StateMachine/Moving" unique_id=1925601406]
 wait_time = 0.5
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=886697015 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("12_2jss4")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 bone_scene = ExtResource("13_ac424")
 bone_speed = Vector2(450, 0)
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=12251120 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("14_r02y0")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 dying_scene = ExtResource("15_n0q4b")
 
-[node name="Area of Vision" type="Area2D" parent="."]
+[node name="Area of Vision" type="Area2D" parent="." unique_id=1589727709]
 visible = false
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision" unique_id=484799337]
 position = Vector2(17.0652, -26.3044)
 shape = SubResource("RectangleShape2D_qovo5")
 
-[node name="SlingerAnim" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_318wi")
-}
+[node name="SlingerAnim" type="AnimationPlayer" parent="." unique_id=431106886]
+libraries/ = SubResource("AnimationLibrary_318wi")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Moving/Attack" to="StateMachine/Moving" method="_on_attack_timeout"]
 [connection signal="timeout" from="StateMachine/Moving/SwitchDirection" to="StateMachine/Moving" method="_on_switch_direction_timeout"]
-[connection signal="body_entered" from="Area of Vision" to="StateMachine/Idle" method="_on_area_of_vision_body_entered"]
+[connection signal="area_entered" from="Area of Vision" to="StateMachine/Idle" method="_on_area_of_vision_area_entered"]

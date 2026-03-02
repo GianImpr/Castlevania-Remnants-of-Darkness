@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bn3lg7fw7nbhb"]
+[gd_scene format=3 uid="uid://bn3lg7fw7nbhb"]
 
 [ext_resource type="Script" uid="uid://cgdju5appl1re" path="res://SampleProject/enemies/Ghost/ghost.gd" id="1_4jg88"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_shggr"]
@@ -132,7 +132,7 @@ stream = ExtResource("7_3q31p")
 script = ExtResource("5_524ja")
 sound_effects = Array[ExtResource("6_rmf7j")]([SubResource("Resource_5pstg")])
 
-[node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[node name="Ghost" type="CharacterBody2D" unique_id=55266763 node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 collision_layer = 4
 collision_mask = 0
 floor_block_on_wall = false
@@ -144,7 +144,7 @@ damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Area2D/Hitbox_iframe")
 hitbox_iframe = NodePath("Area2D")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=1567812392]
 script = ExtResource("2_shggr")
 enemy_name = "GHOST"
 LV = 2
@@ -152,68 +152,66 @@ HP = 1
 ATK = 9
 EXP = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1226957603]
 scale = Vector2(2, 2)
 texture = ExtResource("3_4s651")
 hframes = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=358689984]
 position = Vector2(0, 2)
 scale = Vector2(2.3, 2.3)
 shape = SubResource("RectangleShape2D_ddx2q")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Area2D" type="Area2D" parent="." unique_id=1028940417]
+collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1593269896]
 position = Vector2(0, 2)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_4e0kp")
 debug_color = Color(0.901914, 0.309396, 0, 0.42)
 
-[node name="Hitbox_iframe" type="Timer" parent="Area2D"]
+[node name="Hitbox_iframe" type="Timer" parent="Area2D" unique_id=1050622031]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ef4r7")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1789130856]
+libraries/ = SubResource("AnimationLibrary_ef4r7")
 speed_scale = 1.5
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1424261316]
 volume_db = -8.0
 script = ExtResource("3_n7p7b")
 audio_library = SubResource("Resource_ci558")
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=527381073]
 visible = false
 position = Vector2(0, -9)
 script = ExtResource("5_plncu")
 damage_node = ExtResource("6_q4s2a")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=1714060580 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("10_0a2m4")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("area")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=9409875 node_paths=PackedStringArray("area")]
 script = ExtResource("7_vwp3b")
 area = NodePath("../../Area2D")
 
-[node name="Move" type="Node" parent="StateMachine"]
+[node name="Move" type="Node" parent="StateMachine" unique_id=1445477361]
 script = ExtResource("8_llm2s")
 speed = 100.0
 
-[node name="Bounce" type="Node" parent="StateMachine"]
+[node name="Bounce" type="Node" parent="StateMachine" unique_id=2056009830]
 script = ExtResource("9_ki8vk")
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("area")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=354531210 node_paths=PackedStringArray("area")]
 script = ExtResource("10_ga7yx")
 area = NodePath("../../Area2D")
 dying_effect = ExtResource("11_ch1nl")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Area2D" to="StateMachine/Move" method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D" to="StateMachine/Move" method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Area2D/Hitbox_iframe" to="." method="_on_hitbox_iframe_timeout"]

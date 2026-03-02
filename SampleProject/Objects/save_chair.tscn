@@ -1,13 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://dtgg2nujcdn1o"]
+[gd_scene format=3 uid="uid://dtgg2nujcdn1o"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/save_chair.gd" id="1_i4bse"]
+[ext_resource type="Script" uid="uid://d2xtk7dt6gp22" path="res://SampleProject/Scripts/Stage_elements/save_chair.gd" id="1_i4bse"]
 [ext_resource type="Texture2D" uid="uid://kke5wk463r12" path="res://assets/sprites/Objects/Chairs/SaveChair.png" id="1_pssc2"]
-[ext_resource type="Shader" path="res://SampleProject/Shaders/aura.gdshader" id="2_bu55c"]
+[ext_resource type="Shader" uid="uid://diku0uk4in6gs" path="res://SampleProject/Shaders/aura.gdshader" id="2_bu55c"]
 [ext_resource type="PackedScene" uid="uid://dp5hxkqh3r2d1" path="res://SampleProject/extra_scenes/HUD/in_game_menu.tscn" id="2_o3lir"]
 [ext_resource type="Texture2D" uid="uid://cquk4wbec1myw" path="res://assets/sprites/Objects/Chairs/SaveChairAura.png" id="3_pahd4"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_jw30l"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_cpdl0"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="7_1tx46"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_jw30l"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_cpdl0"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_1tx46"]
 [ext_resource type="AudioStream" uid="uid://bxt6p8rg1n288" path="res://assets/sounds/Objects/PlatformActivate.wav" id="8_haiy0"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_d06tv"]
@@ -15,19 +15,19 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vvx5f"]
 width = 64
 height = 64
+noise = SubResource("FastNoiseLite_d06tv")
 seamless = true
 bump_strength = 32.0
-noise = SubResource("FastNoiseLite_d06tv")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_id470"]
 shader = ExtResource("2_bu55c")
+shader_parameter/n = SubResource("NoiseTexture2D_vvx5f")
 shader_parameter/min_intensity = 0.5
 shader_parameter/max_intensity = 1.0
 shader_parameter/speed_x = 1.0
 shader_parameter/speed_y = 1.0
 shader_parameter/fade_start = 1.0
 shader_parameter/fade_end = 1.0
-shader_parameter/n = SubResource("NoiseTexture2D_vvx5f")
 
 [sub_resource type="Animation" id="Animation_34wpl"]
 length = 0.2
@@ -520,11 +520,11 @@ tracks/11/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tqsdv"]
 _data = {
-"RESET": SubResource("Animation_34wpl"),
-"can_sit": SubResource("Animation_xmur4"),
-"flash": SubResource("Animation_gb2k8"),
-"idle": SubResource("Animation_b7qyp"),
-"warp_flash": SubResource("Animation_qxble")
+&"RESET": SubResource("Animation_34wpl"),
+&"can_sit": SubResource("Animation_xmur4"),
+&"flash": SubResource("Animation_gb2k8"),
+&"idle": SubResource("Animation_b7qyp"),
+&"warp_flash": SubResource("Animation_qxble")
 }
 
 [sub_resource type="Gradient" id="Gradient_npgdg"]
@@ -534,7 +534,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtshg"]
-size = Vector2(35, 135)
+size = Vector2(35, 325)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcuoa"]
 size = Vector2(2, 135)
@@ -548,7 +548,7 @@ stream = ExtResource("8_haiy0")
 script = ExtResource("6_cpdl0")
 sound_effects = Array[ExtResource("7_1tx46")]([SubResource("Resource_d7cj6")])
 
-[node name="Save Chair" type="RigidBody2D" node_paths=PackedStringArray("animation", "aura", "detect_hitbox", "sound")]
+[node name="Save Chair" type="RigidBody2D" unique_id=1908031180 node_paths=PackedStringArray("animation", "aura", "detect_hitbox", "sound")]
 collision_mask = 3
 lock_rotation = true
 freeze = true
@@ -560,26 +560,24 @@ detect_hitbox = NodePath("Area2D")
 sound = NodePath("PolyphonicAudio")
 save_menu_scene = ExtResource("2_o3lir")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1085133282]
 self_modulate = Color(1.2, 0.8, 1.5, 1)
 position = Vector2(0, 9)
 scale = Vector2(2, 2)
 texture = ExtResource("1_pssc2")
 
-[node name="Aura" type="Sprite2D" parent="Sprite2D"]
+[node name="Aura" type="Sprite2D" parent="Sprite2D" unique_id=560049742]
 modulate = Color(0.764631, 0.00293116, 0.999456, 1)
 self_modulate = Color(1.2, 0.8, 1.5, 1)
 show_behind_parent = true
 material = SubResource("ShaderMaterial_id470")
 texture = ExtResource("3_pahd4")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_tqsdv")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1583401549]
+libraries/ = SubResource("AnimationLibrary_tqsdv")
+autoplay = &"idle"
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=145067314]
 amount = 20
 preprocess = 1.0
 randomness = 0.5
@@ -596,21 +594,20 @@ color = Color(0.678431, 0, 1, 1)
 color_ramp = SubResource("Gradient_npgdg")
 color_initial_ramp = SubResource("Gradient_8b3jv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-11.5, 1.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=294730866]
+position = Vector2(-11.5, -93.5)
 shape = SubResource("RectangleShape2D_mtshg")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1824074910]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(6, 3)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2094555694]
+position = Vector2(10, 3)
 shape = SubResource("RectangleShape2D_wcuoa")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1304074429]
 script = ExtResource("5_jw30l")
 audio_library = SubResource("Resource_c053q")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

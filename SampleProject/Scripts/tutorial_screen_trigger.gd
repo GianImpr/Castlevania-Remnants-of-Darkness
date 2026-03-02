@@ -6,7 +6,7 @@ class_name TutorialScreenTrigger
 static var setTutorial: Callable
 
 # Trigger the tutorial box if player enters the trigger zone and a condition is met
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	if Global.player.stats.tutorial_flags[tutorial_id]:
 		queue_free()
 		return

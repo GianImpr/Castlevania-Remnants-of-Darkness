@@ -15,7 +15,7 @@ func Update(delta):
 	enemy_can_die(false)
 	
 
-func _on_vision_body_entered(body: Node2D) -> void:
+func _on_vision_area_entered(area: Area2D) -> void:
 	player.activated_AI = true
 	idle_duration.start()
 

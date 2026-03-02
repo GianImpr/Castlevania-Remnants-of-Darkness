@@ -12,8 +12,8 @@ func _physics_process(delta: float) -> void:
 	remove_glow_if_glowing()
 	move_and_slide()
 	
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	hit_target(1, body, hitbox_iframe)
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	hit_target(1, area.get_parent(), hitbox_iframe)
 		
 func _on_iframe_timer_timeout() -> void:
 	if stats.HP > 0:

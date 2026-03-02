@@ -15,19 +15,23 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_detection_body_entered(body: Node2D) -> void:
+func _on_detection_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(1, body)
 	
 
-func _on_spear_body_entered(body: Node2D) -> void:
+func _on_spear_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(1.5, body, spear)
 	
 
-func _on_special_body_entered(body: Node2D) -> void:
+func _on_special_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(3, body, special, 10, true, StaticGlobal.Attribute.HIT, 1, true)
 
 
-func _on_spear_up_down_body_entered(body: Node2D) -> void:
+func _on_spear_up_down_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	hit_target(1.5, body, vertical_spear_hitbox, 4)
 
 func _on_detect_projectiles_area_entered(area: Area2D) -> void:

@@ -12,7 +12,7 @@ func Update(delta: float):
 		animation.pause()
 
 
-func _on_trigger_boss_body_entered(body: Node2D) -> void:
+func _on_trigger_boss_area_entered(area: Area2D) -> void:
 	Global.player.freeze()
 	Transitioned.emit(self, "appearing")
 	player.trigger_boss.set_deferred("monitoring", false)

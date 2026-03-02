@@ -200,7 +200,6 @@ func _physics_process(delta: float) -> void:
 
 	direction = round(Input.get_axis("move_left", "move_right"))
 	
-	print(get_collision_layer_value(2))
 	
 	# Update where Hector is facing
 	if sprite.flip_h:

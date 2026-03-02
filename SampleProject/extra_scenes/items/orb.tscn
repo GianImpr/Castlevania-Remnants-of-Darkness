@@ -1,14 +1,23 @@
-[gd_scene load_steps=33 format=3 uid="uid://csi3yjrxq4qpx"]
+[gd_scene format=3 uid="uid://csi3yjrxq4qpx"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/orb.gd" id="1_dda8v"]
+[ext_resource type="Script" uid="uid://desrjfodb78hb" path="res://SampleProject/Scripts/Stage_elements/orb.gd" id="1_dda8v"]
 [ext_resource type="Texture2D" uid="uid://dn57vjry1heot" path="res://assets/sprites/Items/Pickups/Orbs/CyanOrb.png" id="1_nsugw"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="2_sgnrd"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_7j4ii"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_m8dki"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_llwci"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_7j4ii"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_m8dki"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="5_llwci"]
 [ext_resource type="AudioStream" uid="uid://wrqweng3ejsu" path="res://assets/sounds/Pickups/SpawnOrb.MP3" id="6_b5jxo"]
 [ext_resource type="AudioStream" uid="uid://ekr5fx3fw7fv" path="res://assets/sounds/Pickups/OrbBeat.MP3" id="8_4hymu"]
 [ext_resource type="AudioStream" uid="uid://iqp4chg11jpy" path="res://assets/sounds/Pickups/GetOrb.MP3" id="9_vdoiv"]
+
+[sub_resource type="Gradient" id="Gradient_1up5j"]
+offsets = PackedFloat32Array(0.00348432, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cwiw1"]
+gradient = SubResource("Gradient_1up5j")
+width = 1
+height = 8
 
 [sub_resource type="Gradient" id="Gradient_edlvs"]
 offsets = PackedFloat32Array(0, 0.368627, 1)
@@ -18,7 +27,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 gradient = SubResource("Gradient_edlvs")
 
 [sub_resource type="Curve" id="Curve_crqyp"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.254417, 2), 0.0, 0.0, 0, 0, Vector2(0.816254, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
@@ -33,20 +42,12 @@ emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 80.0
 emission_ring_radius = 80.0
 emission_ring_inner_radius = 40.0
+emission_ring_cone_angle = 90.0
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -200.0
 radial_accel_max = -100.0
 scale_curve = SubResource("CurveTexture_q1434")
 color_ramp = SubResource("GradientTexture1D_ij8fs")
-
-[sub_resource type="Gradient" id="Gradient_1up5j"]
-offsets = PackedFloat32Array(0.00348432, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cwiw1"]
-gradient = SubResource("Gradient_1up5j")
-width = 1
-height = 8
 
 [sub_resource type="Animation" id="Animation_46h6s"]
 length = 0.001
@@ -459,10 +460,10 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wbe01"]
 _data = {
-"RESET": SubResource("Animation_46h6s"),
-"collected": SubResource("Animation_eyvgk"),
-"floating": SubResource("Animation_3x5nw"),
-"spawn": SubResource("Animation_0xwnf")
+&"RESET": SubResource("Animation_46h6s"),
+&"collected": SubResource("Animation_eyvgk"),
+&"floating": SubResource("Animation_3x5nw"),
+&"spawn": SubResource("Animation_0xwnf")
 }
 
 [sub_resource type="Gradient" id="Gradient_j7ose"]
@@ -482,7 +483,6 @@ glow_levels/2 = 1.0
 glow_levels/4 = 1.0
 glow_levels/6 = 1.0
 glow_levels/7 = 1.0
-glow_blend_mode = 1
 fog_mode = 1
 fog_density = 1.0
 adjustment_enabled = true
@@ -541,7 +541,7 @@ sound_effects = Array[ExtResource("5_llwci")]([SubResource("Resource_gb515"), Su
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7s381"]
 size = Vector2(21, 53)
 
-[node name="Orb" type="Node2D" node_paths=PackedStringArray("animation", "imploding_particles", "glowing_particles", "spawn_particles", "orb_sprite", "point_light", "sound", "beat_sound_timer")]
+[node name="Orb" type="Node2D" unique_id=1570112043 node_paths=PackedStringArray("animation", "imploding_particles", "glowing_particles", "spawn_particles", "orb_sprite", "point_light", "sound", "beat_sound_timer")]
 scale = Vector2(2, 2)
 script = ExtResource("1_dda8v")
 animation = NodePath("AnimationPlayer")
@@ -556,76 +556,74 @@ pickup_flag_id = 28
 beat_sound_timer = NodePath("BeatSoundDelay")
 item_id = 4
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=351794614]
 self_modulate = Color(0, 1, 1, 0.772549)
 emitting = false
 amount = 30
-process_material = SubResource("ParticleProcessMaterial_45e0q")
 texture = SubResource("GradientTexture2D_cwiw1")
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_45e0q")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_wbe01")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=272834959]
+libraries/ = SubResource("AnimationLibrary_wbe01")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1268735256]
 color = Color(1, 1, 2, 1)
 energy = 0.0
 texture = SubResource("GradientTexture2D_pqded")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1534047676]
 self_modulate = Color(1, 1, 1, 0)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("1_nsugw")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1679909097]
 process_mode = 3
 environment = SubResource("Environment_lh031")
 
-[node name="Spawn" type="GPUParticles2D" parent="."]
+[node name="Spawn" type="GPUParticles2D" parent="." unique_id=654999487]
 self_modulate = Color(0, 1, 1, 0.772549)
 z_index = 20
 material = SubResource("CanvasItemMaterial_ehhc5")
 emitting = false
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_0702b")
 texture = ExtResource("2_sgnrd")
 lifetime = 1.5
 one_shot = true
 explosiveness = 0.7
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_0702b")
 
-[node name="Glowing" type="GPUParticles2D" parent="."]
+[node name="Glowing" type="GPUParticles2D" parent="." unique_id=2040086724]
 self_modulate = Color(0, 1, 1, 0.772549)
 z_index = 20
 material = SubResource("CanvasItemMaterial_ehhc5")
 emitting = false
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_7bsek")
 texture = ExtResource("2_sgnrd")
 lifetime = 2.4
 explosiveness = 1.0
 fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_7bsek")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=43110187]
 process_mode = 3
 volume_db = -2.0
 script = ExtResource("3_7j4ii")
 audio_library = SubResource("Resource_rhh2m")
 
-[node name="BeatSoundDelay" type="Timer" parent="."]
+[node name="BeatSoundDelay" type="Timer" parent="." unique_id=1044851535]
 wait_time = 2.4
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=133930468]
 scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="CollisionBox" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionBox" type="CollisionShape2D" parent="Area2D" unique_id=491734435]
 position = Vector2(0.5, -7.5)
 shape = SubResource("RectangleShape2D_7s381")
 
 [connection signal="timeout" from="BeatSoundDelay" to="." method="_on_beat_sound_delay_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

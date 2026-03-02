@@ -1440,5 +1440,5 @@ tutorial_id = 8
 position = Vector2(186, -6)
 flag_id = 3
 
-[connection signal="body_entered" from="Background/Fairy/ForgeTrigger" to="Background/Fairy" method="_on_forge_trigger_body_entered"]
-[connection signal="body_exited" from="Background/Fairy/ForgeTrigger" to="Background/Fairy" method="_on_forge_trigger_body_exited"]
+[connection signal="area_entered" from="Background/Fairy/ForgeTrigger" to="Background/Fairy" method="_on_forge_trigger_area_entered"]
+[connection signal="area_exited" from="Background/Fairy/ForgeTrigger" to="Background/Fairy" method="_on_forge_trigger_area_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b33buvcvhwwqa"]
+[gd_scene format=3 uid="uid://b33buvcvhwwqa"]
 
 [ext_resource type="Script" uid="uid://b1hcb3hrue7gv" path="res://SampleProject/enemies/BonePillar/bone_pillar.gd" id="1_whnnv"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_63tft"]
@@ -192,7 +192,7 @@ size = Vector2(426, 113)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nr5ai"]
 size = Vector2(60, 56)
 
-[node name="BonePillar" type="CharacterBody2D" node_paths=PackedStringArray("vision", "vision_startup_timer", "sprite", "stats", "damage_popup", "hitbox_iframe")]
+[node name="BonePillar" type="CharacterBody2D" unique_id=1049650694 node_paths=PackedStringArray("vision", "vision_startup_timer", "sprite", "stats", "damage_popup", "hitbox_iframe")]
 collision_layer = 5
 collision_mask = 4099
 script = ExtResource("1_whnnv")
@@ -203,7 +203,7 @@ stats = NodePath("EnemyStats")
 damage_popup = NodePath("DamagePopup")
 hitbox_iframe = NodePath("Area2D")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=1625574039]
 script = ExtResource("2_63tft")
 enemy_name = "BONE_PILLAR"
 LV = 7
@@ -215,12 +215,10 @@ EXP = 5
 weaknesses = Array[int]([1, 4])
 tolerances = Array[int]([3, 9])
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_layit")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1696632727]
+libraries/ = SubResource("AnimationLibrary_layit")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1711272785]
 scale = Vector2(2, 2)
 texture = ExtResource("3_2y5qg")
 offset = Vector2(10, 0)
@@ -228,72 +226,72 @@ hframes = 6
 vframes = 4
 frame = 1
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=958841022]
 volume_db = -5.0
 bus = &"SFX"
 script = ExtResource("3_gkhun")
 audio_library = SubResource("Resource_cntts")
 
-[node name="Vision" type="Area2D" parent="."]
+[node name="Vision" type="Area2D" parent="." unique_id=188556487]
 visible = false
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision" unique_id=1421138004]
 position = Vector2(0, -30.5)
 shape = SubResource("RectangleShape2D_imavs")
 
-[node name="Timer" type="Timer" parent="Vision"]
+[node name="Timer" type="Timer" parent="Vision" unique_id=1777398319]
 wait_time = 0.5
 one_shot = true
 autostart = true
 
-[node name="IdleDuration" type="Timer" parent="."]
+[node name="IdleDuration" type="Timer" parent="." unique_id=566478493]
 one_shot = true
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=1541882188 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("9_80gi4")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_duration")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=166577887 node_paths=PackedStringArray("idle_duration")]
 script = ExtResource("5_4yidx")
 idle_duration = NodePath("../../IdleDuration")
 
-[node name="Shoot" type="Node" parent="StateMachine"]
+[node name="Shoot" type="Node" parent="StateMachine" unique_id=1080411420]
 script = ExtResource("6_wma57")
 fireball_scene = ExtResource("11_axyld")
 fireball_origin = Vector2(37, -30)
 
-[node name="Dying" type="Node" parent="StateMachine"]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=313566486]
 script = ExtResource("7_vh1xc")
 dying_scene = ExtResource("15_xv7ij")
 
-[node name="Turning" type="Node" parent="StateMachine"]
+[node name="Turning" type="Node" parent="StateMachine" unique_id=1428434300]
 script = ExtResource("8_6lv8s")
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=1619935957]
 position = Vector2(0, -48)
 script = ExtResource("5_wg3yk")
 damage_node = ExtResource("6_0mqfv")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1478169185]
 collision_layer = 0
 collision_mask = 0
 monitoring = false
 monitorable = false
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Hurtbox" type="CollisionShape2D" parent="Area2D" unique_id=2030050833]
 visible = false
 shape = SubResource("RectangleShape2D_nr5ai")
 disabled = true
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1804393200]
 scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_nr5ai")
 
-[connection signal="body_entered" from="Vision" to="StateMachine/Idle" method="_on_vision_body_entered"]
+[connection signal="area_entered" from="Vision" to="StateMachine/Idle" method="_on_vision_area_entered"]
 [connection signal="timeout" from="Vision/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="IdleDuration" to="StateMachine/Idle" method="_on_idle_duration_timeout"]

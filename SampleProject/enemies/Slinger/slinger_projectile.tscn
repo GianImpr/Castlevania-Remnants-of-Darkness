@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bgqxhdb3bmwpy"]
+[gd_scene format=3 uid="uid://bgqxhdb3bmwpy"]
 
 [ext_resource type="Script" uid="uid://ddh6uryo2vai7" path="res://SampleProject/enemies/Skeleton/BonePhysics.gd" id="1_75mj8"]
 [ext_resource type="Script" uid="uid://cfsc6nnjqwyup" path="res://SampleProject/enemies/Skeleton/bone.gd" id="2_lyi3s"]
@@ -279,7 +279,7 @@ _data = {
 &"rotate": SubResource("Animation_8b3t7")
 }
 
-[node name="SlingerProjectile" type="RigidBody2D" node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "sound")]
+[node name="SlingerProjectile" type="RigidBody2D" unique_id=420119717 node_paths=PackedStringArray("stats", "sprite", "hitbox_iframe", "animation", "hurtbox", "sound")]
 z_index = 10
 collision_layer = 4
 collision_mask = 4097
@@ -296,40 +296,38 @@ animation = NodePath("AnimationPlayer")
 hurtbox = NodePath("Hurtbox")
 sound = NodePath("PolyphonicAudio")
 
-[node name="Stats" type="Node" parent="."]
+[node name="Stats" type="Node" parent="." unique_id=2129341094]
 script = ExtResource("2_lyi3s")
 base_damage = 9
 destructible = true
 destroy_on_contact = true
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=455387758]
 position = Vector2(-0.5, 0)
 scale = Vector2(2.3, 2.3)
 shape = SubResource("RectangleShape2D_xcnoe")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=688074300]
 position = Vector2(-1, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("3_mqd6d")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=707762133]
 scale = Vector2(2.3, 2.3)
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=1231072407]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_4eam0")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1164297083]
 script = SubResource("GDScript_10oeh")
 audio_library = SubResource("Resource_bwgyn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=644144861]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_t1ht4")
-}
-autoplay = "rotate"
+libraries/ = SubResource("AnimationLibrary_t1ht4")
+autoplay = &"rotate"
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

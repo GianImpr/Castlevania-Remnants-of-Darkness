@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cxfeg6jj146ah"]
+[gd_scene format=3 uid="uid://cxfeg6jj146ah"]
 
 [ext_resource type="Script" uid="uid://bhmoor0btevfp" path="res://SampleProject/enemies/ArmorLord/armor_lord.gd" id="1_qx3bf"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_g2oj7"]
@@ -884,7 +884,7 @@ color_ramp = SubResource("GradientTexture1D_norel")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[node name="ArmorLord" type="CharacterBody2D" node_paths=PackedStringArray("vision", "mince", "fire", "swing", "sword_linger", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[node name="ArmorLord" type="CharacterBody2D" unique_id=912263084 node_paths=PackedStringArray("vision", "mince", "fire", "swing", "sword_linger", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 4097
@@ -901,7 +901,7 @@ damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("IframeTimer")
 hitbox_iframe = NodePath("Detection")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=940024388]
 script = ExtResource("2_g2oj7")
 enemy_name = "ARMOR_LORD"
 LV = 9
@@ -910,25 +910,23 @@ ATK = 15
 DEF = 8
 EXP = 100
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=107540431]
 position = Vector2(28, 0)
 texture = ExtResource("3_8hn7x")
 hframes = 11
 vframes = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1699930364]
 root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_mij7x")
-}
+libraries/ = SubResource("AnimationLibrary_mij7x")
 speed_scale = 2.0
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1014426178]
 volume_db = -10.0
 script = ExtResource("4_bpgqt")
 audio_library = SubResource("Resource_siycx")
 
-[node name="FireEffect" type="GPUParticles2D" parent="."]
+[node name="FireEffect" type="GPUParticles2D" parent="." unique_id=390901495]
 z_index = 20
 material = SubResource("CanvasItemMaterial_bb03v")
 position = Vector2(200, 0)
@@ -940,7 +938,7 @@ one_shot = true
 explosiveness = 0.07
 process_material = SubResource("ParticleProcessMaterial_c8cdf")
 
-[node name="SwordTrail" type="Sprite2D" parent="."]
+[node name="SwordTrail" type="Sprite2D" parent="." unique_id=1404624770]
 visible = false
 self_modulate = Color(1, 1, 1, 0.117647)
 show_behind_parent = true
@@ -948,7 +946,7 @@ position = Vector2(18, 2.625)
 scale = Vector2(1.68486, 1.85887)
 texture = ExtResource("11_apeug")
 
-[node name="FireSwordTrail" type="Sprite2D" parent="."]
+[node name="FireSwordTrail" type="Sprite2D" parent="." unique_id=619011491]
 visible = false
 self_modulate = Color(1, 1, 1, 0.117647)
 show_behind_parent = true
@@ -956,119 +954,119 @@ position = Vector2(4, 32.088)
 scale = Vector2(1.79041, 2.04055)
 texture = ExtResource("12_oq3vb")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1599995667]
 visible = false
 position = Vector2(1.5, 25.5)
 shape = SubResource("RectangleShape2D_o00jw")
 
-[node name="Detection" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Detection" type="Area2D" parent="." unique_id=1670174500]
+collision_layer = 0
 collision_mask = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Detection"]
+[node name="Hitbox" type="CollisionShape2D" parent="Detection" unique_id=1207896389]
 visible = false
 position = Vector2(1.5, 33.3478)
 shape = SubResource("RectangleShape2D_dklpl")
 
-[node name="Swing" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Swing" type="Area2D" parent="." unique_id=2099967321]
+collision_layer = 0
 collision_mask = 2
 
-[node name="SwingHitbox" type="CollisionShape2D" parent="Swing"]
+[node name="SwingHitbox" type="CollisionShape2D" parent="Swing" unique_id=385544821]
 visible = false
 position = Vector2(27, 26.0217)
 shape = SubResource("RectangleShape2D_4qip8")
 disabled = true
 
-[node name="Fire" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Fire" type="Area2D" parent="." unique_id=1890724401]
+collision_layer = 0
 collision_mask = 2
 
-[node name="FireHitbox" type="CollisionShape2D" parent="Fire"]
+[node name="FireHitbox" type="CollisionShape2D" parent="Fire" unique_id=37755445]
 position = Vector2(5, 40)
 shape = SubResource("RectangleShape2D_j3amw")
 disabled = true
 
-[node name="Mince" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Mince" type="Area2D" parent="." unique_id=773033868]
+collision_layer = 0
 collision_mask = 2
 
-[node name="MinceHitbox" type="CollisionShape2D" parent="Mince"]
+[node name="MinceHitbox" type="CollisionShape2D" parent="Mince" unique_id=950790287]
 visible = false
 position = Vector2(52, 21.5)
 shape = SubResource("RectangleShape2D_fjqq2")
 disabled = true
 
-[node name="AreaOfVision" type="Area2D" parent="."]
+[node name="AreaOfVision" type="Area2D" parent="." unique_id=1835442246]
 visible = false
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaOfVision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaOfVision" unique_id=1503312097]
 position = Vector2(3, 24)
 shape = SubResource("RectangleShape2D_ctjme")
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=270942931]
 position = Vector2(4, -6)
 script = ExtResource("13_rfaak")
 damage_node = ExtResource("13_4q8sp")
 
-[node name="IframeTimer" type="Timer" parent="."]
+[node name="IframeTimer" type="Timer" parent="." unique_id=1937563524]
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=1962743052 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("17_ra6tr")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("duration_timer")]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=8657086 node_paths=PackedStringArray("duration_timer")]
 script = ExtResource("15_jdmar")
 duration_timer = NodePath("Duration")
 
-[node name="Duration" type="Timer" parent="StateMachine/Idle"]
+[node name="Duration" type="Timer" parent="StateMachine/Idle" unique_id=1550910112]
 wait_time = 0.7
 one_shot = true
 
-[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("duration_timer")]
+[node name="Moving" type="Node" parent="StateMachine" unique_id=1024353189 node_paths=PackedStringArray("duration_timer")]
 script = ExtResource("16_cgj71")
 SPEED = Vector2(30, 0)
 duration_timer = NodePath("Duration")
 
-[node name="Duration" type="Timer" parent="StateMachine/Moving"]
+[node name="Duration" type="Timer" parent="StateMachine/Moving" unique_id=2090882045]
 wait_time = 0.8
 one_shot = true
 
-[node name="Swing" type="Node" parent="StateMachine"]
+[node name="Swing" type="Node" parent="StateMachine" unique_id=570761504]
 script = ExtResource("17_y722i")
 forward_momentum = 800.0
 
-[node name="Fire" type="Node" parent="StateMachine" node_paths=PackedStringArray("fire_hitbox")]
+[node name="Fire" type="Node" parent="StateMachine" unique_id=1483239525 node_paths=PackedStringArray("fire_hitbox")]
 script = ExtResource("18_byf6u")
 fire_hitbox = NodePath("../../Fire/FireHitbox")
 
-[node name="Mince" type="Node" parent="StateMachine" node_paths=PackedStringArray("mincemeat_hitbox", "iframe_timer")]
+[node name="Mince" type="Node" parent="StateMachine" unique_id=1104217634 node_paths=PackedStringArray("mincemeat_hitbox", "iframe_timer")]
 script = ExtResource("19_syfeh")
 mincemeat_hitbox = NodePath("../../Mince/MinceHitbox")
 iframe_timer = NodePath("Iframes")
 
-[node name="Iframes" type="Timer" parent="StateMachine/Mince"]
+[node name="Iframes" type="Timer" parent="StateMachine/Mince" unique_id=508043501]
 wait_time = 0.6
 one_shot = true
 
-[node name="Dying" type="Node" parent="StateMachine"]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1192315544]
 script = ExtResource("20_vield")
 
-[node name="SwordLinger" type="Area2D" parent="."]
-collision_layer = 2
+[node name="SwordLinger" type="Area2D" parent="." unique_id=763084669]
+collision_layer = 0
 collision_mask = 2
 
-[node name="SwordHitbox" type="CollisionShape2D" parent="SwordLinger"]
+[node name="SwordHitbox" type="CollisionShape2D" parent="SwordLinger" unique_id=1598369709]
 position = Vector2(37.3913, 13.0435)
 rotation = -0.816815
 shape = SubResource("RectangleShape2D_5ok50")
 disabled = true
 
-[node name="DyingFlames" type="CPUParticles2D" parent="."]
+[node name="DyingFlames" type="CPUParticles2D" parent="." unique_id=830523603]
 material = SubResource("CanvasItemMaterial_uwia0")
 position = Vector2(-0.434783, 30.4348)
 emitting = false
@@ -1088,7 +1086,7 @@ scale_amount_max = 2.0
 anim_speed_min = 3.0
 anim_speed_max = 3.0
 
-[node name="DyingFire" type="GPUParticles2D" parent="."]
+[node name="DyingFire" type="GPUParticles2D" parent="." unique_id=165184169]
 z_index = 20
 material = SubResource("CanvasItemMaterial_bb03v")
 position = Vector2(2.17391, 42.1739)
@@ -1100,12 +1098,12 @@ one_shot = true
 explosiveness = 0.07
 process_material = SubResource("ParticleProcessMaterial_agiik")
 
-[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
-[connection signal="body_entered" from="Swing" to="." method="_on_swing_body_entered"]
-[connection signal="body_entered" from="Fire" to="." method="_on_fire_body_entered"]
-[connection signal="body_entered" from="Mince" to="." method="_on_mince_body_entered"]
-[connection signal="body_entered" from="AreaOfVision" to="StateMachine/Idle" method="_on_area_of_vision_body_entered"]
+[connection signal="area_entered" from="Detection" to="." method="_on_detection_area_entered"]
+[connection signal="area_entered" from="Swing" to="." method="_on_swing_area_entered"]
+[connection signal="area_entered" from="Fire" to="." method="_on_fire_area_entered"]
+[connection signal="area_entered" from="Mince" to="." method="_on_mince_area_entered"]
+[connection signal="area_entered" from="AreaOfVision" to="StateMachine/Idle" method="_on_area_of_vision_area_entered"]
 [connection signal="timeout" from="StateMachine/Idle/Duration" to="StateMachine/Idle" method="_on_duration_timeout"]
 [connection signal="timeout" from="StateMachine/Moving/Duration" to="StateMachine/Moving" method="_on_duration_timeout"]
 [connection signal="timeout" from="StateMachine/Mince/Iframes" to="StateMachine/Mince" method="_on_iframes_timeout"]
-[connection signal="body_entered" from="SwordLinger" to="." method="_on_sword_linger_body_entered"]
+[connection signal="area_entered" from="SwordLinger" to="." method="_on_sword_linger_area_entered"]

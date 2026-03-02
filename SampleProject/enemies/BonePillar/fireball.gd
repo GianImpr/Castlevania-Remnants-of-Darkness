@@ -37,7 +37,8 @@ func destroy():
 	animation.play("destroy")
 	hit = true
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	var multiplier = 1
 	if not body.is_hurt:
 		var damage = calculate_damage(body, multiplier)
@@ -51,7 +52,3 @@ func _on_lifespan_timeout() -> void:
 func applyDegreeVelocity() -> void:
 	linear_velocity.x = SPEED * direction * cos(rotation)
 	linear_velocity.y = SPEED * sin(rotation) * direction
-
-
-func _on_body_entered(body: Node) -> void:
-	pass # Replace with function body.

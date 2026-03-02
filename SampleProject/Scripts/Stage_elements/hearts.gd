@@ -44,7 +44,7 @@ func is_on_floor():
 	return get_contact_count() > 0
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	if Global.screen == Global.ScreenType.TRAINING and TrainingSettings.cur_challenge != TrainingSettings.ChallengeResult.NONE:
 		TrainingSettings.collected_hearts += 1
 		animation.play("picked")

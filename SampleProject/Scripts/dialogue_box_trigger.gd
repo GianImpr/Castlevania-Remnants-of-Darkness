@@ -4,7 +4,7 @@ class_name DialogueBoxTrigger
 @export var flag_id: int
 static var startDialogue: Callable
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	if Global.player.stats.dialogue_flags[flag_id]:
 		queue_free()
 		return

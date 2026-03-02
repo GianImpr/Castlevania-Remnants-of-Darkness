@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dj1w5vx1ut6l3"]
+[gd_scene format=3 uid="uid://dj1w5vx1ut6l3"]
 
 [ext_resource type="Script" uid="uid://c0ga2jqionbg4" path="res://SampleProject/enemies/BlackPanther/black_panther.gd" id="1_gwyl7"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_qe57j"]
@@ -269,7 +269,7 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_fd6a3"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="BlackPanther" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "ray_cast_2d_right", "blood_particles")]
+[node name="BlackPanther" type="CharacterBody2D" unique_id=1244033046 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "ray_cast_2d_right", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
 floor_constant_speed = true
@@ -288,7 +288,7 @@ ray_cast_2d_left = NodePath("RayCastLeft")
 ray_cast_2d_right = NodePath("RayCastRight")
 blood_particles = NodePath("BloodDamage")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=178561599]
 script = ExtResource("2_qe57j")
 enemy_name = "BLACK_PANTHER"
 LV = 10
@@ -297,57 +297,55 @@ ATK = 28
 EXP = 8
 weaknesses = Array[int]([2, 1])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1525284119]
 texture = ExtResource("3_uwhgh")
 hframes = 11
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_sbpo7")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1168044856]
+libraries/ = SubResource("AnimationLibrary_sbpo7")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1958852245]
 visible = false
 position = Vector2(-0.75, 4.5)
 shape = SubResource("RectangleShape2D_0m68m")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1786733562]
 visible = false
 collision_layer = 0
 collision_mask = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=995797641]
 position = Vector2(-1, 6)
 shape = SubResource("RectangleShape2D_o6mrf")
 
-[node name="Iframe" type="Timer" parent="Hitbox"]
+[node name="Iframe" type="Timer" parent="Hitbox" unique_id=1774215181]
 
-[node name="Vision" type="Area2D" parent="."]
+[node name="Vision" type="Area2D" parent="." unique_id=1848619121]
 visible = false
 collision_layer = 0
 collision_mask = 2
 
-[node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+[node name="VisionShape" type="CollisionShape2D" parent="Vision" unique_id=1626649885]
 position = Vector2(-101.75, 1)
 shape = SubResource("RectangleShape2D_lljl2")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1844286877]
 script = ExtResource("4_yjn0g")
 
-[node name="RayCastLeft" type="RayCast2D" parent="."]
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=888037699]
 visible = false
 target_position = Vector2(-26.5, 0)
 
-[node name="RayCastRight" type="RayCast2D" parent="."]
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=1190904163]
 visible = false
 target_position = Vector2(23.5, 0)
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=1780099353]
 position = Vector2(0, -9.5)
 script = ExtResource("5_1t0ht")
 damage_node = ExtResource("6_jgnbr")
 
-[node name="DeathParticles" type="CPUParticles2D" parent="."]
+[node name="DeathParticles" type="CPUParticles2D" parent="." unique_id=1198257065]
 position = Vector2(0, 6)
 emitting = false
 amount = 40
@@ -364,24 +362,24 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_v1yfl")
 color_ramp = SubResource("Gradient_rf5hk")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=1168922479 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("7_4rg5t")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=164723886]
 script = ExtResource("7_y0y6k")
 
-[node name="Running" type="Node" parent="StateMachine"]
+[node name="Running" type="Node" parent="StateMachine" unique_id=1345453793]
 script = ExtResource("8_aalk1")
 SPEED = 400.0
 
-[node name="Dying" type="Node" parent="StateMachine"]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1739109354]
 script = ExtResource("9_2bno5")
 SPEED = Vector2(150, -450)
 
-[node name="BloodDamage" type="CPUParticles2D" parent="."]
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=1562009476]
 emitting = false
 amount = 12
 lifetime = 0.75
@@ -397,5 +395,5 @@ scale_amount_curve = SubResource("Curve_ptads")
 color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
 color_ramp = SubResource("Gradient_fd6a3")
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Vision" to="StateMachine/Idle" method="_on_area_of_vision_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Vision" to="StateMachine/Idle" method="_on_vision_area_entered"]

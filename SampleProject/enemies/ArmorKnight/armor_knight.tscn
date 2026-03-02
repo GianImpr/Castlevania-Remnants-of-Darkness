@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bn5w03bpeuhmt"]
+[gd_scene format=3 uid="uid://bn5w03bpeuhmt"]
 
 [ext_resource type="Script" uid="uid://cwrmssaiaglfq" path="res://SampleProject/enemies/ArmorKnight/armor_knight.gd" id="1_ospht"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_xremq"]
@@ -798,7 +798,7 @@ radius = 158.013
 [sub_resource type="CircleShape2D" id="CircleShape2D_edfwy"]
 radius = 81.0987
 
-[node name="ArmorKnight" type="CharacterBody2D" node_paths=PackedStringArray("vision", "spear", "special", "vertical_spear_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[node name="ArmorKnight" type="CharacterBody2D" unique_id=959089821 node_paths=PackedStringArray("vision", "spear", "special", "vertical_spear_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 collision_layer = 4
 collision_mask = 4097
 script = ExtResource("1_ospht")
@@ -813,7 +813,7 @@ damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("IframeTimer")
 hitbox_iframe = NodePath("Area2D")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=1698175514]
 script = ExtResource("2_xremq")
 enemy_name = "ARMOR_KNIGHT"
 LV = 6
@@ -828,36 +828,34 @@ rare_drop_rate = 2.1
 weaknesses = Array[int]([1, 5])
 tolerances = Array[int]([6])
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=761824441]
 position = Vector2(3, 17.5)
 shape = SubResource("RectangleShape2D_bup83")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Area2D" type="Area2D" parent="." unique_id=177375063]
+collision_layer = 0
 collision_mask = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=95720197]
 position = Vector2(1, 22)
 shape = SubResource("RectangleShape2D_51w40")
 debug_color = Color(0.972499, 0, 0.44062, 0.42)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=699397486]
 scale = Vector2(2, 2)
 texture = ExtResource("3_6v812")
 hframes = 10
 vframes = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_j1abk")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=932678064]
+libraries/ = SubResource("AnimationLibrary_j1abk")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=656169955]
 volume_db = -15.0
 script = ExtResource("4_7cceu")
 audio_library = SubResource("Resource_ui7xg")
 
-[node name="DyingFlames" type="CPUParticles2D" parent="."]
+[node name="DyingFlames" type="CPUParticles2D" parent="." unique_id=1918394341]
 show_behind_parent = true
 material = SubResource("CanvasItemMaterial_80svb")
 position = Vector2(-0.434783, 30.4348)
@@ -877,119 +875,119 @@ scale_amount_max = 2.0
 anim_speed_min = 3.0
 anim_speed_max = 3.0
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=1675793838]
 position = Vector2(0, -35)
 script = ExtResource("6_8cibn")
 damage_node = ExtResource("7_88dri")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=1947972637 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("14_2lrq4")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1945852216]
 script = ExtResource("8_3j61a")
 
-[node name="Walk" type="Node" parent="StateMachine"]
+[node name="Walk" type="Node" parent="StateMachine" unique_id=2085028456]
 script = ExtResource("9_q141s")
 walk_speed = 30.0
 
-[node name="Ready" type="Node" parent="StateMachine"]
+[node name="Ready" type="Node" parent="StateMachine" unique_id=507408260]
 script = ExtResource("10_tnuq8")
 walk_speed = 30.0
 horizontal_sight_spear = 150.0
 vertical_distance_spear = 200.0
 distance_vision = 260.0
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1307468268]
 script = ExtResource("11_0seaa")
 thrust_speed = 300.0
 
-[node name="Special" type="Node" parent="StateMachine"]
+[node name="Special" type="Node" parent="StateMachine" unique_id=2121239870]
 script = ExtResource("12_i2tji")
 swing_speed = 800.0
 red_spark_scene = ExtResource("19_tab26")
 
-[node name="Dying" type="Node" parent="StateMachine"]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=888432538]
 script = ExtResource("19_gm4gb")
 
-[node name="SwingUp" type="Node" parent="StateMachine"]
+[node name="SwingUp" type="Node" parent="StateMachine" unique_id=157590965]
 script = ExtResource("21_i0cdd")
 
-[node name="SwingDown" type="Node" parent="StateMachine"]
+[node name="SwingDown" type="Node" parent="StateMachine" unique_id=1316611910]
 script = ExtResource("22_tmref")
 
-[node name="Deflect" type="Node" parent="StateMachine"]
+[node name="Deflect" type="Node" parent="StateMachine" unique_id=566605998]
 script = ExtResource("23_qqk2f")
 
-[node name="IframeTimer" type="Timer" parent="."]
+[node name="IframeTimer" type="Timer" parent="." unique_id=2127401847]
 one_shot = true
 
-[node name="Vision" type="Area2D" parent="."]
+[node name="Vision" type="Area2D" parent="." unique_id=1912670238]
 visible = false
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
-[node name="VisionBox" type="CollisionShape2D" parent="Vision"]
+[node name="VisionBox" type="CollisionShape2D" parent="Vision" unique_id=1880421870]
 visible = false
 shape = SubResource("CircleShape2D_pr16o")
 
-[node name="Spear" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Spear" type="Area2D" parent="." unique_id=263118997]
+collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spear"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spear" unique_id=2132385186]
 position = Vector2(-55, 17)
 scale = Vector2(0.85, 0.85)
 shape = SubResource("RectangleShape2D_68u7o")
 disabled = true
 
-[node name="Special" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Special" type="Area2D" parent="." unique_id=1019231841]
+collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Special"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Special" unique_id=1789175300]
 position = Vector2(-54.5, -10)
 scale = Vector2(0.85, 0.85)
 shape = SubResource("RectangleShape2D_osilp")
 disabled = true
 
-[node name="Spear_UpDown" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Spear_UpDown" type="Area2D" parent="." unique_id=1767073362]
+collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spear_UpDown"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spear_UpDown" unique_id=1600914153]
 position = Vector2(6, 93.25)
 scale = Vector2(0.85, 0.85)
 shape = SubResource("RectangleShape2D_bbkdk")
 disabled = true
 
-[node name="DetectProjectiles" type="Area2D" parent="."]
+[node name="DetectProjectiles" type="Area2D" parent="." unique_id=258946160]
 collision_layer = 0
 collision_mask = 1024
 script = ExtResource("23_atrjo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectProjectiles"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectProjectiles" unique_id=1660679026]
 scale = Vector2(0.85, 0.85)
 shape = SubResource("CircleShape2D_laf07")
 debug_color = Color(0, 0.333298, 0.264208, 0.42)
 
-[node name="ProtectiveSwing" type="Area2D" parent="."]
+[node name="ProtectiveSwing" type="Area2D" parent="." unique_id=933246491]
 visible = false
 collision_layer = 0
 collision_mask = 1024
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ProtectiveSwing"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProtectiveSwing" unique_id=1934505645]
 visible = false
 shape = SubResource("CircleShape2D_edfwy")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_detection_body_entered"]
-[connection signal="body_entered" from="Vision" to="StateMachine/Idle" method="_on_area_of_vision_body_entered"]
-[connection signal="body_entered" from="Vision" to="StateMachine/Walk" method="_on_area_of_vision_body_entered"]
-[connection signal="body_entered" from="Spear" to="." method="_on_spear_body_entered"]
-[connection signal="body_entered" from="Special" to="." method="_on_special_body_entered"]
-[connection signal="body_entered" from="Spear_UpDown" to="." method="_on_spear_up_down_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_detection_area_entered"]
+[connection signal="area_entered" from="Vision" to="StateMachine/Idle" method="_on_vision_area_entered"]
+[connection signal="area_entered" from="Vision" to="StateMachine/Walk" method="_on_vision_area_entered"]
+[connection signal="area_entered" from="Spear" to="." method="_on_spear_area_entered"]
+[connection signal="area_entered" from="Special" to="." method="_on_special_area_entered"]
+[connection signal="area_entered" from="Spear_UpDown" to="." method="_on_spear_up_down_area_entered"]
 [connection signal="area_entered" from="DetectProjectiles" to="." method="_on_detect_projectiles_area_entered"]
 [connection signal="area_entered" from="ProtectiveSwing" to="." method="_on_protective_swing_area_entered"]

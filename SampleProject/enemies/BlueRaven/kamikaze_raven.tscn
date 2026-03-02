@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://crkxe62hk26kh"]
+[gd_scene format=3 uid="uid://crkxe62hk26kh"]
 
 [ext_resource type="Script" uid="uid://blto6pf2c42dp" path="res://SampleProject/enemies/BlueRaven/kamikaze_raven.gd" id="1_8qu1v"]
 [ext_resource type="PackedScene" uid="uid://sx5bpu32eldc" path="res://SampleProject/extra_scenes/effects/big_explosion.tscn" id="2_g2x5a"]
@@ -106,7 +106,7 @@ _data = {
 offsets = PackedFloat32Array(0, 0.550676, 0.790541, 1)
 colors = PackedColorArray(0.717647, 0.184314, 0, 1, 0.87451, 0.545098, 0, 1, 1, 0.792157, 0, 1, 1, 0.792157, 0, 0)
 
-[node name="KamikazeRaven" type="CharacterBody2D" node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[node name="KamikazeRaven" type="CharacterBody2D" unique_id=848085144 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 0
@@ -122,7 +122,7 @@ iframe_timer = NodePath("Timer")
 hitbox_iframe = NodePath("Hitbox")
 blood_particles = NodePath("BloodDamage")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=1980837128]
 script = ExtResource("2_vu1oc")
 enemy_name = "KAMIKAZE_RAVEN"
 LV = 11
@@ -132,42 +132,42 @@ EXP = 7
 weaknesses = Array[int]([2, 6])
 tolerances = Array[int]([7])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1425707142]
 texture = ExtResource("3_njjpr")
 offset = Vector2(-2, -75)
 hframes = 4
 vframes = 2
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=69495712]
 visible = false
 position = Vector2(0.75, -0.5)
 shape = SubResource("RectangleShape2D_078j5")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=78693625]
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=971140559]
 visible = false
 collision_layer = 4
 collision_mask = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=45490605]
 position = Vector2(1.25, -0.75)
 shape = SubResource("RectangleShape2D_xn7mg")
 
-[node name="Vision" type="Area2D" parent="."]
+[node name="Vision" type="Area2D" parent="." unique_id=1488313736]
 collision_layer = 0
 collision_mask = 2
 
-[node name="VisionShape" type="CollisionShape2D" parent="Vision"]
+[node name="VisionShape" type="CollisionShape2D" parent="Vision" unique_id=1917367546]
 visible = false
 position = Vector2(6.5, -6.5)
 shape = SubResource("RectangleShape2D_5nyoa")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1973002842]
 script = ExtResource("3_exibr")
 audio_library = SubResource("Resource_haglp")
 
-[node name="BloodDamage" type="CPUParticles2D" parent="."]
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=383511086]
 emitting = false
 amount = 12
 lifetime = 0.75
@@ -183,48 +183,46 @@ scale_amount_curve = SubResource("Curve_va3vl")
 color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
 color_ramp = SubResource("Gradient_5pg3w")
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=738764771]
 position = Vector2(0, -10.5)
 script = ExtResource("4_d3kcu")
 damage_node = ExtResource("5_8towm")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=1113872331 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("11_hoek7")
 initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1157254262]
 script = ExtResource("11_7x4cc")
 
-[node name="Preparing" type="Node" parent="StateMachine"]
+[node name="Preparing" type="Node" parent="StateMachine" unique_id=1218641207]
 script = ExtResource("12_c4m40")
 SPEED = Vector2(200, 80)
 DURATION = 1.0
 red_spark_scene = ExtResource("13_xp8o6")
 
-[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("explode_timer")]
+[node name="Moving" type="Node" parent="StateMachine" unique_id=1584090210 node_paths=PackedStringArray("explode_timer")]
 script = ExtResource("14_tcadx")
 SPEED = 1300.0
 TRACKING_SPEED = 300.0
 TIME_FOR_MAX_SPEED = 2.0
 explode_timer = NodePath("ExplodeTimer")
 
-[node name="ExplodeTimer" type="Timer" parent="StateMachine/Moving"]
+[node name="ExplodeTimer" type="Timer" parent="StateMachine/Moving" unique_id=1425537749]
 wait_time = 5.0
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hot_particles", "hitbox_shape")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1703938558 node_paths=PackedStringArray("hot_particles", "hitbox_shape")]
 script = ExtResource("15_vau70")
 small_explosion_scene = ExtResource("16_whdmx")
 hot_particles = NodePath("../../HotParticles")
 hitbox_shape = NodePath("../../Hitbox/HitboxShape")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_riikq")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1853390549]
+libraries/ = SubResource("AnimationLibrary_riikq")
 
-[node name="HotParticles" type="CPUParticles2D" parent="."]
+[node name="HotParticles" type="CPUParticles2D" parent="." unique_id=1689233215]
 modulate = Color(2, 2, 2, 1)
 amount = 4
 emission_shape = 1

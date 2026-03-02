@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://fgrfy7v26ty4"]
+[gd_scene format=3 uid="uid://fgrfy7v26ty4"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Warg/offensive_fire_pillars.gd" id="1_fvpks"]
+[ext_resource type="Script" uid="uid://bsirgmminshxt" path="res://SampleProject/enemies/Warg/offensive_fire_pillars.gd" id="1_fvpks"]
 [ext_resource type="Texture2D" uid="uid://fufbp6clmn48" path="res://assets/sprites/Enemies/Warg/WargExplosion.png" id="1_j3eba"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_77a8p"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="2_ub67t"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="3_bluek"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="4_g07pk"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_77a8p"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="2_ub67t"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="3_bluek"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="4_g07pk"]
 [ext_resource type="AudioStream" uid="uid://baietjlntt48w" path="res://assets/sounds/Effects/Miscellaneous/Explosion.MP3" id="5_uxx1u"]
 
 [sub_resource type="Resource" id="Resource_dtl0v"]
@@ -113,46 +113,45 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q21yo"]
 _data = {
-"RESET": SubResource("Animation_x6605"),
-"explode": SubResource("Animation_dsmjf")
+&"RESET": SubResource("Animation_x6605"),
+&"explode": SubResource("Animation_dsmjf")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_olo7j"]
 size = Vector2(37, 116.5)
 
-[node name="FirePillars" type="Node2D" node_paths=PackedStringArray("stats", "area")]
+[node name="FirePillars" type="Node2D" unique_id=260106653 node_paths=PackedStringArray("stats", "area")]
 scale = Vector2(2, 2)
 script = ExtResource("1_fvpks")
 stats = NodePath("Projectile")
 area = NodePath("Hitbox")
+iframes_duration = null
 
-[node name="Projectile" type="Node" parent="."]
+[node name="Projectile" type="Node" parent="." unique_id=566857135]
 script = ExtResource("2_ub67t")
 base_damage = 17
 magical = true
 chip_damage = -100
 attribute = 3
 
-[node name="PillarSprite" type="Sprite2D" parent="."]
+[node name="PillarSprite" type="Sprite2D" parent="." unique_id=1934099515]
 position = Vector2(19, -46)
 scale = Vector2(1, 2)
 texture = ExtResource("1_j3eba")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=2038782170]
 script = ExtResource("2_77a8p")
 audio_library = SubResource("Resource_uo5hy")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_q21yo")
-}
-autoplay = "explode"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1717745240]
+libraries/ = SubResource("AnimationLibrary_q21yo")
+autoplay = &"explode"
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1196463603]
 collision_layer = 4
 collision_mask = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=419452432]
 visible = false
 position = Vector2(19.5, -58.75)
 shape = SubResource("RectangleShape2D_olo7j")

@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdbaucja5abn7"]
+[gd_scene format=3 uid="uid://cdbaucja5abn7"]
 
-[ext_resource type="Script" path="res://SampleProject/enemies/Dullahan/DullahanSpike.gd" id="1_a4nj1"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Projectile.gd" id="2_gmmut"]
+[ext_resource type="Script" uid="uid://ca0aaannp2l3e" path="res://SampleProject/enemies/Dullahan/DullahanSpike.gd" id="1_a4nj1"]
+[ext_resource type="Script" uid="uid://bh3wvmd7w1g62" path="res://SampleProject/Scripts/Projectile.gd" id="2_gmmut"]
 [ext_resource type="Texture2D" uid="uid://c6ewa6vhvradu" path="res://assets/sprites/Spells/IceFang.png" id="3_yyt81"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_clwjl"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_q8jgc"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_cfwk0"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_clwjl"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_q8jgc"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_cfwk0"]
 [ext_resource type="AudioStream" uid="uid://cricl0oqswl8h" path="res://assets/sounds/Spells/IceFang.MP3" id="7_1xq1r"]
 
 [sub_resource type="Animation" id="Animation_ordmn"]
@@ -141,8 +141,8 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2n46o"]
 _data = {
-"RESET": SubResource("Animation_ordmn"),
-"spawn": SubResource("Animation_lnn4f")
+&"RESET": SubResource("Animation_ordmn"),
+&"spawn": SubResource("Animation_lnn4f")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bmsuk"]
@@ -165,48 +165,46 @@ gradient = SubResource("Gradient_v216e")
 fill = 1
 fill_from = Vector2(0.487179, 0.478632)
 
-[node name="DullahanFang" type="Node2D" node_paths=PackedStringArray("stats", "area", "iframes")]
+[node name="DullahanFang" type="Node2D" unique_id=254134353 node_paths=PackedStringArray("stats", "area", "iframes")]
 script = ExtResource("1_a4nj1")
 stats = NodePath("Projectile")
 area = NodePath("Area2D")
 iframes = NodePath("Timer")
 
-[node name="Projectile" type="Node" parent="."]
+[node name="Projectile" type="Node" parent="." unique_id=1808804692]
 script = ExtResource("2_gmmut")
 base_damage = 1
 chip_damage = 15
 attribute = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=660021959]
 scale = Vector2(2, 2)
 texture = ExtResource("3_yyt81")
 hframes = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_2n46o")
-}
-autoplay = "spawn"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1414891262]
+libraries/ = SubResource("AnimationLibrary_2n46o")
+autoplay = &"spawn"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1273129395]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=836986902]
 position = Vector2(0, 9.5)
 shape = SubResource("RectangleShape2D_bmsuk")
 disabled = true
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1951753291]
 script = ExtResource("4_clwjl")
 audio_library = SubResource("Resource_nv0be")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1589782321]
 position = Vector2(0, 46)
 texture = SubResource("GradientTexture2D_7b35h")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=572442989]
 wait_time = 0.5
 one_shot = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

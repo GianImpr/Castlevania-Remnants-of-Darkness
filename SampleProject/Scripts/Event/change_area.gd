@@ -5,7 +5,7 @@ class_name ChangeArea
 @export var new_initial_position: Vector2
 @export var presentation_duration: Timer
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area_node: Area2D) -> void:
 	Global.change_area.emit(new_room_path, new_initial_position)
 	
 func _on_timer_timeout() -> void:

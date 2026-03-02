@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dosjh5lntu6w1"]
+[gd_scene format=3 uid="uid://dosjh5lntu6w1"]
 
 [ext_resource type="Script" uid="uid://d2eosyl6kqlaa" path="res://SampleProject/Scripts/Stage_elements/pick_up.gd" id="1_sp08q"]
 [ext_resource type="Shader" uid="uid://ccbusj4pboktl" path="res://SampleProject/Shaders/flash.gdshader" id="1_tf74l"]
@@ -398,9 +398,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 1, 1, 0.502)
 [sub_resource type="Environment" id="Environment_q43d6"]
 background_mode = 3
 glow_enabled = true
-glow_blend_mode = 1
 
-[node name="Pick-up" type="RigidBody2D" node_paths=PackedStringArray("sprite", "idle_timer", "flash_timer", "animation", "sound", "collision", "wall_checker")]
+[node name="Pick-up" type="RigidBody2D" unique_id=900492752 node_paths=PackedStringArray("sprite", "idle_timer", "flash_timer", "animation", "sound", "collision", "wall_checker")]
 collision_layer = 0
 collision_mask = 4097
 lock_rotation = true
@@ -417,51 +416,49 @@ boost_message = ExtResource("3_gagnr")
 collision = NodePath("CollisionShape2D")
 wall_checker = NodePath("WallChecker")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=847068915]
 material = SubResource("ShaderMaterial_3yniq")
 scale = Vector2(2, 2)
 texture = ExtResource("5_010kn")
 
-[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=462564350]
 position = Vector2(0, 1.30068)
 scale = Vector2(0.434783, 0.434783)
 energy = 7.0
 texture = SubResource("GradientTexture2D_a8ych")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=503083281]
 visible = false
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_fe178")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_br1xa")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=219779418]
+libraries/ = SubResource("AnimationLibrary_br1xa")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=683051634]
 collision_layer = 0
-collision_mask = 524288
+collision_mask = 524290
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=54137366]
 visible = false
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_v3iyo")
 
-[node name="IdleDuration" type="Timer" parent="."]
+[node name="IdleDuration" type="Timer" parent="." unique_id=1567717914]
 wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="FlashDuration" type="Timer" parent="."]
+[node name="FlashDuration" type="Timer" parent="." unique_id=660173186]
 wait_time = 0.5
 one_shot = true
 
-[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="." unique_id=606181251]
 volume_db = -25.0
 script = ExtResource("4_n8vax")
 audio_library = SubResource("Resource_8pq3o")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1789521190]
 emitting = false
 amount = 7
 emission_shape = 1
@@ -477,15 +474,15 @@ color = Color(2, 2, 2, 1)
 color_ramp = SubResource("Gradient_4lmh8")
 color_initial_ramp = SubResource("Gradient_3aip7")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1674247311]
 environment = SubResource("Environment_q43d6")
 
-[node name="CheckWalls" type="RayCast2D" parent="."]
+[node name="CheckWalls" type="RayCast2D" parent="." unique_id=493438736]
 target_position = Vector2(10, 0)
 
-[node name="WallChecker" type="Node" parent="."]
+[node name="WallChecker" type="Node" parent="." unique_id=2004723767]
 script = ExtResource("11_vsmat")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="IdleDuration" to="." method="_on_idle_duration_timeout"]
 [connection signal="timeout" from="FlashDuration" to="." method="_on_flash_duration_timeout"]

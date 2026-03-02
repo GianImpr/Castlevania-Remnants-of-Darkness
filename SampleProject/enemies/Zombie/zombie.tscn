@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bpbuc4imoao83"]
+[gd_scene format=3 uid="uid://bpbuc4imoao83"]
 
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="1_17sfr"]
 [ext_resource type="Script" uid="uid://dsmo5e5rvclof" path="res://SampleProject/enemies/Zombie/zombie.gd" id="1_vknq3"]
@@ -218,7 +218,7 @@ sound_effects = Array[ExtResource("8_ile2y")]([SubResource("Resource_hltme"), Su
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6fpy"]
 size = Vector2(13.4783, 35.4348)
 
-[node name="Zombie" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[node name="Zombie" type="CharacterBody2D" unique_id=1177280636 node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 4097
@@ -231,7 +231,7 @@ damage_popup = NodePath("DamageLocation")
 iframe_timer = NodePath("Area2D/Timer")
 hitbox_iframe = NodePath("Area2D")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=1851807767]
 script = ExtResource("1_17sfr")
 enemy_name = "ZOMBIE"
 LV = 1
@@ -239,64 +239,62 @@ HP = 3
 ATK = 9
 EXP = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=998697761]
 position = Vector2(0, -2.6087)
 texture = ExtResource("2_5kk3e")
 hframes = 20
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wmja6")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=784275070]
+libraries/ = SubResource("AnimationLibrary_wmja6")
 
-[node name="Collision box" type="CollisionShape2D" parent="."]
+[node name="Collision box" type="CollisionShape2D" parent="." unique_id=21166057]
 position = Vector2(-4.5, 1)
 shape = SubResource("RectangleShape2D_o2c72")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=2028037797 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("4_xkkvv")
 initial_state = NodePath("Spawning")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Moving" type="Node" parent="StateMachine" unique_id=1201478429 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("6_de3rd")
 SPEED = 5000.0
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 
-[node name="Spawning" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Spawning" type="Node" parent="StateMachine" unique_id=997009344 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("5_dguli")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1842172014 node_paths=PackedStringArray("hitbox_iframe")]
 script = ExtResource("4_grrpx")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 
-[node name="PolyphonicAudioPlayer" parent="." instance=ExtResource("6_60l16")]
+[node name="PolyphonicAudioPlayer" parent="." unique_id=1890872467 instance=ExtResource("6_60l16")]
 audio_library = SubResource("Resource_ja2e3")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
+[node name="Area2D" type="Area2D" parent="." unique_id=837452211]
+collision_layer = 0
 collision_mask = 2
 
-[node name="Hitbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=999081866]
 position = Vector2(-4.13044, 6.41305)
 shape = SubResource("RectangleShape2D_w6fpy")
 
-[node name="Timer" type="Timer" parent="Area2D"]
+[node name="Timer" type="Timer" parent="Area2D" unique_id=115651598]
 
-[node name="DamageLocation" type="Marker2D" parent="."]
+[node name="DamageLocation" type="Marker2D" parent="." unique_id=269155725]
 position = Vector2(-3.91304, -26.087)
 script = ExtResource("13_eqw15")
 damage_node = ExtResource("14_klfs4")
 
-[node name="RayCast2DRight" type="RayCast2D" parent="."]
+[node name="RayCast2DRight" type="RayCast2D" parent="." unique_id=481064893]
 position = Vector2(-3.47826, 0)
 target_position = Vector2(15.2174, 0)
 
-[node name="RayCast2DLeft" type="RayCast2D" parent="."]
+[node name="RayCast2DLeft" type="RayCast2D" parent="." unique_id=1270765133]
 position = Vector2(-3.47826, 0)
 target_position = Vector2(-13.913, 0)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="." method="_on_timer_timeout"]

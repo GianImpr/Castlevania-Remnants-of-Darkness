@@ -7,7 +7,7 @@ class_name HintBoxTrigger
 @export var hint_box_scene: PackedScene
 	
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	if Global.player.stats.hint_flags[flag_id]:
 		queue_free()
 		return

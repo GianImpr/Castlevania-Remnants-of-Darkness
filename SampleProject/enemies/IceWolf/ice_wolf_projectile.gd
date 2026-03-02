@@ -13,7 +13,7 @@ const FREE_AFTER_SECONDS: float = 3
 var direction: int = -1
 
 func _ready() -> void:
-	area.body_entered.connect(_on_area_2d_body_entered)
+	area.area_entered.connect(_on_area_2d_area_entered)
 	get_tree().create_timer(FREE_AFTER_SECONDS, false).timeout.connect(queue_free)
 	var acceleration_tween: Tween = get_tree().create_tween()
 	acceleration_tween.tween_property(self, "linear_velocity", Vector2(0, SPEED.y), ACCELERATION_DURATION).from(Vector2(SPEED.x*direction, 0))
@@ -21,7 +21,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	position = position + linear_velocity * delta
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area_node: Area2D) -> void:
+	var body = area.get_parent()
 	if not body.is_hurt and not on_cooldown:
 		stats.apply_damage(body, stats.calculate_damage(body))
 		on_cooldown = true

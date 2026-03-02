@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cn5udljc46woc"]
+[gd_scene format=3 uid="uid://cn5udljc46woc"]
 
 [ext_resource type="Shader" uid="uid://ccbusj4pboktl" path="res://SampleProject/Shaders/flash.gdshader" id="1_vjqmd"]
 [ext_resource type="Script" uid="uid://j5iw26g480fu" path="res://SampleProject/Scripts/System/life_vessel.gd" id="1_yx2o4"]
@@ -42,7 +42,6 @@ size = Vector2(16, 16)
 [sub_resource type="Environment" id="Environment_q43d6"]
 background_mode = 3
 glow_enabled = true
-glow_blend_mode = 1
 
 [sub_resource type="Animation" id="Animation_piiex"]
 length = 0.001
@@ -118,7 +117,7 @@ stream = ExtResource("10_pun3y")
 script = ExtResource("8_h25pp")
 sound_effects = Array[ExtResource("9_ysxcq")]([SubResource("Resource_6bnuw")])
 
-[node name="LifeVessel" type="RigidBody2D" node_paths=PackedStringArray("animation", "sound", "area")]
+[node name="LifeVessel" type="RigidBody2D" unique_id=1119557337 node_paths=PackedStringArray("animation", "sound", "area")]
 collision_layer = 0
 collision_mask = 4097
 lock_rotation = true
@@ -129,47 +128,45 @@ animation = NodePath("AnimationPlayer")
 sound = NodePath("PolyphonicAudio")
 area = NodePath("Area2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=244009511]
 material = SubResource("ShaderMaterial_3yniq")
 scale = Vector2(2, 2)
 texture = ExtResource("2_m14wy")
 
-[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=1084946680]
 position = Vector2(0, 1.19209e-07)
 scale = Vector2(0.434783, 0.434783)
 energy = 7.0
 texture = SubResource("GradientTexture2D_a8ych")
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" unique_id=1402017087]
 material = SubResource("ShaderMaterial_0q2ud")
 texture = ExtResource("4_0ccpd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216766756]
 position = Vector2(0, -2.27692)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_fe178")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1829310129]
 collision_layer = 0
 collision_mask = 524288
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=378969760]
 visible = false
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_v3iyo")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=668929184]
 environment = SubResource("Environment_q43d6")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ojjl5")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=34756694]
+libraries/ = SubResource("AnimationLibrary_ojjl5")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=188625059]
 process_mode = 3
 volume_db = -25.0
 script = ExtResource("7_cxv4q")
 audio_library = SubResource("Resource_m26fd")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,12 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://csrmfyxqbrq51"]
+[gd_scene format=3 uid="uid://csrmfyxqbrq51"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/door.gd" id="1_7pu62"]
+[ext_resource type="Script" uid="uid://ce707vt2aaahd" path="res://SampleProject/Scripts/Stage_elements/door.gd" id="1_7pu62"]
 [ext_resource type="Texture2D" uid="uid://25id4f3caeeo" path="res://assets/sprites/Objects/Doors/SpecialRooms/SaveDoor.png" id="1_cuyk2"]
-[ext_resource type="Shader" path="res://SampleProject/Shaders/aura.gdshader" id="2_d1xi3"]
+[ext_resource type="Shader" uid="uid://diku0uk4in6gs" path="res://SampleProject/Shaders/aura.gdshader" id="2_d1xi3"]
 [ext_resource type="Texture2D" uid="uid://c8wefiqxotjyy" path="res://assets/sprites/Objects/Doors/SpecialRooms/DoorAura.png" id="3_7sakx"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_mhjp2"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_nydkd"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="7_g5x71"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_mhjp2"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_nydkd"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_g5x71"]
 [ext_resource type="AudioStream" uid="uid://cuxhrofqam4iy" path="res://assets/sounds/Door/DoorOpen.MP3" id="8_ngq30"]
 [ext_resource type="AudioStream" uid="uid://dscgm3b0gg1j8" path="res://assets/sounds/Door/DoorClose.MP3" id="9_31xyp"]
 
@@ -15,18 +15,18 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3ya43"]
 width = 10
 height = 10
-seamless = true
 noise = SubResource("FastNoiseLite_j0tdh")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_htg63"]
 shader = ExtResource("2_d1xi3")
+shader_parameter/n = SubResource("NoiseTexture2D_3ya43")
 shader_parameter/min_intensity = 1.0
 shader_parameter/max_intensity = 1.5
 shader_parameter/speed_x = 1.0
 shader_parameter/speed_y = 1.0
 shader_parameter/fade_start = 0.3
 shader_parameter/fade_end = 0.8
-shader_parameter/n = SubResource("NoiseTexture2D_3ya43")
 
 [sub_resource type="Animation" id="Animation_cy7r1"]
 length = 0.001
@@ -149,9 +149,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_55l8i"]
 _data = {
-"RESET": SubResource("Animation_cy7r1"),
-"idle": SubResource("Animation_rhypp"),
-"opening": SubResource("Animation_tof42")
+&"RESET": SubResource("Animation_cy7r1"),
+&"idle": SubResource("Animation_rhypp"),
+&"opening": SubResource("Animation_tof42")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8y6u"]
@@ -174,7 +174,7 @@ stream = ExtResource("9_31xyp")
 script = ExtResource("6_nydkd")
 sound_effects = Array[ExtResource("7_g5x71")]([SubResource("Resource_a2nwi"), SubResource("Resource_mxeu0")])
 
-[node name="SaveDoor" type="RigidBody2D" node_paths=PackedStringArray("sprite", "aura", "animation", "hitbox", "collision_box", "sound", "area", "spawn_cooldown")]
+[node name="SaveDoor" type="RigidBody2D" unique_id=769266422 node_paths=PackedStringArray("sprite", "aura", "animation", "hitbox", "collision_box", "sound", "area", "spawn_cooldown")]
 collision_layer = 16
 collision_mask = 2
 collision_priority = 2.0
@@ -189,14 +189,14 @@ sound = NodePath("PolyphonicAudio")
 area = NodePath("Area2D")
 spawn_cooldown = NodePath("SpawnCooldown")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=949296033]
 position = Vector2(25, 0)
 scale = Vector2(1.9, 1.9)
 texture = ExtResource("1_cuyk2")
 hframes = 12
 vframes = 2
 
-[node name="Aura" type="Sprite2D" parent="."]
+[node name="Aura" type="Sprite2D" parent="." unique_id=577916217]
 modulate = Color(2.21401e-06, 0.580119, 0.746432, 1)
 show_behind_parent = true
 material = SubResource("ShaderMaterial_htg63")
@@ -207,37 +207,34 @@ flip_v = true
 hframes = 12
 vframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_55l8i")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1181772783]
+libraries/ = SubResource("AnimationLibrary_55l8i")
 speed_scale = 2.0
 
-[node name="Area2D" type="Area2D" parent="."]
-visible = false
+[node name="Area2D" type="Area2D" parent="." unique_id=706927059]
 collision_mask = 2
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(7.32502, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1256969817]
+position = Vector2(3.3250203, 0)
 scale = Vector2(1.9, 1.9)
 shape = SubResource("RectangleShape2D_i8y6u")
 
-[node name="Node2D" type="Node2D" parent="Area2D"]
+[node name="Node2D" type="Node2D" parent="Area2D" unique_id=342247292]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=382487619]
 visible = false
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_4l07o")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=819430157]
 volume_db = -3.0
 script = ExtResource("5_mhjp2")
 audio_library = SubResource("Resource_5hexu")
 
-[node name="SpawnCooldown" type="Timer" parent="."]
+[node name="SpawnCooldown" type="Timer" parent="." unique_id=1313892233]
 one_shot = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="timeout" from="SpawnCooldown" to="." method="_on_spawn_cooldown_timeout"]

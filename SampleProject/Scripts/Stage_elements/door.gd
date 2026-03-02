@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 		sound.play_sound_effect_from_library("close")
 		
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area_node: Area2D) -> void:
 	can_open_door = true
 
 
@@ -60,7 +60,7 @@ func enterDoor():
 	Global.player.state_machine.current_state.Transitioned.emit(Global.player.state_machine.current_state, "opening_door")
 
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_area_2d_area_exited(area_node: Area2D) -> void:
 	can_open_door = false
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://3ypsgown6bve"]
+[gd_scene format=3 uid="uid://3ypsgown6bve"]
 
 [ext_resource type="Script" uid="uid://csr468jtoewx3" path="res://SampleProject/Scripts/Stage_elements/hearts.gd" id="1_3kv6o"]
 [ext_resource type="Texture2D" uid="uid://cxtf7n57tpwda" path="res://assets/sprites/Items/Pickups/Hearts/SoulHeart.png" id="1_33cq2"]
@@ -186,7 +186,7 @@ stream = ExtResource("6_emw4u")
 script = ExtResource("4_y7kkt")
 sound_effects = Array[ExtResource("5_244dn")]([SubResource("Resource_cvlhf")])
 
-[node name="Heart" type="RigidBody2D" node_paths=PackedStringArray("collision", "sprite", "animation", "wall_checker")]
+[node name="Heart" type="RigidBody2D" unique_id=1799909131 node_paths=PackedStringArray("collision", "sprite", "animation", "wall_checker")]
 z_index = 8
 collision_layer = 0
 collision_mask = 4097
@@ -203,41 +203,39 @@ sprite = NodePath("Sprite2D")
 animation = NodePath("AnimationPlayer")
 wall_checker = NodePath("WallChecker")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=470259186]
 scale = Vector2(2, 2)
 texture = ExtResource("1_33cq2")
 hframes = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_h8i1f")
-}
-autoplay = "floating"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=280660784]
+libraries/ = SubResource("AnimationLibrary_h8i1f")
+autoplay = &"floating"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=196554493]
 position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_m0s4b")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=284387142]
 visible = false
 collision_layer = 0
-collision_mask = 524288
+collision_mask = 524290
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=177399619]
 position = Vector2(-1, -2.5)
 scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_4v8j4")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=2106761540]
 volume_db = -5.0
 script = ExtResource("3_tpijv")
 audio_library = SubResource("Resource_w2v3p")
 
-[node name="WallChecker" type="Node" parent="."]
+[node name="WallChecker" type="Node" parent="." unique_id=331095611]
 editor_description = "This is a helper node to be put as a child of a RigidBody2D with Contact Monitor ON and Max Contacts Reported >= 4.
 It checks that if the RigidBody2D is stuck inside a wall, it frees it, as if it has never spawned.
 
 Useful for items being dropped from enemies that can go through walls."
 script = ExtResource("8_rwim1")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

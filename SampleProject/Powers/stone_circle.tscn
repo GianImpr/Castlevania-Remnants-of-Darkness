@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://t6lypsds827a"]
+[gd_scene format=3 uid="uid://t6lypsds827a"]
 
 [ext_resource type="Script" uid="uid://blv3eobru7djy" path="res://SampleProject/Powers/stone_circle.gd" id="1_rry6n"]
 [ext_resource type="Texture2D" uid="uid://buy7j4unue5es" path="res://assets/sprites/Enemies/Medusa/StoneCircle1.png" id="2_ieu2n"]
@@ -142,7 +142,7 @@ stream = ExtResource("13_t743y")
 script = ExtResource("10_4lw8f")
 sound_effects = Array[ExtResource("11_orp8q")]([SubResource("Resource_imyew"), SubResource("Resource_lhmc7")])
 
-[node name="StoneCircle" type="Node2D" node_paths=PackedStringArray("sound", "free_timer", "throw_timer")]
+[node name="StoneCircle" type="Node2D" unique_id=1129838992 node_paths=PackedStringArray("sound", "free_timer", "throw_timer")]
 scale = Vector2(2, 2)
 script = ExtResource("1_rry6n")
 rotating_speed = 1.5
@@ -150,7 +150,7 @@ sound = NodePath("PolyphonicAudio")
 free_timer = NodePath("Free")
 throw_timer = NodePath("Throw")
 
-[node name="Stone" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+[node name="Stone" type="RigidBody2D" parent="." unique_id=1680412867 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
 collision_layer = 4
 collision_mask = 0
 freeze = true
@@ -162,15 +162,15 @@ iframes_duration = 0.5
 animation = NodePath("AnimationPlayer")
 hurtbox = NodePath("Hurtbox")
 
-[node name="StoneSprite" type="Sprite2D" parent="Stone"]
+[node name="StoneSprite" type="Sprite2D" parent="Stone" unique_id=1004669824]
 texture = ExtResource("2_ieu2n")
 
-[node name="Debris" type="Sprite2D" parent="Stone"]
+[node name="Debris" type="Sprite2D" parent="Stone" unique_id=495167691]
 visible = false
 texture = ExtResource("4_bbc2g")
 hframes = 7
 
-[node name="Projectile" type="Node" parent="Stone"]
+[node name="Projectile" type="Node" parent="Stone" unique_id=1599150258]
 script = ExtResource("4_2gcfa")
 base_damage = 20
 destructible = true
@@ -178,26 +178,24 @@ destroy_on_contact = true
 effect_on_destroy = true
 chip_damage = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone"]
-libraries = {
-&"": SubResource("AnimationLibrary_ag1fm")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone" unique_id=2010907182]
+libraries/ = SubResource("AnimationLibrary_ag1fm")
 
-[node name="Hitbox" type="Area2D" parent="Stone"]
+[node name="Hitbox" type="Area2D" parent="Stone" unique_id=371625579]
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Stone/Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone/Hitbox" unique_id=1630017713]
 visible = false
 shape = SubResource("RectangleShape2D_8wony")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Stone"]
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone" unique_id=1647978292]
 visible = false
 shape = SubResource("RectangleShape2D_58d60")
 disabled = true
 
-[node name="Stone2" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+[node name="Stone2" type="RigidBody2D" parent="." unique_id=1865898475 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
 collision_layer = 4
 collision_mask = 0
 freeze = true
@@ -208,15 +206,15 @@ sprite = NodePath("StoneSprite")
 animation = NodePath("AnimationPlayer")
 hurtbox = NodePath("Hurtbox")
 
-[node name="StoneSprite" type="Sprite2D" parent="Stone2"]
+[node name="StoneSprite" type="Sprite2D" parent="Stone2" unique_id=766218324]
 texture = ExtResource("3_nr5lq")
 
-[node name="Debris" type="Sprite2D" parent="Stone2"]
+[node name="Debris" type="Sprite2D" parent="Stone2" unique_id=636992364]
 visible = false
 texture = ExtResource("4_bbc2g")
 hframes = 7
 
-[node name="Projectile" type="Node" parent="Stone2"]
+[node name="Projectile" type="Node" parent="Stone2" unique_id=1170341901]
 script = ExtResource("4_2gcfa")
 base_damage = 20
 destructible = true
@@ -224,26 +222,24 @@ destroy_on_contact = true
 effect_on_destroy = true
 chip_damage = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone2"]
-libraries = {
-&"": SubResource("AnimationLibrary_ag1fm")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone2" unique_id=1291199036]
+libraries/ = SubResource("AnimationLibrary_ag1fm")
 
-[node name="Hitbox" type="Area2D" parent="Stone2"]
+[node name="Hitbox" type="Area2D" parent="Stone2" unique_id=2082747411]
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Stone2/Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone2/Hitbox" unique_id=115465634]
 visible = false
 shape = SubResource("RectangleShape2D_8wony")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Stone2"]
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone2" unique_id=433268559]
 visible = false
 shape = SubResource("RectangleShape2D_58d60")
 disabled = true
 
-[node name="Stone3" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+[node name="Stone3" type="RigidBody2D" parent="." unique_id=1708731506 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
 collision_layer = 4
 collision_mask = 0
 freeze = true
@@ -254,15 +250,15 @@ sprite = NodePath("StoneSprite")
 animation = NodePath("AnimationPlayer")
 hurtbox = NodePath("Hurtbox")
 
-[node name="StoneSprite" type="Sprite2D" parent="Stone3"]
+[node name="StoneSprite" type="Sprite2D" parent="Stone3" unique_id=2070790148]
 texture = ExtResource("5_suh7i")
 
-[node name="Debris" type="Sprite2D" parent="Stone3"]
+[node name="Debris" type="Sprite2D" parent="Stone3" unique_id=1553768599]
 visible = false
 texture = ExtResource("4_bbc2g")
 hframes = 7
 
-[node name="Projectile" type="Node" parent="Stone3"]
+[node name="Projectile" type="Node" parent="Stone3" unique_id=1305973554]
 script = ExtResource("4_2gcfa")
 base_damage = 20
 destructible = true
@@ -270,26 +266,24 @@ destroy_on_contact = true
 effect_on_destroy = true
 chip_damage = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone3"]
-libraries = {
-&"": SubResource("AnimationLibrary_ag1fm")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone3" unique_id=1959231655]
+libraries/ = SubResource("AnimationLibrary_ag1fm")
 
-[node name="Hitbox" type="Area2D" parent="Stone3"]
+[node name="Hitbox" type="Area2D" parent="Stone3" unique_id=1449193477]
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Stone3/Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone3/Hitbox" unique_id=132079451]
 visible = false
 shape = SubResource("RectangleShape2D_8wony")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Stone3"]
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone3" unique_id=252035044]
 visible = false
 shape = SubResource("RectangleShape2D_58d60")
 disabled = true
 
-[node name="Stone4" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+[node name="Stone4" type="RigidBody2D" parent="." unique_id=2110226090 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
 collision_layer = 4
 collision_mask = 0
 freeze = true
@@ -300,15 +294,15 @@ sprite = NodePath("StoneSprite")
 animation = NodePath("AnimationPlayer")
 hurtbox = NodePath("Hurtbox")
 
-[node name="StoneSprite" type="Sprite2D" parent="Stone4"]
+[node name="StoneSprite" type="Sprite2D" parent="Stone4" unique_id=479876712]
 texture = ExtResource("4_mvv70")
 
-[node name="Debris" type="Sprite2D" parent="Stone4"]
+[node name="Debris" type="Sprite2D" parent="Stone4" unique_id=303862387]
 visible = false
 texture = ExtResource("4_bbc2g")
 hframes = 7
 
-[node name="Projectile" type="Node" parent="Stone4"]
+[node name="Projectile" type="Node" parent="Stone4" unique_id=601613384]
 script = ExtResource("4_2gcfa")
 base_damage = 20
 destructible = true
@@ -316,26 +310,24 @@ destroy_on_contact = true
 effect_on_destroy = true
 chip_damage = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone4"]
-libraries = {
-&"": SubResource("AnimationLibrary_ag1fm")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone4" unique_id=1795956341]
+libraries/ = SubResource("AnimationLibrary_ag1fm")
 
-[node name="Hitbox" type="Area2D" parent="Stone4"]
+[node name="Hitbox" type="Area2D" parent="Stone4" unique_id=698835904]
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Stone4/Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone4/Hitbox" unique_id=1979056226]
 visible = false
 shape = SubResource("RectangleShape2D_8wony")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Stone4"]
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone4" unique_id=1444670968]
 visible = false
 shape = SubResource("RectangleShape2D_58d60")
 disabled = true
 
-[node name="Stone5" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+[node name="Stone5" type="RigidBody2D" parent="." unique_id=1087097217 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
 collision_layer = 4
 collision_mask = 0
 freeze = true
@@ -346,15 +338,15 @@ sprite = NodePath("StoneSprite")
 animation = NodePath("AnimationPlayer")
 hurtbox = NodePath("Hurtbox")
 
-[node name="StoneSprite" type="Sprite2D" parent="Stone5"]
+[node name="StoneSprite" type="Sprite2D" parent="Stone5" unique_id=145028733]
 texture = ExtResource("2_ieu2n")
 
-[node name="Debris" type="Sprite2D" parent="Stone5"]
+[node name="Debris" type="Sprite2D" parent="Stone5" unique_id=2051143259]
 visible = false
 texture = ExtResource("4_bbc2g")
 hframes = 7
 
-[node name="Projectile" type="Node" parent="Stone5"]
+[node name="Projectile" type="Node" parent="Stone5" unique_id=2110650929]
 script = ExtResource("4_2gcfa")
 base_damage = 20
 destructible = true
@@ -362,26 +354,24 @@ destroy_on_contact = true
 effect_on_destroy = true
 chip_damage = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone5"]
-libraries = {
-&"": SubResource("AnimationLibrary_ag1fm")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone5" unique_id=980545771]
+libraries/ = SubResource("AnimationLibrary_ag1fm")
 
-[node name="Hitbox" type="Area2D" parent="Stone5"]
+[node name="Hitbox" type="Area2D" parent="Stone5" unique_id=510111328]
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Stone5/Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone5/Hitbox" unique_id=546442360]
 visible = false
 shape = SubResource("RectangleShape2D_8wony")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Stone5"]
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone5" unique_id=1363831969]
 visible = false
 shape = SubResource("RectangleShape2D_58d60")
 disabled = true
 
-[node name="Stone6" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+[node name="Stone6" type="RigidBody2D" parent="." unique_id=1079364952 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
 collision_layer = 4
 collision_mask = 0
 freeze = true
@@ -392,15 +382,15 @@ sprite = NodePath("StoneSprite")
 animation = NodePath("AnimationPlayer")
 hurtbox = NodePath("Hurtbox")
 
-[node name="StoneSprite" type="Sprite2D" parent="Stone6"]
+[node name="StoneSprite" type="Sprite2D" parent="Stone6" unique_id=1992505696]
 texture = ExtResource("3_nr5lq")
 
-[node name="Debris" type="Sprite2D" parent="Stone6"]
+[node name="Debris" type="Sprite2D" parent="Stone6" unique_id=2018721544]
 visible = false
 texture = ExtResource("4_bbc2g")
 hframes = 7
 
-[node name="Projectile" type="Node" parent="Stone6"]
+[node name="Projectile" type="Node" parent="Stone6" unique_id=611072964]
 script = ExtResource("4_2gcfa")
 base_damage = 20
 destructible = true
@@ -408,26 +398,24 @@ destroy_on_contact = true
 effect_on_destroy = true
 chip_damage = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone6"]
-libraries = {
-&"": SubResource("AnimationLibrary_ag1fm")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone6" unique_id=801678697]
+libraries/ = SubResource("AnimationLibrary_ag1fm")
 
-[node name="Hitbox" type="Area2D" parent="Stone6"]
+[node name="Hitbox" type="Area2D" parent="Stone6" unique_id=1756948453]
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Stone6/Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone6/Hitbox" unique_id=860825034]
 visible = false
 shape = SubResource("RectangleShape2D_8wony")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Stone6"]
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone6" unique_id=2081972830]
 visible = false
 shape = SubResource("RectangleShape2D_58d60")
 disabled = true
 
-[node name="Stone7" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+[node name="Stone7" type="RigidBody2D" parent="." unique_id=1520314978 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
 collision_layer = 4
 collision_mask = 0
 freeze = true
@@ -438,15 +426,15 @@ sprite = NodePath("StoneSprite")
 animation = NodePath("AnimationPlayer")
 hurtbox = NodePath("Hurtbox")
 
-[node name="StoneSprite" type="Sprite2D" parent="Stone7"]
+[node name="StoneSprite" type="Sprite2D" parent="Stone7" unique_id=1382021131]
 texture = ExtResource("5_suh7i")
 
-[node name="Debris" type="Sprite2D" parent="Stone7"]
+[node name="Debris" type="Sprite2D" parent="Stone7" unique_id=1383216579]
 visible = false
 texture = ExtResource("4_bbc2g")
 hframes = 7
 
-[node name="Projectile" type="Node" parent="Stone7"]
+[node name="Projectile" type="Node" parent="Stone7" unique_id=2037474141]
 script = ExtResource("4_2gcfa")
 base_damage = 20
 destructible = true
@@ -454,26 +442,24 @@ destroy_on_contact = true
 effect_on_destroy = true
 chip_damage = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone7"]
-libraries = {
-&"": SubResource("AnimationLibrary_ag1fm")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone7" unique_id=599952262]
+libraries/ = SubResource("AnimationLibrary_ag1fm")
 
-[node name="Hitbox" type="Area2D" parent="Stone7"]
+[node name="Hitbox" type="Area2D" parent="Stone7" unique_id=1056480935]
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Stone7/Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone7/Hitbox" unique_id=922437156]
 visible = false
 shape = SubResource("RectangleShape2D_8wony")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Stone7"]
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone7" unique_id=1942272817]
 visible = false
 shape = SubResource("RectangleShape2D_58d60")
 disabled = true
 
-[node name="Stone8" type="RigidBody2D" parent="." node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
+[node name="Stone8" type="RigidBody2D" parent="." unique_id=323656995 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "hurtbox")]
 collision_layer = 4
 collision_mask = 0
 freeze = true
@@ -484,15 +470,15 @@ sprite = NodePath("StoneSprite")
 animation = NodePath("AnimationPlayer")
 hurtbox = NodePath("Hurtbox")
 
-[node name="StoneSprite" type="Sprite2D" parent="Stone8"]
+[node name="StoneSprite" type="Sprite2D" parent="Stone8" unique_id=1661188221]
 texture = ExtResource("4_mvv70")
 
-[node name="Debris" type="Sprite2D" parent="Stone8"]
+[node name="Debris" type="Sprite2D" parent="Stone8" unique_id=1092501054]
 visible = false
 texture = ExtResource("4_bbc2g")
 hframes = 7
 
-[node name="Projectile" type="Node" parent="Stone8"]
+[node name="Projectile" type="Node" parent="Stone8" unique_id=971758550]
 script = ExtResource("4_2gcfa")
 base_damage = 20
 destructible = true
@@ -500,36 +486,34 @@ destroy_on_contact = true
 effect_on_destroy = true
 chip_damage = 10
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone8"]
-libraries = {
-&"": SubResource("AnimationLibrary_ag1fm")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stone8" unique_id=184684680]
+libraries/ = SubResource("AnimationLibrary_ag1fm")
 
-[node name="Hitbox" type="Area2D" parent="Stone8"]
+[node name="Hitbox" type="Area2D" parent="Stone8" unique_id=150639208]
 collision_layer = 0
 collision_mask = 2
 monitoring = false
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Stone8/Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Stone8/Hitbox" unique_id=504818094]
 visible = false
 shape = SubResource("RectangleShape2D_8wony")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Stone8"]
+[node name="Hurtbox" type="CollisionShape2D" parent="Stone8" unique_id=1831482526]
 visible = false
 shape = SubResource("RectangleShape2D_58d60")
 disabled = true
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1042741546]
 volume_db = -10.0
 script = ExtResource("9_c2cf2")
 audio_library = SubResource("Resource_hjebm")
 
-[node name="Throw" type="Timer" parent="."]
+[node name="Throw" type="Timer" parent="." unique_id=1034211225]
 wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="Free" type="Timer" parent="."]
+[node name="Free" type="Timer" parent="." unique_id=1957291907]
 wait_time = 9.0
 one_shot = true
 autostart = true

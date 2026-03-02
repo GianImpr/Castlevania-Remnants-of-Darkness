@@ -205,5 +205,5 @@ process_material = SubResource("ParticleProcessMaterial_jeft2")
 libraries/ = SubResource("AnimationLibrary_r4qnn")
 autoplay = &"travel"
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

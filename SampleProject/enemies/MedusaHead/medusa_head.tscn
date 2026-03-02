@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ogpicvjd72hm"]
+[gd_scene format=3 uid="uid://ogpicvjd72hm"]
 
 [ext_resource type="Script" uid="uid://dd846n7cxpon3" path="res://SampleProject/enemies/MedusaHead/medusa_head.gd" id="1_egwhy"]
 [ext_resource type="Script" uid="uid://dwqs3a3odtwne" path="res://SampleProject/Scripts/EnemyStats.gd" id="2_knrrq"]
@@ -63,7 +63,7 @@ _data = {
 &"moving": SubResource("Animation_kfdss")
 }
 
-[node name="MedusaHead" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[node name="MedusaHead" type="CharacterBody2D" unique_id=955019974 node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 0
@@ -77,7 +77,7 @@ iframe_timer = NodePath("Timer")
 hitbox_iframe = NodePath("Hitbox")
 blood_particles = NodePath("BloodDamage")
 
-[node name="EnemyStats" type="Node" parent="."]
+[node name="EnemyStats" type="Node" parent="." unique_id=1537378953]
 script = ExtResource("2_knrrq")
 enemy_name = "MEDUSA_HEAD"
 LV = 10
@@ -87,29 +87,29 @@ EXP = 3
 weaknesses = Array[int]([2])
 tolerances = Array[int]([12])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1414054177]
 texture = ExtResource("3_hbmoi")
 hframes = 4
 
-[node name="Hurtbox" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=156849543]
 visible = false
 shape = SubResource("RectangleShape2D_n7xww")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=413254978]
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1208280332]
 collision_layer = 0
 collision_mask = 2
 
-[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=1990089370]
 visible = false
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_cq24o")
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1542104892]
 script = ExtResource("3_ivq61")
 
-[node name="BloodDamage" type="CPUParticles2D" parent="."]
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=702973422]
 emitting = false
 amount = 12
 lifetime = 0.75
@@ -125,30 +125,28 @@ scale_amount_curve = SubResource("Curve_va3vl")
 color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
 color_ramp = SubResource("Gradient_5pg3w")
 
-[node name="DamagePopup" type="Marker2D" parent="."]
+[node name="DamagePopup" type="Marker2D" parent="." unique_id=1603440826]
 position = Vector2(0, -18)
 script = ExtResource("4_58pjh")
 damage_node = ExtResource("5_ughfc")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "player", "animation")]
+[node name="StateMachine" type="Node" parent="." unique_id=316139363 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("7_l5smx")
 initial_state = NodePath("Moving")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
-[node name="Moving" type="Node" parent="StateMachine"]
+[node name="Moving" type="Node" parent="StateMachine" unique_id=1930656233]
 script = ExtResource("7_batcw")
 SPEED = Vector2(200, 200)
 SINUSOIDAL_MOVEMENT_DURATION = 1.0
 TURN_AROUND_DELAY = 0.2
 
-[node name="Dying" type="Node" parent="StateMachine" node_paths=PackedStringArray("hitbox_shape")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1884100390 node_paths=PackedStringArray("hitbox_shape")]
 script = ExtResource("8_wl1oq")
 hitbox_shape = NodePath("../../Hitbox/HitboxShape")
 explosion_scene = ExtResource("9_pri0t")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_bqepi")
-}
-autoplay = "moving"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1802400273]
+libraries/ = SubResource("AnimationLibrary_bqepi")
+autoplay = &"moving"

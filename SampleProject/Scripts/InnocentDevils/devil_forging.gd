@@ -23,11 +23,11 @@ func _process(delta: float) -> void:
 		await animation.animation_finished
 		queue_free()
 
-func _on_forge_trigger_body_entered(body: Node2D) -> void:
+func _on_forge_trigger_area_entered(area: Area2D) -> void:
 	can_forge = true
 	Global.player.tap_up.appear()
 
-func _on_forge_trigger_body_exited(body: Node2D) -> void:
+func _on_forge_trigger_area_exited(area: Area2D) -> void:
 	can_forge = false
 	Global.player.tap_up.dismiss()
 

@@ -35,8 +35,8 @@ func _ready() -> void:
 	if type <= CoinType.Gold100:
 		animation.play("coin")
 		
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body is TileMapLayer:
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.get_parent() is TileMapLayer:
 		return 
 	sound.play_sound_effect_from_library("collect")
 	Global.item_box.changeColor(0)

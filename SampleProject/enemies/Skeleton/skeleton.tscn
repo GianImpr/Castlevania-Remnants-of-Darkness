@@ -198,7 +198,7 @@ script = ExtResource("5_vorls")
 damage_node = ExtResource("6_k13al")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1979611514]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=1386167857]
@@ -244,7 +244,7 @@ hitbox_iframe = NodePath("../../Area2D/Hitbox")
 dying_scene = ExtResource("12_fpe1r")
 
 [node name="Area of Vision" type="Area2D" parent="." unique_id=779432401]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision" unique_id=169443416]
@@ -252,8 +252,8 @@ visible = false
 position = Vector2(17.0652, -26.3044)
 shape = SubResource("RectangleShape2D_qovo5")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Moving/Attack" to="StateMachine/Moving" method="_on_attack_timeout"]
 [connection signal="timeout" from="StateMachine/Moving/SwitchDirection" to="StateMachine/Moving" method="_on_switch_direction_timeout"]
-[connection signal="body_entered" from="Area of Vision" to="StateMachine/Idle" method="_on_area_of_vision_body_entered"]
+[connection signal="area_entered" from="Area of Vision" to="StateMachine/Idle" method="_on_area_of_vision_area_entered"]

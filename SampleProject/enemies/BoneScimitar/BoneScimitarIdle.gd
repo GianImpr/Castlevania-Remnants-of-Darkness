@@ -17,5 +17,5 @@ func Physics_Update(delta: float):
 		
 
 
-func _on_area_of_vision_body_entered(body: Node2D) -> void:
+func _on_area_of_vision_area_entered(area: Area2D) -> void:
 	player.activated_AI = true
