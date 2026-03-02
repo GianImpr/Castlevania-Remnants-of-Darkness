@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 		
 func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 	actual_attributes = base_attribute.duplicate(true)
-	if dive_kick and Global.player.state_machine.current_state is HectorDiveKick:
+	if dive_kick and Global.player.state_machine.current_state is HectorDiveKick and (isAlive(body) or body is not CharacterBody2D):
 		player.dive_kicking = true
 		player.transitionToState("jump")
 	if body is Candle or body is Canister:
