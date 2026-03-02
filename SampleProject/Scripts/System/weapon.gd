@@ -42,7 +42,9 @@ enum Weapons {
 	BHUJ,
 	GREAT_SWORD,
 	DURANDAL,
-	BAHG_NAHK
+	BAHG_NAHK,
+	BROADSWORD,
+	ADA
 }
 
 @export var weapon_name: String
