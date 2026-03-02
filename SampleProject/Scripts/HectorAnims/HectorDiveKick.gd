@@ -29,4 +29,7 @@ func Physics_Update(delta: float):
 		if hard_land or player.stats.status[player.stats.Status.POISON] > 0:
 			Transitioned.emit(self, "hard_landing")
 		else:
-			Transitioned.emit(self, "landing")
+			if not Input.is_action_pressed("jump") and player.direction == 0:
+				Transitioned.emit(self, "front_dash")
+			else:
+				Transitioned.emit(self, "landing")

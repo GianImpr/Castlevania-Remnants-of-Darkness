@@ -177,6 +177,7 @@
 [ext_resource type="Script" uid="uid://brqvednbfqkfp" path="res://SampleProject/Scripts/HectorAnims/HectorGuardPerfectAir.gd" id="134_fj7lc"]
 [ext_resource type="AudioStream" uid="uid://cqn0ukglajys6" path="res://assets/sounds/Effects/Guard/Block.wav" id="135_oqc8j"]
 [ext_resource type="Script" uid="uid://bnrhoo8vgy8rc" path="res://SampleProject/Scripts/HectorAnims/HectorDamageMercy.gd" id="136_2ccld"]
+[ext_resource type="Script" uid="uid://b8uxi4gxfpl7b" path="res://SampleProject/Scripts/HectorAnims/HectorFrontDash.gd" id="136_5lhw1"]
 [ext_resource type="Script" uid="uid://cvbnep6ciesjc" path="res://SampleProject/Scripts/HectorAnims/HectorWait.gd" id="136_g7mo7"]
 [ext_resource type="AudioStream" uid="uid://gfj58uvb5asp" path="res://assets/sounds/Effects/Guard/GuardBreak.wav" id="137_xyr7s"]
 [ext_resource type="Script" uid="uid://bgelrthd4qb7k" path="res://SampleProject/Scripts/HectorAnims/HectorSwordSpin.gd" id="138_q0p4k"]
@@ -5391,6 +5392,15 @@ one_shot = true
 
 [node name="Rise" type="Node" parent="StateMachine" unique_id=637213449]
 script = ExtResource("10_6lx6a")
+
+[node name="Front_dash" type="Node" parent="StateMachine" unique_id=730677791 node_paths=PackedStringArray("trail_timer", "debris_timer")]
+script = ExtResource("136_5lhw1")
+dash_speed = 1100.0
+trail_scene = ExtResource("15_2ye6y")
+debris_scene = ExtResource("16_8e2oa")
+trail_timer = NodePath("../Backdash/Trail_timer")
+debris_timer = NodePath("../Backdash/Debris_timer")
+metadata/_custom_type_script = "uid://b8uxi4gxfpl7b"
 
 [node name="Backdash" type="Node" parent="StateMachine" unique_id=1834992025 node_paths=PackedStringArray("trail_timer", "debris_timer")]
 script = ExtResource("11_hdkwr")
