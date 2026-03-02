@@ -18,6 +18,9 @@ func Physics_Update(delta: float):
 	can_die()
 	check_is_hurt()
 	
+	if InputBuffer.is_action_press_buffered("jump") and Input.is_action_pressed("crouch"):
+		Transitioned.emit(self, "slide")
+	
 	if InputBuffer.is_action_press_buffered("backdash") and player.is_hurt and (Global.screen != Global.ScreenType.TRAINING or player.stats.Stats["HP"] > 0):
 		TrainingSettings.spawnTrainingHeart(TrainingMode.Training.QUICK_RECOVER)
 		Transitioned.emit(self, "backdash")
