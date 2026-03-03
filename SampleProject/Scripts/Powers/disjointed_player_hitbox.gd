@@ -13,3 +13,6 @@ func _process(delta: float) -> void:
 		base_attribute = Global.player.sprite.weapon.hitbox.base_attribute
 	else:
 		base_attribute = [Global.Attribute.SLASH]
+
+func calculateDamage(body: Node2D, magical_damage: bool = false) -> int:
+	return super.calculateDamage(body, magical)

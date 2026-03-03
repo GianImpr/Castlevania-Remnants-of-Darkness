@@ -32,7 +32,7 @@ func _on_hit(body: Node2D) -> void:
 	get_child(0).set_deferred("disabled", true)
 	get_tree().create_timer(iframes_duration, false).timeout.connect(enableHitbox.bind(body, self))
 	_on_body_entered(body, false)
-
+	
 static func enableHitbox(body, flame) -> void:
 	if body != null:
 		enemies_hit.erase(body)

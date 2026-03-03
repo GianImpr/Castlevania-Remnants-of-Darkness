@@ -3,6 +3,7 @@ class_name WeaponSprite
 @export var animation: AnimationPlayer
 @export var hitbox: PlayerHitbox
 @export var has_parent_node: bool = false
+@export var boomerang: Sprite2D
 var facing_position: int = 1
 var anim_position: float
 

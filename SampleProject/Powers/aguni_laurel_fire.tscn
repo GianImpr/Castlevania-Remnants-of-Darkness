@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgau1ae4s0ma8"]
+[gd_scene format=3 uid="uid://bgau1ae4s0ma8"]
 
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="1_03wak"]
 [ext_resource type="Script" uid="uid://cjefkx38bim0n" path="res://SampleProject/Powers/aguni_laurel_hitbox.gd" id="2_civ2u"]
@@ -83,9 +83,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o33ff"]
 size = Vector2(27, 20)
 
-[node name="AguniLaurelFire" type="Node2D"]
+[node name="AguniLaurelFire" type="Node2D" unique_id=1734906786]
 
-[node name="FireEffect" type="GPUParticles2D" parent="."]
+[node name="FireEffect" type="GPUParticles2D" parent="." unique_id=763723870]
 light_mask = 0
 z_index = 20
 material = SubResource("CanvasItemMaterial_a815h")
@@ -98,13 +98,11 @@ explosiveness = 0.07
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_0cegh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_bd6ya")
-}
-autoplay = "sprout"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2128449740]
+libraries/ = SubResource("AnimationLibrary_bd6ya")
+autoplay = &"sprout"
 
-[node name="DisjointedPlayerHitbox" type="Area2D" parent="." node_paths=PackedStringArray("effect", "animation", "hitbox")]
+[node name="DisjointedPlayerHitbox" type="Area2D" parent="." unique_id=844974606 node_paths=PackedStringArray("effect", "animation", "hitbox")]
 collision_layer = 128
 collision_mask = 4
 script = ExtResource("2_civ2u")
@@ -114,13 +112,15 @@ animation = NodePath("../AnimationPlayer")
 extra_base_damage = 5
 damage_multiplier = 0.9
 magical = true
-iframes_on_hit = 1
+dmg_multiplier = 0.9
+damage_boost = 5
+iframes_on_hit = 15
 hitbox = NodePath("CollisionShape2D")
 hit_collision_scene = ExtResource("3_lfxv2")
 ice_hit_collision_scene = ExtResource("4_pocb7")
 base_attribute = Array[int]([3])
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DisjointedPlayerHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DisjointedPlayerHitbox" unique_id=1244565599]
 position = Vector2(-3.5, 0)
 shape = SubResource("RectangleShape2D_o33ff")
 

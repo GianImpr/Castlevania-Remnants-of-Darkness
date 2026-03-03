@@ -7,10 +7,13 @@ var can_perfect_guard: bool = false
 func enter():
 	player.playSpecialAttackEffect()
 	animation.play("sword_throw", -1, 1.1)
+	player.sprite.weapon.animation.play("boomerang", -1, 1.1)
 
 func exit():
 	sword_spin.visible = false
 	sword_spin_hitbox.disabled = true
+	if player.sprite.weapon.boomerang:
+		player.sprite.weapon.boomerang.visible = false
 
 func Update(delta: float):
 	can_perform("backdash", true)

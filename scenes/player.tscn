@@ -222,13 +222,14 @@
 [ext_resource type="AudioStream" uid="uid://cnov0eaq02j57" path="res://assets/sounds/HectorMovement/Slide.wav" id="195_w5oev"]
 [ext_resource type="AudioStream" uid="uid://d271jlatj7cyx" path="res://assets/sounds/HectorMovement/SlideJump.wav" id="196_w5oev"]
 [ext_resource type="AudioStream" uid="uid://ce0cgved27m6l" path="res://assets/sounds/HectorMovement/DoubleJump.wav" id="198_p6pc0"]
-[ext_resource type="Script" uid="uid://domtd5cul57yy" path="res://SampleProject/Scripts/System/player_projectile.gd" id="200_5r3n4"]
 [ext_resource type="AudioStream" uid="uid://dcrqspyri6gso" path="res://assets/sounds/HectorMovement/DiveKick.wav" id="200_m4v07"]
 [ext_resource type="AudioStream" uid="uid://dy51w6vjm6bnf" path="res://assets/sounds/Voice/Hector/GuardBreak.wav" id="205_xy0l7"]
 [ext_resource type="Texture2D" uid="uid://1he2rtoahtll" path="res://assets/sprites/Effects/Sparks/Spark1.png" id="207_mg3ag"]
 [ext_resource type="Texture2D" uid="uid://p0swsulobrnj" path="res://assets/sprites/Effects/Sparks/Spark2.png" id="208_5jjpn"]
 [ext_resource type="Texture2D" uid="uid://dcmexpqewqyki" path="res://assets/sprites/Effects/Charge.png" id="215_iee07"]
 [ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="216_rbo1h"]
+[ext_resource type="Script" uid="uid://cetysgqumvdh6" path="res://SampleProject/Scripts/Powers/sword_spin.gd" id="223_cwl8n"]
+[ext_resource type="Texture2D" uid="uid://7a7gx1dlhids" path="res://assets/sprites/Weapons/Swords/AdaBoomerangSwing.png" id="225_cwl8n"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_ju6fn")
@@ -3776,7 +3777,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_b71ut"]
 resource_name = "sword_throw"
 length = 1.1
-step = 0.025
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3938,6 +3939,20 @@ tracks/12/keys = {
 "values": [{
 "args": [],
 "method": &"recolorTrail"
+}]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SwordSpin")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"updateSprite"
 }]
 }
 
@@ -5713,8 +5728,9 @@ one_shot = true
 [node name="IframeHitCounterReset" type="Timer" parent="." unique_id=1227640365]
 one_shot = true
 
-[node name="SwordSpin" type="Node2D" parent="." unique_id=408445569]
-script = ExtResource("200_5r3n4")
+[node name="SwordSpin" type="Node2D" parent="." unique_id=408445569 node_paths=PackedStringArray("sword_sprite")]
+script = ExtResource("223_cwl8n")
+sword_sprite = NodePath("Spin/Sprite2D/Spin/Sprite2D2")
 
 [node name="Spin" parent="SwordSpin" unique_id=96565700 instance=ExtResource("176_86i4x")]
 visible = false
@@ -5722,7 +5738,14 @@ position = Vector2(23, -1.5)
 rotation = 3.14159
 scale = Vector2(2, -2)
 
-[node name="CollisionShape2D" parent="SwordSpin/Spin/DisjointedPlayerHitbox" parent_id_path=PackedInt32Array(96565700, 472308292) index="0" unique_id=1154747824]
+[node name="Sprite2D2" parent="SwordSpin/Spin/Sprite2D/Spin" parent_id_path=PackedInt32Array(96565700, 1609616718) index="0" unique_id=993925385]
+texture = ExtResource("225_cwl8n")
+
+[node name="DisjointedPlayerHitbox" parent="SwordSpin/Spin" index="1" unique_id=472308292]
+dmg_multiplier = 1.05
+damage_boost = 5
+
+[node name="CollisionShape2D" parent="SwordSpin/Spin/DisjointedPlayerHitbox" index="0" unique_id=1154747824]
 disabled = true
 
 [node name="SpecialAttackEffect" type="Node2D" parent="." unique_id=1325300270]
