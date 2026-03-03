@@ -60,7 +60,8 @@ func _process(delta: float) -> void:
 	if active and text.visible_ratio != 1 and Input.is_action_just_pressed("ui_accept"):
 		text.visible_ratio = 1
 		has_to_release_button = true
-		cursor.visible = true
+		if not animation.is_playing():
+			cursor.visible = true
 		cursor.get_child(0).seek(0)
 		wait_timer.stop()
 
@@ -135,7 +136,8 @@ func setText(dialogue: String, emotion: Dialogue.Emotions = Dialogue.Emotions.KE
 
 		
 	text.visible_characters = 0
-	cursor.visible = false
+	if not animation.is_playing():
+		cursor.visible = false
 	text.text = tr(dialogue)
 	wait_timer.wait_time = NORMAL_DIALOGUE_WAIT_TIME
 	wait_timer.start()
