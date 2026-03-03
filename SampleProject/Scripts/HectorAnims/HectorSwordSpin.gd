@@ -12,6 +12,7 @@ func enter():
 func exit():
 	sword_spin.visible = false
 	sword_spin_hitbox.disabled = true
+	player.sprite.weapon.animation.stop()
 	if player.sprite.weapon.boomerang:
 		player.sprite.weapon.boomerang.visible = false
 

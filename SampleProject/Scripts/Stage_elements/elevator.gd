@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 		
 	if can_lift and (Input.is_action_just_pressed("up_arrow") and should_go_up or Input.is_action_just_pressed("crouch") and not should_go_up) and not moving:
 		_moveElevator()
-	
 
 	
 func _moveElevator():
