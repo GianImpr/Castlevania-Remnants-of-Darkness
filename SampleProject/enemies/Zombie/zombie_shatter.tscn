@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://b06yv3amuvb1m"]
+
+[ext_resource type="Script" uid="uid://duqwcssmcq86k" path="res://SampleProject/enemies/SkeletonArcher/shatter.gd" id="1_5d22h"]
+[ext_resource type="Texture2D" uid="uid://b87oy5o8x2nj" path="res://assets/sprites/Enemies/ZombieDeadBody.png" id="2_8oe6g"]
+[ext_resource type="Texture2D" uid="uid://clledjlsycg33" path="res://assets/sprites/Enemies/ZombieDeadChest.png" id="3_ddh4n"]
+[ext_resource type="Texture2D" uid="uid://co1iyv3jc4l3l" path="res://assets/sprites/Enemies/ZombieDeadHead.png" id="4_wmy2x"]
+[ext_resource type="Texture2D" uid="uid://r8qypamawsvh" path="res://assets/sprites/Enemies/ZombieDeadArm.png" id="5_abrvs"]
+[ext_resource type="Texture2D" uid="uid://dba45w3fcayar" path="res://assets/sprites/Enemies/ZombieDeadCloth.png" id="6_cgo50"]
+[ext_resource type="Texture2D" uid="uid://cmxw3h3uf3v2" path="res://assets/sprites/Enemies/ZombieDeadHand2.png" id="7_ixah4"]
+[ext_resource type="Texture2D" uid="uid://bya12v3ftmcai" path="res://assets/sprites/Enemies/ZombieDeadHand.png" id="8_wmgje"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="9_f33j5"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="10_1krsa"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="11_rtxr3"]
+[ext_resource type="AudioStream" uid="uid://lhvvjm8aucp0" path="res://assets/sounds/Enemies/DeadPirate/DeadPiratePieceDrop.wav" id="12_ycpwu"]
+[ext_resource type="Texture2D" uid="uid://c75kgbqkyn6c5" path="res://assets/sprites/Effects/SmallFire.png" id="13_5d22h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d22h"]
+size = Vector2(16, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oe6g"]
+size = Vector2(19.25, 17.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddh4n"]
+size = Vector2(10.5, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmy2x"]
+size = Vector2(14, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abrvs"]
+size = Vector2(7.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgo50"]
+size = Vector2(6.5, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixah4"]
+size = Vector2(9, 13.5)
+
+[sub_resource type="Resource" id="Resource_vmruv"]
+script = ExtResource("11_rtxr3")
+Tag = "drop"
+stream = ExtResource("12_ycpwu")
+
+[sub_resource type="Resource" id="Resource_5avr8"]
+script = ExtResource("10_1krsa")
+sound_effects = Array[ExtResource("11_rtxr3")]([SubResource("Resource_vmruv")])
+
+[node name="ZombieShatter" type="Node2D" unique_id=639978895 node_paths=PackedStringArray("delete_timer", "sound", "flame_texture")]
+script = ExtResource("1_5d22h")
+base_velocity = Vector2(150, -150)
+delete_timer = NodePath("DeleteTimer")
+sound = NodePath("PolyphonicAudio")
+flame_texture = NodePath("Sprite2D")
+dying_noise = false
+
+[node name="Body" type="RigidBody2D" parent="." unique_id=1055295221]
+position = Vector2(0, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Body" unique_id=672216550]
+position = Vector2(-20, -13)
+scale = Vector2(2, 2)
+texture = ExtResource("2_8oe6g")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Body" unique_id=250372316]
+visible = false
+position = Vector2(-20, -11)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_5d22h")
+
+[node name="Chest" type="RigidBody2D" parent="." unique_id=1652359294]
+position = Vector2(-2, 16)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Chest" unique_id=430049521]
+position = Vector2(-24, -39)
+scale = Vector2(2, 2)
+texture = ExtResource("3_ddh4n")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Chest" unique_id=971206784]
+visible = false
+position = Vector2(-23.25, -39.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_8oe6g")
+
+[node name="Head" type="RigidBody2D" parent="." unique_id=1485961062]
+position = Vector2(-3, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Head" unique_id=1252940030]
+position = Vector2(-41, -47)
+scale = Vector2(2, 2)
+texture = ExtResource("4_wmy2x")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Head" unique_id=576291348]
+visible = false
+position = Vector2(-40.5, -46)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ddh4n")
+
+[node name="Arm" type="RigidBody2D" parent="." unique_id=1994916372]
+position = Vector2(4, 8)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Arm" unique_id=850303038]
+position = Vector2(-36, -42)
+scale = Vector2(2, 2)
+texture = ExtResource("5_abrvs")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Arm" unique_id=1387228923]
+visible = false
+position = Vector2(-35, -41)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_wmy2x")
+
+[node name="Leg" type="RigidBody2D" parent="." unique_id=803659041]
+position = Vector2(0, 9)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Leg" unique_id=1205234714]
+position = Vector2(-37, -38)
+scale = Vector2(2, 2)
+texture = ExtResource("6_cgo50")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Leg" unique_id=1018195490]
+visible = false
+position = Vector2(-37.5, -36)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_abrvs")
+
+[node name="Hand" type="RigidBody2D" parent="." unique_id=888173514]
+position = Vector2(-17, 17)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="Hand" unique_id=76217801]
+position = Vector2(-45, -60)
+scale = Vector2(2, 2)
+texture = ExtResource("7_ixah4")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="Hand" unique_id=240641930]
+visible = false
+position = Vector2(-42.5, -59)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_cgo50")
+
+[node name="SecondHand" type="RigidBody2D" parent="." unique_id=1710299992]
+position = Vector2(23, 11)
+collision_layer = 8
+collision_mask = 4097
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="Sprite" type="Sprite2D" parent="SecondHand" unique_id=415814318]
+position = Vector2(-63, -58)
+scale = Vector2(2, 2)
+texture = ExtResource("8_wmgje")
+
+[node name="CollisionBox" type="CollisionShape2D" parent="SecondHand" unique_id=1415614579]
+visible = false
+position = Vector2(-61, -55.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_ixah4")
+
+[node name="DeleteTimer" type="Timer" parent="." unique_id=700136013]
+wait_time = 1.5
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=324230311]
+volume_db = -15.0
+script = ExtResource("9_f33j5")
+audio_library = SubResource("Resource_5avr8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=904613014]
+visible = false
+texture = ExtResource("13_5d22h")
+hframes = 11
+
+[connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]

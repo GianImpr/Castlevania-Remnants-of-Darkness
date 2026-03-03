@@ -276,7 +276,7 @@ func createEffects(body: Node2D, physical_based_sound: bool = true) -> void:
 		if weapon != 0 and not direct_physical_hit:
 			attack_type = player.stats.searchItemInCompendium(weapon, player.stats.weapon_compendium).type
 			
-		if Global.Attribute.SLASH in actual_attributes and body is Enemy and body.blood_particles != null:
+		if Global.Attribute.SLASH in actual_attributes and (body is Enemy or body is Zombie) and body.blood_particles != null:
 			body.blood_particles.restart()
 			body.blood_particles.emitting = true
 			sound.play_sound_effect_from_library("blood_slash_sfx")

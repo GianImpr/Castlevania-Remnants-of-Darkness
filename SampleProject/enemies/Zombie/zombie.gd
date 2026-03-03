@@ -9,6 +9,7 @@ var direction := 1
 @export var hitbox_iframe: Area2D
 @onready var ray_cast_2d_left: RayCast2D = $RayCast2DLeft
 @onready var ray_cast_2d_right: RayCast2D = $RayCast2DRight
+@export var blood_particles: CPUParticles2D
 @export var attribute: Global.Attribute = Global.Attribute.HIT
 
 func _physics_process(delta: float) -> void:

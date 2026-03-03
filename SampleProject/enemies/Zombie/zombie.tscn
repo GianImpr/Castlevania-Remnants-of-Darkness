@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://d0m57kp4ey2gc" path="res://SampleProject/enemies/Zombie/ZombieMoving.gd" id="6_de3rd"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_y1k3t"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="8_ile2y"]
+[ext_resource type="PackedScene" uid="uid://b06yv3amuvb1m" path="res://SampleProject/enemies/Zombie/zombie_shatter.tscn" id="8_yyf0o"]
 [ext_resource type="AudioStream" uid="uid://baubt1rksjbty" path="res://assets/sounds/HectorMovement/jump.MP3" id="9_a80cu"]
 [ext_resource type="AudioStream" uid="uid://cghql4ik4xqao" path="res://assets/sounds/HectorMovement/Backdash.MP3" id="10_hjd37"]
 [ext_resource type="AudioStream" uid="uid://bc2alrbmrk7op" path="res://assets/sounds/HectorMovement/land.MP3" id="11_y0yiq"]
@@ -218,7 +219,23 @@ sound_effects = Array[ExtResource("8_ile2y")]([SubResource("Resource_hltme"), Su
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6fpy"]
 size = Vector2(13.4783, 35.4348)
 
-[node name="Zombie" type="CharacterBody2D" unique_id=1177280636 node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[sub_resource type="Curve" id="Curve_xkkvv"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_yyf0o"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_y2kes"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0.00497513, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ineix"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Zombie" type="CharacterBody2D" unique_id=1177280636 node_paths=PackedStringArray("sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 4097
@@ -230,6 +247,7 @@ stats = NodePath("EnemyStats")
 damage_popup = NodePath("DamageLocation")
 iframe_timer = NodePath("Area2D/Timer")
 hitbox_iframe = NodePath("Area2D")
+blood_particles = NodePath("BloodDamage")
 
 [node name="EnemyStats" type="Node" parent="." unique_id=1851807767]
 script = ExtResource("1_17sfr")
@@ -248,6 +266,7 @@ hframes = 20
 libraries/ = SubResource("AnimationLibrary_wmja6")
 
 [node name="Collision box" type="CollisionShape2D" parent="." unique_id=21166057]
+visible = false
 position = Vector2(-4.5, 1)
 shape = SubResource("RectangleShape2D_o2c72")
 
@@ -266,9 +285,11 @@ hitbox_iframe = NodePath("../../Area2D/Hitbox")
 script = ExtResource("5_dguli")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=1842172014 node_paths=PackedStringArray("hitbox_iframe")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1842172014 node_paths=PackedStringArray("hitbox_iframe", "dying_blood")]
 script = ExtResource("4_grrpx")
 hitbox_iframe = NodePath("../../Area2D/Hitbox")
+dying_scene = ExtResource("8_yyf0o")
+dying_blood = NodePath("../../DyingBlood")
 
 [node name="PolyphonicAudioPlayer" parent="." unique_id=1890872467 instance=ExtResource("6_60l16")]
 audio_library = SubResource("Resource_ja2e3")
@@ -278,6 +299,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=999081866]
+visible = false
 position = Vector2(-4.13044, 6.41305)
 shape = SubResource("RectangleShape2D_w6fpy")
 
@@ -289,12 +311,48 @@ script = ExtResource("13_eqw15")
 damage_node = ExtResource("14_klfs4")
 
 [node name="RayCast2DRight" type="RayCast2D" parent="." unique_id=481064893]
+visible = false
 position = Vector2(-3.47826, 0)
 target_position = Vector2(15.2174, 0)
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="." unique_id=1270765133]
+visible = false
 position = Vector2(-3.47826, 0)
 target_position = Vector2(-13.913, 0)
+
+[node name="DyingBlood" type="CPUParticles2D" parent="." unique_id=1841936604]
+position = Vector2(-8, 6)
+emitting = false
+amount = 36
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 3
+emission_rect_extents = Vector2(10, 20)
+direction = Vector2(1, -1)
+gravity = Vector2(0, 300)
+initial_velocity_min = 80.0
+initial_velocity_max = 160.0
+scale_amount_curve = SubResource("Curve_xkkvv")
+color = Color(0.5803922, 0, 0, 1)
+color_ramp = SubResource("Gradient_yyf0o")
+
+[node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=1500263038]
+position = Vector2(-6, -1)
+emitting = false
+amount = 12
+lifetime = 0.75
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 13.07
+spread = 96.75
+gravity = Vector2(0, 250)
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+scale_amount_curve = SubResource("Curve_y2kes")
+color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
+color_ramp = SubResource("Gradient_ineix")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="Area2D/Timer" to="." method="_on_timer_timeout"]

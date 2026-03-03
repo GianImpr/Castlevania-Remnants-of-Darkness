@@ -506,13 +506,14 @@ hframes = 5
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 2
 hframes = 5
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LeftCharacter" unique_id=166591483]
 root_node = NodePath("../PreviousExpression")
 libraries/ = SubResource("AnimationLibrary_m6pn1")
 
 [node name="RightCharacter" type="Sprite2D" parent="." unique_id=2024569893]
-modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+modulate = Color(0.501961, 0.501961, 0.501961, 1)
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 2
 position = Vector2(744, 226)
