@@ -16,7 +16,6 @@ func Physics_Update(delta: float):
 	player.velocity.x *= MOMENTUM_MULTIPLIER
 	can_fall(false)
 	can_die()
-	check_is_hurt()
 	
 	if InputBuffer.is_action_press_buffered("jump") and Input.is_action_pressed("crouch"):
 		Transitioned.emit(self, "slide")

@@ -120,10 +120,6 @@ func _on_start_cooldown_timeout() -> void:
 func isCorneringPlayer() -> bool:
 	return abs(Global.player.global_position.x - global_position.x) < 140 and (global_position.x < 220 or global_position.x > 740)
 
-
-func _on_laser_2_area_entered(area: Area2D) -> void:
-	var body = area.get_parent()
-	hit_target(2.8, body, laser_hitbox, 25, true, Global.Attribute.FIRE, 1)
 	
 func setBossBar() -> void:
 	if boss and state_machine.current_state is DullahanAppearing and Global.boss_bar.enemy != self:
@@ -131,3 +127,8 @@ func setBossBar() -> void:
 
 func _on_spikes_timeout() -> void:
 	spawnSpikes()
+
+
+func _on_laser_hitbox_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
+	hit_target(2.8, body, laser_hitbox, 25, true, Global.Attribute.FIRE, 1, true)

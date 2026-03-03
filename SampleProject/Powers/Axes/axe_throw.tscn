@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="3_arr67"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="4_v3daj"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yebif"]
-radius = 28.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oa8so"]
+size = Vector2(56, 56)
 
 [sub_resource type="Animation" id="Animation_ecxqs"]
 resource_name = "throw"
@@ -79,7 +79,7 @@ ice_hit_collision_scene = ExtResource("4_v3daj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox" unique_id=763120918]
 scale = Vector2(2, 2)
-shape = SubResource("CircleShape2D_yebif")
+shape = SubResource("RectangleShape2D_oa8so")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=170087749]
 libraries/ = SubResource("AnimationLibrary_s4n8t")

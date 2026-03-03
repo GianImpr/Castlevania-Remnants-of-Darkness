@@ -107,7 +107,7 @@ func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float
 	body.is_hurt = true
 	if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]*0.07:
 		body.is_hurt = false
-	attack_hitbox.set_deferred("monitoring", false)
+	attack_hitbox.set_collision_mask_value(2, false)
 	if rehit_time > 0:
 		var iframes_timer: Timer = Timer.new()
 		add_child(iframes_timer)
@@ -128,7 +128,7 @@ func hit_target(multiplier: float, body, attack_hitbox = hitbox_iframe, chip_dam
 
 func resetHitbox(attack_hitbox: Area2D) -> void:
 	if stats.HP > 0:
-		attack_hitbox.set_deferred("monitoring", true)
+		attack_hitbox.set_collision_mask_value(2, true)
 
 static func resetInvulnerability() -> void:
 	body_hitbox_on_cooldown = false

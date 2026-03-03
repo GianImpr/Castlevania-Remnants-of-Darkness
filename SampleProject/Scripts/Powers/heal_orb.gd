@@ -41,7 +41,8 @@ func _physics_process(delta: float) -> void:
 	global_position = global_position + velocity * actual_direction * delta
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area_node: Area2D) -> void:
+	var body = area_node.get_parent()
 	(body as HectorPlayer).heal(HEALING_POWER, false)
 	visible = false
 	sound.play_sound_effect_from_library("heal")

@@ -1965,7 +1965,6 @@ one_shot = true
 autostart = true
 
 [node name="LaserHitbox" type="Area2D" parent="." unique_id=1065040121]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -2014,7 +2013,6 @@ explosiveness = 0.07
 process_material = SubResource("ParticleProcessMaterial_edw4s")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="timeout" from="IframeTimer" to="." method="_on_iframe_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Appearing/Trail_frequency" to="StateMachine/Appearing" method="_on_trail_frequency_timeout"]
 [connection signal="timeout" from="StateMachine/Idle/Idle_duration" to="StateMachine/Idle" method="_on_duration_timeout"]
 [connection signal="timeout" from="StateMachine/Walking/Walk_duration" to="StateMachine/Walking" method="_on_duration_timeout"]
@@ -2027,4 +2025,4 @@ process_material = SubResource("ParticleProcessMaterial_edw4s")
 [connection signal="timeout" from="Fangs" to="StateMachine/Throw_head" method="_on_fangs_timeout"]
 [connection signal="area_entered" from="TriggerBoss" to="StateMachine/Waiting" method="_on_trigger_boss_area_entered"]
 [connection signal="timeout" from="TriggerBoss/StartCooldown" to="." method="_on_start_cooldown_timeout"]
-[connection signal="body_entered" from="LaserHitbox" to="." method="_on_laser_2_body_entered"]
+[connection signal="area_entered" from="LaserHitbox" to="." method="_on_laser_hitbox_area_entered"]
