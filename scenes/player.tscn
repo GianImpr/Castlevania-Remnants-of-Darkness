@@ -199,6 +199,8 @@
 [ext_resource type="Script" uid="uid://fq0v2mj1k0ga" path="res://SampleProject/Scripts/HectorAnims/HectorUppercut.gd" id="156_gp8oi"]
 [ext_resource type="AudioStream" uid="uid://cp0wlsu0kr46r" path="res://assets/sounds/Effects/HectorHit/HitFire.MP3" id="156_roqt5"]
 [ext_resource type="AudioStream" uid="uid://bya56k86ttxfv" path="res://assets/sounds/Effects/HectorHit/HitIce.MP3" id="157_an6m8"]
+[ext_resource type="Script" uid="uid://c8blox27vc6n4" path="res://SampleProject/Scripts/HectorAnims/HectorEarthquake.gd" id="159_kp546"]
+[ext_resource type="PackedScene" uid="uid://v7l5hlnmrasu" path="res://SampleProject/Powers/Axes/earthquake.tscn" id="160_8ddhv"]
 [ext_resource type="AudioStream" uid="uid://cr3vhib8t4q2a" path="res://assets/sounds/Effects/Swords/SwordSpin.WAV" id="160_oaxy7"]
 [ext_resource type="AudioStream" uid="uid://3tjhhiow3jv5" path="res://assets/sounds/Effects/Swords/SwordGrab.WAV" id="161_7g84s"]
 [ext_resource type="AudioStream" uid="uid://bxttc25p3boho" path="res://assets/sounds/HectorMovement/SpecialAttack.WAV" id="163_hmql1"]
@@ -5450,7 +5452,7 @@ blood = NodePath("../../BloodDamage")
 [node name="Damage_knockback" type="Node" parent="StateMachine" unique_id=2072712276 node_paths=PackedStringArray("ignore_landing")]
 script = ExtResource("121_4sdvf")
 recoil_speed = Vector2(250, -630)
-ignore_landing = NodePath("../Guard_break/Ignore_landing")
+ignore_landing = NodePath("")
 metadata/_custom_type_script = "uid://djsyfeijyf8li"
 
 [node name="Damage_air" type="Node" parent="StateMachine" unique_id=96101769 node_paths=PackedStringArray("blood")]
@@ -5461,7 +5463,11 @@ blood = NodePath("../../BloodDamage")
 [node name="Damage_mercy" type="Node" parent="StateMachine" unique_id=1799364436 node_paths=PackedStringArray("ignore_landing")]
 script = ExtResource("136_2ccld")
 recoil_speed = Vector2(150, -630)
-ignore_landing = NodePath("../Guard_break/Ignore_landing")
+ignore_landing = NodePath("IgnoreLanding")
+
+[node name="IgnoreLanding" type="Timer" parent="StateMachine/Damage_mercy" unique_id=1505118637]
+wait_time = 0.1
+one_shot = true
 
 [node name="Dying" type="Node" parent="StateMachine" unique_id=1245412073 node_paths=PackedStringArray("hurtbox", "timer_reset", "blood")]
 script = ExtResource("108_egrmx")
@@ -5514,11 +5520,7 @@ recoil_speed = 400.0
 [node name="Guard_break" type="Node" parent="StateMachine" unique_id=260069116 node_paths=PackedStringArray("ignore_landing")]
 script = ExtResource("123_h7cmy")
 recoil_speed = Vector2(150, -630)
-ignore_landing = NodePath("Ignore_landing")
-
-[node name="Ignore_landing" type="Timer" parent="StateMachine/Guard_break" unique_id=1768322205]
-wait_time = 0.1
-one_shot = true
+ignore_landing = NodePath("")
 
 [node name="Guard_perfect" type="Node" parent="StateMachine" unique_id=615163960]
 script = ExtResource("133_qno2k")
@@ -5538,6 +5540,12 @@ attack_state = true
 [node name="Throw_axe" type="Node" parent="StateMachine" unique_id=386797734]
 script = ExtResource("141_js2j3")
 attack_state = true
+
+[node name="Earthquake" type="Node" parent="StateMachine" unique_id=1415161120]
+script = ExtResource("159_kp546")
+earthquake_scene = ExtResource("160_8ddhv")
+attack_state = true
+metadata/_custom_type_script = "uid://c8blox27vc6n4"
 
 [node name="Uppercut" type="Node" parent="StateMachine" unique_id=857178468 node_paths=PackedStringArray("uppercut_effects")]
 script = ExtResource("156_gp8oi")

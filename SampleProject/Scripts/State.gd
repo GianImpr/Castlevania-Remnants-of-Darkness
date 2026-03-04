@@ -220,7 +220,6 @@ func get_hector_heavy_attack_sound() -> void:
 
 
 #Plays the appropriate animation for the currently equipped weapon
-#Crouching attacks are missing
 func swingWeapon(anim_type: int):
 	if player.sprite.weapon != null:
 		if anim_type == AttackType.AIR:
