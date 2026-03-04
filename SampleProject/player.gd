@@ -26,7 +26,7 @@ class_name HectorPlayer
 @export_category("Buff nodes")
 @export var confidence_ring_timer: Timer
 @export var time_heal_timer: Timer
-@export var time_heal_particles: GPUParticles2D
+@export var time_heal_particles: CPUParticles2D
 @export_category("Charge nodes")
 @export var charge_sprite: Sprite2D
 @export var charge_anim: AnimationPlayer

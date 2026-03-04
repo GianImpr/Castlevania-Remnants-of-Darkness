@@ -4538,22 +4538,6 @@ anim_speed_max = 1.0
 offsets = PackedFloat32Array(0.00367647, 0.319853, 0.682635, 1)
 colors = PackedColorArray(0, 1, 0.52305055, 1, 0.019913906, 0, 0.8000808, 1, 0.1053383, 0.17952648, 0.9999998, 1, 0.30742115, 0.73354685, 0.99999994, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_h8fhv"]
-gradient = SubResource("Gradient_ypfsk")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1776x"]
-emission_shape = 3
-emission_box_extents = Vector3(8, 17, 1)
-direction = Vector3(0, 0, 0)
-initial_velocity_min = 40.0
-initial_velocity_max = 70.0
-orbit_velocity_min = 9.49949e-08
-orbit_velocity_max = 1.0
-gravity = Vector3(0, -50, 0)
-color_ramp = SubResource("GradientTexture1D_h8fhv")
-anim_speed_min = 1.0
-anim_speed_max = 1.0
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i6sdk"]
 particles_animation = true
 particles_anim_h_frames = 5
@@ -5694,6 +5678,7 @@ wait_time = 0.064
 one_shot = true
 
 [node name="Heal" type="GPUParticles2D" parent="." unique_id=327372729]
+process_mode = 3
 z_index = 20
 material = SubResource("CanvasItemMaterial_mx2i2")
 position = Vector2(0, 12.6087)
@@ -5705,6 +5690,7 @@ one_shot = true
 process_material = SubResource("ParticleProcessMaterial_7cy8a")
 
 [node name="HealMP" type="GPUParticles2D" parent="." unique_id=1234529401]
+process_mode = 3
 z_index = 20
 material = SubResource("CanvasItemMaterial_mx2i2")
 position = Vector2(0, 12.6087)
@@ -5715,17 +5701,32 @@ lifetime = 0.7
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_d5cvh")
 
-[node name="TimeHeal" type="GPUParticles2D" parent="." unique_id=1658934047]
+[node name="TimeHeal" type="CPUParticles2D" parent="." unique_id=1332910115]
+process_mode = 3
 z_index = 20
 material = SubResource("CanvasItemMaterial_mx2i2")
-position = Vector2(0, 12.6087)
+position = Vector2(0.5000002, 21.5)
+scale = Vector2(0.7, 0.7)
 emitting = false
 amount = 18
 texture = ExtResource("167_ltqbs")
 lifetime = 0.7
-process_material = SubResource("ParticleProcessMaterial_1776x")
+fixed_fps = 60
+local_coords = true
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(8, 17)
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, -50)
+initial_velocity_min = 40.0
+initial_velocity_max = 70.0
+color_ramp = SubResource("Gradient_ypfsk")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
 [node name="TimeHealTimer" type="Timer" parent="TimeHeal" unique_id=1105865695]
+process_mode = 1
 
 [node name="PressUp" parent="." unique_id=1077824572 instance=ExtResource("170_moyg6")]
 position = Vector2(0, -25)
