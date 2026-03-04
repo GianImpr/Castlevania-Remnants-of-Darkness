@@ -40,21 +40,21 @@ SYN_STAT,SYN,SIN,SIN,SIN,SYN,SWK,
 MND_STAT,MND,MEN,MNT,MNT,ESP,INZ,
 LCK_STAT,LCK,FOR,SRT,SOR,CHA,GLK,
 WEAPON_EQUIP_LABEL,Wpn,Arma,Arma,Arma,Arme,Wpn,
-ARTIFACT_EQUIP_LABEL,Art.,Art.,Art.,Art.,Art.,Kunst.,
+ARTIFACT_EQUIP_LABEL,Art.,Art.,Art.,Art.,Art.,Art.,
 RELIC_EQUIP_LABEL,Relic,Reliq.,Reliq.,Reliq.,Reliq.,Reliek,
 HEAD_EQUIP_LABEL,Head,Elmo,Cab.,Cab.,Tête,Hoofd,
 BODY_EQUIP_LABEL,Body,Corpo,Torso,Corpo,Corps,Lichaam,
 LEGS_EQUIP_LABEL,Legs,Gambe,Pier.,Pernas,Jambes,Benen,
 ACC1_EQUIP_LABEL,Acc.1,Acc.1,Acc.1,Acs. 1,Acc.1,Acc.1,
 ACC2_EQUIP_LABEL,Acc.2,Acc.2,Acc.2,Acs. 2,Acc.2,Acc.2,
-EQUIPPED_WEAPON,Equipped Weapon,Arma equipaggiata,,Arma Equipada,,,
-EQUIPPED_ARTIFACT,Equipped Artifact,Artefatto equipaggiato,,Artefato Equipado,,,
-EQUIPPED_RELIC,Equipped Relic,Reliquia equipaggiata,,Relíquia Equipada,,,
-EQUIPPED_HEADGEAR,Equipped Headgear,Elmo equipaggiato,,Capacete Equipado,,,
-EQUIPPED_BODY,Equipped Armor,Armatura equipaggiata,,Armadura Equipada,,,
-EQUIPPED_LEGS,Equipped Legs,Armatura inferiore equipaggiata,,Botas Equipadas,,,
-EQUIPPED_ACC1,Equipped Accessory 1,Accessorio 1 equipaggiato,,Acessório Equipado 1,,,
-EQUIPPED_ACC2,Equipped Accessory 2,Accessorio 2 equipaggiato,,Acessório Equipado 2,,,
+EQUIPPED_WEAPON,Equipped Weapon,Arma equipaggiata,Arma equipada,Arma Equipada,,Aangedaan Wapen,
+EQUIPPED_ARTIFACT,Equipped Artifact,Artefatto equipaggiato,Artefacto equipado,Artefato Equipado,,Aangedaan Artefact,
+EQUIPPED_RELIC,Equipped Relic,Reliquia equipaggiata,Reliquia equipada,Relíquia Equipada,,Aangedaan Reliek,
+EQUIPPED_HEADGEAR,Equipped Headgear,Elmo equipaggiato,Tocado equipado,Capacete Equipado,,Aangedaan Hoofduitrusting,
+EQUIPPED_BODY,Equipped Armor,Armatura equipaggiata,Armadura equipada,Armadura Equipada,,Aangedaan Harnas,
+EQUIPPED_LEGS,Equipped Legs,Armatura inferiore equipaggiata,Piernas equipadas,Botas Equipadas,,Aangedaan Benenuitrusting,
+EQUIPPED_ACC1,Equipped Accessory 1,Accessorio 1 equipaggiato,Accesorio 1 equipado,Acessório Equipado 1,,Aangedaan Accessoire1,
+EQUIPPED_ACC2,Equipped Accessory 2,Accessorio 2 equipaggiato,Accesorio 2 equipado,Acessório Equipado 2,,Aangedaan Accessoire 2,
 CONSUMABLES_BUTTON,Consumables,Consumabili,Consumibles,Consumíveis,Consommables,Gebruiksvoorwerpen,
 COLLECTIBLES_BUTTON,Collectibles,Collezionabili,Coleccioables,Colecionáveis,Collectibles,Verzamelobjecten,
 RARE_ITEMS_BUTTON,Rare Items,Oggetti rari,Objetos raros,Itens Raros,Objets rares,Zeldzame Voorwerpen,
@@ -75,11 +75,11 @@ AXES_BUTTON,Axes,Asce,Hachas,Machados,Haches,Bijlen,
 SPEARS_BUTTON,Spears,Lance,Lanzas,Lanças,Lances,Speren,
 KNUCKLES_BUTTON,Knuckles,Tirapugni,Puñales,Soqueiras,Poings,Knokkels,
 SPECIAL_BUTTON,Special,Speciali,Especial,Especial,Spécial,Speciaal,
-HEADGEAR_BUTTON,Headgear,Copricapo,Tocado,Elmo,Couvre-chefs,Hoofdgerei,
+HEADGEAR_BUTTON,Headgear,Copricapo,Tocado,Elmo,Couvre-chefs,Hoofduitrusting,
 BODY_BUTTON,Body,Corpo,Torso,Corpo,Corps,Lichaam,
 LEGS_BUTTON,Legs,Gambe,Piernas,Pernas,Jambes,Benen,
 CONFIRM_CRAFT_BUTTON,Proceed with the combination?,Procedere con la combinazione?,¿Proceder con la combinación?,Prosseguir com a combinação?,Procéder à la combinaison ?,Voltooi de combinatie?,
-EQUIPPED_ITEM_FOR_CRAFTING_WARNING,You will lose your currently equipped gear highlighted in yellow.,Perderai i pezzi di equipaggiamento evidenziati in giallo.,,,,,
+EQUIPPED_ITEM_FOR_CRAFTING_WARNING,You will lose your currently equipped gear highlighted in yellow.,Perderai i pezzi di equipaggiamento evidenziati in giallo.,"Perderás el objeto actualmente equipado que está resaltado en amarillo.",Você perderá o item atualmente equipado que está destacado em amarelo.,,Je zal permanent de huidige uitrusting (die je aan hebt) die geel gemarkeerd is verliezen.,
 YES_BUTTON,Yes,Sì,Sí,Sim,Oui,Ja,
 NO_BUTTON,No,No,No,Não,Non,Nee,
 PRODUCED_PREFIX_MESSAGE,Produced,Ottenuto,Producido/a,Produziu,Fabriqué :,Gemaakt,
@@ -188,6 +188,40 @@ BRASS_KNUCKLES,Brass Knuckles,Tirapugni in ottone,Nudillos de latón,Soco Inglê
 BRASS_KNUCKLES_DESC,"A type of weapon ideal for close quarters combat. Can deal a lot of damage, but its limited reach puts its user in danger constantly.","Un tipo d'arma perfetta per combattimento ravvicinato. Può infliggere molti danni, ma la sua scarsa gittata mette a rischio chi la usa.","Un tipo de arma ideal para el combate cuerpo a cuerpo. Puede infligir mucho daño, pero su alcance limitado pone a su usuario en constante peligro.","Um tipo de arma ideal para combate corpo a corpo. Pode causar muito dano, mas seu alcance limitado coloca seu usuário em perigo constante.",,"Een wapen die ideaal is voor gevechten van dichtbij. Doet veel schade, maar door het bereik is de gebruiker constant in gevaar.",
 CESTUS,Cestus,Cestus,Cestus,Cestus,,Cestus,
 CESTUS_DESC,"A fighting glove used in ancient times for cestus fights, which were sometimes featured in the Olympic games.",Un guanto da combattimento usato in antichità per battaglie inerenti alle Olimpiadi.,"Un guante de combate usado en la antigüedad para luchas de cestus, que a veces se incluían en los Juegos Olímpicos.","Uma luva de combate usada na antiguidade para lutas, que às vezes eram apresentadas nos Jogos Olímpicos.",,"Een gevechts handschoen gebruikt in antieke tijden voor cestus gevechten, die soms werden gezien tijdens de Olympische spelen.",
+LANCE,Lance,Lancia,,,,,
+LANCE_DESC,"Spear made with average quality material.
+Used by most knights.","Una lancia fatta con materiali comuni e di media qualità.
+Usata dalla maggior parte dei cavalieri.",,,,,
+TRIDENT,Trident,Tridente,,,,,
+TRIDENT_DESC,"A unique spear that emits bubbles when swung.
+Deals double damage against fish-type enemies.","Una lancia speciale che emette bolle d'acqua.
+Infligge danni doppi contro nemici assomiglianti a pesci.",,,,,
+SARISSA,Sarissa,Sarissa,,,,,
+SARISSA_DESC,"A spear used by macedonians.
+Its strength comes from its extraordinary length.","Una lancia usata dai macedoni.
+Il suo punto forte è la sua gittata.",,,,,
+GREAT_AXE,Great Axe,Ascia grande,,,,,
+GREAT_AXE_DESC,"A double-edged axe designed for brutal combat.
+Might be rough to wield.","Un'ascia realizzata con due lame, fatta per combattimenti cruenti.
+Potrebbe essere sconfortevole utilizzarla.",,,,,
+BHUJ,Bhuj,Bhuj,,,,,
+BHUJ_DESC,"A war axe whose blade is very sharp.
+Can cut through everything with ease.","Un'ascia da guerra con una lama molto affilata.
+Può squarciare qualsiasi cosa.",,,,,
+GREAT_SWORD,Great Sword,Spada magna,,,,,
+GREAT_SWORD_DESC,"A sword that's used by robust knights.
+Its design depicts the noble aspect of warriors who wield it.","Una spada utilizzata da cavalieri robusti.
+Il suo aspetto rappresenta la nobiltà dei guerrieri che la usano.",,,,,
+DURANDAL,Durandal,Durlindana,,,,,
+DURANDAL_DESC,"The famous sword used by Roland, the frenzy.",La famosa spada utilizzata dall'Orlando furioso.,,,,,
+BAGH_NAKH,Bagh Nakh,Bagh Nakh,,,,,
+BAGH_NAKH_DESC,Knuckles with claws used to slash through skin and muscles.,Tirapugni con artigli che servono a perforare pelle e muscoli.,,,,,
+BROADSWORD,Broadsword,Spada lunga,,,,,
+BROADSWORD_DESC,"An easy to handle sword, comfortable due to its good compromise between length and weight.","Una spada facile da maneggiare, grazie al suo rapporto tra lunghezza e peso.",,,,,
+ADA,Ada,Ada,,,,,
+ADA_DESC,"A sword mainly used in ceremonies.
+However, it's also good for combat.","Una spada utilizzata principalmente nelle cerimonie.
+Ottima anche per il combattimento.",,,,,
 ,,,,,,,
 --Title screen--,,,,,,,
 NEW_GAME_BUTTON,New Game,Nuova partita,Nueva partida,Novo jogo,Nouvelle partie,Nieuw spel,بدأ لعبة جديدة
@@ -237,8 +271,8 @@ Hecho con cráneos de los muertos.","Máscara assustadora usada por assassinos n
 Feita com crânios de mortos.","Un masque terrifiant utilisé par des assassins dans l'Ouest.
 Fait à partir des crânes de défunts.","Verangstigend masker gebruikt door gehuurde moordenaars in het Westen.
 Gemaakt met de schedels van de slachtoffers.",
-IMPERVIOUS_HELM,Impervious Helm,Elmo protettivo,Yelmo impenetrable,Elmo Impenetrável,,,
-IMPERVIOUS_HELM_DESC,A special helmet that allows the wielder to block any projectile without expending Guard Health.,"Un elmo speciale che conferisce, a chi lo indossa, la capacità di parare proiettili senza compromettere la durata della parata.",Un casco especial que permite al portador bloquear cualquier proyectil sin gastar del Aguante de Guardia.,Um capacete especial que permite ao usuário bloquear qualquer projétil sem gastar a Saúde da Defesa.,,,
+IMPERVIOUS_HELM,Impervious Helm,Elmo protettivo,Yelmo impenetrable,Elmo Impenetrável,,Ondoordringbare helm,
+IMPERVIOUS_HELM_DESC,A special helmet that allows the wielder to block any projectile without expending Guard Health.,"Un elmo speciale che conferisce, a chi lo indossa, la capacità di parare proiettili senza compromettere la durata della parata.",Un casco especial que permite al portador bloquear cualquier proyectil sin gastar del Aguante de Guardia.,Um capacete especial que permite ao usuário bloquear qualquer projétil sem gastar a Saúde da Defesa.,,Een speciale helm die de gebruiker welk projectiel dan ook laat blokkeren zonder Verdedigings Gezondheid te verbruiken.,
 ,,,,,,,
 ,,,,,,,
 ,,,,,,,
@@ -261,6 +295,21 @@ SCALE_MAIL,Scale Mail,Armatura a scaglie,Malla de escalas,Cota de Escamas,Cotte 
 SCALE_MAIL_DESC,Mail suit formed by scale-like plates.,Armatura fatta da piastre di metallo a forma di scaglie.,Traje de malla formado por placas parecidas a escalas. ,Traje de malha formado por placas semelhantes a escamas.,Une cotte de mailles formée de plaques semblable à des écailles.,Maliënkolder gevormd door schub-achtige platen.,
 BREASTPLATE,Breastplate,Corazza per petto,Coraza,Peitoral,Plastron,Borstharnas,
 BREASTPLATE_DESC,A tough apron fashioned from a fusion between Iron and Jet Black.,Una corazza realizzata dalla miscela di Ferro e Nero ebano.,Un delantal resistente elaborado a partir de la fusión entre Hierro y Negro Azabache.,Uma bata resistente feita a partir da fusão entre Ferro e Preto Absoluto.,"Un tablier résistant, fait d'une fusion entre du Fer et du Noir de Jais.",Een verhard schort opgemaakt van een fusie met Ijzer en Jet Zwart.,
+PONCHO,Poncho,Poncio,,,,,
+PONCHO_DESC,Simple clothing made to keep the wearer warm.,Un indumento semplice che viene indossato per tenere caldo.,,,,,
+STEEL_MAIL,Steel Mail,Armatura d'acciaio,,,,,
+STEEL_MAIL_DESC,"Armor made with good quality metal.
+A bit more tedious to create compared to the iron variant.","Una corazza realizzata con metallo di buona qualità.
+Un po' più difficile da costruire rispetto a quella di ferro.",,,,,
+SURCOAT,Surcoat,Soprabito,,,,,
+SURCOAT_DESC,Armor with clothes that hold the bearing of a noble family crest.,Un'armatura con sopra un abito che contiene lo stemma di un nobile casato.,,,,,
+CHAIN_MAIL,Chain Mail,Cotta di maglia,,,,,
+CHAIN_MAIL_DESC,"Armor made up of mesh of metal links.
+A bit more comfortable to wear compared to other kinds of armor.","Armatura realizzata con un insieme di di maglie metalliche.
+Più comoda rispetto ad altri tipi di armature.",,,,,
+SERENITY_ROBE,Serenity Robe,Abito rasserenante,,,,,
+SERENITY_ROBE_DESC,"Clothes infused with magic to calm the user's spirit.
+Protects against magical attacks.","Indumento che, grazie ai suoi poteri magici, riesce a calmare lo spirito della persona che lo indossa. Protegge da attacchi magici.",,,,,
 ,,,,,,,
 --Legs--,,,,,,,
 SANDALS,Sandals,Sandali,Sandalias,Sandálias,Sandales,Sandalen,
@@ -273,10 +322,18 @@ ALUMINUM_LEGGINGS,Aluminum Leggings,Gambali d'alluminio,Polainas de aluminio,Per
 ALUMINUM_LEGGINGS_DESC,Armor crafted with aluminum in order to protect the wearer's legs. A bit uncomfortable to wear.,Armatura fatta con alluminio con lo scopo di proteggere le gambe di chi lo indossa. Scomoda.,Armadura hecha con aluminio para proteger las piernas. Es un poco incómoda.,Armadura feita de alumínio para proteger as pernas do usuário. Um pouco desconfortável de usar.,Une armure faite d'aluminium pour protéger les jambes du porteur. Pas très confortable à porter.,Uitrusting gemaakt met aluminium voor het beschermen van de dragers benen. Een beetje oncomfortabel om te dragen.,
 FEATHER_BOOTS,Feather Boots,Stivali Piuma,Botas pluma,Botas de Pena,Bottes à Plumes,Veren Schoenen,
 FEATHER_BOOTS_DESC,Mystic boots that increase pushback while guarding an attack.,Stivali mistici che incrementano il rinculo subito dopo una parata.,Botas místicas que incrementan el retroceso al bloquear un ataque.,Botas místicas que aumentam o recuo ao bloquear um ataque.,Des bottes mystiques qui augmentent le recul en bloquant une attaque.,Mystieke schoenen die de terugstoot verhogen wanneer je een aanval verdedigt.,
-SOLDIER_BOOTS,Soldier Boots,Stivali da soldato,Botas de soldado,Botas de Soldado,,,
-SOLDIER_BOOTS_DESC,"When performing Quick Recovery, invincibility duration is increased by 50%.",L'utilizzo di Recupero Rapido comporta ad un 50% in più della durata di invincibilità.,"Al realizar la Recuperación Rápida, la duración de invencibilidad aumenta en un 50%.","Ao realizar uma Recuperação Rápida, a duração da invencibilidade é aumentada em 50%.",,,
-MOONWALKERS,Moonwalkers,Moonwalker,Moonwalkers,Moonwalkers,,,
-MOONWALKERS_DESC,Extraordinary boots that increase the speed of backdashes.,"Degli straordinari stivali che permettono, a chi li indossa, di schivare all'indietro più velocemente.",Botas extraordinarias que aumentan la velocidad del esquive.,Botas extraordinárias que aumentam a velocidade das esquivas.,,,
+SOLDIER_BOOTS,Soldier Boots,Stivali da soldato,Botas de soldado,Botas de Soldado,,Soldaten Schoenen,
+SOLDIER_BOOTS_DESC,"When performing Quick Recovery, invincibility duration is increased by 50%.",L'utilizzo di Recupero Rapido comporta ad un 50% in più della durata di invincibilità.,"Al realizar la Recuperación Rápida, la duración de invencibilidad aumenta en un 50%.","Ao realizar uma Recuperação Rápida, a duração da invencibilidade é aumentada em 50%.",,"Terwijl je Snelle Herstelling doet, is de onschaadbaarheids duratie verhoogd met 50%.",
+MOONWALKERS,Moonwalkers,Moonwalker,Moonwalkers,Andarilhas da Lua,,Maanwandelaars,
+MOONWALKERS_DESC,Extraordinary boots that increase the speed of backdashes.,"Degli straordinari stivali che permettono, a chi li indossa, di schivare all'indietro più velocemente.",Botas extraordinarias que aumentan la velocidad del esquive.,Botas extraordinárias que aumentam a velocidade das esquivas.,,Buitengewone schoenen die de snelheid van achteruitschuiven verhoogt.,
+COMBAT_BOOTS,Combat Boots,Stivali da combattimento,,,,,
+COMBAT_BOOTS_DESC,Weird looking boots used to improve the wearer's offense.,Degli strani stivali che migliorano le prestazioni offensive di chi li indossa.,,,,,
+STEEL_LEGGINGS,Steel Leggings,Gambali d'acciaio,,,,,
+STEEL_LEGGINGS_DESC,"Leggings made with raw steel.
+Quite resistant on impact.","Gambali fatti con acciaio puro.
+Sono decisamente resistenti all'urto.",,,,,
+WINGED_BOOTS,Winged Boots,Stivali alati,,,,,
+WINGED_BOOTS_DESC,Legendary boots blessed by an angel that decrease the wearer's falling speed.,"Stivali leggendari, benedetti da un angelo, in grado di diminuire la velocità di caduta di chi li indossa.",,,,,
 ,,,,,,,
 --Accessories--,,,,,,,
 SCARF,Scarf,Sciarpa,Bufanda,Lenço,Echarpe,Sjaal,
@@ -291,7 +348,7 @@ CONCENTRATION_STUD,Concentration Stud,Orecchino della tensione,Arete de concentr
 CONCENTRATION_STUD_DESC,"Turquoise stud made to transform concentration into energy.
 Increases damage dealt by 7% when the Focus bar is full.","Orecchino turchese che trasforma la concentrazione in energia.
 Aumenta i danni inflitti del 7% quando la barra di Concentrazione è piena.","Perno de arete turquesa hecho para convertir concentración en energía.
-Aumenta el daño infligido un 7% cuando la barra de concentración está llena.","Brinco de turquesa feita para transformar concentração em energia.
+Aumenta el daño infligido un 7% cuando la barra de concentración está llena.","Brinco de turquesa feito para transformar concentração em energia.
 Aumenta o dano causado em 7% quando a barra de Foco está cheia.","Une boucle d'oreille en turquoise convertissant la concentration en énergie.
 Augmente les dégâts infligés de 7% quand la jauge de concentration est pleine.","Turquoise knoop gemaakt door het transformeren van concentratie naar energie.
 Verhoogt schade met 7% wanneer de Focus bar vol is. ",
@@ -315,17 +372,22 @@ Conferisce ad Hector una seconda possibilità in caso di morte; si rompe dopo l'
 Otorga a Héctor otra oportunidad de vida si muere; se rompe al usarlo.","Um anel feito com as orações e bênçãos de Julia.
 Ele concede a Hector uma segunda chance em caso de sua morte; ele se quebra após o uso.",,"Een ring gemaakt van Julia's zegeningen en gebeden.
 Geeft Hector een tweede kans voor het leven als hij doodgaat en breekt dan.",
-STOIC_BELT,Stoic Belt,Cintura dello stoico,Cinturón estoico,Cinto Estóico,,,
+STOIC_BELT,Stoic Belt,Cintura dello stoico,Cinturón estoico,Cinto Estóico,,Stoïcijnse Riem,
 STOIC_BELT_DESC,"A belt that inhibits pain receptors.
 If taking damage that's less than 7% of max HP, wielder does not flinch.","Una cintura che disattiva i recettori del dolore.
 Se si subiscono danni inferiori al 7% dei PV massimi, chi lo indossa non sussulta.","Un cinturón que inhibe los receptores de dolor.
 Si el daño recibido es menor al 7% de los PV máximos, el portador no se inmuta.","Um cinto que inibe os receptores de dor.
-Se o dano sofrido for inferior a 7% do PV máximo, o usuário não recuará.",,,
-WINGED_RING,Winged Ring,Anello alato,Anillo alado,Anel Alado,,,
-WINGED_RING_DESC,A peculiar ring that boosts damage dealt by 10% when the wielder is in midair.,Uno strano anello che aumenta i danni inflitti del 10% quando chi lo indossa è a mezz'aria.,Un anillo peculiar que aumenta el daño por 10% cuando el portador está en el aire.,Um anel peculiar que aumenta o dano causado em 10% quando o usuário está no ar.,,,
-CONFIDENCE_RING,Confidence Ring,Anello dell'audacia,Anillo de confianza,Anel da Confiança,,,
+Se o dano sofrido for inferior a 7% do PV máximo, o usuário não recuará.",,"Een riem die pijn receptoren onderdrukt.
+Wanneer je schade krijgt die minder dan 7% van je max GP is, doet de gebruiker niet terugdeinzen.",
+WINGED_RING,Winged Ring,Anello alato,Anillo alado,Anel Alado,,Gevleugelde Ring,
+WINGED_RING_DESC,A peculiar ring that boosts damage dealt by 10% when the wielder is in midair.,Uno strano anello che aumenta i danni inflitti del 10% quando chi lo indossa è a mezz'aria.,Un anillo peculiar que aumenta el daño por 10% cuando el portador está en el aire.,Um anel peculiar que aumenta o dano causado em 10% quando o usuário está no ar.,,Een eigenaardige ring die de schade die de gebruiker doet met 10% verhoogt wanneer de gebruiker in de lucht is.,
+CONFIDENCE_RING,Confidence Ring,Anello dell'audacia,Anillo de confianza,Anel da Confiança,,Zelfvertrouwen Ring,
 CONFIDENCE_RING_DESC,"Increases damage taken by 30%, but damage dealt after a perfect guard is increased by 30% for 3 seconds.","Aumenta i danni ricevuti del 30%, ma i danni inflitti aumentano del 30% per 3 secondi dopo una parata perfetta.","Aumenta el daño recibido en un 30%, pero el daño infligido
-después de una guardia perfecta aumenta en un 30% por 3 segundos.","Aumenta o dano recebido em 30%, mas aumenta o dano causado após uma guarda perfeita em 30% por 3 segundos.",,,
+después de una guardia perfecta aumenta en un 30% por 3 segundos.","Aumenta o dano recebido em 30%, mas aumenta o dano causado após uma guarda perfeita em 30% por 3 segundos.",,"Verhoogt schade die je krijgt met 30%, maar de schade na een perfect verdediging is verhoogt met 30% voor 3 seconden.",
+BLOOD_CLOAK,Blood Cloak,Mantello di sangue,,,,,
+BLOOD_CLOAK_DESC,"A macabre cloak tainted with the blood of many demons.
+Heals the currently summoned Innocent Devil when taking damage.","Un macabro mantello fatto col sangue di svariati demoni.
+Guarisce il diavolo innocente evocato quando si subiscono danni.",,,,,
 ,,,,,,,
 --Relics--,,,,,,,
 INDIGO_CROSS,Indigo Cross,Rosario Indaco,Cruz Índiga,Cruz Índigo,Croix Indigo,Indigo Kruis,
@@ -379,12 +441,13 @@ Chance pari a FOR% di sopravvivere a colpi letali se si ha più di 1 PV.","Una m
 SRT% de probabilidad de sobrevivir golpes letales sobre 1 PV.","Uma moeda especial que traz boa sorte ao seu dono.
 Chance de sobreviver a golpes letais igual a FOR% se você tiver mais de 1 PV.",,"Een speciale munt die een goed lot geeft aan degenen die het heeft.
 GLK% kans om dodelijke aanvallen te overleven boven 1 GP",
-PRODIGY_NECKLACE,Prodigy Necklace,Collana del prodigio,Collar de prodigio,Colar do Prodígio,,,
+PRODIGY_NECKLACE,Prodigy Necklace,Collana del prodigio,Collar de prodigio,Colar do Prodígio,,Pienterheids Ketting,
 PRODIGY_NECKLACE_DESC,"A necklace that makes the wielder a prodigy.
 LCK% chance that techniques don't consume Focus.","Una collana che rende, chi la indossa, un prodigio.
 Chance pari a FOR% di non consumare Concentrazione quando si usano tecniche.","Un collar que convierte a quien lo porta en un prodigio.
 SRT% de probabilidad de que las técnicas no consuman Concentración.","Um colar que faz do usuário um prodígio.
-Chance de SOR% de técnicas não consumirem Foco.",,,
+Chance de SOR% de que as técnicas não consumam Foco.",,"Een ketting die de gebruiker een pienter persoon maakt.
+GLK% kans dat technieken niet Focus verbruiken.",
 ,,,,,,,
 --Skills--,,,,,,,
 FORTITUDE_GAUNTLET,Fortitude Gauntlet,Guanto dell'Audacia,Guantelete de Fortitud,Manopla da Fortitude,Gantelet de Fortitude,Vastberadenheids Handschoen,
@@ -445,12 +508,24 @@ SHARP_EDGE_DESC,"With spears, hitting foes at tip range deals 20% more damage.",
 CHARGE_ONE,Charge Lv.1,Carica Liv.1,Carga Niv.1,Carregar Nível 1,,Opladen Nv. 1,
 CHARGE_ONE_DESC,"With spears, channel inner strength to increase damage dealt by 20% until the Focus bar is depleted.","Con le lance, concentra la forza interiore per incrementare la potenza dei colpi del 20% finché la concentrazione non si esaurisce.","Con lanzas, canaliza fuerza interna para aumentar daño infligido en un 20%
 hasta que la barra de Concentración sea agotada.","Com lanças, canalize a força interior para aumentar o dano causado em 20% até que a barra de Foco se esgote.",,"Met speren, haal je innerlijke kracht naar boven om je schade met 20% te verhogen totdat de Focus bar op is.",
-RED_ORB_ITEM,Red Orb,Globo rosso,Orbe Rojo,Orbe Vermelha,,,
+RED_ORB_ITEM,Red Orb,Globo rosso,Orbe Rojo,Orbe Vermelho,,Rode Orb,
 RED_ORB_ITEM_DESC,"Enhances Aguni's Laurel's flames by extending their lifetime and power.
 Unlocks Flame Affinity.","Potenzia Alloro di Aguni, rendendo le fiamme più persistenti e forti.
 Sblocca Affinità Focosa.","Mejora las llamas del Laurel de Agni extendiendo su subsistencia y poder.
 Desbloquea la Afinidad Ardiente.","Aprimora as chamas da Grinalda de Agni, prolongando sua vida útil e poder.
-Desbloqueia a Afinidade com Chamas.",,,
+Desbloqueia a Afinidade com Chamas.",,"Verbetert Aguni's Laurier's vlammen door hun levenstijd en kracht te verhogen.
+Ontgrendelt Vlammen Affiniteit.",
+EARTHQUAKE,Earthquake,Scossa,,,,,
+EARTHQUAKE_DESC,"With axes, jump and then perform a descending slam that causes a shockwave.","Con le asce, salta e scuote il terreno con un fendente in discesa.",,,,,
+PERFORATION,Perforation,Perforazione,,,,,
+PERFORATION_DESC,"With axes, hitting an enemy with one of its weaknesses completely ignores their defense.","Con le asce, se si attacca un nemico con una sua vulnerabilità, ignora anche la sua difesa.",,,,,
+SHREDDER,Shredder,Tritatutto,,,,,
+SHREDDER_DESC,"With greatswords, spins the blade to deal damage and protect from projectiles.
+Hold [[Circle]] to keep spinning the blade.","Con gli spadoni, ruota la lama per infliggere danni e proteggere dai proiettili.
+Tieni premuto [[Circle]] per continuare a far ruotare la lama.",,,,,
+TIGHT_GUARD,Tight Guard,Guardia stretta,,,,,
+TIGHT_GUARD_DESC,"With greatswords, consume 40% of Focus to avoid guard breaks.
+Does not work against Red Spark attacks.","Con gli spadoni, consuma il 40% della Concentrazione per evitare che venga spezzata la guardia. Non funziona contro attacchi con Scintilla Rossa.",,,,,
 ,,,,,,,
 --Consumables--,,,,,,,
 POTION,Potion,Pozione,Poción,Poção,Potion,Drankje,
@@ -461,6 +536,14 @@ TONIC,Tonic,Tonico,Tónico,Tônico,Tonique,Tonic,
 TONIC_DESC,Restores 100 MP.,Ripristina 100 PM.,Recupera 100 PM.,Recupera 100 PM.,Redonne 100 PM.,Herstelt 100 MP.,
 HIGH_TONIC,High Tonic,Tonico alto,Tónico Alto,Tônico Grande,Grand Tonique,Goede Tonic,
 HIGH_TONIC_DESC,Restores 200 MP.,Ripristina 200 PM.,Recupera 200 PM.,Recupera 200 PM.,Redonne 200 PM.,Herstelt 200 MP.,
+ANTIVENOM,Antivenom,Siero,,,,,
+ANTIVENOM_DESC,Cures poison.,Cura dal veleno.,,,,,
+UNCURSE,Uncurse,Pozione benedetta,,,,,
+UNCURSE_DESC,Breaks curses.,Rompe le maledizioni.,,,,,
+MAGICAL_TICKET,Magical Ticket,Biglietto magico,,,,,
+MAGICAL_TICKET_DESC,"Transports the user to Julia's Shop instantly.
+Cannot be used during boss fights.","Porta, chi lo usa, immediatamente al negozio di Julia.
+Non può essere usato durante battaglie contro i boss.",,,,,
 ,,,,,,,
 --Rare Items--,,,,,,,
 ANCIENT_TEXT_1,Ancient Text 1,Manoscritto antico 1,Texto antigüo 1,Texto Antigo 1,Texte Antique 1,Eeuwenoude Text 1,
@@ -553,11 +636,11 @@ Emana un fuerte poder sagrado.","O sangue de um membro da realeza, solidificado 
 Emana um poder forte e sagrado.","Le sang d'un être royal, solidifié par magie. 
 Émet un forte puissance sacrée.","Het bloed van een lid van adel, vervast door magie.
 Straalt een sterke, heilige gloed uit.",
-DRAGON_SCALE,Dragon Scale,Scaglia di drago,Escama de dragón,Escama de dragão,Ecaille de Dragon,Draken Schub,
+DRAGON_SCALE,Dragon Scale,Scaglia di drago,Escama de dragón,Escama de Dragão,Ecaille de Dragon,Draken Schub,
 DRAGON_SCALE_DESC,"Scales taken from a deceased dragon.
 Can be useful to create weapons effective against them.","Scaglia presa da un drago deceduto.
 Può essere utile per creare armi efficaci contro i draghi stessi.","Escamas sacadas de un dragón muerto.
-Pueden ser útiles para crear armas efectivas contra ellos.","Escama retirada de um dragão morto.
+Pueden ser útiles para crear armas efectivas contra ellos.","Escama retirada de um dragão abatido.
 Ironicamente, pode ser usada para criar armas eficazes contra os próprios dragões.","Des écailles provenant d'un dragon décédé. 
 Peuvent être utiles pour créer des armes efficaces contre ces mêmes dragons.","Schubben verkregen van een overleden draak.
 Kan handig zijn om wapens te maken die effectief tegen ze zijn.",
@@ -851,7 +934,7 @@ Preciso me lembrar como se forja um demônio...","Alors. Qu'est-ce qu'il fallait
 Il faut que je me rappelle de la procédure pour forger...","Nou, hoe werkte het?
 Ik moet toch iets van het duivel smeden herinneren...",
 ,,,,,,,
---First encounter with Carmilla--,452,,,,,,
+--First encounter with Carmilla--,504,,,,,,
 FIRST_CARMILLA_DIALOGUE_1,"Ah, if it isn't Hector: the most interesting man in Dracula's court.","Ah, se non è Hector: l'uomo più interessante nella corte di Dracula.","Ah, si no es Héctor: el hombre más interesante de la corte de Drácula.","Ah, se não é Hector: o homem mais interessante da corte de Drácula.","Ah, si ce n'est pas Hector, l'homme le plus intéressant de la cour de Dracula.","Ah, als het Hector wel niet is: de meest interessante man in Dracula's hof.",
 FIRST_CARMILLA_DIALOGUE_2,"I've come to know of your heroic feat.
 You've become a really strong man.","Sono venuta a conoscenza della tua grande impresa.
@@ -893,7 +976,7 @@ Il suo volere vivrà con me!","Tomaré su lugar como reina de esta tierra.
 Sua vontade permanecerá viva!","Je m'assoierai donc sur son trone. 
 En tant que reine de ces terres, je ferai vivre sa volonté!","Ik zal zijn plaats innemen, als koningin van dit land.
 Zijn wil zal verder leven!",
-FIRST_CARMILLA_DIALOGUE_11,"Because, listen to me, humans prove to be worthless and a danger to us both, again and again.","Perché, ascoltami, gli umani continuano a dimostrare di essere un pericolo per noi entrambi più e più volte.","Porque, escúchame, los humanos demuestran ser inútiles y suponer un peligro para ambos, una y otra vez.","Pois, ouça-me, os humanos repetidamento se provam inúteis perigosos para nós dois.","Car écoute-moi bien, Hector, l'homme s'est prouvé être sans valeur, 
+FIRST_CARMILLA_DIALOGUE_11,"Because, listen to me, humans prove to be worthless and a danger to us both, again and again.","Perché, ascoltami, gli umani continuano a dimostrare di essere un pericolo per noi entrambi più e più volte.","Porque, escúchame, los humanos demuestran ser inútiles y suponer un peligro para ambos, una y otra vez.","Porque, ouça bem, os humanos provam ser inúteis e um perigo para nós dois, repetidamente.","Car écoute-moi bien, Hector, l'homme s'est prouvé être sans valeur, 
 et un danger pour nous, encore et encore.","Want, luister naar me, mensen bewijzen waardeloos te zijn en een gevaar te zijn voor ons beide, opnieuw en opnieuw.",
 FIRST_CARMILLA_DIALOGUE_12,"Humans are weak and frail, Hector.
 Look at them!","Gli umani sono deboli e fragili, Hector.
@@ -1036,190 +1119,238 @@ DIALOG_FAGARAS_INTRO_4,"And it is this very accursed power that's going to save 
 ",Ed è proprio grazie a questo maledetto potere che molte vite umane si salveranno. Vite di cui non m'importava nulla prima d'ora.,Y es este mismo poder maldito el que salvará incontables vidas humanas. Vidas que antes no me importaban.,E é esse poder tão maldito que vai salvar inúmeras vidas humanas. Vidas com as quais eu antes não me importava.,Et ce même pouvoir maudit va maintenant sauver d'innombrables vies. Des vies qui ne comptaient pas pour moi auparavant.,En deze heel vervloekte kracht heb die talloze mensenlevens zal redden. Levens die hiervoor niet ertoe deden voor mij.,
 ,,,,,,,
 --Meeting Trevor part 1--,,,,,,,
-MEETING_TREVOR_INTRO_1,Is that...?,Ma è...,,Aquele é...?,,,
-MEETING_TREVOR_INTRO_2,It's Belmont.,È Belmont.,,É o Belmont.,,,
+MEETING_TREVOR_INTRO_1,Is that...?,Ma è...,¿Será ese…?,Aquele é...?,,Is dat...?,
+MEETING_TREVOR_INTRO_2,It's Belmont.,È Belmont.,Es Belmont.,É o Belmont.,,Het is Belmont.,
 ,,,,,,,
 --Meeting Trevor part 2--,,,,,,,
-MEETING_TREVOR_DIALOGUE_1,"It's been a long time, Belmont.","Ne è passato di tempo, Belmont.",,"Há quanto tempo, Belmont.",,,
-MEETING_TREVOR_DIALOGUE_2,"Is that you, Hector?","Sei tu, Hector?",,"É você, Hector?",,,
+MEETING_TREVOR_DIALOGUE_1,"It's been a long time, Belmont.","Ne è passato di tempo, Belmont.","Ya ha pasado un tiempo, Belmont.","Há quanto tempo, Belmont.",,"Dat is me een lange tijd geweest, Belmont.",
+MEETING_TREVOR_DIALOGUE_2,"Is that you, Hector?","Sei tu, Hector?","¿Eres tú, Héctor?","É você, Hector?",,"Ben jij dat, Hector?",
 MEETING_TREVOR_DIALOGUE_3,"It is.
 For what reason are you here?","Sì.
-Per quale motivo sei qui?",,"Sim, sou eu.
-O que você faz aqui?",,,
+Per quale motivo sei qui?","Soy yo.
+¿Por qué motivo estás aquí?","Sim, sou eu.
+O que você faz aqui?",,"Dat ben ik.
+Voor welke reden ben je hier?",
 MEETING_TREVOR_DIALOGUE_4,I have been tasked to track down a cult.,"Ho ricevuto un incarico.
-Sono alla ricerca di una setta.",,Recebi a missão de rastrear um culto.,,,
-MEETING_TREVOR_DIALOGUE_5,A cult?,Una setta?,,Um culto?,,,
-MEETING_TREVOR_DIALOGUE_6,"Yes, they go by Dracula's Grace.","Sì, si chiama Grazia di Dracula.",,"Sim, eles se intitulam "" A Bênção de Drácula"".",,,
+Sono alla ricerca di una setta.","Me han encargado con la tarea de rastrear una secta.",Recebi a missão de rastrear um culto.,,Ik ben een taak opgegeven om een sekte op te sporen.,
+MEETING_TREVOR_DIALOGUE_5,A cult?,Una setta?,¿Una secta?,Um culto?,,Een sekte?,
+MEETING_TREVOR_DIALOGUE_6,"Yes, they go by Dracula's Grace.","Sì, si chiama Grazia di Dracula.","Sí, se llama la Gracia de Drácula.","Sim, eles se intitulam ""A Bênção de Drácula"".",,"Ja, ze dragen de naam Dracula's Gratie.",
 MEETING_TREVOR_DIALOGUE_7,"I want to share as much information as I can since I will need your aid, Hector.","Ho bisogno del tuo aiuto, Hector.
-Cercherò di condividere ogni singolo dettaglio a riguardo.",,"Vou te passar todos os detalhes, pois precisarei da sua ajuda, Hector.",,,
+Cercherò di condividere ogni singolo dettaglio a riguardo.","Quiero compartir tanta información como pueda ya que necesitaré tu ayuda, Héctor.","Vou te passar todos os detalhes, pois precisarei da sua ajuda, Hector.",,"Ik wil zo veel mogelijk informatie delen als ik kan, ik zal je hulp nodig hebben, Hector.",
 MEETING_TREVOR_DIALOGUE_8,"But first, I suggest we head back to Julia. I would like to hear from her as well.","Ma prima, è meglio se torniamo da Julia.
-Vorrei anche il suo parere in questione.",,"Mas primeiro, sugiro que voltemos para Julia. Eu gostaria de falar com ela também.",,,
+Vorrei anche il suo parere in questione.","Pero primero, sugiero que volvamos con Julia.
+Me gustaría saber de ella también.","Mas primeiro, sugiro que voltemos para Julia. Eu gostaria de falar com ela também.",,"Maar eerst, stel ik voor dat we terug naar Julia gaan. Ik wil ook wel horen hoe het met haar gaat.",
 MEETING_TREVOR_DIALOGUE_9,"I understand, she's fortunately not that far from here.
 Let's go.","Capisco, non è molto lontana da qui.
-Andiamo.",,"Entendo, felizmente ela não está muito longe daqui.
-Vamos.",,,
+Andiamo.","Entiendo, ella afortunadamente no está muy lejos de aquí.
+Vamos.","Entendo, felizmente ela não está muito longe daqui.
+Vamos.",,"Ik snap het, ze is gelukkig niet ver van hier.
+Laten we gaan.",
 ,,,,,,,
-"--Hector, Julia and Trevor first time--",518,,,,,,
-TRIO_FIRST_DIALOGUE_1,Welcome back.,Bentornati.,,Bem vindo de volta.,,,
-TRIO_FIRST_DIALOGUE_2,"Is everything ok, Julia?","Tutto bene, Julia?",,"Está tudo bem, Julia?",,,
-TRIO_FIRST_DIALOGUE_3,Yes. I have been practicing some magic as of lately.,"Sì, ho fatto un po' di pratica con la magia ultimamente?",,"Sim. Estive praticando um pouco de magia, como de costume.",,,
+"--Hector, Julia and Trevor first time--",570,,,,,,
+TRIO_FIRST_DIALOGUE_1,Welcome back.,Bentornati.,Bienvenido de vuelta.,Bem vindo de volta.,,Welkom terug.,
+TRIO_FIRST_DIALOGUE_2,"Is everything ok, Julia?","Tutto bene, Julia?","¿Todo bien, Julia?","Está tudo bem, Julia?",,"Is alles oké, Julia?",
+TRIO_FIRST_DIALOGUE_3,Yes. I have been practicing some magic as of lately.,"Sì, ho fatto un po' di pratica con la magia ultimamente?","Sí. He estado practicando un poco de magia últimamente.","Sim. Estive praticando um pouco de magia, como de costume.",,Ja. Ik ben onlangs magie gaan beoefenen.,
 TRIO_FIRST_DIALOGUE_4,"I understand.
 What about the visions?","Capisco.
-E invece le visioni?",,"Certo.
-E quanto às visões?",,,
-TRIO_FIRST_DIALOGUE_5,...,...,,...,,,
-TRIO_FIRST_DIALOGUE_6,We'll talk about that another time.,Ne parleremo un'altra volta.,,Falaremos disso em um outro momento.,,,
-TRIO_FIRST_DIALOGUE_7,I see...,D'accordo...,,Tudo bem...,,,
-TRIO_FIRST_DIALOGUE_8,...,...,,...,,,
+E invece le visioni?","Entiendo.
+¿Y las visiones?","Certo.
+E quanto às visões?",,"Ik snap het.
+Hoe zit het met de visioenen.",
+TRIO_FIRST_DIALOGUE_5,...,...,...,...,,...,
+TRIO_FIRST_DIALOGUE_6,We'll talk about that another time.,Ne parleremo un'altra volta.,"Hablaremos de ello en otra ocasión.",Falaremos disso em um outro momento.,,We zullen daar een andere keer over praten.,
+TRIO_FIRST_DIALOGUE_7,I see...,D'accordo...,"De acuerdo…",Tudo bem...,,Ik begrijp het...,
+TRIO_FIRST_DIALOGUE_8,...,...,...,...,,...,
 TRIO_FIRST_DIALOGUE_9,"I see that sir Belmont is here too.
 I hope all is well.","Vedo che c'è anche il signor Belmont.
-Spero che stiate bene.",,"Vejo que o senhor Belmont também está aqui.
-Espero que esteja tudo bem.",,,
+Spero che stiate bene.","Veo que el señor Belmont está aquí también.
+Espero que todo esté bien.","Vejo que o senhor Belmont também está aqui.
+Espero que esteja tudo bem.",,"Ik zie dat heer Belmont hier ook is.
+Ik hoop dat alles goed is.",
 TRIO_FIRST_DIALOGUE_10,"You flatter me with your kindness, m'lady.
 You can call me Trevor.","Mi lusinga con la sua gentilezza.
-Puoi chiamarmi semplicemente Trevor.",,"Fico lisonjeado com sua gentileza, minha senhora.
-Pode me chamar de Trevor.",,,
-TRIO_FIRST_DIALOGUE_11,"As you wish, Trevor.","D'accordo, Trevor.",,"Como quiser, Trevor.",,,
-TRIO_FIRST_DIALOGUE_12,I assume there's a reason why both of you are here.,Immagino siate venuti qui per un motivo.,,Deve haver um motivo para que os dois estejam aqui.,,,
-TRIO_FIRST_DIALOGUE_13,"Yes, Belmont had to tell us about this new cult that has arisen.","Sì, Belmont vorrebbe dirci qualcosa riguardo alla fondazione di una nuova setta.",,Sim. O Belmont precisava nos contar sobre esse novo culto que surgiu.,,,
-TRIO_FIRST_DIALOGUE_14,A cult...,Una setta...,,Um culto...,,,
+Puoi chiamarmi semplicemente Trevor.","Me halagas con tu amabilidad, señorita.
+Me puedes llamar Trevor.","Fico lisonjeado com sua gentileza, minha senhora.
+Pode me chamar de Trevor.",,"Je vleit me met je vriendelijkheid, m'vrouw.
+Je kunt me gewoon Trevor noemen.",
+TRIO_FIRST_DIALOGUE_11,"As you wish, Trevor.","D'accordo, Trevor.","Como desees, Trevor.","Como quiser, Trevor.",,"Zoals je wenst, Trevor.",
+TRIO_FIRST_DIALOGUE_12,I assume there's a reason why both of you are here.,Immagino siate venuti qui per un motivo.,"Asumo que hay una razón por la que ambos estén aquí.",Deve haver um motivo para que os dois estejam aqui.,,Ik neem aan dat er een reden is dat jullie hier beide zijn.,
+TRIO_FIRST_DIALOGUE_13,"Yes, Belmont had to tell us about this new cult that has arisen.","Sì, Belmont vorrebbe dirci qualcosa riguardo alla fondazione di una nuova setta.","Sí, Belmont tenía que decirnos sobre una nuevo secta que ha surgido.",Sim. O Belmont precisava nos contar sobre esse novo culto que surgiu.,,"Ja, Belmont moest ons over een nieuwe sekte die is ontstaan.",
+TRIO_FIRST_DIALOGUE_14,A cult...,Una setta...,"Una secta…",Um culto...,,Een sekte...,
 TRIO_FIRST_DIALOGUE_15,"That's right.
 I have gathered some information regarding it.","Proprio così.
-Ho un po' di informazioni a riguardo.",,"Exato.
-Eu consegui algumas informações a respeito.",,,
-TRIO_FIRST_DIALOGUE_16,"It's called Dracula's Grace, and their plan might surprise you.","Si chiama Grazia di Dracula, e vi sorprenderanno le loro intenzioni.",,"Se chamam ""A Bênção de Drácula"" e você ficará surpresa ao saber dos planos deles.",,,
-TRIO_FIRST_DIALOGUE_17,They do not intend to resurrect Lord Dracula.,Non vogliono la resurrezione del Conte Dracula.,,Eles não pretendem reviver Lorde Drácula.,,,
-TRIO_FIRST_DIALOGUE_18,...,...,,...,,,
+Ho un po' di informazioni a riguardo.","Así es.
+He recopilado información al respecto.","Exato.
+Eu consegui algumas informações a respeito.",,"Dat klopt.
+Ik heb wat informatie verzameld erover.",
+TRIO_FIRST_DIALOGUE_16,"It's called Dracula's Grace, and their plan might surprise you.","Si chiama Grazia di Dracula, e vi sorprenderanno le loro intenzioni.","Se llama la Gracia de Drácula, y su plan podría sorprenderte.","Se chamam ""A Bênção de Drácula"" e você ficará surpresa ao saber dos planos deles.",,"Het wordt Dracula's Gratie genoemd, en hun plan kan jullie verassen.",
+TRIO_FIRST_DIALOGUE_17,They do not intend to resurrect Lord Dracula.,Non vogliono la resurrezione del Conte Dracula.,"No tienen intención de resucitar a Drácula.",Eles não pretendem reviver Lorde Drácula.,,Ze zijn niet van plan om Graaf Dracula te herrijzen.,
+TRIO_FIRST_DIALOGUE_18,...,...,...,...,,...,
 TRIO_FIRST_DIALOGUE_19,"What?
 Then what are they after?","No?
-Allora cosa vogliono?",,"Quê?
-Então, o que estão procurando?",,,
-TRIO_FIRST_DIALOGUE_20,"From what I know, they want to do the same thing as Lord Dracula: bring an end to mankind.","Da quel che so, vogliono comunque steriminare l'umanità.",,"Pelo que eu descobri, eles querem o mesmo que Lorde Drácula: pôr um fim à humanidade.",,,
-TRIO_FIRST_DIALOGUE_21,"But with his powers and the curse gone, they don't seem nearly as powerful as Lord Dracula's former army of the night.","Ma senza i poteri di Dracula e senza la maledizione, non sembrano minimamente forti quanto l'esercito del Conte.",,"Porém, com a maldição findada e sem seus poderes, eles não se comparam ao antigo exército da noite de Lorde Drácula.",,,
-TRIO_FIRST_DIALOGUE_22,Meaning that we have a chance to stop them.,Quindi li possiamo fermare.,,Isso significa que temos uma chance de impedi-los.,,,
+Allora cosa vogliono?","¿Qué?
+¿Entonces cuál es su objetivo?","Quê?
+Então, o que estão procurando?",,"Wat?
+Wat willen ze dan hebben?",
+TRIO_FIRST_DIALOGUE_20,"From what I know, they want to do the same thing as Lord Dracula: bring an end to mankind.","Da quel che so, vogliono comunque steriminare l'umanità.","Por lo que sé, quieren hacer lo mismo que él: acabar con la humanidad.","Pelo que eu descobri, eles querem o mesmo que Lorde Drácula: pôr um fim à humanidade.",,"Van wat ik weet, willen ze hetzelfde als Graaf Dracula: een einde brengen aan de mensheid.",
+TRIO_FIRST_DIALOGUE_21,"But with his powers and the curse gone, they don't seem nearly as powerful as Lord Dracula's former army of the night.","Ma senza i poteri di Dracula e senza la maledizione, non sembrano minimamente forti quanto l'esercito del Conte.","Pero sin sus poderes y sin la maldición, no parecen tan poderosos como el viejo ejército de la noche de Drácula.","Porém, com a maldição findada e sem seus poderes, eles não se comparam ao antigo exército da noite de Lorde Drácula.",,"Maar met zijn krachten en de vloek die weg zijn, lijken ze niet even machtig te zijn als Graaf Dracula's voormalige leger van de nacht.",
+TRIO_FIRST_DIALOGUE_22,Meaning that we have a chance to stop them.,Quindi li possiamo fermare.,"Lo que significa que tenemos una oportunidad de detenerlos.",Isso significa que temos uma chance de impedi-los.,,Wat betekent dat we een kans hebben om ze te stoppen.,
 TRIO_FIRST_DIALOGUE_23,"...You look ghastly, Hector.
 Is something troubling you?","...Hai un aspetto spaventoso, Hector.
-C'è qualcosa che ti turba?",,"...O que você tem, Hector?
-Algo está te incomodando?",,,
-TRIO_FIRST_DIALOGUE_24,Quite so.,Decisamente.,,Exatamente isso.,,,
-TRIO_FIRST_DIALOGUE_25,"Belmont, you said that this cult doesn't want to resurrect Dracula, but only follow his ambition of destroying humanity?","Belmont, hai detto che questa setta non vuole far risorgere Dracula, ma solo seguire il suo desiderio di sterminio?",,"Belmont, você disse que esse culto não pretende reviver Drácula, mas apenas seguir seu desejo de destruir a humanidade.",,,
-TRIO_FIRST_DIALOGUE_26,"Yes, what about it?","Sì, perché?",,"Sim, e?",,,
-TRIO_FIRST_DIALOGUE_27,"Before meeting you, I had the luxury of encountering a vampire.","Prima di incontrarti, ho avuto il lusso di imbattermi in una vampira.",,"Antes de achar você, eu tive o luxo de me encontrar com uma vampira.",,,
+C'è qualcosa che ti turba?","...Te ves fatal, Héctor.
+¿Te preocupa algo?","...O que você tem, Hector?
+Algo está te incomodando?",,"... Je ziet bleek, Hector.
+Is er iets wat je bekommerd?",
+TRIO_FIRST_DIALOGUE_24,Quite so.,Decisamente.,Decididamente.,Exatamente isso.,,Best wel.,
+TRIO_FIRST_DIALOGUE_25,"Belmont, you said that this cult doesn't want to resurrect Dracula, but only follow his ambition of destroying humanity?","Belmont, hai detto che questa setta non vuole far risorgere Dracula, ma solo seguire il suo desiderio di sterminio?","Belmont, ¿dijiste que este culto no quiere resucitar a Drácula, sino sólo seguir su ambición de destruir a la humanidad?","Belmont, você disse que esse culto não pretende reviver Drácula, mas apenas seguir seu desejo de destruir a humanidade.",,"Belmont, je zegt dat deze sekte niet Dracula wil laten herrijzen, maar dat hun enige ambitie het vernietigen van de mensheid is?",
+TRIO_FIRST_DIALOGUE_26,"Yes, what about it?","Sì, perché?","Sí, ¿por qué?","Sim, e?",,"Ja, wat is daarmee?",
+TRIO_FIRST_DIALOGUE_27,"Before meeting you, I had the luxury of encountering a vampire.","Prima di incontrarti, ho avuto il lusso di imbattermi in una vampira.","Antes de conocerte, tuve el lujo de encontrarme con una vampira.","Antes de achar você, eu tive o luxo de me encontrar com uma vampira.",,"Voordat ik je ontmoette, had ik de geweldige kans om een vampier te ontmoeten.",
 TRIO_FIRST_DIALOGUE_28,"Her name is Carmilla.
 She said she wants to bring an end to all of us.","Il suo nome è Carmilla.
-Mi ha riferito che vuole porre fine a tutti noi.",,"O nome dela é Carmilla.
-Ela me disse que deseja dar um fim à todos nós.",,,
+Mi ha riferito che vuole porre fine a tutti noi.","Se llama Carmilla.
+Ella me dijo que quiere acabar con todos nosotros.","O nome dela é Carmilla.
+Ela me disse que deseja dar um fim à todos nós.",,"Haar naam was Carmilla.
+Ze zei dat ze een einde aan ons allemaal wilde brengen.",
 TRIO_FIRST_DIALOGUE_29,"One of Lord Dracula's subordinates?
 Do you know more about her?","Uno dei comandanti del Conte Dracula?
-Ne sai di più su di lei?",,"Uma subordidada de Lorde Drácula?
-Você sabe mais sobre ela?",,,
+Ne sai di più su di lei?","¿Una de las comandantes de Drácula?
+¿Sabes más sobre ella?","Uma subordidada de Lorde Drácula?
+Você sabe mais sobre ela?",,"Een van Graaf Dracula's afgezanten?
+Weet je meer over haar?",
 TRIO_FIRST_DIALOGUE_30,"I never spoke to her while I was in Lord Dracula's court.
-I only know that she is a very ambitious creature.","Non proprio, non le ho mai parlato quando eravamo insieme nella corte di Dracula. So solo che è molto ambiziosa.",,"Nunca falei com ela enquanto fazia parte da corte de Drácula.
-Só o que eu sei é que ela é uma criatura muito ambiciosa.",,,
-TRIO_FIRST_DIALOGUE_31,"But most importantly, she said that Lord Dracula should not be involved in this anymore.","In ogni caso, ha detto che non vuole mettere il Conte in mezzo a questa storia.",,"Mas, o mais importante, ela disse que Lorde Drácula não estaria envolvido nisso.",,,
-TRIO_FIRST_DIALOGUE_32,So that means she must be a member of that cult.,Quindi fa parte della setta.,,Então isso significa que ela faz parte desse culto.,,,
-TRIO_FIRST_DIALOGUE_33,"I think so, yes.",Credo di sì.,,"Faz sentido, sim.",,,
-TRIO_FIRST_DIALOGUE_34,She also said something about the curse still existing.,"Ha anche menzionato la maledizione, dicendo che esiste ancora.",,Ela também mencionou algo sobre a maldição ainda existir.,,,
-TRIO_FIRST_DIALOGUE_35,What?!,Come?!,,O quê?!,,,
-TRIO_FIRST_DIALOGUE_36,Didn't you transform it into something completely harmless?,Ma non l'avevi trasformata in qualcosa di innocuo?,,Achei que você a tivesse transformado em algo totalmente inofensivo?,,,
+I only know that she is a very ambitious creature.","Non proprio, non le ho mai parlato quando eravamo insieme nella corte di Dracula. So solo che è molto ambiziosa.","Nunca hablé con ella mientras estuve en la corte de Drácula.
+Solo sé que es una criatura muy ambiciosa.","Nunca falei com ela enquanto fazia parte da corte de Drácula.
+Só o que eu sei é que ela é uma criatura muito ambiciosa.",,"Ik heb haar nooit gesproken toen ik bij Graaf Dracula's hof hoorde.
+Ik wist alleen maar dat ze een erg ambitieus wezen was.",
+TRIO_FIRST_DIALOGUE_31,"But most importantly, she said that Lord Dracula should not be involved in this anymore.","In ogni caso, ha detto che non vuole mettere il Conte in mezzo a questa storia.",Pero lo más importante es que dijo que Drácula no debería involucrarse más en esto.,"Mas, o mais importante, ela disse que Lorde Drácula não estaria envolvido nisso.",,"Maar het meest belangrijke, is dat ze zei dat Graaf Dracula niet meer hierbij betrokken is.",
+TRIO_FIRST_DIALOGUE_32,So that means she must be a member of that cult.,Quindi fa parte della setta.,Así que eso significa que ella es miembro de ese culto.,Então isso significa que ela faz parte desse culto.,,Dus dat betekent dat ze wel een lid van de sekte moet zijn.,
+TRIO_FIRST_DIALOGUE_33,"I think so, yes.",Credo di sì.,Creo que sí.,"Faz sentido, sim.",,"Ik denk het wel, ja.",
+TRIO_FIRST_DIALOGUE_34,She also said something about the curse still existing.,"Ha anche menzionato la maledizione, dicendo che esiste ancora.",También dijo algo acerca de que la maldición aún existe.,Ela também mencionou algo sobre a maldição ainda existir.,,Ze zei ook iets over dat de vloek nog steeds bestaat.,
+TRIO_FIRST_DIALOGUE_35,What?!,Come?!,¡¿Qué?!,O quê?!,,What?!,
+TRIO_FIRST_DIALOGUE_36,Didn't you transform it into something completely harmless?,Ma non l'avevi trasformata in qualcosa di innocuo?,¿Qué no la habías transformado en algo completamente inofensivo?,Você não a transformou em algo completamente inofensivo?,,Heb je het niet in iets volledig onschadelijks getransformeerd?,
 TRIO_FIRST_DIALOGUE_37,"I did.
 It's the power of a devil forgemaster.","L'ho fatto.
-Questo è il potere della forgiatura diabolica.",,"Foi o que eu fiz.
-Este é o poder de um forjador de demônios.",,,
-TRIO_FIRST_DIALOGUE_38,"I transformed the curse into something else, completely harmless as is.","Ho trasformato la maledizione in qualcosa di innocuo, di per sé.",,"Eu transformei a maldição em algo completamente inofensivo, do jeito que está.",,,
-TRIO_FIRST_DIALOGUE_39,"But into what, exactly?","Ma in che cosa, esattamente?",,"Mas em quê, exatamente?",,,
-TRIO_FIRST_DIALOGUE_40,A stone.,Una pietra.,,Uma pedra.,,,
-TRIO_FIRST_DIALOGUE_41,A stone?,Una pietra?,,Uma pedra?,,,
+Questo è il potere della forgiatura diabolica.","Lo hice.
+Es el poder de un maestro de la forja demoniaca.","Foi o que eu fiz.
+Este é o poder de um forjador de demônios.",,"Dat heb ik gedaan.
+Het is de kracht van een duivel smederijmeester.",
+TRIO_FIRST_DIALOGUE_38,"I transformed the curse into something else, completely harmless as is.","Ho trasformato la maledizione in qualcosa di innocuo, di per sé.","Transformé la maldición en otra cosa, completamente inofensiva como es.","Eu transformei a maldição em outra coisa, algo inofensivo, do jeito que está.",,"Ik heb de vloek getransformeerd in iet anders, compleet onschadelijk zoals het is.",
+TRIO_FIRST_DIALOGUE_39,"But into what, exactly?","Ma in che cosa, esattamente?","¿Pero en qué exactamente?","Mas em quê, exatamente?",,"Maar in wat, precies?",
+TRIO_FIRST_DIALOGUE_40,A stone.,Una pietra.,"Una piedra.",Uma pedra.,,Een steen.,
+TRIO_FIRST_DIALOGUE_41,A stone?,Una pietra?,"¿Una piedra?",Uma pedra?,,Een steen?,
 TRIO_FIRST_DIALOGUE_42,"Indeed.
-All of the curse's energy was solidified and transformed into a stone.",Proprio così. Tutta l'energia della maledizione è stata solidificata e trasformata in una pietra.,,"De fato.
-Toda a energia da maldição foi solidificada e transformada em uma pedra.",,,
-TRIO_FIRST_DIALOGUE_43,"And where is that stone, right now?","E dov'è quella pietra, in questo momento?",,E onde essa pedra está neste momento?,,,
-TRIO_FIRST_DIALOGUE_44,Julia has it.,Ce l'ha Julia.,,Julia está com ela.,,,
+All of the curse's energy was solidified and transformed into a stone.",Proprio così. Tutta l'energia della maledizione è stata solidificata e trasformata in una pietra.,"En efecto.
+Toda la energía de la maldición fue solidificada y transformada en una piedra.","De fato.
+Toda a energia da maldição foi solidificada e transformada em uma pedra.",,"Inderdaad.
+Alle energie van de vloek was vervast en getransformeerd in een steen.",
+TRIO_FIRST_DIALOGUE_43,"And where is that stone, right now?","E dov'è quella pietra, in questo momento?","¿Y dónde está esa piedra ahora?",E onde essa pedra está neste momento?,,"En waar is die steen, op dit ogenblik?",
+TRIO_FIRST_DIALOGUE_44,Julia has it.,Ce l'ha Julia.,"Julia la tiene.",Julia está com ela.,,Julia heeft hem.,
 TRIO_FIRST_DIALOGUE_45,"Yes, I have it hidden here.
 I'll show you.","Sì, l'ho nascosta qui.
-Te la mostro.",,"Sim. Eu a escondi aqui.
-Venha, vou lhe mostrar.",,,
-TRIO_FIRST_DIALOGUE_46,This feeling... are you sure this is harmless?,Questa sensazione... sei sicuro che sia innocua?,,Essa sensação... você tem certeza que é seguro?,,,
-TRIO_FIRST_DIALOGUE_47,"This stone essentially acts as a seal. I cannot completely delete something from existence, only transform it.","Questa pietra agisce essenzialmente come sigillo. Non posso cancellare dall'esistenza qualcosa, ma posso trasformarla.",,"Esta pedra basicamente aje como um selo. Eu não consigo simplesmente apagar algo da existência, apenas transformá-lo.",,,
-TRIO_FIRST_DIALOGUE_48,I understand.,Capisco.,,Entendo.,,,
-TRIO_FIRST_DIALOGUE_49,But allow me to question you this.,Ma fammi fare una domanda.,,Mas permita-me fazer-lhe esta pergunta.,,,
-TRIO_FIRST_DIALOGUE_50,What happens if I destroy the stone?,Cosa succederebbe se distruggessi la pietra?,,O que acontece se eu destruir esta pedra?,,,
-TRIO_FIRST_DIALOGUE_51,"The curse would be unleashed upon this land, again.",La maledizione verrebbe rilasciata di nuovo.,,A maldição seria liberada novamente sobre a terra.,,,
-TRIO_FIRST_DIALOGUE_52,...!,...!,,...!,,,
-TRIO_FIRST_DIALOGUE_53,...,...,,...,,,
-TRIO_FIRST_DIALOGUE_54,"Even if in our hands, such power will eventually be released.","Anche se è nelle nostre mani, prima o poi questo potere si scatenerà.",,"Mesmo que esteja em nossas mãos, esse poder acabará sendo liberado.",,,
-TRIO_FIRST_DIALOGUE_55,Especially now that Carmilla already knows about its existence...,Specialmente ora che Carmilla sa della sua esistenza...,,Especialmente agora que Carmilla sabe da sua existência...,,,
-TRIO_FIRST_DIALOGUE_56,"...and now that I feel the curse in the air, again.",...ed ora che la sento sempre di più nell'aria che respiriamo.,,"...e agora que sinto a maldição no ar, novamente.",,,
-TRIO_FIRST_DIALOGUE_57,"I tried to act clueless when she mentioned the curse being separated from Dracula's influence, but to no avail.","Ho fatto finta di non sapere di che cosa stesse parlando Carmilla quando parlò della maledizione, ma non è servito a niente.",,"Tentei fingir que não sabia de nada quando ela mencionou que a maldição estava separada da influência de Drácula, mas foi em vão.",,,
-TRIO_FIRST_DIALOGUE_58,What can we do to stop that from ever happening?,Cosa possiamo fare per evitare una catastrofe del genere?,,O que podemos fazer para impedir que isso aconteça?,,,
+Te la mostro.","Sí, la tengo escondida aquí.
+Te la mostraré.","Sim. Eu a escondi aqui.
+Venha, vou lhe mostrar.",,"Ja, ik heb hem hier verstopt.
+Ik zal het je laten zien.",
+TRIO_FIRST_DIALOGUE_46,This feeling... are you sure this is harmless?,Questa sensazione... sei sicuro che sia innocua?,Esta sensación… ¿estás seguro de que es inofensiva?,Essa sensação... você tem certeza que é seguro?,,Dit gevoel... ben je zeker dat dit onschadelijk is?,
+TRIO_FIRST_DIALOGUE_47,"This stone essentially acts as a seal. I cannot completely delete something from existence, only transform it.","Questa pietra agisce essenzialmente come sigillo. Non posso cancellare dall'esistenza qualcosa, ma posso trasformarla.","Esta piedra actúa esencialmente como un sello.
+No puedo eliminar algo completamente de la existencia, solo transformarlo.","Esta pedra basicamente aje como um selo. Eu não consigo simplesmente apagar algo da existência, apenas transformá-lo.",,"Deze steen werkt in essentie als een zegel. Ik kan het niet compleet van zijn bestaan wissen, alleen het transformeren.",
+TRIO_FIRST_DIALOGUE_48,I understand.,Capisco.,Entiendo.,Entendo.,,Ik snap het.,
+TRIO_FIRST_DIALOGUE_49,But allow me to question you this.,Ma fammi fare una domanda.,Pero permítame preguntarle esto.,Mas permita-me fazer-lhe esta pergunta.,,Maar laat me je deze vraag stellen.,
+TRIO_FIRST_DIALOGUE_50,What happens if I destroy the stone?,Cosa succederebbe se distruggessi la pietra?,¿Qué pasaría si destruyo la piedra?,O que acontece se eu destruir esta pedra?,,Wat gebeurt er als je de steen verwoest?,
+TRIO_FIRST_DIALOGUE_51,"The curse would be unleashed upon this land, again.",La maledizione verrebbe rilasciata di nuovo.,La maldición se desataría nuevamente sobre esta tierra.,A maldição seria liberada novamente sobre a terra.,,"Dan zou de vloek weer over dit land ontketend worden, opnieuw",
+TRIO_FIRST_DIALOGUE_52,...!,...!,¡…!,...!,,...!,
+TRIO_FIRST_DIALOGUE_53,...,...,...,...,,...,
+TRIO_FIRST_DIALOGUE_54,"Even if in our hands, such power will eventually be released.","Anche se è nelle nostre mani, prima o poi questo potere si scatenerà.","Incluso si está en nuestras manos, ese poder eventualmente será liberado.","Mesmo que esteja em nossas mãos, esse poder acabará sendo liberado.",,"Zelf in onze handen, zal zo'n kracht uiteindelijk ontketend worden.",
+TRIO_FIRST_DIALOGUE_55,Especially now that Carmilla already knows about its existence...,Specialmente ora che Carmilla sa della sua esistenza...,Especialmente ahora que Carmilla ya sabe de su existencia…,Especialmente agora que Carmilla sabe da sua existência...,,Vooral nu Carmilla al weet over het bestaan ervan...,
+TRIO_FIRST_DIALOGUE_56,"...and now that I feel the curse in the air, again.",...ed ora che la sento sempre di più nell'aria che respiriamo.,"...y ahora que siento la maldición en el aire, otra vez.","...e agora que sinto a maldição no ar, novamente.",,"... en nu voel ik de vloek in de lucht, opnieuw.",
+TRIO_FIRST_DIALOGUE_57,"I tried to act clueless when she mentioned the curse being separated from Dracula's influence, but to no avail.","Ho fatto finta di non sapere di che cosa stesse parlando Carmilla quando parlò della maledizione, ma non è servito a niente.","Fingí que no sabía de qué estaba hablando Carmilla cuando mencionó la maldición, pero fue en vano.
+","Tentei fingir que não sabia de nada quando ela mencionou que a maldição estava separada da influência de Drácula, mas foi em vão.",,"Ik probeerde verbaasd te reageren toen ze vermelde dat de vloek van Dracula's invloed los gezet was, maar het mocht niet baten.",
+TRIO_FIRST_DIALOGUE_58,What can we do to stop that from ever happening?,Cosa possiamo fare per evitare una catastrofe del genere?,¿Qué podemos hacer para evitar tal catástrofe?,O que podemos fazer para impedir que isso aconteça?,,Wat kunnen we doen om het te stoppen van te gebeuren?,
 TRIO_FIRST_DIALOGUE_59,"Nothing. This is a stalemate.
 The stone can never be erased from existence.","Nulla. Siamo in una situazione di stallo.
-Questa pietra non può essere eliminata in alcun modo.",,"Nada. Isto é um impasse.
-A pedra jamais poderá ser apagada da existência.",,,
-TRIO_FIRST_DIALOGUE_60,I see...,Ho capito...,,Sei...,,,
-TRIO_FIRST_DIALOGUE_61,"If Dracula's Grace wants to destroy mankind, they will need this.","Se la Grazia di Dracula vuole sterminare gli esseri umani, vorranno sicuramente questa pietra.",,"Se a Bênção de Drácula quer destruir a humanidade, eles vão precisar disso.",,,
-TRIO_FIRST_DIALOGUE_62,Have you considered the possibility that they know about this stone in particular?,Hai considerato la possibilità che loro sappiano esattamente di questo oggetto?,,Você já considerou a possibilidade de eles saberem especificamente sobre essa pedra?,,,
-TRIO_FIRST_DIALOGUE_63,"Unfortunately, we had to find out the hard way.",La risposta a questa domanda l'abbiamo dovuta scoprire nel peggiore dei modi.,,"Infelizmente, tivemos que descobrir isso do modo mais difícil.",,,
+Questa pietra non può essere eliminata in alcun modo.","Nada. Estamos en un punto muerto.
+Esta piedra no se puede eliminar de ninguna forma.","Nada. Isto é um impasse.
+A pedra jamais poderá ser apagada da existência.",,"Niks. Het is een gelijkspel.
+De steen kan nooit gewist worden van zijn bestaan.",
+TRIO_FIRST_DIALOGUE_60,I see...,Ho capito...,Ya veo…,Sei...,,Ik begrijp het...,
+TRIO_FIRST_DIALOGUE_61,"If Dracula's Grace wants to destroy mankind, they will need this.","Se la Grazia di Dracula vuole sterminare gli esseri umani, vorranno sicuramente questa pietra.","Si la Gracia de Drácula quiere destruir a la humanidad, necesitarán esta piedra.","Se a Bênção de Drácula quer destruir a humanidade, eles vão precisar disso.",,"Als Dracula's Gratie de mensheid wilt veroesten, zullen ze dit nodig hebben.",
+TRIO_FIRST_DIALOGUE_62,Have you considered the possibility that they know about this stone in particular?,Hai considerato la possibilità che loro sappiano esattamente di questo oggetto?,"¿Haz considerado la posibilidad de que conozcan sobre esta piedra en particular?",Você já considerou a possibilidade de eles saberem especificamente sobre essa pedra?,,Heb je al de mogelijkheid nagegaan dat ze over exact deze steen zouden weten?,
+TRIO_FIRST_DIALOGUE_63,"Unfortunately, we had to find out the hard way.",La risposta a questa domanda l'abbiamo dovuta scoprire nel peggiore dei modi.,"Desafortunadamente, tuvimos que descubrirlo por las malas.","Infelizmente, tivemos que descobrir isso do modo mais difícil.",,"Helaas, hadden we het de moeilijke manier moeten leren.",
 TRIO_FIRST_DIALOGUE_64,"We had to abandon our previous home, to settle here.
 We were being hunted.","Abbiamo dovuto abbandonare la nostra vecchia casa, per stabilirci qui.
-Continuavamo ad essere perseguitati.",,"Tivemos que abandonar nossa antiga casa para nos estabelecermos aqui.
-Estávamos sendo caçados.",,,
-TRIO_FIRST_DIALOGUE_65,By who?,Da chi?,,Por quem?,,,
-TRIO_FIRST_DIALOGUE_66,"Creatures of the night, vampires... some humans as well.","Creature della notte, vampri... anche alcuni esseri umani.",,"Criaturas da noite, vampiros... e até mesmo humanos.",,,
-TRIO_FIRST_DIALOGUE_67,"Come to think of it, I am sure they will know about our new hiding place soon enough.","Ora che ci penso, sono sicuro che verranno anche qui prima o poi.",,"Pensando nisso, eu tenho certeza que logo irão descobrir o nosso esconderijo.",,,
-TRIO_FIRST_DIALOGUE_68,...,...,,...,,,
-TRIO_FIRST_DIALOGUE_69,...,...,,...,,,
-TRIO_FIRST_DIALOGUE_70,...,...,,...,,,
-TRIO_FIRST_DIALOGUE_71,"So it seems our goals align again, Hector.","Quindi i nostri obiettivi si intersecano nuovamente, Hector.",,"Parece que nossos objetivos estão de acordo, Hector.",,,
-TRIO_FIRST_DIALOGUE_72,"What do you mean, Belmont?","Cosa intendi dire, Belmont?",,"O que quer dizer, Belmont?",,,
-TRIO_FIRST_DIALOGUE_73,I mean that this stone is exactly what we need to accomplish this task.,Intendo dire che questa pietra è esattamente ciò che ci serve.,,Quero dizer que esta pedra é exatamente o que precisamos para cumprir essa tarefa.,,,
-TRIO_FIRST_DIALOGUE_74,How so?,In che modo?,,Como assim?,,,
-TRIO_FIRST_DIALOGUE_75,"Since they will be searching for this, we can lure them here and strike them down.","Siccome la staranno sicuramente cercando, potremmo attirarli qui e sconfiggerli.",,"Já que eles estarão procurando por isso, nós podemos atraí-los para cá e atacá-los.",,,
-TRIO_FIRST_DIALOGUE_76,What?,Cosa?,,O quê?,,,
-TRIO_FIRST_DIALOGUE_77,I cannot afford Julia to be in danger.,Non posso permettere di mettere in pericolo Julia.,,Não colocarei Julia em perigo.,,,
+Continuavamo ad essere perseguitati.","Tuvimos que abandonar nuestro hogar anterior para establecernos aquí.
+Estábamos siendo perseguidos.","Tivemos que abandonar nossa antiga casa para nos estabelecermos aqui.
+Estávamos sendo caçados.",,"We hebben ons vorige thuis verlaten, om hier te ons te vestigen.
+We werden achterna gezeten.",
+TRIO_FIRST_DIALOGUE_65,By who?,Da chi?,¿Por quién?,Por quem?,,Door wie?,
+TRIO_FIRST_DIALOGUE_66,"Creatures of the night, vampires... some humans as well.","Creature della notte, vampri... anche alcuni esseri umani.","Criaturas de la noche, vampiros… algunos humanos también.","Criaturas da noite, vampiros... e até mesmo humanos.",,"Wezens van de nacht, vampieren... een paar mensen ook.",
+TRIO_FIRST_DIALOGUE_67,"Come to think of it, I am sure they will know about our new hiding place soon enough.","Ora che ci penso, sono sicuro che verranno anche qui prima o poi.","Ahora que lo pienso, estoy seguro de que pronto sabrán de nuestro nuevo escondite.","Pensando nisso, estou certo de que logo irão descobrir nosso esconderijo.",,"Nu ik erover nadenk, ik denk dat ze zeker onze nieuwe verstopplek zullen uitvogelen.",
+TRIO_FIRST_DIALOGUE_68,...,...,...,...,,...,
+TRIO_FIRST_DIALOGUE_69,...,...,...,...,,...,
+TRIO_FIRST_DIALOGUE_70,...,...,...,...,,...,
+TRIO_FIRST_DIALOGUE_71,"So it seems our goals align again, Hector.","Quindi i nostri obiettivi si intersecano nuovamente, Hector.","Parece que nuestros objetivos se alinean de nuevo, Héctor.","Parece que nossos objetivos estão de acordo, Hector.",,"Dus het ziet ernaar uit dat onze doelen samenkomen, Hector.",
+TRIO_FIRST_DIALOGUE_72,"What do you mean, Belmont?","Cosa intendi dire, Belmont?","¿Qué quieres decir, Belmont?","O que quer dizer, Belmont?",,"Wat bedoel je precies, Belmont?",
+TRIO_FIRST_DIALOGUE_73,I mean that this stone is exactly what we need to accomplish this task.,Intendo dire che questa pietra è esattamente ciò che ci serve.,Quiero decir que esta piedra es exactamente lo que necesitamos para realizar esta tarea.,Quero dizer que esta pedra é exatamente o que precisamos para cumprir essa tarefa.,,Ik bedoel dat die steen precies is wat ik nodig heb om mijn taak te voltooien.,
+TRIO_FIRST_DIALOGUE_74,How so?,In che modo?,¿Cómo?,Como assim?,,Hoe dan?,
+TRIO_FIRST_DIALOGUE_75,"Since they will be searching for this, we can lure them here and strike them down.","Siccome la staranno sicuramente cercando, potremmo attirarli qui e sconfiggerli.","Como definitivamente la estarán buscando, podemos atraerlos aquí y derrotarlos.","Já que eles estarão procurando por isso, nós podemos atraí-los para cá e atacá-los.",,"Omdat ze hiervoor zullen zoeken, kunnen we hun lokken naar hier en ze neerslaan.",
+TRIO_FIRST_DIALOGUE_76,What?,Cosa?,¿Qué?,O quê?,,Wat?,
+TRIO_FIRST_DIALOGUE_77,I cannot afford Julia to be in danger.,Non posso permettere di mettere in pericolo Julia.,No puedo permitir que Julia corra peligro.,Não colocarei Julia em perigo.,,Ik kan niet Julia in gevaar brengen.,
 TRIO_FIRST_DIALOGUE_78,"I have already suffered a great tragedy once the same way.
 I refuse to through all of that again!","Ho già sofferto una gran tragedia nello stesso modo.
-Mi rifiuto di correre il rischio che riaccada!",,"Já sofri uma grande tragédia dessa mesma forma.
-Eu me recuso a passar por tudo isso novamente!",,,
-TRIO_FIRST_DIALOGUE_79,Then what do you propose we do?,Allora che cosa proponi di fare?,,Então o que você propõe?,,,
-TRIO_FIRST_DIALOGUE_80,...,...,,...,,,
+Mi rifiuto di correre il rischio che riaccada!","Ya sufrí una gran tragedia de la misma manera.
+¡Me niego a pasar por todo eso otra vez!","Já sofri uma grande tragédia dessa mesma forma.
+Eu me recuso a passar por tudo isso novamente!",,"Ik heb al een grote tragedie op dezelfde manier ervaren.
+Ik weiger door al dat opnieuw heen te gaan!",
+TRIO_FIRST_DIALOGUE_79,Then what do you propose we do?,Allora che cosa proponi di fare?,"Entonces ¿qué propones que hagamos?",Então o que você propõe?,,Dan wat stel jij voor dat we doen?,
+TRIO_FIRST_DIALOGUE_80,...,...,...,...,,...,
 TRIO_FIRST_DIALOGUE_81,"We can lure them elsewhere.
 But in doing so, we have to know more about the enemy first.","Potremmo attirarli da un'altra parte.
-Per farlo avremo bisogno di più informazioni su di loro, però...",,"Podemos atraí-los para outro lugar.
-Mas, ao fazer isso, precisamos saber mais sobre nosso inimigo.",,,
+Per farlo avremo bisogno di più informazioni su di loro, però...","Podríamos atraerlos a otro lugar.
+Para ello, necesitaremos más información sobre el enemigo.","Podemos atraí-los para outro lugar.
+Mas, ao fazer isso, precisamos saber mais sobre nosso inimigo.",,"We lokken ze ergens anders naartoe.
+Maar om dat te doen, moeten we eerst meer over de vijand weten.",
 TRIO_FIRST_DIALOGUE_82,"I see.
 Collecting more clues is what you want to do.","Capisco.
-Quello che vuoi fare è cercare indizi.",,"Certo.
-Você quer coletar mais pistas primeiro.",,,
-TRIO_FIRST_DIALOGUE_83,"What do you think about that, Julia?","Cosa ne pensi, Julia?",,"O que você acha disso, Julia?",,,
+Quello che vuoi fare è cercare indizi.","Entiendo.
+Lo que quieres hacer es buscar pistas.","Certo.
+Você quer coletar mais pistas primeiro.",,"Ik begrijp het.
+Meer aanwijzingen verzamelen is alles wat je kan doen.",
+TRIO_FIRST_DIALOGUE_83,"What do you think about that, Julia?","Cosa ne pensi, Julia?","¿Qué opinas de eso, Julia?","O que você acha disso, Julia?",,"Wat denk je daarvan, Julia?",
 TRIO_FIRST_DIALOGUE_84,"You should be careful, Trevor.
 This recklessness of yours has almost cost you your life.","Dovresti fare attenzione, Trevor.
-Questo tuo modo frettoloso di fare le cose ti è quasi costato la vita.",,"Você deveria ter cuidado, Trevor.
-Essa sua imprudência quase lhe custou a vida.",,,
-TRIO_FIRST_DIALOGUE_85,"As Hector said, we need a strategy.","Come dice Hector, abbiamo bisogno di una strategia.",,"Como Hector disse, nós precisamos de uma estratégia.",,,
-TRIO_FIRST_DIALOGUE_86,We must act accordingly to who stands before us.,Dobbiamo agire in base a chi abbiamo di fronte a noi.,,Devemos agir de acordo com quem estiver diante de nós.,,,
-TRIO_FIRST_DIALOGUE_87,I understand.,Capisco.,,Eu entendo.,,,
-TRIO_FIRST_DIALOGUE_88,I know of two places of where to find clues.,Ho in mente due luoghi nei quali potreste cercare indizi.,,Eu sei de dois locais onde podemos encontrar pistas.,,,
-TRIO_FIRST_DIALOGUE_89,"Speaking with a couple of villagers and using my envisioning powers, I can predict that a vampire will show up.","Parlando con un paio di persone e usando i miei poteri da veggente, prevedo che si farà avanti un vampiro.",,"Conversando com alguns moradores e usando meus poderes de premonição, posso prever que um vampiro aparecerá.",,,
-TRIO_FIRST_DIALOGUE_90,"I don't exactly know where, but to the north from here, after the temple.","Non so esattamente dove, ma a nord da qui, dopo il tempio.",,"Não sei exatamente onde, mas fica ao norte daqui, após o templo.",,,
+Questo tuo modo frettoloso di fare le cose ti è quasi costato la vita.","Deberías tener cuidado, Trevor.
+Esta imprudencia tuya casi te cuesta la vida.","Você deveria ter cuidado, Trevor.
+Essa sua imprudência quase lhe custou a vida.",,"Je moet voorzichtig zijn, Trevor.
+Die roekeloosheid van je zal bijna je eigen leven kosten.",
+TRIO_FIRST_DIALOGUE_85,"As Hector said, we need a strategy.","Come dice Hector, abbiamo bisogno di una strategia.","Como dijo Héctor, necesitamos una estrategia.","Como Hector disse, nós precisamos de uma estratégia.",,"Zoals Hector zei, we hebben een strategie nodig.",
+TRIO_FIRST_DIALOGUE_86,We must act accordingly to who stands before us.,Dobbiamo agire in base a chi abbiamo di fronte a noi.,Debemos actuar ante quién tenemos por delante.,Devemos agir de acordo com quem estiver diante de nós.,,We moeten handelen naar wat voor ons te wachten staat.,
+TRIO_FIRST_DIALOGUE_87,I understand.,Capisco.,De acuerdo.,Eu entendo.,,Ik begrijp het.,
+TRIO_FIRST_DIALOGUE_88,I know of two places of where to find clues.,Ho in mente due luoghi nei quali potreste cercare indizi.,Conozco de dos lugares donde podrías encontrar pistas.,Eu sei de dois locais onde podemos encontrar pistas.,,Ik weet de eerste twee plaatsen waar je aanwijzingen zal vinden.,
+TRIO_FIRST_DIALOGUE_89,"Speaking with a couple of villagers and using my envisioning powers, I can predict that a vampire will show up.","Parlando con un paio di persone e usando i miei poteri da veggente, prevedo che si farà avanti un vampiro.","Después de hablar con un par de aldeanos y usando mis poderes clarividentes, predigo que aparecerá un vampiro.","Conversando com alguns moradores e usando meus poderes de premonição, posso prever que um vampiro aparecerá.",,"Als ik spreek met een paar dorpsbewoners praat terwijl ik mijn visioen krachten gebruik, kan ik voorspellen wanneer een vampier komt.",
+TRIO_FIRST_DIALOGUE_90,"I don't exactly know where, but to the north from here, after the temple.","Non so esattamente dove, ma a nord da qui, dopo il tempio.","No sé exactamente dónde, pero al norte de aquí, después del templo.","Não sei exatamente onde, mas fica ao norte daqui, após o templo.",,"Ik weet niet exact waar, maar noord vanuit hier, achter de tempel.",
 TRIO_FIRST_DIALOGUE_91,"And to the east, there will be a reunion. Many candles, torches and lamps vanquishing the darkness of an infested manor.","Mentre ad est si terrà un convento.
-Tante candele, torce e lampioni che scacciano le tenebre di una villa infestata.",,"E ao leste, haverá um reencontro. Muitas velas, tochas e lâmpadas dissipando a escuridão de uma mansão infestada.",,,
+Tante candele, torce e lampioni che scacciano le tenebre di una villa infestata.","Y al este, habrá un convento.
+Numerosas velas, antorchas y farolas disipan la oscuridad de una mansión embrujada.","E ao leste, haverá um reencontro. Muitas velas, tochas e lâmpadas dissipando a escuridão de uma mansão infestada.",,"En naar het oosten, daar zal een reunie zijn. Veel kaarsen, fakkels en lampen die de duisternis van het gekwelde landuis overwinnen.",
 TRIO_FIRST_DIALOGUE_92,"I understand.
 Sounds like we have to split up.","D'accordo.
-Credo che dovremo dividerci.",,"Entendido.
-Ao que parece, teremos que nos separar.",,,
-TRIO_FIRST_DIALOGUE_93,I'll go to the north while you take the east path.,"Andrò a nord, mentre tu andrai ad est.",,Eu irei para o norte enquanto você segue para o leste.,,,
-TRIO_FIRST_DIALOGUE_94,Then it is settled.,Allora è deciso.,,Então está decidido.,,,
+Credo che dovremo dividerci.","De acuerdo.
+Parece que tendremos que separarnos.","Entendido.
+Ao que parece, teremos que nos separar.",,"Ik begrijp het.
+Het klinkt voor mij dat we dan ons moeten opsplitsen.",
+TRIO_FIRST_DIALOGUE_93,I'll go north while you take the east path.,"Andrò a nord, mentre tu andrai ad est.",Iré hacia el norte mientras tú tomas el camino al este.,Eu irei para o norte enquanto você segue para o leste.,,Ik zal noord gaan en dan nemen jullie het pad naar het oosten.,
+TRIO_FIRST_DIALOGUE_94,Then it is settled.,Allora è deciso.,Entonces está decidido.,Então está decidido.,,Dan is dat geregeld.,
 TRIO_FIRST_DIALOGUE_95,"I will depart immediately.
 May good fortune bless your journey, Hector.","Parto subito.
-Che la buona sorte sia dalla tua parte, Hector.",,"Partirei imediatamente.
-Que a boa sorte abençoe sua jornada, Hector.",,,
-TRIO_FIRST_DIALOGUE_96,"You as well, Belmont.","Anche a te, Belmont.",,"A você também, Belmont.",,,
-TRIO_FIRST_DIALOGUE_97,"You know, speaking for so long without sitting on a chair vexes me so.","Sai, detesto parlare per così tanto tempo senza potermi sedere.",,"Sabe, ficar falando por tanto tempo sem sentar em uma cadeira me irrita profundamente.",,,
-TRIO_FIRST_DIALOGUE_98,*giggles*,*ridacchia*,,*risinhos*,,,
-TRIO_FIRST_DIALOGUE_99,Then perhaps your first quest is to find a chair to bring here when there's small talk to do.,Allora forse la prima cosa che dovresti fare è trovare una sedia e portarla qui.,,Então talvez sua primeira missão seja encontrar uma cadeira e trazer para cá para quando precisarmos conversar um pouco.,,,
-TRIO_FIRST_DIALOGUE_100,"As wise as ever, Julia.","Saggia come sempre, Julia.",,"Sábia como sempre, Julia.",,,
-TRIO_FIRST_DIALOGUE_101,Let's get to work.,Ora di metterci al lavoro.,,Vamos ao trabalho.,,,
+Che la buona sorte sia dalla tua parte, Hector.","Partiré inmediatamente.
+Que la buena fortuna bendiga tu jornada, Héctor.","Partirei imediatamente.
+Que a boa sorte abençoe sua jornada, Hector.",,"Ik zal meteen vertrekken.
+Moge goed lot je reis zegenen, Hector",
+TRIO_FIRST_DIALOGUE_96,"You as well, Belmont.","Anche a te, Belmont.","Tú también, Belmont.","A você também, Belmont.",,"Jou ook, Belmont.",
+TRIO_FIRST_DIALOGUE_97,"You know, speaking for so long without sitting on a chair vexes me so.","Sai, detesto parlare per così tanto tempo senza potermi sedere.","Sabes, odio hablar durante tanto tiempo sin poder sentarme en una silla.","Sabe, ficar falando por tanto tempo sem sentar em uma cadeira me irrita profundamente.",,"Weet je, zo lang spreken zonder op een stoel te zitten ergert me zo.",
+TRIO_FIRST_DIALOGUE_98,*giggles*,*ridacchia*,*risilla*,*risinhos*,,*giechelt*,
+TRIO_FIRST_DIALOGUE_99,Then perhaps your first quest is to find a chair to bring here when there's small talk to do.,Allora forse la prima cosa che dovresti fare è trovare una sedia e portarla qui.,Entonces quizás lo primero que deberías hacer es buscar una silla y traerla aquí para charlas.,Então talvez sua primeira missão seja encontrar uma cadeira e trazer para cá para quando precisarmos conversar um pouco.,,Dan zal misschien je eerste missie zijn een stoel te vinden voor wanneer er kletspraat is.,
+TRIO_FIRST_DIALOGUE_100,"As wise as ever, Julia.","Saggia come sempre, Julia.","Tan sabia como siempre, Julia.","Sábia como sempre, Julia.",,"Je bent zo wijs als altijd, Julia.",
+TRIO_FIRST_DIALOGUE_101,Let's get to work.,Ora di metterci al lavoro.,Manos a la obra.,Vamos ao trabalho.,,Laten we te werk gaan.,
 ,,,,,,,
 --Stage titles--,,,,,,,
 ABANDONED_MONASTERY_TITLE,Abandoned Monastery,Monastero abbandonato,Monasterio Abandonado,Mosteiro Abandonado,Monastère abandonné,Verlaten Klooster,
@@ -1627,9 +1758,9 @@ intercambiar rápidamente al elegirlas en el inventario de armas mientras
 mueves la palanca derecha en la dirección en la quieras equipar la arma.
 
 Mueve la palanca derecha en la misma dirección de nuevo para sobrescribir
-o remover la arma en esa posición.","No menu Equipar, você pode selecionar as armas para as quais deseja alternar rapidamente escolhendo-as no inventário de Armas e movendo o direcional direito na direção em que deseja equipá-las.
+o remover la arma en esa posición.","No menu Equipar, você pode selecionar as armas para as quais deseja alternar rapidamente escolhendo-as no inventário de Armas e movendo o analógico direito na direção em que deseja equipá-las.
 
-Mova novamente o direcional direito na mesma direção para substituir ou remover a arma naquela posição.",,"Terwijl je in het uitrusting menu bent, je kan wapens die je wilt selecteren om snel 
+Mova novamente o analógico direito na mesma direção para substituir ou remover a arma naquela posição.",,"Terwijl je in het uitrusting menu bent, je kan wapens die je wilt selecteren om snel 
 wisselen door ze te kiezen in de Wapens inventaris, 
 terwijl je de Rechter stick in dezelfde richting zet als het wapen dat je wilt aandoen.
 
@@ -1678,7 +1809,7 @@ invencível por um curto período de tempo.",,"Je kunt snel herstellen van neerh
 
 Als je dat doet zal Hector achteruitschuiven en blijft
 hij onschaadbaar voor een korte tijd.",
-RED_ORB,RED ORB,GLOBO ROSSO,ORBE ROJO,ORBE VERMELHO,,,
+RED_ORB,RED ORB,GLOBO ROSSO,ORBE ROJO,ORBE VERMELHO,,Rode Orb,
 RED_ORB_DESC,"This orb enhances the strength of Aguni's Laurel.
 
 Flames produced have their lifespan extended by 100% while
@@ -1714,7 +1845,16 @@ Ao ativar a relíquia, Hector pode usar a [color=yellow]Afinidade com Chamas[/co
 faz com que todos os seus ataques normais inflijam dano de fogo, ao custo
 de 3 PM por golpe.
 [color=#ff8080]Esta técnica não funcionará em armas que já possuem um
-atributo elemental.[/color]",,,
+atributo elemental.[/color]",,"Deze orb verbetert de sterkte van Aguni's Laurier.
+
+Vlammen die geproduceerd zijn hebben hun levenstijd met 100% verlengd
+terwijl ze schade met 10 verhogen.
+
+Door het reliek te activeren, kan Hector [color=yellow]Vlammen Affiniteit[/color], gebruiken,
+die veroorzaakt dat al zijn normale aanvallen vuur schade doen, met de kosten
+van 3 MP per aanraking.
+[color=#ff8080]Deze techniek zal niet werken wapens die al een elementale
+eigenschap hebben.[/color]",
 ,,,,,,,
 --Hints--,,,,,,,
 SKILLS_LEARNED_MESSAGE,Learned [color=yellow]%s[/color] and [color=yellow]%s[/color].,Imparato [color=yellow]%s[/color] e [color=yellow]%s[/color].,Haz aprendido [color=yellow]%s[/color] y [color=yellow]%s[/color].,Aprendeu [color=yellow]%s[/color] e [color=yellow] %s[/color].,Appris: ,Geleerd [color=yellow]%s[/color] en [color=yellow]%s[/color].,
@@ -1915,6 +2055,8 @@ HEAL_SKILL_ID,Heal,Guarigione,Cura,Cura,Soin,Genees,
 HEAL_SKILL_ID_DESC,Heals Hector a moderate amount of HP.,"Guarisce Hector, ripristinando un po' di PV.",Le cura una cantidad moderada de PS a Héctor.,Recupera uma quantidade moderada de PV de Hector.,"Soigne Hector, lui redonnant une quantité modérée de PV.",Geneest Hector een gemiddeld gehalte GP.,
 REFRESHING_AIR_SKILL_ID,Refreshing Air,Aria rinfrescante,Aire refrescante,Ar Revigorante,Air rafraîchissant,Verfrissende Lucht,
 REFRESHING_AIR_SKILL_ID_DESC,Temporarily allows Hector to heal MP when attacking a foe.,Permette temporaneamente ad Hector di recuperare i PM quando colpisce un nemico.,Le permite a Héctor temporalmente curar PM cuando ataca enemigos.,Permite temporariamente que Hector recupere PM ao atacar um inimigo.,Permet temporairement à Hector de récupérer des MP en attaquant un ennemi.,Laat Hector tijdelijk MP herstellen wanneer hij een vijand aanvalt.,
+TIME_HEAL,Time Heal,Guarigione continua,,,,,
+TIME_HEAL_DESC,Slowly heals Hector's HP and MP for a short period of time.,Recupera i PV ed i PM di Hector lentamente per un po'.,,,,,
 ,,,,,,,
 --Bestiary--,,,,,,,
 NAME_LABEL,Name,Nome,Nombre,Nome,,Naam,الأسم
