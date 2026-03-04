@@ -199,6 +199,7 @@
 [ext_resource type="Script" uid="uid://fq0v2mj1k0ga" path="res://SampleProject/Scripts/HectorAnims/HectorUppercut.gd" id="156_gp8oi"]
 [ext_resource type="AudioStream" uid="uid://cp0wlsu0kr46r" path="res://assets/sounds/Effects/HectorHit/HitFire.MP3" id="156_roqt5"]
 [ext_resource type="AudioStream" uid="uid://bya56k86ttxfv" path="res://assets/sounds/Effects/HectorHit/HitIce.MP3" id="157_an6m8"]
+[ext_resource type="Script" uid="uid://btn3dp1v3g3j" path="res://SampleProject/Scripts/HectorAnims/HectorShredder.gd" id="158_ypfsk"]
 [ext_resource type="Script" uid="uid://c8blox27vc6n4" path="res://SampleProject/Scripts/HectorAnims/HectorEarthquake.gd" id="159_kp546"]
 [ext_resource type="PackedScene" uid="uid://v7l5hlnmrasu" path="res://SampleProject/Powers/Axes/earthquake.tscn" id="160_8ddhv"]
 [ext_resource type="AudioStream" uid="uid://cr3vhib8t4q2a" path="res://assets/sounds/Effects/Swords/SwordSpin.WAV" id="160_oaxy7"]
@@ -232,6 +233,7 @@
 [ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="216_rbo1h"]
 [ext_resource type="Script" uid="uid://cetysgqumvdh6" path="res://SampleProject/Scripts/Powers/sword_spin.gd" id="223_cwl8n"]
 [ext_resource type="Texture2D" uid="uid://7a7gx1dlhids" path="res://assets/sprites/Weapons/Swords/AdaBoomerangSwing.png" id="225_cwl8n"]
+[ext_resource type="PackedScene" uid="uid://brn6khjn47oaf" path="res://SampleProject/Powers/Greatswords/shredder.tscn" id="233_8ddhv"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_ju6fn")
@@ -5245,6 +5247,7 @@ direct_physical_hit = true
 dive_kick = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/DiveStraightHitbox" unique_id=2000259751]
+visible = false
 position = Vector2(0.50000405, 20.5)
 shape = SubResource("RectangleShape2D_m4v07")
 disabled = true
@@ -5449,10 +5452,9 @@ attack_state = true
 script = ExtResource("17_tstub")
 blood = NodePath("../../BloodDamage")
 
-[node name="Damage_knockback" type="Node" parent="StateMachine" unique_id=2072712276 node_paths=PackedStringArray("ignore_landing")]
+[node name="Damage_knockback" type="Node" parent="StateMachine" unique_id=2072712276]
 script = ExtResource("121_4sdvf")
 recoil_speed = Vector2(250, -630)
-ignore_landing = NodePath("")
 metadata/_custom_type_script = "uid://djsyfeijyf8li"
 
 [node name="Damage_air" type="Node" parent="StateMachine" unique_id=96101769 node_paths=PackedStringArray("blood")]
@@ -5520,7 +5522,7 @@ recoil_speed = 400.0
 [node name="Guard_break" type="Node" parent="StateMachine" unique_id=260069116 node_paths=PackedStringArray("ignore_landing")]
 script = ExtResource("123_h7cmy")
 recoil_speed = Vector2(150, -630)
-ignore_landing = NodePath("")
+ignore_landing = NodePath("../Damage_mercy/IgnoreLanding")
 
 [node name="Guard_perfect" type="Node" parent="StateMachine" unique_id=615163960]
 script = ExtResource("133_qno2k")
@@ -5536,6 +5538,11 @@ script = ExtResource("138_q0p4k")
 sword_spin = NodePath("../../SwordSpin/Spin")
 sword_spin_hitbox = NodePath("../../SwordSpin/Spin/DisjointedPlayerHitbox/CollisionShape2D")
 attack_state = true
+
+[node name="Shredder" type="Node" parent="StateMachine" unique_id=277770109]
+script = ExtResource("158_ypfsk")
+shredder_scene = ExtResource("233_8ddhv")
+metadata/_custom_type_script = "uid://btn3dp1v3g3j"
 
 [node name="Throw_axe" type="Node" parent="StateMachine" unique_id=386797734]
 script = ExtResource("141_js2j3")

@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://brn6khjn47oaf"]
+
+[ext_resource type="Script" uid="uid://b2rk8r51haslh" path="res://SampleProject/Scripts/Powers/shredder.gd" id="1_gnvqi"]
+[ext_resource type="Script" uid="uid://gkvibd7oxi2i" path="res://SampleProject/Scripts/Powers/disjointed_player_hitbox.gd" id="1_qp0vv"]
+[ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="2_gnvqi"]
+[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="3_q05sd"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_hja56"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_6kxn5"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_8x1te"]
+[ext_resource type="AudioStream" uid="uid://dtqfaqn26ut0b" path="res://assets/sounds/HectorMovement/SwingGreatsword.MP3" id="7_qp0vv"]
+[ext_resource type="Texture2D" uid="uid://2k2u65dycquu" path="res://assets/sprites/Weapons/Greatswords/Durandal.png" id="8_bljob"]
+[ext_resource type="Texture2D" uid="uid://dkxgqvaj0gxh" path="res://assets/sprites/Weapons/Swords/Circle.png" id="9_qp0vv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to7n8"]
+size = Vector2(121, 120)
+
+[sub_resource type="Resource" id="Resource_gnvqi"]
+script = ExtResource("7_8x1te")
+Tag = "swing"
+stream = ExtResource("7_qp0vv")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_q05sd"]
+script = ExtResource("6_6kxn5")
+sound_effects = Array[ExtResource("7_8x1te")]([SubResource("Resource_gnvqi")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="Gradient" id="Gradient_acqb8"]
+colors = PackedColorArray(0.337255, 0.301961, 0.65098, 0.74902, 1, 0.74902, 0.752941, 0.129412)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gnvqi"]
+gradient = SubResource("Gradient_acqb8")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.153846, 0)
+fill_to = Vector2(0.44871795, 0.517094)
+
+[sub_resource type="Animation" id="Animation_1ggmk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_yhei5"]
+resource_name = "spin"
+length = 0.3334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PolyphonicAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["swing"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gnvqi"]
+resource_name = "spin_reverse"
+length = 0.3334
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sword:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PolyphonicAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["swing"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qb3pc"]
+_data = {
+&"RESET": SubResource("Animation_1ggmk"),
+&"spin": SubResource("Animation_yhei5"),
+&"spin_reverse": SubResource("Animation_gnvqi")
+}
+
+[node name="Shredder" type="Node2D" unique_id=1707562902 node_paths=PackedStringArray("sprite", "animation")]
+z_index = 6
+script = ExtResource("1_gnvqi")
+sprite = NodePath("Sword")
+animation = NodePath("AnimationPlayer")
+
+[node name="DisjointedPlayerHitbox" type="Area2D" parent="." unique_id=1160635680 node_paths=PackedStringArray("hitbox")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_qp0vv")
+dmg_multiplier = 0.7
+damage_boost = 4
+iframes_on_hit = 13
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("2_gnvqi")
+ice_hit_collision_scene = ExtResource("3_q05sd")
+base_attribute = Array[int]([2])
+metadata/_custom_type_script = "uid://gkvibd7oxi2i"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DisjointedPlayerHitbox" unique_id=152953026]
+visible = false
+position = Vector2(1.5, -1)
+shape = SubResource("RectangleShape2D_to7n8")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1763549427]
+bus = &"SFX"
+script = ExtResource("5_hja56")
+audio_library = SubResource("Resource_q05sd")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="Sword" type="Sprite2D" parent="." unique_id=210785697]
+scale = Vector2(-2, 2)
+texture = ExtResource("8_bljob")
+offset = Vector2(-18, -28)
+hframes = 11
+vframes = 2
+frame = 10
+
+[node name="Trail" type="Sprite2D" parent="Sword" unique_id=1066638311]
+modulate = Color(1, 1, 1, 0.657)
+clip_children = 1
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("9_qp0vv")
+
+[node name="Spin" type="TextureRect" parent="Sword/Trail" unique_id=1902679719]
+offset_right = 512.0
+offset_bottom = 512.0
+texture = SubResource("GradientTexture2D_gnvqi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1577215596]
+libraries/ = SubResource("AnimationLibrary_qb3pc")
+autoplay = &"spin"
+
+[connection signal="body_entered" from="DisjointedPlayerHitbox" to="DisjointedPlayerHitbox" method="_on_body_entered"]
