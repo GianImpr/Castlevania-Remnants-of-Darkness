@@ -210,6 +210,12 @@ func calculateDamage(body: Node2D, magical: bool = false) -> int:
 			offensive_stat = player.stats.Stats["STR"]/2
 		else:
 			offensive_stat = player.stats.Stats["ATK"]
+			
+	if Global.player.stats.canApplySkill(Skill.Skills.PERFORATION):
+		for element in actual_attributes:
+			if element in body.stats.weaknesses:
+				defensive_stat = 0
+				
 	var damage: int = max(offensive_stat - defensive_stat/2, 1) * dmg_multiplier + damage_boost
 	const STUD_OF_CONCENTRATION_BOOST: float = 1.07
 	const TIP_DAMAGE_MULTIPLIER: float = 1.2
