@@ -30,6 +30,7 @@ func exit():
 
 func Update(delta: float):
 	check_is_hurt()
+	can_fall(false)
 	
 	if not player.sprite.frame == SPIN_FRAME and not finished:
 		player.sprite.frame = SPIN_FRAME

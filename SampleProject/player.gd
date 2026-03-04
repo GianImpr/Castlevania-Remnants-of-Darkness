@@ -44,6 +44,7 @@ const AGUNI_LAUREL_COST_PER_SECOND: int = 15
 var aguni_mp_consumption: float = 0
 const AGUNI_COOLDOWN: float = 0.03
 var aguni_on_cooldown: bool = false
+const TIGHT_GUARD_COST: float = 20
 
 const STONE_OF_ALCHEMY_HEAL: int = 5
 const BLOOD_CLOAK_HEAL: int = 2
@@ -493,3 +494,9 @@ func disableCharge() -> void:
 
 func transitionToState(state: String) -> void:
 	state_machine.current_state.Transitioned.emit(state_machine.current_state, state)
+
+func checkTightGuard() -> void:
+	if stats.Stats["Guard"] == 1 and stats.canApplySkill(Skill.Skills.TIGHT_GUARD) and stats.Stats["FP"] >= TIGHT_GUARD_COST:
+			stats.Stats["Guard"] += 1
+			stats.Stats["FP"] -= TIGHT_GUARD_COST
+			GuardSparkle.tight_guard_sparkle = true

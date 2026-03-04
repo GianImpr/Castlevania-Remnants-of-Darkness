@@ -20,7 +20,9 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 		damage = max(base_damage + thrower_ATK - body.stats.Stats["RES"]/2, 1) * multiplier
 	else:
 		damage = max(base_damage + thrower_ATK - body.stats.Stats["DEF"]/2, 1) * multiplier
-		
+	
+	body.checkTightGuard()
+	
 	if body.isGuarding():
 		if destroy_on_block:
 			get_parent().destroy()

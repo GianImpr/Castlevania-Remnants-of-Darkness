@@ -42,12 +42,15 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 	const STONE_DAMAGE_MULTIPLIER: float = 2
 	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
 	const ENFEEBLE_DAMAGE_MULTIPLIER: float = 1.3
+	
+	body.checkTightGuard()
 
 	if body.isGuarding():
 		if body.isPerfectGuarding():
 			body.stats.Stats["MP"] = min(body.stats.Stats["MMP"], body.stats.Stats["MP"]+floor(damage/10)+10*(int(guard_break)+2))
 			body.heal_innocent(floor(damage/10)+1)
 			body.stats.Stats["Guard"] = 3
+			GuardSparkle.tight_guard_sparkle = false
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.PERFECT_GUARD)
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
 			return 0

@@ -51,12 +51,15 @@ func remove_glow_if_glowing():
 func calculate_damage(body, multiplier) -> int:
 	var damage
 	damage = max((stats.ATK - body.stats.Stats["DEF"]/2)*multiplier, 1)
-		
+	
+	body.checkTightGuard()
+	
 	if body.isGuarding():
 		if body.isPerfectGuarding():
 			body.stats.Stats["MP"] = min(body.stats.Stats["MMP"], body.stats.Stats["MP"]+floor(damage/10)+10)
 			body.heal_innocent(floor(damage/10)+1)
 			body.stats.Stats["Guard"] = 3
+			GuardSparkle.tight_guard_sparkle = false
 			return 0
 		if damage < body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1:
 			damage = 0
