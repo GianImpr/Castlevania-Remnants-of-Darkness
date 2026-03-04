@@ -74,6 +74,7 @@ enum Status {
 	POISON,
 	CURSE,
 	ENFEEBLE,
+	TIME_HEAL,
 	STONE
 }
 
@@ -81,6 +82,7 @@ func _input(event: InputEvent) -> void:
 	var compendiums = [weapon_compendium, artifact_compendium, relic_compendium, body_compendium, headgear_compendium, legs_compendium, accessory_compendium, item_compendium.Compendium, skill_compendium]
 	var inventories = [weapon_inventory, artifact_inventory, relic_inventory, body_inventory, head_inventory, legs_inventory, acc_inventory, item_inventory, skill_inventory]
 	if event.is_action_released("debug"):
+		Global.player.unlockMagic()
 		for i in range(0, compendiums.size()):
 			for j in range(1, compendiums[i].size()+1):
 				addItem(j, inventories[i], 9)

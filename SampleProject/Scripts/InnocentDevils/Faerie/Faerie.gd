@@ -13,7 +13,8 @@ var current_skill: Ability = Ability.HEAL
 
 enum Ability {
 	HEAL,
-	REFRESHING_AIR
+	REFRESHING_AIR,
+	TIME_HEAL
 }
 
 func _ready() -> void:
@@ -25,8 +26,13 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("next_skill"):
 		current_skill = (current_skill+1)%stats.skills.size()
+		while not stats.skills[current_skill].unlocked:
+			current_skill = (current_skill+1)%stats.skills.size()
 	elif Input.is_action_just_pressed("previous_skill"):
 		current_skill = (current_skill-1)%stats.skills.size()
+		while not stats.skills[current_skill].unlocked:
+			current_skill = (current_skill-1)%stats.skills.size()
+
 		
 func _physics_process(delta: float) -> void:
 	move_and_slide()

@@ -25,6 +25,8 @@ class_name HectorPlayer
 @export var reset_guard_presses_timer: Timer
 @export_category("Buff nodes")
 @export var confidence_ring_timer: Timer
+@export var time_heal_timer: Timer
+@export var time_heal_particles: GPUParticles2D
 @export_category("Charge nodes")
 @export var charge_sprite: Sprite2D
 @export var charge_anim: AnimationPlayer
@@ -45,6 +47,8 @@ var aguni_mp_consumption: float = 0
 const AGUNI_COOLDOWN: float = 0.03
 var aguni_on_cooldown: bool = false
 const TIGHT_GUARD_COST: float = 20
+const TIME_HEAL_HP_POWER: int = 4
+const TIME_HEAL_MP_POWER: int = 2
 
 const STONE_OF_ALCHEMY_HEAL: int = 5
 const BLOOD_CLOAK_HEAL: int = 2
@@ -500,3 +504,18 @@ func checkTightGuard() -> void:
 			stats.Stats["Guard"] += 1
 			stats.Stats["FP"] -= TIGHT_GUARD_COST
 			GuardSparkle.tight_guard_sparkle = true
+			
+func applyTimeHeal() -> void:
+	if not time_heal_timer.timeout.is_connected(timeHealTick):
+		time_heal_timer.timeout.connect(timeHealTick)
+	Global.player.stats.status[Global.player.stats.Status.TIME_HEAL] = 15
+	time_heal_particles.emitting = true
+	time_heal_particles.one_shot = false
+	time_heal_timer.start()
+
+func timeHealTick() -> void:
+	if Global.player.stats.status[Global.player.stats.Status.TIME_HEAL] <= 0:
+		time_heal_timer.stop()
+		time_heal_particles.one_shot = true
+	heal(TIME_HEAL_HP_POWER, false)
+	healMP(TIME_HEAL_MP_POWER, Vector2(0,28))

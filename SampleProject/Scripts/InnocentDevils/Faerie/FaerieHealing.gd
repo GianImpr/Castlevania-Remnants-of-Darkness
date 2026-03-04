@@ -6,7 +6,8 @@ class_name FaerieHealing
 var skill_id: int
 var skills: Array[Callable] = [
 	heal,
-	refreshingAir
+	refreshingAir,
+	timeHeal
 ]
 
 func enter():
@@ -33,6 +34,10 @@ func refreshingAir() -> void:
 	var refreshing_air = refreshing_air_scene.instantiate()
 	Global.player.add_child(refreshing_air)
 	refreshing_air.position.y += 30
+	
+func timeHeal() -> void:
+	setSoundAndParticles("heal_effect", Color(0.3,0.7,1))
+	Global.player.applyTimeHeal()
 	
 func setSoundAndParticles(sound_name: String, color: Color) -> void:
 	magic_particles.self_modulate = color

@@ -8,6 +8,7 @@ class_name IDSkill
 @export var power: int
 @export var multiplier: float
 @export var type: Type
+@export var unlocked: bool
 @export_category("Synergy")
 @export var synergy_engager: bool
 @export var icon: CompressedTexture2D
