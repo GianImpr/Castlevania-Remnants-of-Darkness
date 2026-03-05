@@ -282,6 +282,7 @@ func save_game():
 	var save_manager := SaveManager.new()
 	save_manager.set_value("stats", player.stats)
 	save_manager.set_value("generated_rooms", generated_rooms)
+	save_manager.set_value("facing_position", Global.player.facing_position)
 	save_manager.set_value("current_room", MetSys.get_current_room_name())
 	save_manager.set_value("unlocked_magic", player.unlocked_magic)
 	save_manager.set_value("innocent_devil_scene", player.innocent_devil_scene)
@@ -327,6 +328,9 @@ func load_game():
 	player.stats = stats
 	generated_rooms.assign(save_manager.get_value("generated_rooms"))
 	player.unlocked_magic = save_manager.get_value("unlocked_magic")
+	player.facing_position = save_manager.get_value("facing_position")
+	if player.facing_position == -1:
+		player.sprite.flip_h = true
 	player.innocent_devil_pocket = save_manager.get_value("innocent_devil_pocket")
 	player.innocent_devil_scene = save_manager.get_value("innocent_devil_scene")
 	player.summoned_innocent_devil_id = save_manager.get_value("current_innocent_devil")
@@ -342,7 +346,7 @@ func load_game():
 	Global.player.stats.file_name = save_manager.get_value("file_name")
 	Global.player.stats.map_ratio = save_manager.get_value("map_ratio")
 	if save_manager.get_value("position") != null:
-		Global.player.global_position = save_manager.get_value("position") + Vector2(30, 0)
+		Global.player.global_position = save_manager.get_value("position") + Vector2(30*player.facing_position, 50)
 	else:
 		player.position = Vector2(259, 287)
 		
@@ -359,7 +363,11 @@ func load_game():
 		player.innocent_devil = player.innocent_devil_scene.instantiate()
 		player.innocent_devil_pocket[player.summoned_innocent_devil_id].applyStats(player.innocent_devil)
 		player.get_parent().add_child(player.innocent_devil)
-		player.innocent_devil.global_position = player.global_position + Vector2(75, -50)
+		player.innocent_devil.facing_position = Global.player.facing_position * (-1)
+		if player.innocent_devil.facing_position == 1:
+			player.innocent_devil.scale.x *= -1
+		player.innocent_devil.global_position = player.global_position + Vector2(75*player.innocent_devil.facing_position*(-1), -50)
+
 	
 	player.pocket_size = save_manager.get_value("pocket_size")
 	var weapon_path = save_manager.get_value("weapon")
