@@ -5458,9 +5458,10 @@ attack_state = true
 script = ExtResource("17_tstub")
 blood = NodePath("../../BloodDamage")
 
-[node name="Damage_knockback" type="Node" parent="StateMachine" unique_id=2072712276]
+[node name="Damage_knockback" type="Node" parent="StateMachine" unique_id=2072712276 node_paths=PackedStringArray("ignore_landing")]
 script = ExtResource("121_4sdvf")
 recoil_speed = Vector2(250, -630)
+ignore_landing = NodePath("../Damage_mercy/IgnoreLanding")
 metadata/_custom_type_script = "uid://djsyfeijyf8li"
 
 [node name="Damage_air" type="Node" parent="StateMachine" unique_id=96101769 node_paths=PackedStringArray("blood")]

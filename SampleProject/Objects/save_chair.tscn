@@ -537,7 +537,7 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 size = Vector2(35, 325)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcuoa"]
-size = Vector2(2, 135)
+size = Vector2(4, 135)
 
 [sub_resource type="Resource" id="Resource_d7cj6"]
 script = ExtResource("7_1tx46")
@@ -599,10 +599,10 @@ position = Vector2(-11.5, -93.5)
 shape = SubResource("RectangleShape2D_mtshg")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1824074910]
-collision_mask = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2094555694]
-position = Vector2(10, 3)
+position = Vector2(11, 3)
 shape = SubResource("RectangleShape2D_wcuoa")
 
 [node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1304074429]

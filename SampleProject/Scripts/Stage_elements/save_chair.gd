@@ -13,7 +13,7 @@ var save_menu: InGameMenu
 func _ready() -> void:
 	save_menu = save_menu_scene.instantiate()
 	add_child(save_menu)
-	get_tree().create_timer(0.1).timeout.connect(detect_hitbox.set_deferred.bind("monitoring", true))
+	get_tree().create_timer(0.1).timeout.connect(detect_hitbox.set_collision_mask_value.bind(2, true))
 
 func _process(delta: float) -> void:
 	player_state = Global.player.state_machine.current_state
@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		
 	if player_state is HectorSitDown and not player_state.animation.is_playing() and Input.is_action_just_pressed("circle")  and not opened_menu:
 		player_state.Transitioned.emit(player_state, "stand_up")
-		if detect_hitbox.monitoring:
+		if detect_hitbox.get_collision_mask_value(2) and detect_hitbox.overlaps_area(Global.player.hurtbox_area):
 			Global.player.tap_up.appear()
 
 
@@ -47,7 +47,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	if detect_hitbox.monitoring:
+	if detect_hitbox.get_collision_mask_value(2):
 		can_sit = false
 		if Global.player != null:
 			Global.player.tap_up.dismiss()

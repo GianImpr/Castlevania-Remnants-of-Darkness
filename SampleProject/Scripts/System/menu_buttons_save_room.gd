@@ -47,7 +47,7 @@ func _saveGame():
 		chair_node.sound.play_sound_effect_from_library("activate")
 		chair_node.animation.play("flash")
 		await chair_node.animation.animation_finished
-		chair_node.detect_hitbox.monitoring = false
+		chair_node.detect_hitbox.set_collision_mask_value(2, false)
 		chair_node.can_sit = false
 		if not Global.player.stats.hint_flags[stand_up_flag_id]:
 			Global.tutorial_box.activate = true
