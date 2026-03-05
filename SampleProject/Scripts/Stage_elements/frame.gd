@@ -20,13 +20,13 @@ func _input(event: InputEvent) -> void:
 
 		
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	if Global.player.stats.dialogue_flags[FIRST_TRIO_DIALOGUE]:
 		inside_area = true
 		Global.player.tap_up.appear()
 
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_area_2d_area_exited(area: Area2D) -> void:
 	if Global.player.stats.dialogue_flags[FIRST_TRIO_DIALOGUE]:
 		inside_area = false
 		if Global.player:

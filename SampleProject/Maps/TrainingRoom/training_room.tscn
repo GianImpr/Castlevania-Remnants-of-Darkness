@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b15fvv131wq0u"]
+[gd_scene format=3 uid="uid://b15fvv131wq0u"]
 
 [ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_r6isx"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_xkcj3"]
@@ -999,7 +999,7 @@ normal = Vector2(-1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lh1pq"]
 normal = Vector2(0, 1)
 
-[node name="TrainingRoom" type="Node2D"]
+[node name="TrainingRoom" type="Node2D" unique_id=1703145380]
 script = ExtResource("1_r6isx")
 stage_music = "encounter"
 change_music = true
@@ -1009,20 +1009,20 @@ camera_limit_right = 848
 camera_limit_bottom = 448
 metadata/_custom_type_script = "uid://cra3c457tg2j7"
 
-[node name="RoomInstance" parent="." instance=ExtResource("2_xkcj3")]
+[node name="RoomInstance" parent="." unique_id=1611455925 instance=ExtResource("2_xkcj3")]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1691910959]
 self_modulate = Color(1, 1, 1, 0.69803923)
 tile_set = SubResource("TileSet_lh1pq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=502355511]
 self_modulate = Color(0.5294118, 0.654902, 1, 1)
 show_behind_parent = true
 position = Vector2(432, 16)
 scale = Vector2(2, 2)
 texture = ExtResource("4_xkcj3")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=773113122]
 position = Vector2(411, 104)
 amount = 20
 emission_shape = 3
@@ -1037,36 +1037,36 @@ scale_amount_curve = SubResource("Curve_r6isx")
 color = Color(1.8247963, 1.8247963, 1.8247963, 1)
 color_ramp = SubResource("Gradient_xkcj3")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=790181790]
 collision_layer = 65
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=803844142]
 position = Vector2(356, 435)
 shape = SubResource("WorldBoundaryShape2D_onwft")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=469763049]
 position = Vector2(15, 314)
 shape = SubResource("WorldBoundaryShape2D_f6bll")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1919147904]
 position = Vector2(849, 291)
 shape = SubResource("WorldBoundaryShape2D_xkcj3")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=925430176]
 position = Vector2(411, 0)
 shape = SubResource("WorldBoundaryShape2D_lh1pq")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=155702423]
 position = Vector2(411, -170)
 shape = SubResource("WorldBoundaryShape2D_lh1pq")
 
-[node name="TrainingSettings" type="Node" parent="." node_paths=PackedStringArray("enemy_spawner", "enemy_spawner_2")]
+[node name="TrainingSettings" type="Node" parent="." unique_id=2085073969 node_paths=PackedStringArray("enemy_spawner", "enemy_spawner_2")]
 script = ExtResource("5_onwft")
 enemy_spawner = NodePath("../SpawnEnemy")
 enemy_spawner_2 = NodePath("../SpawnEnemy2")
 pick_up_scene = ExtResource("7_lh1pq")
 
-[node name="SpawnEnemy" parent="." instance=ExtResource("6_f6bll")]
+[node name="SpawnEnemy" parent="." unique_id=1504141663 instance=ExtResource("6_f6bll")]
 process_mode = 4
 position = Vector2(700, 434)
 spawn_instantly = true
@@ -1074,7 +1074,7 @@ automatic_offset = true
 enemy_count = 1
 max_at_once = 1
 
-[node name="SpawnEnemy2" parent="." instance=ExtResource("6_f6bll")]
+[node name="SpawnEnemy2" parent="." unique_id=1466071553 instance=ExtResource("6_f6bll")]
 process_mode = 4
 position = Vector2(160, 434)
 spawn_instantly = true

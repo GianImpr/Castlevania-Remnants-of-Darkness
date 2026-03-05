@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://5fb0njj5o06d"]
+[gd_scene format=3 uid="uid://5fb0njj5o06d"]
 
 [ext_resource type="Script" uid="uid://cgkm1v8ta1s47" path="res://SampleProject/Scripts/Stage_elements/frame.gd" id="1_h3ehx"]
 [ext_resource type="Texture2D" uid="uid://dxeec21cts246" path="res://assets/sprites/Tiles/TrainingRoom.png" id="1_m23ep"]
@@ -111,35 +111,6 @@ tracks/6/keys = {
 "values": [20]
 }
 
-[sub_resource type="Animation" id="Animation_m23ep"]
-resource_name = "idle"
-length = 3.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -40)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D2:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 3),
-"transitions": PackedFloat32Array(-2, -2, -2),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0.81960785, 0.8509804, 1), Color(0.74509805, 0.7254902, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_2hwur"]
 resource_name = "activate"
 length = 2.0
@@ -218,6 +189,35 @@ tracks/5/keys = {
 "values": [40]
 }
 
+[sub_resource type="Animation" id="Animation_m23ep"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.81960785, 0.8509804, 1), Color(0.74509805, 0.7254902, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h3ehx"]
 _data = {
 &"RESET": SubResource("Animation_h3ehx"),
@@ -237,21 +237,21 @@ stream = ExtResource("7_uo6m7")
 script = ExtResource("5_nnu1a")
 sound_effects = Array[ExtResource("6_877ya")]([SubResource("Resource_d7cj6")])
 
-[node name="Frame" type="Node2D" node_paths=PackedStringArray("animation")]
+[node name="Frame" type="Node2D" unique_id=267099595 node_paths=PackedStringArray("animation")]
 process_mode = 3
 script = ExtResource("1_h3ehx")
 animation = NodePath("AnimationPlayer")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=876602661]
 position = Vector2(-450, -371.20007)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_2qrt3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=432356298]
 scale = Vector2(2, 2)
 texture = ExtResource("2_h3ehx")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1209061001]
 position = Vector2(0, 20)
 amount = 20
 lifetime = 2.0
@@ -269,7 +269,7 @@ color = Color(1, 0.6745098, 0, 1)
 color_ramp = SubResource("Gradient_h3ehx")
 color_initial_ramp = SubResource("Gradient_2qrt3")
 
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=1213641488]
 amount = 20
 lifetime = 2.0
 preprocess = 1.0
@@ -286,26 +286,24 @@ color = Color(1, 0, 0, 1)
 color_ramp = SubResource("Gradient_h3ehx")
 color_initial_ramp = SubResource("Gradient_2qrt3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_h3ehx")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=405388227]
+libraries/ = SubResource("AnimationLibrary_h3ehx")
+autoplay = &"idle"
 
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Node" parent="." unique_id=1436921577]
 
-[node name="Area2D" type="Area2D" parent="Node"]
+[node name="Area2D" type="Area2D" parent="Node" unique_id=1492658526]
 position = Vector2(757, 342)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Area2D" unique_id=1720987070]
 position = Vector2(0, 129.01944)
 shape = SubResource("RectangleShape2D_h3ehx")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=337105507]
 script = ExtResource("4_uwina")
 audio_library = SubResource("Resource_56vvf")
 
-[connection signal="body_entered" from="Node/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Node/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="Node/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Node/Area2D" to="." method="_on_area_2d_area_exited"]
