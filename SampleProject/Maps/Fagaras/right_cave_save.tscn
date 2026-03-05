@@ -830,6 +830,9 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_tv067")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ilwnf"]
+normal = Vector2(0, 1)
+
 [node name="Room" type="Node2D" unique_id=1424203895]
 script = ExtResource("1_2pxn8")
 stage_music = "save_room"
@@ -880,3 +883,10 @@ position = Vector2(857, -90)
 [node name="SaveAirCandle2" parent="." unique_id=306453277 instance=ExtResource("9_f2amd")]
 position = Vector2(140, -90)
 scale = Vector2(-1.04, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=435563688]
+position = Vector2(-278, 81)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1961472835]
+position = Vector2(940, -143)
+shape = SubResource("WorldBoundaryShape2D_ilwnf")
