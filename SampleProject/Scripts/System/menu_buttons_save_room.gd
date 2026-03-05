@@ -69,13 +69,23 @@ func _openWarpScreen() -> void:
 
 
 func warp():
+	const NORMAL_POSITION: Vector2 = Vector2(232,282)
+	const FLIPPED_POSITION: Vector2 = Vector2(726,282)
 	const FINAL_WARP_COLOR: Color = Color(0.5, 1.5, 0, 0)
 	const FINAL_SCALE: Vector2 = Vector2(0, 4)
 	const POSITION_OFFSET: Vector2 = Vector2(0, -50)
 	const TWEEN_DURATION: float = 1.5
 	const DELAY: float = 1.2
 	var warp_tween: Tween = get_tree().create_tween()
-	var cur_position: Vector2 = Global.player.global_position
+	var cur_position: Vector2
+	var destination_flipped: bool = warp_screen.destination_flip
+
+	if destination_flipped:
+		cur_position = FLIPPED_POSITION
+	else:
+		cur_position = NORMAL_POSITION
+	cur_position.y = Global.player.global_position.y
+		
 	chair_node.sound.play_sound_effect_from_library("activate")
 	warp_tween.pause()
 	warp_tween.set_parallel(true)
@@ -86,6 +96,8 @@ func warp():
 	chair_node.animation.play("warp_flash")
 	await chair_node.animation.animation_finished
 	resumeGame()
+	Global.player.facing_position = -1 if destination_flipped else 1
+	Global.player.sprite.flip_h = destination_flipped
 	Global.change_area.emit(warp_screen.destination_selected, cur_position)
 
 	

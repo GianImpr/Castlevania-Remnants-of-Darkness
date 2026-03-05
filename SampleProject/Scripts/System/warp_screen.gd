@@ -10,6 +10,7 @@ const BUTTON_DISABLED_COLOR: Color = Color.DIM_GRAY
 @export var preview: TextureRect #950x950
 var available_destinations: Array[int]
 var destination_selected: String = ""
+var destination_flip: bool = false
 var cur_button: int = 0
 var stylebox_empty: StyleBoxEmpty = StyleBoxEmpty.new()
 @warning_ignore("unused_signal")
@@ -56,5 +57,6 @@ func _on_button_focused(which) -> void:
 	
 func _on_button_pressed(which) -> void:
 	destination_selected = Game.get_singleton().save_rooms[available_destinations[which.get_index()]]["path"]
+	destination_flip = Game.get_singleton().save_rooms[available_destinations[which.get_index()]]["flip"]
 	sound.play_sound_effect_from_library("confirm")
 	animation.play_backwards("disappear")
