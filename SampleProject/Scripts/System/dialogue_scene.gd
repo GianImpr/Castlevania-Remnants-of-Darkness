@@ -136,7 +136,7 @@ func setText(dialogue: String, emotion: Dialogue.Emotions = Dialogue.Emotions.KE
 
 		
 	text.visible_characters = 0
-	if not animation.is_playing():
+	if not animation.is_playing() or animation.current_animation == "swap":
 		cursor.visible = false
 	text.text = tr(dialogue)
 	wait_timer.wait_time = NORMAL_DIALOGUE_WAIT_TIME
