@@ -1,20 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://dsgptwmrb4dyu"]
+[gd_scene format=3 uid="uid://dsgptwmrb4dyu"]
 
 [ext_resource type="Script" uid="uid://bnxx66pvx38ud" path="res://SampleProject/Scripts/Stage_elements/breakable_wall.gd" id="1_5cnbf"]
 [ext_resource type="PackedScene" uid="uid://cqcotgixr17x7" path="res://SampleProject/extra_scenes/stage_elements/wall.tscn" id="1_8km6x"]
 [ext_resource type="Script" uid="uid://co2dffa7rp4qa" path="res://SampleProject/Scripts/Stage_elements/DestructibleBody.gd" id="2_wjuk1"]
-[ext_resource type="Texture2D" uid="uid://c04vxsdtq4ws2" path="res://assets/sprites/Effects/Debris2.png" id="3_go1y0"]
+[ext_resource type="Texture2D" uid="uid://b4a1k8vq34mwf" path="res://assets/sprites/Effects/Debris.png" id="4_i34y1"]
 [ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_7hmgm"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_fucua"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_n0404"]
 [ext_resource type="AudioStream" uid="uid://ci4gtdwh6bnd0" path="res://assets/sounds/Objects/WallDamage.MP3" id="8_md5ta"]
 [ext_resource type="AudioStream" uid="uid://svjxleypen1h" path="res://assets/sounds/Objects/WallBreak.MP3" id="9_1okk0"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0orsv"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_318pj"]
 particles_animation = true
-particles_anim_h_frames = 11
+particles_anim_h_frames = 10
 particles_anim_v_frames = 1
-particles_anim_loop = true
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_muxw3"]
+offsets = PackedFloat32Array(0, 0.69411767, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.027450979, 1, 1, 1, 0)
 
 [sub_resource type="Resource" id="Resource_2533x"]
 script = ExtResource("7_n0404")
@@ -33,17 +37,17 @@ sound_effects = Array[ExtResource("7_n0404")]([SubResource("Resource_2533x"), Su
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r03i3"]
 size = Vector2(32, 96)
 
-[node name="BreakableWall" type="Node2D" node_paths=PackedStringArray("breaking_particles", "wall", "sound", "collision_box")]
+[node name="BreakableWall" type="Node2D" unique_id=744760839 node_paths=PackedStringArray("breaking_particles", "wall", "sound", "collision_box")]
 script = ExtResource("1_5cnbf")
 breaking_particles = NodePath("Breaking")
 wall = NodePath("Node2D/Wall")
 sound = NodePath("PolyphonicAudio")
 collision_box = NodePath("CollisionBox/CollisionShape2D")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="." unique_id=1970903508]
 modulate = Color(0.533333, 0.670588, 1, 1)
 
-[node name="Wall" parent="Node2D" instance=ExtResource("1_8km6x")]
+[node name="Wall" parent="Node2D" unique_id=2129280130 instance=ExtResource("1_8km6x")]
 collision_layer = 1
 script = ExtResource("2_wjuk1")
 blocks_per_side = 8
@@ -55,11 +59,11 @@ collision_layers = 12
 collision_masks = 12
 SPEED = Vector2(-400, 0)
 
-[node name="Breaking" type="CPUParticles2D" parent="."]
-material = SubResource("CanvasItemMaterial_0orsv")
+[node name="Breaking" type="CPUParticles2D" parent="." unique_id=30303179]
+material = SubResource("CanvasItemMaterial_318pj")
 emitting = false
 amount = 24
-texture = ExtResource("3_go1y0")
+texture = ExtResource("4_i34y1")
 lifetime = 0.7
 one_shot = true
 emission_shape = 3
@@ -67,20 +71,21 @@ emission_rect_extents = Vector2(10, 42)
 gravity = Vector2(0, 0)
 scale_amount_min = 2.0
 scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_muxw3")
 anim_speed_min = 2.0
 anim_speed_max = 2.0
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1068625073]
 volume_db = 3.0
 script = ExtResource("5_7hmgm")
 audio_library = SubResource("Resource_3ibxi")
 
-[node name="CollisionBox" type="RigidBody2D" parent="."]
+[node name="CollisionBox" type="RigidBody2D" parent="." unique_id=1469373402]
 collision_layer = 4
 collision_mask = 0
 lock_rotation = true
 freeze = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBox" unique_id=691001860]
 visible = false
 shape = SubResource("RectangleShape2D_r03i3")
