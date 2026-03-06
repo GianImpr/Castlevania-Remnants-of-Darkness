@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://428fif48ts8b"]
+
+[ext_resource type="Script" uid="uid://bnxx66pvx38ud" path="res://SampleProject/Scripts/Stage_elements/breakable_wall.gd" id="1_0caa0"]
+[ext_resource type="PackedScene" uid="uid://26k2pe2l3rnw" path="res://SampleProject/extra_scenes/stage_elements/waterway_wall.tscn" id="2_eddx8"]
+[ext_resource type="Script" uid="uid://co2dffa7rp4qa" path="res://SampleProject/Scripts/Stage_elements/DestructibleBody.gd" id="3_eddx8"]
+[ext_resource type="Texture2D" uid="uid://b4a1k8vq34mwf" path="res://assets/sprites/Effects/Debris.png" id="3_n2k8d"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_6ml1k"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_axcin"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_7gbpu"]
+[ext_resource type="AudioStream" uid="uid://ci4gtdwh6bnd0" path="res://assets/sounds/Objects/WallDamage.MP3" id="7_olgs3"]
+[ext_resource type="AudioStream" uid="uid://svjxleypen1h" path="res://assets/sounds/Objects/WallBreak.MP3" id="8_4o86b"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_318pj"]
+particles_animation = true
+particles_anim_h_frames = 10
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_muxw3"]
+offsets = PackedFloat32Array(0, 0.69411767, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.027450979, 1, 1, 1, 0)
+
+[sub_resource type="Resource" id="Resource_2533x"]
+script = ExtResource("6_7gbpu")
+Tag = "damage"
+stream = ExtResource("7_olgs3")
+
+[sub_resource type="Resource" id="Resource_86dg1"]
+script = ExtResource("6_7gbpu")
+Tag = "break"
+stream = ExtResource("8_4o86b")
+
+[sub_resource type="Resource" id="Resource_3ibxi"]
+script = ExtResource("5_axcin")
+sound_effects = Array[ExtResource("6_7gbpu")]([SubResource("Resource_2533x"), SubResource("Resource_86dg1")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r03i3"]
+size = Vector2(32, 96)
+
+[node name="BreakableWall" type="Node2D" unique_id=744760839 node_paths=PackedStringArray("breaking_particles", "wall", "sound", "collision_box")]
+script = ExtResource("1_0caa0")
+breaking_particles = NodePath("Breaking")
+wall = NodePath("Node2D/object")
+sound = NodePath("PolyphonicAudio")
+collision_box = NodePath("CollisionBox/CollisionShape2D")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1970903508]
+modulate = Color(0.654902, 0.6666667, 1, 1)
+
+[node name="object" parent="Node2D" unique_id=1339386508 instance=ExtResource("2_eddx8")]
+script = ExtResource("3_eddx8")
+blocks_per_side = 8
+blocks_impulse = 300.0
+blocks_gravity_scale = 0.7
+debris_max_time = 2.0
+remove_debris = true
+collision_layers = 12
+collision_masks = 12
+SPEED = Vector2(-400, 0)
+
+[node name="Breaking" type="CPUParticles2D" parent="." unique_id=30303179]
+material = SubResource("CanvasItemMaterial_318pj")
+emitting = false
+amount = 24
+texture = ExtResource("3_n2k8d")
+lifetime = 0.7
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(10, 53)
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_muxw3")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1068625073]
+volume_db = 3.0
+script = ExtResource("4_6ml1k")
+audio_library = SubResource("Resource_3ibxi")
+
+[node name="CollisionBox" type="RigidBody2D" parent="." unique_id=1469373402]
+collision_layer = 4
+collision_mask = 0
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBox" unique_id=691001860]
+visible = false
+shape = SubResource("RectangleShape2D_r03i3")

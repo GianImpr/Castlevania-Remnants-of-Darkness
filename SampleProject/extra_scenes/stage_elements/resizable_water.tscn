@@ -116,5 +116,7 @@ script = ExtResource("4_bifbc")
 audio_library = SubResource("Resource_v87x7")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
+[connection signal="area_entered" from="Sprite2D2/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Sprite2D2/Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Sprite2D2/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Sprite2D2/Area2D" to="." method="_on_area_2d_body_exited"]

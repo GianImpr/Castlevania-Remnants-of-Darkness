@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
 uniform float hue_shift: hint_range(0.0, 1.0) = 0.0;
+uniform float intensity: hint_range(0.0, 1.0) = 0.0;
 
 vec4 shift_hue(in vec4 color, in float shift) {
 	// The unit gray vector in RGB color space.
@@ -17,5 +18,8 @@ vec4 shift_hue(in vec4 color, in float shift) {
 }
 
 void fragment() {
-	COLOR = shift_hue(texture(TEXTURE, UV), hue_shift);
+	COLOR = shift_hue(texture(TEXTURE, UV), hue_shift) * intensity;
+	if (COLOR.a > 0.0) {
+		COLOR.a = 1.0;
+	}
 }

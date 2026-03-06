@@ -382,6 +382,9 @@ func can_turnaround_with_scale() -> void:
 
 func horizontal_distance_from_player() -> float:
 	return abs(Global.player.global_position.x - player.global_position.x)
+	
+func vertical_distance_from_player() -> float:
+	return abs(Global.player.global_position.y - player.global_position.y)
 
 func enemy_can_die(with_misc_items: bool = true) -> void:
 	if player.stats.HP <= 0:

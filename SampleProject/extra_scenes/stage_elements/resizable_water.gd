@@ -39,6 +39,12 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		if body.velocity.y < 0:
 			triggerBigSplash(body)
 		track_bodies.erase(body)
+		
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	_on_area_2d_body_entered(area.get_parent())
+	
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	_on_area_2d_body_exited(area.get_parent())
 
 func triggerBigSplash(body: Node2D) -> void:
 	var big_splash = big_water_splash.instantiate()

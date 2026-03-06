@@ -365,6 +365,7 @@
 [ext_resource type="AudioStream" uid="uid://btdetdcgv2x4p" path="res://assets/music/GameOver.mp3" id="274_30jyd"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="274_mxxml"]
 [ext_resource type="PackedScene" uid="uid://jq8urid718wn" path="res://SampleProject/extra_scenes/game_over_screen.tscn" id="283_3wcg1"]
+[ext_resource type="AudioStream" uid="uid://rcd8exs6eagu" path="res://assets/music/CrystalTeardrops.ogg" id="339_gvdo1"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_6ajcc")
@@ -4480,9 +4481,15 @@ Tag = "game_over"
 stream = ExtResource("274_30jyd")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
+[sub_resource type="Resource" id="Resource_iixkq"]
+script = ExtResource("10_etx3r")
+Tag = "teardrops"
+stream = ExtResource("339_gvdo1")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_8tj7q"]
 script = ExtResource("8_afqo1")
-sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj"), SubResource("Resource_d34sg"), SubResource("Resource_b4g4d"), SubResource("Resource_6q42e"), SubResource("Resource_mxxml"), SubResource("Resource_w5jos")])
+sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj"), SubResource("Resource_d34sg"), SubResource("Resource_b4g4d"), SubResource("Resource_6q42e"), SubResource("Resource_mxxml"), SubResource("Resource_w5jos"), SubResource("Resource_iixkq")])
 
 [sub_resource type="Gradient" id="Gradient_0dip4"]
 offsets = PackedFloat32Array(0, 0.989418)
@@ -4718,7 +4725,7 @@ save_rooms = Array[Dictionary]([{
 "path": "Hideout/save_room.tscn"
 }])
 element_icons = Array[CompressedTexture2D]([ExtResource("216_wblab"), ExtResource("217_gdkcj"), ExtResource("218_xw0ho"), ExtResource("219_m5fjj"), ExtResource("220_vyah2"), ExtResource("221_n18wm"), ExtResource("222_p6otc"), ExtResource("222_t1r3v"), ExtResource("223_p32iy"), ExtResource("224_b3tfu"), ExtResource("225_v5wqb"), ExtResource("226_krr36")])
-starting_map = "FirstLevel/Woods.tscn"
+starting_map = "Waterway/waterway_entrance.tscn"
 
 [node name="Player" parent="." unique_id=2045510482 instance=ExtResource("5_81k16")]
 z_index = 5

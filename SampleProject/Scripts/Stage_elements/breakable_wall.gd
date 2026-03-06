@@ -27,9 +27,10 @@ func takeDamage() -> void:
 		broken = true
 		collision_box.set_deferred("disabled", true)
 		wall.detonate()
-		var item = item_scene.instantiate()
-		item.z_index = 10
-		item.pickup_flag = pick_up_flag
-		item.set_deferred("global_position", global_position)
-		MetSys.get_current_room_instance().call_deferred("add_child", item)
+		if item_scene:
+			var item = item_scene.instantiate()
+			item.z_index = 10
+			item.pickup_flag = pick_up_flag
+			item.set_deferred("global_position", global_position)
+			MetSys.get_current_room_instance().call_deferred("add_child", item)
 		sound.play_sound_effect_from_library("break")

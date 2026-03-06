@@ -29,6 +29,7 @@ func on_button_pressed(which):
 			which.release_focus()
 			_saveGame()
 		1:
+			which.release_focus()
 			_openWarpScreen()
 		2:
 			which.release_focus()

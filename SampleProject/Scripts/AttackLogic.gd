@@ -66,7 +66,7 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 		body.get_parent().takeDamage()
 		return
 	# Hitting an object that isn't a candle
-	if body is RigidBody2D or body is StaticBody2D and "stats" in body:
+	if (body is RigidBody2D or body is StaticBody2D) and "stats" in body:
 		if body.stats.effect_on_destroy:
 			createEffects(body, physical_based_sound)
 		if "stats" in body and body.stats.destructible:

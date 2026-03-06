@@ -429,7 +429,7 @@ _data = {
 size = Vector2(14.5, 38.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6md3o"]
-size = Vector2(311.5, 27)
+size = Vector2(458.5, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csxok"]
 size = Vector2(24.5, 46)
@@ -486,9 +486,9 @@ metadata/_custom_type_script = "uid://jpd31rlnmjom"
 script = ExtResource("2_hjvh7")
 enemy_name = "MERMAN"
 LV = 13
-HP = 30
+HP = 45
 ATK = 27
-EXP = 10
+EXP = 20
 weaknesses = Array[int]([1, 2, 5])
 tolerances = Array[int]([3, 4])
 metadata/_custom_type_script = "uid://dwqs3a3odtwne"
@@ -570,7 +570,7 @@ collision_mask = 2
 
 [node name="Vision" type="CollisionShape2D" parent="VisionArea" unique_id=1446241469]
 visible = false
-position = Vector2(-6.25, -4)
+position = Vector2(-0.25, -4)
 shape = SubResource("RectangleShape2D_6md3o")
 debug_color = Color(0, 0.6396028, 0.36678696, 0.41960785)
 

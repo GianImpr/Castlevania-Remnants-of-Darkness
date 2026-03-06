@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://26k2pe2l3rnw"]
+
+[ext_resource type="Texture2D" uid="uid://b0cjfyecgy7fd" path="res://assets/sprites/Objects/BreakableWalls/Waterway.png" id="1_1prom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pxxr"]
+size = Vector2(32, 128)
+
+[node name="object" type="RigidBody2D" unique_id=1339386508]
+collision_layer = 5
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=843336335]
+texture = ExtResource("1_1prom")
+flip_h = true
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1724863634]
+visible = false
+shape = SubResource("RectangleShape2D_3pxxr")
