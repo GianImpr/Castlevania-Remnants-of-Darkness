@@ -42,5 +42,6 @@ func resumeAttackAnimation() -> void:
 	animation.play("attack" + attack_anim_suffix(), -1, get_attack_speed())
 	animation.seek(old_anim_pos)
 	if player.sprite.weapon != null:
+		player.sprite.weapon.animation.play("swing")
 		player.sprite.weapon.set_anim_pos(player.sprite.weapon.anim_position)
 	player.resume_attack = false

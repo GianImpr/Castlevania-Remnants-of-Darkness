@@ -44,7 +44,8 @@ enum Weapons {
 	DURANDAL,
 	BAHG_NAHK,
 	BROADSWORD,
-	ADA
+	ADA,
+	ROYAL_CLAYMORE
 }
 
 @export var weapon_name: String

@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="3_a3gfy"]
 [ext_resource type="Script" uid="uid://c56hcudjs1xrt" path="res://SampleProject/Scripts/camera_2d.gd" id="3_mx3v0"]
 [ext_resource type="Texture2D" uid="uid://y13sdm3voch4" path="res://assets/sprites/Weapons/Swords/Short Sword/Short_Sword_icon_new.png" id="3_x7lpv"]
-[ext_resource type="Texture2D" uid="uid://bbrtcr6o7o2gi" path="res://assets/sprites/Items/InventoryIcons/Bullova.png" id="4_5a8ru"]
 [ext_resource type="PackedScene" uid="uid://jda48nrn12d2" path="res://SampleProject/Weapons/short_sword.tscn" id="4_lhu5i"]
 [ext_resource type="PackedScene" uid="uid://bvh7e1rc12sbj" path="res://SampleProject/Weapons/bullova.tscn" id="5_71vdw"]
 [ext_resource type="PackedScene" uid="uid://cenjpg3o6am6u" path="res://scenes/player.tscn" id="5_81k16"]
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="5_pjg0o"]
+[ext_resource type="Texture2D" uid="uid://caw8updlmyepd" path="res://assets/sprites/Items/InventoryIcons/Bullova_New.png" id="5_ua8sn"]
 [ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="6_70wxk"]
 [ext_resource type="Texture2D" uid="uid://bklif37kbg5bs" path="res://assets/sprites/Items/InventoryIcons/Claymore.png" id="6_c5tvp"]
 [ext_resource type="Script" uid="uid://j2vesgbfbner" path="res://SampleProject/Scripts/System/item.gd" id="6_n752u"]
@@ -120,6 +120,7 @@
 [ext_resource type="Texture2D" uid="uid://c50ps33nritj7" path="res://assets/sprites/Items/InventoryIcons/Inventory_285.png" id="42_in0th"]
 [ext_resource type="Texture2D" uid="uid://bukgaq1m26bw3" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Right_Stick.png" id="42_iw62n"]
 [ext_resource type="Texture2D" uid="uid://seheewb7knbc" path="res://assets/sprites/Items/InventoryIcons/Inventory_286.png" id="43_qvtt0"]
+[ext_resource type="PackedScene" uid="uid://c40tpxot1hlb" path="res://SampleProject/Weapons/royal_claymore.tscn" id="43_ua8sn"]
 [ext_resource type="Texture2D" uid="uid://dj2485ajmbxmt" path="res://assets/sprites/Items/InventoryIcons/Inventory_287.png" id="44_pmr51"]
 [ext_resource type="Texture2D" uid="uid://byto4t4vp78uc" path="res://assets/sprites/Items/InventoryIcons/Inventory_288.png" id="45_c8v55"]
 [ext_resource type="Texture2D" uid="uid://distdgmohnwjj" path="res://assets/sprites/Items/InventoryIcons/Inventory_289.png" id="46_k8mnd"]
@@ -393,7 +394,7 @@ type = 2
 ATK = 15
 crouch_attack = true
 value = 300
-icon = ExtResource("4_5a8ru")
+icon = ExtResource("5_ua8sn")
 sprite = ExtResource("5_71vdw")
 recipe_status = 2
 recipe = Array[Dictionary]([{
@@ -831,6 +832,37 @@ recipe = Array[Dictionary]([{
 "quantity": 1
 }, {
 "id": 59,
+"inventory": 3,
+"quantity": 1
+}])
+metadata/_custom_type_script = "uid://1vp87s3hhyhn"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ua8sn"]
+load_path = "res://.godot/imported/Royal_Claymore.png-cb626f7592b0ed9560d2bf8f4162b542.ctex"
+
+[sub_resource type="Resource" id="Resource_sk44n"]
+script = ExtResource("2_6ajcc")
+weapon_name = "ROYAL_CLAYMORE"
+weapon_description = "ROYAL_CLAYMORE_DESC"
+type = 1
+ATK = 25
+DEF = 10
+RES = 15
+crouch_attack = true
+value = 1000
+icon = SubResource("CompressedTexture2D_ua8sn")
+sprite = ExtResource("43_ua8sn")
+recipe_status = 0
+recipe = Array[Dictionary]([{
+"id": 3,
+"inventory": 0,
+"quantity": 1
+}, {
+"id": 57,
+"inventory": 3,
+"quantity": 1
+}, {
+"id": 62,
 "inventory": 3,
 "quantity": 1
 }])
@@ -4682,7 +4714,7 @@ animation = NodePath("AnimationPlayer")
 difficulty = 1
 update_player_compendium = true
 world_environment = NodePath("WorldEnvironment")
-weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3"), SubResource("Resource_etedp"), SubResource("Resource_3pxt5"), SubResource("Resource_kt2e1"), SubResource("Resource_cm3lq"), SubResource("Resource_88uus"), SubResource("Resource_w7bsh"), SubResource("Resource_o3ohi"), SubResource("Resource_ve6hm"), SubResource("Resource_eewh7"), SubResource("Resource_qwgas"), SubResource("Resource_8tx5s"), SubResource("Resource_8fi0q"), SubResource("Resource_2kmxy"), SubResource("Resource_5suw8"), SubResource("Resource_2v3qx")])
+weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3"), SubResource("Resource_etedp"), SubResource("Resource_3pxt5"), SubResource("Resource_kt2e1"), SubResource("Resource_cm3lq"), SubResource("Resource_88uus"), SubResource("Resource_w7bsh"), SubResource("Resource_o3ohi"), SubResource("Resource_ve6hm"), SubResource("Resource_eewh7"), SubResource("Resource_qwgas"), SubResource("Resource_8tx5s"), SubResource("Resource_8fi0q"), SubResource("Resource_2kmxy"), SubResource("Resource_5suw8"), SubResource("Resource_2v3qx"), SubResource("Resource_sk44n")])
 item_compendium = SubResource("Resource_ksmb3")
 headgear_compendium = Array[ExtResource("58_johey")]([SubResource("Resource_stdwu"), SubResource("Resource_hcxc2"), SubResource("Resource_qtfvs"), SubResource("Resource_b4qdd"), SubResource("Resource_w8tqy"), SubResource("Resource_4iosu"), SubResource("Resource_b0lhj"), SubResource("Resource_kh436"), SubResource("Resource_n53u7"), SubResource("Resource_n15bh"), SubResource("Resource_2gney"), SubResource("Resource_580rm"), SubResource("Resource_fy53e"), SubResource("Resource_xv0ma"), SubResource("Resource_csljy"), SubResource("Resource_nfnn0"), SubResource("Resource_7go8i"), SubResource("Resource_ji887"), SubResource("Resource_nhhcx"), SubResource("Resource_ocbsj"), SubResource("Resource_jsrpv"), SubResource("Resource_qx0f7"), SubResource("Resource_bg2je"), SubResource("Resource_vexyv"), SubResource("Resource_utsap"), SubResource("Resource_itck4"), SubResource("Resource_ms7n0"), SubResource("Resource_chuqd")])
 body_compendium = Array[ExtResource("86_xt4t6")]([SubResource("Resource_0i5km"), SubResource("Resource_ypho0"), SubResource("Resource_qpfcj"), SubResource("Resource_nolcn"), SubResource("Resource_o68me"), SubResource("Resource_dqisp"), SubResource("Resource_rngem"), SubResource("Resource_excnl"), SubResource("Resource_54pao"), SubResource("Resource_7vfvr"), SubResource("Resource_1lj8y"), SubResource("Resource_81t7d")])
