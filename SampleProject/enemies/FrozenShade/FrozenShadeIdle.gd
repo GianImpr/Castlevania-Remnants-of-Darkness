@@ -1,8 +1,8 @@
 extends State
 class_name FrozenShadeIdle
 var duration: float
-const MIN_DURATION: float = 0.7
-const MAX_DURATION: float = 1.5
+const MIN_DURATION: float = 1.2
+const MAX_DURATION: float = 1.8
 const ACTIONS: Array[String] = ["icicle", "freeze"]
 var can_act: bool
 const SPEED: float = 30
