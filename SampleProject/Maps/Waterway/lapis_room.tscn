@@ -1,20 +1,17 @@
-[gd_scene format=4 uid="uid://ddh57wniglsxn"]
+[gd_scene format=4 uid="uid://b1b23indvdxoa"]
 
-[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_hxhkl"]
-[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_vad6g"]
-[ext_resource type="PackedScene" uid="uid://cor3lhdigpbnf" path="res://SampleProject/extra_scenes/stage_elements/waterfall.tscn" id="3_0mh0p"]
-[ext_resource type="Texture2D" uid="uid://deoisjjuxkrub" path="res://assets/sprites/Tiles/Waterway.png" id="3_jhlj3"]
-[ext_resource type="PackedScene" uid="uid://dbfro1y1663so" path="res://SampleProject/extra_scenes/stage_elements/waterfall_thin.tscn" id="4_hxhkl"]
-[ext_resource type="PackedScene" uid="uid://428fif48ts8b" path="res://SampleProject/extra_scenes/stage_elements/waterway_breakable_wall.tscn" id="5_tcwi6"]
-[ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="7_btfqh"]
-[ext_resource type="PackedScene" uid="uid://drs0b6varamj6" path="res://SampleProject/enemies/FrozenShade/frozen_shade.tscn" id="7_jhlj3"]
-[ext_resource type="PackedScene" uid="uid://bdup55rwn04ng" path="res://SampleProject/extra_scenes/stage_elements/waterfall_medium.tscn" id="7_vad6g"]
-[ext_resource type="PackedScene" uid="uid://bvk8m1t7uwv0b" path="res://SampleProject/enemies/Une/Une.tscn" id="8_lpsqe"]
-[ext_resource type="PackedScene" uid="uid://bkyptgxub2ly0" path="res://SampleProject/extra_scenes/stage_elements/purple_candle.tscn" id="8_pb3x6"]
-[ext_resource type="PackedScene" uid="uid://bp5nipcdx63vb" path="res://SampleProject/enemies/CaveTroll/cave_troll.tscn" id="9_lpsqe"]
+[ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_7bm5s"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_m2wgn"]
+[ext_resource type="PackedScene" uid="uid://cor3lhdigpbnf" path="res://SampleProject/extra_scenes/stage_elements/waterfall.tscn" id="3_b2fgq"]
+[ext_resource type="PackedScene" uid="uid://dbfro1y1663so" path="res://SampleProject/extra_scenes/stage_elements/waterfall_thin.tscn" id="4_25b01"]
+[ext_resource type="PackedScene" uid="uid://bdup55rwn04ng" path="res://SampleProject/extra_scenes/stage_elements/waterfall_medium.tscn" id="5_hwk2y"]
+[ext_resource type="Texture2D" uid="uid://deoisjjuxkrub" path="res://assets/sprites/Tiles/Waterway.png" id="6_xs7yg"]
+[ext_resource type="PackedScene" uid="uid://bwr5frmmnkw6y" path="res://SampleProject/enemies/FloatingSkull/floating_skull.tscn" id="7_b2fgq"]
+[ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="7_m2wgn"]
+[ext_resource type="PackedScene" uid="uid://bkyptgxub2ly0" path="res://SampleProject/extra_scenes/stage_elements/purple_candle.tscn" id="8_25b01"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ngp7b"]
-texture = ExtResource("3_jhlj3")
+texture = ExtResource("6_xs7yg")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -790,7 +787,7 @@ physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_ngp7b")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uxnd2"]
-texture = ExtResource("3_jhlj3")
+texture = ExtResource("6_xs7yg")
 texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 2:0/0 = 0
@@ -1577,30 +1574,38 @@ physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_uxnd2")
 
 [node name="Room" type="Node2D" unique_id=2013800835]
-script = ExtResource("1_hxhkl")
+script = ExtResource("1_7bm5s")
 metadata/_custom_type_script = "uid://cra3c457tg2j7"
 
-[node name="RoomInstance" parent="." unique_id=537413460 instance=ExtResource("2_vad6g")]
+[node name="RoomInstance" parent="." unique_id=537413460 instance=ExtResource("2_m2wgn")]
 
-[node name="Waterfall" parent="." unique_id=1701755214 instance=ExtResource("3_0mh0p")]
+[node name="Waterfall" parent="." unique_id=1701755214 instance=ExtResource("3_b2fgq")]
 z_index = -1
-position = Vector2(218, 232)
+position = Vector2(781, 256)
 
-[node name="WaterfallThin" parent="." unique_id=270913308 instance=ExtResource("4_hxhkl")]
+[node name="Waterfall2" parent="." unique_id=499070354 instance=ExtResource("3_b2fgq")]
 z_index = -1
-position = Vector2(254, 205)
+position = Vector2(514, 251)
 
-[node name="WaterfallThin2" parent="." unique_id=932599187 instance=ExtResource("4_hxhkl")]
+[node name="WaterfallThin" parent="." unique_id=270913308 instance=ExtResource("4_25b01")]
+z_index = -1
+position = Vector2(819, 226)
+
+[node name="WaterfallThin2" parent="." unique_id=932599187 instance=ExtResource("4_25b01")]
 z_index = -1
 position = Vector2(838, 186)
 
-[node name="WaterfallThin3" parent="." unique_id=774683512 instance=ExtResource("4_hxhkl")]
+[node name="WaterfallThin3" parent="." unique_id=774683512 instance=ExtResource("4_25b01")]
 z_index = -1
-position = Vector2(881, 222)
+position = Vector2(68, 183)
 
-[node name="WaterfallMedium" parent="." unique_id=822928521 instance=ExtResource("7_vad6g")]
+[node name="WaterfallThin4" parent="." unique_id=261528764 instance=ExtResource("4_25b01")]
 z_index = -1
-position = Vector2(502, 226)
+position = Vector2(68, 183)
+
+[node name="WaterfallMedium" parent="." unique_id=822928521 instance=ExtResource("5_hwk2y")]
+z_index = -1
+position = Vector2(180, 209)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=564892838]
 
@@ -1622,44 +1627,51 @@ tile_set = SubResource("TileSet_raptn")
 [node name="Foreground" type="TileMapLayer" parent="." unique_id=376880764]
 modulate = Color(0.6533247, 0.6666282, 1, 1)
 z_index = -1
-tile_map_data = PackedByteArray("AAAAAAcAAAABAAAAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAACABAAsAAAAFAAIAABABAAwAAAAHABQAABACAAsAAAAAACAAAAACAAwAAAAFAAIAABADAAwAAAAAACAAAAAAAAoAAAABAAAAACABAA0AAAAFAAYAABACAA0AAAAEAAYAABADAA0AAAAFAAIAABAEAA0AAAAAACAAAAAAAAMAAAAHAAEAAAAAAAQAAAAHAAIAAAAAAAUAAAAHAAMAAAAAAAYAAAAHAAQAAAAAAAAAAAAHAAEAAAAAAAEAAAAHAAMAAAAAAAIAAAAHAAQAAAAAAAsAAAADAAUAAAAAAAwAAAAHAAIAAAAAAA0AAAAHAAMAAAAAAA4AAAAHAAQAAAABAA4AAAACAAAAACACAA4AAAADAAAAACADAA4AAAAEAAAAACAEAA4AAAAFAAAAACAFAA4AAAAGAAAAACAGAA4AAAAHAAAAACAHAA4AAAACAAAAACAIAA4AAAADAAAAACAJAA4AAAAEAAAAACAKAA4AAAAFAAAAACALAA4AAAAGAAAAACAMAA4AAAAHAAAAACANAA4AAAACAAAAACAOAA4AAAADAAAAACAPAA4AAAAEAAAAACAQAA4AAAAHAAUAAAAZAA4AAAAFAAAAADAaAA4AAAAEAAAAADAbAA4AAAADAAAAADAcAA4AAAACAAAAADAdAA4AAAAHAAQAABAdAAAAAAAHAAEAABAdAAEAAAAHAAMAABAdAAIAAAAHAAQAABAdAAMAAAAHAAEAABAdAAQAAAAHAAIAABAdAAUAAAAHAAMAABAdAAYAAAAHAAQAABAdAAcAAAABAAAAABAdAAgAAAABAAEAABAdAAkAAAABAAEAADAdAAoAAAABAAAAADAdAAsAAAADAAUAABAcAAsAAAAFAAIAAAAbAAsAAAAAACAAABAdAAwAAAAHAAIAABAcAAwAAAAHABQAAAAbAAwAAAAFAAIAAAAaAAwAAAAAACAAABAdAA0AAAAHAAMAABAcAA0AAAAFAAYAAAAbAA0AAAAEAAYAAAAaAA0AAAAFAAIAAAAZAA0AAAAAACAAABABAAAAAAACAAAAAAACAAAAAAADAAAAAAADAAAAAAAEAAAAAAAEAAAAAAAFAAAAAAAFAAAAAAAGAAAAAAAGAAAAAAAHAAAAAAAHAAAAAAACAAAAAAAIAAAAAAADAAAAAAAJAAAAAAAEAAAAAAAKAAAAAAAFAAAAAAALAAAAAAAGAAAAAAAMAAAAAAAHAAAAAAANAAAAAAACAAAAAAAOAAAAAAADAAAAAAAcAAAAAAACAAAAABAbAAAAAAADAAAAABAaAAAAAAAEAAAAABAZAAAAAAAFAAAAABAYAAAAAAAGAAAAABAXAAAAAAAHAAAAABAWAAAAAAACAAAAABAVAAAAAAADAAAAABAUAAAAAAAEAAAAABATAAAAAAAFAAAAABASAAAAAAAGAAAAABARAAAAAAAHAAAAABAQAAAAAAACAAAAABAPAAAAAAADAAAAABAUAA4AAAAHAAUAABAYAA4AAAADAAUAABAXAA4AAAAEAAUAABAWAA4AAAAFAAUAABAVAA4AAAAGAAUAABAOAAkAAAAHAAAAAAAOAAoAAAAHAAEAAAAOAAsAAAAHAAIAAAAOAAwAAAAHAAMAAAAOAA0AAAAHAAQAAAANAAkAAAADAAUAABAMAAkAAAAEAAUAABALAAkAAAAFAAUAABAKAAkAAAAGAAUAABASAAkAAAAGAAUAAAARAAkAAAAFAAUAAAAQAAkAAAAEAAUAAAAPAAkAAAADAAUAAAAHAAkAAAAHAAUAABAIAAkAAAAFAAUAAAAJAAkAAAAGAAUAAAAUAAkAAAAFAAUAABATAAkAAAAGAAUAABAWAAkAAAAHAAUAAAAVAAkAAAAHAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAcAAAABAAAAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAACABAAsAAAAFAAIAABABAAwAAAAHABQAABACAAsAAAAAACAAAAACAAwAAAAFAAIAABADAAwAAAAAACAAAAAAAAoAAAABAAAAACABAA0AAAAFAAYAABACAA0AAAAEAAYAABADAA0AAAAFAAIAABAEAA0AAAAAACAAAAAAAAMAAAAHAAEAAAAAAAQAAAAHAAIAAAAAAAUAAAAHAAMAAAAAAAYAAAAHAAQAAAAAAAAAAAAHAAEAAAAAAAEAAAAHAAMAAAAAAAIAAAAHAAQAAAAAAAsAAAADAAUAAAAAAAwAAAAHAAIAAAAAAA0AAAAHAAMAAAAAAA4AAAAHAAQAAAABAA4AAAACAAAAACACAA4AAAADAAAAACADAA4AAAAEAAAAACAEAA4AAAAFAAAAACAFAA4AAAAGAAAAACAGAA4AAAAHAAAAACAHAA4AAAACAAAAACAIAA4AAAADAAAAACAJAA4AAAAEAAAAACAKAA4AAAAFAAAAACALAA4AAAAGAAAAACAMAA4AAAAHAAAAACANAA4AAAACAAAAACAOAA4AAAADAAAAACAPAA4AAAAEAAAAACAQAA4AAAAFAAAAACAZAA4AAAAFAAAAADAaAA4AAAAEAAAAADAbAA4AAAADAAAAADAcAA4AAAACAAAAADAdAA4AAAAHAAQAABAdAAAAAAAHAAEAABAdAAEAAAAHAAMAABAdAAIAAAAHAAQAABAdAAMAAAAHAAEAABAdAAQAAAAHAAIAABAdAAUAAAAHAAMAABAdAAYAAAAHAAQAABAdAAcAAAAHAAEAABAdAAgAAAAHAAIAABAdAAkAAAAHAAMAABAdAAoAAAAHAAQAABAdAAsAAAAHAAEAABAdAAwAAAAHAAIAABAdAA0AAAAHAAMAABABAAAAAAACAAAAAAACAAAAAAADAAAAAAADAAAAAAAEAAAAAAAEAAAAAAAFAAAAAAAFAAAAAAAGAAAAAAAGAAAAAAAHAAAAAAAHAAAAAAACAAAAAAAIAAAAAAADAAAAAAAJAAAAAAAEAAAAAAAKAAAAAAAFAAAAAAALAAAAAAAGAAAAAAAMAAAAAAAHAAAAAAANAAAAAAACAAAAAAAOAAAAAAADAAAAAAAcAAAAAAACAAAAABAbAAAAAAADAAAAABAaAAAAAAAEAAAAABAZAAAAAAAFAAAAABAYAAAAAAAGAAAAABAXAAAAAAAHAAAAABAWAAAAAAACAAAAABAVAAAAAAADAAAAABAUAAAAAAAEAAAAABATAAAAAAAFAAAAABASAAAAAAAGAAAAABARAAAAAAAHAAAAABAQAAAAAAACAAAAABAPAAAAAAADAAAAABAUAA4AAAADAAAAACAYAA4AAAAHAAAAACAXAA4AAAAGAAAAACAWAA4AAAAFAAAAACAVAA4AAAAEAAAAACARAA4AAAAGAAAAACASAA4AAAAHAAAAACATAA4AAAACAAAAACALAA0AAAAAACAAABAMAAwAAAAAACAAABAMAA0AAAAFAAIAAAANAAsAAAAAACAAABANAAwAAAAFAAIAAAANAA0AAAAEAAYAAAAOAAsAAAAFAAIAAAAOAAwAAAAHABQAAAAOAA0AAAAFAAYAAAAPAAsAAAADAAUAABAPAAwAAAAHAAIAABAPAA0AAAAHAAMAABAQAAsAAAADAAUAAAAQAAwAAAAHAAIAAAAQAA0AAAAHAAMAAAASAAsAAAAAACAAAAARAAsAAAAFAAIAABATAAwAAAAAACAAAAASAAwAAAAFAAIAABARAAwAAAAHABQAABAUAA0AAAAAACAAAAATAA0AAAAFAAIAABASAA0AAAAEAAYAABARAA0AAAAFAAYAABA=")
 tile_set = SubResource("TileSet_arubb")
 
 [node name="Enemies" type="Node" parent="." unique_id=312869739]
 
-[node name="FrozenShade" parent="Enemies" unique_id=272423195 instance=ExtResource("7_jhlj3")]
-position = Vector2(818, 241)
+[node name="Enemy" parent="Enemies" unique_id=2041339201 instance=ExtResource("7_b2fgq")]
+position = Vector2(754, 144)
 
-[node name="Une5" parent="Enemies" unique_id=79424855 instance=ExtResource("8_lpsqe")]
-position = Vector2(402, 286)
+[node name="Enemy2" parent="Enemies" unique_id=1108694944 instance=ExtResource("7_b2fgq")]
+position = Vector2(354, 250)
 
-[node name="Une6" parent="Enemies" unique_id=1043101074 instance=ExtResource("8_lpsqe")]
-position = Vector2(461, 286)
+[node name="Enemy3" parent="Enemies" unique_id=336734774 instance=ExtResource("7_b2fgq")]
+position = Vector2(775, 375)
 
-[node name="Une8" parent="Enemies" unique_id=1017966875 instance=ExtResource("8_lpsqe")]
-position = Vector2(522, 286)
+[node name="Enemy4" parent="Enemies" unique_id=275816930 instance=ExtResource("7_b2fgq")]
+position = Vector2(526, 120)
 
-[node name="Une9" parent="Enemies" unique_id=2135293419 instance=ExtResource("8_lpsqe")]
-position = Vector2(579, 286)
+[node name="Enemy5" parent="Enemies" unique_id=2000292954 instance=ExtResource("7_b2fgq")]
+position = Vector2(204, 132)
 
-[node name="CaveTroll" parent="Enemies" unique_id=429861966 instance=ExtResource("9_lpsqe")]
-position = Vector2(351, 249)
+[node name="Enemy6" parent="Enemies" unique_id=1769187879 instance=ExtResource("7_b2fgq")]
+position = Vector2(874, 76)
 
-[node name="Items" type="Node" parent="." unique_id=673278912]
-
-[node name="Aquamarine" parent="Items" unique_id=900492752 instance=ExtResource("7_btfqh")]
-position = Vector2(415, 431)
-id = 51
-current_item_name = "AQUAMARINE"
-pickup_flag = 95
+[node name="Enemy7" parent="Enemies" unique_id=1962510190 instance=ExtResource("7_b2fgq")]
+position = Vector2(277, 384)
 
 [node name="Candles" type="Node" parent="." unique_id=363742069]
 
-[node name="PurpleCandle" parent="Candles" unique_id=598586100 instance=ExtResource("8_pb3x6")]
-position = Vector2(733, 400)
+[node name="PurpleCandle" parent="Candles" unique_id=319576706 instance=ExtResource("8_25b01")]
+position = Vector2(250, 400)
 
-[node name="PurpleCandle2" parent="Candles" unique_id=626533284 instance=ExtResource("8_pb3x6")]
-position = Vector2(370, 401)
+[node name="PurpleCandle2" parent="Candles" unique_id=194779522 instance=ExtResource("8_25b01")]
+position = Vector2(805, 400)
 
-[node name="BreakableWall" parent="." unique_id=744760839 instance=ExtResource("5_tcwi6")]
-position = Vector2(944, 288)
+[node name="Items" type="Node" parent="." unique_id=1521391695]
+
+[node name="Lapislazuli" parent="Items" unique_id=900492752 instance=ExtResource("7_m2wgn")]
+position = Vector2(515, 323)
+type = 7
+id = 15
+current_item_name = "LAPIS_LAZULI"
+pickup_flag = 96
+
+[node name="ManaPrism" parent="Items" unique_id=150399781 instance=ExtResource("7_m2wgn")]
+position = Vector2(882, 431)
+id = 6
+current_item_name = "Mana Prism"
+pickup_flag = 97

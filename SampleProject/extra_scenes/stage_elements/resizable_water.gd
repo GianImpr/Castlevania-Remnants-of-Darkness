@@ -5,6 +5,7 @@ class_name Water
 @export var small_water_splash: PackedScene
 @export var sound: PolyphonicAudio
 @export var collision: CollisionShape2D
+@export var water_sprite: Sprite2D
 
 var excluded_bodies: Array[CharacterBody2D]
 var track_bodies: Array[CharacterBody2D]
@@ -48,8 +49,8 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 func triggerBigSplash(body: Node2D) -> void:
 	var big_splash = big_water_splash.instantiate()
-	var x_pos: float = min(body.global_position.x-SPLASH_SPAWN_OFFSET, global_position.x+collision.shape.size.x*collision.global_scale.x-SPLASH_SIZE)
-	x_pos = max(x_pos, global_position.x)
+	var x_pos: float = min(body.global_position.x-SPLASH_SPAWN_OFFSET, water_sprite.global_position.x-water_sprite.texture.get_size().x*water_sprite.scale.x/2+collision.shape.size.x*collision.global_scale.x-SPLASH_SIZE)
+	x_pos = max(x_pos, water_sprite.global_position.x-water_sprite.texture.get_size().x*water_sprite.scale.x/2)
 	
 	big_splash.global_position = Vector2(x_pos, global_position.y)
 	if MetSys.get_current_room_instance():
@@ -62,8 +63,8 @@ func triggerBigSplash(body: Node2D) -> void:
 
 func triggerSmallSplash(body: Node2D) -> void:
 	var small_splash = small_water_splash.instantiate()
-	var x_pos: float = min(body.global_position.x-SPLASH_SPAWN_OFFSET, global_position.x+collision.shape.size.x*collision.global_scale.x-SPLASH_SIZE)
-	x_pos = max(x_pos, global_position.x)
+	var x_pos: float = min(body.global_position.x-SPLASH_SPAWN_OFFSET, (water_sprite.global_position.x-water_sprite.texture.get_size().x*water_sprite.scale.x/2)+collision.shape.size.x*collision.global_scale.x-SPLASH_SIZE)
+	x_pos = max(x_pos, water_sprite.global_position.x-water_sprite.texture.get_size().x*water_sprite.scale.x/2)
 
 	small_splash.global_position = Vector2(x_pos, global_position.y)
 	if MetSys.get_current_room_instance():
