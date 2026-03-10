@@ -13,13 +13,15 @@ const MAX_VERTICAL_DISTANCE: float = 130
 
 func enter():
 	animation.play("idle")
-	applyVelocity()
+	if player.activated_AI:
+		applyVelocity()
 	can_act = false
 	duration = randf_range(MIN_DURATION, MAX_DURATION)
 	get_tree().create_timer(duration, false).timeout.connect(func(): can_act = true)
 	
 func exit():
-	velocity_tween.kill()
+	if velocity_tween:
+		velocity_tween.kill()
 	player.velocity = Vector2.ZERO
 
 func Update(delta: float):

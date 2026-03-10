@@ -67,8 +67,7 @@ func _on_vision_area_entered(area: Area2D) -> void:
 	activated_AI = true
 	vision.set_deferred("monitoring", false)
 
-func hittingFromBehind(area: Area2D) -> bool:
-	var body = area.get_parent()
+func hittingFromBehind(body: CharacterBody2D) -> bool:
 	return facing_position == body.facing_position
 
 func makeTrailRed(trail_sprite: Sprite2D) -> void:

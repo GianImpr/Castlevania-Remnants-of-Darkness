@@ -1,13 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3ojnp2qhy6a3"]
+[gd_scene format=3 uid="uid://d3ojnp2qhy6a3"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/candle.gd" id="1_386nx"]
+[ext_resource type="Script" uid="uid://c4rcfxqx5qahg" path="res://SampleProject/Scripts/Stage_elements/candle.gd" id="1_386nx"]
 [ext_resource type="PackedScene" uid="uid://bdohr8arplesu" path="res://SampleProject/extra_scenes/effects/small_explosion.tscn" id="2_y3jor"]
 [ext_resource type="PackedScene" uid="uid://rum44mjshdlr" path="res://SampleProject/extra_scenes/items/money.tscn" id="3_w72jm"]
 [ext_resource type="PackedScene" uid="uid://3ypsgown6bve" path="res://SampleProject/extra_scenes/items/heart.tscn" id="4_gc6sh"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_ktylu"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_ktylu"]
 [ext_resource type="Texture2D" uid="uid://y41bwfnn5fum" path="res://assets/sprites/Objects/Candles/Midair/BlueCandle.png" id="4_qqxw7"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_jwijw"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="6_xt5ce"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_jwijw"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_xt5ce"]
 [ext_resource type="AudioStream" uid="uid://e40yi1yjto5j" path="res://assets/sounds/Effects/Destructibles/CandleBreak.MP3" id="7_ahra6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_momd5"]
@@ -115,9 +115,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_42ogp"]
 _data = {
-"RESET": SubResource("Animation_7ge2x"),
-"destroy": SubResource("Animation_jik0c"),
-"idle": SubResource("Animation_rcg0g")
+&"RESET": SubResource("Animation_7ge2x"),
+&"destroy": SubResource("Animation_jik0c"),
+&"idle": SubResource("Animation_rcg0g")
 }
 
 [sub_resource type="Resource" id="Resource_xswxi"]
@@ -129,7 +129,7 @@ stream = ExtResource("7_ahra6")
 script = ExtResource("5_jwijw")
 sound_effects = Array[ExtResource("6_xt5ce")]([SubResource("Resource_xswxi")])
 
-[node name="Candle" type="RigidBody2D" node_paths=PackedStringArray("sprite", "animation", "sound", "hitbox_iframe")]
+[node name="Candle" type="RigidBody2D" unique_id=1172327600 node_paths=PackedStringArray("sprite", "animation", "sound", "hitbox_iframe")]
 collision_layer = 4
 collision_mask = 0
 freeze = true
@@ -142,23 +142,22 @@ heart_scene = ExtResource("4_gc6sh")
 sound = NodePath("PolyphonicAudio")
 hitbox_iframe = NodePath("CollisionShape2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1374816590]
+visible = false
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_momd5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1447360224]
 scale = Vector2(2, 2)
 texture = ExtResource("4_qqxw7")
 hframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_42ogp")
-}
-autoplay = "idle"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1244679900]
+libraries/ = SubResource("AnimationLibrary_42ogp")
+autoplay = &"idle"
 speed_scale = 1.3
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=125499335]
 volume_db = -4.0
 script = ExtResource("4_ktylu")
 audio_library = SubResource("Resource_p6g50")

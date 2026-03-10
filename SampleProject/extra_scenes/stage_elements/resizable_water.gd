@@ -9,7 +9,7 @@ class_name Water
 
 var excluded_bodies: Array[CharacterBody2D]
 var track_bodies: Array[CharacterBody2D]
-var can_produce_small_sound: bool = true
+static var can_produce_small_sound: bool = true
 const SMALL_SPLASH_TIME_INTERVAL: float = 0.12
 const VELOCITY_FOR_BIG_SPLASH: float = 500
 const SPLASH_SPAWN_OFFSET: float = 30

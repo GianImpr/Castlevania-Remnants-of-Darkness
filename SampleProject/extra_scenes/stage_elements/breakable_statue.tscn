@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://frk6phjfufps"]
+
+[ext_resource type="Texture2D" uid="uid://c4u1pur551mi7" path="res://assets/sprites/Objects/Other/BreakableStatue.png" id="1_gnxtk"]
+[ext_resource type="Texture2D" uid="uid://c04vxsdtq4ws2" path="res://assets/sprites/Effects/Debris2.png" id="2_0wehj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wehj"]
+size = Vector2(23, 97.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f3e1x"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_2q2gg"]
+offsets = PackedFloat32Array(0, 0.18431373, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.036000002, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_0wehj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Melting:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Melting:one_shot")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f3e1x"]
+resource_name = "melt"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.13333334, 3.1333334),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 180)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Melting:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Melting:one_shot")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.0666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.13333346, 2.5666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2q2gg"]
+_data = {
+&"RESET": SubResource("Animation_0wehj"),
+&"melt": SubResource("Animation_f3e1x")
+}
+
+[node name="BreakableStatue" type="Node2D" unique_id=323968959]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=200053863]
+scale = Vector2(2, 2)
+texture = ExtResource("1_gnxtk")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=648606752]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1112633241]
+visible = false
+position = Vector2(-1, -0.25)
+shape = SubResource("RectangleShape2D_0wehj")
+
+[node name="Melting" type="CPUParticles2D" parent="." unique_id=274394579]
+material = SubResource("CanvasItemMaterial_f3e1x")
+position = Vector2(-3, 93)
+emitting = false
+amount = 240
+texture = ExtResource("2_0wehj")
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(30, 10)
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 250.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_2q2gg")
+anim_speed_min = 1.0
+anim_speed_max = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1699956324]
+libraries/ = SubResource("AnimationLibrary_2q2gg")
