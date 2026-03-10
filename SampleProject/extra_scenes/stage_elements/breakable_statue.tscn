@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://frk6phjfufps"]
 
+[ext_resource type="Script" uid="uid://baykpixie8w3k" path="res://SampleProject/Scripts/Stage_elements/breakable_statue.gd" id="1_f3e1x"]
 [ext_resource type="Texture2D" uid="uid://c4u1pur551mi7" path="res://assets/sprites/Objects/Other/BreakableStatue.png" id="1_gnxtk"]
 [ext_resource type="Texture2D" uid="uid://c04vxsdtq4ws2" path="res://assets/sprites/Effects/Debris2.png" id="2_0wehj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wehj"]
-size = Vector2(23, 97.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3e1x"]
+size = Vector2(56, 194)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f3e1x"]
 particles_animation = true
@@ -66,6 +67,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/StaticBody2D/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_f3e1x"]
 resource_name = "melt"
@@ -118,6 +131,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite2D/StaticBody2D/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2q2gg"]
 _data = {
@@ -125,20 +150,26 @@ _data = {
 &"melt": SubResource("Animation_f3e1x")
 }
 
-[node name="BreakableStatue" type="Node2D" unique_id=323968959]
+[node name="BreakableStatue" type="Node2D" unique_id=323968959 node_paths=PackedStringArray("animation", "sprite", "hitbox_iframe", "recovery_timer")]
+script = ExtResource("1_f3e1x")
+animation = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
+event_id = 7
+hitbox_iframe = NodePath("Sprite2D/StaticBody2D/CollisionShape2D")
+recovery_timer = NodePath("Recovery")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=200053863]
 scale = Vector2(2, 2)
 texture = ExtResource("1_gnxtk")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=648606752]
-collision_layer = 4
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D" unique_id=917337404]
+scale = Vector2(0.5, 0.5)
+collision_layer = 5
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1112633241]
-visible = false
-position = Vector2(-1, -0.25)
-shape = SubResource("RectangleShape2D_0wehj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" unique_id=1730792860]
+position = Vector2(-6, 3)
+shape = SubResource("RectangleShape2D_f3e1x")
 
 [node name="Melting" type="CPUParticles2D" parent="." unique_id=274394579]
 material = SubResource("CanvasItemMaterial_f3e1x")
@@ -162,3 +193,5 @@ anim_speed_max = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1699956324]
 libraries/ = SubResource("AnimationLibrary_2q2gg")
+
+[node name="Recovery" type="Timer" parent="." unique_id=69531525]

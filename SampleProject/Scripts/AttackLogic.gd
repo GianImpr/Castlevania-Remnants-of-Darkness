@@ -58,9 +58,13 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 	if dive_kick and Global.player.state_machine.current_state is HectorDiveKick and (isAlive(body) or body is not CharacterBody2D):
 		player.dive_kicking = true
 		player.transitionToState("jump")
-	if body is Candle or body is Canister:
-		createHitEffect(body)
-		body.destroy()
+	if body is Candle or body is Canister or body.get_parent().get_parent() is BreakableStatue:
+		if body.get_parent().get_parent() is BreakableStatue:
+			createEffects(body)
+			body.get_parent().get_parent().takeHit(actual_attributes)
+		else:
+			createHitEffect(body)
+			body.destroy()
 		return
 	if body is RigidBody2D and body.get_parent() is BreakableWall:
 		body.get_parent().takeDamage()
@@ -116,6 +120,8 @@ func createHitEffect(body: Node2D) -> void:
 	var hurtbox: CollisionShape2D
 	if body is Enemy or body is Zombie:
 		hurtbox = body.hitbox_iframe.get_child(0)
+	elif body.get_parent().get_parent() is BreakableStatue:
+		hurtbox = body.get_child(0)
 	else:
 		hurtbox = body.hitbox_iframe
 	var body_size: Vector2
