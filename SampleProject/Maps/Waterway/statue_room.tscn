@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://h7vjguyngmqt" path="res://assets/sprites/Tiles/WaterwayHerb.png" id="3_lhh13"]
 [ext_resource type="Texture2D" uid="uid://deoisjjuxkrub" path="res://assets/sprites/Tiles/Waterway.png" id="4_3musb"]
 [ext_resource type="PackedScene" uid="uid://frk6phjfufps" path="res://SampleProject/extra_scenes/stage_elements/breakable_statue.tscn" id="5_7yglg"]
+[ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="6_3musb"]
+[ext_resource type="PackedScene" uid="uid://ds8enf7ivwg6o" path="res://SampleProject/Objects/canister.tscn" id="7_ird57"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yspm2"]
 texture = ExtResource("3_lhh13")
@@ -2059,5 +2061,16 @@ tile_set = SubResource("TileSet_6xnxp")
 [node name="Enemies" type="Node" parent="." unique_id=312869739]
 
 [node name="Items" type="Node" parent="." unique_id=673278912]
+
+[node name="GoddessShield" parent="Items" unique_id=900492752 instance=ExtResource("6_3musb")]
+position = Vector2(846, 400)
+type = 2
+id = 7
+current_item_name = "GODDESS_SHIELD"
+pickup_flag = 99
+
+[node name="Canister" parent="Items" unique_id=1971232261 instance=ExtResource("7_ird57")]
+position = Vector2(782, 401)
+pickup_flag = 100
 
 [node name="Candles" type="Node" parent="." unique_id=363742069]

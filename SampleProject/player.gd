@@ -27,6 +27,7 @@ class_name HectorPlayer
 @export var confidence_ring_timer: Timer
 @export var time_heal_timer: Timer
 @export var time_heal_particles: CPUParticles2D
+@export var goddess_shield_particles: CPUParticles2D
 @export_category("Charge nodes")
 @export var charge_sprite: Sprite2D
 @export var charge_anim: AnimationPlayer
@@ -519,3 +520,8 @@ func timeHealTick() -> void:
 		time_heal_particles.one_shot = true
 	heal(TIME_HEAL_HP_POWER, false)
 	healMP(TIME_HEAL_MP_POWER, Vector2(0,28))
+
+func activateGoddessShieldEffect() -> void:
+	goddess_shield_particles.restart()
+	goddess_shield_particles.emitting = true
+	sound.play_sound_effect_from_library("goddess_shield")

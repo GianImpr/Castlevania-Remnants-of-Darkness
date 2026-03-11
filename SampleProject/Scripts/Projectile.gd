@@ -15,6 +15,8 @@ var thrower_ATK: int = 0
 func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> int:
 	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
 	const ENFEEBLE_DAMAGE_MULTIPLIER: float = 1.3
+	const STONE_DAMAGE_MULTIPLIER: float = 2
+	const GODDESS_SHIELD_DAMAGE_MULTIPLIER: float = 0.5
 	var damage
 	if magical:
 		damage = max(base_damage + thrower_ATK - body.stats.Stats["RES"]/2, 1) * multiplier
@@ -71,13 +73,18 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 			damage = 0
 	
 	if body.stats.current_status == Global.player.stats.Ailment.STONE:
-		damage *= 2
+		damage *= STONE_DAMAGE_MULTIPLIER
 		
 	if body.stats.accessoryEquipped(Accessory.Accessories.CONFIDENCE_RING):
 		damage *= CONFIDENCE_RING_MULTIPLIER
 		
 	if body.stats.status[body.stats.Status.ENFEEBLE] > 0:
 		damage *= ENFEEBLE_DAMAGE_MULTIPLIER
+		
+	if Global.player.stats.itemEquipped(Artifact.Artifacts.GODDESS_SHIELD, Global.player.stats.EQUIPMENT_SLOTS.ARTIFACT) and randf_range(0,99) < Global.player.stats.Stats["LCK"]*0.5:
+		damage *= GODDESS_SHIELD_DAMAGE_MULTIPLIER
+		Global.player.activateGoddessShieldEffect()
+
 		
 	if Global.screen == Global.ScreenType.TRAINING:
 		return ceil(body.stats.Stats["MHP"] * TrainingSettings.damage_upon_hit / 100)

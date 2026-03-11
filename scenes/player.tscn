@@ -227,6 +227,7 @@
 [ext_resource type="AudioStream" uid="uid://ce0cgved27m6l" path="res://assets/sounds/HectorMovement/DoubleJump.wav" id="198_p6pc0"]
 [ext_resource type="AudioStream" uid="uid://dcrqspyri6gso" path="res://assets/sounds/HectorMovement/DiveKick.wav" id="200_m4v07"]
 [ext_resource type="AudioStream" uid="uid://dy51w6vjm6bnf" path="res://assets/sounds/Voice/Hector/GuardBreak.wav" id="205_xy0l7"]
+[ext_resource type="AudioStream" uid="uid://bb444nsfpnhim" path="res://assets/sounds/Effects/Miscellaneous/GoddessShield.wav" id="207_h8fhv"]
 [ext_resource type="Texture2D" uid="uid://1he2rtoahtll" path="res://assets/sprites/Effects/Sparks/Spark1.png" id="207_mg3ag"]
 [ext_resource type="Texture2D" uid="uid://p0swsulobrnj" path="res://assets/sprites/Effects/Sparks/Spark2.png" id="208_5jjpn"]
 [ext_resource type="Texture2D" uid="uid://dcmexpqewqyki" path="res://assets/sprites/Effects/Charge.png" id="215_iee07"]
@@ -4388,9 +4389,15 @@ Tag = "dive_kick"
 stream = ExtResource("200_m4v07")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
+[sub_resource type="Resource" id="Resource_1776x"]
+script = ExtResource("17_eidx6")
+Tag = "goddess_shield"
+stream = ExtResource("207_h8fhv")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_uk8xp"]
 script = ExtResource("140_3d8p5")
-sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_p6pc0"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6"), SubResource("Resource_cj1no"), SubResource("Resource_1q6vw"), SubResource("Resource_4sdvf"), SubResource("Resource_oke0v"), SubResource("Resource_w5oev"), SubResource("Resource_5uixd"), SubResource("Resource_god42"), SubResource("Resource_3rsyo")])
+sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_p6pc0"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6"), SubResource("Resource_cj1no"), SubResource("Resource_1q6vw"), SubResource("Resource_4sdvf"), SubResource("Resource_oke0v"), SubResource("Resource_w5oev"), SubResource("Resource_5uixd"), SubResource("Resource_god42"), SubResource("Resource_3rsyo"), SubResource("Resource_1776x")])
 
 [sub_resource type="Resource" id="Resource_2oamq"]
 script = ExtResource("17_eidx6")
@@ -4995,7 +5002,11 @@ _limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.5, 0.0049916506), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Player" type="CharacterBody2D" unique_id=935233281 node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "hurtbox_area", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "reset_guard_presses_timer", "confidence_ring_timer", "time_heal_timer", "time_heal_particles", "charge_sprite", "charge_anim", "charge_particles", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
+[sub_resource type="Gradient" id="Gradient_h8fhv"]
+offsets = PackedFloat32Array(0.5110294, 1)
+colors = PackedColorArray(2.454227, 0, 0, 1, 1, 1, 1, 1)
+
+[node name="Player" type="CharacterBody2D" unique_id=935233281 node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "hurtbox_area", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "reset_guard_presses_timer", "confidence_ring_timer", "time_heal_timer", "time_heal_particles", "goddess_shield_particles", "charge_sprite", "charge_anim", "charge_particles", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
 scale = Vector2(2, 2)
 collision_layer = 524288
 collision_mask = 4113
@@ -5024,6 +5035,7 @@ reset_guard_presses_timer = NodePath("Reset_guard_presses_timer")
 confidence_ring_timer = NodePath("ConfidenceRing")
 time_heal_timer = NodePath("TimeHeal/TimeHealTimer")
 time_heal_particles = NodePath("TimeHeal")
+goddess_shield_particles = NodePath("GoddessShieldParticles")
 charge_sprite = NodePath("ChargeWave")
 charge_anim = NodePath("ChargeWave/ChargeAnim")
 charge_particles = NodePath("ChargeParticles")
@@ -5891,6 +5903,26 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 30.0
 initial_velocity_max = 40.0
 color_ramp = SubResource("Gradient_rbo1h")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_speed_curve = SubResource("Curve_hhfsc")
+
+[node name="GoddessShieldParticles" type="CPUParticles2D" parent="." unique_id=896288144]
+material = SubResource("CanvasItemMaterial_hhfsc")
+position = Vector2(1, 15.5)
+emitting = false
+amount = 48
+texture = ExtResource("216_rbo1h")
+one_shot = true
+explosiveness = 0.6
+emission_shape = 3
+emission_rect_extents = Vector2(5, 20)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+color_ramp = SubResource("Gradient_rbo1h")
+color_initial_ramp = SubResource("Gradient_h8fhv")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 anim_speed_curve = SubResource("Curve_hhfsc")

@@ -42,6 +42,7 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 	const STONE_DAMAGE_MULTIPLIER: float = 2
 	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
 	const ENFEEBLE_DAMAGE_MULTIPLIER: float = 1.3
+	const GODDESS_SHIELD_DAMAGE_MULTIPLIER: float = 0.5
 	
 	body.checkTightGuard()
 
@@ -98,6 +99,10 @@ func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool 
 	
 	if damage > body.stats.Stats["HP"] and body.stats.Stats["HP"] > 1 and randi_range(0, 99) < body.stats.Stats["LCK"] and Global.player.stats.itemEquipped(Artifact.Artifacts.MIRACLE_COIN, "artifact"):
 		damage = body.stats.Stats["HP"] - 1
+		
+	if Global.player.stats.itemEquipped(Artifact.Artifacts.GODDESS_SHIELD, Global.player.stats.EQUIPMENT_SLOTS.ARTIFACT) and randf_range(0,99) < Global.player.stats.Stats["LCK"]*0.5:
+		damage *= GODDESS_SHIELD_DAMAGE_MULTIPLIER
+		Global.player.activateGoddessShieldEffect()
 		
 	if Global.screen == Global.ScreenType.TRAINING:
 		return ceil(body.stats.Stats["MHP"] * TrainingSettings.damage_upon_hit / 100)
