@@ -31,6 +31,8 @@ func exit():
 
 
 func Update(delta: float):
+	if player.velocity.x > 0:
+		player.velocity.x = 0
 	enemy_can_die()
 
 func Physics_Update(delta: float):

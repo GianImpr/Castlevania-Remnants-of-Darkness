@@ -12,13 +12,20 @@ var direction := 1
 @export var ray_cast_2d_right: RayCast2D
 @export var blood_particles: CPUParticles2D
 @export var register_knockback: bool = false
+@export var visibility_notifier: VisibleOnScreenNotifier2D
+@export var idle_states: Array[String] = ["idle", "dying"]
 var is_hurt: bool = false
+var stay_idle: bool = false
+@export var reset_idle_when_staying_idle: bool = false
 static var body_hitbox_on_cooldown: bool = false
 static var INVULNERABILITY_DURATION: float = 1
 
 func _ready() -> void:
 	body_hitbox_on_cooldown = false
 	hitbox_iframe.set_collision_mask_value(2, true)
+	if visibility_notifier:
+		visibility_notifier.screen_entered.connect(setStayIdle.bind(false))
+		visibility_notifier.screen_exited.connect(setStayIdle.bind(true))
 
 
 func _process(delta: float) -> void:
@@ -140,3 +147,6 @@ func resetHitbox(attack_hitbox: Area2D) -> void:
 
 static func resetInvulnerability() -> void:
 	body_hitbox_on_cooldown = false
+
+func setStayIdle(value: bool) -> void:
+	stay_idle = value

@@ -1,5 +1,5 @@
 extends Enemy
-
+class_name Merman
 var activated_AI: bool = false
 var facing_position: int
 var ice_elemental: bool = false

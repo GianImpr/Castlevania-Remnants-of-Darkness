@@ -443,7 +443,7 @@ particles_anim_loop = false
 [sub_resource type="Gradient" id="Gradient_ig8kp"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="DarkOctopus" type="CharacterBody2D" unique_id=1366359971 node_paths=PackedStringArray("vision", "body_sprite", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[node name="DarkOctopus" type="CharacterBody2D" unique_id=1366359971 node_paths=PackedStringArray("vision", "body_sprite", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles", "visibility_notifier")]
 scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_amnjl")
@@ -456,6 +456,7 @@ damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Iframe")
 hitbox_iframe = NodePath("HitboxArea")
 blood_particles = NodePath("BloodDamage")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 metadata/_custom_type_script = "uid://jpd31rlnmjom"
 
 [node name="EnemyStats" type="Node" parent="." unique_id=314663985]
@@ -490,6 +491,7 @@ autoplay = &"idle"
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=233871891]
 position = Vector2(0, -3)
 volume_db = -8.0
+bus = &"SFX"
 script = ExtResource("3_gtkym")
 audio_library = SubResource("Resource_wqcyt")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
@@ -589,3 +591,6 @@ script = ExtResource("16_petxl")
 explosion_scene = ExtResource("18_petxl")
 head_animation = NodePath("../../Head/AnimationPlayer")
 metadata/_custom_type_script = "uid://dnrvqt1lfpdde"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1200990555]
+rect = Rect2(-35, -20, 71, 41.5)

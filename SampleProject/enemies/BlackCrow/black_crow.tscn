@@ -247,7 +247,7 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_v1u0i"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="BlackCrow" type="CharacterBody2D" unique_id=1295851263 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[node name="BlackCrow" type="CharacterBody2D" unique_id=1295851263 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles", "visibility_notifier")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 0
@@ -261,6 +261,7 @@ damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Iframe")
 hitbox_iframe = NodePath("Hitbox")
 blood_particles = NodePath("BloodDamage")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="EnemyStats" type="Node" parent="." unique_id=226144080]
 script = ExtResource("2_cs74y")
@@ -361,6 +362,8 @@ initial_velocity_max = 40.0
 scale_amount_curve = SubResource("Curve_32cqo")
 color = Color(0.579254, 2.4306e-06, 4.81308e-08, 1)
 color_ramp = SubResource("Gradient_v1u0i")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1864734792]
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="Vision" to="StateMachine/Waiting" method="_on_vision_area_entered"]

@@ -540,7 +540,10 @@ sound_effects = Array[ExtResource("8_th5i8")]([SubResource("Resource_7uhwd"), Su
 metadata/_custom_type_script = "uid://c8movixc3pc7b"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv5bh"]
-size = Vector2(485.5, 113.5)
+size = Vector2(485.5, 60.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g815w"]
+size = Vector2(109, 186.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qilh5"]
 size = Vector2(7, 28)
@@ -558,7 +561,7 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0, 0.5302198, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="FrozenShade" type="CharacterBody2D" unique_id=272423195 node_paths=PackedStringArray("vision", "freeze_area", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[node name="FrozenShade" type="CharacterBody2D" unique_id=272423195 node_paths=PackedStringArray("vision", "freeze_area", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "visibility_notifier")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 0
@@ -572,6 +575,7 @@ stats = NodePath("EnemyStats")
 damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Iframe")
 hitbox_iframe = NodePath("HitboxArea")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 metadata/_custom_type_script = "uid://jpd31rlnmjom"
 
 [node name="EnemyStats" type="Node" parent="." unique_id=895349931]
@@ -659,8 +663,14 @@ collision_mask = 2
 
 [node name="Vision" type="CollisionShape2D" parent="VisionArea" unique_id=1286557127]
 visible = false
-position = Vector2(18.75, 29.25)
+position = Vector2(18.75, 2.75)
 shape = SubResource("RectangleShape2D_dv5bh")
+debug_color = Color(0, 0.6364619, 0.40852782, 0.41960785)
+
+[node name="Vision2" type="CollisionShape2D" parent="VisionArea" unique_id=160876122]
+visible = false
+position = Vector2(-2, 0.75)
+shape = SubResource("RectangleShape2D_g815w")
 debug_color = Color(0, 0.6364619, 0.40852782, 0.41960785)
 
 [node name="HitboxArea" type="Area2D" parent="." unique_id=1125416957]
@@ -722,3 +732,6 @@ initial_velocity_max = 30.0
 color_ramp = SubResource("Gradient_m68qi")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=694296113]
+rect = Rect2(-10, -17.5, 20, 49)

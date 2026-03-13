@@ -36,6 +36,13 @@ func _physics_process(delta: float) -> void:
 func on_child_transition(state, new_state_name):
 	if state != current_state:
 		return
+		
+	if "stay_idle" in player and player.stay_idle and not new_state_name.to_lower() in player.idle_states:
+		if player.reset_idle_when_staying_idle:
+			current_state.enter()
+			return
+		else:
+			return
 	
 	new_state = states.get(new_state_name.to_lower())
 	if !new_state:

@@ -353,7 +353,7 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="Toad" type="CharacterBody2D" unique_id=808718436 node_paths=PackedStringArray("vision", "tongue_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[node name="Toad" type="CharacterBody2D" unique_id=808718436 node_paths=PackedStringArray("vision", "tongue_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles", "visibility_notifier")]
 scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_hprro")
@@ -367,6 +367,8 @@ damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Timer")
 hitbox_iframe = NodePath("HitboxArea")
 blood_particles = NodePath("BloodDamage")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+reset_idle_when_staying_idle = true
 metadata/_custom_type_script = "uid://jpd31rlnmjom"
 
 [node name="EnemyStats" type="Node" parent="." unique_id=923461122]
@@ -430,8 +432,10 @@ position = Vector2(0, 0.75)
 shape = SubResource("RectangleShape2D_v58hs")
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=229113555]
-volume_db = -10.0
+volume_db = -13.0
+max_distance = 1000.0
 max_polyphony = 32
+bus = &"SFX"
 script = ExtResource("4_g00tp")
 audio_library = SubResource("Resource_ivlsf")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
@@ -508,3 +512,5 @@ scale_amount_min = 2.0
 scale_amount_max = 2.0
 anim_speed_min = 1.0
 anim_speed_max = 1.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1004725782]

@@ -192,7 +192,7 @@ size = Vector2(426, 113)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nr5ai"]
 size = Vector2(60, 56)
 
-[node name="BonePillar" type="CharacterBody2D" unique_id=1049650694 node_paths=PackedStringArray("vision", "vision_startup_timer", "sprite", "stats", "damage_popup", "hitbox_iframe")]
+[node name="BonePillar" type="CharacterBody2D" unique_id=1049650694 node_paths=PackedStringArray("vision", "vision_startup_timer", "sprite", "stats", "damage_popup", "hitbox_iframe", "visibility_notifier")]
 collision_layer = 5
 collision_mask = 4099
 script = ExtResource("1_whnnv")
@@ -202,6 +202,7 @@ sprite = NodePath("Sprite2D")
 stats = NodePath("EnemyStats")
 damage_popup = NodePath("DamagePopup")
 hitbox_iframe = NodePath("Area2D")
+visibility_notifier = NodePath("VisibleOnScreenEnabler2D")
 
 [node name="EnemyStats" type="Node" parent="." unique_id=1625574039]
 script = ExtResource("2_63tft")
@@ -291,6 +292,10 @@ disabled = true
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1804393200]
 scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_nr5ai")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1061812868]
+position = Vector2(-17, -17)
+rect = Rect2(-10, -10, 55, 53)
 
 [connection signal="area_entered" from="Vision" to="StateMachine/Idle" method="_on_vision_area_entered"]
 [connection signal="timeout" from="Vision/Timer" to="." method="_on_timer_timeout"]

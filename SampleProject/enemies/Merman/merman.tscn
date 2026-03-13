@@ -465,7 +465,7 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="Merman" type="CharacterBody2D" unique_id=570366689 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[node name="Merman" type="CharacterBody2D" unique_id=570366689 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles", "visibility_notifier")]
 scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_bwhn6")
@@ -480,6 +480,8 @@ damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Iframe")
 hitbox_iframe = NodePath("HitboxArea")
 blood_particles = NodePath("BloodDamage")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+idle_states = Array[String](["idle", "dying", "recoil"])
 metadata/_custom_type_script = "uid://jpd31rlnmjom"
 
 [node name="EnemyStats" type="Node" parent="." unique_id=2071288419]
@@ -622,3 +624,6 @@ scale_amount_min = 2.0
 scale_amount_max = 2.0
 anim_speed_min = 4.0
 anim_speed_max = 4.0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1098521333]
+rect = Rect2(-20, -31.5, 30, 47)

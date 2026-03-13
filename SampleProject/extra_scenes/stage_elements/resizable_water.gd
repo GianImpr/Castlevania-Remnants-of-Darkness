@@ -52,6 +52,9 @@ func triggerBigSplash(body: Node2D) -> void:
 	var x_pos: float = min(body.global_position.x-SPLASH_SPAWN_OFFSET, water_sprite.global_position.x-water_sprite.texture.get_size().x*water_sprite.scale.x/2+collision.shape.size.x*collision.global_scale.x-SPLASH_SIZE)
 	x_pos = max(x_pos, water_sprite.global_position.x-water_sprite.texture.get_size().x*water_sprite.scale.x/2)
 	
+	if body is Enemy and body.stats.HP <= 0:
+		return
+	
 	big_splash.global_position = Vector2(x_pos, global_position.y+get_child(0).position.y)
 	if MetSys.get_current_room_instance():
 		MetSys.get_current_room_instance().add_child.call_deferred(big_splash)
@@ -66,6 +69,9 @@ func triggerSmallSplash(body: Node2D) -> void:
 	var x_pos: float = min(body.global_position.x-SPLASH_SPAWN_OFFSET, (water_sprite.global_position.x-water_sprite.texture.get_size().x*water_sprite.scale.x/2)+collision.shape.size.x*collision.global_scale.x-SPLASH_SIZE)
 	x_pos = max(x_pos, water_sprite.global_position.x-water_sprite.texture.get_size().x*water_sprite.scale.x/2)
 
+	if body is Enemy and body.stats.HP <= 0:
+		return
+		
 	small_splash.global_position = Vector2(x_pos, global_position.y+get_child(0).position.y)
 	if MetSys.get_current_room_instance():
 		MetSys.get_current_room_instance().add_child.call_deferred(small_splash)

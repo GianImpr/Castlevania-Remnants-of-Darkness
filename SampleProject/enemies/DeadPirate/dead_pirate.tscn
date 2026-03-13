@@ -596,6 +596,7 @@ libraries/ = SubResource("AnimationLibrary_e5kmv")
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=644364557]
 volume_db = -15.0
+bus = &"SFX"
 script = ExtResource("2_mcqa2")
 audio_library = SubResource("Resource_u307b")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
@@ -649,11 +650,13 @@ trail = NodePath("../../Trail")
 hurtbox = NodePath("../../Hurtbox")
 metadata/_custom_type_script = "uid://i38uw33fh2i5"
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=1983463093 node_paths=PackedStringArray("hitbox_iframe", "dying_blood")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=1983463093 node_paths=PackedStringArray("hitbox_iframe", "dying_blood", "trail_sprite", "anti_trail_sprite")]
 script = ExtResource("21_81bpk")
 hitbox_iframe = NodePath("../../HitboxArea/Hitbox")
 dying_scene = ExtResource("22_u307b")
 dying_blood = NodePath("../../DyingBlood")
+trail_sprite = NodePath("../../Trail")
+anti_trail_sprite = NodePath("../../AntiAirTrail")
 metadata/_custom_type_script = "uid://cyhi7krfapt5y"
 
 [node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=600765682]

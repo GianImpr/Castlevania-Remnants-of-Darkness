@@ -303,7 +303,7 @@ radius = 173.64908
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_amc8p"]
 
-[node name="Decarabia" type="CharacterBody2D" unique_id=452054061 node_paths=PackedStringArray("vision", "state_machine", "turn_cooldown_timer", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "ray_cast_2d_right")]
+[node name="Decarabia" type="CharacterBody2D" unique_id=452054061 node_paths=PackedStringArray("vision", "state_machine", "turn_cooldown_timer", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "ray_cast_2d_right", "visibility_notifier")]
 scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_0qcrc")
@@ -318,6 +318,8 @@ iframe_timer = NodePath("Iframe")
 hitbox_iframe = NodePath("HitboxArea")
 ray_cast_2d_left = NodePath("RayCast2DLeft")
 ray_cast_2d_right = NodePath("RayCast2DRight")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+reset_idle_when_staying_idle = true
 metadata/_custom_type_script = "uid://jpd31rlnmjom"
 
 [node name="EnemyStats" type="Node" parent="." unique_id=1617747511]
@@ -401,6 +403,7 @@ libraries/ = SubResource("AnimationLibrary_y36n7")
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1931211849]
 volume_db = -13.0
+bus = &"SFX"
 script = ExtResource("4_h3ju1")
 audio_library = SubResource("Resource_c0aqm")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
@@ -448,3 +451,7 @@ target_position = Vector2(-25, 0)
 
 [node name="TurnCooldown" type="Timer" parent="." unique_id=69006301]
 wait_time = 0.1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2124442717]
+position = Vector2(-13.5, -13)
+rect = Rect2(-10, -10, 46.5, 46)

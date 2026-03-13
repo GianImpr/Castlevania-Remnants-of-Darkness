@@ -222,7 +222,7 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_sg8a5"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="Frog" type="CharacterBody2D" unique_id=808718436 node_paths=PackedStringArray("vision", "tongue_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[node name="Frog" type="CharacterBody2D" unique_id=808718436 node_paths=PackedStringArray("vision", "tongue_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles", "visibility_notifier")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 4097
@@ -237,6 +237,8 @@ damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Timer")
 hitbox_iframe = NodePath("HitboxArea")
 blood_particles = NodePath("BloodDamage")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
+reset_idle_when_staying_idle = true
 metadata/_custom_type_script = "uid://jpd31rlnmjom"
 
 [node name="EnemyStats" type="Node" parent="." unique_id=923461122]
@@ -295,8 +297,10 @@ shape = SubResource("RectangleShape2D_v58hs")
 libraries/ = SubResource("AnimationLibrary_snpah")
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=229113555]
-volume_db = -10.0
+volume_db = -13.0
+max_distance = 1000.0
 max_polyphony = 32
+bus = &"SFX"
 script = ExtResource("3_sg8a5")
 audio_library = SubResource("Resource_6dwtb")
 metadata/_custom_type_script = "uid://b6rmc6evqalxh"
@@ -353,3 +357,6 @@ script = ExtResource("13_h2lho")
 explosion_scene = ExtResource("14_vm034")
 hitbox = NodePath("../../HitboxArea/Hitbox")
 metadata/_custom_type_script = "uid://2pwonlgnh3xc"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1104269685]
+rect = Rect2(-9.5, -7, 19, 14.5)

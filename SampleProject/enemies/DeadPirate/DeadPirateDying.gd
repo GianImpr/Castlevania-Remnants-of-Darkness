@@ -3,10 +3,14 @@ class_name DeadPirateDying
 @export var hitbox_iframe: CollisionShape2D
 @export var dying_scene: PackedScene
 @export var dying_blood: CPUParticles2D
+@export var trail_sprite: Sprite2D
+@export var anti_trail_sprite: Sprite2D
 const FREE_AFTER_SECONDS: float = 1.5
 
 func enter():
 	animation.stop()
+	trail_sprite.visible = false
+	anti_trail_sprite.visible = false
 	player.anti_air.get_child(0).set_deferred("disabled", true)
 	player.sword.get_child(0).set_deferred("disabled", true)
 	player.hitbox_iframe.get_child(0).set_deferred("disabled", true)

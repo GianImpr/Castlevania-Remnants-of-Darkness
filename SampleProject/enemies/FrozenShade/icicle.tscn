@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://1eyc20ikiagf" path="res://assets/sounds/Enemies/FrozenShade/IcicleBreak2.ogg" id="9_3hbxf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lqhfa"]
-size = Vector2(22.5, 2)
+size = Vector2(7.5, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2p2xa"]
 size = Vector2(32, 6)
@@ -245,8 +245,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=811099130]
-visible = false
-position = Vector2(2.5, 1.5)
+position = Vector2(2.5, -4)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_lqhfa")
 
