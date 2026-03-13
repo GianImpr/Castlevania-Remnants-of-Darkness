@@ -225,6 +225,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [node name="Frog" type="CharacterBody2D" unique_id=808718436 node_paths=PackedStringArray("vision", "tongue_hitbox", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
 scale = Vector2(2, 2)
 collision_layer = 4
+collision_mask = 4097
 script = ExtResource("1_pd6i1")
 vision = NodePath("VisionArea")
 tongue_hitbox = NodePath("TongueArea")
@@ -286,6 +287,7 @@ disabled = true
 debug_color = Color(0.94274306, 0.24144435, 0, 0.41960785)
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1616814822]
+visible = false
 position = Vector2(0.25, -3)
 shape = SubResource("RectangleShape2D_v58hs")
 
