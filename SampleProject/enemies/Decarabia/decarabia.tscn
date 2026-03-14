@@ -302,6 +302,7 @@ radius = 23.521267
 radius = 173.64908
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_amc8p"]
+radius = 19.104973
 
 [node name="Decarabia" type="CharacterBody2D" unique_id=452054061 node_paths=PackedStringArray("vision", "state_machine", "turn_cooldown_timer", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "ray_cast_2d_right", "visibility_notifier")]
 scale = Vector2(2, 2)
@@ -428,7 +429,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=2133692894]
-visible = false
 shape = SubResource("CircleShape2D_amc8p")
 debug_color = Color(0.86601394, 0.35608864, 0, 0.41960785)
 

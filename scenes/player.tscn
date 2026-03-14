@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
 [ext_resource type="Script" uid="uid://cb60kmpjhfr6h" path="res://SampleProject/player.gd" id="1_p2ow1"]
 [ext_resource type="PackedScene" uid="uid://bao10vvn6rpga" path="res://SampleProject/Powers/Axes/axe_throw.tscn" id="2_1180g"]
-[ext_resource type="PackedScene" uid="uid://crov6smdsbwb4" path="res://SampleProject/familiars/Faerie/faerie.tscn" id="2_1776x"]
 [ext_resource type="Script" uid="uid://j2vesgbfbner" path="res://SampleProject/Scripts/System/item.gd" id="2_j5pj6"]
 [ext_resource type="Script" uid="uid://1vp87s3hhyhn" path="res://SampleProject/Scripts/System/weapon.gd" id="2_ju6fn"]
 [ext_resource type="Texture2D" uid="uid://du0eiy67cnc7d" path="res://assets/sprites/Items/InventoryIcons/Inventory_258.png" id="3_2k40y"]
@@ -5017,7 +5016,6 @@ floor_max_angle = 1.3089969
 floor_snap_length = 30.0
 safe_margin = 0.15
 script = ExtResource("1_p2ow1")
-innocent_devil_scene = ExtResource("2_1776x")
 sprite = NodePath("Sprite2D")
 aura = NodePath("Sprite2D/Aura")
 state_machine = NodePath("StateMachine")
@@ -5058,7 +5056,7 @@ Stats = {
 "ATK": 8,
 "CON": 4,
 "DEF": 2,
-"EXP": 5000,
+"EXP": 0,
 "FP": 0.0,
 "GOLD": 0,
 "Guard": 3,

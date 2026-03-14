@@ -9,6 +9,7 @@ var facing_position: int
 @export var state_machine: StateMachine
 const ROTATION_PER_HUNDRED_SPEED: float = PI
 @export var turn_cooldown_timer: Timer
+signal turning
 
 func _ready() -> void:
 	super()
@@ -36,6 +37,7 @@ func turn_on_wall():
 		facing_position *= -1
 		scale.x *= -1
 		velocity.x *= -1
+		turning.emit()
 
 
 

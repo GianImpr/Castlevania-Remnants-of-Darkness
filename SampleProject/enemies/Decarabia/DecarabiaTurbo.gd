@@ -9,6 +9,8 @@ const MAX_DURATION: float = 5
 var acceleration_tween: Tween
 
 func enter():
+	if not player.turning.is_connected(changeAcceleration):
+		player.turning.connect(changeAcceleration)
 	if not sound_interval_timer.timeout.is_connected(sound.play_sound_effect_from_library):
 		sound_interval_timer.timeout.connect(sound.play_sound_effect_from_library.bind("splash"))
 	can_turnaround_with_scale()
@@ -29,3 +31,11 @@ func Update(delta: float):
 
 func Physics_Update(delta: float):
 	pass
+
+func changeAcceleration() -> void:
+	if acceleration_tween and acceleration_tween.is_running():
+		var old_pos: float = acceleration_tween.get_total_elapsed_time()
+		acceleration_tween.kill()
+		if old_pos < ACCELERATION_DURATION:
+			acceleration_tween = get_tree().create_tween()
+			acceleration_tween.tween_property(player, "velocity:x", SPEED*player.facing_position, ACCELERATION_DURATION-old_pos)

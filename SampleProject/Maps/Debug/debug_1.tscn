@@ -3,15 +3,7 @@
 [ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_m4qdj"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_1u5xp"]
 [ext_resource type="Texture2D" uid="uid://b4d0xyxsq3tff" path="res://assets/sprites/Tiles/Debug.png" id="3_2ur68"]
-[ext_resource type="Texture2D" uid="uid://utw78hhki22k" path="res://assets/sprites/Objects/Other/WaterSurface.png" id="4_ejr6v"]
-[ext_resource type="Script" uid="uid://c2xa1t7v5m6yh" path="res://SampleProject/extra_scenes/stage_elements/resizable_water.gd" id="4_rjj1q"]
-[ext_resource type="PackedScene" uid="uid://dle4vdwj0t34f" path="res://SampleProject/extra_scenes/stage_elements/water_splash.tscn" id="5_kwfkb"]
-[ext_resource type="PackedScene" uid="uid://c60jsfrlx85w3" path="res://SampleProject/extra_scenes/stage_elements/small_water_splash.tscn" id="6_i41q0"]
-[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="7_rspch"]
-[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_6bfpa"]
-[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_i41q0"]
-[ext_resource type="AudioStream" uid="uid://crv7fk0e66soy" path="res://assets/sounds/Effects/Miscellaneous/BigSplash.wav" id="10_1mmoy"]
-[ext_resource type="AudioStream" uid="uid://iuq41xxsnubj" path="res://assets/sounds/Effects/Miscellaneous/SmallSplash.wav" id="12_1mmoy"]
+[ext_resource type="PackedScene" uid="uid://qoqq8avm8hvu" path="res://SampleProject/enemies/Decarabia/decarabia.tscn" id="4_ejr6v"]
 
 [sub_resource type="Gradient" id="Gradient_2prqw"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
@@ -109,71 +101,6 @@ physics_layer_1/collision_layer = 4096
 physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_d34m2")
 
-[sub_resource type="Animation" id="Animation_ki7wd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_te7kb"]
-resource_name = "idle"
-length = 0.2
-loop_mode = 2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_eroyy"]
-_data = {
-&"RESET": SubResource("Animation_ki7wd"),
-&"idle": SubResource("Animation_te7kb")
-}
-
-[sub_resource type="Gradient" id="Gradient_n6mno"]
-colors = PackedColorArray(0, 0.145098, 0.4, 0.337255, 0, 0.145098, 0.4, 0.337255)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jqftp"]
-gradient = SubResource("Gradient_n6mno")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0euv"]
-size = Vector2(64.095245, 63)
-
-[sub_resource type="Resource" id="Resource_6nq1p"]
-script = ExtResource("9_i41q0")
-Tag = "big_splash"
-stream = ExtResource("10_1mmoy")
-metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
-
-[sub_resource type="Resource" id="Resource_ulaal"]
-script = ExtResource("9_i41q0")
-Tag = "small_splash"
-stream = ExtResource("12_1mmoy")
-metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
-
-[sub_resource type="Resource" id="Resource_v87x7"]
-script = ExtResource("8_6bfpa")
-sound_effects = Array[ExtResource("9_i41q0")]([SubResource("Resource_6nq1p"), SubResource("Resource_ulaal")])
-metadata/_custom_type_script = "uid://c8movixc3pc7b"
-
 [node name="Room" type="Node2D" unique_id=999051135]
 script = ExtResource("1_m4qdj")
 apply_limits = true
@@ -198,46 +125,5 @@ tile_set = SubResource("TileSet_cydyx")
 tile_map_data = PackedByteArray("AAALAAgAAAADAAAAAAAHAAsAAAADAAAAAAAIAAsAAAADAAAAAAAJAAsAAAADAAAAAAAMAAgAAAADAAAAAAANAAgAAAADAAAAAAAOAAgAAAADAAAAAAARAAoAAAADAAAAAAASAAoAAAADAAAAAAATAAoAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_t01tf")
 
-[node name="ResizableWater" type="Node2D" parent="." unique_id=1143357429 node_paths=PackedStringArray("sound", "collision")]
-z_index = 30
-position = Vector2(126, 414)
-script = ExtResource("4_rjj1q")
-big_water_splash = ExtResource("5_kwfkb")
-small_water_splash = ExtResource("6_i41q0")
-sound = NodePath("PolyphonicAudio")
-collision = NodePath("Sprite2D2/Area2D/CollisionShape2D")
-
-[node name="Sprite2D" type="Sprite2D" parent="ResizableWater" unique_id=999073275]
-texture_repeat = 2
-texture = ExtResource("4_ejr6v")
-centered = false
-vframes = 3
-region_enabled = true
-region_rect = Rect2(0, 0, 770, 48)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ResizableWater" unique_id=843658693]
-libraries/ = SubResource("AnimationLibrary_eroyy")
-autoplay = &"idle"
-speed_scale = 0.5
-
-[node name="Sprite2D2" type="Sprite2D" parent="ResizableWater" unique_id=1865934326]
-position = Vector2(386, 18)
-scale = Vector2(12, 0.5)
-texture = SubResource("GradientTexture2D_jqftp")
-
-[node name="Area2D" type="Area2D" parent="ResizableWater/Sprite2D2" unique_id=143048597]
-collision_layer = 0
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ResizableWater/Sprite2D2/Area2D" unique_id=1808212824]
-visible = false
-shape = SubResource("RectangleShape2D_y0euv")
-
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="ResizableWater" unique_id=8018818]
-volume_db = -12.0
-script = ExtResource("7_rspch")
-audio_library = SubResource("Resource_v87x7")
-metadata/_custom_type_script = "uid://b6rmc6evqalxh"
-
-[connection signal="body_entered" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="ResizableWater/Sprite2D2/Area2D" to="ResizableWater" method="_on_area_2d_body_exited"]
+[node name="Decarabia" parent="." unique_id=452054061 instance=ExtResource("4_ejr6v")]
+position = Vector2(496, 402)
