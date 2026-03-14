@@ -335,10 +335,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.3, 0.35, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.10000001, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [2, 0, 1, 5, 3, 7, 9, 10]
+"values": [0, 1, 5, 3, 7, 9, 10]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -496,13 +496,13 @@ base_attribute = Array[int]([2])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox" unique_id=1280816527]
 visible = false
-position = Vector2(-12, 11)
+position = Vector2(-12, 20)
 shape = SubResource("RectangleShape2D_i1dwb")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=16646798]
 self_modulate = Color(1, 1, 1, 0)
-position = Vector2(29, -7)
+position = Vector2(27, 0)
 scale = Vector2(0.727273, 1)
 texture = ExtResource("6_ewa86")
 vframes = 2

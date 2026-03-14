@@ -227,7 +227,10 @@ func swingWeapon(anim_type: int):
 		elif anim_type == AttackType.GROUND:
 			player.sprite.weapon.play(get_attack_speed())
 		elif anim_type == AttackType.CROUCH:
-			player.sprite.weapon.play_crouch(get_attack_speed())
+			var visible_from_start: bool = true
+			if Global.player.stats.getCurrentWeaponType() in [Weapon.Type.GREATSWORD, Weapon.Type.SPEAR, Weapon.Type.FIST]:
+				visible_from_start = false
+			player.sprite.weapon.play_crouch(get_attack_speed(), visible_from_start)
 
 #Allows the player to activate a relic and handles the activation logic along
 #with visual effects
