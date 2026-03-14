@@ -24,6 +24,7 @@ func _ready() -> void:
 	body_hitbox_on_cooldown = false
 	hitbox_iframe.set_collision_mask_value(2, true)
 	if visibility_notifier:
+		stay_idle = not visibility_notifier.is_on_screen()
 		visibility_notifier.screen_entered.connect(setStayIdle.bind(false))
 		visibility_notifier.screen_exited.connect(setStayIdle.bind(true))
 

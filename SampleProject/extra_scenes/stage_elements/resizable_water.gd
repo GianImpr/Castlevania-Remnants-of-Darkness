@@ -58,6 +58,10 @@ func triggerBigSplash(body: Node2D) -> void:
 	big_splash.global_position = Vector2(x_pos, global_position.y+get_child(0).position.y)
 	if Global.screen != Global.ScreenType.TRANSITION:
 		MetSys.get_current_room_instance().add_child(big_splash)
+	else:
+		big_splash.queue_free()
+		return
+		
 	sound.play_sound_effect_from_library("big_splash")
 	if body.velocity.y > VELOCITY_FOR_BIG_SPLASH:
 		big_splash.bigSplash()
@@ -75,6 +79,9 @@ func triggerSmallSplash(body: Node2D) -> void:
 	small_splash.global_position = Vector2(x_pos, global_position.y+get_child(0).position.y)
 	if Global.screen != Global.ScreenType.TRANSITION:
 		MetSys.get_current_room_instance().add_child(small_splash)
+	else:
+		small_splash.queue_free()
+		return
 		
 	if can_produce_small_sound:
 		can_produce_small_sound = false
