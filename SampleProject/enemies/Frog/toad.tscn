@@ -479,9 +479,10 @@ metadata/_custom_type_script = "uid://crito87kqqtf3"
 script = ExtResource("12_0qwvn")
 metadata/_custom_type_script = "uid://bt3p51aart0l"
 
-[node name="Tongue" type="Node" parent="StateMachine" unique_id=1319637909 node_paths=PackedStringArray("tongue_hitbox")]
+[node name="Tongue" type="Node" parent="StateMachine" unique_id=1319637909 node_paths=PackedStringArray("tongue_hitbox", "tongue_sprite")]
 script = ExtResource("13_hprro")
 tongue_hitbox = NodePath("../../TongueArea/Hitbox")
+tongue_sprite = NodePath("../../Tongue")
 metadata/_custom_type_script = "uid://d21bbd6jdhmgk"
 
 [node name="Dying" type="Node" parent="StateMachine" unique_id=100316938 node_paths=PackedStringArray("hitbox", "particles", "tongue_sprite")]

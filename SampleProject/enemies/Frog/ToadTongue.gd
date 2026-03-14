@@ -1,12 +1,15 @@
 extends State
 class_name ToadTongue
 @export var tongue_hitbox: CollisionShape2D
+@export var tongue_sprite: Sprite2D
 
 func enter():
 	animation.play("tongue")
 	
 func exit():
 	tongue_hitbox.set_deferred("disabled", true)
+	animation.stop()
+	tongue_sprite.visible = false
 
 func Update(delta: float):
 	enemy_can_die()

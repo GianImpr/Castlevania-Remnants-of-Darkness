@@ -27,5 +27,5 @@ func Physics_Update(delta: float):
 
 func decideAction() -> String:
 	if abs(Global.player.global_position.x - player.global_position.x) < MIN_TONGUE_DISTANCE:
-		return ["tongue", "jump"].pick_random()
+		return ["tongue", "tongue", "tongue", "jump"].pick_random()
 	return "jump"

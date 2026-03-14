@@ -8,6 +8,7 @@ func enter():
 func exit():
 	tongue_hitbox.set_deferred("disabled", true)
 
+
 func Update(delta: float):
 	enemy_can_die()
 	
