@@ -88,14 +88,14 @@
 [ext_resource type="Texture2D" uid="uid://b0w1atcaqhjsv" path="res://assets/sprites/Items/InventoryIcons/Inventory_273.png" id="31_o30at"]
 [ext_resource type="Texture2D" uid="uid://dm6vfcwtodame" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Square.png" id="31_tk0s7"]
 [ext_resource type="Texture2D" uid="uid://6p7n4eskpk4c" path="res://assets/sprites/Items/InventoryIcons/Inventory_274.png" id="32_23dgf"]
-[ext_resource type="Texture2D" uid="uid://c80vykhtjvcc" path="res://assets/sprites/Items/InventoryIcons/GreatSword.png" id="32_elabx"]
 [ext_resource type="Texture2D" uid="uid://bjjj12v4g82g4" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Triangle.png" id="32_um34v"]
 [ext_resource type="Texture2D" uid="uid://0dseup6781ic" path="res://assets/sprites/Items/InventoryIcons/Inventory_275.png" id="33_b4hpa"]
-[ext_resource type="PackedScene" uid="uid://b5xmisos6f4ay" path="res://SampleProject/Weapons/great_sword.tscn" id="33_e2quk"]
+[ext_resource type="Texture2D" uid="uid://dhrisibiydava" path="res://assets/sprites/Items/InventoryIcons/NodachiIcon.png" id="33_dc2g8"]
 [ext_resource type="Texture2D" uid="uid://bkttgyeuecjw" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Options.png" id="33_gcngi"]
 [ext_resource type="Texture2D" uid="uid://clu1utyj8cyvs" path="res://assets/sprites/Items/InventoryIcons/Inventory_276.png" id="34_a7efe"]
 [ext_resource type="Texture2D" uid="uid://xrh5xy2dps1l" path="res://assets/sprites/Items/InventoryIcons/Inventory_423.png" id="34_eii45"]
 [ext_resource type="Texture2D" uid="uid://bw2h7xxdtp31i" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Share.png" id="34_happf"]
+[ext_resource type="PackedScene" uid="uid://8ix1hlbsa1li" path="res://SampleProject/Weapons/nodachi.tscn" id="34_wycjs"]
 [ext_resource type="Texture2D" uid="uid://dbcpcppmsb0k0" path="res://assets/sprites/Items/InventoryIcons/Inventory_277.png" id="35_8ci27"]
 [ext_resource type="PackedScene" uid="uid://xqlvvxe58orc" path="res://SampleProject/Weapons/durandal.tscn" id="35_bcd5a"]
 [ext_resource type="Texture2D" uid="uid://rwgkfm18pk3l" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_R1.png" id="35_fjwe1"]
@@ -704,16 +704,16 @@ metadata/_custom_type_script = "uid://1vp87s3hhyhn"
 
 [sub_resource type="Resource" id="Resource_8tx5s"]
 script = ExtResource("2_6ajcc")
-weapon_name = "GREAT_SWORD"
-weapon_description = "GREAT_SWORD_DESC"
+weapon_name = "NODACHI"
+weapon_description = "NODACHI_DESC"
 type = 1
 ATK = 18
 DEF = 4
 RES = 3
 crouch_attack = true
 value = 520
-icon = ExtResource("32_elabx")
-sprite = ExtResource("33_e2quk")
+icon = ExtResource("33_dc2g8")
+sprite = ExtResource("34_wycjs")
 recipe_status = 0
 recipe = Array[Dictionary]([{
 "id": 3,
