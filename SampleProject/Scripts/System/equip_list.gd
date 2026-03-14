@@ -62,7 +62,24 @@ func _process(delta: float) -> void:
 					quick_weapon_icons.get_child(i).texture = null
 				sound.play_sound_effect_from_library("confirm")
 				break
-		
+	elif equipSlots.button_index == 0 and equipSlots.menu.accessed_menu == 0 and state_machine.current_state is InvEquip:
+		const RSTICK_ACTIONS: Array[String] = ["rstick_up", "next_skill", "rstick_down", "previous_skill"]
+		for i in range(0, RSTICK_ACTIONS.size()):
+			if Input.is_action_just_pressed(RSTICK_ACTIONS[i]):
+				var cur_weapon: Weapon = null
+				if Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.WEAPON] > 0:
+					cur_weapon = Global.player.stats.weapon_compendium[Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.WEAPON]-1]
+
+				if quick_weapons[i] != cur_weapon and cur_weapon != null:
+					quick_weapons[i] = cur_weapon
+					quick_weapon_icons.get_child(i).texture = cur_weapon.icon
+				else:
+					quick_weapons[i] = null
+					quick_weapon_icons.get_child(i).texture = null
+				sound.play_sound_effect_from_library("confirm")
+				break
+
+	
 #Equips the selected item by:
 #Updating stats
 #Updating the item ID of the current equip slot
