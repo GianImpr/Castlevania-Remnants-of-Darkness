@@ -365,6 +365,7 @@ func equippingRelic() -> bool:
 func turnOffRelic() -> void:
 	Global.player.enabled_magic = false
 	Global.player.aura.visible = false
+	Global.player.relic_sounds.stop()
 
 #Used by the WeaponWheel node: allows to quickly swap between four different weapons
 func quickWeaponSwap(weapon_position: int) -> void:
