@@ -306,6 +306,7 @@ radius = 173.64908
 [node name="Decarabia" type="CharacterBody2D" unique_id=452054061 node_paths=PackedStringArray("vision", "state_machine", "turn_cooldown_timer", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "ray_cast_2d_left", "ray_cast_2d_right", "visibility_notifier")]
 scale = Vector2(2, 2)
 collision_layer = 4
+collision_mask = 4097
 script = ExtResource("1_0qcrc")
 vision = NodePath("VisionArea")
 state_machine = NodePath("StateMachine")
