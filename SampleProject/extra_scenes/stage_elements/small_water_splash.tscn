@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c60jsfrlx85w3"]
+[gd_scene format=3 uid="uid://c60jsfrlx85w3"]
 
 [ext_resource type="Texture2D" uid="uid://bk4p5eu0pmsaj" path="res://assets/sprites/Effects/WaterSplash.png" id="1_n7vsj"]
 
@@ -85,13 +85,13 @@ _data = {
 &"splash": SubResource("Animation_orond")
 }
 
-[node name="SmallWaterSplash" type="Node2D"]
+[node name="SmallWaterSplash" type="Node2D" unique_id=373173552]
 z_index = 31
 
-[node name="ScaleWater" type="Node2D" parent="."]
+[node name="ScaleWater" type="Node2D" parent="." unique_id=1739440936]
 scale = Vector2(1, 1e-05)
 
-[node name="Sprite2D" type="Sprite2D" parent="ScaleWater"]
+[node name="Sprite2D" type="Sprite2D" parent="ScaleWater" unique_id=609017627]
 self_modulate = Color(0.40784314, 0.45882353, 0.27058825, 0)
 clip_children = 2
 material = SubResource("CanvasItemMaterial_yepyw")
@@ -99,7 +99,7 @@ position = Vector2(30, -10)
 scale = Vector2(2, 2)
 texture = ExtResource("1_n7vsj")
 
-[node name="TextureRect" type="TextureRect" parent="ScaleWater/Sprite2D"]
+[node name="TextureRect" type="TextureRect" parent="ScaleWater/Sprite2D" unique_id=645594703]
 visible = false
 material = SubResource("CanvasItemMaterial_aensr")
 offset_left = -15.0
@@ -108,7 +108,7 @@ offset_right = 25.0
 offset_bottom = 4.5
 texture = SubResource("GradientTexture2D_aensr")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=994056025]
 position = Vector2(29, 0)
 scale = Vector2(1, 2.97355)
 emitting = false
@@ -126,14 +126,12 @@ scale_amount_min = 2.0
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_1rmmn")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2065770494]
 position = Vector2(32, -108)
 scale = Vector2(0.96875, 3.375)
 blend_mode = 2
 texture = SubResource("GradientTexture2D_1rmmn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_edt7g")
-}
-autoplay = "splash"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1152593489]
+libraries/ = SubResource("AnimationLibrary_edt7g")
+autoplay = &"splash"
