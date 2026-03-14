@@ -23,6 +23,7 @@ func Physics_Update(delta: float):
 		player.velocity.y *= HEIGHT_DECELERATION*delta
 	player.velocity.x = player.facing_position * (-1) * pushback
 	can_die()
+	can_double_jump()
 	
 	if player.is_on_floor():
 		Transitioned.emit(self, "hard_landing")

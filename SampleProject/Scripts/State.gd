@@ -286,6 +286,8 @@ func stay_crouched():
 func can_double_jump():
 	if InputBuffer.is_action_press_buffered("jump") and player.can_double_jump:
 		Transitioned.emit(self, "double_jump")
+		if self is HectorDamageAir:
+			player.is_hurt = false
 		
 func can_dive_kick():
 	if InputBuffer.is_action_press_buffered("jump") and Input.is_action_pressed("crouch"):
