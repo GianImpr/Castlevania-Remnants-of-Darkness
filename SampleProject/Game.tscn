@@ -11,23 +11,22 @@
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="5_pjg0o"]
 [ext_resource type="Texture2D" uid="uid://caw8updlmyepd" path="res://assets/sprites/Items/InventoryIcons/Bullova_New.png" id="5_ua8sn"]
 [ext_resource type="FontFile" uid="uid://chxn05h5dsxi2" path="res://assets/sprites/Font/OldLondon.ttf" id="6_70wxk"]
-[ext_resource type="Texture2D" uid="uid://bklif37kbg5bs" path="res://assets/sprites/Items/InventoryIcons/Claymore.png" id="6_c5tvp"]
 [ext_resource type="Script" uid="uid://j2vesgbfbner" path="res://SampleProject/Scripts/System/item.gd" id="6_n752u"]
 [ext_resource type="PackedScene" uid="uid://b4f2sbjwt3lf7" path="res://SampleProject/extra_scenes/inventory_menu.tscn" id="6_pokik"]
 [ext_resource type="PackedScene" uid="uid://2k1tvl70buqg" path="res://SampleProject/extra_scenes/HUD/item_box.tscn" id="7_11rec"]
-[ext_resource type="PackedScene" uid="uid://dhpoigeaf1rv5" path="res://SampleProject/Weapons/claymore.tscn" id="7_g5tc5"]
+[ext_resource type="Texture2D" uid="uid://d2jlts00yvcd1" path="res://assets/sprites/Items/InventoryIcons/Royal_Claymore.png" id="7_dc2g8"]
 [ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="7_ip71q"]
 [ext_resource type="Texture2D" uid="uid://du0eiy67cnc7d" path="res://assets/sprites/Items/InventoryIcons/Inventory_258.png" id="7_oyt25"]
 [ext_resource type="Script" uid="uid://dqfeccpppaddk" path="res://SampleProject/Scripts/System/music_player.gd" id="8_385te"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_afqo1"]
 [ext_resource type="Texture2D" uid="uid://b0pf1n6afknku" path="res://assets/sprites/Items/InventoryIcons/Inventory_257.png" id="8_atld1"]
-[ext_resource type="Texture2D" uid="uid://dil67bbpd26mq" path="res://assets/sprites/Items/InventoryIcons/Falchion.png" id="8_hgl6s"]
+[ext_resource type="Texture2D" uid="uid://cinveonpnwv2u" path="res://assets/sprites/Items/InventoryIcons/ZweihanderIcon.png" id="9_dc2g8"]
 [ext_resource type="Texture2D" uid="uid://baxtph716gnw5" path="res://assets/sprites/Items/InventoryIcons/Inventory_291.png" id="9_fjwgd"]
-[ext_resource type="PackedScene" uid="uid://cankh7clno27c" path="res://SampleProject/Weapons/falchion.tscn" id="9_s4pf2"]
 [ext_resource type="Texture2D" uid="uid://drwi0scdnk2tl" path="res://assets/sprites/Items/InventoryIcons/Inventory_292.png" id="10_8v4x6"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="10_etx3r"]
 [ext_resource type="AudioStream" uid="uid://ce1urfkmutvrd" path="res://assets/sounds/Menu/ShowMap.MP3" id="10_kb15x"]
 [ext_resource type="Texture2D" uid="uid://4kwuakvxtq7" path="res://assets/sprites/Items/InventoryIcons/Mace.png" id="10_tph4o"]
+[ext_resource type="PackedScene" uid="uid://b7vqut88inkvr" path="res://SampleProject/Weapons/zweihander.tscn" id="10_wycjs"]
 [ext_resource type="Texture2D" uid="uid://c6ppcg8i6ld1d" path="res://assets/sprites/Items/InventoryIcons/Inventory_293.png" id="11_4mo0k"]
 [ext_resource type="PackedScene" uid="uid://og11ao24k2oq" path="res://SampleProject/Weapons/mace.tscn" id="11_u7wty"]
 [ext_resource type="Texture2D" uid="uid://caxuiae8j1lj7" path="res://assets/sprites/Items/InventoryIcons/Inventory_294.png" id="12_ljk1s"]
@@ -417,8 +416,8 @@ ATK = 12
 DEF = 2
 crouch_attack = true
 value = 300
-icon = ExtResource("6_c5tvp")
-sprite = ExtResource("7_g5tc5")
+icon = ExtResource("7_dc2g8")
+sprite = ExtResource("43_ua8sn")
 recipe_status = 0
 recipe = Array[Dictionary]([{
 "id": 46,
@@ -432,16 +431,16 @@ recipe = Array[Dictionary]([{
 
 [sub_resource type="Resource" id="Resource_nv7yp"]
 script = ExtResource("2_6ajcc")
-weapon_name = "FALCHION"
-weapon_description = "FALCHION_DESC"
+weapon_name = "ZWEIHANDER"
+weapon_description = "ZWEIHANDER_DESC"
 type = 1
 element = Array[int]([2])
 ATK = 15
 DEF = 2
 crouch_attack = true
 value = 450
-icon = ExtResource("8_hgl6s")
-sprite = ExtResource("9_s4pf2")
+icon = ExtResource("9_dc2g8")
+sprite = ExtResource("10_wycjs")
 recipe_status = 0
 recipe = Array[Dictionary]([{
 "id": 3,
