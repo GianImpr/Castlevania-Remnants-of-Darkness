@@ -55,6 +55,10 @@ func _process(delta: float) -> void:
 		
 func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 	actual_attributes = base_attribute.duplicate(true)
+	
+	if Global.player.stats.itemEquipped(Weapon.Weapons.BAHG_NAHK, HectorStats.EQUIPMENT_SLOTS.WEAPON) and (name in ["FistHitbox", "UppercutHitbox", "ThunderUppercut"]):
+		actual_attributes[actual_attributes.find(Global.Attribute.HIT)] = Global.Attribute.SLASH
+	
 	if dive_kick and Global.player.state_machine.current_state is HectorDiveKick and (isAlive(body) or body is not CharacterBody2D):
 		player.dive_kicking = true
 		player.transitionToState("jump")
