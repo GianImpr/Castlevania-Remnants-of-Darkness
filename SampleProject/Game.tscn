@@ -93,14 +93,14 @@
 [ext_resource type="Texture2D" uid="uid://dhrisibiydava" path="res://assets/sprites/Items/InventoryIcons/NodachiIcon.png" id="33_dc2g8"]
 [ext_resource type="Texture2D" uid="uid://bkttgyeuecjw" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Options.png" id="33_gcngi"]
 [ext_resource type="Texture2D" uid="uid://clu1utyj8cyvs" path="res://assets/sprites/Items/InventoryIcons/Inventory_276.png" id="34_a7efe"]
-[ext_resource type="Texture2D" uid="uid://xrh5xy2dps1l" path="res://assets/sprites/Items/InventoryIcons/Inventory_423.png" id="34_eii45"]
 [ext_resource type="Texture2D" uid="uid://bw2h7xxdtp31i" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_Share.png" id="34_happf"]
 [ext_resource type="PackedScene" uid="uid://8ix1hlbsa1li" path="res://SampleProject/Weapons/nodachi.tscn" id="34_wycjs"]
 [ext_resource type="Texture2D" uid="uid://dbcpcppmsb0k0" path="res://assets/sprites/Items/InventoryIcons/Inventory_277.png" id="35_8ci27"]
-[ext_resource type="PackedScene" uid="uid://xqlvvxe58orc" path="res://SampleProject/Weapons/durandal.tscn" id="35_bcd5a"]
+[ext_resource type="Texture2D" uid="uid://crlqvsudyqrsg" path="res://assets/sprites/Items/InventoryIcons/DragonKillerIcon.png" id="35_dc2g8"]
 [ext_resource type="Texture2D" uid="uid://rwgkfm18pk3l" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_R1.png" id="35_fjwe1"]
 [ext_resource type="Texture2D" uid="uid://cqgpumb0tf5xr" path="res://addons/guide/ui/renderers/controllers/playstation/icons/PS5_L1.png" id="36_bnl1m"]
 [ext_resource type="Texture2D" uid="uid://bnhnnpu6nlg2b" path="res://assets/sprites/Items/InventoryIcons/Inventory_278.png" id="36_u5spk"]
+[ext_resource type="PackedScene" uid="uid://daux5a6635l1c" path="res://SampleProject/Weapons/dragon_killer.tscn" id="36_wycjs"]
 [ext_resource type="Texture2D" uid="uid://d4e27g5u51n6f" path="res://assets/sprites/Items/InventoryIcons/BahgNahk.png" id="36_x7lpv"]
 [ext_resource type="Texture2D" uid="uid://dfcnoqbynj6om" path="res://assets/sprites/Items/InventoryIcons/Inventory_280.png" id="37_fr50l"]
 [ext_resource type="PackedScene" uid="uid://bmmj3wqs6ydfy" path="res://SampleProject/Weapons/bahg_nahk.tscn" id="37_lhu5i"]
@@ -732,16 +732,16 @@ metadata/_custom_type_script = "uid://1vp87s3hhyhn"
 
 [sub_resource type="Resource" id="Resource_8fi0q"]
 script = ExtResource("2_6ajcc")
-weapon_name = "DURANDAL"
-weapon_description = "DURANDAL_DESC"
+weapon_name = "DRAGON_KILLER"
+weapon_description = "DRAGON_KILLER_DESC"
 type = 1
 ATK = 21
 DEF = 6
 RES = 7
 crouch_attack = true
 value = 600
-icon = ExtResource("34_eii45")
-sprite = ExtResource("35_bcd5a")
+icon = ExtResource("35_dc2g8")
+sprite = ExtResource("36_wycjs")
 recipe_status = 0
 recipe = Array[Dictionary]([{
 "id": 4,
