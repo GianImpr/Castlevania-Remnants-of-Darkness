@@ -10,4 +10,4 @@ func _physics_process(delta: float) -> void:
 
 func fitTextInBox(size_multiplier: float = 1) -> void:
 	if get_rect().size.x > custom_minimum_size.x:
-		add_theme_font_size_override("font_size", get_theme_font_size("font_size")/get_rect().size.x*custom_minimum_size.x*size_multiplier)
+		add_theme_font_size_override("font_size", min(get_theme_font_size("font_size"), get_theme_font_size("font_size")/get_rect().size.x*custom_minimum_size.x*size_multiplier))
