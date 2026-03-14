@@ -5,6 +5,7 @@ extends RigidBody2D
 @export var animation: AnimationPlayer
 @export var sound: PolyphonicAudio
 @export var area: Area2D
+signal picked
 
 func _ready():
 	if Global.player.stats.picked_items[pickup_flag]:
@@ -23,5 +24,6 @@ func _on_area_2d_area_entered(area_body: Area2D) -> void:
 	visible = false
 	area.set_deferred("monitoring", false)
 	sound.play_sound_effect_from_library("life_up")
+	picked.emit()
 	await sound.finished
 	queue_free()

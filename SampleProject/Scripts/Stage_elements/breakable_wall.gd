@@ -4,11 +4,16 @@ class_name BreakableWall
 @export var wall: DestructibleBody2D
 @export var sound: PolyphonicAudio
 @export var pick_up_flag: int
+@export var wall_flag: int
 @export var collision_box: CollisionShape2D
 @export var item_scene: PackedScene
 const HITS_TO_TAKE: int = 3
 var hits_taken: int = 0
 var broken: bool = false
+
+func _ready() -> void:
+	if Global.player.stats.wall_flags[wall_flag]:
+		queue_free()
 
 func takeDamage() -> void:
 	hits_taken += 1
@@ -32,5 +37,8 @@ func takeDamage() -> void:
 			item.z_index = 10
 			item.pickup_flag = pick_up_flag
 			item.set_deferred("global_position", global_position)
+			item.picked.connect(func(): Global.player.stats.wall_flags[wall_flag] = true)
 			MetSys.get_current_room_instance().call_deferred("add_child", item)
+		else:
+			Global.player.stats.wall_flags[wall_flag] = true
 		sound.play_sound_effect_from_library("break")

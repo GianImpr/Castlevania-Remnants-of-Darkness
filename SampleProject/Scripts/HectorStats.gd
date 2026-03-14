@@ -62,6 +62,7 @@ var combat_flags: Array[bool] ##ID list checks for combat rooms and bosses
 var tutorial_flags: Array[bool] ##ID list checks for fullscreen tutorial popups
 var dialogue_flags: Array[bool] ##ID list checks for dialogue scenes
 var save_flags: Array[bool] ##ID list checks for visited save rooms
+var wall_flags: Array[bool] ##ID list checks for broken walls
 var current_area: String = "???"
 var map_ratio: String
 
@@ -82,6 +83,8 @@ func _input(event: InputEvent) -> void:
 	var compendiums = [weapon_compendium, artifact_compendium, relic_compendium, body_compendium, headgear_compendium, legs_compendium, accessory_compendium, item_compendium.Compendium, skill_compendium]
 	var inventories = [weapon_inventory, artifact_inventory, relic_inventory, body_inventory, head_inventory, legs_inventory, acc_inventory, item_inventory, skill_inventory]
 	if event.is_action_released("debug"):
+		for i in range(0, save_flags.size()):
+			save_flags[i] = true
 		Global.player.unlockMagic()
 		for i in range(0, compendiums.size()):
 			for j in range(1, compendiums[i].size()+1):
@@ -99,6 +102,7 @@ func _ready() -> void:
 		tutorial_flags.append(false)
 		dialogue_flags.append(false)
 		save_flags.append(false)
+		wall_flags.append(false)
 
 func _process(delta: float) -> void:
 	Stats["FP"] = Stats["MFP"] - 1

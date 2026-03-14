@@ -27,6 +27,9 @@ var explosion_delay_timer_limit = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if Global.player.stats.wall_flags[get_parent().get_parent().wall_flag]:
+		return
+		
 	object = {
 		blocks = [],
 		blocks_container = Node2D.new(),

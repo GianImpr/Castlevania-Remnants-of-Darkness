@@ -31,6 +31,7 @@ var compendium: Array[Dictionary]
 static var next_flag_to_use: int
 
 static var change_equipment: Callable
+signal picked
 
 enum ItemType {
 	ITEM,
@@ -119,6 +120,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	Global.item_box.visible = true
 	Global.item_box.label.text = Global.player.stats.searchItemInCompendium(id, getCompendium(type))[getItemName(type)]
 	Global.item_box.timer.start()
+	picked.emit()
 	animation.play("picked")
 	
 static func getCompendium(item_type: ItemType):
