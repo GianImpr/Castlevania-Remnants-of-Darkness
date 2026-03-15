@@ -3990,6 +3990,7 @@ settings = {
 "master_volume": 100,
 "music_volume": 100,
 "resolution": 1,
+"rumble": 1,
 "scaling": 0,
 "sfx_volume": 100,
 "voice_volume": 100,
@@ -4869,6 +4870,46 @@ offset_left = 204.0
 offset_top = 18.0
 offset_right = 841.0
 offset_bottom = 385.0
+
+[node name="Rumble" type="HBoxContainer" parent="MenuStateMachine/Options/Game/Options" unique_id=334415235]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=1569612278 node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(368, 0)
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "RUMBLE_OPTION"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=1373532954]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=981676141]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "ENABLED_LABEL"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=1899439827]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 4
+stretch_mode = 5
 
 [node name="Title" type="HBoxContainer" parent="MenuStateMachine/Options/Game/Options" unique_id=47684547]
 layout_mode = 2

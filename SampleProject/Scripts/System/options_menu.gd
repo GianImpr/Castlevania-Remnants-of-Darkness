@@ -11,7 +11,7 @@ class_name InvOptions
 @export var binding_buttons: GridContainer
 @export var description: RichTextLabelWithButtons
 var cur_button: InventoryButton
-var functions: Array[Callable] = [changeWindowMode, changeResolution, changeScaling, changeVsync, changeFramerate, changeFramerateDisplay, changeMasterVolume, changeSFXVolume, changeMusicVolume, changeVoiceVolume, changeControllerLayout, changeInputBuffer, changeDevice]
+var functions: Array[Callable] = [changeWindowMode, changeResolution, changeScaling, changeVsync, changeFramerate, changeFramerateDisplay, changeMasterVolume, changeSFXVolume, changeMusicVolume, changeVoiceVolume, changeControllerLayout, changeInputBuffer, changeDevice, changeRumble]
 var descriptions: Array[String] = [
 	"WINDOW_MODE_DESC",
 	
@@ -37,7 +37,9 @@ var descriptions: Array[String] = [
 	
 	"INPUT_BUFFERING_DESC",
 	
-	"INPUT_DEVICE_DESC"
+	"INPUT_DEVICE_DESC",
+	
+	"RUMBLE_DESC"
 ]
 var sub_menu_buttons: Array[InventoryButton]
 var glow_timer: Timer = Timer.new()
@@ -144,8 +146,11 @@ func _ready() -> void:
 	Global.settings_node = self
 	
 func triggerSettings() -> void:
-	for i in range(0, functions.size()-1):
+	for i in range(0, functions.size()-2):
+		if i == functions.size()-2:
+			continue
 		functions[i].bind(0,sub_menu_buttons[i]).call()
+	functions[functions.size()-2].bind(0,sub_menu_buttons[28])
 	setButtons(Global.game.controller_scheme)
 	updateUIActions()
 
@@ -350,12 +355,18 @@ func Update(delta: float):
 		hideInnerMenu()
 	elif Input.is_action_just_pressed("ui_cancel") and in_bind_menu and not registering_input:
 		in_bind_menu = false
-		sub_menu_buttons[functions.size()-1].grab_focus()
+		sub_menu_buttons[functions.size()-2].grab_focus()
 		
-	if Input.is_action_just_pressed("move_right") and inner_menu >= 0 and sub_menu_buttons.find(cur_button) < functions.size():
-		functions[sub_menu_buttons.find(cur_button)].bind(1, cur_button).call()
-	elif Input.is_action_just_pressed("move_left") and inner_menu >= 0 and sub_menu_buttons.find(cur_button) < functions.size():
-		functions[sub_menu_buttons.find(cur_button)].bind(-1, cur_button).call()
+	if Input.is_action_just_pressed("move_right") and inner_menu >= 0 and (sub_menu_buttons.find(cur_button) < functions.size()-1 or sub_menu_buttons.find(cur_button) == 28):
+		if sub_menu_buttons.find(cur_button) < 28:
+			functions[sub_menu_buttons.find(cur_button)].bind(1, cur_button).call()
+		elif sub_menu_buttons.find(cur_button) == 28:
+			functions[functions.size()-1].bind(1, cur_button).call()
+	elif Input.is_action_just_pressed("move_left") and inner_menu >= 0 and (sub_menu_buttons.find(cur_button) < functions.size()-1 or sub_menu_buttons.find(cur_button) == 28):
+		if sub_menu_buttons.find(cur_button) < 28:
+			functions[sub_menu_buttons.find(cur_button)].bind(-1, cur_button).call()
+		elif sub_menu_buttons.find(cur_button) == 28:
+			functions[functions.size()-1].bind(-1, cur_button).call()
 	
 func Physics_Update(delta: float):
 	pass
@@ -406,7 +417,7 @@ func initSubMenuButtons() -> void:
 				sub_menu_button.focus_neighbor_bottom = vbox.get_child(posmod((i+1),vbox.get_child_count())).get_child(0).get_path()
 				sub_menu_button.focus_neighbor_top = vbox.get_child(posmod((i-1),vbox.get_child_count())).get_child(0).get_path()
 			sub_menu_button["theme_override_styles/focus"] = button_glow
-			if vbox != game_menu:
+			if vbox != game_menu or sub_menu_button.get_name() == "Button":
 				sub_menu_button.pressed.connect(self.on_sub_button_pressed.bind(sub_menu_button))
 				sub_menu_button.focus_entered.connect(self.on_sub_button_focused.bind(sub_menu_button))
 			else:
@@ -434,24 +445,26 @@ func _on_change_glow_timeout():
 		button_glow.bg_color = Color(glow_intensity, 0, 0)
 		
 func on_sub_button_pressed(which):
-	if which == sub_menu_buttons[functions.size()-1]:
+	if which == sub_menu_buttons[functions.size()-2]:
 		in_bind_menu = true
-		sub_menu_buttons[functions.size()].grab_focus()
+		sub_menu_buttons[functions.size()-1].grab_focus()
 		sound.play_sound_effect_from_library("confirm")
 		return
 	sound.play_sound_effect_from_library("denied")
 	
 func on_sub_button_focused(which):
 	cur_button = which
-	if sub_menu_buttons.find(cur_button) < descriptions.size():
+	if sub_menu_buttons.find(cur_button) < descriptions.size()-1:
 		description.new_text = descriptions[sub_menu_buttons.find(cur_button)]
+	elif sub_menu_buttons.find(cur_button) == 28:
+		description.new_text = descriptions[descriptions.size()-1]
 	sound.play_sound_effect_from_library("cursor")
 
 func on_game_button_pressed(which):
 	sound.play_sound_effect_from_library("confirm")
 	if which.get_name() == "Quit game":
 		get_tree().quit()
-	else:
+	elif which.get_name() == "Title screen":
 		Global.toTitleScreen()
 	
 func on_game_button_focused(which):
@@ -568,6 +581,13 @@ func changeFramerate(offset: int, button: InventoryButton) -> void:
 			Engine.max_fps = 144
 		2:
 			Engine.max_fps = 0
+			
+func changeRumble(offset: int, button: InventoryButton) -> void:
+	const modes: Array[String] = ["DISABLED_LABEL", "ENABLED_LABEL"]
+	settings["rumble"] = posmod(settings["rumble"]+offset,modes.size())
+	var setting_label: Label = button.get_parent().get_child(2)
+	setting_label.text = tr(modes[settings["rumble"]])
+
 
 func changeFramerateDisplay(offset: int, button: InventoryButton) -> void:
 	const modes: Array[String] = ["NO_LABEL", "YES_LABEL"]
