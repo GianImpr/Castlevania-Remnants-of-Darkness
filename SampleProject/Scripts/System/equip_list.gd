@@ -18,6 +18,8 @@ var player
 @export var labels: Control
 @export var quick_weapon_icons: Control
 @export var qty_scroll: ScrollContainer
+@export var artifact_panel: Container
+@export var artifact_proc_label: RichTextLabelWithButtons
 var weapon_text: Label
 var weapon_icon: TextureRect
 var cur_selected_item = null
@@ -148,6 +150,15 @@ func on_focused(button):
 		cur_selected_item = null
 		weapon_icon.texture = load("res://assets/sprites/Items/InventoryIcons/Inventory_255.png")
 		weapon_text.text = ""
+		
+	if equipSlots.button_index == 1 and cur_selected_item != null:
+		var stat_proc: HectorStats.Parameters = cur_selected_item["stat_proc"]
+		var proc_rate: float = cur_selected_item["proc_factor"]
+		artifact_panel.visible = stat_proc != HectorStats.Parameters.NONE
+		if artifact_panel.visible:
+			artifact_proc_label.text = "[right]Activation rate: " + str(int(Global.player.stats.Stats[HectorStats.Parameters.keys()[stat_proc]] * proc_rate)) + "%[/right]"
+	else:
+		artifact_panel.visible = false
 	
 	if qty_list.size.y < size.y:
 		qty_list.custom_minimum_size.y = size.y
@@ -208,6 +219,7 @@ func updateList():
 			child.queue_free()
 	weapon_icon.texture = load("res://assets/sprites/Items/InventoryIcons/Inventory_255.png")
 	weapon_text.text = ""
+	artifact_panel.visible = false
 	resetLabel(labels.SubArrows)
 	resetLabel(labels.NewSubStats)
 

@@ -15,6 +15,8 @@ class_name Artifact
 @export var glow: Color
 @export var max_quantity: int = 1
 @export var icon: Texture2D
+@export var stat_proc: HectorStats.Parameters
+@export var proc_factor: float
 
 enum Artifacts {
 	LITTLE_HAMMER,

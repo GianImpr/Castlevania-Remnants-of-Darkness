@@ -52,6 +52,19 @@ const EQUIPMENT_SLOTS = {
 	ACC_2 = "acc2"
 }
 
+enum Parameters {
+	NONE,
+	HP,
+	MP,
+	ATK,
+	DEF,
+	STR,
+	CON,
+	INT,
+	RES,
+	LCK
+}
+
 var current_status: Ailment = Ailment.GOOD
 
 var picked_items: Array[bool] ##ID list checks for item pick-up flags
@@ -89,6 +102,7 @@ func _input(event: InputEvent) -> void:
 		for i in range(0, compendiums.size()):
 			for j in range(1, compendiums[i].size()+1):
 				addItem(j, inventories[i], 9)
+				
 
 func _ready() -> void:
 	if poison_tick_timer.get_parent() == null:

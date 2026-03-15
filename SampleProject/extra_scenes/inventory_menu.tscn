@@ -575,6 +575,24 @@ default_font_size = 16
 default_font = ExtResource("8_vu1np")
 default_font_size = 32
 
+[sub_resource type="Gradient" id="Gradient_wfdfl"]
+colors = PackedColorArray(0.611248, 0, 0.0458476, 1, 0.368089, 0.0797996, 2.40654e-08, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qg52y"]
+gradient = SubResource("Gradient_wfdfl")
+fill = 1
+fill_from = Vector2(0.529915, 0.495726)
+fill_to = Vector2(0.0042735, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qicg"]
+texture = SubResource("GradientTexture2D_qg52y")
+texture_margin_left = 5.0
+texture_margin_right = 10.0
+
+[sub_resource type="Theme" id="Theme_w0cua"]
+default_font = ExtResource("8_vu1np")
+default_font_size = 32
+
 [sub_resource type="Theme" id="Theme_ro5kl"]
 default_font = ExtResource("14_by7ny")
 default_font_size = 32
@@ -672,24 +690,6 @@ default_font_size = 32
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_37m4q"]
 script = ExtResource("30_itkm0")
-
-[sub_resource type="Gradient" id="Gradient_wfdfl"]
-colors = PackedColorArray(0.611248, 0, 0.0458476, 1, 0.368089, 0.0797996, 2.40654e-08, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qg52y"]
-gradient = SubResource("Gradient_wfdfl")
-fill = 1
-fill_from = Vector2(0.529915, 0.495726)
-fill_to = Vector2(0.0042735, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1qicg"]
-texture = SubResource("GradientTexture2D_qg52y")
-texture_margin_left = 5.0
-texture_margin_right = 10.0
-
-[sub_resource type="Theme" id="Theme_w0cua"]
-default_font = ExtResource("8_vu1np")
-default_font_size = 32
 
 [sub_resource type="Gradient" id="Gradient_27b20"]
 colors = PackedColorArray(0, 0, 0, 1, 0.237539, 0.237539, 0.237539, 1)
@@ -2472,7 +2472,7 @@ scale = Vector2(2, 2)
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="EquipList" type="GridContainer" parent="MenuStateMachine/Equip/Display/EquipScroll" unique_id=2098074987 node_paths=PackedStringArray("glow_timer", "sound", "equipSlots", "state_machine", "weapon_desc", "qty_list", "labels", "quick_weapon_icons", "qty_scroll")]
+[node name="EquipList" type="GridContainer" parent="MenuStateMachine/Equip/Display/EquipScroll" unique_id=2098074987 node_paths=PackedStringArray("glow_timer", "sound", "equipSlots", "state_machine", "weapon_desc", "qty_list", "labels", "quick_weapon_icons", "qty_scroll", "artifact_panel", "artifact_proc_label")]
 custom_minimum_size = Vector2(360, 94)
 layout_mode = 2
 theme = SubResource("Theme_j428y")
@@ -2490,6 +2490,8 @@ qty_list = NodePath("../../QuantityScroll/QuantityList")
 labels = NodePath("../../Text")
 quick_weapon_icons = NodePath("../../QuickWeapons/QuickWeaponIcons")
 qty_scroll = NodePath("../../QuantityScroll")
+artifact_panel = NodePath("../../Description/ArtifactPanel")
+artifact_proc_label = NodePath("../../Description/ArtifactPanel/ArtifactProcText")
 
 [node name="Unequip" type="Button" parent="MenuStateMachine/Equip/Display/EquipScroll/EquipList" unique_id=854954827]
 custom_minimum_size = Vector2(162, 0)
@@ -2562,6 +2564,30 @@ offset_top = 395.0
 offset_right = 852.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
+
+[node name="ArtifactPanel" type="PanelContainer" parent="MenuStateMachine/Equip/Display/Description" unique_id=654089022]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 602.0
+offset_top = 372.0
+offset_right = 807.0
+offset_bottom = 404.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_1qicg")
+
+[node name="ArtifactProcText" type="RichTextLabel" parent="MenuStateMachine/Equip/Display/Description/ArtifactPanel" unique_id=264414610]
+layout_mode = 2
+theme = SubResource("Theme_w0cua")
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[right]Activation rate: 0%[/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("30_m47lu")
+new_text = "Activation rate: 100%"
 
 [node name="EquipLabels" type="HBoxContainer" parent="MenuStateMachine/Equip/Display" unique_id=1356406849]
 offset_left = 187.0
