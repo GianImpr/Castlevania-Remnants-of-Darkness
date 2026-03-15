@@ -38,17 +38,18 @@ func updateHintList() -> void:
 		button.state_machine = buttons.state_machine
 		button.desired_state = self
 		buttons.add_child(button)
-	default_button = buttons.get_child(0)
+	default_button = buttons.get_child(1)
 
 func deleteHintList() -> void:
 	for button in buttons.get_children():
-		button.queue_free()
+		if button is Button:
+			button.queue_free()
 
 func on_button_pressed(which) -> void:
 	sound.play_sound_effect_from_library("denied")
 	
 func on_focused(which) -> void:
-	var current_button_index: int = which.get_index()
+	var current_button_index: int = which.get_index()-1
 	displayCurrentHint(current_button_index, which.disabled)
 	
 func displayCurrentHint(hint_id: int, hide_hint: bool) -> void:

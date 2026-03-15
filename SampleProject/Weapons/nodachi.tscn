@@ -581,6 +581,7 @@ _data = {
 
 [node name="Nodachi" type="Sprite2D" unique_id=1608474890 node_paths=PackedStringArray("animation", "hitbox")]
 process_mode = 1
+process_priority = 2
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 z_index = -1
@@ -611,6 +612,7 @@ shape = SubResource("RectangleShape2D_i1dwb")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=16646798]
+process_priority = 2
 self_modulate = Color(0.894118, 0.501961, 0.443137, 0)
 position = Vector2(-15, 9)
 texture = ExtResource("6_vqhrg")

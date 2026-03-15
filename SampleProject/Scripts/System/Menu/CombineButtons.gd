@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 		confirm_animation.play("close_craft")
 		verifyNewRecipes()
 		menu.accessed_menu = 1
-		item_list.get_child(item_to_craft).grab_focus()
+		item_list.get_child(item_to_craft+1).grab_focus()
 
 
 
@@ -51,7 +51,7 @@ func on_button_pressed(which):
 	if item_list.get_child_count() > 0:
 		sound.play_sound_effect_from_library("confirm")
 		button_index = which.get_index()
-		item_list.get_child(0).grab_focus()
+		item_list.get_child(1).grab_focus()
 		menu.accessed_menu = 1
 	else:
 		sound.play_sound_effect_from_library("denied")
@@ -88,16 +88,17 @@ func on_item_button_pressed(which):
 		confirm_panel_label.text = tr("EQUIPPED_ITEM_FOR_CRAFTING_WARNING") + "\n" + confirm_panel_label.text
 	confirm_animation.play("show")
 	sound.play_sound_effect_from_library("popup")
-	item_to_craft = which.get_index()
+	item_to_craft = which.get_index()-1
 	confirm_panel_button.grab_focus()
 
 func on_item_focused(which) -> void:
 	sound.play_sound_effect_from_library("cursor")
-	updateMaterialList(getItemFromCompendium(item_id_list[which.get_index()], getListType()), getListType())
+	updateMaterialList(getItemFromCompendium(item_id_list[which.get_index()-1], getListType()), getListType())
 
 func deleteList() -> void:
 	for item in item_list.get_children():
-		item.queue_free()
+		if item is Button:
+			item.queue_free()
 		item_id_list.clear()
 	for crafting_material in material_list.get_children():
 		crafting_material.queue_free()
@@ -412,7 +413,7 @@ func _on_no_pressed() -> void:
 		sound.play_sound_effect_from_library("confirm")
 		await confirm_animation.animation_finished
 		updateMaterialList(null)
-		item_list.get_child(item_to_craft).grab_focus()
+		item_list.get_child(item_to_craft+1).grab_focus()
 		menu.accessed_menu = 1
 
 func verifyNewRecipes() -> void:

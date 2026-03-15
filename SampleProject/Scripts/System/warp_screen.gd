@@ -38,25 +38,26 @@ func initList() -> void:
 			destination_button.add_theme_color_override("font_disabled_color", BUTTON_DISABLED_COLOR)
 			destination_button.add_theme_color_override("font_focus_color", BUTTON_FOCUSED_COLOR)
 			panel.add_child(destination_button)
-	panel.get_child(0).grab_focus()
+	panel.get_child(1).grab_focus()
 
 func closeList() -> void:
 	for child in panel.get_children():
-		child.queue_free()
+		if child is Button:
+			child.queue_free()
 	available_destinations.clear()
 	
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel") and not animation.is_playing() and panel.get_child_count() > 0:
+	if Input.is_action_just_pressed("ui_cancel") and not animation.is_playing() and panel.get_child_count() > 1:
 		panel.get_child(cur_button).release_focus()
 		animation.play_backwards("disappear")
 
 func _on_button_focused(which) -> void:
-	preview.texture = Game.get_singleton().save_rooms[available_destinations[which.get_index()]]["image"]
+	preview.texture = Game.get_singleton().save_rooms[available_destinations[which.get_index()-1]]["image"]
 	cur_button = which.get_index()
 	sound.play_sound_effect_from_library("cursor")
 	
 func _on_button_pressed(which) -> void:
-	destination_selected = Game.get_singleton().save_rooms[available_destinations[which.get_index()]]["path"]
-	destination_flip = Game.get_singleton().save_rooms[available_destinations[which.get_index()]]["flip"]
+	destination_selected = Game.get_singleton().save_rooms[available_destinations[which.get_index()-1]]["path"]
+	destination_flip = Game.get_singleton().save_rooms[available_destinations[which.get_index()-1]]["flip"]
 	sound.play_sound_effect_from_library("confirm")
 	animation.play_backwards("disappear")

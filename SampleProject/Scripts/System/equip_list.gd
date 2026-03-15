@@ -93,12 +93,12 @@ func on_button_pressed(button):
 	equipSlots.get_child(0).get_child(equipSlots.button_index).grab_focus()
 	sound.play_sound_effect_from_library("confirm")
 	if equippingWeapon():
-		updateProperties(getEquipFromInventory(button.get_index()-2))
+		updateProperties(getEquipFromInventory(button.get_index()-3))
 	elif equippingRelic():
 		turnOffRelic()
-	updateNewStats(getEquipFromInventory(button.get_index()-2), getEquipFromCompendium(getCurSlot()-1, getCurCompendium()), ["STR", "CON", "INT", "RES", "SYN", "LCK", "ATK", "DEF"])
+	updateNewStats(getEquipFromInventory(button.get_index()-3), getEquipFromCompendium(getCurSlot()-1, getCurCompendium()), ["STR", "CON", "INT", "RES", "SYN", "LCK", "ATK", "DEF"])
 	updateStats(["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
-	updateWeaponSprite(getEquipFromInventory(button.get_index()-2))
+	updateWeaponSprite(getEquipFromInventory(button.get_index()-3))
 	if button.get_index() == 0:
 		if current_slot > 0:
 			player.addItem(current_slot, getCurInventory())
@@ -108,7 +108,7 @@ func on_button_pressed(button):
 	else:
 		if current_slot > 0:
 			player.addItem(current_slot, getCurInventory())
-		setCurSlot(getCurInventory()[button.get_index()-2]["id"])
+		setCurSlot(getCurInventory()[button.get_index()-3]["id"])
 		player.removeItem(getCurSlot(), getCurInventory())
 		equipSlots.get_child(0).get_child(equipSlots.button_index).get_child(0).texture = getCurCompendium()[getCurSlot()-1]["icon"]
 		#equipSlots.get_child(0).get_child(equipSlots.button_index).text = getCurCompendium()[getCurSlot()-1][getCurItemProperty("name")]
@@ -141,7 +141,7 @@ func equipItem(slot: String, item: Variant, compendium: Variant, inventory: Vari
 #Retrieves information about the currently highlighted equipment piece
 func on_focused(button):
 	if button.get_index() > 0:
-		cur_selected_item = getCurCompendium()[getCurInventory()[button.get_index()-2]["id"]-1]
+		cur_selected_item = getCurCompendium()[getCurInventory()[button.get_index()-3]["id"]-1]
 		weapon_icon.texture = cur_selected_item["icon"]
 		weapon_text.text = cur_selected_item[getCurItemProperty("description")]
 	else:
@@ -152,7 +152,7 @@ func on_focused(button):
 	if qty_list.size.y < size.y:
 		qty_list.custom_minimum_size.y = size.y
 	qty_scroll.scroll_vertical = get_parent().scroll_vertical
-	var selectedEquip = getEquipFromInventory(button.get_index()-2)
+	var selectedEquip = getEquipFromInventory(button.get_index()-3)
 	var currentEquip = getCurEquip()
 		
 	var subStats: Array[String] = ["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"]

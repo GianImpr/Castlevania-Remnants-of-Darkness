@@ -60,7 +60,7 @@ func Update(delta: float):
 			Transitioned.emit(self, "menu")
 		else:
 			openEncyclopedia()
-			enemy_list.get_child(current_button_index).grab_focus()
+			enemy_list.get_child(current_button_index+1).grab_focus()
 		
 func Physics_Update(delta: float):
 	pass
@@ -83,11 +83,12 @@ func initializeEnemyList() -> void:
 		button.focus_entered.connect(on_focused.bind(button))
 		button.pressed.connect(on_button_pressed.bind(button))
 		enemy_list.add_child(button)
-	default_button = enemy_list.get_child(0)
+	default_button = enemy_list.get_child(1)
 
 func deleteEnemyList() -> void:
 	for button in enemy_list.get_children():
-		button.queue_free()
+		if button is Button:
+			button.queue_free()
 
 func on_button_pressed(which) -> void:
 	sound.play_sound_effect_from_library("confirm")
@@ -97,7 +98,7 @@ func on_button_pressed(which) -> void:
 	
 func on_focused(which) -> void:
 	sound.play_sound_effect_from_library("cursor")
-	current_button_index = which.get_index()
+	current_button_index = which.get_index()-1
 
 func wasBeaten(enemy_id: int) -> bool:
 	return Global.player.stats.enemy_compendium[enemy_id].killed > 0

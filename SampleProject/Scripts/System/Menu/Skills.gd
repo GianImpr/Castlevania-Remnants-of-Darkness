@@ -31,7 +31,7 @@ func on_button_pressed(which):
 	if skill_list.get_child_count() > 0:
 		sound.play_sound_effect_from_library("confirm")
 		button_index = which.get_index()
-		skill_list.get_child(0).grab_focus()
+		skill_list.get_child(1).grab_focus()
 		menu.accessed_menu = 1
 		skill_list.get_parent().custom_minimum_size.y = skill_list.size.y*2
 	else:
@@ -53,11 +53,12 @@ func on_skill_button_pressed(which):
 
 func on_skill_focused(which) -> void:
 	sound.play_sound_effect_from_library("cursor")
-	updateDescription(getSkillFromInventory(which.get_index(), getListType()))
+	updateDescription(getSkillFromInventory(which.get_index()-1, getListType()))
 
 func deleteList() -> void:
 	for skill in skill_list.get_children():
-		skill.queue_free()
+		if skill is Button:
+			skill.queue_free()
 	for label in cost_list.get_children():
 		label.queue_free()
 

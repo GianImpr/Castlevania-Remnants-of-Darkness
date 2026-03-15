@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="17_4p3kx"]
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="18_pyfyu"]
 [ext_resource type="Script" uid="uid://ddhqrwm8juyjr" path="res://SampleProject/Scripts/System/warp_screen.gd" id="19_li0op"]
+[ext_resource type="Script" uid="uid://dj2ie8pg1y6h7" path="res://SampleProject/Scripts/System/FocusSlider.gd" id="20_yvbvh"]
 
 [sub_resource type="Theme" id="Theme_21ors"]
 default_font = ExtResource("2_hg7qs")
@@ -1661,6 +1662,10 @@ follow_focus = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="WarpScreen/Destinations/ScrollContainer" unique_id=1606326634]
 layout_mode = 2
+
+[node name="FocusSlider" type="Node" parent="WarpScreen/Destinations/ScrollContainer/VBoxContainer" unique_id=471625499]
+script = ExtResource("20_yvbvh")
+metadata/_custom_type_script = "uid://dj2ie8pg1y6h7"
 
 [node name="Preview" type="PanelContainer" parent="WarpScreen" unique_id=867918088]
 modulate = Color(1, 1, 1, 0)

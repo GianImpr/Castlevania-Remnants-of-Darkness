@@ -23,6 +23,13 @@ var base_item_costs: Array[int]
 static var level: int = 0
 var cur_index: int = 0
 var gold_consumption_tween: Tween
+var cur_button_held: String
+var cur_button_held_for: float
+var holding_button: bool = false
+var sliding_active: bool = false
+var HOLD_AFTER_SECONDS: float = 0.3
+var SLIDE_SPEED: float = 0.075
+var sliding_interval: float = 0.03
 
 enum ItemEntryChildren {
 	BUTTON,
@@ -207,26 +214,50 @@ func getInventory(type: PickUp.ItemType) -> Array[Dictionary]:
 			return lists.skill_inventory
 		_:
 			return []
+			
+func _input(event: InputEvent) -> void:
+	const ACTIONS: Array[String] = ["ui_right", "ui_left", "ui_up", "ui_down"]
+	for action in ACTIONS:
+		if event.is_action(action):
+			if cur_button_held != action:
+				cur_button_held_for = 0
+			cur_button_held = action
+			holding_button = true
+			
+	if cur_button_held != "" and Input.is_action_just_released(cur_button_held):
+		cur_button_held_for = 0
+		cur_button_held = ""
+		holding_button = false
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 		
+		
 	gold_label.text = str(Shop.displayed_gold)
 	if animation.is_playing():
 		return
+		
+	if holding_button:
+		cur_button_held_for += delta
+	sliding_active = cur_button_held_for >= HOLD_AFTER_SECONDS
+	
+	if not sliding_active or sliding_interval < 0:
+		sliding_interval = SLIDE_SPEED
+	else:
+		sliding_interval -= delta
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		closeBuyScreen()
-	elif Input.is_action_just_pressed("ui_right"):
+	elif Input.is_action_just_pressed("ui_right") or (Input.is_action_pressed("ui_right") and sliding_interval < 0):
 		increaseQuantity(base_item_costs[cur_index])
-	elif Input.is_action_just_pressed("ui_left"):
+	elif Input.is_action_just_pressed("ui_left") or (Input.is_action_pressed("ui_left") and sliding_interval < 0):
 		decreaseQuantity(base_item_costs[cur_index])
-	elif Input.is_action_just_pressed("ui_up"):
+	elif Input.is_action_just_pressed("ui_up") or (Input.is_action_pressed("ui_up") and sliding_interval < 0):
 		cur_index = posmod(cur_index-1, item_entries.get_child_count())
 		focusOnButton()
 		updateAvailability()
-	elif Input.is_action_just_pressed("ui_down"):
+	elif Input.is_action_just_pressed("ui_down") or (Input.is_action_pressed("ui_down") and sliding_interval < 0):
 		cur_index = posmod(cur_index+1, item_entries.get_child_count())
 		focusOnButton()
 		updateAvailability()

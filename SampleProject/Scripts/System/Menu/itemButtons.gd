@@ -41,7 +41,7 @@ func on_button_pressed(which):
 	if item_list.get_child_count() > 0:
 		sound.play_sound_effect_from_library("confirm")
 		button_index = which.get_index()
-		item_list.get_child(0).grab_focus()
+		item_list.get_child(1).grab_focus()
 		menu.accessed_menu = 1
 		item_list.get_parent().custom_minimum_size.y = item_list.size.y*2
 	else:
@@ -59,12 +59,12 @@ func getListType():
 			return 3
 		
 func on_item_button_pressed(which):
-	var item_to_be_used = getItemFromInventory(which.get_index(), getListType())
+	var item_to_be_used = getItemFromInventory(which.get_index()-1, getListType())
 	if not useItem(item_to_be_used):
 		return
-	if Global.player.stats.item_inventory[getItemIndex(which.get_index(), item_to_be_used.type)]["quantity"] == 1:
+	if Global.player.stats.item_inventory[getItemIndex(which.get_index()-1, item_to_be_used.type)]["quantity"] == 1:
 		which.queue_free()
-		qty_list.get_child(which.get_index()).queue_free()
+		qty_list.get_child(which.get_index()-1).queue_free()
 		updateDescription(null)
 		if item_list.get_child_count() != 1:
 			if item_list.get_child(which.get_index()+1):
@@ -72,17 +72,18 @@ func on_item_button_pressed(which):
 			elif item_list.get_child(which.get_index()-1):
 				item_list.get_child(which.get_index()-1).grab_focus()
 	else:
-		qty_list.get_child(which.get_index()).text = "x" + str(Global.player.stats.item_inventory[getItemIndex(which.get_index(), item_to_be_used.type)]["quantity"]-1)
-	Global.player.stats.removeItem(Global.player.stats.getItemIndexInCompendium(getItemFromInventory(which.get_index(), getListType()), Global.player.stats.item_compendium.Compendium), Global.player.stats.item_inventory)
+		qty_list.get_child(which.get_index()-1).text = "x" + str(Global.player.stats.item_inventory[getItemIndex(which.get_index()-1, item_to_be_used.type)]["quantity"]-1)
+	Global.player.stats.removeItem(Global.player.stats.getItemIndexInCompendium(getItemFromInventory(which.get_index()-1, getListType()), Global.player.stats.item_compendium.Compendium), Global.player.stats.item_inventory)
 	
 func on_item_focused(which) -> void:
 	sound.play_sound_effect_from_library("cursor")
-	updateDescription(getItemFromInventory(which.get_index(), getListType()))
-	displayProperties(getItemFromInventory(which.get_index(), getListType()))
+	updateDescription(getItemFromInventory(which.get_index()-1, getListType()))
+	displayProperties(getItemFromInventory(which.get_index()-1, getListType()))
 
 func deleteList() -> void:
 	for item in item_list.get_children():
-		item.queue_free()
+		if item is Button:
+			item.queue_free()
 	for label in qty_list.get_children():
 		label.queue_free()
 

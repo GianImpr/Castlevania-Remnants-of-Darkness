@@ -47,6 +47,7 @@
 [ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="30_m47lu"]
 [ext_resource type="Script" uid="uid://dhtgbq716ur1h" path="res://SampleProject/Scripts/System/summon_menu.gd" id="33_8wvtw"]
 [ext_resource type="Script" uid="uid://c0krk05gli8v1" path="res://SampleProject/Scripts/System/Menu/SummonButtons.gd" id="33_qfkoi"]
+[ext_resource type="Script" uid="uid://dj2ie8pg1y6h7" path="res://SampleProject/Scripts/System/FocusSlider.gd" id="37_3ust8"]
 [ext_resource type="Script" uid="uid://0eu16g6si83v" path="res://SampleProject/Scripts/System/options_menu.gd" id="39_fbvxh"]
 [ext_resource type="Texture2D" uid="uid://dtyoud2v5t5ao" path="res://assets/sprites/HUD/Buttons/Back.png" id="39_lm186"]
 [ext_resource type="Texture2D" uid="uid://cxhoxuk5ouguu" path="res://assets/sprites/HUD/Buttons/Forward.png" id="40_3pvl0"]
@@ -2503,6 +2504,9 @@ clip_text = true
 wait_time = 0.1
 autostart = true
 
+[node name="FocusSlider" type="Node" parent="MenuStateMachine/Equip/Display/EquipScroll/EquipList" unique_id=1491346939]
+script = ExtResource("37_3ust8")
+
 [node name="QuantityScroll" type="ScrollContainer" parent="MenuStateMachine/Equip/Display" unique_id=2135279972]
 offset_left = 355.0
 offset_top = 97.0
@@ -2997,6 +3001,10 @@ sound = NodePath("../../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../../..")
 state_machine = NodePath("../../../../..")
 
+[node name="FocusSlider" type="Node" parent="MenuStateMachine/Items/Display/ScrollContainer/Control/ItemList" unique_id=1694772797]
+script = ExtResource("37_3ust8")
+metadata/_custom_type_script = "uid://dj2ie8pg1y6h7"
+
 [node name="QuantityList" type="GridContainer" parent="MenuStateMachine/Items/Display/ScrollContainer/Control" unique_id=50995381]
 layout_mode = 0
 offset_left = 296.0
@@ -3461,6 +3469,10 @@ sound = NodePath("../../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../../..")
 state_machine = NodePath("../../../../..")
 
+[node name="FocusSlider" type="Node" parent="MenuStateMachine/Skills/Display/ScrollContainer/Control/SkillList" unique_id=745499053]
+script = ExtResource("37_3ust8")
+metadata/_custom_type_script = "uid://dj2ie8pg1y6h7"
+
 [node name="CostList" type="GridContainer" parent="MenuStateMachine/Skills/Display/ScrollContainer/Control" unique_id=405103477]
 layout_mode = 0
 offset_left = 290.0
@@ -3753,6 +3765,10 @@ button_glow = SubResource("StyleBoxFlat_dss61")
 sound = NodePath("../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../..")
 state_machine = NodePath("../../../..")
+
+[node name="FocusSlider" type="Node" parent="MenuStateMachine/Combine/Display/ScrollContainer/Menu" unique_id=2026786878]
+script = ExtResource("37_3ust8")
+metadata/_custom_type_script = "uid://dj2ie8pg1y6h7"
 
 [node name="ConfirmPanel" type="PanelContainer" parent="MenuStateMachine/Combine/Display" unique_id=737681915]
 anchors_preset = 5
@@ -4852,6 +4868,10 @@ sound = NodePath("../../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../../..")
 state_machine = NodePath("../../../../..")
 
+[node name="FocusSlider" type="Node" parent="MenuStateMachine/Hints/Display/PanelContainer/ScrollContainer/HintButtons" unique_id=221864064]
+script = ExtResource("37_3ust8")
+metadata/_custom_type_script = "uid://dj2ie8pg1y6h7"
+
 [node name="TutorialBox" type="VBoxContainer" parent="MenuStateMachine/Hints/Display" unique_id=2095366563]
 offset_left = 286.0
 offset_top = 25.0
@@ -4918,6 +4938,10 @@ custom_minimum_size = Vector2(616, 0)
 layout_mode = 2
 theme = SubResource("Theme_phj2e")
 columns = 2
+
+[node name="FocusSlider" type="Node" parent="MenuStateMachine/Bestiary/Display/Encyclopedia/PanelContainer/ScrollContainer/GridContainer" unique_id=249262016]
+script = ExtResource("37_3ust8")
+metadata/_custom_type_script = "uid://dj2ie8pg1y6h7"
 
 [node name="MonsterProfile" type="Control" parent="MenuStateMachine/Bestiary/Display" unique_id=1656829586]
 layout_mode = 3
