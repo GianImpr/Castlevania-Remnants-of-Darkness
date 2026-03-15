@@ -245,3 +245,14 @@ func removeEquippedItem(item) -> void:
 				change_slot_icon.call(equip_icon_order[i], "", null)
 				return
 	push_error("removeEquippedItem: Item not found")
+
+## Sorts skills by weapon type if they're learnable, otherwise by id.
+func sortSkillInventory() -> void:
+	skill_inventory.sort_custom(sortSkillInventoryAlgorithm)
+
+func sortSkillInventoryAlgorithm(a: Dictionary, b: Dictionary) -> bool:
+	var skill_a: Skill = searchItemInCompendium(a.id, skill_compendium)
+	var skill_b: Skill = searchItemInCompendium(b.id, skill_compendium)
+	if skill_a.type == Skill.SkillType.LEARNABLE and skill_b.type == Skill.SkillType.LEARNABLE:
+		return skill_a.weapon_type < skill_b.weapon_type
+	return a.id < b.id

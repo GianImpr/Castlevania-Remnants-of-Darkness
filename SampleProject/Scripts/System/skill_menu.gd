@@ -7,6 +7,7 @@ class_name InvSkill
 var accessed_menu: int
 
 func enter():
+	Global.player.stats.sortSkillInventory()
 	animation.play_backwards("change")
 	default_button.grab_focus()
 	accessed_menu = 0

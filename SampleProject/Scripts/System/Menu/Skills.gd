@@ -88,7 +88,7 @@ func initList(skillType: int) -> void:
 			skill_button.focus_entered.connect(self.on_skill_focused.bind(skill_button))
 			skill_button.fitTextInBox()
 			
-			
+		
 func getSkillFromCompendium(index: int) -> Skill:
 	var item_compendium = Global.player.stats.skill_compendium
 	if index > 0:
