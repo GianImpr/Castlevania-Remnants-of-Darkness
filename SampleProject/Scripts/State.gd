@@ -184,7 +184,8 @@ func can_attack():
 		if cur_skill.command_input.size() == 0 or player.stats.getCurrentWeaponType() != cur_skill.weapon_type or player.stats.Stats[stat_to_consume] < cur_skill.cost_value:
 			continue
 		
-		if InputBuffer.checkCommandInput(cur_skill.command_input, 50) and player.stats.status[Global.player.stats.Status.CURSE] <= 0:
+		var input_leniency_frames: int = 50*Engine.get_frames_per_second()/144
+		if InputBuffer.checkCommandInput(cur_skill.command_input, input_leniency_frames) and player.stats.status[Global.player.stats.Status.CURSE] <= 0:
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.TECHNIQUES)
 			Transitioned.emit(self, state_to_transition_to)
 			if not (stat_to_consume == "FP" and Global.player.stats.itemEquipped(Artifact.Artifacts.PRODIGY_NECKLACE, "artifact") and randi_range(0, 99) < Global.player.stats.Stats["LCK"]):

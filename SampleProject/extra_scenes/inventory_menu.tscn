@@ -353,12 +353,12 @@ fill_to = Vector2(0, 1)
 default_font = ExtResource("9_6pgav")
 default_font_size = 32
 
-[sub_resource type="Gradient" id="Gradient_7xs6h"]
+[sub_resource type="Gradient" id="Gradient_3ust8"]
 offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
 colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_85ajc"]
-gradient = SubResource("Gradient_7xs6h")
+gradient = SubResource("Gradient_3ust8")
 width = 300
 height = 32
 fill_to = Vector2(0, 1)
@@ -3983,6 +3983,7 @@ button_glow = SubResource("StyleBoxFlat_06wc2")
 settings = {
 "buffer": 20,
 "device": 0,
+"framerate": 1,
 "frames": 0,
 "layout": 0,
 "light": 0,
@@ -4288,7 +4289,7 @@ z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
 theme = SubResource("Theme_pvykr")
-text = "SHOW_FRAMERATE_OPTION"
+text = "ADJUST_FRAMERATE_OPTION"
 flat = true
 alignment = 0
 script = ExtResource("6_r83iq")
@@ -4308,10 +4309,50 @@ z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
 theme = SubResource("Theme_idane")
-text = "No"
+text = "144"
 horizontal_alignment = 1
 
 [node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Framerate" unique_id=439339454]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Framerate2" type="HBoxContainer" parent="MenuStateMachine/Options/Graphics/Options" unique_id=1987462490]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Graphics/Options/Framerate2" unique_id=1346143761 node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(368, 0)
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "SHOW_FRAMERATE_OPTION"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Framerate2" unique_id=42019698]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Graphics/Options/Framerate2" unique_id=1015840317]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "No"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Graphics/Options/Framerate2" unique_id=1582645205]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3

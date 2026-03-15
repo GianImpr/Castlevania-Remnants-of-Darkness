@@ -11,7 +11,7 @@ class_name InvOptions
 @export var binding_buttons: GridContainer
 @export var description: RichTextLabelWithButtons
 var cur_button: InventoryButton
-var functions: Array[Callable] = [changeWindowMode, changeResolution, changeScaling, changeVsync, changeFramerateDisplay, changeMasterVolume, changeSFXVolume, changeMusicVolume, changeVoiceVolume, changeControllerLayout, changeInputBuffer, changeDevice]
+var functions: Array[Callable] = [changeWindowMode, changeResolution, changeScaling, changeVsync, changeFramerate, changeFramerateDisplay, changeMasterVolume, changeSFXVolume, changeMusicVolume, changeVoiceVolume, changeControllerLayout, changeInputBuffer, changeDevice]
 var descriptions: Array[String] = [
 	"WINDOW_MODE_DESC",
 	
@@ -20,6 +20,8 @@ var descriptions: Array[String] = [
 	"SPRITE_SCALING_DESC",
 	
 	"VERTICAL_SYNC_DESC",
+	
+	"ADJUST_FPS_DESC",
 	
 	"SHOW_FRAMERATE_DESC",
 	
@@ -553,7 +555,20 @@ func changeVsync(offset: int, button: InventoryButton) -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-		
+
+func changeFramerate(offset: int, button: InventoryButton) -> void:
+	const rates: Array[String] = ["60", "144", "Uncapped"]
+	settings["framerate"] = posmod(settings["framerate"]+offset,rates.size())
+	var setting_label: Label = button.get_parent().get_child(2)
+	setting_label.text = tr(rates[settings["framerate"]])
+	match settings["framerate"]:
+		0:
+			Engine.max_fps = 60
+		1:
+			Engine.max_fps = 144
+		2:
+			Engine.max_fps = 0
+
 func changeFramerateDisplay(offset: int, button: InventoryButton) -> void:
 	const modes: Array[String] = ["NO_LABEL", "YES_LABEL"]
 	settings["frames"] = posmod(settings["frames"]+offset,modes.size())

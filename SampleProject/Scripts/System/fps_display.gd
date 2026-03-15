@@ -5,7 +5,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var elapsed_frames: float = Engine.get_frames_per_second()
-	if elapsed_frames < ProjectSettings.get_setting("application/run/max_fps"):
+	if elapsed_frames < Engine.max_fps:
 		text = "[color=#ffff00]" + str(int(elapsed_frames)) + " FPS[/color]"
 	else:
 		text = str(int(elapsed_frames)) + " FPS"

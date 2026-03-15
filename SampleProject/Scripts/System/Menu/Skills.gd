@@ -28,7 +28,7 @@ func on_focused(button):
 	initList(button.get_index())
 	
 func on_button_pressed(which):
-	if skill_list.get_child_count() > 0:
+	if skill_list.get_child_count() > 1:
 		sound.play_sound_effect_from_library("confirm")
 		button_index = which.get_index()
 		skill_list.get_child(1).grab_focus()

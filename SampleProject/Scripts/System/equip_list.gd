@@ -156,7 +156,8 @@ func on_focused(button):
 		var proc_rate: float = cur_selected_item["proc_factor"]
 		artifact_panel.visible = stat_proc != HectorStats.Parameters.NONE
 		if artifact_panel.visible:
-			artifact_proc_label.text = "[right]Activation rate: " + str(int(Global.player.stats.Stats[HectorStats.Parameters.keys()[stat_proc]] * proc_rate)) + "%[/right]"
+			var rate: int = min(Global.player.stats.Stats[HectorStats.Parameters.keys()[stat_proc]] * proc_rate, 100)
+			artifact_proc_label.text = "[right]Activation rate: " + str(rate) + "%[/right]"
 	else:
 		artifact_panel.visible = false
 	

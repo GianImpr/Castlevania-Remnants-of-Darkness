@@ -40,7 +40,19 @@ func _ready() -> void:
 		
 	# This is garbage but what can you do. Literally just here for the elevator not jittering like crazy.
 	if disable_pixel_snap:
-		Engine.max_fps = 120
+		match Global.settings_node.settings["framerate"]:
+			0:
+				Engine.max_fps = 60
+			1:
+				Engine.max_fps = 120
+			2:
+				Engine.max_fps = 0
 	else:
-		Engine.max_fps = 144
+		match Global.settings_node.settings["framerate"]:
+			0:
+				Engine.max_fps = 60
+			1:
+				Engine.max_fps = 144
+			2:
+				Engine.max_fps = 0
 	RenderingServer.viewport_set_snap_2d_transforms_to_pixel(Global.get_viewport().get_viewport_rid(), not disable_pixel_snap)
