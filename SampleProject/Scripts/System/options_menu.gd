@@ -11,7 +11,7 @@ class_name InvOptions
 @export var binding_buttons: GridContainer
 @export var description: RichTextLabelWithButtons
 var cur_button: InventoryButton
-var functions: Array[Callable] = [changeWindowMode, changeResolution, changeScaling, changeVsync, changeFramerate, changeFramerateDisplay, changeMasterVolume, changeSFXVolume, changeMusicVolume, changeVoiceVolume, changeControllerLayout, changeInputBuffer, changeDevice, changeRumble]
+var functions: Array[Callable] = [changeWindowMode, changeResolution, changeScaling, changeVsync, changeFramerate, changeFramerateDisplay, changeMasterVolume, changeSFXVolume, changeMusicVolume, changeVoiceVolume, changeControllerLayout, changeInputBuffer, changeDevice, changeLanguage, changeRumble]
 var descriptions: Array[String] = [
 	"WINDOW_MODE_DESC",
 	
@@ -38,6 +38,8 @@ var descriptions: Array[String] = [
 	"INPUT_BUFFERING_DESC",
 	
 	"INPUT_DEVICE_DESC",
+	
+	"LANGUAGE_DESC",
 	
 	"RUMBLE_DESC"
 ]
@@ -146,11 +148,12 @@ func _ready() -> void:
 	Global.settings_node = self
 	
 func triggerSettings() -> void:
-	for i in range(0, functions.size()-2):
-		if i == functions.size()-2:
+	for i in range(0, functions.size()-3):
+		if i == functions.size()-3:
 			continue
 		functions[i].bind(0,sub_menu_buttons[i]).call()
-	functions[functions.size()-2].bind(0,sub_menu_buttons[28])
+	functions[functions.size()-3].bind(0,sub_menu_buttons[28])
+	functions[functions.size()-2].bind(0,sub_menu_buttons[29])
 	setButtons(Global.game.controller_scheme)
 	updateUIActions()
 
@@ -355,18 +358,18 @@ func Update(delta: float):
 		hideInnerMenu()
 	elif Input.is_action_just_pressed("ui_cancel") and in_bind_menu and not registering_input:
 		in_bind_menu = false
-		sub_menu_buttons[functions.size()-2].grab_focus()
+		sub_menu_buttons[functions.size()-3].grab_focus()
 		
-	if Input.is_action_just_pressed("move_right") and inner_menu >= 0 and (sub_menu_buttons.find(cur_button) < functions.size()-1 or sub_menu_buttons.find(cur_button) == 28):
+	if Input.is_action_just_pressed("move_right") and inner_menu >= 0 and (sub_menu_buttons.find(cur_button) < functions.size()-1 or sub_menu_buttons.find(cur_button) >= 28 and sub_menu_buttons.find(cur_button) <= 29):
 		if sub_menu_buttons.find(cur_button) < 28:
 			functions[sub_menu_buttons.find(cur_button)].bind(1, cur_button).call()
-		elif sub_menu_buttons.find(cur_button) == 28:
-			functions[functions.size()-1].bind(1, cur_button).call()
-	elif Input.is_action_just_pressed("move_left") and inner_menu >= 0 and (sub_menu_buttons.find(cur_button) < functions.size()-1 or sub_menu_buttons.find(cur_button) == 28):
+		elif sub_menu_buttons.find(cur_button) >= 28:
+			functions[functions.size()-30+sub_menu_buttons.find(cur_button)].bind(1, cur_button).call()
+	elif Input.is_action_just_pressed("move_left") and inner_menu >= 0 and (sub_menu_buttons.find(cur_button) < functions.size()-1 or sub_menu_buttons.find(cur_button) >= 28 and sub_menu_buttons.find(cur_button) <= 29):
 		if sub_menu_buttons.find(cur_button) < 28:
 			functions[sub_menu_buttons.find(cur_button)].bind(-1, cur_button).call()
-		elif sub_menu_buttons.find(cur_button) == 28:
-			functions[functions.size()-1].bind(-1, cur_button).call()
+		elif sub_menu_buttons.find(cur_button) >= 28:
+			functions[functions.size()-30+sub_menu_buttons.find(cur_button)].bind(-1, cur_button).call()
 	
 func Physics_Update(delta: float):
 	pass
@@ -445,19 +448,19 @@ func _on_change_glow_timeout():
 		button_glow.bg_color = Color(glow_intensity, 0, 0)
 		
 func on_sub_button_pressed(which):
-	if which == sub_menu_buttons[functions.size()-2]:
+	if which == sub_menu_buttons[functions.size()-3]:
 		in_bind_menu = true
-		sub_menu_buttons[functions.size()-1].grab_focus()
+		sub_menu_buttons[functions.size()-2].grab_focus()
 		sound.play_sound_effect_from_library("confirm")
 		return
 	sound.play_sound_effect_from_library("denied")
 	
 func on_sub_button_focused(which):
 	cur_button = which
-	if sub_menu_buttons.find(cur_button) < descriptions.size()-1:
+	if sub_menu_buttons.find(cur_button) < descriptions.size()-2:
 		description.new_text = descriptions[sub_menu_buttons.find(cur_button)]
-	elif sub_menu_buttons.find(cur_button) == 28:
-		description.new_text = descriptions[descriptions.size()-1]
+	elif sub_menu_buttons.find(cur_button) >= 28:
+		description.new_text = descriptions[descriptions.size()-30+sub_menu_buttons.find(cur_button)]
 	sound.play_sound_effect_from_library("cursor")
 
 func on_game_button_pressed(which):
@@ -581,7 +584,14 @@ func changeFramerate(offset: int, button: InventoryButton) -> void:
 			Engine.max_fps = 144
 		2:
 			Engine.max_fps = 0
-			
+
+func changeLanguage(offset: int, button: InventoryButton) -> void:
+	settings["language"] = posmod(settings["language"]+offset,Global.Languages.size())
+	var setting_label: Label = button.get_parent().get_child(2)
+	Global.language = settings["language"]
+	setting_label.text = Global.Languages.keys()[settings["language"]]
+	TranslationServer.set_locale(Global.langs[settings["language"]])
+
 func changeRumble(offset: int, button: InventoryButton) -> void:
 	const modes: Array[String] = ["DISABLED_LABEL", "ENABLED_LABEL"]
 	settings["rumble"] = posmod(settings["rumble"]+offset,modes.size())

@@ -3985,6 +3985,7 @@ settings = {
 "device": 0,
 "framerate": 1,
 "frames": 0,
+"language": 0,
 "layout": 0,
 "light": 0,
 "master_volume": 100,
@@ -4871,10 +4872,50 @@ offset_top = 18.0
 offset_right = 841.0
 offset_bottom = 385.0
 
-[node name="Rumble" type="HBoxContainer" parent="MenuStateMachine/Options/Game/Options" unique_id=334415235]
+[node name="Language" type="HBoxContainer" parent="MenuStateMachine/Options/Game/Options" unique_id=334415235]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=1569612278 node_paths=PackedStringArray("state_machine")]
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Game/Options/Language" unique_id=1569612278 node_paths=PackedStringArray("state_machine")]
+z_index = 1
+custom_minimum_size = Vector2(368, 0)
+layout_mode = 2
+theme = SubResource("Theme_pvykr")
+text = "LANGUAGE_OPTION"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+state_machine = NodePath("../../../../..")
+
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Game/Options/Language" unique_id=1373532954]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("39_lm186")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Game/Options/Language" unique_id=981676141]
+z_index = 1
+custom_minimum_size = Vector2(198, 0)
+layout_mode = 2
+theme = SubResource("Theme_idane")
+text = "LANGUAGE_LABEL"
+horizontal_alignment = 1
+
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Game/Options/Language" unique_id=1899439827]
+z_index = 1
+custom_minimum_size = Vector2(32, 16)
+layout_direction = 3
+layout_mode = 2
+texture = ExtResource("40_3pvl0")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Rumble" type="HBoxContainer" parent="MenuStateMachine/Options/Game/Options" unique_id=116797970]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=1744339647 node_paths=PackedStringArray("state_machine")]
 z_index = 1
 custom_minimum_size = Vector2(368, 0)
 layout_mode = 2
@@ -4885,7 +4926,7 @@ alignment = 0
 script = ExtResource("6_r83iq")
 state_machine = NodePath("../../../../..")
 
-[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=1373532954]
+[node name="Back" type="TextureRect" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=1589971498]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
@@ -4894,7 +4935,7 @@ texture = ExtResource("39_lm186")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=981676141]
+[node name="Label" type="Label" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=1750670303]
 z_index = 1
 custom_minimum_size = Vector2(198, 0)
 layout_mode = 2
@@ -4902,7 +4943,7 @@ theme = SubResource("Theme_idane")
 text = "ENABLED_LABEL"
 horizontal_alignment = 1
 
-[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=1899439827]
+[node name="Forward" type="TextureRect" parent="MenuStateMachine/Options/Game/Options/Rumble" unique_id=477266934]
 z_index = 1
 custom_minimum_size = Vector2(32, 16)
 layout_direction = 3
