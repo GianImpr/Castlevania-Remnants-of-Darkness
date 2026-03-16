@@ -17,7 +17,7 @@ var base_item_costs: Array[int]
 static var level: int = 0
 var cur_index: int = 0
 var gold_gain_tween: Tween
-const SELL_WORTH_MULTIPLIER: float = 0.6
+static var SELL_WORTH_MULTIPLIER: float = 0.6
 var cur_button_held: String
 var cur_button_held_for: float
 var holding_button: bool = false

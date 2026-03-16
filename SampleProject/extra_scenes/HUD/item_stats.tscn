@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://ckiepu5io78ie"]
 
 [ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="1_5cxfp"]
+[ext_resource type="Script" uid="uid://bbgau80wmefc0" path="res://SampleProject/Scripts/System/Menu/item_stats.gd" id="1_gco3r"]
 [ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="2_gco3r"]
+[ext_resource type="FontFile" uid="uid://hl515hf64s3e" path="res://assets/sprites/Font/OldLondonAlternate.ttf" id="3_gco3r"]
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="3_urf23"]
-[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="4_yven1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3cjd"]
 texture = ExtResource("1_5cxfp")
@@ -12,13 +13,23 @@ texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 
-[sub_resource type="Theme" id="Theme_jp5wv"]
-default_font = ExtResource("2_gco3r")
+[sub_resource type="Theme" id="Theme_urf23"]
+default_font = ExtResource("3_gco3r")
 default_font_size = 32
 
 [sub_resource type="Gradient" id="Gradient_7xs6h"]
-offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
-colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+offsets = PackedFloat32Array(0, 0.381679, 0.69512194, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.9999996, 0.8208614, 0.33189565, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yven1"]
+gradient = SubResource("Gradient_7xs6h")
+width = 300
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Theme" id="Theme_jp5wv"]
+default_font = ExtResource("2_gco3r")
+default_font_size = 32
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6w2ro"]
 gradient = SubResource("Gradient_7xs6h")
@@ -30,17 +41,137 @@ fill_to = Vector2(0, 1)
 default_font = ExtResource("3_urf23")
 default_font_size = 32
 
-[sub_resource type="Theme" id="Theme_4neb5"]
-default_font = ExtResource("4_yven1")
-default_font_size = 32
+[sub_resource type="Gradient" id="Gradient_s4k03"]
+offsets = PackedFloat32Array(0, 0.250923, 0.545802, 1)
+colors = PackedColorArray(0.634397, 0.753086, 1, 1, 0.600464, 0.9306, 1, 1, 0.234167, 0.169173, 1, 1, 0.282645, 0.610606, 1, 1)
 
-[node name="ItemStats" type="Control" unique_id=983692698]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ol4uy"]
+gradient = SubResource("Gradient_s4k03")
+width = 250
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_f81f2"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.825069, 0.772398, 0, 1, 0.999375, 0.868251, 7.70092e-07, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gnau5"]
+gradient = SubResource("Gradient_f81f2")
+width = 250
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gco3r"]
+gradient = SubResource("Gradient_f81f2")
+width = 250
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_gco3r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yven1"]
+resource_name = "close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_urf23"]
+resource_name = "play"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yven1"]
+_data = {
+&"RESET": SubResource("Animation_gco3r"),
+&"close": SubResource("Animation_yven1"),
+&"play": SubResource("Animation_urf23")
+}
+
+[node name="ItemStats" type="Control" unique_id=983692698 node_paths=PackedStringArray("stats", "hbox_template", "attack_hbox_template", "defense_hbox_template", "stat_hbox_template", "animation")]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gco3r")
+stats = NodePath("PanelContainer/Stats")
+hbox_template = NodePath("PanelContainer/Stats/Sample")
+attack_hbox_template = NodePath("PanelContainer/Stats/AttackSample")
+defense_hbox_template = NodePath("PanelContainer/Stats/DefenseSample")
+stat_hbox_template = NodePath("PanelContainer/Stats/StatSample")
+animation = NodePath("AnimationPlayer")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=988484395]
 layout_mode = 1
@@ -55,7 +186,7 @@ theme_override_constants/separation = 0
 [node name="Required" type="Label" parent="PanelContainer/Stats" unique_id=1660805167]
 clip_children = 1
 layout_mode = 2
-theme = SubResource("Theme_jp5wv")
+theme = SubResource("Theme_urf23")
 text = "Item information"
 horizontal_alignment = 1
 
@@ -63,56 +194,100 @@ horizontal_alignment = 1
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
-texture = SubResource("GradientTexture2D_6w2ro")
+texture = SubResource("GradientTexture2D_yven1")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=189572817]
+[node name="Sample" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=189572817]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Stats/HBoxContainer" unique_id=1508754308]
+[node name="Label" type="Label" parent="PanelContainer/Stats/Sample" unique_id=1508754308]
 clip_children = 1
-custom_minimum_size = Vector2(150, 32)
+custom_minimum_size = Vector2(230, 32)
 layout_mode = 2
 theme = SubResource("Theme_jp5wv")
 text = "Attack"
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/Stats/HBoxContainer/Label" unique_id=2141268267]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Stats/Sample/Label" unique_id=2141268267]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_6w2ro")
 
-[node name="Value" type="Label" parent="PanelContainer/Stats/HBoxContainer" unique_id=970277522]
+[node name="Value" type="Label" parent="PanelContainer/Stats/Sample" unique_id=970277522]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme = SubResource("Theme_ryp40")
 text = "0"
 horizontal_alignment = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=1911115239]
+[node name="DefenseSample" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=453263237]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/Stats/HBoxContainer2" unique_id=1719841992]
+[node name="Label" type="Label" parent="PanelContainer/Stats/DefenseSample" unique_id=1670302846]
 clip_children = 1
-custom_minimum_size = Vector2(150, 32)
+custom_minimum_size = Vector2(230, 32)
 layout_mode = 2
 theme = SubResource("Theme_jp5wv")
-text = "Defense"
+text = "Attack"
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/Stats/HBoxContainer2/Label" unique_id=1744108763]
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Stats/DefenseSample/Label" unique_id=1534195908]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
-texture = SubResource("GradientTexture2D_6w2ro")
+texture = SubResource("GradientTexture2D_ol4uy")
 
-[node name="Value" type="Label" parent="PanelContainer/Stats/HBoxContainer2" unique_id=764053432]
+[node name="Value" type="Label" parent="PanelContainer/Stats/DefenseSample" unique_id=730309142]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme = SubResource("Theme_ryp40")
 text = "0"
 horizontal_alignment = 2
 
-[node name="Exit" type="Label" parent="PanelContainer/Stats" unique_id=1139720951]
+[node name="AttackSample" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=432108813]
 layout_mode = 2
-theme = SubResource("Theme_4neb5")
-text = "Press any button to close."
+
+[node name="Label" type="Label" parent="PanelContainer/Stats/AttackSample" unique_id=2137128753]
+clip_children = 1
+custom_minimum_size = Vector2(230, 32)
+layout_mode = 2
+theme = SubResource("Theme_jp5wv")
+text = "Attack"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Stats/AttackSample/Label" unique_id=152836097]
+modulate = Color(1, 0.403922, 1, 1)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_gnau5")
+
+[node name="Value" type="Label" parent="PanelContainer/Stats/AttackSample" unique_id=977441698]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme = SubResource("Theme_ryp40")
+text = "0"
 horizontal_alignment = 2
+
+[node name="StatSample" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=268925585]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/Stats/StatSample" unique_id=934917827]
+clip_children = 1
+custom_minimum_size = Vector2(230, 32)
+layout_mode = 2
+theme = SubResource("Theme_jp5wv")
+text = "Attack"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Stats/StatSample/Label" unique_id=1303478180]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_gco3r")
+
+[node name="Value" type="Label" parent="PanelContainer/Stats/StatSample" unique_id=185508128]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme = SubResource("Theme_ryp40")
+text = "0"
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=961144696]
+libraries/ = SubResource("AnimationLibrary_yven1")

@@ -20,6 +20,8 @@ var player
 @export var qty_scroll: ScrollContainer
 @export var artifact_panel: Container
 @export var artifact_proc_label: RichTextLabelWithButtons
+@export var show_item_stats: RichTextLabelWithButtons
+@export var item_stats: ItemStats
 var weapon_text: Label
 var weapon_icon: TextureRect
 var cur_selected_item = null
@@ -50,6 +52,14 @@ func _process(delta: float) -> void:
 			state_machine.current_state.accessed_menu = 0
 	elif not glow_timer.is_stopped():
 		glow_timer.stop()
+		
+	item_stats.can_open = equipSlots.menu.accessed_menu == 1 and cur_selected_item != null
+	show_item_stats.visible = item_stats.can_open
+	if item_stats.visible:
+		show_item_stats.new_text = " [[R1]] Hide item stats"
+	else:
+		show_item_stats.new_text = " [[R1]] Show item stats"
+	
 	
 	#Change current quick weapon slot
 	if equipSlots.button_index == 0 and equipSlots.menu.accessed_menu == 1 and state_machine.current_state is InvEquip:
@@ -150,7 +160,13 @@ func on_focused(button):
 		cur_selected_item = null
 		weapon_icon.texture = load("res://assets/sprites/Items/InventoryIcons/Inventory_255.png")
 		weapon_text.text = ""
-		
+	
+	if button.get_index() % 2 == 0:
+		item_stats.position.x = 465
+	else:
+		item_stats.position.x = 100
+	item_stats.item = cur_selected_item
+	
 	if equipSlots.button_index == 1 and cur_selected_item != null:
 		var stat_proc: HectorStats.Parameters = cur_selected_item["stat_proc"]
 		var proc_rate: float = cur_selected_item["proc_factor"]
@@ -225,8 +241,9 @@ func updateList():
 	resetLabel(labels.NewSubStats)
 
 func _on_glow_timer_timeout() -> void:
-	for child in children:
-		button_glow.bg_color = Color(glow_intensity, 0, 0)
+	return
+	#for child in children:
+		#button_glow.bg_color = Color(glow_intensity, 0, 0)
 
 #Retrieves data from the index-th element of a compendium
 func getEquipFromCompendium(index: int, compendium):

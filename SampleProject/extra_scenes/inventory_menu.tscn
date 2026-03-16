@@ -57,6 +57,7 @@
 [ext_resource type="Texture2D" uid="uid://dfhbi1p3w6noo" path="res://assets/sprites/HUD/WeaponLevels/Sword.png" id="41_iem5b"]
 [ext_resource type="Texture2D" uid="uid://bong8gmt6hw0q" path="res://assets/sprites/HUD/WeaponLevels/Greatsword.png" id="42_dvgxg"]
 [ext_resource type="Texture2D" uid="uid://xm72q0nsbqu3" path="res://assets/sprites/HUD/Buttons/Down.png" id="43_5ev2a"]
+[ext_resource type="PackedScene" uid="uid://ckiepu5io78ie" path="res://SampleProject/extra_scenes/HUD/item_stats.tscn" id="43_7y2b8"]
 [ext_resource type="Texture2D" uid="uid://bllvk6t7gf425" path="res://assets/sprites/HUD/WeaponLevels/Axe.png" id="43_rrve7"]
 [ext_resource type="Texture2D" uid="uid://bfxgefahhvb23" path="res://assets/sprites/HUD/Buttons/Up.png" id="44_dqurr"]
 [ext_resource type="Texture2D" uid="uid://ci5l6sem44iic" path="res://assets/sprites/HUD/WeaponLevels/Spear.png" id="44_of820"]
@@ -2472,7 +2473,7 @@ scale = Vector2(2, 2)
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="EquipList" type="GridContainer" parent="MenuStateMachine/Equip/Display/EquipScroll" unique_id=2098074987 node_paths=PackedStringArray("glow_timer", "sound", "equipSlots", "state_machine", "weapon_desc", "qty_list", "labels", "quick_weapon_icons", "qty_scroll", "artifact_panel", "artifact_proc_label")]
+[node name="EquipList" type="GridContainer" parent="MenuStateMachine/Equip/Display/EquipScroll" unique_id=2098074987 node_paths=PackedStringArray("glow_timer", "sound", "equipSlots", "state_machine", "weapon_desc", "qty_list", "labels", "quick_weapon_icons", "qty_scroll", "artifact_panel", "artifact_proc_label", "show_item_stats", "item_stats")]
 custom_minimum_size = Vector2(360, 94)
 layout_mode = 2
 theme = SubResource("Theme_j428y")
@@ -2492,6 +2493,8 @@ quick_weapon_icons = NodePath("../../QuickWeapons/QuickWeaponIcons")
 qty_scroll = NodePath("../../QuantityScroll")
 artifact_panel = NodePath("../../Description/ArtifactPanel")
 artifact_proc_label = NodePath("../../Description/ArtifactPanel/ArtifactProcText")
+show_item_stats = NodePath("../../ShowItemStats")
+item_stats = NodePath("../../ItemStats")
 
 [node name="Unequip" type="Button" parent="MenuStateMachine/Equip/Display/EquipScroll/EquipList" unique_id=854954827]
 custom_minimum_size = Vector2(162, 0)
@@ -2582,7 +2585,7 @@ layout_mode = 2
 theme = SubResource("Theme_w0cua")
 theme_override_constants/outline_size = 8
 bbcode_enabled = true
-text = "[right]Activation rate: 0%[/right]"
+text = "Activation rate: 100%"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -2765,6 +2768,25 @@ offset_left = 31.0
 offset_top = 45.0
 offset_right = 63.0
 offset_bottom = 77.0
+
+[node name="ItemStats" parent="MenuStateMachine/Equip/Display" unique_id=983692698 instance=ExtResource("43_7y2b8")]
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 7.0
+offset_bottom = 4.0
+
+[node name="ShowItemStats" type="RichTextLabel" parent="MenuStateMachine/Equip/Display" unique_id=1493883553]
+z_index = 2
+offset_left = 24.0
+offset_top = 375.0
+offset_right = 331.0
+offset_bottom = 415.0
+theme = SubResource("Theme_0pw8i")
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = " [img]res://assets/sprites/HUD/Buttons/R1.png[/img] Show item stats"
+script = ExtResource("30_m47lu")
+new_text = " [[R1]] Show item stats"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Equip" unique_id=272173128]
 libraries/ = SubResource("AnimationLibrary_cuwo4")
