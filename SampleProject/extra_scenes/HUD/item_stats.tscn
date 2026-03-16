@@ -5,6 +5,10 @@
 [ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="2_gco3r"]
 [ext_resource type="FontFile" uid="uid://hl515hf64s3e" path="res://assets/sprites/Font/OldLondonAlternate.ttf" id="3_gco3r"]
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="3_urf23"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="6_jp5wv"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_6w2ro"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="8_ryp40"]
+[ext_resource type="AudioStream" uid="uid://bk3yytbku0xg2" path="res://assets/sounds/Menu/PopUp.MP3" id="9_4neb5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3cjd"]
 texture = ExtResource("1_5cxfp")
@@ -149,6 +153,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicMenuAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["popup"],
+"method": &"play_sound_effect_from_library"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yven1"]
 _data = {
@@ -157,7 +175,18 @@ _data = {
 &"play": SubResource("Animation_urf23")
 }
 
-[node name="ItemStats" type="Control" unique_id=983692698 node_paths=PackedStringArray("stats", "hbox_template", "attack_hbox_template", "defense_hbox_template", "stat_hbox_template", "animation")]
+[sub_resource type="Resource" id="Resource_bp15l"]
+script = ExtResource("8_ryp40")
+Tag = "popup"
+stream = ExtResource("9_4neb5")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_ekywq"]
+script = ExtResource("7_6w2ro")
+sound_effects = Array[ExtResource("8_ryp40")]([SubResource("Resource_bp15l")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[node name="ItemStats" type="Control" unique_id=983692698 node_paths=PackedStringArray("stats", "hbox_template", "attack_hbox_template", "defense_hbox_template", "stat_hbox_template", "element_hbox_template", "animation")]
 z_index = 1
 layout_mode = 3
 anchors_preset = 15
@@ -171,6 +200,7 @@ hbox_template = NodePath("PanelContainer/Stats/Sample")
 attack_hbox_template = NodePath("PanelContainer/Stats/AttackSample")
 defense_hbox_template = NodePath("PanelContainer/Stats/DefenseSample")
 stat_hbox_template = NodePath("PanelContainer/Stats/StatSample")
+element_hbox_template = NodePath("PanelContainer/Stats/ElementSample")
 animation = NodePath("AnimationPlayer")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=988484395]
@@ -289,5 +319,32 @@ theme = SubResource("Theme_ryp40")
 text = "0"
 horizontal_alignment = 2
 
+[node name="ElementSample" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=960273491]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/Stats/ElementSample" unique_id=86273757]
+clip_children = 1
+custom_minimum_size = Vector2(230, 32)
+layout_mode = 2
+theme = SubResource("Theme_jp5wv")
+text = "Attribute"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/Stats/ElementSample/Label" unique_id=1716508436]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_6w2ro")
+
+[node name="Icons" type="HBoxContainer" parent="PanelContainer/Stats/ElementSample" unique_id=1189434870]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+alignment = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=961144696]
 libraries/ = SubResource("AnimationLibrary_yven1")
+
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="." unique_id=1944425926]
+volume_db = -3.0
+script = ExtResource("6_jp5wv")
+audio_library = SubResource("Resource_ekywq")
+metadata/_custom_type_script = "uid://db2g34ep3sicd"

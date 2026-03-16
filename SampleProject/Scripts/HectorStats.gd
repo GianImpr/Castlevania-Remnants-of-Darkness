@@ -119,7 +119,6 @@ func _ready() -> void:
 		wall_flags.append(false)
 
 func _process(delta: float) -> void:
-	Stats["FP"] = Stats["MFP"] - 1
 	Bases["ATK"] = Stats["STR"]/2
 	Bases["DEF"] = Stats["CON"]/2
 	for i in range(0, status.size()):

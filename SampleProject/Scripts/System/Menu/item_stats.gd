@@ -5,6 +5,7 @@ class_name ItemStats
 @export var attack_hbox_template: HBoxContainer
 @export var defense_hbox_template: HBoxContainer
 @export var stat_hbox_template: HBoxContainer
+@export var element_hbox_template: HBoxContainer
 @export var exit_label: Label
 @export var animation: AnimationPlayer
 var can_open: bool = false:
@@ -44,6 +45,7 @@ func _ready() -> void:
 	attack_hbox_template.visible = false
 	defense_hbox_template.visible = false
 	stat_hbox_template.visible = false
+	element_hbox_template.visible = false
 	visible = false
 	
 func _process(delta: float) -> void:
@@ -74,17 +76,21 @@ func setStats() -> void:
 			color = LabelColor.RED
 		elif STATS[i] == "DEF":
 			color = LabelColor.BLUE
-		if item_stat > 0:
+		if item_stat != 0:
 			createStatEntry(tr(STAT_LABELS[i]), item_stat, false, color)
 			
 	if item is Weapon:
+		createElementsEntry("Attribute", item.element)
 		for i in range(0, WEAPON_STATS.size()):
 			if WEAPON_STATS[i] == "jump_cancel":
 				var item_stat: String = "YES_LABEL" if item[WEAPON_STATS[i]] else "NO_LABEL"
 				createStatEntry(WEAPON_STATS_LABELS[i], item_stat, true)
 			else:
 				createStatEntry(WEAPON_STATS_LABELS[i], WEAPON_TYPES[item[WEAPON_STATS[i]]], true)
-				
+	
+	if item is Headgear or item is Body or item is Legs or item is Accessory:
+		createElementsEntry("Resistance", item.element)
+	
 	for i in range(0, MISC_STATS.size()):
 		var item_stat: int = item[MISC_STATS[i]]
 		if MISC_STATS[i] == "value":
@@ -94,7 +100,7 @@ func setStats() -> void:
 
 func resetStats() -> void:
 	for stat_entry in stats.get_children():
-		if stat_entry not in [hbox_template, attack_hbox_template, defense_hbox_template, stat_hbox_template] and stat_entry is HBoxContainer:
+		if stat_entry not in [hbox_template, attack_hbox_template, defense_hbox_template, stat_hbox_template, element_hbox_template] and stat_entry is HBoxContainer:
 			stat_entry.queue_free()
 
 func createStatEntry(stat_name: String, value, text_font: bool = false, hbox_color: LabelColor = LabelColor.GRAY) -> void:
@@ -109,6 +115,8 @@ func createStatEntry(stat_name: String, value, text_font: bool = false, hbox_col
 		_:
 			entry = hbox_template.duplicate()
 	entry.get_child(CHILD.LABEL).text = stat_name
+	if value is int and value < 0:
+		entry.get_child(CHILD.VALUE).self_modulate = Color.INDIAN_RED
 	entry.get_child(CHILD.VALUE).text = str(value)
 	if text_font:
 		var new_font: FontFile = FontFile.new()
@@ -117,5 +125,15 @@ func createStatEntry(stat_name: String, value, text_font: bool = false, hbox_col
 	stats.add_child(entry)
 	entry.visible = true
 
-func createElementsEntry(entry_name: String, elements: Global.Attribute) -> void:
-	pass
+func createElementsEntry(entry_name: String, elements: Array[Global.Attribute]) -> void:
+	if elements.size() == 0:
+		return
+	var entry: HBoxContainer = element_hbox_template.duplicate()
+	entry.get_child(CHILD.LABEL).text = entry_name
+	for i in range(elements.size()-1, -1, -1):
+		var icon: TextureRect = TextureRect.new()
+		icon.custom_minimum_size.x = 32
+		icon.texture = Global.game.element_icons[elements[i]-1]
+		entry.get_child(CHILD.VALUE).add_child(icon)
+	stats.add_child(entry)
+	entry.visible = true
