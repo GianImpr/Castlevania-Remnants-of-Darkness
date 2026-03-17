@@ -23,5 +23,4 @@ func Physics_Update(delta: float):
 	pass
 
 func _on_duration_timeout() -> void:
-	sound.play_sound_effect_from_library("move")
 	Transitioned.emit(self, "moving")
