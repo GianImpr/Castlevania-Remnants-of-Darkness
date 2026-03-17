@@ -12,6 +12,8 @@
 [ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="8_c4ouk"]
 [ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="9_2pq27"]
 [ext_resource type="Script" uid="uid://ci4nlniwcbyi5" path="res://SampleProject/Scripts/System/sell_screen.gd" id="9_ov5w2"]
+[ext_resource type="PackedScene" uid="uid://ckiepu5io78ie" path="res://SampleProject/extra_scenes/HUD/item_stats.tscn" id="9_x2utj"]
+[ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="11_7v0m5"]
 [ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="12_ogxjy"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="13_4e0xj"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="14_ltn54"]
@@ -583,6 +585,10 @@ texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 
+[sub_resource type="Theme" id="Theme_x2utj"]
+default_font = ExtResource("2_80w3n")
+default_font_size = 32
+
 [sub_resource type="Theme" id="Theme_okf63"]
 default_font = ExtResource("8_c4ouk")
 default_font_size = 32
@@ -951,7 +957,7 @@ icon = SubResource("CompressedTexture2D_axgji")
 flat = true
 icon_alignment = 1
 
-[node name="BuyScreen" type="Control" parent="." unique_id=130879487 node_paths=PackedStringArray("scroll_container", "gold_label", "animation", "sound", "text_description", "icon_description", "item_entries", "gold_sound")]
+[node name="BuyScreen" type="Control" parent="." unique_id=130879487 node_paths=PackedStringArray("scroll_container", "gold_label", "animation", "sound", "text_description", "icon_description", "item_entries", "gold_sound", "item_stats", "show_item_stats")]
 z_index = 1
 anchors_preset = 0
 offset_right = 40.0
@@ -988,6 +994,8 @@ text_description = NodePath("../Description/Text")
 icon_description = NodePath("../Description/Icon")
 item_entries = NodePath("PanelContainer/ScrollContainer/Items")
 gold_sound = NodePath("../GoldAudio")
+item_stats = NodePath("ItemStats")
+show_item_stats = NodePath("../Description/ShowItemStats")
 
 [node name="Header" type="HBoxContainer" parent="BuyScreen" unique_id=1891818298]
 modulate = Color(1, 1, 1, 0)
@@ -1150,6 +1158,13 @@ texture = SubResource("GradientTexture2D_i7x1f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BuyScreen" unique_id=1512871429]
 libraries/ = SubResource("AnimationLibrary_xqvsg")
+
+[node name="ItemStats" parent="BuyScreen" unique_id=983692698 instance=ExtResource("9_x2utj")]
+layout_mode = 1
+offset_left = 458.0
+offset_top = 7.0
+offset_right = 458.0
+offset_bottom = 7.0
 
 [node name="SellScreen" type="Control" parent="." unique_id=1866881543 node_paths=PackedStringArray("scroll_container", "gold_label", "animation", "sound", "text_description", "icon_description", "item_entries", "gold_sound")]
 z_index = 1
@@ -1364,14 +1379,29 @@ offset_right = 852.0
 offset_bottom = 468.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vib0y")
 
+[node name="ShowItemStats" type="RichTextLabel" parent="Description" unique_id=107783250]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_left = 24.0
+offset_top = 375.0
+offset_right = 331.0
+offset_bottom = 415.0
+theme = SubResource("Theme_x2utj")
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = " [img]res://assets/sprites/HUD/Buttons/R1.png[/img] Show item stats"
+script = ExtResource("11_7v0m5")
+new_text = " [[R1]] Show item stats"
+
 [node name="Gold" type="Label" parent="." unique_id=752490214]
 self_modulate = Color(1, 1, 1, 0)
 clip_children = 1
 z_index = 1
 layout_mode = 0
-offset_left = 591.0
+offset_left = 201.0
 offset_top = 21.0
-offset_right = 733.0
+offset_right = 343.0
 offset_bottom = 53.0
 theme = SubResource("Theme_okf63")
 text = "MENU_GOLD"
@@ -1387,9 +1417,9 @@ texture = SubResource("GradientTexture2D_v0lvk")
 self_modulate = Color(1, 1, 1, 0)
 z_index = 1
 layout_mode = 0
-offset_left = 704.0
+offset_left = 314.0
 offset_top = 21.0
-offset_right = 848.0
+offset_right = 458.0
 offset_bottom = 111.0
 theme = SubResource("Theme_j43w6")
 theme_override_constants/line_spacing = 5

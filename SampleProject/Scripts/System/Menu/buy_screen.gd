@@ -15,6 +15,8 @@ class_name ShopBuy
 @export var icon_description: TextureRect
 @export var item_entries: VBoxContainer
 @export var gold_sound: PolyphonicMenuAudio
+@export var item_stats: ItemStats
+@export var show_item_stats: RichTextLabelWithButtons
 var item_quantities: Array[int]
 var item_max_held: Array[int]
 var item_held: Array[int]
@@ -43,7 +45,10 @@ enum ItemEntryChildren {
 func initializeBuyScreen() -> void:
 	initializeItemEntries()
 	cur_index = 0
+	item_stats.in_shop = true
+	item_stats.can_open = true
 	focusOnButton(true)
+	
 	scroll_container.scroll_vertical = 0
 	updateAvailability()
 
@@ -52,6 +57,7 @@ func focusOnButton(silent: bool = false) -> void:
 	var cur_button: HBoxContainer = item_entries.get_child(cur_index)
 	cur_button.get_child(ItemEntryChildren.BUTTON).grab_focus()
 	updateDescription()
+	item_stats.item = getCompendium(purchasable_items[cur_index].type)[purchasable_items[cur_index].id-1]
 	if not silent:
 		sound.play_sound_effect_from_library("cursor")
 	
@@ -64,6 +70,8 @@ func updateDescription() -> void:
 
 ## Returns to initial screen.
 func closeBuyScreen() -> void:
+	item_stats.can_open = false
+	show_item_stats.visible = false
 	var cur_button: HBoxContainer = item_entries.get_child(cur_index)
 	if cur_button:
 		cur_button.get_child(ItemEntryChildren.BUTTON).release_focus()
@@ -232,7 +240,12 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-		
+	
+	show_item_stats.visible = item_stats.item != null and item_stats.item is not Item
+	if item_stats.visible:
+		show_item_stats.new_text = " [[R1]] Hide item stats"
+	else:
+		show_item_stats.new_text = " [[R1]] Show item stats"
 		
 	gold_label.text = str(Shop.displayed_gold)
 	if animation.is_playing():

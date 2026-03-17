@@ -34,6 +34,7 @@ func _ready() -> void:
 	get_child(0).focus_entered.connect(self.on_focused.bind(get_child(0)))
 	WeaponWheel.quickWeaponSwap = quickWeaponSwap
 	CombineButtons.equipItem = equipItem
+	item_stats.in_shop = false
 
 func _process(delta: float) -> void:
 	if weapon_desc:
@@ -53,7 +54,7 @@ func _process(delta: float) -> void:
 	elif not glow_timer.is_stopped():
 		glow_timer.stop()
 		
-	item_stats.can_open = equipSlots.menu.accessed_menu == 1 and cur_selected_item != null
+	item_stats.can_open = equipSlots.menu.accessed_menu == 1 and cur_selected_item != null and Global.screen == Global.ScreenType.MENU
 	show_item_stats.visible = item_stats.can_open
 	if item_stats.visible:
 		show_item_stats.new_text = " [[R1]] Hide item stats"
@@ -299,8 +300,8 @@ func compareStats(selectedEquip, currentEquip, stats: Array[String], arrowLabel:
 			newStatLabel += "[color=#0070ff]" + str(player.Estimated[stat]) + "[/color]\n"
 			newArrows += "[color=#0070ff]↗[/color]\n"
 		elif player.Estimated[stat] < player.Stats[stat]:
-			newStatLabel += "[color=#ff4000]" + str(player.Estimated[stat]) + "[/color]\n"
-			newArrows += "[color=#ff4000]↘[/color]\n"
+			newStatLabel += "[color=#cd5c5c]" + str(player.Estimated[stat]) + "[/color]\n"
+			newArrows += "[color=#cd5c5c]↘[/color]\n"
 		else:
 			newArrows += "\n"
 			newStatLabel += "\n"

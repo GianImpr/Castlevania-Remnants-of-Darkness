@@ -8,6 +8,7 @@ class_name ItemStats
 @export var element_hbox_template: HBoxContainer
 @export var exit_label: Label
 @export var animation: AnimationPlayer
+var in_shop: bool = false
 var can_open: bool = false:
 	set(value):
 		can_open = value
@@ -16,7 +17,10 @@ var can_open: bool = false:
 var item: Variant:
 	set(value):
 		item = value
-		if visible and item != null:
+		if visible and item is Item:
+			closeWindow()
+			return
+		if visible and item != null and item is not Item:
 			resetStats()
 			setStats()
 
@@ -56,7 +60,7 @@ func _process(delta: float) -> void:
 			closeWindow()
 
 func openWindow() -> void:
-	if item != null:
+	if item != null and item is not Item:
 		setStats()
 		if not visible:
 			animation.play("play")
@@ -76,26 +80,27 @@ func setStats() -> void:
 			color = LabelColor.RED
 		elif STATS[i] == "DEF":
 			color = LabelColor.BLUE
-		if item_stat != 0:
-			createStatEntry(tr(STAT_LABELS[i]), item_stat, false, color)
+		if item_stat != 0 or in_shop:
+			createStatEntry(tr(STAT_LABELS[i]), item_stat, color, in_shop, i)
 			
 	if item is Weapon:
 		createElementsEntry("Attribute", item.element)
 		for i in range(0, WEAPON_STATS.size()):
 			if WEAPON_STATS[i] == "jump_cancel":
 				var item_stat: String = "YES_LABEL" if item[WEAPON_STATS[i]] else "NO_LABEL"
-				createStatEntry(WEAPON_STATS_LABELS[i], item_stat, true)
+				createStatEntry(WEAPON_STATS_LABELS[i], item_stat)
 			else:
-				createStatEntry(WEAPON_STATS_LABELS[i], WEAPON_TYPES[item[WEAPON_STATS[i]]], true)
+				createStatEntry(WEAPON_STATS_LABELS[i], WEAPON_TYPES[item[WEAPON_STATS[i]]])
 	
 	if item is Headgear or item is Body or item is Legs or item is Accessory:
 		createElementsEntry("Resistance", item.element)
 	
 	for i in range(0, MISC_STATS.size()):
 		var item_stat: int = item[MISC_STATS[i]]
-		if MISC_STATS[i] == "value":
+		if MISC_STATS[i] == "value" and not in_shop:
 			item_stat *= ShopSell.SELL_WORTH_MULTIPLIER
-		createStatEntry(MISC_STAT_LABELS[i], item_stat)
+		if not (MISC_STATS[i] == "value" and in_shop):
+			createStatEntry(MISC_STAT_LABELS[i], item_stat)
 
 
 func resetStats() -> void:
@@ -103,7 +108,7 @@ func resetStats() -> void:
 		if stat_entry not in [hbox_template, attack_hbox_template, defense_hbox_template, stat_hbox_template, element_hbox_template] and stat_entry is HBoxContainer:
 			stat_entry.queue_free()
 
-func createStatEntry(stat_name: String, value, text_font: bool = false, hbox_color: LabelColor = LabelColor.GRAY) -> void:
+func createStatEntry(stat_name: String, value, hbox_color: LabelColor = LabelColor.GRAY, compare_with_equipped: bool = false, index: int = 0) -> void:
 	var entry: HBoxContainer
 	match hbox_color:
 		LabelColor.NORMAL:
@@ -116,12 +121,44 @@ func createStatEntry(stat_name: String, value, text_font: bool = false, hbox_col
 			entry = hbox_template.duplicate()
 	entry.get_child(CHILD.LABEL).text = stat_name
 	if value is int and value < 0:
-		entry.get_child(CHILD.VALUE).self_modulate = Color.INDIAN_RED
-	entry.get_child(CHILD.VALUE).text = str(value)
-	if text_font:
-		var new_font: FontFile = FontFile.new()
-		new_font.load_dynamic_font("res://assets/sprites/Font/McMillen.ttf")
-		(entry.get_child(CHILD.VALUE) as Label).add_theme_font_override("font", new_font)
+		entry.get_child(CHILD.VALUE).text = "[color=#cd5c5c]" + str(value) + "[/color]"
+	else:
+		entry.get_child(CHILD.VALUE).text = str(value)
+	
+	if compare_with_equipped:
+		var equipped_value: int = 0
+		var equipped_item = null
+		var equipped_id: int = 0
+		if item is Weapon:
+			equipped_id = Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.WEAPON]-1
+			if equipped_id >= 0:
+				equipped_item = Global.player.stats.weapon_compendium[equipped_id]
+		elif item is Headgear:
+			equipped_id = Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.HEADGEAR]-1
+			if equipped_id >= 0:
+				equipped_item = Global.player.stats.headgear_compendium[equipped_id]
+		elif item is Body:
+			equipped_id = Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.BODY]-1
+			if equipped_id >= 0:
+				equipped_item = Global.player.stats.body_compendium[equipped_id]
+		elif item is Legs:
+			equipped_id = Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.LEGS]-1
+			if equipped_id >= 0:
+				equipped_item = Global.player.stats.legs_compendium[equipped_id]
+		elif item is Accessory:
+			equipped_id = Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.ACC_1]-1
+			if equipped_id >= 0:
+				equipped_item = Global.player.stats.accessory_compendium[equipped_id]
+		if equipped_item:
+			equipped_value = equipped_item[STATS[index]]
+		var diff_value: int = value - equipped_value
+		if diff_value > 0:
+			entry.get_child(CHILD.VALUE).text += "[color=#0070ff] (+" + str(diff_value) + ")[/color]"
+		elif diff_value < 0:
+			entry.get_child(CHILD.VALUE).text += "[color=#cd5c5c] (" + str(diff_value) + ")[/color]"
+		else:
+			entry.get_child(CHILD.VALUE).text += " (" + str(diff_value) + ")"
+
 	stats.add_child(entry)
 	entry.visible = true
 

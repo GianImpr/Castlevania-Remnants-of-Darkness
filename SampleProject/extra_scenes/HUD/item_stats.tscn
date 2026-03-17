@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bbgau80wmefc0" path="res://SampleProject/Scripts/System/Menu/item_stats.gd" id="1_gco3r"]
 [ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="2_gco3r"]
 [ext_resource type="FontFile" uid="uid://hl515hf64s3e" path="res://assets/sprites/Font/OldLondonAlternate.ttf" id="3_gco3r"]
-[ext_resource type="FontFile" uid="uid://crx7ffu3a78bi" path="res://assets/sprites/Font/SotNMonospace.ttf" id="3_urf23"]
+[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="5_jp5wv"]
 [ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="6_jp5wv"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_6w2ro"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="8_ryp40"]
@@ -13,9 +13,9 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3cjd"]
 texture = ExtResource("1_5cxfp")
 texture_margin_left = 20.0
-texture_margin_top = 20.0
+texture_margin_top = 10.0
 texture_margin_right = 20.0
-texture_margin_bottom = 20.0
+texture_margin_bottom = 16.0
 
 [sub_resource type="Theme" id="Theme_urf23"]
 default_font = ExtResource("3_gco3r")
@@ -42,7 +42,7 @@ height = 32
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Theme" id="Theme_ryp40"]
-default_font = ExtResource("3_urf23")
+default_font = ExtResource("5_jp5wv")
 default_font_size = 32
 
 [sub_resource type="Gradient" id="Gradient_s4k03"]
@@ -211,7 +211,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_r3cjd")
 
 [node name="Stats" type="VBoxContainer" parent="PanelContainer" unique_id=1057800676]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = -3
 
 [node name="Required" type="Label" parent="PanelContainer/Stats" unique_id=1660805167]
 clip_children = 1
@@ -242,12 +242,14 @@ offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_6w2ro")
 
-[node name="Value" type="Label" parent="PanelContainer/Stats/Sample" unique_id=970277522]
+[node name="Value" type="RichTextLabel" parent="PanelContainer/Stats/Sample" unique_id=106115775]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme = SubResource("Theme_ryp40")
+bbcode_enabled = true
 text = "0"
 horizontal_alignment = 2
+justification_flags = 161
 
 [node name="DefenseSample" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=453263237]
 layout_mode = 2
@@ -265,12 +267,14 @@ offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_ol4uy")
 
-[node name="Value" type="Label" parent="PanelContainer/Stats/DefenseSample" unique_id=730309142]
+[node name="Value" type="RichTextLabel" parent="PanelContainer/Stats/DefenseSample" unique_id=999860338]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme = SubResource("Theme_ryp40")
+bbcode_enabled = true
 text = "0"
 horizontal_alignment = 2
+justification_flags = 161
 
 [node name="AttackSample" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=432108813]
 layout_mode = 2
@@ -289,12 +293,14 @@ offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gnau5")
 
-[node name="Value" type="Label" parent="PanelContainer/Stats/AttackSample" unique_id=977441698]
+[node name="Value" type="RichTextLabel" parent="PanelContainer/Stats/AttackSample" unique_id=732149881]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme = SubResource("Theme_ryp40")
+bbcode_enabled = true
 text = "0"
 horizontal_alignment = 2
+justification_flags = 161
 
 [node name="StatSample" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=268925585]
 layout_mode = 2
@@ -312,12 +318,14 @@ offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_gco3r")
 
-[node name="Value" type="Label" parent="PanelContainer/Stats/StatSample" unique_id=185508128]
+[node name="Value" type="RichTextLabel" parent="PanelContainer/Stats/StatSample" unique_id=444364143]
 custom_minimum_size = Vector2(120, 32)
 layout_mode = 2
 theme = SubResource("Theme_ryp40")
+bbcode_enabled = true
 text = "0"
 horizontal_alignment = 2
+justification_flags = 161
 
 [node name="ElementSample" type="HBoxContainer" parent="PanelContainer/Stats" unique_id=960273491]
 layout_mode = 2

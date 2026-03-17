@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 
 ### Opens the initial shop screen.
 func startShop() -> void:
+	buy_screen.show_item_stats.visible = false
 	is_closed = false
 	cur_button = default_button
 	displayed_gold = Global.player.stats.Stats["GOLD"]
