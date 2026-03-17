@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cao03qo1w131f" path="res://assets/sprites/Weapons/Swords/Broadsword/BroadswordBoomerangSwing.png" id="7_gi0ub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4h2w"]
-size = Vector2(54, 32)
+size = Vector2(54, 28)
 
 [sub_resource type="Animation" id="Animation_kqnrs"]
 length = 0.001
@@ -548,7 +548,7 @@ ice_hit_collision_scene = ExtResource("5_furi8")
 base_attribute = Array[int]([2])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Broadsword/PlayerHitbox" unique_id=2057367121]
-position = Vector2(17, 0)
+position = Vector2(17, 9)
 shape = SubResource("RectangleShape2D_e4h2w")
 
 [node name="Trail" type="Sprite2D" parent="Broadsword" unique_id=16646798]
