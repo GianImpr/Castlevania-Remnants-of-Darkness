@@ -8,7 +8,7 @@ class_name InnocentDevilStats
 @export var Bases: Dictionary #Current stats without boosts
 @export var skills: Array[IDSkill]
 @export var evo_crystals: Dictionary
-@export var level_up: GPUParticles2D
+@export var level_up: CPUParticles2D
 @export var sound: PolyphonicAudio
 
 func _ready() -> void:

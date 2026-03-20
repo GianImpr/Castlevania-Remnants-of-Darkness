@@ -11,7 +11,6 @@ func Update(delta: float):
 	enemy_can_die()
 	can_turnaround_with_scale()
 	if player.ai_activated:
-		sound.play_sound_effect_from_library("move")
 		animation.play("fly")
 		Transitioned.emit(self, "moving")
 

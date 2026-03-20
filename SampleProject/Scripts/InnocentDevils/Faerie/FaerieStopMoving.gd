@@ -1,10 +1,8 @@
 extends State
 class_name FaerieStopMoving
-@export var wings: AnimationPlayer
 
 func enter():
-	animation.play("stopping", -1, 1.3)
-	wings.play("normal")
+	animation.play("stopping")
 	player.velocity *= 0.4
 	
 func Update(delta: float):

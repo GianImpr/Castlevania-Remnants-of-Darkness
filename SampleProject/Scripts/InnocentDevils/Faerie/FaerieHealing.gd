@@ -1,6 +1,5 @@
 extends State
 class_name FaerieHealing
-@export var wings: AnimationPlayer
 @export var refreshing_air_scene: PackedScene
 @export var magic_particles: CPUParticles2D
 var skill_id: int
@@ -13,8 +12,7 @@ var skills: Array[Callable] = [
 func enter():
 	player.velocity = Vector2(0, 0)
 	skill_id = player.current_skill
-	animation.play("heal", -1, 2)
-	wings.play("normal")
+	animation.play("heal")
 	player.stats.Stats["Hearts"] -= player.stats.skills[skill_id].cost
 	
 func Update(delta: float):

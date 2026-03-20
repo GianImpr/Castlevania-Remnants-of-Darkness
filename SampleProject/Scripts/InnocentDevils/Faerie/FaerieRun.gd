@@ -1,10 +1,8 @@
 extends State
 class_name FaerieRun
-@export var wings: AnimationPlayer
 
 func enter():
 	animation.play("move_start", -1, 1.3)
-	wings.play("normal")
 	
 func Update(delta: float):
 	if not animation.is_playing() or animation.current_animation != "move_start":
@@ -21,12 +19,9 @@ func Physics_Update(delta: float):
 
 func determineAnimation():
 	if abs(player.velocity.y) > abs(player.velocity.x) and abs(player.velocity.x) < 300 and player.velocity.y > 0 and animation.current_animation != "dropping":
-		animation.play("dropping", -1, 2)
-		wings.play("normal")
+		animation.play("dropping")
 	elif abs(player.velocity.y) > abs(player.velocity.x) and abs(player.velocity.x) < 300 and player.velocity.y < 0 and animation.current_animation != "rising":
-		animation.play("rising", -1, 1)
-		wings.play("normal")
+		animation.play("rising")
 	elif abs(player.velocity.y) < abs(player.velocity.x) and animation.current_animation != "running":
-		animation.play("running", -1, 2)
-		wings.play("running")
+		animation.play("running")
 		

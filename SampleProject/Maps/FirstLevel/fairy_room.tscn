@@ -6,6 +6,8 @@
 [ext_resource type="TileSet" uid="uid://7i6eyhfdabdq" path="res://assets/sprites/Tiles/OoE2.tres" id="3_sfivm"]
 [ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="5_0ilth"]
 [ext_resource type="Shader" uid="uid://diku0uk4in6gs" path="res://SampleProject/Shaders/aura.gdshader" id="5_dnpec"]
+[ext_resource type="Shader" uid="uid://dtfxu1jn7ht65" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="6_bmycx"]
+[ext_resource type="Texture2D" uid="uid://bjh6boh3k0ccw" path="res://assets/sprites/InnocentDevils/InfantFairyBody.png" id="6_xjwf2"]
 [ext_resource type="Script" uid="uid://o3eqqwjwqve2" path="res://SampleProject/Scripts/InnocentDevils/devil_forging.gd" id="7_1gwmw"]
 [ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="7_1iij1"]
 [ext_resource type="Texture2D" uid="uid://biwn5irdj8rpr" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoor.png" id="7_mmtkg"]
@@ -14,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://crov6smdsbwb4" path="res://SampleProject/familiars/Faerie/faerie.tscn" id="8_ns1be"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_ewq5u"]
 [ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="9_hrdd7"]
-[ext_resource type="Texture2D" uid="uid://c350vlw6uws2f" path="res://assets/sprites/InnocentDevils/Fairy/FairySealed.png" id="9_o4ht3"]
 [ext_resource type="AudioStream" uid="uid://ccbtqu8n0yk0n" path="res://assets/sounds/Effects/Miscellaneous/InnocentForge.MP3" id="10_21tnh"]
 [ext_resource type="AudioStream" uid="uid://pgfes7qej7na" path="res://assets/sounds/InnocentDevils/Faerie/FaerieThankYou.MP3" id="14_takdq"]
 [ext_resource type="PackedScene" uid="uid://q43vbthycopx" path="res://SampleProject/extra_scenes/HUD/tutorial_screen_trigger.tscn" id="18_rcncv"]
@@ -918,6 +919,22 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_pt205")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y83iq"]
+shader = ExtResource("6_bmycx")
+shader_parameter/influence = 0.5
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 1.0
+shader_parameter/mix_colors = false
+shader_parameter/enabled = false
+shader_parameter/sheet_columns = 20
+shader_parameter/sheet_rows = 20
+shader_parameter/petrified = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmycx"]
+atlas = ExtResource("6_xjwf2")
+region = Rect2(0, 48, 32, 48)
+margin = Rect2(0, 7, 0, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n88jm"]
 size = Vector2(79, 20)
 
@@ -1333,9 +1350,10 @@ tile_map_data = PackedByteArray("AAAGAAQAAAAAABkAAAAGAAUAAAAAABoAAAAGAAYAAAAAABs
 tile_set = SubResource("TileSet_uar6o")
 
 [node name="Fairy" type="Sprite2D" parent="Background" unique_id=1275923843 node_paths=PackedStringArray("animation", "forging_particles")]
-position = Vector2(606.667, 537.333)
+material = SubResource("ShaderMaterial_y83iq")
+position = Vector2(607, 522)
 scale = Vector2(2, 2)
-texture = ExtResource("9_o4ht3")
+texture = SubResource("AtlasTexture_bmycx")
 script = ExtResource("7_1gwmw")
 innocent_devil_scene = ExtResource("8_ns1be")
 event_id = 3
@@ -1349,11 +1367,11 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Fairy/ForgeTrigger" unique_id=1482260763]
-position = Vector2(321.5, 448)
+position = Vector2(300, 448)
 shape = SubResource("RectangleShape2D_n88jm")
 
 [node name="HintBoxTrigger" parent="Background/Fairy" unique_id=315936785 instance=ExtResource("9_hrdd7")]
-position = Vector2(-65.5, -51.9998)
+position = Vector2(-66.833336, -150.33334)
 scale = Vector2(1, 0.4)
 flag_id = 10
 text = "HINT_10"
