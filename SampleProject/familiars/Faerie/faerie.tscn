@@ -19,15 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://ckq5g8uy1gq13" path="res://assets/sprites/InnocentDevils/InfantFairyCrystal.png" id="8_yowja"]
 [ext_resource type="Script" uid="uid://blognkorla2r8" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFunnyWall.gd" id="9_0ixtq"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_7ueiy"]
-[ext_resource type="AudioStream" uid="uid://c2turxxbo67s2" path="res://assets/sounds/InnocentDevils/Faerie/FairyHeal1.MP3" id="10_jqjld"]
-[ext_resource type="AudioStream" uid="uid://7ia3jv1shxri" path="res://assets/sounds/InnocentDevils/Faerie/FairyHeal2.MP3" id="11_6v3ya"]
-[ext_resource type="AudioStream" uid="uid://c3hvhwhjsbhp8" path="res://assets/sounds/InnocentDevils/Faerie/FairyHeal3.MP3" id="12_0ku5v"]
 [ext_resource type="PackedScene" uid="uid://b85mrm6ht3kgn" path="res://SampleProject/extra_scenes/effects/refreshing_air.tscn" id="13_aa5on"]
 [ext_resource type="AudioStream" uid="uid://dmygyfdvwkny8" path="res://assets/sounds/InnocentDevils/Faerie/HealEffect.MP3" id="13_n2r0b"]
-[ext_resource type="AudioStream" uid="uid://o8xb73wudmam" path="res://assets/sounds/InnocentDevils/Faerie/FaerieFunnyWall.MP3" id="16_sa2f5"]
+[ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="22_ue60m"]
 [ext_resource type="AudioStream" uid="uid://dlmhl7dysb8lh" path="res://assets/sounds/InnocentDevils/IDLevelUp.MP3" id="24_2jcuy"]
-[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="24_782qj"]
-[ext_resource type="AudioStream" uid="uid://rpogipl0n7kv" path="res://assets/sounds/Powerups/RefreshingAir.MP3" id="24_oyaot"]
 
 [sub_resource type="Resource" id="Resource_afldu"]
 script = ExtResource("3_5jgsh")
@@ -280,7 +275,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_uujjc"]
 resource_name = "heal"
 length = 1.3
-step = 0.1
+step = 0.06
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -378,6 +373,20 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PolyphonicAudioPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1764706),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["infant_heal"],
+"method": &"play_sound_effect_from_library"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_3clpc"]
@@ -649,6 +658,20 @@ tracks/8/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PolyphonicAudioPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.1764706),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["infant_heal"],
+"method": &"play_sound_effect_from_library"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_3f2ob"]
 resource_name = "rising"
@@ -896,59 +919,45 @@ _data = {
 &"stopping": SubResource("Animation_xd0rn")
 }
 
-[sub_resource type="Resource" id="Resource_aqksd"]
+[sub_resource type="Resource" id="Resource_n11vx"]
 script = ExtResource("9_7ueiy")
-Tag = "heal1"
-stream = ExtResource("10_jqjld")
+Tag = "infant_heal"
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
-[sub_resource type="Resource" id="Resource_vmbya"]
-script = ExtResource("9_7ueiy")
-Tag = "heal2"
-stream = ExtResource("11_6v3ya")
-
-[sub_resource type="Resource" id="Resource_ntdpa"]
-script = ExtResource("9_7ueiy")
-Tag = "heal3"
-stream = ExtResource("12_0ku5v")
-
-[sub_resource type="Resource" id="Resource_vyyje"]
-script = ExtResource("9_7ueiy")
-Tag = "heal_effect"
-stream = ExtResource("13_n2r0b")
-
-[sub_resource type="Resource" id="Resource_ee45a"]
-script = ExtResource("9_7ueiy")
-Tag = "funny_wall"
-stream = ExtResource("16_sa2f5")
-
-[sub_resource type="Resource" id="Resource_rdxi0"]
-script = ExtResource("9_7ueiy")
-Tag = "refreshing_air"
-stream = ExtResource("24_oyaot")
-
-[sub_resource type="Resource" id="Resource_dxc67"]
+[sub_resource type="Resource" id="Resource_ue60m"]
 script = ExtResource("9_7ueiy")
 Tag = "level_up"
 stream = ExtResource("24_2jcuy")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_bn0uq"]
+script = ExtResource("9_7ueiy")
+Tag = "heal_effect"
+stream = ExtResource("13_n2r0b")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
 [sub_resource type="Resource" id="Resource_g1eeh"]
 script = ExtResource("8_kyyu2")
-sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_aqksd"), SubResource("Resource_vmbya"), SubResource("Resource_ntdpa"), SubResource("Resource_vyyje"), SubResource("Resource_ee45a"), SubResource("Resource_rdxi0"), SubResource("Resource_dxc67")])
+sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_n11vx"), SubResource("Resource_ue60m"), SubResource("Resource_bn0uq")])
 
 [sub_resource type="Curve" id="Curve_ykbwx"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gq6fw"]
-blend_mode = 1
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bn0uq"]
 particles_animation = true
-particles_anim_h_frames = 7
-particles_anim_v_frames = 7
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id="Gradient_2xivr"]
-offsets = PackedFloat32Array(0.00367647, 0.319853, 0.682635, 1)
-colors = PackedColorArray(0.248935, 0.22347, 0, 1, 0.720155, 0.558532, 1.92523e-07, 1, 0.986061, 0.854681, 1.54018e-06, 1, 1, 1, 1, 1)
+[sub_resource type="Gradient" id="Gradient_syto6"]
+offsets = PackedFloat32Array(0.014423077, 1)
+colors = PackedColorArray(1.8247963, 1.8247963, 0, 1, 1.8247963, 1.8247963, 0, 0)
+
+[sub_resource type="Curve" id="Curve_1mhe1"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.5, 0.0049916506), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="Faerie" type="CharacterBody2D" unique_id=928786545 node_paths=PackedStringArray("stats", "state_machine")]
 z_index = 7
@@ -1096,28 +1105,26 @@ gravity = Vector2(0, 300)
 initial_velocity_max = 40.0
 scale_amount_curve = SubResource("Curve_ykbwx")
 
-[node name="LevelUp" type="CPUParticles2D" parent="." unique_id=842147681]
-z_index = 20
-material = SubResource("CanvasItemMaterial_gq6fw")
+[node name="LevelUp" type="CPUParticles2D" parent="." unique_id=1026101236]
+material = SubResource("CanvasItemMaterial_bn0uq")
+position = Vector2(-2, -4)
 emitting = false
-amount = 80
-texture = ExtResource("24_782qj")
-lifetime = 1.5
+amount = 96
+texture = ExtResource("22_ue60m")
+lifetime = 0.5
 one_shot = true
-explosiveness = 0.75
-fixed_fps = 60
-draw_order = 1
+randomness = 0.7
 emission_shape = 1
-emission_sphere_radius = 10.0
-direction = Vector2(0, 0)
+emission_sphere_radius = 2.0
+direction = Vector2(1, 1)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 20.0
-initial_velocity_max = 40.0
-orbit_velocity_max = 1.0
-color_ramp = SubResource("Gradient_2xivr")
+initial_velocity_min = 30.0
+initial_velocity_max = 150.0
+color_ramp = SubResource("Gradient_syto6")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
+anim_speed_curve = SubResource("Curve_1mhe1")
 
 [connection signal="timeout" from="StateMachine/Freeze/Duration" to="StateMachine/Freeze" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Funny_wall/IdleDuration" to="StateMachine/Funny_wall" method="_on_idle_duration_timeout"]

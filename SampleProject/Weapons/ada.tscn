@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://7a7gx1dlhids" path="res://assets/sprites/Weapons/Swords/AdaBoomerangSwing.png" id="7_rjfim"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4h2w"]
-size = Vector2(54, 27)
+size = Vector2(54, 10)
 
 [sub_resource type="Animation" id="Animation_kqnrs"]
 length = 0.001
@@ -513,7 +513,7 @@ ice_hit_collision_scene = ExtResource("5_4icb7")
 base_attribute = Array[int]([2])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ada/PlayerHitbox" unique_id=2057367121]
-position = Vector2(17, 9.5)
+position = Vector2(17, 1)
 shape = SubResource("RectangleShape2D_e4h2w")
 
 [node name="Trail" type="Sprite2D" parent="Ada" unique_id=16646798]

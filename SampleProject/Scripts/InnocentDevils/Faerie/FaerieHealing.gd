@@ -39,8 +39,6 @@ func timeHeal() -> void:
 	
 func setSoundAndParticles(sound_name: String, color: Color) -> void:
 	magic_particles.self_modulate = color
-	var voice_clip = "heal" + str(randi_range(1,3))
-	sound.play_sound_effect_from_library(voice_clip)
 	sound.play_sound_effect_from_library(sound_name)
 	
 func performSkill():

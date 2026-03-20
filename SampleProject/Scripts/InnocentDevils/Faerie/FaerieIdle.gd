@@ -6,7 +6,7 @@ func enter():
 	animation.play("idle")
 	
 func Update(delta: float):
-	if abs(player.position - Global.player.position).length_squared() > Vector2(150, 150).length_squared():
+	if abs(player.position - Global.player.position).length_squared() > Vector2(100, 100).length_squared():
 		Transitioned.emit(self, "run")
 	can_use_skill()
 		

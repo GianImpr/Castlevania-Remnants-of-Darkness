@@ -88,7 +88,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iatff"]
-size = Vector2(31.5, 15)
+size = Vector2(31.5, 15.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hng47"]
 size = Vector2(31.5, 15)
@@ -138,8 +138,7 @@ root_node = NodePath("../EnemyStats")
 libraries/ = SubResource("AnimationLibrary_cws8k")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="." unique_id=1877451788]
-visible = false
-position = Vector2(0.25, -6.5)
+position = Vector2(0.25, -6.75)
 shape = SubResource("RectangleShape2D_iatff")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=2055974705]

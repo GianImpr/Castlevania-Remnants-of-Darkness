@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b82wsh800tusc" path="res://assets/sprites/Weapons/Swords/Short Sword/ShortSwordBoomerangSwing.png" id="7_kh1j4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1blf0"]
-size = Vector2(49, 31)
+size = Vector2(49, 15.5)
 
 [sub_resource type="Animation" id="Animation_kqnrs"]
 length = 0.001
@@ -512,7 +512,7 @@ ice_hit_collision_scene = ExtResource("5_87iuq")
 base_attribute = Array[int]([2])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShortSword/PlayerHitbox" unique_id=2057367121]
-position = Vector2(14, 7)
+position = Vector2(14, -0.75)
 shape = SubResource("RectangleShape2D_1blf0")
 
 [node name="Trail" type="Sprite2D" parent="ShortSword" unique_id=16646798]

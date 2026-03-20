@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_yu3a1"]
 [ext_resource type="Texture2D" uid="uid://deoisjjuxkrub" path="res://assets/sprites/Tiles/Waterway.png" id="3_yu3a1"]
 [ext_resource type="PackedScene" uid="uid://c5b546j52x16h" path="res://SampleProject/extra_scenes/stage_elements/resizable_water.tscn" id="4_sqam7"]
+[ext_resource type="PackedScene" uid="uid://cow3qaei4a10n" path="res://SampleProject/extra_scenes/stage_elements/change_area_trigger.tscn" id="5_arubb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ngp7b"]
 texture = ExtResource("3_yu3a1")
@@ -1575,6 +1576,8 @@ change_music = true
 metadata/_custom_type_script = "uid://cra3c457tg2j7"
 
 [node name="RoomInstance" parent="." unique_id=537413460 instance=ExtResource("2_yu3a1")]
+show_name_ID = 3
+stage_name = "Moonlit Waterway"
 
 [node name="GroundBackground" type="TileMapLayer" parent="." unique_id=364420354]
 modulate = Color(0.6156863, 0.56078434, 1, 0.7764706)
@@ -1607,5 +1610,10 @@ region_rect = Rect2(0, 0, 962, 48)
 [node name="Sprite2D2" parent="ResizableWater" index="2" unique_id=543616230]
 position = Vector2(332.00006, 34)
 scale = Vector2(15, 1)
+
+[node name="ChangeArea" parent="." unique_id=836693443 instance=ExtResource("5_arubb")]
+position = Vector2(-12, 3)
+new_room_path = "Hideout/to_waterway.tscn"
+new_initial_position = Vector2(940, 279)
 
 [editable path="ResizableWater"]
