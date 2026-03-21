@@ -14,7 +14,7 @@ func _ready() -> void:
 		animation.speed_scale = RED_ORB_ANIMATION_SPEED_MULTIPLIER
 		effect.amount *= RED_ORB_MULTIPLIER
 		effect.lifetime *= RED_ORB_MULTIPLIER
-		extra_base_damage *= RED_ORB_DAMAGE_MULTIPLIER
+		damage_boost *= RED_ORB_DAMAGE_MULTIPLIER
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -141,7 +141,7 @@ func createHitEffect(body: Node2D) -> void:
 	var effect_y = (coordinatesY[1]+coordinatesY[2])/2
 	var hit_effect
 	var using_affinity: bool = false
-	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= AFFINITY_COST:
+	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= AFFINITY_COST and self is not AguniLaurelHitbox:
 		if Global.player.stats.itemEquipped(Relic.Relics.INDIGO_CROSS, "relic") and Global.player.stats.findItem(Skill.Skills.CYAN_ORB, Global.player.stats.skill_inventory):
 			actual_attributes.append(Global.Attribute.ICE)
 			hit_effect = ice_hit_collision_scene.instantiate()
