@@ -56,10 +56,11 @@ func _process(delta: float) -> void:
 		
 	item_stats.can_open = equipSlots.menu.accessed_menu == 1 and cur_selected_item != null and Global.screen == Global.ScreenType.MENU
 	show_item_stats.visible = item_stats.can_open
-	if item_stats.visible:
-		show_item_stats.new_text = " [[R1]] Hide item stats"
-	else:
-		show_item_stats.new_text = " [[R1]] Show item stats"
+	if equipSlots.menu.accessed_menu == 1 and show_item_stats.visible:
+		if item_stats.visible:
+			show_item_stats.new_text = " [[R1]] Hide item stats"
+		else:
+			show_item_stats.new_text = " [[R1]] Show item stats"
 	
 	
 	#Change current quick weapon slot

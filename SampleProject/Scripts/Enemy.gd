@@ -136,7 +136,7 @@ func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float
 func hit_target(multiplier: float, body, attack_hitbox = hitbox_iframe, chip_damage: int = 0, guard_break: bool = false, attribute: Global.Attribute = Global.Attribute.HIT, rehit_time: float = 1, knockback: bool = false):
 	if not body_hitbox_on_cooldown or attack_hitbox != hitbox_iframe:
 		body_hitbox_on_cooldown = true
-		get_tree().create_timer(INVULNERABILITY_DURATION).timeout.connect(resetInvulnerability)
+		get_tree().create_timer(INVULNERABILITY_DURATION, false).timeout.connect(resetInvulnerability)
 		var damage = calculate_damage(body, multiplier, chip_damage, guard_break, attribute, knockback)
 		apply_damage(body, damage, attack_hitbox, rehit_time)
 	if "facing_position" in self:

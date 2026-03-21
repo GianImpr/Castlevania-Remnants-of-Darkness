@@ -27,6 +27,7 @@ func exit():
 func Physics_Update(delta: float):
 	can_die()
 	check_is_hurt()
+	can_attack()
 	
 	if player.is_on_floor():
 		if hard_land or player.stats.status[player.stats.Status.POISON] > 0:
