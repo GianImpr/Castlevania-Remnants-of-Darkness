@@ -140,7 +140,7 @@ func _process(delta: float) -> void:
 	
 	guarding = isGuarding()
 	
-	if Input.is_action_just_pressed("guard") and can_perfect_guard():
+	if Input.is_action_just_pressed("guard") and can_perfect_guard() and (not is_hurt or state_machine.current_state is HectorGuardPerfect or state_machine.current_state is HectorGuardPerfectAir):
 		times_guard_pressed += 1
 		if times_guard_pressed <= MAX_GUARD_PRESS_PER_HALF_SECOND:
 			if Global.game.difficulty == Global.game.Difficulty.SIMPLIFIED:
@@ -151,7 +151,7 @@ func _process(delta: float) -> void:
 			reset_guard_presses_timer.start()
 	elif not Input.is_action_pressed("guard") and not perfect_guard_timer.is_stopped():
 		perfect_guard_timer.stop()
-		
+	
 	if innocent_devil != null:
 		summoned_innocent_devil_id = innocent_devil.id
 		

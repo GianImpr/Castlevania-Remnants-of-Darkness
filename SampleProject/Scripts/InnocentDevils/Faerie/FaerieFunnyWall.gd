@@ -22,7 +22,6 @@ func Update(delta: float):
 	if phase == 2 and not animation.is_playing():
 		animation.play("idle")
 		idle_duration.start()
-		sound.play_sound_effect_from_library("funny_wall")
 		
 	if phase == 3 and animation.current_animation != "heal":
 		animation.play("open")

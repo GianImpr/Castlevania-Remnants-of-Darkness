@@ -2,7 +2,7 @@ extends State
 class_name FaerieRun
 
 func enter():
-	animation.play("move_start", -1, 1.3)
+	animation.play("move_start")
 	
 func Update(delta: float):
 	if not animation.is_playing() or animation.current_animation != "move_start":

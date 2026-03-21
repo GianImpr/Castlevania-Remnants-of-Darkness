@@ -25,6 +25,7 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 	
 	body.checkTightGuard()
 	
+	
 	if body.isGuarding():
 		if destroy_on_block:
 			get_parent().destroy()

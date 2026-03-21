@@ -134,7 +134,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-12, 11), Vector2(-27, 7), Vector2(-24, 1), Vector2(-20, -17), Vector2(15, -27), Vector2(35, -2), Vector2(41, 25)]
+"values": [Vector2(-12, 11), Vector2(-27, 7), Vector2(-24, 1), Vector2(-20, -17), Vector2(15, -17), Vector2(35, -2), Vector2(41, 25)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -296,7 +296,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-12, 11), Vector2(-27, 7), Vector2(-24, 1), Vector2(-20, -17), Vector2(15, -27), Vector2(35, -2), Vector2(41, 25)]
+"values": [Vector2(-12, 11), Vector2(-27, 7), Vector2(-24, 1), Vector2(-20, -17), Vector2(15, -17), Vector2(35, -2), Vector2(41, 25)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -446,7 +446,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-12, 20), Vector2(-27, 16), Vector2(-24, 10), Vector2(-20, -8), Vector2(15, -18), Vector2(35, -2), Vector2(41, 34)]
+"values": [Vector2(-12, 20), Vector2(-27, 16), Vector2(-24, 10), Vector2(-20, -8), Vector2(15, -8), Vector2(35, -2), Vector2(41, 34)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -587,7 +587,6 @@ z_index = -1
 texture = ExtResource("1_tfgje")
 hframes = 11
 vframes = 2
-frame = 10
 script = ExtResource("2_g20km")
 animation = NodePath("AnimationPlayer")
 hitbox = NodePath("PlayerHitbox")
@@ -605,13 +604,12 @@ base_attribute = Array[int]([2])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox" unique_id=1280816527]
 visible = false
-position = Vector2(41, 34)
-rotation = 1.5708
+position = Vector2(-12, 20)
 shape = SubResource("RectangleShape2D_i1dwb")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=16646798]
-self_modulate = Color(0.894118, 0.501961, 0.443137, 0)
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(-15, 9)
 texture = ExtResource("6_rkv3p")
 hframes = 5

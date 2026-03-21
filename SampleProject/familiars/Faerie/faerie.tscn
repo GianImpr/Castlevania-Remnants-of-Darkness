@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bjh6boh3k0ccw" path="res://assets/sprites/InnocentDevils/InfantFairyBody.png" id="8_0e5x1"]
 [ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="8_6o0ma"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_kyyu2"]
+[ext_resource type="Texture2D" uid="uid://pnaab1xw7gpw" path="res://assets/sprites/InnocentDevils/InfantFairySmear.png" id="8_syto6"]
 [ext_resource type="Script" uid="uid://7jgukldlniqq" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFreeze.gd" id="8_v045c"]
 [ext_resource type="Texture2D" uid="uid://ckq5g8uy1gq13" path="res://assets/sprites/InnocentDevils/InfantFairyCrystal.png" id="8_yowja"]
 [ext_resource type="Script" uid="uid://blognkorla2r8" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFunnyWall.gd" id="9_0ixtq"]
@@ -167,7 +168,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -193,6 +194,30 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SmearSprite:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SmearSprite:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_8kj1f"]
 resource_name = "rising"
@@ -209,7 +234,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [29]
+"values": [30]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -221,7 +246,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -233,7 +258,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -245,7 +270,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [24, 25, 26]
+"values": [3, 4, 5]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -257,7 +282,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [19]
+"values": [21]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -269,13 +294,13 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_uujjc"]
 resource_name = "heal"
-length = 1.3
-step = 0.06
+length = 1.05
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -283,7 +308,7 @@ tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05882353, 0.11764706, 0.1764706, 0.2352941, 0.29411766, 0.3529412, 0.4117647, 0.47058824, 1, 1.0999999, 1.2),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.35, 0.4, 0.45, 0.5, 0.9, 0.95, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -295,7 +320,7 @@ tracks/1/path = NodePath("Magic:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.47058824),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -307,7 +332,7 @@ tracks/2/path = NodePath("StateMachine/Healing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.47058824),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -317,70 +342,34 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Body:flip_v")
+tracks/3/path = NodePath("WingSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65000004, 0.70000005, 0.75000006, 0.8, 0.85, 0.9, 0.95, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false]
+"values": [48, 49, 50, 51, 52, 53, 54, 55, 56, 27, 28, 56, 27, 28, 29, 29, 28, 58, 59]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WingSprite:frame")
+tracks/4/path = NodePath("CrystalSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.05882353, 0.11764706, 0.1764706, 0.23529412, 0.29411766, 0.3529412, 0.4117647, 0.47058824, 0.5294118, 0.5882353, 0.64705884, 0.7058824, 0.7647059, 0.8235294, 0.88235295, 0.9411765, 1, 1.1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [48, 49, 50, 51, 52, 53, 54, 55, 56, 27, 28, 29, 27, 28, 29, 27, 28, 57, 58, 59]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("WingSprite:flip_v")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CrystalSprite:frame")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.05882353, 0.11764706, 0.1764706, 0.23529412, 0.29411766, 0.3529412, 0.4117647, 0.47058824, 1, 1.1, 1.2),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.35, 0.4, 0.45, 0.5, 0.9, 0.95, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CrystalSprite:flip_v")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(1.3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("PolyphonicAudioPlayer")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PolyphonicAudioPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.1764706),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -388,12 +377,36 @@ tracks/8/keys = {
 "method": &"play_sound_effect_from_library"
 }]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SmearSprite:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.15, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SmearSprite:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2, 0.25, 0.3, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_3clpc"]
 resource_name = "idle"
 length = 0.6
 loop_mode = 1
-step = 0.1
+step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -470,7 +483,6 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_3us23"]
 resource_name = "move_start"
 length = 0.4
-step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -502,7 +514,7 @@ tracks/2/path = NodePath("WingSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.099999994, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [15, 14, 13, 12]
@@ -538,7 +550,7 @@ tracks/5/path = NodePath("CrystalSprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [27, 26, 25, 24]
@@ -546,7 +558,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_j27ag"]
 resource_name = "open"
-length = 1.3
+length = 1.0589
 step = 0.06
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -555,7 +567,7 @@ tracks/0/path = NodePath("Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05882353, 0.11764706, 0.1764706, 0.2352941, 0.29411766, 0.3529412, 0.4117647, 0.47058824, 1, 1.0999999, 1.2),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.35, 0.4, 0.45, 0.5, 0.9, 0.95, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -593,7 +605,7 @@ tracks/3/path = NodePath("Magic:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.3),
+"times": PackedFloat32Array(0, 1.0588236),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Color(0.860559, 0, 0.464751, 1), Color(0, 1, 0, 1)]
@@ -601,76 +613,64 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Body:flip_v")
+tracks/4/path = NodePath("WingSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65000004, 0.70000005, 0.75000006, 0.8, 0.85, 0.9, 0.95, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false]
+"values": [48, 49, 50, 51, 52, 53, 54, 55, 56, 27, 28, 56, 27, 28, 29, 29, 28, 58, 59]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("WingSprite:frame")
+tracks/5/path = NodePath("CrystalSprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.058823533, 0.11764706, 0.17647061, 0.23529413, 0.29411766, 0.3529412, 0.4117647, 0.47058824, 0.5294118, 0.5882353, 0.64705884, 0.7058824, 0.7647059, 0.8235294, 0.88235295, 0.9411764, 1, 1.1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [48, 49, 50, 51, 52, 53, 54, 55, 56, 27, 28, 29, 27, 28, 29, 27, 28, 57, 58, 59]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("WingSprite:flip_v")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CrystalSprite:frame")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.05882353, 0.11764706, 0.1764706, 0.23529412, 0.29411766, 0.3529412, 0.4117647, 0.47058824, 1, 1.1, 1.2),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.25, 0.35, 0.4, 0.45, 0.5, 0.9, 0.95, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CrystalSprite:flip_v")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(1.3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("PolyphonicAudioPlayer")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PolyphonicAudioPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0.1764706),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["infant_heal"],
 "method": &"play_sound_effect_from_library"
 }]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SmearSprite:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.15, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SmearSprite:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2, 0.25, 0.3, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_3f2ob"]
@@ -1010,10 +1010,15 @@ sound = NodePath("../PolyphonicAudioPlayer")
 [node name="WingSprite" type="Sprite2D" parent="." unique_id=1792098350]
 texture = ExtResource("7_yowja")
 flip_h = true
-flip_v = true
 hframes = 12
 vframes = 5
 frame = 48
+
+[node name="SmearSprite" type="Sprite2D" parent="." unique_id=1735032058]
+visible = false
+texture = ExtResource("8_syto6")
+flip_h = true
+hframes = 3
 
 [node name="CrystalSprite" type="Sprite2D" parent="." unique_id=383492104]
 texture = ExtResource("8_yowja")
@@ -1082,7 +1087,7 @@ script = ExtResource("9_0ixtq")
 idle_duration = NodePath("IdleDuration")
 
 [node name="IdleDuration" type="Timer" parent="StateMachine/Funny_wall" unique_id=1090983632]
-wait_time = 3.0
+wait_time = 0.5
 one_shot = true
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1620416710]

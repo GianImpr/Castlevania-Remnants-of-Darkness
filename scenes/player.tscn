@@ -3136,6 +3136,30 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(0.5, 0), Vector2(0.5, 0), Vector2(0.5, 6)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Collision:shape:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 45)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Collision:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 12.5)]
+}
 
 [sub_resource type="Animation" id="Animation_453o6"]
 resource_name = "landing"
@@ -3429,6 +3453,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(15, 45)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HurtboxArea/Hurtbox:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 12.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HurtboxArea/Hurtbox:shape:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, 41)]
+}
 
 [sub_resource type="Animation" id="Animation_m23uc"]
 resource_name = "run"
@@ -3707,6 +3755,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.5, 12.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HurtboxArea/Hurtbox:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 12.5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HurtboxArea/Hurtbox:shape:size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, 41)]
 }
 
 [sub_resource type="Animation" id="Animation_w772u"]
@@ -5060,12 +5132,12 @@ Stats = {
 "FP": 0.0,
 "GOLD": 0,
 "Guard": 3,
-"HP": 100,
+"HP": 180,
 "INT": 5,
 "LCK": 3,
 "LV": 1,
 "MFP": 100.0,
-"MHP": 100,
+"MHP": 180,
 "MMP": 0,
 "MP": 0,
 "MSP": 0,
@@ -5102,7 +5174,7 @@ Initial = {
 "DEF": 2,
 "INT": 5,
 "LCK": 3,
-"MHP": 100,
+"MHP": 180,
 "MMP": 100,
 "MSP": 0,
 "RES": 2,
@@ -5173,17 +5245,15 @@ weapon_proficiency = Array[Dictionary]([{
 script = ExtResource("93_30li2")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=899107974]
-visible = false
 position = Vector2(0.5, 12.5)
 shape = SubResource("RectangleShape2D_mbn21")
-debug_color = Color(0.989477, 0, 0.289978, 0.42)
+debug_color = Color(0.6909119, 0.49648726, 0, 0.41960785)
 
 [node name="HurtboxArea" type="Area2D" parent="." unique_id=1779600514]
 collision_layer = 2050
 collision_mask = 0
 
 [node name="Hurtbox" type="CollisionShape2D" parent="HurtboxArea" unique_id=1488121514]
-visible = false
 position = Vector2(0.5, 12.5)
 shape = SubResource("RectangleShape2D_god42")
 debug_color = Color(0.989477, 0, 0.289978, 0.42)

@@ -3,7 +3,7 @@ class_name HectorFalling
 @export var coyote_timer: Timer
 @export var trail_timer: Timer
 static var cur_falling_speed: float
-var can_perfect_guard: bool = false
+var can_perfect_guard: bool = true
 const FALL_STARTING_ANIM_TIME: float = 0.5
 const HARD_LAND_SPEED_THRESHOLD: float = 1000
 
