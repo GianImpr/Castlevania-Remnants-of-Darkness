@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://3of6choscigf"]
+
+[ext_resource type="Texture2D" uid="uid://bsyon4hbftqb0" path="res://assets/sprites/Objects/Background/WaterfallSmall.png" id="1_ggvm2"]
+
+[sub_resource type="Animation" id="Animation_bjkre"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 4, 96)]
+}
+
+[sub_resource type="Animation" id="Animation_jan83"]
+resource_name = "fall"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 4, 96), Rect2(0, -96, 4, 96)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xh5q3"]
+_data = {
+&"RESET": SubResource("Animation_bjkre"),
+&"fall": SubResource("Animation_jan83")
+}
+
+[node name="WaterfallLessThinShort" type="Node2D" unique_id=1701755214]
+modulate = Color(0.7921569, 0.7764706, 1, 0.47058824)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=642518085]
+texture_repeat = 2
+texture = ExtResource("1_ggvm2")
+region_enabled = true
+region_rect = Rect2(0, 0, 4, 96)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1598850856]
+libraries/ = SubResource("AnimationLibrary_xh5q3")
+autoplay = &"fall"
+speed_scale = 0.2

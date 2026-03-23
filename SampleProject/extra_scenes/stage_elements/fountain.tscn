@@ -1,0 +1,216 @@
+[gd_scene format=3 uid="uid://dlmpwm04077h2"]
+
+[ext_resource type="Texture2D" uid="uid://cgrkess0lanqm" path="res://assets/sprites/Objects/Background/StatueFountain.png" id="1_amhg7"]
+[ext_resource type="Texture2D" uid="uid://b8ytwf6g8p4jj" path="res://assets/sprites/Objects/Background/FountainWater.png" id="2_qgw37"]
+[ext_resource type="Texture2D" uid="uid://dr2v5ar64wkww" path="res://assets/sprites/Objects/Background/FountainSideWater.png" id="3_wnoas"]
+[ext_resource type="Texture2D" uid="uid://mvevqq7pd48a" path="res://assets/sprites/Objects/Background/FountainSideWaterfall.png" id="4_crpkb"]
+[ext_resource type="Texture2D" uid="uid://btljpx73vxyhx" path="res://assets/sprites/Items/OtherIcons/16x16/fa164.png" id="6_ns3a5"]
+[ext_resource type="Texture2D" uid="uid://rtgn1pxl0dhx" path="res://assets/sprites/Items/OtherIcons/16x16/GreenStone.png" id="7_k4qmj"]
+[ext_resource type="Texture2D" uid="uid://blaifgl02jqdx" path="res://assets/sprites/Items/OtherIcons/16x16/fa165.png" id="8_6xrsj"]
+[ext_resource type="Texture2D" uid="uid://bpt16o8tv2alt" path="res://assets/sprites/Items/OtherIcons/16x16/OrangeStone.png" id="9_wntp8"]
+
+[sub_resource type="Animation" id="Animation_wnoas"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainWater:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SideWaterLeft:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SideWaterLeftWaterfall:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SideWaterRightWaterfall:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_crpkb"]
+resource_name = "water_flowing"
+length = 0.30000168
+loop_mode = 1
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainWater:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SideWaterLeft:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.15, 0.19999999, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SideWaterRight:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.15, 0.19999999, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SideWaterLeftWaterfall:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.15, 0.19999999, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SideWaterRightWaterfall:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.049999997, 0.099999994, 0.15, 0.19999999, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sexdx"]
+_data = {
+&"RESET": SubResource("Animation_wnoas"),
+&"water_flowing": SubResource("Animation_crpkb")
+}
+
+[node name="Fountain" type="Node2D" unique_id=148260216]
+modulate = Color(0.654902, 0.6666667, 1, 1)
+
+[node name="Architecture" type="Sprite2D" parent="." unique_id=754379090]
+scale = Vector2(2, 2)
+texture = ExtResource("1_amhg7")
+
+[node name="MainWater" type="Sprite2D" parent="." unique_id=395255791]
+self_modulate = Color(1, 1, 1, 0.44705883)
+position = Vector2(2, 60)
+scale = Vector2(2, 2)
+texture = ExtResource("2_qgw37")
+hframes = 6
+
+[node name="SideWaterLeft" type="Sprite2D" parent="." unique_id=1810298769]
+self_modulate = Color(1, 1, 1, 0.44705883)
+position = Vector2(-64, 138)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wnoas")
+hframes = 6
+
+[node name="SideWaterRight" type="Sprite2D" parent="." unique_id=1940970301]
+self_modulate = Color(1, 1, 1, 0.44705883)
+position = Vector2(62, 138)
+scale = Vector2(2, 2)
+texture = ExtResource("3_wnoas")
+flip_h = true
+hframes = 6
+
+[node name="SideWaterLeftWaterfall" type="Sprite2D" parent="." unique_id=668701651]
+self_modulate = Color(1, 1, 1, 0.44705883)
+position = Vector2(-70, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("4_crpkb")
+hframes = 6
+
+[node name="SideWaterRightWaterfall" type="Sprite2D" parent="." unique_id=134097773]
+self_modulate = Color(1, 1, 1, 0.44705883)
+position = Vector2(68, 96)
+scale = Vector2(2, 2)
+texture = ExtResource("4_crpkb")
+flip_h = true
+hframes = 6
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=241893839]
+libraries/ = SubResource("AnimationLibrary_sexdx")
+autoplay = &"water_flowing"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=574603869]
+offset_left = -70.0
+offset_top = 164.0
+offset_right = 70.0
+offset_bottom = 204.0
+
+[node name="Stone1" type="TextureRect" parent="HBoxContainer" unique_id=138465106]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("6_ns3a5")
+stretch_mode = 4
+
+[node name="Stone2" type="TextureRect" parent="HBoxContainer" unique_id=1721209321]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("7_k4qmj")
+stretch_mode = 4
+
+[node name="Stone3" type="TextureRect" parent="HBoxContainer" unique_id=233713286]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("8_6xrsj")
+stretch_mode = 4
+
+[node name="Stone4" type="TextureRect" parent="HBoxContainer" unique_id=2110546318]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("9_wntp8")
+stretch_mode = 4
