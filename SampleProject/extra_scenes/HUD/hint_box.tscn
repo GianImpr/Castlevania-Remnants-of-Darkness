@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bbvmo7y5quj1s"]
+[gd_scene format=3 uid="uid://bbvmo7y5quj1s"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/hint_box.gd" id="1_ltenk"]
+[ext_resource type="Script" uid="uid://doxsuck8pt6gf" path="res://SampleProject/Scripts/System/hint_box.gd" id="1_ltenk"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="2_e2c6u"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="3_chrie"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="3_jwu5c"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_twsgs"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="5_bpbf7"]
+[ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="3_chrie"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="3_jwu5c"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_twsgs"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="5_bpbf7"]
 [ext_resource type="AudioStream" uid="uid://bt2twsi6xy61v" path="res://assets/sounds/Menu/Window.wav" id="6_7n3ic"]
 
 [sub_resource type="Theme" id="Theme_0pcjg"]
@@ -62,8 +62,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4o5me"]
 _data = {
-"RESET": SubResource("Animation_ksj4u"),
-"popup": SubResource("Animation_46ghl")
+&"RESET": SubResource("Animation_ksj4u"),
+&"popup": SubResource("Animation_46ghl")
 }
 
 [sub_resource type="Resource" id="Resource_dkt31"]
@@ -75,7 +75,7 @@ stream = ExtResource("6_7n3ic")
 script = ExtResource("4_twsgs")
 sound_effects = Array[ExtResource("5_bpbf7")]([SubResource("Resource_dkt31")])
 
-[node name="HintBox" type="Control" node_paths=PackedStringArray("label", "timer", "sound", "animation")]
+[node name="HintBox" type="Control" unique_id=1380068158 node_paths=PackedStringArray("label", "timer", "sound", "animation")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,7 +90,7 @@ timer = NodePath("Timer")
 sound = NodePath("PolyphonicMenuAudio")
 animation = NodePath("AnimationPlayer")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1379949976]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -105,29 +105,28 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1, 1e-05)
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1786923750]
 layout_mode = 2
 theme = SubResource("Theme_0pcjg")
 theme_override_styles/panel = SubResource("StyleBoxTexture_qh7qy")
 
-[node name="RichTextLabelWithButtons" type="RichTextLabel" parent="CenterContainer/PanelContainer"]
+[node name="RichTextLabelWithButtons" type="RichTextLabel" parent="CenterContainer/PanelContainer" unique_id=2117390232]
 layout_mode = 2
 bbcode_enabled = true
+text = "Press [img]res://assets/sprites/HUD/Buttons/Square.png[/img] to attack."
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_chrie")
 new_text = "Press [[Square]] to attack."
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_4o5me")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1025186616]
+libraries/ = SubResource("AnimationLibrary_4o5me")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=540583015]
 one_shot = true
 
-[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="." unique_id=2092078718]
 volume_db = -18.0
 script = ExtResource("3_jwu5c")
 audio_library = SubResource("Resource_oeyjm")

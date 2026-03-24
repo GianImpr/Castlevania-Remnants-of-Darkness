@@ -13,13 +13,17 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if activate:
-		animation.play("popup")
-		timer.wait_time = time
-		label.controller_scheme = Global.game.controller_scheme
-		label.new_text = text
-		timer.start()
-		sound.play_sound_effect_from_library("open")
+		popup(text, time)
 		activate = false
 
 func _on_timer_timeout() -> void:
 	animation.play_backwards("popup")
+
+func popup(message: String, duration: float) -> void:
+		animation.play("popup")
+		timer.wait_time = time
+		label.controller_scheme = Global.game.controller_scheme
+		label.new_text = message
+		timer.start()
+		sound.play_sound_effect_from_library("open")
+	

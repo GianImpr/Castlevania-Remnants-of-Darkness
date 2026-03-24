@@ -155,6 +155,10 @@ func findItem(id: int, inventory) -> int:
 			return item["quantity"]
 	return 0
 
+## Returns true if player collected the item.
+func hasItem(id: int) -> int:
+	return findItem(id+1, item_inventory) > 0
+
 ## Adds copies of a certain item ID in a certain inventory.
 func addItem(id: int, inventory, copies_to_add: int = 1) -> void:
 	var copies = findItem(id, inventory)
