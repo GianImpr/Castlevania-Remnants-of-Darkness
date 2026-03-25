@@ -7,19 +7,16 @@
 [ext_resource type="AudioStream" uid="uid://cqcf404qofb42" path="res://assets/sounds/Effects/Miscellaneous/TextSpeech.MP3" id="5_i2a1r"]
 [ext_resource type="Texture2D" uid="uid://cmm7ljl15sp6m" path="res://assets/sprites/HUD/Containers/DialogueBox/DialogueCursor.png" id="6_uqomd"]
 
-[sub_resource type="Resource" id="Resource_428n4"]
+[sub_resource type="Resource" id="Resource_le6aa"]
 script = ExtResource("2_va3t4")
 expression = 1
-dialogue_text = "It's been a long time, Belmont."
-position = 1
+dialogue_text = "FOUNTAIN_MONOLOGUE_1"
 metadata/_custom_type_script = "uid://cngvggw68h5x0"
 
-[sub_resource type="Resource" id="Resource_jlad6"]
+[sub_resource type="Resource" id="Resource_mewe8"]
 script = ExtResource("2_va3t4")
-character = 2
 expression = 1
-dialogue_text = "Is that you, Hector?"
-position = 1
+dialogue_text = "FOUNTAIN_MONOLOGUE_2"
 metadata/_custom_type_script = "uid://cngvggw68h5x0"
 
 [sub_resource type="Animation" id="Animation_f5om2"]
@@ -483,7 +480,7 @@ _data = {
 
 [node name="Dialogue" type="Node2D" unique_id=975225164 node_paths=PackedStringArray("left_character", "right_character", "character_name", "text", "wait_timer", "sound", "animation", "cursor")]
 script = ExtResource("1_2shlh")
-dialogue_test = Array[ExtResource("2_va3t4")]([SubResource("Resource_428n4"), SubResource("Resource_jlad6")])
+dialogue_test = Array[ExtResource("2_va3t4")]([SubResource("Resource_le6aa"), SubResource("Resource_mewe8")])
 left_character = NodePath("LeftCharacter")
 right_character = NodePath("RightCharacter")
 character_name = NodePath("Label")

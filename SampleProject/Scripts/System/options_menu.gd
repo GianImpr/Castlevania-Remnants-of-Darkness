@@ -10,6 +10,7 @@ class_name InvOptions
 @export var settings: Dictionary
 @export var binding_buttons: GridContainer
 @export var description: RichTextLabelWithButtons
+@export var language_button: Button
 var cur_button: InventoryButton
 var functions: Array[Callable] = [changeWindowMode, changeResolution, changeScaling, changeVsync, changeFramerate, changeFramerateDisplay, changeMasterVolume, changeSFXVolume, changeMusicVolume, changeVoiceVolume, changeControllerLayout, changeInputBuffer, changeDevice, changeLanguage, changeRumble]
 var descriptions: Array[String] = [
@@ -21,7 +22,7 @@ var descriptions: Array[String] = [
 	
 	"VERTICAL_SYNC_DESC",
 	
-	"ADJUST_FPS_DESC",
+	"ADJUST_FRAMERATE_DESC",
 	
 	"SHOW_FRAMERATE_DESC",
 	
@@ -277,6 +278,7 @@ const Actions = {
 func enter():
 	animation.play_backwards("change")
 	default_button.grab_focus()
+	language_button.text = Global.Languages.keys()[settings["language"]]
 	
 
 func exit():
@@ -573,7 +575,7 @@ func changeVsync(offset: int, button: InventoryButton) -> void:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 
 func changeFramerate(offset: int, button: InventoryButton) -> void:
-	const rates: Array[String] = ["60", "144", "Uncapped"]
+	const rates: Array[String] = ["60", "144", "UNCAPPED_LABEL"]
 	settings["framerate"] = posmod(settings["framerate"]+offset,rates.size())
 	var setting_label: Label = button.get_parent().get_child(2)
 	setting_label.text = tr(rates[settings["framerate"]])

@@ -1,12 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://ds8enf7ivwg6o"]
+[gd_scene format=3 uid="uid://ds8enf7ivwg6o"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="1_beicf"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/Stage_elements/canister.gd" id="1_yto3p"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="2_stgdq"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="1_beicf"]
+[ext_resource type="Script" uid="uid://c4m6to36ljm6" path="res://SampleProject/Scripts/Stage_elements/canister.gd" id="1_yto3p"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="2_stgdq"]
 [ext_resource type="Texture2D" uid="uid://dcofyfqruenet" path="res://assets/sprites/Objects/Canisters/Canister.png" id="2_vddg6"]
 [ext_resource type="PackedScene" uid="uid://cn5udljc46woc" path="res://SampleProject/extra_scenes/items/life_vessel.tscn" id="2_ysejs"]
 [ext_resource type="Texture2D" uid="uid://b14un0hnoriq2" path="res://assets/sprites/Effects/Fire2.png" id="3_hefti"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="3_oiy7i"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="3_oiy7i"]
 [ext_resource type="AudioStream" uid="uid://d36otnwl0rx7d" path="res://assets/sounds/Effects/Destructibles/Container.MP3" id="4_43fgi"]
 
 [sub_resource type="Resource" id="Resource_sork7"]
@@ -104,9 +104,9 @@ resource_name = "idle"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_13kty"]
 _data = {
-"RESET": SubResource("Animation_nqi3h"),
-"destroy": SubResource("Animation_n4100"),
-"idle": SubResource("Animation_eefjp")
+&"RESET": SubResource("Animation_nqi3h"),
+&"destroy": SubResource("Animation_n4100"),
+&"idle": SubResource("Animation_eefjp")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cctky"]
@@ -118,7 +118,7 @@ particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="Canister" type="RigidBody2D" node_paths=PackedStringArray("animation", "sound", "hitbox_iframe")]
+[node name="Canister" type="RigidBody2D" unique_id=1719252116 node_paths=PackedStringArray("animation", "sound", "hitbox_iframe")]
 collision_layer = 4
 collision_mask = 0
 freeze = true
@@ -128,35 +128,33 @@ item_scene = ExtResource("2_ysejs")
 sound = NodePath("PolyphonicAudio")
 hitbox_iframe = NodePath("CollisionShape2D")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=733831908]
 volume_db = -10.0
 script = ExtResource("1_beicf")
 audio_library = SubResource("Resource_wpyr0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1058521856]
 scale = Vector2(2, 2)
 texture = ExtResource("2_vddg6")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=298617131]
 root_node = NodePath("../Sprite2D")
-libraries = {
-"": SubResource("AnimationLibrary_13kty")
-}
-autoplay = "idle"
+libraries/ = SubResource("AnimationLibrary_13kty")
+autoplay = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=747699492]
 position = Vector2(0.5, 0.5)
 scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_cctky")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=262819698]
 material = SubResource("CanvasItemMaterial_ob55f")
 emitting = false
 amount = 10
+texture = ExtResource("3_hefti")
 one_shot = true
 explosiveness = 0.3
 randomness = 0.5
-texture = ExtResource("3_hefti")
 emission_shape = 3
 emission_rect_extents = Vector2(10, 50)
 direction = Vector2(0, -1)

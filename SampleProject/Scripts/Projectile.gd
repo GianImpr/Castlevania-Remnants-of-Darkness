@@ -44,6 +44,8 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 			return 0
 		elif damage >= body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1 and not guard_break:
 			damage = min(damage*0.1, body.stats.Stats["HP"]-1)
+			if Global.player.stats.accessoryEquipped(Accessory.Accessories.TOUGH_RING):
+				damage = 0
 		elif (body.stats.Stats["Guard"] == 1 and not Global.player.stats.itemEquipped(Headgear.Headgears.IMPERVIOUS_HELMET, "head")) or guard_break:
 			damage *= 0.6
 		if not guard_break:

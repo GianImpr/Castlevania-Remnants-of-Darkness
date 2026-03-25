@@ -32,5 +32,6 @@ enum Accessories {
 	STOIC_BELT = 13,
 	WINGED_RING = 14,
 	LAPIS_LAZULI = 15,
-	PEARL_RING = 16
+	PEARL_RING = 16,
+	TOUGH_RING = 17
 }

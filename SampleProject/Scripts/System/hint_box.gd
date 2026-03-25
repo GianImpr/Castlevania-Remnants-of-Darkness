@@ -21,9 +21,11 @@ func _on_timer_timeout() -> void:
 
 func popup(message: String, duration: float) -> void:
 		animation.play("popup")
-		timer.wait_time = time
+		timer.wait_time = duration
 		label.controller_scheme = Global.game.controller_scheme
 		label.new_text = message
 		timer.start()
 		sound.play_sound_effect_from_library("open")
 	
+func isActive() -> bool:
+	return not timer.is_stopped()

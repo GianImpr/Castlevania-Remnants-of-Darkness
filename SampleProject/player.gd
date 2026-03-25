@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name HectorPlayer
 
+@export_category("Debug")
+@export var god_mode: bool
 @export_category("Innocent Devils")
 @export var innocent_devil_scene: PackedScene
 @export var innocent_devil_pocket: Array[InnocentDevilEntry]
@@ -57,6 +59,8 @@ const SPEED = 260.0
 const IFRAMES_HIT_THRESHOLD: int = 3
 const FOCUS_GAIN_RATIO: int = 10
 const GUARD_RECOVERY_TIME: int = 3
+const TOUGH_RING_GUARD_RECOVERY_TIME_MULTIPLIER_NORMAL: float = 1.33
+const TOUGH_RING_GUARD_RECOVERY_TIME_MULTIPLIER_CRAZY: float = 1.5
 const MAX_WEAPON_RANK = 1
 const LONG_MERCY_INVINCIBILITY_DURATION: float = 1.7
 const SHORT_MERCY_INVINCIBILITY_DURATION: float = 0.8
@@ -136,7 +140,7 @@ func _input(event: InputEvent) -> void:
 	
 func _process(delta: float) -> void:
 	#If harmed, become invulnerable for a while
-	hurtbox_area.set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped() and not state_machine.current_state is HectorWait and not state_machine.current_state is HectorEarthquake)
+	hurtbox_area.set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped() and not state_machine.current_state is HectorWait and not state_machine.current_state is HectorEarthquake and not god_mode)
 	
 	guarding = isGuarding()
 	
@@ -161,10 +165,17 @@ func _process(delta: float) -> void:
 	elif guard_recovery.is_stopped():
 		var actual_recovery_time: float = GUARD_RECOVERY_TIME
 		if stats.canApplySkill(Skill.Skills.STEADY_FIGHTER):
-			guard_recovery.start(actual_recovery_time*0.9)
-			
+			actual_recovery_time *= 0.9
+		
+		if stats.accessoryEquipped(Accessory.Accessories.TOUGH_RING):
+			if Global.game != null and Global.game.difficulty != Game.Difficulty.CRAZY:
+				actual_recovery_time *= TOUGH_RING_GUARD_RECOVERY_TIME_MULTIPLIER_NORMAL
+			elif Global.game != null:
+				actual_recovery_time *= TOUGH_RING_GUARD_RECOVERY_TIME_MULTIPLIER_CRAZY
+		
 		if Global.game != null and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
 			actual_recovery_time /= 2
+			
 		guard_recovery.start(actual_recovery_time)
 		
 	if stats.Stats["EXP"] >= expNeededToLvUp() and stats.Stats["LV"] < 99:

@@ -38,11 +38,11 @@ enum LabelColor {
 
 const STATS = ["ATK", "DEF", "STR", "CON", "INT", "SYN", "RES", "LCK"]
 const MISC_STATS = ["value", "max_quantity"]
-const MISC_STAT_LABELS = ["Value", "Can hold up to max"]
+const MISC_STAT_LABELS = ["ITEM_VALUE_LABEL", "ITEM_MAX_CAPACITY_LABEL"]
 const STAT_LABELS = ["ATK_STAT_FULL", "DEF_STAT_FULL", "STR_STAT_FULL", "CON_STAT_FULL", "INT_STAT_FULL", "SYN_STAT_FULL", "MND_STAT_FULL", "LCK_STAT_FULL"]
 const WEAPON_STATS = ["jump_cancel", "type"]
-const WEAPON_STATS_LABELS = ["Allows land cancel", "Weapon type"]
-const WEAPON_TYPES = ["Sword", "Greatsword", "Axe", "Spear", "Knuckles", "Special"]
+const WEAPON_STATS_LABELS = ["ITEM_LAND_CANCEL_LABEL", "ITEM_TYPE_LABEL"]
+const WEAPON_TYPES = ["SWORD_TYPE_LABEL", "GREATSWORD_TYPE_LABEL", "AXE_TYPE_LABEL", "SPEAR_TYPE_LABEL", "KNUCKLES_TYPE_LABEL", "SPECIAL_TYPE_LABEL"]
 
 func _ready() -> void:
 	hbox_template.visible = false
@@ -84,16 +84,16 @@ func setStats() -> void:
 			createStatEntry(tr(STAT_LABELS[i]), item_stat, color, in_shop, i)
 			
 	if item is Weapon:
-		createElementsEntry("Attribute", item.element)
+		createElementsEntry(tr("ATTRIBUTE_LABEL"), item.element)
 		for i in range(0, WEAPON_STATS.size()):
 			if WEAPON_STATS[i] == "jump_cancel":
 				var item_stat: String = "YES_LABEL" if item[WEAPON_STATS[i]] else "NO_LABEL"
-				createStatEntry(WEAPON_STATS_LABELS[i], item_stat)
+				createStatEntry(tr(WEAPON_STATS_LABELS[i]), item_stat)
 			else:
-				createStatEntry(WEAPON_STATS_LABELS[i], WEAPON_TYPES[item[WEAPON_STATS[i]]])
+				createStatEntry(tr(WEAPON_STATS_LABELS[i]), tr(WEAPON_TYPES[item[WEAPON_STATS[i]]]))
 	
 	if item is Headgear or item is Body or item is Legs or item is Accessory:
-		createElementsEntry("Resistance", item.element)
+		createElementsEntry(tr("RESISTANCE_LABEL"), item.element)
 	
 	for i in range(0, MISC_STATS.size()):
 		var item_stat: int = item[MISC_STATS[i]]

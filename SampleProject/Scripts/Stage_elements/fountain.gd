@@ -9,7 +9,7 @@ class_name Fountain
 @export var first_event_flag: int
 @export var area: Area2D
 var can_interact: bool = false
-const camera_offset_list: Array[Vector2] = [Vector2(432, 221)]
+const camera_offset_list: Array[Vector2] = [Vector2(432, 421)]
 var doors: Array[CombatDoor] = [yellow_door, green_door, blue_door, orange_door]
 
 enum Events {
@@ -39,11 +39,11 @@ func _process(delta: float) -> void:
 		area.monitoring = false
 
 
-func _on_area_entered() -> void:
+func _on_area_entered(area_2d: Area2D) -> void:
 	Global.player.tap_up.appear()
 	can_interact = true
 
-func _on_area_exited() -> void:
+func _on_area_exited(area_2d: Area2D) -> void:
 	Global.player.tap_up.dismiss()
 	can_interact = false
 
@@ -58,21 +58,24 @@ func updateStoneVisibility() -> void:
 		if Global.player.stats.event_flags[first_event_flag+i]:
 			stones.get_child(i).self_modulate = Color.WHITE
 		else:
-			stones.get_child(i).self_modualte = Color.BLACK
+			stones.get_child(i).self_modulate = Color.BLACK
 
 func checkStone(stone_to_check: int) -> void:
-	const MESSAGE_DURATION: float = 1
+	const MESSAGE_DURATION: float = 2
 	const SUCCESS_MESSAGE: String = "GEMSTONE_INSERTED"
 	const FAILED_MESSAGE: String = "GEMSTONE_REQUIRED"
-	if Global.player.stats.hasItem(Item.Items.YELLOW_GEMSTONE):
+	const items_to_check: Array[Item.Items] = [Item.Items.YELLOW_GEMSTONE, Item.Items.GREEN_GEMSTONE, Item.Items.BLUE_GEMSTONE, Item.Items.ORANGE_GEMSTONE]
+	if Global.player.stats.hasItem(items_to_check[stone_to_check]):
 		Global.player.stats.event_flags[first_event_flag+stone_to_check] = true
 		Global.tutorial_box.popup(tr(SUCCESS_MESSAGE), MESSAGE_DURATION)
 		updateStoneVisibility()
 		openDoor(stone_to_check)
 	else:
-		Global.tutorial_box.popup(tr(FAILED_MESSAGE), MESSAGE_DURATION)
+		if not Global.tutorial_box.isActive():
+			Global.tutorial_box.popup(tr(FAILED_MESSAGE), MESSAGE_DURATION)
 
 func openDoor(door_index: int) -> void:
+	doors = [yellow_door, green_door, blue_door, orange_door]
 	var door_to_open: CombatDoor = doors[door_index]
 	const INITIAL_WAIT_SECONDS: float = 1
 	const CAMERA_MOVE_DURATION: float = 2
@@ -89,6 +92,7 @@ func openDoor(door_index: int) -> void:
 
 
 func openAlreadyUnlockedDoors() -> void:
+	doors = [yellow_door, green_door, blue_door, orange_door]
 	for i in range(0, Events.size()):
 		if Global.player.stats.event_flags[first_event_flag+i]:
 			doors[i].get_parent().queue_free()
@@ -96,5 +100,5 @@ func openAlreadyUnlockedDoors() -> void:
 func enablePlatform() -> void:
 	var platform_sprite_animation: AnimationPlayer = moving_platform.get_child(0).get_child(0).get_child(0)
 	var platform_movement_animation: AnimationPlayer = moving_platform.get_child(1)
-	platform_movement_animation.play()
-	platform_sprite_animation.play()
+	platform_movement_animation.play("move")
+	platform_sprite_animation.play("spinning")

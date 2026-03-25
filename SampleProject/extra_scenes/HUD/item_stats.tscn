@@ -27,7 +27,7 @@ colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yven1"]
 gradient = SubResource("Gradient_7xs6h")
-width = 300
+width = 400
 height = 32
 fill_to = Vector2(0, 1)
 
@@ -215,9 +215,10 @@ theme_override_constants/separation = -3
 
 [node name="Required" type="Label" parent="PanelContainer/Stats" unique_id=1660805167]
 clip_children = 1
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme = SubResource("Theme_urf23")
-text = "Item information"
+text = "ITEM_INFO_LABEL"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/Stats/Required" unique_id=762405766]

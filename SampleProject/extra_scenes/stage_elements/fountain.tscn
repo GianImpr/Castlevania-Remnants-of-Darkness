@@ -136,9 +136,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jthf"]
 size = Vector2(140, 14)
 
-[node name="Fountain" type="Node2D" unique_id=148260216]
+[node name="Fountain" type="Node2D" unique_id=148260216 node_paths=PackedStringArray("stones", "area")]
 modulate = Color(0.654902, 0.6666667, 1, 1)
 script = ExtResource("1_7jthf")
+stones = NodePath("Stones")
+first_event_flag = 11
+area = NodePath("Detection")
 
 [node name="Architecture" type="Sprite2D" parent="." unique_id=754379090]
 scale = Vector2(2, 2)
@@ -183,6 +186,7 @@ hframes = 6
 frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=241893839]
+process_mode = 3
 libraries/ = SubResource("AnimationLibrary_sexdx")
 autoplay = &"water_flowing"
 
@@ -222,7 +226,7 @@ stretch_mode = 4
 
 [node name="Detection" type="Area2D" parent="." unique_id=467493729]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 2050
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" unique_id=1413126226]
 position = Vector2(0, 201)

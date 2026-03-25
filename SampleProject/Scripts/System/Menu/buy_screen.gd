@@ -243,9 +243,9 @@ func _process(delta: float) -> void:
 	
 	show_item_stats.visible = item_stats.item != null and item_stats.item is not Item
 	if item_stats.visible:
-		show_item_stats.new_text = " [[R1]] Hide item stats"
+		show_item_stats.new_text = " " + tr("HIDE_ITEM_STATS_LABEL")
 	else:
-		show_item_stats.new_text = " [[R1]] Show item stats"
+		show_item_stats.new_text = " " + tr("SHOW_ITEM_STATS_LABEL")
 		
 	gold_label.text = str(Shop.displayed_gold)
 	if animation.is_playing():
