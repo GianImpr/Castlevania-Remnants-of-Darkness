@@ -24,7 +24,8 @@ func _ready():
 		sprite.frame = 22
 		aura.visible = false
 		collision_box.disabled = true
-		needs_to_close = true
+		if (Global.player.facing_position == 1 and not flipped_to_left) or (Global.player.facing_position == -1 and flipped_to_left):
+			needs_to_close = true
 	if flipped_to_left:
 		sprite.position.x -= 52
 		aura.position.x -= 68

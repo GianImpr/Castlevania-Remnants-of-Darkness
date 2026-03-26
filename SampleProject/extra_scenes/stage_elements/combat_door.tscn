@@ -371,7 +371,7 @@ detection = NodePath("CombatDoor/DetectionArea")
 [node name="CombatDoor" type="StaticBody2D" parent="." unique_id=495463410 node_paths=PackedStringArray("animation", "open_delay", "close_delay", "door_sprite", "seal_sprite")]
 z_index = -1
 collision_layer = 17
-collision_mask = 2
+collision_mask = 2050
 collision_priority = 2.0
 script = ExtResource("1_8e8x8")
 animation = NodePath("AnimationPlayer")
@@ -401,7 +401,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_s3ty1")
 
 [node name="DetectionArea" type="Area2D" parent="CombatDoor" unique_id=845437707]
-collision_mask = 2
+collision_mask = 2050
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CombatDoor/DetectionArea" unique_id=804163779]

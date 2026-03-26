@@ -88,7 +88,6 @@ func openDoor(door_index: int) -> void:
 	enablePlatform()
 	await Global.camera.camera_moved_back
 	Global.player.unfreeze()
-	can_interact = true
 
 
 func openAlreadyUnlockedDoors() -> void:

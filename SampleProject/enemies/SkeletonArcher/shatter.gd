@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 			child_sprite.hframes = flame_texture.hframes
 			child_sprite.vframes = flame_texture.vframes
 			child_sprite.frame = 0
-			get_tree().create_timer(VISIBILITY_DELAY, false).timeout.connect(func(): child_sprite.visible = true)
+			get_tree().create_timer(VISIBILITY_DELAY, false).timeout.connect(func(): if child_sprite: child_sprite.visible = true)
 			var tween: Tween = get_tree().create_tween()
 			tween.tween_property(child_sprite, "frame", LAST_ANIM_FRAME, ANIMATION_DURATION)
 			tween.finished.connect(child_sprite.queue_free)
@@ -57,7 +57,6 @@ func turnAround() -> void:
 		var child_collision: CollisionShape2D = child.get_child(COLLISION_INDEX)
 		child_sprite.scale.x *= -1
 		child_collision.scale.x *= -1
-
 
 func _on_delete_timer_timeout() -> void:
 	queue_free()

@@ -1,4 +1,5 @@
 extends CombatScene
+class_name Gauntlet
 @export var armor_lord: PackedScene
 var spawned_lord: bool = false
 @export var spawn_enemy: PackedScene
