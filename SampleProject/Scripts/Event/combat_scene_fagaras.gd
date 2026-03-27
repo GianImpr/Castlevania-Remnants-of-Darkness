@@ -5,7 +5,7 @@ var spawned_lord: bool = false
 @export var spawn_enemy: PackedScene
 var spawn
 var cur_phase: int = 0
-const PHASES: int = 6
+@export var PHASES: int = 6
 
 func _ready() -> void:
 	super()

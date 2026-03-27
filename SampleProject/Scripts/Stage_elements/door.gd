@@ -21,10 +21,10 @@ func _ready():
 		aura.texture = aura_sheet
 	aura.modulate = aura_color
 	if Global.player.state_machine.current_state is HectorOpeningDoor:
-		sprite.frame = 22
-		aura.visible = false
-		collision_box.disabled = true
 		if (Global.player.facing_position == 1 and not flipped_to_left) or (Global.player.facing_position == -1 and flipped_to_left):
+			sprite.frame = 22
+			aura.visible = false
+			collision_box.disabled = true
 			needs_to_close = true
 	if flipped_to_left:
 		sprite.position.x -= 52

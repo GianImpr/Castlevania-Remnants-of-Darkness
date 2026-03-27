@@ -81,10 +81,6 @@ func _spawnEnemy():
 			hurtbox = child
 			break
 	if hurtbox and automatic_offset:
-		print(global_position.y)
-		print(hurtbox.position.y)
-		print(hurtbox.shape.size.y)
-		print(hurtbox.global_scale.y)
 		enemy_node.global_position = Vector2(global_position.x, global_position.y - (hurtbox.position.y + hurtbox.shape.size.y/2)*hurtbox.global_scale.y)
 	if "activated_AI" in enemy_node:
 		enemy_node.activated_AI = activate_behavior_instantly

@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://5b0g2k1wel3p" path="res://SampleProject/enemies/DeadPirate/dead_pirate.tscn" id="6_eni8b"]
 [ext_resource type="PackedScene" uid="uid://cafkf0jti8wad" path="res://SampleProject/enemies/Merman/merman.tscn" id="7_aueu7"]
 [ext_resource type="PackedScene" uid="uid://bp5nipcdx63vb" path="res://SampleProject/enemies/CaveTroll/cave_troll.tscn" id="8_frgif"]
+[ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="11_frgif"]
+[ext_resource type="Texture2D" uid="uid://biwn5irdj8rpr" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoor.png" id="12_frgif"]
+[ext_resource type="Texture2D" uid="uid://bpiy0qh3bsdit" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoorAura.png" id="13_yi6wf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nyrvr"]
 texture = ExtResource("4_lafeb")
@@ -2897,5 +2900,12 @@ region_rect = Rect2(0, 0, 2150, 48)
 [node name="Sprite2D2" parent="ResizableWater" index="2" unique_id=543616230]
 position = Vector2(1073, 19)
 scale = Vector2(33.515877, 1.59375)
+
+[node name="SaveDoor" parent="." unique_id=769266422 instance=ExtResource("11_frgif")]
+position = Vector2(2381, 288)
+flipped_to_left = true
+spritesheet = ExtResource("12_frgif")
+aura_sheet = ExtResource("13_yi6wf")
+aura_color = Color(0.16602775, 0.5041362, 0.99999994, 1)
 
 [editable path="ResizableWater"]

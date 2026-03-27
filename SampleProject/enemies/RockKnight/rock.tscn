@@ -169,14 +169,14 @@ metadata/_custom_type_script = "uid://c8movixc3pc7b"
 [node name="Rock" type="RigidBody2D" unique_id=1931345496 node_paths=PackedStringArray("stats", "area", "sprite", "animation", "raycast")]
 collision_layer = 4
 collision_mask = 0
-gravity_scale = 0.7
+gravity_scale = 0.5
 script = ExtResource("1_j5fo4")
 stats = NodePath("Projectile")
 area = NodePath("Hitbox")
 sprite = NodePath("Sprite2D")
 animation = NodePath("AnimationPlayer")
 raycast = NodePath("DetectGround")
-SPEED = Vector2(1800, -200)
+SPEED = Vector2(1800, 200)
 rock_shatter_scene = ExtResource("2_6o1fl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1411151420]

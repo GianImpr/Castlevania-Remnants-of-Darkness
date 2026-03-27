@@ -11,6 +11,9 @@
 [ext_resource type="Shader" uid="uid://bk1fbtrdvyjkg" path="res://SampleProject/enemies/CaveTroll/hueshift.gdshader" id="7_a2p56"]
 [ext_resource type="PackedScene" uid="uid://bdcmh4e72rodn" path="res://SampleProject/extra_scenes/stage_elements/moving_platform_temple.tscn" id="10_yuaio"]
 [ext_resource type="PackedScene" uid="uid://df43umeqy115k" path="res://SampleProject/extra_scenes/stage_elements/dialogue_box_trigger.tscn" id="11_p8grb"]
+[ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="12_xntj6"]
+[ext_resource type="Texture2D" uid="uid://biwn5irdj8rpr" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoor.png" id="13_xntj6"]
+[ext_resource type="Texture2D" uid="uid://bpiy0qh3bsdit" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoorAura.png" id="14_qh7d6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gk0ie"]
 texture = ExtResource("4_6nbvg")
@@ -1291,6 +1294,13 @@ position = Vector2(480, 822)
 [node name="DialogueBoxTrigger" parent="." unique_id=1680409146 instance=ExtResource("11_p8grb")]
 position = Vector2(393, 421)
 flag_id = 9
+
+[node name="SaveDoor" parent="." unique_id=769266422 instance=ExtResource("12_xntj6")]
+z_index = 1
+position = Vector2(13, 736)
+spritesheet = ExtResource("13_xntj6")
+aura_sheet = ExtResource("14_qh7d6")
+aura_color = Color(0.16602775, 0.5041362, 0.99999994, 1)
 
 [editable path="YellowDoor"]
 [editable path="GreenDoor"]

@@ -1699,6 +1699,7 @@ position = Vector2(608, 314)
 script = ExtResource("8_hx6vp")
 armor_lord = ExtResource("9_hmwf5")
 spawn_enemy = ExtResource("9_2jpkd")
+PHASES = 5
 event_ID = 5
 door1 = NodePath("../Node2D")
 door2 = NodePath("../Node2D2")
@@ -1712,33 +1713,44 @@ position = Vector2(481, 415)
 enemy = ExtResource("10_g0bx5")
 enemy_type = "MERMAN"
 automatic_offset = true
-spawn_range = Vector2(500, 0)
-respawn_cooldown = 2.0
+spawn_range = Vector2(800, 0)
+respawn = true
 condition = 3
 enemy_count = 6
-max_at_once = 2
+max_at_once = 6
 
 [node name="SpawnEnemy2" parent="Gauntlet/FirstPhase_Merman" unique_id=2099660525 instance=ExtResource("9_2jpkd")]
 position = Vector2(481, 415)
 enemy = ExtResource("10_g0bx5")
 enemy_type = "MERMAN"
 automatic_offset = true
-spawn_range = Vector2(500, 0)
-respawn_cooldown = 3.0
+spawn_range = Vector2(800, 0)
+respawn = true
 condition = 3
-enemy_count = 6
-max_at_once = 2
+enemy_count = 10
+max_at_once = 6
 
 [node name="SpawnEnemy3" parent="Gauntlet/FirstPhase_Merman" unique_id=22743890 instance=ExtResource("9_2jpkd")]
 position = Vector2(481, 415)
 enemy = ExtResource("10_g0bx5")
 enemy_type = "MERMAN"
 automatic_offset = true
-spawn_range = Vector2(400, 0)
-respawn_cooldown = 4.0
+spawn_range = Vector2(800, 0)
+respawn = true
 condition = 3
 enemy_count = 6
-max_at_once = 2
+max_at_once = 6
+
+[node name="SpawnEnemy4" parent="Gauntlet/FirstPhase_Merman" unique_id=2062921847 instance=ExtResource("9_2jpkd")]
+position = Vector2(481, 415)
+enemy = ExtResource("10_g0bx5")
+enemy_type = "MERMAN"
+automatic_offset = true
+spawn_range = Vector2(800, 0)
+respawn = true
+condition = 3
+enemy_count = 6
+max_at_once = 6
 
 [node name="SecondPhase_CaveTrollPirate" type="Node" parent="Gauntlet" unique_id=242751315]
 process_mode = 4
@@ -1749,9 +1761,9 @@ enemy = ExtResource("11_gj014")
 enemy_type = "CAVE_TROLL"
 automatic_offset = true
 spawn_range = Vector2(100, 0)
-respawn_cooldown = 3.0
+respawn = true
 condition = 3
-enemy_count = 2
+enemy_count = 4
 max_at_once = 1
 
 [node name="SpawnEnemy2" parent="Gauntlet/SecondPhase_CaveTrollPirate" unique_id=1734637013 instance=ExtResource("9_2jpkd")]
@@ -1760,35 +1772,36 @@ enemy = ExtResource("12_3jwgc")
 enemy_type = "DEAD_PIRATE"
 automatic_offset = true
 spawn_range = Vector2(100, 0)
-respawn_cooldown = 3.0
+respawn = true
 condition = 3
-enemy_count = 2
+enemy_count = 4
 max_at_once = 1
 
 [node name="ThirdPhase_FrozenShadeEctoplasm" type="Node" parent="Gauntlet" unique_id=1795403804]
 process_mode = 4
 
 [node name="SpawnEnemy" parent="Gauntlet/ThirdPhase_FrozenShadeEctoplasm" unique_id=1021638642 instance=ExtResource("9_2jpkd")]
-position = Vector2(206, 223)
+position = Vector2(209, 273)
 enemy = ExtResource("13_xgy07")
 enemy_type = "FROZEN_SHADE"
 automatic_offset = true
 spawn_range = Vector2(100, 100)
+respawn = true
 respawn_cooldown = 2.0
 condition = 3
 enemy_count = 2
-max_at_once = 2
+max_at_once = 1
 
 [node name="SpawnEnemy2" parent="Gauntlet/ThirdPhase_FrozenShadeEctoplasm" unique_id=127851714 instance=ExtResource("9_2jpkd")]
-position = Vector2(744, 227)
+position = Vector2(743, 281)
 enemy = ExtResource("13_xgy07")
 enemy_type = "FROZEN_SHADE"
 automatic_offset = true
 spawn_range = Vector2(100, 100)
-respawn_cooldown = 2.5
+respawn = true
 condition = 3
-enemy_count = 2
-max_at_once = 2
+enemy_count = 4
+max_at_once = 1
 
 [node name="SpawnEnemy3" parent="Gauntlet/ThirdPhase_FrozenShadeEctoplasm" unique_id=227477846 instance=ExtResource("9_2jpkd")]
 position = Vector2(482, 213)
@@ -1796,9 +1809,33 @@ enemy = ExtResource("14_js60u")
 enemy_type = "ECTOPLASM"
 automatic_offset = true
 spawn_range = Vector2(100, 100)
-respawn_cooldown = 3.0
+respawn = true
 condition = 3
 enemy_count = 2
+max_at_once = 2
+
+[node name="SpawnEnemy4" parent="Gauntlet/ThirdPhase_FrozenShadeEctoplasm" unique_id=1269150156 instance=ExtResource("9_2jpkd")]
+position = Vector2(223, 176)
+enemy = ExtResource("14_js60u")
+enemy_type = "ECTOPLASM"
+automatic_offset = true
+spawn_range = Vector2(100, 100)
+respawn = true
+respawn_cooldown = 1.5
+condition = 3
+enemy_count = 3
+max_at_once = 2
+
+[node name="SpawnEnemy5" parent="Gauntlet/ThirdPhase_FrozenShadeEctoplasm" unique_id=1627773892 instance=ExtResource("9_2jpkd")]
+position = Vector2(734, 182)
+enemy = ExtResource("14_js60u")
+enemy_type = "ECTOPLASM"
+automatic_offset = true
+spawn_range = Vector2(100, 100)
+respawn = true
+respawn_cooldown = 1.5
+condition = 3
+enemy_count = 3
 max_at_once = 2
 
 [node name="FourthPhase_DecarabiaArcher" type="Node" parent="Gauntlet" unique_id=1936797865]
@@ -1808,20 +1845,22 @@ process_mode = 4
 position = Vector2(151, 413)
 enemy = ExtResource("15_3jwgc")
 enemy_type = "DECARABIA"
-automatic_offset = true
+offset = Vector2(0, 40)
 spawn_range = Vector2(20, 0)
+respawn = true
 respawn_cooldown = 2.0
 condition = 3
 enemy_count = 6
-max_at_once = 2
+max_at_once = 1
 
 [node name="SpawnEnemy2" parent="Gauntlet/FourthPhase_DecarabiaArcher" unique_id=1536742048 instance=ExtResource("9_2jpkd")]
 position = Vector2(804, 414)
 enemy = ExtResource("15_3jwgc")
 enemy_type = "DECARABIA"
-automatic_offset = true
+offset = Vector2(0, 40)
 spawn_range = Vector2(20, 0)
-respawn_cooldown = 2.5
+respawn = true
+respawn_cooldown = 1.5
 condition = 3
 enemy_count = 6
 max_at_once = 2
@@ -1831,52 +1870,57 @@ position = Vector2(834, 414)
 enemy = ExtResource("16_xgy07")
 enemy_type = "SKELETON_ARCHER"
 automatic_offset = true
+respawn = true
 respawn_cooldown = 1.5
 condition = 3
-enemy_count = 2
+enemy_count = 6
 max_at_once = 1
 
 [node name="SpawnEnemy4" parent="Gauntlet/FourthPhase_DecarabiaArcher" unique_id=283104911 instance=ExtResource("9_2jpkd")]
-position = Vector2(134, 414)
+position = Vector2(246, 413)
 enemy = ExtResource("16_xgy07")
 enemy_type = "SKELETON_ARCHER"
 automatic_offset = true
-respawn_cooldown = 2.5
+spawn_range = Vector2(200, 0)
+respawn = true
+respawn_cooldown = 1.5
 condition = 3
-enemy_count = 2
-max_at_once = 1
+enemy_count = 6
+max_at_once = 2
 
 [node name="FifthPhase_RockKnightOctopus" type="Node" parent="Gauntlet" unique_id=451606767]
 process_mode = 4
 
 [node name="SpawnEnemy" parent="Gauntlet/FifthPhase_RockKnightOctopus" unique_id=2053465621 instance=ExtResource("9_2jpkd")]
-position = Vector2(357, 414)
+position = Vector2(482, 415)
 enemy = ExtResource("17_js60u")
 enemy_type = "ROCK_KNIGHT"
 automatic_offset = true
-respawn_cooldown = 2.0
+spawn_range = Vector2(600, 0)
+respawn = true
+respawn_cooldown = 1.5
 condition = 3
-enemy_count = 2
-max_at_once = 1
+enemy_count = 8
+max_at_once = 2
 
 [node name="SpawnEnemy2" parent="Gauntlet/FifthPhase_RockKnightOctopus" unique_id=1262936853 instance=ExtResource("9_2jpkd")]
 position = Vector2(292, 414)
 enemy = ExtResource("18_s8r34")
 enemy_type = "DARK_OCTOPUS"
 automatic_offset = true
-spawn_range = Vector2(20, 0)
-respawn_cooldown = 2.0
+spawn_range = Vector2(600, 0)
+respawn = true
 condition = 3
-enemy_count = 2
+enemy_count = 4
 max_at_once = 1
 
 [node name="SpawnEnemy3" parent="Gauntlet/FifthPhase_RockKnightOctopus" unique_id=462727879 instance=ExtResource("9_2jpkd")]
-position = Vector2(414, 414)
+position = Vector2(481, 415)
 enemy = ExtResource("18_s8r34")
 enemy_type = "DARK_OCTOPUS"
 automatic_offset = true
-spawn_range = Vector2(20, 0)
-respawn_cooldown = 2.0
+spawn_range = Vector2(600, 0)
+respawn = true
 condition = 3
-enemy_count = 2
-max_at_once = 1
+enemy_count = 4
+max_at_once = 2

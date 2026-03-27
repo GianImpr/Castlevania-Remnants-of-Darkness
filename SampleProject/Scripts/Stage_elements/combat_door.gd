@@ -18,7 +18,7 @@ func _ready():
 		get_parent().queue_free()
 	if get_parent().should_close:
 		if not Global.player.stats.combat_flags[get_parent().combat_flag_id]:
-			Global.player.global_position.x += 40
+			Global.player.global_position.x += 40*sign(Global.player.facing_position)
 		if not Global.player.stats.combat_flags[get_parent().combat_flag_id]:
 			Global.player.freeze()
 		position.y = -128

@@ -32,7 +32,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("up_arrow"):
+	if Input.is_action_just_pressed("up_arrow") and can_interact:
 		_triggerCurrentEvent()
 		
 	if Global.player.stats.event_flags[first_event_flag+Events.size()-1]:
