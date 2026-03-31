@@ -1,6 +1,7 @@
 extends State
 class_name MermanIdle
 @export var idle_timer: Timer
+var should_swim: bool = true
 const IDLE_MIN_DURATION: float = 0.2
 const IDLE_MAX_DURATION: float = 0.8
 

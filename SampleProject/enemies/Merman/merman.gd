@@ -3,6 +3,7 @@ class_name Merman
 var activated_AI: bool = false
 var facing_position: int
 var ice_elemental: bool = false
+@export var spawn_idle: bool = false
 @export var is_moving: bool = true
 @export var vision: Area2D
 @export var contact_damage_multiplier: float = 1

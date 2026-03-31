@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dalkv4b0fnk62" path="res://SampleProject/enemies/RockKnight/rock_knight.tscn" id="17_js60u"]
 [ext_resource type="PackedScene" uid="uid://dixyfnx3ksi8s" path="res://SampleProject/enemies/DarkOctopus/dark_octopus.tscn" id="18_s8r34"]
 [ext_resource type="Script" uid="uid://4t0qttyv0rqn" path="res://SampleProject/Scripts/System/hard_mode_node.gd" id="19_hmwf5"]
+[ext_resource type="PackedScene" uid="uid://c5b546j52x16h" path="res://SampleProject/extra_scenes/stage_elements/resizable_water.tscn" id="20_ml6q2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vidal"]
 texture = ExtResource("3_8vls2")
@@ -1712,33 +1713,48 @@ metadata/_custom_type_script = "uid://dit1bwpvesgyl"
 process_mode = 4
 
 [node name="SpawnEnemy" parent="Gauntlet/FirstPhase_Merman" unique_id=1419854072 instance=ExtResource("9_2jpkd")]
-position = Vector2(481, 415)
+position = Vector2(481, 640)
 enemy = ExtResource("10_g0bx5")
 enemy_type = "MERMAN"
+enemy_properties = Array[Dictionary]([{
+"name": "spawn_idle",
+"value": false
+}])
 automatic_offset = true
 spawn_range = Vector2(800, 0)
+play_animation = false
 respawn = true
 condition = 3
 enemy_count = 8
 max_at_once = 6
 
 [node name="SpawnEnemy2" parent="Gauntlet/FirstPhase_Merman" unique_id=2099660525 instance=ExtResource("9_2jpkd")]
-position = Vector2(481, 415)
+position = Vector2(481, 640)
 enemy = ExtResource("10_g0bx5")
 enemy_type = "MERMAN"
+enemy_properties = Array[Dictionary]([{
+"name": "spawn_idle",
+"value": false
+}])
 automatic_offset = true
 spawn_range = Vector2(800, 0)
+play_animation = false
 respawn = true
 condition = 3
 enemy_count = 8
 max_at_once = 6
 
 [node name="SpawnEnemy3" parent="Gauntlet/FirstPhase_Merman" unique_id=22743890 instance=ExtResource("9_2jpkd")]
-position = Vector2(481, 415)
+position = Vector2(481, 640)
 enemy = ExtResource("10_g0bx5")
 enemy_type = "MERMAN"
+enemy_properties = Array[Dictionary]([{
+"name": "spawn_idle",
+"value": false
+}])
 automatic_offset = true
 spawn_range = Vector2(800, 0)
+play_animation = false
 respawn = true
 condition = 3
 enemy_count = 8
@@ -1917,3 +1933,17 @@ respawn = true
 condition = 3
 enemy_count = 4
 max_at_once = 1
+
+[node name="ResizableWater" parent="." unique_id=2122667391 instance=ExtResource("20_ml6q2")]
+position = Vector2(327, 423)
+
+[node name="Sprite2D" parent="ResizableWater" index="0" unique_id=1514111186]
+self_modulate = Color(1, 1, 1, 0.79607844)
+position = Vector2(-350, 0)
+region_rect = Rect2(0, 0, 1000, 48)
+
+[node name="Sprite2D2" parent="ResizableWater" index="2" unique_id=543616230]
+position = Vector2(150, 34)
+scale = Vector2(16, 1)
+
+[editable path="ResizableWater"]

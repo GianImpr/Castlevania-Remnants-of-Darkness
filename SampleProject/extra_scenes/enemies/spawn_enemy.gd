@@ -4,12 +4,14 @@ class_name SpawnEnemy
 
 @export var enemy: PackedScene
 @export var enemy_type: String
+@export var enemy_properties: Array[Dictionary] = [{"name": "", "value": false}]
 @export var spawn_instantly: bool
 @export var LV_bonus: int = 0
 @export var offset: Vector2
 @export var automatic_offset: bool = false
 @export var spawn_range: Vector2
 @export var activate_behavior_instantly: bool = true
+@export var play_animation: bool = true
 @export_category("Respawning")
 @export var respawn: bool
 @export_range(0, 30, 0.1, "suffix:s") var respawn_cooldown: float = 1
@@ -70,12 +72,18 @@ func _playSpawn():
 				spawn_range_offset.x += modify_pos
 				spawn_range_offset.x = min(max(-spawn_range.x/2, spawn_range_offset.x), spawn_range.x/2)
 			global_position = starting_pos + spawn_range_offset
-			animation.play("spawn")
+			if play_animation:
+				animation.play("spawn")
+			else:
+				animation.play("spawn_without_anim")
 
 	elif checkCondition(condition):
 		if particles.emitting:
 			await particles.finished
-		animation.play("spawn")
+		if play_animation:
+			animation.play("spawn")
+		else:
+			animation.play("spawn_without_anim")
 
 func _spawnEnemy():
 	summoned_enemies += 1
@@ -83,6 +91,11 @@ func _spawnEnemy():
 	enemy_node.stats.LV += LV_bonus
 	enemy_node.stats.ATK += LV_bonus * 2.5
 	enemy_node.global_position = global_position - offset
+	
+	for property in enemy_properties:
+		if property["name"] in enemy_node:
+			enemy_node[property["name"]] = property["value"]
+			
 	get_parent().add_child(enemy_node)
 	var hurtbox: CollisionShape2D
 	for child in enemy_node.get_children():
@@ -95,15 +108,16 @@ func _spawnEnemy():
 		enemy_node.activated_AI = activate_behavior_instantly
 	elif "ai_activated" in enemy_node:
 		enemy_node.ai_activated = activate_behavior_instantly
-	enemy_node.modulate = Color(1, 0, 1, 0)
-	enemy_node.process_mode = Node.PROCESS_MODE_DISABLED
-	var tween = get_tree().create_tween()
-	tween.tween_property(enemy_node, "modulate", Color(1, 0, 1, 0.5), 0.5)
-	await tween.finished
-	tween = get_tree().create_tween()
-	tween.tween_property(enemy_node, "modulate", Color(1, 1, 1, 1), 0.5)
-	await tween.finished
-	enemy_node.process_mode = Node.PROCESS_MODE_INHERIT
+	if play_animation:
+		enemy_node.modulate = Color(1, 0, 1, 0)
+		enemy_node.process_mode = Node.PROCESS_MODE_DISABLED
+		var tween = get_tree().create_tween()
+		tween.tween_property(enemy_node, "modulate", Color(1, 0, 1, 0.5), 0.5)
+		await tween.finished
+		tween = get_tree().create_tween()
+		tween.tween_property(enemy_node, "modulate", Color(1, 1, 1, 1), 0.5)
+		await tween.finished
+		enemy_node.process_mode = Node.PROCESS_MODE_INHERIT
 
 func deleteIfNoRespawn():
 	if not respawn:

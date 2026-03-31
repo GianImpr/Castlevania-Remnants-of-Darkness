@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="6_fppdx"]
 [ext_resource type="Script" uid="uid://d3busd68khsln" path="res://SampleProject/enemies/Merman/MermanWalking.gd" id="6_kemvy"]
 [ext_resource type="Script" uid="uid://5qnh3vo067rp" path="res://SampleProject/enemies/Merman/MermanRecoil.gd" id="7_a6gly"]
+[ext_resource type="Script" uid="uid://bccbne5d8ibt0" path="res://SampleProject/enemies/Merman/MermanSwimming.gd" id="8_5gdp5"]
 [ext_resource type="Texture2D" uid="uid://b14un0hnoriq2" path="res://assets/sprites/Effects/Fire2.png" id="8_bwhn6"]
 [ext_resource type="Script" uid="uid://buv6rvtg7m4ta" path="res://SampleProject/enemies/Merman/MermanDying.gd" id="8_jfrpt"]
 [ext_resource type="PackedScene" uid="uid://cxq8cavlkfi7i" path="res://SampleProject/enemies/Merman/merman_fireball.tscn" id="8_xk182"]
@@ -512,10 +513,19 @@ libraries/ = SubResource("AnimationLibrary_6md3o")
 
 [node name="StateMachine" type="Node" parent="." unique_id=2045344095 node_paths=PackedStringArray("initial_state", "player", "animation")]
 script = ExtResource("3_fppdx")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Swimming")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 metadata/_custom_type_script = "uid://d2kqkdfhgcbi7"
+
+[node name="Swimming" type="Node" parent="StateMachine" unique_id=22740012 node_paths=PackedStringArray("swimming_timer", "sprite")]
+script = ExtResource("8_5gdp5")
+swimming_timer = NodePath("Duration")
+sprite = NodePath("../../Sprite2D")
+metadata/_custom_type_script = "uid://bccbne5d8ibt0"
+
+[node name="Duration" type="Timer" parent="StateMachine/Swimming" unique_id=717481299]
+one_shot = true
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1868357075 node_paths=PackedStringArray("idle_timer")]
 script = ExtResource("5_bsly3")

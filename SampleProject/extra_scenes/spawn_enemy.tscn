@@ -118,6 +118,27 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_v5ayh"]
+resource_name = "spawn_without_anim"
+length = 3.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.233333, 3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_spawnEnemy"
+}, {
+"args": [],
+"method": &"deleteIfNoRespawn"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_serlo"]
 resource_name = "test"
 tracks/0/type = "value"
@@ -149,6 +170,7 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_alq1m"),
 &"spawn": SubResource("Animation_da8nx"),
+&"spawn_without_anim": SubResource("Animation_v5ayh"),
 &"test": SubResource("Animation_serlo")
 }
 
