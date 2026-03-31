@@ -109,7 +109,7 @@ func remove_momentum():
 #and transition to the appropriate new state
 func check_is_blocking():
 	if player.is_hurt and player.stats.Stats["HP"] > 0:
-		if (self is HectorJump or self is HectorFalling or self is HectorDoubleJump) and player.willPerfectGuard():
+		if (self is HectorJump or self is HectorFalling or self is HectorDoubleJump or self is HectorAirAttack) and player.willPerfectGuard():
 			Global.player.transitionToState("Guard_perfect_air")
 			return
 		elif self is HectorJump or self is HectorFalling or self is HectorDoubleJump:

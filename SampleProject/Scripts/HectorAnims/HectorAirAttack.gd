@@ -1,6 +1,6 @@
 extends State
 class_name HectorAirAttack
-var can_perfect_guard: bool = false
+var can_perfect_guard: bool = true
 const HEIGHT_DECELERATION: float = 0.95
 
 

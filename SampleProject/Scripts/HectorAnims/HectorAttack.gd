@@ -1,6 +1,6 @@
 extends State
 class_name HectorAttack
-var can_perfect_guard: bool = false
+var can_perfect_guard: bool = true
 
 func _ready():
 	HectorWait.resumeAttackAnimation = resumeAttackAnimation

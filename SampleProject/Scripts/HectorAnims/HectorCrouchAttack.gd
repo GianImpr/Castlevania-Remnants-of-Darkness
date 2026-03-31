@@ -1,6 +1,6 @@
 extends State
 class_name HectorCrouchAttack
-var can_perfect_guard: bool = false
+var can_perfect_guard: bool = true
 const FIST_ANIMATION_CANCELLABLE_FROM: float = 0.48
 static var getWeaponAttackSound: Callable
 static var getHectorAttackSound: Callable
