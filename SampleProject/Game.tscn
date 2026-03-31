@@ -373,6 +373,7 @@
 [ext_resource type="PackedScene" uid="uid://jq8urid718wn" path="res://SampleProject/extra_scenes/game_over_screen.tscn" id="283_3wcg1"]
 [ext_resource type="AudioStream" uid="uid://rcd8exs6eagu" path="res://assets/music/CrystalTeardrops.ogg" id="339_gvdo1"]
 [ext_resource type="AudioStream" uid="uid://rojr6o1d5144" path="res://assets/music/WaterTheologia.ogg" id="345_7fhmx"]
+[ext_resource type="AudioStream" uid="uid://djolu6rurb574" path="res://assets/music/Encounter2.ogg" id="347_xwt4j"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_6ajcc")
@@ -4645,9 +4646,15 @@ Tag = "indigo_temple"
 stream = ExtResource("345_7fhmx")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
+[sub_resource type="Resource" id="Resource_dfcem"]
+script = ExtResource("10_etx3r")
+Tag = "encounter_2"
+stream = ExtResource("347_xwt4j")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_8tj7q"]
 script = ExtResource("8_afqo1")
-sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj"), SubResource("Resource_d34sg"), SubResource("Resource_b4g4d"), SubResource("Resource_6q42e"), SubResource("Resource_mxxml"), SubResource("Resource_w5jos"), SubResource("Resource_iixkq"), SubResource("Resource_xnt2o")])
+sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj"), SubResource("Resource_d34sg"), SubResource("Resource_b4g4d"), SubResource("Resource_6q42e"), SubResource("Resource_mxxml"), SubResource("Resource_w5jos"), SubResource("Resource_iixkq"), SubResource("Resource_xnt2o"), SubResource("Resource_dfcem")])
 
 [sub_resource type="Gradient" id="Gradient_0dip4"]
 offsets = PackedFloat32Array(0, 0.989418)

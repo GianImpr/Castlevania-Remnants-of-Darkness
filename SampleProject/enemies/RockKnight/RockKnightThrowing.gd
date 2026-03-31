@@ -2,7 +2,7 @@ extends State
 class_name RockKnightThrowing
 @export var rock_scene: PackedScene
 @export var red_spark_scene: PackedScene
-const ROCK_SPEED_MULTIPLIER: float = 0.4
+const ROCK_SPEED_MULTIPLIER: float = 0.48
 const OFFSET: Vector2 = Vector2(22,-72)
 
 func enter():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://pmhfi7gv5sxe"]
+[gd_scene format=3 uid="uid://pmhfi7gv5sxe"]
 
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="1_j32fa"]
 [ext_resource type="Script" uid="uid://dq0diloex14b2" path="res://SampleProject/extra_scenes/enemies/spawn_enemy.gd" id="1_liif3"]
@@ -178,13 +178,14 @@ color_ramp = SubResource("GradientTexture1D_tnrw0")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[node name="SpawnEnemy" type="Node2D" node_paths=PackedStringArray("timer", "animation", "delete_timer")]
+[node name="SpawnEnemy" type="Node2D" unique_id=1829841291 node_paths=PackedStringArray("timer", "animation", "delete_timer", "particles")]
 script = ExtResource("1_liif3")
 timer = NodePath("Timer")
 animation = NodePath("AnimationPlayer")
 delete_timer = NodePath("DeleteTimer")
+particles = NodePath("GPUParticles2D")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=742314051]
 z_index = 20
 material = SubResource("CanvasItemMaterial_j27em")
 emitting = false
@@ -194,19 +195,17 @@ one_shot = true
 explosiveness = 0.07
 process_material = SubResource("ParticleProcessMaterial_3das4")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_dq8ar")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1409127799]
+libraries/ = SubResource("AnimationLibrary_dq8ar")
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=2089954332]
 volume_db = 5.0
 script = ExtResource("3_vluex")
 audio_library = SubResource("Resource_s0sue")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=965009822]
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=1285420823]
 z_index = 20
 material = SubResource("CanvasItemMaterial_j27em")
 emitting = false
@@ -216,7 +215,7 @@ one_shot = true
 explosiveness = 0.07
 process_material = SubResource("ParticleProcessMaterial_go66r")
 
-[node name="DeleteTimer" type="Timer" parent="."]
+[node name="DeleteTimer" type="Timer" parent="." unique_id=455576797]
 wait_time = 4.0
 one_shot = true
 

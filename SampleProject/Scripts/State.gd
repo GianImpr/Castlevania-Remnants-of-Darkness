@@ -66,6 +66,11 @@ func can_drop_ledge():
 		player.set_collision_mask_value(ONE_WAY_PLATFORM_LAYER, false)
 		get_tree().create_timer(IGNORE_PLATFORMS_FOR_SECONDS, false).timeout.connect(func(): player.set_collision_mask_value(ONE_WAY_PLATFORM_LAYER, true))
 
+func reset_ledge_detection():
+	const ONE_WAY_PLATFORM_LAYER: int = 13
+	player.set_collision_mask_value(ONE_WAY_PLATFORM_LAYER, true)
+	
+
 #Allows the player to guard if they have Fortitude Gauntlet (Skill ID 1)
 func can_guard():
 	if player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, player.stats.skill_inventory) and not player.is_hurt:

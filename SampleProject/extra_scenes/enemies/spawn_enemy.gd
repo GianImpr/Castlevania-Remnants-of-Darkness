@@ -23,6 +23,7 @@ class_name SpawnEnemy
 var summoned_enemies: int = 0
 var starting_pos: Vector2
 @export var delete_timer: Timer
+@export var particles: GPUParticles2D
 
 enum Conditions {
 	ALWAYS,
@@ -60,12 +61,20 @@ func checkCondition(cond_type: Conditions):
 func _playSpawn():
 	if condition == Conditions.SUMMONED_IN_TOTAL:
 		if checkCondition(condition):
-			global_position = starting_pos + Vector2(randf_range(-spawn_range.x/2, spawn_range.x/2), randf_range(-spawn_range.y/2, spawn_range.y/2))
-			if global_position.x > Global.player.global_position.x - 50 and global_position.x < Global.player.global_position.x + 50 and spawn_range.x != 0 and spawn_range.y != 0:
-				var modify_pos = (randf_range(50,100)*sign(randi_range(0,1)*2-1))
-				global_position.x += modify_pos
+			if particles.emitting:
+				await particles.finished
+			var previous_position: float = global_position.x
+			var spawn_range_offset: Vector2 = Vector2(randf_range(-spawn_range.x/2, spawn_range.x/2), randf_range(-spawn_range.y/2, spawn_range.y/2))
+			if starting_pos.x+spawn_range_offset.x > Global.player.global_position.x - 120 and starting_pos.x+spawn_range_offset.x < Global.player.global_position.x + 120 and (spawn_range.x != 0 or spawn_range.y != 0):
+				var modify_pos = (randf_range(120,150)*sign(starting_pos.x+spawn_range_offset.x - Global.player.global_position.x))
+				spawn_range_offset.x += modify_pos
+				spawn_range_offset.x = min(max(-spawn_range.x/2, spawn_range_offset.x), spawn_range.x/2)
+			global_position = starting_pos + spawn_range_offset
 			animation.play("spawn")
+
 	elif checkCondition(condition):
+		if particles.emitting:
+			await particles.finished
 		animation.play("spawn")
 
 func _spawnEnemy():

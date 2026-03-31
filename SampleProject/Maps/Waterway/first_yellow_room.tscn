@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://d3ojnp2qhy6a3" path="res://SampleProject/extra_scenes/stage_elements/candle.tscn" id="5_asqtp"]
 [ext_resource type="PackedScene" uid="uid://des8o3jbf3a4m" path="res://SampleProject/extra_scenes/stage_elements/grounded_candle.tscn" id="6_ek6yj"]
 [ext_resource type="PackedScene" uid="uid://cmjvajpmsltsp" path="res://SampleProject/enemies/Ectoplasm/ectoplasm.tscn" id="7_3igcy"]
-[ext_resource type="PackedScene" uid="uid://5b0g2k1wel3p" path="res://SampleProject/enemies/DeadPirate/dead_pirate.tscn" id="8_ij15f"]
 [ext_resource type="PackedScene" uid="uid://bvk8m1t7uwv0b" path="res://SampleProject/enemies/Une/Une.tscn" id="9_ij15f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ov32"]
@@ -1239,9 +1238,6 @@ position = Vector2(38, 336)
 z_index = 1
 position = Vector2(198, 182)
 
-[node name="DeadPirate" parent="Enemies" unique_id=921547969 instance=ExtResource("8_ij15f")]
-position = Vector2(68, 827)
-
 [node name="Une" parent="Enemies" unique_id=445170381 instance=ExtResource("9_ij15f")]
 position = Vector2(210, 639)
 
@@ -1250,3 +1246,7 @@ position = Vector2(267, 639)
 
 [node name="Une3" parent="Enemies" unique_id=904774591 instance=ExtResource("9_ij15f")]
 position = Vector2(353, 607)
+
+[node name="Ectoplasm2" parent="Enemies" unique_id=122267009 instance=ExtResource("7_3igcy")]
+z_index = 1
+position = Vector2(199, 748)

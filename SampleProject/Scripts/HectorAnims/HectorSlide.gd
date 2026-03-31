@@ -14,6 +14,7 @@ const DEBRIS_POSITION: Vector2 = Vector2(40,68)
 const DECELERATION_DURATION: float = 0.55
 
 func enter():
+	reset_ledge_detection()
 	if not turn_timer.timeout.is_connected(applySpeed):
 		turn_timer.timeout.connect(applySpeed)
 	animation.play("slide")

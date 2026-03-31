@@ -6,6 +6,7 @@ var spawned_lord: bool = false
 var spawn
 var cur_phase: int = 0
 @export var PHASES: int = 6
+@export var track_name: String = "encounter"
 
 func _ready() -> void:
 	super()
@@ -43,4 +44,4 @@ func _process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	get_child(cur_phase).process_mode = Node.PROCESS_MODE_INHERIT
-	playMusic("encounter")
+	playMusic(track_name)
