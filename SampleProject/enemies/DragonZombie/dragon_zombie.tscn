@@ -1066,7 +1066,7 @@ shape = SubResource("RectangleShape2D_08iqv")
 
 [node name="HitboxArea" type="Area2D" parent="." unique_id=1266568863]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=1819889503]
 visible = false
@@ -1076,7 +1076,7 @@ debug_color = Color(0.9999998, 0, 0.10509225, 0.41960785)
 
 [node name="BiteArea" type="Area2D" parent="." unique_id=1142741607]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="Bite" type="CollisionShape2D" parent="BiteArea" unique_id=1194501250]
 visible = false
@@ -1087,7 +1087,7 @@ debug_color = Color(0.8797684, 0.3396266, 0, 0.41960785)
 
 [node name="BreathArea" type="Area2D" parent="." unique_id=1533777107]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BreathArea" unique_id=1618035264]
 position = Vector2(-61.5, -21)
@@ -1096,7 +1096,7 @@ disabled = true
 
 [node name="LaserArea" type="Area2D" parent="." unique_id=1859972630]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LaserArea" unique_id=474849255]
 visible = false

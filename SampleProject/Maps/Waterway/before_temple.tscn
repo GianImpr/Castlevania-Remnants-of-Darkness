@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c5b546j52x16h" path="res://SampleProject/extra_scenes/stage_elements/resizable_water.tscn" id="5_uy6n8"]
 [ext_resource type="PackedScene" uid="uid://5b0g2k1wel3p" path="res://SampleProject/enemies/DeadPirate/dead_pirate.tscn" id="6_eni8b"]
 [ext_resource type="PackedScene" uid="uid://cafkf0jti8wad" path="res://SampleProject/enemies/Merman/merman.tscn" id="7_aueu7"]
+[ext_resource type="PackedScene" uid="uid://pmhfi7gv5sxe" path="res://SampleProject/extra_scenes/spawn_enemy.tscn" id="8_ef26j"]
 [ext_resource type="PackedScene" uid="uid://bp5nipcdx63vb" path="res://SampleProject/enemies/CaveTroll/cave_troll.tscn" id="8_frgif"]
 [ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="11_frgif"]
 [ext_resource type="Texture2D" uid="uid://biwn5irdj8rpr" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoor.png" id="12_frgif"]
@@ -2864,16 +2865,53 @@ position = Vector2(707, 285)
 [node name="DeadPirate2" parent="Enemies" unique_id=1016933944 instance=ExtResource("6_eni8b")]
 position = Vector2(2000, 285)
 
-[node name="Merman" parent="Enemies" unique_id=570366689 instance=ExtResource("7_aueu7")]
-position = Vector2(1097, 318)
-spawn_idle = true
-
-[node name="Merman2" parent="Enemies" unique_id=878963565 instance=ExtResource("7_aueu7")]
-position = Vector2(1506, 320)
-spawn_idle = true
-
 [node name="CaveTroll" parent="Enemies" unique_id=429861966 instance=ExtResource("8_frgif")]
 position = Vector2(1355, 315)
+
+[node name="SpawnEnemy" parent="Enemies" unique_id=1829841291 instance=ExtResource("8_ef26j")]
+position = Vector2(1251, 594)
+enemy = ExtResource("7_aueu7")
+enemy_type = "MERMAN"
+enemy_properties = Array[Dictionary]([{
+"name": "spawn_idle",
+"value": false
+}])
+automatic_offset = true
+spawn_range = Vector2(1600, 0)
+play_animation = false
+respawn = true
+respawn_cooldown = 10.0
+max_at_once = 5
+
+[node name="SpawnEnemy2" parent="Enemies" unique_id=687077281 instance=ExtResource("8_ef26j")]
+position = Vector2(1251, 594)
+enemy = ExtResource("7_aueu7")
+enemy_type = "MERMAN"
+enemy_properties = Array[Dictionary]([{
+"name": "spawn_idle",
+"value": false
+}])
+automatic_offset = true
+spawn_range = Vector2(1600, 0)
+play_animation = false
+respawn = true
+respawn_cooldown = 10.0
+max_at_once = 5
+
+[node name="SpawnEnemy3" parent="Enemies" unique_id=1799551690 instance=ExtResource("8_ef26j")]
+position = Vector2(1251, 594)
+enemy = ExtResource("7_aueu7")
+enemy_type = "MERMAN"
+enemy_properties = Array[Dictionary]([{
+"name": "spawn_idle",
+"value": false
+}])
+automatic_offset = true
+spawn_range = Vector2(1600, 0)
+play_animation = false
+respawn = true
+respawn_cooldown = 10.0
+max_at_once = 5
 
 [node name="Items" type="Node" parent="." unique_id=673278912]
 

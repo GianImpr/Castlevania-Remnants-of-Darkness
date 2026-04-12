@@ -18,7 +18,7 @@ func Physics_Update(delta: float):
 	can_die()
 	can_guard()
 	
-	if InputBuffer.is_action_press_buffered("jump") and Input.is_action_pressed("crouch"):
+	if InputBuffer.is_action_press_buffered("jump") and Input.is_action_pressed("crouch") and not player.is_hurt:
 		Transitioned.emit(self, "slide")
 	
 	if InputBuffer.is_action_press_buffered("backdash") and player.is_hurt and (Global.screen != Global.ScreenType.TRAINING or player.stats.Stats["HP"] > 0):

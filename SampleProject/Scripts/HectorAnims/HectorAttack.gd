@@ -1,17 +1,23 @@
 extends State
 class_name HectorAttack
 var can_perfect_guard: bool = true
+@export var hector_hands: Sprite2D
+const DEFAULT_HAND_FRAME: int = 6
 
 func _ready():
 	HectorWait.resumeAttackAnimation = resumeAttackAnimation
 
 func enter():
+	if attack_anim_suffix() == "_spear":
+		hector_hands.frame = DEFAULT_HAND_FRAME
+		hector_hands.visible = true
 	if not player.resume_attack:
 		animation.play("attack" + attack_anim_suffix(), -1, get_attack_speed())
 	else:
 		resumeAttackAnimation()
 	
 func exit():
+	hector_hands.visible = false
 	if player.sprite.weapon != null:
 		player.sprite.weapon.stop()
 	

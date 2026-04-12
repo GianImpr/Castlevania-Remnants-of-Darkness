@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ca5x188ifdjwt" path="res://SampleProject/Scripts/System/title_screen.gd" id="1_wa1th"]
 [ext_resource type="PackedScene" uid="uid://bjjk4mm7bkkd5" path="res://SampleProject/extra_scenes/loading_screen.tscn" id="2_hpjsa"]
-[ext_resource type="Texture2D" uid="uid://drvtxptjc62a0" path="res://assets/sprites/HUD/Title/Logo.png" id="4_ejp0b"]
+[ext_resource type="Texture2D" uid="uid://6xg6b4ht0wul" path="res://assets/sprites/HUD/Title/NewLogo.png" id="3_tevnt"]
 [ext_resource type="Texture2D" uid="uid://bnambwf21bgi8" path="res://assets/sprites/HUD/Title/PressStart.png" id="4_o6pa4"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="5_2pknv"]
 [ext_resource type="Texture2D" uid="uid://6wd7mmy7y5xn" path="res://assets/sprites/HUD/Title/sky.png" id="5_p8ta0"]
@@ -257,13 +257,13 @@ sound = NodePath("Sounds")
 
 [node name="Title" type="TextureRect" parent="." unique_id=1986862799]
 z_index = 1
-layout_mode = 0
-offset_left = 87.0
-offset_top = 13.0
-offset_right = 1248.0
-offset_bottom = 447.0
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_ejp0b")
+layout_mode = 1
+offset_left = 108.0
+offset_top = 23.0
+offset_right = 1405.0
+offset_bottom = 493.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_tevnt")
 
 [node name="Background" type="TextureRect" parent="." unique_id=546107514]
 layout_mode = 0

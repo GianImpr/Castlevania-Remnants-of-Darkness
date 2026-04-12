@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://qfif02ey0t3e"]
 
-[ext_resource type="Texture2D" uid="uid://k34l8labyta2" path="res://assets/sprites/Weapons/Spears/Lance.png" id="1_6ikni"]
+[ext_resource type="Texture2D" uid="uid://cx8xffxtvfeoy" path="res://assets/sprites/Weapons/Spears/Naginata.png" id="1_4d2d0"]
 [ext_resource type="Script" uid="uid://cuc51tpbif06h" path="res://SampleProject/Scripts/HectorAnims/weapon_sprite.gd" id="2_mpmg7"]
 [ext_resource type="Script" uid="uid://bnqfu6md522u3" path="res://SampleProject/Scripts/AttackLogic.gd" id="3_nnc8q"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="4_3ldej"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="5_o2v7l"]
-[ext_resource type="Texture2D" uid="uid://bbn7e5gi24eyw" path="res://assets/sprites/Weapons/Spears/Smear.png" id="6_07ok2"]
+[ext_resource type="Texture2D" uid="uid://dmnqsrnfygsh0" path="res://assets/sprites/Weapons/Spears/LanceSmear.png" id="6_duq7y"]
 
 [sub_resource type="Animation" id="Animation_sud5e"]
 length = 0.001
@@ -189,10 +189,10 @@ tracks/7/path = NodePath("Trail:self_modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.133333, 0.2, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -316,10 +316,10 @@ tracks/7/path = NodePath("Trail:self_modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.133333, 0.2, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -443,10 +443,10 @@ tracks/7/path = NodePath("Trail:self_modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.133333, 0.2, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -486,11 +486,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxj7m"]
 size = Vector2(82, 15)
 
-[node name="Lance" type="Sprite2D" unique_id=1336296905 node_paths=PackedStringArray("animation", "hitbox")]
+[node name="Naginata" type="Sprite2D" unique_id=1336296905 node_paths=PackedStringArray("animation", "hitbox")]
 process_mode = 1
 visible = false
-texture = ExtResource("1_6ikni")
-offset = Vector2(19, 0)
+texture = ExtResource("1_4d2d0")
+offset = Vector2(19, 12)
 hframes = 5
 script = ExtResource("2_mpmg7")
 animation = NodePath("AnimationPlayer")
@@ -516,7 +516,7 @@ shape = SubResource("RectangleShape2D_dxj7m")
 disabled = true
 
 [node name="Trail" type="Sprite2D" parent="." unique_id=1291135433]
-position = Vector2(-2, 1)
-texture = ExtResource("6_07ok2")
+position = Vector2(-2, -5)
+texture = ExtResource("6_duq7y")
 
 [connection signal="body_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_body_entered"]

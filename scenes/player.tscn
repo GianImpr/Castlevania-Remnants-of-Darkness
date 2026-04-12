@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
 [ext_resource type="Script" uid="uid://cb60kmpjhfr6h" path="res://SampleProject/player.gd" id="1_p2ow1"]
 [ext_resource type="PackedScene" uid="uid://bao10vvn6rpga" path="res://SampleProject/Powers/Axes/axe_throw.tscn" id="2_1180g"]
+[ext_resource type="PackedScene" uid="uid://b4vwhu0l34e8s" path="res://SampleProject/familiars/Crow/crow.tscn" id="2_1776x"]
 [ext_resource type="Script" uid="uid://j2vesgbfbner" path="res://SampleProject/Scripts/System/item.gd" id="2_j5pj6"]
 [ext_resource type="Script" uid="uid://1vp87s3hhyhn" path="res://SampleProject/Scripts/System/weapon.gd" id="2_ju6fn"]
 [ext_resource type="Texture2D" uid="uid://du0eiy67cnc7d" path="res://assets/sprites/Items/InventoryIcons/Inventory_258.png" id="3_2k40y"]
@@ -167,10 +168,12 @@
 [ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="121_xam8b"]
 [ext_resource type="PackedScene" uid="uid://bgau1ae4s0ma8" path="res://SampleProject/Powers/aguni_laurel_fire.tscn" id="122_4xc62"]
 [ext_resource type="AudioStream" uid="uid://dcwejqi3poyp4" path="res://assets/sounds/Effects/Miscellaneous/LevelUp.MP3" id="122_e7mle"]
+[ext_resource type="Texture2D" uid="uid://dwc4g23sdxtn2" path="res://assets/sprites/Characters/Hector/HectorSpearHands.png" id="122_gik8q"]
 [ext_resource type="Script" uid="uid://cf1ppfim3qip6" path="res://SampleProject/Scripts/HectorAnims/HectorGuardBlocking.gd" id="122_uml35"]
 [ext_resource type="Script" uid="uid://qj13jt40ymnd" path="res://SampleProject/Scripts/HectorAnims/HectorGuardBreak.gd" id="123_h7cmy"]
 [ext_resource type="Script" uid="uid://dv6ffl8lnhe18" path="res://SampleProject/Scripts/HectorAnims/HectorDoubleJump.gd" id="126_god42"]
 [ext_resource type="Script" uid="uid://yg6mkbqnmoey" path="res://SampleProject/Scripts/HectorAnims/HectorDiveKick.gd" id="127_3rsyo"]
+[ext_resource type="Script" uid="uid://dtuf333k0t8k3" path="res://SampleProject/Scripts/HectorAnims/HectorGlide.gd" id="129_b6n08"]
 [ext_resource type="Script" uid="uid://1xoxget7b8n6" path="res://SampleProject/Scripts/stateTest.gd" id="129_k7aot"]
 [ext_resource type="Script" uid="uid://bu6a0jaceyaa4" path="res://SampleProject/Scripts/HectorAnims/HectorSlide.gd" id="129_w5oev"]
 [ext_resource type="Script" uid="uid://bvobps123ifnc" path="res://SampleProject/Scripts/HectorAnims/HectorGuardPerfect.gd" id="133_qno2k"]
@@ -1708,6 +1711,18 @@ tracks/32/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Sprite2D/SpearHands:frame")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_lhfeg"]
 resource_name = "air_attack"
@@ -1851,6 +1866,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [333, 334, 335, 336, 337]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/SpearHands:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [13, 14, 15, 16, 17]
 }
 
 [sub_resource type="Animation" id="Animation_rol68"]
@@ -1996,6 +2023,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [320, 321, 322, 323, 324, 325]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/SpearHands:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_v6x1f"]
@@ -2314,6 +2353,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [327, 328, 329, 330, 331, 332]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/SpearHands:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002, 0.26666668, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12]
 }
 
 [sub_resource type="Animation" id="Animation_upmxk"]
@@ -5088,6 +5139,7 @@ floor_max_angle = 1.3089969
 floor_snap_length = 30.0
 safe_margin = 0.15
 script = ExtResource("1_p2ow1")
+innocent_devil_scene = ExtResource("2_1776x")
 sprite = NodePath("Sprite2D")
 aura = NodePath("Sprite2D/Aura")
 state_machine = NodePath("StateMachine")
@@ -5263,7 +5315,7 @@ volume_db = 9.905
 max_polyphony = 3
 bus = &"SFX"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=20858256 node_paths=PackedStringArray("glow_timer")]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=20858256 node_paths=PackedStringArray("glow_timer", "hector_hands")]
 process_mode = 3
 material = SubResource("ShaderMaterial_a8u0y")
 texture = ExtResource("3_hkpj0")
@@ -5274,6 +5326,7 @@ script = ExtResource("91_toel8")
 glow_speed = 0.17
 glow_timer = NodePath("Glow")
 initial_weapon_sprite = ExtResource("115_5uixd")
+hector_hands = NodePath("SpearHands")
 
 [node name="FistHitbox" type="Area2D" parent="Sprite2D" unique_id=1015260105 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1
@@ -5420,6 +5473,13 @@ vframes = 20
 [node name="Glow" type="Timer" parent="Sprite2D" unique_id=1881607956]
 one_shot = true
 
+[node name="SpearHands" type="Sprite2D" parent="Sprite2D" unique_id=578763171]
+visible = false
+z_index = 1
+position = Vector2(0, 11)
+texture = ExtResource("122_gik8q")
+hframes = 18
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=344604728]
 libraries/ = SubResource("AnimationLibrary_jttxa")
 
@@ -5454,6 +5514,10 @@ trail_timer = NodePath("../Slide/Trail_timer")
 FALLING_SPEED = Vector2(500, 800)
 attack_state = true
 metadata/_custom_type_script = "uid://yg6mkbqnmoey"
+
+[node name="Glide" type="Node" parent="StateMachine" unique_id=1085118303]
+script = ExtResource("129_b6n08")
+metadata/_custom_type_script = "uid://dtuf333k0t8k3"
 
 [node name="Landing" type="Node" parent="StateMachine" unique_id=404474392]
 script = ExtResource("7_klxgc")
@@ -5525,16 +5589,19 @@ wait_time = 0.08
 [node name="Debris_timer" type="Timer" parent="StateMachine/Backdash" unique_id=1182653179]
 wait_time = 0.1
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=1224426198]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1224426198 node_paths=PackedStringArray("hector_hands")]
 script = ExtResource("12_5kq8s")
+hector_hands = NodePath("../../Sprite2D/SpearHands")
 attack_state = true
 
-[node name="Crouch_attack" type="Node" parent="StateMachine" unique_id=876133017]
+[node name="Crouch_attack" type="Node" parent="StateMachine" unique_id=876133017 node_paths=PackedStringArray("hector_hands")]
 script = ExtResource("13_xjq4u")
+hector_hands = NodePath("../../Sprite2D/SpearHands")
 attack_state = true
 
-[node name="Air_attack" type="Node" parent="StateMachine" unique_id=1255109090]
+[node name="Air_attack" type="Node" parent="StateMachine" unique_id=1255109090 node_paths=PackedStringArray("hector_hands")]
 script = ExtResource("14_4akkl")
+hector_hands = NodePath("../../Sprite2D/SpearHands")
 attack_state = true
 
 [node name="Damage" type="Node" parent="StateMachine" unique_id=1524856899 node_paths=PackedStringArray("blood")]

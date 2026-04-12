@@ -71,7 +71,7 @@ var current_hits_taken_before_iframes: int = 0
 var reset_position: Vector2
 var facing_position: int
 var skip_crouch_anim: bool
-var innocent_devil
+var innocent_devil: InnocentDevil
 var direction: int = 0
 var skip_run_start: bool = false
 var can_jump_cancel: bool = true
@@ -355,7 +355,7 @@ func can_perfect_guard() -> bool:
 
 func addExp(amount: int) -> void:
 	stats.Stats["EXP"] += amount
-	if innocent_devil != null:
+	if innocent_devil != null and innocent_devil.is_alive:
 		innocent_devil.stats.Stats["EXP"] += amount
 		
 func addWeaponExp() -> void:
@@ -536,3 +536,6 @@ func activateGoddessShieldEffect() -> void:
 	goddess_shield_particles.restart()
 	goddess_shield_particles.emitting = true
 	sound.play_sound_effect_from_library("goddess_shield")
+
+func targettableInnocentDevil() -> bool:
+	return innocent_devil != null and innocent_devil is Crow and innocent_devil.is_alive

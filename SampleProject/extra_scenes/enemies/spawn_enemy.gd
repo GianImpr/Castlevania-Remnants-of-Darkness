@@ -61,7 +61,7 @@ func checkCondition(cond_type: Conditions):
 			return checkSameTypeEnemies() < max_at_once
 
 func _playSpawn():
-	if condition == Conditions.SUMMONED_IN_TOTAL:
+	if condition == Conditions.SUMMONED_IN_TOTAL or condition == Conditions.ALWAYS:
 		if checkCondition(condition):
 			if particles.emitting:
 				await particles.finished

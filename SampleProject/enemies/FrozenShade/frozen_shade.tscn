@@ -194,6 +194,7 @@ tracks/12/keys = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m68qi"]
 shader = ExtResource("4_m68qi")
+shader_parameter/dissolve_from_top = false
 shader_parameter/progress = 0.0
 shader_parameter/expansion_amount = 2.000000095
 shader_parameter/center_x = 0.0570000027075
@@ -659,7 +660,7 @@ metadata/_custom_type_script = "uid://d0ffw2f0aswn"
 
 [node name="VisionArea" type="Area2D" parent="." unique_id=1299825060]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="Vision" type="CollisionShape2D" parent="VisionArea" unique_id=1286557127]
 visible = false
@@ -675,7 +676,7 @@ debug_color = Color(0, 0.6364619, 0.40852782, 0.41960785)
 
 [node name="HitboxArea" type="Area2D" parent="." unique_id=1125416957]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=1050695074]
 visible = false
@@ -685,7 +686,7 @@ debug_color = Color(0.86811054, 0.35365856, 1.92523e-07, 0.41960785)
 
 [node name="FreezeArea" type="Area2D" parent="." unique_id=88021285]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FreezeArea" unique_id=997531684]
 visible = false

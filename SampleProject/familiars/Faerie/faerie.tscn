@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://ckq5g8uy1gq13" path="res://assets/sprites/InnocentDevils/InfantFairyCrystal.png" id="8_yowja"]
 [ext_resource type="Script" uid="uid://blognkorla2r8" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFunnyWall.gd" id="9_0ixtq"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_7ueiy"]
+[ext_resource type="Texture2D" uid="uid://dgyomqbnbmi4" path="res://assets/sprites/Items/InventoryIcons/Inventory_319.png" id="11_1mhe1"]
 [ext_resource type="PackedScene" uid="uid://b85mrm6ht3kgn" path="res://SampleProject/extra_scenes/effects/refreshing_air.tscn" id="13_aa5on"]
 [ext_resource type="AudioStream" uid="uid://dmygyfdvwkny8" path="res://assets/sounds/InnocentDevils/Faerie/HealEffect.MP3" id="13_n2r0b"]
 [ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="22_ue60m"]
@@ -53,6 +54,13 @@ cost = 13
 type = 2
 unlocked = true
 icon = ExtResource("6_0e5x1")
+
+[sub_resource type="Resource" id="Resource_6o0ma"]
+script = ExtResource("3_5jgsh")
+name = "GLIDE"
+description = "GLIDE_DESC"
+icon = ExtResource("11_1mhe1")
+metadata/_custom_type_script = "uid://bin0fbttt1atq"
 
 [sub_resource type="Animation" id="Animation_yowja"]
 length = 0.001
@@ -952,7 +960,7 @@ particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_syto6"]
 offsets = PackedFloat32Array(0.014423077, 1)
-colors = PackedColorArray(1.8247963, 1.8247963, 0, 1, 1.8247963, 1.8247963, 0, 0)
+colors = PackedColorArray(3.2944162, 3.2944162, 0, 1, 1.8247963, 1.8247963, 0, 0)
 
 [sub_resource type="Curve" id="Curve_1mhe1"]
 _limits = [-2.0, 2.0, 0.0, 1.0]
@@ -962,12 +970,20 @@ point_count = 3
 [node name="Faerie" type="CharacterBody2D" unique_id=928786545 node_paths=PackedStringArray("stats", "state_machine")]
 z_index = 7
 scale = Vector2(2, 2)
+motion_mode = 1
 script = ExtResource("1_un82i")
+evolutions = Array[Dictionary]([{
+"name": "INFANT_FAIRY",
+"sprite_body": ExtResource("8_0e5x1"),
+"sprite_crystal": ExtResource("8_yowja"),
+"sprite_smear": ExtResource("8_syto6"),
+"sprite_wings": ExtResource("7_yowja")
+}])
 id_name = "Fairy"
-stats = NodePath("InnocentDevil")
+stats = NodePath("InnocentDevilStats")
 state_machine = NodePath("StateMachine")
 
-[node name="InnocentDevil" type="Node" parent="." unique_id=1548762419 node_paths=PackedStringArray("level_up", "sound")]
+[node name="InnocentDevilStats" type="Node" parent="." unique_id=1548762419 node_paths=PackedStringArray("level_up", "sound")]
 script = ExtResource("2_fhvse")
 Stats = {
 "ATK": 5,
@@ -983,7 +999,7 @@ Growths = {
 "ATK": 50,
 "DEF": 0,
 "INT": 130,
-"MHearts": 300,
+"MHearts": 200,
 "MND": 150
 }
 Boosts = {
@@ -1003,7 +1019,8 @@ Initial = {
 "MHearts": 50,
 "MND": 5
 }
-skills = Array[ExtResource("3_5jgsh")]([SubResource("Resource_afldu"), SubResource("Resource_cf336"), SubResource("Resource_yowja")])
+skills = Array[ExtResource("3_5jgsh")]([SubResource("Resource_afldu"), SubResource("Resource_cf336"), SubResource("Resource_yowja"), SubResource("Resource_6o0ma")])
+evo_crystals = Array[int]([0, 0, 0, 0, 0])
 level_up = NodePath("../LevelUp")
 sound = NodePath("../PolyphonicAudioPlayer")
 
@@ -1112,7 +1129,7 @@ scale_amount_curve = SubResource("Curve_ykbwx")
 
 [node name="LevelUp" type="CPUParticles2D" parent="." unique_id=1026101236]
 material = SubResource("CanvasItemMaterial_bn0uq")
-position = Vector2(-2, -4)
+position = Vector2(0, -1)
 emitting = false
 amount = 96
 texture = ExtResource("22_ue60m")

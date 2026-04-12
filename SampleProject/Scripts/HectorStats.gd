@@ -273,3 +273,79 @@ func sortSkillInventoryAlgorithm(a: Dictionary, b: Dictionary) -> bool:
 	if skill_a.type == Skill.SkillType.LEARNABLE and skill_b.type == Skill.SkillType.LEARNABLE:
 		return skill_a.weapon_type < skill_b.weapon_type
 	return a.id < b.id
+
+func calculateDamageTaken(base_power: int, multiplier: float, chip_damage: int, guard_break: bool, attribute: Global.Attribute, knockback: bool) -> int:
+	var player: HectorPlayer = get_parent()
+	var damage = max((base_power - Stats["DEF"]/2)*multiplier, 1)
+	var damage_with_chip = damage + chip_damage
+	const STONE_DAMAGE_MULTIPLIER: float = 2
+	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
+	const ENFEEBLE_DAMAGE_MULTIPLIER: float = 1.3
+	const GODDESS_SHIELD_DAMAGE_MULTIPLIER: float = 0.5
+	
+	player.checkTightGuard()
+
+	if player.isGuarding():
+		if player.isPerfectGuarding():
+			Stats["MP"] = min(Stats["MMP"], Stats["MP"]+floor(damage/10)+10*(int(guard_break)+2))
+			player.heal_innocent(floor(damage/10)+1)
+			Stats["Guard"] = 3
+			GuardSparkle.tight_guard_sparkle = false
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.PERFECT_GUARD)
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
+			return 0
+		if (damage_with_chip < Stats["MHP"]/10 or TrainingSettings.cur_challenge == TrainingMode.Training.GUARD) and Stats["Guard"] > 1 and not guard_break:
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
+			Stats["Guard"] -= 1
+			return 0
+		elif damage_with_chip >= Stats["MHP"]/10 and Stats["Guard"] > 1 and not guard_break:
+			damage = min(damage * 0.1 + chip_damage, Stats["HP"]-1)
+			if Global.player.stats.accessoryEquipped(Accessory.Accessories.TOUGH_RING):
+				damage = 0
+		elif Stats["Guard"] == 1 or guard_break:
+			damage = damage * 0.6 + chip_damage
+		if not guard_break:
+			Stats["Guard"] -= 1
+		else:
+			Stats["Guard"] = 0
+	else:
+		player.knockback = knockback
+		player.applyHitEffect(attribute)
+		
+	if not player.isGuarding() or Stats["Guard"] == 0:
+		match attribute:
+			Global.Attribute.STONE:
+				player.petrify()
+			Global.Attribute.CURSE:
+				player.curse()
+			Global.Attribute.POISON:
+				player.poison()
+			Global.Attribute.ENFEEBLE:
+				player.enfeeble()
+		
+	if player.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
+		if guard_break:
+			damage = min(damage*0.6, Stats["HP"]/10)
+		else:
+			damage = 0
+			
+	if player.state_machine.current_state is HectorPetrified:
+		damage *= STONE_DAMAGE_MULTIPLIER
+		
+	if accessoryEquipped(Accessory.Accessories.CONFIDENCE_RING):
+		damage *= CONFIDENCE_RING_MULTIPLIER
+		
+	if status[Status.ENFEEBLE] > 0:
+		damage *= ENFEEBLE_DAMAGE_MULTIPLIER
+	
+	if damage > Stats["HP"] and Stats["HP"] > 1 and randi_range(0, 99) < Stats["LCK"] and Global.player.stats.itemEquipped(Artifact.Artifacts.MIRACLE_COIN, "artifact"):
+		damage = Stats["HP"] - 1
+		
+	if Global.player.stats.itemEquipped(Artifact.Artifacts.GODDESS_SHIELD, Global.player.stats.EQUIPMENT_SLOTS.ARTIFACT) and randf_range(0,99) < Global.player.stats.Stats["LCK"]*0.5:
+		damage *= GODDESS_SHIELD_DAMAGE_MULTIPLIER
+		Global.player.activateGoddessShieldEffect()
+		
+	if Global.screen == Global.ScreenType.TRAINING:
+		return ceil(Stats["MHP"] * TrainingSettings.damage_upon_hit / 100)
+	
+	return damage

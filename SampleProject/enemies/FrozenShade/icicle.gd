@@ -35,13 +35,17 @@ func destroy():
 	
 func alignToPlayer() -> void:
 	var aligning_tween: Tween = get_tree().create_tween()
-	var cur_player_position: Vector2 = Global.player.global_position
+	var cur_target_position: Vector2 = Global.player.global_position
 	const ALIGNING_DURATION: float = 0.5
 	const COOLDOWN_DURATION: float = 0.3
 	const COOLDOWN_DURATION_MIN_MULTIPLIER: float = 1
 	const COOLDOWN_DURATION_MAX_MULTIPLIER: float = 5
+	
+	if Global.player.targettableInnocentDevil() and randi_range(0, 1) == 0:
+		cur_target_position = Global.player.innocent_devil.global_position
+	
 	aligning_tween.set_trans(Tween.TRANS_QUART)
 	aligning_tween.set_ease(Tween.EASE_OUT)
-	aligning_tween.tween_property(self, "rotation", global_position.angle_to_point(cur_player_position)-PI/2, ALIGNING_DURATION)
+	aligning_tween.tween_property(self, "rotation", global_position.angle_to_point(cur_target_position)-PI/2, ALIGNING_DURATION)
 	await aligning_tween.finished
 	await get_tree().create_timer(COOLDOWN_DURATION*randf_range(COOLDOWN_DURATION_MIN_MULTIPLIER, COOLDOWN_DURATION_MAX_MULTIPLIER), false).timeout

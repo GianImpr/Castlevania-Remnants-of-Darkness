@@ -443,7 +443,7 @@ damage_node = ExtResource("6_2ymih")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=305353556]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=430047815]
 position = Vector2(0.5, 3)
@@ -453,7 +453,7 @@ shape = SubResource("RectangleShape2D_hxc08")
 
 [node name="Area of Vision" type="Area2D" parent="." unique_id=189491389]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision" unique_id=1300848933]
 position = Vector2(-12.5, -39)

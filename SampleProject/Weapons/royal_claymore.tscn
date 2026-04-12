@@ -170,7 +170,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0.1, 0.15, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(0.894118, 0.501961, 0.443137, 0.376471), Color(0.894118, 0.501961, 0.443137, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.3764706), Color(1, 1, 1, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -370,7 +370,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0.1, 0.15, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(0.894118, 0.501961, 0.443137, 0.376471), Color(0.894118, 0.501961, 0.443137, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.3764706), Color(1, 1, 1, 0)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -532,7 +532,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0.2, 0.25, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(0.894118, 0.501961, 0.443137, 0.376471), Color(0.894118, 0.501961, 0.443137, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.3764706), Color(1, 1, 1, 0)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -587,7 +587,6 @@ z_index = -1
 texture = ExtResource("1_8tfxt")
 hframes = 11
 vframes = 2
-frame = 3
 script = ExtResource("2_g780g")
 animation = NodePath("AnimationPlayer")
 hitbox = NodePath("PlayerHitbox")
@@ -604,12 +603,12 @@ ice_hit_collision_scene = ExtResource("5_whyrv")
 base_attribute = Array[int]([2])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox" unique_id=1280816527]
-position = Vector2(15, -8)
-rotation = -0.00568026
+position = Vector2(-12, 20)
 shape = SubResource("RectangleShape2D_i1dwb")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=16646798]
-self_modulate = Color(0.894118, 0.501961, 0.443137, 0.37647104)
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(-15, 9)
 texture = ExtResource("6_8tfxt")
 hframes = 5

@@ -416,7 +416,7 @@ shape = SubResource("CircleShape2D_srgf1")
 
 [node name="VisionArea" type="Area2D" parent="." unique_id=1391903479]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="Vision" type="CollisionShape2D" parent="VisionArea" unique_id=569444513]
 visible = false
@@ -426,7 +426,7 @@ debug_color = Color(0.10538485, 0.6483274, 0, 0.41960785)
 
 [node name="HitboxArea" type="Area2D" parent="." unique_id=1963933064]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="Hitbox" type="CollisionShape2D" parent="HitboxArea" unique_id=2133692894]
 shape = SubResource("CircleShape2D_amc8p")

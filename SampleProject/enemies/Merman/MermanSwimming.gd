@@ -63,7 +63,8 @@ func Update(delta: float):
 func Physics_Update(delta: float):
 	if player.is_on_floor() and not player.spawn_idle:
 		sprite.offset = Vector2.ZERO
-		rotating_tween.kill()
+		if rotating_tween:
+			rotating_tween.kill()
 		sprite.rotation_degrees = 0
 		animation.play("recoil")
 		await animation.animation_finished

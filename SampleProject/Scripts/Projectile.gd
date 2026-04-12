@@ -18,6 +18,10 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 	const STONE_DAMAGE_MULTIPLIER: float = 2
 	const GODDESS_SHIELD_DAMAGE_MULTIPLIER: float = 0.5
 	var damage
+	
+	if body is InnocentDevil:
+		return body.stats.calculateDamageTaken(base_damage+thrower_ATK, multiplier, chip_damage, guard_break, attribute, knockback)
+	
 	if magical:
 		damage = max(base_damage + thrower_ATK - body.stats.Stats["RES"]/2, 1) * multiplier
 	else:
@@ -96,7 +100,12 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 		
 func apply_damage(body, damage):
 	body.damage_popup.popup(damage, 0)
-	body.stats.Stats["HP"] -= damage
+	
+	if body is InnocentDevil:
+		body.stats.Stats["Hearts"] = max(body.stats.Stats["Hearts"] - damage, 0)
+	else:
+		body.stats.Stats["HP"] = max(body.stats.Stats["HP"] - damage, 0)
+		if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]*0.07:
+			body.is_hurt = false
+
 	body.is_hurt = true
-	if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]*0.07:
-		body.is_hurt = false

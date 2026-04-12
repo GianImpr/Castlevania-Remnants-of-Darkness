@@ -39,3 +39,6 @@ func Update(delta):
 		animation.play("landing", -1, 1.5)
 		await animation.animation_finished
 		animation.play(ANIM_NAME, BLEND, ANIM_SPEED)
+		
+	if not animation.is_playing():
+		animation.play(ANIM_NAME, BLEND, ANIM_SPEED)

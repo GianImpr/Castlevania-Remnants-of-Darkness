@@ -9,7 +9,7 @@ var Boosts: Dictionary #Stat boosts to Hector
 var Initial: Dictionary #Initial starting stats
 var Bases: Dictionary = StaticGlobal.deep_dictionary_duplicate(Initial) #Current stats without boosts
 var skills: Array[IDSkill]
-var evo_crystals: Dictionary
+var evo_crystals: Array[int]
 var innocent_devil_scene: PackedScene
 
 func getDataFromIDStats(devil: CharacterBody2D) -> void:
@@ -22,7 +22,7 @@ func getDataFromIDStats(devil: CharacterBody2D) -> void:
 	Initial = StaticGlobal.deep_dictionary_duplicate(stats.Initial)
 	Bases = StaticGlobal.deep_dictionary_duplicate(stats.Bases)
 	skills = StaticGlobal.recursive_duplicate(stats.skills)
-	evo_crystals = StaticGlobal.deep_dictionary_duplicate(stats.evo_crystals)
+	evo_crystals = stats.evo_crystals.duplicate(true)
 	innocent_devil_scene = load(devil.scene_file_path)
 	
 func applyStats(devil: CharacterBody2D) -> void:
@@ -35,7 +35,7 @@ func applyStats(devil: CharacterBody2D) -> void:
 	stats.Initial = StaticGlobal.deep_dictionary_duplicate(Initial)
 	stats.Bases = StaticGlobal.deep_dictionary_duplicate(Bases)
 	stats.skills = StaticGlobal.recursive_duplicate(skills)
-	stats.evo_crystals = StaticGlobal.deep_dictionary_duplicate(evo_crystals)
+	stats.evo_crystals = evo_crystals.duplicate(true)
 
 func updateStats(devil: CharacterBody2D) -> void:
 	getDataFromIDStats(devil)

@@ -181,6 +181,21 @@ func useItem(item: Item) -> bool:
 			sound.play_sound_effect_from_library("MPItem")
 		item.HealingType.SYNERGY:
 			stats["SP"] = min(stats["SP"]+item.power, stats["MSP"])
+		item.HealingType.HEART:
+			if Global.player.innocent_devil == null or not Global.player.innocent_devil.is_alive:
+				sound.play_sound_effect_from_library("denied")
+				return false
+			Global.player.innocent_devil.stats.Stats["Hearts"] = min(Global.player.innocent_devil.stats.Stats["Hearts"]+item.power, Global.player.innocent_devil.stats.Stats["MHearts"])
+			sound.play_sound_effect_from_library("MPItem")
+			displayProperties(item)
+		item.HealingType.REVIVE:
+			if Global.player.innocent_devil == null or Global.player.innocent_devil.is_alive:
+				sound.play_sound_effect_from_library("denied")
+				return false
+			Global.player.innocent_devil.stats.Stats["Hearts"] = min(Global.player.innocent_devil.stats.Stats["Hearts"]+item.power, Global.player.innocent_devil.stats.Stats["MHearts"])
+			sound.play_sound_effect_from_library("MPItem")
+			displayProperties(item)
+
 	menu.updateStats()
 	return true
 	
@@ -196,7 +211,14 @@ func displayProperties(item: Item) -> void:
 			labels.SubStatValues.text += tr("MP_STAT") + " "
 		item.HealingType.SYNERGY:
 			labels.SubStatValues.text += tr("SP_STAT") + " "
+		item.HealingType.HEART:
+			labels.SubStatValues.text += tr("MENU_HEARTS") + " "
+		item.HealingType.REVIVE:
+			labels.SubStatValues.text += tr("MENU_HEARTS") + " "
 	if item.power > 0:
 		labels.SubStatValues.text += "+" + str(item.power)
 	else:
 		labels.SubStatValues.text += "-" + str(item.power)
+		
+	if (item.healing_type == item.HealingType.HEART or item.healing_type == item.HealingType.REVIVE) and Global.player.innocent_devil != null:
+		labels.SubStatValues.text += "\n" + str(Global.player.innocent_devil.stats.Stats["Hearts"]) + "/" + str(Global.player.innocent_devil.stats.Stats["MHearts"])

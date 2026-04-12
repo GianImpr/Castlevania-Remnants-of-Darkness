@@ -2,9 +2,13 @@ extends State
 class_name HectorAirAttack
 var can_perfect_guard: bool = true
 const HEIGHT_DECELERATION: float = 0.95
-
+@export var hector_hands: Sprite2D
+const DEFAULT_HAND_FRAME: int = 6
 
 func enter():
+	if attack_anim_suffix() == "_spear":
+		hector_hands.frame = DEFAULT_HAND_FRAME
+		hector_hands.visible = true
 	animation.play("air_attack" + attack_anim_suffix(), -1, get_attack_speed())
 	
 func exit():
@@ -12,6 +16,7 @@ func exit():
 		player.sprite.weapon.stop()
 	elif player.sprite.weapon != null and player.resume_attack:
 		player.sprite.weapon.register_anim_pos()
+	hector_hands.visible = false
 	
 func Update(delta: float):
 	pass

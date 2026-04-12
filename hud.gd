@@ -23,15 +23,21 @@ class_name HeadsUpDisplay
 @export var mana_colors: Array[CompressedTexture2D]
 @onready var HUD_fog: TextureRect = $TextureRect/Fog
 @onready var id_hud_fog: TextureRect = $TextureRect/IDFog
+@onready var id_mode: TextureRect = $IDBars/IDMode
 
 var can_change_opacity: bool = true
 var is_transparent: bool = false
 var opacity_trigger_offset: int = 0
+var id_mode_tween_color: Tween
 
 const BASE_BAR_SIZE: int = 48
 const MAX_BAR_SIZE: int = 130
 const BASE_BODY_SIZE: int = 140
 const DEFAULT_BODY_SIZE: int = 163
+const ID_OFFENSIVE_MODE_COLOR: Color = Color.RED
+const ID_DEFENSIVE_MODE_COLOR: Color = Color.DODGER_BLUE
+const ID_MODE_SWITCH_TWEEN_DURATION: float = 0.25
+const ID_NO_MODE_COLOR: Color = Color.BLACK
 
 const ID_BASE_BAR_SIZE: int = 33
 const ID_MAX_BAR_SIZE: int = 90
@@ -70,6 +76,8 @@ func _ready():
 	if Global.player.innocent_devil != null:
 		h_box_container.updateHP(Global.player.innocent_devil.stats.Stats["Hearts"], Global.player.innocent_devil.stats.Stats["MHearts"])
 		initBar(Global.player.innocent_devil.stats.Stats["Hearts"], Global.player.innocent_devil.stats.Stats["MHearts"], hearts)
+	else:
+		Global.HUD.id_mode.self_modulate = Global.HUD.ID_NO_MODE_COLOR
 	initBar(HP, MHP, health)
 	initBar(MP, MMP, mana)
 	var atlas: AtlasTexture = HUD_fog.texture
@@ -294,3 +302,11 @@ func updateWeaponIconAndLight(weapon: Weapon) -> void:
 			Input.set_joy_light(0, Color.GREEN)
 		Weapon.Type.FIST:
 			Input.set_joy_light(0, Color.YELLOW)
+
+func switchIdModeColor(color: Color) -> void:
+	const MAX_INTENSITY_MULTIPLIER: float = 2
+	if id_mode_tween_color != null and id_mode_tween_color.is_running():
+		id_mode_tween_color.kill()
+	id_mode_tween_color = get_tree().create_tween()
+	id_mode_tween_color.tween_property(id_mode, "self_modulate", color*MAX_INTENSITY_MULTIPLIER, ID_MODE_SWITCH_TWEEN_DURATION)
+	id_mode_tween_color.tween_property(id_mode, "self_modulate", color, ID_MODE_SWITCH_TWEEN_DURATION)

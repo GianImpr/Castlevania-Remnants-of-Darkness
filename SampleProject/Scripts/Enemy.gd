@@ -45,87 +45,22 @@ func remove_glow_if_glowing():
 		sprite.self_modulate = Color(min(sprite.self_modulate.r+0.12, 1), min(sprite.self_modulate.g+0.12, 1), min(sprite.self_modulate.b+0.12, 1))
 
 func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool = false, attribute: Global.Attribute = Global.Attribute.HIT, knockback: bool = false) -> int:
-	var damage = max((stats.ATK - body.stats.Stats["DEF"]/2)*multiplier, 1)
-	var damage_with_chip = damage + chip_damage
-	const STONE_DAMAGE_MULTIPLIER: float = 2
-	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
-	const ENFEEBLE_DAMAGE_MULTIPLIER: float = 1.3
-	const GODDESS_SHIELD_DAMAGE_MULTIPLIER: float = 0.5
-	
-	body.checkTightGuard()
-
-	if body.isGuarding():
-		if body.isPerfectGuarding():
-			body.stats.Stats["MP"] = min(body.stats.Stats["MMP"], body.stats.Stats["MP"]+floor(damage/10)+10*(int(guard_break)+2))
-			body.heal_innocent(floor(damage/10)+1)
-			body.stats.Stats["Guard"] = 3
-			GuardSparkle.tight_guard_sparkle = false
-			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.PERFECT_GUARD)
-			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
-			return 0
-		if (damage_with_chip < body.stats.Stats["MHP"]/10 or TrainingSettings.cur_challenge == TrainingMode.Training.GUARD) and body.stats.Stats["Guard"] > 1 and not guard_break:
-			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)
-			body.stats.Stats["Guard"] -= 1
-			return 0
-		elif damage_with_chip >= body.stats.Stats["MHP"]/10 and body.stats.Stats["Guard"] > 1 and not guard_break:
-			damage = min(damage * 0.1 + chip_damage, body.stats.Stats["HP"]-1)
-			if Global.player.stats.accessoryEquipped(Accessory.Accessories.TOUGH_RING):
-				damage = 0
-		elif body.stats.Stats["Guard"] == 1 or guard_break:
-			damage = damage * 0.6 + chip_damage
-		if not guard_break:
-			body.stats.Stats["Guard"] -= 1
-		else:
-			body.stats.Stats["Guard"] = 0
-	else:
-		body.knockback = knockback
-		body.applyHitEffect(attribute)
-		
-	if not body.isGuarding() or body.stats.Stats["Guard"] == 0:
-		match attribute:
-			Global.Attribute.STONE:
-				body.petrify()
-			Global.Attribute.CURSE:
-				body.curse()
-			Global.Attribute.POISON:
-				body.poison()
-			Global.Attribute.ENFEEBLE:
-				body.enfeeble()
-		
-	if body.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
-		if guard_break:
-			damage = min(damage*0.6, body.stats.Stats["HP"]/10)
-		else:
-			damage = 0
-			
-	if body.state_machine.current_state is HectorPetrified:
-		damage *= STONE_DAMAGE_MULTIPLIER
-		
-	if body.stats.accessoryEquipped(Accessory.Accessories.CONFIDENCE_RING):
-		damage *= CONFIDENCE_RING_MULTIPLIER
-		
-	if body.stats.status[body.stats.Status.ENFEEBLE] > 0:
-		damage *= ENFEEBLE_DAMAGE_MULTIPLIER
-	
-	if damage > body.stats.Stats["HP"] and body.stats.Stats["HP"] > 1 and randi_range(0, 99) < body.stats.Stats["LCK"] and Global.player.stats.itemEquipped(Artifact.Artifacts.MIRACLE_COIN, "artifact"):
-		damage = body.stats.Stats["HP"] - 1
-		
-	if Global.player.stats.itemEquipped(Artifact.Artifacts.GODDESS_SHIELD, Global.player.stats.EQUIPMENT_SLOTS.ARTIFACT) and randf_range(0,99) < Global.player.stats.Stats["LCK"]*0.5:
-		damage *= GODDESS_SHIELD_DAMAGE_MULTIPLIER
-		Global.player.activateGoddessShieldEffect()
-		
-	if Global.screen == Global.ScreenType.TRAINING:
-		return ceil(body.stats.Stats["MHP"] * TrainingSettings.damage_upon_hit / 100)
-	
-	return damage
+	return body.stats.calculateDamageTaken(stats.ATK, multiplier, chip_damage, guard_break, attribute, knockback)
 	
 func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float = 0):
 	body.damage_popup.popup(damage, 0)
-	body.stats.Stats["HP"] = max(body.stats.Stats["HP"]-damage, 0)
-	body.is_hurt = true
-	if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]*0.07:
-		body.is_hurt = false
-	attack_hitbox.set_collision_mask_value(2, false)
+	
+	if body is HectorPlayer:
+		body.stats.Stats["HP"] = max(body.stats.Stats["HP"]-damage, 0)
+		if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]*0.07:
+			body.is_hurt = false
+		body.is_hurt = true
+		attack_hitbox.set_collision_mask_value(2, false)
+	elif body is InnocentDevil:
+		body.stats.Stats["Hearts"] = max(body.stats.Stats["Hearts"]-damage, 0)
+		body.is_hurt = true
+		attack_hitbox.set_collision_mask_value(14, false)
+		
 	if rehit_time > 0:
 		var iframes_timer: Timer = Timer.new()
 		add_child(iframes_timer)
@@ -142,14 +77,25 @@ func hit_target(multiplier: float, body, attack_hitbox = hitbox_iframe, chip_dam
 		var damage = calculate_damage(body, multiplier, chip_damage, guard_break, attribute, knockback)
 		apply_damage(body, damage, attack_hitbox, rehit_time)
 	if "facing_position" in self:
-		body.sprite.flip_h = self.facing_position == 1
+		if "sprite" in body:
+			body.sprite.flip_h = self.facing_position == 1
+		elif body is InnocentDevil:
+			if self.facing_position != body.facing_position:
+				body.state_machine.current_state.turn_around()
 
 func resetHitbox(attack_hitbox: Area2D) -> void:
 	if stats.HP > 0:
 		attack_hitbox.set_collision_mask_value(2, true)
+		attack_hitbox.set_collision_mask_value(14, true)
 
 static func resetInvulnerability() -> void:
 	body_hitbox_on_cooldown = false
 
 func setStayIdle(value: bool) -> void:
 	stay_idle = value
+
+func getHurtbox() -> CollisionShape2D:
+	for child in get_children():
+		if child is CollisionShape2D:
+			return child
+	return null

@@ -83,8 +83,10 @@ func can_guard():
 func can_turn():
 	if player.direction == 1:
 		player.sprite.flip_h = false
+		player.sprite.hector_hands.flip_h = false
 	elif player.direction == -1:
 		player.sprite.flip_h = true
+		player.sprite.hector_hands.flip_h = true
 
 #Allows the player to move, with possibility to retain momentum
 #This only applies movement, without changing animation, so it is different than
@@ -412,6 +414,18 @@ func enemy_check_is_hurt(new_state_on_damage: String) -> void:
 	if player.is_hurt and player.stats.HP > 0:
 		player.is_hurt = false
 		Transitioned.emit(self, new_state_on_damage)
+		
+func innocent_check_is_hurt(new_state_on_damage: String) -> void:
+	if player.is_hurt and player.stats.Stats["Hearts"] > 0:
+		Transitioned.emit(self, new_state_on_damage)
+		
+func innocent_can_guard() -> void:
+	if player.attack_blocked:
+		Transitioned.emit(self, "guard")
+		
+func innocent_can_die() -> void:
+	if player.stats.Stats["Hearts"] <= 0:
+		Transitioned.emit(self, "dying")
 
 func turn_around():
 	player.scale.x *= (-1)
@@ -424,5 +438,6 @@ func can_use_skill() -> void:
 		return
 		
 	if Input.is_action_just_pressed("innocent_devil_move") and player.stats.Stats["Hearts"] > player.stats.skills[player.current_skill].cost and Global.player.stats.Stats["HP"] > 0:
+		player.updateCurSkillTransition()
 		Global.player.sound.play_sound_effect_from_library("innocent_command")
-		Transitioned.emit(self, "Healing")
+		Transitioned.emit(self, player.skill_transitions_to_state)

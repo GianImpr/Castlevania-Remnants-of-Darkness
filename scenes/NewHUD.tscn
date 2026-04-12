@@ -199,6 +199,14 @@ width = 3
 height = 3
 fill_to = Vector2(0, 1)
 
+[sub_resource type="Gradient" id="Gradient_cmfcn"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w6egv"]
+gradient = SubResource("Gradient_cmfcn")
+width = 38
+height = 40
+fill_to = Vector2(0, 1)
+
 [sub_resource type="Animation" id="Animation_0iyl6"]
 length = 0.001
 tracks/0/type = "value"
@@ -740,8 +748,20 @@ offset_bottom = 36.5
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("13_yybq8")
 
+[node name="IDMode" type="TextureRect" parent="IDBars" unique_id=1832088204]
+self_modulate = Color(0, 0.5058824, 1, 1)
+z_index = -1
+layout_mode = 0
+offset_left = 5.0
+offset_top = 1.5
+offset_right = 43.0
+offset_bottom = 41.5
+scale = Vector2(0.45, 0.45)
+texture = SubResource("GradientTexture2D_w6egv")
+
 [node name="LevelUpIcon" type="Sprite2D" parent="IDBars" unique_id=1144404293]
-position = Vector2(47, 28.5)
+position = Vector2(39, 27)
+scale = Vector2(0.7, 0.7)
 skew = -1.56905
 texture = ExtResource("14_4k87i")
 vframes = 4

@@ -5,7 +5,7 @@ class_name InvDevil
 @export var id_name: Label
 @export var skill_description: Label
 @export var skill_list: DevilButtons
-var devil: Faerie
+var devil: InnocentDevil
 
 func enter():
 	devil = Global.player.innocent_devil

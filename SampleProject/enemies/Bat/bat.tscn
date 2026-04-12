@@ -154,7 +154,7 @@ shape = SubResource("RectangleShape2D_gki5g")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2101466466]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=774211326]
 position = Vector2(-1, 9)
@@ -169,7 +169,7 @@ speed_scale = 2.0
 [node name="Area of Vision" type="Area2D" parent="." unique_id=1692126256]
 visible = false
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area of Vision" unique_id=686709895]
 shape = SubResource("CircleShape2D_rxwe6")

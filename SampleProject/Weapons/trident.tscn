@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bnqfu6md522u3" path="res://SampleProject/Scripts/AttackLogic.gd" id="3_l2d23"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="4_fe1b5"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="5_mqj7x"]
-[ext_resource type="Texture2D" uid="uid://bbn7e5gi24eyw" path="res://assets/sprites/Weapons/Spears/Smear.png" id="6_klgca"]
+[ext_resource type="Texture2D" uid="uid://dmnqsrnfygsh0" path="res://assets/sprites/Weapons/Spears/LanceSmear.png" id="6_kv3cy"]
 [ext_resource type="Texture2D" uid="uid://sy66dqk72fgc" path="res://assets/sprites/Enemies/Procel/ProcelBubble.png" id="7_kv3cy"]
 
 [sub_resource type="Animation" id="Animation_l2d23"]
@@ -227,10 +227,10 @@ tracks/7/path = NodePath("Trail:self_modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.133333, 0.2, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -280,7 +280,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(46, -8)]
+"values": [Vector2(38, -8)]
 }
 tracks/12/type = "method"
 tracks/12/imported = false
@@ -404,10 +404,10 @@ tracks/7/path = NodePath("Trail:self_modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.133333, 0.2, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -457,7 +457,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(46, -8)]
+"values": [Vector2(38, -8)]
 }
 tracks/12/type = "method"
 tracks/12/imported = false
@@ -581,10 +581,10 @@ tracks/7/path = NodePath("Trail:self_modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.133333, 0.2, 0.266667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -634,7 +634,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(46, 4)]
+"values": [Vector2(38, 4)]
 }
 tracks/12/type = "method"
 tracks/12/imported = false
@@ -687,7 +687,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 process_mode = 1
 visible = false
 texture = ExtResource("1_h72dh")
-offset = Vector2(19, 0)
+offset = Vector2(19, 12)
 hframes = 5
 script = ExtResource("2_kv3cy")
 animation = NodePath("AnimationPlayer")
@@ -708,14 +708,13 @@ ice_hit_collision_scene = ExtResource("5_mqj7x")
 base_attribute = Array[int]([2])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox" unique_id=2060136593]
-visible = false
 position = Vector2(21, 11)
 shape = SubResource("RectangleShape2D_dxj7m")
 disabled = true
 
 [node name="Trail" type="Sprite2D" parent="." unique_id=1291135433]
-position = Vector2(-2, 0)
-texture = ExtResource("6_klgca")
+position = Vector2(-2, -5)
+texture = ExtResource("6_kv3cy")
 
 [node name="Bubbles" type="CPUParticles2D" parent="." unique_id=892563380]
 self_modulate = Color(0.59000057, 0.8238249, 1, 0.56)

@@ -5,6 +5,8 @@ const FIST_ANIMATION_CANCELLABLE_FROM: float = 0.48
 static var getWeaponAttackSound: Callable
 static var getHectorAttackSound: Callable
 const WEAPON_ANIMATION_DELAY: float = 0.01
+@export var hector_hands: Sprite2D
+const DEFAULT_HAND_FRAME: int = 6
 
 func enter():
 	playAttackAnimation()
@@ -12,6 +14,7 @@ func enter():
 func exit():
 	if player.sprite.weapon != null:
 		player.sprite.weapon.stop()
+	hector_hands.visible = false
 	
 func Update(delta: float):
 	remove_momentum()
@@ -35,6 +38,9 @@ func Physics_Update(delta: float):
 func playAttackAnimation() -> void:
 	var anim_speed = get_attack_speed()
 	var anim_suffix = attack_anim_suffix()
+	if attack_anim_suffix() == "_spear":
+		hector_hands.frame = DEFAULT_HAND_FRAME
+		hector_hands.visible = true
 	animation.play("crouch_attack" + anim_suffix, -1, anim_speed)
 	animation.seek(0)
 

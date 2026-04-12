@@ -961,7 +961,7 @@ shape = SubResource("RectangleShape2D_o00jw")
 
 [node name="Detection" type="Area2D" parent="." unique_id=1670174500]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="Hitbox" type="CollisionShape2D" parent="Detection" unique_id=1207896389]
 visible = false
@@ -970,7 +970,7 @@ shape = SubResource("RectangleShape2D_dklpl")
 
 [node name="Swing" type="Area2D" parent="." unique_id=2099967321]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="SwingHitbox" type="CollisionShape2D" parent="Swing" unique_id=385544821]
 visible = false
@@ -980,7 +980,7 @@ disabled = true
 
 [node name="Fire" type="Area2D" parent="." unique_id=1890724401]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="FireHitbox" type="CollisionShape2D" parent="Fire" unique_id=37755445]
 position = Vector2(5, 40)
@@ -989,7 +989,7 @@ disabled = true
 
 [node name="Mince" type="Area2D" parent="." unique_id=773033868]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="MinceHitbox" type="CollisionShape2D" parent="Mince" unique_id=950790287]
 visible = false
@@ -1000,7 +1000,7 @@ disabled = true
 [node name="AreaOfVision" type="Area2D" parent="." unique_id=1835442246]
 visible = false
 collision_layer = 0
-collision_mask = 2
+collision_mask = 8194
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaOfVision" unique_id=1503312097]
 position = Vector2(3, 24)
