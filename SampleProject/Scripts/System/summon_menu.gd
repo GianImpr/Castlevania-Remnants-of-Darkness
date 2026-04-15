@@ -1,10 +1,23 @@
 extends MenuState
 class_name InvSummon
 
-@export var empty_ID_bar: GradientTexture2D
-@export var fill_ID_bar: GradientTexture2D
 @export var id_panel: VBoxContainer
 @export var buttons: SummonButtons
+@export var send_back_button: InventoryButton
+@export var id_entry_template: HBoxContainer
+var first_button: InventoryButton
+
+enum EntryChildID {
+	NAME = 0,
+	LEVEL = 2,
+	BAR = 4,
+	HEARTS = 5,
+	DOWN = 6,
+	EVO = 8
+}
+
+func _ready() -> void:
+	id_panel.remove_child(id_entry_template)
 
 func enter():
 	animation.play_backwards("change")
@@ -12,7 +25,7 @@ func enter():
 		Global.player.innocent_devil.updateStatsInEntry()
 	updateInnocentDevils()
 	buttons.setButtons()
-	default_button.grab_focus()
+	first_button.grab_focus()
 
 func exit():
 	deleteInnocentDevilList()
@@ -26,45 +39,27 @@ func Physics_Update(delta: float):
 	pass
 	
 func updateInnocentDevils() -> void:
-	for devil in Global.player.innocent_devil_pocket:
-		var id_entry: HBoxContainer = HBoxContainer.new()
-		var id_name: Label = Label.new()
-		var id_level: Label = Label.new()
-		var id_bar: TextureProgressBar = TextureProgressBar.new()
-		var id_hearts: Label = Label.new()
-		var blankspace_filler: String
-		var button: InventoryButton = InventoryButton.new()
-		button.text = " "
-		button.flat = true
-		button.state_machine = buttons.state_machine
-		id_name.text = devil.Name
-		while (id_name.text.length() + blankspace_filler.length() < 14):
-			blankspace_filler += " "
-		id_name.text += blankspace_filler
-		id_level.text = "LV.%02d" % devil.Stats["LV"]
-		id_bar.texture_under = empty_ID_bar
-		id_bar.texture_progress = fill_ID_bar
-		id_bar.value = float(devil.Stats["Hearts"])/devil.Stats["MHearts"]*id_bar.max_value
-		id_bar.size_flags_vertical = Control.SIZE_SHRINK_END
-		id_hearts.text = " %3d" % devil.Stats["Hearts"] + "/" + "%3d" % devil.Stats["MHearts"]
-		id_entry.add_child(id_name)
-		id_entry.add_child(id_level)
-		id_entry.add_child(id_bar)
-		id_entry.add_child(id_hearts)
-		id_panel.add_child(id_entry)
-		buttons.add_child(button)
-	var send_back_label: Label = Label.new()
-	var send_back_button: InventoryButton = InventoryButton.new()
-	send_back_button.state_machine = buttons.state_machine
-	send_back_label.text = "Send back"
-	send_back_button.text = " "
-	send_back_button.flat = true
-	id_panel.add_child(send_back_label)
-	buttons.add_child(send_back_button)
-	default_button = buttons.get_child(0)
+	id_panel.remove_child(send_back_button)
+	var should_grab_focus: bool = true
+	for devil: InnocentDevilEntry in Global.player.innocent_devil_pocket:
+		var entry: HBoxContainer = id_entry_template.duplicate()
+		entry.get_child(EntryChildID.NAME).text = devil.Name
+		if should_grab_focus:
+			first_button = entry.get_child(EntryChildID.NAME)
+			should_grab_focus = false
+		entry.get_child(EntryChildID.LEVEL).text = str(devil.Stats["LV"])
+		var heart_bar: TextureProgressBar = entry.get_child(EntryChildID.BAR).get_child(0)
+		heart_bar.value = float(devil.Stats["Hearts"])/devil.Stats["MHearts"]*heart_bar.max_value
+		entry.get_child(EntryChildID.HEARTS).text = "%3d" % devil.Stats["Hearts"] + "/%3d" % devil.Stats["MHearts"]
+		entry.get_child(EntryChildID.DOWN).modulate = Color.WHITE if not devil.is_alive else Color.TRANSPARENT
+		entry.get_child(EntryChildID.EVO).text = "ON" if devil.allow_evo_crystals else "OFF"
+		if Global.player.innocent_devil and devil.Name == Global.player.innocent_devil.id_name:
+			entry.get_child(EntryChildID.NAME).disabled = true
+		id_panel.add_child(entry)
+	send_back_button.disabled = Global.player.innocent_devil == null
+	id_panel.add_child(send_back_button)
 
 func deleteInnocentDevilList() -> void:
 	for entry in id_panel.get_children():
-		entry.queue_free()
-	for button in buttons.get_children():
-		button.queue_free()
+		if entry != id_entry_template and entry is HBoxContainer:
+			entry.queue_free()

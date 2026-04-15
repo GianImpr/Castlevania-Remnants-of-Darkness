@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://d0ffw2f0aswn" path="res://SampleProject/Scripts/damage_location.gd" id="10_so1j0"]
 [ext_resource type="PackedScene" uid="uid://beartgufu5i2u" path="res://SampleProject/extra_scenes/floating_numbers.tscn" id="11_7qx4e"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="12_buxdv"]
+[ext_resource type="Script" uid="uid://dluljn16efbpk" path="res://SampleProject/familiars/Crow/CrowSpawn.gd" id="13_6f78i"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="13_l8o8w"]
 [ext_resource type="AudioStream" uid="uid://dlmhl7dysb8lh" path="res://assets/sounds/InnocentDevils/IDLevelUp.MP3" id="14_orr6q"]
 [ext_resource type="AudioStream" uid="uid://cw51sljc7882f" path="res://assets/sounds/Effects/HectorHit/HectorHit.MP3" id="15_kqhad"]
@@ -32,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://bya56k86ttxfv" path="res://assets/sounds/Effects/HectorHit/HitIce.MP3" id="17_gp652"]
 [ext_resource type="Texture2D" uid="uid://brw1jnqokwney" path="res://assets/sprites/Effects/IceCollision.png" id="19_l8o8w"]
 [ext_resource type="Script" uid="uid://blf6aekba8gd1" path="res://SampleProject/familiars/Crow/CrowGuard.gd" id="20_or574"]
+[ext_resource type="Script" uid="uid://dkymdbg643jio" path="res://SampleProject/familiars/Crow/CrowDismiss.gd" id="22_6f78i"]
 [ext_resource type="AudioStream" uid="uid://ciglcfguo3ff3" path="res://assets/sounds/InnocentDevils/Crow/CrowAttack.wav" id="23_a6aqp"]
 [ext_resource type="AudioStream" uid="uid://bjchp7lybesi4" path="res://assets/sounds/InnocentDevils/Crow/CrowGlide.wav" id="24_8e3so"]
 [ext_resource type="AudioStream" uid="uid://ck35tioi5eur5" path="res://assets/sounds/InnocentDevils/Crow/CrowDead.wav" id="25_r2hw7"]
@@ -776,7 +778,7 @@ colors = PackedColorArray(1, 0.914602, 0.769121, 1, 0.984314, 0.713726, 0, 0)
 offsets = PackedFloat32Array(0, 0.991979)
 colors = PackedColorArray(1, 1, 1, 1, 1, 0.919853, 0.782403, 1)
 
-[node name="Crow" type="CharacterBody2D" unique_id=2104041657 node_paths=PackedStringArray("hurtbox_area", "damage_popup", "detection", "dash_frequency_timer", "stats", "state_machine")]
+[node name="Crow" type="CharacterBody2D" unique_id=2104041657 node_paths=PackedStringArray("hurtbox_area", "damage_popup", "detection", "dash_frequency_timer", "stats", "state_machine", "vanishing_particles", "spawn_particles", "sparkles", "sprite", "sound", "voice", "animation")]
 z_index = 2
 scale = Vector2(2, 2)
 collision_layer = 0
@@ -790,6 +792,13 @@ dash_frequency_timer = NodePath("DashFrequency")
 id_name = "El Cro"
 stats = NodePath("InnocentDevilStats")
 state_machine = NodePath("StateMachine")
+vanishing_particles = NodePath("Vanishing")
+spawn_particles = NodePath("Revival")
+sparkles = NodePath("Sparkles")
+sprite = NodePath("Body")
+sound = NodePath("PolyphonicAudioPlayer")
+voice = NodePath("Voice")
+animation = NodePath("AnimationPlayer")
 metadata/_custom_type_script = "uid://df5gwrek3weyb"
 
 [node name="InnocentDevilStats" type="Node" parent="." unique_id=1779888169 node_paths=PackedStringArray("level_up", "sound", "sprite", "effects")]
@@ -897,6 +906,13 @@ animation = NodePath("../AnimationPlayer")
 voice = NodePath("../Voice")
 metadata/_custom_type_script = "uid://d2kqkdfhgcbi7"
 
+[node name="Spawn" type="Node" parent="StateMachine" unique_id=460023808 node_paths=PackedStringArray("revival_particles", "sprite", "sparkles")]
+script = ExtResource("13_6f78i")
+revival_particles = NodePath("../../Revival")
+sprite = NodePath("../../Body")
+sparkles = NodePath("../../Sparkles")
+metadata/_custom_type_script = "uid://dluljn16efbpk"
+
 [node name="Idle" type="Node" parent="StateMachine" unique_id=701496756]
 script = ExtResource("7_7qx4e")
 metadata/_custom_type_script = "uid://h48ju6v50mp5"
@@ -935,6 +951,10 @@ metadata/_custom_type_script = "uid://bg6t8get3tswh"
 [node name="Guard" type="Node" parent="StateMachine" unique_id=312336675]
 script = ExtResource("20_or574")
 metadata/_custom_type_script = "uid://blf6aekba8gd1"
+
+[node name="Dismiss" type="Node" parent="StateMachine" unique_id=177808707]
+script = ExtResource("22_6f78i")
+metadata/_custom_type_script = "uid://dkymdbg643jio"
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=892409969]
 volume_db = -5.0

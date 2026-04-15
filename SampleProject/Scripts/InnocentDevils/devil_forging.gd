@@ -19,6 +19,8 @@ func _process(delta: float) -> void:
 		Global.player.stats.event_flags[event_id] = true
 		Global.player.tap_up.dismiss()
 		animation.play("forging")
+		if Global.player.innocent_devil:
+			Global.player.innocent_devil.dismiss()
 		Global.player.freeze()
 		await animation.animation_finished
 		queue_free()
@@ -32,8 +34,9 @@ func _on_forge_trigger_area_exited(area: Area2D) -> void:
 	Global.player.tap_up.dismiss()
 
 func forgeInnocentDevil():
-	var innocent_devil: Faerie = innocent_devil_scene.instantiate()
+	var innocent_devil: InnocentDevil = innocent_devil_scene.instantiate()
 	Global.player.pocket_size += 1
+	innocent_devil.id = Global.player.pocket_size
 	innocent_devil.global_position = global_position
 	get_parent().get_parent().add_child(innocent_devil)
 	innocent_devil.state_machine.current_state.Transitioned.emit(innocent_devil.state_machine.current_state, "freeze")

@@ -79,8 +79,9 @@ func setButtons() -> void:
 			child.desired_state = menu
 			child["theme_override_styles/focus"] = style_box_empty
 			children.append(child)
-			child.pressed.connect(self.on_button_pressed.bind(child))
-			child.focus_entered.connect(self.on_focused.bind(child))
+			if not child.pressed.is_connected(self.on_button_pressed.bind(child)):
+				child.pressed.connect(self.on_button_pressed.bind(child))
+				child.focus_entered.connect(self.on_focused.bind(child))
 		elif child is HBoxContainer:
 			for box_child in child.get_children():
 				if box_child is Button:

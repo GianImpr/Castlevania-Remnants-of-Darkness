@@ -23,8 +23,12 @@
 [ext_resource type="Texture2D" uid="uid://dgyomqbnbmi4" path="res://assets/sprites/Items/InventoryIcons/Inventory_319.png" id="11_1mhe1"]
 [ext_resource type="PackedScene" uid="uid://b85mrm6ht3kgn" path="res://SampleProject/extra_scenes/effects/refreshing_air.tscn" id="13_aa5on"]
 [ext_resource type="AudioStream" uid="uid://dmygyfdvwkny8" path="res://assets/sounds/InnocentDevils/Faerie/HealEffect.MP3" id="13_n2r0b"]
+[ext_resource type="Script" uid="uid://bt73nbebo6u4p" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieSpawn.gd" id="13_yowja"]
+[ext_resource type="Script" uid="uid://26uwmgwv3u2y" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieDismiss.gd" id="21_gcuwl"]
 [ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="22_ue60m"]
 [ext_resource type="AudioStream" uid="uid://dlmhl7dysb8lh" path="res://assets/sounds/InnocentDevils/IDLevelUp.MP3" id="24_2jcuy"]
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="26_6o0ma"]
+[ext_resource type="AudioStream" uid="uid://dtxs8yoast6u2" path="res://assets/sounds/InnocentDevils/IDRevive.wav" id="29_gcuwl"]
 
 [sub_resource type="Resource" id="Resource_afldu"]
 script = ExtResource("3_5jgsh")
@@ -967,7 +971,44 @@ _limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.5, 0.0049916506), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Faerie" type="CharacterBody2D" unique_id=928786545 node_paths=PackedStringArray("stats", "state_machine")]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0e5x1"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_yowja"]
+offsets = PackedFloat32Array(0.014423077, 1)
+colors = PackedColorArray(3.2944162, 3.2944162, 3.2944162, 1, 0, 1.474247, 1.2681158, 0)
+
+[sub_resource type="Curve" id="Curve_gcuwl"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.5, 0.0049916506), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4yd27"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_rs8cd"]
+offsets = PackedFloat32Array(0.00367647, 0.319853, 0.702326, 1)
+colors = PackedColorArray(0.51469004, 0.77957696, 1, 1, 0.7689311, 0.90377855, 0.99999994, 1, 0, 0.31617793, 0.8261534, 1, 1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_r2hw7"]
+script = ExtResource("9_7ueiy")
+Tag = "revive"
+stream = ExtResource("29_gcuwl")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_4yd27"]
+script = ExtResource("8_kyyu2")
+sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_r2hw7")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[node name="Faerie" type="CharacterBody2D" unique_id=928786545 node_paths=PackedStringArray("stats", "state_machine", "vanishing_particles", "spawn_particles", "sparkles", "sprite", "sound", "voice", "animation")]
 z_index = 7
 scale = Vector2(2, 2)
 motion_mode = 1
@@ -982,6 +1023,13 @@ evolutions = Array[Dictionary]([{
 id_name = "Fairy"
 stats = NodePath("InnocentDevilStats")
 state_machine = NodePath("StateMachine")
+vanishing_particles = NodePath("Vanishing")
+spawn_particles = NodePath("Revival")
+sparkles = NodePath("Sparkles")
+sprite = NodePath("Body")
+sound = NodePath("PolyphonicAudioPlayer")
+voice = NodePath("Voice")
+animation = NodePath("AnimationPlayer")
 
 [node name="InnocentDevilStats" type="Node" parent="." unique_id=1548762419 node_paths=PackedStringArray("level_up", "sound")]
 script = ExtResource("2_fhvse")
@@ -1078,6 +1126,10 @@ initial_state = NodePath("Idle")
 player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 
+[node name="Spawn" type="Node" parent="StateMachine" unique_id=196577412]
+script = ExtResource("13_yowja")
+metadata/_custom_type_script = "uid://bt73nbebo6u4p"
+
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1994607704]
 script = ExtResource("3_ry4ys")
 
@@ -1106,6 +1158,10 @@ idle_duration = NodePath("IdleDuration")
 [node name="IdleDuration" type="Timer" parent="StateMachine/Funny_wall" unique_id=1090983632]
 wait_time = 0.5
 one_shot = true
+
+[node name="Dismiss" type="Node" parent="StateMachine" unique_id=795797448]
+script = ExtResource("21_gcuwl")
+metadata/_custom_type_script = "uid://26uwmgwv3u2y"
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1620416710]
 volume_db = -5.0
@@ -1147,6 +1203,54 @@ color_ramp = SubResource("Gradient_syto6")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 anim_speed_curve = SubResource("Curve_1mhe1")
+
+[node name="Revival" type="CPUParticles2D" parent="." unique_id=1626840083]
+material = SubResource("CanvasItemMaterial_0e5x1")
+position = Vector2(0, 3)
+emitting = false
+amount = 192
+texture = ExtResource("22_ue60m")
+lifetime = 0.5
+one_shot = true
+randomness = 0.7
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 150.0
+color_ramp = SubResource("Gradient_yowja")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_speed_curve = SubResource("Curve_gcuwl")
+
+[node name="Vanishing" type="CPUParticles2D" parent="." unique_id=512819970]
+z_index = 20
+material = SubResource("CanvasItemMaterial_4yd27")
+position = Vector2(-0.5, 11.999996)
+emitting = false
+amount = 100
+texture = ExtResource("26_6o0ma")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.07
+draw_order = 1
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(0, -1)
+spread = 80.0
+gravity = Vector2(0, -50)
+initial_velocity_max = 30.0
+color_ramp = SubResource("Gradient_rs8cd")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Voice" type="AudioStreamPlayer2D" parent="." unique_id=1425443411]
+volume_db = -12.0
+script = ExtResource("4_u4ig5")
+audio_library = SubResource("Resource_4yd27")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
 [connection signal="timeout" from="StateMachine/Freeze/Duration" to="StateMachine/Freeze" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Funny_wall/IdleDuration" to="StateMachine/Funny_wall" method="_on_idle_duration_timeout"]

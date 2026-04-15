@@ -43,7 +43,10 @@ func updateSkillList() -> void:
 	const SKILL_BUTTON_MINIMUM_SIZE: Vector2 = Vector2(400, 40)
 	const SKILL_COST_MINIMUM_SIZE: Vector2 = Vector2(50, 0)
 	const BUTTON_FOCUSED_COLOR: Color = Color(1, 0.733, 0)
-	for ability in devil.stats.skills:
+	for ability: IDSkill in devil.stats.skills:
+		if not ability.unlocked:
+			continue
+			
 		var skill_panel: HBoxContainer = HBoxContainer.new()
 		skill_panel.custom_minimum_size = SKILL_PANEL_MINIMUM_SIZE
 		

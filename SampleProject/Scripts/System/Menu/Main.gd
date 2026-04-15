@@ -64,8 +64,8 @@ func updateStats():
 		new_icon.visible = CombineButtons.new_craftable_items
 	
 	# This line will be decommented in a further update, when there are more than one innocent devil
-	default_button.disabled = true
-	#default_button.disabled = Global.player.pocket_size == 0
+	#default_button.disabled = true
+	default_button.disabled = Global.player.pocket_size == 0
 	id_label.visible = Global.player.innocent_devil != null
 
 func showButtonWithCondition(button: InventoryButton, button_name: String, condition: bool):

@@ -78,7 +78,15 @@
 [ext_resource type="Texture2D" uid="uid://dxdefq0sl6148" path="res://assets/sprites/HUD/Buttons/L2.png" id="53_ij3vk"]
 [ext_resource type="Script" uid="uid://cleptkjw23hpj" path="res://SampleProject/Scripts/System/Menu/InvHints.gd" id="54_nkih0"]
 [ext_resource type="Script" uid="uid://cea2wd677vq2g" path="res://SampleProject/Scripts/System/Menu/HintButtons.gd" id="55_v1gb1"]
+[ext_resource type="Texture2D" uid="uid://hiolfbyro5t8" path="res://assets/sprites/HUD/InGameHUD/Hearts.png" id="60_2t52q"]
 [ext_resource type="AudioStream" uid="uid://cpi3vmsn423y2" path="res://assets/sounds/Menu/MPHeal.MP3" id="61_xj8br"]
+[ext_resource type="Texture2D" uid="uid://bntvnmo5oryn1" path="res://assets/sprites/Items/Pickups/EvoCrystals/EvoBlue.png" id="62_6mxjt"]
+[ext_resource type="Texture2D" uid="uid://c6lkn1a8y44rh" path="res://assets/sprites/Items/Pickups/Hearts/Heart.png" id="62_ukmin"]
+[ext_resource type="Texture2D" uid="uid://cgc1jyvgj4475" path="res://assets/sprites/Items/Pickups/EvoCrystals/EvoGreen.png" id="63_jqemx"]
+[ext_resource type="Texture2D" uid="uid://b0taaanrk76c5" path="res://assets/sprites/Items/Pickups/EvoCrystals/EvoRed.png" id="63_ph380"]
+[ext_resource type="Texture2D" uid="uid://dqwchxkws6csy" path="res://assets/sprites/Items/Pickups/EvoCrystals/EvoYellow.png" id="64_ff15y"]
+[ext_resource type="Texture2D" uid="uid://clxai2xxlk6p2" path="res://assets/sprites/Items/Pickups/EvoCrystals/EvoWhite.png" id="65_taw0k"]
+[ext_resource type="Texture2D" uid="uid://deqm7hrmownqo" path="res://assets/sprites/HUD/IDIcons/RefreshingAir.png" id="66_jqemx"]
 [ext_resource type="AudioStream" uid="uid://c01e5tvpp3805" path="res://assets/sounds/Menu/OpenMenu.WAV" id="67_0rdd3"]
 [ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="67_47uwl"]
 [ext_resource type="Texture2D" uid="uid://deidqvq0n8mto" path="res://assets/sprites/HUD/Buttons/R2.png" id="68_pjwjw"]
@@ -531,6 +539,12 @@ _data = {
 &"RESET": SubResource("Animation_4qst1"),
 &"idle": SubResource("Animation_fjmrg")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l7e6h"]
+
+[sub_resource type="Theme" id="Theme_6mxjt"]
+default_font = ExtResource("8_vu1np")
+default_font_size = 32
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ea2r"]
 
@@ -1035,43 +1049,80 @@ _limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="Gradient" id="Gradient_wx3tg"]
-colors = PackedColorArray(0.281187, 0.281187, 0.281187, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q1aj5"]
-gradient = SubResource("Gradient_wx3tg")
-width = 200
-height = 20
-fill_to = Vector2(0, 1)
-
-[sub_resource type="Gradient" id="Gradient_22av7"]
-colors = PackedColorArray(1, 0.72549, 0.0588235, 1, 0.516901, 0.367234, 2.88785e-07, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4qo27"]
-gradient = SubResource("Gradient_22av7")
-width = 200
-height = 20
-fill_to = Vector2(0, 1)
-
-[sub_resource type="Gradient" id="Gradient_0uqko"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_r37ge"]
-gradient = SubResource("Gradient_0uqko")
-
-[sub_resource type="Gradient" id="Gradient_q7qlu"]
-colors = PackedColorArray(0, 0, 0, 1, 0.00226884, 0.11899, 0.578939, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1o7wn"]
-gradient = SubResource("Gradient_q7qlu")
-fill_from = Vector2(1, 1)
-
-[sub_resource type="Theme" id="Theme_0h0bh"]
-default_font = ExtResource("14_by7ny")
+[sub_resource type="Theme" id="Theme_ukmin"]
+default_font = ExtResource("8_vu1np")
 default_font_size = 32
 
+[sub_resource type="Theme" id="Theme_2t52q"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ukmin"]
+content_margin_top = 50.0
+texture = ExtResource("70_nf135")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
 [sub_resource type="Theme" id="Theme_1ycwe"]
-default_font_size = 12
+default_font = ExtResource("8_vu1np")
+default_font_size = 32
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph380"]
+atlas = ExtResource("62_ukmin")
+region = Rect2(-1, -1, 16, 0)
+
+[sub_resource type="Gradient" id="Gradient_oclnj"]
+colors = PackedColorArray(0.09239706, 0.09239707, 0.092397, 1, 0.34407577, 0.34407577, 0.34407565, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ijn7"]
+gradient = SubResource("Gradient_oclnj")
+width = 3
+height = 3
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Theme" id="Theme_oclnj"]
+default_font = ExtResource("8_vu1np")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_ph380"]
+default_font = ExtResource("11_op056")
+default_font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_7xs6h"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oclnj"]
+gradient = SubResource("Gradient_7xs6h")
+width = 300
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Theme" id="Theme_5ijn7"]
+default_font = ExtResource("9_6pgav")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_y1mo2"]
+default_font = ExtResource("10_ndwun")
+default_font_size = 48
+
+[sub_resource type="Gradient" id="Gradient_ffcim"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6mxjt"]
+gradient = SubResource("Gradient_ffcim")
+width = 560
+height = 48
+fill_from = Vector2(0.0318471, 0.22293)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Theme" id="Theme_0h0bh"]
+default_font = ExtResource("8_vu1np")
+default_font_size = 32
 
 [sub_resource type="Theme" id="Theme_pvykr"]
 default_font = ExtResource("8_vu1np")
@@ -2110,6 +2161,87 @@ offset_right = 32.0
 offset_bottom = 32.0
 texture = SubResource("GradientTexture2D_85ajc")
 
+[node name="EvolutionCrystals" type="PanelContainer" parent="MenuStateMachine/Devil/Display" unique_id=1482299477]
+offset_left = 7.0
+offset_top = 431.0
+offset_right = 429.0
+offset_bottom = 471.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_l7e6h")
+
+[node name="EvoCrystals" type="HBoxContainer" parent="MenuStateMachine/Devil/Display/EvolutionCrystals" unique_id=1060716925]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Red" type="TextureRect" parent="MenuStateMachine/Devil/Display/EvolutionCrystals/EvoCrystals" unique_id=1902055260]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("63_ph380")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RedValue" type="Label" parent="MenuStateMachine/Devil/Display/EvolutionCrystals/EvoCrystals" unique_id=1537543458]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+theme = SubResource("Theme_6mxjt")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Blue" type="TextureRect" parent="MenuStateMachine/Devil/Display/EvolutionCrystals/EvoCrystals" unique_id=254184189]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("62_6mxjt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BlueValue" type="Label" parent="MenuStateMachine/Devil/Display/EvolutionCrystals/EvoCrystals" unique_id=1433884445]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+theme = SubResource("Theme_6mxjt")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Green" type="TextureRect" parent="MenuStateMachine/Devil/Display/EvolutionCrystals/EvoCrystals" unique_id=2040074090]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("63_jqemx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GreenValue" type="Label" parent="MenuStateMachine/Devil/Display/EvolutionCrystals/EvoCrystals" unique_id=791511143]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+theme = SubResource("Theme_6mxjt")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Yellow" type="TextureRect" parent="MenuStateMachine/Devil/Display/EvolutionCrystals/EvoCrystals" unique_id=1858722376]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("64_ff15y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="YellowValue" type="Label" parent="MenuStateMachine/Devil/Display/EvolutionCrystals/EvoCrystals" unique_id=1283398324]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+theme = SubResource("Theme_6mxjt")
+text = "0"
+horizontal_alignment = 2
+
+[node name="White" type="TextureRect" parent="MenuStateMachine/Devil/Display/EvolutionCrystals/EvoCrystals" unique_id=274615498]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("65_taw0k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WhiteValue" type="Label" parent="MenuStateMachine/Devil/Display/EvolutionCrystals/EvoCrystals" unique_id=1537116314]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+theme = SubResource("Theme_6mxjt")
+text = "0"
+horizontal_alignment = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Devil" unique_id=883169536]
 libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
@@ -2144,7 +2276,6 @@ button_glow = SubResource("StyleBoxFlat_h2w5a")
 sound = NodePath("../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../..")
 state_machine = NodePath("../../../..")
-stateless = null
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuStateMachine/Equip/Display/PanelContainer/Menu" unique_id=1296704040]
 layout_mode = 2
@@ -3941,54 +4072,420 @@ scale_amount_curve = SubResource("Curve_e50mf")
 libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Summons" type="Node" parent="MenuStateMachine" unique_id=1950013848 node_paths=PackedStringArray("id_panel", "buttons", "animation")]
+[node name="Summons" type="Node" parent="MenuStateMachine" unique_id=1950013848 node_paths=PackedStringArray("id_panel", "buttons", "send_back_button", "id_entry_template", "animation")]
 script = ExtResource("33_8wvtw")
-empty_ID_bar = SubResource("GradientTexture2D_q1aj5")
-fill_ID_bar = SubResource("GradientTexture2D_4qo27")
 id_panel = NodePath("Display/IDPanels")
-buttons = NodePath("Display/Summons")
+buttons = NodePath("Display/IDPanels")
+send_back_button = NodePath("Display/IDPanels/SendBack")
+id_entry_template = NodePath("Display/IDPanels/Entry")
 animation = NodePath("AnimationPlayer")
 
 [node name="Display" type="Node2D" parent="MenuStateMachine/Summons" unique_id=1949357809]
 modulate = Color(0, 0, 0, 0)
 z_index = 1
 
-[node name="Margin" type="TextureRect" parent="MenuStateMachine/Summons/Display" unique_id=991254222]
-show_behind_parent = true
-offset_left = 11.0
-offset_top = 11.0
+[node name="IDStats" type="PanelContainer" parent="MenuStateMachine/Summons/Display" unique_id=383075702]
+offset_left = 16.0
+offset_top = 363.0
 offset_right = 852.0
-offset_bottom = 471.0
-texture = SubResource("GradientTexture1D_r37ge")
+offset_bottom = 468.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_k0c86")
 
-[node name="ListBackground" type="TextureRect" parent="MenuStateMachine/Summons/Display" unique_id=1223095824]
-show_behind_parent = true
-offset_left = 13.0
-offset_top = 13.0
-offset_right = 850.0
-offset_bottom = 469.0
-texture = SubResource("GradientTexture2D_1o7wn")
+[node name="Stats" type="Control" parent="MenuStateMachine/Summons/Display/IDStats" unique_id=191572196]
+layout_mode = 2
 
-[node name="IDPanels" type="VBoxContainer" parent="MenuStateMachine/Summons/Display" unique_id=1907557813]
-z_index = 1
-offset_left = 21.0
-offset_top = 23.0
-offset_right = 833.0
-offset_bottom = 83.0
-theme = SubResource("Theme_0h0bh")
+[node name="Attack" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats" unique_id=1334996525]
+clip_children = 1
+layout_mode = 0
+offset_left = 90.0
+offset_top = -10.0
+offset_right = 208.0
+offset_bottom = 22.0
+theme = SubResource("Theme_qd4hr")
+text = "ATK_STAT"
+horizontal_alignment = 1
 
-[node name="Summons" type="VBoxContainer" parent="MenuStateMachine/Summons/Display" unique_id=207618147 node_paths=PackedStringArray("sound", "menu", "state_machine")]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDStats/Stats/Attack" unique_id=563661744]
+modulate = Color(1, 0.403922, 1, 1)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_gnau5")
+
+[node name="Defense" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats" unique_id=246775994]
+clip_children = 1
+layout_mode = 0
+offset_left = 90.0
+offset_top = 22.0
+offset_right = 204.0
+offset_bottom = 54.0
+theme = SubResource("Theme_qd4hr")
+text = "DEF_STAT"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDStats/Stats/Defense" unique_id=369824894]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_ol4uy")
+
+[node name="Intelligence" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats" unique_id=1616061800]
+clip_children = 1
+layout_mode = 0
+offset_left = 260.0
+offset_top = -10.0
+offset_right = 384.0
+offset_bottom = 22.0
+theme = SubResource("Theme_qd4hr")
+text = "INT_STAT"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDStats/Stats/Intelligence" unique_id=1122316192]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_gwmgf")
+
+[node name="Mind" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats" unique_id=1787215461]
+clip_children = 1
+layout_mode = 0
+offset_left = 260.0
+offset_top = 22.0
+offset_right = 384.0
+offset_bottom = 54.0
+theme = SubResource("Theme_qd4hr")
+text = "MND_STAT"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDStats/Stats/Mind" unique_id=1903311572]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_gwmgf")
+
+[node name="Values" type="Control" parent="MenuStateMachine/Summons/Display/IDStats/Stats" unique_id=1056837209]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Evolution" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats/Values" unique_id=2033660160]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 117.0
+offset_top = -43.0
+offset_right = 261.0
+offset_bottom = -11.0
+theme = SubResource("Theme_ukmin")
+text = "Innocent Fairy"
+
+[node name="Attack" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats/Values" unique_id=1657825371]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 173.0
+offset_top = -11.0
+offset_right = 233.0
+offset_bottom = 21.0
+theme = SubResource("Theme_2t52q")
+text = "25"
+horizontal_alignment = 2
+
+[node name="Defense" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats/Values" unique_id=898265573]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 173.0
+offset_top = 21.0
+offset_right = 233.0
+offset_bottom = 53.0
+theme = SubResource("Theme_2t52q")
+text = "25"
+horizontal_alignment = 2
+
+[node name="Intelligence" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats/Values" unique_id=2138519348]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 343.0
+offset_top = -11.0
+offset_right = 403.0
+offset_bottom = 21.0
+theme = SubResource("Theme_2t52q")
+text = "25"
+horizontal_alignment = 2
+
+[node name="Mind" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats/Values" unique_id=2140962561]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 0
+offset_left = 343.0
+offset_top = 21.0
+offset_right = 403.0
+offset_bottom = 53.0
+theme = SubResource("Theme_2t52q")
+text = "25"
+horizontal_alignment = 2
+
+[node name="EvolutionCrystals" type="PanelContainer" parent="MenuStateMachine/Summons/Display/IDStats/Stats" unique_id=25513826]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 15.0
+offset_right = 876.0
+offset_bottom = 55.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_l7e6h")
+
+[node name="EvoCrystals" type="HBoxContainer" parent="MenuStateMachine/Summons/Display/IDStats/Stats/EvolutionCrystals" unique_id=439328226]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Red" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDStats/Stats/EvolutionCrystals/EvoCrystals" unique_id=131050246]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("63_ph380")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RedValue" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats/EvolutionCrystals/EvoCrystals" unique_id=1484410514]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+theme = SubResource("Theme_6mxjt")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Blue" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDStats/Stats/EvolutionCrystals/EvoCrystals" unique_id=829067398]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("62_6mxjt")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BlueValue" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats/EvolutionCrystals/EvoCrystals" unique_id=1661074264]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+theme = SubResource("Theme_6mxjt")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Green" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDStats/Stats/EvolutionCrystals/EvoCrystals" unique_id=1172328580]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("63_jqemx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GreenValue" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats/EvolutionCrystals/EvoCrystals" unique_id=1337969504]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+theme = SubResource("Theme_6mxjt")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Yellow" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDStats/Stats/EvolutionCrystals/EvoCrystals" unique_id=1778208064]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("64_ff15y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="YellowValue" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats/EvolutionCrystals/EvoCrystals" unique_id=1956468078]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+theme = SubResource("Theme_6mxjt")
+text = "0"
+horizontal_alignment = 2
+
+[node name="White" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDStats/Stats/EvolutionCrystals/EvoCrystals" unique_id=1717559026]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("65_taw0k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WhiteValue" type="Label" parent="MenuStateMachine/Summons/Display/IDStats/Stats/EvolutionCrystals/EvoCrystals" unique_id=797833086]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+theme = SubResource("Theme_6mxjt")
+text = "0"
+horizontal_alignment = 2
+
+[node name="Skills" type="PanelContainer" parent="MenuStateMachine/Summons/Display/IDStats/Stats" unique_id=1176607024]
+layout_mode = 0
+offset_left = 454.0
+offset_top = -30.0
+offset_right = 806.0
+offset_bottom = 10.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_l7e6h")
+
+[node name="SkillIcons" type="HBoxContainer" parent="MenuStateMachine/Summons/Display/IDStats/Stats/Skills" unique_id=1879892393]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Skill1" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDStats/Stats/Skills/SkillIcons" unique_id=1224425672]
+layout_mode = 2
+texture = ExtResource("66_jqemx")
+
+[node name="InnocentDevils" type="PanelContainer" parent="MenuStateMachine/Summons/Display" unique_id=542045634]
+offset_left = 16.0
+offset_top = 54.0
+offset_right = 852.0
+offset_bottom = 354.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ukmin")
+
+[node name="IDPanels" type="VBoxContainer" parent="MenuStateMachine/Summons/Display" unique_id=207618147 node_paths=PackedStringArray("id_skills", "evo_crystals", "ATK_label", "INT_label", "DEF_label", "MND_label", "evolution_label", "send_back_button", "devil_stats_panel", "sound", "menu", "state_machine")]
 custom_minimum_size = Vector2(820, 0)
-offset_left = 21.0
-offset_top = 25.0
-offset_right = 61.0
-offset_bottom = 91.0
+offset_left = 30.0
+offset_top = 67.0
+offset_right = 850.0
+offset_bottom = 151.0
 theme = SubResource("Theme_1ycwe")
 script = ExtResource("33_qfkoi")
+id_skills = NodePath("../IDStats/Stats/Skills/SkillIcons")
+evo_crystals = NodePath("../IDStats/Stats/EvolutionCrystals/EvoCrystals")
+ATK_label = NodePath("../IDStats/Stats/Values/Attack")
+INT_label = NodePath("../IDStats/Stats/Values/Intelligence")
+DEF_label = NodePath("../IDStats/Stats/Values/Defense")
+MND_label = NodePath("../IDStats/Stats/Values/Mind")
+evolution_label = NodePath("../IDStats/Stats/Values/Evolution")
+send_back_button = NodePath("SendBack")
+devil_stats_panel = NodePath("../IDStats/Stats")
 button_glow = SubResource("StyleBoxFlat_06wc2")
 sound = NodePath("../../../../PolyphonicMenuAudio")
 menu = NodePath("../..")
 state_machine = NodePath("../../..")
+
+[node name="Entry" type="HBoxContainer" parent="MenuStateMachine/Summons/Display/IDPanels" unique_id=1953379248]
+layout_mode = 2
+
+[node name="Name" type="Button" parent="MenuStateMachine/Summons/Display/IDPanels/Entry" unique_id=1853089067]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+action_mode = 0
+text = "Phinks"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+metadata/_custom_type_script = "uid://jg6jw4e4n33d"
+
+[node name="LevelLabel" type="Label" parent="MenuStateMachine/Summons/Display/IDPanels/Entry" unique_id=1329856482]
+clip_children = 1
+layout_mode = 2
+theme = SubResource("Theme_qd4hr")
+text = "LV"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDPanels/Entry/LevelLabel" unique_id=87048027]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_gwmgf")
+
+[node name="LevelValue" type="Label" parent="MenuStateMachine/Summons/Display/IDPanels/Entry" unique_id=2060688005]
+custom_minimum_size = Vector2(36, 32)
+layout_mode = 2
+theme = SubResource("Theme_2t52q")
+text = "25"
+horizontal_alignment = 2
+
+[node name="HeartIcon" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDPanels/Entry" unique_id=1320962738]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("AtlasTexture_ph380")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Bar" type="Control" parent="MenuStateMachine/Summons/Display/IDPanels/Entry" unique_id=1958739821]
+custom_minimum_size = Vector2(205, 0)
+layout_mode = 2
+
+[node name="Hearts" type="TextureProgressBar" parent="MenuStateMachine/Summons/Display/IDPanels/Entry/Bar" unique_id=1487687469]
+custom_minimum_size = Vector2(200, 12)
+layout_mode = 0
+offset_top = 14.0
+offset_right = 200.0
+offset_bottom = 26.0
+max_value = 10.0
+value = 5.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_5ijn7")
+texture_progress = ExtResource("60_2t52q")
+
+[node name="HeartValue" type="Label" parent="MenuStateMachine/Summons/Display/IDPanels/Entry" unique_id=2099295044]
+custom_minimum_size = Vector2(126, 32)
+layout_mode = 2
+theme = SubResource("Theme_2t52q")
+text = "10/102"
+horizontal_alignment = 2
+
+[node name="Downed" type="Label" parent="MenuStateMachine/Summons/Display/IDPanels/Entry" unique_id=1332505777]
+self_modulate = Color(1, 0.2739889, 0.21327025, 1)
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme = SubResource("Theme_oclnj")
+text = "K.O."
+horizontal_alignment = 1
+
+[node name="EvoCrystalIcon" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDPanels/Entry" unique_id=1844057285]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("63_ph380")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EvoActivated" type="Label" parent="MenuStateMachine/Summons/Display/IDPanels/Entry" unique_id=1403405808]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme = SubResource("Theme_oclnj")
+text = "ON"
+horizontal_alignment = 1
+
+[node name="SendBack" type="Button" parent="MenuStateMachine/Summons/Display/IDPanels" unique_id=339733123]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+action_mode = 0
+text = "Send back"
+flat = true
+alignment = 0
+script = ExtResource("6_r83iq")
+metadata/_custom_type_script = "uid://jg6jw4e4n33d"
+
+[node name="DeckLabel" type="Label" parent="MenuStateMachine/Summons/Display" unique_id=909287581]
+clip_children = 1
+z_index = 1
+offset_left = 648.0
+offset_top = 18.0
+offset_right = 790.0
+offset_bottom = 50.0
+theme = SubResource("Theme_ph380")
+text = "Slots"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Summons/Display/DeckLabel" unique_id=683247622]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_oclnj")
+
+[node name="DeckQuantity" type="Label" parent="MenuStateMachine/Summons/Display" unique_id=260794164]
+z_index = 1
+offset_left = 705.0
+offset_top = 18.0
+offset_right = 849.0
+offset_bottom = 108.0
+theme = SubResource("Theme_5ijn7")
+theme_override_constants/line_spacing = 5
+text = "0/0"
+horizontal_alignment = 2
+
+[node name="BuyLabel" type="Label" parent="MenuStateMachine/Summons/Display" unique_id=1420146072]
+clip_children = 1
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 508.0
+offset_bottom = 60.0
+theme = SubResource("Theme_y1mo2")
+text = "Summon"
+
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Summons/Display/BuyLabel" unique_id=109655696]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_6mxjt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MenuStateMachine/Summons" unique_id=382178099]
 libraries/ = SubResource("AnimationLibrary_xuig2")
