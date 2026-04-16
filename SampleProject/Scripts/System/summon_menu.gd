@@ -6,6 +6,8 @@ class_name InvSummon
 @export var send_back_button: InventoryButton
 @export var id_entry_template: HBoxContainer
 var first_button: InventoryButton
+@export var evo_icons: Array[CompressedTexture2D]
+@export var deck_quantity: Label
 
 enum EntryChildID {
 	NAME = 0,
@@ -13,6 +15,7 @@ enum EntryChildID {
 	BAR = 4,
 	HEARTS = 5,
 	DOWN = 6,
+	EVO_ICON = 7,
 	EVO = 8
 }
 
@@ -23,6 +26,7 @@ func enter():
 	animation.play_backwards("change")
 	if Global.player.innocent_devil != null:
 		Global.player.innocent_devil.updateStatsInEntry()
+	deck_quantity.text = str(Global.player.pocket_size) + "/" + str(Global.player.pocket_size) #Obviously WIP
 	updateInnocentDevils()
 	buttons.setButtons()
 	first_button.grab_focus()
@@ -52,6 +56,7 @@ func updateInnocentDevils() -> void:
 		heart_bar.value = float(devil.Stats["Hearts"])/devil.Stats["MHearts"]*heart_bar.max_value
 		entry.get_child(EntryChildID.HEARTS).text = "%3d" % devil.Stats["Hearts"] + "/%3d" % devil.Stats["MHearts"]
 		entry.get_child(EntryChildID.DOWN).modulate = Color.WHITE if not devil.is_alive else Color.TRANSPARENT
+		entry.get_child(EntryChildID.EVO_ICON).texture = evo_icons[Global.player.stats.evoCrystalType()]
 		entry.get_child(EntryChildID.EVO).text = "ON" if devil.allow_evo_crystals else "OFF"
 		if Global.player.innocent_devil and devil.Name == Global.player.innocent_devil.id_name:
 			entry.get_child(EntryChildID.NAME).disabled = true

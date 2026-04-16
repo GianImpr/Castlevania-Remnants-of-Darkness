@@ -237,6 +237,7 @@ func _physics_process(delta: float) -> void:
 	if innocent_devil_scene and innocent_devil == null:
 		innocent_devil = innocent_devil_scene.instantiate()
 		get_parent().add_child(innocent_devil)
+		innocent_devil.id = summoned_innocent_devil_id
 		innocent_devil.position = Vector2(position.x - 100 *facing_position,position.y)
 		
 	move_and_slide()
@@ -354,9 +355,11 @@ func can_perfect_guard() -> bool:
 	return stats.findItem(Skill.Skills.PLATINUM_ARM, stats.skill_inventory) > 0
 
 func addExp(amount: int) -> void:
+	const LEVEL_DIFFERENCE_MULTIPLIER: float = 0.1
 	stats.Stats["EXP"] += amount
 	if innocent_devil != null and innocent_devil.is_alive:
-		innocent_devil.stats.Stats["EXP"] += amount
+		var level_gap: int = max(stats.Stats["LV"] - innocent_devil.stats.Stats["LV"], 0)
+		innocent_devil.stats.Stats["EXP"] += int(amount+amount*level_gap*LEVEL_DIFFERENCE_MULTIPLIER)
 		
 func addWeaponExp() -> void:
 	var amount_gained = 1

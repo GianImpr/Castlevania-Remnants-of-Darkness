@@ -1121,7 +1121,7 @@ fill_from = Vector2(0.0318471, 0.22293)
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Theme" id="Theme_0h0bh"]
-default_font = ExtResource("8_vu1np")
+default_font = ExtResource("14_by7ny")
 default_font_size = 32
 
 [sub_resource type="Theme" id="Theme_pvykr"]
@@ -4072,12 +4072,14 @@ scale_amount_curve = SubResource("Curve_e50mf")
 libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Summons" type="Node" parent="MenuStateMachine" unique_id=1950013848 node_paths=PackedStringArray("id_panel", "buttons", "send_back_button", "id_entry_template", "animation")]
+[node name="Summons" type="Node" parent="MenuStateMachine" unique_id=1950013848 node_paths=PackedStringArray("id_panel", "buttons", "send_back_button", "id_entry_template", "deck_quantity", "animation")]
 script = ExtResource("33_8wvtw")
 id_panel = NodePath("Display/IDPanels")
 buttons = NodePath("Display/IDPanels")
 send_back_button = NodePath("Display/IDPanels/SendBack")
 id_entry_template = NodePath("Display/IDPanels/Entry")
+evo_icons = Array[CompressedTexture2D]([ExtResource("63_ph380"), ExtResource("62_6mxjt"), ExtResource("63_jqemx"), ExtResource("64_ff15y"), ExtResource("65_taw0k")])
+deck_quantity = NodePath("Display/DeckQuantity")
 animation = NodePath("AnimationPlayer")
 
 [node name="Display" type="Node2D" parent="MenuStateMachine/Summons" unique_id=1949357809]
@@ -4320,6 +4322,14 @@ theme_override_constants/separation = 8
 layout_mode = 2
 texture = ExtResource("66_jqemx")
 
+[node name="Image" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDStats/Stats" unique_id=154778518]
+layout_mode = 0
+offset_left = 8.0
+offset_top = -42.0
+offset_right = 72.0
+offset_bottom = 38.0
+scale = Vector2(1.25, 1.25)
+
 [node name="InnocentDevils" type="PanelContainer" parent="MenuStateMachine/Summons/Display" unique_id=542045634]
 offset_left = 16.0
 offset_top = 54.0
@@ -4327,7 +4337,7 @@ offset_right = 852.0
 offset_bottom = 354.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ukmin")
 
-[node name="IDPanels" type="VBoxContainer" parent="MenuStateMachine/Summons/Display" unique_id=207618147 node_paths=PackedStringArray("id_skills", "evo_crystals", "ATK_label", "INT_label", "DEF_label", "MND_label", "evolution_label", "send_back_button", "devil_stats_panel", "sound", "menu", "state_machine")]
+[node name="IDPanels" type="VBoxContainer" parent="MenuStateMachine/Summons/Display" unique_id=207618147 node_paths=PackedStringArray("id_skills", "evo_crystals", "ATK_label", "INT_label", "DEF_label", "MND_label", "evolution_label", "send_back_button", "devil_stats_panel", "devil_image", "sound", "menu", "state_machine")]
 custom_minimum_size = Vector2(820, 0)
 offset_left = 30.0
 offset_top = 67.0
@@ -4344,6 +4354,7 @@ MND_label = NodePath("../IDStats/Stats/Values/Mind")
 evolution_label = NodePath("../IDStats/Stats/Values/Evolution")
 send_back_button = NodePath("SendBack")
 devil_stats_panel = NodePath("../IDStats/Stats")
+devil_image = NodePath("../IDStats/Stats/Image")
 button_glow = SubResource("StyleBoxFlat_06wc2")
 sound = NodePath("../../../../PolyphonicMenuAudio")
 menu = NodePath("../..")
@@ -4438,7 +4449,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 action_mode = 0
-text = "Send back"
+text = "SEND_BACK_BUTTON"
 flat = true
 alignment = 0
 script = ExtResource("6_r83iq")
@@ -4472,16 +4483,16 @@ theme_override_constants/line_spacing = 5
 text = "0/0"
 horizontal_alignment = 2
 
-[node name="BuyLabel" type="Label" parent="MenuStateMachine/Summons/Display" unique_id=1420146072]
+[node name="SummonLabel" type="Label" parent="MenuStateMachine/Summons/Display" unique_id=1420146072]
 clip_children = 1
 offset_left = 16.0
 offset_top = 8.0
 offset_right = 508.0
 offset_bottom = 60.0
 theme = SubResource("Theme_y1mo2")
-text = "Summon"
+text = "SUMMON_LABEL"
 
-[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Summons/Display/BuyLabel" unique_id=109655696]
+[node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Summons/Display/SummonLabel" unique_id=109655696]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0

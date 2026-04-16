@@ -17,7 +17,7 @@ func Update(_delta: float):
 		sparkles.emitting = true
 		get_tree().create_timer(0.1, false).timeout.connect(func(): revival_particles.emitting = true)
 		revival_tween = get_tree().create_tween()
-		revival_tween.tween_property(sprite, "self_modulate", Color.WHITE, REVIVAL_TWEEN_DURATION)
+		revival_tween.tween_property(player, "modulate", Color.WHITE, REVIVAL_TWEEN_DURATION)
 		await revival_tween.finished
 		Transitioned.emit(self, "idle")
 		player.dash_frequency_timer.start()

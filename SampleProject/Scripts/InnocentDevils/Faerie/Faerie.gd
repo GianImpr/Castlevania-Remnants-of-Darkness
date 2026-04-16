@@ -18,7 +18,8 @@ const EvolutionData = {
 	BODY = "sprite_body",
 	CRYSTAL = "sprite_crystal",
 	WINGS = "sprite_wings",
-	SMEAR = "sprite_smear"
+	SMEAR = "sprite_smear",
+	IMAGE = "image"
 }
 
 func _ready() -> void:

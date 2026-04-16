@@ -26,7 +26,8 @@ enum Evolutions {
 
 const EvolutionData = {
 	NAME = "name",
-	BODY = "sprite_body"
+	BODY = "sprite_body",
+	IMAGE = "image"
 }
 
 func _ready() -> void:
@@ -91,3 +92,7 @@ func isGuarding() -> bool:
 	const MINIMUM_GUARDING_ODDS: float = 16
 	var guarding_odds: float = MINIMUM_GUARDING_ODDS+stats.Stats["LV"]
 	return randi_range(0, 1) <= guarding_odds/GUARDING_COEFFICIENT or mode == Mode.DEFENSIVE
+
+func onModeChanged(new_mode: Mode) -> void:
+	can_dash = false
+	dash_frequency_timer.start()

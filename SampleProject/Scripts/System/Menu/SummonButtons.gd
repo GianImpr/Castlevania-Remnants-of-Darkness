@@ -10,6 +10,7 @@ class_name SummonButtons
 @export var evolution_label: Label
 @export var send_back_button: InventoryButton
 @export var devil_stats_panel: Control
+@export var devil_image: TextureRect
 
 
 func ready() -> void:
@@ -50,7 +51,8 @@ func on_focused(which) -> void:
 	DEF_label.text = str(devil.Stats["DEF"])
 	INT_label.text = str(devil.Stats["INT"])
 	MND_label.text = str(devil.Stats["MND"])
-	evolution_label.text = "Innocent Fairy"
+	evolution_label.text = devil.evolution_name
+	devil_image.texture = devil.image
 	for i in range(1,9,2):
 		evo_crystals.get_child(i).text = str(devil.evo_crystals[i/2])
 	for skill: IDSkill in devil.skills:

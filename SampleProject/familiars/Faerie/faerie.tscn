@@ -4,11 +4,9 @@
 [ext_resource type="Script" uid="uid://duj1ea88vhssi" path="res://SampleProject/Scripts/InnocentDevils/innocent_devil.gd" id="2_fhvse"]
 [ext_resource type="Script" uid="uid://bin0fbttt1atq" path="res://SampleProject/Scripts/InnocentDevils/IDSkill.gd" id="3_5jgsh"]
 [ext_resource type="Script" uid="uid://di71psgnisnfn" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieIdle.gd" id="3_ry4ys"]
-[ext_resource type="Texture2D" uid="uid://btru3nul44e6v" path="res://assets/sprites/HUD/IDIcons/Heal1.png" id="4_sbpmc"]
 [ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_u4ig5"]
-[ext_resource type="Texture2D" uid="uid://deqm7hrmownqo" path="res://assets/sprites/HUD/IDIcons/RefreshingAir.png" id="5_dnftg"]
 [ext_resource type="Script" uid="uid://1r4g306ipyuc" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieRun.gd" id="5_wubor"]
-[ext_resource type="Texture2D" uid="uid://dpgftd4ug7ic8" path="res://assets/sprites/Items/OtherIcons/16x16/fa1113.png" id="6_0e5x1"]
+[ext_resource type="Texture2D" uid="uid://c724mdiyn0k6e" path="res://assets/sprites/InnocentDevils/Fairy/FairyImage.png" id="6_4yd27"]
 [ext_resource type="Script" uid="uid://cowhj5b4jdb44" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieStopMoving.gd" id="6_nci8y"]
 [ext_resource type="Script" uid="uid://c3hrpte6hnnmh" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieHealing.gd" id="7_8u2gj"]
 [ext_resource type="Texture2D" uid="uid://2bpxq35b8ys" path="res://assets/sprites/InnocentDevils/InfantFairyWings.png" id="7_yowja"]
@@ -19,8 +17,11 @@
 [ext_resource type="Script" uid="uid://7jgukldlniqq" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFreeze.gd" id="8_v045c"]
 [ext_resource type="Texture2D" uid="uid://ckq5g8uy1gq13" path="res://assets/sprites/InnocentDevils/InfantFairyCrystal.png" id="8_yowja"]
 [ext_resource type="Script" uid="uid://blognkorla2r8" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFunnyWall.gd" id="9_0ixtq"]
+[ext_resource type="Texture2D" uid="uid://bwddxluqfwb4y" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_Heal.png" id="9_4yd27"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_7ueiy"]
-[ext_resource type="Texture2D" uid="uid://dgyomqbnbmi4" path="res://assets/sprites/Items/InventoryIcons/Inventory_319.png" id="11_1mhe1"]
+[ext_resource type="Texture2D" uid="uid://b826gc6fvpsaq" path="res://assets/sprites/InnocentDevils/Skills/ID_Skill_RefreshingAir.png" id="10_rs8cd"]
+[ext_resource type="Texture2D" uid="uid://cjh21y4pcbsxx" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_TimeHeal.png" id="11_4bh4y"]
+[ext_resource type="Texture2D" uid="uid://cye7dklhjctcr" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_Glide.png" id="12_0jpl7"]
 [ext_resource type="PackedScene" uid="uid://b85mrm6ht3kgn" path="res://SampleProject/extra_scenes/effects/refreshing_air.tscn" id="13_aa5on"]
 [ext_resource type="AudioStream" uid="uid://dmygyfdvwkny8" path="res://assets/sounds/InnocentDevils/Faerie/HealEffect.MP3" id="13_n2r0b"]
 [ext_resource type="Script" uid="uid://bt73nbebo6u4p" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieSpawn.gd" id="13_yowja"]
@@ -30,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="26_6o0ma"]
 [ext_resource type="AudioStream" uid="uid://dtxs8yoast6u2" path="res://assets/sounds/InnocentDevils/IDRevive.wav" id="29_gcuwl"]
 
-[sub_resource type="Resource" id="Resource_afldu"]
+[sub_resource type="Resource" id="Resource_1uow2"]
 script = ExtResource("3_5jgsh")
 name = "HEAL_SKILL_ID"
 description = "HEAL_SKILL_ID_DESC"
@@ -39,31 +40,30 @@ power = 50
 multiplier = 1.0
 type = 2
 unlocked = true
-icon = ExtResource("4_sbpmc")
+icon = ExtResource("9_4yd27")
 
-[sub_resource type="Resource" id="Resource_cf336"]
+[sub_resource type="Resource" id="Resource_ovac2"]
 script = ExtResource("3_5jgsh")
 name = "REFRESHING_AIR_SKILL_ID"
 description = "REFRESHING_AIR_SKILL_ID_DESC"
 cost = 15
 type = 2
 unlocked = true
-icon = ExtResource("5_dnftg")
+icon = ExtResource("10_rs8cd")
 
-[sub_resource type="Resource" id="Resource_yowja"]
+[sub_resource type="Resource" id="Resource_6f78i"]
 script = ExtResource("3_5jgsh")
 name = "TIME_HEAL_SKILL_ID"
 description = "TIME_HEAL_SKILL_ID_DESC"
 cost = 13
 type = 2
-unlocked = true
-icon = ExtResource("6_0e5x1")
+icon = ExtResource("11_4bh4y")
 
-[sub_resource type="Resource" id="Resource_6o0ma"]
+[sub_resource type="Resource" id="Resource_edmne"]
 script = ExtResource("3_5jgsh")
 name = "GLIDE"
 description = "GLIDE_DESC"
-icon = ExtResource("11_1mhe1")
+icon = ExtResource("12_0jpl7")
 metadata/_custom_type_script = "uid://bin0fbttt1atq"
 
 [sub_resource type="Animation" id="Animation_yowja"]
@@ -1014,6 +1014,7 @@ scale = Vector2(2, 2)
 motion_mode = 1
 script = ExtResource("1_un82i")
 evolutions = Array[Dictionary]([{
+"image": ExtResource("6_4yd27"),
 "name": "INFANT_FAIRY",
 "sprite_body": ExtResource("8_0e5x1"),
 "sprite_crystal": ExtResource("8_yowja"),
@@ -1067,7 +1068,7 @@ Initial = {
 "MHearts": 50,
 "MND": 5
 }
-skills = Array[ExtResource("3_5jgsh")]([SubResource("Resource_afldu"), SubResource("Resource_cf336"), SubResource("Resource_yowja"), SubResource("Resource_6o0ma")])
+skills = Array[ExtResource("3_5jgsh")]([SubResource("Resource_1uow2"), SubResource("Resource_ovac2"), SubResource("Resource_6f78i"), SubResource("Resource_edmne")])
 evo_crystals = Array[int]([0, 0, 0, 0, 0])
 level_up = NodePath("../LevelUp")
 sound = NodePath("../PolyphonicAudioPlayer")

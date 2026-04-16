@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name InnocentDevil
 var facing_position: int = -1
 
-@export var id: int = 1
+@export var id: int
 @export var id_name: String
 @export var stats: InnocentDevilStats
 @export var state_machine: Node
@@ -21,7 +21,7 @@ var attack_blocked: bool = false
 var allow_evo_crystals: bool = true
 
 const SPAWN_TWEEN_DURATION: float = 1
-const SPAWN_POSITION_OFFSET: Vector2 = Vector2(0, -150)
+const SPAWN_POSITION_OFFSET: Vector2 = Vector2(100, -100)
 
 var mode: Mode = Mode.OFFENSIVE:
 	set(value):
@@ -32,8 +32,10 @@ var mode: Mode = Mode.OFFENSIVE:
 		match mode:
 			Mode.OFFENSIVE:
 				Global.HUD.switchIdModeColor(Global.HUD.ID_OFFENSIVE_MODE_COLOR)
+				onModeChanged(Mode.OFFENSIVE)
 			Mode.DEFENSIVE:
 				Global.HUD.switchIdModeColor(Global.HUD.ID_DEFENSIVE_MODE_COLOR)
+				onModeChanged(Mode.DEFENSIVE)
 		state_machine.polyphonic_audio_player.play_sound_effect_from_library("change_mode")
 
 enum Mode {
@@ -69,6 +71,7 @@ func _process(delta: float) -> void:
 		mode = Mode.OFFENSIVE
 	elif Input.is_action_just_pressed("rstick_down") and can_change_mode:
 		mode = Mode.DEFENSIVE
+		
 
 		
 func _physics_process(delta: float) -> void:
@@ -110,7 +113,7 @@ func summon() -> void:
 		return
 	var spawn_tween: Tween
 	animation.play("idle")
-	global_position = Global.player.global_position + SPAWN_POSITION_OFFSET
+	global_position = Global.player.global_position + Vector2(SPAWN_POSITION_OFFSET.x*Global.player.facing_position, SPAWN_POSITION_OFFSET.y)
 	voice.play_sound_effect_from_library("revive")
 	sparkles.emitting = true
 	get_tree().create_timer(0.1, false).timeout.connect(func(): spawn_particles.emitting = true)
@@ -126,3 +129,6 @@ func dismiss() -> void:
 	var dismiss_tween: Tween = get_tree().create_tween()
 	dismiss_tween.tween_property(self, "modulate", Color.TRANSPARENT, DISMISS_TWEEN_DURATION)
 	transitionToState("dismiss")
+
+func onModeChanged(new_mode: Mode) -> void:
+	pass

@@ -77,7 +77,7 @@ func hit_target(multiplier: float, body, attack_hitbox = hitbox_iframe, chip_dam
 		var damage = calculate_damage(body, multiplier, chip_damage, guard_break, attribute, knockback)
 		apply_damage(body, damage, attack_hitbox, rehit_time)
 	if "facing_position" in self:
-		if "sprite" in body:
+		if body is HectorPlayer:
 			body.sprite.flip_h = self.facing_position == 1
 		elif body is InnocentDevil:
 			if self.facing_position != body.facing_position:

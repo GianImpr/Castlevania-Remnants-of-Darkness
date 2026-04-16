@@ -349,3 +349,12 @@ func calculateDamageTaken(base_power: int, multiplier: float, chip_damage: int, 
 		return ceil(Stats["MHP"] * TrainingSettings.damage_upon_hit / 100)
 	
 	return damage
+
+func evoCrystalType() -> int:
+	var weapon_type: int = getCurrentWeaponType()
+	
+	#Sword and greatsword both give red crystals
+	if weapon_type <= 1:
+		return 0
+		
+	return weapon_type - 1
