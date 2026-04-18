@@ -1857,12 +1857,13 @@ state_machine = NodePath("../../../..")
 libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Devil" type="Node" parent="MenuStateMachine" unique_id=630048566 node_paths=PackedStringArray("labels", "id_name", "skill_description", "skill_list", "animation")]
+[node name="Devil" type="Node" parent="MenuStateMachine" unique_id=630048566 node_paths=PackedStringArray("labels", "id_name", "skill_description", "skill_list", "evo_crystals", "animation")]
 script = ExtResource("12_kdyk3")
 labels = NodePath("Display/Text")
 id_name = NodePath("Display/Text/Name")
 skill_description = NodePath("Display/Description")
 skill_list = NodePath("Display/PanelContainer/Menu")
+evo_crystals = NodePath("Display/EvolutionCrystals/EvoCrystals")
 animation = NodePath("AnimationPlayer")
 
 [node name="Display" type="Node2D" parent="MenuStateMachine/Devil" unique_id=2031747453]

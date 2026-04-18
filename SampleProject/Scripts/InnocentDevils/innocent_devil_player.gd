@@ -8,11 +8,13 @@ var facing_position: int = -1
 @export var state_machine: Node
 @export var vanishing_particles: CPUParticles2D
 @export var spawn_particles: CPUParticles2D
+@export var evo_particles: GPUParticles2D
 @export var sparkles: CPUParticles2D
 @export var sprite: Sprite2D
 @export var sound: PolyphonicAudio
 @export var voice: PolyphonicAudio
 @export var animation: AnimationPlayer
+@export var collision: CollisionShape2D
 var is_alive: bool = true
 var current_skill: Ability = Ability.HEAL
 var skill_transitions_to_state: String
@@ -132,3 +134,11 @@ func dismiss() -> void:
 
 func onModeChanged(new_mode: Mode) -> void:
 	pass
+
+func shine(evo_crystal_type: EvoCrystal.Type) -> void:
+	const EVO_CRYSTAL_COLORS: Array[Color] = [Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.WHITE]
+	evo_particles.modulate = EVO_CRYSTAL_COLORS[evo_crystal_type]
+	evo_particles.emitting = true
+
+func getHurtboxCenter() -> Vector2:
+	return collision.global_position + Vector2(collision.shape.size.x/2, collision.shape.size.y/2)

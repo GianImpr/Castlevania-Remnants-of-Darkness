@@ -39,10 +39,6 @@ size = Vector2(16, 14.0201)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v3iyo"]
 size = Vector2(16, 16)
 
-[sub_resource type="Environment" id="Environment_q43d6"]
-background_mode = 3
-glow_enabled = true
-
 [sub_resource type="Animation" id="Animation_piiex"]
 length = 0.001
 tracks/0/type = "value"
@@ -156,9 +152,6 @@ collision_mask = 526338
 visible = false
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_v3iyo")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=668929184]
-environment = SubResource("Environment_q43d6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=34756694]
 libraries/ = SubResource("AnimationLibrary_ojjl5")

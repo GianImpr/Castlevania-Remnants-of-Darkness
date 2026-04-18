@@ -31,7 +31,7 @@ func getDataFromIDStats(devil: InnocentDevil) -> void:
 	Initial = StaticGlobal.deep_dictionary_duplicate(stats.Initial)
 	Bases = StaticGlobal.deep_dictionary_duplicate(stats.Bases)
 	skills = StaticGlobal.recursive_duplicate(stats.skills)
-	evo_crystals = stats.evo_crystals.duplicate(true)
+	evo_crystals = stats.evo_crystals
 	current_evolution = devil.current_evolution
 	innocent_devil_scene = load(devil.scene_file_path)
 	
@@ -48,7 +48,7 @@ func applyStats(devil: InnocentDevil) -> void:
 	stats.Initial = StaticGlobal.deep_dictionary_duplicate(Initial)
 	stats.Bases = StaticGlobal.deep_dictionary_duplicate(Bases)
 	stats.skills = StaticGlobal.recursive_duplicate(skills)
-	stats.evo_crystals = evo_crystals.duplicate(true)
+	stats.evo_crystals = evo_crystals
 
 func updateStats(devil: InnocentDevil) -> void:
 	getDataFromIDStats(devil)

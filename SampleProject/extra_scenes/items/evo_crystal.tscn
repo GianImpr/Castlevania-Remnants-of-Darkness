@@ -1,0 +1,191 @@
+[gd_scene format=3 uid="uid://d1wor1k4syfn8"]
+
+[ext_resource type="Script" uid="uid://6gjo2t02nu4u" path="res://SampleProject/Scripts/Stage_elements/evo_crystal.gd" id="1_l1tmv"]
+[ext_resource type="Shader" uid="uid://ccbusj4pboktl" path="res://SampleProject/Shaders/flash.gdshader" id="3_6lnky"]
+[ext_resource type="Texture2D" uid="uid://bntvnmo5oryn1" path="res://assets/sprites/Items/Pickups/EvoCrystals/EvoBlue.png" id="3_tytao"]
+[ext_resource type="Texture2D" uid="uid://cgc1jyvgj4475" path="res://assets/sprites/Items/Pickups/EvoCrystals/EvoGreen.png" id="4_jho8c"]
+[ext_resource type="Texture2D" uid="uid://b0taaanrk76c5" path="res://assets/sprites/Items/Pickups/EvoCrystals/EvoRed.png" id="4_tytao"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_jho8c"]
+[ext_resource type="Texture2D" uid="uid://dqwchxkws6csy" path="res://assets/sprites/Items/Pickups/EvoCrystals/EvoYellow.png" id="5_mevta"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_mevta"]
+[ext_resource type="Texture2D" uid="uid://clxai2xxlk6p2" path="res://assets/sprites/Items/Pickups/EvoCrystals/EvoWhite.png" id="6_wif7x"]
+[ext_resource type="AudioStream" uid="uid://b4c6ln2078jmx" path="res://assets/sounds/Pickups/EvoCrystal.ogg" id="7_u7gwu"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_wif7x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yniq"]
+shader = ExtResource("3_6lnky")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[sub_resource type="Gradient" id="Gradient_71y8j"]
+offsets = PackedFloat32Array(0, 0.328042)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8ych"]
+gradient = SubResource("Gradient_71y8j")
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.495726, 0.474359)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fe178"]
+size = Vector2(8.5, 12.01005)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3iyo"]
+size = Vector2(8, 12)
+
+[sub_resource type="Resource" id="Resource_0p5lm"]
+script = ExtResource("7_wif7x")
+Tag = "evo"
+stream = ExtResource("7_u7gwu")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_6lnky"]
+script = ExtResource("6_mevta")
+sound_effects = Array[ExtResource("7_wif7x")]([SubResource("Resource_0p5lm")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="Animation" id="Animation_tytao"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jho8c"]
+resource_name = "collect"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.76666665, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586, 12.566370614359172]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.8247963, 1.8247963, 1.8247963, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mevta"]
+resource_name = "idle"
+length = 2.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.43333334, 2.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -15)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wif7x"]
+_data = {
+&"RESET": SubResource("Animation_tytao"),
+&"collect": SubResource("Animation_jho8c"),
+&"idle": SubResource("Animation_mevta")
+}
+
+[node name="EvoCrystal" type="RigidBody2D" unique_id=1119557337 node_paths=PackedStringArray("sprite", "animation", "sound", "area")]
+z_index = 15
+collision_layer = 0
+collision_mask = 4097
+lock_rotation = true
+script = ExtResource("1_l1tmv")
+power = 1
+sprite = NodePath("Sprite2D")
+animation = NodePath("AnimationPlayer")
+sound = NodePath("PolyphonicAudio")
+area = NodePath("Area2D")
+evo_crystals = Array[CompressedTexture2D]([ExtResource("4_tytao"), ExtResource("3_tytao"), ExtResource("4_jho8c"), ExtResource("5_mevta"), ExtResource("6_wif7x")])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=244009511]
+material = SubResource("ShaderMaterial_3yniq")
+scale = Vector2(2, 2)
+texture = ExtResource("4_tytao")
+offset = Vector2(-8, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=1084946680]
+position = Vector2(-8.000001, 1.0000015)
+scale = Vector2(0.434783, 0.434783)
+energy = 2.0
+texture = SubResource("GradientTexture2D_a8ych")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216766756]
+visible = false
+position = Vector2(-16.5, 0.01004982)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_fe178")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1829310129]
+z_index = 10
+collision_layer = 0
+collision_mask = 526338
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=378969760]
+visible = false
+position = Vector2(-16, 0)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_v3iyo")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=188625059]
+process_mode = 3
+bus = &"SFX"
+script = ExtResource("5_jho8c")
+audio_library = SubResource("Resource_6lnky")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=23093693]
+libraries/ = SubResource("AnimationLibrary_wif7x")
+autoplay = &"idle"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

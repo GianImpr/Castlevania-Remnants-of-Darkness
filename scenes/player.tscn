@@ -4648,7 +4648,7 @@ anim_speed_max = 1.0
 offsets = PackedFloat32Array(0.00367647, 0.319853, 0.682635, 1)
 colors = PackedColorArray(2.93598e-06, 0.179974, 0.522945, 1, 0.177272, 8.27849e-06, 0.754886, 1, 0.355584, 0.00069443, 0.96464, 1, 0.246885, 0.0804089, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_jgfqy"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gik8q"]
 gradient = SubResource("Gradient_nopul")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d5cvh"]
@@ -4660,7 +4660,7 @@ initial_velocity_max = 70.0
 orbit_velocity_min = 9.49949e-08
 orbit_velocity_max = 1.0
 gravity = Vector3(0, -50, 0)
-color_ramp = SubResource("GradientTexture1D_jgfqy")
+color_ramp = SubResource("GradientTexture1D_gik8q")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
@@ -5851,6 +5851,7 @@ amount = 18
 texture = ExtResource("167_ltqbs")
 lifetime = 0.7
 one_shot = true
+fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_d5cvh")
 
 [node name="TimeHeal" type="CPUParticles2D" parent="." unique_id=1332910115]

@@ -13,15 +13,18 @@ class_name EnemyStats
 @export var rare_drop_id: int = 0
 @export var rare_drop_category: PickUp.ItemType
 @export var rare_drop_rate: float = 0
+@export var evo_crystal_amount: int = 1
 @export var weaknesses: Array[Global.Attribute]
 @export var tolerances: Array[Global.Attribute]
 var enemy_parent_node: Node
 const PICK_UP_SCENE_PATH: String = "res://SampleProject/extra_scenes/items/pick_up.tscn"
 const HEART_SCENE_PATH: String = "res://SampleProject/extra_scenes/items/heart.tscn"
 const MONEY_SCENE_PATH: String = "res://SampleProject/extra_scenes/items/money.tscn"
+const EVO_CRYSTAL_SCENE_PATH: String = "res://SampleProject/extra_scenes/items/evo_crystal.tscn"
 static var pick_up_scene: Resource = preload(PICK_UP_SCENE_PATH)
 static var heart_scene: Resource = preload(HEART_SCENE_PATH)
 static var money_scene: Resource = preload(MONEY_SCENE_PATH)
+static var evo_crystal_scene: Resource = preload(EVO_CRYSTAL_SCENE_PATH)
 static var CRAZY_MODE_STAT_MULTIPLIER: float = 1.5
 static var CRAZY_MODE_LEVEL_BOOST: float = 10
 static var SIMPLIFIED_MODE_STAT_MULTIPLIER: float = 0.5
@@ -48,6 +51,8 @@ func determineDrop(include_misc_items: bool) -> void:
 	const MIN_RANDOM_NUMBER: float = 0
 	const MAX_RANDOM_NUMBER: float = 1
 	const HEART_DROP_RATE: float = 0.25
+	const EVO_CRYSTAL_DROP_RATE: float = 0.2+1
+	const CONSEQUENT_EVO_CRYSTAL_SPRITE_OFFSET: Vector2 = Vector2(7,-3)
 	const MONEY_DROP_RATE: float = 0.3
 	const RED_SCARF_BONUS_MULTIPLIER: float = 1.3
 	var heart_drop_multiplier: float = 1
@@ -71,6 +76,9 @@ func determineDrop(include_misc_items: bool) -> void:
 		
 	if random_number <= HEART_DROP_RATE*heart_drop_multiplier and (Global.player.unlocked_magic or Global.player.innocent_devil != null):
 		dropMisc(heart_scene)
+	elif random_number <= EVO_CRYSTAL_DROP_RATE and Global.player.innocent_devil != null and Global.player.innocent_devil.is_alive:
+		for i in range(0, evo_crystal_amount):
+			dropMisc(evo_crystal_scene, CONSEQUENT_EVO_CRYSTAL_SPRITE_OFFSET*i)
 	elif random_number <= MONEY_DROP_RATE:
 		dropMisc(money_scene)
 
@@ -91,11 +99,14 @@ func dropItem(id: int, type: PickUp.ItemType) -> void:
 	enemy_parent_node.add_child(pick_up)
 
 # Drops a random heart or money
-func dropMisc(scene: PackedScene) -> void:
+func dropMisc(scene: PackedScene, sprite_offset: Vector2 = Vector2.ZERO) -> void:
 	var misc_drop = scene.instantiate()
 	if "fly_high" in misc_drop:
 		misc_drop.fly_high = true
 	misc_drop.global_position = get_parent().global_position
+	if misc_drop is EvoCrystal:
+		misc_drop.global_position.x += sprite_offset.x
+		misc_drop.sprite.offset.y += sprite_offset.y
 	enemy_parent_node.add_child(misc_drop)
 	
 func findEntry() -> EnemyEntry:

@@ -395,10 +395,6 @@ colors = PackedColorArray(2, 2, 2, 1, 0, 0.6, 1, 0)
 [sub_resource type="Gradient" id="Gradient_3aip7"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 1, 1, 0.502)
 
-[sub_resource type="Environment" id="Environment_q43d6"]
-background_mode = 3
-glow_enabled = true
-
 [node name="Pick-up" type="RigidBody2D" unique_id=900492752 node_paths=PackedStringArray("sprite", "idle_timer", "flash_timer", "animation", "sound", "collision", "wall_checker")]
 collision_layer = 0
 collision_mask = 4097
@@ -473,9 +469,6 @@ scale_amount_max = 3.0
 color = Color(2, 2, 2, 1)
 color_ramp = SubResource("Gradient_4lmh8")
 color_initial_ramp = SubResource("Gradient_3aip7")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1674247311]
-environment = SubResource("Environment_q43d6")
 
 [node name="CheckWalls" type="RayCast2D" parent="." unique_id=493438736]
 target_position = Vector2(10, 0)

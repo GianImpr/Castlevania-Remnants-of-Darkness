@@ -5,6 +5,7 @@ class_name InvDevil
 @export var id_name: Label
 @export var skill_description: Label
 @export var skill_list: DevilButtons
+@export var evo_crystals: HBoxContainer
 var devil: InnocentDevil
 
 func enter():
@@ -37,6 +38,9 @@ func updateStats():
 	labels.ExperienceValues.text = str(devil.stats.Stats["EXP"]) + "\n"
 	labels.ExperienceValues.text += str(devil.stats.expNeededToLvUp()-devil.stats.Stats["EXP"]) + "\n"
 	skill_description.text = ""
+	for i in range(1,9,2):
+		evo_crystals.get_child(i).text = str(devil.stats.evo_crystals[i/2])
+
 	
 func updateSkillList() -> void:
 	const SKILL_PANEL_MINIMUM_SIZE: Vector2 = Vector2(500, 40)

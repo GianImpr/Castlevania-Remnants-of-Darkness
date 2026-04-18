@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name LifeVessel
 @export var power: int
 @export var pickup_flag: int
 @export var boost_message: PackedScene

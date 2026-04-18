@@ -779,7 +779,26 @@ colors = PackedColorArray(1, 0.914602, 0.769121, 1, 0.984314, 0.713726, 0, 0)
 offsets = PackedFloat32Array(0, 0.991979)
 colors = PackedColorArray(1, 1, 1, 1, 1, 0.919853, 0.782403, 1)
 
-[node name="Crow" type="CharacterBody2D" unique_id=2104041657 node_paths=PackedStringArray("hurtbox_area", "damage_popup", "detection", "dash_frequency_timer", "stats", "state_machine", "vanishing_particles", "spawn_particles", "sparkles", "sprite", "sound", "voice", "animation")]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_edmne"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_08i5x"]
+emission_shape = 3
+emission_box_extents = Vector3(8, 17, 1)
+direction = Vector3(0, 0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 70.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 1.0
+gravity = Vector3(0, -50, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Crow" type="CharacterBody2D" unique_id=2104041657 node_paths=PackedStringArray("hurtbox_area", "damage_popup", "detection", "dash_frequency_timer", "stats", "state_machine", "vanishing_particles", "spawn_particles", "evo_particles", "sparkles", "sprite", "sound", "voice", "animation", "collision")]
 z_index = 2
 scale = Vector2(2, 2)
 collision_layer = 0
@@ -800,11 +819,13 @@ stats = NodePath("InnocentDevilStats")
 state_machine = NodePath("StateMachine")
 vanishing_particles = NodePath("Vanishing")
 spawn_particles = NodePath("Revival")
+evo_particles = NodePath("EvoCrystalShine")
 sparkles = NodePath("Sparkles")
 sprite = NodePath("Body")
 sound = NodePath("PolyphonicAudioPlayer")
 voice = NodePath("Voice")
 animation = NodePath("AnimationPlayer")
+collision = NodePath("HurtboxArea/Hurtbox")
 metadata/_custom_type_script = "uid://df5gwrek3weyb"
 
 [node name="InnocentDevilStats" type="Node" parent="." unique_id=1779888169 node_paths=PackedStringArray("level_up", "sound", "sprite", "effects")]
@@ -895,7 +916,7 @@ position = Vector2(1.5, -0.5)
 shape = SubResource("CapsuleShape2D_8e3so")
 
 [node name="HurtboxArea" type="Area2D" parent="." unique_id=349384552]
-collision_layer = 8192
+collision_layer = 24576
 collision_mask = 0
 
 [node name="Hurtbox" type="CollisionShape2D" parent="HurtboxArea" unique_id=2108844634]
@@ -1130,5 +1151,18 @@ initial_velocity_max = 150.0
 scale_amount_curve = SubResource("Curve_wa1eh")
 color_ramp = SubResource("Gradient_qr6n4")
 color_initial_ramp = SubResource("Gradient_5mfou")
+
+[node name="EvoCrystalShine" type="GPUParticles2D" parent="." unique_id=2129693960]
+process_mode = 3
+z_index = 20
+material = SubResource("CanvasItemMaterial_edmne")
+position = Vector2(1.5, 3)
+emitting = false
+amount = 18
+texture = ExtResource("7_ob5gs")
+lifetime = 0.7
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_08i5x")
 
 [connection signal="body_entered" from="DashArea" to="DashArea" method="_on_body_entered"]
