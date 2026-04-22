@@ -17,6 +17,7 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 	const ENFEEBLE_DAMAGE_MULTIPLIER: float = 1.3
 	const STONE_DAMAGE_MULTIPLIER: float = 2
 	const GODDESS_SHIELD_DAMAGE_MULTIPLIER: float = 0.5
+	const RESIST_FIRE_ICE_DAMAGE_MULTIPLIER: float = 0.33
 	var damage
 	
 	if body is InnocentDevil:
@@ -91,7 +92,9 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 	if Global.player.stats.itemEquipped(Artifact.Artifacts.GODDESS_SHIELD, Global.player.stats.EQUIPMENT_SLOTS.ARTIFACT) and randf_range(0,99) < Global.player.stats.Stats["LCK"]*0.5:
 		damage *= GODDESS_SHIELD_DAMAGE_MULTIPLIER
 		Global.player.activateGoddessShieldEffect()
-
+		
+	if Global.player.stats.status[Global.player.stats.Status.RESIST_FIRE_ICE] > 0:
+		damage *= RESIST_FIRE_ICE_DAMAGE_MULTIPLIER
 		
 	if Global.screen == Global.ScreenType.TRAINING:
 		return ceil(body.stats.Stats["MHP"] * TrainingSettings.damage_upon_hit / 100)

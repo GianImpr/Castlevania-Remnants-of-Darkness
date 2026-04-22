@@ -6,7 +6,9 @@ var skill_id: int
 var skills: Array[Callable] = [
 	heal,
 	refreshingAir,
-	timeHeal
+	timeHeal,
+	errorSkill,
+	resistFireIce
 ]
 
 func enter():
@@ -32,10 +34,14 @@ func refreshingAir() -> void:
 	var refreshing_air = refreshing_air_scene.instantiate()
 	Global.player.add_child(refreshing_air)
 	refreshing_air.position.y += 30
-	
+
 func timeHeal() -> void:
 	setSoundAndParticles("heal_effect", Color(0.3,0.7,1))
 	Global.player.applyTimeHeal()
+	
+func resistFireIce() -> void:
+	setSoundAndParticles("heal_effect", Color(0.8,0,7))
+	Global.player.stats.status[Global.player.stats.Status.RESIST_FIRE_ICE] = 30
 	
 func setSoundAndParticles(sound_name: String, color: Color) -> void:
 	magic_particles.self_modulate = color
@@ -43,3 +49,6 @@ func setSoundAndParticles(sound_name: String, color: Color) -> void:
 	
 func performSkill():
 	skills[skill_id].call()
+
+func errorSkill():
+	printerr("This slot should not be used.")

@@ -29,6 +29,7 @@
 [ext_resource type="Shader" uid="uid://ccbusj4pboktl" path="res://SampleProject/Shaders/flash.gdshader" id="13_j586m"]
 [ext_resource type="AudioStream" uid="uid://dmygyfdvwkny8" path="res://assets/sounds/InnocentDevils/Faerie/HealEffect.MP3" id="13_n2r0b"]
 [ext_resource type="Script" uid="uid://bt73nbebo6u4p" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieSpawn.gd" id="13_yowja"]
+[ext_resource type="Texture2D" uid="uid://dcx6np6gfaplj" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_ResistFireIce.png" id="16_wjj4u"]
 [ext_resource type="Script" uid="uid://26uwmgwv3u2y" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieDismiss.gd" id="21_gcuwl"]
 [ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="22_ue60m"]
 [ext_resource type="AudioStream" uid="uid://dlmhl7dysb8lh" path="res://assets/sounds/InnocentDevils/IDLevelUp.MP3" id="24_2jcuy"]
@@ -92,6 +93,16 @@ script = ExtResource("3_5jgsh")
 name = "GLIDE"
 description = "GLIDE_DESC"
 icon = ExtResource("12_0jpl7")
+metadata/_custom_type_script = "uid://bin0fbttt1atq"
+
+[sub_resource type="Resource" id="Resource_04nok"]
+script = ExtResource("3_5jgsh")
+name = "RESIST_FIRE_ICE_SKILL_ID"
+description = "RESIST_FIRE_ICE_SKILL_ID_DESC"
+cost = 30
+type = 2
+unlocked = true
+icon = ExtResource("16_wjj4u")
 metadata/_custom_type_script = "uid://bin0fbttt1atq"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j3ndj"]
@@ -1463,7 +1474,7 @@ Initial = {
 "MHearts": 50,
 "MND": 5
 }
-skills = Array[ExtResource("3_5jgsh")]([SubResource("Resource_1uow2"), SubResource("Resource_ovac2"), SubResource("Resource_6f78i"), SubResource("Resource_edmne")])
+skills = Array[ExtResource("3_5jgsh")]([SubResource("Resource_1uow2"), SubResource("Resource_ovac2"), SubResource("Resource_6f78i"), SubResource("Resource_edmne"), SubResource("Resource_04nok")])
 evo_crystals = Array[int]([0, 0, 0, 0, 0])
 level_up = NodePath("../LevelUp")
 sound = NodePath("../PolyphonicAudioPlayer")

@@ -89,6 +89,7 @@ enum Status {
 	CURSE,
 	ENFEEBLE,
 	TIME_HEAL,
+	RESIST_FIRE_ICE,
 	STONE
 }
 
@@ -282,6 +283,7 @@ func calculateDamageTaken(base_power: int, multiplier: float, chip_damage: int, 
 	const CONFIDENCE_RING_MULTIPLIER: float = 1.3
 	const ENFEEBLE_DAMAGE_MULTIPLIER: float = 1.3
 	const GODDESS_SHIELD_DAMAGE_MULTIPLIER: float = 0.5
+	const RESIST_FIRE_ICE_SKILL_DAMAGE_MULTIPLIER: float = 0.33
 	
 	player.checkTightGuard()
 
@@ -337,6 +339,9 @@ func calculateDamageTaken(base_power: int, multiplier: float, chip_damage: int, 
 		
 	if status[Status.ENFEEBLE] > 0:
 		damage *= ENFEEBLE_DAMAGE_MULTIPLIER
+		
+	if status[Status.RESIST_FIRE_ICE] > 0 and attribute in [Global.Attribute.FIRE, Global.Attribute.ICE]:
+		damage *= RESIST_FIRE_ICE_SKILL_DAMAGE_MULTIPLIER
 	
 	if damage > Stats["HP"] and Stats["HP"] > 1 and randi_range(0, 99) < Stats["LCK"] and Global.player.stats.itemEquipped(Artifact.Artifacts.MIRACLE_COIN, "artifact"):
 		damage = Stats["HP"] - 1
