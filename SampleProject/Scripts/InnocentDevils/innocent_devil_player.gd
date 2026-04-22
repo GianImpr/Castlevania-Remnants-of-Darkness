@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name InnocentDevil
 var facing_position: int = -1
+signal evolved
 
 @export var id: int
 @export var id_name: String
@@ -14,6 +15,7 @@ var facing_position: int = -1
 @export var sound: PolyphonicAudio
 @export var voice: PolyphonicAudio
 @export var animation: AnimationPlayer
+@export var evolution_animation: AnimationPlayer
 @export var collision: CollisionShape2D
 var is_alive: bool = true
 var current_skill: Ability = Ability.HEAL
@@ -53,6 +55,9 @@ enum Ability {
 	TIME_HEAL,
 	GLIDE
 }
+
+func _ready() -> void:
+	updateSpriteToCurrentEvolution()
 	
 func _process(delta: float) -> void:
 	if not is_alive:
@@ -142,3 +147,66 @@ func shine(evo_crystal_type: EvoCrystal.Type) -> void:
 
 func getHurtboxCenter() -> Vector2:
 	return collision.global_position + Vector2(collision.shape.size.x/2, collision.shape.size.y/2)
+
+func updateSpriteToCurrentEvolution() -> void:
+	pass
+
+func evolve(new_evolution: int) -> void:
+	const EVOLUTION_UPDATE_MESSAGE_DURATION: float = 3
+	const DARK_TWEEN_DURATION: float = 0.4
+	const NORMAL_LIGHT_DURATION: float = 0.1
+	var darkening_tween: Tween
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	top_level = true
+	get_tree().paused = true
+	darkening_tween = get_tree().create_tween()
+	darkening_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	darkening_tween.tween_property(get_tree().current_scene, "modulate", Color.DIM_GRAY, DARK_TWEEN_DURATION)
+	Global.screen = Global.ScreenType.EVENT
+	transitionToState("freeze")
+	evolution_animation.play("evolve")
+	await evolved
+	self.current_evolution = new_evolution
+	updateSpriteToCurrentEvolution()
+	Global.player.heal_innocent(9999)
+	await evolution_animation.animation_finished
+	darkening_tween = get_tree().create_tween()
+	darkening_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	darkening_tween.tween_property(get_tree().current_scene, "modulate", Color.WHITE, NORMAL_LIGHT_DURATION)
+	get_tree().paused = false
+	top_level = false
+	Global.screen = Global.ScreenType.NONE
+	Global.tutorial_box.popup(id_name + " evolved into [color=yellow]" + self.evolutions[self.current_evolution][self.EvolutionData.NAME] + "[/color].", EVOLUTION_UPDATE_MESSAGE_DURATION)
+	process_mode = Node.PROCESS_MODE_INHERIT
+	canEvolve()
+	
+func checkShouldEvolve() -> void:
+	const CANNOT_EVOLVE: int = -1
+	var evolve_to: int = canEvolve()
+	if evolve_to != CANNOT_EVOLVE:
+		evolve(evolve_to)
+
+## Returns the ID of the form the devil can evolve to.
+## Returns -1 else.
+func canEvolve() -> int:
+	const MAX_TIER: int = 1 ##3 once all evolutions are done
+	var current_evo: int = self.current_evolution
+	var evo_crystals: int = 0
+	var possible_evolutions: Array[int] = [current_evo-current_evo%2+1, current_evo-current_evo%2+2]
+	
+	if current_evo >= MAX_TIER:
+		return -1
+	
+	for evolution in possible_evolutions:
+		var evo_crystals_needed: int = self.evolutions[evolution][self.EvolutionData.EVO_CRYSTALS_REQUIRED]
+
+		for i in range(0, EvoCrystal.Type.size()):
+			if self.evolutions[evolution][self.EvolutionData.EVO_CRYSTALS_ACCEPTED][i]:
+				evo_crystals += stats.evo_crystals[i]
+
+		if evo_crystals >= evo_crystals_needed:
+			for i in range(0, EvoCrystal.Type.size()):
+				if self.evolutions[evolution][self.EvolutionData.EVO_CRYSTALS_ACCEPTED][i]:
+					stats.evo_crystals[i] = 0
+			return evolution
+	return -1

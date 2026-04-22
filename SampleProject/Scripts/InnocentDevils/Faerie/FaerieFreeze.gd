@@ -4,6 +4,7 @@ var period: int = 0
 @export var timer: Timer
 
 func enter():
+	player.velocity = Vector2.ZERO
 	animation.play("idle")
 	timer.start()
 	

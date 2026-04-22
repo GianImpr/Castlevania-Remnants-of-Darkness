@@ -20,6 +20,7 @@ const ANGLE_ADJUST_INTERVAL: float = 0.3
 const SPEED: float = 400
 signal picked
 signal travel
+signal absorbed
 
 enum Type {
 	RED,
@@ -82,9 +83,11 @@ func flyTowardsInnocentDevil(devil: InnocentDevil, delta: float) -> void:
 func dissolve() -> void:
 	const DISSOLVE_DURATION: float = 0.2
 	var dissolve_tween: Tween = get_tree().create_tween()
+	absorbed.emit()
 	dissolving = true
 	linear_velocity = Vector2.ZERO
 	Global.player.innocent_devil.stats.evo_crystals[type] = min(Global.player.innocent_devil.stats.evo_crystals[type]+power, 999)
 	dissolve_tween.tween_property(self, "global_scale", Vector2.ZERO, DISSOLVE_DURATION)
 	await dissolve_tween.finished
+	Global.player.innocent_devil.checkShouldEvolve()
 	queue_free()

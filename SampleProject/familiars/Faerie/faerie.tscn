@@ -9,20 +9,24 @@
 [ext_resource type="Texture2D" uid="uid://c724mdiyn0k6e" path="res://assets/sprites/InnocentDevils/Fairy/FairyImage.png" id="6_4yd27"]
 [ext_resource type="Script" uid="uid://cowhj5b4jdb44" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieStopMoving.gd" id="6_nci8y"]
 [ext_resource type="Script" uid="uid://c3hrpte6hnnmh" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieHealing.gd" id="7_8u2gj"]
+[ext_resource type="Texture2D" uid="uid://byrj4qf1ntwbp" path="res://assets/sprites/InnocentDevils/Fairy/Leaffle/LeaffleBody.png" id="7_lrodk"]
 [ext_resource type="Texture2D" uid="uid://2bpxq35b8ys" path="res://assets/sprites/InnocentDevils/InfantFairyWings.png" id="7_yowja"]
 [ext_resource type="Texture2D" uid="uid://bjh6boh3k0ccw" path="res://assets/sprites/InnocentDevils/InfantFairyBody.png" id="8_0e5x1"]
 [ext_resource type="Script" uid="uid://d2kqkdfhgcbi7" path="res://SampleProject/Scripts/System/state_machine.gd" id="8_6o0ma"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_kyyu2"]
 [ext_resource type="Texture2D" uid="uid://pnaab1xw7gpw" path="res://assets/sprites/InnocentDevils/InfantFairySmear.png" id="8_syto6"]
 [ext_resource type="Script" uid="uid://7jgukldlniqq" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFreeze.gd" id="8_v045c"]
+[ext_resource type="Texture2D" uid="uid://dohpwug7hpgf2" path="res://assets/sprites/InnocentDevils/Fairy/Leaffle/LeaffleSmear.png" id="8_wjj4u"]
 [ext_resource type="Texture2D" uid="uid://ckq5g8uy1gq13" path="res://assets/sprites/InnocentDevils/InfantFairyCrystal.png" id="8_yowja"]
 [ext_resource type="Script" uid="uid://blognkorla2r8" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieFunnyWall.gd" id="9_0ixtq"]
+[ext_resource type="Texture2D" uid="uid://bj0pjb0ksogvc" path="res://assets/sprites/InnocentDevils/Fairy/Leaffle/LeaffleWings.png" id="9_04nok"]
 [ext_resource type="Texture2D" uid="uid://bwddxluqfwb4y" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_Heal.png" id="9_4yd27"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_7ueiy"]
 [ext_resource type="Texture2D" uid="uid://b826gc6fvpsaq" path="res://assets/sprites/InnocentDevils/Skills/ID_Skill_RefreshingAir.png" id="10_rs8cd"]
 [ext_resource type="Texture2D" uid="uid://cjh21y4pcbsxx" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_TimeHeal.png" id="11_4bh4y"]
 [ext_resource type="Texture2D" uid="uid://cye7dklhjctcr" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_Glide.png" id="12_0jpl7"]
 [ext_resource type="PackedScene" uid="uid://b85mrm6ht3kgn" path="res://SampleProject/extra_scenes/effects/refreshing_air.tscn" id="13_aa5on"]
+[ext_resource type="Shader" uid="uid://ccbusj4pboktl" path="res://SampleProject/Shaders/flash.gdshader" id="13_j586m"]
 [ext_resource type="AudioStream" uid="uid://dmygyfdvwkny8" path="res://assets/sounds/InnocentDevils/Faerie/HealEffect.MP3" id="13_n2r0b"]
 [ext_resource type="Script" uid="uid://bt73nbebo6u4p" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieSpawn.gd" id="13_yowja"]
 [ext_resource type="Script" uid="uid://26uwmgwv3u2y" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieDismiss.gd" id="21_gcuwl"]
@@ -32,6 +36,28 @@
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="26_6o0ma"]
 [ext_resource type="AudioStream" uid="uid://7ipy4yvrhsl6" path="res://assets/sounds/InnocentDevils/Faerie/FairyFirstTierHeal2.wav" id="29_0jpl7"]
 [ext_resource type="AudioStream" uid="uid://dtxs8yoast6u2" path="res://assets/sounds/InnocentDevils/IDRevive.wav" id="29_gcuwl"]
+[ext_resource type="Texture2D" uid="uid://do1dgmj2xasah" path="res://assets/sprites/Effects/ChargeParticlesDecolored.png" id="33_0jpl7"]
+[ext_resource type="AudioStream" uid="uid://sn0qbpa8r74e" path="res://assets/sounds/InnocentDevils/Evolved.wav" id="34_ri05a"]
+[ext_resource type="AudioStream" uid="uid://bh3jgggmp1qjc" path="res://assets/sounds/InnocentDevils/EvolveParticles.wav" id="35_3cw05"]
+[ext_resource type="Texture2D" uid="uid://dkxgqvaj0gxh" path="res://assets/sprites/Weapons/Swords/Circle.png" id="35_j3ndj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4bh4y"]
+load_path = "res://.godot/imported/FairyImage.png-1911bb7d72893a7e851db460654e12d5.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0jpl7"]
+load_path = "res://.godot/imported/HornetBody.png-e8b24d606a4489894a031d0a17e942eb.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j586m"]
+load_path = "res://.godot/imported/InfantFairyCrystal.png-3d4c8d73b9627b1240abff41bac55b5c.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j3ndj"]
+load_path = "res://.godot/imported/HornetSmear.png-b1445502f8fa4354d1093f2b7c8dcc76.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_egyvd"]
+load_path = "res://.godot/imported/HornetWings.png-799cbf950f35169db8d36bd342de156b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1dc0q"]
+load_path = "res://.godot/imported/InfantFairyCrystal.png-3d4c8d73b9627b1240abff41bac55b5c.ctex"
 
 [sub_resource type="Resource" id="Resource_1uow2"]
 script = ExtResource("3_5jgsh")
@@ -67,6 +93,11 @@ name = "GLIDE"
 description = "GLIDE_DESC"
 icon = ExtResource("12_0jpl7")
 metadata/_custom_type_script = "uid://bin0fbttt1atq"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j3ndj"]
+shader = ExtResource("13_j586m")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="Animation" id="Animation_yowja"]
 length = 0.001
@@ -115,7 +146,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
+tracks/0/path = NodePath("Sprites/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -151,7 +182,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Body:flip_v")
+tracks/3/path = NodePath("Sprites/Body:flip_v")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -163,7 +194,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WingSprite:frame")
+tracks/4/path = NodePath("Sprites/WingSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -175,7 +206,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("WingSprite:flip_v")
+tracks/5/path = NodePath("Sprites/WingSprite:flip_v")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -187,7 +218,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CrystalSprite:frame")
+tracks/6/path = NodePath("Sprites/CrystalSprite:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -199,7 +230,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CrystalSprite:flip_v")
+tracks/7/path = NodePath("Sprites/CrystalSprite:flip_v")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -211,7 +242,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SmearSprite:frame")
+tracks/8/path = NodePath("Sprites/SmearSprite:frame")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -223,7 +254,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("SmearSprite:visible")
+tracks/9/path = NodePath("Sprites/SmearSprite:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -231,6 +262,78 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sprites:material")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_j3ndj")]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Sprites:material:shader_parameter/flash_modifier")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Evolving:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Evolving:amount_ratio")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("EvoCircle:self_modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("EvoCircle:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.01, 0.01)]
 }
 
 [sub_resource type="Animation" id="Animation_8kj1f"]
@@ -241,7 +344,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
+tracks/0/path = NodePath("Sprites/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -253,7 +356,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body:flip_v")
+tracks/1/path = NodePath("Sprites/Body:flip_v")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -265,7 +368,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WingSprite:flip_v")
+tracks/2/path = NodePath("Sprites/WingSprite:flip_v")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -277,7 +380,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WingSprite:frame")
+tracks/3/path = NodePath("Sprites/WingSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -289,7 +392,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CrystalSprite:frame")
+tracks/4/path = NodePath("Sprites/CrystalSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -301,7 +404,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CrystalSprite:flip_v")
+tracks/5/path = NodePath("Sprites/CrystalSprite:flip_v")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -318,7 +421,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
+tracks/0/path = NodePath("Sprites/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -356,7 +459,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WingSprite:frame")
+tracks/3/path = NodePath("Sprites/WingSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -368,7 +471,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CrystalSprite:frame")
+tracks/4/path = NodePath("Sprites/CrystalSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -394,7 +497,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("SmearSprite:frame")
+tracks/6/path = NodePath("Sprites/SmearSprite:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -406,7 +509,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SmearSprite:visible")
+tracks/7/path = NodePath("Sprites/SmearSprite:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -424,7 +527,7 @@ step = 0.0167
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
+tracks/0/path = NodePath("Sprites/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -436,7 +539,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body:flip_v")
+tracks/1/path = NodePath("Sprites/Body:flip_v")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -448,7 +551,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WingSprite:frame")
+tracks/2/path = NodePath("Sprites/WingSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -460,7 +563,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WingSprite:flip_v")
+tracks/3/path = NodePath("Sprites/WingSprite:flip_v")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -472,7 +575,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CrystalSprite:frame")
+tracks/4/path = NodePath("Sprites/CrystalSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -484,7 +587,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CrystalSprite:flip_v")
+tracks/5/path = NodePath("Sprites/CrystalSprite:flip_v")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -500,7 +603,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
+tracks/0/path = NodePath("Sprites/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -512,7 +615,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body:flip_v")
+tracks/1/path = NodePath("Sprites/Body:flip_v")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -524,7 +627,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WingSprite:frame")
+tracks/2/path = NodePath("Sprites/WingSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -536,7 +639,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WingSprite:flip_v")
+tracks/3/path = NodePath("Sprites/WingSprite:flip_v")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -548,7 +651,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CrystalSprite:flip_v")
+tracks/4/path = NodePath("Sprites/CrystalSprite:flip_v")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -560,7 +663,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CrystalSprite:frame")
+tracks/5/path = NodePath("Sprites/CrystalSprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -577,7 +680,7 @@ step = 0.06
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
+tracks/0/path = NodePath("Sprites/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -627,7 +730,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("WingSprite:frame")
+tracks/4/path = NodePath("Sprites/WingSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -639,7 +742,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CrystalSprite:frame")
+tracks/5/path = NodePath("Sprites/CrystalSprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -665,7 +768,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SmearSprite:frame")
+tracks/7/path = NodePath("Sprites/SmearSprite:frame")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -677,7 +780,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SmearSprite:visible")
+tracks/8/path = NodePath("Sprites/SmearSprite:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -695,7 +798,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
+tracks/0/path = NodePath("Sprites/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -707,7 +810,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body:flip_v")
+tracks/1/path = NodePath("Sprites/Body:flip_v")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -719,7 +822,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WingSprite:flip_v")
+tracks/2/path = NodePath("Sprites/WingSprite:flip_v")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -731,7 +834,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WingSprite:frame")
+tracks/3/path = NodePath("Sprites/WingSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -743,7 +846,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CrystalSprite:flip_v")
+tracks/4/path = NodePath("Sprites/CrystalSprite:flip_v")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -755,7 +858,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CrystalSprite:frame")
+tracks/5/path = NodePath("Sprites/CrystalSprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -773,7 +876,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
+tracks/0/path = NodePath("Sprites/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -785,7 +888,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body:flip_v")
+tracks/1/path = NodePath("Sprites/Body:flip_v")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -797,7 +900,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WingSprite:frame")
+tracks/2/path = NodePath("Sprites/WingSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -809,7 +912,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("WingSprite:flip_v")
+tracks/3/path = NodePath("Sprites/WingSprite:flip_v")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -821,7 +924,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CrystalSprite:frame")
+tracks/4/path = NodePath("Sprites/CrystalSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -833,7 +936,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CrystalSprite:flip_v")
+tracks/5/path = NodePath("Sprites/CrystalSprite:flip_v")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -850,7 +953,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
+tracks/0/path = NodePath("Sprites/Body:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -862,7 +965,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WingSprite:frame")
+tracks/1/path = NodePath("Sprites/WingSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -874,7 +977,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WingSprite:flip_v")
+tracks/2/path = NodePath("Sprites/WingSprite:flip_v")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -886,7 +989,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CrystalSprite:flip_v")
+tracks/3/path = NodePath("Sprites/CrystalSprite:flip_v")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -898,7 +1001,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CrystalSprite:frame")
+tracks/4/path = NodePath("Sprites/CrystalSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -910,7 +1013,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Body:flip_v")
+tracks/5/path = NodePath("Sprites/Body:flip_v")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1012,9 +1115,21 @@ Tag = "revive"
 stream = ExtResource("29_gcuwl")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
+[sub_resource type="Resource" id="Resource_wjq2j"]
+script = ExtResource("9_7ueiy")
+Tag = "evolving"
+stream = ExtResource("34_ri05a")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_lrodk"]
+script = ExtResource("9_7ueiy")
+Tag = "particle_evolving"
+stream = ExtResource("35_3cw05")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_4yd27"]
 script = ExtResource("8_kyyu2")
-sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_r2hw7")])
+sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_r2hw7"), SubResource("Resource_wjq2j"), SubResource("Resource_lrodk")])
 metadata/_custom_type_script = "uid://c8movixc3pc7b"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rs8cd"]
@@ -1038,7 +1153,233 @@ anim_speed_max = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4yd27"]
 
-[node name="Faerie" type="CharacterBody2D" unique_id=928786545 node_paths=PackedStringArray("stats", "state_machine", "vanishing_particles", "spawn_particles", "evo_particles", "sparkles", "sprite", "sound", "voice", "animation", "collision")]
+[sub_resource type="Gradient" id="Gradient_4bh4y"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2364341, 0.46124032, 0.68992245, 0.87984496)
+colors = PackedColorArray(0.99211615, 0, 0.2368845, 1, 1.4439225e-06, 0.2815217, 0.7646202, 1, 0, 0.99035984, 0.4361636, 1, 0.798914, 0.75852126, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0jpl7"]
+gradient = SubResource("Gradient_4bh4y")
+
+[sub_resource type="Gradient" id="Gradient_edlvs"]
+offsets = PackedFloat32Array(0, 0.368627, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ij8fs"]
+gradient = SubResource("Gradient_edlvs")
+
+[sub_resource type="Curve" id="Curve_crqyp"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.254417, 2), 0.0, 0.0, 0, 0, Vector2(0.816254, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_q1434"]
+curve = SubResource("Curve_crqyp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j586m"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 80.0
+emission_ring_radius = 80.0
+emission_ring_inner_radius = 40.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -300.0
+radial_accel_max = -300.0
+scale_curve = SubResource("CurveTexture_q1434")
+color_ramp = SubResource("GradientTexture1D_ij8fs")
+color_initial_ramp = SubResource("GradientTexture1D_0jpl7")
+anim_speed_min = -1.0
+anim_speed_max = -1.0
+anim_offset_min = 1.0
+anim_offset_max = 1.0
+
+[sub_resource type="Animation" id="Animation_j3ndj"]
+resource_name = "evolve"
+length = 5.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("ShaderMaterial_j3ndj"), null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites:material:shader_parameter/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.15, 2.15, 3.1, 4.05, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2000000095, 0.50000002375, 1.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Evolving:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Evolving:amount_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.65, 2.75, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EvoCircle:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.85, 4, 4.15, 4.7),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("EvoCircle:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.85, 5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.01, 0.01), Vector2(0.3, 0.3)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"evolved"],
+"method": &"emit_signal"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Voice")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.6, 0.90000004, 1.15, 1.35, 1.5, 1.7, 1.9, 2, 2.1000001, 2.2, 2.3, 2.4, 2.5, 2.6000001, 2.7, 2.8, 2.9, 3, 3.1000001, 3.2, 3.3, 3.4, 3.5, 3.8500001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolve_particles"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["evolving"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_egyvd"]
+_data = {
+&"evolve": SubResource("Animation_j3ndj")
+}
+
+[node name="Faerie" type="CharacterBody2D" unique_id=928786545 node_paths=PackedStringArray("smear_sprite", "wings", "crystal", "stats", "state_machine", "vanishing_particles", "spawn_particles", "evo_particles", "sparkles", "sprite", "sound", "voice", "animation", "evolution_animation", "collision")]
 z_index = 7
 scale = Vector2(2, 2)
 motion_mode = 1
@@ -1050,7 +1391,28 @@ evolutions = Array[Dictionary]([{
 "sprite_crystal": ExtResource("8_yowja"),
 "sprite_smear": ExtResource("8_syto6"),
 "sprite_wings": ExtResource("7_yowja")
+}, {
+"evo_quantity": 1,
+"evo_type": [true, false, true, false, true],
+"image": SubResource("CompressedTexture2D_4bh4y"),
+"name": "HORNET",
+"sprite_body": SubResource("CompressedTexture2D_0jpl7"),
+"sprite_crystal": SubResource("CompressedTexture2D_j586m"),
+"sprite_smear": SubResource("CompressedTexture2D_j3ndj"),
+"sprite_wings": SubResource("CompressedTexture2D_egyvd")
+}, {
+"evo_quantity": 1,
+"evo_type": [false, true, false, true, false],
+"image": SubResource("CompressedTexture2D_4bh4y"),
+"name": "LEAFFLE",
+"sprite_body": ExtResource("7_lrodk"),
+"sprite_crystal": SubResource("CompressedTexture2D_1dc0q"),
+"sprite_smear": ExtResource("8_wjj4u"),
+"sprite_wings": ExtResource("9_04nok")
 }])
+smear_sprite = NodePath("Sprites/SmearSprite")
+wings = NodePath("Sprites/WingSprite")
+crystal = NodePath("Sprites/CrystalSprite")
 id_name = "Fairy"
 stats = NodePath("InnocentDevilStats")
 state_machine = NodePath("StateMachine")
@@ -1058,10 +1420,11 @@ vanishing_particles = NodePath("Vanishing")
 spawn_particles = NodePath("Revival")
 evo_particles = NodePath("EvoCrystalShine")
 sparkles = NodePath("Sparkles")
-sprite = NodePath("Body")
+sprite = NodePath("Sprites/Body")
 sound = NodePath("PolyphonicAudioPlayer")
 voice = NodePath("Voice")
 animation = NodePath("AnimationPlayer")
+evolution_animation = NodePath("EvoCircle/Evolution")
 collision = NodePath("DetectEvo/CollisionShape2D")
 
 [node name="InnocentDevilStats" type="Node" parent="." unique_id=1548762419 node_paths=PackedStringArray("level_up", "sound")]
@@ -1105,28 +1468,42 @@ evo_crystals = Array[int]([0, 0, 0, 0, 0])
 level_up = NodePath("../LevelUp")
 sound = NodePath("../PolyphonicAudioPlayer")
 
-[node name="WingSprite" type="Sprite2D" parent="." unique_id=1792098350]
+[node name="Sprites" type="Node2D" parent="." unique_id=974910374]
+material = SubResource("ShaderMaterial_j3ndj")
+
+[node name="WingSprite" type="Sprite2D" parent="Sprites" unique_id=1792098350]
+use_parent_material = true
 texture = ExtResource("7_yowja")
 flip_h = true
 hframes = 12
 vframes = 5
 frame = 48
 
-[node name="SmearSprite" type="Sprite2D" parent="." unique_id=1735032058]
+[node name="SmearSprite" type="Sprite2D" parent="Sprites" unique_id=1735032058]
 visible = false
+use_parent_material = true
 texture = ExtResource("8_syto6")
 flip_h = true
 hframes = 3
 
-[node name="CrystalSprite" type="Sprite2D" parent="." unique_id=383492104]
+[node name="CrystalSprite" type="Sprite2D" parent="Sprites" unique_id=383492104]
+use_parent_material = true
 texture = ExtResource("8_yowja")
 flip_h = true
 hframes = 12
 vframes = 3
 
-[node name="CrystalGlow" type="AnimationPlayer" parent="CrystalSprite" unique_id=1976331157]
+[node name="CrystalGlow" type="AnimationPlayer" parent="Sprites/CrystalSprite" unique_id=1976331157]
 libraries/ = SubResource("AnimationLibrary_4yd27")
 autoplay = &"glow"
+
+[node name="Body" type="Sprite2D" parent="Sprites" unique_id=573037453]
+use_parent_material = true
+texture = ExtResource("8_0e5x1")
+flip_h = true
+hframes = 12
+vframes = 3
+frame = 12
 
 [node name="Sparkles" type="CPUParticles2D" parent="." unique_id=131348754]
 modulate = Color(3, 1, 3, 1)
@@ -1142,13 +1519,6 @@ initial_velocity_min = 2.0
 initial_velocity_max = 5.0
 scale_amount_curve = SubResource("Curve_mesp0")
 color = Color(0.913065, 0.000749685, 0.925435, 1)
-
-[node name="Body" type="Sprite2D" parent="." unique_id=573037453]
-texture = ExtResource("8_0e5x1")
-flip_h = true
-hframes = 12
-vframes = 3
-frame = 12
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1033765711]
 libraries/ = SubResource("AnimationLibrary_refp3")
@@ -1303,8 +1673,27 @@ collision_layer = 16384
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectEvo" unique_id=1634524100]
+visible = false
 position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_4yd27")
+
+[node name="Evolving" type="GPUParticles2D" parent="." unique_id=1877673463]
+material = SubResource("CanvasItemMaterial_0e5x1")
+emitting = false
+amount = 200
+texture = ExtResource("33_0jpl7")
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_j586m")
+
+[node name="EvoCircle" type="Sprite2D" parent="." unique_id=712973243]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(0.5, 6.5)
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("35_j3ndj")
+
+[node name="Evolution" type="AnimationPlayer" parent="EvoCircle" unique_id=84222758]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_egyvd")
 
 [connection signal="timeout" from="StateMachine/Freeze/Duration" to="StateMachine/Freeze" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Funny_wall/IdleDuration" to="StateMachine/Funny_wall" method="_on_idle_duration_timeout"]
