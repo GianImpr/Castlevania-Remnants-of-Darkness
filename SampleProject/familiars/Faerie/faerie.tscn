@@ -47,6 +47,7 @@
 [ext_resource type="AudioStream" uid="uid://c7hf0pj3h3pvo" path="res://assets/sounds/InnocentDevils/Faerie/FairySecondTierHeal.wav" id="43_rkvmq"]
 [ext_resource type="AudioStream" uid="uid://4gel63qmst8v" path="res://assets/sounds/InnocentDevils/Faerie/FairySecondTierHeal2.wav" id="44_g3fyg"]
 [ext_resource type="AudioStream" uid="uid://dmf51hjcujf0u" path="res://assets/sounds/InnocentDevils/Faerie/FairySecondTierAttack.wav" id="45_wi8el"]
+[ext_resource type="AudioStream" uid="uid://dsbog04omcwya" path="res://assets/sounds/InnocentDevils/Faerie/PoisonPowder.wav" id="46_g3fyg"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4bh4y"]
 load_path = "res://.godot/imported/FairyImage.png-1911bb7d72893a7e851db460654e12d5.ctex"
@@ -123,6 +124,7 @@ name = "POISON_POWDER_SKILL_ID"
 description = "POISON_POWER_SKILL_ID_DESC"
 cost = 15
 type = 2
+unlocked = true
 learnable_by_evolution_ID = 2
 AP_needed = 100
 icon = ExtResource("17_53stp")
@@ -1082,9 +1084,15 @@ Tag = "heal_effect"
 stream = ExtResource("13_n2r0b")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
+[sub_resource type="Resource" id="Resource_wi8el"]
+script = ExtResource("9_7ueiy")
+Tag = "powder"
+stream = ExtResource("46_g3fyg")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_g1eeh"]
 script = ExtResource("8_kyyu2")
-sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_ue60m"), SubResource("Resource_bn0uq")])
+sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_ue60m"), SubResource("Resource_bn0uq"), SubResource("Resource_wi8el")])
 
 [sub_resource type="Curve" id="Curve_ykbwx"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

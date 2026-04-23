@@ -199,7 +199,8 @@ func can_attack():
 			Transitioned.emit(self, state_to_transition_to)
 			if not (stat_to_consume == "FP" and Global.player.stats.itemEquipped(Artifact.Artifacts.PRODIGY_NECKLACE, "artifact") and randi_range(0, 99) < Global.player.stats.Stats["LCK"]):
 				player.stats.Stats[stat_to_consume] -= cur_skill.cost_value
-			get_hector_attack_sound()
+			if cur_skill.use_voice_clip:
+				get_hector_attack_sound()
 			return
 		
 	if InputBuffer.is_action_press_buffered("attack"):

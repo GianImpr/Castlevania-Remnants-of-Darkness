@@ -209,6 +209,7 @@
 [ext_resource type="AudioStream" uid="uid://3tjhhiow3jv5" path="res://assets/sounds/Effects/Swords/SwordGrab.WAV" id="161_7g84s"]
 [ext_resource type="AudioStream" uid="uid://bxttc25p3boho" path="res://assets/sounds/HectorMovement/SpecialAttack.WAV" id="163_hmql1"]
 [ext_resource type="AudioStream" uid="uid://dsrp2qq44o8du" path="res://assets/sounds/Effects/Miscellaneous/FocusFull.wav" id="164_xgoly"]
+[ext_resource type="Script" uid="uid://6vpewaisae1s" path="res://SampleProject/Scripts/HectorAnims/HectorSneakAttack.gd" id="166_4cvqp"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="167_ltqbs"]
 [ext_resource type="AudioStream" uid="uid://d1dl1exlnlmj2" path="res://assets/sounds/Effects/Miscellaneous/WeaponRankUp.wav" id="168_o4hqs"]
 [ext_resource type="PackedScene" uid="uid://dhu73hhippefg" path="res://SampleProject/extra_scenes/HUD/press_up.tscn" id="170_moyg6"]
@@ -236,6 +237,7 @@
 [ext_resource type="Texture2D" uid="uid://dcmexpqewqyki" path="res://assets/sprites/Effects/Charge.png" id="215_iee07"]
 [ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="216_rbo1h"]
 [ext_resource type="Script" uid="uid://cetysgqumvdh6" path="res://SampleProject/Scripts/Powers/sword_spin.gd" id="223_cwl8n"]
+[ext_resource type="AudioStream" uid="uid://csjqpj5clyk1e" path="res://assets/sounds/Voice/Hector/HeavyAttack1.wav" id="224_cev0d"]
 [ext_resource type="Texture2D" uid="uid://7a7gx1dlhids" path="res://assets/sprites/Weapons/Swords/AdaBoomerangSwing.png" id="225_cwl8n"]
 [ext_resource type="PackedScene" uid="uid://brn6khjn47oaf" path="res://SampleProject/Powers/Greatswords/shredder.tscn" id="233_8ddhv"]
 
@@ -3902,6 +3904,58 @@ tracks/3/keys = {
 "values": [Vector2(13, 12)]
 }
 
+[sub_resource type="Animation" id="Animation_gik8q"]
+resource_name = "sneak_attack"
+length = 1.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-1.4901161e-08, 0.05, 0.1, 0.40000004, 0.45000005, 0.5, 0.55, 0.6, 0.65, 0.75, 0.8000001, 0.85, 0.9, 0.95, 0.99999994, 1.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 21, 49, 180, 181, 182, 183, 184, 185, 180, 181, 182, 183, 184, 185, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.39999992, 0.55, 1.05, 1.25, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 0), Color(1, 0, 0, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 0), Color(1, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Sneak_attack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.35, 0.4, 0.74999994, 1.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"warpToClosestEnemy"
+}, {
+"args": [],
+"method": &"useWeapon"
+}, {
+"args": [],
+"method": &"useWeapon"
+}, {
+"args": [],
+"method": &"warpBack"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_b71ut"]
 resource_name = "sword_throw"
 length = 1.1
@@ -4314,6 +4368,7 @@ _data = {
 &"run_start": SubResource("Animation_xave1"),
 &"sitting_down": SubResource("Animation_w772u"),
 &"slide": SubResource("Animation_oke0v"),
+&"sneak_attack": SubResource("Animation_gik8q"),
 &"sword_throw": SubResource("Animation_b71ut"),
 &"throw": SubResource("Animation_qkrq3"),
 &"thunder_uppercut": SubResource("Animation_3k6ne"),
@@ -4592,9 +4647,14 @@ Tag = "what"
 stream = ExtResource("205_xy0l7")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
+[sub_resource type="Resource" id="Resource_4tr32"]
+script = ExtResource("17_eidx6")
+Tag = "heavy_attack_3"
+stream = ExtResource("224_cev0d")
+
 [sub_resource type="Resource" id="Resource_xhqmh"]
 script = ExtResource("140_3d8p5")
-sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_fk7mo"), SubResource("Resource_pomuy"), SubResource("Resource_1fd5c"), SubResource("Resource_hk5vy"), SubResource("Resource_jp6yi"), SubResource("Resource_go7i7"), SubResource("Resource_35fxo"), SubResource("Resource_lfj2t"), SubResource("Resource_ryiyx"), SubResource("Resource_fkwog"), SubResource("Resource_sobq1"), SubResource("Resource_um52d")])
+sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_fk7mo"), SubResource("Resource_pomuy"), SubResource("Resource_1fd5c"), SubResource("Resource_hk5vy"), SubResource("Resource_jp6yi"), SubResource("Resource_go7i7"), SubResource("Resource_35fxo"), SubResource("Resource_lfj2t"), SubResource("Resource_ryiyx"), SubResource("Resource_fkwog"), SubResource("Resource_sobq1"), SubResource("Resource_um52d"), SubResource("Resource_4tr32")])
 
 [sub_resource type="Curve" id="Curve_t2ule"]
 _limits = [0.0, 5.0, 0.0, 1.0]
@@ -5129,6 +5189,9 @@ point_count = 3
 offsets = PackedFloat32Array(0.5110294, 1)
 colors = PackedColorArray(2.454227, 0, 0, 1, 1, 1, 1, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cvqp"]
+size = Vector2(432, 240)
+
 [node name="Player" type="CharacterBody2D" unique_id=935233281 node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "hurtbox_area", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "reset_guard_presses_timer", "confidence_ring_timer", "time_heal_timer", "time_heal_particles", "goddess_shield_particles", "charge_sprite", "charge_anim", "charge_particles", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
 scale = Vector2(2, 2)
 collision_layer = 524288
@@ -5315,8 +5378,9 @@ volume_db = 9.905
 max_polyphony = 3
 bus = &"SFX"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=20858256 node_paths=PackedStringArray("glow_timer", "hector_hands")]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=20858256 node_paths=PackedStringArray("glow_timer", "hector_hands", "aura")]
 process_mode = 3
+visible = false
 material = SubResource("ShaderMaterial_a8u0y")
 texture = ExtResource("3_hkpj0")
 hframes = 20
@@ -5327,6 +5391,7 @@ glow_speed = 0.17
 glow_timer = NodePath("Glow")
 initial_weapon_sprite = ExtResource("115_5uixd")
 hector_hands = NodePath("SpearHands")
+aura = NodePath("Aura")
 
 [node name="FistHitbox" type="Area2D" parent="Sprite2D" unique_id=1015260105 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1
@@ -5711,6 +5776,11 @@ earthquake_scene = ExtResource("160_8ddhv")
 attack_state = true
 metadata/_custom_type_script = "uid://c8blox27vc6n4"
 
+[node name="Sneak_attack" type="Node" parent="StateMachine" unique_id=1665799572]
+script = ExtResource("166_4cvqp")
+attack_state = true
+metadata/_custom_type_script = "uid://6vpewaisae1s"
+
 [node name="Uppercut" type="Node" parent="StateMachine" unique_id=857178468 node_paths=PackedStringArray("uppercut_effects")]
 script = ExtResource("156_gp8oi")
 uppercut_effects = NodePath("../../UppercutLightning")
@@ -6072,6 +6142,15 @@ one_shot = true
 
 [node name="PoisonTick" type="Timer" parent="." unique_id=1874319816]
 
+[node name="DetectEnemies" type="Area2D" parent="." unique_id=812365222]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectEnemies" unique_id=1286200502]
+visible = false
+shape = SubResource("RectangleShape2D_4cvqp")
+debug_color = Color(0.67513645, 0.50692594, 3.85046e-07, 0.41960785)
+
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/SlideHitbox" to="Sprite2D/SlideHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/DiveStraightHitbox" to="Sprite2D/DiveStraightHitbox" method="_on_body_entered"]
@@ -6089,5 +6168,7 @@ one_shot = true
 [connection signal="timeout" from="StateMachine/Opening_door/FinalDuration" to="StateMachine/Opening_door" method="_on_final_duration_timeout"]
 [connection signal="timeout" from="Guard_recovery" to="." method="_on_guard_recovery_timeout"]
 [connection signal="timeout" from="IframeHitCounterReset" to="." method="_on_iframe_hit_counter_reset_timeout"]
+[connection signal="body_entered" from="DetectEnemies" to="." method="onEnemyDetected"]
+[connection signal="body_exited" from="DetectEnemies" to="." method="onEnemyLost"]
 
 [editable path="SwordSpin/Spin"]

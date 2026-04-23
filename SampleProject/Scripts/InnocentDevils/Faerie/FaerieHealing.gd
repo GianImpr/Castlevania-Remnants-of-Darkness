@@ -51,7 +51,7 @@ func resistFireIce() -> void:
 	
 func poisonPowder() -> void:
 	const POISON_POWDER_OFFSET: Vector2 = Vector2(57, 52)
-	setSoundAndParticles("heal_effect", Color(0.3,0.6,0.5))
+	setSoundAndParticles("powder", Color(0.3,0.6,0.5))
 	var poison_powder = poison_powder_scene.instantiate()
 	poison_powder.global_position = player.global_position
 	poison_powder.global_position.x += POISON_POWDER_OFFSET.x*player.facing_position

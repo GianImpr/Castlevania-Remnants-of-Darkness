@@ -95,6 +95,8 @@ var cur_charge: Charge = Charge.NONE
 var times_guard_pressed: int = 0
 var can_double_jump: bool = true
 
+var targettable_enemies: Array[Enemy]
+
 const Animations = {
 	ATTACK_AIR = "air_attack",
 	ATTACK = "attack",
@@ -140,7 +142,7 @@ func _input(event: InputEvent) -> void:
 	
 func _process(delta: float) -> void:
 	#If harmed, become invulnerable for a while
-	hurtbox_area.set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped() and not state_machine.current_state is HectorWait and not state_machine.current_state is HectorEarthquake and not god_mode)
+	hurtbox_area.set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped() and not state_machine.current_state is HectorWait and not state_machine.current_state is HectorEarthquake and not state_machine.current_state is HectorSneakAttack and not god_mode)
 	
 	guarding = isGuarding()
 	
@@ -544,3 +546,25 @@ func activateGoddessShieldEffect() -> void:
 
 func targettableInnocentDevil() -> bool:
 	return innocent_devil != null and innocent_devil is Crow and innocent_devil.is_alive
+
+func onEnemyDetected(body: Node2D) -> void:
+	if not body is Enemy:
+		return
+	targettable_enemies.append(body)
+	
+func onEnemyLost(body: Node2D) -> void:
+	if not body is Enemy:
+		return
+	targettable_enemies.erase(body)
+
+## Returns the closest enemy to Hector or null if there are none.
+func closestEnemy() -> Enemy:
+	var closest_enemy: Enemy = null
+	for enemy in targettable_enemies:
+		if not closest_enemy:
+			closest_enemy = enemy
+			continue
+			
+		if enemy.global_position.distance_to(global_position) < closest_enemy.global_position.distance_to(global_position):
+			closest_enemy = enemy
+	return closest_enemy

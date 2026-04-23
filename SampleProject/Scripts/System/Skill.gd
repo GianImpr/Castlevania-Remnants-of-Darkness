@@ -14,6 +14,7 @@ class_name Skill
 @export var weapon_type: Weapon.Type
 @export var weapon_rank: WeaponRank
 @export var transitions_into_state: String
+@export var use_voice_clip: bool = false
 
 enum SkillType {
 	PICKABLE,

@@ -30,6 +30,9 @@ const NORMAL_TRAIL = Color(1, 1, 1, 1)
 const ICE_TRAIL = Color(0.3, 0.8, 1.5, 1)
 const FIRE_TRAIL = Color(1.5, 0.7, 0.3, 1)
 
+const SNEAK_ATTACK_MULTIPLIER_BOOST: float = 1.2
+const SNEAK_ATTACK_DAMAGE_BOOST: int = 5
+
 func _ready() -> void:
 	pass
 	
@@ -259,6 +262,9 @@ func calculateDamage(body: Node2D, magical: bool = false) -> int:
 		
 	if not TrainingSettings.can_deal_damage and Global.screen == Global.ScreenType.TRAINING:
 		return 0
+		
+	if Global.player.state_machine.current_state is HectorSneakAttack:
+		damage = damage * SNEAK_ATTACK_MULTIPLIER_BOOST + SNEAK_ATTACK_DAMAGE_BOOST
 		
 	if "is_guarding" in body and body.is_guarding:
 		damage *= BLOCKED_DAMAGE_MULTIPLIER
