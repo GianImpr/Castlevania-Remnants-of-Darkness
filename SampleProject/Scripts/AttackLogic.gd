@@ -234,6 +234,7 @@ func calculateDamage(body: Node2D, magical: bool = false) -> int:
 	const WINGED_RING_MULTIPLIER: float = 1.1
 	const BLOCKED_DAMAGE_MULTIPLIER: float = 0.1
 	const ENFEEBLE_DAMAGE_MULTIPLIER: float = 0.7
+	const POISONED_ENEMY_DAMAGE_MULTIPLIER: float = 1.33
 	
 	if player.stats.accessoryEquipped(Accessory.Accessories.STUD_OF_CONCENTRATION) and player.stats.Stats["FP"] >= player.stats.Stats["MFP"]:
 		damage *= STUD_OF_CONCENTRATION_BOOST
@@ -252,6 +253,9 @@ func calculateDamage(body: Node2D, magical: bool = false) -> int:
 		
 	if player.stats.status[player.stats.Status.ENFEEBLE] > 0:
 		damage *= ENFEEBLE_DAMAGE_MULTIPLIER
+		
+	if body.poisoned:
+		damage *= POISONED_ENEMY_DAMAGE_MULTIPLIER
 		
 	if not TrainingSettings.can_deal_damage and Global.screen == Global.ScreenType.TRAINING:
 		return 0
@@ -275,6 +279,9 @@ func applyDamage(body: Node2D, damage: int, physical_based_sound: bool = true) -
 			multiplier_rate *= 1.5
 		elif element in body.stats.tolerances:
 			multiplier_rate *= 0.67
+			
+		if element == Global.Attribute.POISON and element in body.stats.weaknesses:
+			body.applyPoison()
 	
 	multiplier_rate = max(multiplier_rate, 1)
 	damage *= log(multiplier_rate) / log(2)

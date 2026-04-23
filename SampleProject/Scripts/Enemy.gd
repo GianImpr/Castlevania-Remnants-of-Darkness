@@ -14,8 +14,11 @@ var direction := 1
 @export var register_knockback: bool = false
 @export var visibility_notifier: VisibleOnScreenNotifier2D
 @export var idle_states: Array[String] = ["idle", "dying"]
+const ENEMY_POISON_VFX_SCENE: PackedScene = preload("res://SampleProject/extra_scenes/effects/enemy_poison.tscn")
 var is_hurt: bool = false
 var stay_idle: bool = false
+var poisoned: bool = false
+var poison_bubbles: Node2D = null
 @export var reset_idle_when_staying_idle: bool = false
 static var body_hitbox_on_cooldown: bool = false
 static var INVULNERABILITY_DURATION: float = 1
@@ -45,6 +48,9 @@ func remove_glow_if_glowing():
 		sprite.self_modulate = Color(min(sprite.self_modulate.r+0.12, 1), min(sprite.self_modulate.g+0.12, 1), min(sprite.self_modulate.b+0.12, 1))
 
 func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool = false, attribute: Global.Attribute = Global.Attribute.HIT, knockback: bool = false) -> int:
+	const POISONED_MULTIPLIER: float = 0.5
+	if poisoned:
+		multiplier *= POISONED_MULTIPLIER
 	return body.stats.calculateDamageTaken(stats.ATK, multiplier, chip_damage, guard_break, attribute, knockback)
 	
 func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float = 0):
@@ -99,3 +105,18 @@ func getHurtbox() -> CollisionShape2D:
 		if child is CollisionShape2D:
 			return child
 	return null
+
+func applyPoison() -> void:
+	if poisoned:
+		return
+	poisoned = true
+	poison_bubbles = ENEMY_POISON_VFX_SCENE.instantiate()
+	var hurtbox: CollisionShape2D = getHurtbox()
+	var hurtbox_shape: Shape2D = hurtbox.shape
+	var bubbles_offset: Vector2
+	if hurtbox_shape is CircleShape2D:
+		bubbles_offset = Vector2(hurtbox.position.x, hurtbox.position.y-hurtbox_shape.radius)
+	elif hurtbox_shape is RectangleShape2D:
+		bubbles_offset = Vector2(hurtbox.position.x, hurtbox.position.y-hurtbox_shape.size.y/2)
+	poison_bubbles.position = bubbles_offset
+	add_child(poison_bubbles)

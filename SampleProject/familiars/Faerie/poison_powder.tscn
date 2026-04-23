@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://2kj55e6ojcv0"]
+
+[ext_resource type="Script" uid="uid://bop83aoqldow6" path="res://SampleProject/Scripts/InnocentDevils/innocent_devil_hitbox.gd" id="1_bkaty"]
+[ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="2_rvo7m"]
+[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="3_mcynh"]
+[ext_resource type="Texture2D" uid="uid://c04vxsdtq4ws2" path="res://assets/sprites/Effects/Debris2.png" id="4_8h1xc"]
+[ext_resource type="Texture2D" uid="uid://dn5bol5yv6q41" path="res://assets/sprites/InnocentDevils/Fairy/Leaffle/PoisonPowderBubbles.png" id="5_qhegl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgoev"]
+size = Vector2(64, 64)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q3qxf"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_c1cbe"]
+offsets = PackedFloat32Array(0, 0.18431373, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.23500001, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_s6wyf"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_rl13c"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Animation" id="Animation_ogsvd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubbles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Powder:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_h238u"]
+resource_name = "play"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bubbles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Powder:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_biqp1"]
+_data = {
+&"RESET": SubResource("Animation_ogsvd"),
+&"play": SubResource("Animation_h238u")
+}
+
+[node name="PoisonPowder" type="Node2D" unique_id=796114411]
+z_index = 2
+
+[node name="InnocentDevilHitbox" type="Area2D" parent="." unique_id=1259597339 node_paths=PackedStringArray("hitbox")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_bkaty")
+dmg_multiplier = 0.1
+damage_boost = 1
+iframes_on_hit = 120
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("2_rvo7m")
+ice_hit_collision_scene = ExtResource("3_mcynh")
+base_attribute = Array[int]([10])
+metadata/_custom_type_script = "uid://bop83aoqldow6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InnocentDevilHitbox" unique_id=1118376941]
+shape = SubResource("RectangleShape2D_kgoev")
+
+[node name="Powder" type="CPUParticles2D" parent="." unique_id=2135930978]
+material = SubResource("CanvasItemMaterial_q3qxf")
+emitting = false
+amount = 16
+texture = ExtResource("4_8h1xc")
+one_shot = true
+explosiveness = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(16, 16)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -80)
+initial_velocity_max = 80.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(0, 0.7058824, 0.1882353, 1)
+color_ramp = SubResource("Gradient_c1cbe")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="Bubbles" type="CPUParticles2D" parent="." unique_id=1023833543]
+self_modulate = Color(0.4392157, 0.6117647, 0.44705883, 0.5568628)
+material = SubResource("CanvasItemMaterial_s6wyf")
+position = Vector2(1, 23)
+emitting = false
+texture = ExtResource("5_qhegl")
+one_shot = true
+explosiveness = 0.6
+emission_shape = 3
+emission_rect_extents = Vector2(16, 16)
+direction = Vector2(0, -1)
+spread = 60.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 200.0
+scale_amount_curve = SubResource("Curve_rl13c")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_offset_max = 0.6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1957488982]
+libraries/ = SubResource("AnimationLibrary_biqp1")
+autoplay = &"play"
+
+[connection signal="body_entered" from="InnocentDevilHitbox" to="InnocentDevilHitbox" method="_on_body_entered"]

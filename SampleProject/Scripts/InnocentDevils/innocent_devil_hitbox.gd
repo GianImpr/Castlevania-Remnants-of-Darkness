@@ -128,6 +128,8 @@ func createHitEffect(body: Node2D) -> void:
 			hit_effect = ice_hit_collision_scene.instantiate()
 		Global.Attribute.FIRE:
 			hit_effect = fire_hit_collision_scene.instantiate()
+		_:
+			hit_effect = hit_collision_scene.instantiate()
 				
 	hit_effect.position = Vector2(effect_x, effect_y)
 	Global.player.get_parent().add_child(hit_effect)
@@ -152,6 +154,7 @@ func removeHitboxIfNotAttacking() -> void:
 
 # Calculates the base damage of the move
 func calculateDamage(body: Node2D, magical: bool = false) -> int:
+	const POISONED_ENEMY_DAMAGE_MULTIPLIER: float = 1.33
 	var offensive_stat: int
 	var defensive_stat: int
 	if magical:
@@ -166,6 +169,9 @@ func calculateDamage(body: Node2D, magical: bool = false) -> int:
 			
 	var damage: int = max(offensive_stat - defensive_stat/2, 1) * dmg_multiplier + damage_boost
 	const BLOCKED_DAMAGE_MULTIPLIER: float = 0.1
+	
+	if body.poisoned:
+		damage *= POISONED_ENEMY_DAMAGE_MULTIPLIER
 			
 	if not TrainingSettings.can_deal_damage and Global.screen == Global.ScreenType.TRAINING:
 		return 0
@@ -189,6 +195,9 @@ func applyDamage(body: Node2D, damage: int, physical_based_sound: bool = true) -
 			multiplier_rate *= 1.5
 		elif element in body.stats.tolerances:
 			multiplier_rate *= 0.67
+			
+		if element == Global.Attribute.POISON and element in body.stats.weaknesses:
+			body.applyPoison()
 	
 	multiplier_rate = max(multiplier_rate, 1)
 	damage *= log(multiplier_rate) / log(2)

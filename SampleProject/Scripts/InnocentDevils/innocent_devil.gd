@@ -77,7 +77,7 @@ func calculateDamageTaken(base_power: int, multiplier: float, chip_damage: int, 
 		get_parent().attack_blocked = true
 	else:
 		applyHitEffect(attribute)
-		
+	
 	if guarding and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
 		damage = 0
 	

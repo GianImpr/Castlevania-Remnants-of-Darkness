@@ -18,6 +18,7 @@ signal evolved
 @export var evolution_animation: AnimationPlayer
 @export var collision: CollisionShape2D
 var is_alive: bool = true
+var lock_current_skill: bool = false
 var current_skill: Ability = Ability.HEAL
 var skill_transitions_to_state: String
 var can_change_mode: bool = true
@@ -53,10 +54,13 @@ enum Ability {
 	HEAL,
 	REFRESHING_AIR,
 	TIME_HEAL,
-	GLIDE
+	GLIDE,
+	RESIST_FIRE_ICE,
+	POISON_POWDER
 }
 
 func _ready() -> void:
+	lock_current_skill = false
 	updateSpriteToCurrentEvolution()
 	
 func _process(delta: float) -> void:
@@ -65,15 +69,18 @@ func _process(delta: float) -> void:
 		
 	if stats.Stats["EXP"] >= stats.expNeededToLvUp() and stats.Stats["LV"] < MAX_LEVEL:
 		stats.levelUp()
-		
+	
+	if lock_current_skill:
+		return
+	
 	if Input.is_action_just_pressed("next_skill"):
-		current_skill = (current_skill+1)%stats.skills.size()
+		current_skill = posmod((current_skill+1),stats.skills.size())
 		while not stats.skills[current_skill].unlocked:
-			current_skill = (current_skill+1)%stats.skills.size()
+			current_skill = posmod((current_skill+1),stats.skills.size())
 	elif Input.is_action_just_pressed("previous_skill"):
-		current_skill = (current_skill-1)%stats.skills.size()
+		current_skill = posmod((current_skill-1),stats.skills.size())
 		while not stats.skills[current_skill].unlocked:
-			current_skill = (current_skill-1)%stats.skills.size()
+			current_skill = posmod((current_skill-1),stats.skills.size())
 	elif Input.is_action_just_pressed("rstick_up") and can_change_mode:
 		mode = Mode.OFFENSIVE
 	elif Input.is_action_just_pressed("rstick_down") and can_change_mode:

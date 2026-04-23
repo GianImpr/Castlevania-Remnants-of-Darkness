@@ -404,6 +404,8 @@ func vertical_distance_from_player() -> float:
 func enemy_can_die(with_misc_items: bool = true) -> void:
 	if player.stats.HP <= 0:
 		Transitioned.emit(self, "dying")
+		if player.poison_bubbles:
+			player.poison_bubbles.get_child(0).one_shot = true
 		player.stats.determineDrop(with_misc_items)
 		
 func enemy_can_guard(flag: bool) -> void:

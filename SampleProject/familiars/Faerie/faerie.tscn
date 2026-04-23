@@ -30,17 +30,23 @@
 [ext_resource type="AudioStream" uid="uid://dmygyfdvwkny8" path="res://assets/sounds/InnocentDevils/Faerie/HealEffect.MP3" id="13_n2r0b"]
 [ext_resource type="Script" uid="uid://bt73nbebo6u4p" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieSpawn.gd" id="13_yowja"]
 [ext_resource type="Texture2D" uid="uid://dcx6np6gfaplj" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_ResistFireIce.png" id="16_wjj4u"]
+[ext_resource type="Texture2D" uid="uid://bjmhwusfynt67" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_PoisonPowder.png" id="17_53stp"]
 [ext_resource type="Script" uid="uid://26uwmgwv3u2y" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieDismiss.gd" id="21_gcuwl"]
 [ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="22_ue60m"]
 [ext_resource type="AudioStream" uid="uid://dlmhl7dysb8lh" path="res://assets/sounds/InnocentDevils/IDLevelUp.MP3" id="24_2jcuy"]
 [ext_resource type="AudioStream" uid="uid://b64wv6o4gp3h1" path="res://assets/sounds/InnocentDevils/Faerie/FairyFirstTierHeal1.wav" id="26_4bh4y"]
 [ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="26_6o0ma"]
+[ext_resource type="Script" uid="uid://doos4n3fipbr3" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaeriePowder.gd" id="27_1dc0q"]
 [ext_resource type="AudioStream" uid="uid://7ipy4yvrhsl6" path="res://assets/sounds/InnocentDevils/Faerie/FairyFirstTierHeal2.wav" id="29_0jpl7"]
 [ext_resource type="AudioStream" uid="uid://dtxs8yoast6u2" path="res://assets/sounds/InnocentDevils/IDRevive.wav" id="29_gcuwl"]
 [ext_resource type="Texture2D" uid="uid://do1dgmj2xasah" path="res://assets/sprites/Effects/ChargeParticlesDecolored.png" id="33_0jpl7"]
 [ext_resource type="AudioStream" uid="uid://sn0qbpa8r74e" path="res://assets/sounds/InnocentDevils/Evolved.wav" id="34_ri05a"]
 [ext_resource type="AudioStream" uid="uid://bh3jgggmp1qjc" path="res://assets/sounds/InnocentDevils/EvolveParticles.wav" id="35_3cw05"]
 [ext_resource type="Texture2D" uid="uid://dkxgqvaj0gxh" path="res://assets/sprites/Weapons/Swords/Circle.png" id="35_j3ndj"]
+[ext_resource type="PackedScene" uid="uid://2kj55e6ojcv0" path="res://SampleProject/familiars/Faerie/poison_powder.tscn" id="42_04nok"]
+[ext_resource type="AudioStream" uid="uid://c7hf0pj3h3pvo" path="res://assets/sounds/InnocentDevils/Faerie/FairySecondTierHeal.wav" id="43_rkvmq"]
+[ext_resource type="AudioStream" uid="uid://4gel63qmst8v" path="res://assets/sounds/InnocentDevils/Faerie/FairySecondTierHeal2.wav" id="44_g3fyg"]
+[ext_resource type="AudioStream" uid="uid://dmf51hjcujf0u" path="res://assets/sounds/InnocentDevils/Faerie/FairySecondTierAttack.wav" id="45_wi8el"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4bh4y"]
 load_path = "res://.godot/imported/FairyImage.png-1911bb7d72893a7e851db460654e12d5.ctex"
@@ -103,6 +109,16 @@ cost = 30
 type = 2
 unlocked = true
 icon = ExtResource("16_wjj4u")
+metadata/_custom_type_script = "uid://bin0fbttt1atq"
+
+[sub_resource type="Resource" id="Resource_rjt3t"]
+script = ExtResource("3_5jgsh")
+name = "POISON_POWDER_SKILL_ID"
+description = "POISON_POWER_SKILL_ID_DESC"
+cost = 15
+type = 2
+unlocked = true
+icon = ExtResource("17_53stp")
 metadata/_custom_type_script = "uid://bin0fbttt1atq"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j3ndj"]
@@ -491,43 +507,43 @@ tracks/4/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
-tracks/5/type = "method"
+tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("PolyphonicAudioPlayer")
+tracks/5/path = NodePath("Sprites/SmearSprite:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.1764706),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["infant_heal_2"],
-"method": &"play_sound_effect_from_library"
-}]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Sprites/SmearSprite:frame")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0.15, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Sprites/SmearSprite:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/SmearSprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.2, 0.25, 0.3, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, true, false, true, false]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"playVoice"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_3clpc"]
@@ -762,43 +778,43 @@ tracks/5/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
-tracks/6/type = "method"
+tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("PolyphonicAudioPlayer")
+tracks/6/path = NodePath("Sprites/SmearSprite:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.1764706),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["infant_heal_1"],
-"method": &"play_sound_effect_from_library"
-}]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Sprites/SmearSprite:frame")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0.15, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 1, 2]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Sprites/SmearSprite:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprites/SmearSprite:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.15, 0.2, 0.25, 0.3, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, true, false, true, false]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.3529412),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"healingGrunt"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_3f2ob"]
@@ -1047,12 +1063,6 @@ _data = {
 &"stopping": SubResource("Animation_xd0rn")
 }
 
-[sub_resource type="Resource" id="Resource_n11vx"]
-script = ExtResource("9_7ueiy")
-Tag = "infant_heal_1"
-stream = ExtResource("26_4bh4y")
-metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
-
 [sub_resource type="Resource" id="Resource_ue60m"]
 script = ExtResource("9_7ueiy")
 Tag = "level_up"
@@ -1065,15 +1075,9 @@ Tag = "heal_effect"
 stream = ExtResource("13_n2r0b")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
-[sub_resource type="Resource" id="Resource_j586m"]
-script = ExtResource("9_7ueiy")
-Tag = "infant_heal_2"
-stream = ExtResource("29_0jpl7")
-metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
-
 [sub_resource type="Resource" id="Resource_g1eeh"]
 script = ExtResource("8_kyyu2")
-sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_n11vx"), SubResource("Resource_ue60m"), SubResource("Resource_bn0uq"), SubResource("Resource_j586m")])
+sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_ue60m"), SubResource("Resource_bn0uq")])
 
 [sub_resource type="Curve" id="Curve_ykbwx"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -1134,13 +1138,43 @@ metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
 [sub_resource type="Resource" id="Resource_lrodk"]
 script = ExtResource("9_7ueiy")
-Tag = "particle_evolving"
+Tag = "evolve_particles"
 stream = ExtResource("35_3cw05")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_j586m"]
+script = ExtResource("9_7ueiy")
+Tag = "infant_heal_2"
+stream = ExtResource("29_0jpl7")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_n11vx"]
+script = ExtResource("9_7ueiy")
+Tag = "infant_heal_1"
+stream = ExtResource("26_4bh4y")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_a74i3"]
+script = ExtResource("9_7ueiy")
+Tag = "second_tier_1"
+stream = ExtResource("43_rkvmq")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_38se1"]
+script = ExtResource("9_7ueiy")
+Tag = "second_tier_2"
+stream = ExtResource("44_g3fyg")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_nhyo7"]
+script = ExtResource("9_7ueiy")
+Tag = "leaffle_attack"
+stream = ExtResource("45_wi8el")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
 [sub_resource type="Resource" id="Resource_4yd27"]
 script = ExtResource("8_kyyu2")
-sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_r2hw7"), SubResource("Resource_wjq2j"), SubResource("Resource_lrodk")])
+sound_effects = Array[ExtResource("9_7ueiy")]([SubResource("Resource_r2hw7"), SubResource("Resource_wjq2j"), SubResource("Resource_lrodk"), SubResource("Resource_j586m"), SubResource("Resource_n11vx"), SubResource("Resource_a74i3"), SubResource("Resource_38se1"), SubResource("Resource_nhyo7")])
 metadata/_custom_type_script = "uid://c8movixc3pc7b"
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rs8cd"]
@@ -1390,6 +1424,14 @@ _data = {
 &"evolve": SubResource("Animation_j3ndj")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_53stp"]
+radius = 60.0
+height = 476.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rjt3t"]
+radius = 118.0
+height = 333.0
+
 [node name="Faerie" type="CharacterBody2D" unique_id=928786545 node_paths=PackedStringArray("smear_sprite", "wings", "crystal", "stats", "state_machine", "vanishing_particles", "spawn_particles", "evo_particles", "sparkles", "sprite", "sound", "voice", "animation", "evolution_animation", "collision")]
 z_index = 7
 scale = Vector2(2, 2)
@@ -1474,7 +1516,7 @@ Initial = {
 "MHearts": 50,
 "MND": 5
 }
-skills = Array[ExtResource("3_5jgsh")]([SubResource("Resource_1uow2"), SubResource("Resource_ovac2"), SubResource("Resource_6f78i"), SubResource("Resource_edmne"), SubResource("Resource_04nok")])
+skills = Array[ExtResource("3_5jgsh")]([SubResource("Resource_1uow2"), SubResource("Resource_ovac2"), SubResource("Resource_6f78i"), SubResource("Resource_edmne"), SubResource("Resource_04nok"), SubResource("Resource_rjt3t")])
 evo_crystals = Array[int]([0, 0, 0, 0, 0])
 level_up = NodePath("../LevelUp")
 sound = NodePath("../PolyphonicAudioPlayer")
@@ -1556,6 +1598,7 @@ script = ExtResource("6_nci8y")
 [node name="Healing" type="Node" parent="StateMachine" unique_id=620160420 node_paths=PackedStringArray("magic_particles")]
 script = ExtResource("7_8u2gj")
 refreshing_air_scene = ExtResource("13_aa5on")
+poison_powder_scene = ExtResource("42_04nok")
 magic_particles = NodePath("../../Magic")
 
 [node name="Freeze" type="Node" parent="StateMachine" unique_id=694473913 node_paths=PackedStringArray("timer")]
@@ -1572,6 +1615,10 @@ idle_duration = NodePath("IdleDuration")
 [node name="IdleDuration" type="Timer" parent="StateMachine/Funny_wall" unique_id=1090983632]
 wait_time = 0.5
 one_shot = true
+
+[node name="Powder" type="Node" parent="StateMachine" unique_id=1796613215]
+script = ExtResource("27_1dc0q")
+metadata/_custom_type_script = "uid://doos4n3fipbr3"
 
 [node name="Dismiss" type="Node" parent="StateMachine" unique_id=795797448]
 script = ExtResource("21_gcuwl")
@@ -1706,5 +1753,22 @@ texture = ExtResource("35_j3ndj")
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_egyvd")
 
+[node name="EnemyDetectionArea" type="Area2D" parent="." unique_id=850393182]
+collision_layer = 0
+collision_mask = 4
+
+[node name="EnemyDetection" type="CollisionShape2D" parent="EnemyDetectionArea" unique_id=2024446174]
+visible = false
+position = Vector2(1.5, -0.5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_53stp")
+
+[node name="EnemyDetection2" type="CollisionShape2D" parent="EnemyDetectionArea" unique_id=2073613220]
+visible = false
+position = Vector2(1.5, -0.5)
+shape = SubResource("CapsuleShape2D_rjt3t")
+
 [connection signal="timeout" from="StateMachine/Freeze/Duration" to="StateMachine/Freeze" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Funny_wall/IdleDuration" to="StateMachine/Funny_wall" method="_on_idle_duration_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="onEnemyDetected"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="onEnemyLost"]
