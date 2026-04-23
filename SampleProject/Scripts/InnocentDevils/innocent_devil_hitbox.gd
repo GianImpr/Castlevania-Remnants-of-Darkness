@@ -87,7 +87,7 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 			Global.enemy_box.timer.start()
 		damage = applyDamage(body, damage, physical_based_sound)
 		if kills(body, damage):
-			Global.player.addExp(body.stats.EXP)
+			Global.player.addExp(body.stats.EXP, body.stats.LV)
 			updateKillCount(body.stats.enemy_name)
 		else:
 			hit_enemies.append(body)

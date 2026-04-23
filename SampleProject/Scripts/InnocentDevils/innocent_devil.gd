@@ -82,3 +82,13 @@ func calculateDamageTaken(base_power: int, multiplier: float, chip_damage: int, 
 		damage = 0
 	
 	return damage
+
+## Learns a skill that can be unlocked.
+func checkLearnedSkill() -> int:
+	const MESSAGE_POPUP_DURATION: float = 3
+	for i in range(0, skills.size()):
+		var skill: IDSkill = skills[i]
+		if skill.learnable and Stats["AP"] >= skill.AP_needed and not skill.unlocked and skill.learnable_by_evolution_ID == get_parent().current_evolution:
+			skill.unlocked = true
+			Global.tutorial_box.popup(get_parent().id_name + " learned [color=yellow]" + skill.name + "[/color]", MESSAGE_POPUP_DURATION)
+	return -1

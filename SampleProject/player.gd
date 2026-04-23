@@ -354,12 +354,14 @@ func relicColor() -> Color:
 func can_perfect_guard() -> bool:
 	return stats.findItem(Skill.Skills.PLATINUM_ARM, stats.skill_inventory) > 0
 
-func addExp(amount: int) -> void:
+func addExp(amount: int, enemy_level: int) -> void:
 	const LEVEL_DIFFERENCE_MULTIPLIER: float = 0.1
 	stats.Stats["EXP"] += amount
 	if innocent_devil != null and innocent_devil.is_alive:
 		var level_gap: int = max(stats.Stats["LV"] - innocent_devil.stats.Stats["LV"], 0)
 		innocent_devil.stats.Stats["EXP"] += int(amount+amount*level_gap*LEVEL_DIFFERENCE_MULTIPLIER)
+		innocent_devil.stats.Stats["AP"] += (1+enemy_level/10)
+		innocent_devil.stats.checkLearnedSkill()
 		
 func addWeaponExp() -> void:
 	var amount_gained = 1

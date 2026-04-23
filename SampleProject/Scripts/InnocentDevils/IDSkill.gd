@@ -9,6 +9,9 @@ class_name IDSkill
 @export var multiplier: float
 @export var type: Type
 @export var unlocked: bool
+@export var learnable: bool = true
+@export var learnable_by_evolution_ID: int ##Can only be learned by this specific Innocent Devil evolution. Check Evolutions enum in any of the InnocentDevil subclasses.
+@export var AP_needed: int
 @export_category("Synergy")
 @export var synergy_engager: bool
 @export var icon: CompressedTexture2D

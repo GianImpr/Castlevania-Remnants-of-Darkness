@@ -75,6 +75,7 @@ power = 50
 multiplier = 1.0
 type = 2
 unlocked = true
+learnable = false
 icon = ExtResource("9_4yd27")
 
 [sub_resource type="Resource" id="Resource_ovac2"]
@@ -84,6 +85,7 @@ description = "REFRESHING_AIR_SKILL_ID_DESC"
 cost = 15
 type = 2
 unlocked = true
+learnable = false
 icon = ExtResource("10_rs8cd")
 
 [sub_resource type="Resource" id="Resource_6f78i"]
@@ -92,12 +94,15 @@ name = "TIME_HEAL_SKILL_ID"
 description = "TIME_HEAL_SKILL_ID_DESC"
 cost = 13
 type = 2
+learnable_by_evolution_ID = 2
+AP_needed = 50
 icon = ExtResource("11_4bh4y")
 
 [sub_resource type="Resource" id="Resource_edmne"]
 script = ExtResource("3_5jgsh")
 name = "GLIDE"
 description = "GLIDE_DESC"
+learnable = false
 icon = ExtResource("12_0jpl7")
 metadata/_custom_type_script = "uid://bin0fbttt1atq"
 
@@ -107,7 +112,8 @@ name = "RESIST_FIRE_ICE_SKILL_ID"
 description = "RESIST_FIRE_ICE_SKILL_ID_DESC"
 cost = 30
 type = 2
-unlocked = true
+learnable_by_evolution_ID = 1
+AP_needed = 50
 icon = ExtResource("16_wjj4u")
 metadata/_custom_type_script = "uid://bin0fbttt1atq"
 
@@ -117,7 +123,8 @@ name = "POISON_POWDER_SKILL_ID"
 description = "POISON_POWER_SKILL_ID_DESC"
 cost = 15
 type = 2
-unlocked = true
+learnable_by_evolution_ID = 2
+AP_needed = 100
 icon = ExtResource("17_53stp")
 metadata/_custom_type_script = "uid://bin0fbttt1atq"
 
@@ -1483,6 +1490,7 @@ collision = NodePath("DetectEvo/CollisionShape2D")
 [node name="InnocentDevilStats" type="Node" parent="." unique_id=1548762419 node_paths=PackedStringArray("level_up", "sound")]
 script = ExtResource("2_fhvse")
 Stats = {
+"AP": 0,
 "ATK": 5,
 "DEF": 0,
 "EXP": 0,
@@ -1507,6 +1515,7 @@ Boosts = {
 "STR": 0
 }
 Initial = {
+"AP": 0,
 "ATK": 5,
 "DEF": 0,
 "EXP": 0,

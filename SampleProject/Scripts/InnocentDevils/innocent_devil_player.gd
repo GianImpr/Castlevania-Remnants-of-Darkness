@@ -163,6 +163,7 @@ func evolve(new_evolution: int) -> void:
 	const DARK_TWEEN_DURATION: float = 0.4
 	const NORMAL_LIGHT_DURATION: float = 0.1
 	var darkening_tween: Tween
+	stats.Stats["AP"] = 0
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	top_level = true
 	get_tree().paused = true

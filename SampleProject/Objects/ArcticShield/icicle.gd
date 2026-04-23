@@ -34,7 +34,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			take_damage(min(body.stats.HP, damage))
 			damage = apply_damage(body, damage)
 			if kills(body, damage):
-				Global.player.addExp(body.stats.EXP)
+				Global.player.addExp(body.stats.EXP, body.stats.LV)
 			else:
 				body_covered.append(body)
 		if is_alive(body):
