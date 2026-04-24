@@ -44,3 +44,12 @@ func warpBack() -> void:
 func useWeapon() -> void:
 	sound.play_sound_effect_from_library(get_attack_sound())
 	swingWeapon(AttackType.AIR)
+
+func createOutline(play_back: bool = false) -> void:
+	var outline: Outline = outline_scene.instantiate()
+	outline.global_position = player.global_position
+	MetSys.get_current_room_instance().add_child(outline)
+	if play_back:
+		outline.playBackwards()
+	else:
+		outline.play()
