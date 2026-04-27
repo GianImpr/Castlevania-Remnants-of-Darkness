@@ -7,6 +7,7 @@ class_name PlayerHitbox
 @export var sound: PolyphonicAudio
 @export var state_machine: Node
 @export var hitbox: CollisionShape2D
+@export var hitbox_is_child: bool
 @export var trail: Sprite2D
 @export var hit_collision_scene: PackedScene
 @export var ice_hit_collision_scene: PackedScene
@@ -32,6 +33,8 @@ const FIRE_TRAIL = Color(1.5, 0.7, 0.3, 1)
 
 const SNEAK_ATTACK_MULTIPLIER_BOOST: float = 1.2
 const SNEAK_ATTACK_DAMAGE_BOOST: int = 5
+
+const ENERGY_STRIKE_MP_REGEN: int = 3
 
 func _ready() -> void:
 	pass
@@ -82,6 +85,8 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 			createEffects(body, physical_based_sound)
 		if "stats" in body and body.stats.destructible:
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.PROJECTILES, body.global_position)
+			if Global.player.stats.canApplySkill(Skill.Skills.ENERGY_STRIKE) and get_parent() is WeaponSprite:
+				Global.player.healMP(ENERGY_STRIKE_MP_REGEN)
 			body.destroy()
 		return
 	# Hitting an enemy
@@ -125,8 +130,10 @@ func _on_body_entered(body: Node2D, physical_based_sound: bool = true) -> void:
 # The calculation is done taking the intersection between attack hitbox and target hurtbox and finding its center
 func createHitEffect(body: Node2D) -> void:
 	var hurtbox: CollisionShape2D
-	if body is Enemy or body is Zombie:
+	if body is Zombie:
 		hurtbox = body.hitbox_iframe.get_child(0)
+	elif body is Enemy:
+		hurtbox = body.getHurtbox()
 	elif body.get_parent().get_parent() is BreakableStatue:
 		hurtbox = body.get_child(0)
 	else:
@@ -136,12 +143,16 @@ func createHitEffect(body: Node2D) -> void:
 		body_size = hurtbox.shape.size
 	elif hurtbox.shape is CircleShape2D:
 		body_size = Vector2(hurtbox.shape.radius*2, hurtbox.shape.radius*2)
-	var coordinatesX: Array[float] = [hitbox.global_position.x-body_size.x/2, hitbox.global_position.x+body_size.x/2, hurtbox.global_position.x+body_size.x/2, hurtbox.global_position.x-body_size.x/2]
-	var coordinatesY: Array[float] = [hitbox.global_position.y-body_size.y/2, hitbox.global_position.y+body_size.y/2, hurtbox.global_position.y+body_size.y/2, hurtbox.global_position.y-body_size.y/2]
-	coordinatesX.sort()
-	coordinatesY.sort()
-	var effect_x = (coordinatesX[1]+coordinatesX[2])/2
-	var effect_y = (coordinatesY[1]+coordinatesY[2])/2
+		
+	var actual_hitbox: Node2D = hitbox
+	if hitbox_is_child:
+		actual_hitbox = get_child(0)
+	
+	var hitbox_rect: Rect2 = Rect2(actual_hitbox.global_position-actual_hitbox.shape.size, actual_hitbox.shape.size*2)
+	var hurtbox_rect: Rect2 = Rect2(hurtbox.global_position-body_size, body_size*2)
+	var intersection: Rect2 = hitbox_rect.intersection(hurtbox_rect)
+	var effect_x = intersection.position.x+intersection.size.x/2
+	var effect_y = intersection.position.y+intersection.size.y/2
 	var hit_effect
 	var using_affinity: bool = false
 	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= AFFINITY_COST and self is not AguniLaurelHitbox:
@@ -207,8 +218,12 @@ func adjustHitboxOrientation() -> void:
 # Disables the hitbox if not attacking.
 # This is to avoid hitbox lingering if the player cancels the attack animation
 func removeHitboxIfNotAttacking() -> void:
+	var actual_hitbox: Node2D = hitbox
+	if hitbox_is_child:
+		actual_hitbox = get_child(0)
+
 	if not state_machine.current_state.attacking():
-		hitbox.set_deferred("disabled", true)
+		actual_hitbox.set_deferred("disabled", true)
 
 # Calculates the base damage of the move
 func calculateDamage(body: Node2D, magical: bool = false) -> int:
@@ -348,6 +363,10 @@ func updateKillCount(enemy_name: String) -> void:
 func atTipDistance(target: Node2D) -> bool:
 	const TIP_SIZE: float = 10
 	var enemy_pos: float
+	
+	if not hitbox:
+		return false
+		
 	if target.hitbox_iframe.get_child(0).shape is RectangleShape2D:
 		enemy_pos = target.hitbox_iframe.get_child(0).global_position.x-target.hitbox_iframe.get_child(0).shape.size.x/2
 	else:

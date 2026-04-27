@@ -1,0 +1,842 @@
+[gd_scene format=3 uid="uid://bnf0jul53e7c1"]
+
+[ext_resource type="Texture2D" uid="uid://dgo4vl0sgkiy8" path="res://assets/sprites/Effects/Wind.png" id="1_q40x4"]
+[ext_resource type="Shader" uid="uid://dtfxu1jn7ht65" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="1_uaotn"]
+[ext_resource type="Texture2D" uid="uid://bc22rt5lbfl50" path="res://assets/sprites/Characters/Hector/HectorSprite2D.png" id="2_p0c8d"]
+[ext_resource type="Script" uid="uid://5kfmni2ssuj4" path="res://SampleProject/Scripts/System/hector_glow.gd" id="3_1a4on"]
+[ext_resource type="PackedScene" uid="uid://jda48nrn12d2" path="res://SampleProject/Weapons/short_sword.tscn" id="4_obbtq"]
+[ext_resource type="Script" uid="uid://bnqfu6md522u3" path="res://SampleProject/Scripts/AttackLogic.gd" id="5_8ri16"]
+[ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="6_4xhes"]
+[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="7_pnr1b"]
+[ext_resource type="Shader" uid="uid://diku0uk4in6gs" path="res://SampleProject/Shaders/aura.gdshader" id="8_kbvxk"]
+[ext_resource type="Texture2D" uid="uid://b1k4jwit2pa3b" path="res://assets/sprites/Characters/Hector/HectorSprite2DAura.png" id="9_o6fiu"]
+[ext_resource type="Texture2D" uid="uid://dwc4g23sdxtn2" path="res://assets/sprites/Characters/Hector/HectorSpearHands.png" id="10_gg11j"]
+[ext_resource type="Texture2D" uid="uid://c6un2pf6f5ilo" path="res://assets/sprites/Weapons/Spears/StretchedCircle.png" id="12_8ri16"]
+[ext_resource type="Shader" uid="uid://ccbusj4pboktl" path="res://SampleProject/Shaders/flash.gdshader" id="13_4xhes"]
+[ext_resource type="Texture2D" uid="uid://dg0eageqkkh7m" path="res://assets/sprites/Weapons/Spears/Sasumata.png" id="14_4xhes"]
+[ext_resource type="Script" uid="uid://gkvibd7oxi2i" path="res://SampleProject/Scripts/Powers/disjointed_player_hitbox.gd" id="15_kbvxk"]
+[ext_resource type="Texture2D" uid="uid://68088u8in12a" path="res://assets/sprites/Characters/Hector/HectorWhirlwindHands.png" id="16_pnr1b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8u0y"]
+shader = ExtResource("1_uaotn")
+shader_parameter/influence = 0.0999999977648
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 4.0000000596048
+shader_parameter/mix_colors = false
+shader_parameter/enabled = false
+shader_parameter/sheet_columns = 20
+shader_parameter/sheet_rows = 20
+shader_parameter/petrified = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fu7uc"]
+size = Vector2(27, 10.478)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oke0v"]
+size = Vector2(22, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4v07"]
+size = Vector2(23, 15.999998)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rsyo"]
+size = Vector2(23.500004, 15.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otvxe"]
+size = Vector2(49.5, 50)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_25ioo"]
+frequency = 0.6231
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_poo34"]
+noise = SubResource("FastNoiseLite_25ioo")
+seamless = true
+normalize = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2oqw"]
+shader = ExtResource("8_kbvxk")
+shader_parameter/n = SubResource("NoiseTexture2D_poo34")
+shader_parameter/min_intensity = 0.6
+shader_parameter/max_intensity = 1.3
+shader_parameter/speed_x = 1000.0
+shader_parameter/speed_y = -100.0
+shader_parameter/fade_start = 1.0
+shader_parameter/fade_end = 1.0
+
+[sub_resource type="Animation" id="Animation_o6fiu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Whirlwind/WindLeft:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Whirlwind/WindRight:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Whirlwind/Node2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Whirlwind/Node2D/Sprite2D/Spin:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.269605]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Whirlwind/Spear:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Whirlwind/Spear:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-150, 18)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Whirlwind/Spear:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Whirlwind/Spear:flip_v")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Whirlwind/Spear:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Whirlwind/Spear:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.17453292]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Whirlwind/Spear:z_index")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Whirlwind/Spear:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Whirlwind/Node2D/DisjointedPlayerHitbox/CollisionPolygon2D:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Whirlwind/Node2D/DisjointedPlayerHitbox/CollisionPolygon2D:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Whirlwind/HectorHands:frame")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../Whirlwind/HectorHands:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../Whirlwind/Spear:skew")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.53232545]
+}
+
+[sub_resource type="Animation" id="Animation_gg11j"]
+resource_name = "WHIRL"
+length = 2.6
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.050000012, 0.099999994, 0.15, 0.19999999, 0.25, 0.3, 0.34999996, 0.40000004, 0.45, 0.5, 0.55, 0.6, 0.65000004, 0.7, 0.74999994, 0.8, 0.8500001, 0.90000004, 0.95, 0.99999994, 1.05, 1.1000001, 1.1500001, 1.2, 1.25, 1.3, 1.3500001, 1.4000001, 1.45, 1.5, 1.5714288, 1.6428572, 1.7142857, 1.7857143, 1.8571426, 1.9285713, 1.9999999, 2.0714283, 2.3785713, 2.45, 2.5214283, 2.5928571),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 367, 368, 369, 370, 367, 368, 369, 370, 367, 368, 369, 370, 367, 368, 369, 370, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Whirlwind/WindLeft:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.14285715, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Whirlwind/WindRight:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.14285715, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Whirlwind/Node2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.35, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Whirlwind/Node2D/Sprite2D/Spin:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.35, 0.55, 0.75, 0.95, 1.15, 1.35, 1.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586, 12.566370614359172, 18.84955592153876, 25.132741228718345, 31.41592653589793, 34.55751918948773]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Whirlwind/Spear:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.3, 1.5000001, 1.6428572, 1.7142859, 1.7857144, 1.8571427, 1.9285712, 2, 2.0714285),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, true, false, false, false, true, true, false, false, false, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Whirlwind/Spear:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 1.5000001, 1.5714287, 1.6428572, 1.7142859, 1.7857144, 1.8571427, 1.9285715, 2, 2.0714288),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(-137, 12), Vector2(-122, 6), Vector2(104, -3), Vector2(136, 0), Vector2(105, -14), Vector2(-102, -6), Vector2(77, -39), Vector2(92, -26), Vector2(96, -22), Vector2(90, -34), Vector2(-68.00001, 8), Vector2(-97.99999, 14), Vector2(70, 14), Vector2(66, 14), Vector2(58, 0), Vector2(58, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Whirlwind/Spear:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2, 0.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 0, 0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Whirlwind/Spear:flip_v")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25, 0.3, 1.5, 1.6428572, 1.7142859, 1.7857144, 1.8571427, 1.9285712, 2, 2.0714285),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false, true, false, false, false, false, false, false, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Whirlwind/Spear:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.35, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Whirlwind/Spear:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.7857144, 1.8571427, 1.9285712, 2, 2.0714285),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, 0.0, 0.0, -0.17453292, -0.17453292]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Whirlwind/Spear:z_index")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1.6428572, 1.7142859, 1.7857144, 1.8571428),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [-1, -1, -1, -1, 0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Whirlwind/Spear:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(2.2142859, 2.357143),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Whirlwind/Node2D/DisjointedPlayerHitbox/CollisionPolygon2D:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.071428575, 0.35, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 0), Vector2(1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Whirlwind/Node2D/DisjointedPlayerHitbox/CollisionPolygon2D:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.35, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../Whirlwind/HectorHands:frame")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1.8571429, 1.9285715, 2, 2.0714288),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../Whirlwind/HectorHands:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1.8571428, 2.357143),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../Whirlwind/Spear:skew")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.25, 0.35714287, 1.7142859, 1.7857144, 1.8571428),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, -0.523598775598299, 0.9773844, 0.0, 0.0, 0.0, 0.6719518, -0.6981317, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_yi2h4"]
+resource_name = "whirl_loop"
+length = 0.2858
+loop_mode = 1
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.071428575, 0.14285715, 0.21428572),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [367, 368, 369, 370]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_567sl"]
+_data = {
+&"RESET": SubResource("Animation_o6fiu"),
+&"WHIRL": SubResource("Animation_gg11j"),
+&"whirl_loop": SubResource("Animation_yi2h4")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hkc7b"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Curve" id="Curve_645km"]
+_limits = [-10.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.765574), 0.0, 0.0, 0, 0, Vector2(0.4552529, -1.3029141), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_uaotn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_gaq5x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_4xhes"]
+curve_x = SubResource("Curve_645km")
+curve_y = SubResource("Curve_uaotn")
+curve_z = SubResource("Curve_gaq5x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ipkch"]
+particle_flag_disable_z = true
+direction = Vector3(1, -1, 0)
+spread = 0.0
+initial_velocity_min = 240.0
+initial_velocity_max = 280.0
+directional_velocity_min = 600.0
+directional_velocity_max = 600.0
+directional_velocity_curve = SubResource("CurveXYZTexture_4xhes")
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+scale_min = 2.0
+scale_max = 2.0
+anim_speed_min = 5.0
+anim_speed_max = 5.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yi2h4"]
+load_path = "res://.godot/imported/Wind.png-c30a0f9d5131d6dd895b620bd5bbed9b.ctex"
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_567sl"]
+particle_flag_disable_z = true
+direction = Vector3(-1, -1, 0)
+spread = 0.0
+initial_velocity_min = 220.0
+initial_velocity_max = 280.0
+directional_velocity_min = -600.0
+directional_velocity_max = -600.0
+directional_velocity_curve = SubResource("CurveXYZTexture_4xhes")
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = -2.2351742e-06
+scale_min = 2.0
+scale_max = 2.0
+anim_speed_min = 5.0
+anim_speed_max = 5.0
+
+[sub_resource type="Gradient" id="Gradient_pnr1b"]
+colors = PackedColorArray(0.337255, 0.301961, 0.65098, 0.74902, 1, 0.74902, 0.752941, 0.129412)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5c8hu"]
+gradient = SubResource("Gradient_pnr1b")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.666667, 0.897436)
+fill_to = Vector2(0.153846, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmdi8"]
+shader = ExtResource("13_4xhes")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifier = 0.0
+
+[node name="WhirlwindScene" type="Node2D" unique_id=1902742773]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1727714802 node_paths=PackedStringArray("glow_timer", "hector_hands", "aura")]
+process_mode = 3
+material = SubResource("ShaderMaterial_a8u0y")
+scale = Vector2(2, 2)
+texture = ExtResource("2_p0c8d")
+hframes = 20
+vframes = 21
+frame = 360
+region_rect = Rect2(0, 0, 0, 70)
+script = ExtResource("3_1a4on")
+glow_speed = 0.17
+glow_timer = NodePath("Glow")
+initial_weapon_sprite = ExtResource("4_obbtq")
+hector_hands = NodePath("SpearHands")
+aura = NodePath("Aura")
+
+[node name="FistHitbox" type="Area2D" parent="Sprite2D" unique_id=1654397970 node_paths=PackedStringArray("hitbox")]
+process_mode = 1
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("5_8ri16")
+iframes_on_hit = 8
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("6_4xhes")
+ice_hit_collision_scene = ExtResource("7_pnr1b")
+base_attribute = Array[int]([1])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/FistHitbox" unique_id=2142029098]
+visible = false
+position = Vector2(17.6223, 0.413044)
+shape = SubResource("RectangleShape2D_fu7uc")
+
+[node name="SlideHitbox" type="Area2D" parent="Sprite2D" unique_id=1192673893 node_paths=PackedStringArray("hitbox")]
+process_mode = 1
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("5_8ri16")
+dmg_multiplier = 0.2
+damage_boost = 10
+iframes_on_hit = 30
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("6_4xhes")
+ice_hit_collision_scene = ExtResource("7_pnr1b")
+base_attribute = Array[int]([1])
+direct_physical_hit = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/SlideHitbox" unique_id=1272748999]
+visible = false
+position = Vector2(19.5, 30)
+shape = SubResource("RectangleShape2D_oke0v")
+disabled = true
+
+[node name="DiveStraightHitbox" type="Area2D" parent="Sprite2D" unique_id=192409794 node_paths=PackedStringArray("hitbox")]
+process_mode = 1
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("5_8ri16")
+dmg_multiplier = 0.1
+damage_boost = 5
+iframes_on_hit = 5
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("6_4xhes")
+ice_hit_collision_scene = ExtResource("7_pnr1b")
+base_attribute = Array[int]([1])
+direct_physical_hit = true
+dive_kick = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/DiveStraightHitbox" unique_id=1835597426]
+visible = false
+position = Vector2(0.50000405, 20.5)
+shape = SubResource("RectangleShape2D_m4v07")
+disabled = true
+
+[node name="DiveDiagonalHitbox" type="Area2D" parent="Sprite2D" unique_id=219328705 node_paths=PackedStringArray("hitbox")]
+process_mode = 1
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("5_8ri16")
+dmg_multiplier = 0.1
+damage_boost = 5
+iframes_on_hit = 5
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("6_4xhes")
+ice_hit_collision_scene = ExtResource("7_pnr1b")
+base_attribute = Array[int]([1])
+direct_physical_hit = true
+dive_kick = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/DiveDiagonalHitbox" unique_id=368125360]
+visible = false
+position = Vector2(6.2500052, 20.749996)
+shape = SubResource("RectangleShape2D_3rsyo")
+disabled = true
+
+[node name="UppercutHitbox" type="Area2D" parent="Sprite2D" unique_id=2061994351 node_paths=PackedStringArray("hitbox")]
+process_mode = 1
+visible = false
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("5_8ri16")
+iframes_on_hit = 20
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("6_4xhes")
+ice_hit_collision_scene = ExtResource("7_pnr1b")
+base_attribute = Array[int]([1])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/UppercutHitbox" unique_id=757808414]
+position = Vector2(13.25, 2.5)
+shape = SubResource("RectangleShape2D_otvxe")
+disabled = true
+
+[node name="ThunderUppercutHitbox" type="Area2D" parent="Sprite2D" unique_id=1906433220 node_paths=PackedStringArray("hitbox")]
+process_mode = 1
+visible = false
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("5_8ri16")
+dmg_multiplier = 2.0
+damage_boost = 15
+iframes_on_hit = 20
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("6_4xhes")
+ice_hit_collision_scene = ExtResource("7_pnr1b")
+base_attribute = Array[int]([1])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ThunderUppercutHitbox" unique_id=1413498620]
+position = Vector2(13.25, 2.5)
+shape = SubResource("RectangleShape2D_otvxe")
+disabled = true
+
+[node name="Aura" type="Sprite2D" parent="Sprite2D" unique_id=419756341]
+visible = false
+modulate = Color(0, 0.545098, 0.898039, 1)
+show_behind_parent = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_d2oqw")
+texture = ExtResource("9_o6fiu")
+hframes = 20
+vframes = 20
+
+[node name="Glow" type="Timer" parent="Sprite2D" unique_id=426929771]
+one_shot = true
+
+[node name="SpearHands" type="Sprite2D" parent="Sprite2D" unique_id=76358584]
+visible = false
+z_index = 1
+position = Vector2(0, 11)
+texture = ExtResource("10_gg11j")
+hframes = 18
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1799626935]
+libraries/ = SubResource("AnimationLibrary_567sl")
+
+[node name="Whirlwind" type="Node2D" parent="." unique_id=288059974]
+
+[node name="WindLeft" type="GPUParticles2D" parent="Whirlwind" unique_id=1793672024]
+self_modulate = Color(0.48, 0.48, 0.48, 0.17254902)
+material = SubResource("CanvasItemMaterial_hkc7b")
+position = Vector2(-24, 3)
+amount = 16
+texture = ExtResource("1_q40x4")
+speed_scale = 1.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ipkch")
+
+[node name="WindRight" type="GPUParticles2D" parent="Whirlwind" unique_id=2125863631]
+self_modulate = Color(0.48, 0.48, 0.48, 0.17254902)
+material = SubResource("CanvasItemMaterial_hkc7b")
+position = Vector2(10, -3)
+amount = 16
+texture = SubResource("CompressedTexture2D_yi2h4")
+speed_scale = 1.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_567sl")
+
+[node name="Node2D" type="Node2D" parent="Whirlwind" unique_id=154280268]
+position = Vector2(0, -31)
+rotation = 3.1415927
+scale = Vector2(6, -6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Whirlwind/Node2D" unique_id=890512895]
+clip_children = 1
+scale = Vector2(0.04, 0.02)
+skew = 0.996583
+texture = ExtResource("12_8ri16")
+
+[node name="Spin" type="TextureRect" parent="Whirlwind/Node2D/Sprite2D" unique_id=1609616718]
+offset_right = 512.0
+offset_bottom = 512.0
+rotation = 6.269605
+texture = SubResource("GradientTexture2D_5c8hu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Whirlwind/Node2D/Sprite2D/Spin" unique_id=993925385]
+material = SubResource("ShaderMaterial_kmdi8")
+position = Vector2(84, 205)
+rotation = -1.5708
+scale = Vector2(6, 9)
+texture = ExtResource("14_4xhes")
+flip_h = true
+flip_v = true
+hframes = 5
+frame = 3
+
+[node name="DisjointedPlayerHitbox" type="Area2D" parent="Whirlwind/Node2D" unique_id=472308292 node_paths=PackedStringArray("trail")]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("15_kbvxk")
+extra_base_damage = 12
+damage_multiplier = 1.1
+iframes_on_hit = 25
+trail = NodePath("../Sprite2D")
+hit_collision_scene = ExtResource("6_4xhes")
+ice_hit_collision_scene = ExtResource("7_pnr1b")
+base_attribute = Array[int]([2, 6])
+adjust_facing_position = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Whirlwind/Node2D/DisjointedPlayerHitbox" unique_id=686759736]
+visible = false
+position = Vector2(0, 16.666666)
+polygon = PackedVector2Array(10, 0, -10, 0, -22, -36, 22, -36)
+
+[node name="Spear" type="Sprite2D" parent="Whirlwind" unique_id=37229485]
+z_index = -1
+position = Vector2(-150, 18)
+rotation = -0.17453292
+scale = Vector2(2, 2)
+skew = -0.53232545
+texture = ExtResource("14_4xhes")
+flip_h = true
+flip_v = true
+hframes = 5
+
+[node name="HectorHands" type="Sprite2D" parent="Whirlwind" unique_id=137445775]
+position = Vector2(0, 16)
+scale = Vector2(2, 2)
+texture = ExtResource("16_pnr1b")
+hframes = 5
+
+[connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Sprite2D/SlideHitbox" to="Sprite2D/SlideHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Sprite2D/DiveStraightHitbox" to="Sprite2D/DiveStraightHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Sprite2D/DiveDiagonalHitbox" to="Sprite2D/DiveDiagonalHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Sprite2D/UppercutHitbox" to="Sprite2D/UppercutHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Sprite2D/ThunderUppercutHitbox" to="Sprite2D/ThunderUppercutHitbox" method="_on_body_entered"]
+[connection signal="timeout" from="Sprite2D/Glow" to="Sprite2D" method="_on_glow_timeout"]
+[connection signal="body_entered" from="Whirlwind/Node2D/DisjointedPlayerHitbox" to="Whirlwind/Node2D/DisjointedPlayerHitbox" method="_on_body_entered"]

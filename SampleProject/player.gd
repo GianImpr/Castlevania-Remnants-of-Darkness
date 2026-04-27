@@ -34,7 +34,7 @@ class_name HectorPlayer
 @export var charge_sprite: Sprite2D
 @export var charge_anim: AnimationPlayer
 @export var charge_particles: CPUParticles2D
-@export_category("Temporary nodes")
+@export_category("Effect nodes")
 @export var heal_effect: GPUParticles2D
 @export var heal_mp_effect: GPUParticles2D
 @export var tap_up: TapUp
@@ -91,6 +91,7 @@ const NORMAL_GRAVITY_MULTIPLIER: float = 2
 const WINGED_BOOTS_GRAVITY_MULTIPLIER: float = 1.7
 
 const CHARGE_ONE_COST_RATIO: int = 10
+const PERFECT_CHARGE_REGEN: int = 20
 var cur_charge: Charge = Charge.NONE
 var times_guard_pressed: int = 0
 var can_double_jump: bool = true

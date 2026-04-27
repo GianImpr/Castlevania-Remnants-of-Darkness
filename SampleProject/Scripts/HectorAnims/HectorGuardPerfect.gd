@@ -8,6 +8,9 @@ func enter():
 	player.velocity.x = 0
 	animation.play("perfect_guarding", -1, 2.8)
 	sound.play_sound_effect_from_library("perfect_guard")
+	
+	if player.stats.canApplySkill(Skill.Skills.PERFECT_CHARGE) and player.cur_charge != HectorPlayer.Charge.NONE:
+		player.stats.Stats["FP"] += player.PERFECT_CHARGE_REGEN
 
 	if player.stats.itemEquipped(Artifact.Artifacts.STONE_OF_ALCHEMY, "artifact"):
 		player.activateStoneOfAlchemy()
