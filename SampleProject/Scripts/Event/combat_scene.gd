@@ -8,6 +8,8 @@ func _ready():
 	if Global.player.stats.combat_flags[event_ID]:
 		queue_free()
 	else:
+		var combat_door: CombatDoor = door1.get_child(0)
+		combat_door.closing.connect(SavingScreen.setBattleCheckpoint)
 		event()
 		
 func event():

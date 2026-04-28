@@ -7,6 +7,7 @@ class_name CombatDoor
 @export var boss_door_texture: CompressedTexture2D
 @export var door_sprite: Sprite2D
 @export var seal_sprite: Sprite2D
+signal closing
 
 func _ready():
 	seal_sprite.visible = get_parent().boss_door
@@ -17,7 +18,7 @@ func _ready():
 	if Global.player.stats.combat_flags[get_parent().combat_flag_id]:
 		get_parent().queue_free()
 	if get_parent().should_close:
-		if not Global.player.stats.combat_flags[get_parent().combat_flag_id]:
+		if not Global.player.stats.combat_flags[get_parent().combat_flag_id] and not SavingScreen.isBattleCheckpointSet():
 			Global.player.global_position.x += 40*sign(Global.player.facing_position)
 		if not Global.player.stats.combat_flags[get_parent().combat_flag_id]:
 			Global.player.freeze()
@@ -51,6 +52,7 @@ func _on_animation_delay_timeout() -> void:
 
 # Close door when entered
 func _on_close_delay_timeout() -> void:
+	closing.emit()
 	Global.player.unfreeze()
 	if get_parent().boss_door:
 		animation.play("close_boss")

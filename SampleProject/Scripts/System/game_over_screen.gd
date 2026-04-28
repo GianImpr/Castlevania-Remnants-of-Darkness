@@ -11,7 +11,7 @@ func _ready() -> void:
 	Global.game_over_screen = self
 
 func showScreen() -> void:
-	retry_battle_button.visible = false
+	retry_battle_button.visible = SavingScreen.isBattleCheckpointSet()
 	animation.play("start")
 	await get_tree().create_timer(MUSIC_DELAY_SECONDS).timeout
 	Global.music_player.play_sound_effect_from_library("game_over")
@@ -43,13 +43,18 @@ func titleScreen() -> void:
 	
 func retryBattle() -> void:
 	sound.play_sound_effect_from_library("confirm")
+	LoadingScreen.loadBattleCheckpoint()
 	get_viewport().gui_release_focus()
 	hideScreen()
 	await animation.animation_finished
-	
+	get_tree().paused = false
+	Global.loaded_settings = false
+	get_tree().reload_current_scene()
+
 	
 func reloadSave() -> void:
 	sound.play_sound_effect_from_library("confirm")
+	SavingScreen.deleteBattleCheckpoint()
 	if Global.save_destination != "":
 		Global.save_file_to_load = Global.save_destination
 	Global.load_data = Global.save_file_to_load != ""

@@ -53,6 +53,24 @@ func saveData():
 	confirm_panel.get_child(ButtonIndex.YES).release_focus()
 
 	saved_with_success = true
+	
+static func setBattleCheckpoint() -> void:
+	Global.player.stats.map_ratio = "%3d%%" % int(MetSys.get_explored_ratio() * 100)
+	var destination = INITIAL_SAVE_PATH + CHECKPOINT_SAVE_NAME + SAVE_FILE_EXTENSION
+	var old_save_destination: String = Global.save_destination
+	Global.save_destination = destination
+	Game.get_singleton().save_game()
+	Game.get_singleton().reset_map_starting_coords()
+	Global.save_destination = old_save_destination
+
+static func deleteBattleCheckpoint() -> void:
+	var destination = INITIAL_SAVE_PATH + CHECKPOINT_SAVE_NAME + SAVE_FILE_EXTENSION
+	if FileAccess.file_exists(destination):
+		DirAccess.remove_absolute(destination)
+		
+static func isBattleCheckpointSet() -> bool:
+	var destination = INITIAL_SAVE_PATH + CHECKPOINT_SAVE_NAME + SAVE_FILE_EXTENSION
+	return FileAccess.file_exists(destination)
 
 func askConfirm():
 	confirm_panel_opened = true

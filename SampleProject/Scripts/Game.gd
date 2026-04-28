@@ -346,7 +346,9 @@ func load_game():
 	Global.player.stats.file_name = save_manager.get_value("file_name")
 	Global.player.stats.map_ratio = save_manager.get_value("map_ratio")
 	if save_manager.get_value("position") != null:
-		Global.player.global_position = save_manager.get_value("position") + Vector2(30*player.facing_position, 50)
+		Global.player.global_position = save_manager.get_value("position")
+		if not LoadingScreen.isloadingBattleCheckpoint():
+			Global.player.global_position += Vector2(30*player.facing_position, 50)
 	else:
 		player.position = Vector2(259, 287)
 		

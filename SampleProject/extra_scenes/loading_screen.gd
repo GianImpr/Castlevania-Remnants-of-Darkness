@@ -16,6 +16,7 @@ const INITIAL_SAVE_PATH: String = "user://slot"
 const SAVE_FILE_EXTENSION: String = ".save"
 const SAVE_MANAGER_RESOURCE = preload("res://addons/MetroidvaniaSystem/Template/Scripts/SaveManager.gd")
 const FILE_NAME_INDEX: int = 1
+const CHECKPOINT_SAVE_NAME: String = "checkpoint"
 const NO_SLOT: int = -1
 var start_new_game: bool = false
 
@@ -173,6 +174,17 @@ func onSlotPressed():
 		
 func exitScreen():
 	animation.play("disappear_to_title")
+	
+static func loadBattleCheckpoint() -> void:
+	var destination = INITIAL_SAVE_PATH + CHECKPOINT_SAVE_NAME + SAVE_FILE_EXTENSION
+	Global.load_data = true
+	if Global.save_file_to_load != destination:
+		Global.save_destination = Global.save_file_to_load
+	Global.save_file_to_load = destination
+	
+static func isloadingBattleCheckpoint() -> bool:
+	var checkpoint_name = INITIAL_SAVE_PATH + CHECKPOINT_SAVE_NAME + SAVE_FILE_EXTENSION
+	return Global.save_file_to_load == checkpoint_name
 
 	#var SAVE_PATH = "user://slot1.save"
 	#can_load = FileAccess.file_exists(SAVE_PATH)

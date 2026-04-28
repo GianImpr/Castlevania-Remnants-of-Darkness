@@ -19,6 +19,7 @@ enum COMMANDS {
 
 func _ready() -> void:
 	highlightFocusedButton(0)
+	SavingScreen.deleteBattleCheckpoint()
 
 func _process(delta: float) -> void:
 	if not animation.is_playing():

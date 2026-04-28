@@ -39,6 +39,9 @@ func _on_pressed(which: Button) -> void:
 		return
 	sound.play_sound_effect_from_library("confirm")
 	Global.new_game_difficulty = which.get_index()
+	Global.load_data = false
+	Global.save_destination = ""
+	Global.save_file_to_load = ""
 	animation.play("vanish")
 	
 func updateDescription(which: Button) -> void:
