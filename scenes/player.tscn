@@ -1793,6 +1793,18 @@ tracks/38/keys = {
 "update": 0,
 "values": [Vector2(1, 2)]
 }
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("Whirlwind/SpearSprite/Spear:visible")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_lhfeg"]
 resource_name = "air_attack"
@@ -4060,7 +4072,7 @@ tracks/12/keys = {
 "times": PackedFloat32Array(0.071428575, 0.5714286),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 0), Vector2(2, 2)]
+"values": [Vector2(1, 0), Vector2(1, 1)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
@@ -6075,7 +6087,6 @@ scale = Vector2(0.5, 0.5)
 self_modulate = Color(0.48, 0.48, 0.48, 0.17254902)
 material = SubResource("CanvasItemMaterial_c0ija")
 position = Vector2(-24, 3)
-emitting = false
 amount = 16
 texture = ExtResource("242_446j8")
 speed_scale = 1.5
@@ -6086,7 +6097,6 @@ process_material = SubResource("ParticleProcessMaterial_r0x2e")
 self_modulate = Color(0.48, 0.48, 0.48, 0.17254902)
 material = SubResource("CanvasItemMaterial_c0ija")
 position = Vector2(10, -3)
-emitting = false
 amount = 16
 texture = SubResource("CompressedTexture2D_wgof3")
 speed_scale = 1.5
@@ -6094,7 +6104,6 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_37cei")
 
 [node name="Node2D" type="Node2D" parent="Whirlwind" unique_id=1854823455]
-visible = false
 position = Vector2(0, -31)
 rotation = 3.1415927
 scale = Vector2(6, -6)
@@ -6108,6 +6117,7 @@ texture = ExtResource("243_nrd1h")
 [node name="Spin" type="TextureRect" parent="Whirlwind/Node2D/Sprite2D" unique_id=1099894288]
 offset_right = 512.0
 offset_bottom = 512.0
+rotation = 12.566371
 texture = SubResource("GradientTexture2D_stxmr")
 
 [node name="SpinningSpear" type="Sprite2D" parent="Whirlwind/Node2D/Sprite2D/Spin" unique_id=157620780]
@@ -6136,16 +6146,14 @@ base_attribute = Array[int]([2, 6])
 adjust_facing_position = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Whirlwind/Node2D/DisjointedPlayerHitbox" unique_id=581236721]
-visible = false
-position = Vector2(0, 34)
-scale = Vector2(1, 1e-05)
+position = Vector2(0, 16)
 polygon = PackedVector2Array(10, 0, -10, 0, -22, -36, 22, -36)
-disabled = true
 
 [node name="SpearSprite" type="Node2D" parent="Whirlwind" unique_id=1758900180]
 
 [node name="Spear" type="Sprite2D" parent="Whirlwind/SpearSprite" unique_id=1981954796]
 physics_interpolation_mode = 2
+visible = false
 z_index = -1
 position = Vector2(-41, 42.999996)
 rotation = -0.6387905
@@ -6163,7 +6171,6 @@ position = Vector2(0, 16)
 scale = Vector2(2, 2)
 texture = ExtResource("247_2t4xi")
 hframes = 5
-frame = 2
 
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/SlideHitbox" to="Sprite2D/SlideHitbox" method="_on_body_entered"]

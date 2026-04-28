@@ -148,7 +148,15 @@ func createHitEffect(body: Node2D) -> void:
 	if hitbox_is_child:
 		actual_hitbox = get_child(0)
 	
-	var hitbox_rect: Rect2 = Rect2(actual_hitbox.global_position-actual_hitbox.shape.size, actual_hitbox.shape.size*2)
+	var hitbox_rect: Rect2
+	
+	if actual_hitbox is CollisionShape2D:
+		hitbox_rect = Rect2(actual_hitbox.global_position-actual_hitbox.shape.size, actual_hitbox.shape.size*2)
+	elif actual_hitbox is CollisionPolygon2D:
+		var polygon: PackedVector2Array = actual_hitbox.polygon
+		var size: Vector2 = Vector2(polygon[3].x-polygon[2].x, polygon[0].y-polygon[2].y)*abs(actual_hitbox.global_scale)
+		hitbox_rect = Rect2(actual_hitbox.global_position-Vector2(size.x/2, size.y), size)
+	
 	var hurtbox_rect: Rect2 = Rect2(hurtbox.global_position-body_size, body_size*2)
 	var intersection: Rect2 = hitbox_rect.intersection(hurtbox_rect)
 	var effect_x = intersection.position.x+intersection.size.x/2
