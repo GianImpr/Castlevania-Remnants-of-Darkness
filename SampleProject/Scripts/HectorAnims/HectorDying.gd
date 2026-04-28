@@ -30,8 +30,3 @@ func Physics_Update(delta: float):
 func _on_reset_timeout() -> void:
 	Global.game_over_screen.showScreen()
 	get_tree().paused = true
-	await get_tree().create_timer(8).timeout
-	Global.game_over_screen.hideScreen()
-	await get_tree().create_timer(1).timeout
-	get_tree().paused = false
-	Global.toTitleScreen()

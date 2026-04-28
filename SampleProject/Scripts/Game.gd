@@ -383,7 +383,7 @@ func load_game():
 			weapon.hitbox.sound = player.sound
 			weapon.hitbox.state_machine = player.state_machine
 		player.sprite.weapon = weapon
-		player.add_child(weapon_node)
+		player.sprite.add_child(weapon_node)
 	
 	if not custom_run:
 		var loaded_starting_map: String = save_manager.get_value("current_room")

@@ -143,7 +143,7 @@ func _input(event: InputEvent) -> void:
 	
 func _process(delta: float) -> void:
 	#If harmed, become invulnerable for a while
-	hurtbox_area.set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped() and not state_machine.current_state is HectorWait and not state_machine.current_state is HectorEarthquake and not state_machine.current_state is HectorSneakAttack and not god_mode)
+	hurtbox_area.set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped() and not state_machine.current_state is HectorWait and not state_machine.current_state is HectorEarthquake and not state_machine.current_state is HectorSneakAttack and not state_machine.current_state is HectorWhirlwind and not god_mode)
 	
 	guarding = isGuarding()
 	

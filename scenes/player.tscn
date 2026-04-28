@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="1_l85l3"]
 [ext_resource type="Script" uid="uid://cb60kmpjhfr6h" path="res://SampleProject/player.gd" id="1_p2ow1"]
 [ext_resource type="PackedScene" uid="uid://bao10vvn6rpga" path="res://SampleProject/Powers/Axes/axe_throw.tscn" id="2_1180g"]
-[ext_resource type="PackedScene" uid="uid://crov6smdsbwb4" path="res://SampleProject/familiars/Faerie/faerie.tscn" id="2_gik8q"]
 [ext_resource type="Script" uid="uid://j2vesgbfbner" path="res://SampleProject/Scripts/System/item.gd" id="2_j5pj6"]
 [ext_resource type="Script" uid="uid://1vp87s3hhyhn" path="res://SampleProject/Scripts/System/weapon.gd" id="2_ju6fn"]
 [ext_resource type="Texture2D" uid="uid://du0eiy67cnc7d" path="res://assets/sprites/Items/InventoryIcons/Inventory_258.png" id="3_2k40y"]
@@ -5119,7 +5118,6 @@ floor_max_angle = 1.3089969
 floor_snap_length = 30.0
 safe_margin = 0.15
 script = ExtResource("1_p2ow1")
-innocent_devil_scene = ExtResource("2_gik8q")
 sprite = NodePath("Sprite2D")
 aura = NodePath("Sprite2D/Aura")
 state_machine = NodePath("StateMachine")
@@ -6087,6 +6085,7 @@ scale = Vector2(0.5, 0.5)
 self_modulate = Color(0.48, 0.48, 0.48, 0.17254902)
 material = SubResource("CanvasItemMaterial_c0ija")
 position = Vector2(-24, 3)
+emitting = false
 amount = 16
 texture = ExtResource("242_446j8")
 speed_scale = 1.5
@@ -6097,6 +6096,7 @@ process_material = SubResource("ParticleProcessMaterial_r0x2e")
 self_modulate = Color(0.48, 0.48, 0.48, 0.17254902)
 material = SubResource("CanvasItemMaterial_c0ija")
 position = Vector2(10, -3)
+emitting = false
 amount = 16
 texture = SubResource("CompressedTexture2D_wgof3")
 speed_scale = 1.5
@@ -6104,6 +6104,7 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_37cei")
 
 [node name="Node2D" type="Node2D" parent="Whirlwind" unique_id=1854823455]
+visible = false
 position = Vector2(0, -31)
 rotation = 3.1415927
 scale = Vector2(6, -6)
@@ -6117,7 +6118,6 @@ texture = ExtResource("243_nrd1h")
 [node name="Spin" type="TextureRect" parent="Whirlwind/Node2D/Sprite2D" unique_id=1099894288]
 offset_right = 512.0
 offset_bottom = 512.0
-rotation = 12.566371
 texture = SubResource("GradientTexture2D_stxmr")
 
 [node name="SpinningSpear" type="Sprite2D" parent="Whirlwind/Node2D/Sprite2D/Spin" unique_id=157620780]
@@ -6146,8 +6146,11 @@ base_attribute = Array[int]([2, 6])
 adjust_facing_position = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Whirlwind/Node2D/DisjointedPlayerHitbox" unique_id=581236721]
+visible = false
 position = Vector2(0, 16)
+scale = Vector2(1, 1e-05)
 polygon = PackedVector2Array(10, 0, -10, 0, -22, -36, 22, -36)
+disabled = true
 
 [node name="SpearSprite" type="Node2D" parent="Whirlwind" unique_id=1758900180]
 

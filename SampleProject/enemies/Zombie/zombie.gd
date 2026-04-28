@@ -11,6 +11,8 @@ var direction := 1
 @onready var ray_cast_2d_right: RayCast2D = $RayCast2DRight
 @export var blood_particles: CPUParticles2D
 @export var attribute: Global.Attribute = Global.Attribute.HIT
+var poisoned: bool = false
+var poison_bubbles: Node2D = null
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

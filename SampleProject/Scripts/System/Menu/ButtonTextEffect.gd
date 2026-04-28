@@ -75,6 +75,7 @@ func parseText(value: String) -> String:
 	if not Engine.is_editor_hint() and Global.game != null:
 		controller_scheme = Global.game.controller_scheme
 	setButtons(controller_scheme)
+
 	var result: String = ""
 	var cur_pos: int = 0
 	var par_position: int = value.find("[[")

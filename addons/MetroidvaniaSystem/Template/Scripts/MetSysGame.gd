@@ -26,7 +26,7 @@ func add_module(module_name: String):
 	modules.append(module)
 
 func _physics_tick():
-	if Global.game != null and can_process():
+	if Global.game != null and is_inside_tree() and can_process():
 		MetSys.set_player_position(player.position)
 
 ## Loads a map and adds as a child of this node. If a map already exists, it will be removed before the new one is loaded. This method is asynchronous, so you should call it with [code]await[/code] if you want to do something after the map is loaded. Alternatively, you can use [signal room_loaded].
