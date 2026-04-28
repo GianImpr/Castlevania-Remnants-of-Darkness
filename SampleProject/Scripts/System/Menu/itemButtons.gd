@@ -195,6 +195,17 @@ func useItem(item: Item) -> bool:
 			Global.player.innocent_devil.stats.Stats["Hearts"] = min(Global.player.innocent_devil.stats.Stats["Hearts"]+item.power, Global.player.innocent_devil.stats.Stats["MHearts"])
 			sound.play_sound_effect_from_library("MPItem")
 			displayProperties(item)
+		item.HealingType.TELEPORTATION:
+			sound.play_sound_effect_from_library("confirm")
+			Global.player.transitionToState("teleport")
+			deleteList()
+			updateDescription(null)
+			menu.accessed_menu = 0
+			item_list.get_parent().get_parent().scroll_vertical = 0
+			item_list.get_parent().custom_minimum_size.y = 0
+			if get_tree().paused and Global.screen == Global.ScreenType.MENU:
+				get_viewport().gui_release_focus()
+				Global.inventory.resume()
 
 	menu.updateStats()
 	return true

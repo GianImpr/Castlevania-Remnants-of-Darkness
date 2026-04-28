@@ -22,3 +22,4 @@ func Physics_Update(delta: float):
 	check_is_hurt()
 	can_guard()
 	can_die()
+	can_pose()

@@ -15,7 +15,8 @@ enum HealingType {
 	HEART = 5,
 	POISON = 6,
 	CURSE = 7,
-	REVIVE = 8
+	REVIVE = 8,
+	TELEPORTATION = 9
 }
 enum Items {
 	POTION,
@@ -103,7 +104,8 @@ enum Items {
 	YELLOW_GEMSTONE,
 	GREEN_GEMSTONE,
 	BLUE_GEMSTONE,
-	ORANGE_GEMSTONE
+	ORANGE_GEMSTONE,
+	MAGICAL_TICKET
 }
 
 @export var item_name: String

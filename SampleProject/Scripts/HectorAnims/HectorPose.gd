@@ -1,14 +1,17 @@
 extends State
-class_name HectorIdle
-
-const ANIM_SPEED: float = 0.65
-const BLEND: float = -1
+class_name HectorPose
 var can_perfect_guard: bool = true
 
 func enter():
-	animation.play(player.Animations.IDLE, BLEND, ANIM_SPEED)
+	animation.play("pose")
 	
 func Update(delta: float):
+	if not Input.is_action_pressed("up_arrow"):
+		Transitioned.emit(self, "idle")
+		
+	if not animation.is_playing():
+		animation.play("pose_loop")
+		
 	can_perform(Actions.JUMP, true)
 	can_perform(Actions.BACKDASH, true)
 	can_perform(Actions.CROUCH, false)
@@ -18,7 +21,3 @@ func Update(delta: float):
 	can_die()
 	run_without_start_anim(false)
 	can_fall(true)
-	can_pose()
-		
-	if not animation.is_playing():
-		animation.play(player.Animations.IDLE, BLEND, ANIM_SPEED)

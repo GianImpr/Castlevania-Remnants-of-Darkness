@@ -43,6 +43,10 @@ func can_perform(anim_name: String, just_pressed: bool):
 	else:
 		if Input.is_action_pressed(anim_name):
 			Transitioned.emit(self, anim_name)
+			
+func can_pose() -> void:
+	if Input.is_action_pressed("up_arrow"):
+		Transitioned.emit(self, "pose")
 
 #Allows the player to run in a certain state
 func run_without_start_anim(skip_run_start_animation: bool):
@@ -223,8 +227,9 @@ func get_hector_attack_sound() -> void:
 		voice.play_sound_effect_from_library("Attack" + str(voice_clip))
 
 #Plays one of Hector's strong attack grunts
-func get_hector_heavy_attack_sound() -> void:
-	sound.play_sound_effect_from_library(get_attack_sound())
+func get_hector_heavy_attack_sound(with_weapon_sound: bool = true) -> void:
+	if with_weapon_sound:
+		sound.play_sound_effect_from_library(get_attack_sound())
 	var voice_clip = randi_range(1, 2)
 	if voice_clip > 0:
 		voice.play_sound_effect_from_library("heavy_attack_" + str(voice_clip))
