@@ -241,7 +241,7 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	
-	show_item_stats.visible = item_stats.item != null and item_stats.item is not Item
+	show_item_stats.visible = item_stats.item != null and item_stats.item is not Item and item_stats.can_open
 	if item_stats.visible:
 		show_item_stats.new_text = " " + tr("HIDE_ITEM_STATS_LABEL")
 	else:

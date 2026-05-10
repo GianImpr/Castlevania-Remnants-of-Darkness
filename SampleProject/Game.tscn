@@ -383,6 +383,7 @@
 [ext_resource type="AudioStream" uid="uid://rcd8exs6eagu" path="res://assets/music/CrystalTeardrops.ogg" id="339_gvdo1"]
 [ext_resource type="AudioStream" uid="uid://rojr6o1d5144" path="res://assets/music/WaterTheologia.ogg" id="345_7fhmx"]
 [ext_resource type="AudioStream" uid="uid://djolu6rurb574" path="res://assets/music/Encounter2.ogg" id="347_xwt4j"]
+[ext_resource type="PackedScene" uid="uid://b8cg3xh84xly" path="res://SampleProject/extra_scenes/HUD/description_box.tscn" id="368_hniq0"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_6ajcc")
@@ -530,8 +531,8 @@ recipe = Array[Dictionary]([{
 
 [sub_resource type="Resource" id="Resource_kt2e1"]
 script = ExtResource("2_6ajcc")
-weapon_name = "LANCE"
-weapon_description = "LANCE_DESC"
+weapon_name = "STEEL_LANCE"
+weapon_description = "STEEL_LANCE_DESC"
 type = 3
 element = Array[int]([2])
 ATK = 11
@@ -644,8 +645,8 @@ metadata/_custom_type_script = "uid://1vp87s3hhyhn"
 
 [sub_resource type="Resource" id="Resource_ve6hm"]
 script = ExtResource("2_6ajcc")
-weapon_name = "LONG_SPEAR"
-weapon_description = "LONG_SPEAR_DESC"
+weapon_name = "SHARP_SPEAR"
+weapon_description = "SHARP_SPEAR_DESC"
 type = 3
 element = Array[int]([2])
 ATK = 17
@@ -1347,6 +1348,7 @@ icon = ExtResource("43_qvtt0")
 script = ExtResource("6_n752u")
 item_name = "Quiche"
 item_description = "A french specialty, great for its harmony between eggs and crust."
+type = 1
 healing_type = 1
 power = 50
 value = 430
@@ -1527,7 +1529,7 @@ icon = ExtResource("105_kil1c")
 [sub_resource type="Resource" id="Resource_q6a3q"]
 script = ExtResource("6_n752u")
 item_name = "PRINCES_VEIN"
-item_description = "PRINCES_VAIN_DESC"
+item_description = "PRINCES_VEIN_DESC"
 type = 3
 value = 45
 max_quantity = 99
@@ -4969,7 +4971,6 @@ adjustment_enabled = true
 script = ExtResource("1_xdpfu")
 animation = NodePath("AnimationPlayer")
 difficulty = 1
-update_player_compendium = true
 world_environment = NodePath("WorldEnvironment")
 weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3"), SubResource("Resource_etedp"), SubResource("Resource_3pxt5"), SubResource("Resource_kt2e1"), SubResource("Resource_cm3lq"), SubResource("Resource_88uus"), SubResource("Resource_w7bsh"), SubResource("Resource_o3ohi"), SubResource("Resource_ve6hm"), SubResource("Resource_eewh7"), SubResource("Resource_qwgas"), SubResource("Resource_8tx5s"), SubResource("Resource_8fi0q"), SubResource("Resource_2kmxy"), SubResource("Resource_5suw8"), SubResource("Resource_2v3qx"), SubResource("Resource_s0um6"), SubResource("Resource_b8m15"), SubResource("Resource_sk44n")])
 item_compendium = SubResource("Resource_ksmb3")
@@ -5020,11 +5021,11 @@ save_rooms = Array[Dictionary]([{
 }, {
 "flip": true,
 "image": ExtResource("160_rdsmc"),
-"name": "WATERWAY_ENTRANCE",
+"name": "INDIGO_TEMPLE_YELLOW_PATH",
 "path": "Waterway/yellow_save_room.tscn"
 }])
 element_icons = Array[CompressedTexture2D]([ExtResource("314_0qc47"), ExtResource("315_mu0f5"), ExtResource("316_hniq0"), ExtResource("317_7u0qt"), ExtResource("318_3sidl"), ExtResource("319_umdd8"), ExtResource("320_gxpmc"), ExtResource("321_m20fq"), ExtResource("322_dkwmf"), ExtResource("323_236bd"), ExtResource("324_cic6f"), ExtResource("325_0a8mu")])
-starting_map = "Waterway/waterway_entrance.tscn"
+starting_map = "FirstLevel/Woods.tscn"
 
 [node name="Player" parent="." unique_id=2045510482 instance=ExtResource("5_81k16")]
 z_index = 5
@@ -5185,6 +5186,8 @@ z_index = 99
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=808949865]
 
 [node name="InventoryMenu" parent="PauseMenu" unique_id=1521344533 instance=ExtResource("6_pokik")]
+
+[node name="DescriptionBox" parent="PauseMenu" unique_id=1380068158 instance=ExtResource("368_hniq0")]
 
 [node name="Framerate" type="CanvasLayer" parent="." unique_id=892442911]
 layer = 30

@@ -1,4 +1,4 @@
-keys,en,it,es,pt_BR,fr,nl,ar
+f,en,it,es,pt_BR,fr,nl,ar
 --Menu--,,,,,,,
 MENU_HP, H P, P V, P V, P V, P V, G P,نقاط الصحة
 MENU_MP,M P,P M,P M,P M,P M,M P,نقاط المانا
@@ -31,14 +31,14 @@ SKILLS_BUTTON,Skills,Abilità,Habilidades,Habilidades,Talents,Vaardigheden,
 OPTIONS_BUTTON,Options,Opzioni,Opciones,Opções,Options,Opties,
 HINTS_BUTTON,Hints,Consigli,Pistas,Dicas,Indices,Hints,
 INNOCENT_DEVIL_LABEL,Innocent Devil [[R1]],Diavolo Innocente [[R1]],Demonio inocente [[R1]],Demônio Inocente [[R1]],Démon innocent [[R1]],Onschuldige Duivel [[R1]],
-ATK_STAT,ATK,ATT,ATQ,ATQ,ATQ,AVL,
+ATK_STAT,ATK,ATT,ATA,ATQ,ATQ,AVL,
 DEF_STAT,DEF,DIF,DEF,DEF,DEF,VDG,
-STR_STAT,STR,FRZ,FRZ,FOR,FOR,KRC,
+STR_STAT,STR,FRZ,FUE,FOR,FOR,KRC,
 CON_STAT,CON,FIS,CON,CON,CST,CON,
 INT_STAT,INT,INT,INT,INT,INT,INT,
 SYN_STAT,SYN,SIN,SIN,SIN,SYN,SWK,
-MND_STAT,MND,MEN,MNT,MNT,ESP,INZ,
-LCK_STAT,LCK,FOR,SRT,SOR,CHA,GLK,
+MND_STAT,MND,MEN,MEN,MNT,ESP,INZ,
+LCK_STAT,LCK,FOR,SUE,SOR,CHA,GLK,
 WEAPON_EQUIP_LABEL,Wpn,Arma,Arma,Arma,Arme,Wpn,
 ARTIFACT_EQUIP_LABEL,Art.,Art.,Art.,Art.,Art.,Art.,
 RELIC_EQUIP_LABEL,Relic,Reliq.,Reliq.,Reliq.,Reliq.,Reliek,
@@ -53,7 +53,7 @@ EQUIPPED_RELIC,Equipped Relic,Reliquia equipaggiata,Reliquia equipada,Relíquia 
 EQUIPPED_HEADGEAR,Equipped Headgear,Elmo equipaggiato,Tocado equipado,Capacete Equipado,,Aangedaan Hoofduitrusting,
 EQUIPPED_BODY,Equipped Armor,Armatura equipaggiata,Armadura equipada,Armadura Equipada,,Aangedaan Harnas,
 EQUIPPED_LEGS,Equipped Legs,Armatura inferiore equipaggiata,Piernas equipadas,Botas Equipadas,,Aangedaan Benenuitrusting,
-EQUIPPED_ACC1,Equipped Accessory 1,Accessorio 1 equipaggiato,Accesorio 1 equipado,Acessório Equipado 1,,Aangedaan Accessoire1,
+EQUIPPED_ACC1,Equipped Accessory 1,Accessorio 1 equipaggiato,Accesorio 1 equipado,Acessório Equipado 1,,Aangedaan Accessoire 1,
 EQUIPPED_ACC2,Equipped Accessory 2,Accessorio 2 equipaggiato,Accesorio 2 equipado,Acessório Equipado 2,,Aangedaan Accessoire 2,
 CONSUMABLES_BUTTON,Consumables,Consumabili,Consumibles,Consumíveis,Consommables,Gebruiksvoorwerpen,
 COLLECTIBLES_BUTTON,Collectibles,Collezionabili,Coleccioables,Colecionáveis,Collectibles,Verzamelobjecten,
@@ -70,10 +70,10 @@ TECHNIQUES_BUTTON,Techniques,Tecniche,Técnicas,Técnicas,Techniques,Technieken,
 OTHER_BUTTON,Other,Altro,Otros,Outros,Autres,Andere,
 REQUIRED_MATERIALS_LABEL,Required materials,Materiali necessari,Materiales requeridos,Materiais necessários,Matériaux requis,Benodigde Materialen,
 SWORDS_BUTTON,Swords,Spade,Espadas,Espadas,Épées,Zwaarden,
-GREATSWORDS_BUTTON,Greatswords,Spadoni,Espadones,Espadões,Grandes épées,Grootzwaard,
+GREATSWORDS_BUTTON,Greatswords,Spadoni,Espadones,Espadões,Grandes épées,Grootzwaarden,
 AXES_BUTTON,Axes,Asce,Hachas,Machados,Haches,Bijlen,
 SPEARS_BUTTON,Spears,Lance,Lanzas,Lanças,Lances,Speren,
-KNUCKLES_BUTTON,Knuckles,Tirapugni,Puñales,Soqueiras,Poings,Knokkels,
+KNUCKLES_BUTTON,Knuckles,Tirapugni,Manoplas,Soqueiras,Poings,Handschoenen,
 SPECIAL_BUTTON,Special,Speciali,Especial,Especial,Spécial,Speciaal,
 HEADGEAR_BUTTON,Headgear,Copricapo,Tocado,Elmo,Couvre-chefs,Hoofduitrusting,
 BODY_BUTTON,Body,Corpo,Torso,Corpo,Corps,Lichaam,
@@ -91,7 +91,7 @@ WINDOW_MODE_OPTION,Window mode,Finestra di gioco,Modo de ventana,Modo janela,Mod
 WINDOW_RESOLUTION_OPTION,Window resolution,Risoluzione,Resolución,Resolução da tela,Résolution de la fenêtre,Venster resolutie,
 SPRITE_SCALING_OPTION,Sprite scaling,Sprite,Escalado de sprites,Escala de sprites,Échelle des sprites,Sprite schaal,
 VERTICAL_SYNC_OPTION,Vertical sync,V-Sync,V-Sync,Sincronização Vertical,V-Sync,Verticale synchronisatie,
-ADJUST_FRAMERATE_OPTION,Change framerate,Cambia FPS,,,,,
+ADJUST_FRAMERATE_OPTION,Change framerate,Cambia FPS,Cambiar FPS,Alterar taxa de quadros,,Verander frame per seconde,
 SHOW_FRAMERATE_OPTION,Show framerate,Mostra FPS,Mostrar FPS,Mostrar FPS,Montrer taux de rafraîchissement,Frame per seconde zichtbaar,
 MASTER_VOLUME_OPTION,Master volume,Volume del gioco,Volúmen maestro,Volume mestre,Volume principal,Algmemeen volume,
 SFX_VOLUME_OPTION,SFX volume,Volume dei suoni,Volúmen de sonido,Volume de efeitos sonoros,Volume des effets,Geluid Effect volume,
@@ -114,19 +114,25 @@ INVENTORY_KEY,Inventory,Inventario,Inventario,Inventário,Inventaire,Inventaris,
 MAP_KEY,Map,Mappa,Mapa,Mapa,Carte,Kaart,
 SWITCH_KEY,Switch,Cambia,Cambiar,Trocar,Alterner,Verwissel,
 RESET_KEYS_BUTTON,Reset buttons,Reimposta,Restablecer,Resetar botões,Réinitialiser,Reset knoppen,
-LANGUAGE_OPTION,Language,Lingua,,,,,
-RUMBLE_OPTION,Controller vibration,Vibrazione del controller,,,,,
+LANGUAGE_OPTION,Language,Lingua,Idioma,Idioma,,Taal,
+RUMBLE_OPTION,Controller vibration,Vibrazione del controller,Volver a la pantalla de título,Vibração,,Controller vibratie,
 TITLE_SCREEN_OPTION,Return to title screen,Torna alla schermata del titolo,Ir a la pantalla de título,Retornar à tela de título,Retourner à l'écran titre,Terug naar beginscherm,
 QUIT_GAME_OPTION,Quit game,Esci dal gioco,Salír del juego,Sair do jogo,Quitter le jeu,Stop spel,
-WINDOW_MODE_DESC,Change the window display mode. Objects may not be displayed properly on Stretch mode.,Cambia il tipo di finestra. Gli oggetti potrebbero essere deformati con l'opzione Allarga.,Cambia el modo de la ventana. Puede ser que los objetos no se visualicen apropiadamente en el modo ancho.,Altere o modo de exibição da janela. Os objetos podem não ser exibidos corretamente no modo Esticar.,Changer le mode d'affichage de la fenêtre. Certains objets peuvent mal s'afficher en mode Étiré,Verander de venster modus. Objecten kunnen verkeerd afgebeeld zijn in Strek modus.,
-WINDOW_RESOLUTION_DESC,"Change window size, if in Windowed mode. Objects may not be displayed properly on 240p/720p.",Cambia la dimensione della finestra. Gli oggetti potrebbero essere deformati a 240p/720p.,"Cambia el tamaño, si está en modo ventana. Puede ser que los objectos no se visualicen apropiadamente en 240p/720p.","Altere o tamanho da janela, se estiver no modo Janela. Os objetos podem não ser exibidos corretamente em 240p/720p.",Changer la taille de la fenêtre en mode Fenêtré. Les objets peuvent mal s'afficher en 240p/720p,"Verander de venster resolutie, als je in Venster Modus bent. Objecten kunnen verkeerd afgebeeld zijn bij 240p/720p.",
+WINDOW_MODE_DESC,Change the window display mode. Objects may not be displayed properly on Stretch mode.,Cambia il tipo di finestra. Gli oggetti potrebbero essere deformati con l'opzione Allarga.,Cambia el modo de la ventana. Puede ser que los objetos no se visualicen apropiadamente en el modo ancho.,Altere o modo de exibição da janela. Os objetos podem não ser exibidos corretamente no modo Esticar.,"Changer le mode d'affichage de la fenêtre.
+Certains objets peuvent mal s'afficher en mode Étiré.",Verander de venster modus. Objecten kunnen verkeerd afgebeeld zijn in Strek modus.,
+WINDOW_RESOLUTION_DESC,"Change window size, if in Windowed mode. Objects may not be displayed properly on 240p/720p.",Cambia la dimensione della finestra. Gli oggetti potrebbero essere deformati a 240p/720p.,"Cambia el tamaño, si está en modo ventana. Puede ser que los objectos no se visualicen apropiadamente en 240p/720p.","Altere o tamanho da janela, se estiver no modo Janela. Os objetos podem não ser exibidos corretamente em 240p/720p.","Changer la taille de la fenêtre en mode Fenêtré.
+Les objets peuvent mal s'afficher en 240p/720p.","Verander de venster resolutie, als je in Venster Modus bent. Objecten kunnen verkeerd afgebeeld zijn bij 240p/720p.",
 FIT_SCREEN_RESOLUTION,Fit Screen,Adatta a schermo,Ajustar a pantalla,Ajustar à janela,,Pas aan naar scherm.,
 SPRITE_SCALING_DESC,"Change the way the objects are drawn. Viewport increases performance, but reduces image quality.","Cambia il modo in cui gli oggetti sono disegnati. La modalità Viewport aumenta la performance, ma con grafica potenzialmente inferiore.","Cambia la forma de renderización de objetos. La ventana gráfica mejora rendimiento, pero reduce la calidad de imagen.","Altere a forma como os objetos são desenhados. A viewport melhora o desempenho, mas reduz a qualidade da imagem.","Changer la methode d'affichage des objets. Viewport améliore les performances, mais réduit la qualité d'image.","Verander hoe objecten worden afgebeeld. Kijkvenster verhoogt prestatie, maar verlaagt afbeeldingskwaliteit.",
 VERTICAL_SYNC_DESC,"Enable or disable V-Sync. Disabling it might reduce input lag, but it can introduce tearing.","Abilita o disabilita la sincronizzazione verticale. Disabilitarla comporta a un minore ritardo nei comandi, ma potrebbe verificarsi tearing.","Habilita o deshabilita el V-Sync. Puede reducir retraso de entrada, pero introduce desgarros visuales si inactivo.","Habilite ou desabilite o V-Sync. Desabilitá-lo pode reduzir o atraso de entrada, mas pode causar artefatos na tela.","Dés/activer La synchronisation verticale. La désactiver peut réduire le délai, mais aussi créer du déchirement d'écran.","Doe V-Sync aan of uit. Uitdoen kan invoer vertraging verlagen, maar kan ook schermscheuren veroorzaken.",
 SHOW_FRAMERATE_DESC,Enable or disable an FPS counter.,Mostra o nasconde l'indicatore di FPS.,Muestra ó esconde el indicador de FPS.,Habilite ou desabilite o contador de FPS.,Dés/activer le compteur d'images par seconde.,Doe de FPS teller aan of uit.,
 ADJUST_FRAMERATE_DESC,"Change the refresh rate of the game.
 Uncapped option only works with V-Sync disabled.","Cambia la frequenza di aggiornamento dello schermo del gioco.
-L'opzione Illimitata funziona solo con V-Sync disabilitato.",,,,,
+L'opzione Illimitata funziona solo con V-Sync disabilitato.","Cambiar la frecuencia de actualización del juego.
+La opción ilimitada solo funciona con V-Sync deshabilitado.
+","Altere a taxa de atualização do jogo.
+A opção ""Ilimitada"" só funciona com a Sincronização Vertical (V-Sync) desativada.",,"Verander de vernieuwingssnelheid van de game.
+Ongelimiteerde optie werkt alleen met V-Sync uit.",
 MASTER_VOLUME_DESC,Change the volume of the game.,Cambia il volume del gioco.,Cambia el volúmen del juego.,Altere o volume do jogo.,Changer le volume du jeu.,Verander het volume van het spel.,
 SFX_VOLUME_DESC,Change the volume of sound effects.,Cambia il volume degli effetti sonori.,Cambia el volúmen de los efectos de sonido.,Altere o volume dos efeitos sonoros.,Changer le volume des effets sonores.,Verander het volume van geluidseffecten.,
 MUSIC_VOLUME_DESC,Change the volume of music.,Cambia il volume della musica.,Cambia el volúmen de la música.,Altere o volume da música.,Changer le volume des musiques.,Verander het volume van de muziek.,
@@ -134,8 +140,8 @@ VOICE_VOLUME_DESC,Change the volume of voices.,Cambia il volume delle voci.,Camb
 CONTROLLER_LAYOUT_DESC,Pick which controller scheme the game should refer to when showing button icons.,Indica che tipo di controller a cui riferirsi quando vengono mostrati pulsanti sullo schermo.,Elige a que esquema de mando el juego debería referirse al mostrar los íconos de botones.,Escolha qual esquema de controle o jogo deve usar ao mostrar ícones de botões.,Choisir à quel schéma de commandes le jeu doit se référer en affichant les icones des boutons.,Kies welk controller schema van het spel je bekijkt wanneer de knop iconen zichtbaar zijn.,
 INPUT_BUFFERING_DESC,Adjust the size of input buffering. Higher values can improve input feedback.,Modifica la finestra del buffer dei comandi. Valori maggiori possono migliorare il feedback dei pulsanti.,Ajusta la flexibilidad del buffer de entrada. Valores más altos pueden mejorar la respuesta de entrada.,Ajuste o tamanho do buffer de entrada. Valores mais altos podem melhorar o feedback de entrada.,Ajuster la taille du tampon. Une valeur plus élevée peut améliorer la réponse des entrées.,Verander de grote van invoer bufferen. Hogere waarden kunnen invoer ervaring verbeteren.,
 INPUT_DEVICE_DESC,Press this button to remap buttons on the selected device.,Premi questo pulsante per cambiare la funzione dei pulsanti sul dispositivo utilizzato.,Presiona éste botón para reconfigurar los controles del dispositivo seleccionado.,Pressione este botão para remapear botões no dispositivo selecionado.,Appuyer ici pour reconfigurer les boutons sur l'appareil choisi.,Druk deze knop om de knoppen opnieuw in te stellen op het geselecteerde apparaat.,
-LANGUAGE_DESC,Change the language of in-game text.,Cambia la lingua del gioco.,,,,,
-RUMBLE_DESC,Enable or disable controller vibration.,Attiva o disattiva la vibrazione del controller.,,,,,
+LANGUAGE_DESC,Change the language of in-game text.,Cambia la lingua del gioco.,Cambia el idioma del texto del juego.,Altere o idioma do texto no jogo.,,Verander de taal van de tekst in het spel.,
+RUMBLE_DESC,Enable or disable controller vibration.,Attiva o disattiva la vibrazione del controller.,Habilita o deshabilita la vibración del mando.,Habilite ou desabilite a vibração do controle.,,Doe controller vibratie aan of uit.,
 TITLE_SCREEN_DESC,"Return to the title screen.
 Be sure to save your data.","Torna alla schermata del titolo.
 Assicurati di salvare i dati prima di farlo.","Regresa a la pantalla de título.
@@ -161,21 +167,22 @@ NO_LABEL,No,No,No,Não,Non,Nee,لا
 YES_LABEL,Yes,Sì,Sí,Sim,Oui,Ja,نعم
 CONTROLLER_LABEL,Controller,Controller,Mando,Controle,Manette,Controller,وحدة التحكم
 KEYBOARD_LABEL,Keyboard,Tastiera,Teclado,Teclado,Clavier,Toetsenbord,لوحة المفاتيح
-HIDE_ITEM_STATS_LABEL,[[R1]] Hide item stats,[[R1]] Mostra parametri,,,,,
-SHOW_ITEM_STATS_LABEL,[[R1]] Show item stats,[[R1]] Nascondi parametri,,,,,
-ITEM_INFO_LABEL,Item information,Parametri dell'oggetto,,,,,
-ITEM_VALUE_LABEL,Value,Valore,,,,,
-ITEM_MAX_CAPACITY_LABEL,Can hold up to max,Quantità massima,,,,,
-ITEM_LAND_CANCEL_LABEL,Allows land cancel,Attacco rapido in discesa,,,,,
-ITEM_TYPE_LABEL,Weapon type,Tipo dell'arma,,,,,
-SWORD_TYPE_LABEL,Sword,Spada,,,,,
-GREATSWORD_TYPE_LABEL,Greatsword,Spadone,,,,,
-AXE_TYPE_LABEL,Axe,Ascia,,,,,
-SPEAR_TYPE_LABEL,Spear,Lancia,,,,,
-KNUCKLES_TYPE_LABEL,Knuckle,Tirapugni,,,,,
-SPECIAL_TYPE_LABEL,Special,Speciale,,,,,
-ATTRIBUTE_LABEL,Attribute,Elemento,,,,,
-RESISTANCE_LABEL,Resistance,Resistenza,,,,,
+HIDE_ITEM_STATS_LABEL,[[R1]] Hide item stats,[[R1]] Nascondi parametri,[[R1]] Esconder estadísticas,[[R1]] Ocultar estatísticas do item,,[[R1]] Laat object attributen niet zien.,
+SHOW_ITEM_STATS_LABEL,[[R1]] Show item stats,[[R1]] Mostra parametri,[[R1]] Mostrar estadísticas,[[R1]] Exibir estatísticas do item,,[[R1]] Laat object attributen zien.,
+ITEM_INFO_LABEL,Item information,Parametri dell'oggetto,Información del objeto,Informações do item,,Object informatie,
+ITEM_VALUE_LABEL,Value,Valore,Valor,Valor,,Waarde,
+ITEM_MAX_CAPACITY_LABEL,Can hold up to max,Quantità massima,Cantidad máxima,Pode carregar no máximo,,Kan maximaal vasthouden,
+ITEM_LAND_CANCEL_LABEL,Allows land cancel,Attacco cancellabile,Cancelable al aterrizar,Cancelável ao aterrissar,,Kan landen annuleren,
+ITEM_TYPE_LABEL,Weapon type,Tipo dell'arma,Tipo de arma,Tipo de arma,,Wapen Type,
+SWORD_TYPE_LABEL,Sword,Spada,Espada,Espada,,Zwaard,
+GREATSWORD_TYPE_LABEL,Greatsword,Spadone,Espadón,Espadão,,Grootzwaard,
+AXE_TYPE_LABEL,Axe,Ascia,Hacha,Machado,,Bijl,
+SPEAR_TYPE_LABEL,Spear,Lancia,Lanza,Lança,,Speer,
+KNUCKLES_TYPE_LABEL,Knuckle,Tirapugni,Manopla,Soqueira,,Handschoen,
+SPECIAL_TYPE_LABEL,Special,Speciale,Especial,Especial,,Speciaal,
+ATTRIBUTE_LABEL,Attribute,Elemento,Elemento,Elemento,,Eigenschap,
+RESISTANCE_LABEL,Resistance,Resistenza,Resistencia,Resistência,,Resistentie,
+SEND_BACK_BUTTON,Send back,Manda via,,,,,
 ,,,,,,,
 --Weapons--,,,,,,,
 CANNOT_CHANGE_WEAPON_MESSAGE,Cannot change weapon while attacking.,Non si può cambiare arma mentre si attacca.,No se puede cambiar de arma mientras atacas.,Não é possível trocar de arma durante um ataque.,Impossible de changer d'arme en pleine attaque.,Wapen kan niet veranderd worden tijdens aanval.,لا يمكن تغيير السلاح أثناء القتال
@@ -192,24 +199,28 @@ Es difícil de empuñar como lo es pesada.","Uma arma cujo nome significa ""gran
 É difícil de empunhar devido ao peso.","Le nom de cette arme signifie ""grande épée"".
 Son poids le rend difficile à manier.","Wapen waarvan de naam ""groot zwaard"".
 Moeilijk om te gebruiken vanwege zijn gewicht.",
-ZWEIHANDER,Zweihander,Zweihander,,,,,
+ZWEIHANDER,Zweihander,Zweihander,Zweihänder,Zweihander,,Zweihander,
 ZWEIHANDER_DESC,"A heavy and long blade that cuts a massive arc in the air.
 Requires good skill to use.","Una lama lunga e pesante che smezza un grande arco in aria.
-Serve una buona padronanza nel maneggiarla.",,,,,
+Serve una buona padronanza nel maneggiarla.","Una hoja pesada y larga que corta un enorme arco en el aire.
+Exige una buena destreza para usar.","Uma lâmina pesada e longa que corta um arco enorme no ar.
+Requer boa habilidade para ser usada.",,"Een zwaar en lang zwaard dat een enorme boog snijdt in de lucht.
+Vereist goede vaardigheid om te gebruiken.",
 MACE,Mace,Mazza,Maza,Maça,Massue,Strijdknots,
 MACE_DESC,"A large club, useful against those resistant to slashes.","Un grande randello, utile contro nemici resistenti al taglio.","Un garrote grande, útil contra aquellos resistentes a cortaduras.","Um porrete grande, útil contra inimigos resistentes a cortes.","Une enorme massue, utile face aux ennemis résistant aux entailles.","Een grote knots, handig tegen zij die resistent zijn tegen snijden.",
-BRONZE_SPEAR,Bronze Spear,Lancia di bronzo,Lanza de bronce,Lança de Bronze,,Bronzen Speer,
-BRONZE_SPEAR_DESC,"A spear made with cheap material.
-Not very strong, but has good reach.","Una lancia fatta con materiale economico.
-Non molto forte, ma possiede una lunga gittata.","Una lanza hecha con material barato.
-No es muy fuerte, pero tiene buen alcance.","Uma lança feita de material barato.
-Não é muito forte, mas tem um bom alcance.",,"Een speer gemaakt van goedkoop materiaal.
-Niet heel sterk, maar heeft een goed bereik.",
-PARTISAN,Partisan,Partigiana,Partisana,Partesana,,Partizaan,
-PARTISAN_DESC,A polearm which features a sharp blade at its edge.,Una lancia con tanto di punta affilata.,"Un arma de asta con una hoja afilada en su borde.",Uma arma de haste com uma lâmina afiada em sua ponta.,,Een lans met een scherp lemmet aan de zijkant.,
-HALBERD,Halberd,Alabarda,Alabarda,Alabarda,,Hellebaard,
-HALBERD_DESC,A polearm that ends with a wide axe blade.,Un tipo di lancia che ha una lama con una forma simile a quello di un'ascia.,Un arma de asta que termina con una hoja de hacha ancha.,Uma arma de haste que termina em uma larga lâmina de machado.,,Een lans waarvan de punt een weide bijl lemmet is.,
-BRASS_KNUCKLES,Brass Knuckles,Tirapugni in ottone,Nudillos de latón,Soco Inglês,,Messing Vuisten,
+DUNG,Dung,Dung,,,,,
+DUNG_DESC,"A long and thin double-bladed spear.
+Good for attacking safely at distance.","Una lunga e sottile lancia a doppia lama.
+Ottima per attaccare a distanza in maniera sicura.",,,,,
+SASUMATA,Sasumata,Sasumata,,,,Partizaan,
+SASUMATA_DESC,"A weapon made mostly to threaten targets.
+It can be used in combat, but it's not exactly designed to kill.","Un'arma fatta principalmente per spaventare.
+Può essere usata in combattimento, anche se non è fatta per uccidere.",,,,Een lans met een scherp lemmet aan de zijkant.,
+NAGINATA,Naginata,Naginata,,,,Hellebaard,
+NAGINATA_DESC,"A weird kind of spear developed on an island in the East.
+Its curved blade is perfect for slicing up enemies.","Una strana lancia progettata in un'isola dell'Est.
+La sua lama curva è perfetta per fare a fettine i nemici.",,,,Een hellebaard die eindigt met een wijde bijl lemmet.,
+BRASS_KNUCKLES,Brass Knuckles,Tirapugni in ottone,Nudillos de latón,Soco Inglês,,Messing Handschoen,
 BRASS_KNUCKLES_DESC,"A type of weapon ideal for close quarters combat. Can deal a lot of damage, but its limited reach puts its user in danger constantly.","Un tipo d'arma perfetta per combattimento ravvicinato. Può infliggere molti danni, ma la sua scarsa gittata mette a rischio chi la usa.","Un tipo de arma ideal para el combate cuerpo a cuerpo. Puede infligir mucho daño, pero su alcance limitado pone a su usuario en constante peligro.","Um tipo de arma ideal para combate corpo a corpo. Pode causar muito dano, mas seu alcance limitado coloca seu usuário em perigo constante.",,"Een wapen die ideaal is voor gevechten van dichtbij. Doet veel schade, maar door het bereik is de gebruiker constant in gevaar.",
 CESTUS,Cestus,Cestus,Cestus,Cesto,,Cestus,
 CESTUS_DESC,"A fighting glove used in ancient times for cestus fights, which were sometimes featured in the Olympic games.",Un guanto da combattimento usato in antichità per battaglie inerenti alle Olimpiadi.,"Un guante de combate usado en la antigüedad para luchas de cestus, que a veces se incluían en los Juegos Olímpicos.","Uma luva de combate usada na antiguidade para lutas, que às vezes eram apresentadas nos Jogos Olímpicos.",,"Een gevechts handschoen gebruikt in antieke tijden voor cestus gevechten, die soms werden gezien tijdens de Olympische spelen.",
@@ -227,33 +238,24 @@ Infligge danni doppi contro nemici assomiglianti a pesci.","Una lanza única que
 Duplica el daño infligido contra enemigos similares a peces.","Uma lança única que libera bolhas ao ser brandida.
 Causa o dobro de dano em inimigos do tipo peixe.",,"Een unieke speer die bubbels uitstoot wanneer je het zwaait.
 Brengt dubbele schade aan vis-type vijanden toe.",
-SARISSA,Sarissa,Sarissa,Sarisa,Sarissa,,Sarissa,
-SARISSA_DESC,"A spear used by macedonians.
-Its strength comes from its extraordinary length.","Una lancia usata dai macedoni.
-Il suo punto forte è la sua gittata.","Una lanza usada por los macedonios.
-Su fuerza viene de su longitud extraordinaria.","Uma lança utilizada pelos macedônios.
-Sua força vem do seu tamanho extraordinário.",,"Een speer gebruikt door de macedoniërs.
-Zijn kracht komt van zijn buitengewone lengte.",
-GREAT_AXE,Great Axe,Ascia grande,Gran hacha,Machado Grande,,Grootbijl,
-GREAT_AXE_DESC,"A double-edged axe designed for brutal combat.
-Might be rough to wield.","Un'ascia realizzata con due lame, fatta per combattimenti cruenti.
-Potrebbe essere sconfortevole utilizzarla.","Un hacha con doble filo diseñada para combate brutal.
-Puede resultar incómoda de utilizar.","Um machado de dois gumes feito para combates brutais.
-Pode ser difícil de manusear.",,"Een tweesnijdende bijl voor woeste gevechten.
-Kan moeilijk zijn om te hanteren.",
-BHUJ,Bhuj,Bhuj,Bhuj,Bhuj,,Bhuj,
-BHUJ_DESC,"A war axe whose blade is very sharp.
-Can cut through everything with ease.","Un'ascia da guerra con una lama molto affilata.
-Può squarciare qualsiasi cosa.","Un hacha de guerra con una hoja muy afilada.
-Puede cortar de todo con facilidad.","Um machado de guerra cuja lâmina é bastante afiada.
-Pode cortar através de qualquer coisa com facilidade.",,"Een oorlogs bijl wiens lemmet erg scherp is.
-Kan door alles snijden met gemak.",
-NODACHI,Nodachi,Nodachi,,,,,
-NODACHI_DESC,A beautiful sword whose lethality is shown off by the leftover blood on its blade.,Una bellissima spada che dimostra quanto sia letale con il sangue rimasto lungo la sua lama.,,,,,
-DRAGON_KILLER,Dragon Killer,Ammazzadraghi,,,,,
+SHARP_SPEAR,Sharp Spear,Lancia affilata,,,,,
+SHARP_SPEAR_DESC,"A spear featuring a very sharp, deadly edge.",Una lancia con una lama molto affilata e letale.,,,,,
+VERSATILE_SPEAR,Versatile Spear,Lancia versatile,,,,,
+VERSATILE_SPEAR_DESC,"An all-around weapon with many uses.
+Can produce fire when using special skills.",Un'arma dai mille usi in grado di produrre fuoco quando si utilizzano abilità speciali.,,,,,
+BAMBOO_LANCE,Bamboo Lance,Lancia di bambù,,,,,
+BAMBOO_LANCE_DESC,"A lance that resembles a bamboo stick.
+Very light on the hands, but should you use it as a weapon?","Una lancia che sembra uno stecco di bambù.
+Molto leggera da maneggiare, ma ha senso usarla?",,,,,
+NODACHI,Nodachi,Nodachi,Nodachi,Nodachi,,Nodachi,
+NODACHI_DESC,A beautiful sword whose lethality is shown off by the leftover blood on its blade.,Una bellissima spada che dimostra quanto sia letale con il sangue rimasto lungo la sua lama.,Una hermosa espada cuya letalidad se demuestra por la sangre salpicada sobre su hoja.,Uma bela espada cuja letalidade é demonstrada pelo sangue em sua lâmina.,,Een prachtig zwaard wiens dodelijkheid getoond wordt door achtergebleven bloed op zijn lemmet.,
+DRAGON_KILLER,Dragon Killer,Ammazzadraghi,Matadragones,Matadora de Dragões,,Draken Slachter,
 DRAGON_KILLER_DESC,"A very heavy dual-handed sword.
 Its massive blade is able to cut through anything.","Una spada a due mani molto pesante.
-La sua enorme lama è in grado di perforare qualsiasi cosa.",,,,,
+La sua enorme lama è in grado di perforare qualsiasi cosa.","Un mandoble muy pesado.
+Su maciza hoja puede cortar a través de todo.","Uma espada de duas mãos muito pesada.
+Sua lâmina maciça pode cortar qualquer coisa.",,"Een erg zwaar tweehandig zwaard.
+Zijn gigantisch lemmet is in staat door alles heen te snijden.",
 BAGH_NAKH,Bagh Nakh,Bagh Nakh,Bagh nakh,Garras de Tigre,,Tijgerklauw,
 BAGH_NAKH_DESC,Knuckles with claws used to slash through skin and muscles.,Tirapugni con artigli che servono a perforare pelle e muscoli.,"Manoplas con garras como las de un tigre, usadas para tajar piel y musculo.",Soqueiras com garras usadas para rasgar pele e músculos.,,Handschoen met klouwen die gebruikt worden om door huid en spieren te snijden.,
 BROADSWORD,Broadsword,Spada lunga,Espada ancha,Espada Larga,,Slagzwaard,
@@ -265,6 +267,16 @@ Ottima anche per il combattimento.","Una espada usada principalmente en ceremoni
 Aunque también es buna para combate.","Uma espada utilizada principalmente em celebrações.
 Entretanto, também é ótima para combate.",,"Een zwaard voornamelijk gebruikt in ceremonies.
 Alhoewel, het is ook goed voor gevechten.",
+DECK_BRUSH,Deck Brush,Spazzolone,,,,,
+DECK_BRUSH_DESC,"Let it be said that even this weapon is able to defeat the Evil Count himself.
+Perhaps the Vampire Killer is overrated?","Perfino un'arma del genere può sconfiggere il Signore Oscuro.
+Forse l'Ammazzavampiri non serve più a niente?",,,,,
+BARDICHE,Bardiche,Berdica,,,,,
+BARDICHE_DESC,A dual-handed war axe great for both swinging and chopping.,Un'ascia da guerra a due mani ottima sia per maneggiare che per fare a brandelli.,,,,,
+TABAR,Tabar,Tabar,,,,,
+TABAR_DESC,"An axe with a crescent moon-shaped blade.
+Commonly used in India.","Un'ascia con la lama a forma di mezzaluna.
+Spesso usata in India.",,,,,
 ,,,,,,,
 --Title screen--,,,,,,,
 NEW_GAME_BUTTON,New Game,Nuova partita,Nueva partida,Novo jogo,Nouvelle partie,Nieuw spel,بدأ لعبة جديدة
@@ -394,7 +406,8 @@ WINGED_BOOTS_DESC,Legendary boots blessed by an angel that decrease the wearer's
 SCARF,Scarf,Sciarpa,Bufanda,Lenço,Echarpe,Sjaal,
 SCARF_DESC,Keeps you warm from cold environments.,Tiene caldo da ambienti freddi.,Te mantiene cálido en ambientes fríos.,Mantém você aquecido em ambientes frios.,Vous maintient bien au chaud dans les environnements froids.,Houd je warm in koude gebieden.,
 EMERALD_RING,Emerald Ring,Anello smeraldo,Anillo esmeralda,Anel de Esmeralda,Anneau Emeraude,Smaragden Ring,
-EMERALD_RING_DESC,A ring with a shiny emerald stone that can be sold at a good price.,Un anello con una luccicosa pietra di smeraldo che può essere venduta ad un buon prezzo.,Un anillo con una brillante esmeralda que puede ser vendido a un buen precio.,Um anel com uma pedra esmeralda brilhante que pode ser vendido por um bom preço.,"Un anneau avec une pierre d'émeraude brillante, peut se vendre à bon prix.",Een ring met een schitterende smaragden ring die kan verkocht worden tegen een goede prijs.,
+EMERALD_RING_DESC,A ring with a shiny emerald stone that can be sold at a good price.,Un anello con una luccicosa pietra di smeraldo che può essere venduta ad un buon prezzo.,Un anillo con una brillante esmeralda que puede ser vendido a un buen precio.,"Um anel com uma pedra esmeralda brilhante.
+Pode ser vendido por um bom preço.","Un anneau avec une pierre d'émeraude brillante, peut se vendre à bon prix.",Een ring met een schitterende smaragden ring die kan verkocht worden tegen een goede prijs.,
 TALISMAN,Talisman,Talismano,Talismán,Talismã,Talisman,Talisman,
 TALISMAN_DESC,Protects the wearer from evil spirits.,Protegge chi lo indossa da spiriti maligni.,Protege al portador de espíritus malignos.,Protege o usuário de espíritos malignos.,Protège le porteur des esprits maléfiques.,Beschermt de drager tegen kwaadaardige geesten.,
 FORTITUDE_NECKLACE,Fortitude Necklace,Collana Audace,Collar de fortaleza,Colar da Fortitude,Collier de Fortitude,Vastberadenheids Ketting,
@@ -446,6 +459,15 @@ Guarisce il diavolo innocente evocato quando si subiscono danni.","Una capa maca
 Cura al demonio inocente invocado al recibir daño.","Um manto macabro manchado com sangue de vários demônios.
 Cura o Demônio Inocente invocado ao sofrer dano.",,"Een macabre mantel besmet met het bloed van velen demonen.
 Geneest de huidige opgeroepen Onschuldige Duivel wanneer je schade krijgt.",
+TOUGH_RING,Tough Ring,Anello del duro,Anillo resistente,Anel Resistente,,Weerbaarheids Ring,
+TOUGH_RING_DESC,"A special ring that negates damage taken upon guarding attacks, but slows down Guard Health recovery rate.","Un anello speciale cheprotegge dai danni in parata, ma aumenta il tempo necessario per recuperare la durata della guardia.","Un anillo especial que niega el daño recibido al bloquear ataques,
+pero ralentiza la recuperación del Aguante de Guardia.","Um anel especial que anula o dano sofrido ao bloquear ataques, mas diminui a taxa de recuperação da Saúde da Defesa.",,"Een speciale ring die opgenoment schade verwaarloost wanneer je aanvallen verdedigt, maar vertraagt Verdedigings Gezondheid herstelsnelheid",
+PEARL_RING,Pearl Ring,Anello perlato,Anillo de perla,Anel de Pérola,,Parel Ring,
+PEARL_RING_DESC,A ring with a shiny peal stone that can be sold at a good price.,"Un anello con una perla luccicosa.
+Può essere venduto ad un buon prezzo.",Un anillo con una perla reluciente que puede ser vendido a un buen precio.,"Um anel com uma pedra pérola brilhante.
+Pode ser vendido por um bom preço.",,Een ring met een schitterende bleke steen die kan verkocht worden voor een goede prijs.,
+LAPIS_LAZULI,Lapis lazuli,Lapislazzuli,Lapislázuli,Lápis-Lazúli,,Lapis Lazuli,
+LAPIS_LAZULI_DESC,"A ring made with lapis lazuli, a precious blue stone that brings fortune to whom holds it.","Un anello fatto con lapislazzuli, una pietra che si dice porti fortuna a chi la possiede.","Un anillo hecho con lapislázuli, una piedra preciosa azul que trae fortuna a quién lo posee.","Um anel feito com lápis-lazúli, uma pedra preciosa azul que traz riqueza a quem a possui.",,"Een ring met lapis lazuli, een waardevolle blauwe steen die geluk brengt voor degene die hem bezit.",
 ,,,,,,,
 --Relics--,,,,,,,
 INDIGO_CROSS,Indigo Cross,Rosario Indaco,Cruz Índiga,Cruz Índigo,Croix Indigo,Indigo Kruis,
@@ -476,40 +498,43 @@ LITTLE_HAMMER,Little Hammer,Martelletto,Martillo Pequeño,Martelo Pequeno,Petit 
 LITTLE_HAMMER_DESC,"A golden hammer, said to harbor fortune to the wielder.
 LCK% chance to generate gold when hitting a foe.","Un martello d'oro il quale, si dice, dia fortuna a chi lo possiede.
 Chance pari a FOR% di generare oro quando si colpisce un nemico.","Un martillo dorado, se dice que trae fortuna a quien lo porta.
-SRT% de probabilidad de generar oro al golpear un enemigo.","Um martelo dourado que dizem trazer riqueza para quem o empunha.
+SUE% de probabilidad de generar oro al golpear un enemigo.","Um martelo dourado que dizem trazer riqueza para quem o empunha.
 Chance de SOR% de gerar ouro ao atingir um inimigo.","Un maillet d'or, censé apporter la fortune à son manieur.
-CHA% chance de générer de l'or en frappant un ennemi.","Een gouden hamer, gezegd om foruna te geven aan de gebruiker.
+CHA% chance de générer de l'or en frappant un ennemi.","Een gouden hamer, gezegd om geluk te brengen voor de gebruiker.
 GLK% kans om goud te verwekken wanneer een vijand geraakt word.",
-STONE_OF_ALCHEMY,Stone of Alchemy,Pietra alchemica,Pieda de alquimia,Pedra da Alquimia,,Steen van Alchemie,
+STONE_OF_ALCHEMY,Stone of Alchemy,Pietra alchemica,Pieda de Alquimia,Pedra da Alquimia,,Steen van Alchemie,
 STONE_OF_ALCHEMY_DESC,A weird stone made with alchemy that absorbs the energy of an impact. Restores MP when blocking attacks.,Una strana pietra fatta con l'alchimia che assorbe l'energia di un urto. Ripristina PM quando si para un attacco.,"Una rara piedra hecha con alquimia que absorbe la energía de un impacto. Restaura PM al bloquear ataques.","Uma pedra estranha, criada por meio da alquimia, que absorve a energia de um impacto. Restaura MP ao bloquear ataques.",,Een vreemde steen gemaakt met alchemie die de energie van een stoot absorbeert. Herstelt MP wanneer het aanvallen blokkeert.,
-HEART_BROOCH,Heart Brooch,Spilla a cuore,Broche corazón,Broche de Coração,,Hart Broche,
+HEART_BROOCH,Heart Brooch,Spilla a cuore,Broche Corazón,Broche de Coração,,Hart Broche,
 HEART_BROOCH_DESC,"A brooch with the shape of a heart.
 LCK/2% chance to generate hearts when hitting a foe.","Una spilla a forma di cuore.
 Chance pari a FOR/2% di generare cuori quando si colpisce un nemico.","Un broche con forma de corazón.
-SRT/2% de probabilidad de generar corazones al golpear un enemigo.","Um broche em formato de coração.
+SUE/2% de probabilidad de generar corazones al golpear un enemigo.","Um broche em formato de coração.
 Chance de SOR/2% de gerar corações ao atingir um inimigo.",,"Een broche in de vorm van een hart.
 GLK/2% kans om een hart te verwekken wanneer een vijand geraakt word.",
-BLOOD_STONE,Blood Stone,Pietra di sangue,Piedra de sangre,Pedra de Sangue,,Bloed Steen,
+BLOOD_STONE,Blood Stone,Pietra di sangue,Piedra de Sangre,Pedra de Sangue,,Bloed Steen,
 BLOOD_STONE_DESC,"A stone crafted for vampires, but can also be used by humans without repercussions. LCK/2% chance to absorb HP upon hitting a foe.","Una pietra realizzata per i vampiri, ma anche gli umani possono utilizzarla senza problemi. Chance pari a FOR/2% di assorbire PV quando si colpisce un nemico.","Una piedra elaborada para vampiros, pero también puede ser usada por humanos sin repercusiones.
-SRT/2% de probabilidad para absorber PV al golpear un enemigo.","Uma pedra forjada para vampiros, mas que pode ser usada por humanos sem consequências. Chance de SOR/2% de absorver PV ao atingir um inimigo.",,"Een steen gemaakt voor vampieren, maar kan ook gebruikt worden door mensen zonder consequencies. GLK/2% kans om GP te absorberen wanneer een vijand geraakt wordt.",
-MIRACLE_COIN,Miracle Coin,Moneta della fortuna,Moneda milagrosa,Moeda da Fortuna,,Mirakel Munt,
+SUE/2% de probabilidad para absorber PV al golpear un enemigo.","Uma pedra forjada para vampiros, mas que pode ser usada por humanos sem consequências. Chance de SOR/2% de absorver PV ao atingir um inimigo.",,"Een steen gemaakt voor vampieren, maar kan ook gebruikt worden door mensen zonder consequencies. GLK/2% kans om GP te absorberen wanneer een vijand geraakt wordt.",
+MIRACLE_COIN,Miracle Coin,Moneta della fortuna,Moneda de la Fortuna,Moeda da Fortuna,,Mirakel Munt,
 MIRACLE_COIN_DESC,"A special coin that harbors good fortune to whoever possesses it.
 LCK% chance to survive lethal blows over 1 HP.","Una moneta speciale che porta fortuna a chi la possiede.
 Chance pari a FOR% di sopravvivere a colpi letali se si ha più di 1 PV.","Una moneda especial que trae buena fortuna a quien la posee.
-SRT% de probabilidad de sobrevivir golpes letales sobre 1 PV.","Uma moeda especial que traz boa sorte ao seu dono.
-Chance de sobreviver a golpes letais igual a FOR% se você tiver mais de 1 PV.",,"Een speciale munt die een goed lot geeft aan degenen die het heeft.
+SUE% de probabilidad de sobrevivir golpes letales sobre 1 PV.","Uma moeda especial que traz boa sorte ao seu dono.
+Chance de sobreviver a golpes letais igual a FOR% se você tiver mais de 1 PV.",,"Een speciale munt die een geluk geeft voor degene die het heeft.
 GLK% kans om dodelijke aanvallen te overleven boven 1 GP",
-PRODIGY_NECKLACE,Prodigy Necklace,Collana del prodigio,Collar de prodigio,Colar do Prodígio,,Pienterheids Ketting,
+PRODIGY_NECKLACE,Prodigy Necklace,Collana del prodigio,Collar del Prodigio,Colar do Prodígio,,Pienterheids Ketting,
 PRODIGY_NECKLACE_DESC,"A necklace that makes the wielder a prodigy.
 LCK% chance that techniques don't consume Focus.","Una collana che rende, chi la indossa, un prodigio.
 Chance pari a FOR% di non consumare Concentrazione quando si usano tecniche.","Un collar que convierte a quien lo porta en un prodigio.
-SRT% de probabilidad de que las técnicas no consuman Concentración.","Um colar que faz do usuário um prodígio.
+SUE% de probabilidad de que las técnicas no consuman Concentración.","Um colar que faz do usuário um prodígio.
 Chance de SOR% de que as técnicas não consumam Foco.",,"Een ketting die de gebruiker een pienter persoon maakt.
 GLK% kans dat technieken niet Focus verbruiken.",
-GODDESS_SHIELD,Goddess Shield,Scudo della dea,,,,,
+GODDESS_SHIELD,Goddess Shield,Scudo della dea,Escudo de la Diosa,Escudo da Deusa,,Godins Schild,
 GODDESS_SHIELD_DESC,"A shield blessed by an ancient goddess.
 LCK/2% chance to halve damage taken.","Uno scudo benedetto da un'antica dea.
-Chance pari a FOR/2% di dimezzare i danni subiti.",,,,,
+Chance pari a FOR/2% di dimezzare i danni subiti.","Un escudo bendecido por una diosa antigua.
+SUE/2% de probabilidad de reducir a la mitad el daño recibido.","Um escudo abençoado por uma deusa ancestral.
+Chance de SOR/2% de reduzir o dano sofrido pela metade.",,"Een schild gezegend door een eeuwenoude godin.
+GLK/2% kans om genomen schade te halveren.",
 ,,,,,,,
 --Skills--,,,,,,,
 FORTITUDE_GAUNTLET,Fortitude Gauntlet,Guanto dell'Audacia,Guantelete de Fortitud,Manopla da Fortitude,Gantelet de Fortitude,Vastberadenheids Handschoen,
@@ -545,24 +570,24 @@ AWARENESS,Awareness,Accortezza,Conciencia,Percepção,Vigilance,Bewustzijn,
 AWARENESS_DESC,Focus increases while guarding attacks with greatswords.,"Usando spadoni, la barra della concentrazione aumenta quando si parano attacchi.",Incrementa la concentración mientras te proteges de ataques con espadones.,A barra de Foco se intensifica ao aparar ataques com espadões.,La concentration augmente en parant les attaques avec des longues épées.,Verhoogt focus wanneer je aanvallen van grootzwaarden verdedigt.,
 GUARD_STANCE,Guard Stance,Posizione difensiva,Posición de Guardia,Postura de Guarda,Posture de Garde,Verdediging Stand,
 GUARD_STANCE_DESC,"With greatswords, can attack immediately after a successful block.","Usando spadoni, si può attaccare immediatamente dopo aver parato un colpo.",Se puede atacar con espadones de inmediato al bloquear un ataque.,Você pode atacar imediatamente após um bloqueio bem-sucedido com espadões.,"Équipé d'une grande épée, peux attaquer immédiatement après une parade réussie.","Met grootzwaarden, je kunt meteen aanvallen na een succesvolle blokering.",
-WICKED_GLADIATOR_FIST,Wicked Gladiator Fist,Pugno del crudele gladiatore,Puño del Gladiador Cruel,Punho do Gladiador Perverso,,Behekste Gladiator Vuist,
+WICKED_GLADIATOR_FIST,Wicked Gladiator Fist,Pugno del crudele gladiatore,Puño del Gladiador Cruel,Punho do Gladiador Perverso,,Behekste Gladiator Handschoen,
 WICKED_GLADIATOR_FIST_DESC,"A technique with knuckles where the user performs an uppercut.
 Good for anti-air or grounded enemies.","Una tecnica con i tirapugni che consiste nel tirare un montante.
 Utile per nemici aerei o che sostano in posizioni basse.","Una técnica con los puños con la que el usuario ejecuta un uppercut.
 Bueno como antiaéreo o contra enemigos terrestres.","Uma técnica com soqueiras em que o usuário executa um gancho ascendente.
-Eficaz contra inimigos aéreos ou terrestres.",,"Een techniek met vuisten waarbij de gebruiker een uppercut geeft.
+Eficaz contra inimigos aéreos ou terrestres.",,"Een techniek met handschoenen waarbij de gebruiker een uppercut geeft.
 Goed voor anti-lucht of gegronde vijanden.",
 STEADY_FIGHTER,Steady Fighter,Lottatore pronto,Luchador Firme,Lutador Inabalável,,Standvastige Vechter,
-STEADY_FIGHTER_DESC,"With knuckles, reduces the amount of time required to restore Guard Health.","Quando si usano i tirapugni, il tempo necessario per recuperare la salute della guardia diminuisce.","Con manoplas, reduce el tiempo requerido para restaurar el Aguante de Guardia.","Com soqueiras, o tempo necessário para restaurar a Saúde da Defesa é reduzido.",,"Met vuisten, vereist minder tijd om Verdedigings Gezondheid te herstellen.",
-ELECTRIC_WICKED_GLADIATOR_FIST,Electric Wicked Gladiator Fist,Pugno elettrico del crudele gladiatore,Puño Electrico del Gladiador Cruel,Punho Elétrico do Gladiador Perverso,,Elektrische Behekste Gladiator Vuist,
+STEADY_FIGHTER_DESC,"With knuckles, reduces the amount of time required to restore Guard Health.","Quando si usano i tirapugni, il tempo necessario per recuperare la salute della guardia diminuisce.","Con manoplas, reduce el tiempo requerido para restaurar el Aguante de Guardia.","Com soqueiras, o tempo necessário para restaurar a Saúde da Defesa é reduzido.",,"Met handschoenen, vereist minder tijd om Verdedigings Gezondheid te herstellen.",
+ELECTRIC_WICKED_GLADIATOR_FIST,Electric Wicked Gladiator Fist,Pugno elettrico del crudele gladiatore,Puño Electrico del Gladiador Cruel,Punho Elétrico do Gladiador Perverso,,Elektrische Behekste Gladiator Handschoen,
 ELECTRIC_WICKED_GLADIATOR_FIST_DESC,"With knuckles, unleashes a powerful electric uppercut.
 The user remains invincible for a bit after performing this move.","Con i tirapugni, tira un potente montante elettrico.
 Si rimane invincibili per un po' di tempo dopo aver usato questa mossa.","Con manoplas, desata un poderoso uppercut eléctrico.
 El usuario queda invencible por un momento después de realizar este movimiento.","Com soqueiras, desfira um poderoso gancho ascendente elétrico.
-O usuário permanece invencível por um tempo após executar este movimento.",,"Met vuisten, laat een krachtige elektrische uppercut los.
+O usuário permanece invencível por um tempo após executar este movimento.",,"Met handschoenen, laat een krachtige elektrische uppercut los.
 De gebruiker blijft even ontastbaar na deze aanval te gebruiken.",
 WINDSTORM,Windstorm,Vento furioso,Viento Furioso,Tempestade de Vento,,Windstorm,
-WINDSTORM_DESC,"With knuckles, unleashes the fury of the wind that hits enemies multiple times from afar.","Con i tirapugni, scatena una furia dei venti che danneggia i nemici da lontano e più volte.","Con manoplas, desata la furia del viento que golpea a enemigos múltiples veces desde lejos.","Com soqueiras, libere a fúria do vento que atinge os inimigos várias vezes à distância.",,"Met vuisten, laat een razernij van wind los die meerdere vijanden van veraf raakt.",
+WINDSTORM_DESC,"With knuckles, unleashes the fury of the wind that hits enemies multiple times from afar.","Con i tirapugni, scatena una furia dei venti che danneggia i nemici da lontano e più volte.","Con manoplas, desata la furia del viento que golpea a enemigos múltiples veces desde lejos.","Com soqueiras, libere a fúria do vento que atinge os inimigos várias vezes à distância.",,"Met handschoenen, laat een razernij van wind los die meerdere vijanden van veraf raakt.",
 TOME_OF_MONSTERS,Tome of Monsters,Tomo dei mostri,Tomo de Monstruos,Tomo de Monstros,,Boek van Monsters,
 TOME_OF_MONSTERS_DESC,A tome that contains information regarding all encountered enemies.,Un tomo che contiene informazioni riguardo a tutti i nemici incontrati.,"Un tomo que contiene información sobre todos los enemigos encontrados.",Um tomo que contém informações sobre todos os inimigos encontrados.,,Een boek die informatie bevat over alle benaderde vijanden.,
 SHARP_EDGE,Sharp Edge,Lama Affilata,Hoja Afilada,Ponta Afiada,,Scherp Zwaard,
@@ -589,6 +614,14 @@ Does not work against Red Spark attacks.","Con gli spadoni, consuma il 40% della
 No funciona con ataques de destello rojo.","Com espadões, consuma 40% de Foco para evitar quebras de guarda.
 Ineficaz contra Ataques de Centelha Vermelha.",,"Met grootzwaarden, verbruik 40% van Focus om verdedigings breuken te verkomen.
 Werkt niet met Rode Flits aanvallen.",
+SNEAK_ATTACK,Sneak Attack,Assalto,,,,,
+SNEAK_ATTACK_DESC,"With swords, warps behind the closest opponent and unleashes two slashes.","Con le spade, si teletrasporta dietro al nemico più vicino e sferra due fendenti.",,,,,
+ENERGY_STRIKE,Energy Strike,Colpo energetico,,,,,
+ENERGY_STRIKE_DESC,"With swords, breaking projectiles confers 3 MP.",Rompere i proiettili con le spade restituisce 3 PM.,,,,,
+WHIRLWIND,Whirlwind,Ciclone,,,,,
+WHIRLWIND_DESC,"With spears, swings the weapon repeatedly to generate a whirlwind that deals wind damage.","Con le lance, ruota l'arma continuamente al punto da generare un ciclone che infligge danni da vento.",,,,,
+PERFECT_CHARGE,Perfect Charge,Carica perfetta,,,,,
+PERFECT_CHARGE_DESC,"With spears, perfect guarding while Charge is active restores 20 FP.","Con le lance, se Carica è attiva, allora la parata perfetta ripristina 20 PF.",,,,,
 ,,,,,,,
 --Consumables--,,,,,,,
 POTION,Potion,Pozione,Poción,Poção,Potion,Drankje,
@@ -610,13 +643,16 @@ Non può essere usato durante battaglie contro i boss.","Transporta al usuario a
 No puede usarse durante combates contra jefes.","Transporta o usuário para a Loja da Júlia instantaneamente.
 Não pode ser usado durante batalhas contra chefes.",,"Transporteert meteen de gebruiker naar Julia's winkel.
 Kan niet gebruikt worden tijdens baas gevechten.",
-MUSSEL,Mussel,Muscolo,,,,,
+MUSSEL,Mussel,Muscolo,Mejillón,Mexilhão,,Mossel,
 MUSSEL_DESC,"A mussel steamed with white wine.
 Tasty, but you'd need more than just one to be satiated.","Un muscolo cucinato col vino bianco.
-Buono, ma forse dovresti mangiare più di uno per sentirti sazio.",,,,,
+Buono, ma forse dovresti mangiare più di uno per sentirti sazio.","Un mejillón al vapor con vino blanco.
+Rico, pero quizás necesites comer más de uno para quedar satisfecho.","Um mexilhão cozido no vapor com vinho branco.
+Saboroso, mas você precisaria de mais de um para ficar satisfeito.",,"Een mossel gestoomd met witte wijn.
+Lekker, maar je zal meer dan één nodig hebben om geen honger meer te hebben.",
 ,,,,,,,
 --Rare Items--,,,,,,,
-ANCIENT_TEXT_1,Ancient Text 1,Manoscritto antico 1,Texto antigüo 1,Texto Antigo 1,Texte Antique 1,Eeuwenoude Text 1,
+ANCIENT_TEXT_1,Ancient Text 1,Manoscritto antico 1,Texto antiguo 1,Texto Antigo 1,Texte Antique 1,Eeuwenoude Text 1,
 ANCIENT_TEXT_1_DESC,The tombstones hold a secret tied to the tall room with the moving platform...,Le tombe nascondono un segreto correlato all'alta stanza con la piattaforma magica che si muove...,Las lápidas guardan un secreto vinculado a la sala alta con la plataforma móvil...,As lápides guardam um segredo ligado à sala alta com a plataforma móvel...,Les tombeaux renferment un secret lié à la grande salle aux plateformes mobiles...,De tombe houd een geheim verborgen die te maken heeft met de hoge ruimte met het bewegend platform...,
 LEFT_SERPENT_EYE,Left Serpent Eye,Occhio Serpente Sinistro,Ojo izquierdo de serpiente,Olho Esquerdo da Serpente,Œil Gauche de Serpent,Linker Serpent Oog,
 LEFT_SERPENT_EYE_DESC,"A bright jewel that shines crimson.
@@ -634,28 +670,45 @@ Se parece al ojo de una serpiente, quizá pueda encajar en algún lugar...","Uma
 Lembra o olho de uma cobra, talvez caiba em algum lugar...","Un joyau brillant d'un outremer éclatant. 
 Ressemble à l'œil d'un serpent, peut-être qu'il faut le placer quelque part...","Een helder juweel dat diepblauw schittert.
 Lijkt op een oog van een slang, misschien past het ergens in...",
-ANCIENT_TEXT_2,Ancient Text 2,Manoscritto antico 2,Texto antigüo 2,Texto Antigo 2,Texte Antique 2,Eeuwenoude Text 2,
+ANCIENT_TEXT_2,Ancient Text 2,Manoscritto antico 2,Texto antiguo 2,Texto Antigo 2,Texte Antique 2,Eeuwenoude Text 2,
 ANCIENT_TEXT_2_DESC,Light up the candles and a secret power will be bestowed upon you.,Accendi le candele e un potere segreto ti verrà conferito.,Enciende las velas y un poder secréto será otorgado a tí.,Acenda as velas e um poder secreto lhe será concedido.,"Illuminez les chandelles, et un pouvoir secret vous sera confié.",Verlicht de kandelaren en een geheime kracht zal aan je toebehoren.,
-ANCIENT_TEXT_3,Ancient Text 3,Manoscritto antico 3,,,,,
+ANCIENT_TEXT_3,Ancient Text 3,Manoscritto antico 3,Texto antiguo 3,Texto Antigo 3,,Eeuwenoude Text 3,
 ANCIENT_TEXT_3_DESC,"We eventually decided to hide the gemstone behind a statue.
 No physical attack can break it, although if you use ice and fire...","Abbiamo deciso infine di nascondere la gemma dietro ad una statua.
-Nessun attacco fisico la può scalfire, ma se si usa il ghiaccio ed il fuoco...",,,,,
-YELLOW_GEMSTONE,Yellow Gemstone,Gemma gialla,,,,,
+Nessun attacco fisico la può scalfire, ma se si usa il ghiaccio ed il fuoco...","Eventualmente decidimos esconder la gema detrás de una estatua.
+No ataque físico puede romperla, pero si usas hielo y fuego…","Finalmente decidimos esconder a gema atrás de uma estátua.
+Nenhum ataque físico pode quebrá-la, mas se você usar gelo e fogo...",,"We hebben uiteindelijk besloten om de edelsteen achter een standbeeld te verstoppen.
+Geen fysieke aanval die het kan breken, alhoewel als je ijs en vuur gebruikt...",
+YELLOW_GEMSTONE,Yellow Gemstone,Gemma gialla,Gema amarilla,Gema Amarela,,Gele Edelsteen,
 YELLOW_GEMSTONE_DESC,"A gemstone that shines yellow.
 It's part of a 4-gem collection.","Una gemma che brilla di color giallo.
-Fa parte di una collezione da 4 pezzi.",,,,,
-GREEN_GEMSTONE,Green Gemstone,Gemma verde,,,,,
+Fa parte di una collezione da 4 pezzi.","Una gema que brilla de color amarillo.
+Es parte de una colección de cuatro partes.","Uma pedra preciosa que brilha em amarelo.
+Faz parte de uma coleção de 4 pedras.",,"Een edelsteen die geel blinkt.
+Het is deel van een 4 delige edelsteen collectie.",
+GREEN_GEMSTONE,Green Gemstone,Gemma verde,Gema verde,Gema Verde,,Groene Edelsteen,
 GREEN_GEMSTONE_DESC,"A gemstone that shines green.
 It's part of a 4-gem collection.","Una gemma che brilla di color verde.
-Fa parte di una collezione da 4 pezzi.",,,,,
-BLUE_GEMSTONE,Blue Gemstone,Gemma blu,,,,,
+Fa parte di una collezione da 4 pezzi.","Una gema que brilla de color verde.
+Es parte de una colección de cuatro partes.","Uma pedra preciosa que brilha em verde.
+Faz parte de uma coleção de 4 pedras.",,"Een edelsteen die groen blinkt.
+Het is deel van een 4 delige edelsteen collectie.",
+BLUE_GEMSTONE,Blue Gemstone,Gemma blu,Gema azul,Gema Azul,,Blauwe Edelsteen,
 BLUE_GEMSTONE_DESC,"A gemstone that shines blue.
 It's part of a 4-gem collection.","Una gemma che brilla di color blu.
-Fa parte di una collezione da 4 pezzi.",,,,,
-ORANGE_GEMSTONE,Orange Gemstone,Gemma arancione,,,,,
+Fa parte di una collezione da 4 pezzi.","Una gema que brilla de color azul.
+Es parte de una colección de cuatro partes.","Uma pedra preciosa que brilha em azul.
+Faz parte de uma coleção de 4 pedras.",,"Een edelsteen die blauw blinkt.
+Het is deel van een 4 delige edelsteen collectie.",
+ORANGE_GEMSTONE,Orange Gemstone,Gemma arancione,Gema naranja,Gema Laranja,,Oranje Edelsteen,
 ORANGE_GEMSTONE_DESC,"A gemstone that shines orange.
 It's part of a 4-gem collection.","Una gemma che brilla di color arancione.
-Fa parte di una collezione da 4 pezzi.",,,,,
+Fa parte di una collezione da 4 pezzi.","Una gema que brilla de color naranja.
+Es parte de una colección de cuatro partes.","Uma pedra preciosa que brilha em laranja.
+Faz parte de uma coleção de 4 pedras.",,"Een edelsteen die oranje blinkt.
+Het is deel van een 4 delige edelsteen collectie.",
+MAGICAL_TICKET,Magical Ticket,Biglietto magico,,,,,
+MAGICAL_TICKET_DESC,Instantly transports the user to Julia's Shop.,Teletrasporta istantaneamente al negozio di Julia.,,,,,
 ,,,,,,,
 --Materials--,,,,,,,
 BRONZE,Bronze,Bronzo,Bronce,Bronze,Bronze,Brons,
@@ -1024,7 +1077,7 @@ Preciso me lembrar como se forja um demônio...","Alors. Qu'est-ce qu'il fallait
 Il faut que je me rappelle de la procédure pour forger...","Nou, hoe werkte het?
 Ik moet toch iets van het duivel smeden herinneren...",
 ,,,,,,,
---First encounter with Carmilla--,539,,,,,,
+--First encounter with Carmilla--,562,,,,,,
 FIRST_CARMILLA_DIALOGUE_1,"Ah, if it isn't Hector: the most interesting man in Dracula's court.","Ah, se non è Hector: l'uomo più interessante nella corte di Dracula.","Ah, si no es Héctor: el hombre más interesante de la corte de Drácula.","Ah, se não é Hector: o homem mais interessante da corte de Drácula.","Ah, si ce n'est pas Hector, l'homme le plus intéressant de la cour de Dracula.","Ah, als het Hector wel niet is: de meest interessante man in Dracula's hof.",
 FIRST_CARMILLA_DIALOGUE_2,"I've come to know of your heroic feat.
 You've become a really strong man.","Sono venuta a conoscenza della tua grande impresa.
@@ -1237,7 +1290,7 @@ Vamos.","Entendo, felizmente ela não está muito longe daqui.
 Vamos.",,"Ik snap het, ze is gelukkig niet ver van hier.
 Laten we gaan.",
 ,,,,,,,
-"--Hector, Julia and Trevor first time--",605,,,,,,
+"--Hector, Julia and Trevor first time--",628,,,,,,
 TRIO_FIRST_DIALOGUE_1,Welcome back.,Bentornati.,Bienvenido de vuelta.,Bem vindo de volta.,,Welkom terug.,
 TRIO_FIRST_DIALOGUE_2,"Is everything ok, Julia?","Tutto bene, Julia?","¿Todo bien, Julia?","Está tudo bem, Julia?",,"Is alles oké, Julia?",
 TRIO_FIRST_DIALOGUE_3,Yes. I have been practicing some magic as of lately.,"Sì, ho fatto un po' di pratica con la magia ultimamente?","Sí. He estado practicando un poco de magia últimamente.","Sim. Estive praticando um pouco de magia, como de costume.",,Ja. Ik ben onlangs magie gaan beoefenen.,
@@ -1413,7 +1466,7 @@ Esta imprudencia tuya casi te cuesta la vida.","Você deveria ter cuidado, Trevo
 Essa sua imprudência quase lhe custou a vida.",,"Je moet voorzichtig zijn, Trevor.
 Die roekeloosheid van je zal bijna je eigen leven kosten.",
 TRIO_FIRST_DIALOGUE_85,"As Hector said, we need a strategy.","Come dice Hector, abbiamo bisogno di una strategia.","Como dijo Héctor, necesitamos una estrategia.","Como Hector disse, nós precisamos de uma estratégia.",,"Zoals Hector zei, we hebben een strategie nodig.",
-TRIO_FIRST_DIALOGUE_86,We must act accordingly to who stands before us.,Dobbiamo agire in base a chi abbiamo di fronte a noi.,Debemos actuar ante quién tenemos por delante.,Devemos agir de acordo com quem estiver diante de nós.,,We moeten handelen naar wat voor ons te wachten staat.,
+TRIO_FIRST_DIALOGUE_86,We must act accordingly to whom stands before us.,Dobbiamo agire in base a chi abbiamo di fronte a noi.,Debemos actuar ante quién tenemos por delante.,Devemos agir de acordo com quem estiver diante de nós.,,We moeten handelen naar wat voor ons te wachten staat.,
 TRIO_FIRST_DIALOGUE_87,I understand.,Capisco.,De acuerdo.,Eu entendo.,,Ik begrijp het.,
 TRIO_FIRST_DIALOGUE_88,I know of two places of where to find clues.,Ho in mente due luoghi nei quali potreste cercare indizi.,Conozco de dos lugares donde podrías encontrar pistas.,Eu sei de dois locais onde podemos encontrar pistas.,,Ik weet de eerste twee plaatsen waar je aanwijzingen zal vinden.,
 TRIO_FIRST_DIALOGUE_89,"Speaking with a couple of villagers and using my envisioning powers, I can predict that a vampire will show up.","Parlando con un paio di persone e usando i miei poteri da veggente, prevedo che si farà avanti un vampiro.","Después de hablar con un par de aldeanos y usando mis poderes clarividentes, predigo que aparecerá un vampiro.","Conversando com alguns moradores e usando meus poderes de premonição, posso prever que um vampiro aparecerá.",,"Als ik spreek met een paar dorpsbewoners praat terwijl ik mijn visioen krachten gebruik, kan ik voorspellen wanneer een vampier komt.",
@@ -1445,10 +1498,16 @@ TRIO_FIRST_DIALOGUE_101,Let's get to work.,Ora di metterci al lavoro.,Manos a la
 --Fountain monologue--,,,,,,,
 FOUNTAIN_MONOLOGUE_1,"What a beautiful fountain...
 I wish Julia were here to gaze our eyes upon this beauty.","Che splendida fontana...
-Quanto vorrei che Julia fosse qui con me ad ammirarla.",,,,,
+Quanto vorrei che Julia fosse qui con me ad ammirarla.","Que fuente tan espléndida…
+Cómo me gustaría que Julia estuviera aquí conmigo para admirarla.","Que fonte linda...
+Queria que Julia estivesse aqui para contemplarmos essa beleza.",,"Wat een prachtige fontein...
+Ik wens dat Julia hier was om haar ogen op deze pracht te richten.",
 FOUNTAIN_MONOLOGUE_2,"Although it seems like it's missing some pieces.
 I wonder where I can find them...","Però pare che siano venuti a mancare alcuni pezzi da inserire.
-Forse li posso trovare da qualche parte...",,,,,
+Forse li posso trovare da qualche parte...","Pero parece que le faltan algunas piezas.
+Quizás pueda encontrarlas en algún sitio...","Mas parece que faltam algumas peças.
+Talvez eu consiga achá-las em algum lugar...",,"Hoewel het lijkt dat er stukjes missen.
+Ik vraag me af waar ik ze kan vinden...",
 ,,,,,,,
 ,,,,,,,
 --Stage titles--,,,,,,,
@@ -1987,14 +2046,7 @@ HINT_9,Press [[L1]] to backdash.,Premi [[L1]] per schivare all'indietro.,Presion
 HINT_10,Seems like a good place for devil forging.,"Sembra un buon posto per una
 forgiatura diabolica.",Parece un buen lugar para la forja de demonios.,Parece um bom lugar para forjar um demônio.,"Ca m'a l'air d'être un bon endroit
 pour forger un démon.",Ziet er uit als een goede plaats voor duivel smeden.,
-,,,,,,,
-HINT_11,"Axes are strong weapons, but Hector is
-unable to crouch attack with them.","Le asce sono armi potenti, ma Hector
-non ci può attaccare da accovacciato.","Las hachas son armas fuertes, pero Héctor
-no puede atacar agachado con ellas.","Machados são armas fortes, mas Hector não consegue
-atacar enquanto está agachado com eles.","Les haches sont des armes puissantes, mais
-Hector ne peut pas s'accroupir en les maniant.","Bijlen zijn sterke wapens, maar Hector kan
-niet hurk aanvallen met ze doen.",
+HINT_11,Press [[Jump]] while crouching to slide.,Premi [[Jump]] da accovacciato per fare una scivolata.,,,,,
 HINT_12,Press [[Circle]] to stand up.,Premi [[Circle]] per alzarti.,Presiona [[Circle]] para levantarte.,Pressione [[Circle]] para levantar-se.,Appuyez sur [[Circle]] pour vous lever.,Druk [[Circle]] om op te staan.,
 HINT_13,If only there was a way to get rid of this log...,Se solo ci fosse un modo per sbarazzarsi di questo tronco...,Si tan solo hubiese una forma de deshacerse de este tronco...,Se ao menos houvesse uma maneira de se livrar desse tronco...,Si seulement on pouvait se débarasser de cette bûche...,Was er maar een manier om deze boomstam weg te doen...,
 HINT_14,"This door won't budge.
@@ -2011,6 +2063,11 @@ SAVE_GAME_BUTTON,Save Game,Salva partita,Guardar partida,Salvar o Jogo,Sauver. p
 TELEPORT_GAME_BUTTON,Teleport,Teletrasporto,Teletransportar,Teleportar,Se teleporter,Teleporteer,
 EXIT_SAVE_BUTTON,Exit,Esci,Salir,Sair,Quitter,Sluit,
 ,,,,,,,
+--Game Over--,,,,,,,
+RETRY_BATTLE_BUTTON,Retry battle,Riprova il combattimento,,,,,
+LAST_SAVE_BUTTON,Restart from last save,Riprova dall'ultimo salvataggio,,,,,
+TITLE_SCREEN_BUTTON,Return to title screen,Ritorna alla schermata del titolo,,,,,
+,,,,,,,
 --Shop--,,,,,,,
 JULIA_WELCOME,Welcome.,Benvenuto.,Bienvenido.,Bem-vindo,,Welkom.,
 JULIA_THANKS_AS_ALWAYS,Thanks as always.,"Come sempre, grazie.","Gracias, como siempre.","Como sempre, obrigada.",,"Zoals altijd, bedankt.",
@@ -2021,12 +2078,15 @@ ABANDONED_MONASTERY_GAUNTLET,Abandoned Monastery - Gauntlet,Monastero abbandonat
 ABANDONED_MONASTERY_TOP,Abandoned Monastery - Top floor,Monastero abbandonato - Pinnacolo,Monasterio Abandonado - Pináculo,Mosteiro Abandonado - Piso superior,Monastère Abandonné - Etage superieur,Verlaten Klooster - Bovenste verdieping,
 FAGARAS_LEFT,Fagaras Forest - Left cave path,Foresta Fagaras - Cammino sinistro,Bosque Fagaras - Camino izquierdo,Floresta Fagaras - Passagem à esquerda,Forêt de Fagaras - Entrée gauche des cavernes,Fagaras's Woud - Linker grotten pad,
 FAGARAS_RIGHT,Fagaras Forest - Right cave path,Foresta Fagaras - Cammino destro,Bosque Fagaras - Camino derecho,Floresta Fagaras - Passagem à direita,Forêt de Fagaras - Entrée droite des cavernes,Fagaras's Woud - Rechter grotten pad,
+JULIA_SHOP,Fagaras Forest - Julia's Shop,Foresta Fagaras - Negozio di Julia,,,,,
+WATERWAY_ENTRANCE,Moonlit Waterway - Entrance,Acquedotto Illuminato - Entrata,,,,,
+INDIGO_TEMPLE_YELLOW_PATH,Indigo Temple - Yellow path,Tempio Indaco - Cammino giallo,,,,,
 ,,,,,,,
 --Enemies--,,,,,,,
 ZOMBIE,Zombie,Zombie,Zombi,Zumbi,Zombie,Zombie,
 SKELETON,Skeleton,Scheletro,Esqueleto,Esqueleto,Squelette,Skelet,
 BAT,Bat,Pipistrello,Murciélago,Morcego,,Vleermuis,
-AXE_ARMOR,Axe Armor,Armigero,Armadura hacha,Armadura de Machado,Armure hache,Bijl Harnas,
+AXE_ARMOR,Axe Armor,Armigero,Caballero hacha,Armadura de Machado,Armure hache,Bijl Harnas,
 GHOST,Ghost,Spettro,Fantasma,Espectro,Fantôme,Spook,
 SLINGER,Slinger,Scheletro costola,Lanza-costillas,Esqueleto Atirador,Frondeur,Slingeraar,
 BONE_SCIMITAR,Bone Scimitar,Scheletro spadaccino,Esqueleto espadachín,Esqueleto Espadachim,Squelette Soldat,Skelet Jager,
@@ -2046,21 +2106,22 @@ MEDUSA_HEAD,Medusa Head,Testa di medusa,Cabeza Medusa,Cabeça de Medusa,Tête de
 DEVIL,Devil,Diavolo,Diablo,Demônio,Diable,Duivel,
 UKOBACK,Ukoback,Ukoback,Ukobach,Ukoback,Ukoback,Ukoback,
 MEDUSA,Medusa,Medusa,Medusa,Medusa,,Medusa,
-MERMAN,Merman,Tritone,,,,,
-DECARABIA,Decarabia,Decarabia,,,,,
-CAVE_TROLL,Chupacabra,Chupacabra,,,,,
-DEAD_PIRATE,Dead Pirate,Pirata non-morto,,,,,
-DARK_OCTOPUS,Dark Octopus,Piovra oscura,,,,,
-ECTOPLASM,Ectoplasm,Ectoplasma,,,,,
-FROG,Frog,Rana,,,,,
-TOAD,Toad,Rospo,,,,,
-FROZEN_SHADE,Frozen Shade,Ombra glaciale,,,,,
-PROCEL,Procel,Procel,,,,,
-ROCK_KNIGHT,Rock Knight,Cavalier lancia-rocce,,,,,
-LIZARDMAN,Lizardman,Uomo lucertola,,,,,
-MUSHROOM_BOMB,Mushroom bomb,Bomba fungosa,,,,,
-SKELETON_ARCHER,Skeleton Archer,Scheletro arciere,,,,,
-ARCTIC_WOLF,Arctic Wolf,Lupo artico,,,,,
+MERMAN,Merman,Tritone,Tritón,Tritão,,Meerman,
+DECARABIA,Decarabia,Decarabia,Decarabia,Decarabia,,Decarabia,
+CAVE_TROLL,Chupacabra,Chupacabra,Chupacabra,Chupacabra,,Chupacabra,
+DEAD_PIRATE,Dead Pirate,Pirata non-morto,Pirata muerto,Pirata Morto,,Dode Piraat,
+DARK_OCTOPUS,Dark Octopus,Piovra oscura,Pulpo oscuro,Polvo Sombrio,,Donkere Octopus,
+ECTOPLASM,Ectoplasm,Ectoplasma,Ectoplasma,Ectoplasma,,Ectoplasma,
+FROG,Frog,Rana,Rana,Rã,,Kikker,
+TOAD,Toad,Rospo,Sapo,Sapo,,Pad,
+FROZEN_SHADE,Frozen Shade,Ombra glaciale,Sombra helada,Sombra Congelada,,Bevroren Schaduw,
+PROCEL,Procel,Procel,Procel,Procel,,Procel,
+ROCK_KNIGHT,Rock Knight,Cavalier lancia-rocce,Caballero roca,Cavaleiro de Pedra,,Stenen Ridder,
+LIZARDMAN,Lizardman,Uomo lucertola,Hombre lagarto,Homem-Lagarto,,Hagedisman,
+MUSHROOM_BOMB,Mushroom bomb,Bomba fungosa,Bomba hongo,Cogumelo Explosivo,,Paddenstoel bom,
+SKELETON_ARCHER,Skeleton Archer,Scheletro arciere,Esqueleto arquero,Esqueleto Arqueiro,,Skelet Boogschutter,
+ARCTIC_WOLF,Arctic Wolf,Lupo artico,Lobo ártico,Lobo Ártico,,Pool Wolf,
+DRAGON_ZOMBIE,Dragon Zombie,Necrodrago,,,,,
 ,,,,,,,
 --Enemy descriptions--,,,,,,,
 ZOMBIE_DESC,"The cadaver of a man brought back to life with dark magic.
@@ -2164,13 +2225,33 @@ Beweegt zich onvoorspelbaar en kan aanvallen met vuur en ijs.",
 UKOBACK_DESC,A little gremlin whose only purpose in life is to spread fires.,Un piccolo gremlin il cui unico scopo nella vita è quello di appiccare incendi.,Un duendecillo el cual su único propósito de vida es de esparcir fuegos.,Um pequeno gremlin cujo único propósito na vida é espalhar incêndios.,,Een klein aardmannetje wiens enige doel in het leven vuur verspreiden is.,
 MEDUSA_DESC,A beautiful monster cursed with the power of being able to turn anything it sees to stone.,Un bellissimo mostro maledetto col potere di poter pietrificare qualsiasi cosa con il suo sguardo.,Un hermoso monstruo maldecido con el poder de poder convertir todo lo que ve en piedra.,Um belo monstro amaldiçoado com o poder de transformar em pedra tudo o que vê.,,Een prachtig monster vervloekt met de kracht waardoor alles wat het ziet in steen verandert.,
 ,,,,,,,
+--Innocent Devil Evolutions--,,,,,,,
+INFANT_FAIRY,Infant Fairy,Fata bambina,,,,,
+HERBEST,Herbest,Erberina,,,,,
+LEAFFLE,Leaffle,Fogliolina,,,,,
+CROW,Crow,Corvo,,,,,
+,,,,,,,
 --Innocent Devil Skills--,,,,,,,
 HEAL_SKILL_ID,Heal,Guarigione,Cura,Cura,Soin,Genezing,
 HEAL_SKILL_ID_DESC,Heals Hector a moderate amount of HP.,"Guarisce Hector, ripristinando un po' di PV.",Le cura una cantidad moderada de PV a Héctor.,Recupera uma quantidade moderada de PV de Hector.,"Soigne Hector, lui redonnant une quantité modérée de PV.",Geneest Hector een gemiddeld gehalte GP.,
 REFRESHING_AIR_SKILL_ID,Refreshing Air,Aria rinfrescante,Aire refrescante,Ar Revigorante,Air rafraîchissant,Verfrissende Lucht,
 REFRESHING_AIR_SKILL_ID_DESC,Temporarily allows Hector to heal MP when attacking a foe.,Permette temporaneamente ad Hector di recuperare i PM quando colpisce un nemico.,Le permite a Héctor temporalmente curar PM cuando ataca enemigos.,Permite temporariamente que Hector recupere PM ao atacar um inimigo.,Permet temporairement à Hector de récupérer des MP en attaquant un ennemi.,Laat Hector tijdelijk MP herstellen wanneer hij een vijand aanvalt.,
-TIME_HEAL,Time Heal,Guarigione continua,Cura temporal,Cura Temporal,,Tijd Genezing,
-TIME_HEAL_DESC,Slowly heals Hector's HP and MP for a short period of time.,Recupera i PV ed i PM di Hector lentamente per un po'.,Paulatinamente cura los PV y PM de Héctor por un breve período de tiempo.,Lentamente recupera PV e PM de Hector durante um breve período.,,Geneest traag Hector's GP en MP over een korte termijn.,
+TIME_HEAL_SKILL_ID,Time Heal,Guarigione continua,Cura temporal,Cura Temporal,,Tijd Genezing,
+TIME_HEAL_SKILL_ID_DESC,Slowly heals Hector's HP and MP for a short period of time.,Recupera i PV ed i PM di Hector lentamente per un po'.,Paulatinamente cura los PV y PM de Héctor por un breve período de tiempo.,Lentamente recupera PV e PM de Hector durante um breve período.,,Geneest traag Hector's GP en MP over een korte termijn.,
+POISON_POWDER_SKILL_ID,Poison Powder,Polvere velenosa,,,,,
+POISON_POWDER_SKILL_ID_DESC,"Attacks close enemies with a magic powder that can poison them.
+Targets vulnerable to poison are prioritized.","Attacca i nemici in prossimità con una polvere velenosa magica.
+I bersagli deboli al veleno vengono scelti per primi.",,,,,
+RESIST_FIRE_ICE_SKILL_ID,Resist Fire/Ice,Resisti Fuoco/Ghiaccio,,,,,
+RESIST_FIRE_ICE_SKILL_ID_DESC,"Confers Hector temporary protection against Fire and Ice attacks.
+Damage is reduced by 67%.","Conferisce ad Hector una maggiore protezione contro attacchi di tipo Fuoco e Ghiaccio, i cui danni vengono ridotti del 67%.",,,,,
+LUCKY_SLOT_SKILL_ID,Lucky Slot,Lotteria,,,,,
+LUCKY_SLOT_SKILL_ID_DESC,"Play a slot machine minigame and see if you're a lucky person!
+Bigger wins confer higher HP healing.","Gioca alla slot machine e vedi se sei fortunato!
+Vincite più proficue garantiscono una guarigione migliore.",,,,,
+GLIDE_SKILL_ID,Glide,Planata,,,,,
+GLIDE_SKILL_ID_DESC,"Allows Hector to glide in midair, allowing him to reach unreachable places otherwise.","Permette ad Hector di planare a mezz'aria.
+In questo modo, si posso raggiungere luoghi altrimenti inaccessibili.",,,,,
 ,,,,,,,
 --Bestiary--,,,,,,,
 NAME_LABEL,Name,Nome,Nombre,Nome,,Naam,الأسم
@@ -2179,8 +2260,8 @@ STATS_LABEL,Stats,Parametri,Estadísticas,Atributos,,Status,
 ELEMENTAL_LABEL,Elemental affinity,Affinità elementale,Afinidad elemental,Afinidade elemental,,Elementale affiniteit,
 TOLERANCES_LABEL,Tolerances,Tolleranze,Tolerancias,Tolerâncias,,Toleranties,التحمل
 WEAKNESSES_LABEL,Weaknesses,Debolezze,Debilidades,Fraquezas,,Zwakheden,نقاط الضعف
-KILLED_LABEL,Killed,Uccisi,Matados,Abatimentos,,Vermoord,تم قتل
+KILLED_LABEL,Killed,Uccisi,Matados,Abatidos,,Vermoord,تم قتل
 ,,,,,,,
 --Indigo Temple Fountain interaction--,,,,,,,
-GEMSTONE_REQUIRED,A gemstone can be inserted here.,Si può inserire una gemma qui.,,,,,
-GEMSTONE_INSERTED,The gemstone has been inserted.,È stata inserita la gemma.,,,,,
+GEMSTONE_REQUIRED,A gemstone can be inserted here.,Si può inserire una gemma qui.,Una gema puede ser insertada aquí.,Uma gema pode ser inserida aqui.,,Een edelsteen kan hier in gestoken worden.,
+GEMSTONE_INSERTED,The gemstone has been inserted.,È stata inserita la gemma.,La gema ha sido insertada.,A gema foi colocada.,,Een edelsteen is hier ingestoken.,

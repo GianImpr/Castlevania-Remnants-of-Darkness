@@ -48,6 +48,7 @@ sound_effects = Array[ExtResource("5_q4suk")]([SubResource("Resource_ka81q"), Su
 metadata/_custom_type_script = "uid://c8movixc3pc7b"
 
 [node name="RockShatter" type="Node2D" unique_id=639978895 node_paths=PackedStringArray("delete_timer", "sound", "flame_texture")]
+z_index = 1
 script = ExtResource("1_ka81q")
 base_velocity = Vector2(350, -340)
 delete_timer = NodePath("DeleteTimer")

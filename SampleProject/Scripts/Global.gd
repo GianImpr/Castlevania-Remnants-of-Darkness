@@ -7,6 +7,7 @@ static var camera: GameCamera = null
 static var item_box = null
 static var enemy_box = null
 static var tutorial_box: HintBox = null
+static var description_box: HintBox = null
 static var inventory = null
 static var tutorial_screen: TutorialScreen = null
 static var fade_screen: FadeScreen = null

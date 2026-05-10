@@ -33,6 +33,7 @@ enum DropIndex {
 @export var drops: VBoxContainer
 @export var tolerances: HBoxContainer
 @export var weaknesses: HBoxContainer
+var stylebox_empty: StyleBoxFlat = StyleBoxFlat.new()
 
 var current_screen: BestiaryScreen
 var current_button_index: int = 0
@@ -45,6 +46,7 @@ var transition_tween: Tween
 const TWEEN_DURATION: float = 0.1
 
 func enter():
+	stylebox_empty.bg_color = Color.DARK_RED
 	resetBestiaryMenu()
 	animation.play_backwards("change")
 	initializeEnemyList()
@@ -80,6 +82,11 @@ func initializeEnemyList() -> void:
 		button.custom_minimum_size = MINIMUM_BUTTON_SIZE
 		button.flat = true
 		button.desired_state = self
+		button.add_theme_stylebox_override("normal", stylebox_empty)
+		button.add_theme_stylebox_override("pressed", stylebox_empty)
+		button.add_theme_stylebox_override("hover", stylebox_empty)
+		button.add_theme_stylebox_override("disabled", stylebox_empty)
+		button.add_theme_stylebox_override("focus", stylebox_empty)
 		button.focus_entered.connect(on_focused.bind(button))
 		button.pressed.connect(on_button_pressed.bind(button))
 		enemy_list.add_child(button)

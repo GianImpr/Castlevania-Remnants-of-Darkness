@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://b8cg3xh84xly"]
+
+[ext_resource type="Script" uid="uid://doxsuck8pt6gf" path="res://SampleProject/Scripts/System/hint_box.gd" id="1_5qe38"]
+[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="2_mfckp"]
+[ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="3_mfckp"]
+[ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="3_xl3hw"]
+[ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="4_yqb6b"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_mk070"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_jhhkn"]
+[ext_resource type="AudioStream" uid="uid://cr25eu7ste64s" path="res://assets/sounds/Effects/Miscellaneous/TutorialPopup.MP3" id="8_mfckp"]
+
+[sub_resource type="Theme" id="Theme_0pcjg"]
+default_font = ExtResource("2_mfckp")
+default_font_size = 32
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xl3hw"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("3_mfckp")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+
+[sub_resource type="Animation" id="Animation_ksj4u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_46ghl"]
+resource_name = "popup"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4o5me"]
+_data = {
+&"RESET": SubResource("Animation_ksj4u"),
+&"popup": SubResource("Animation_46ghl")
+}
+
+[sub_resource type="Resource" id="Resource_xl3hw"]
+script = ExtResource("6_jhhkn")
+Tag = "open"
+stream = ExtResource("8_mfckp")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_yqb6b"]
+script = ExtResource("5_mk070")
+sound_effects = Array[ExtResource("6_jhhkn")]([SubResource("Resource_xl3hw")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[node name="DescriptionBox" type="Control" unique_id=1380068158 node_paths=PackedStringArray("label", "timer", "sound", "animation")]
+process_mode = 3
+z_index = 240
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_5qe38")
+label = NodePath("CenterContainer/PanelContainer/RichTextLabelWithButtons")
+timer = NodePath("Timer")
+sound = NodePath("PolyphonicMenuAudio")
+animation = NodePath("AnimationPlayer")
+is_description_box = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1379949976]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -438.0
+offset_top = -138.0
+offset_right = 438.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 1e-05)
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1786923750]
+layout_mode = 2
+theme = SubResource("Theme_0pcjg")
+theme_override_styles/panel = SubResource("StyleBoxTexture_xl3hw")
+
+[node name="RichTextLabelWithButtons" type="RichTextLabel" parent="CenterContainer/PanelContainer" unique_id=2117390232]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][color=yellow]New stage: Moonlit Waterway[/color]
+A giant full new stage which features plenty of enemies, puzzles and exploration.
+[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_xl3hw")
+new_text = "[center][color=yellow]New stage: Moonlit Waterway[/color]
+A giant full new stage which features plenty of enemies, puzzles and exploration.
+[/center]"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1025186616]
+libraries/ = SubResource("AnimationLibrary_4o5me")
+
+[node name="Timer" type="Timer" parent="." unique_id=540583015]
+wait_time = 5.0
+one_shot = true
+
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="." unique_id=2092078718]
+volume_db = -4.0
+script = ExtResource("4_yqb6b")
+audio_library = SubResource("Resource_yqb6b")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

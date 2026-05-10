@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bk3yytbku0xg2" path="res://assets/sounds/Menu/PopUp.MP3" id="9_4neb5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r3cjd"]
+content_margin_bottom = 5.0
 texture = ExtResource("1_5cxfp")
 texture_margin_left = 20.0
 texture_margin_top = 10.0
@@ -215,7 +216,7 @@ theme_override_constants/separation = -3
 
 [node name="Required" type="Label" parent="PanelContainer/Stats" unique_id=1660805167]
 clip_children = 1
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = SubResource("Theme_urf23")
 text = "ITEM_INFO_LABEL"

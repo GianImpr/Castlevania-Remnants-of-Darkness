@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	player_state = Global.player.state_machine.current_state
-	if can_sit and Input.is_action_just_pressed("up_arrow") and Global.player.is_on_floor() and not Input.is_action_pressed("jump") and (player_state is HectorIdle or player_state is HectorRunEnd):
+	if can_sit and Input.is_action_just_pressed("up_arrow") and Global.player.is_on_floor() and not Input.is_action_pressed("jump") and (player_state is HectorIdle or player_state is HectorRunEnd or player_state is HectorPose):
 		Global.player.tap_up.dismiss()
 		player_state.Transitioned.emit(player_state, "sit_down")
 		Global.player.facing_position = direction

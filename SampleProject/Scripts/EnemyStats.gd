@@ -51,7 +51,7 @@ func determineDrop(include_misc_items: bool) -> void:
 	const MIN_RANDOM_NUMBER: float = 0
 	const MAX_RANDOM_NUMBER: float = 1
 	const HEART_DROP_RATE: float = 0.25
-	const EVO_CRYSTAL_DROP_RATE: float = 0.2+1
+	const EVO_CRYSTAL_DROP_RATE: float = 0.2-1
 	const CONSEQUENT_EVO_CRYSTAL_SPRITE_OFFSET: Vector2 = Vector2(7,-3)
 	const MONEY_DROP_RATE: float = 0.3
 	const RED_SCARF_BONUS_MULTIPLIER: float = 1.3

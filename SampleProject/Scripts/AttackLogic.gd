@@ -161,6 +161,9 @@ func createHitEffect(body: Node2D) -> void:
 	var intersection: Rect2 = hitbox_rect.intersection(hurtbox_rect)
 	var effect_x = intersection.position.x+intersection.size.x/2
 	var effect_y = intersection.position.y+intersection.size.y/2
+	if effect_x == 0 and effect_y == 0:
+		effect_x = hurtbox.global_position.x-body_size.x/2
+		effect_y = hurtbox.global_position.y-body_size.y/2
 	var hit_effect
 	var using_affinity: bool = false
 	if Global.player.enabled_magic and Global.player.stats.Stats["MP"] >= AFFINITY_COST and self is not AguniLaurelHitbox:

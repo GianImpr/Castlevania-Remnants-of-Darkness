@@ -15,7 +15,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if can_forge and Global.player.state_machine.current_state is HectorIdle and Input.is_action_just_pressed("up_arrow"):
+	if can_forge and (Global.player.state_machine.current_state is HectorIdle or Global.player.state_machine.current_state is HectorPose) and Input.is_action_just_pressed("up_arrow"):
 		Global.player.stats.event_flags[event_id] = true
 		Global.player.tap_up.dismiss()
 		animation.play("forging")

@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://cjh21y4pcbsxx" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_TimeHeal.png" id="11_4bh4y"]
 [ext_resource type="Texture2D" uid="uid://cye7dklhjctcr" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_Glide.png" id="12_0jpl7"]
 [ext_resource type="PackedScene" uid="uid://b85mrm6ht3kgn" path="res://SampleProject/extra_scenes/effects/refreshing_air.tscn" id="13_aa5on"]
-[ext_resource type="Shader" uid="uid://ccbusj4pboktl" path="res://SampleProject/Shaders/flash.gdshader" id="13_j586m"]
 [ext_resource type="AudioStream" uid="uid://dmygyfdvwkny8" path="res://assets/sounds/InnocentDevils/Faerie/HealEffect.MP3" id="13_n2r0b"]
 [ext_resource type="Script" uid="uid://bt73nbebo6u4p" path="res://SampleProject/Scripts/InnocentDevils/Faerie/FaerieSpawn.gd" id="13_yowja"]
 [ext_resource type="Texture2D" uid="uid://dcx6np6gfaplj" path="res://assets/sprites/InnocentDevils/Skills/ID_skill_ResistFireIce.png" id="16_wjj4u"]
@@ -131,9 +130,6 @@ icon = ExtResource("17_53stp")
 metadata/_custom_type_script = "uid://bin0fbttt1atq"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j3ndj"]
-shader = ExtResource("13_j586m")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="Animation" id="Animation_yowja"]
 length = 0.001

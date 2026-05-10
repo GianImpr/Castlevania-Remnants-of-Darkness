@@ -90,5 +90,5 @@ func checkLearnedSkill() -> int:
 		var skill: IDSkill = skills[i]
 		if skill.learnable and Stats["AP"] >= skill.AP_needed and not skill.unlocked and skill.learnable_by_evolution_ID == get_parent().current_evolution:
 			skill.unlocked = true
-			Global.tutorial_box.popup(get_parent().id_name + " learned [color=yellow]" + skill.name + "[/color]", MESSAGE_POPUP_DURATION)
+			Global.tutorial_box.popup(get_parent().id_name + " learned [color=yellow]" + tr(skill.name) + "[/color].", MESSAGE_POPUP_DURATION)
 	return -1

@@ -291,6 +291,11 @@ id_defensive_mode={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194322,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+text={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
+]
+}
 
 [input_devices]
 
@@ -321,9 +326,10 @@ locale/translations=PackedStringArray("res://translation.es.translation", "res:/
 
 [physics]
 
+2d/physics_engine="GodotPhysics2D"
 common/physics_interpolation=true
-common/stretch/mode="viewport"
-common/stretch/scale_mode="integer"
+common/stretch/mode="canvas_items"
+common/stretch/scale_mode="keep"
 
 [rendering]
 

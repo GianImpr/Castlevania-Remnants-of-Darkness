@@ -61,7 +61,7 @@ const FOCUS_GAIN_RATIO: int = 10
 const GUARD_RECOVERY_TIME: int = 3
 const TOUGH_RING_GUARD_RECOVERY_TIME_MULTIPLIER_NORMAL: float = 1.33
 const TOUGH_RING_GUARD_RECOVERY_TIME_MULTIPLIER_CRAZY: float = 1.5
-const MAX_WEAPON_RANK = 1
+const MAX_WEAPON_RANK = 2
 const LONG_MERCY_INVINCIBILITY_DURATION: float = 1.7
 const SHORT_MERCY_INVINCIBILITY_DURATION: float = 0.8
 const MAX_GUARD_PRESS_PER_HALF_SECOND: int = 3
@@ -244,6 +244,7 @@ func _physics_process(delta: float) -> void:
 		innocent_devil.position = Vector2(position.x - 100 *facing_position,position.y)
 		
 	move_and_slide()
+	position = position.round()
 
 # Unused, comes from the Metroidvania System plugin test.
 # Might come in handy later on while reloading saves.
@@ -309,7 +310,7 @@ func expNeededToLvUp() -> int:
 func expNeededToRankUpWeapon() -> int:
 	var weapon_type: int = 4
 	var allowed_weapon_types: Array[Weapon.Type] = [Weapon.Type.SWORD, Weapon.Type.AXE, Weapon.Type.GREATSWORD, Weapon.Type.SPEAR, Weapon.Type.FIST]
-	var extra_level_for: Array[Weapon.Type] = [Weapon.Type.FIST]
+	var extra_level_for: Array[Weapon.Type] = []
 	if stats.equipment["weapon"] != 0:
 		weapon_type = stats.searchItemInCompendium(stats.equipment["weapon"], stats.weapon_compendium).type
 	var next_weapon_lv = stats.weapon_proficiency[weapon_type]["lv"]+1

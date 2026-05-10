@@ -688,6 +688,8 @@ default_font = ExtResource("11_op056")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urtv8"]
 bg_color = Color(0.341176, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jqemx"]
+
 [sub_resource type="Theme" id="Theme_uwbuc"]
 default_font = ExtResource("8_vu1np")
 default_font_size = 16
@@ -3164,6 +3166,7 @@ offset_left = 37.0
 offset_top = 166.0
 offset_right = 37.0
 offset_bottom = 166.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jqemx")
 follow_focus = true
 
 [node name="Control" type="Control" parent="MenuStateMachine/Items/Display/ScrollContainer" unique_id=1745115017]
@@ -4378,7 +4381,7 @@ metadata/_custom_type_script = "uid://jg6jw4e4n33d"
 clip_children = 1
 layout_mode = 2
 theme = SubResource("Theme_qd4hr")
-text = "LV"
+text = "MENU_LV"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Summons/Display/IDPanels/Entry/LevelLabel" unique_id=87048027]
@@ -4491,7 +4494,7 @@ offset_top = 8.0
 offset_right = 508.0
 offset_bottom = 60.0
 theme = SubResource("Theme_y1mo2")
-text = "SUMMON_LABEL"
+text = "SUMMON_BUTTON"
 
 [node name="TextureRect" type="TextureRect" parent="MenuStateMachine/Summons/Display/SummonLabel" unique_id=109655696]
 layout_mode = 0

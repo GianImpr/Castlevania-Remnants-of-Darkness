@@ -21,7 +21,7 @@ func enter():
 			animation.play("run_end", -1, 1.5)
 			await animation.animation_finished
 			animation.play(ANIM_NAME, BLEND, ANIM_SPEED)
-		elif not animation.is_playing():
+		elif not animation.is_playing() or animation.current_animation == "pose":
 			animation.play(ANIM_NAME, BLEND, ANIM_SPEED)
 	else:
 		has_to_land = true

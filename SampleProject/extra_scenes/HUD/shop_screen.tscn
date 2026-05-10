@@ -67,6 +67,11 @@ script = ExtResource("4_xqvsg")
 id = 8
 metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
 
+[sub_resource type="Resource" id="Resource_xddf5"]
+script = ExtResource("4_xqvsg")
+id = 87
+metadata/_custom_type_script = "uid://ckrs7a0y6d77i"
+
 [sub_resource type="Resource" id="Resource_oe3a5"]
 script = ExtResource("4_xqvsg")
 type = 1
@@ -963,29 +968,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_sxp3s")
-purchasable_items = Array[ExtResource("4_xqvsg")]([SubResource("Resource_xqvsg"), SubResource("Resource_c4ouk"), SubResource("Resource_2pq27"), SubResource("Resource_xgaue"), SubResource("Resource_oe3a5"), SubResource("Resource_ogxjy"), SubResource("Resource_4e0xj"), SubResource("Resource_ltn54"), SubResource("Resource_i7x1f"), SubResource("Resource_v0lvk"), SubResource("Resource_514lr"), SubResource("Resource_pvot7"), SubResource("Resource_cvd1v"), SubResource("Resource_5wiqe"), SubResource("Resource_qphcq"), SubResource("Resource_atiwv"), SubResource("Resource_ov5w2"), SubResource("Resource_7v0m5"), SubResource("Resource_x2utj"), SubResource("Resource_ekxcn")])
-preview = {
-"ADVENTURER_CLOAK": 1300,
-"Antivenom": 200,
-"BLOOD_STONE": 2000,
-"BRASS_KNUCKLES": 100,
-"BRONZE_SPEAR": 150,
-"BULLOVA": 300,
-"CLAYMORE": 300,
-"HEART_BROOCH": 1500,
-"LEATHER_ARMOR": 200,
-"LEATHER_HAT": 100,
-"MIRACLE_COIN": 1000,
-"POTION": 500,
-"RED_SCARF": 1500,
-"RING_OF_LIFE": 3000,
-"SANDALS": 100,
-"SHORT_SWORD": 100,
-"STONE_OF_ALCHEMY": 3000,
-"TONIC": 500,
-"Uncurse": 200,
-"WIZARD_CLOAK": 2500
-}
+purchasable_items = Array[ExtResource("4_xqvsg")]([SubResource("Resource_xqvsg"), SubResource("Resource_c4ouk"), SubResource("Resource_2pq27"), SubResource("Resource_xgaue"), SubResource("Resource_xddf5"), SubResource("Resource_oe3a5"), SubResource("Resource_ogxjy"), SubResource("Resource_4e0xj"), SubResource("Resource_ltn54"), SubResource("Resource_i7x1f"), SubResource("Resource_v0lvk"), SubResource("Resource_514lr"), SubResource("Resource_pvot7"), SubResource("Resource_cvd1v"), SubResource("Resource_5wiqe"), SubResource("Resource_qphcq"), SubResource("Resource_atiwv"), SubResource("Resource_ov5w2"), SubResource("Resource_7v0m5"), SubResource("Resource_x2utj"), SubResource("Resource_ekxcn")])
 scroll_container = NodePath("PanelContainer/ScrollContainer")
 gold_label = NodePath("../GoldValue")
 animation = NodePath("AnimationPlayer")
