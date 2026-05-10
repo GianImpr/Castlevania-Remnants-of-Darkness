@@ -45,6 +45,7 @@ Since this project does not contain monetization in any form, it's compliant to 
 
 ## Credits
 ### Sprites
+- Masked Dedede: [YouTube](https://youtube.com/@masked_dedede_?si=8iUp6s7aaM2Wm-NS)
 - Donoffrio
 - ShockPixels: [X](https://x.com/ShockPixels)
 - Darren Zcon: [YouTube](https://www.youtube.com/channel/UCeB4QINOUHNhy9zR6sh-2sA)
@@ -68,6 +69,9 @@ Since this project does not contain monetization in any form, it's compliant to 
 - Me: Italian, English
 - Masked Dedede: Spanish
 - Distopia: Portuguese (Brazil)
+- A2LAN: French [Carrd](https://a2lan.carrd.co/)
+- Toby_Dog7: Dutch [GameJolt](https://gamejolt.com/games/UnderTinge/450333)
+- Slukig: Russian
 
 ### Godot Addons
 - KoBeWi: [Metroidvania System](https://github.com/KoBeWi/Metroidvania-System)
