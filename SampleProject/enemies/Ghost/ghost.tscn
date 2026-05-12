@@ -207,9 +207,9 @@ speed = 100.0
 [node name="Bounce" type="Node" parent="StateMachine" unique_id=2056009830]
 script = ExtResource("9_ki8vk")
 
-[node name="Dying" type="Node" parent="StateMachine" unique_id=354531210 node_paths=PackedStringArray("area")]
+[node name="Dying" type="Node" parent="StateMachine" unique_id=354531210 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_ga7yx")
-area = NodePath("../../Area2D")
+hitbox = NodePath("../../Area2D/CollisionShape2D")
 dying_effect = ExtResource("11_ch1nl")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -181,7 +181,7 @@ func _process(delta: float) -> void:
 			
 		guard_recovery.start(actual_recovery_time)
 		
-	if stats.Stats["EXP"] >= expNeededToLvUp() and stats.Stats["LV"] < 99:
+	if stats.Stats["EXP"] >= expNeededToLvUp() and stats.Stats["LV"] < 1:
 		levelUp()
 		
 	if expNeededToRankUpWeapon() <= 0:

@@ -303,7 +303,7 @@ func stay_crouched():
 	Transitioned.emit(self, "crouch")
 	
 func can_double_jump():
-	if InputBuffer.is_action_press_buffered("jump") and player.can_double_jump:
+	if InputBuffer.is_action_press_buffered("jump") and player.can_double_jump and false:
 		Transitioned.emit(self, "double_jump")
 		if self is HectorDamageAir:
 			player.is_hurt = false
