@@ -4971,6 +4971,7 @@ adjustment_enabled = true
 script = ExtResource("1_xdpfu")
 animation = NodePath("AnimationPlayer")
 difficulty = 1
+update_player_compendium = true
 world_environment = NodePath("WorldEnvironment")
 weapon_compendium = Array[ExtResource("2_6ajcc")]([SubResource("Resource_m4xeh"), SubResource("Resource_onxks"), SubResource("Resource_a1d76"), SubResource("Resource_nv7yp"), SubResource("Resource_bxxw3"), SubResource("Resource_etedp"), SubResource("Resource_3pxt5"), SubResource("Resource_kt2e1"), SubResource("Resource_cm3lq"), SubResource("Resource_88uus"), SubResource("Resource_w7bsh"), SubResource("Resource_o3ohi"), SubResource("Resource_ve6hm"), SubResource("Resource_eewh7"), SubResource("Resource_qwgas"), SubResource("Resource_8tx5s"), SubResource("Resource_8fi0q"), SubResource("Resource_2kmxy"), SubResource("Resource_5suw8"), SubResource("Resource_2v3qx"), SubResource("Resource_s0um6"), SubResource("Resource_b8m15"), SubResource("Resource_sk44n")])
 item_compendium = SubResource("Resource_ksmb3")
@@ -5121,10 +5122,10 @@ audio_library = SubResource("Resource_k7wl7")
 [node name="HUD2" parent="UI" unique_id=250061 instance=ExtResource("257_30jyd")]
 
 [node name="ItemBox" parent="UI" unique_id=798629577 instance=ExtResource("7_11rec")]
-offset_left = 16.0
-offset_top = 424.0
-offset_right = 16.0
-offset_bottom = 424.0
+offset_left = 12.0
+offset_top = -3.0
+offset_right = 12.0
+offset_bottom = -3.0
 
 [node name="EnemyBox" parent="UI" unique_id=1984694917 instance=ExtResource("13_uka3k")]
 offset_left = -16.0

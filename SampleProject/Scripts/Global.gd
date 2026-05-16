@@ -4,7 +4,7 @@ class_name StaticGlobal
 static var player: HectorPlayer = null
 static var game: Game = null
 static var camera: GameCamera = null
-static var item_box = null
+static var item_box: ItemBox = null
 static var enemy_box = null
 static var tutorial_box: HintBox = null
 static var description_box: HintBox = null

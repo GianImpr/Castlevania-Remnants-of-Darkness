@@ -86,6 +86,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		
 	idle_timer.stop()
 	flash_timer.stop()
+	var item_type: ItemBox.Type
 	if not auto_equip:
 		Global.player.stats.addItem(id, getInventory())
 	else:
@@ -100,26 +101,26 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			#Still need the logic to update player stats
 	if type == ItemType.ITEM:
 		sound.play_sound_effect_from_library("item")
-		Global.item_box.changeColor(ItemBox.Type.BLUE)
+		item_type = ItemBox.Type.BLUE
 	elif type == ItemType.SKILL or type == ItemType.ARTIFACT or type == ItemType.RELIC:
 		var popup = boost_message.instantiate()
 		popup.get_child(0).frame = 3
 		Global.player.sprite.enable_glow = true
 		Global.player.add_child(popup)
 		if type == ItemType.SKILL:
-			Global.item_box.changeColor(ItemBox.Type.ORANGE)
+			item_type = ItemBox.Type.ORANGE
 		elif type == ItemType.RELIC:
-			Global.item_box.changeColor(ItemBox.Type.PURPLE)
+			item_type = ItemBox.Type.PURPLE
 			if not Global.player.unlocked_magic:
 				Global.player.unlockMagic()
 		else:
-			Global.item_box.changeColor(ItemBox.Type.RED)
+			item_type = ItemBox.Type.RED
 	else:
 		sound.play_sound_effect_from_library("equip")
-		Global.item_box.changeColor(0)
-	Global.item_box.visible = true
-	Global.item_box.label.text = Global.player.stats.searchItemInCompendium(id, getCompendium(type))[getItemName(type)]
-	Global.item_box.timer.start()
+	var item_entry = Global.player.stats.searchItemInCompendium(id, getCompendium(type))
+	var item_name: String = item_entry[getItemName(type)]
+	var item_icon: Texture2D = item_entry.icon
+	Global.item_box.addEntry(item_name, item_type, item_icon)
 	picked.emit()
 	animation.play("picked")
 	

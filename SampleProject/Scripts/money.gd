@@ -39,9 +39,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_parent() is TileMapLayer:
 		return 
 	sound.play_sound_effect_from_library("collect")
-	Global.item_box.changeColor(0)
-	Global.item_box.visible = true
-	Global.item_box.label.text = "$" + str(coin_data[type].value) 
+	Global.item_box.addEntry("$" + str(coin_data[type].value), ItemBox.Type.BLUE, null)
 	Global.player.stats.Stats["GOLD"] += coin_data[type].value
-	Global.item_box.timer.start()
 	animation.play("picked")

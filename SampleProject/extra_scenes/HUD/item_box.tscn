@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2k1tvl70buqg"]
+[gd_scene format=3 uid="uid://2k1tvl70buqg"]
 
 [ext_resource type="Script" uid="uid://c18edvlm23c7c" path="res://SampleProject/Scripts/System/item_box.gd" id="1_d8mr8"]
 [ext_resource type="Texture2D" uid="uid://gbcs3e2yhpky" path="res://assets/sprites/HUD/Containers/NameBox/ItemBox.png" id="2_qvc4r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ovg0jielsica" path="res://assets/sprites/HUD/Containers/NameBox/RelicBox.png" id="4_nvhjh"]
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="5_0uekx"]
 [ext_resource type="Texture2D" uid="uid://cf86js04xbhqi" path="res://assets/sprites/HUD/Containers/NameBox/ArtifactBox.png" id="5_xd4x8"]
+[ext_resource type="Texture2D" uid="uid://caw8updlmyepd" path="res://assets/sprites/Items/InventoryIcons/Bullova_New.png" id="7_f3qut"]
 
 [sub_resource type="Theme" id="Theme_haqnl"]
 default_font = ExtResource("5_0uekx")
@@ -18,28 +19,86 @@ texture_margin_left = 16.0
 texture_margin_top = 4.0
 texture_margin_right = 16.0
 
-[node name="ItemBox" type="Control" node_paths=PackedStringArray("label", "timer")]
+[sub_resource type="Animation" id="Animation_mevbm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_f3qut"]
+resource_name = "show"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 2.9333334, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deleteTopEntry"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mevbm"]
+_data = {
+&"RESET": SubResource("Animation_mevbm"),
+&"show": SubResource("Animation_f3qut")
+}
+
+[node name="ItemBox" type="Control" unique_id=435188266 node_paths=PackedStringArray("label", "icon", "animation", "margin_container", "vbox_container")]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_right = -432.0
-offset_bottom = -240.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 scale = Vector2(2, 2)
 script = ExtResource("1_d8mr8")
-label = NodePath("MarginContainer2/PanelContainer/Label")
-timer = NodePath("Timer")
+label = NodePath("VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/Label")
+icon = NodePath("VBoxContainer/MarginContainer/PanelContainer/HBoxContainer/Icon")
+animation = NodePath("VBoxContainer/MarginContainer/AnimationPlayer")
 textures = Array[CompressedTexture2D]([ExtResource("2_qvc4r"), ExtResource("3_v843h"), ExtResource("4_nvhjh"), ExtResource("5_xd4x8")])
+margin_container = NodePath("VBoxContainer/MarginContainer")
+vbox_container = NodePath("VBoxContainer")
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=868387789]
+layout_mode = 0
+offset_left = 0.5
+offset_top = -260.5
+offset_right = 86.5
+offset_bottom = -0.5
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=761813088]
 custom_minimum_size = Vector2(41, 22)
-layout_mode = 1
-offset_right = 98.0
-offset_bottom = 40.0
+layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MarginContainer" unique_id=298821622]
 custom_minimum_size = Vector2(41, 22)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -47,12 +106,16 @@ size_flags_vertical = 0
 theme = SubResource("Theme_haqnl")
 theme_override_styles/panel = SubResource("StyleBoxTexture_65o1e")
 
-[node name="Label" type="Label" parent="MarginContainer2/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/PanelContainer" unique_id=1086000639]
 layout_mode = 2
-text = "Bone Scimitar"
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
-one_shot = true
+[node name="Icon" type="TextureRect" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=1153845064]
+layout_mode = 2
+texture = ExtResource("7_f3qut")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=1548795653]
+layout_mode = 2
+text = "Bullova"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/MarginContainer" unique_id=1152166338]
+libraries/ = SubResource("AnimationLibrary_mevbm")
