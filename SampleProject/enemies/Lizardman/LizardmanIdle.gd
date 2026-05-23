@@ -15,7 +15,6 @@ func enter():
 		get_tree().create_timer(randf_range(MIN_DURATION, MAX_DURATION), false).timeout.connect(Transitioned.emit.bind(self, decideAction()))
 	else:
 		animation.play("idle")
-		player.should_guard = true
 		phase = 0
 	
 func exit():

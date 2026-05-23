@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://y1grse4c552u"]
+
+[ext_resource type="Script" uid="uid://crfh3diiu0273" path="res://SampleProject/Scripts/Stage_elements/flipping_platform.gd" id="1_p7kip"]
+[ext_resource type="Texture2D" uid="uid://bw70cwld6fi83" path="res://assets/sprites/Objects/Platforms/FlippingPlatform.png" id="2_ao8a2"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_k06qs"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_at6k5"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="5_k6dkr"]
+[ext_resource type="AudioStream" uid="uid://ctvwndpu3onmd" path="res://assets/sounds/Objects/MovingPlatform.wav" id="6_8y8ph"]
+
+[sub_resource type="Animation" id="Animation_slj5d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fxaww"]
+resource_name = "flipping"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.14999999, 0.19999999, 0.25, 0.29999998, 0.35, 0.39999998, 0.45, 0.5, 0.54999995),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.14999999, 0.54999995),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["flip"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k06qs"]
+_data = {
+&"RESET": SubResource("Animation_slj5d"),
+&"flipping": SubResource("Animation_fxaww")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_at6k5"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6dkr"]
+size = Vector2(63.5, 5)
+
+[sub_resource type="Resource" id="Resource_m1c0m"]
+script = ExtResource("5_k6dkr")
+Tag = "flip"
+stream = ExtResource("6_8y8ph")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_jydp6"]
+script = ExtResource("4_at6k5")
+sound_effects = Array[ExtResource("5_k6dkr")]([SubResource("Resource_m1c0m")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[node name="FlippingPlatform" type="StaticBody2D" unique_id=58467302 node_paths=PackedStringArray("area", "animation")]
+collision_mask = 0
+script = ExtResource("1_p7kip")
+area = NodePath("Detection")
+animation = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=209142910]
+scale = Vector2(2, 2)
+texture = ExtResource("2_ao8a2")
+hframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1109095903]
+libraries/ = SubResource("AnimationLibrary_k06qs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1000445647]
+visible = false
+shape = SubResource("RectangleShape2D_at6k5")
+one_way_collision = true
+
+[node name="Detection" type="Area2D" parent="." unique_id=1077400216]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" unique_id=2037076166]
+visible = false
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_k6dkr")
+one_way_collision = true
+debug_color = Color(0.9610434, 1.1551381e-06, 0.51534206, 0.41960785)
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=113022148]
+volume_db = -15.0
+script = ExtResource("3_k06qs")
+audio_library = SubResource("Resource_jydp6")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"

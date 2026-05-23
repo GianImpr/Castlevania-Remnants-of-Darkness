@@ -2923,6 +2923,7 @@ skill_name = "SNEAK_ATTACK"
 skill_description = "SNEAK_ATTACK_DESC"
 type = 2
 cost_type = 3
+cost_value = 50
 command_input = Array[String](["up_arrow", "circle"])
 command_input_serialized = " [[Up]] + [[Circle]]"
 icon = ExtResource("199_fg1yf")
@@ -2945,6 +2946,7 @@ skill_name = "WHIRLWIND"
 skill_description = "WHIRLWIND_DESC"
 type = 2
 cost_type = 3
+cost_value = 70
 command_input = Array[String](["crouch", "circle"])
 command_input_serialized = " [[Down]] + [[Circle]]"
 icon = ExtResource("206_keox5")
@@ -5026,7 +5028,7 @@ save_rooms = Array[Dictionary]([{
 "path": "Waterway/yellow_save_room.tscn"
 }])
 element_icons = Array[CompressedTexture2D]([ExtResource("314_0qc47"), ExtResource("315_mu0f5"), ExtResource("316_hniq0"), ExtResource("317_7u0qt"), ExtResource("318_3sidl"), ExtResource("319_umdd8"), ExtResource("320_gxpmc"), ExtResource("321_m20fq"), ExtResource("322_dkwmf"), ExtResource("323_236bd"), ExtResource("324_cic6f"), ExtResource("325_0a8mu")])
-starting_map = "FirstLevel/Woods.tscn"
+starting_map = "Debug/debug_1.tscn"
 
 [node name="Player" parent="." unique_id=2045510482 instance=ExtResource("5_81k16")]
 z_index = 5

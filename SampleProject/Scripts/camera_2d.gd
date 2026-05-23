@@ -5,6 +5,7 @@ class_name GameCamera
 
 const DEFAULT_RANDOM_STRENGTH: float = 10.0
 var shake_strength: float = 0.0
+var drag_camera_tween: Tween
 signal camera_moved
 signal camera_moved_back
 
@@ -40,3 +41,14 @@ func moveCamera(to_offset: Vector2, duration: float) -> void:
 	moving_tween.tween_property(self, "offset", Vector2.ZERO, MOVE_DURATION)
 	await moving_tween.finished
 	camera_moved_back.emit()
+
+## Moves the camera in the specified offset position.
+## As opposed to [code]moveCamera()[/code], it doesn't move back
+## to its original position.
+func dragCamera(to: Vector2, duration: float = 0.5) -> void:
+	if drag_camera_tween:
+		drag_camera_tween.kill()
+	drag_camera_tween = get_tree().create_tween()
+	drag_camera_tween.set_trans(Tween.TRANS_SINE)
+	drag_camera_tween.set_ease(Tween.EASE_IN_OUT)
+	drag_camera_tween.tween_property(self, "position", to, duration)

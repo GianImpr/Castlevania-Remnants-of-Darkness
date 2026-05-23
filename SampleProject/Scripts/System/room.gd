@@ -18,19 +18,7 @@ func _ready() -> void:
 
 	Global.camera.drag_vertical_enabled = not center_camera
 	
-	if apply_limits:
-		if camera_limit_left == 0 and camera_limit_right == 0:
-			camera_limit_left = 0
-			camera_limit_right = 864
-		
-		if camera_limit_bottom == 0 and camera_limit_top == 0:
-			camera_limit_top = 0
-			camera_limit_bottom = 480
-			
-		Global.camera.limit_left = camera_limit_left
-		Global.camera.limit_right = camera_limit_right
-		Global.camera.limit_top = camera_limit_top
-		Global.camera.limit_bottom = camera_limit_bottom
+	applyCameraLimits()
 		
 	if (Global.music_player.stream.resource_name != stage_music or Global.music_player.volume_db == -80 or not Global.music_player.playing) and change_music:
 		Global.music_player.stream.resource_name = stage_music
@@ -56,3 +44,18 @@ func _ready() -> void:
 			2:
 				Engine.max_fps = 0
 	RenderingServer.viewport_set_snap_2d_transforms_to_pixel(Global.get_viewport().get_viewport_rid(), not disable_pixel_snap)
+
+func applyCameraLimits() -> void:
+	if apply_limits:
+		if camera_limit_left == 0 and camera_limit_right == 0:
+			camera_limit_left = 0
+			camera_limit_right = 864
+		
+		if camera_limit_bottom == 0 and camera_limit_top == 0:
+			camera_limit_top = 0
+			camera_limit_bottom = 480
+			
+		Global.camera.limit_left = camera_limit_left
+		Global.camera.limit_right = camera_limit_right
+		Global.camera.limit_top = camera_limit_top
+		Global.camera.limit_bottom = camera_limit_bottom

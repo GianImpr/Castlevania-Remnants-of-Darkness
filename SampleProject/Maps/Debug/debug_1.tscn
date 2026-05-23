@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://cra3c457tg2j7" path="res://SampleProject/Scripts/System/room.gd" id="1_m4qdj"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_1u5xp"]
 [ext_resource type="Texture2D" uid="uid://b4d0xyxsq3tff" path="res://assets/sprites/Tiles/Debug.png" id="3_2ur68"]
-[ext_resource type="PackedScene" uid="uid://drs0b6varamj6" path="res://SampleProject/enemies/FrozenShade/frozen_shade.tscn" id="4_ejr6v"]
+[ext_resource type="PackedScene" uid="uid://y1grse4c552u" path="res://SampleProject/extra_scenes/stage_elements/flipping_platform.tscn" id="4_ejr6v"]
+[ext_resource type="PackedScene" uid="uid://ehj36n74b1a4" path="res://SampleProject/Objects/switch.tscn" id="5_s6umn"]
 
 [sub_resource type="Gradient" id="Gradient_2prqw"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
@@ -127,5 +128,11 @@ z_index = -1
 tile_map_data = PackedByteArray("AAALAAgAAAADAAAAAAAMAAgAAAADAAAAAAANAAgAAAADAAAAAAAOAAgAAAADAAAAAAARAAoAAAADAAAAAAASAAoAAAADAAAAAAATAAoAAAADAAAAAAAHAAYAAAADAAAAAAAIAAYAAAADAAAAAAAJAAYAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_t01tf")
 
-[node name="FrozenShade" parent="." unique_id=272423195 instance=ExtResource("4_ejr6v")]
-position = Vector2(272, 262)
+[node name="FlippingPlatform" parent="." unique_id=58467302 instance=ExtResource("4_ejr6v")]
+position = Vector2(646, 205)
+
+[node name="FlippingPlatform2" parent="." unique_id=1804459624 instance=ExtResource("4_ejr6v")]
+position = Vector2(777, 274)
+
+[node name="Switch" parent="." unique_id=2081535327 instance=ExtResource("5_s6umn")]
+position = Vector2(534, 432)

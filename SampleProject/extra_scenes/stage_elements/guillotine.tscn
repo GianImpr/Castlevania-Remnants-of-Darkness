@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://c3rpde7kya5ee"]
+
+[ext_resource type="Script" uid="uid://4wqnvnabigyr" path="res://SampleProject/Scripts/Stage_elements/hazard.gd" id="1_n4wv2"]
+[ext_resource type="Texture2D" uid="uid://c4gdcx3cjbkyt" path="res://assets/sprites/Objects/Hazards/Guillotine/GuillotineChain.png" id="1_o1sg0"]
+[ext_resource type="Texture2D" uid="uid://dgye5wwsqi4hs" path="res://assets/sprites/Objects/Hazards/Guillotine/GuillotineHazard.png" id="2_n4wv2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1sg0"]
+size = Vector2(32.5, 80)
+
+[sub_resource type="Animation" id="Animation_o1sg0"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_n4wv2"]
+resource_name = "fall"
+length = 2.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainEdge:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.8666667, 1.3, 2.3),
+"transitions": PackedFloat32Array(2, 0.5, 2, 2, 1, 2),
+"update": 0,
+"values": [Vector2(0, -268), Vector2(0, 0), Vector2(0, -32), Vector2(0, 0), Vector2(0, 0), Vector2(0, -268)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SecondChain:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.8666667, 1.3, 2.3),
+"transitions": PackedFloat32Array(2, 0.5, 2, 2, 1, 2),
+"update": 0,
+"values": [Vector2(19, 431), Vector2(19, 183), Vector2(19, 214), Vector2(19, 183), Vector2(19, 183), Vector2(19, 431)]
+}
+
+[sub_resource type="Animation" id="Animation_74t3g"]
+resource_name = "fall"
+length = 2.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainEdge:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1, 1.2, 1.3666667, 1.8, 2.8),
+"transitions": PackedFloat32Array(2, 0.5, 2, 2, 1, 2),
+"update": 0,
+"values": [Vector2(0, -268), Vector2(0, 0), Vector2(0, -32), Vector2(0, 0), Vector2(0, 0), Vector2(0, -268)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SecondChain:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1, 1.2, 1.3666667, 1.8, 2.8),
+"transitions": PackedFloat32Array(2, 0.5, 2, 2, 1, 2),
+"update": 0,
+"values": [Vector2(19, 431), Vector2(19, 183), Vector2(19, 214), Vector2(19, 183), Vector2(19, 183), Vector2(19, 431)]
+}
+
+[sub_resource type="Animation" id="Animation_h3lej"]
+resource_name = "fall"
+length = 2.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainEdge:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.26666668, 0.76666665, 0.9666667, 1.1333333, 1.5666666, 2.5666666),
+"transitions": PackedFloat32Array(2, 0.5, 2, 2, 1, 2),
+"update": 0,
+"values": [Vector2(0, -268), Vector2(0, 0), Vector2(0, -32), Vector2(0, 0), Vector2(0, 0), Vector2(0, -268)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SecondChain:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.26666668, 0.76666665, 0.9666667, 1.1333333, 1.5666666, 2.5666666),
+"transitions": PackedFloat32Array(2, 0.5, 2, 2, 1, 2),
+"update": 0,
+"values": [Vector2(19, 431), Vector2(19, 183), Vector2(19, 214), Vector2(19, 183), Vector2(19, 183), Vector2(19, 431)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_74t3g"]
+_data = {
+&"RESET": SubResource("Animation_o1sg0"),
+&"fall": SubResource("Animation_n4wv2"),
+&"fall_alt": SubResource("Animation_74t3g"),
+&"fall_alt_2": SubResource("Animation_h3lej")
+}
+
+[node name="Guillotine" type="StaticBody2D" unique_id=149299745 node_paths=PackedStringArray("area")]
+script = ExtResource("1_n4wv2")
+area = NodePath("MainEdge/Area2D")
+percent_damage = 25
+ignore_defense = true
+
+[node name="MainEdge" type="Node2D" parent="." unique_id=1836045772]
+position = Vector2(0, -268)
+
+[node name="MainChain" type="Sprite2D" parent="MainEdge" unique_id=1696728969]
+texture_repeat = 2
+position = Vector2(0, -224)
+scale = Vector2(2, 2)
+texture = ExtResource("1_o1sg0")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 448)
+
+[node name="Edge" type="Sprite2D" parent="MainEdge" unique_id=1442563469]
+position = Vector2(0, 672)
+scale = Vector2(2, 2)
+texture = ExtResource("2_n4wv2")
+
+[node name="Area2D" type="Area2D" parent="MainEdge" unique_id=1613503736]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainEdge/Area2D" unique_id=1022182271]
+visible = false
+position = Vector2(-1.25, 299)
+shape = SubResource("RectangleShape2D_o1sg0")
+
+[node name="SecondChain" type="Sprite2D" parent="." unique_id=847659319]
+position = Vector2(19, 431)
+scale = Vector2(2, 2)
+texture = ExtResource("1_o1sg0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=799264387]
+libraries/ = SubResource("AnimationLibrary_74t3g")
+autoplay = &"fall"

@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://b4uidtovb488j"]
+
+[ext_resource type="Texture2D" uid="uid://c4gdcx3cjbkyt" path="res://assets/sprites/Objects/Hazards/Guillotine/GuillotineChain.png" id="1_hq53e"]
+[ext_resource type="Script" uid="uid://4wqnvnabigyr" path="res://SampleProject/Scripts/Stage_elements/hazard.gd" id="1_xwtrw"]
+[ext_resource type="Texture2D" uid="uid://dbp85v2gvg81f" path="res://assets/sprites/Objects/Hazards/Guillotine/AxeHazard.png" id="2_xwtrw"]
+
+[sub_resource type="Animation" id="Animation_hq53e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xwtrw"]
+resource_name = "swing"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.6981317007977318, 0.6981317007977318]
+}
+
+[sub_resource type="Animation" id="Animation_4wb76"]
+resource_name = "swing"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.6981317007977318, -0.6981317007977318]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4wb76"]
+_data = {
+&"RESET": SubResource("Animation_hq53e"),
+&"swing": SubResource("Animation_xwtrw"),
+&"swing_backwards": SubResource("Animation_4wb76")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isjxm"]
+size = Vector2(81, 39.000008)
+
+[node name="AxeHazard" type="StaticBody2D" unique_id=1502476801 node_paths=PackedStringArray("area")]
+script = ExtResource("1_xwtrw")
+area = NodePath("Sprite/Edge/Area2D")
+percent_damage = 25
+ignore_defense = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=241995225]
+libraries/ = SubResource("AnimationLibrary_4wb76")
+autoplay = &"swing"
+
+[node name="Sprite" type="Node2D" parent="." unique_id=2048216772]
+
+[node name="Chain" type="Sprite2D" parent="Sprite" unique_id=373097070]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hq53e")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 224)
+
+[node name="Edge" type="Sprite2D" parent="Sprite" unique_id=2142841864]
+position = Vector2(0, 584)
+scale = Vector2(2, 2)
+texture = ExtResource("2_xwtrw")
+offset = Vector2(0, 44)
+
+[node name="Area2D" type="Area2D" parent="Sprite/Edge" unique_id=2067604752]
+position = Vector2(-4.5, -233)
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Edge/Area2D" unique_id=38237981]
+visible = false
+position = Vector2(8.5, 172.5)
+shape = SubResource("RectangleShape2D_isjxm")

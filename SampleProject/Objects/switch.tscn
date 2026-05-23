@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://ehj36n74b1a4"]
+
+[ext_resource type="Script" uid="uid://b058pxnhr434m" path="res://SampleProject/Scripts/Stage_elements/switch.gd" id="1_lulx8"]
+[ext_resource type="Texture2D" uid="uid://c2xqqqcwte7rm" path="res://assets/sprites/Objects/Other/Switch.png" id="2_wkvhf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jpr3"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oaehw"]
+size = Vector2(52, 39)
+
+[sub_resource type="Animation" id="Animation_0euhe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Detection:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mly4o"]
+resource_name = "press"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, -8), Vector2(0, -4), Vector2(0, 6), Vector2(0, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Detection:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wkvhf"]
+resource_name = "press_instantl"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Detection:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tyspt"]
+_data = {
+&"RESET": SubResource("Animation_0euhe"),
+&"press": SubResource("Animation_mly4o"),
+&"press_instantly": SubResource("Animation_wkvhf")
+}
+
+[node name="Switch" type="StaticBody2D" unique_id=2081535327 node_paths=PackedStringArray("animation")]
+collision_mask = 0
+script = ExtResource("1_lulx8")
+animation = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1945961196]
+scale = Vector2(2, 2)
+texture = ExtResource("2_wkvhf")
+hframes = 4
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=820180973]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_5jpr3")
+
+[node name="Detection" type="Area2D" parent="." unique_id=1801371813]
+collision_layer = 0
+collision_mask = 2
+
+[node name="DetectionBox" type="CollisionShape2D" parent="Detection" unique_id=1556818133]
+visible = false
+position = Vector2(-1, -3.5)
+shape = SubResource("RectangleShape2D_oaehw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=320037549]
+libraries/ = SubResource("AnimationLibrary_tyspt")
+
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
