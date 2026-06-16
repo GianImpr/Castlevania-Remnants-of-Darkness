@@ -9,7 +9,7 @@ class_name Fountain
 @export var first_event_flag: int
 @export var area: Area2D
 var can_interact: bool = false
-const camera_offset_list: Array[Vector2] = [Vector2(432, 421), Vector2(528, 900)]
+const camera_offset_list: Array[Vector2] = [Vector2(432, 421), Vector2(528, 858), Vector2(528,421), Vector2(528,421)]
 var doors: Array[CombatDoor] = [yellow_door, green_door, blue_door, orange_door]
 
 enum Events {

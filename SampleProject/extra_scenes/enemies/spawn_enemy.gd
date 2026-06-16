@@ -7,6 +7,7 @@ class_name SpawnEnemy
 @export var enemy_properties: Array[Dictionary] = [{"name": "", "value": false}]
 @export var spawn_instantly: bool
 @export var LV_bonus: int = 0
+@export var HP_multiplier: float = 1
 @export var offset: Vector2
 @export var automatic_offset: bool = false
 @export var spawn_range: Vector2
@@ -88,6 +89,7 @@ func _playSpawn():
 func _spawnEnemy():
 	summoned_enemies += 1
 	var enemy_node = enemy.instantiate()
+	enemy_node.stats.HP *= HP_multiplier
 	enemy_node.stats.LV += LV_bonus
 	enemy_node.stats.ATK += LV_bonus * 2.5
 	enemy_node.global_position = global_position - offset
@@ -95,7 +97,9 @@ func _spawnEnemy():
 	for property in enemy_properties:
 		if property["name"] in enemy_node:
 			enemy_node[property["name"]] = property["value"]
-			
+	
+	if "agony" in enemy_node and enemy_node.agony_effect:
+		enemy_node.agony_effect.visible = enemy_node.agony
 	get_parent().add_child(enemy_node)
 	var hurtbox: CollisionShape2D
 	for child in enemy_node.get_children():
@@ -118,6 +122,10 @@ func _spawnEnemy():
 		tween.tween_property(enemy_node, "modulate", Color(1, 1, 1, 1), 0.5)
 		await tween.finished
 		enemy_node.process_mode = Node.PROCESS_MODE_INHERIT
+		if enemy_node.boss and Global.HUD.boss_bar.enemy == null:
+			Global.HUD.boss_bar.enemy = enemy_node
+		elif enemy_node.boss and Global.HUD.boss_bar_2.enemy == null:
+			Global.HUD.boss_bar_2.enemy = enemy_node
 
 func deleteIfNoRespawn():
 	if not respawn:

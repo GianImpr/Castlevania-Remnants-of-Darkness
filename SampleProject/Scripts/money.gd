@@ -30,6 +30,9 @@ func _ready() -> void:
 		type += 1
 	if Global.player.stats.Stats["LCK"] > randi_range(0, 199):
 		type += 1
+		
+	if Global.player.stats.accessoryEquipped(Accessory.Accessories.GOLD_RING):
+		type = min(type+1, CoinType.Gold100)
 
 	sprite.texture = coin_data[type].texture
 	if type <= CoinType.Gold100:

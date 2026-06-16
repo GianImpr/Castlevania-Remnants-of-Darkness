@@ -158,7 +158,7 @@ script = ExtResource("5_2hh1y")
 sound_effects = Array[ExtResource("6_a8hqw")]([SubResource("Resource_m04vb"), SubResource("Resource_avqew"), SubResource("Resource_fukjr")])
 metadata/_custom_type_script = "uid://c8movixc3pc7b"
 
-[node name="RockKnight" type="CharacterBody2D" unique_id=723503461 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe")]
+[node name="RockKnight" type="CharacterBody2D" unique_id=723503461 node_paths=PackedStringArray("vision", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "visibility_notifier")]
 scale = Vector2(2, 2)
 collision_layer = 4
 script = ExtResource("1_quyp8")
@@ -169,6 +169,7 @@ stats = NodePath("EnemyStats")
 damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Timer")
 hitbox_iframe = NodePath("HitboxArea")
+visibility_notifier = NodePath("VisibleOnScreenNotifier2D")
 metadata/_custom_type_script = "uid://jpd31rlnmjom"
 
 [node name="EnemyStats" type="Node" parent="." unique_id=1503855312]
@@ -266,3 +267,6 @@ script = ExtResource("16_avqew")
 hitbox_iframe = NodePath("../../HitboxArea/Hitbox")
 dying_scene = ExtResource("20_1p7hc")
 metadata/_custom_type_script = "uid://clkysmtp4w5ps"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=454644494]
+position = Vector2(-9, 0)

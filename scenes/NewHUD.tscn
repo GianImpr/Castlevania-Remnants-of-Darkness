@@ -937,6 +937,75 @@ libraries/ = SubResource("AnimationLibrary_q6yu7")
 [node name="Damage_display" type="Timer" parent="BossBar" unique_id=400472714]
 one_shot = true
 
+[node name="Control" type="Control" parent="." unique_id=1550731539]
+anchors_preset = 0
+offset_left = -26.0
+offset_top = 15.0
+offset_right = 14.0
+offset_bottom = 55.0
+
+[node name="BossBar2" type="TextureRect" parent="Control" unique_id=1377359772 node_paths=PackedStringArray("animation", "yellow_bar", "blue_bar", "yellow_damage", "blue_damage", "damage_display_duration")]
+layout_mode = 1
+offset_left = 155.0
+offset_top = 450.0
+offset_right = 350.00003
+offset_bottom = 453.0
+scale = Vector2(2.8, 2.8)
+texture = ExtResource("19_hlm7p")
+script = ExtResource("20_oxp7a")
+animation = NodePath("AnimationPlayer")
+yellow_bar = NodePath("BossBar1")
+blue_bar = NodePath("BossBar2")
+yellow_damage = NodePath("DamageYellow")
+blue_damage = NodePath("DamageBlue")
+damage_display_duration = NodePath("Damage_display")
+
+[node name="DamageYellow" type="TextureProgressBar" parent="Control/BossBar2" unique_id=643677277]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 193.0
+offset_bottom = 3.0
+max_value = 500.0
+value = 500.0
+nine_patch_stretch = true
+texture_progress = ExtResource("21_ludcq")
+
+[node name="BossBar1" type="TextureProgressBar" parent="Control/BossBar2" unique_id=1121535237]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 193.0
+offset_bottom = 3.0
+max_value = 500.0
+value = 500.0
+nine_patch_stretch = true
+texture_progress = ExtResource("22_805sf")
+
+[node name="DamageBlue" type="TextureProgressBar" parent="Control/BossBar2" unique_id=1854766262]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 193.0
+offset_bottom = 3.0
+max_value = 500.0
+value = 500.0
+nine_patch_stretch = true
+texture_progress = ExtResource("21_ludcq")
+
+[node name="BossBar2" type="TextureProgressBar" parent="Control/BossBar2" unique_id=1546101014]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 193.0
+offset_bottom = 3.0
+max_value = 500.0
+value = 340.0
+nine_patch_stretch = true
+texture_progress = ExtResource("23_kgt85")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/BossBar2" unique_id=246214852]
+libraries/ = SubResource("AnimationLibrary_q6yu7")
+
+[node name="Damage_display" type="Timer" parent="Control/BossBar2" unique_id=34029390]
+one_shot = true
+
 [node name="WeaponIcon" type="TextureRect" parent="." unique_id=1126412780]
 layout_mode = 0
 offset_left = 34.0
@@ -945,3 +1014,4 @@ offset_right = 66.0
 offset_bottom = 62.0
 
 [connection signal="timeout" from="BossBar/Damage_display" to="BossBar" method="_on_damage_display_timeout"]
+[connection signal="timeout" from="Control/BossBar2/Damage_display" to="Control/BossBar2" method="_on_damage_display_timeout"]

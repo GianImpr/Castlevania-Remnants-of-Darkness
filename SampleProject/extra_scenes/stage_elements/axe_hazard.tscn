@@ -3,6 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://c4gdcx3cjbkyt" path="res://assets/sprites/Objects/Hazards/Guillotine/GuillotineChain.png" id="1_hq53e"]
 [ext_resource type="Script" uid="uid://4wqnvnabigyr" path="res://SampleProject/Scripts/Stage_elements/hazard.gd" id="1_xwtrw"]
 [ext_resource type="Texture2D" uid="uid://dbp85v2gvg81f" path="res://assets/sprites/Objects/Hazards/Guillotine/AxeHazard.png" id="2_xwtrw"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_qa20j"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_hr6l1"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_hkdas"]
+[ext_resource type="AudioStream" uid="uid://cafc3a6tlqn3w" path="res://assets/sounds/Objects/AxeSwing2.wav" id="7_7k21s"]
 
 [sub_resource type="Animation" id="Animation_hq53e"]
 length = 0.001
@@ -35,6 +39,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [-0.6981317007977318, 0.6981317007977318]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PolyphonicAudio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.76666665),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["swing"],
+"method": &"play_sound_effect_from_library"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_4wb76"]
 resource_name = "swing"
@@ -62,6 +80,17 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isjxm"]
 size = Vector2(81, 39.000008)
+
+[sub_resource type="Resource" id="Resource_vsorv"]
+script = ExtResource("6_hkdas")
+Tag = "swing"
+stream = ExtResource("7_7k21s")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_tqj55"]
+script = ExtResource("5_hr6l1")
+sound_effects = Array[ExtResource("6_hkdas")]([SubResource("Resource_vsorv")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
 
 [node name="AxeHazard" type="StaticBody2D" unique_id=1502476801 node_paths=PackedStringArray("area")]
 script = ExtResource("1_xwtrw")
@@ -97,3 +126,12 @@ collision_mask = 2
 visible = false
 position = Vector2(8.5, 172.5)
 shape = SubResource("RectangleShape2D_isjxm")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1459330612]
+position = Vector2(-2, 745)
+volume_db = -10.0
+max_distance = 1300.0
+bus = &"SFX"
+script = ExtResource("4_qa20j")
+audio_library = SubResource("Resource_tqj55")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"

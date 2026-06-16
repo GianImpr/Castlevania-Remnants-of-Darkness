@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dy467fcw0yjlb"]
+
+[ext_resource type="Script" uid="uid://bnxx66pvx38ud" path="res://SampleProject/Scripts/Stage_elements/breakable_wall.gd" id="1_yyj23"]
+[ext_resource type="PackedScene" uid="uid://dosjh5lntu6w1" path="res://SampleProject/extra_scenes/items/pick_up.tscn" id="2_odn4j"]
+[ext_resource type="PackedScene" uid="uid://cv2ex1pcclx3x" path="res://SampleProject/extra_scenes/stage_elements/blue_indigo_path_wall.tscn" id="2_t3wmu"]
+[ext_resource type="Script" uid="uid://co2dffa7rp4qa" path="res://SampleProject/Scripts/Stage_elements/DestructibleBody.gd" id="3_odn4j"]
+[ext_resource type="Texture2D" uid="uid://b4a1k8vq34mwf" path="res://assets/sprites/Effects/Debris.png" id="4_ffr3l"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="5_36so5"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_83r2r"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_qgmn2"]
+[ext_resource type="AudioStream" uid="uid://ci4gtdwh6bnd0" path="res://assets/sounds/Objects/WallDamage.MP3" id="8_gnsge"]
+[ext_resource type="AudioStream" uid="uid://svjxleypen1h" path="res://assets/sounds/Objects/WallBreak.MP3" id="9_30dyb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_318pj"]
+particles_animation = true
+particles_anim_h_frames = 10
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_muxw3"]
+offsets = PackedFloat32Array(0, 0.69411767, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.027450979, 1, 1, 1, 0)
+
+[sub_resource type="Resource" id="Resource_2533x"]
+script = ExtResource("7_qgmn2")
+Tag = "damage"
+stream = ExtResource("8_gnsge")
+
+[sub_resource type="Resource" id="Resource_86dg1"]
+script = ExtResource("7_qgmn2")
+Tag = "break"
+stream = ExtResource("9_30dyb")
+
+[sub_resource type="Resource" id="Resource_3ibxi"]
+script = ExtResource("6_83r2r")
+sound_effects = Array[ExtResource("7_qgmn2")]([SubResource("Resource_2533x"), SubResource("Resource_86dg1")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wagau"]
+size = Vector2(33, 95)
+
+[node name="BreakableWall" type="Node2D" unique_id=744760839 node_paths=PackedStringArray("breaking_particles", "wall", "sound", "collision_box")]
+script = ExtResource("1_yyj23")
+breaking_particles = NodePath("Breaking")
+wall = NodePath("Node2D/object")
+sound = NodePath("PolyphonicAudio")
+pick_up_flag = 112
+wall_flag = 4
+collision_box = NodePath("CollisionBox/CollisionShape2D")
+item_scene = ExtResource("2_odn4j")
+type = 7
+id = 18
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1970903508]
+modulate = Color(0.7372549, 0.7490196, 1, 1)
+
+[node name="object" parent="Node2D" unique_id=1339386508 instance=ExtResource("2_t3wmu")]
+script = ExtResource("3_odn4j")
+blocks_per_side = 4
+blocks_impulse = 300.0
+blocks_gravity_scale = 0.7
+debris_max_time = 2.0
+remove_debris = true
+collision_layers = 12
+collision_masks = 12
+SPEED = Vector2(400, 0)
+
+[node name="Breaking" type="CPUParticles2D" parent="." unique_id=30303179]
+material = SubResource("CanvasItemMaterial_318pj")
+emitting = false
+amount = 48
+texture = ExtResource("4_ffr3l")
+lifetime = 0.7
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(20, 53)
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_muxw3")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1068625073]
+volume_db = 3.0
+script = ExtResource("5_36so5")
+audio_library = SubResource("Resource_3ibxi")
+
+[node name="CollisionBox" type="RigidBody2D" parent="." unique_id=1469373402]
+collision_layer = 4
+collision_mask = 0
+lock_rotation = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBox" unique_id=691001860]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_wagau")

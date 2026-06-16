@@ -17,6 +17,8 @@ func exit():
 
 func Update(delta: float):
 	enemy_can_die()
+	if player.stay_idle:
+		player.velocity.x = 0
 	
 	if sign(player.facing_position) != sign(Global.player.global_position.x - player.global_position.x):
 		Transitioned.emit(self, "turning")

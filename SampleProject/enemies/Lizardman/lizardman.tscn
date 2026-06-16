@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://dfo3mwdcv5111" path="res://SampleProject/enemies/Lizardman/LizardmanShield.gd" id="14_1kmi1"]
 [ext_resource type="Script" uid="uid://bb7g10yhdolxn" path="res://SampleProject/enemies/Lizardman/LizardmanDying.gd" id="15_t63k2"]
 [ext_resource type="PackedScene" uid="uid://jvlxbvrpvbmy" path="res://SampleProject/extra_scenes/red_spark.tscn" id="20_t63k2"]
+[ext_resource type="Texture2D" uid="uid://c3h6ipibtk2sk" path="res://assets/sprites/Effects/Agony.png" id="26_7nbva"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idh5m"]
 size = Vector2(362, 73)
@@ -622,7 +623,55 @@ colors = PackedColorArray(1, 0.914602, 0.769121, 1, 0.984314, 0.713726, 0, 0)
 offsets = PackedFloat32Array(0, 0.991979)
 colors = PackedColorArray(1, 1, 1, 1, 1, 0.919853, 0.782403, 1)
 
-[node name="Lizardman" type="CharacterBody2D" unique_id=1541588054 node_paths=PackedStringArray("vision", "sword_hitbox", "poison_hitbox", "protective_area", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[sub_resource type="Gradient" id="Gradient_34g6w"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jars4"]
+gradient = SubResource("Gradient_34g6w")
+width = 50
+height = 80
+fill = 2
+fill_from = Vector2(0.5606838, 0.48290598)
+fill_to = Vector2(0.53846157, 0.0982906)
+
+[sub_resource type="Animation" id="Animation_3xppy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 40, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_cbvhq"]
+resource_name = "agony"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 40, 70), Rect2(0, 128, 40, 70)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tc1a8"]
+_data = {
+&"RESET": SubResource("Animation_3xppy"),
+&"agony": SubResource("Animation_cbvhq")
+}
+
+[node name="Lizardman" type="CharacterBody2D" unique_id=1541588054 node_paths=PackedStringArray("vision", "sword_hitbox", "poison_hitbox", "protective_area", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles", "agony_effect")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 4097
@@ -641,6 +690,7 @@ iframe_timer = NodePath("Iframe")
 hitbox_iframe = NodePath("HitboxArea")
 blood_particles = NodePath("BloodDamage")
 register_knockback = true
+agony_effect = NodePath("Agony")
 metadata/_custom_type_script = "uid://jpd31rlnmjom"
 
 [node name="EnemyStats" type="Node" parent="." unique_id=1672362661]
@@ -869,3 +919,25 @@ initial_velocity_max = 150.0
 scale_amount_curve = SubResource("Curve_3w1m8")
 color_ramp = SubResource("Gradient_rs04j")
 color_initial_ramp = SubResource("Gradient_guf7x")
+
+[node name="Agony" type="Node2D" parent="." unique_id=1209204865]
+
+[node name="TextureRect" type="TextureRect" parent="Agony" unique_id=2067679184]
+clip_children = 1
+offset_left = -25.0
+offset_top = -45.0
+offset_right = 25.0
+offset_bottom = 35.0
+texture = SubResource("GradientTexture2D_jars4")
+
+[node name="Agony" type="Sprite2D" parent="Agony/TextureRect" unique_id=535865594]
+self_modulate = Color(1, 1, 1, 0.21100001)
+texture_repeat = 2
+position = Vector2(25, 33)
+texture = ExtResource("26_7nbva")
+region_enabled = true
+region_rect = Rect2(0, 0, 40, 50)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Agony/TextureRect/Agony" unique_id=1292974483]
+libraries/ = SubResource("AnimationLibrary_tc1a8")
+autoplay = &"agony"

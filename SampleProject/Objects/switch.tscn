@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b058pxnhr434m" path="res://SampleProject/Scripts/Stage_elements/switch.gd" id="1_lulx8"]
 [ext_resource type="Texture2D" uid="uid://c2xqqqcwte7rm" path="res://assets/sprites/Objects/Other/Switch.png" id="2_wkvhf"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_mly4o"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_tyspt"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="5_0ie3i"]
+[ext_resource type="AudioStream" uid="uid://ggsknublo0rg" path="res://assets/sounds/Objects/SwitchPushed.wav" id="6_m8s07"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5jpr3"]
 size = Vector2(64, 16)
@@ -88,6 +92,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PolyphonicAudio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["press"],
+"method": &"play_sound_effect_from_library"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_wkvhf"]
 resource_name = "press_instantl"
@@ -137,6 +155,17 @@ _data = {
 &"press_instantly": SubResource("Animation_wkvhf")
 }
 
+[sub_resource type="Resource" id="Resource_04t13"]
+script = ExtResource("5_0ie3i")
+Tag = "press"
+stream = ExtResource("6_m8s07")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_j2uqj"]
+script = ExtResource("4_tyspt")
+sound_effects = Array[ExtResource("5_0ie3i")]([SubResource("Resource_04t13")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
 [node name="Switch" type="StaticBody2D" unique_id=2081535327 node_paths=PackedStringArray("animation")]
 collision_mask = 0
 script = ExtResource("1_lulx8")
@@ -163,5 +192,11 @@ shape = SubResource("RectangleShape2D_oaehw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=320037549]
 libraries/ = SubResource("AnimationLibrary_tyspt")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1291299073]
+bus = &"SFX"
+script = ExtResource("3_mly4o")
+audio_library = SubResource("Resource_j2uqj")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
 [connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]

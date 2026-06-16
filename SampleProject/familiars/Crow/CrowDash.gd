@@ -48,7 +48,7 @@ func Physics_Update(delta: float):
 		
 func spawnDashVfx() -> void:
 	var dash_vfx = dash_vfx_scene.instantiate()
-	dash_vfx.global_position = player.global_position
+	dash_vfx.global_position = player.global_position - MetSys.get_current_room_instance().global_position
 	if player.facing_position == -1:
 		dash_vfx.scale.x *= -1
 	dash_vfx.z_index = player.z_index+1

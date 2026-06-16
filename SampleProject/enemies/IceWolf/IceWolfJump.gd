@@ -13,6 +13,7 @@ const SHOCKWAVE_ACTIVE_FOR_SECONDS: float = 0.5
 
 func enter():
 	var red_spark = red_spark_scene.instantiate()
+	player.velocity.x = 0
 	red_spark.global_position = player.global_position
 	MetSys.get_current_room_instance().add_child(red_spark)
 	animation.play("jump")

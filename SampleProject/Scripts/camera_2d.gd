@@ -16,7 +16,7 @@ func apply_shake():
 	shake_strength = random_strength
 
 func _process(delta: float) -> void:
-	if shake_strength > 0:
+	if shake_strength > 0.1:
 		shake_strength = lerpf(shake_strength, 0, shake_fade * delta)
 		
 		offset = _randomOffset()
@@ -26,19 +26,22 @@ func _randomOffset() -> Vector2:
 
 ## Moves the camera in the specified offset position.
 ## Automatically moves back after a specified amount of time.
-func moveCamera(to_offset: Vector2, duration: float) -> void:
+func moveCamera(to_offset: Vector2, duration: float, custom_scrolling_duration: float = 0.5, custom_scrolling_back: bool = false) -> void:
 	var moving_tween: Tween = get_tree().create_tween()
-	const MOVE_DURATION: float = 0.5
+	const DEFAULT_SCROLLING_SPEED: float = 1
 	moving_tween.set_trans(Tween.TRANS_SINE)
 	moving_tween.set_ease(Tween.EASE_IN_OUT)
-	moving_tween.tween_property(self, "offset", to_offset, MOVE_DURATION)
+	moving_tween.tween_property(self, "offset", to_offset, custom_scrolling_duration)
 	await moving_tween.finished
 	camera_moved.emit()
 	await get_tree().create_timer(duration).timeout
 	moving_tween = get_tree().create_tween()
 	moving_tween.set_trans(Tween.TRANS_SINE)
 	moving_tween.set_ease(Tween.EASE_IN_OUT)
-	moving_tween.tween_property(self, "offset", Vector2.ZERO, MOVE_DURATION)
+	if custom_scrolling_back:
+		moving_tween.tween_property(self, "offset", Vector2.ZERO, custom_scrolling_back)
+	else:
+		moving_tween.tween_property(self, "offset", Vector2.ZERO, DEFAULT_SCROLLING_SPEED)
 	await moving_tween.finished
 	camera_moved_back.emit()
 

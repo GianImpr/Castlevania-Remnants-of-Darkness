@@ -10,7 +10,8 @@ func exit():
 	pass
 
 func Update(delta: float):
-	pass
+	if not animation.is_playing():
+		animation.play("dying")
 
 func Physics_Update(delta: float):
 	pass

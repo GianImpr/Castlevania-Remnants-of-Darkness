@@ -33,7 +33,7 @@ func Physics_Update(delta: float):
 		var collision_position: Vector2 = player.raycast.get_collision_point()
 		var tile_coords = collider.local_to_map(collision_position)
 		var tile: TileData = collider.get_cell_tile_data(tile_coords)
-		if tile.is_collision_polygon_one_way(1, 0):
+		if tile and tile.is_collision_polygon_one_way(1, 0):
 			snapped_on_platform = true
 			player.position.y = collision_position.y - Global.player.hurtbox.shape.get_rect().size.y -42
 			#get_tree().create_tween().tween_property(player, "global_position", player.position-abs(collision_position-player.position), 0.05)

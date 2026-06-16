@@ -13,8 +13,11 @@ func _ready() -> void:
 	HectorPetrified.resetGame = _on_reset_timeout
 
 func enter():
-	animation.play("dying", -1)
-	voice.play_sound_effect_from_library("Dead")
+	if player.drowning:
+		animation.play("dying_drowning", -1)
+	else:
+		animation.play("dying", -1)
+		voice.play_sound_effect_from_library("Dead")
 	player.velocity = FLOATING_SPEED
 	timer_reset.start()
 	Global.music_player.fadeMusic(FADE_MUSIC_DURATION)

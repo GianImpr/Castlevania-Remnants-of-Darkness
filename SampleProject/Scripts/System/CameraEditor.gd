@@ -9,6 +9,8 @@ class_name CameraEditor
 @export var position_offset: Vector2
 
 func _ready() -> void:
+	monitoring = false
+	get_tree().create_timer(0.01).timeout.connect(func(): monitoring = true)
 	body_entered.connect(applyCameraSettings)
 	body_exited.connect(resetCameraSettings)
 	

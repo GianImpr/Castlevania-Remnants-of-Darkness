@@ -7,6 +7,7 @@ class_name CombatDoor
 @export var boss_door_texture: CompressedTexture2D
 @export var door_sprite: Sprite2D
 @export var seal_sprite: Sprite2D
+static var opening_from_left: bool
 signal closing
 
 func _ready():
@@ -19,7 +20,7 @@ func _ready():
 		get_parent().queue_free()
 	if get_parent().should_close:
 		if not Global.player.stats.combat_flags[get_parent().combat_flag_id] and not SavingScreen.isBattleCheckpointSet():
-			Global.player.global_position.x += 40*sign(Global.player.facing_position)
+			Global.player.global_position.x += 40 if opening_from_left else -40
 		if not Global.player.stats.combat_flags[get_parent().combat_flag_id]:
 			Global.player.freeze()
 		position.y = -128
@@ -34,6 +35,9 @@ func _physics_process(delta: float) -> void:
 # Open door when Hector is touching them to enter the room
 func _on_detection_area_area_entered(area: Area2D) -> void:
 	if not get_parent().should_close:
+		opening_from_left = get_parent().opens_from_left
+
+	if not get_parent().should_close:
 		if get_parent().boss_door:
 			animation.play("open_boss")
 		else:
@@ -43,6 +47,7 @@ func _on_detection_area_area_entered(area: Area2D) -> void:
 
 # Open doors a bit after the fight is over
 func _on_animation_delay_timeout() -> void:
+
 	if get_parent().boss_door:
 		animation.play("open_boss")
 	else:

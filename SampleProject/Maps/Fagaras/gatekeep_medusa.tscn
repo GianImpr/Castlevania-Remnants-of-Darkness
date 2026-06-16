@@ -2306,5 +2306,6 @@ shape = SubResource("WorldBoundaryShape2D_ap8j6")
 position = Vector2(944, 352)
 combat_flag_id = 4
 boss_door = true
+opens_from_left = true
 
 [connection signal="area_entered" from="SnakeDoorEvent/Area2D" to="SnakeDoorEvent" method="_on_area_2d_area_entered"]

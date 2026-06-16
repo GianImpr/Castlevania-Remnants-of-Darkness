@@ -5,6 +5,7 @@ static var player: HectorPlayer = null
 static var game: Game = null
 static var camera: GameCamera = null
 static var item_box: ItemBox = null
+static var full_item_box: FullItemBox = null
 static var enemy_box = null
 static var tutorial_box: HintBox = null
 static var description_box: HintBox = null
@@ -60,7 +61,8 @@ enum ScreenType {
 	WHEEL,
 	SHOP,
 	TRAINING_MENU,
-	TRAINING
+	TRAINING,
+	ITEM_BOX
 }
 enum Attribute {
 	NONE = 0,

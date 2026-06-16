@@ -20,10 +20,15 @@ var stay_idle: bool = false
 var poisoned: bool = false
 var poison_bubbles: Node2D = null
 @export var reset_idle_when_staying_idle: bool = false
+@export var agony: bool = false
+@export var agony_effect: Node2D
+
 static var body_hitbox_on_cooldown: bool = false
 static var INVULNERABILITY_DURATION: float = 1
 
 func _ready() -> void:
+	if agony_effect:
+		agony_effect.visible = agony
 	body_hitbox_on_cooldown = false
 	hitbox_iframe.set_collision_mask_value(2, true)
 	if visibility_notifier:
@@ -58,9 +63,9 @@ func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float
 	
 	if body is HectorPlayer:
 		body.stats.Stats["HP"] = max(body.stats.Stats["HP"]-damage, 0)
+		body.is_hurt = true
 		if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]*0.07:
 			body.is_hurt = false
-		body.is_hurt = true
 		attack_hitbox.set_collision_mask_value(2, false)
 	elif body is InnocentDevil:
 		body.stats.Stats["Hearts"] = max(body.stats.Stats["Hearts"]-damage, 0)

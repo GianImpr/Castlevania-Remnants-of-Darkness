@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://d13u45uutcs4s"]
+
+[ext_resource type="Texture2D" uid="uid://c3h6ipibtk2sk" path="res://assets/sprites/Effects/Agony.png" id="1_8vmel"]
+
+[sub_resource type="Gradient" id="Gradient_34g6w"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jars4"]
+gradient = SubResource("Gradient_34g6w")
+width = 50
+height = 50
+fill = 2
+fill_from = Vector2(0.5683761, 0.48717952)
+fill_to = Vector2(0.50854707, 0)
+
+[sub_resource type="Animation" id="Animation_3xppy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 40, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_cbvhq"]
+resource_name = "agony"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 40, 50), Rect2(0, 128, 40, 50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tc1a8"]
+_data = {
+&"RESET": SubResource("Animation_3xppy"),
+&"agony": SubResource("Animation_cbvhq")
+}
+
+[node name="Agony" type="Node2D" unique_id=1209204865]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2067679184]
+clip_children = 1
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+texture = SubResource("GradientTexture2D_jars4")
+
+[node name="Agony" type="Sprite2D" parent="TextureRect" unique_id=535865594]
+self_modulate = Color(1, 1, 1, 0.21100001)
+texture_repeat = 2
+position = Vector2(25, 25)
+texture = ExtResource("1_8vmel")
+region_enabled = true
+region_rect = Rect2(0, 0, 40, 50)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect/Agony" unique_id=1292974483]
+libraries/ = SubResource("AnimationLibrary_tc1a8")
+autoplay = &"agony"

@@ -3,12 +3,30 @@
 [ext_resource type="Script" uid="uid://4wqnvnabigyr" path="res://SampleProject/Scripts/Stage_elements/hazard.gd" id="1_n4wv2"]
 [ext_resource type="Texture2D" uid="uid://c4gdcx3cjbkyt" path="res://assets/sprites/Objects/Hazards/Guillotine/GuillotineChain.png" id="1_o1sg0"]
 [ext_resource type="Texture2D" uid="uid://dgye5wwsqi4hs" path="res://assets/sprites/Objects/Hazards/Guillotine/GuillotineHazard.png" id="2_n4wv2"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="4_ucqku"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="5_3jw6o"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="6_iscr4"]
+[ext_resource type="AudioStream" uid="uid://hjetc3xuk7f3" path="res://assets/sounds/Objects/GuillottineStart.wav" id="7_s7nku"]
+[ext_resource type="AudioStream" uid="uid://chuo84m5a1cy4" path="res://assets/sounds/Objects/GuillottineFall.wav" id="8_pkjbh"]
+[ext_resource type="Texture2D" uid="uid://c04vxsdtq4ws2" path="res://assets/sprites/Effects/Debris2.png" id="9_3jw6o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1sg0"]
 size = Vector2(32.5, 80)
 
 [sub_resource type="Animation" id="Animation_o1sg0"]
 resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Debris:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_n4wv2"]
 resource_name = "fall"
@@ -37,6 +55,35 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(2, 0.5, 2, 2, 1, 2),
 "update": 0,
 "values": [Vector2(19, 431), Vector2(19, 183), Vector2(19, 214), Vector2(19, 183), Vector2(19, 183), Vector2(19, 431)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["fall"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["land"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Debris:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_74t3g"]
@@ -67,6 +114,35 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(19, 431), Vector2(19, 183), Vector2(19, 214), Vector2(19, 183), Vector2(19, 183), Vector2(19, 431)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["fall"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["land"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Debris:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_h3lej"]
 resource_name = "fall"
@@ -96,6 +172,35 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(19, 431), Vector2(19, 183), Vector2(19, 214), Vector2(19, 183), Vector2(19, 183), Vector2(19, 431)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PolyphonicAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.26666668, 0.76666665),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["fall"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["land"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Debris:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74t3g"]
 _data = {
@@ -105,6 +210,33 @@ _data = {
 &"fall_alt_2": SubResource("Animation_h3lej")
 }
 
+[sub_resource type="Resource" id="Resource_c3l6r"]
+script = ExtResource("6_iscr4")
+Tag = "fall"
+stream = ExtResource("7_s7nku")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_oqe6u"]
+script = ExtResource("6_iscr4")
+Tag = "land"
+stream = ExtResource("8_pkjbh")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_1n21w"]
+script = ExtResource("5_3jw6o")
+sound_effects = Array[ExtResource("6_iscr4")]([SubResource("Resource_c3l6r"), SubResource("Resource_oqe6u")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iscr4"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_s7nku"]
+offsets = PackedFloat32Array(0, 0.18431373, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.23500001, 1, 1, 1, 0)
+
 [node name="Guillotine" type="StaticBody2D" unique_id=149299745 node_paths=PackedStringArray("area")]
 script = ExtResource("1_n4wv2")
 area = NodePath("MainEdge/Area2D")
@@ -112,7 +244,7 @@ percent_damage = 25
 ignore_defense = true
 
 [node name="MainEdge" type="Node2D" parent="." unique_id=1836045772]
-position = Vector2(0, -268)
+position = Vector2(0, -261.26855)
 
 [node name="MainChain" type="Sprite2D" parent="MainEdge" unique_id=1696728969]
 texture_repeat = 2
@@ -137,10 +269,42 @@ position = Vector2(-1.25, 299)
 shape = SubResource("RectangleShape2D_o1sg0")
 
 [node name="SecondChain" type="Sprite2D" parent="." unique_id=847659319]
-position = Vector2(19, 431)
+position = Vector2(19, 424.7709)
 scale = Vector2(2, 2)
 texture = ExtResource("1_o1sg0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=799264387]
 libraries/ = SubResource("AnimationLibrary_74t3g")
 autoplay = &"fall"
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1485768271]
+position = Vector2(-2, 602)
+volume_db = -16.0
+max_distance = 1000.0
+bus = &"SFX"
+script = ExtResource("4_ucqku")
+audio_library = SubResource("Resource_1n21w")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="Debris" type="CPUParticles2D" parent="." unique_id=407405797]
+z_index = 1
+material = SubResource("CanvasItemMaterial_iscr4")
+position = Vector2(-3, 329)
+emitting = false
+amount = 4
+texture = ExtResource("9_3jw6o")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(10, 0)
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, -80)
+initial_velocity_max = 250.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(0.42365062, 0.42365065, 0.42365062, 1)
+color_ramp = SubResource("Gradient_s7nku")
+anim_speed_min = 1.0
+anim_speed_max = 2.0

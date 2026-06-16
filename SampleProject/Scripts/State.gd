@@ -97,6 +97,7 @@ func can_turn():
 #can_run_without_anim
 func can_move_with_momentum(keep_momentum: bool, with_speed_boost: bool = false):
 	const MOMENTUM_DECELERATION: float = 0.93
+	const DROWNING_DECELERATION: float = 0.8
 	if player.direction:
 		if with_speed_boost:
 			player.velocity.x = max(player.SPEED, abs(player.velocity.x)) * player.direction
@@ -107,6 +108,8 @@ func can_move_with_momentum(keep_momentum: bool, with_speed_boost: bool = false)
 			player.velocity.x *= MOMENTUM_DECELERATION
 		else:
 			player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
+	if player.drowning:
+		player.velocity.x *= DROWNING_DECELERATION
 
 func remove_momentum():
 	player.velocity.x = 0
@@ -303,7 +306,7 @@ func stay_crouched():
 	Transitioned.emit(self, "crouch")
 	
 func can_double_jump():
-	if InputBuffer.is_action_press_buffered("jump") and player.can_double_jump and false:
+	if InputBuffer.is_action_press_buffered("jump") and player.can_double_jump and Global.player.stats.findItem(Skill.Skills.LEAP_STONE, Global.player.stats.skill_inventory):
 		Transitioned.emit(self, "double_jump")
 		if self is HectorDamageAir:
 			player.is_hurt = false
@@ -409,6 +412,8 @@ func vertical_distance_from_player() -> float:
 
 func enemy_can_die(with_misc_items: bool = true) -> void:
 	if player.stats.HP <= 0:
+		if player is Enemy and player.agony:
+			player.agony_effect.visible = false
 		Transitioned.emit(self, "dying")
 		if player.poison_bubbles:
 			player.poison_bubbles.get_child(0).one_shot = true

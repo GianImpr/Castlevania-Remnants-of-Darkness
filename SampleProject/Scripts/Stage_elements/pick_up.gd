@@ -83,10 +83,14 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		var item_full_label = item_full_scene.instantiate()
 		add_child(item_full_label)
 		return
-		
 	idle_timer.stop()
 	flash_timer.stop()
 	var item_type: ItemBox.Type
+	var item_entry = Global.player.stats.searchItemInCompendium(id, getCompendium(type))
+	var item_name: String = item_entry[getItemName(type)]
+	var item_description: String = item_entry[getItemDescription(type)]
+	var item_icon: Texture2D = item_entry.icon
+
 	if not auto_equip:
 		Global.player.stats.addItem(id, getInventory())
 	else:
@@ -102,11 +106,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if type == ItemType.ITEM:
 		sound.play_sound_effect_from_library("item")
 		item_type = ItemBox.Type.BLUE
+		Global.item_box.addEntry(item_name, item_type, item_icon)
 	elif type == ItemType.SKILL or type == ItemType.ARTIFACT or type == ItemType.RELIC:
-		var popup = boost_message.instantiate()
-		popup.get_child(0).frame = 3
-		Global.player.sprite.enable_glow = true
-		Global.player.add_child(popup)
 		if type == ItemType.SKILL:
 			item_type = ItemBox.Type.ORANGE
 		elif type == ItemType.RELIC:
@@ -115,12 +116,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 				Global.player.unlockMagic()
 		else:
 			item_type = ItemBox.Type.RED
+		sprite.visible = false
+		sound.play_sound_effect_from_library("skill")
+		Global.full_item_box.activate((item_type as FullItemBox.Type), item_name, item_description, item_icon)
 	else:
 		sound.play_sound_effect_from_library("equip")
-	var item_entry = Global.player.stats.searchItemInCompendium(id, getCompendium(type))
-	var item_name: String = item_entry[getItemName(type)]
-	var item_icon: Texture2D = item_entry.icon
-	Global.item_box.addEntry(item_name, item_type, item_icon)
+		Global.item_box.addEntry(item_name, item_type, item_icon)
 	picked.emit()
 	animation.play("picked")
 	

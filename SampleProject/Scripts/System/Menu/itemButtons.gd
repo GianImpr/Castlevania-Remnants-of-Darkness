@@ -196,6 +196,9 @@ func useItem(item: Item) -> bool:
 			sound.play_sound_effect_from_library("MPItem")
 			displayProperties(item)
 		item.HealingType.TELEPORTATION:
+			if not Global.player.can_use_magical_ticket:
+				sound.play_sound_effect_from_library("denied")
+				return false
 			sound.play_sound_effect_from_library("confirm")
 			Global.player.transitionToState("teleport")
 			deleteList()

@@ -11,17 +11,17 @@ class_name Candle
 
 func destroy():
 	var explosion = explosion_scene.instantiate()
-	get_parent().get_parent().call_deferred("add_child", explosion)
+	MetSys.get_current_room_instance().call_deferred("add_child", explosion)
 	if Global.player.stats.Stats["MP"] == Global.player.stats.Stats["MMP"]:
 		var coin = coin_scene.instantiate()
-		get_parent().get_parent().call_deferred("add_child", coin)
-		coin.global_position = global_position
+		MetSys.get_current_room_instance().call_deferred("add_child", coin)
+		coin.global_position = global_position - MetSys.get_current_room_instance().global_position
 	else:
 		var heart = heart_scene.instantiate()
 		heart.can_be_red = false
-		get_parent().get_parent().call_deferred("add_child", heart)
-		heart.global_position = global_position
-	explosion.global_position = global_position
+		MetSys.get_current_room_instance().call_deferred("add_child", heart)
+		heart.global_position = global_position - MetSys.get_current_room_instance().global_position
+	explosion.global_position = global_position - MetSys.get_current_room_instance().global_position
 	sound.play_sound_effect_from_library("destroy")
 	animation.play("destroy")
 	

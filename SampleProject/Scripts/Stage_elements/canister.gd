@@ -12,7 +12,7 @@ class_name Canister
 func destroy():
 	var item = item_scene.instantiate()
 	item.pickup_flag = pickup_flag
-	get_parent().get_parent().call_deferred("add_child", item)
+	MetSys.get_current_room_instance().call_deferred("add_child", item)
 	item.global_position = global_position
 	item.global_position.y -= 15
 	if item is PickUp:

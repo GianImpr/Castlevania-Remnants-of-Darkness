@@ -85,10 +85,16 @@ var enabled_magic: bool = false
 var activating_magic: bool = false
 var hit_effect_applied: bool = false
 var dive_kicking: bool = false
+var drowning: bool = false
+var in_heavy_water: bool = false
+var drowning_health_tick: float = 0
+const DROWNING_TOTAL_HP_DRAIN_IN_SECONDS: float = 15
 const PERFECT_GUARD_WINDOW_SIMPLIFIED: float = 0.192
 const PERFECT_GUARD_WINDOW_DEFAULT: float = 0.096
 const NORMAL_GRAVITY_MULTIPLIER: float = 2
 const WINGED_BOOTS_GRAVITY_MULTIPLIER: float = 1.7
+const DROWNING_GRAVITY_MULTIPLIER: float = 0.6
+const HEAVY_WATER_GRAVITY_MULTIPLIER: float = 2
 
 const CHARGE_ONE_COST_RATIO: int = 10
 const PERFECT_CHARGE_REGEN: int = 20
@@ -97,6 +103,7 @@ var times_guard_pressed: int = 0
 var can_double_jump: bool = true
 
 var targettable_enemies: Array[Enemy]
+var can_use_magical_ticket: bool = true
 
 const Animations = {
 	ATTACK_AIR = "air_attack",
@@ -146,6 +153,12 @@ func _process(delta: float) -> void:
 	hurtbox_area.set_collision_layer_value(2, not is_hurt and mercy_invincibility_duration.is_stopped() and not state_machine.current_state is HectorWait and not state_machine.current_state is HectorEarthquake and not state_machine.current_state is HectorSneakAttack and not state_machine.current_state is HectorWhirlwind and not state_machine.current_state is HectorTeleport and not god_mode)
 	
 	guarding = isGuarding()
+	
+	if drowning:
+		drowning_health_tick += stats.Stats["MHP"]*delta/DROWNING_TOTAL_HP_DRAIN_IN_SECONDS
+		if drowning_health_tick >= 1:
+			stats.Stats["HP"] = max(0, stats.Stats["HP"]-drowning_health_tick)
+			drowning_health_tick -= 1
 	
 	if Input.is_action_just_pressed("guard") and can_perfect_guard() and (not is_hurt or state_machine.current_state is HectorGuardPerfect or state_machine.current_state is HectorGuardPerfectAir):
 		times_guard_pressed += 1
@@ -216,6 +229,11 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor() and not motion_mode == MotionMode.MOTION_MODE_FLOATING:
 		var gravity_multiplier: float
 		gravity_multiplier = WINGED_BOOTS_GRAVITY_MULTIPLIER if stats.itemEquipped(Legs.Leg.WINGED_BOOTS, stats.EQUIPMENT_SLOTS.LEGS) else NORMAL_GRAVITY_MULTIPLIER
+		if drowning and not in_heavy_water:
+			gravity_multiplier *= DROWNING_GRAVITY_MULTIPLIER
+		elif in_heavy_water:
+			gravity_multiplier *= HEAVY_WATER_GRAVITY_MULTIPLIER
+
 		velocity += get_gravity() * gravity_multiplier * delta
 
 	direction = round(Input.get_axis("move_left", "move_right"))
@@ -487,7 +505,7 @@ func enfeeble() -> void:
 func instantiateScene(scene: PackedScene, get_player_frame: bool, offset: Vector2, on_top: bool = false):
 	var instance: Sprite2D = scene.instantiate()
 	instance.scale = scale
-	instance.global_position = global_position + offset - MetSys.get_current_room_instance().position
+	instance.global_position = global_position + offset - MetSys.get_current_room_instance().global_position
 	instance.flip_h = sprite.flip_h
 	if not on_top:
 		instance.z_index = z_index-1
@@ -570,3 +588,11 @@ func closestEnemy() -> Enemy:
 		if enemy.global_position.distance_to(global_position) < closest_enemy.global_position.distance_to(global_position):
 			closest_enemy = enemy
 	return closest_enemy
+
+func startDrowning() -> void:
+	drowning_health_tick = 0
+	drowning = true
+	state_machine.voice.play_sound_effect_from_library("Hit1")
+	
+func stopDrowning() -> void:
+	drowning = false

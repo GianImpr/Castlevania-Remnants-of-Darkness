@@ -5,6 +5,7 @@ class_name Hazard
 @export_range(0,100,1,"suffix:%") var percent_damage: int = 0
 @export_range(0.5,3,0.1,"suffix:s") var iframe_duration: float = 1
 @export var ignore_defense: bool = false
+@export var attribute: Global.Attribute = Global.Attribute.SLASH
 
 func _ready() -> void:
 	area.area_entered.connect(applyDamage)

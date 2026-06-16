@@ -4,6 +4,7 @@ extends Node2D
 @export var boss_door: bool
 @export var init_cooldown: Timer #To avoid detecting the player too early when the room changes
 @export var detection: Area2D
+@export var opens_from_left: bool
 
 
 func _ready():

@@ -11,7 +11,8 @@ class_name HeadsUpDisplay
 @onready var h_box_container_3: ImageNumber = $ImageNumber
 @onready var id_body: TextureRect = $IDBars
 @onready var id_skill: TextureRect = $IDBars/SkillIcon
-@onready var boss_bar: TextureRect = $BossBar
+@onready var boss_bar: BossBar = $BossBar
+@onready var boss_bar_2: BossBar = $Control/BossBar2
 @export var id_level_up_animation: AnimationPlayer
 @export var guard_health: HBoxContainer
 @onready var training: Control = $Training

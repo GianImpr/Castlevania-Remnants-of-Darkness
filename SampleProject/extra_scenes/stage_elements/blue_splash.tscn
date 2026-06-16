@@ -1,0 +1,253 @@
+[gd_scene format=3 uid="uid://bf2td186wiir2"]
+
+[ext_resource type="Script" uid="uid://c3opc6pprqeq2" path="res://SampleProject/Scripts/Stage_elements/blue_splash.gd" id="1_faxqq"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="2_1qn5r"]
+[ext_resource type="Texture2D" uid="uid://cjd3vuyl88ker" path="res://assets/sprites/Objects/Hazards/WaterJet.png" id="2_faxqq"]
+[ext_resource type="Texture2D" uid="uid://p1t5i4sxhu71" path="res://assets/sprites/Effects/floaty_64.png" id="4_6y5l7"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_c2cdt"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="5_ub0ew"]
+[ext_resource type="AudioStream" uid="uid://c52uvwkog5l2f" path="res://assets/sounds/Objects/BlueSplash.wav" id="6_tpah5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c2cdt"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_pri4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WarnParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_c2cdt"]
+resource_name = "splash"
+length = 0.22
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.02, 0.03, 0.04, 0.049999997, 0.06, 0.07, 0.08, 0.089999996, 0.099999994, 0.11, 0.12, 0.13, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.21, 0.22),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 5), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.21),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.307), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.030000001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WarnParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Area2D:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.14),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ub0ew"]
+_data = {
+&"RESET": SubResource("Animation_pri4q"),
+&"splash": SubResource("Animation_c2cdt")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_faxqq"]
+size = Vector2(603, 4)
+
+[sub_resource type="Resource" id="Resource_13lfq"]
+script = ExtResource("5_ub0ew")
+Tag = "splash"
+stream = ExtResource("6_tpah5")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_duw2r"]
+script = ExtResource("4_c2cdt")
+sound_effects = Array[ExtResource("5_ub0ew")]([SubResource("Resource_13lfq")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tpah5"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 7
+particles_anim_loop = false
+
+[node name="BlueSplash" type="StaticBody2D" unique_id=2004963302 node_paths=PackedStringArray("warn_particles", "animation", "sound", "area")]
+scale = Vector2(2, 2)
+script = ExtResource("1_faxqq")
+warn_particles = NodePath("WarnParticles")
+animation = NodePath("AnimationPlayer")
+sound = NodePath("PolyphonicAudio")
+area = NodePath("Area2D")
+base_power = 40
+percent_damage = 10
+metadata/_custom_type_script = "uid://4wqnvnabigyr"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1824182388]
+material = SubResource("CanvasItemMaterial_c2cdt")
+texture = ExtResource("2_faxqq")
+hframes = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=301378927]
+libraries/ = SubResource("AnimationLibrary_ub0ew")
+speed_scale = 0.5
+
+[node name="Area2D" type="Area2D" parent="." unique_id=958111360]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=379500245]
+visible = false
+position = Vector2(3.5, -3)
+shape = SubResource("RectangleShape2D_faxqq")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1351912902]
+volume_db = -15.0
+bus = &"SFX"
+script = ExtResource("2_1qn5r")
+audio_library = SubResource("Resource_duw2r")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="AttackParticles" type="CPUParticles2D" parent="." unique_id=603213007]
+material = SubResource("CanvasItemMaterial_tpah5")
+position = Vector2(0, -1)
+emitting = false
+texture = ExtResource("4_6y5l7")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(300, 1)
+direction = Vector2(1, -1)
+spread = 0.0
+initial_velocity_min = 50.0
+initial_velocity_max = 200.0
+color = Color(0.7058824, 0.84313726, 1, 1)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[node name="WarnParticles" type="CPUParticles2D" parent="." unique_id=2046887137]
+material = SubResource("CanvasItemMaterial_tpah5")
+position = Vector2(-300.5, 1.5)
+emitting = false
+amount = 1
+texture = ExtResource("4_6y5l7")
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(1, -1)
+spread = 0.0
+initial_velocity_min = 50.0
+initial_velocity_max = 200.0
+color = Color(0.7058824, 0.84313726, 1, 1)
+anim_speed_min = 1.0
+anim_speed_max = 1.0

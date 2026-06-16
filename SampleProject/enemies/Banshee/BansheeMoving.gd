@@ -2,13 +2,16 @@ extends State
 class_name BansheeMoving
 @export var speed: float
 @export var move_duration: Timer
+const SIDE_SWITCH_DISTANCE_THRESHOLD: float = 80
 
 func enter():
+	can_turnaround()
 	animation.play("moving", -1, 1)
 	move_duration.start()
 	
 func Update(delta: float):
-	can_turnaround()
+	if horizontal_distance_from_player() >= SIDE_SWITCH_DISTANCE_THRESHOLD:
+		can_turnaround()
 	enemy_can_die()
 
 func Physics_Update(delta: float):

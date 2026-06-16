@@ -7,6 +7,8 @@ class_name BreakableWall
 @export var wall_flag: int
 @export var collision_box: CollisionShape2D
 @export var item_scene: PackedScene
+@export var type: PickUp.ItemType
+@export var id: int
 const HITS_TO_TAKE: int = 3
 var hits_taken: int = 0
 var broken: bool = false
@@ -34,6 +36,9 @@ func takeDamage() -> void:
 		wall.detonate()
 		if item_scene:
 			var item = item_scene.instantiate()
+			if item is PickUp:
+				item.type = type
+				item.id = id
 			item.z_index = 10
 			item.pickup_flag = pick_up_flag
 			item.set_deferred("global_position", global_position)

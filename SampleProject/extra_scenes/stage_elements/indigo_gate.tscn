@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://q6vbc8btfujo"]
+
+[ext_resource type="Script" uid="uid://c53bff7vhudbk" path="res://SampleProject/Scripts/Stage_elements/indigo_gate.gd" id="1_te1aq"]
+[ext_resource type="Texture2D" uid="uid://d3swxsxilmy52" path="res://assets/sprites/Objects/Doors/Other/Gate.png" id="2_25n7n"]
+[ext_resource type="PackedScene" uid="uid://b1s5cb6jv4cm" path="res://SampleProject/extra_scenes/HUD/hint_box_trigger.tscn" id="3_uk52s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk52s"]
+size = Vector2(22, 358)
+
+[node name="IndigoGate" type="StaticBody2D" unique_id=2022312470]
+collision_mask = 0
+script = ExtResource("1_te1aq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=924151695]
+scale = Vector2(2, 2)
+texture = ExtResource("2_25n7n")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2017125133]
+visible = false
+position = Vector2(1, 11)
+shape = SubResource("RectangleShape2D_uk52s")
+
+[node name="HintBoxTrigger" parent="." unique_id=1324032945 instance=ExtResource("3_uk52s")]
+visible = false
+position = Vector2(-18, -215)
+flag_id = 16
+text = "HINT_16"
+time = 2.0

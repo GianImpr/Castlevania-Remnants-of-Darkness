@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cvyrscaciwfd5" path="res://assets/sounds/Pickups/se_sys_get_item.msf.wav" id="7_w6tyi"]
 [ext_resource type="AudioStream" uid="uid://b4bl5bt0uambh" path="res://assets/sounds/Pickups/se_sys_get_wepon.msf.wav" id="8_y24s0"]
 [ext_resource type="Script" uid="uid://bmdtgap5whiop" path="res://SampleProject/Scripts/System/wall_checker.gd" id="11_vsmat"]
+[ext_resource type="AudioStream" uid="uid://xit7will8gsm" path="res://assets/sounds/Pickups/SkillGet.wav" id="11_y5xhd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3yniq"]
 shader = ExtResource("1_tf74l")
@@ -297,6 +298,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_ncxih"]
 resource_name = "picked"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -328,7 +330,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -342,7 +344,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -385,9 +387,15 @@ script = ExtResource("6_uj225")
 Tag = "equip"
 stream = ExtResource("8_y24s0")
 
+[sub_resource type="Resource" id="Resource_h1b4b"]
+script = ExtResource("6_uj225")
+Tag = "skill"
+stream = ExtResource("11_y5xhd")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_8pq3o"]
 script = ExtResource("5_0hp0c")
-sound_effects = Array[ExtResource("6_uj225")]([SubResource("Resource_mn1nh"), SubResource("Resource_te6pc")])
+sound_effects = Array[ExtResource("6_uj225")]([SubResource("Resource_mn1nh"), SubResource("Resource_te6pc"), SubResource("Resource_h1b4b")])
 
 [sub_resource type="Gradient" id="Gradient_4lmh8"]
 colors = PackedColorArray(2, 2, 2, 1, 0, 0.6, 1, 0)
@@ -450,6 +458,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="." unique_id=606181251]
+process_mode = 3
 volume_db = -25.0
 script = ExtResource("4_n8vax")
 audio_library = SubResource("Resource_8pq3o")

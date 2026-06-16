@@ -103,12 +103,11 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 		
 func apply_damage(body, damage):
 	body.damage_popup.popup(damage, 0)
-	
+	body.is_hurt = true
+
 	if body is InnocentDevil:
 		body.stats.Stats["Hearts"] = max(body.stats.Stats["Hearts"] - damage, 0)
 	else:
 		body.stats.Stats["HP"] = max(body.stats.Stats["HP"] - damage, 0)
 		if body.stats.accessoryEquipped(Accessory.Accessories.STOIC_BELT) and not body.isGuarding() and damage < body.stats.Stats["MHP"]*0.07:
 			body.is_hurt = false
-
-	body.is_hurt = true

@@ -1,5 +1,5 @@
 extends TextureRect
-
+class_name BossBar
 @export var animation: AnimationPlayer
 var enemy: Enemy:
 	set(value):
@@ -31,6 +31,9 @@ func _process(delta: float) -> void:
 		return
 	if displayed_HP > enemy.stats.HP:
 		displayed_HP = enemy.stats.HP
+		if animation.current_animation == "initialize":
+			yellow_damage.value = 500
+			blue_damage.value = 500
 		animation.play("shake")
 		damage_display_duration.start()
 		updateBar()

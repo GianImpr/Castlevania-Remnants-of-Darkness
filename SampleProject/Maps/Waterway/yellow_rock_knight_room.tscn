@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d3ojnp2qhy6a3" path="res://SampleProject/extra_scenes/stage_elements/candle.tscn" id="5_akius"]
 [ext_resource type="PackedScene" uid="uid://dalkv4b0fnk62" path="res://SampleProject/enemies/RockKnight/rock_knight.tscn" id="6_xeqfd"]
 [ext_resource type="PackedScene" uid="uid://fj3r8us6fctg" path="res://SampleProject/extra_scenes/stage_elements/waterfall_less_thin.tscn" id="7_3hkmv"]
+[ext_resource type="PackedScene" uid="uid://bn7uia82o3rnk" path="res://SampleProject/extra_scenes/stage_elements/indigo_yellow_path_breakable_wall.tscn" id="8_3hkmv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_he8rb"]
 texture = ExtResource("3_roi43")
@@ -990,6 +991,9 @@ physics_layer_1/collision_layer = 4096
 physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_6ov32")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hkmv"]
+size = Vector2(6, 110.5)
+
 [node name="Room" type="Node2D" unique_id=2013800835]
 script = ExtResource("1_jrunw")
 metadata/_custom_type_script = "uid://cra3c457tg2j7"
@@ -1045,3 +1049,13 @@ position = Vector2(576, 346)
 [node name="WaterfallLessThin3" parent="." unique_id=2067141593 instance=ExtResource("7_3hkmv")]
 z_index = -1
 position = Vector2(832, 346)
+
+[node name="BreakableWall" parent="." unique_id=744760839 instance=ExtResource("8_3hkmv")]
+position = Vector2(33, 352)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=45263313]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=291476415]
+position = Vector2(65, 148.75)
+shape = SubResource("RectangleShape2D_3hkmv")

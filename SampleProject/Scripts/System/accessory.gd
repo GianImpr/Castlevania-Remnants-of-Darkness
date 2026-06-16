@@ -33,5 +33,6 @@ enum Accessories {
 	WINGED_RING = 14,
 	LAPIS_LAZULI = 15,
 	PEARL_RING = 16,
-	TOUGH_RING = 17
+	TOUGH_RING = 17,
+	GOLD_RING = 18
 }

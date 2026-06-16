@@ -1284,7 +1284,7 @@ size = Vector2(13, 45)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8u0y"]
 shader = ExtResource("88_t7gcy")
-shader_parameter/influence = 0.0999999977648
+shader_parameter/influence = 0.1999999955296
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/speed = 4.0000000596048
 shader_parameter/mix_colors = false
@@ -2709,6 +2709,21 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -100)]
+}
+
+[sub_resource type="Animation" id="Animation_2t4xi"]
+resource_name = "dying_drowning"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [123]
 }
 
 [sub_resource type="Animation" id="Animation_qlkcq"]
@@ -4424,6 +4439,7 @@ _data = {
 &"double_jump": SubResource("Animation_p6pc0"),
 &"double_jump_reverse": SubResource("Animation_god42"),
 &"dying": SubResource("Animation_8pt8e"),
+&"dying_drowning": SubResource("Animation_2t4xi"),
 &"guard_break": SubResource("Animation_qlkcq"),
 &"guard_walk": SubResource("Animation_075cc"),
 &"guarding": SubResource("Animation_ohwuw"),

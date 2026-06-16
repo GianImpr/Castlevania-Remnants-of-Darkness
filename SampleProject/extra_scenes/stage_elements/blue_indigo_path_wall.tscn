@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cv2ex1pcclx3x"]
+
+[ext_resource type="Texture2D" uid="uid://dd5ayfhtvgnlb" path="res://assets/sprites/Objects/BreakableWalls/IndigoBluePath.png" id="1_bda1r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pxxr"]
+size = Vector2(32, 96)
+
+[node name="object" type="RigidBody2D" unique_id=1339386508]
+collision_layer = 5
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=843336335]
+texture = ExtResource("1_bda1r")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1724863634]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_3pxxr")

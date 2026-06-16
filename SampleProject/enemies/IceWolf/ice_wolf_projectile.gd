@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	position = position + linear_velocity * delta
 
 func _on_area_2d_area_entered(area_node: Area2D) -> void:
-	var body = area.get_parent()
+	var body = area_node.get_parent()
 	if not body.is_hurt and not on_cooldown:
 		stats.apply_damage(body, stats.calculate_damage(body))
 		on_cooldown = true

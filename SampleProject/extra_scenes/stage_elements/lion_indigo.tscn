@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://cyggxn81gn6km"]
+
+[ext_resource type="Script" uid="uid://rykt1a6ad5hg" path="res://SampleProject/Scripts/Stage_elements/lion_indigo.gd" id="1_1eutu"]
+[ext_resource type="Texture2D" uid="uid://wtplbsfcvna" path="res://assets/sprites/Objects/Background/IndigoLionHead.png" id="1_m85wn"]
+[ext_resource type="PackedScene" uid="uid://cor3lhdigpbnf" path="res://SampleProject/extra_scenes/stage_elements/waterfall.tscn" id="2_jvhr8"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="3_pearc"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="4_1eutu"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="5_0s44p"]
+[ext_resource type="AudioStream" uid="uid://hsx6jf5238fb" path="res://assets/sounds/Powerups/ActivateRelic.MP3" id="6_yn6ck"]
+
+[sub_resource type="Gradient" id="Gradient_jvhr8"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_agu03"]
+gradient = SubResource("Gradient_jvhr8")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_m85wn"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jvhr8"]
+gradient = SubResource("Gradient_m85wn")
+width = 1
+
+[sub_resource type="Animation" id="Animation_agu03"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisibleWaterfall:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftEye:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightEye:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0rok1"]
+resource_name = "activate"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VisibleWaterfall:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(28, 0), Vector2(28, 768)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftEye:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.5785255, 1.353256, 1), Color(0, 3.528761, 7.9112988, 1), Color(0, 0.5785255, 1.353256, 1), Color(0, 1.4517859, 3.2944162, 1), Color(0, 0.5785255, 1.353256, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RightEye:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0.5785255, 1.353256, 1), Color(0, 3.528761, 7.9112988, 1), Color(0, 0.5785255, 1.353256, 1), Color(0, 1.4517859, 3.2944162, 1), Color(0, 0.5785255, 1.353256, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"glowing", -1, 1.0, false],
+"method": &"play"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PolyphonicAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["activate"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_m85wn"]
+resource_name = "glowing"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftEye:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0.790655, 1.8247963, 1), Color(0, 1.4517859, 3.2944162, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightEye:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0.790655, 1.8247963, 1), Color(0, 1.4517859, 3.2944162, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VisibleWaterfall:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(28, 768)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pearc"]
+_data = {
+&"RESET": SubResource("Animation_agu03"),
+&"activate": SubResource("Animation_0rok1"),
+&"glowing": SubResource("Animation_m85wn")
+}
+
+[sub_resource type="Resource" id="Resource_wegc4"]
+script = ExtResource("5_0s44p")
+Tag = "activate"
+stream = ExtResource("6_yn6ck")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_12tiq"]
+script = ExtResource("4_1eutu")
+sound_effects = Array[ExtResource("5_0s44p")]([SubResource("Resource_wegc4")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[node name="LionIndigo" type="Node2D" unique_id=1641144995 node_paths=PackedStringArray("animation")]
+script = ExtResource("1_1eutu")
+animation = NodePath("AnimationPlayer")
+
+[node name="LeftEye" type="Sprite2D" parent="." unique_id=369459695]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-14, -28)
+scale = Vector2(4, 4)
+texture = SubResource("GradientTexture1D_agu03")
+
+[node name="RightEye" type="Sprite2D" parent="." unique_id=1890109412]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(8, -28)
+scale = Vector2(4, 4)
+texture = SubResource("GradientTexture1D_agu03")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1853848000]
+scale = Vector2(2, 2)
+texture = ExtResource("1_m85wn")
+
+[node name="VisibleWaterfall" type="TextureRect" parent="." unique_id=1822651040]
+clip_children = 1
+offset_left = -14.0
+offset_top = 10.0
+offset_right = -13.0
+offset_bottom = 11.0
+texture = SubResource("GradientTexture1D_jvhr8")
+
+[node name="Waterfall" parent="VisibleWaterfall" unique_id=1701755214 instance=ExtResource("2_jvhr8")]
+clip_children = 2
+position = Vector2(14, 384)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2068606008]
+libraries/ = SubResource("AnimationLibrary_pearc")
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=805239572]
+volume_db = -5.0
+script = ExtResource("3_pearc")
+audio_library = SubResource("Resource_12tiq")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"

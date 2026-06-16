@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://dupj8pvjbrdia" path="res://assets/sounds/Enemies/IceWolf/IceWolfSlide.wav" id="28_xy6lo"]
 [ext_resource type="PackedScene" uid="uid://bwxpjqoms6wep" path="res://SampleProject/enemies/IceWolf/ice_wolf_dead.tscn" id="29_pwn5w"]
 [ext_resource type="AudioStream" uid="uid://ykbxupe7sfkc" path="res://assets/sounds/Enemies/RockKnight/RockKnightBodyPartExploding.ogg" id="30_gdm3s"]
+[ext_resource type="Texture2D" uid="uid://c3h6ipibtk2sk" path="res://assets/sprites/Effects/Agony.png" id="31_f6i7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdyqg"]
 size = Vector2(244.25, 51.75)
@@ -325,6 +326,20 @@ tracks/5/keys = {
 "values": [{
 "args": ["explosion"],
 "method": &"play_sound_effect_from_library"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
 }]
 }
 
@@ -749,7 +764,55 @@ color_ramp = SubResource("GradientTexture1D_f6i7g")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[node name="IceWolf" type="CharacterBody2D" unique_id=1878165104 node_paths=PackedStringArray("vision", "punch", "last_punch", "slide", "dash", "shockwave", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles")]
+[sub_resource type="Gradient" id="Gradient_f6i7g"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xy6lo"]
+gradient = SubResource("Gradient_f6i7g")
+width = 50
+height = 50
+fill = 2
+fill_from = Vector2(0.5555556, 0.50000006)
+fill_to = Vector2(0.52136755, 0)
+
+[sub_resource type="Animation" id="Animation_3xppy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 40, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_cbvhq"]
+resource_name = "agony"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 40, 70), Rect2(0, 128, 40, 70)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tc1a8"]
+_data = {
+&"RESET": SubResource("Animation_3xppy"),
+&"agony": SubResource("Animation_cbvhq")
+}
+
+[node name="IceWolf" type="CharacterBody2D" unique_id=1878165104 node_paths=PackedStringArray("vision", "punch", "last_punch", "slide", "dash", "shockwave", "sprite", "hitbox", "stats", "damage_popup", "iframe_timer", "hitbox_iframe", "blood_particles", "agony_effect")]
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 4097
@@ -767,6 +830,7 @@ damage_popup = NodePath("DamagePopup")
 iframe_timer = NodePath("Timer")
 hitbox_iframe = NodePath("HitboxArea")
 blood_particles = NodePath("BloodDamage")
+agony_effect = NodePath("Agony")
 metadata/_custom_type_script = "uid://jpd31rlnmjom"
 
 [node name="EnemyStats" type="Node" parent="." unique_id=493883460]
@@ -1011,3 +1075,25 @@ lifetime = 1.5
 one_shot = true
 explosiveness = 0.07
 process_material = SubResource("ParticleProcessMaterial_xy6lo")
+
+[node name="Agony" type="Node2D" parent="." unique_id=1209204865]
+
+[node name="TextureRect" type="TextureRect" parent="Agony" unique_id=2067679184]
+clip_children = 1
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+texture = SubResource("GradientTexture2D_xy6lo")
+
+[node name="Agony" type="Sprite2D" parent="Agony/TextureRect" unique_id=535865594]
+self_modulate = Color(1, 1, 1, 0.21100001)
+texture_repeat = 2
+position = Vector2(25, 25)
+texture = ExtResource("31_f6i7g")
+region_enabled = true
+region_rect = Rect2(0, 0, 40, 50)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Agony/TextureRect/Agony" unique_id=1292974483]
+libraries/ = SubResource("AnimationLibrary_tc1a8")
+autoplay = &"agony"

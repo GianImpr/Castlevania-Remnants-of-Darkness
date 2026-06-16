@@ -6,6 +6,9 @@ class_name Water
 @export var sound: PolyphonicAudio
 @export var collision: CollisionShape2D
 @export var water_sprite: Sprite2D
+@export var apply_extra_gravity: bool
+@export var drowning_detection: Area2D
+@export var allow_drowning: bool = false
 
 var excluded_bodies: Array[CharacterBody2D]
 var track_bodies: Array[CharacterBody2D]
@@ -18,10 +21,15 @@ const SPLASH_SIZE: float = 60
 func _ready() -> void:
 	excluded_bodies.clear()
 	track_bodies.clear()
+	drowning_detection.position.y /= drowning_detection.global_scale.y
+	if allow_drowning:
+		drowning_detection.set_deferred("monitoring", true)
 
 func _process(delta: float) -> void:
 	for body: CharacterBody2D in track_bodies:
 		if body.velocity.x != 0 and body not in excluded_bodies:
+			if "drowning" in body and body.drowning:
+				return
 			excluded_bodies.append(body)
 			triggerSmallSplash(body)
 			get_tree().create_timer(SMALL_SPLASH_TIME_INTERVAL, false).timeout.connect(func(): excluded_bodies.erase(body))
@@ -42,9 +50,15 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		track_bodies.erase(body)
 		
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.get_parent() is HectorPlayer:
+		Global.player.in_heavy_water = apply_extra_gravity
+		return
 	_on_area_2d_body_entered(area.get_parent())
 	
 func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.get_parent() is HectorPlayer:
+		Global.player.in_heavy_water = false
+		return
 	_on_area_2d_body_exited(area.get_parent())
 
 func triggerBigSplash(body: Node2D) -> void:
@@ -89,3 +103,8 @@ func triggerSmallSplash(body: Node2D) -> void:
 		sound.play_sound_effect_from_library("small_splash")
 		
 	
+func _on_drowning_entered(body: Node2D) -> void:
+	body.startDrowning()
+	
+func _on_drowning_exited(body: Node2D) -> void:
+	body.stopDrowning()

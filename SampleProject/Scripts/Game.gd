@@ -366,7 +366,7 @@ func load_game():
 		player.innocent_devil_pocket[player.summoned_innocent_devil_id].applyStats(player.innocent_devil)
 		player.get_parent().add_child(player.innocent_devil)
 		player.innocent_devil.facing_position = Global.player.facing_position * (-1)
-		if player.innocent_devil.facing_position == 1:
+		if player.innocent_devil.facing_position == 1 and player.innocent_devil is Faerie:
 			player.innocent_devil.scale.x *= -1
 		player.innocent_devil.global_position = player.global_position + Vector2(75*player.innocent_devil.facing_position*(-1), -50)
 

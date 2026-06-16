@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://dc28q0j1e2kyn"]
+
+[ext_resource type="Script" uid="uid://bsq5xdsgr1b63" path="res://SampleProject/Scripts/System/full_item_box.gd" id="1_cvu58"]
+[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="2_5ls82"]
+[ext_resource type="Texture2D" uid="uid://gbcs3e2yhpky" path="res://assets/sprites/HUD/Containers/NameBox/ItemBox.png" id="3_0n1q8"]
+[ext_resource type="Texture2D" uid="uid://brdok712lblw" path="res://assets/sprites/HUD/Containers/NameBox/SkillBox.png" id="3_7r2da"]
+[ext_resource type="Texture2D" uid="uid://caw8updlmyepd" path="res://assets/sprites/Items/InventoryIcons/Bullova_New.png" id="4_7r2da"]
+[ext_resource type="Texture2D" uid="uid://ovg0jielsica" path="res://assets/sprites/HUD/Containers/NameBox/RelicBox.png" id="4_rx7eb"]
+[ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="5_rx7eb"]
+[ext_resource type="Texture2D" uid="uid://cf86js04xbhqi" path="res://assets/sprites/HUD/Containers/NameBox/ArtifactBox.png" id="5_ugc5v"]
+[ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="9_rx7eb"]
+
+[sub_resource type="Theme" id="Theme_haqnl"]
+default_font = ExtResource("2_5ls82")
+default_font_size = 16
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_65o1e"]
+content_margin_bottom = 4.0
+texture = ExtResource("3_0n1q8")
+texture_margin_left = 16.0
+texture_margin_top = 4.0
+texture_margin_right = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ngtk1"]
+content_margin_top = 50.0
+texture = ExtResource("5_rx7eb")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+
+[sub_resource type="Theme" id="Theme_ugc5v"]
+default_font = ExtResource("2_5ls82")
+default_font_size = 32
+
+[sub_resource type="Animation" id="Animation_8l8qi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_w7sbw"]
+resource_name = "show"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1y540"]
+_data = {
+&"RESET": SubResource("Animation_8l8qi"),
+&"show": SubResource("Animation_w7sbw")
+}
+
+[node name="FullItemBox" type="Control" unique_id=435188266 node_paths=PackedStringArray("label", "description", "icon", "animation", "panel_container")]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = 35.0
+offset_right = -1.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_cvu58")
+label = NodePath("MarginContainer/PanelContainer/HBoxContainer/Label")
+description = NodePath("Description")
+icon = NodePath("MarginContainer/PanelContainer/HBoxContainer/Icon")
+animation = NodePath("AnimationPlayer")
+textures = Array[CompressedTexture2D]([ExtResource("3_0n1q8"), ExtResource("3_7r2da"), ExtResource("4_rx7eb"), ExtResource("5_ugc5v")])
+panel_container = NodePath("MarginContainer/PanelContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1880016884]
+custom_minimum_size = Vector2(41, 22)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.5
+offset_top = -57.0
+offset_right = 70.5
+offset_bottom = -33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=1427880346]
+custom_minimum_size = Vector2(41, 22)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource("Theme_haqnl")
+theme_override_styles/panel = SubResource("StyleBoxTexture_65o1e")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer" unique_id=1186282302]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/PanelContainer/HBoxContainer" unique_id=1494261067]
+layout_mode = 2
+texture = ExtResource("4_7r2da")
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer" unique_id=1685552083]
+layout_mode = 2
+text = "Fortitude Gauntlet"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1780638771]
+layout_mode = 0
+offset_left = -209.5
+offset_top = -29.0
+offset_right = 626.5
+offset_bottom = 44.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxTexture_ngtk1")
+
+[node name="Description" type="RichTextLabel" parent="." unique_id=529646969]
+layout_mode = 0
+offset_left = -203.5
+offset_top = -26.5
+offset_right = 611.5
+offset_bottom = 38.5
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_ugc5v")
+scroll_active = false
+script = ExtResource("9_rx7eb")
+metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
+
+[node name="Continue" type="RichTextLabel" parent="." unique_id=38959537]
+layout_mode = 0
+offset_left = 31.5
+offset_top = 6.0
+offset_right = 370.5
+offset_bottom = 46.0
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_ugc5v")
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "TUTORIAL_BOX_CONTINUE"
+horizontal_alignment = 2
+script = ExtResource("9_rx7eb")
+new_text = "TUTORIAL_BOX_CONTINUE"
+metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1650305843]
+libraries/ = SubResource("AnimationLibrary_1y540")
