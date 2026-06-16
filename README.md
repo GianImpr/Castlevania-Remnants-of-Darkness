@@ -1,5 +1,6 @@
 # Welcome to the GitHub page of Castlevania: Remnants of Darkness!
-![Logo](https://github.com/user-attachments/assets/f39b2cb6-3f3a-4ad5-97a5-46462bd2de77)
+<img alt="NewLogo" src="https://github.com/user-attachments/assets/036cd887-6b0e-4b5a-adde-5c9eaecccebd" />
+
 ## About this project
 This is a fangame I'm developing in ***Godot Engine 4.6***, and my goal is to create a full game (while also learning how to make games, since this is the first one I'm making) based on the Metroidvania genre.
 
@@ -25,7 +26,6 @@ This game aims to take the distinctive elements of ***Castlevania: Curse of Dark
 
 ## What does each directory contain?
 - ```addons```: Contains all files related to Godot Addons, such as G.U.I.D.E, Metroidvania System, Input Helper and Input Buffer;
-- ```android```: Contains files for making builds on Android;
 - ```assets```: Contains images, spritesheets, textures, sounds, soundtracks and so on;
 - ```guide_examples```: Contains guides for the G.U.I.D.E Addon;
 - ```rooms```: Contains old builds of room scenes, nothing of value;
