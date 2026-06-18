@@ -5,7 +5,11 @@ var can_perfect_guard: bool = false
 static var applyMercyInvincibility: Callable
 
 func enter():
-	animation.play("hurt", -1, 1.2)
+	if player.hurt_from_back:
+		animation.play("hurt_back", -1, 1.2)
+	else:
+		animation.play("hurt", -1, 1.2)
+	player.hurt_from_back = false
 	player.velocity.x = 0
 	blood.emitting = true
 	

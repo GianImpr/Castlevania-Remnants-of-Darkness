@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cym0x30pf4045"]
+
+[ext_resource type="Shader" uid="uid://ctkur5hjjor5d" path="res://SampleProject/Shaders/unique_tonality.gdshader" id="1_nl7k0"]
+[ext_resource type="Texture2D" uid="uid://bc22rt5lbfl50" path="res://assets/sprites/Characters/Hector/HectorSprite2D.png" id="2_t2ol6"]
+[ext_resource type="Script" uid="uid://dlkkj6nhr3dfn" path="res://SampleProject/Scripts/backdash_trail.gd" id="3_o3xo2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e1ame"]
+shader = ExtResource("1_nl7k0")
+shader_parameter/target_color = Color(0.7490196, 0, 1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/luminosity = Color(0.4162787, 0.81909496, 0.14787453, 1)
+
+[node name="BackdashTrail" type="Sprite2D" unique_id=332537084]
+material = SubResource("ShaderMaterial_e1ame")
+texture = ExtResource("2_t2ol6")
+hframes = 20
+vframes = 24
+script = ExtResource("3_o3xo2")
+duration = 0.33

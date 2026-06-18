@@ -37,7 +37,6 @@
 [ext_resource type="Script" uid="uid://qwvrmsl67odq" path="res://SampleProject/Scripts/HectorAnims/HectorCrouchAttack.gd" id="13_xjq4u"]
 [ext_resource type="Script" uid="uid://dhlqme3a3a4qs" path="res://SampleProject/Scripts/HectorAnims/HectorAirAttack.gd" id="14_4akkl"]
 [ext_resource type="Texture2D" uid="uid://j0iqrvrsfr8l" path="res://assets/sprites/Items/InventoryIcons/Inventory_259.png" id="14_8xxqq"]
-[ext_resource type="PackedScene" uid="uid://m6mdjyrpiuny" path="res://SampleProject/extra_scenes/backdash_trail.tscn" id="15_2ye6y"]
 [ext_resource type="PackedScene" uid="uid://chsi373nippdo" path="res://SampleProject/extra_scenes/polyphonic_audio_player.tscn" id="15_lipy2"]
 [ext_resource type="Texture2D" uid="uid://c5e7abdrgw8fe" path="res://assets/sprites/Items/InventoryIcons/Inventory_260.png" id="15_qplng"]
 [ext_resource type="PackedScene" uid="uid://cfxkhpbgtwixy" path="res://SampleProject/extra_scenes/debris.tscn" id="16_8e2oa"]
@@ -184,6 +183,7 @@
 [ext_resource type="AudioStream" uid="uid://gfj58uvb5asp" path="res://assets/sounds/Effects/Guard/GuardBreak.wav" id="137_xyr7s"]
 [ext_resource type="Script" uid="uid://bgelrthd4qb7k" path="res://SampleProject/Scripts/HectorAnims/HectorSwordSpin.gd" id="138_q0p4k"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="140_3d8p5"]
+[ext_resource type="PackedScene" uid="uid://cym0x30pf4045" path="res://SampleProject/extra_scenes/effects/purple_backdash_trail.tscn" id="140_4ybkv"]
 [ext_resource type="Script" uid="uid://wv6wql8bs5gy" path="res://SampleProject/Scripts/HectorAnims/HectorThrowAxe.gd" id="141_js2j3"]
 [ext_resource type="AudioStream" uid="uid://fw6xwwdjdls8" path="res://assets/sounds/HectorMovement/Punch.MP3" id="142_67mgn"]
 [ext_resource type="AudioStream" uid="uid://c52p25lskmuel" path="res://assets/sounds/Effects/EnemyHit/HitSfx.MP3" id="143_ftd0k"]
@@ -2135,6 +2135,23 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_c0ija"]
+resource_name = "backflip"
+length = 0.52
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.19999999, 0.24, 0.28, 0.32, 0.35999998, 0.39999998, 0.44, 0.48),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 0]
+}
+
 [sub_resource type="Animation" id="Animation_v6x1f"]
 resource_name = "crouch"
 length = 0.4
@@ -2942,6 +2959,57 @@ tracks/0/keys = {
 "values": [122]
 }
 
+[sub_resource type="Animation" id="Animation_uc5i5"]
+resource_name = "hurt_back"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [125, 126, 125]
+}
+
+[sub_resource type="Animation" id="Animation_gl364"]
+resource_name = "hurt_crouch"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [94, 95]
+}
+
+[sub_resource type="Animation" id="Animation_64ww5"]
+resource_name = "hurt_crouch_back"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [96, 97, 96]
+}
+
 [sub_resource type="Animation" id="Animation_wdefe"]
 resource_name = "idle"
 length = 0.4
@@ -3225,7 +3293,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_hd1es"]
 resource_name = "perfect_guarding_air"
 length = 0.8
-step = 0.1
+step = 0.13
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3233,10 +3301,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [70]
+"values": [405, 406, 407, 406, 405]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -3533,7 +3601,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [4, 21, 49]
+"values": [4, 50, 51]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -3896,12 +3964,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.0666667, 0.2, 0.266667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [128, 129, 130, 131]
+"values": [128, 129, 151, 152]
 }
 
 [sub_resource type="Animation" id="Animation_3k6ne"]
 resource_name = "thunder_uppercut"
-length = 0.55
+length = 0.85
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -3910,10 +3978,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.65, 0.7, 0.75, 0.79999995),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [226, 227, 228, 229, 230, 231, 232, 233, 234, 235]
+"values": [226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -3922,7 +3990,7 @@ tracks/1/path = NodePath("StateMachine/Uppercut")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.25),
+"times": PackedFloat32Array(0.25, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -3939,7 +4007,7 @@ tracks/2/path = NodePath("PolyphonicAudioPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["ewgf"],
@@ -3953,7 +4021,7 @@ tracks/3/path = NodePath("UppercutLightning/UppercutSpark1:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -3965,7 +4033,7 @@ tracks/4/path = NodePath("UppercutLightning/UppercutSpark2:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -3977,7 +4045,7 @@ tracks/5/path = NodePath("UppercutLightning/ThunderLighting:energy")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.1, 0.25, 0.45, 0.55),
+"times": PackedFloat32Array(0.15, 0.3, 0.50000006, 0.6000001),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 6.0, 6.0, 0.0]
@@ -3989,7 +4057,7 @@ tracks/6/path = NodePath("Sprite2D/ThunderUppercutHitbox/CollisionShape2D:disabl
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.2, 0.35),
+"times": PackedFloat32Array(0.25, 0.39999998),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -3997,59 +4065,59 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_iotq6"]
 resource_name = "uppercut"
-length = 0.55
+length = 0.85
 step = 0.05
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("StateMachine/Uppercut")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [226, 227, 228, 229, 230, 231, 232, 233, 234, 235]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("StateMachine/Uppercut")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"get_hector_attack_sound"
 }]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PolyphonicAudioPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PolyphonicAudioPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["punch"],
 "method": &"play_sound_effect_from_library"
 }]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D/UppercutHitbox/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.2, 0.3),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/UppercutHitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25, 0.35000002),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.65, 0.7, 0.75, 0.79999995),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238]
 }
 
 [sub_resource type="Animation" id="Animation_4ybkv"]
@@ -4400,7 +4468,7 @@ tracks/27/keys = {
 [sub_resource type="Animation" id="Animation_si7n8"]
 resource_name = "windstorm"
 length = 0.95
-step = 0.05
+step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4408,10 +4476,24 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.3, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.19999999, 0.24, 0.28, 0.32, 0.35999998, 0.39999998, 0.44, 0.48, 0.52, 0.76, 0.84, 0.91999996),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [260, 261, 262, 263, 264, 265]
+"values": [420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/Windstorm")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.24),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"performWindstorm"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jttxa"]
@@ -4427,6 +4509,7 @@ _data = {
 &"attack_fist": SubResource("Animation_5xy3g"),
 &"attack_greatsword": SubResource("Animation_7hrwj"),
 &"attack_spear": SubResource("Animation_htusw"),
+&"backflip": SubResource("Animation_c0ija"),
 &"crouch": SubResource("Animation_v6x1f"),
 &"crouch_attack": SubResource("Animation_dlpvv"),
 &"crouch_attack_axe": SubResource("Animation_xy0l7"),
@@ -4446,6 +4529,9 @@ _data = {
 &"hard_landing": SubResource("Animation_ci5hg"),
 &"hurt": SubResource("Animation_5bejj"),
 &"hurt_air": SubResource("Animation_rbc1d"),
+&"hurt_back": SubResource("Animation_uc5i5"),
+&"hurt_crouch": SubResource("Animation_gl364"),
+&"hurt_crouch_back": SubResource("Animation_64ww5"),
 &"idle": SubResource("Animation_wdefe"),
 &"jump": SubResource("Animation_2pg2k"),
 &"landing": SubResource("Animation_453o6"),
@@ -5593,7 +5679,7 @@ process_mode = 3
 material = SubResource("ShaderMaterial_a8u0y")
 texture = ExtResource("3_hkpj0")
 hframes = 20
-vframes = 21
+vframes = 24
 region_rect = Rect2(0, 0, 0, 70)
 script = ExtResource("91_toel8")
 glow_speed = 0.17
@@ -5819,7 +5905,7 @@ one_shot = true
 [node name="Slide" type="Node" parent="StateMachine" unique_id=874481497 node_paths=PackedStringArray("trail_timer", "debris_timer", "turn_timer")]
 script = ExtResource("129_w5oev")
 slide_speed = 600.0
-trail_scene = ExtResource("15_2ye6y")
+trail_scene = ExtResource("140_4ybkv")
 debris_scene = ExtResource("16_8e2oa")
 trail_timer = NodePath("Trail_timer")
 debris_timer = NodePath("Debris_timer")
@@ -5828,7 +5914,7 @@ attack_state = true
 metadata/_custom_type_script = "uid://bu6a0jaceyaa4"
 
 [node name="Trail_timer" type="Timer" parent="StateMachine/Slide" unique_id=384082923]
-wait_time = 0.08
+wait_time = 0.04
 
 [node name="Debris_timer" type="Timer" parent="StateMachine/Slide" unique_id=2107521112]
 wait_time = 0.1
@@ -5843,7 +5929,7 @@ script = ExtResource("10_6lx6a")
 [node name="Front_dash" type="Node" parent="StateMachine" unique_id=730677791 node_paths=PackedStringArray("trail_timer", "debris_timer")]
 script = ExtResource("136_5lhw1")
 dash_speed = 1100.0
-trail_scene = ExtResource("15_2ye6y")
+trail_scene = ExtResource("140_4ybkv")
 debris_scene = ExtResource("16_8e2oa")
 trail_timer = NodePath("../Backdash/Trail_timer")
 debris_timer = NodePath("../Backdash/Debris_timer")
@@ -5852,13 +5938,13 @@ metadata/_custom_type_script = "uid://b8uxi4gxfpl7b"
 [node name="Backdash" type="Node" parent="StateMachine" unique_id=1834992025 node_paths=PackedStringArray("trail_timer", "debris_timer")]
 script = ExtResource("11_hdkwr")
 backdash_speed = 800.0
-trail_scene = ExtResource("15_2ye6y")
+trail_scene = ExtResource("140_4ybkv")
 debris_scene = ExtResource("16_8e2oa")
 trail_timer = NodePath("Trail_timer")
 debris_timer = NodePath("Debris_timer")
 
 [node name="Trail_timer" type="Timer" parent="StateMachine/Backdash" unique_id=747251017]
-wait_time = 0.08
+wait_time = 0.04
 
 [node name="Debris_timer" type="Timer" parent="StateMachine/Backdash" unique_id=1182653179]
 wait_time = 0.1

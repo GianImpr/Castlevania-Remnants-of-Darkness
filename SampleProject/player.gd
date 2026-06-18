@@ -78,6 +78,7 @@ var can_jump_cancel: bool = true
 var can_crouch_attack: bool = true
 var resume_attack: bool = false
 var is_hurt: bool = false
+var hurt_from_back: bool = false
 var knockback: bool = false
 var guarding: bool = false
 var unlocked_magic: bool = false
@@ -516,6 +517,7 @@ func instantiateScene(scene: PackedScene, get_player_frame: bool, offset: Vector
 		instance.texture = sprite.texture
 		instance.hframes = sprite.hframes
 		instance.vframes = sprite.vframes
+
 	MetSys.get_current_room_instance().add_child(instance)
 
 func activateBloodCloak() -> void:
