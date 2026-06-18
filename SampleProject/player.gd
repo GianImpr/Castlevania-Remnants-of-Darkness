@@ -106,6 +106,7 @@ var can_double_jump: bool = true
 var targettable_enemies: Array[Enemy]
 var can_use_magical_ticket: bool = true
 
+
 const Animations = {
 	ATTACK_AIR = "air_attack",
 	ATTACK = "attack",

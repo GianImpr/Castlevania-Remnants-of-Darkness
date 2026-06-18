@@ -2138,7 +2138,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_c0ija"]
 resource_name = "backflip"
 length = 0.52
-step = 0.04
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2146,10 +2146,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.19999999, 0.24, 0.28, 0.32, 0.35999998, 0.39999998, 0.44, 0.48),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.07, 0.09, 0.13, 0.15, 0.21, 0.25, 0.29, 0.33, 0.37, 0.44),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 0]
+"values": [440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451]
 }
 
 [sub_resource type="Animation" id="Animation_v6x1f"]
@@ -5914,7 +5914,7 @@ attack_state = true
 metadata/_custom_type_script = "uid://bu6a0jaceyaa4"
 
 [node name="Trail_timer" type="Timer" parent="StateMachine/Slide" unique_id=384082923]
-wait_time = 0.04
+wait_time = 0.06
 
 [node name="Debris_timer" type="Timer" parent="StateMachine/Slide" unique_id=2107521112]
 wait_time = 0.1
@@ -5944,7 +5944,7 @@ trail_timer = NodePath("Trail_timer")
 debris_timer = NodePath("Debris_timer")
 
 [node name="Trail_timer" type="Timer" parent="StateMachine/Backdash" unique_id=747251017]
-wait_time = 0.04
+wait_time = 0.05
 
 [node name="Debris_timer" type="Timer" parent="StateMachine/Backdash" unique_id=1182653179]
 wait_time = 0.1
