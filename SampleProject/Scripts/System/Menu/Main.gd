@@ -57,11 +57,14 @@ func updateStats():
 	showButtonWithCondition(default_button, "SUMMON_BUTTON", Global.player.pocket_size > 0)
 	showButtonWithCondition(combine_button, "COMBINE_BUTTON", Global.player.stats.findItem(Skill.Skills.BLACKSMITH_CONTRACT, Global.player.stats.skill_inventory))
 	showButtonWithCondition(bestiary_button, "BESTIARY_BUTTON", Global.player.stats.findItem(Skill.Skills.TOME_OF_MONSTERS, Global.player.stats.skill_inventory))
-	if combine_button.visible:
-		var new_icon: TextureRect = combine_button.get_child(0)
+	
+	var new_icon: TextureRect = combine_button.get_child(0)
+	if not combine_button.disabled:
 		CombineButtons.new_craftable_items = false
 		InvCombine.verifyNewRecipe.call()
 		new_icon.visible = CombineButtons.new_craftable_items
+	else:
+		new_icon.visible = false
 	
 	# This line will be decommented in a further update, when there are more than one innocent devil
 	#default_button.disabled = true

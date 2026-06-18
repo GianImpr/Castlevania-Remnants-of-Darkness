@@ -265,13 +265,13 @@ func isTransparent() -> bool:
 	return modulate.a < 1
 
 func checkBlinking(stat, max_stat, bar: TextureProgressBar, tween_idx: int, color: Color) -> void:
-	if stat <= max_stat / 4 and (blinking_tweens[tween_idx] == null or not blinking_tweens[tween_idx].is_running()):
+	if stat <= max_stat / 4 and max_stat != 0 and (blinking_tweens[tween_idx] == null or not blinking_tweens[tween_idx].is_running()):
 		blinking_tweens[tween_idx] = get_tree().create_tween()
 		blinking_tweens[tween_idx].set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 		blinking_tweens[tween_idx].set_loops()
 		blinking_tweens[tween_idx].tween_property(bar, "tint_under", color, 0.35)
 		blinking_tweens[tween_idx].tween_property(bar, "tint_under", Color.WHITE, 0.35)
-	elif stat > max_stat / 4 and blinking_tweens[tween_idx] != null and blinking_tweens[tween_idx].is_running():
+	elif (stat > max_stat / 4 or max_stat == 0) and blinking_tweens[tween_idx] != null and blinking_tweens[tween_idx].is_running():
 		blinking_tweens[tween_idx].kill()
 		bar.tint_under = Color.WHITE
 		
