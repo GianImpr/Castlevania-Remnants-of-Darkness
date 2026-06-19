@@ -10,7 +10,7 @@ class_name InvOptions
 @export var settings: Dictionary
 @export var binding_buttons: GridContainer
 @export var description: RichTextLabelWithButtons
-@export var language_button: Button
+@export var language_label: Label
 var cur_button: InventoryButton
 var functions: Array[Callable] = [changeWindowMode, changeResolution, changeScaling, changeVsync, changeFramerate, changeFramerateDisplay, changeMasterVolume, changeSFXVolume, changeMusicVolume, changeVoiceVolume, changeControllerLayout, changeInputBuffer, changeDevice, changeLanguage, changeRumble]
 var descriptions: Array[String] = [
@@ -278,7 +278,7 @@ const Actions = {
 func enter():
 	animation.play_backwards("change")
 	default_button.grab_focus()
-	language_button.text = Global.Languages.keys()[settings["language"]]
+	language_label.text = Global.Languages.keys()[settings["language"]]
 	
 
 func exit():
@@ -593,6 +593,7 @@ func changeLanguage(offset: int, button: InventoryButton) -> void:
 	Global.language = settings["language"]
 	setting_label.text = Global.Languages.keys()[settings["language"]]
 	TranslationServer.set_locale(Global.langs[settings["language"]])
+	description.new_text = tr("LANGUAGE_DESC")
 
 func changeRumble(offset: int, button: InventoryButton) -> void:
 	const modes: Array[String] = ["DISABLED_LABEL", "ENABLED_LABEL"]

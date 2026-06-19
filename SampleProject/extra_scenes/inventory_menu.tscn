@@ -4507,7 +4507,7 @@ texture = SubResource("GradientTexture2D_6mxjt")
 libraries/ = SubResource("AnimationLibrary_xuig2")
 speed_scale = 1.2
 
-[node name="Options" type="Node" parent="MenuStateMachine" unique_id=676869685 node_paths=PackedStringArray("buttons", "graphics_menu", "audio_menu", "controller_menu", "game_menu", "binding_buttons", "description", "language_button", "animation", "default_button")]
+[node name="Options" type="Node" parent="MenuStateMachine" unique_id=676869685 node_paths=PackedStringArray("buttons", "graphics_menu", "audio_menu", "controller_menu", "game_menu", "binding_buttons", "description", "language_label", "animation", "default_button")]
 script = ExtResource("39_fbvxh")
 buttons = NodePath("Display/OptionList")
 graphics_menu = NodePath("Graphics/Options")
@@ -4535,7 +4535,7 @@ settings = {
 }
 binding_buttons = NodePath("Controls/Options/Bindings")
 description = NodePath("Display/Description")
-language_button = NodePath("Game/Options/Language/Button")
+language_label = NodePath("Game/Options/Language/Label")
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/OptionList/Window")
 
