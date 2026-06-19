@@ -252,6 +252,7 @@
 [ext_resource type="Script" uid="uid://gkvibd7oxi2i" path="res://SampleProject/Scripts/Powers/disjointed_player_hitbox.gd" id="246_eacfl"]
 [ext_resource type="Texture2D" uid="uid://68088u8in12a" path="res://assets/sprites/Characters/Hector/HectorWhirlwindHands.png" id="247_2t4xi"]
 [ext_resource type="Texture2D" uid="uid://c3ysdgd637tx5" path="res://assets/sprites/Weapons/Greatswords/ClaymoreTrail.png" id="248_il6c1"]
+[ext_resource type="Texture2D" uid="uid://c04vxsdtq4ws2" path="res://assets/sprites/Effects/Debris2.png" id="253_4ybkv"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_ju6fn")
@@ -1893,6 +1894,30 @@ tracks/46/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("FootDebrisLeft:emitting")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("FootDebrisRight:emitting")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_lhfeg"]
 resource_name = "air_attack"
@@ -2151,6 +2176,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FootDebrisLeft:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FootDebrisRight:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.33),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_v6x1f"]
@@ -2924,6 +2973,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(13, 27)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FootDebrisLeft:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FootDebrisRight:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_5bejj"]
@@ -5488,6 +5561,16 @@ color_ramp = SubResource("GradientTexture1D_bdrjn")
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uc5i5"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_gl364"]
+offsets = PackedFloat32Array(0, 0.18431373, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.23500001, 1, 1, 1, 0)
+
 [node name="Player" type="CharacterBody2D" unique_id=935233281 node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "hurtbox_area", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "reset_guard_presses_timer", "confidence_ring_timer", "time_heal_timer", "time_heal_particles", "goddess_shield_particles", "charge_sprite", "charge_anim", "charge_particles", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
 scale = Vector2(2, 2)
 collision_layer = 524290
@@ -6591,6 +6674,46 @@ texture = ExtResource("167_ltqbs")
 lifetime = 1.6
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_eacfl")
+
+[node name="FootDebrisLeft" type="CPUParticles2D" parent="." unique_id=477253402]
+material = SubResource("CanvasItemMaterial_uc5i5")
+position = Vector2(-8.5, 33.5)
+emitting = false
+amount = 1
+texture = ExtResource("253_4ybkv")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(0, 0)
+direction = Vector2(0, -1)
+spread = 70.0
+gravity = Vector2(0, -350)
+initial_velocity_max = 20.0
+color = Color(0.53058064, 0.33850247, 0.18903735, 1)
+color_ramp = SubResource("Gradient_gl364")
+anim_speed_min = 1.0
+anim_speed_max = 2.0
+
+[node name="FootDebrisRight" type="CPUParticles2D" parent="." unique_id=1049891232]
+material = SubResource("CanvasItemMaterial_uc5i5")
+position = Vector2(11, 36.5)
+emitting = false
+amount = 1
+texture = ExtResource("253_4ybkv")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+emission_shape = 3
+emission_rect_extents = Vector2(0, 0)
+direction = Vector2(0, -1)
+spread = 70.0
+gravity = Vector2(0, -350)
+initial_velocity_max = 20.0
+color = Color(0.53058064, 0.33850247, 0.18903735, 1)
+color_ramp = SubResource("Gradient_gl364")
+anim_speed_min = 1.0
+anim_speed_max = 2.0
 
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/SlideHitbox" to="Sprite2D/SlideHitbox" method="_on_body_entered"]

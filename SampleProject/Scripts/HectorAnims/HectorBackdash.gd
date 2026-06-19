@@ -18,7 +18,6 @@ func enter():
 		player.velocity.x *= MOONWALKERS_SPEED_BOOST
 	sound.play_sound_effect_from_library("backdash")
 	player.instantiateScene(trail_scene, true, Vector2(0,0))
-	player.instantiateScene(debris_scene, false, Vector2(player.facing_position*DEBRIS_POSITION.x,DEBRIS_POSITION.y))
 	trail_timer.start()
 	debris_timer.start()
 	if randi_range(0, 1) > 0:
@@ -52,4 +51,5 @@ func _on_trail_timer_timeout() -> void:
 	player.instantiateScene(trail_scene, true, Vector2(0,0))
 	
 func _on_debris_timer_timeout() -> void:
-	player.instantiateScene(debris_scene, false, Vector2(player.facing_position*DEBRIS_POSITION.x,DEBRIS_POSITION.y))
+	pass
+	#player.instantiateScene(debris_scene, false, Vector2(player.facing_position*DEBRIS_POSITION.x,DEBRIS_POSITION.y))
