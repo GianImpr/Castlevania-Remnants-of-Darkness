@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bao10vvn6rpga"]
 
-[ext_resource type="Texture2D" uid="uid://bh5qwwkhg4tf7" path="res://assets/sprites/Weapons/Axes/Bullova.png" id="1_c7po8"]
 [ext_resource type="Script" uid="uid://bm84mvxqm3hll" path="res://SampleProject/Scripts/Powers/axe_throw.gd" id="1_q023f"]
 [ext_resource type="PackedScene" uid="uid://m6mdjyrpiuny" path="res://SampleProject/extra_scenes/backdash_trail.tscn" id="2_8345f"]
 [ext_resource type="Script" uid="uid://gkvibd7oxi2i" path="res://SampleProject/Scripts/Powers/disjointed_player_hitbox.gd" id="2_u8rh7"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="3_arr67"]
+[ext_resource type="Texture2D" uid="uid://c486cm7oyxyxs" path="res://assets/sprites/Weapons/Axes/BullovaNew.png" id="3_oa8so"]
 [ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="4_v3daj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oa8so"]
@@ -59,10 +59,9 @@ trail_frequency = NodePath("Trail")
 [node name="Sprite2D" type="Sprite2D" parent="Rotate" unique_id=1095904398]
 z_index = 10
 scale = Vector2(2, 2)
-texture = ExtResource("1_c7po8")
-offset = Vector2(10, -17)
-hframes = 10
-vframes = 2
+texture = ExtResource("3_oa8so")
+offset = Vector2(0, 10)
+hframes = 6
 
 [node name="PlayerHitbox" type="Area2D" parent="." unique_id=1237393596 node_paths=PackedStringArray("hitbox")]
 collision_layer = 1024

@@ -1290,7 +1290,7 @@ shader_parameter/speed = 4.0000000596048
 shader_parameter/mix_colors = false
 shader_parameter/enabled = false
 shader_parameter/sheet_columns = 20
-shader_parameter/sheet_rows = 21
+shader_parameter/sheet_rows = 24
 shader_parameter/petrified = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fu7uc"]
@@ -1913,7 +1913,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_1w37a"]
 resource_name = "air_attack_axe"
-step = 0.05
+length = 0.87
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1921,7 +1922,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
+"times": PackedFloat32Array(0, 0.050000012, 0.120000005, 0.2, 0.28, 0.38, 0.42, 0.46, 0.5, 0.55, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [280, 281, 282, 283, 284, 305, 306, 307, 308, 309, 310]
@@ -2033,8 +2034,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_5xsr0"]
 resource_name = "attack_axe"
-length = 0.95
-step = 0.05
+length = 0.98
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2042,10 +2043,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.35, 0.4, 0.45, 0.5, 0.8, 0.90000004),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.12, 0.2, 0.28, 0.38, 0.42, 0.46, 0.5, 0.54, 0.59, 0.84, 0.91),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 291, 292]
+"values": [280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292]
 }
 
 [sub_resource type="Animation" id="Animation_5xy3g"]
@@ -2260,8 +2261,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_xy0l7"]
 resource_name = "crouch_attack_axe"
-length = 0.95
-step = 0.05
+length = 0.92
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2269,10 +2270,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.10000001, 0.15, 0.2, 0.29999998, 0.35, 0.39999998, 0.45, 0.49999994, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.050000012, 0.120000005, 0.2, 0.28, 0.38, 0.42, 0.46, 0.5, 0.55, 0.6, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352]
+"values": [340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -5828,7 +5829,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_d2oqw")
 texture = ExtResource("92_8s8fj")
 hframes = 20
-vframes = 20
+vframes = 24
 
 [node name="Glow" type="Timer" parent="Sprite2D" unique_id=1881607956]
 one_shot = true
@@ -6266,6 +6267,7 @@ anim_speed_max = 1.0
 process_mode = 1
 
 [node name="PressUp" parent="." unique_id=1077824572 instance=ExtResource("170_moyg6")]
+visible = false
 position = Vector2(0, -25)
 
 [node name="HitEffect" type="Node2D" parent="." unique_id=784955305]
