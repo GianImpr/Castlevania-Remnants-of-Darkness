@@ -141,7 +141,7 @@ script = ExtResource("4_xohao")
 sound_effects = Array[ExtResource("6_ywtg4")]([SubResource("Resource_l68mg")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63bul"]
-size = Vector2(30, 31.7391)
+size = Vector2(12, 31.7391)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qovo5"]
 size = Vector2(418.913, 126.522)
@@ -202,9 +202,9 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="Area2D" unique_id=1386167857]
-visible = false
-position = Vector2(3.26087, 1.52174)
+position = Vector2(2.5, 1.52174)
 shape = SubResource("RectangleShape2D_63bul")
+debug_color = Color(0.9913104, 0, 0.27320355, 0.41960785)
 
 [node name="Timer" type="Timer" parent="Area2D" unique_id=856885669]
 
