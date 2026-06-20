@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dm7k8iy42xhd1"]
+[gd_scene format=3 uid="uid://dm7k8iy42xhd1"]
 
 [ext_resource type="Script" uid="uid://dfu53xgckw6so" path="res://SampleProject/Scripts/Stage_elements/broken_candle.gd" id="1_u83di"]
 [ext_resource type="PackedScene" uid="uid://bneltl27wjbe4" path="res://SampleProject/extra_scenes/effects/candle_explosion.tscn" id="2_rdjpu"]
@@ -16,84 +16,85 @@ size = Vector2(18.3908, 25.2874)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpqs5"]
 size = Vector2(34.4828, 13.7931)
 
-[node name="BrokenCandle" type="Node2D" node_paths=PackedStringArray("delete_timer")]
+[node name="BrokenCandle" type="Node2D" unique_id=713408354 node_paths=PackedStringArray("delete_timer")]
+z_index = 2
 script = ExtResource("1_u83di")
 base_velocity = Vector2(250, -180)
 delete_timer = NodePath("DeleteTimer")
 explosion = ExtResource("2_rdjpu")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1572428736]
 collision_layer = 8
 collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=72105974]
 position = Vector2(-1.21375, -11)
 scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_fbgsw")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1335577247]
 scale = Vector2(2, 2)
 texture = ExtResource("2_s2pbf")
 hframes = 4
 
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+[node name="RigidBody2D2" type="RigidBody2D" parent="." unique_id=1276550614]
 collision_layer = 8
 collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2" unique_id=1490959145]
 position = Vector2(-1, 3.5)
 scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_xt3jm")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2" unique_id=2097506047]
 scale = Vector2(2, 2)
 texture = ExtResource("2_s2pbf")
 hframes = 4
 frame = 1
 
-[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+[node name="RigidBody2D3" type="RigidBody2D" parent="." unique_id=153953935]
 collision_layer = 8
 collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3" unique_id=2127336078]
 position = Vector2(-1, 25)
 scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_63qn8")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3" unique_id=2126050361]
 scale = Vector2(2, 2)
 texture = ExtResource("2_s2pbf")
 hframes = 4
 frame = 2
 
-[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+[node name="RigidBody2D4" type="RigidBody2D" parent="." unique_id=1698755143]
 collision_layer = 8
 collision_mask = 4097
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4" unique_id=622303837]
 position = Vector2(-1, 42)
 scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_jpqs5")
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D4"]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D4" unique_id=1813130445]
 scale = Vector2(2, 2)
 texture = ExtResource("2_s2pbf")
 hframes = 4
 frame = 3
 
-[node name="DeleteTimer" type="Timer" parent="."]
+[node name="DeleteTimer" type="Timer" parent="." unique_id=1456194195]
 wait_time = 1.5
 
 [connection signal="timeout" from="DeleteTimer" to="." method="_on_delete_timer_timeout"]
