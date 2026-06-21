@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://c8bbxf8j0d03e" path="res://SampleProject/Scripts/HectorAnims/HectorRun.gd" id="4_lgawh"]
 [ext_resource type="Texture2D" uid="uid://b0pf1n6afknku" path="res://assets/sprites/Items/InventoryIcons/Inventory_257.png" id="4_nt1gp"]
 [ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="5_7iojt"]
+[ext_resource type="PackedScene" uid="uid://c6vrlg0oj8a7o" path="res://SampleProject/Powers/aquarius_necklace_trap.tscn" id="5_c0ija"]
 [ext_resource type="Script" uid="uid://cxwarwgxfkshg" path="res://SampleProject/Scripts/HectorAnims/HectorRunEnd.gd" id="5_dh0o4"]
 [ext_resource type="Texture2D" uid="uid://bbrtcr6o7o2gi" path="res://assets/sprites/Items/InventoryIcons/Bullova.png" id="5_hrc7u"]
 [ext_resource type="Texture2D" uid="uid://baxtph716gnw5" path="res://assets/sprites/Items/InventoryIcons/Inventory_291.png" id="5_s8wrk"]
@@ -5571,7 +5572,22 @@ particles_anim_loop = false
 offsets = PackedFloat32Array(0, 0.18431373, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.23500001, 1, 1, 1, 0)
 
-[node name="Player" type="CharacterBody2D" unique_id=935233281 node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "hurtbox_area", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "reset_guard_presses_timer", "confidence_ring_timer", "time_heal_timer", "time_heal_particles", "goddess_shield_particles", "charge_sprite", "charge_anim", "charge_particles", "heal_effect", "heal_mp_effect", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4ybkv"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_c0ija"]
+offsets = PackedFloat32Array(0.015957447, 0.7925532)
+colors = PackedColorArray(0.7079864, 1.0097178, 1.6677853, 1, 2.7631395, 0, 0.52140784, 1)
+
+[sub_resource type="Curve" id="Curve_r0x2e"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.5, 0.0049916506), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Player" type="CharacterBody2D" unique_id=935233281 node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "hurtbox_area", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "reset_guard_presses_timer", "confidence_ring_timer", "time_heal_timer", "time_heal_particles", "goddess_shield_particles", "charge_sprite", "charge_anim", "charge_particles", "heal_effect", "heal_mp_effect", "special_item_get_particles", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
 scale = Vector2(2, 2)
 collision_layer = 524290
 collision_mask = 4113
@@ -5606,12 +5622,14 @@ charge_anim = NodePath("ChargeWave/ChargeAnim")
 charge_particles = NodePath("ChargeParticles")
 heal_effect = NodePath("Heal")
 heal_mp_effect = NodePath("HealMP")
+special_item_get_particles = NodePath("SpecialItemGet")
 tap_up = NodePath("PressUp")
 effects = NodePath("HitEffect")
 special_attack_animation = NodePath("SpecialAttackEffect/SpecialAnim")
 throw_axe = ExtResource("2_1180g")
 raycast = NodePath("RayCast2D")
 aguni_flames = ExtResource("122_4xc62")
+aquarius_trap = ExtResource("5_c0ija")
 relic_sounds = NodePath("RelicSounds")
 
 [node name="HectorStats" type="Node" parent="." unique_id=1348586030 node_paths=PackedStringArray("poison_tick_timer", "play_time")]
@@ -6716,6 +6734,29 @@ color = Color(0.53058064, 0.33850247, 0.18903735, 1)
 color_ramp = SubResource("Gradient_gl364")
 anim_speed_min = 1.0
 anim_speed_max = 2.0
+
+[node name="SpecialItemGet" type="CPUParticles2D" parent="." unique_id=228970212]
+process_mode = 3
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
+material = SubResource("CanvasItemMaterial_4ybkv")
+position = Vector2(-0.5, 12)
+emitting = false
+amount = 192
+texture = ExtResource("216_rbo1h")
+lifetime = 0.5
+one_shot = true
+randomness = 0.7
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 150.0
+color_ramp = SubResource("Gradient_c0ija")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_speed_curve = SubResource("Curve_r0x2e")
 
 [connection signal="body_entered" from="Sprite2D/FistHitbox" to="Sprite2D/FistHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/SlideHitbox" to="Sprite2D/SlideHitbox" method="_on_body_entered"]

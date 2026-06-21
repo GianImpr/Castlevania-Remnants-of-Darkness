@@ -15,8 +15,10 @@ class_name Relic
 @export var glow: Color
 @export var max_quantity: int = 1
 @export var icon: Texture2D
+@export var MP_cost: int
 
 enum Relics {
 	INDIGO_CROSS,
-	AGUNIS_LAUREL
+	AGUNIS_LAUREL,
+	AQUARIUS_NECKLACE
 }

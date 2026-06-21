@@ -363,3 +363,9 @@ func evoCrystalType() -> int:
 		return 0
 		
 	return weapon_type - 1
+
+func getRelicMPCost() -> int:
+	var cur_relic: Relic = searchItemInCompendium(equipment[EQUIPMENT_SLOTS.RELIC], relic_compendium)
+	if cur_relic == null:
+		return 0
+	return cur_relic.MP_cost

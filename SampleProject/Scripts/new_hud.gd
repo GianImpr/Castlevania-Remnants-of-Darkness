@@ -33,7 +33,6 @@ var MMP
 var MP
 
 func _ready():
-	Global.HUD = self
 	HP = player.stats.Stats["HP"]
 	MHP = player.stats.Stats["MHP"]
 	MP = player.stats.Stats["MP"]

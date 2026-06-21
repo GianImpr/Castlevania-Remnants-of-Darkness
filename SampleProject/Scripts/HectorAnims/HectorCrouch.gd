@@ -38,6 +38,8 @@ func Update(delta: float):
 	check_is_hurt()
 	can_die()
 	can_drop_ledge()
+	player.canCreateAquariusTrap()
 
 func canSlide() -> void:
 	can_slide = true
+	

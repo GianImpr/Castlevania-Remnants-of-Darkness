@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://c6vrlg0oj8a7o"]
+
+[ext_resource type="Script" uid="uid://djhwdpmgoaav8" path="res://SampleProject/Scripts/Powers/aquarius_necklace_trap.gd" id="1_xhu4f"]
+[ext_resource type="Texture2D" uid="uid://sy66dqk72fgc" path="res://assets/sprites/Enemies/Procel/ProcelBubble.png" id="2_j2hp7"]
+[ext_resource type="Script" uid="uid://gkvibd7oxi2i" path="res://SampleProject/Scripts/Powers/disjointed_player_hitbox.gd" id="3_p5sj2"]
+[ext_resource type="PackedScene" uid="uid://bdq22d1u11qoc" path="res://SampleProject/extra_scenes/on_hit/hit_particle.tscn" id="4_xfqre"]
+[ext_resource type="PackedScene" uid="uid://burk60k5mdudw" path="res://SampleProject/extra_scenes/on_hit/ice_particle.tscn" id="5_ex7yn"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="6_ex7yn"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="7_bso1w"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="8_blwno"]
+[ext_resource type="AudioStream" uid="uid://db0w71jkpf4y0" path="res://assets/sounds/Enemies/Procel/Bubble.wav" id="9_bso1w"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bso1w"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_blwno"]
+offsets = PackedFloat32Array(0, 0.21978022, 0.46153846)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.36100003, 1, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s23sj"]
+size = Vector2(105, 130)
+
+[sub_resource type="Resource" id="Resource_bxd1t"]
+script = ExtResource("8_blwno")
+Tag = "bubble"
+stream = ExtResource("9_bso1w")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_s23sj"]
+script = ExtResource("7_bso1w")
+sound_effects = Array[ExtResource("8_blwno")]([SubResource("Resource_bxd1t")])
+metadata/_custom_type_script = "uid://c8movixc3pc7b"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bso1w"]
+size = Vector2(75.5, 26.5)
+
+[node name="AquariusNecklaceTrap" type="Node2D" unique_id=181218612 node_paths=PackedStringArray("hitbox", "bubbles", "explosion_bubbles", "sound", "detection")]
+z_index = 10
+script = ExtResource("1_xhu4f")
+hitbox = NodePath("DisjointedPlayerHitbox/CollisionShape2D")
+bubbles = NodePath("Bubbles")
+explosion_bubbles = NodePath("BubblesExplode")
+sound = NodePath("PolyphonicAudio")
+detection = NodePath("DetectEnemy")
+
+[node name="Bubbles" type="CPUParticles2D" parent="." unique_id=1301537555]
+material = SubResource("CanvasItemMaterial_bso1w")
+position = Vector2(-7, -24.5)
+amount = 48
+texture = ExtResource("2_j2hp7")
+lifetime = 0.9
+emission_shape = 3
+emission_rect_extents = Vector2(30, 1)
+direction = Vector2(0, -1)
+spread = 75.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 120.0
+angular_velocity_min = 30.0
+angular_velocity_max = 60.0
+radial_accel_min = 5.0
+radial_accel_max = 70.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_blwno")
+anim_offset_max = 1.0
+
+[node name="BubblesExplode" type="CPUParticles2D" parent="." unique_id=269626439]
+material = SubResource("CanvasItemMaterial_bso1w")
+position = Vector2(-7, -24.5)
+emitting = false
+amount = 192
+texture = ExtResource("2_j2hp7")
+lifetime = 0.9
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(30, 1)
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 260.0
+initial_velocity_max = 400.0
+angular_velocity_min = 30.0
+angular_velocity_max = 60.0
+radial_accel_min = 5.0
+radial_accel_max = 70.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_blwno")
+anim_offset_max = 1.0
+
+[node name="DisjointedPlayerHitbox" type="Area2D" parent="." unique_id=1624609696 node_paths=PackedStringArray("hitbox")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_p5sj2")
+dmg_multiplier = 0.75
+damage_boost = 10
+iframes_on_hit = 15
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("4_xfqre")
+ice_hit_collision_scene = ExtResource("5_ex7yn")
+base_attribute = Array[int]([1])
+metadata/_custom_type_script = "uid://gkvibd7oxi2i"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DisjointedPlayerHitbox" unique_id=981111835]
+position = Vector2(4.5, -55)
+shape = SubResource("RectangleShape2D_s23sj")
+disabled = true
+
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=954824789]
+volume_db = -18.0
+bus = &"SFX"
+script = ExtResource("6_ex7yn")
+audio_library = SubResource("Resource_s23sj")
+metadata/_custom_type_script = "uid://b6rmc6evqalxh"
+
+[node name="DetectEnemy" type="Area2D" parent="." unique_id=1580657332]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectEnemy" unique_id=1582810629]
+position = Vector2(10, -3)
+shape = SubResource("RectangleShape2D_bso1w")
+
+[connection signal="body_entered" from="DisjointedPlayerHitbox" to="DisjointedPlayerHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="DetectEnemy" to="." method="_on_detect_enemy_body_entered"]

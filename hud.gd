@@ -104,8 +104,8 @@ func _process(delta: float) -> void:
 	updateHP(delta)
 	updateMP(delta)
 	updateGuardHealth()
-	checkBlinking(HP, MHP, health, BLINKING_TWEEN.HP, low_HP_tint)
-	checkBlinking(MP, MMP, mana, BLINKING_TWEEN.MP, low_MP_tint)
+	checkBlinking(HP, MHP/4, health, BLINKING_TWEEN.HP, low_HP_tint)
+	checkBlinking(MP, Global.player.stats.getRelicMPCost()-1, mana, BLINKING_TWEEN.MP, low_MP_tint)
 	
 	var focus_animation: AnimationPlayer = focus.get_child(0)
 	focus.value = player.stats.Stats["FP"]/player.stats.Stats["MFP"]*focus.max_value
@@ -119,7 +119,7 @@ func _process(delta: float) -> void:
 		updateMaxStat(Global.player.innocent_devil.stats.Stats["MHearts"], hearts, delta, true)
 		updateHearts(delta)
 		updateIDBodySize()
-		checkBlinking(Global.player.innocent_devil.stats.Stats["Hearts"], Global.player.innocent_devil.stats.Stats["MHearts"], hearts, BLINKING_TWEEN.HEARTS, low_Hearts_tint)
+		checkBlinking(Global.player.innocent_devil.stats.Stats["Hearts"], Global.player.innocent_devil.stats.Stats["MHearts"]/4, hearts, BLINKING_TWEEN.HEARTS, low_Hearts_tint)
 		#heart_glow.visible = Global.player.innocent_devil.stats.Stats["Hearts"] <= Global.player.innocent_devil.stats.Stats["MHearts"]/4
 	training.visible = Global.screen == Global.ScreenType.TRAINING
 	if training.visible:
@@ -176,6 +176,8 @@ func updateMP(delta):
 			low_MP_tint = Color(0, 0.545, 0.898)
 		Relic.Relics.AGUNIS_LAUREL:
 			low_MP_tint = Color(1, 0.365, 0)
+		Relic.Relics.AQUARIUS_NECKLACE:
+			low_MP_tint = Color(0.465, 0.465, 0.6)
 			
 	mana.texture_progress = mana_colors[Global.player.stats.equipment["relic"]]
 	if not (Global.screen == Global.ScreenType.NONE or Global.screen == Global.ScreenType.WHEEL or Global.screen == Global.ScreenType.EVENT or Global.screen == Global.ScreenType.TRAINING):
@@ -264,14 +266,14 @@ func setOpacity(opacity: float) -> void:
 func isTransparent() -> bool:
 	return modulate.a < 1
 
-func checkBlinking(stat, max_stat, bar: TextureProgressBar, tween_idx: int, color: Color) -> void:
-	if stat <= max_stat / 4 and max_stat != 0 and (blinking_tweens[tween_idx] == null or not blinking_tweens[tween_idx].is_running()):
+func checkBlinking(stat, blink_threshold, bar: TextureProgressBar, tween_idx: int, color: Color) -> void:
+	if stat <= blink_threshold and blink_threshold != 0 and (blinking_tweens[tween_idx] == null or not blinking_tweens[tween_idx].is_running()):
 		blinking_tweens[tween_idx] = get_tree().create_tween()
 		blinking_tweens[tween_idx].set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 		blinking_tweens[tween_idx].set_loops()
 		blinking_tweens[tween_idx].tween_property(bar, "tint_under", color, 0.35)
 		blinking_tweens[tween_idx].tween_property(bar, "tint_under", Color.WHITE, 0.35)
-	elif (stat > max_stat / 4 or max_stat == 0) and blinking_tweens[tween_idx] != null and blinking_tweens[tween_idx].is_running():
+	elif (stat > blink_threshold or blink_threshold == 0) and blinking_tweens[tween_idx] != null and blinking_tweens[tween_idx].is_running():
 		blinking_tweens[tween_idx].kill()
 		bar.tint_under = Color.WHITE
 		

@@ -41,7 +41,9 @@ func changeRoom(target_room: String, changing_area: bool, initial_position: Vect
 	
 	if Global.screen == Global.ScreenType.NONE:
 		Global.screen = Global.ScreenType.TRANSITION
+	
 	Global.fade_screen.animation.play("fade_in")
+	AquariusNecklaceTrap.traps.clear()
 	await Global.fade_screen.animation.animation_finished
 	
 	var prev_room_instance := MetSys.get_current_room_instance()

@@ -37,12 +37,14 @@ class_name HectorPlayer
 @export_category("Effect nodes")
 @export var heal_effect: GPUParticles2D
 @export var heal_mp_effect: GPUParticles2D
+@export var special_item_get_particles: CPUParticles2D
 @export var tap_up: TapUp
 @export var effects: Node
 @export var special_attack_animation: AnimationPlayer
 @export var throw_axe: PackedScene
 @export var raycast: RayCast2D
 @export var aguni_flames: PackedScene
+@export var aquarius_trap: PackedScene
 @export var relic_sounds: PolyphonicAudio
 
 const AGUNI_LAUREL_COST_PER_SECOND: int = 15
@@ -52,6 +54,8 @@ var aguni_on_cooldown: bool = false
 const TIGHT_GUARD_COST: float = 20
 const TIME_HEAL_HP_POWER: int = 4
 const TIME_HEAL_MP_POWER: int = 2
+
+const AQUARIUS_NECKLACE_COST: int = 60
 
 const STONE_OF_ALCHEMY_HEAL: int = 5
 const BLOOD_CLOAK_HEAL: int = 2
@@ -599,3 +603,10 @@ func startDrowning() -> void:
 	
 func stopDrowning() -> void:
 	drowning = false
+
+func canCreateAquariusTrap() -> void:
+	if enabled_magic and stats.itemEquipped(Relic.Relics.AQUARIUS_NECKLACE, "relic") and stats.Stats["MP"] >= AQUARIUS_NECKLACE_COST and Input.is_action_just_pressed("circle"):
+		stats.Stats["MP"] -= AQUARIUS_NECKLACE_COST
+		var trap = aquarius_trap.instantiate()
+		trap.global_position = global_position + Vector2(0,51) - MetSys.get_current_room_instance().global_position
+		MetSys.get_current_room_instance().add_child(trap)

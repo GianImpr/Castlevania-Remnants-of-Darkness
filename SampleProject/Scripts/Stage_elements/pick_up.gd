@@ -118,6 +118,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			item_type = ItemBox.Type.RED
 		sprite.visible = false
 		sound.play_sound_effect_from_library("skill")
+		Global.player.special_item_get_particles.emitting = true
 		Global.full_item_box.activate((item_type as FullItemBox.Type), item_name, item_description, item_icon)
 	else:
 		sound.play_sound_effect_from_library("equip")

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://sm2qlbwi6wt7" path="res://assets/sprites/HUD/InGameHUD/New/Body.png" id="4_ulm54"]
 [ext_resource type="Texture2D" uid="uid://o847yl7lsxpe" path="res://assets/sprites/HUD/InGameHUD/Health.png" id="5_cmfcn"]
 [ext_resource type="Texture2D" uid="uid://ds2na1xcloxqp" path="res://assets/sprites/HUD/InGameHUD/Fog.png" id="5_ulm54"]
+[ext_resource type="Texture2D" uid="uid://cwktag5ljioxr" path="res://assets/sprites/HUD/InGameHUD/MPBars/ManaWater.png" id="5_w6egv"]
 [ext_resource type="Texture2D" uid="uid://bkqwngl7qxspr" path="res://assets/sprites/HUD/InGameHUD/New/GuardHealth.png" id="6_w6egv"]
 [ext_resource type="Script" uid="uid://crh4llmldi4eq" path="res://ImageNumber.gd" id="7_gxfyg"]
 [ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="8_xgi8v"]
@@ -529,7 +530,7 @@ offset_bottom = 129.0
 script = ExtResource("1_nvkqm")
 id_level_up_animation = NodePath("IDBars/AnimationPlayer")
 guard_health = NodePath("TextureRect/GuardHealth")
-mana_colors = Array[CompressedTexture2D]([ExtResource("2_cmfcn"), ExtResource("2_2gb11"), ExtResource("3_tnaqy")])
+mana_colors = Array[CompressedTexture2D]([ExtResource("2_cmfcn"), ExtResource("2_2gb11"), ExtResource("3_tnaqy"), ExtResource("5_w6egv")])
 
 [node name="Body" type="PanelContainer" parent="." unique_id=1861841537]
 layout_mode = 0
