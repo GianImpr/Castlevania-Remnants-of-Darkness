@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="2_80w3n"]
 [ext_resource type="FontFile" uid="uid://ma2njl02pxj6" path="res://assets/sprites/Font/Olondona.otf" id="2_e852k"]
 [ext_resource type="Texture2D" uid="uid://p30gqbuy6e5q" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop.png" id="3_e852k"]
+[ext_resource type="Texture2D" uid="uid://n4jkshydqt5h" path="res://assets/sprites/HUD/Faces/Julia/HalfBody.png" id="3_ekxcn"]
 [ext_resource type="Script" uid="uid://3oihmy3l1ctv" path="res://SampleProject/Scripts/System/Menu/buy_screen.gd" id="3_sxp3s"]
 [ext_resource type="Texture2D" uid="uid://dmxxcbkoktm32" path="res://assets/sprites/HUD/Containers/DialogueBox/Crop3.png" id="4_4rfpf"]
 [ext_resource type="Script" uid="uid://ckrs7a0y6d77i" path="res://SampleProject/Scripts/System/shop_entry.gd" id="4_xqvsg"]
@@ -961,6 +962,12 @@ text = "? ? ?"
 icon = SubResource("CompressedTexture2D_axgji")
 flat = true
 icon_alignment = 1
+
+[node name="Julia" type="Sprite2D" parent="InitialScreen" unique_id=1704958128]
+position = Vector2(148, 274)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ekxcn")
+hframes = 5
 
 [node name="BuyScreen" type="Control" parent="." unique_id=130879487 node_paths=PackedStringArray("scroll_container", "gold_label", "animation", "sound", "text_description", "icon_description", "item_entries", "gold_sound", "item_stats", "show_item_stats")]
 z_index = 1

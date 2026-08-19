@@ -24,7 +24,7 @@ const Sprites = {
 	HECTOR = "res://assets/sprites/HUD/Faces/Hector/HalfBody.png",
 	CARMILLA = "res://assets/sprites/HUD/Faces/Carmilla/HalfBody.png",
 	TREVOR = "res://assets/sprites/HUD/Faces/Trevor/HalfBody.png",
-	JULIA = "res://assets/sprites/HUD/Faces/Carmilla/HalfBody.png"
+	JULIA = "res://assets/sprites/HUD/Faces/Julia/HalfBody.png"
 }
 
 enum Emotions {
