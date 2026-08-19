@@ -216,7 +216,7 @@ func can_attack():
 			return
 		
 	if InputBuffer.is_action_press_buffered("attack"):
-		if (self is HectorCrouch or self is HectorRise) and player.can_crouch_attack:
+		if (self is HectorCrouch or self is HectorRise or self is HectorSlide) and player.can_crouch_attack:
 			Transitioned.emit(self, "crouch_attack")
 			swingWeapon(AttackType.CROUCH)
 		elif not player.is_on_floor():

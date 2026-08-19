@@ -26,12 +26,14 @@ func enter():
 	debris_timer.start()
 	
 func Update(delta: float):
-	pass
+	if animation.current_animation_position > 0.2:
+		can_perform("backdash", true)
 	
 func Physics_Update(delta: float):
 	can_fall(true, SLIDE_CANCEL_EXTRA_VERTICAL_MOMENTUM)
 	check_is_hurt()
 	can_die()
+	can_attack()
 	if player.is_on_wall():
 		debris_timer.stop()
 		
@@ -42,6 +44,7 @@ func Physics_Update(delta: float):
 func exit():
 	trail_timer.stop()
 	debris_timer.stop()
+	turn_timer.stop()
 	if deceleration_tween:
 		deceleration_tween.kill()
 	player.velocity.x *= SLIDE_CANCEL_SPEED_BOOST_MULTIPLIER
