@@ -25,8 +25,8 @@ static var pick_up_scene: Resource = preload(PICK_UP_SCENE_PATH)
 static var heart_scene: Resource = preload(HEART_SCENE_PATH)
 static var money_scene: Resource = preload(MONEY_SCENE_PATH)
 static var evo_crystal_scene: Resource = preload(EVO_CRYSTAL_SCENE_PATH)
-static var CRAZY_MODE_STAT_MULTIPLIER: float = 1.5
-static var CRAZY_MODE_LEVEL_BOOST: float = 10
+static var CRAZY_MODE_STAT_MULTIPLIER: float = 2
+static var CRAZY_MODE_LEVEL_BOOST: float = 20
 static var SIMPLIFIED_MODE_STAT_MULTIPLIER: float = 0.5
 
 var enemy_entry: EnemyEntry
@@ -34,6 +34,7 @@ var enemy_entry: EnemyEntry
 func _ready():
 	enemy_entry = findEntry()
 	if Global.game.difficulty == Game.Difficulty.CRAZY:
+		HP *= CRAZY_MODE_STAT_MULTIPLIER
 		LV += CRAZY_MODE_LEVEL_BOOST
 		DEF *= CRAZY_MODE_STAT_MULTIPLIER
 		RES *= CRAZY_MODE_STAT_MULTIPLIER

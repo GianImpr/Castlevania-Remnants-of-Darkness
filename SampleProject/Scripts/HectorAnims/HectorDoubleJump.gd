@@ -6,6 +6,7 @@ var snapped_on_platform: bool
 var cur_facing_position: int
 
 func enter():
+	player.sprite.physics_interpolation_mode = PhysicsInterpolationMode.PHYSICS_INTERPOLATION_MODE_OFF
 	player.can_double_jump = false
 	snapped_on_platform = false
 	if player.facing_position == 1:
@@ -20,7 +21,8 @@ func enter():
 
 func exit():
 	animation.stop()
-	player.sprite.rotation = 0
+	player.sprite.rotation_degrees = 0
+	player.sprite.physics_interpolation_mode = PhysicsInterpolationMode.PHYSICS_INTERPOLATION_MODE_INHERIT
 	
 func Physics_Update(delta: float):
 		

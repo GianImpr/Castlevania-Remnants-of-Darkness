@@ -14,7 +14,7 @@ func Update(delta: float):
 	
 func Physics_Update(delta: float):
 	can_perform("jump", true)
-	run_without_start_anim(false)
+	run_without_start_anim(false, animation.current_animation_position <= 0.03)
 	can_perform("crouch", false)
 	can_fall(true)
 	can_perform("backdash", true)

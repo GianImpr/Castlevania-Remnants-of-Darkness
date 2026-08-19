@@ -137,7 +137,7 @@ func _process(delta: float) -> void:
 		opacity_trigger_offset = 0
 	
 	if Global.player.position.x + opacity_trigger_offset <= hud_body.size.x*2 and Global.player.position.y - Global.camera.limit_top <= hud_body.size.y*2 and not isTransparent():
-		setOpacity(0.2)
+		setOpacity(0.1)
 	elif (Global.player.position.x + opacity_trigger_offset > hud_body.size.x*2 or Global.player.position.y - Global.camera.limit_top > hud_body.size.y*2) and isTransparent():
 		setOpacity(1)
 
@@ -259,7 +259,7 @@ func setOpacity(opacity: float) -> void:
 		return
 	can_change_opacity = false
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "modulate", Color(1,1,1,opacity), 0.2)
+	tween.tween_property(self, "modulate", Color(1,1,1,opacity), 0.1)
 	await tween.finished
 	can_change_opacity = true
 	

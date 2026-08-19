@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bsxx7aocrs1f6"]
+[gd_scene format=3 uid="uid://bsxx7aocrs1f6"]
 
 [ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="1_maiip"]
 [ext_resource type="Script" uid="uid://c5a1ot8hqjqch" path="res://SampleProject/Scripts/System/weapon_wheel.gd" id="1_rsc42"]
@@ -183,7 +183,7 @@ stream = ExtResource("14_0mw03")
 script = ExtResource("10_e0m5m")
 sound_effects = Array[ExtResource("11_rtylm")]([SubResource("Resource_reret"), SubResource("Resource_iy3sn"), SubResource("Resource_c5mcm")])
 
-[node name="WeaponWheel" type="Control" node_paths=PackedStringArray("animation", "cursor_animation", "cursor_sprite", "weapon_icons", "sound")]
+[node name="WeaponWheel" type="Control" unique_id=544510981 node_paths=PackedStringArray("animation", "cursor_animation", "cursor_sprite", "weapon_icons", "sound")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -200,47 +200,43 @@ cursor_sprite = NodePath("Cursor")
 weapon_icons = NodePath("Wheel/Weapons")
 sound = NodePath("PolyphonicMenuAudio")
 
-[node name="Wheel" type="Sprite2D" parent="."]
+[node name="Wheel" type="Sprite2D" parent="." unique_id=1931189784]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0.698039)
 position = Vector2(110, 382)
 texture = ExtResource("2_rtpe5")
 
-[node name="Weapons" type="Node2D" parent="Wheel"]
+[node name="Weapons" type="Node2D" parent="Wheel" unique_id=1252863675]
 scale = Vector2(2, 2)
 
-[node name="Weapon1" type="Sprite2D" parent="Wheel/Weapons"]
+[node name="Weapon1" type="Sprite2D" parent="Wheel/Weapons" unique_id=1918686496]
 position = Vector2(-2, -29)
 texture = ExtResource("3_56wl6")
 
-[node name="Weapon2" type="Sprite2D" parent="Wheel/Weapons"]
+[node name="Weapon2" type="Sprite2D" parent="Wheel/Weapons" unique_id=1044292805]
 position = Vector2(27, 0)
 texture = ExtResource("4_gthal")
 
-[node name="Weapon3" type="Sprite2D" parent="Wheel/Weapons"]
+[node name="Weapon3" type="Sprite2D" parent="Wheel/Weapons" unique_id=2139382404]
 position = Vector2(-1.5, 29.5)
 texture = ExtResource("5_slg3w")
 
-[node name="Weapon4" type="Sprite2D" parent="Wheel/Weapons"]
+[node name="Weapon4" type="Sprite2D" parent="Wheel/Weapons" unique_id=2055314538]
 position = Vector2(-31, 0)
 texture = ExtResource("6_0ged2")
 
-[node name="Cursor" type="Sprite2D" parent="."]
+[node name="Cursor" type="Sprite2D" parent="." unique_id=1599802280]
 visible = false
 position = Vector2(106, 440)
 texture = ExtResource("7_lrhk3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cursor"]
-libraries = {
-&"": SubResource("AnimationLibrary_r40d8")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cursor" unique_id=919647421]
+libraries/ = SubResource("AnimationLibrary_r40d8")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_xbetg")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=452956012]
+libraries/ = SubResource("AnimationLibrary_xbetg")
 
-[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="."]
+[node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="." unique_id=2066563711]
 volume_db = -15.0
 script = ExtResource("9_j4lc6")
 audio_library = SubResource("Resource_e48o0")

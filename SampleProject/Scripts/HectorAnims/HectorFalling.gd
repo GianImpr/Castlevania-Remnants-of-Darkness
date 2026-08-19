@@ -6,15 +6,18 @@ static var cur_falling_speed: float
 var can_perfect_guard: bool = true
 const FALL_STARTING_ANIM_TIME: float = 0.5
 const HARD_LAND_SPEED_THRESHOLD: float = 1000
+static var hyper_leap: bool
 
 func enter():
 	animation.play("jump", -1, 1.3)
 	animation.seek(FALL_STARTING_ANIM_TIME)
 	cur_falling_speed = 0
-	if abs(player.velocity.x) > abs(player.SPEED):
+	if hyper_leap:
 		trail_timer.start()
+		animation.play("hyper_leap")
 		
 func exit():
+	hyper_leap = false
 	trail_timer.stop()
 	
 func Update(delta: float):

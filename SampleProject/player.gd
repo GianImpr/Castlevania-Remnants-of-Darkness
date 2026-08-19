@@ -55,7 +55,7 @@ const TIGHT_GUARD_COST: float = 20
 const TIME_HEAL_HP_POWER: int = 4
 const TIME_HEAL_MP_POWER: int = 2
 
-const AQUARIUS_NECKLACE_COST: int = 60
+const AQUARIUS_NECKLACE_COST: int = 75
 
 const STONE_OF_ALCHEMY_HEAL: int = 5
 const BLOOD_CLOAK_HEAL: int = 2
@@ -230,7 +230,7 @@ func _process(delta: float) -> void:
 		flame.global_position = global_position + Vector2(20*facing_position,66) - MetSys.get_current_room_instance().global_position
 		MetSys.get_current_room_instance().add_child(flame)
 
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor() and not motion_mode == MotionMode.MOTION_MODE_FLOATING:
 		var gravity_multiplier: float
@@ -307,7 +307,8 @@ func levelUp():
 	var popup = boost_message.instantiate()
 	sprite.enable_glow = true # Rainbow effect on Hector
 	add_child(popup)
-	stats.Stats["LV"] += 1
+	while stats.Stats["EXP"] >= expNeededToLvUp() and stats.Stats["LV"] < 99:
+		stats.Stats["LV"] += 1
 	for stat in ["MHP", "MMP", "STR", "CON", "INT", "LCK", "SYN", "RES"]:
 		if (stat == "MMP" and unlockedMagic()) or stat != "MMP":
 			stats.Bases[stat] = stats.Initial[stat] + int(stats.Growths[stat]/100.0*(stats.Stats["LV"]))
@@ -397,7 +398,7 @@ func addWeaponExp() -> void:
 	if stats.equipment["weapon"] != 0:
 		weapon_type = stats.searchItemInCompendium(stats.equipment["weapon"], stats.weapon_compendium).type
 	
-	if weapon_type == Weapon.Type.AXE:
+	if weapon_type in [Weapon.Type.AXE, Weapon.Type.GREATSWORD, Weapon.Type.SPEAR]:
 		amount_gained = 2
 		
 	stats.weapon_proficiency[weapon_type]["exp"] += amount_gained
@@ -488,21 +489,21 @@ func petrify() -> void:
 
 func curse() -> void:
 	const CURSE_DURATION_SECONDS: float = 25
-	var actual_curse_duration: float = CURSE_DURATION_SECONDS/(1-min(float(stats.Stats["CON"])/100, 99))
+	var actual_curse_duration: float = CURSE_DURATION_SECONDS/(1+min(float(stats.Stats["CON"])/100, 99))
 	stats.current_status = stats.Ailment.CURSE
 	stats.status[HectorStats.Status.CURSE] = actual_curse_duration
 	state_machine.voice.play_sound_effect_from_library("what")
 	
 func poison() -> void:
 	const POISON_DURATION_SECONDS: float = 25
-	var actual_poison_duration: float = POISON_DURATION_SECONDS/(1-min(float(stats.Stats["CON"])/100, 99))
+	var actual_poison_duration: float = POISON_DURATION_SECONDS/(1+min(float(stats.Stats["CON"])/100, 99))
 	stats.current_status = stats.Ailment.POISON
 	stats.status[HectorStats.Status.POISON] = actual_poison_duration
 	state_machine.voice.play_sound_effect_from_library("what")
 	
 func enfeeble() -> void:
 	const ENFEEBLE_DURATION_SECONDS: float = 25
-	var actual_enfeeble_duration: float = ENFEEBLE_DURATION_SECONDS/(1-min(float(stats.Stats["CON"])/100, 99))
+	var actual_enfeeble_duration: float = ENFEEBLE_DURATION_SECONDS/(1+min(float(stats.Stats["CON"])/100, 99))
 	stats.current_status = stats.Ailment.ENFEEBLE
 	stats.status[HectorStats.Status.ENFEEBLE] = actual_enfeeble_duration
 	state_machine.voice.play_sound_effect_from_library("what")

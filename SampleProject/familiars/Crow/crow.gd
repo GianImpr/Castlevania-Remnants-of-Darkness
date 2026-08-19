@@ -73,7 +73,7 @@ func targetWeakerEnemy() -> void:
 
 func determineDash() -> void:
 	can_dash = true
-	dash_frequency_timer.wait_time = DEFAULT_DASH_TIMER - float(stats.Stats["LV"])/5
+	dash_frequency_timer.wait_time = DEFAULT_DASH_TIMER - float(stats.Stats["LV"])/50
 	dash_frequency_timer.start()
 
 func isEnemyWeakerThan(target: Enemy, to: Enemy) -> bool:

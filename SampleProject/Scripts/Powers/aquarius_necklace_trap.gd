@@ -39,8 +39,12 @@ func repeatSound() -> void:
 
 
 func _on_detect_enemy_body_entered(body: Node2D) -> void:
-	#if body is not Enemy or body is not Zombie:
-	#	return
+	if body is not Enemy and body is not Zombie:
+		return
+	
+	if body.stats.HP <= 0:
+		return
+		
 	detection.set_deferred("monitoring", false)
 	traps.erase(self)
 	detonate()

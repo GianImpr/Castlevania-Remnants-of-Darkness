@@ -6,10 +6,13 @@ const HEIGHT_DECELERATION: float = 0.95
 const DEFAULT_HAND_FRAME: int = 6
 
 func enter():
-	if attack_anim_suffix() == "_spear":
+	var anim_suffix: String = attack_anim_suffix()
+	if anim_suffix == "_spear":
 		hector_hands.frame = DEFAULT_HAND_FRAME
 		hector_hands.visible = true
-	animation.play("air_attack" + attack_anim_suffix(), -1, get_attack_speed())
+	elif anim_suffix == "_fist" and Input.is_action_pressed("crouch"):
+		anim_suffix = "_fist_diag"
+	animation.play("air_attack" + anim_suffix, -1, get_attack_speed())
 	
 func exit():
 	if player.sprite.weapon != null and not player.resume_attack and not player.state_machine.new_state is HectorWait:

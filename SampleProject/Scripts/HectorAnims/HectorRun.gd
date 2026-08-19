@@ -5,15 +5,20 @@ const ANIM_SPEED: float = 1.6
 const BLEND: float = -1
 const ANIM_NAME: String = "run_start"
 var can_perfect_guard: bool = true
+static var play_landing_run_animation: bool
 
 func enter():
-	if not player.skip_run_start:
+	if not player.skip_run_start and not play_landing_run_animation:
 		animation.play("run_start", BLEND, 1.6)
+	elif play_landing_run_animation:
+		animation.play("landing_moving")
 	else:
 		animation.play("run", BLEND, 1.8)
 	
 func Update(delta: float):
-	pass
+	if not animation.is_playing():
+		animation.play("run", BLEND, 1.8)
+		animation.seek(0.3)
 	
 func Physics_Update(delta: float):
 	#Continue the run animation if not stopping

@@ -22,6 +22,8 @@ func _ready() -> void:
 	if player == Global.player:
 		HectorCrouchAttack.getWeaponAttackSound = get_attack_sound
 		HectorCrouchAttack.getHectorAttackSound = get_hector_attack_sound
+		HectorAttack.getHectorAttackSound = get_hector_attack_sound
+		HectorAttack.getWeaponAttackSound = get_attack_sound
 
 func enter():
 	pass
@@ -49,9 +51,10 @@ func can_pose() -> void:
 		Transitioned.emit(self, "pose")
 
 #Allows the player to run in a certain state
-func run_without_start_anim(skip_run_start_animation: bool):
+func run_without_start_anim(skip_run_start_animation: bool, add_landing_run_animation: bool = false):
 	if player.direction:
 		player.skip_run_start = skip_run_start_animation
+		HectorRun.play_landing_run_animation = add_landing_run_animation
 		Transitioned.emit(self, "run")
 
 #Allows the player to fall in a certain state
@@ -60,6 +63,8 @@ func can_fall(coyote_effect: bool, extra_height: float = 0):
 		if coyote_effect:
 			player.coyote_timer.start()
 		player.velocity.y -= extra_height
+		if self is HectorSlide:
+			HectorFalling.hyper_leap = true
 		Transitioned.emit(self, "falling")
 
 #Allows the player to drop from ledges in a certain state
@@ -327,7 +332,7 @@ func can_land():
 		if Global.player.stats.status[Global.player.stats.Status.POISON] > 0:
 			Transitioned.emit(self, "hard_landing")
 			return
-		run_without_start_anim(true)
+		run_without_start_anim(true, true)
 		if not player.direction:
 			Transitioned.emit(self, "landing")
 	
@@ -360,7 +365,7 @@ func attack_anim_suffix() -> String:
 
 func get_attack_speed() -> float:
 	
-	var speeds = [2, 1, 1, 1, 2]
+	var speeds = [2, 1, 1, 1, 1]
 	if player.stats.equipment["weapon"] == 0:
 		return speeds[4]
 	return speeds[player.stats.searchItemInCompendium(player.stats.equipment["weapon"], player.stats.weapon_compendium).type]

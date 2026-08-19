@@ -10,7 +10,10 @@ func enter():
 	snapped_on_platform = false
 	double_jump_ready = false
 	get_tree().create_timer(DOUBLE_JUMP_AFTER, false).timeout.connect(func(): double_jump_ready = true)
-	animation.play("jump", -1, 1.3)
+	if player.direction == 0:
+		animation.play("jump")
+	else:
+		animation.play("diagonal_jump")
 	animation.seek(0)
 	player.velocity.y = JUMP_VELOCITY
 	if not player.dive_kicking:

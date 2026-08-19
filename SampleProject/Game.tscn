@@ -387,6 +387,7 @@
 [ext_resource type="AudioStream" uid="uid://rojr6o1d5144" path="res://assets/music/WaterTheologia.ogg" id="345_7fhmx"]
 [ext_resource type="AudioStream" uid="uid://djolu6rurb574" path="res://assets/music/Encounter2.ogg" id="347_xwt4j"]
 [ext_resource type="AudioStream" uid="uid://b4imdkesi5o1k" path="res://assets/music/DecisiveBattle.ogg" id="358_umdd8"]
+[ext_resource type="AudioStream" uid="uid://d0dyi5e2ihx76" path="res://assets/music/FagarasCaveWIP.ogg" id="361_dkwmf"]
 [ext_resource type="PackedScene" uid="uid://dc28q0j1e2kyn" path="res://SampleProject/extra_scenes/HUD/full_item_box.tscn" id="367_7u0qt"]
 [ext_resource type="PackedScene" uid="uid://b8cg3xh84xly" path="res://SampleProject/extra_scenes/HUD/description_box.tscn" id="368_hniq0"]
 
@@ -3006,9 +3007,9 @@ MP_cost = 1
 script = ExtResource("105_7lbas")
 relic_name = "AQUARIUS_NECKLACE"
 relic_description = "AQUARIUS_NECKLACE_DESC"
-glow = Color(0.7674173, 0.99940485, 0.99999994, 1)
+glow = Color(0.47570005, 0.6635233, 0.67, 1)
 icon = ExtResource("225_m20fq")
-MP_cost = 60
+MP_cost = 75
 metadata/_custom_type_script = "uid://4q5gc0nk15gw"
 
 [sub_resource type="Resource" id="Resource_1ioky"]
@@ -4764,7 +4765,7 @@ stream = ExtResource("22_2kg4t")
 
 [sub_resource type="Resource" id="Resource_j7yuj"]
 script = ExtResource("10_etx3r")
-Tag = "cave"
+Tag = "cave_OLD"
 stream = ExtResource("170_nmeol")
 
 [sub_resource type="Resource" id="Resource_d34sg"]
@@ -4818,9 +4819,15 @@ Tag = "decisive_battle"
 stream = ExtResource("358_umdd8")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
+[sub_resource type="Resource" id="Resource_klj4p"]
+script = ExtResource("10_etx3r")
+Tag = "cave"
+stream = ExtResource("361_dkwmf")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_8tj7q"]
 script = ExtResource("8_afqo1")
-sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj"), SubResource("Resource_d34sg"), SubResource("Resource_b4g4d"), SubResource("Resource_6q42e"), SubResource("Resource_mxxml"), SubResource("Resource_w5jos"), SubResource("Resource_iixkq"), SubResource("Resource_xnt2o"), SubResource("Resource_dfcem"), SubResource("Resource_x25o2")])
+sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj"), SubResource("Resource_d34sg"), SubResource("Resource_b4g4d"), SubResource("Resource_6q42e"), SubResource("Resource_mxxml"), SubResource("Resource_w5jos"), SubResource("Resource_iixkq"), SubResource("Resource_xnt2o"), SubResource("Resource_dfcem"), SubResource("Resource_x25o2"), SubResource("Resource_klj4p")])
 
 [sub_resource type="Gradient" id="Gradient_0dip4"]
 offsets = PackedFloat32Array(0, 0.989418)

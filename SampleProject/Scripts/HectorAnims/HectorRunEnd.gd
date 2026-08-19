@@ -4,7 +4,7 @@ var can_perfect_guard: bool = true
 
 
 func enter():
-	animation.play("run_end", -1, 1.5)
+	animation.play("run_end")
 	
 func Update(delta: float):
 	pass

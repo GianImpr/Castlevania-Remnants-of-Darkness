@@ -249,6 +249,8 @@ func calculateDamage(body: Node2D, magical: bool = false) -> int:
 			offensive_stat = player.stats.Stats["STR"]/2
 		else:
 			offensive_stat = player.stats.Stats["ATK"]
+			if player.state_machine.current_state is HectorUppercut:
+				offensive_stat = player.stats.Stats["ATK"] * HectorUppercut.damage_multiplier
 			
 	if Global.player.stats.canApplySkill(Skill.Skills.PERFORATION):
 		for element in actual_attributes:

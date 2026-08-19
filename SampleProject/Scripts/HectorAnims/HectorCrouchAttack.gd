@@ -38,9 +38,11 @@ func Physics_Update(delta: float):
 func playAttackAnimation() -> void:
 	var anim_speed = get_attack_speed()
 	var anim_suffix = attack_anim_suffix()
-	if attack_anim_suffix() == "_spear":
+	if anim_suffix == "_spear":
 		hector_hands.frame = DEFAULT_HAND_FRAME
 		hector_hands.visible = true
+	elif anim_suffix == "_fist" and player.direction == player.facing_position:
+		anim_suffix = "_fist_diag"
 	animation.play("crouch_attack" + anim_suffix, -1, anim_speed)
 	animation.seek(0)
 
