@@ -31,5 +31,5 @@ func Physics_Update(delta: float):
 			applyMercyInvincibility.call(player.SHORT_MERCY_INVINCIBILITY_DURATION)
 
 	if not animation.is_playing() and (Global.screen != Global.ScreenType.TRAINING or player.stats.Stats["HP"] > 0):
-		Transitioned.emit(self, "crouch")
+		stay_crouched()
 		player.is_hurt = false
