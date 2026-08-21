@@ -25,6 +25,7 @@ class_name HeadsUpDisplay
 @onready var HUD_fog: TextureRect = $TextureRect/Fog
 @onready var id_hud_fog: TextureRect = $TextureRect/IDFog
 @onready var id_mode: TextureRect = $IDBars/IDMode
+@onready var gold_HUD: GoldHUD = $GoldHUD
 
 var can_change_opacity: bool = true
 var is_transparent: bool = false

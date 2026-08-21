@@ -383,7 +383,9 @@
 [ext_resource type="Texture2D" uid="uid://djje28lnidp7c" path="res://assets/sprites/HUD/Elements/Poison.png" id="323_236bd"]
 [ext_resource type="Texture2D" uid="uid://dlwec5dr5h053" path="res://assets/sprites/HUD/Elements/Curse.png" id="324_cic6f"]
 [ext_resource type="Texture2D" uid="uid://dypdshve4t2hm" path="res://assets/sprites/HUD/Elements/Stone.png" id="325_0a8mu"]
+[ext_resource type="Script" uid="uid://c1vp5ukcefpq0" path="res://SampleProject/Scripts/System/map_window.gd" id="333_236bd"]
 [ext_resource type="AudioStream" uid="uid://rcd8exs6eagu" path="res://assets/music/CrystalTeardrops.ogg" id="339_gvdo1"]
+[ext_resource type="AudioStream" uid="uid://nqir05a7fqmo" path="res://assets/sounds/Menu/ChangeMap.ogg" id="340_cic6f"]
 [ext_resource type="AudioStream" uid="uid://rojr6o1d5144" path="res://assets/music/WaterTheologia.ogg" id="345_7fhmx"]
 [ext_resource type="AudioStream" uid="uid://djolu6rurb574" path="res://assets/music/Encounter2.ogg" id="347_xwt4j"]
 [ext_resource type="AudioStream" uid="uid://b4imdkesi5o1k" path="res://assets/music/DecisiveBattle.ogg" id="358_umdd8"]
@@ -4567,121 +4569,6 @@ metadata/_custom_type_script = "uid://bsculv0s33ivn"
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sngb1"]
 bg_color = Color(0.0593842, 0, 0.585751, 0.270588)
 
-[sub_resource type="GDScript" id="GDScript_u7odr"]
-resource_name = "MapWindow"
-script/source = "# The window that contains a bigger map overview than minimap. Toggled with M.
-extends Panel
-
-# The size of the window in cells.
-var SIZE: Vector2i
-
-# The position where the player started (for the vector feature).
-var starting_coords: Vector2i
-# The offset for drawing the cells. Allows map panning.
-var offset: Vector2i
-# The player location node from MetSys.add_player_location()
-var player_location: Node2D
-# The vector feature, toggled with D. It displays an arrow from player's starting point to the current position.
-# It's purely to show custom drawing on the map.
-var show_delta: bool
-@export var sound: PolyphonicMenuAudio
-@export var stage_name: Label
-
-func _ready() -> void:
-	# Cellular size is total size divided by cell size.
-	SIZE = size / MetSys.CELL_SIZE
-	# Connect some signals.
-	MetSys.cell_changed.connect(queue_redraw.unbind(1))
-	MetSys.cell_changed.connect(update_offset.unbind(1)) # When player moves to another cell, move the map.
-	MetSys.map_updated.connect(queue_redraw)
-	# Create player location. We need a reference to update its offset.
-	player_location = MetSys.add_player_location(self)
-
-func _draw() -> void:
-	for x in SIZE.x:
-		for y in SIZE.y:
-			# Draw cells. Note how offset is used.
-			MetSys.draw_cell(self, Vector2i(x, y), Vector3i(x - offset.x, y - offset.y, MetSys.current_layer))
-	# Draw shared borders and custom elements.
-	if MetSys.settings.theme.use_shared_borders:
-		MetSys.draw_shared_borders()
-	MetSys.draw_custom_elements(self, Rect2i(-offset.x, -offset.y, SIZE.x, SIZE.y))
-	# Get the current player coordinates.
-	var coords := MetSys.get_current_flat_coords()
-	# If the delta vector (D) is enabled and player isn't on the starting position...
-	if show_delta and coords != starting_coords:
-		var start_pos := MetSys.get_cell_position(starting_coords + offset)
-		var current_pos := MetSys.get_cell_position(coords + offset)
-		# draw the vector...
-		draw_line(start_pos, current_pos, Color.WHITE, 2)
-		
-		const arrow_size = 4
-		# and arrow. This code shows how to draw custom stuff on the map outside the MetSys functions.
-		draw_set_transform(current_pos, start_pos.angle_to_point(current_pos), Vector2.ONE)
-		draw_primitive([Vector2(-arrow_size, -arrow_size), Vector2(arrow_size, 0), Vector2(-arrow_size, arrow_size)], [Color.WHITE], [])
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed(\"map\") and Global.player.stats.Stats[\"HP\"] > 0:
-		if not visible and Global.screen == Global.ScreenType.NONE:
-			Global.screen = Global.ScreenType.MAP
-			sound.play_sound_effect_from_library(\"map\")
-			visible = true
-			stage_name.text = Global.player.stats.current_area
-			$\"../Minimap\".visible = false
-			get_tree().paused = true
-			var tween = get_tree().create_tween()
-			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-			tween.tween_property(Global.fade_screen, \"modulate\", Color(1, 1, 1, 1), 0.1)
-			await tween.finished
-			tween = get_tree().create_tween()
-			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-			tween.tween_property(self, \"modulate\", Color(1, 1, 1, 1), 0.1)
-			await tween.finished
-			return
-		if visible and Global.screen == Global.ScreenType.MAP:
-			sound.play_sound_effect_from_library(\"map\")
-			var tween = get_tree().create_tween()
-			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-			tween.tween_property(self, \"modulate\", Color(1, 1, 1, 0), 0.1)
-			await tween.finished
-			tween = get_tree().create_tween()
-			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-			tween.tween_property(Global.fade_screen, \"modulate\", Color(1, 1, 1, 0), 0.1)
-			await tween.finished
-			if Global.screen == Global.ScreenType.MAP:
-				get_tree().paused = false
-			visible = false
-			$\"../Minimap\".visible = true
-			Global.screen = Global.ScreenType.NONE
-			update_offset()
-
-
-func _input(event: InputEvent) -> void:
-	pass
-	if event is InputEventAction:
-		if event.pressed:
-			pass
-			# Toggle visibility when pressing M.
-			#elif event.keycode == KEY_D:
-				# D toggles position tracking (delta vector).
-				#show_delta = not show_delta
-				#queue_redraw()
-
-func update_offset():
-	# Update the map offset based on the current position.
-	# Normally the offset is interactive and the player is able to move freely around the map.
-	# But in this demo, the map can overlay the game and thus is updated in real time.
-	offset = Vector2(2,13)
-	#offset = -MetSys.get_current_flat_coords() + SIZE / 2
-	player_location.offset = Vector2(offset) * MetSys.CELL_SIZE
-
-func reset_starting_coords():
-	# Starting position for the delta vector.
-	var coords := MetSys.get_current_flat_coords()
-	starting_coords = Vector2i(coords.x, coords.y)
-	queue_redraw()
-"
-
 [sub_resource type="Theme" id="Theme_j0fso"]
 default_font = ExtResource("5_pjg0o")
 default_font_size = 32
@@ -4704,7 +4591,7 @@ func update():
 	# Only update when visible.
 	if is_visible_in_tree():
 		# Show the percentage.
-		text = \"%3d%%\" % int(MetSys.get_explored_ratio() * 100)
+		text = \"%3.1f%%\" % (MetSys.get_explored_ratio(MapView.layer) * 100)
 "
 
 [sub_resource type="Theme" id="Theme_m08mk"]
@@ -4716,9 +4603,15 @@ script = ExtResource("10_etx3r")
 Tag = "map"
 stream = ExtResource("10_kb15x")
 
+[sub_resource type="Resource" id="Resource_f7q2w"]
+script = ExtResource("10_etx3r")
+Tag = "change"
+stream = ExtResource("340_cic6f")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_k7wl7"]
 script = ExtResource("8_afqo1")
-sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_rsagu")])
+sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_rsagu"), SubResource("Resource_f7q2w")])
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_00yi7"]
 polyphony = 1
@@ -5111,7 +5004,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapWindow" type="Panel" parent="UI" unique_id=1202555402 node_paths=PackedStringArray("sound", "stage_name")]
+[node name="MapWindow" type="Panel" parent="UI" unique_id=1202555402 node_paths=PackedStringArray("sound", "stage_name", "stage_percent")]
 process_mode = 3
 visible = false
 z_index = 11
@@ -5128,18 +5021,21 @@ offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sngb1")
-script = SubResource("GDScript_u7odr")
+script = ExtResource("333_236bd")
 sound = NodePath("MapSound")
 stage_name = NodePath("StageName")
+stage_percent = NodePath("Percent")
 
 [node name="Percent" type="Label" parent="UI/MapWindow" unique_id=2102450162]
+custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
-offset_left = 749.0
+offset_left = 699.0
 offset_top = 5.0
-offset_right = 789.0
+offset_right = 829.0
 offset_bottom = 29.0
 theme = SubResource("Theme_j0fso")
 text = "9%"
+horizontal_alignment = 2
 script = SubResource("GDScript_66suq")
 
 [node name="StageName" type="Label" parent="UI/MapWindow" unique_id=128371481]

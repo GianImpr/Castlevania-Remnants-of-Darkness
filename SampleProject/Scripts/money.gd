@@ -42,6 +42,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_parent() is TileMapLayer:
 		return 
 	sound.play_sound_effect_from_library("collect")
-	Global.item_box.addEntry("$" + str(coin_data[type].value), ItemBox.Type.BLUE, null)
+	#Global.item_box.addEntry("$" + str(coin_data[type].value), ItemBox.Type.BLUE, null)
 	Global.player.stats.Stats["GOLD"] += coin_data[type].value
+	Global.HUD.gold_HUD.collectGold()
 	animation.play("picked")

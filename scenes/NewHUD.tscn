@@ -28,6 +28,17 @@
 [ext_resource type="Texture2D" uid="uid://eqrphxjgkwgm" path="res://assets/sprites/HUD/InGameHUD/BossDamage.png" id="21_ludcq"]
 [ext_resource type="Texture2D" uid="uid://dxvme5jenvhxc" path="res://assets/sprites/HUD/InGameHUD/BossBar1.png" id="22_805sf"]
 [ext_resource type="Texture2D" uid="uid://bb6kgjvn6w2gp" path="res://assets/sprites/HUD/InGameHUD/BossBar2.png" id="23_kgt85"]
+[ext_resource type="FontFile" uid="uid://cm6bf6lrkmmyh" path="res://assets/sprites/Font/McMillenBold.ttf" id="29_xgi8v"]
+[ext_resource type="FontFile" uid="uid://bkqeydh4cq86s" path="res://assets/sprites/Font/McMillen.ttf" id="30_3c8kx"]
+[ext_resource type="Texture2D" uid="uid://ch028hrysokkd" path="res://assets/sprites/HUD/Gold/GoldLow.png" id="30_xgc1p"]
+[ext_resource type="Texture2D" uid="uid://diekqc1wswe8l" path="res://assets/sprites/HUD/Gold/GoldLowMedium.png" id="31_frmgq"]
+[ext_resource type="Script" uid="uid://kq30claoj8as" path="res://SampleProject/Scripts/System/gold_value_hud.gd" id="31_n0ew2"]
+[ext_resource type="Texture2D" uid="uid://dv1mb67fa4rsv" path="res://assets/sprites/HUD/Gold/GoldMedium.png" id="32_hlm7p"]
+[ext_resource type="Texture2D" uid="uid://cmuxwasf0o6de" path="res://assets/sprites/HUD/Gold/GoldMediumHigh.png" id="33_oxp7a"]
+[ext_resource type="Texture2D" uid="uid://7sul32rt52uk" path="res://assets/sprites/HUD/Gold/GoldHigh.png" id="34_ludcq"]
+[ext_resource type="Texture2D" uid="uid://beetiwywvk6xf" path="res://assets/sprites/HUD/Gold/GoldVeryHigh.png" id="35_805sf"]
+[ext_resource type="Texture2D" uid="uid://d4hcahx00x563" path="res://assets/sprites/HUD/Gold/GoldSuperHigh.png" id="36_kgt85"]
+[ext_resource type="Texture2D" uid="uid://oyye8lrhcjut" path="res://assets/sprites/HUD/Gold/GoldMax.png" id="37_5rra8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tnaqy"]
 texture = ExtResource("4_ulm54")
@@ -519,6 +530,24 @@ _data = {
 &"shake": SubResource("Animation_s2yj0"),
 &"vanish": SubResource("Animation_k32vc")
 }
+
+[sub_resource type="Theme" id="Theme_n0ew2"]
+default_font = ExtResource("29_xgi8v")
+default_font_size = 32
+
+[sub_resource type="Gradient" id="Gradient_7xs6h"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d7iqj"]
+gradient = SubResource("Gradient_7xs6h")
+width = 300
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Theme" id="Theme_hd2te"]
+default_font = ExtResource("30_3c8kx")
+default_font_size = 32
 
 [node name="HUD" type="Control" unique_id=437600230 node_paths=PackedStringArray("id_level_up_animation", "guard_health")]
 process_mode = 3
@@ -1013,6 +1042,73 @@ offset_left = 34.0
 offset_top = 30.0
 offset_right = 66.0
 offset_bottom = 62.0
+
+[node name="GoldHUD" type="Control" parent="." unique_id=1149572847 node_paths=PackedStringArray("gold_value", "increased_gold_value", "increased_gold_icon")]
+anchors_preset = 0
+offset_left = 744.0
+offset_top = -33.0
+offset_right = 784.0
+offset_bottom = 7.0
+script = ExtResource("31_n0ew2")
+gold_value = NodePath("GoldValue")
+increased_gold_value = NodePath("IncreasedGoldValue")
+increased_gold_icon = NodePath("IncreasedGoldValue/TextureRect")
+gold_icons = Array[CompressedTexture2D]([ExtResource("30_xgc1p"), ExtResource("31_frmgq"), ExtResource("32_hlm7p"), ExtResource("33_oxp7a"), ExtResource("34_ludcq"), ExtResource("35_805sf"), ExtResource("36_kgt85"), ExtResource("37_5rra8")])
+
+[node name="Gold" type="Label" parent="GoldHUD" unique_id=47825087]
+clip_children = 1
+z_index = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 133.0
+offset_right = 145.0
+offset_bottom = 165.0
+theme = SubResource("Theme_n0ew2")
+text = "G"
+
+[node name="TextureRect" type="TextureRect" parent="GoldHUD/Gold" unique_id=1157797877]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 32.0
+texture = SubResource("GradientTexture2D_d7iqj")
+
+[node name="GoldValue" type="Label" parent="GoldHUD" unique_id=266702226]
+z_index = 1
+layout_mode = 0
+offset_left = -28.0
+offset_top = 133.0
+offset_right = 116.0
+offset_bottom = 223.0
+theme = SubResource("Theme_hd2te")
+theme_override_constants/line_spacing = 5
+theme_override_constants/outline_size = 8
+text = "0"
+horizontal_alignment = 2
+
+[node name="IncreasedGoldValue" type="Label" parent="GoldHUD" unique_id=1875297548]
+self_modulate = Color(0, 0.54004896, 1, 1)
+z_index = 1
+layout_mode = 0
+offset_left = -28.0
+offset_top = 161.0
+offset_right = 116.0
+offset_bottom = 251.0
+theme = SubResource("Theme_hd2te")
+theme_override_constants/line_spacing = 5
+theme_override_constants/outline_size = 8
+text = "+0"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="GoldHUD/IncreasedGoldValue" unique_id=1592872498]
+custom_minimum_size = Vector2(19, 17)
+layout_mode = 0
+offset_left = 20.0
+offset_top = -4.0
+offset_right = 39.0
+offset_bottom = 13.0
+scale = Vector2(2, 2)
+texture = ExtResource("31_frmgq")
+stretch_mode = 3
 
 [connection signal="timeout" from="BossBar/Damage_display" to="BossBar" method="_on_damage_display_timeout"]
 [connection signal="timeout" from="Control/BossBar2/Damage_display" to="Control/BossBar2" method="_on_damage_display_timeout"]
