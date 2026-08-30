@@ -386,6 +386,7 @@
 [ext_resource type="Script" uid="uid://c1vp5ukcefpq0" path="res://SampleProject/Scripts/System/map_window.gd" id="333_236bd"]
 [ext_resource type="AudioStream" uid="uid://rcd8exs6eagu" path="res://assets/music/CrystalTeardrops.ogg" id="339_gvdo1"]
 [ext_resource type="AudioStream" uid="uid://nqir05a7fqmo" path="res://assets/sounds/Menu/ChangeMap.ogg" id="340_cic6f"]
+[ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="341_0a8mu"]
 [ext_resource type="AudioStream" uid="uid://rojr6o1d5144" path="res://assets/music/WaterTheologia.ogg" id="345_7fhmx"]
 [ext_resource type="AudioStream" uid="uid://djolu6rurb574" path="res://assets/music/Encounter2.ogg" id="347_xwt4j"]
 [ext_resource type="AudioStream" uid="uid://b4imdkesi5o1k" path="res://assets/music/DecisiveBattle.ogg" id="358_umdd8"]
@@ -4613,6 +4614,10 @@ metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 script = ExtResource("8_afqo1")
 sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_rsagu"), SubResource("Resource_f7q2w")])
 
+[sub_resource type="Theme" id="Theme_0a8mu"]
+default_font = ExtResource("274_mxxml")
+default_font_size = 32
+
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_00yi7"]
 polyphony = 1
 
@@ -5004,7 +5009,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapWindow" type="Panel" parent="UI" unique_id=1202555402 node_paths=PackedStringArray("sound", "stage_name", "stage_percent")]
+[node name="MapWindow" type="Panel" parent="UI" unique_id=1202555402 node_paths=PackedStringArray("sound", "stage_name", "stage_percent", "previous_stage_name", "next_stage_name")]
 process_mode = 3
 visible = false
 z_index = 11
@@ -5025,20 +5030,24 @@ script = ExtResource("333_236bd")
 sound = NodePath("MapSound")
 stage_name = NodePath("StageName")
 stage_percent = NodePath("Percent")
+previous_stage_name = NodePath("PreviousStageName")
+next_stage_name = NodePath("NextStageName")
 
 [node name="Percent" type="Label" parent="UI/MapWindow" unique_id=2102450162]
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 0
-offset_left = 699.0
+offset_left = 696.0
 offset_top = 5.0
-offset_right = 829.0
+offset_right = 826.0
 offset_bottom = 29.0
+tooltip_auto_translate_mode = 1
 theme = SubResource("Theme_j0fso")
 text = "9%"
 horizontal_alignment = 2
 script = SubResource("GDScript_66suq")
 
 [node name="StageName" type="Label" parent="UI/MapWindow" unique_id=128371481]
+auto_translate_mode = 1
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = 5
@@ -5052,7 +5061,7 @@ theme = SubResource("Theme_m08mk")
 theme_override_colors/font_shadow_color = Color(0.187176, 0.187176, 0.187176, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-text = "Abandoned Monastery"
+text = "MOONLIT_WATERWAY"
 horizontal_alignment = 1
 
 [node name="MapSound" type="AudioStreamPlayer" parent="UI/MapWindow" unique_id=386208450]
@@ -5061,6 +5070,35 @@ volume_db = -10.0
 bus = &"SFX"
 script = ExtResource("7_ip71q")
 audio_library = SubResource("Resource_k7wl7")
+
+[node name="PreviousStageName" type="RichTextLabel" parent="UI/MapWindow" unique_id=1007354174]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 37.0
+offset_right = 351.0
+offset_bottom = 77.0
+theme = SubResource("Theme_0a8mu")
+bbcode_enabled = true
+text = " [img]res://assets/sprites/HUD/Buttons/L1.png[/img] Fagaras Forest"
+script = ExtResource("341_0a8mu")
+new_text = " [[L1]] Fagaras Forest"
+metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
+
+[node name="NextStageName" type="RichTextLabel" parent="UI/MapWindow" unique_id=1178798181]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 471.0
+offset_top = 37.0
+offset_right = 821.0
+offset_bottom = 77.0
+theme = SubResource("Theme_0a8mu")
+bbcode_enabled = true
+text = "Fagaras Forest [img]res://assets/sprites/HUD/Buttons/R1.png[/img] "
+horizontal_alignment = 2
+script = ExtResource("341_0a8mu")
+new_text = "Fagaras Forest [[R1]] "
+metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
 
 [node name="HUD2" parent="UI" unique_id=250061 instance=ExtResource("257_30jyd")]
 

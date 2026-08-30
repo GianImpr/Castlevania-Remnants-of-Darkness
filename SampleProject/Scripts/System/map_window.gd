@@ -18,6 +18,8 @@ static var layer: int = -1
 @export var sound: PolyphonicMenuAudio
 @export var stage_name: Label
 @export var stage_percent: Label
+@export var previous_stage_name: RichTextLabelWithButtons
+@export var next_stage_name: RichTextLabelWithButtons
 
 const STAGE_NAMES: Array[String] = [
 	"ABANDONED_MONASTERY",
@@ -69,7 +71,9 @@ func _process(delta: float) -> void:
 			Global.screen = Global.ScreenType.MAP
 			sound.play_sound_effect_from_library("map")
 			visible = true
-			stage_name.text = tr(STAGE_NAMES[layer])
+			stage_name.text = tr(STAGE_NAMES[layer] + "_TITLE")
+			updateStageLabels()
+			update_offset()
 			$"../Minimap".visible = false
 			get_tree().paused = true
 			var tween = get_tree().create_tween()
@@ -120,11 +124,27 @@ func updateMapView():
 	sound.play_sound_effect_from_library("change")
 	queue_redraw()
 	update_offset()
-	stage_name.text = tr(STAGE_NAMES[layer])
+	updateStageLabels()
+	stage_name.text = tr(STAGE_NAMES[layer] + "_TITLE")
 	stage_percent.update()
 	fade_tween = get_tree().create_tween()
 	fade_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	fade_tween.tween_property(self, "modulate", Color.WHITE, FADE_DURATION)
+	
+func updateStageLabels():
+	var next_layer: int = posmod(layer+1, 4)
+	while MetSys.get_explored_ratio(next_layer) == 0:
+		next_layer = posmod(next_layer+1, 4)
+		
+	var prev_layer: int = posmod(layer-1, 4)
+	while MetSys.get_explored_ratio(prev_layer) == 0:
+		prev_layer = posmod(prev_layer-1, 4)
+		
+	previous_stage_name.visible = prev_layer != layer
+	next_stage_name.visible = prev_layer != layer
+	previous_stage_name.new_text = " [[L1]] " + tr(STAGE_NAMES[prev_layer] + "_TITLE")
+	next_stage_name.new_text = tr(STAGE_NAMES[next_layer] + "_TITLE") + " [[R1]]"
+
 
 func _input(event: InputEvent) -> void:
 	pass
