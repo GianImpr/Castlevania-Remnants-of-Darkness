@@ -266,6 +266,7 @@ func _ready() -> void:
 		
 		# Reset position tracking (feature specific to this project).
 		await get_tree().physics_frame
+		Global.HUD.gold_HUD.initializeCounter()
 		Global.HUD.updateWeaponIconAndLight(weapon_compendium[Global.player.stats.equipment["weapon"]-1])
 		reset_map_starting_coords.call_deferred()
 

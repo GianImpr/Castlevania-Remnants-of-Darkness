@@ -5,8 +5,16 @@ class_name GoldHUD
 @export var increased_gold_value: Label
 @export var increased_gold_icon: TextureRect
 @export var gold_icons: Array[CompressedTexture2D]
-var displayed_gold_value: int = -1
-var collected_gold: int = 0
+var displayed_gold_value: int = -1:
+	set(value):
+		displayed_gold_value = value
+		gold_value.text = str(displayed_gold_value)
+		
+var collected_gold: int = 0:
+	set(value):
+		collected_gold = value
+		increased_gold_value.text = "+" + str(collected_gold)
+		
 var collect_gold_tween: Tween
 var modulate_tween: Tween
 const COLLECT_AFTER_SECONDS: float = 2
@@ -26,24 +34,21 @@ const GOLD_ICON_THRESHOLDS := [
 	2000
 ]
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	gold_value.text = str(displayed_gold_value)
-	increased_gold_value.text = "+" + str(collected_gold)
-	
+func initializeCounter() -> void:
+	if displayed_gold_value == -1:
+		displayed_gold_value = Global.player.stats.Stats["GOLD"]
+
+
 func collectGold() -> void:
 	collect_gold_caller_id += 1
 	var call_id: int = collect_gold_caller_id
 	
-	if displayed_gold_value == -1:
-		displayed_gold_value = Global.player.stats.Stats["GOLD"]
-	
 	if collect_gold_tween != null and collect_gold_tween.is_running():
 		collect_gold_tween.kill()
 		modulate_tween.kill()
-		
+	
+	increased_gold_value.modulate = Color.WHITE
 	collected_gold = Global.player.stats.Stats["GOLD"]-displayed_gold_value
-	increased_gold_value.text = str(collected_gold)
 	increased_gold_value.visible = true
 	increased_gold_icon.texture = gold_icons[determineGoldIcon(collected_gold)]
 	var total_gold_collected: int = collected_gold
@@ -61,7 +66,8 @@ func collectGold() -> void:
 	await collect_gold_tween.finished
 	if call_id != collect_gold_caller_id:
 		return
-	increased_gold_value.visible = false
+	collect_gold_tween = get_tree().create_tween()
+	collect_gold_tween.tween_property(increased_gold_value, "modulate", Color.TRANSPARENT, 0.1)
 	
 	await get_tree().create_timer(FADE_AFTER_SECONDS).timeout
 	if call_id != collect_gold_caller_id:

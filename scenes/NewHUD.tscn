@@ -1044,10 +1044,11 @@ offset_right = 66.0
 offset_bottom = 62.0
 
 [node name="GoldHUD" type="Control" parent="." unique_id=1149572847 node_paths=PackedStringArray("gold_value", "increased_gold_value", "increased_gold_icon")]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 0
-offset_left = 744.0
+offset_left = 723.0
 offset_top = -33.0
-offset_right = 784.0
+offset_right = 763.0
 offset_bottom = 7.0
 script = ExtResource("31_n0ew2")
 gold_value = NodePath("GoldValue")
@@ -1055,13 +1056,25 @@ increased_gold_value = NodePath("IncreasedGoldValue")
 increased_gold_icon = NodePath("IncreasedGoldValue/TextureRect")
 gold_icons = Array[CompressedTexture2D]([ExtResource("30_xgc1p"), ExtResource("31_frmgq"), ExtResource("32_hlm7p"), ExtResource("33_oxp7a"), ExtResource("34_ludcq"), ExtResource("35_805sf"), ExtResource("36_kgt85"), ExtResource("37_5rra8")])
 
+[node name="GoldOutline" type="Label" parent="GoldHUD" unique_id=492887495]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 1
+layout_mode = 0
+offset_left = 115.0
+offset_top = 135.0
+offset_right = 261.0
+offset_bottom = 176.0
+theme = SubResource("Theme_n0ew2")
+theme_override_font_sizes/font_size = 32
+text = "G"
+
 [node name="Gold" type="Label" parent="GoldHUD" unique_id=47825087]
 clip_children = 1
 z_index = 1
 layout_mode = 0
-offset_left = 3.0
+offset_left = 113.0
 offset_top = 133.0
-offset_right = 145.0
+offset_right = 255.0
 offset_bottom = 165.0
 theme = SubResource("Theme_n0ew2")
 text = "G"
@@ -1075,9 +1088,9 @@ texture = SubResource("GradientTexture2D_d7iqj")
 [node name="GoldValue" type="Label" parent="GoldHUD" unique_id=266702226]
 z_index = 1
 layout_mode = 0
-offset_left = -28.0
+offset_left = -44.0
 offset_top = 133.0
-offset_right = 116.0
+offset_right = 100.0
 offset_bottom = 223.0
 theme = SubResource("Theme_hd2te")
 theme_override_constants/line_spacing = 5
@@ -1089,9 +1102,9 @@ horizontal_alignment = 2
 self_modulate = Color(0, 0.54004896, 1, 1)
 z_index = 1
 layout_mode = 0
-offset_left = -28.0
+offset_left = -44.0
 offset_top = 161.0
-offset_right = 116.0
+offset_right = 100.0
 offset_bottom = 251.0
 theme = SubResource("Theme_hd2te")
 theme_override_constants/line_spacing = 5
@@ -1102,9 +1115,9 @@ horizontal_alignment = 2
 [node name="TextureRect" type="TextureRect" parent="GoldHUD/IncreasedGoldValue" unique_id=1592872498]
 custom_minimum_size = Vector2(19, 17)
 layout_mode = 0
-offset_left = 20.0
+offset_left = 148.0
 offset_top = -4.0
-offset_right = 39.0
+offset_right = 167.0
 offset_bottom = 13.0
 scale = Vector2(2, 2)
 texture = ExtResource("31_frmgq")
