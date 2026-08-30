@@ -68,6 +68,7 @@ const TOUGH_RING_GUARD_RECOVERY_TIME_MULTIPLIER_CRAZY: float = 1.5
 const MAX_WEAPON_RANK = 2
 const LONG_MERCY_INVINCIBILITY_DURATION: float = 1.7
 const SHORT_MERCY_INVINCIBILITY_DURATION: float = 0.8
+const AFTER_GUARD_MERCY_INVINCIBILITY_DURATION: float = 0.4
 const MAX_GUARD_PRESS_PER_HALF_SECOND: int = 3
 const RING_OF_LIFE_SCENE: PackedScene = preload("res://SampleProject/extra_scenes/effects/ring_of_life_effect.tscn")
 
@@ -604,6 +605,21 @@ func startDrowning() -> void:
 	
 func stopDrowning() -> void:
 	drowning = false
+
+func applyMercyInvincibility(duration: float = LONG_MERCY_INVINCIBILITY_DURATION, apply_blink: bool = true) -> void:
+	if is_on_floor():
+		mercy_invincibility_duration.start(duration)
+		const TWEEN_LOOP_DURATION: float = 0.1
+		const BLINK_SPEED: float = 0.3
+		const NORMAL_COLOR: Color = Color(1,1,1,1)
+		const TRANSPARENT_COLOR: Color = Color(1,1,1,0.5)
+		mercy_invincibility_duration.wait_time = duration
+		var tween: Tween
+		if apply_blink:
+			tween = get_tree().create_tween()
+			tween.set_loops(duration/TWEEN_LOOP_DURATION/2)
+			tween.tween_property(sprite, "self_modulate", NORMAL_COLOR, BLINK_SPEED).from(TRANSPARENT_COLOR)
+
 
 func canCreateAquariusTrap() -> void:
 	if enabled_magic and stats.itemEquipped(Relic.Relics.AQUARIUS_NECKLACE, "relic") and stats.Stats["MP"] >= AQUARIUS_NECKLACE_COST and Input.is_action_just_pressed("circle"):

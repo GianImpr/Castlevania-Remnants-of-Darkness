@@ -18,10 +18,11 @@ func enter():
 	if player.stats.itemEquipped(Artifact.Artifacts.STONE_OF_ALCHEMY, "artifact"):
 		player.activateStoneOfAlchemy()
 		
-	
+
 	
 func exit():
 	player.is_hurt = false
+	player.applyMercyInvincibility(Global.player.AFTER_GUARD_MERCY_INVINCIBILITY_DURATION, false)
 	
 func Update(delta: float):
 	if player.stats.canApplySkill(Skill.Skills.GUARD_STANCE):
