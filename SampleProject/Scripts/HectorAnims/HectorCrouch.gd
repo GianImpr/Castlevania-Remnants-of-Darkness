@@ -24,7 +24,7 @@ func Update(delta: float):
 	if not Input.is_action_pressed("crouch") and not slide_pressed:
 		Transitioned.emit(self, "rise")
 		
-	if slide_pressed and can_slide:
+	if slide_pressed and (can_slide or player.direction != 0):
 		Transitioned.emit(self, "slide")
 		
 	if Input.is_action_just_pressed("jump"):
