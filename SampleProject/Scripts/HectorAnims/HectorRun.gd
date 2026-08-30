@@ -12,6 +12,7 @@ func enter():
 		animation.play("run_start", BLEND, 1.6)
 	elif play_landing_run_animation:
 		animation.play("landing_moving")
+		play_landing_run_animation = false
 	else:
 		animation.play("run", BLEND, 1.8)
 	

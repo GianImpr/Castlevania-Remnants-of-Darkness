@@ -24,7 +24,7 @@ func Update(delta: float):
 	if player.direction == 0 and Input.is_action_pressed("guard"):
 		Transitioned.emit(self, "guard")
 	elif not Input.is_action_pressed("guard"):
-		Transitioned.emit(self, "run")
+		run_without_start_anim(false)
 		
 	check_is_blocking()
 	_can_activate_magic()
