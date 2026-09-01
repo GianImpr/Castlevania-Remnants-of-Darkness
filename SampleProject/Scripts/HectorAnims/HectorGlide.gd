@@ -28,12 +28,15 @@ func exit():
 	interrupted = true
 
 func Physics_Update(delta: float):
-	if player.velocity.y > 0 and not animation.is_playing():
+	if player.velocity.y > 0:
 		player.velocity.y *= 0.3
 		
 	if (InputBuffer.is_action_press_buffered("jump") or player.is_on_wall()) and player.velocity.y > 0:
 		interrupted = true
-		
+	
+	if (Global.player.innocent_devil is not Crow):
+		interrupted = true
+	
 	if interrupted:
 		can_fall(false)
 		
