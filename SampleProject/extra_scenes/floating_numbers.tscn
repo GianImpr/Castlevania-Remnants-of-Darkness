@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://beartgufu5i2u"]
+[gd_scene format=3 uid="uid://beartgufu5i2u"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/floating_numbers.gd" id="1_hhsrs"]
+[ext_resource type="Script" uid="uid://d1meo0kgkc4ak" path="res://SampleProject/Scripts/floating_numbers.gd" id="1_hhsrs"]
 [ext_resource type="FontFile" uid="uid://ci2tmsivehkf6" path="res://assets/sprites/Font/Caja.ttf" id="2_4b5ty"]
-[ext_resource type="Texture2D" uid="uid://bko5ad88ck8ps" path="res://assets/sprites/HUD/Popups/DamageNumbers.png" id="3_vjnii"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/System/damage_numbers.gd" id="3_xa5cm"]
+[ext_resource type="Script" uid="uid://dqmsky4espvna" path="res://SampleProject/Scripts/System/damage_numbers.gd" id="3_xa5cm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lbl7t"]
 font = ExtResource("2_4b5ty")
@@ -83,28 +82,30 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_87dba"]
 _data = {
-"RESET": SubResource("Animation_btdgk"),
-"popup": SubResource("Animation_fq4gv")
+&"RESET": SubResource("Animation_btdgk"),
+&"popup": SubResource("Animation_fq4gv")
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x8uw4"]
+load_path = "res://.godot/imported/DamageNumbers.png-91f39f51625c02832e8e7e3f042dc799.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_k33g6"]
-atlas = ExtResource("3_vjnii")
+atlas = SubResource("CompressedTexture2D_x8uw4")
 region = Rect2(48, 0, 8, 10)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dt85b"]
-load_path = "res://.godot/imported/DamageNumbers.png-c8016333acc0359b420fcdf2ac062c9b.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8dvg"]
 atlas = SubResource("CompressedTexture2D_dt85b")
 region = Rect2(40, 0, 8, 10)
 
-[node name="FloatingNumbers" type="Marker2D" node_paths=PackedStringArray("label", "damage_container")]
+[node name="FloatingNumbers" type="Marker2D" unique_id=696591668 node_paths=PackedStringArray("label", "damage_container")]
 z_index = 10
 script = ExtResource("1_hhsrs")
 label = NodePath("Label")
 damage_container = NodePath("Control/HBoxContainer")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=468595937]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
@@ -125,36 +126,34 @@ label_settings = SubResource("LabelSettings_lbl7t")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_87dba")
-}
-autoplay = "popup"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1468983348]
+libraries/ = SubResource("AnimationLibrary_87dba")
+autoplay = &"popup"
 
-[node name="DamageNumbers" type="TextureRect" parent="."]
+[node name="DamageNumbers" type="TextureRect" parent="." unique_id=783837096]
 visible = false
 offset_right = 8.0
 offset_bottom = 10.0
 texture = SubResource("AtlasTexture_k33g6")
 stretch_mode = 2
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=491603910]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -92.0
-offset_top = -8.0
-offset_right = -92.0
-offset_bottom = -8.0
+offset_left = -18.0
+offset_top = -11.0
+offset_right = -18.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 0.125)
 size_flags_horizontal = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control" node_paths=PackedStringArray("damage_numbers")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1622462338 node_paths=PackedStringArray("damage_numbers")]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 0
 offset_right = 20.0
@@ -165,12 +164,12 @@ alignment = 1
 script = ExtResource("3_xa5cm")
 damage_numbers = NodePath("../../DamageNumbers")
 
-[node name="DamageNumbers2" type="TextureRect" parent="Control/HBoxContainer"]
+[node name="DamageNumbers2" type="TextureRect" parent="Control/HBoxContainer" unique_id=125723739]
 layout_mode = 2
 texture = SubResource("AtlasTexture_s8dvg")
 stretch_mode = 2
 
-[node name="DamageNumbers3" type="TextureRect" parent="Control/HBoxContainer"]
+[node name="DamageNumbers3" type="TextureRect" parent="Control/HBoxContainer" unique_id=1631153805]
 layout_mode = 2
 texture = SubResource("AtlasTexture_s8dvg")
 stretch_mode = 2

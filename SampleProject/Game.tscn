@@ -4592,7 +4592,10 @@ func update():
 	# Only update when visible.
 	if is_visible_in_tree():
 		# Show the percentage.
-		text = \"%3.1f%%\" % (MetSys.get_explored_ratio(MapView.layer) * 100)
+		if MapView.layer >= 0:
+			text = \"%3.1f%%\" % (MetSys.get_explored_ratio(MapView.layer) * 100)
+		else:
+			text = \"%3.1f%%\" % (MetSys.get_explored_ratio() * 100)
 "
 
 [sub_resource type="Theme" id="Theme_m08mk"]
@@ -4617,6 +4620,8 @@ sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_rsagu"), S
 [sub_resource type="Theme" id="Theme_0a8mu"]
 default_font = ExtResource("274_mxxml")
 default_font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0a8mu"]
 
 [sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_00yi7"]
 polyphony = 1
@@ -5009,7 +5014,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MapWindow" type="Panel" parent="UI" unique_id=1202555402 node_paths=PackedStringArray("sound", "stage_name", "stage_percent", "previous_stage_name", "next_stage_name")]
+[node name="MapWindow" type="Panel" parent="UI" unique_id=1202555402]
 process_mode = 3
 visible = false
 z_index = 11
@@ -5026,12 +5031,6 @@ offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sngb1")
-script = ExtResource("333_236bd")
-sound = NodePath("MapSound")
-stage_name = NodePath("StageName")
-stage_percent = NodePath("Percent")
-previous_stage_name = NodePath("PreviousStageName")
-next_stage_name = NodePath("NextStageName")
 
 [node name="Percent" type="Label" parent="UI/MapWindow" unique_id=2102450162]
 custom_minimum_size = Vector2(130, 0)
@@ -5099,6 +5098,31 @@ horizontal_alignment = 2
 script = ExtResource("341_0a8mu")
 new_text = "Fagaras Forest [[R1]] "
 metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
+
+[node name="Map" type="Panel" parent="UI/MapWindow" unique_id=1122044465 node_paths=PackedStringArray("sound", "stage_name", "stage_percent", "previous_stage_name", "next_stage_name")]
+process_mode = 3
+z_index = 11
+clip_contents = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.5
+offset_top = -220.0
+offset_right = 412.5
+offset_bottom = 440.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(103, 220)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0a8mu")
+script = ExtResource("333_236bd")
+sound = NodePath("../MapSound")
+stage_name = NodePath("../StageName")
+stage_percent = NodePath("../Percent")
+previous_stage_name = NodePath("../PreviousStageName")
+next_stage_name = NodePath("../NextStageName")
 
 [node name="HUD2" parent="UI" unique_id=250061 instance=ExtResource("257_30jyd")]
 

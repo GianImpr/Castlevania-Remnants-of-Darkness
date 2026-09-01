@@ -308,7 +308,7 @@ func save_game():
 	save_manager.save_as_text(Global.save_destination)
 
 func reset_map_starting_coords():
-	$UI/MapWindow.reset_starting_coords()
+	$UI/MapWindow/Map.reset_starting_coords()
 
 func init_room():
 	MetSys.get_current_room_instance().adjust_camera_limits($Player/Camera2D)
