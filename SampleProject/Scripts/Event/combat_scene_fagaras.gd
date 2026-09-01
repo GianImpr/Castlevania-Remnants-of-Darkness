@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 		
 	elif not Global.player.stats.combat_flags[event_ID]:
 		Global.player.stats.combat_flags[event_ID] = true
+		SavingScreen.deleteBattleCheckpoint()
 		_dissolveMusic()
 		
 
