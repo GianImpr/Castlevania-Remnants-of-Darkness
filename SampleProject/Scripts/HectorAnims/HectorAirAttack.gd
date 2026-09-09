@@ -33,5 +33,6 @@ func Physics_Update(delta: float):
 	can_land()
 	can_die()
 	
+	
 	if not animation.is_playing() and not player.is_on_floor():
 		Transitioned.emit(self, "falling")

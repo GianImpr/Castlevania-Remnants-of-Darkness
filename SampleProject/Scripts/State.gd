@@ -311,7 +311,7 @@ func stay_crouched():
 	Transitioned.emit(self, "crouch")
 	
 func can_double_jump():
-	if InputBuffer.is_action_press_buffered("jump") and player.can_double_jump and Global.player.stats.findItem(Skill.Skills.LEAP_STONE, Global.player.stats.skill_inventory):
+	if player.can_double_jump and InputBuffer.is_action_press_buffered("jump") and Global.player.stats.findItem(Skill.Skills.LEAP_STONE, Global.player.stats.skill_inventory):
 		Transitioned.emit(self, "double_jump")
 		if self is HectorDamageAir:
 			player.is_hurt = false

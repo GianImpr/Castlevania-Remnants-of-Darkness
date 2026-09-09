@@ -33,7 +33,11 @@ func Physics_Update(delta: float):
 	can_die()
 	if not coyote_timer.is_stopped():
 		can_perform("jump", true)
-	
+
+	if not player.can_double_jump and Global.player.stats.findItem(Skill.Skills.LEAP_STONE, Global.player.stats.skill_inventory):
+		can_dive_kick()
+
+
 	determineLandingType()
 
 #Checks if the player will soft land or hard land
