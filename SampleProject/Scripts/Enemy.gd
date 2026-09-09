@@ -82,6 +82,9 @@ func apply_damage(body, damage, attack_hitbox = hitbox_iframe, rehit_time: float
 		iframes_timer.queue_free()
 
 func hit_target(multiplier: float, body, attack_hitbox = hitbox_iframe, chip_damage: int = 0, guard_break: bool = false, attribute: Global.Attribute = Global.Attribute.HIT, rehit_time: float = 1, knockback: bool = false):
+	if stats.HP <= 0:
+		return
+	
 	if not body_hitbox_on_cooldown or attack_hitbox != hitbox_iframe:
 		body_hitbox_on_cooldown = true
 		get_tree().create_timer(INVULNERABILITY_DURATION, false).timeout.connect(resetInvulnerability)
