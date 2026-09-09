@@ -405,7 +405,7 @@ func addWeaponExp() -> void:
 		
 	stats.weapon_proficiency[weapon_type]["exp"] += amount_gained
 	
-func heal(amount: int, with_particles: bool = true) -> void:
+func heal(amount: int, with_particles: bool = true, hide_value: bool = false) -> void:
 	if state_machine.current_state is HectorDying:
 		return
 		
@@ -414,7 +414,8 @@ func heal(amount: int, with_particles: bool = true) -> void:
 	hit_effect_applied = true
 	sprite.editShaderParams(0.2, 4, true, Color(0, 0.766, 0))
 	stats.Stats["HP"] = min(stats.Stats["HP"]+amount, stats.Stats["MHP"])
-	damage_popup.popup(amount, 2)
+	if not hide_value:
+		damage_popup.popup(amount, 2)
 
 	if with_particles:
 		heal_effect.emitting = true
@@ -424,10 +425,12 @@ func heal(amount: int, with_particles: bool = true) -> void:
 		tween = get_tree().create_tween()
 		tween.tween_property(sprite, "self_modulate", Color(1,1,1), 1)
 	
-func healMP(amount: int, popup_offset: Vector2 = Vector2.ZERO) -> void:
+func healMP(amount: int, popup_offset: Vector2 = Vector2.ZERO, hide_value: bool = false) -> void:
 	stats.Stats["MP"] = min(stats.Stats["MP"]+amount, stats.Stats["MMP"])
 	heal_mp_effect.emitting = true
-	damage_popup.popup(amount, 3, popup_offset)
+	
+	if not hide_value:
+		damage_popup.popup(amount, 3, popup_offset)
 
 	
 func heal_innocent(amount: int) -> void:

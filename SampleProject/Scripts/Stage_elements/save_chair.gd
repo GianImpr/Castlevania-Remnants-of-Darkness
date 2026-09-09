@@ -22,8 +22,8 @@ func _process(delta: float) -> void:
 		player_state.Transitioned.emit(player_state, "sit_down")
 		Global.player.facing_position = direction
 		Global.player.sprite.flip_h = (direction < 0)
-		Global.player.stats.Stats["HP"] = Global.player.stats.Stats["MHP"]
-		Global.player.stats.Stats["MP"] = Global.player.stats.Stats["MMP"]
+		Global.player.heal(9999, false, true)
+		Global.player.healMP(9999, Vector2.ZERO, true)
 		if Global.player.innocent_devil != null:
 			Global.player.heal_innocent(9999)
 		await player_state.animation.animation_finished
