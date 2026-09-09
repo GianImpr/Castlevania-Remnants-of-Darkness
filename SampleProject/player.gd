@@ -593,12 +593,12 @@ func onEnemyLost(body: Node2D) -> void:
 ## Returns the closest enemy to Hector or null if there are none.
 func closestEnemy() -> Enemy:
 	var closest_enemy: Enemy = null
-	for enemy in targettable_enemies:
+	for enemy: Enemy in targettable_enemies:
 		if not closest_enemy:
 			closest_enemy = enemy
 			continue
 			
-		if enemy.global_position.distance_to(global_position) < closest_enemy.global_position.distance_to(global_position):
+		if enemy.global_position.distance_to(global_position) < closest_enemy.global_position.distance_to(global_position) and enemy.stats.HP > 0:
 			closest_enemy = enemy
 	return closest_enemy
 
