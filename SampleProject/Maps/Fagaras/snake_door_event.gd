@@ -4,11 +4,13 @@ class_name SnakeDoorEvent
 @export var event_flag: int
 @export var hint_14: HintBoxTrigger
 @export var hint_15: HintBoxTrigger
+@export var snake_door: Door
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Global.player.stats.event_flags[event_flag]:
 		queue_free()
+		snake_door.openDoorInstantly()
 	elif not hasEyes():
 		hint_15.queue_free()
 	elif hasEyes():

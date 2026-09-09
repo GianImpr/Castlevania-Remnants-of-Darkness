@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Door
 @export var flipped_to_left: bool
 @export var sprite: Sprite2D
 @export var aura: Sprite2D
@@ -11,8 +12,10 @@ extends RigidBody2D
 @export var aura_sheet: CompressedTexture2D
 @export var aura_color: Color = Color(0, 0.58, 0.746)
 @export var spawn_cooldown: Timer
+@export var already_open: bool = false
 var can_open_door: bool = false
 var needs_to_close: bool = false
+const OPEN_DOOR_FRAME: int = 22
 
 func _ready():
 	spawn_cooldown.start()
@@ -22,7 +25,7 @@ func _ready():
 	aura.modulate = aura_color
 	if Global.player.state_machine.current_state is HectorOpeningDoor:
 		if (Global.player.facing_position == 1 and not flipped_to_left) or (Global.player.facing_position == -1 and flipped_to_left):
-			sprite.frame = 22
+			sprite.frame = OPEN_DOOR_FRAME
 			aura.visible = false
 			collision_box.disabled = true
 			needs_to_close = true
@@ -33,7 +36,14 @@ func _ready():
 		aura.scale *= -1
 		hitbox.scale *= -1
 		collision_box.scale *= -1
-		
+
+func openDoorInstantly() -> void:
+	sprite.frame = OPEN_DOOR_FRAME
+	aura.visible = false
+	collision_box.disabled = true
+	needs_to_close = false
+	area.set_collision_mask_value(12, false)
+
 func _process(delta: float) -> void:
 	if Global.player.state_machine.current_state is HectorRun and can_open_door and Global.player.sprite.flip_h == !flipped_to_left:
 		enterDoor()

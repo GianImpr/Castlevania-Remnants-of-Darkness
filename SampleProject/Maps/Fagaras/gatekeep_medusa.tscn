@@ -2273,12 +2273,13 @@ spritesheet = ExtResource("6_dm63n")
 aura_sheet = ExtResource("7_b5m8g")
 aura_color = Color(0.75, 0, 0.0124998, 1)
 
-[node name="SnakeDoorEvent" type="StaticBody2D" parent="." unique_id=2084728644 node_paths=PackedStringArray("hint_14", "hint_15")]
+[node name="SnakeDoorEvent" type="StaticBody2D" parent="." unique_id=2084728644 node_paths=PackedStringArray("hint_14", "hint_15", "snake_door")]
 position = Vector2(922, 288)
 script = ExtResource("8_iafjq")
 event_flag = 7
 hint_14 = NodePath("HintBoxTrigger")
 hint_15 = NodePath("HintBoxTrigger2")
+snake_door = NodePath("../SaveDoor")
 
 [node name="HintBoxTrigger" parent="SnakeDoorEvent" unique_id=1297810644 instance=ExtResource("8_4kraw")]
 position = Vector2(-440, -298)
