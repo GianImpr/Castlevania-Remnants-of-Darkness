@@ -629,6 +629,9 @@ func canCreateAquariusTrap() -> void:
 		MetSys.get_current_room_instance().add_child(trap)
 
 func setBloodForSlashDamage() -> void:
+	if isGuarding():
+		return
+	
 	blood.restart()
 	blood.lifetime = 0.4
 	blood.one_shot = false
@@ -641,6 +644,9 @@ func setBloodForSlashDamage() -> void:
 	blood.initial_velocity_max = 80
 	
 func resetBloodAttributes() -> void:
+	if isGuarding():
+		return
+
 	blood.restart()
 	blood.lifetime = 0.75
 	blood.one_shot = true
