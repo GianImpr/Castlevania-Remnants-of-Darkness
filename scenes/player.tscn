@@ -1931,6 +1931,18 @@ tracks/49/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("BloodDamage:position")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_lhfeg"]
 resource_name = "air_attack"
@@ -2720,6 +2732,18 @@ tracks/1/keys = {
 "update": 0,
 "values": []
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BloodDamage:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, 5)]
+}
 
 [sub_resource type="Animation" id="Animation_r0x2e"]
 resource_name = "diagonal_jump"
@@ -3009,7 +3033,7 @@ tracks/2/path = NodePath("BloodDamage:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -3021,7 +3045,7 @@ tracks/3/path = NodePath("BloodDamage:one_shot")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -3033,7 +3057,7 @@ tracks/4/path = NodePath("BloodDamage:explosiveness")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
@@ -3045,7 +3069,7 @@ tracks/5/path = NodePath("BloodDamage:amount")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [90]
@@ -3057,7 +3081,7 @@ tracks/6/path = NodePath("BloodDamage:direction")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -1)]
@@ -3069,10 +3093,22 @@ tracks/7/path = NodePath("BloodDamage:gravity")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, -100)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BloodDamage:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 5)]
 }
 
 [sub_resource type="Animation" id="Animation_2t4xi"]
@@ -3312,6 +3348,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BloodDamage:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.74),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-2, 18)]
+}
 
 [sub_resource type="Animation" id="Animation_5bejj"]
 resource_name = "hurt"
@@ -3328,6 +3376,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [120, 121]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodDamage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_rbc1d"]
@@ -3346,6 +3406,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [122]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodDamage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, 5)]
+}
 
 [sub_resource type="Animation" id="Animation_uc5i5"]
 resource_name = "hurt_back"
@@ -3362,6 +3434,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [125, 126, 125]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodDamage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_gl364"]
@@ -3380,6 +3464,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [94, 95]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodDamage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 18)]
+}
 
 [sub_resource type="Animation" id="Animation_64ww5"]
 resource_name = "hurt_crouch_back"
@@ -3396,6 +3492,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [96, 97, 96]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodDamage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 20)]
 }
 
 [sub_resource type="Animation" id="Animation_wgof3"]
@@ -5941,7 +6049,7 @@ _limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.5, 0.0049916506), 0.0, 0.0, 0, 0, Vector2(1, -2), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="Player" type="CharacterBody2D" unique_id=935233281 node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "hurtbox_area", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "reset_guard_presses_timer", "confidence_ring_timer", "time_heal_timer", "time_heal_particles", "goddess_shield_particles", "charge_sprite", "charge_anim", "charge_particles", "heal_effect", "heal_mp_effect", "special_item_get_particles", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
+[node name="Player" type="CharacterBody2D" unique_id=935233281 node_paths=PackedStringArray("sprite", "aura", "state_machine", "damage_popup", "stats", "hurtbox", "hurtbox_area", "sound", "guard_recovery", "coyote_timer", "perfect_guard_timer", "mercy_invincibility_duration", "mercy_invincibility_hit_threshold_reset", "focus_gain_duration", "reset_guard_presses_timer", "confidence_ring_timer", "time_heal_timer", "time_heal_particles", "goddess_shield_particles", "charge_sprite", "charge_anim", "charge_particles", "blood", "heal_effect", "heal_mp_effect", "special_item_get_particles", "tap_up", "effects", "special_attack_animation", "raycast", "relic_sounds")]
 scale = Vector2(2, 2)
 collision_layer = 524290
 collision_mask = 4113
@@ -5974,6 +6082,7 @@ goddess_shield_particles = NodePath("GoddessShieldParticles")
 charge_sprite = NodePath("ChargeWave")
 charge_anim = NodePath("ChargeWave/ChargeAnim")
 charge_particles = NodePath("ChargeParticles")
+blood = NodePath("BloodDamage")
 heal_effect = NodePath("Heal")
 heal_mp_effect = NodePath("HealMP")
 special_item_get_particles = NodePath("SpecialItemGet")

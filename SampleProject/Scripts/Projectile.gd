@@ -73,7 +73,12 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 				body.poison()
 			Global.Attribute.ENFEEBLE:
 				body.enfeeble()
-		
+	
+	if attribute == Global.Attribute.SLASH:
+		body.setBloodForSlashDamage()
+	else:
+		body.resetBloodAttributes()
+	
 	if body.isGuarding() and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:
 		if guard_break:
 			damage = min(damage*0.6, body.stats.Stats["HP"]/10)

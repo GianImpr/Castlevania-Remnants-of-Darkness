@@ -35,7 +35,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_tongue_2d_area_entered(area: Area2D) -> void:
 	var body = area.get_parent()
-	hit_target(tongue_damage_multiplier, body, hitbox_iframe, tongue_chip_damage)
+	hit_target(tongue_damage_multiplier, body, hitbox_iframe, tongue_chip_damage, false, Global.Attribute.SLASH)
 	
 func _on_aura_2d_area_entered(area: Area2D) -> void:
 	var body = area.get_parent()

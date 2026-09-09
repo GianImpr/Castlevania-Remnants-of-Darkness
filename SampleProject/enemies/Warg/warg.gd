@@ -32,7 +32,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 func _on_bite_hitbox_area_entered(area: Area2D) -> void:
 	var body = area.get_parent()
-	hit_target(BITE_DAMAGE_MULTIPLIER, body, bite_hitbox, BITE_CHIP_DAMAGE)
+	hit_target(BITE_DAMAGE_MULTIPLIER, body, bite_hitbox, BITE_CHIP_DAMAGE, false, Global.Attribute.SLASH)
 
 
 func _on_iframe_timer_timeout() -> void:

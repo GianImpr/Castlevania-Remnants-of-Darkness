@@ -18,6 +18,12 @@ func applyDamage(body_area: Area2D) -> void:
 	var chip_damage: int = power/3
 	const MULTIPLIER: int = 1
 	var damage: int = body.stats.calculateDamageTaken(power, MULTIPLIER, chip_damage, true, Global.Attribute.HIT, true)
+	if body is HectorPlayer:
+		if attribute == Global.Attribute.SLASH:
+			body.setBloodForSlashDamage()
+		else:
+			body.resetBloodAttributes()
+	
 	body.damage_popup.popup(damage, 0)
 	body.stats.Stats["HP"] = max(body.stats.Stats["HP"]-damage, 0)
 	body.is_hurt = true

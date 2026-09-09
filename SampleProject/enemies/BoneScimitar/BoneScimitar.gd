@@ -30,4 +30,4 @@ func _on_timer_timeout() -> void:
 
 func _on_sword_area_entered(area: Area2D) -> void:
 	var body = area.get_parent()
-	hit_target(1.5, body, sword_hitbox)
+	hit_target(1.5, body, sword_hitbox, 0, false, Global.Attribute.SLASH)

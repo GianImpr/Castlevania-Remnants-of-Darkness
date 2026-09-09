@@ -22,12 +22,12 @@ func _on_detection_area_entered(area: Area2D) -> void:
 
 func _on_spear_area_entered(area: Area2D) -> void:
 	var body = area.get_parent()
-	hit_target(1.5, body, spear)
+	hit_target(1.5, body, spear, 0, false, Global.Attribute.SLASH)
 	
 
 func _on_special_area_entered(area: Area2D) -> void:
 	var body = area.get_parent()
-	hit_target(3, body, special, 10, true, StaticGlobal.Attribute.HIT, 1, true)
+	hit_target(3, body, special, 10, true, StaticGlobal.Attribute.SLASH, 1, true)
 
 
 func _on_spear_up_down_area_entered(area: Area2D) -> void:

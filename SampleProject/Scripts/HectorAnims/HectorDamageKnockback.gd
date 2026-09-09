@@ -10,6 +10,7 @@ func enter():
 	player.velocity.y = recoil_speed.y
 	ignore_landing.start()
 	animation.play("damage_mercy")
+	player.blood.emitting = true
 	
 func exit():
 	if Global.game != null and Global.game.difficulty == Game.Difficulty.SIMPLIFIED:

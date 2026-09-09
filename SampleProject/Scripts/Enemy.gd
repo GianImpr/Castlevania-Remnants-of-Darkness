@@ -89,6 +89,11 @@ func hit_target(multiplier: float, body, attack_hitbox = hitbox_iframe, chip_dam
 		apply_damage(body, damage, attack_hitbox, rehit_time)
 	if "facing_position" in self:
 		if body is HectorPlayer:
+			if attribute == Global.Attribute.SLASH:
+				body.setBloodForSlashDamage()
+			else:
+				body.resetBloodAttributes()
+				
 			if not body.is_on_floor():
 				body.sprite.flip_h = self.facing_position == 1
 			else:

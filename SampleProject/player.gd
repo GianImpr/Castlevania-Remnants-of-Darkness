@@ -35,6 +35,7 @@ class_name HectorPlayer
 @export var charge_anim: AnimationPlayer
 @export var charge_particles: CPUParticles2D
 @export_category("Effect nodes")
+@export var blood: CPUParticles2D
 @export var heal_effect: GPUParticles2D
 @export var heal_mp_effect: GPUParticles2D
 @export var special_item_get_particles: CPUParticles2D
@@ -626,3 +627,26 @@ func canCreateAquariusTrap() -> void:
 		var trap = aquarius_trap.instantiate()
 		trap.global_position = global_position + Vector2(0,51) - MetSys.get_current_room_instance().global_position
 		MetSys.get_current_room_instance().add_child(trap)
+
+func setBloodForSlashDamage() -> void:
+	blood.restart()
+	blood.lifetime = 0.4
+	blood.one_shot = false
+	get_tree().create_timer(0.2, false).timeout.connect(func(): blood.one_shot = stats.Stats["HP"] > 0)
+	blood.amount = 96
+	blood.explosiveness = 0
+	blood.spread = 45
+	blood.direction = Vector2(facing_position,-1)
+	blood.initial_velocity_min = 80
+	blood.initial_velocity_max = 80
+	
+func resetBloodAttributes() -> void:
+	blood.restart()
+	blood.lifetime = 0.75
+	blood.one_shot = true
+	blood.amount = 12
+	blood.explosiveness = 0.9
+	blood.spread = 45
+	blood.direction = Vector2(facing_position,-1)
+	blood.initial_velocity_min = 20
+	blood.initial_velocity_max = 40

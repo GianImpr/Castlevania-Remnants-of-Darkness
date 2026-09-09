@@ -48,7 +48,7 @@ func _on_sword_area_entered(area: Area2D) -> void:
 		knockback = true
 		chip_damage = SWORD_CHIP_DAMAGE
 		makeTrailRed(trail)
-	hit_target(damage_multiplier, body, sword, chip_damage, sword_guard_break, Global.Attribute.HIT, 0.2, knockback)
+	hit_target(damage_multiplier, body, sword, chip_damage, sword_guard_break, Global.Attribute.SLASH, 0.2, knockback)
 
 func _on_anti_air_area_entered(area: Area2D) -> void:
 	var body = area.get_parent()
@@ -56,7 +56,7 @@ func _on_anti_air_area_entered(area: Area2D) -> void:
 	if hittingFromBehind(body):
 		damage_multiplier *= backturned_damage_multiplier
 		makeTrailRed(anti_trail)
-	hit_target(damage_multiplier, body)
+	hit_target(damage_multiplier, body, sword, false, Global.Attribute.SLASH)
 
 
 func _on_iframe_timer_timeout() -> void:
