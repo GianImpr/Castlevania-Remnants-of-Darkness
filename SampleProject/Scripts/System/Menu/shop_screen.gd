@@ -75,6 +75,7 @@ func closeShop() -> void:
 	animation.play_backwards("shop_start")
 	await animation.animation_finished
 	Global.screen = Global.ScreenType.NONE
+	Global.HUD.gold_HUD.displayed_gold_value = Global.player.stats.Stats["GOLD"]
 	initial_screen.process_mode = PROCESS_MODE_DISABLED
 	get_viewport().gui_release_focus()
 	Global.player.unfreeze()

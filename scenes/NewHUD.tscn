@@ -909,9 +909,10 @@ texture = ExtResource("20_ulm54")
 layout_mode = 1
 offset_left = 155.0
 offset_top = 450.0
-offset_right = 350.00003
+offset_right = 350.00006
 offset_bottom = 453.0
 scale = Vector2(2.8, 2.8)
+pivot_offset = Vector2(-11, 0)
 texture = ExtResource("19_hlm7p")
 script = ExtResource("20_oxp7a")
 animation = NodePath("AnimationPlayer")
@@ -969,16 +970,16 @@ one_shot = true
 
 [node name="Control" type="Control" parent="." unique_id=1550731539]
 anchors_preset = 0
-offset_left = -26.0
+offset_left = 4.0
 offset_top = 15.0
-offset_right = 14.0
+offset_right = 44.0
 offset_bottom = 55.0
 
 [node name="BossBar2" type="TextureRect" parent="Control" unique_id=1377359772 node_paths=PackedStringArray("animation", "yellow_bar", "blue_bar", "yellow_damage", "blue_damage", "damage_display_duration")]
 layout_mode = 1
 offset_left = 155.0
 offset_top = 450.0
-offset_right = 350.00003
+offset_right = 350.00006
 offset_bottom = 453.0
 scale = Vector2(2.8, 2.8)
 texture = ExtResource("19_hlm7p")
