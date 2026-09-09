@@ -97,8 +97,9 @@ func _process(delta: float) -> void:
 			$"../../Minimap".visible = false
 			get_tree().paused = true
 			var tween = get_tree().create_tween()
+			Global.HUD.visible = false
 			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-			tween.tween_property(Global.fade_screen, "modulate", Color(1, 1, 1, 1), 0.1)
+			tween.tween_property(Global.fade_screen, "modulate", Color(1, 1, 1, 0.6), 0.1)
 			await tween.finished
 			tween = get_tree().create_tween()
 			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
@@ -111,6 +112,7 @@ func _process(delta: float) -> void:
 			var tween = get_tree().create_tween()
 			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 			tween.tween_property(get_parent(), "modulate", Color(0, 0, 0, 1), 0.1)
+			Global.HUD.visible = true
 			await tween.finished
 			get_parent().modulate = Color(0,0,0,0)
 			tween = get_tree().create_tween()
