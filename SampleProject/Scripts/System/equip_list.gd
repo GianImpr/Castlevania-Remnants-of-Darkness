@@ -137,7 +137,7 @@ func equipItem(slot: String, item: Variant, compendium: Variant, inventory: Vari
 		updateProperties(item)
 	elif slot == stats.EQUIPMENT_SLOTS.RELIC:
 		turnOffRelic()
-	updateNewStats(item, getEquipFromCompendium(stats.equipment[slot], compendium), ["STR", "CON", "INT", "RES", "SYN", "LCK", "ATK", "DEF"])
+	updateNewStats(item, getEquipFromCompendium(stats.equipment[slot]-1, compendium), ["STR", "CON", "INT", "RES", "SYN", "LCK", "ATK", "DEF"])
 	updateStats(["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
 	updateWeaponSprite(item)
 	if item == null:
@@ -311,6 +311,8 @@ func compareStats(selectedEquip, currentEquip, stats: Array[String], arrowLabel:
 
 #Updates the new stats
 func updateNewStats(selectedWeapon, currentWeapon, stats: Array[String]):
+	player = Global.player.stats
+	
 	for stat in stats:
 		if selectedWeapon and currentWeapon:
 			player.Boosts[stat] += selectedWeapon[stat] - currentWeapon[stat]

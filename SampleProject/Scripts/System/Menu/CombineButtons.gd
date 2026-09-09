@@ -277,7 +277,7 @@ func craftItem(item, type, button_position) -> void:
 
 		if not hector_stats.removeItemCopies(material_item["id"], material_item["quantity"], material_inventory, true):
 			equipItem.call(equipment_slot, null, material_compendium, material_inventory)
-			hector_stats.removeWeaponInWheel(material_item["id"])
+			hector_stats.removeItem(material_item["id"], material_inventory, true)
 	
 	var item_inventory = getInventory(type)
 	item_data.recipe_status = Weapon.RecipeStatus.REVEALED
