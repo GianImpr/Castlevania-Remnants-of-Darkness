@@ -40,5 +40,5 @@ func Update(delta):
 		await animation.animation_finished
 		animation.play(ANIM_NAME, BLEND, ANIM_SPEED)
 		
-	if not animation.is_playing():
-		animation.play(ANIM_NAME, BLEND, ANIM_SPEED)
+#	if not animation.is_playing() and Global.screen == Global.ScreenType.EVENT:
+#		animation.play(ANIM_NAME, BLEND, ANIM_SPEED)

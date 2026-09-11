@@ -6057,7 +6057,7 @@ slide_on_ceiling = false
 floor_constant_speed = true
 floor_max_angle = 1.3089969
 floor_snap_length = 30.0
-safe_margin = 0.15
+safe_margin = 0.25
 script = ExtResource("1_p2ow1")
 sprite = NodePath("Sprite2D")
 aura = NodePath("Sprite2D/Aura")
@@ -6219,7 +6219,6 @@ weapon_proficiency = Array[Dictionary]([{
 script = ExtResource("93_30li2")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=899107974]
-visible = false
 position = Vector2(0.5, 12.5)
 shape = SubResource("RectangleShape2D_mbn21")
 debug_color = Color(0.6909119, 0.49648726, 0, 0.41960785)
