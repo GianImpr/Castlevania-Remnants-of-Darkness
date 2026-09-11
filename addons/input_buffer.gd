@@ -138,7 +138,11 @@ func checkCommandInput(command: Array[String], leniency: int, facing_position_ma
 			elif button["action"] == "neutral" and button["duration"] <= leniency:
 				prev_command = ""
 			elif button["action"] != "neutral" and button["action"] != prev_command:
-				return false
+				if input_to_find == 0:
+					continue
+				else:
+					command_history.clear()
+					return false
 			if input_to_find == command.size():
 				break
 		if input_to_find == command.size():

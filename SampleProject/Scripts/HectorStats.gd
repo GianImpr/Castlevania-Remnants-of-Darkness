@@ -122,6 +122,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	Bases["ATK"] = Stats["STR"]/2
 	Bases["DEF"] = Stats["CON"]/2
+	
+	if Global.player.god_mode:
+		Stats["MP"] = Stats["MMP"]
+		Stats["FP"] = Stats["MFP"]
+	
 	for i in range(0, status.size()):
 		status[i] = max(status[i]-delta, 0)
 
