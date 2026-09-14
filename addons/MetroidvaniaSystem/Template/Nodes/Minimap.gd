@@ -40,6 +40,7 @@ extends Control
 @onready var drawer: Node2D = $Drawer
 
 var player_location: Node2D
+var markers: Array[Node2D]
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -56,6 +57,7 @@ func _ready() -> void:
 		player_location = MetSys.add_player_location(drawer)
 	
 	set_physics_process(smooth_scroll and MetSys.settings.theme.show_exact_player_location)
+	initializeMarkers()
 
 func _physics_process(delta: float) -> void:
 	update_drawer_position()
@@ -106,5 +108,21 @@ func _draw_map() -> void:
 	
 	if MetSys.settings.theme.use_shared_borders:
 		MetSys.draw_shared_borders()
-	
+		
+
+	for i in range(0, Global.player.stats.markers.size()):
+		var cur_marker: Dictionary = Global.player.stats.markers[i]
+		var marker_node_index: int = markers.find_custom(func(marker): return marker.name == Global.player.stats.markers[i]["name"])
+		if marker_node_index == -1:
+			continue
+		
+		var marker_node: Node2D = markers[marker_node_index]
+		marker_node.visible = cur_marker["layer"] == MetSys.current_layer
+		marker_node.position = Vector2(cur_marker["minimap_cell"] - center)*MetSys.CELL_SIZE + cur_marker["minimap_offset"]
+
 	MetSys.draw_custom_elements(drawer, Rect2i(draw_center + offset, draw_area), draw_offset, layer)
+
+func initializeMarkers() -> void:
+	await get_tree().physics_frame
+	for marker_data in Global.player.stats.markers:
+		MetSys.load_marker_on_minimap(self, marker_data)

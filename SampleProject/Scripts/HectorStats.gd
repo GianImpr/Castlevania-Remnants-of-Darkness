@@ -78,6 +78,7 @@ var save_flags: Array[bool] ##ID list checks for visited save rooms
 var wall_flags: Array[bool] ##ID list checks for broken walls
 var current_area: String = "???"
 var map_ratio: String
+var markers: Array[Dictionary] = []
 
 static var change_slot_icon: Callable
 
@@ -118,6 +119,9 @@ func _ready() -> void:
 		dialogue_flags.append(false)
 		save_flags.append(false)
 		wall_flags.append(false)
+	if markers.is_empty():
+		for i in range (0, MetSys.Marker.size()):
+			markers.append({"layer": -9999, "offset": Vector2.ZERO, "type": -1, "name": "", "minimap_cell": Vector2.ZERO, "minimap_offset": Vector2.ZERO})
 
 func _process(delta: float) -> void:
 	Bases["ATK"] = Stats["STR"]/2

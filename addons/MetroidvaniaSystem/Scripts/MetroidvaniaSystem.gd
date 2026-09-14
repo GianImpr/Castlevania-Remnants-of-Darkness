@@ -7,6 +7,20 @@ class_name MetroidvaniaSystem extends Node
 const DEFAULT_SYMBOL = -99
 enum { DISPLAY_CENTER = 1, DISPLAY_OUTLINE = 2, DISPLAY_BORDERS = 4, DISPLAY_SYMBOLS = 8 }
 
+enum Marker {
+	RED,
+	BLUE,
+	GREEN,
+	YELLOW
+}
+
+const MarkerColor = [
+	Color.RED,
+	Color.BLUE,
+	Color.GREEN,
+	Color.YELLOW
+]
+
 const MetSysSettings = preload("res://addons/MetroidvaniaSystem/Scripts/Settings.gd")
 const MetSysSaveData = preload("res://addons/MetroidvaniaSystem/Scripts/SaveData.gd")
 const MapData = preload("res://addons/MetroidvaniaSystem/Scripts/MapData.gd")
@@ -348,6 +362,90 @@ func add_player_location(canvas_item: CanvasItem, offset := Vector2()) -> Node2D
 	location_instance.offset = offset
 	canvas_item.add_child(location_instance)
 	return location_instance
+
+## Creates an instance of a marker with ID specified
+func add_new_marker(canvas_item: CanvasItem, offset := Vector2(), type: Marker = Marker.RED, layer: int = -1) -> Node2D:
+	var MARKER_SCENE: PackedScene = load("res://SampleProject/Maps/marker.tscn")
+	var current_marker_data: Dictionary = Global.player.stats.markers[type]
+	if current_marker_data["layer"] < 0:
+		current_marker_data["layer"] = layer
+		current_marker_data["offset"] = offset
+		current_marker_data["type"] = type
+		current_marker_data["minimap_cell"] = Global.minimap.center
+		current_marker_data["minimap_offset"] = Global.minimap.player_location.position
+		var marker_instance: Node2D = MARKER_SCENE.instantiate()
+		var marker_instance_body: Node2D = marker_instance.get_child(0)
+		marker_instance.name = "MARKER_" + Marker.keys()[type]
+		current_marker_data["name"] = marker_instance.name
+		marker_instance.modulate = MarkerColor[type]
+		marker_instance_body.modulate = MarkerColor[type]
+		marker_instance.position = offset
+		marker_instance.get_child(1).play("Instantiate")
+		
+		var minimap_marker_instance: Node2D = MARKER_SCENE.instantiate()
+		var minimap_marker_instance_body: Node2D = minimap_marker_instance.get_child(0)
+		minimap_marker_instance.name = "MARKER_" + Marker.keys()[type]
+		minimap_marker_instance.modulate = MarkerColor[type]
+		minimap_marker_instance_body.modulate = MarkerColor[type]
+		minimap_marker_instance.position = Global.minimap.player_location.position
+		minimap_marker_instance.get_child(1).play("Instantiate")
+
+		canvas_item.markers.append(marker_instance)
+		canvas_item.add_child(marker_instance)
+		Global.minimap.drawer.add_child(minimap_marker_instance)
+		Global.minimap.markers.append(minimap_marker_instance)
+		return marker_instance
+	else:
+		current_marker_data["layer"] = -9999
+		current_marker_data["offset"] = Vector2.ZERO
+		current_marker_data["type"] = -1
+		current_marker_data["name"] = ""
+		current_marker_data["minimap_cell"] = Vector2.ZERO
+		current_marker_data["minimap_offset"] = Vector2.ZERO
+		var markers: Array[Node2D] = canvas_item.markers
+		var minimap_markers: Array[Node2D] = Global.minimap.markers
+		var marker_node_index: int = markers.find_custom((func(child: Node2D): return child.name == "MARKER_" + Marker.keys()[type]).bind())
+		var marker_minimap_node_index: int = minimap_markers.find_custom((func(child: Node2D): return child.name == "MARKER_" + Marker.keys()[type]).bind())
+		var marker_to_delete: Node = markers[marker_node_index]
+		var marker_minimap_to_delete: Node = minimap_markers[marker_minimap_node_index]
+		canvas_item.markers.remove_at(marker_node_index)
+		Global.minimap.markers.remove_at(marker_minimap_node_index)
+		marker_to_delete.get_child(1).play("Remove")
+		Global.minimap.drawer.remove_child(marker_minimap_to_delete)
+		marker_minimap_to_delete.queue_free()
+	return null
+
+func load_marker_on_map(canvas_item: CanvasItem, marker_data: Dictionary) -> void:
+	if marker_data["layer"] == -9999:
+		return
+	
+	var MARKER_SCENE: PackedScene = load("res://SampleProject/Maps/marker.tscn")
+	var marker_instance: Node2D = MARKER_SCENE.instantiate()
+	var marker_instance_body: Node2D = marker_instance.get_child(0)
+	marker_instance.name = marker_data["name"]
+	marker_instance.modulate = MarkerColor[marker_data["type"]]
+	marker_instance_body.modulate = MarkerColor[marker_data["type"]]
+	marker_instance.position = marker_data["offset"]
+	marker_instance.get_child(1).play("Instantiate")
+	canvas_item.add_child(marker_instance)
+	canvas_item.markers.append(marker_instance)
+
+func load_marker_on_minimap(canvas_item: CanvasItem, marker_data: Dictionary) -> void:
+	if marker_data["layer"] == -9999:
+		return
+	
+	var MARKER_SCENE: PackedScene = load("res://SampleProject/Maps/marker.tscn")
+	var marker_instance: Node2D = MARKER_SCENE.instantiate()
+	var marker_instance_body: Node2D = marker_instance.get_child(0)
+	marker_instance.name = marker_data["name"]
+	marker_instance.modulate = MarkerColor[marker_data["type"]]
+	marker_instance_body.modulate = MarkerColor[marker_data["type"]]
+	marker_instance.visible = marker_data["layer"] == MetSys.current_layer
+	marker_instance.position = Vector2(marker_data["minimap_cell"] - Global.minimap.center)*MetSys.CELL_SIZE + marker_data["minimap_offset"]
+	marker_instance.get_child(1).play("Instantiate")
+	canvas_item.drawer.add_child(marker_instance)
+	canvas_item.markers.append(marker_instance)
+
 
 ## Returns the current cell coordinates of the player, as determined from [method set_player_position].
 func get_current_coords() -> Vector3i:

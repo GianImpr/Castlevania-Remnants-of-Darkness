@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cwktag5ljioxr" path="res://assets/sprites/HUD/InGameHUD/MPBars/ManaWater.png" id="5_w6egv"]
 [ext_resource type="Texture2D" uid="uid://bkqwngl7qxspr" path="res://assets/sprites/HUD/InGameHUD/New/GuardHealth.png" id="6_w6egv"]
 [ext_resource type="Script" uid="uid://crh4llmldi4eq" path="res://ImageNumber.gd" id="7_gxfyg"]
-[ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="8_xgi8v"]
 [ext_resource type="Script" uid="uid://bodsgvfymt8bo" path="res://scenes/guard_number.gd" id="9_3c8kx"]
 [ext_resource type="Texture2D" uid="uid://nuq5bvc306w5" path="res://assets/sprites/HUD/InGameHUD/GuardLabel.png" id="10_n0ew2"]
 [ext_resource type="Texture2D" uid="uid://dh5e88swq1g6a" path="res://assets/sprites/HUD/InGameHUD/New/IDBody.png" id="11_d7iqj"]
@@ -701,13 +700,6 @@ visible = false
 custom_minimum_size = Vector2(5, 8)
 layout_mode = 2
 texture = ExtResource("20_ulm54")
-
-[node name="Minimap" parent="." unique_id=864712459 instance=ExtResource("8_xgi8v")]
-layout_mode = 0
-offset_left = 1342.5
-offset_top = -21.25
-offset_right = 1462.5
-offset_bottom = 98.75
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=2071277136 node_paths=PackedStringArray("label")]
 visible = false

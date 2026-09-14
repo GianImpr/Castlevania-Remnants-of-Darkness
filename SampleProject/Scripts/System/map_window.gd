@@ -11,9 +11,11 @@ var starting_coords: Vector2i
 var offset: Vector2i
 # The player location node from MetSys.add_player_location()
 var player_location: Node2D
+var markers: Array[Node2D]
 # The vector feature, toggled with D. It displays an arrow from player's starting point to the current position.
 # It's purely to show custom drawing on the map.
 var show_delta: bool
+var marker_mode: bool
 static var layer: int = -10000
 @export var sound: PolyphonicMenuAudio
 @export var stage_name: Label
@@ -44,6 +46,7 @@ func _ready() -> void:
 	MetSys.map_updated.connect(queue_redraw)
 	# Create player location. We need a reference to update its offset.
 	player_location = MetSys.add_player_location(self)
+	initializeMarkers()
 
 func _draw() -> void:
 	SIZE = size / MetSys.CELL_SIZE
@@ -67,6 +70,17 @@ func drawMap(map_layer: int, stage_offset: Vector2 = Vector2.ZERO) -> void:
 	if MetSys.settings.theme.use_shared_borders:
 		MetSys.draw_shared_borders()
 	MetSys.draw_custom_elements(self, Rect2i(-offset.x-stage_offset.x, -offset.y-stage_offset.y, SIZE.x, SIZE.y))
+	
+	for i in range(0, Global.player.stats.markers.size()):
+		var cur_marker: Dictionary = Global.player.stats.markers[i]
+		var marker_node_index: int = markers.find_custom(func(marker): return marker.name == Global.player.stats.markers[i]["name"])
+		if marker_node_index == -1:
+			continue
+		
+		var marker_node: Node2D = markers[marker_node_index]
+		marker_node.visible = Global.player.stats.markers[i]["layer"] == map_layer or worldMapLayer()
+		
+	
 	# Get the current player coordinates.
 	var coords := MetSys.get_current_flat_coords()
 	# If the delta vector (D) is enabled and player isn't on the starting position...
@@ -144,6 +158,10 @@ func _process(delta: float) -> void:
 		else:
 			layer = -layer
 		updateMapView()
+		
+	if Input.is_action_just_pressed("innocent_devil_move"):
+		marker_mode = not marker_mode
+		MetSys.add_new_marker(self, player_location.position, MetSys.Marker.YELLOW, layer)
 
 func updateMapView():
 	const FADE_DURATION: float = 0.1
@@ -210,8 +228,29 @@ func update_offset():
 	offset = Vector2(2,13)
 	#offset = -MetSys.get_current_flat_coords() + SIZE / 2
 	player_location.offset = Vector2(offset) * MetSys.CELL_SIZE
+	for marker in markers:
+		var marker_stats: Array[Dictionary] = Global.player.stats.markers
+		var marker_data_index: int = marker_stats.find_custom(func(marker_entry): return marker_entry["name"] == marker.name)
+		
+		if marker_data_index == -1:
+			continue
+		
+		var marker_data: Dictionary = marker_stats[marker_data_index]
+		marker.position = marker_data["offset"]
+	
 	if worldMapLayer():
 		player_location.offset += STAGE_OFFSETS[MetSys.current_layer] * MetSys.CELL_SIZE
+		for marker in markers:
+			var marker_stats: Array[Dictionary] = Global.player.stats.markers
+			var marker_data_index: int = marker_stats.find_custom(func(marker_entry): return marker_entry["name"] == marker.name)
+			
+			if marker_data_index == -1:
+				continue
+			
+			var marker_data: Dictionary = marker_stats[marker_data_index]
+			var marker_layer: int = marker_data["layer"]
+			marker.position += STAGE_OFFSETS[marker_layer] * MetSys.CELL_SIZE
+			
 	player_location.visible = layer == MetSys.current_layer or worldMapLayer()
 
 func reset_starting_coords():
@@ -222,3 +261,8 @@ func reset_starting_coords():
 
 func worldMapLayer() -> bool:
 	return layer < 0
+
+func initializeMarkers() -> void:
+	await get_tree().physics_frame
+	for marker_data in Global.player.stats.markers:
+		MetSys.load_marker_on_map(self, marker_data)
