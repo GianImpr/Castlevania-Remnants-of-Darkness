@@ -19,6 +19,7 @@ static var stage_presentation: StagePresentation = null
 static var training_menu: TrainingMenu = null
 static var game_over_screen: GameOverScreen = null
 static var boss_bar = null
+static var flash_screen: FlashScreen = null
 static var fps_display = null
 static var settings_node: InvOptions = null
 static var HUD: HeadsUpDisplay = null

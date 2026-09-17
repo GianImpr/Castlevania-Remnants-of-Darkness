@@ -396,6 +396,7 @@
 [ext_resource type="AudioStream" uid="uid://d0dyi5e2ihx76" path="res://assets/music/FagarasCaveWIP.ogg" id="361_dkwmf"]
 [ext_resource type="PackedScene" uid="uid://dc28q0j1e2kyn" path="res://SampleProject/extra_scenes/HUD/full_item_box.tscn" id="367_7u0qt"]
 [ext_resource type="PackedScene" uid="uid://b8cg3xh84xly" path="res://SampleProject/extra_scenes/HUD/description_box.tscn" id="368_hniq0"]
+[ext_resource type="Script" uid="uid://cr0fbwg7nsxc8" path="res://SampleProject/Scripts/System/flash_screen.gd" id="371_2jp76"]
 
 [sub_resource type="Resource" id="Resource_m4xeh"]
 script = ExtResource("2_6ajcc")
@@ -4796,12 +4797,12 @@ metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 script = ExtResource("8_afqo1")
 sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_v1m0x"), SubResource("Resource_yfkrg"), SubResource("Resource_ugwl0"), SubResource("Resource_k0xgh"), SubResource("Resource_ixgba"), SubResource("Resource_4wf17"), SubResource("Resource_fkqie"), SubResource("Resource_m0k4y"), SubResource("Resource_j7yuj"), SubResource("Resource_d34sg"), SubResource("Resource_b4g4d"), SubResource("Resource_6q42e"), SubResource("Resource_mxxml"), SubResource("Resource_w5jos"), SubResource("Resource_iixkq"), SubResource("Resource_xnt2o"), SubResource("Resource_dfcem"), SubResource("Resource_x25o2"), SubResource("Resource_klj4p")])
 
-[sub_resource type="Gradient" id="Gradient_0dip4"]
+[sub_resource type="Gradient" id="Gradient_2jp76"]
 offsets = PackedFloat32Array(0, 0.989418)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xll01"]
-gradient = SubResource("Gradient_0dip4")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hrm2w"]
+gradient = SubResource("Gradient_2jp76")
 
 [sub_resource type="Animation" id="Animation_bqv2o"]
 length = 0.001
@@ -4828,6 +4829,22 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hrm2w"]
+resource_name = "death_flash"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.2, 0.23333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 0, 0, 0.1), Color(1, 1, 1, 0), Color(1, 0, 0, 0.1), Color(1, 1, 1, 0), Color(1, 0, 0, 0.1), Color(1, 1, 1, 0), Color(1, 0, 0, 0.1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_fw4b4"]
@@ -4858,11 +4875,36 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_qyww0"]
+resource_name = "water_death_flash"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.2, 0.23333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0, 0.55022365, 0.9192141, 0.5019608), Color(1, 1, 1, 0), Color(0, 0.55022365, 0.9192141, 0.5019608), Color(1, 1, 1, 0), Color(0, 0.55022365, 0.9192141, 0.5019608), Color(1, 1, 1, 0), Color(0, 0.55022365, 0.9192141, 0.5019608), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h86rj"]
 _data = {
 &"RESET": SubResource("Animation_bqv2o"),
-&"fade_in": SubResource("Animation_fw4b4")
+&"death_flash": SubResource("Animation_hrm2w"),
+&"fade_in": SubResource("Animation_fw4b4"),
+&"water_death_flash": SubResource("Animation_qyww0")
 }
+
+[sub_resource type="Gradient" id="Gradient_0dip4"]
+offsets = PackedFloat32Array(0, 0.989418)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qyww0"]
+gradient = SubResource("Gradient_0dip4")
 
 [sub_resource type="Theme" id="Theme_o031g"]
 default_font = ExtResource("274_mxxml")
@@ -5233,11 +5275,24 @@ modulate = Color(1, 1, 1, 0)
 z_index = 10
 offset_right = 869.0
 offset_bottom = 483.0
-texture = SubResource("GradientTexture1D_xll01")
+texture = SubResource("GradientTexture1D_hrm2w")
 script = ExtResource("13_voup6")
 animation = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/FadeScreen" unique_id=987974006]
+libraries/ = SubResource("AnimationLibrary_h86rj")
+
+[node name="FlashScreen" type="TextureRect" parent="UI" unique_id=753735452 node_paths=PackedStringArray("animation")]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+z_index = 10
+offset_right = 869.0
+offset_bottom = 483.0
+texture = SubResource("GradientTexture1D_qyww0")
+script = ExtResource("371_2jp76")
+animation = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/FlashScreen" unique_id=1768689057]
 libraries/ = SubResource("AnimationLibrary_h86rj")
 
 [node name="TotalFadeScreen" type="TextureRect" parent="UI" unique_id=119560641]
@@ -5246,7 +5301,7 @@ self_modulate = Color(1, 1, 1, 0)
 z_index = 99
 offset_right = 869.0
 offset_bottom = 483.0
-texture = SubResource("GradientTexture1D_xll01")
+texture = SubResource("GradientTexture1D_hrm2w")
 script = ExtResource("268_2rw2m")
 
 [node name="StagePresentation" parent="UI" unique_id=1336323715 instance=ExtResource("16_yvhsl")]

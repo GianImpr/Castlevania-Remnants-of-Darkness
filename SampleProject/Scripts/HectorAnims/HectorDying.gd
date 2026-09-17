@@ -19,6 +19,7 @@ func enter():
 	playing_death_anim = false
 	if player.drowning:
 		animation.play("dying_drowning", -1)
+		Global.flash_screen.waterDeathFlash()
 	else:
 		if not player.is_on_floor():
 			animation.play("hurt_air")
@@ -32,6 +33,7 @@ func enter():
 			timer_reset.start()
 			player.velocity.x = 0
 			player.velocity.y = 0
+			Global.flash_screen.deathFlash()
 	Global.music_player.fadeMusic(FADE_MUSIC_DURATION)
 	
 func Update(delta: float):
@@ -41,6 +43,7 @@ func Physics_Update(delta: float):
 	hurtbox.disabled = true
 	
 	if player.is_on_floor() and not playing_death_anim:
+		Global.flash_screen.deathFlash()
 		player.velocity.x = 0
 		player.velocity.y = 0
 		playing_death_anim = true
