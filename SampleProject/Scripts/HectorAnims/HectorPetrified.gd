@@ -13,6 +13,8 @@ var can_perfect_guard: bool = false
 var broken: bool
 static var applyMercyInvincibility: Callable
 static var resetGame: Callable
+const FADE_MUSIC_DURATION: float = 2.5
+
 
 var shake_tween: Tween
 const FADE_DELAY_TIME: float = 3
@@ -40,13 +42,7 @@ func Update(delta: float):
 			ticks_left -= 1
 			
 	if player.stats.Stats["HP"] <= 0 and not broken:
-		Global.flash_screen.deathFlash()
-		breakStatue()
-		broken = true
-		player.motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
-		hurtbox.disabled = true
-		get_tree().create_timer(FADE_DELAY_TIME).timeout.connect(resetGame)
-		player.visible = false
+		can_die()
 		
 
 	if ticks_left <= 0 and not broken:
@@ -61,15 +57,27 @@ func Update(delta: float):
 		if player.is_hurt:
 			get_tree().create_timer(IFRAME_TIME).timeout.connect(func(): player.is_hurt = false)
 	
+	if animation.is_playing():
+		animation.stop()
+	
 	if ticks_left <= 0 and not animation.is_playing() and player.stats.Stats["HP"] > 0:
 		Transitioned.emit(self, "idle")
 
 
 func Physics_Update(delta: float):
 	pass
-
+	
 func breakStatue() -> void:
 	var hector_statue = hector_statue_scene.instantiate()
 	MetSys.get_current_room_instance().add_child(hector_statue)
 	hector_statue.global_position = player.global_position
-	
+
+func breakStatueAndDie() -> void:
+	Global.music_player.fadeMusic(FADE_MUSIC_DURATION)
+	Global.flash_screen.deathFlash()
+	breakStatue()
+	broken = true
+	player.motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	hurtbox.disabled = true
+	get_tree().create_timer(FADE_DELAY_TIME).timeout.connect(resetGame)
+	player.visible = false

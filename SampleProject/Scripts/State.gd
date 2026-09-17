@@ -359,9 +359,15 @@ func can_die():
 			if not player.is_on_floor():
 				ring_of_life_effect.get_child(1).play("idle_air")
 			else:
-				Transitioned.emit(self, "damage_mercy")
+				if self is HectorPetrified:
+					(self as HectorPetrified).ticks_left = 0
+				else:
+					Transitioned.emit(self, "damage_mercy")
 		else:
-			Transitioned.emit(self, "dying")
+			if self is HectorPetrified:
+				(self as HectorPetrified).breakStatueAndDie()
+			else:
+				Transitioned.emit(self, "dying")
 		
 func attack_anim_suffix() -> String:
 	var anims = ["", "_greatsword", "_axe", "_spear", "_fist"]
