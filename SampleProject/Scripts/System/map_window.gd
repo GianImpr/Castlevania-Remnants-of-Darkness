@@ -168,7 +168,7 @@ func _process(delta: float) -> void:
 			layer = -layer
 		updateMapView()
 		
-	if Input.is_action_just_pressed("innocent_devil_move") and not worldMapLayer():
+	if Input.is_action_just_pressed("innocent_devil_move") and not worldMapLayer() and Global.screen == Global.ScreenType.MAP:
 		if layer == MetSys.current_layer and not marker_mode:
 			cursor.position = player_location.position
 		elif not marker_mode:
