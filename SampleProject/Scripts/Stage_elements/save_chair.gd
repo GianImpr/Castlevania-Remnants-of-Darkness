@@ -24,8 +24,8 @@ func _process(delta: float) -> void:
 		Global.player.sprite.flip_h = (direction < 0)
 		Global.player.heal(Global.player.stats.Stats["MHP"], false, true)
 		Global.player.healMP(Global.player.stats.Stats["MMP"], Vector2.ZERO, true)
-		if Global.player.innocent_devil != null:
-			Global.player.heal_innocent(9999)
+		Global.player.healDevils()
+		Global.player.healAilments()
 		await player_state.animation.animation_finished
 		opened_menu = true
 		save_menu.animation.play("appear")

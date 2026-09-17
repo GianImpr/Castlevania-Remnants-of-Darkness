@@ -440,6 +440,17 @@ func heal_innocent(amount: int) -> void:
 	if innocent_devil != null:
 		innocent_devil.stats.Stats["Hearts"] = min(innocent_devil.stats.Stats["Hearts"]+amount, innocent_devil.stats.Stats["MHearts"])
 
+func healDevils() -> void:
+	if innocent_devil != null:
+		innocent_devil.stats.Stats["Hearts"] = innocent_devil.stats.Stats["MHearts"]
+	for devil: InnocentDevilEntry in innocent_devil_pocket:
+		devil.Stats["Hearts"] = devil.Stats["MHearts"]
+
+func healAilments() -> void:
+	for i in range(0, stats.status.size()):
+		stats.status[i] = 0
+	stats.current_status = stats.Ailment.GOOD
+
 ## Player stays in idle animation
 func freeze() -> void:
 	transitionToState("wait")
