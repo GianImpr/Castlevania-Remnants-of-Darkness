@@ -662,3 +662,6 @@ func resetBloodAttributes() -> void:
 	blood.direction = Vector2(facing_position,-1)
 	blood.initial_velocity_min = 20
 	blood.initial_velocity_max = 40
+
+func isWeak() -> bool:
+	return stats.Stats["HP"] <= stats.Stats["MHP"]/4 or stats.status[stats.Status.POISON] > 0 or stats.status[stats.Status.ENFEEBLE] > 0

@@ -256,7 +256,6 @@
 [ext_resource type="Texture2D" uid="uid://dler8ycprwoac" path="res://assets/sprites/Items/InventoryIcons/BookOfMonsters.png" id="157_qs5p8"]
 [ext_resource type="Texture2D" uid="uid://ctxxn0ruh067u" path="res://assets/images/WarpPreviews/AbandonedGauntlet.png" id="157_wahx8"]
 [ext_resource type="Texture2D" uid="uid://bgsf8dpkpib4k" path="res://assets/images/WarpPreviews/AbandonedTop.png" id="158_8p07p"]
-[ext_resource type="Texture2D" uid="uid://bwygvf5oseir5" path="res://assets/sprites/Items/InventoryIcons/Inventory_133.png" id="158_pi3lu"]
 [ext_resource type="Texture2D" uid="uid://b5pb6poj5elsi" path="res://assets/images/WarpPreviews/FagarasLeft.png" id="159_gniwj"]
 [ext_resource type="Texture2D" uid="uid://cgegk2xn44yjs" path="res://assets/sprites/Items/InventoryIcons/Inventory_82.png" id="160_chuqd"]
 [ext_resource type="Texture2D" uid="uid://cocqy21dghhhv" path="res://assets/images/WarpPreviews/FagarasRight.png" id="160_rdsmc"]
@@ -318,6 +317,7 @@
 [ext_resource type="Texture2D" uid="uid://drqloa2gpqrc5" path="res://assets/sprites/Enemies/FloatingSkull.png" id="197_noaqa"]
 [ext_resource type="Texture2D" uid="uid://cmp5mdjom4buj" path="res://assets/sprites/HUD/WeaponTypeIcons/SwordIcon.png" id="199_fg1yf"]
 [ext_resource type="Texture2D" uid="uid://dwjaayjdt0koj" path="res://assets/sprites/Enemies/Warg/Warg.png" id="199_psy43"]
+[ext_resource type="Texture2D" uid="uid://c2g5c3e5yu7r6" path="res://assets/sprites/Items/InventoryIcons/Death_Doll.png" id="200_2jp76"]
 [ext_resource type="Texture2D" uid="uid://dhte01gm1q0rs" path="res://assets/sprites/HUD/WeaponTypeIcons/AxeIcon.png" id="200_gvdo1"]
 [ext_resource type="Texture2D" uid="uid://c123taoncynk4" path="res://assets/sprites/Enemies/Ukoback/Ukoback.png" id="201_4cvfm"]
 [ext_resource type="Texture2D" uid="uid://tpobaynfjjbs" path="res://assets/sprites/Enemies/MedusaHead.png" id="203_esagk"]
@@ -2638,11 +2638,11 @@ icon = ExtResource("157_6vmuw")
 
 [sub_resource type="Resource" id="Resource_yrj2d"]
 script = ExtResource("95_xlcm0")
-accessory_name = "RING_OF_LIFE"
-accessory_description = "RING_OF_LIFE_DESC"
+accessory_name = "DEATH_DOLL"
+accessory_description = "DEATH_DOLL_DESC"
 value = 3000
 max_quantity = 1
-icon = ExtResource("158_pi3lu")
+icon = ExtResource("200_2jp76")
 metadata/_custom_type_script = "uid://bnewa3gbe2njm"
 
 [sub_resource type="Resource" id="Resource_n1ytd"]
@@ -4888,7 +4888,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.2, 0.23333335),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Color(0, 0.55022365, 0.9192141, 0.5019608), Color(1, 1, 1, 0), Color(0, 0.55022365, 0.9192141, 0.5019608), Color(1, 1, 1, 0), Color(0, 0.55022365, 0.9192141, 0.5019608), Color(1, 1, 1, 0), Color(0, 0.55022365, 0.9192141, 0.5019608), Color(1, 1, 1, 0)]
+"values": [Color(0, 0.548779, 0.91775256, 0.1), Color(1, 1, 1, 0), Color(0, 0.548779, 0.91775256, 0.1), Color(1, 1, 1, 0), Color(0, 0.548779, 0.91775256, 0.1), Color(1, 1, 1, 0), Color(0, 0.548779, 0.91775256, 0.1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h86rj"]

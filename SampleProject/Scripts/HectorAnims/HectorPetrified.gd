@@ -40,6 +40,7 @@ func Update(delta: float):
 			ticks_left -= 1
 			
 	if player.stats.Stats["HP"] <= 0 and not broken:
+		Global.flash_screen.deathFlash()
 		breakStatue()
 		broken = true
 		player.motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
