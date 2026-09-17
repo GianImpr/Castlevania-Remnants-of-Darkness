@@ -13,6 +13,7 @@ func enter():
 	default_button.disabled = Global.player.isAttacking()
 	updateStats(["ATK", "DEF", "STR", "CON", "INT", "RES", "SYN", "LCK"], labels.SubStatValues)
 	updateQuickWeaponIcons()
+	updateQuickRelicIcons()
 	
 func exit():
 	animation.play("change")
@@ -37,3 +38,11 @@ func updateQuickWeaponIcons() -> void:
 			quick_weapons_icons.get_child(i).texture = EquipMenu.quick_weapons[i].icon
 		else:
 			quick_weapons_icons.get_child(i).texture = null
+			
+func updateQuickRelicIcons() -> void:
+	var quick_relic_icons: Control = equip_list.quick_relic_icons
+	for i in range(0, EquipMenu.quick_relics.size()):
+		if EquipMenu.quick_relics[i] != null:
+			quick_relic_icons.get_child(i).texture = EquipMenu.quick_relics[i].icon
+		else:
+			quick_relic_icons.get_child(i).texture = null

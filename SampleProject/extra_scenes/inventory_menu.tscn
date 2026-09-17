@@ -2658,7 +2658,7 @@ scale = Vector2(2, 2)
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="EquipList" type="GridContainer" parent="MenuStateMachine/Equip/Display/EquipScroll" unique_id=2098074987 node_paths=PackedStringArray("glow_timer", "sound", "equipSlots", "state_machine", "weapon_desc", "qty_list", "labels", "quick_weapon_icons", "qty_scroll", "artifact_panel", "artifact_proc_label", "show_item_stats", "item_stats")]
+[node name="EquipList" type="GridContainer" parent="MenuStateMachine/Equip/Display/EquipScroll" unique_id=2098074987 node_paths=PackedStringArray("glow_timer", "sound", "equipSlots", "state_machine", "weapon_desc", "qty_list", "labels", "quick_weapon_icons", "quick_relic_icons", "qty_scroll", "artifact_panel", "artifact_proc_label", "show_item_stats", "item_stats")]
 custom_minimum_size = Vector2(360, 94)
 layout_mode = 2
 theme = SubResource("Theme_j428y")
@@ -2675,6 +2675,7 @@ weapon_desc = NodePath("../../Description")
 qty_list = NodePath("../../QuantityScroll/QuantityList")
 labels = NodePath("../../Text")
 quick_weapon_icons = NodePath("../../QuickWeapons/QuickWeaponIcons")
+quick_relic_icons = NodePath("../../QuickRelics/QuickRelicIcons")
 qty_scroll = NodePath("../../QuantityScroll")
 artifact_panel = NodePath("../../Description/ArtifactPanel")
 artifact_proc_label = NodePath("../../Description/ArtifactPanel/ArtifactProcText")
@@ -2948,6 +2949,65 @@ offset_right = 109.0
 offset_bottom = 119.0
 
 [node name="Weapon4" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickWeapons/QuickWeaponIcons" unique_id=1071552841]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 45.0
+offset_right = 63.0
+offset_bottom = 77.0
+
+[node name="QuickRelics" type="Control" parent="MenuStateMachine/Equip/Display" unique_id=1328572789]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Up" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickRelics" unique_id=476946181]
+position = Vector2(92, 45)
+texture = ExtResource("44_dqurr")
+
+[node name="Right" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickRelics" unique_id=1859036095]
+position = Vector2(113, 62)
+texture = ExtResource("40_3pvl0")
+
+[node name="Down" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickRelics" unique_id=1168594710]
+position = Vector2(92, 79)
+texture = ExtResource("43_5ev2a")
+
+[node name="Left" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickRelics" unique_id=1808384098]
+position = Vector2(73, 62)
+texture = ExtResource("39_lm186")
+
+[node name="RStick" type="Sprite2D" parent="MenuStateMachine/Equip/Display/QuickRelics" unique_id=1909954942]
+position = Vector2(93, 62)
+texture = ExtResource("40_7y7h1")
+
+[node name="QuickRelicIcons" type="Control" parent="MenuStateMachine/Equip/Display/QuickRelics" unique_id=1470195136]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Weapon1" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickRelics/QuickRelicIcons" unique_id=504425203]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 3.0
+offset_right = 109.0
+offset_bottom = 35.0
+
+[node name="Weapon2" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickRelics/QuickRelicIcons" unique_id=161090912]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 44.0
+offset_right = 153.0
+offset_bottom = 76.0
+
+[node name="Weapon3" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickRelics/QuickRelicIcons" unique_id=2136026020]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 87.0
+offset_right = 109.0
+offset_bottom = 119.0
+
+[node name="Weapon4" type="TextureRect" parent="MenuStateMachine/Equip/Display/QuickRelics/QuickRelicIcons" unique_id=1770776159]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 45.0

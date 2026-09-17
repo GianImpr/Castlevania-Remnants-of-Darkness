@@ -17,6 +17,7 @@ var player
 @export var qty_list: GridContainer
 @export var labels: Control
 @export var quick_weapon_icons: Control
+@export var quick_relic_icons: Control
 @export var qty_scroll: ScrollContainer
 @export var artifact_panel: Container
 @export var artifact_proc_label: RichTextLabelWithButtons
@@ -26,6 +27,7 @@ var weapon_text: Label
 var weapon_icon: TextureRect
 var cur_selected_item = null
 static var quick_weapons: Array = [null, null, null, null]
+static var quick_relics: Array = [null, null, null, null]
 
 func _ready() -> void:
 	get_child(0).flat = true
@@ -33,6 +35,7 @@ func _ready() -> void:
 	get_child(0).pressed.connect(self.on_button_pressed.bind(get_child(0)))
 	get_child(0).focus_entered.connect(self.on_focused.bind(get_child(0)))
 	WeaponWheel.quickWeaponSwap = quickWeaponSwap
+	WeaponWheel.quickRelicSwap = quickRelicSwap
 	CombineButtons.equipItem = equipItem
 	item_stats.in_shop = false
 
@@ -63,35 +66,8 @@ func _process(delta: float) -> void:
 			show_item_stats.new_text = " " + tr("SHOW_ITEM_STATS_LABEL")
 	
 	
-	#Change current quick weapon slot
-	if equipSlots.button_index == 0 and equipSlots.menu.accessed_menu == 1 and state_machine.current_state is InvEquip:
-		const RSTICK_ACTIONS: Array[String] = ["rstick_up", "next_skill", "rstick_down", "previous_skill"]
-		for i in range(0, RSTICK_ACTIONS.size()):
-			if Input.is_action_just_pressed(RSTICK_ACTIONS[i]):
-				if quick_weapons[i] != cur_selected_item and cur_selected_item != null:
-					quick_weapons[i] = cur_selected_item
-					quick_weapon_icons.get_child(i).texture = cur_selected_item.icon
-				else:
-					quick_weapons[i] = null
-					quick_weapon_icons.get_child(i).texture = null
-				sound.play_sound_effect_from_library("confirm")
-				break
-	elif equipSlots.button_index == 0 and equipSlots.menu.accessed_menu == 0 and state_machine.current_state is InvEquip:
-		const RSTICK_ACTIONS: Array[String] = ["rstick_up", "next_skill", "rstick_down", "previous_skill"]
-		for i in range(0, RSTICK_ACTIONS.size()):
-			if Input.is_action_just_pressed(RSTICK_ACTIONS[i]):
-				var cur_weapon: Weapon = null
-				if Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.WEAPON] > 0:
-					cur_weapon = Global.player.stats.weapon_compendium[Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.WEAPON]-1]
-
-				if quick_weapons[i] != cur_weapon and cur_weapon != null:
-					quick_weapons[i] = cur_weapon
-					quick_weapon_icons.get_child(i).texture = cur_weapon.icon
-				else:
-					quick_weapons[i] = null
-					quick_weapon_icons.get_child(i).texture = null
-				sound.play_sound_effect_from_library("confirm")
-				break
+	changeQuickWeaponSlots()
+	changeQuickRelicSlots()
 
 	
 #Equips the selected item by:
@@ -449,6 +425,34 @@ func quickWeaponSwap(weapon_position: int) -> void:
 		player.equipment["weapon"] = 0
 		equipSlots.get_child(0).get_child(0).get_child(0).texture = defaultIcon()
 
+#Used by the WeaponWheel node: allows to quickly swap between four different relics
+func quickRelicSwap(relic_position: int) -> void:
+	if Global.player == null:
+		return
+
+	player = Global.player.stats
+	var relic_compendium: Array[Relic] = player.relic_compendium
+	
+	var new_relic = quick_relics[relic_position]
+	var current_relic_id = player.equipment[player.EQUIPMENT_SLOTS.RELIC]
+	
+	
+	if quick_relics[relic_position] != null:
+		if current_relic_id > 0:
+			player.addItem(current_relic_id, player.relic_inventory)
+		player.removeItem(player.getItemIndexInCompendium(quick_relics[relic_position], relic_compendium), player.relic_inventory)
+		player.equipment[player.EQUIPMENT_SLOTS.RELIC] = player.getItemIndexInCompendium(quick_relics[relic_position], relic_compendium)
+		if player.equipment[player.EQUIPMENT_SLOTS.RELIC] != current_relic_id:
+			turnOffRelic()
+		equipSlots.get_child(0).get_child(2).get_child(0).texture = quick_relics[relic_position].icon
+	else:
+		if current_relic_id > 0:
+			player.addItem(current_relic_id, player.relic_inventory)
+		player.equipment[player.EQUIPMENT_SLOTS.RELIC] = 0
+		turnOffRelic()
+		equipSlots.get_child(0).get_child(2).get_child(0).texture = defaultIcon()
+
+
 # Used when saving data
 static func serializeQuickWeapons() -> Array[int]:
 	var serialized_weapons: Array[int] = [0,0,0,0]
@@ -456,6 +460,14 @@ static func serializeQuickWeapons() -> Array[int]:
 		if quick_weapons[i] != null:
 			serialized_weapons[i] = Global.player.stats.getItemIndexInCompendium(quick_weapons[i], Global.player.stats.weapon_compendium)
 	return serialized_weapons
+	
+# Used when saving data
+static func serializeQuickRelics() -> Array[int]:
+	var serialized_relics: Array[int] = [0,0,0,0]
+	for i in range(0, quick_relics.size()):
+		if quick_relics[i] != null:
+			serialized_relics[i] = Global.player.stats.getItemIndexInCompendium(quick_relics[i], Global.player.stats.relic_compendium)
+	return serialized_relics
 
 # Used when loading data
 static func deserializeQuickWeapons(serialized_weapons: Array[int]) -> void:
@@ -472,6 +484,20 @@ static func deserializeQuickWeapons(serialized_weapons: Array[int]) -> void:
 		else:
 			quick_weapons[i] = null
 
+# Used when loading data
+static func deserializeQuickRelics(serialized_relics: Array[int]) -> void:
+	var compendium: Array[Relic]
+	
+	if Game.get_singleton().update_player_compendium:
+		compendium = Game.get_singleton().relic_compendium
+	else:
+		compendium = Global.player.stats.relic_compendium
+	
+	for i in range(0, quick_relics.size()):
+		if serialized_relics[i] > 0:
+			quick_relics[i] = compendium[serialized_relics[i]-1]
+		else:
+			quick_relics[i] = null
 
 # Determines if it should search weapons from Game or HectorStats
 static func determineWeaponCompendium() -> Array[Weapon]:
@@ -479,3 +505,67 @@ static func determineWeaponCompendium() -> Array[Weapon]:
 		return Game.get_singleton().weapon_compendium
 	else:
 		return Global.player.stats.weapon_compendium
+
+# Handles logic to equip or unequip weapons in the quick slots
+func changeQuickRelicSlots() -> void:
+	quick_relic_icons.get_parent().visible = equipSlots.button_index == 2
+	if equipSlots.button_index == 2 and equipSlots.menu.accessed_menu == 1 and state_machine.current_state is InvEquip:
+		const RSTICK_ACTIONS: Array[String] = ["rstick_up", "next_skill", "rstick_down", "previous_skill"]
+		for i in range(0, RSTICK_ACTIONS.size()):
+			if Input.is_action_just_pressed(RSTICK_ACTIONS[i]):
+				if quick_relics[i] != cur_selected_item and cur_selected_item != null:
+					quick_relics[i] = cur_selected_item
+					quick_relic_icons.get_child(i).texture = cur_selected_item.icon
+				else:
+					quick_relics[i] = null
+					quick_relic_icons.get_child(i).texture = null
+				sound.play_sound_effect_from_library("confirm")
+				break
+	elif equipSlots.button_index == 2 and equipSlots.menu.accessed_menu == 0 and state_machine.current_state is InvEquip:
+		const RSTICK_ACTIONS: Array[String] = ["rstick_up", "next_skill", "rstick_down", "previous_skill"]
+		for i in range(0, RSTICK_ACTIONS.size()):
+			if Input.is_action_just_pressed(RSTICK_ACTIONS[i]):
+				var cur_relic: Relic = null
+				if Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.RELIC] > 0:
+					cur_relic = Global.player.stats.relic_compendium[Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.RELIC]-1]
+
+				if quick_relics[i] != cur_relic and cur_relic != null:
+					quick_relics[i] = cur_relic
+					quick_relic_icons.get_child(i).texture = cur_relic.icon
+				else:
+					quick_relics[i] = null
+					quick_relic_icons.get_child(i).texture = null
+				sound.play_sound_effect_from_library("confirm")
+				break
+				
+# Handles logic to equip or unequip weapons in the quick slots
+func changeQuickWeaponSlots() -> void:
+	quick_weapon_icons.get_parent().visible = equipSlots.button_index == 0
+	if equipSlots.button_index == 0 and equipSlots.menu.accessed_menu == 1 and state_machine.current_state is InvEquip:
+		const RSTICK_ACTIONS: Array[String] = ["rstick_up", "next_skill", "rstick_down", "previous_skill"]
+		for i in range(0, RSTICK_ACTIONS.size()):
+			if Input.is_action_just_pressed(RSTICK_ACTIONS[i]):
+				if quick_weapons[i] != cur_selected_item and cur_selected_item != null:
+					quick_weapons[i] = cur_selected_item
+					quick_weapon_icons.get_child(i).texture = cur_selected_item.icon
+				else:
+					quick_weapons[i] = null
+					quick_weapon_icons.get_child(i).texture = null
+				sound.play_sound_effect_from_library("confirm")
+				break
+	elif equipSlots.button_index == 0 and equipSlots.menu.accessed_menu == 0 and state_machine.current_state is InvEquip:
+		const RSTICK_ACTIONS: Array[String] = ["rstick_up", "next_skill", "rstick_down", "previous_skill"]
+		for i in range(0, RSTICK_ACTIONS.size()):
+			if Input.is_action_just_pressed(RSTICK_ACTIONS[i]):
+				var cur_weapon: Weapon = null
+				if Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.WEAPON] > 0:
+					cur_weapon = Global.player.stats.weapon_compendium[Global.player.stats.equipment[HectorStats.EQUIPMENT_SLOTS.WEAPON]-1]
+
+				if quick_weapons[i] != cur_weapon and cur_weapon != null:
+					quick_weapons[i] = cur_weapon
+					quick_weapon_icons.get_child(i).texture = cur_weapon.icon
+				else:
+					quick_weapons[i] = null
+					quick_weapon_icons.get_child(i).texture = null
+				sound.play_sound_effect_from_library("confirm")
+				break

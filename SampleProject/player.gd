@@ -156,8 +156,6 @@ func _input(event: InputEvent) -> void:
 		if (event as InputEventKey).keycode == KEY_0:
 			print(InputHelper.serialize_inputs_for_actions())
 			
-	if event.is_action_pressed("circle"):
-		stats.Stats["HP"] = 0
 	
 func _process(delta: float) -> void:
 	#If harmed, become invulnerable for a while

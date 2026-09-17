@@ -5,10 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://dheigepcsm2mj" path="res://assets/sprites/HUD/Wheels/WeaponWheel.png" id="2_rtpe5"]
 [ext_resource type="Texture2D" uid="uid://dvhm565w0bkyu" path="res://assets/sprites/Items/InventoryIcons/Inventory_387.png" id="3_56wl6"]
 [ext_resource type="Texture2D" uid="uid://bcm0qbkuikw78" path="res://assets/sprites/Items/InventoryIcons/Inventory_381.png" id="4_gthal"]
+[ext_resource type="Texture2D" uid="uid://dnsxuxf17dmc6" path="res://assets/sprites/HUD/Wheels/RelicWheel.png" id="4_wdgdr"]
 [ext_resource type="Texture2D" uid="uid://bcpk63mrwwmf4" path="res://assets/sprites/Items/InventoryIcons/Inventory_393.png" id="5_slg3w"]
 [ext_resource type="Texture2D" uid="uid://dg5urpor4ntv6" path="res://assets/sprites/Items/InventoryIcons/Inventory_401.png" id="6_0ged2"]
 [ext_resource type="Texture2D" uid="uid://ljne6me6k6jl" path="res://assets/sprites/HUD/Wheels/WeaponSelected.png" id="7_lrhk3"]
 [ext_resource type="Script" uid="uid://db2g34ep3sicd" path="res://SampleProject/Scripts/System/menu_sounds.gd" id="9_j4lc6"]
+[ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="9_nf5qt"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="10_e0m5m"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="11_rtylm"]
 [ext_resource type="AudioStream" uid="uid://c2svnpn2gfgxc" path="res://assets/sounds/Wheel/Open.mp3" id="12_ljfim"]
@@ -18,6 +20,9 @@
 [sub_resource type="Theme" id="Theme_65fg8"]
 default_font = ExtResource("1_maiip")
 default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_g2snk"]
+default_font = ExtResource("1_maiip")
 
 [sub_resource type="Animation" id="Animation_l71xj"]
 length = 0.001
@@ -183,7 +188,7 @@ stream = ExtResource("14_0mw03")
 script = ExtResource("10_e0m5m")
 sound_effects = Array[ExtResource("11_rtylm")]([SubResource("Resource_reret"), SubResource("Resource_iy3sn"), SubResource("Resource_c5mcm")])
 
-[node name="WeaponWheel" type="Control" unique_id=544510981 node_paths=PackedStringArray("animation", "cursor_animation", "cursor_sprite", "weapon_icons", "sound")]
+[node name="QuickWheel" type="Control" unique_id=544510981 node_paths=PackedStringArray("animation", "cursor_animation", "cursor_sprite", "slot_icons", "sound", "wheel_sprite", "switch_label")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -197,8 +202,11 @@ animation = NodePath("AnimationPlayer")
 cursor_animation = NodePath("Cursor/AnimationPlayer")
 cursor_coordinates = Array[Vector2]([Vector2(106, 324), Vector2(164, 382), Vector2(106, 440), Vector2(48, 382)])
 cursor_sprite = NodePath("Cursor")
-weapon_icons = NodePath("Wheel/Weapons")
+slot_icons = NodePath("Wheel/Icons")
 sound = NodePath("PolyphonicMenuAudio")
+wheel_textures = Array[CompressedTexture2D]([ExtResource("2_rtpe5"), ExtResource("4_wdgdr")])
+wheel_sprite = NodePath("Wheel")
+switch_label = NodePath("Wheel/SwitchLabel")
 
 [node name="Wheel" type="Sprite2D" parent="." unique_id=1931189784]
 modulate = Color(1, 1, 1, 0)
@@ -206,24 +214,42 @@ self_modulate = Color(1, 1, 1, 0.698039)
 position = Vector2(110, 382)
 texture = ExtResource("2_rtpe5")
 
-[node name="Weapons" type="Node2D" parent="Wheel" unique_id=1252863675]
+[node name="Icons" type="Node2D" parent="Wheel" unique_id=1252863675]
 scale = Vector2(2, 2)
 
-[node name="Weapon1" type="Sprite2D" parent="Wheel/Weapons" unique_id=1918686496]
+[node name="Icon1" type="Sprite2D" parent="Wheel/Icons" unique_id=1918686496]
 position = Vector2(-2, -29)
 texture = ExtResource("3_56wl6")
 
-[node name="Weapon2" type="Sprite2D" parent="Wheel/Weapons" unique_id=1044292805]
+[node name="Icon2" type="Sprite2D" parent="Wheel/Icons" unique_id=1044292805]
 position = Vector2(27, 0)
 texture = ExtResource("4_gthal")
 
-[node name="Weapon3" type="Sprite2D" parent="Wheel/Weapons" unique_id=2139382404]
+[node name="Icon3" type="Sprite2D" parent="Wheel/Icons" unique_id=2139382404]
 position = Vector2(-1.5, 29.5)
 texture = ExtResource("5_slg3w")
 
-[node name="Weapon4" type="Sprite2D" parent="Wheel/Weapons" unique_id=2055314538]
+[node name="Icon4" type="Sprite2D" parent="Wheel/Icons" unique_id=2055314538]
 position = Vector2(-31, 0)
 texture = ExtResource("6_0ged2")
+
+[node name="SwitchLabel" type="RichTextLabel" parent="Wheel" unique_id=586261439]
+offset_left = -55.0
+offset_top = -25.0
+offset_right = 49.0
+offset_bottom = 39.0
+theme = SubResource("Theme_g2snk")
+theme_override_constants/outline_size = 8
+bbcode_enabled = true
+text = "[center] [img]res://assets/sprites/HUD/Buttons/R1.png[/img]
+ [font_size=32][/font_size]
+[/center]"
+scroll_active = false
+script = ExtResource("9_nf5qt")
+new_text = "[center] [[R1]]
+ [font_size=32][/font_size]
+[/center]"
+metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
 
 [node name="Cursor" type="Sprite2D" parent="." unique_id=1599802280]
 visible = false
@@ -237,6 +263,6 @@ libraries/ = SubResource("AnimationLibrary_r40d8")
 libraries/ = SubResource("AnimationLibrary_xbetg")
 
 [node name="PolyphonicMenuAudio" type="AudioStreamPlayer" parent="." unique_id=2066563711]
-volume_db = -15.0
+volume_db = -17.0
 script = ExtResource("9_j4lc6")
 audio_library = SubResource("Resource_e48o0")
