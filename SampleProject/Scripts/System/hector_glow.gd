@@ -61,7 +61,7 @@ func _process(delta: float) -> void:
 		flipWeapon()
 		
 func _physics_process(delta: float) -> void:
-	if get_parent().aura.frame != frame and not get_parent().state_machine.current_state is HectorIdle or get_parent().aura.frame != 0 and frame == 0:
+	if get_parent().aura.frame != frame and not get_parent().state_machine.animation.current_animation == "idle" or get_parent().aura.frame != 0 and frame == 0:
 		get_parent().aura.frame = frame
 		
 	if get_parent().aura.flip_h != flip_h:
