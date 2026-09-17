@@ -16,12 +16,18 @@ var markers: Array[Node2D]
 # It's purely to show custom drawing on the map.
 var show_delta: bool
 var marker_mode: bool
+var marker_color: MetroidvaniaSystem.Marker = MetroidvaniaSystem.Marker.RED
 static var layer: int = -10000
 @export var sound: PolyphonicMenuAudio
 @export var stage_name: Label
 @export var stage_percent: Label
 @export var previous_stage_name: RichTextLabelWithButtons
 @export var next_stage_name: RichTextLabelWithButtons
+@export var cursor: Sprite2D
+const CURSOR_SPEED: Vector2 = Vector2(300, 300)
+@onready var cursor_animation: AnimationPlayer = $MarkerCursor/AnimationPlayer
+var cursor_tween: Tween
+
 
 const STAGE_NAMES: Array[String] = [
 	"ABANDONED_MONASTERY",
@@ -38,6 +44,7 @@ const STAGE_OFFSETS: Array[Vector2] = [
 ]
 
 func _ready() -> void:
+	Global.map = self
 	# Cellular size is total size divided by cell size.
 	SIZE = size / MetSys.CELL_SIZE
 	# Connect some signals.
@@ -121,6 +128,8 @@ func _process(delta: float) -> void:
 			await tween.finished
 			return
 		if get_parent().visible and Global.screen == Global.ScreenType.MAP:
+			marker_mode = false
+			cursor.self_modulate = Color.TRANSPARENT
 			layer = MetSys.current_layer
 			sound.play_sound_effect_from_library("map")
 			var tween = get_tree().create_tween()
@@ -140,12 +149,12 @@ func _process(delta: float) -> void:
 			Global.screen = Global.ScreenType.NONE
 			update_offset()
 			
-	if Input.is_action_just_pressed("backdash") and Global.screen == Global.ScreenType.MAP and not worldMapLayer():
+	if Input.is_action_just_pressed("backdash") and Global.screen == Global.ScreenType.MAP and not worldMapLayer() and not marker_mode:
 		layer = posmod(layer-1, 4)
 		while MetSys.get_explored_ratio(layer) == 0:
 			layer = posmod(layer-1, 4)
 		updateMapView()
-	elif Input.is_action_just_pressed("guard") and Global.screen == Global.ScreenType.MAP and not worldMapLayer():
+	elif Input.is_action_just_pressed("guard") and Global.screen == Global.ScreenType.MAP and not worldMapLayer() and not marker_mode:
 		layer = posmod(layer+1, 4)
 		while MetSys.get_explored_ratio(layer) == 0:
 			layer = posmod(layer+1, 4)
@@ -159,9 +168,51 @@ func _process(delta: float) -> void:
 			layer = -layer
 		updateMapView()
 		
-	if Input.is_action_just_pressed("innocent_devil_move"):
+	if Input.is_action_just_pressed("innocent_devil_move") and not worldMapLayer():
+		if layer == MetSys.current_layer and not marker_mode:
+			cursor.position = player_location.position
+		elif not marker_mode:
+			cursor.position = get_parent().size / 2
 		marker_mode = not marker_mode
-		MetSys.add_new_marker(self, player_location.position, MetSys.Marker.YELLOW, layer)
+		if marker_mode:
+			cursor_animation.play("show")
+		else:
+			cursor_animation.play_backwards("show")
+		
+	if Input.is_action_just_pressed("guard") and marker_mode:
+		marker_color = posmod(marker_color+1, MetroidvaniaSystem.Marker.size())
+		
+		if cursor_tween != null and cursor_tween.is_running():
+			cursor_tween.kill()
+		
+		cursor_tween = get_tree().create_tween()
+		cursor_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		cursor_tween.tween_property(cursor, "modulate", Color.BLACK, 0.1)
+		cursor_tween.tween_property(cursor, "modulate", MetroidvaniaSystem.MarkerColor[marker_color], 0.1)
+		sound.play_sound_effect_from_library("change_cursor")
+	elif Input.is_action_just_pressed("backdash") and marker_mode:
+		marker_color = posmod(marker_color-1, MetroidvaniaSystem.Marker.size())
+		if cursor_tween != null and cursor_tween.is_running():
+			cursor_tween.kill()
+		
+		cursor_tween = get_tree().create_tween()
+		cursor_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		cursor_tween.tween_property(cursor, "modulate", Color.BLACK, 0.1)
+		cursor_tween.tween_property(cursor, "modulate", MetroidvaniaSystem.MarkerColor[marker_color], 0.1)
+		sound.play_sound_effect_from_library("change_cursor")
+
+		
+	if Input.is_action_just_pressed("jump") and marker_mode:
+		sound.play_sound_effect_from_library("put_marker")
+		MetSys.add_new_marker(self, cursor.position, marker_color, layer)
+		
+	if marker_mode:
+		var marker_direction_x: float = Input.get_axis("move_left", "move_right")
+		var marker_direction_y: float = Input.get_axis("up_arrow", "crouch")
+		var marker_speed: Vector2 = CURSOR_SPEED * Vector2(marker_direction_x, marker_direction_y)
+		cursor.position = cursor.position + marker_speed * delta
+		cursor.position.x = fposmod(cursor.position.x, get_parent().size.x)
+		cursor.position.y = fposmod(cursor.position.y, get_parent().size.y)
 
 func updateMapView():
 	const FADE_DURATION: float = 0.1
@@ -239,6 +290,7 @@ func update_offset():
 		marker.position = marker_data["offset"]
 	
 	if worldMapLayer():
+		marker_mode = false
 		player_location.offset += STAGE_OFFSETS[MetSys.current_layer] * MetSys.CELL_SIZE
 		for marker in markers:
 			var marker_stats: Array[Dictionary] = Global.player.stats.markers

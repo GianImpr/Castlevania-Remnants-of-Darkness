@@ -11,14 +11,24 @@ enum Marker {
 	RED,
 	BLUE,
 	GREEN,
-	YELLOW
+	YELLOW,
+	PURPLE,
+	BROWN,
+	AQUA,
+	ORANGE,
+	WHITE,
 }
 
 const MarkerColor = [
 	Color.RED,
 	Color.BLUE,
 	Color.GREEN,
-	Color.YELLOW
+	Color.YELLOW,
+	Color.PURPLE,
+	Color.SADDLE_BROWN,
+	Color.AQUA,
+	Color.ORANGE,
+	Color.WHITE,
 ]
 
 const MetSysSettings = preload("res://addons/MetroidvaniaSystem/Scripts/Settings.gd")
@@ -372,13 +382,12 @@ func add_new_marker(canvas_item: CanvasItem, offset := Vector2(), type: Marker =
 		current_marker_data["offset"] = offset
 		current_marker_data["type"] = type
 		current_marker_data["minimap_cell"] = Global.minimap.center
-		current_marker_data["minimap_offset"] = Global.minimap.player_location.position
+		current_marker_data["minimap_offset"] = Global.minimap.player_location.position + (Global.map.cursor.position - Global.map.player_location.position)
 		var marker_instance: Node2D = MARKER_SCENE.instantiate()
 		var marker_instance_body: Node2D = marker_instance.get_child(0)
 		marker_instance.name = "MARKER_" + Marker.keys()[type]
 		current_marker_data["name"] = marker_instance.name
 		marker_instance.modulate = MarkerColor[type]
-		marker_instance_body.modulate = MarkerColor[type]
 		marker_instance.position = offset
 		marker_instance.get_child(1).play("Instantiate")
 		
@@ -386,7 +395,6 @@ func add_new_marker(canvas_item: CanvasItem, offset := Vector2(), type: Marker =
 		var minimap_marker_instance_body: Node2D = minimap_marker_instance.get_child(0)
 		minimap_marker_instance.name = "MARKER_" + Marker.keys()[type]
 		minimap_marker_instance.modulate = MarkerColor[type]
-		minimap_marker_instance_body.modulate = MarkerColor[type]
 		minimap_marker_instance.position = Global.minimap.player_location.position
 		minimap_marker_instance.get_child(1).play("Instantiate")
 

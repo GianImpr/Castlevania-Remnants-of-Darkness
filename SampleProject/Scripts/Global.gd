@@ -23,6 +23,7 @@ static var fps_display = null
 static var settings_node: InvOptions = null
 static var HUD: HeadsUpDisplay = null
 static var minimap = null
+static var map = null
 var language: Languages = Languages.ENGLISH
 var load_data: bool = false
 var crazy_mode: bool = false
