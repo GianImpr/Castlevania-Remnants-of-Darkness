@@ -8,11 +8,12 @@ var can_perfect_guard: bool = false
 var starting_from_midair: bool = false
 var has_to_land: bool = false
 static var resumeAttackAnimation: Callable
+const CHECK_MIDAIR_STATUS_AFTER_DELAY: float = 0.1
 
 func enter():
 	if player.resume_attack:
 		resumeAttackAnimation.call()
-	starting_from_midair = not player.is_on_floor()
+	get_tree().create_timer(CHECK_MIDAIR_STATUS_AFTER_DELAY).timeout.connect(func(): starting_from_midair = not player.is_on_floor())
 	if Global.screen != Global.ScreenType.TRAINING:
 		Global.screen = Global.ScreenType.EVENT
 	player.velocity.x = 0
@@ -40,5 +41,5 @@ func Update(delta):
 		await animation.animation_finished
 		animation.play(ANIM_NAME, BLEND, ANIM_SPEED)
 		
-#	if not animation.is_playing() and Global.screen == Global.ScreenType.EVENT:
-#		animation.play(ANIM_NAME, BLEND, ANIM_SPEED)
+	if not animation.is_playing() and Global.screen == Global.ScreenType.EVENT:
+		animation.play(ANIM_NAME, BLEND, ANIM_SPEED)

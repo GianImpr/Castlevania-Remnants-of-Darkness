@@ -170,6 +170,7 @@
 [ext_resource type="Texture2D" uid="uid://dwc4g23sdxtn2" path="res://assets/sprites/Characters/Hector/HectorSpearHands.png" id="122_gik8q"]
 [ext_resource type="Script" uid="uid://cf1ppfim3qip6" path="res://SampleProject/Scripts/HectorAnims/HectorGuardBlocking.gd" id="122_uml35"]
 [ext_resource type="Script" uid="uid://qj13jt40ymnd" path="res://SampleProject/Scripts/HectorAnims/HectorGuardBreak.gd" id="123_h7cmy"]
+[ext_resource type="Script" uid="uid://c4rihgs0pp3ip" path="res://SampleProject/Scripts/System/debug_anim.gd" id="123_uc5i5"]
 [ext_resource type="Script" uid="uid://dv6ffl8lnhe18" path="res://SampleProject/Scripts/HectorAnims/HectorDoubleJump.gd" id="126_god42"]
 [ext_resource type="Script" uid="uid://yg6mkbqnmoey" path="res://SampleProject/Scripts/HectorAnims/HectorDiveKick.gd" id="127_3rsyo"]
 [ext_resource type="Script" uid="uid://dtuf333k0t8k3" path="res://SampleProject/Scripts/HectorAnims/HectorGlide.gd" id="129_b6n08"]
@@ -6373,6 +6374,7 @@ hframes = 18
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=344604728]
 libraries/ = SubResource("AnimationLibrary_jttxa")
+script = ExtResource("123_uc5i5")
 
 [node name="Node" type="Node" parent="." unique_id=520328470]
 
@@ -6721,7 +6723,6 @@ color_initial_ramp = SubResource("Gradient_guf7x")
 script = ExtResource("148_5d06q")
 
 [node name="Label" type="Label" parent="." unique_id=348030609 node_paths=PackedStringArray("state_machine")]
-visible = false
 offset_left = -20.8696
 offset_top = -33.913
 offset_right = 19.1304
