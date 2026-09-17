@@ -179,6 +179,12 @@ func useItem(item: Item) -> bool:
 		item.HealingType.MAGIC:
 			stats["MP"] = min(stats["MP"]+item.power, stats["MMP"])
 			sound.play_sound_effect_from_library("MPItem")
+		item.HealingType.POISON:
+			Global.player.stats.status[HectorStats.Status.POISON] = 0
+			sound.play_sound_effect_from_library("MPItem")
+		item.HealingType.CURSE:
+			Global.player.stats.status[HectorStats.Status.CURSE] = 0
+			sound.play_sound_effect_from_library("MPItem")
 		item.HealingType.SYNERGY:
 			stats["SP"] = min(stats["SP"]+item.power, stats["MSP"])
 		item.HealingType.HEART:

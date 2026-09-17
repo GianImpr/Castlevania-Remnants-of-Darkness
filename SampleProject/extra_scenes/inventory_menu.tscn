@@ -676,6 +676,56 @@ _data = {
 &"change": SubResource("Animation_41rsd")
 }
 
+[sub_resource type="Gradient" id="Gradient_jqemx"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.47, 0.47, 0.47, 1, 0.32, 0.32, 0.32, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ff15y"]
+gradient = SubResource("Gradient_jqemx")
+width = 300
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_taw0k"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.5015805, 0.0029991234, 0.8508918, 1, 0.85448956, 0.3169531, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l7e6h"]
+gradient = SubResource("Gradient_taw0k")
+width = 300
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_6h8lt"]
+offsets = PackedFloat32Array(0, 0.370229, 0.545802, 1)
+colors = PackedColorArray(0.77626395, 0.45824903, 0, 1, 1, 0.82716453, 0.7504605, 1, 0.470856, 0.367828, 0, 1, 0.99139804, 0.7783982, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c6o14"]
+gradient = SubResource("Gradient_6h8lt")
+width = 300
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_g56rw"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.7166333, 0, 0.21038255, 1, 1, 0.3509225, 0.34121585, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oc8gi"]
+gradient = SubResource("Gradient_g56rw")
+width = 300
+height = 32
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_op776"]
+offsets = PackedFloat32Array(0, 0.381679, 0.545802, 1)
+colors = PackedColorArray(0.706391, 0.761794, 0.819929, 1, 0.888787, 0.862144, 0.861713, 1, 0.470856, 0.367828, 0, 1, 0.744666, 0.58189, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8gqq0"]
+gradient = SubResource("Gradient_op776")
+width = 300
+height = 32
+fill_to = Vector2(0, 1)
+
 [sub_resource type="Theme" id="Theme_ic6tr"]
 default_font = ExtResource("9_6pgav")
 default_font_size = 32
@@ -2932,6 +2982,7 @@ script = ExtResource("19_l3hae")
 elements = NodePath("Display/Elements")
 item_list = NodePath("Display/ScrollContainer/Control/ItemList")
 MP_bar = NodePath("Display/Elements/MPBar")
+status_gradients = Array[GradientTexture2D]([SubResource("GradientTexture2D_ff15y"), SubResource("GradientTexture2D_l7e6h"), SubResource("GradientTexture2D_c6o14"), SubResource("GradientTexture2D_oc8gi"), SubResource("GradientTexture2D_8gqq0")])
 animation = NodePath("AnimationPlayer")
 default_button = NodePath("Display/PanelContainer/Menu/Consumables")
 

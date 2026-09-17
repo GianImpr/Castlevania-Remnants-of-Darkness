@@ -665,3 +665,6 @@ func resetBloodAttributes() -> void:
 
 func isWeak() -> bool:
 	return stats.Stats["HP"] <= stats.Stats["MHP"]/4 or stats.status[stats.Status.POISON] > 0 or stats.status[stats.Status.ENFEEBLE] > 0
+
+func isPetrified() -> bool:
+	return state_machine.current_state is HectorPetrified
