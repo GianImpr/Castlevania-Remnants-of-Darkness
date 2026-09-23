@@ -24,7 +24,7 @@ func createTrail() -> void:
 	trail.hframes = sprite.hframes
 	trail.offset = sprite.offset
 	trail.global_position = sprite.global_position - MetSys.get_current_room_instance().global_position
-	trail.scale = Vector2(2, 2)
+	trail.scale = Vector2(2 * direction, 2)
 	trail.rotation_degrees = sprite.rotation_degrees
 	trail.show_behind_parent = true
 	trail.z_index = 9
