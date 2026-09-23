@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dapkpnkm8sow8"]
+
+[ext_resource type="Script" uid="uid://kwwmdo325o42" path="res://addons/kanban_tasks/view/settings/stages/stages.gd" id="1_1yycq"]
+
+[node name="Stages" type="VBoxContainer" unique_id=730317252]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_1yycq")
+
+[node name="Header" type="HBoxContainer" parent="." unique_id=560617268]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="\'EditStageLayout\'" type="Label" parent="Header" unique_id=348522360]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Edit Stage Layout:"
+
+[node name="\'StageWidth\'" type="Label" parent="Header" unique_id=827952690]
+layout_mode = 2
+text = "Stage Width"
+
+[node name="WidthSpinBox" type="SpinBox" parent="Header" unique_id=2023771662]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+accessibility_labeled_by_nodes = Array[NodePath]([NodePath("../\'StageWidth\'")])
+min_value = 200.0
+max_value = 800.0
+value = 200.0
+rounded = true
+allow_greater = true
+alignment = 1
+suffix = "px"
+select_all_on_focus = true
+
+[node name="WarnAboutEmptyDeletion" type="CheckBox" parent="Header" unique_id=1017071750]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Warn about empty deletion."
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1613118127]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer" unique_id=2013896487]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/ScrollContainer" unique_id=1647933709]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Grid" type="HBoxContainer" parent="PanelContainer/ScrollContainer/CenterContainer" unique_id=1695163191]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ColumnHolder" type="HBoxContainer" parent="PanelContainer/ScrollContainer/CenterContainer/Grid" unique_id=1263007802]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="AddColumn" type="VBoxContainer" parent="PanelContainer/ScrollContainer/CenterContainer/Grid" unique_id=2093623661]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="AddColumn" type="Button" parent="PanelContainer/ScrollContainer/CenterContainer/Grid/AddColumn" unique_id=1445148106]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 105)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="Empty" type="Button" parent="PanelContainer/ScrollContainer/CenterContainer/Grid/AddColumn" unique_id=1868106499]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+text = "+"
+
+[node name="Warning" type="Control" parent="PanelContainer" unique_id=1339112746]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="WarningSign" type="Button" parent="PanelContainer/Warning" unique_id=1578402273]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+tooltip_text = "Adding to much stages can overflow the editor.
+
+Recommended maximum: 4*3"
+focus_mode = 0
+flat = true
+
+[node name="ConfirmNotEmpty" type="ConfirmationDialog" parent="." unique_id=1240101809]
+unique_name_in_owner = true
+title = "Delete Stage"
+size = Vector2i(403, 159)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmNotEmpty" unique_id=1173550062]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ConfirmNotEmpty/VBoxContainer" unique_id=1210268278]
+layout_mode = 2
+text = "You are deleting a stage which has tasks assigned.
+
+The tasks will be assigned to the following stage:"
+
+[node name="TaskDestination" type="OptionButton" parent="ConfirmNotEmpty/VBoxContainer" unique_id=1622670225]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ConfirmEmpty" type="ConfirmationDialog" parent="." unique_id=1107424921]
+unique_name_in_owner = true
+title = "Delete Stage"
+size = Vector2i(316, 100)
+dialog_text = "Do you really want to delete this stage?
+You can not undo this."

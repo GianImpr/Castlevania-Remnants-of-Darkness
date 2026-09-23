@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dh1yunmhipirg"]
+
+[ext_resource type="Script" uid="uid://7jskmn63x3pt" path="res://addons/kanban_tasks/view/settings/settings.gd" id="1_4eaw3"]
+[ext_resource type="PackedScene" uid="uid://due07vdflx4o" path="res://addons/kanban_tasks/view/settings/general/general.tscn" id="1_dk7pg"]
+[ext_resource type="PackedScene" uid="uid://b2likgss81t0s" path="res://addons/kanban_tasks/view/settings/categories/categories.tscn" id="3_iycb0"]
+[ext_resource type="PackedScene" uid="uid://dapkpnkm8sow8" path="res://addons/kanban_tasks/view/settings/stages/stages.tscn" id="4_okolg"]
+
+[node name="Settings" type="AcceptDialog" unique_id=650180224]
+oversampling_override = 1.0
+title = "Settings"
+position = Vector2i(0, 36)
+size = Vector2i(800, 400)
+visible = true
+script = ExtResource("1_4eaw3")
+
+[node name="Settings" type="TabContainer" parent="." unique_id=690004289]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 300)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"TabContainerOdd"
+current_tab = 0
+
+[node name="General" parent="Settings" unique_id=2109241999 instance=ExtResource("1_dk7pg")]
+unique_name_in_owner = true
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Categories" parent="Settings" unique_id=1569239372 instance=ExtResource("3_iycb0")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Stages" parent="Settings" unique_id=152864210 instance=ExtResource("4_okolg")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2

@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2likgss81t0s"]
+
+[ext_resource type="Script" uid="uid://brn3wr8cbs41k" path="res://addons/kanban_tasks/view/settings/categories/categories.gd" id="1_n36ev"]
+
+[node name="Categories" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_n36ev")
+
+[node name="Header" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="\'Available Categories\'" type="Label" parent="Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Available Categories:"
+
+[node name="Add" type="Button" parent="Header"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="CategoryHolder" type="VBoxContainer" parent="PanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3

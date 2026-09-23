@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci67r2f2btg5"]
+
+[ext_resource type="Script" uid="uid://ll67u43bmpjh" path="res://addons/AsepriteWizard/interface/imports_manager/dock_imports_panel.gd" id="1_1xyeb"]
+[ext_resource type="PackedScene" uid="uid://cisgsfvp4nf1g" path="res://addons/AsepriteWizard/interface/shared/tree/resource_tree.tscn" id="2_d1s4o"]
+[ext_resource type="PackedScene" uid="uid://qgmln507kjnm" path="res://addons/AsepriteWizard/interface/shared/tree/tree_selection_confirmation_warning.tscn" id="3_2us73"]
+[ext_resource type="PackedScene" uid="uid://dnlk2yep7teea" path="res://addons/AsepriteWizard/interface/imports_manager/tree_selection_single_item.tscn" id="3_4ufqa"]
+[ext_resource type="PackedScene" uid="uid://bhtu6mlwmthqo" path="res://addons/AsepriteWizard/interface/imports_manager/tree_selection_multiple_items.tscn" id="3_pw8ds"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_edrvq"]
+
+[node name="dock_imports" type="Panel"]
+custom_minimum_size = Vector2(600, 400)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_edrvq")
+script = ExtResource("1_1xyeb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="tree" parent="MarginContainer/VBoxContainer/HSplitContainer" instance=ExtResource("2_d1s4o")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HSplitContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Details"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="nothing" type="Label" parent="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Nothing selected"
+horizontal_alignment = 1
+
+[node name="single_item" parent="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_4ufqa")]
+layout_mode = 2
+
+[node name="multiple_items" parent="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_pw8ds")]
+layout_mode = 2
+
+[node name="confirmation_warning" parent="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_2us73")]
+layout_mode = 2
+
+[connection signal="multi_selected" from="MarginContainer/VBoxContainer/HSplitContainer/tree" to="." method="_on_resource_tree_multi_selected"]
+[connection signal="refresh_triggered" from="MarginContainer/VBoxContainer/HSplitContainer/tree" to="." method="_on_resource_tree_refresh_triggered"]
+[connection signal="import_triggered" from="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/single_item" to="." method="_on_single_item_import_triggered"]
+[connection signal="open_scene_triggered" from="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/single_item" to="." method="_on_single_item_open_scene_triggered"]
+[connection signal="import_triggered" from="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/multiple_items" to="." method="_on_multiple_items_import_triggered"]
+[connection signal="warning_confirmed" from="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/confirmation_warning" to="." method="_on_confirmation_warning_warning_confirmed"]
+[connection signal="warning_declined" from="MarginContainer/VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/confirmation_warning" to="." method="_on_confirmation_warning_warning_declined"]

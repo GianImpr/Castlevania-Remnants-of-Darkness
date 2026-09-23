@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://cwfixtyy5lpin"]
+
+[ext_resource type="Script" uid="uid://c6ccwvv8tjdsk" path="res://addons/kanban_tasks/view/documentation/documentation.gd" id="1_fw3gy"]
+[ext_resource type="Texture2D" uid="uid://3edv1ymvukp0" path="res://addons/kanban_tasks/view/documentation/1.svg" id="1_inmy7"]
+[ext_resource type="Texture2D" uid="uid://bbo1gfac2wymg" path="res://addons/kanban_tasks/view/documentation/2.svg" id="2_1g6ul"]
+[ext_resource type="Texture2D" uid="uid://bb8knc6dctfj1" path="res://addons/kanban_tasks/view/documentation/3.svg" id="3_e3hha"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cmnk1"]
+font_size = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cmvuv"]
+
+[node name="AcceptDialog" type="AcceptDialog" unique_id=1501486445]
+oversampling_override = 1.0
+title = "Documentation"
+size = Vector2i(1000, 600)
+min_size = Vector2i(1000, 600)
+theme_type_variation = &"EditorSettingsDialog"
+ok_button_text = "Close"
+script = ExtResource("1_fw3gy")
+
+[node name="Help" type="ScrollContainer" parent="." unique_id=535755392]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Help" unique_id=1359404301]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="PanelContainer1" type="PanelContainer" parent="Help/VBoxContainer" unique_id=983778674]
+layout_mode = 2
+theme_type_variation = &"Panel"
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="Help/VBoxContainer/PanelContainer1" unique_id=861006902]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 2
+
+[node name="Control" type="Control" parent="Help/VBoxContainer/PanelContainer1/HBoxContainer1" unique_id=1543101361]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Help/VBoxContainer/PanelContainer1/HBoxContainer1" unique_id=1613673530]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A kanban board helps you to organise tasks. After you created a task you can drag and drop it between the stages to reflect its current status. Add spontaneous ideas to the \"Todo\" stage. Move them into \"Doing\" when you are ready to tackle them. Once a task is done move it into \"Done\" to keep track of all your accomplishments."
+label_settings = SubResource("LabelSettings_cmnk1")
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Help/VBoxContainer/PanelContainer1/HBoxContainer1" unique_id=892191990]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("1_inmy7")
+expand_mode = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="Help/VBoxContainer" unique_id=90515732]
+layout_mode = 2
+theme_type_variation = &"Panel"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Help/VBoxContainer/PanelContainer2" unique_id=1366977175]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Help/VBoxContainer/PanelContainer2/HBoxContainer2" unique_id=698644339]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("2_1g6ul")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Help/VBoxContainer/PanelContainer2/HBoxContainer2" unique_id=1865995285]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Boost your productivity by customizing your board! 
+Double click stage or task names to change them. Configure categories and change the layout in the settings. 
+Find tasks by using the search bar."
+label_settings = SubResource("LabelSettings_cmnk1")
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="Help/VBoxContainer/PanelContainer2/HBoxContainer2" unique_id=2057758449]
+layout_mode = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="Help/VBoxContainer" unique_id=792363036]
+layout_mode = 2
+theme_type_variation = &"Panel"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Help/VBoxContainer/PanelContainer3" unique_id=242955631]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 2
+
+[node name="Control" type="Control" parent="Help/VBoxContainer/PanelContainer3/HBoxContainer3" unique_id=1118352302]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Help/VBoxContainer/PanelContainer3/HBoxContainer3" unique_id=978285368]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Edit the details of you tasks by clicking the edit button. Give your task a meaningful title and put the details into the description. Give your task a category to keep the overview."
+label_settings = SubResource("LabelSettings_cmnk1")
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Help/VBoxContainer/PanelContainer3/HBoxContainer3" unique_id=125050301]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("3_e3hha")
+expand_mode = 1
+
+[node name="ShamelessPlug" type="RichTextLabel" parent="Help/VBoxContainer" unique_id=2067203823]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cmvuv")
+bbcode_enabled = true
+text = "[center][img height=2em]uid://phpa3kr3tjwu[/img]  Leave a star on [url=https://github.com/HolonProduction/godot_kanban_tasks]Github[/url] or a like on the [url=https://store.godotengine.org/asset/holonproduction/kanban-tasks/]Asset Store[/url][/center]"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false

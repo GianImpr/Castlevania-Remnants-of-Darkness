@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://ckqrwj5kxr6vl"]
+
+[ext_resource type="Script" uid="uid://bmsawo6qqtluu" path="res://addons/kanban_tasks/view/task/task.gd" id="1_dslv8"]
+[ext_resource type="Script" uid="uid://cmnh7scftf1d" path="res://addons/kanban_tasks/edit_label/edit_label.gd" id="2_iitpi"]
+[ext_resource type="Script" uid="uid://cqsmighbbfdl5" path="res://addons/kanban_tasks/view/task/autosize_label.gd" id="3_1qkab"]
+[ext_resource type="PackedScene" uid="uid://bwi22eyrmeeet" path="res://addons/kanban_tasks/view/details/details.tscn" id="3_2ol5j"]
+[ext_resource type="PackedScene" uid="uid://dwjg5vyxx4g48" path="res://addons/kanban_tasks/view/details/step_holder.tscn" id="4_4e7a7"]
+[ext_resource type="Script" uid="uid://guc56bqr2khq" path="res://addons/kanban_tasks/expand_button/expand_button.gd" id="5_sgwao"]
+
+[node name="Task" type="MarginContainer" unique_id=698399779]
+editor_description = "This container is needed because the panel style cannot be updated from a script on the panel container."
+custom_minimum_size = Vector2(150, 0)
+offset_right = 150.0
+offset_bottom = 50.0
+size_flags_horizontal = 3
+focus_mode = 2
+script = ExtResource("1_dslv8")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=1704620960]
+unique_name_in_owner = true
+show_behind_parent = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=878429944]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer" unique_id=2075946638]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/MarginContainer" unique_id=1102637383]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1244035275]
+layout_mode = 2
+
+[node name="CategoryButton" type="Button" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1009888406]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+
+[node name="Title" type="VBoxContainer" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=562777166]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34.1)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("2_iitpi")
+
+[node name="Description" type="Label" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1197087444]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.443137)
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 3
+text_overrun_behavior = 3
+script = ExtResource("3_1qkab")
+
+[node name="StepHolder" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1751671221 instance=ExtResource("4_4e7a7")]
+unique_name_in_owner = true
+layout_mode = 2
+scrollable = false
+steps_can_be_removed = false
+steps_can_be_reordered = false
+steps_have_context_menu = false
+
+[node name="ExpandButton" type="Button" parent="Panel/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1264164075]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"ExpandButton"
+flat = true
+icon_alignment = 1
+script = ExtResource("5_sgwao")
+expanded = false
+
+[node name="Edit" type="Button" parent="Panel/HBoxContainer" unique_id=1289048325]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+flat = true
+
+[node name="ContextMenu" type="PopupMenu" parent="." unique_id=1856471290]
+unique_name_in_owner = true
+oversampling_override = 1.0
+allow_search = false
+
+[node name="Details" parent="." unique_id=1680695291 instance=ExtResource("3_2ol5j")]
+unique_name_in_owner = true

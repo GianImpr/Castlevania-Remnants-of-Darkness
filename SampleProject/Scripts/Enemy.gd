@@ -49,8 +49,8 @@ func turn_on_wall():
 		sprite.flip_h = false
 		
 func remove_glow_if_glowing():
-	if sprite.self_modulate != Color(1,1,1):
-		sprite.self_modulate = Color(min(sprite.self_modulate.r+0.12, 1), min(sprite.self_modulate.g+0.12, 1), min(sprite.self_modulate.b+0.12, 1))
+	if sprite.self_modulate != Color.WHITE:
+		sprite.self_modulate = Color(min(sprite.self_modulate.r+0.12, 1), min(sprite.self_modulate.g+0.12, 1), min(sprite.self_modulate.b+0.12, 1), sprite.self_modulate.a)
 
 func calculate_damage(body, multiplier, chip_damage: int = 0, guard_break: bool = false, attribute: Global.Attribute = Global.Attribute.HIT, knockback: bool = false) -> int:
 	const POISONED_MULTIPLIER: float = 0.5

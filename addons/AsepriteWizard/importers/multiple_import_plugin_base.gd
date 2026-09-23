@@ -1,0 +1,158 @@
+@tool
+extends EditorImportPlugin
+
+const result_codes = preload("../config/result_codes.gd")
+const logger = preload("../config/logger.gd")
+
+var config = preload("../config/config.gd").new()
+var _aseprite = preload("../aseprite/aseprite.gd").new()
+var _bakery = preload("./helpers/bakery.gd").new()
+
+var file_system_helper
+
+func _init(fs_helper) -> void:
+	file_system_helper = fs_helper
+
+
+func _get_recognized_extensions():
+	return ["aseprite", "ase"]
+
+
+func _get_save_extension():
+	return "res"
+
+
+func _get_resource_type():
+	return "PackedDataContainer"
+
+
+func _get_preset_count():
+	return 1
+
+
+func _get_preset_name(i):
+	return "Default"
+
+
+func _get_import_order():
+	return 1
+
+
+func _get_option_visibility(path, option, options):
+	return true
+
+
+func _import(source_file, save_path, options, platform_variants, gen_files):
+	var old_data = _load_old_data(source_file)
+
+	if not _aseprite.test_command():
+		if config.should_generate_bake_files() && _bakery.has_bake_file(source_file):
+			logger.warn("Aseprite command failed. Falling back to baked file. No changes will be made to children resources", source_file)
+			return _bakery.load_bake_file(source_file, "%s.%s" % [save_path, _get_save_extension()])
+		else:
+			return ERR_UNCONFIGURED
+
+	var exception_pattern = options.get('layer/exclude_layers_pattern', "")
+	var should_include_only_visibles = options.get('layer/only_visible_layers', false)
+	var should_merge_duplicates = options.get('layer/merge_duplicate_layers', false)
+
+	var absolute_source_file = ProjectSettings.globalize_path(source_file)
+
+	var layers = _aseprite.list_valid_layers(
+		absolute_source_file,
+		exception_pattern,
+		should_include_only_visibles,
+		should_merge_duplicates,
+		true
+	)
+
+	var layers_resources_folder = options["output/layers_resources_folder"]
+
+	if layers_resources_folder.is_relative_path():
+		var source_base_dir = source_file.get_base_dir()
+		layers_resources_folder = source_base_dir.path_join(layers_resources_folder).simplify_path()
+
+	var import_options = _get_base_import_options(options)
+	import_options["source"] = source_file
+
+	var base_name = source_file.get_basename()
+
+	if layers_resources_folder != "":
+		if not DirAccess.dir_exists_absolute(layers_resources_folder):
+			DirAccess.make_dir_recursive_absolute(layers_resources_folder)
+		base_name = "%s/%s" % [layers_resources_folder, base_name.get_file()]
+
+	var data_to_save = {
+		"layers": {}
+	}
+
+	for layer in layers:
+		var flat_layer_name = (layer as String).replace("/", "_")
+		var layer_save_path = "%s_%s.%s" % [base_name, flat_layer_name, _layer_extension()]
+		var file = FileAccess.open(layer_save_path, FileAccess.WRITE)
+		var source_hash = FileAccess.get_md5(absolute_source_file)
+		file.store_string(JSON.stringify({
+			"layer": layer,
+			"import_options": import_options,
+			"source_hash": source_hash
+		}))
+		data_to_save.layers[layer] = layer_save_path
+
+	var packed = PackedDataContainer.new()
+	packed.pack(data_to_save)
+
+	var exit_code = ResourceSaver.save(packed, "%s.%s" % [save_path, _get_save_extension()])
+
+	if config.should_generate_bake_files():
+		var bake_code = _bakery.save_bake_file(source_file, packed)
+		if bake_code != OK:
+			logger.error('Bake file creation failed (%s) ' % bake_code, source_file)
+
+	_cleanup_old_layers(old_data, layers)
+
+	file_system_helper.schedule_file_system_scan()
+
+	return exit_code
+
+
+func _layer_extension() -> String:
+	return ""
+
+func _get_base_import_options(options: Dictionary):
+	return {}
+
+
+func _load_old_data(source_file: String):
+	var old_data = {}
+
+	if ResourceLoader.exists(source_file):
+		var d = ResourceLoader.load(source_file)
+		# handling JSON to keep it backwards compatible
+		# remove it in the next major version
+		if d is JSON:
+			old_data = d.data.layers
+		elif d is PackedDataContainer:
+			if d["layers"] != null:
+				old_data = _packed_container_to_dictionary(d["layers"])
+
+	return old_data
+
+
+func _packed_container_to_dictionary(packed):
+	var dic = {}
+	for k in packed:
+		if packed[k] is PackedDataContainerRef:
+			dic[k] = _packed_container_to_dictionary(packed[k])
+		else:
+			dic[k] = packed[k]
+	return dic
+
+
+func _cleanup_old_layers(old_data: Dictionary, layers: Array):
+	var old_layers = old_data.keys()
+
+	for old_layer in old_layers:
+		if not layers.has(old_layer):
+			var file = old_data[old_layer]
+			if FileAccess.file_exists(file):
+				DirAccess.remove_absolute(file)

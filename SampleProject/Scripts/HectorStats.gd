@@ -127,6 +127,9 @@ func _process(delta: float) -> void:
 	Bases["ATK"] = Stats["STR"]/2
 	Bases["DEF"] = Stats["CON"]/2
 	
+	if Input.is_action_just_pressed("map"):
+		Stats["HP"] = 0
+	
 	if Global.player.god_mode:
 		Stats["MP"] = Stats["MMP"]
 		Stats["FP"] = Stats["MFP"]

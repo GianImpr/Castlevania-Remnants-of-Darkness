@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://vej7yqkbtd5f"]
+
+[ext_resource type="Script" uid="uid://mthylyhxbge5" path="res://addons/AsepriteWizard/interface/docks/animated_sprite/animated_sprite_inspector_dock.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://uxm7b02wry10" path="res://addons/AsepriteWizard/interface/docks/dock_fields.tscn" id="2_2ilip"]
+
+[node name="animated_sprite_inspector_dock" type="PanelContainer"]
+offset_right = 14.0
+offset_bottom = 14.0
+script = ExtResource("1")
+
+[node name="dock_fields" parent="." instance=ExtResource("2_2ilip")]
+layout_mode = 2
+
+[connection signal="field_changed" from="dock_fields" to="." method="_on_dock_fields_field_changed"]
+[connection signal="revert_changes_requested" from="dock_fields" to="." method="_on_dock_fields_revert_changes_requested"]
