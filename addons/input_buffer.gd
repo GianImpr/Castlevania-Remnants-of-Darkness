@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 		"neutral": "*"
 	}
 	
-	if false:
+	if true:
 		var command_string: String = "{"
 		for command in command_history:
 			command_string += " ["
@@ -108,12 +108,12 @@ func readNewInputs() -> void:
 		for entry in popped_entry:
 			total_duration -= entry["duration"]
 	
-func checkCommandInput(command: Array[String], leniency: int, facing_position_matters: bool = true) -> bool:
+func checkCommandInput(command: Array[String], leniency: int, facing_position_matters: bool = true, last_skill_to_check: bool = false) -> bool:
 	var inputs_found: Array[String]
 	var input_to_find: int = 0
 	var prev_command: String = ""
 	var actual_command: Array[String] = command.duplicate(true)
-	
+	actual_command.reverse()
 	
 	if facing_position_matters and Global.player != null:
 		for i in range(0, actual_command.size()):
@@ -121,10 +121,9 @@ func checkCommandInput(command: Array[String], leniency: int, facing_position_ma
 				actual_command[i] = "move_left"
 			elif actual_command[i] == "move_left" and Global.player.facing_position == -1:
 				actual_command[i] = "move_right"
-	
-	for buttons in command_history:
-		for button in buttons:
-				
+		
+	for i in range(command_history.size()-1, -1, -1):
+		for button in command_history[i]:
 			if button["action"].begins_with("ui") or (button["action"] == "neutral" and input_to_find == 0):
 				continue
 			if actual_command[input_to_find] == button["action"] and button["duration"] <= leniency and button["action"] != prev_command:
@@ -141,7 +140,6 @@ func checkCommandInput(command: Array[String], leniency: int, facing_position_ma
 				if input_to_find == 0:
 					continue
 				else:
-					command_history.clear()
 					return false
 			if input_to_find == command.size():
 				break

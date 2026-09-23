@@ -187,6 +187,7 @@ func can_attack():
 	
 	#Check command inputs from unlocked special moves
 	for skill in player.stats.skill_inventory:
+		var last_skill: bool = skill["id"] == player.stats.skill_inventory[-1]["id"]
 		var cur_skill: Skill = player.stats.skill_compendium[skill["id"]-1]
 		var state_to_transition_to: String = cur_skill.transitions_into_state
 		var stat_to_consume: String
@@ -206,7 +207,7 @@ func can_attack():
 			continue
 		
 		var input_leniency_frames: int = 50*Engine.get_frames_per_second()/144
-		if InputBuffer.checkCommandInput(cur_skill.command_input, input_leniency_frames) and player.stats.status[Global.player.stats.Status.CURSE] <= 0:
+		if InputBuffer.checkCommandInput(cur_skill.command_input, input_leniency_frames, true, last_skill) and player.stats.status[Global.player.stats.Status.CURSE] <= 0:
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.TECHNIQUES)
 			Transitioned.emit(self, state_to_transition_to)
 			if not (stat_to_consume == "FP" and Global.player.stats.itemEquipped(Artifact.Artifacts.PRODIGY_NECKLACE, "artifact") and randi_range(0, 99) < Global.player.stats.Stats["LCK"]):
