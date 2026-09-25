@@ -22,7 +22,10 @@ func enter():
 
 func Update(delta: float):
 	if not animation.is_playing():
-		Transitioned.emit(self, "idle")
+		if player.is_on_floor():
+			Transitioned.emit(self, "idle")
+		else:
+			Transitioned.emit(self, "falling")
 	
 func Physics_Update(delta: float):
 	pass
