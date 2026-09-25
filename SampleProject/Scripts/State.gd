@@ -208,6 +208,8 @@ func can_attack():
 		
 		var input_leniency_frames: int = 50*Engine.get_frames_per_second()/144
 		if InputBuffer.checkCommandInput(cur_skill.command_input, input_leniency_frames, true, last_skill) and player.stats.status[Global.player.stats.Status.CURSE] <= 0:
+			if not player.is_on_floor() and not cur_skill.can_use_in_midair:
+				return
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.TECHNIQUES)
 			Transitioned.emit(self, state_to_transition_to)
 			if not (stat_to_consume == "FP" and Global.player.stats.itemEquipped(Artifact.Artifacts.PRODIGY_NECKLACE, "artifact") and randi_range(0, 99) < Global.player.stats.Stats["LCK"]):
