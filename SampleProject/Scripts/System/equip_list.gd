@@ -81,6 +81,12 @@ func on_button_pressed(button):
 	
 	sound.play_sound_effect_from_library("equip")
 	var current_slot = getCurSlot()
+	var equipped_slot_icon: TextureRect = equipSlots.get_child(0).get_child(equipSlots.button_index).get_child(0)
+	var EQUIP_FLASH_DURATION: float = 0.2
+	var equip_tween: Tween = get_tree().create_tween()
+	equip_tween.set_parallel()
+	equip_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+
 	equipSlots.get_child(0).get_child(equipSlots.button_index).grab_focus()
 	if equippingWeapon():
 		updateProperties(getEquipFromInventory(button.get_index()-3))
@@ -93,15 +99,21 @@ func on_button_pressed(button):
 		if current_slot > 0:
 			player.addItem(current_slot, getCurInventory())
 		setCurSlot(0)
-		equipSlots.get_child(0).get_child(equipSlots.button_index).get_child(0).texture = defaultIcon()
+		equip_tween.tween_property(equipped_slot_icon, "modulate", Color.TRANSPARENT, EQUIP_FLASH_DURATION).from(Color.WHITE)
+		equip_tween.tween_property(equipped_slot_icon, "scale", Vector2(2,2), EQUIP_FLASH_DURATION).from(Vector2.ONE)
+		equip_tween.finished.connect(func(): equipped_slot_icon.texture = defaultIcon())
 		#equipSlots.get_child(0).get_child(equipSlots.button_index).text = "--------"
 	else:
 		if current_slot > 0:
 			player.addItem(current_slot, getCurInventory())
 		setCurSlot(getCurInventory()[button.get_index()-3]["id"])
 		player.removeItem(getCurSlot(), getCurInventory())
-		equipSlots.get_child(0).get_child(equipSlots.button_index).get_child(0).texture = getCurCompendium()[getCurSlot()-1]["icon"]
+		equipped_slot_icon.texture = getCurCompendium()[getCurSlot()-1]["icon"]
+		equip_tween.tween_property(equipped_slot_icon, "modulate", Color.WHITE, EQUIP_FLASH_DURATION).from(Color(3,3,3,1))
+		equip_tween.tween_property(equipped_slot_icon, "scale", Vector2.ONE, EQUIP_FLASH_DURATION).from(Vector2(2,2))
 		#equipSlots.get_child(0).get_child(equipSlots.button_index).text = getCurCompendium()[getCurSlot()-1][getCurItemProperty("name")]
+
+	
 	equipSlots.on_focused(equipSlots.get_child(0).get_child(equipSlots.button_index))
 	equipSlots.menu.accessed_menu = 0
 	
