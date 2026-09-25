@@ -78,10 +78,10 @@ func _process(delta: float) -> void:
 func on_button_pressed(button):
 	if not Global.screen == Global.ScreenType.MENU:
 		return
-		
+	
+	sound.play_sound_effect_from_library("equip")
 	var current_slot = getCurSlot()
 	equipSlots.get_child(0).get_child(equipSlots.button_index).grab_focus()
-	sound.play_sound_effect_from_library("confirm")
 	if equippingWeapon():
 		updateProperties(getEquipFromInventory(button.get_index()-3))
 	elif equippingRelic():

@@ -389,7 +389,6 @@
 [ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="340_ke0lk"]
 [ext_resource type="Script" uid="uid://diy6tlfq0jpgk" path="res://SampleProject/Scripts/System/Menu/ButtonTextEffect.gd" id="341_0a8mu"]
 [ext_resource type="AudioStream" uid="uid://ciixnwaj2l7s7" path="res://assets/sounds/Menu/Cursor.wav" id="341_2jp76"]
-[ext_resource type="AudioStream" uid="uid://8dd2c8iq1psd" path="res://assets/sounds/Menu/ToggleMarker.wav" id="342_hrm2w"]
 [ext_resource type="Texture2D" uid="uid://bksta6rrcsm2m" path="res://assets/sprites/HUD/InGameHUD/RoD_marker_quill_white.png" id="345_2jp76"]
 [ext_resource type="AudioStream" uid="uid://rojr6o1d5144" path="res://assets/music/WaterTheologia.ogg" id="345_7fhmx"]
 [ext_resource type="AudioStream" uid="uid://djolu6rurb574" path="res://assets/music/Encounter2.ogg" id="347_xwt4j"]
@@ -4630,15 +4629,9 @@ Tag = "change_cursor"
 stream = ExtResource("341_2jp76")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
-[sub_resource type="Resource" id="Resource_arwh5"]
-script = ExtResource("10_etx3r")
-Tag = "marker_mode"
-stream = ExtResource("342_hrm2w")
-metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
-
 [sub_resource type="Resource" id="Resource_k7wl7"]
 script = ExtResource("8_afqo1")
-sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_rsagu"), SubResource("Resource_f7q2w"), SubResource("Resource_b87we"), SubResource("Resource_gml6c"), SubResource("Resource_arwh5")])
+sound_effects = Array[ExtResource("10_etx3r")]([SubResource("Resource_rsagu"), SubResource("Resource_f7q2w"), SubResource("Resource_b87we"), SubResource("Resource_gml6c")])
 
 [sub_resource type="Theme" id="Theme_0a8mu"]
 default_font = ExtResource("274_mxxml")
@@ -5128,7 +5121,6 @@ grow_vertical = 2
 
 [node name="MapWindow" type="Panel" parent="UI" unique_id=1202555402]
 process_mode = 3
-visible = false
 z_index = 11
 clip_contents = true
 anchors_preset = 8
@@ -5217,7 +5209,7 @@ metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
 
 [node name="MarkerModeLabel" type="RichTextLabel" parent="UI/MapWindow" unique_id=1253977183]
 auto_translate_mode = 1
-custom_minimum_size = Vector2(850, 64)
+custom_minimum_size = Vector2(0, 64)
 custom_maximum_size = Vector2(-1, 64)
 layout_mode = 0
 offset_left = 6.0
@@ -5226,10 +5218,12 @@ offset_right = 356.0
 offset_bottom = 442.0
 theme = SubResource("Theme_0a8mu")
 bbcode_enabled = true
-text = " [img]res://assets/sprites/HUD/Buttons/Triangle.png[/img] Marker mode"
+text = " [img]res://assets/sprites/HUD/Buttons/Triangle.png[/img] Marker mode
+ [img]res://assets/sprites/HUD/Buttons/Circle.png[/img] Change color"
 vertical_alignment = 2
 script = ExtResource("341_0a8mu")
-new_text = " [[Triangle]] Marker mode"
+new_text = " [[Triangle]] Marker mode
+ [[Circle]] Change color"
 metadata/_custom_type_script = "uid://diy6tlfq0jpgk"
 
 [node name="Map" type="Panel" parent="UI/MapWindow" unique_id=1122044465 node_paths=PackedStringArray("sound", "stage_name", "stage_percent", "previous_stage_name", "next_stage_name", "cursor", "marker_label")]

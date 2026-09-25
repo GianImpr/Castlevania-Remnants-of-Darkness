@@ -75,6 +75,10 @@ func parseText(value: String) -> String:
 	if not Engine.is_editor_hint() and Global.game != null:
 		controller_scheme = Global.game.controller_scheme
 	setButtons(controller_scheme)
+	
+	if buttons.is_empty():
+		push_warning("Unable to parse current text because the button dictionary is still being initialized: " + value)
+		return value
 
 	var result: String = ""
 	var cur_pos: int = 0

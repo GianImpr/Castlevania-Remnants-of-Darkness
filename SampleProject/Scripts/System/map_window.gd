@@ -15,7 +15,14 @@ var markers: Array[Node2D]
 # The vector feature, toggled with D. It displays an arrow from player's starting point to the current position.
 # It's purely to show custom drawing on the map.
 var show_delta: bool
-var marker_mode: bool
+var marker_mode: bool:
+	set(value):
+		marker_mode = value
+		if not marker_mode:
+			marker_label.new_text = " [[Triangle]] " + tr("MARKER_MODE_LABEL")
+		else:
+			marker_label.new_text = " [[Triangle]] " + tr("VIEW_MODE_LABEL") + "\n [[L1]]/[[R1]] " + tr("CHANGE_COLOR_LABEL") + " [[Cross]] " + tr("PLACE_REMOVE_MARKER_LABEL")
+		
 var marker_color: MetroidvaniaSystem.Marker = MetroidvaniaSystem.Marker.RED
 static var layer: int = -10000
 @export var sound: PolyphonicMenuAudio
@@ -24,6 +31,7 @@ static var layer: int = -10000
 @export var previous_stage_name: RichTextLabelWithButtons
 @export var next_stage_name: RichTextLabelWithButtons
 @export var cursor: Sprite2D
+@export var marker_label: RichTextLabelWithButtons
 const CURSOR_SPEED: Vector2 = Vector2(300, 300)
 @onready var cursor_animation: AnimationPlayer = $MarkerCursor/AnimationPlayer
 var cursor_tween: Tween
@@ -86,6 +94,7 @@ func drawMap(map_layer: int, stage_offset: Vector2 = Vector2.ZERO) -> void:
 		
 		var marker_node: Node2D = markers[marker_node_index]
 		marker_node.visible = Global.player.stats.markers[i]["layer"] == map_layer or worldMapLayer()
+	marker_label.visible = not worldMapLayer()
 		
 	
 	# Get the current player coordinates.
@@ -108,6 +117,7 @@ func _process(delta: float) -> void:
 		if not get_parent().visible and Global.screen == Global.ScreenType.NONE:
 			layer = MetSys.current_layer
 			Global.screen = Global.ScreenType.MAP
+			marker_mode = false
 			scale = Vector2.ONE
 			pivot_offset = size / 2
 			sound.play_sound_effect_from_library("map")
@@ -174,6 +184,7 @@ func _process(delta: float) -> void:
 		elif not marker_mode:
 			cursor.position = get_parent().size / 2
 		marker_mode = not marker_mode
+		sound.play_sound_effect_from_library("marker_mode")
 		if marker_mode:
 			cursor_animation.play("show")
 		else:
@@ -225,6 +236,7 @@ func updateMapView():
 		scale = Vector2.ONE
 		pivot_offset = size / 2
 	else:
+		cursor.self_modulate = Color.TRANSPARENT
 		scale = Vector2(0.33,0.33)
 		pivot_offset = Vector2(size.x/9, size.y/2)
 
@@ -235,7 +247,7 @@ func updateMapView():
 	if not worldMapLayer():
 		stage_name.text = tr(STAGE_NAMES[layer] + "_TITLE")
 	else:
-		stage_name.text = "World Map"
+		stage_name.text = tr("WORLD_MAP")
 	stage_percent.update()
 	fade_tween = get_tree().create_tween()
 	fade_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)

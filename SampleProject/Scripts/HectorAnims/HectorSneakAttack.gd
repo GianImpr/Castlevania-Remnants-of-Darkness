@@ -6,9 +6,12 @@ var initial_flip_h: bool
 var target: Enemy
 const DEFAULT_DISTANCE_TRAVEL: Vector2 = Vector2(150, 0)
 const OFFSET_FROM_ENEMY_POSITION: Vector2 = Vector2(30, -10)
+var starting_on_floor: bool
 
 func enter():
+	starting_on_floor = player.is_on_floor()
 	target = player.closestEnemy()
+	player.velocity.y = 0
 	player.motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	initial_flip_h = player.sprite.flip_h
 	animation.play("sneak_attack")
@@ -39,7 +42,11 @@ func warpBack() -> void:
 	Global.player.sprite.position = Vector2.ZERO
 	player.sprite.flip_h = initial_flip_h
 	player.facing_position = -1 if player.sprite.flip_h else 1
-	player.motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
+	if starting_on_floor:
+		player.motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
+	else:
+		await animation.animation_finished
+		player.motion_mode = CharacterBody2D.MOTION_MODE_GROUNDED
 
 func useWeapon() -> void:
 	sound.play_sound_effect_from_library(get_attack_sound())

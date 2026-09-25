@@ -5,7 +5,7 @@ var can_perfect_guard: bool = false
 const EARTHQUAKE_SPAWNING_OFFSET: Vector2 = Vector2(0,60)
 const JUMP_HEIGHT: float = -700
 const STOP_ANIM_AT_SECONDS: float = 0.2
-const FINAL_FRAME: int = 289
+const FINAL_FRAME: int = 270
 var phase: int
 const TRANSITION_DELAY: float = 0.7
 const AXE_SWUNG_ANIM_TIME: float = 0.4

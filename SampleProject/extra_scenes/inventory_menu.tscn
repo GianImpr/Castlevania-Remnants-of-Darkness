@@ -98,6 +98,7 @@
 [ext_resource type="Texture2D" uid="uid://cf258lfi3stud" path="res://assets/sprites/Items/InventoryIcons/Inventory_295.png" id="74_u2uhr"]
 [ext_resource type="AudioStream" uid="uid://bk3yytbku0xg2" path="res://assets/sounds/Menu/PopUp.MP3" id="78_vmt14"]
 [ext_resource type="AudioStream" uid="uid://df5y67suewgce" path="res://assets/sounds/Menu/CombineItem.MP3" id="79_7mq7x"]
+[ext_resource type="AudioStream" uid="uid://c2vn7u85bm0tr" path="res://assets/sounds/HectorMovement/Equip.ogg" id="98_ff15y"]
 
 [sub_resource type="Animation" id="Animation_jhpsa"]
 length = 0.001
@@ -1282,9 +1283,15 @@ script = ExtResource("9_rjh3h")
 Tag = "combine"
 stream = ExtResource("79_7mq7x")
 
+[sub_resource type="Resource" id="Resource_hrm2w"]
+script = ExtResource("9_rjh3h")
+Tag = "equip"
+stream = ExtResource("98_ff15y")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_qfoex"]
 script = ExtResource("26_vtso6")
-sound_effects = Array[ExtResource("9_rjh3h")]([SubResource("Resource_qjpvw"), SubResource("Resource_l4gp3"), SubResource("Resource_bm0x8"), SubResource("Resource_umnlg"), SubResource("Resource_6kmn2"), SubResource("Resource_g5wyo"), SubResource("Resource_dnocr"), SubResource("Resource_6ps3m")])
+sound_effects = Array[ExtResource("9_rjh3h")]([SubResource("Resource_qjpvw"), SubResource("Resource_l4gp3"), SubResource("Resource_bm0x8"), SubResource("Resource_umnlg"), SubResource("Resource_6kmn2"), SubResource("Resource_g5wyo"), SubResource("Resource_dnocr"), SubResource("Resource_6ps3m"), SubResource("Resource_hrm2w")])
 
 [sub_resource type="Resource" id="Resource_m3lnr"]
 script = ExtResource("9_rjh3h")
