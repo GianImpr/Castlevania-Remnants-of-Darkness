@@ -13,3 +13,6 @@ extends Control
 @export var health_bar: TextureProgressBar
 @export var mana_bar: TextureProgressBar
 @export var synergy_bar: TextureProgressBar
+@export var preview_health_bar: TextureProgressBar
+@export var preview_mana_bar: TextureProgressBar
+@export var preview_synergy_bar: TextureProgressBar

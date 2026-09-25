@@ -5,7 +5,24 @@ class_name ItemButtons
 @export var qty_list: GridContainer
 @export var description: Node
 @export var labels: Control
+@export var preview_health_bar: TextureProgressBar
+@export var preview_mana_bar: TextureProgressBar
+const DEFAULT_PREVIEW_BAR_COLOR: Color = Color.GREEN
+const PREVIEW_BAR_BLINKING_SPEED_SECONDS: float = 0.35
+
 var button_index: int
+
+func _ready() -> void:
+	super()
+	var preview_blinking_tween: Tween = get_tree().create_tween()
+	preview_blinking_tween.bind_node(self)
+	preview_blinking_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	preview_blinking_tween.set_loops()
+	preview_blinking_tween.tween_property(preview_health_bar, "tint_progress", Color.WHITE, PREVIEW_BAR_BLINKING_SPEED_SECONDS)
+	preview_blinking_tween.parallel().tween_property(preview_mana_bar, "tint_progress", Color.WHITE, PREVIEW_BAR_BLINKING_SPEED_SECONDS)
+	preview_blinking_tween.tween_property(preview_health_bar, "tint_progress", Color.GREEN, PREVIEW_BAR_BLINKING_SPEED_SECONDS)
+	preview_blinking_tween.parallel().tween_property(preview_mana_bar, "tint_progress", Color.GREEN, PREVIEW_BAR_BLINKING_SPEED_SECONDS)
+
 
 func _process(delta: float) -> void:
 	if menu.accessed_menu == 1 and Input.is_action_just_pressed("ui_cancel"):
@@ -166,6 +183,7 @@ func updateDescription(item: Item) -> void:
 	else:
 		item_icon.texture = null
 		item_text.text = ""
+	showHealingPreview(item)
 
 func useItem(item: Item) -> bool:
 	if item.type != item.Type.CONSUMABLE:
@@ -215,11 +233,28 @@ func useItem(item: Item) -> bool:
 			if get_tree().paused and Global.screen == Global.ScreenType.MENU:
 				get_viewport().gui_release_focus()
 				Global.inventory.resume()
-
+	showHealingPreview(item)
 	menu.updateStats()
 	return true
 	
-	#Global.player.stats.removeItem()
+func showHealingPreview(item: Item) -> void:
+	var healing_value: int = 0
+	var healing_type: Item.HealingType = Item.HealingType.NONE
+	if item != null:
+		healing_type = item.healing_type
+		healing_value = item.power
+	
+	match healing_type:
+			item.HealingType.HEALTH:
+				preview_health_bar.value =  float(Global.getStat("HP") + healing_value) / Global.getStat("MHP") * preview_health_bar.max_value
+				preview_mana_bar.value =  0
+			item.HealingType.MAGIC:
+				preview_health_bar.value =  0
+				preview_mana_bar.value =  float(Global.getStat("MP") + healing_value) / Global.getStat("MMP") * preview_mana_bar.max_value
+			_:
+				preview_health_bar.value =  0
+				preview_mana_bar.value =  0
+
 func displayProperties(item: Item) -> void:
 	labels.SubStatValues.text = ""
 	if item.power == 0:

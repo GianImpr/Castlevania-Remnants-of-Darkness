@@ -748,6 +748,15 @@ default_font_size = 32
 [sub_resource type="Theme" id="Theme_lj5n3"]
 default_font = ExtResource("11_op056")
 
+[sub_resource type="Gradient" id="Gradient_ff15y"]
+colors = PackedColorArray(1, 1, 1, 1, 0.3553136, 0.35531354, 0.35531357, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6h8lt"]
+gradient = SubResource("Gradient_ff15y")
+width = 5
+height = 3
+fill_to = Vector2(0, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vl8s6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urtv8"]
@@ -3079,7 +3088,7 @@ default_button = NodePath("Display/PanelContainer/Menu/Consumables")
 modulate = Color(0, 0, 0, 0)
 z_index = 1
 
-[node name="Elements" type="Control" parent="MenuStateMachine/Items/Display" unique_id=1966910762 node_paths=PackedStringArray("MainStatsValues", "StatusValue", "SubStatValues", "health_bar", "mana_bar", "synergy_bar")]
+[node name="Elements" type="Control" parent="MenuStateMachine/Items/Display" unique_id=1966910762 node_paths=PackedStringArray("MainStatsValues", "StatusValue", "SubStatValues", "health_bar", "mana_bar", "synergy_bar", "preview_health_bar", "preview_mana_bar")]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 13.0
@@ -3094,6 +3103,8 @@ SubStatValues = NodePath("ItemProperties")
 health_bar = NodePath("HPBar")
 mana_bar = NodePath("MPBar")
 synergy_bar = NodePath("SPBar")
+preview_health_bar = NodePath("PreviewHPBar")
+preview_mana_bar = NodePath("PreviewMPBar")
 
 [node name="ItemProperties" type="Label" parent="MenuStateMachine/Items/Display/Elements" unique_id=704008641]
 layout_mode = 0
@@ -3201,6 +3212,27 @@ text = " 180/ 180
  100/ 100
    0/   0"
 
+[node name="PreviewHPBar" type="TextureProgressBar" parent="MenuStateMachine/Items/Display/Elements" unique_id=1910505857]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 30.0
+offset_right = 260.0
+offset_bottom = 70.0
+scale = Vector2(44, 3)
+texture_under = SubResource("GradientTexture2D_xtlt0")
+texture_progress = SubResource("GradientTexture2D_6h8lt")
+tint_progress = Color(0, 1, 0, 1)
+
+[node name="PreviewMPBar" type="TextureProgressBar" parent="MenuStateMachine/Items/Display/Elements" unique_id=924563039]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 63.0
+offset_right = 260.0
+offset_bottom = 103.0
+scale = Vector2(44, 3)
+texture_under = SubResource("GradientTexture2D_xtlt0")
+texture_progress = SubResource("GradientTexture2D_6h8lt")
+
 [node name="HPBar" type="TextureProgressBar" parent="MenuStateMachine/Items/Display/Elements" unique_id=2139618812]
 layout_mode = 0
 offset_left = 220.0
@@ -3208,8 +3240,7 @@ offset_top = 30.0
 offset_right = 260.0
 offset_bottom = 70.0
 scale = Vector2(44, 3)
-value = 100.0
-texture_under = SubResource("GradientTexture2D_xtlt0")
+value = 50.0
 texture_progress = ExtResource("12_33jpi")
 
 [node name="MPBar" type="TextureProgressBar" parent="MenuStateMachine/Items/Display/Elements" unique_id=1498698458]
@@ -3220,7 +3251,6 @@ offset_right = 260.0
 offset_bottom = 103.0
 scale = Vector2(44, 3)
 value = 100.0
-texture_under = SubResource("GradientTexture2D_xtlt0")
 texture_progress = ExtResource("13_jjf0d")
 
 [node name="SPBar" type="TextureProgressBar" parent="MenuStateMachine/Items/Display/Elements" unique_id=317521469]
@@ -3240,7 +3270,7 @@ offset_right = 222.0
 offset_bottom = 193.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vl8s6")
 
-[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Items/Display/PanelContainer" unique_id=84556668 node_paths=PackedStringArray("item_list", "qty_list", "description", "labels", "sound", "menu", "state_machine")]
+[node name="Menu" type="VBoxContainer" parent="MenuStateMachine/Items/Display/PanelContainer" unique_id=84556668 node_paths=PackedStringArray("item_list", "qty_list", "description", "labels", "preview_health_bar", "preview_mana_bar", "sound", "menu", "state_machine")]
 layout_mode = 2
 focus_neighbor_top = NodePath("Materials")
 focus_neighbor_bottom = NodePath("Consumables")
@@ -3250,6 +3280,8 @@ item_list = NodePath("../../ScrollContainer/Control/ItemList")
 qty_list = NodePath("../../ScrollContainer/Control/QuantityList")
 description = NodePath("../../Description")
 labels = NodePath("../../Elements")
+preview_health_bar = NodePath("../../Elements/PreviewHPBar")
+preview_mana_bar = NodePath("../../Elements/PreviewMPBar")
 button_glow = SubResource("StyleBoxFlat_urtv8")
 sound = NodePath("../../../../../PolyphonicMenuAudio")
 menu = NodePath("../../..")
