@@ -185,11 +185,25 @@ tracks/3/path = NodePath("../../OpenMenuAudio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.8),
+"times": PackedFloat32Array(0.76666665),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["open"],
 "method": &"play_sound_effect_from_library"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../PolyphonicMenuAudio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
 }]
 }
 
