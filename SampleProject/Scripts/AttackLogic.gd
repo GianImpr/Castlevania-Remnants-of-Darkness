@@ -9,6 +9,7 @@ class_name PlayerHitbox
 @export var hitbox: CollisionShape2D
 @export var hitbox_is_child: bool
 @export var trail: Sprite2D
+@export var sheathe_trail: Sprite2D
 @export var hit_collision_scene: PackedScene
 @export var ice_hit_collision_scene: PackedScene
 @export var fire_hit_collision_scene: PackedScene = preload("res://SampleProject/extra_scenes/effects/candle_explosion.tscn")
@@ -364,6 +365,10 @@ func recolorTrail() -> void:
 		trail.modulate = FIRE_TRAIL
 	else:
 		trail.modulate = NORMAL_TRAIL
+	
+	if sheathe_trail:
+			sheathe_trail.modulate = trail.modulate
+
 
 func updateKillCount(enemy_name: String) -> void:
 	for i in range(0, Game.enemy_data.size()):

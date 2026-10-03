@@ -2,6 +2,7 @@ extends State
 class_name HectorAttack
 var can_perfect_guard: bool = true
 @export var hector_hands: Sprite2D
+@export var sheathe_sound: PolyphonicAudio
 const DEFAULT_HAND_FRAME: int = 6
 const FIST_FOLLOW_UP_FROM_TIME: float = 0.25
 static var getWeaponAttackSound: Callable
@@ -9,13 +10,16 @@ static var getHectorAttackSound: Callable
 const WEAPON_ANIMATION_DELAY: float = 0.01
 static var speed_multiplier: float = 1
 const SPEED_INCREASE_AFTER_FIST: float = 0.05
-
+var should_transition_to_sheathe: bool
+var transitioned_to_sheathe: bool
 
 func _ready():
 	HectorWait.resumeAttackAnimation = resumeAttackAnimation
 
 func enter():
 	speed_multiplier = 1
+	transitioned_to_sheathe = false
+	should_transition_to_sheathe = Global.player.stats.getCurrentWeaponType() == Weapon.Type.SWORD
 	if attack_anim_suffix() == "_spear":
 		hector_hands.frame = DEFAULT_HAND_FRAME
 		hector_hands.visible = true
@@ -29,6 +33,9 @@ func exit():
 	if player.sprite.weapon != null:
 		player.sprite.weapon.stop()
 	
+	if animation.current_animation == "sheathe_sword":
+		sheathe_sound.stop()
+
 func Update(delta: float):
 	remove_momentum()
 	
@@ -68,8 +75,31 @@ func Physics_Update(delta: float):
 	check_is_hurt()
 	can_die()
 	
+	if animation.current_animation == "sheathe_sword":
+		if Input.is_action_pressed("jump"):
+			Transitioned.emit(self, "jump")
+		elif InputBuffer.is_action_press_buffered("attack"):
+			sheathe_sound.stop()
+			can_turn()
+			player.sprite.weapon.sheathe.visible = false
+			player.sprite.weapon.play(get_attack_speed())
+			player.sprite.weapon.animation.seek(0)
+			get_hector_attack_sound()
+			transitioned_to_sheathe = false
+			enter()
+		else:
+			run_without_start_anim(false)
+			can_guard()
+			can_perform("backdash", true)
+			can_perform("crouch", false)
+			can_turn()
+			can_pose()
+	
 	if not animation.is_playing():
-		Transitioned.emit(self, "idle")
+		if should_transition_to_sheathe and not transitioned_to_sheathe:
+			playSheatheAnimation()
+		else:
+			Transitioned.emit(self, "idle")
 
 #Continues the attack animation from where AirAttack left off
 func resumeAttackAnimation() -> void:
@@ -90,3 +120,8 @@ func playAttackAnimation(punch_number: String) -> void:
 	var anim_suffix = attack_anim_suffix()
 	animation.play("attack" + anim_suffix + punch_number, -1, anim_speed * speed_multiplier)
 	animation.seek(0)
+
+func playSheatheAnimation() -> void:
+	transitioned_to_sheathe = true
+	animation.play("sheathe_sword")
+	player.sprite.weapon.play_sheathe()

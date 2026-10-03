@@ -242,6 +242,8 @@
 [ext_resource type="AudioStream" uid="uid://drbsnlyige8pb" path="res://assets/sounds/Effects/Miscellaneous/Teleport.mp3" id="215_eacfl"]
 [ext_resource type="Texture2D" uid="uid://dcmexpqewqyki" path="res://assets/sprites/Effects/Charge.png" id="215_iee07"]
 [ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="216_rbo1h"]
+[ext_resource type="AudioStream" uid="uid://cxt5kclgs5qig" path="res://assets/sounds/HectorMovement/SwordSheathe1.wav" id="219_gl364"]
+[ext_resource type="AudioStream" uid="uid://boa1umpi7bb0r" path="res://assets/sounds/HectorMovement/SwordSheathe2.wav" id="220_64ww5"]
 [ext_resource type="Script" uid="uid://cetysgqumvdh6" path="res://SampleProject/Scripts/Powers/sword_spin.gd" id="223_cwl8n"]
 [ext_resource type="AudioStream" uid="uid://csjqpj5clyk1e" path="res://assets/sounds/Voice/Hector/HeavyAttack1.wav" id="224_cev0d"]
 [ext_resource type="Texture2D" uid="uid://7a7gx1dlhids" path="res://assets/sprites/Weapons/Swords/AdaBoomerangSwing.png" id="225_cwl8n"]
@@ -4148,6 +4150,40 @@ tracks/4/keys = {
 "values": [Vector2(13, 41)]
 }
 
+[sub_resource type="Animation" id="Animation_1yt45"]
+resource_name = "sheathe_sword"
+length = 1.9
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.46, 0.51, 0.71, 0.81, 0.86, 0.91, 0.96, 1.01, 1.06, 1.11, 1.16, 1.21, 1.28, 1.33, 1.4, 1.5, 1.6, 1.7, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 649, 650, 650, 651, 651, 652, 652, 653, 654, 654, 655, 656, 657, 658, 659]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SheatheSounds")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.40000004, 1.52),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["sword_sheathe_1"],
+"method": &"play_sound_effect_from_library"
+}, {
+"args": ["sword_sheathe_2"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_w772u"]
 resource_name = "sitting_down"
 length = 0.5
@@ -5049,6 +5085,7 @@ _data = {
 &"run": SubResource("Animation_m23uc"),
 &"run_end": SubResource("Animation_rcift"),
 &"run_start": SubResource("Animation_xave1"),
+&"sheathe_sword": SubResource("Animation_1yt45"),
 &"sitting_down": SubResource("Animation_w772u"),
 &"slide": SubResource("Animation_oke0v"),
 &"sneak_attack": SubResource("Animation_gik8q"),
@@ -5281,6 +5318,22 @@ stream = ExtResource("183_bjshn")
 [sub_resource type="Resource" id="Resource_biklv"]
 script = ExtResource("140_3d8p5")
 sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_2oamq")])
+
+[sub_resource type="Resource" id="Resource_c0ija"]
+script = ExtResource("17_eidx6")
+Tag = "sword_sheathe_1"
+stream = ExtResource("219_gl364")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_uc5i5"]
+script = ExtResource("17_eidx6")
+Tag = "sword_sheathe_2"
+stream = ExtResource("220_64ww5")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
+[sub_resource type="Resource" id="Resource_gl364"]
+script = ExtResource("140_3d8p5")
+sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_c0ija"), SubResource("Resource_uc5i5")])
 
 [sub_resource type="Resource" id="Resource_fk7mo"]
 script = ExtResource("17_eidx6")
@@ -6482,9 +6535,10 @@ wait_time = 0.05
 [node name="Debris_timer" type="Timer" parent="StateMachine/Backdash" unique_id=1182653179]
 wait_time = 0.1
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=1224426198 node_paths=PackedStringArray("hector_hands")]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1224426198 node_paths=PackedStringArray("hector_hands", "sheathe_sound")]
 script = ExtResource("12_5kq8s")
 hector_hands = NodePath("../../Sprite2D/SpearHands")
+sheathe_sound = NodePath("../../SheatheSounds")
 attack_state = true
 
 [node name="Crouch_attack" type="Node" parent="StateMachine" unique_id=876133017 node_paths=PackedStringArray("hector_hands")]
@@ -6674,6 +6728,11 @@ process_mode = 1
 bus = &"SFX"
 audio_library = SubResource("Resource_biklv")
 
+[node name="SheatheSounds" parent="." unique_id=616425838 instance=ExtResource("15_lipy2")]
+process_mode = 1
+bus = &"SFX"
+audio_library = SubResource("Resource_gl364")
+
 [node name="VoiceClips" parent="." unique_id=1626614355 instance=ExtResource("15_lipy2")]
 volume_db = -18.0
 bus = &"Voice"
@@ -6685,6 +6744,7 @@ script = ExtResource("23_fwax5")
 damage_node = ExtResource("24_txt38")
 
 [node name="BloodDamage" type="CPUParticles2D" parent="." unique_id=28058517]
+visible = false
 emitting = false
 amount = 12
 lifetime = 0.75

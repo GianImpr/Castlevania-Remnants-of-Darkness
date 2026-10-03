@@ -4,6 +4,7 @@ class_name WeaponSprite
 @export var hitbox: PlayerHitbox
 @export var has_parent_node: bool = false
 @export var boomerang: Sprite2D
+@export var sheathe: Sprite2D
 var facing_position: int = 1
 var anim_position: float
 
@@ -23,9 +24,14 @@ func play_crouch(anim_speed: float = 1, visible_from_start: bool = true):
 	animation.play("swing_crouch", -1, anim_speed)
 	visible = visible_from_start
 
+func play_sheathe():
+	sheathe.visible = true
+	animation.play("sheathe")
 
 func stop():
 	visible = false
+	if sheathe:
+		sheathe.visible = false
 	animation.call_deferred("stop")
 	
 func register_anim_pos():
