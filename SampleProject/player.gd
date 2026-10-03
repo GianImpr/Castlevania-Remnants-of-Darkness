@@ -654,6 +654,7 @@ func setBloodForSlashDamage() -> void:
 	blood.amount = 96
 	blood.explosiveness = 0
 	blood.spread = 45
+	blood.gravity.y = -100
 	blood.direction = Vector2(facing_position,-1)
 	blood.initial_velocity_min = 80
 	blood.initial_velocity_max = 80
@@ -667,8 +668,9 @@ func resetBloodAttributes() -> void:
 	blood.one_shot = true
 	blood.amount = 12
 	blood.explosiveness = 0.9
-	blood.spread = 45
-	blood.direction = Vector2(facing_position,-1)
+	blood.spread = 40
+	blood.gravity.y = 150
+	blood.direction = Vector2(facing_position,1)
 	blood.initial_velocity_min = 20
 	blood.initial_velocity_max = 40
 
