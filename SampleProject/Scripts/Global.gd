@@ -47,10 +47,12 @@ enum Languages {
 	SPANISH,
 	PORTUGUESE,
 	FRENCH,
-	DUTCH
+	DUTCH,
+	RUSSIAN,
+	CHINESE
 }
 
-const langs = ["en", "it", "es", "pt_BR", "fr", "nl"]
+const langs = ["en", "it", "es", "pt_BR", "fr", "nl", "ru", "zh"]
 
 
 enum ScreenType {

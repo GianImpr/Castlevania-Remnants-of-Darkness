@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 		"neutral": "*"
 	}
 	
-	if true:
+	if false:
 		var command_string: String = "{"
 		for command in command_history:
 			command_string += " ["

@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 		shake_strength = lerpf(shake_strength, 0, shake_fade * delta)
 		
 		offset = _randomOffset()
+	global_position = Global.player.global_position
 		
 func _randomOffset() -> Vector2:
 	return Vector2(randf_range(-shake_strength, shake_strength), randf_range(-shake_strength, shake_strength))
