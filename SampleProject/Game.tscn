@@ -384,6 +384,7 @@
 [ext_resource type="Texture2D" uid="uid://dlwec5dr5h053" path="res://assets/sprites/HUD/Elements/Curse.png" id="324_cic6f"]
 [ext_resource type="Texture2D" uid="uid://dypdshve4t2hm" path="res://assets/sprites/HUD/Elements/Stone.png" id="325_0a8mu"]
 [ext_resource type="Script" uid="uid://c1vp5ukcefpq0" path="res://SampleProject/Scripts/System/map_window.gd" id="333_236bd"]
+[ext_resource type="Texture2D" uid="uid://ddnjj8bu8p1jy" path="res://assets/sprites/HUD/InGameHUD/RoD_minimap_border.png" id="333_qyww0"]
 [ext_resource type="AudioStream" uid="uid://rcd8exs6eagu" path="res://assets/music/CrystalTeardrops.ogg" id="339_gvdo1"]
 [ext_resource type="AudioStream" uid="uid://nqir05a7fqmo" path="res://assets/sounds/Menu/ChangeMap.ogg" id="340_cic6f"]
 [ext_resource type="AudioStream" uid="uid://d0e646nkdhatc" path="res://assets/sounds/Menu/Confirm.wav" id="340_ke0lk"]
@@ -5110,9 +5111,9 @@ z_index = 8
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -91.0
+offset_left = -97.0
 offset_top = 8.0
-offset_right = 77.0
+offset_right = 71.0
 offset_bottom = 176.0
 grow_horizontal = 0
 scale = Vector2(0.5, 0.5)
@@ -5275,16 +5276,16 @@ libraries/ = SubResource("AnimationLibrary_hrm2w")
 [node name="HUD2" parent="UI" unique_id=250061 instance=ExtResource("257_30jyd")]
 
 [node name="ItemBox" parent="UI" unique_id=798629577 instance=ExtResource("7_11rec")]
-offset_left = 12.0
+offset_left = 8.0
 offset_top = -3.0
-offset_right = 12.0
+offset_right = 8.0
 offset_bottom = -3.0
 
 [node name="EnemyBox" parent="UI" unique_id=1984694917 instance=ExtResource("13_uka3k")]
-offset_left = -16.0
-offset_top = 424.0
-offset_right = -448.0
-offset_bottom = 184.0
+offset_left = -11.0
+offset_top = 426.0
+offset_right = -443.0
+offset_bottom = 186.0
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="UI" unique_id=1200797640]
 process_mode = 3
@@ -5351,6 +5352,15 @@ dialogue_test = Array[ExtResource("107_o0dwx")]([SubResource("Resource_csyar"), 
 z_index = 99
 
 [node name="FullItemBox" parent="UI" unique_id=435188266 instance=ExtResource("367_7u0qt")]
+
+[node name="Border" type="TextureRect" parent="UI" unique_id=1407423390]
+z_index = 8
+offset_left = 760.0
+offset_top = 3.0
+offset_right = 815.0
+offset_bottom = 58.0
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("333_qyww0")
 
 [node name="PauseMenu" type="CanvasLayer" parent="." unique_id=808949865]
 

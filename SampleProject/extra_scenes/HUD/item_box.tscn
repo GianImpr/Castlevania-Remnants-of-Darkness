@@ -15,9 +15,9 @@ default_font_size = 16
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_65o1e"]
 content_margin_bottom = 4.0
 texture = ExtResource("2_qvc4r")
-texture_margin_left = 16.0
+texture_margin_left = 22.0
 texture_margin_top = 4.0
-texture_margin_right = 16.0
+texture_margin_right = 22.0
 
 [sub_resource type="Animation" id="Animation_mevbm"]
 length = 0.001
@@ -28,6 +28,18 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -63,6 +75,18 @@ tracks/1/keys = {
 "method": &"deleteTopEntry"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/HBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.3, 2.7, 2.8000002),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mevbm"]
 _data = {
@@ -87,10 +111,10 @@ vbox_container = NodePath("VBoxContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=868387789]
 layout_mode = 0
-offset_left = 0.5
-offset_top = -260.5
-offset_right = 86.5
-offset_bottom = -0.5
+offset_left = 1.5
+offset_top = -241.0
+offset_right = 99.5
+offset_bottom = -1.0
 theme_override_constants/separation = 0
 alignment = 2
 
@@ -115,7 +139,9 @@ texture = ExtResource("7_f3qut")
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=1548795653]
 layout_mode = 2
-text = "Bullova"
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 1
+text = "Bronze"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/MarginContainer" unique_id=1152166338]
 libraries/ = SubResource("AnimationLibrary_mevbm")

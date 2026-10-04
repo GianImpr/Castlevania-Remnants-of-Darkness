@@ -232,7 +232,7 @@ func _process(delta: float) -> void:
 		var flame = aguni_flames.instantiate()
 		flame.global_position = global_position + Vector2(20*facing_position,66) - MetSys.get_current_room_instance().global_position
 		MetSys.get_current_room_instance().add_child(flame)
-		
+	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

@@ -154,7 +154,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.45999998, 0.51, 0.71, 0.81, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28, 1.4, 1.5, 1.5999999),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-3, 4), Vector2(18, 6), Vector2(-5, 2), Vector2(-2, -3), Vector2(4, -7), Vector2(-16, 22), Vector2(-14, 21), Vector2(-13, 19), Vector2(-14, 18), Vector2(-11, 14), Vector2(-9, 8), Vector2(1, 1), Vector2(8, 9), Vector2(4, 12), Vector2(-4, 5), Vector2(3, -5), Vector2(11, -5), Vector2(13, 2), Vector2(12, 4), Vector2(11, 3), Vector2(10, 4), Vector2(9, 10)]
+"values": [Vector2(-3, 4), Vector2(18, 6), Vector2(-5, 2), Vector2(-2, -3), Vector2(4, -7), Vector2(-16, 22), Vector2(-14, 21), Vector2(-13, 19), Vector2(-14, 18), Vector2(-11, 14), Vector2(-8, 8), Vector2(1, 1), Vector2(8, 9), Vector2(4, 12), Vector2(-4, 5), Vector2(3, -5), Vector2(11, -5), Vector2(13, 2), Vector2(12, 4), Vector2(11, 3), Vector2(10, 4), Vector2(9, 10)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -190,7 +190,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.41, 0.45999998, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(0, 0), Vector2(12, -12), Vector2(5, -4), Vector2(-8, 2), Vector2(-9, -4), Vector2(2, -9), Vector2(7, 6), Vector2(-3, 9), Vector2(-10, 1), Vector2(-4, -7), Vector2(6, -3), Vector2(5, 6)]
+"values": [Vector2(0, 0), Vector2(12, -12), Vector2(5, -4), Vector2(-6, 2), Vector2(-9, -4), Vector2(2, -9), Vector2(7, 6), Vector2(-3, 9), Vector2(-10, 1), Vector2(-4, -7), Vector2(6, -3), Vector2(5, 6)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -230,7 +230,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_2yxjc")
 hframes = 20
 vframes = 39
-frame = 658
+frame = 649
 region_rect = Rect2(0, 0, 0, 70)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=339248227]
@@ -251,9 +251,8 @@ hframes = 21
 frame = 1
 
 [node name="Sheathe" type="Sprite2D" parent="Weapon/Weapon" unique_id=455822961]
-visible = false
-self_modulate = Color(0.89257157, 0.89257157, 0.89257157, 0.78514314)
-position = Vector2(5, 6)
+self_modulate = Color(0.99999934, 0.99999934, 0.99999934, 0.99999934)
+position = Vector2(-6, 2)
 texture = ExtResource("6_ljmr6")
 hframes = 11
-frame = 10
+frame = 2
