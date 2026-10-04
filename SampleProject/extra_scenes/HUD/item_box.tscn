@@ -139,8 +139,10 @@ texture = ExtResource("7_f3qut")
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/PanelContainer/HBoxContainer" unique_id=1548795653]
 layout_mode = 2
-theme_override_constants/shadow_offset_x = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.49803922)
+theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 1
 text = "Bronze"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/MarginContainer" unique_id=1152166338]
