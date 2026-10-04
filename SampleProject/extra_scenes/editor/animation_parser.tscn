@@ -56,6 +56,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weapon/Weapon/Sheathe:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(17, -14)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ljmr6"]
 _data = {
@@ -130,7 +142,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.46, 0.51, 0.71, 0.81, 0.86, 0.91, 0.96, 1.01, 1.06, 1.11, 1.16, 1.21, 1.28, 1.33, 1.4, 1.5, 1.6, 1.7, 1.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 649, 650, 650, 651, 651, 652, 652, 653, 654, 654, 655, 656, 657, 658, 659]
+"values": [660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 669, 670, 670, 671, 671, 672, 672, 673, 674, 674, 675, 676, 677, 678, 679]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -139,10 +151,10 @@ tracks/1/path = NodePath("Weapon/Weapon:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.71, 0.81, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28, 1.4, 1.5, 1.5999999),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.51, 0.71, 0.81, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28, 1.4, 1.5, 1.5999999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+"values": [0, 2, 3, 4, 5, 21, 7, 8, 24, 9, 10, 11, 12, 13, 14, 15, 16, 25, 26, 27, 28]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -151,10 +163,10 @@ tracks/2/path = NodePath("Weapon/Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.45999998, 0.51, 0.71, 0.81, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28, 1.4, 1.5, 1.5999999),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.45999998, 0.51, 0.71, 0.81, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28, 1.4, 1.41, 1.5, 1.5999999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-3, 4), Vector2(18, 6), Vector2(-5, 2), Vector2(-2, -3), Vector2(4, -7), Vector2(-16, 22), Vector2(-14, 21), Vector2(-13, 19), Vector2(-14, 18), Vector2(-11, 14), Vector2(-8, 8), Vector2(1, 1), Vector2(8, 9), Vector2(4, 12), Vector2(-4, 5), Vector2(3, -5), Vector2(11, -5), Vector2(13, 2), Vector2(12, 4), Vector2(11, 3), Vector2(10, 4), Vector2(9, 10)]
+"values": [Vector2(-6, 12), Vector2(17, 15), Vector2(-4, 12), Vector2(-1, 8), Vector2(5, 5), Vector2(-16, 37), Vector2(-13, 36), Vector2(-18, 30), Vector2(-14, 27), Vector2(-12, 32), Vector2(-7, 20), Vector2(1, 14), Vector2(8, 22), Vector2(4, 23), Vector2(-4, 16), Vector2(3, 9), Vector2(11, 9), Vector2(13, 16), Vector2(16, 18), Vector2(13, 21), Vector2(16, 21), Vector2(16, 25), Vector2(13, 31)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -190,7 +202,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.41, 0.45999998, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(0, 0), Vector2(12, -12), Vector2(5, -4), Vector2(-6, 2), Vector2(-9, -4), Vector2(2, -9), Vector2(7, 6), Vector2(-3, 9), Vector2(-10, 1), Vector2(-4, -7), Vector2(6, -3), Vector2(5, 6)]
+"values": [Vector2(0, 0), Vector2(14, -17), Vector2(13, 0), Vector2(-6, 2), Vector2(-9, -4), Vector2(2, -9), Vector2(7, 6), Vector2(-3, 9), Vector2(-10, 1), Vector2(-4, -7), Vector2(6, -3), Vector2(2, 6)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -202,7 +214,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0.41, 0.45999998, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+"values": [11, 12, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -230,7 +242,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_2yxjc")
 hframes = 20
 vframes = 39
-frame = 649
+frame = 669
 region_rect = Rect2(0, 0, 0, 70)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=339248227]
@@ -238,7 +250,7 @@ physics_interpolation_mode = 2
 libraries/ = SubResource("AnimationLibrary_ljmr6")
 libraries/sword_sheathe = SubResource("AnimationLibrary_qmig6")
 script = ExtResource("5_wm7jr")
-base_frame = 640
+base_frame = 660
 animation_name = "sword_sheathe"
 animation_data = ExtResource("4_ou7ed")
 
@@ -247,12 +259,12 @@ animation_data = ExtResource("4_ou7ed")
 [node name="Weapon" type="Sprite2D" parent="Weapon" unique_id=207483322]
 position = Vector2(-10, 10)
 texture = ExtResource("5_2yxjc")
-hframes = 21
+hframes = 29
 frame = 1
 
 [node name="Sheathe" type="Sprite2D" parent="Weapon/Weapon" unique_id=455822961]
-self_modulate = Color(0.99999934, 0.99999934, 0.99999934, 0.99999934)
-position = Vector2(-6, 2)
+self_modulate = Color(0.7744806, 0.7744806, 0.7744806, 0.775365)
+position = Vector2(17, -14)
 texture = ExtResource("6_ljmr6")
-hframes = 11
+hframes = 13
 frame = 2

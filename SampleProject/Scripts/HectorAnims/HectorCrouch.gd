@@ -31,14 +31,14 @@ func Update(delta: float):
 		slide_pressed = true
 		slide_after_timer.start()
 		
-	can_turn()
 	can_fall(false)
 	can_attack()
+	can_turn()
 	can_guard()
-	check_is_hurt()
-	can_die()
 	can_drop_ledge()
 	player.canCreateAquariusTrap()
+	check_is_hurt()
+	can_die()
 
 func canSlide() -> void:
 	can_slide = true

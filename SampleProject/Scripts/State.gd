@@ -255,7 +255,7 @@ func swingWeapon(anim_type: int):
 			player.sprite.weapon.play(get_attack_speed())
 		elif anim_type == AttackType.CROUCH:
 			var visible_from_start: bool = true
-			if Global.player.stats.getCurrentWeaponType() in [Weapon.Type.GREATSWORD, Weapon.Type.SPEAR, Weapon.Type.FIST]:
+			if Global.player.stats.getCurrentWeaponType() in [Weapon.Type.GREATSWORD, Weapon.Type.SPEAR, Weapon.Type.FIST, Weapon.Type.SWORD]:
 				visible_from_start = false
 			player.sprite.weapon.play_crouch(get_attack_speed(), visible_from_start)
 

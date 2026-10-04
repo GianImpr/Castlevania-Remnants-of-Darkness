@@ -24,9 +24,12 @@ func play_crouch(anim_speed: float = 1, visible_from_start: bool = true):
 	animation.play("swing_crouch", -1, anim_speed)
 	visible = visible_from_start
 
-func play_sheathe():
+func play_sheathe(crouch: bool = false):
 	sheathe.visible = true
-	animation.play("sheathe")
+	if not crouch:
+		animation.play("sheathe")
+	else:
+		animation.play("sheathe_crouch")
 
 func stop():
 	visible = false
