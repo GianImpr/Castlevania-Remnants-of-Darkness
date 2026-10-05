@@ -76,7 +76,7 @@ func Physics_Update(delta: float):
 	can_die()
 	
 	if animation.current_animation == "sheathe_sword":
-		if Input.is_action_pressed("jump"):
+		if InputBuffer.is_action_press_buffered("jump"):
 			Transitioned.emit(self, "jump")
 		elif InputBuffer.is_action_press_buffered("attack"):
 			sheathe_sound.stop()

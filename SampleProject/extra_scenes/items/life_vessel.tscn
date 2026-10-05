@@ -2,12 +2,11 @@
 
 [ext_resource type="Shader" uid="uid://ccbusj4pboktl" path="res://SampleProject/Shaders/flash.gdshader" id="1_vjqmd"]
 [ext_resource type="Script" uid="uid://j5iw26g480fu" path="res://SampleProject/Scripts/System/life_vessel.gd" id="1_yx2o4"]
-[ext_resource type="Texture2D" uid="uid://d4il687uurbj1" path="res://assets/sprites/Items/Pickups/Boosters/LifeVessel.png" id="2_m14wy"]
 [ext_resource type="PackedScene" uid="uid://blkgrf1pyhns1" path="res://SampleProject/extra_scenes/HUD/boost_message.tscn" id="2_wyfb2"]
-[ext_resource type="Shader" uid="uid://4smg7nuqwfay" path="res://SampleProject/Shaders/rainbow.gdshader" id="3_hfifi"]
-[ext_resource type="Texture2D" uid="uid://hvp2h5n3owjw" path="res://assets/sprites/Items/Pickups/Boosters/LifeVesselEssence.png" id="4_0ccpd"]
+[ext_resource type="Texture2D" uid="uid://8jv7e7xlg4gb" path="res://assets/sprites/Items/Pickups/Boosters/HPMaxUp.png" id="4_2mhqe"]
 [ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="7_cxv4q"]
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="8_h25pp"]
+[ext_resource type="Texture2D" uid="uid://juoabc8ao3vk" path="res://assets/sprites/Items/Pickups/Boosters/HPUpParticles.png" id="9_4p38j"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="9_ysxcq"]
 [ext_resource type="AudioStream" uid="uid://djh3kkwjm0n4f" path="res://assets/sounds/Pickups/LifeUp.wav" id="10_pun3y"]
 
@@ -16,28 +15,49 @@ shader = ExtResource("1_vjqmd")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifier = 0.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3iyo"]
+size = Vector2(16, 16)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g0mv5"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_4bh4y"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.2364341, 0.46124032, 0.68992245, 0.87984496)
+colors = PackedColorArray(0.99211615, 0, 0.2368845, 1, 0.10250563, 0.41932634, 0.99999994, 1, 0, 0.99035984, 0.4361636, 1, 0.798914, 0.75852126, 0, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0jpl7"]
+gradient = SubResource("Gradient_4bh4y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4p38j"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(16, 16, 0)
+direction = Vector3(0, -1, 0)
+spread = 15.0
+initial_velocity_min = 40.0
+initial_velocity_max = 80.0
+gravity = Vector3(0, 0, 0)
+color_initial_ramp = SubResource("GradientTexture1D_0jpl7")
+anim_speed_min = 3.0
+anim_speed_max = 3.0
+
 [sub_resource type="Gradient" id="Gradient_71y8j"]
 offsets = PackedFloat32Array(0, 0.328042)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8ych"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4p38j"]
 gradient = SubResource("Gradient_71y8j")
 use_hdr = true
 fill = 1
 fill_from = Vector2(0.495726, 0.474359)
 fill_to = Vector2(0, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0q2ud"]
-shader = ExtResource("3_hfifi")
-shader_parameter/strength = 0.75
-shader_parameter/speed = 2.0
-shader_parameter/angle = 80.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fe178"]
 size = Vector2(16, 14.0201)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3iyo"]
-size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_piiex"]
 length = 0.001
@@ -52,6 +72,71 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/Sparkles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/PointLight2D:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+
+[sub_resource type="Animation" id="Animation_2mhqe"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D/PointLight2D:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 3.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_nge4v"]
@@ -76,7 +161,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -97,10 +182,23 @@ tracks/2/keys = {
 "method": &"play_sound_effect_from_library"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/Sparkles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ojjl5"]
 _data = {
 &"RESET": SubResource("Animation_piiex"),
+&"idle": SubResource("Animation_2mhqe"),
 &"picked": SubResource("Animation_nge4v")
 }
 
@@ -117,44 +215,54 @@ sound_effects = Array[ExtResource("9_ysxcq")]([SubResource("Resource_6bnuw")])
 collision_layer = 0
 collision_mask = 4097
 lock_rotation = true
+freeze = true
 script = ExtResource("1_yx2o4")
 power = 15
 boost_message = ExtResource("2_wyfb2")
 animation = NodePath("AnimationPlayer")
 sound = NodePath("PolyphonicAudio")
-area = NodePath("Area2D")
+area = NodePath("Sprite2D/Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=244009511]
 material = SubResource("ShaderMaterial_3yniq")
 scale = Vector2(2, 2)
-texture = ExtResource("2_m14wy")
+texture = ExtResource("4_2mhqe")
 
-[node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=1084946680]
-position = Vector2(0, 1.19209e-07)
-scale = Vector2(0.434783, 0.434783)
-energy = 7.0
-texture = SubResource("GradientTexture2D_a8ych")
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D" unique_id=1402017087]
-material = SubResource("ShaderMaterial_0q2ud")
-texture = ExtResource("4_0ccpd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216766756]
-position = Vector2(0, -2.27692)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_fe178")
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1829310129]
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1829310129]
+visible = false
+scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 526338
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=378969760]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=378969760]
 visible = false
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_v3iyo")
 
+[node name="Sparkles" type="GPUParticles2D" parent="Sprite2D" unique_id=1803182112]
+self_modulate = Color(1, 1, 1, 0.64705884)
+material = SubResource("CanvasItemMaterial_g0mv5")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_4p38j")
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_4p38j")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=1437017183]
+position = Vector2(0, 1.30068)
+scale = Vector2(0.434783, 0.434783)
+energy = 3.0
+texture = SubResource("GradientTexture2D_4p38j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216766756]
+visible = false
+position = Vector2(0, -2.27692)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_fe178")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=34756694]
 libraries/ = SubResource("AnimationLibrary_ojjl5")
+autoplay = &"idle"
 
 [node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=188625059]
 process_mode = 3
@@ -162,4 +270,4 @@ volume_db = -25.0
 script = ExtResource("7_cxv4q")
 audio_library = SubResource("Resource_m26fd")
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_area_entered"]

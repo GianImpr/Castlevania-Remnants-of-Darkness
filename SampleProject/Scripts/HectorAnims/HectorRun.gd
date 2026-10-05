@@ -1,7 +1,6 @@
 extends State
 class_name HectorRun
 
-const ANIM_SPEED: float = 1.6
 const BLEND: float = -1
 const ANIM_NAME: String = "run_start"
 var can_perfect_guard: bool = true
@@ -9,22 +8,22 @@ static var play_landing_run_animation: bool
 
 func enter():
 	if not player.skip_run_start and not play_landing_run_animation:
-		animation.play("run_start", BLEND, 1.6)
+		animation.play("run_start", BLEND, 1)
 	elif play_landing_run_animation:
 		animation.play("landing_moving")
 		play_landing_run_animation = false
 	else:
-		animation.play("run", BLEND, 1.8)
+		animation.play("run", BLEND, 1)
 	
 func Update(delta: float):
 	if not animation.is_playing():
-		animation.play("run", BLEND, 1.8)
-		animation.seek(0.3)
+		animation.play("run", BLEND, 1)
+		animation.seek(0)
 	
 func Physics_Update(delta: float):
 	#Continue the run animation if not stopping
 	if not animation.is_playing():
-		animation.play("run", -1, 1.8)
+		animation.play("run", -1, 1)
 		
 	can_move_with_momentum(false)
 	can_perform(Actions.JUMP, true)
