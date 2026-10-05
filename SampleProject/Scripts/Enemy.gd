@@ -19,6 +19,7 @@ var is_hurt: bool = false
 var stay_idle: bool = false
 var poisoned: bool = false
 var poison_bubbles: Node2D = null
+var name_already_shown: bool = false
 @export var reset_idle_when_staying_idle: bool = false
 @export var agony: bool = false
 @export var agony_effect: Node2D
