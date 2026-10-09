@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://csrmfyxqbrq51" path="res://SampleProject/extra_scenes/stage_elements/door.tscn" id="12_xntj6"]
 [ext_resource type="Texture2D" uid="uid://biwn5irdj8rpr" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoor.png" id="13_xntj6"]
 [ext_resource type="Texture2D" uid="uid://bpiy0qh3bsdit" path="res://assets/sprites/Objects/Doors/SpecialRooms/DevilDoorAura.png" id="14_qh7d6"]
+[ext_resource type="PackedScene" uid="uid://cow3qaei4a10n" path="res://SampleProject/extra_scenes/stage_elements/change_area_trigger.tscn" id="15_gctl2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gk0ie"]
 texture = ExtResource("4_6nbvg")
@@ -1301,6 +1302,11 @@ position = Vector2(13, 736)
 spritesheet = ExtResource("13_xntj6")
 aura_sheet = ExtResource("14_qh7d6")
 aura_color = Color(0.16602775, 0.5041362, 0.99999994, 1)
+
+[node name="TutorialScreenTrigger" parent="." unique_id=836693443 instance=ExtResource("15_gctl2")]
+position = Vector2(960, 29)
+collision_mask = 0
+new_room_path = "Waterway/red_first_room.tscn"
 
 [editable path="YellowDoor"]
 [editable path="GreenDoor"]
