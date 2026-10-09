@@ -21,11 +21,10 @@ func Update(delta: float):
 	
 func _on_trail_frequency_timeout() -> void:
 	var trail = trail_scene.instantiate()
-	player.add_child(trail)
 	trail.texture = sword_sprite.texture
 	trail.vframes = sword_sprite.vframes
 	trail.hframes = sword_sprite.hframes
 	trail.global_position = sword_sprite.global_position
-	trail.scale = Vector2(2, 2)
-	trail.rotation_degrees = sword_sprite.rotation_degrees
-	trail.show_behind_parent = true
+	trail.scale = Vector2(-2, 2)
+	trail.rotation_degrees = -sword_sprite.rotation_degrees
+	MetSys.get_current_room_instance().add_child(trail)
