@@ -92,7 +92,7 @@ func hit_target(multiplier: float, body, attack_hitbox = hitbox_iframe, chip_dam
 		var damage = calculate_damage(body, multiplier, chip_damage, guard_break, attribute, knockback)
 		apply_damage(body, damage, attack_hitbox, rehit_time)
 	if "facing_position" in self:
-		if body is HectorPlayer:
+		if body is HectorPlayer and not body.isPetrified():
 			if attribute == Global.Attribute.SLASH:
 				body.setBloodForSlashDamage()
 			else:
