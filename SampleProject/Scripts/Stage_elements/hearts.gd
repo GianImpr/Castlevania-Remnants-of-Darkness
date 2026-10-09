@@ -37,8 +37,6 @@ func _physics_process(delta: float) -> void:
 	linear_velocity.x = SPEED * sin(Time.get_ticks_msec()/300)
 	if is_on_floor():
 		linear_velocity.x = 0
-		if not animation.is_playing():
-			animation.play("idle")
 			
 func is_on_floor():
 	return get_contact_count() > 0
