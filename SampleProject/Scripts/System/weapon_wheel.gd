@@ -91,7 +91,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("l2") and Global.screen == Global.ScreenType.NONE:
+	if Input.is_action_just_pressed("l2") and Global.screen == Global.ScreenType.NONE and Global.player.stats.Stats["HP"] > 0:
 		updateWeaponIcons()
 		relic_wheel = false
 		updateWheelTexture()
