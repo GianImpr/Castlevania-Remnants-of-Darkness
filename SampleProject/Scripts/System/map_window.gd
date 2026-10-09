@@ -126,6 +126,7 @@ func _process(delta: float) -> void:
 			updateStageLabels()
 			update_offset()
 			$"../../Minimap".visible = false
+			$"../../Border".visible = false
 			get_tree().paused = true
 			var tween = get_tree().create_tween()
 			Global.HUD.visible = false
@@ -156,6 +157,7 @@ func _process(delta: float) -> void:
 				get_tree().paused = false
 			get_parent().visible = false
 			$"../../Minimap".visible = true
+			$"../../Border".visible = true
 			Global.screen = Global.ScreenType.NONE
 			update_offset()
 			
