@@ -13,10 +13,13 @@ const CHECK_MIDAIR_STATUS_AFTER_DELAY: float = 0.1
 func enter():
 	if player.resume_attack:
 		resumeAttackAnimation.call()
-	get_tree().create_timer(CHECK_MIDAIR_STATUS_AFTER_DELAY).timeout.connect(func(): starting_from_midair = not player.is_on_floor())
+	var midair_timer: SceneTreeTimer
+	midair_timer = get_tree().create_timer(CHECK_MIDAIR_STATUS_AFTER_DELAY)
+	midair_timer.timeout.connect(func(): starting_from_midair = not player.is_on_floor())
 	if Global.screen != Global.ScreenType.TRAINING:
 		Global.screen = Global.ScreenType.EVENT
 	player.velocity.x = 0
+	await midair_timer.timeout
 	if player.is_on_floor():
 		if animation.current_animation == "run" or animation.current_animation == "run_start":
 			animation.play("run_end", -1, 1.5)
@@ -40,6 +43,6 @@ func Update(delta):
 		animation.play("landing", -1, 1.5)
 		await animation.animation_finished
 		animation.play(ANIM_NAME, BLEND, ANIM_SPEED)
-		
-	if not animation.is_playing() and Global.screen == Global.ScreenType.EVENT:
+	
+	if not animation.is_playing() and (Global.screen == Global.ScreenType.EVENT or Global.screen == Global.ScreenType.TRAINING) and player.is_on_floor():
 		animation.play(ANIM_NAME, BLEND, ANIM_SPEED)

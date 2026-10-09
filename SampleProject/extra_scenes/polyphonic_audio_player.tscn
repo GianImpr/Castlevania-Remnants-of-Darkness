@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://chsi373nippdo"]
+[gd_scene format=3 uid="uid://chsi373nippdo"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="1_frplv"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="2_sey1v"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="3_2ndaa"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="1_frplv"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="2_sey1v"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="3_2ndaa"]
 [ext_resource type="AudioStream" uid="uid://baubt1rksjbty" path="res://assets/sounds/HectorMovement/jump.MP3" id="4_da3gs"]
 [ext_resource type="AudioStream" uid="uid://cghql4ik4xqao" path="res://assets/sounds/HectorMovement/Backdash.MP3" id="5_fov8f"]
 [ext_resource type="AudioStream" uid="uid://bc2alrbmrk7op" path="res://assets/sounds/HectorMovement/land.MP3" id="6_xlvwx"]
@@ -50,6 +50,6 @@ stream = ExtResource("10_ugnrj")
 script = ExtResource("2_sey1v")
 sound_effects = Array[ExtResource("3_2ndaa")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl")])
 
-[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D"]
+[node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" unique_id=2133036637]
 script = ExtResource("1_frplv")
 audio_library = SubResource("Resource_h6kku")

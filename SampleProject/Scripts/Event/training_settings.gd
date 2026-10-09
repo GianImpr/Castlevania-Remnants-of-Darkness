@@ -29,6 +29,8 @@ enum ChallengeResult {
 
 func _ready() -> void:
 	Global.player.unfreeze()
+	if Global.player.innocent_devil:
+		Global.player.innocent_devil.dismiss()
 	enemy_spawner.enemy = enemies[0]
 	if enemies.size() > 1:
 		enemy_spawner_2.enemy = enemies[1]

@@ -173,8 +173,6 @@ func check_is_hurt():
 			voice.play_sound_effect_from_library("HeavyHit")
 	elif player.is_hurt and player.willPerfectGuard():
 		check_is_blocking()
-	elif player.stats.Stats["HP"] == 0:
-		sound.play_sound_effect_from_library("damage")
 
 #Tells if the player is currently attacking
 func attacking() -> bool:
@@ -332,7 +330,8 @@ func can_land():
 			player.resume_attack = true
 			Transitioned.emit(self, "attack")
 			return
-		TrainingSettings.spawnTrainingHeart(TrainingMode.Training.JUMP_CANCEL)
+		if attacking() and player.can_jump_cancel:
+			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.JUMP_CANCEL)
 		if Global.player.stats.status[Global.player.stats.Status.POISON] > 0:
 			Transitioned.emit(self, "hard_landing")
 			return
@@ -349,6 +348,7 @@ func can_die():
 		if Global.screen == Global.ScreenType.TRAINING:
 			if self is not HectorDamageMercy and self is not HectorHardLanding:
 				Transitioned.emit(self, "damage_mercy")
+				get_tree().create_timer(0.5, false).timeout.connect(func(): Global.player.blood.emitting = false)
 			return
 		if player.stats.accessoryEquipped(Accessory.Accessories.RING_OF_LIFE):
 			var ring_of_life_effect = player.RING_OF_LIFE_SCENE.instantiate()

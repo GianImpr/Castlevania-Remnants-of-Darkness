@@ -24,7 +24,6 @@ func Update(delta: float):
 func Physics_Update(delta: float):
 	can_fall(true)
 	check_is_hurt()
-	can_die()
 	
 	if not animation.is_playing():
 		Transitioned.emit(self, "idle")
