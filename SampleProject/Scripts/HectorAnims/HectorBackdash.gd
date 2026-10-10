@@ -13,6 +13,9 @@ const MOONWALKERS_SPEED_BOOST: float = 1.3
 
 func enter():
 	animation.play("backflip")
+	if player.direction != 0:
+		player.facing_position = player.direction
+	can_turn()
 	player.velocity.x = backdash_speed * player.facing_position * (-1)
 	if Global.player.stats.itemEquipped(Legs.Leg.MOONWALKERS, "legs"):
 		player.velocity.x *= MOONWALKERS_SPEED_BOOST
