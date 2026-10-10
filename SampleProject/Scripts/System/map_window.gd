@@ -35,6 +35,7 @@ static var layer: int = -10000
 const CURSOR_SPEED: Vector2 = Vector2(300, 300)
 @onready var cursor_animation: AnimationPlayer = $MarkerCursor/AnimationPlayer
 var cursor_tween: Tween
+var show_tween: Tween
 
 
 const STAGE_NAMES: Array[String] = [
@@ -113,7 +114,7 @@ func drawMap(map_layer: int, stage_offset: Vector2 = Vector2.ZERO) -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("map") and Global.player.stats.Stats["HP"] > 0:
+	if Input.is_action_just_pressed("map") and Global.player.stats.Stats["HP"] > 0 and (not show_tween or show_tween and not show_tween.is_running()):
 		if not get_parent().visible and Global.screen == Global.ScreenType.NONE:
 			layer = MetSys.current_layer
 			Global.screen = Global.ScreenType.MAP
@@ -128,31 +129,31 @@ func _process(delta: float) -> void:
 			$"../../Minimap".visible = false
 			$"../../Border".visible = false
 			get_tree().paused = true
-			var tween = get_tree().create_tween()
+			show_tween = get_tree().create_tween()
 			Global.HUD.visible = false
-			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-			tween.tween_property(Global.fade_screen, "modulate", Color(1, 1, 1, 0.6), 0.1)
-			await tween.finished
-			tween = get_tree().create_tween()
-			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-			tween.tween_property(get_parent(), "modulate", Color(1, 1, 1, 1), 0.1)
-			await tween.finished
+			show_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+			show_tween.tween_property(Global.fade_screen, "modulate", Color(1, 1, 1, 0.6), 0.1)
+			await show_tween.finished
+			show_tween = get_tree().create_tween()
+			show_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+			show_tween.tween_property(get_parent(), "modulate", Color(1, 1, 1, 1), 0.1)
+			await show_tween.finished
 			return
-		if get_parent().visible and Global.screen == Global.ScreenType.MAP:
+		if get_parent().visible and Global.screen == Global.ScreenType.MAP and (not show_tween or show_tween and not show_tween.is_running()):
 			marker_mode = false
 			cursor.self_modulate = Color.TRANSPARENT
 			layer = MetSys.current_layer
 			sound.play_sound_effect_from_library("map")
-			var tween = get_tree().create_tween()
-			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-			tween.tween_property(get_parent(), "modulate", Color(0, 0, 0, 1), 0.1)
+			show_tween = get_tree().create_tween()
+			show_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+			show_tween.tween_property(get_parent(), "modulate", Color(0, 0, 0, 1), 0.1)
 			Global.HUD.visible = true
-			await tween.finished
+			await show_tween.finished
 			get_parent().modulate = Color(0,0,0,0)
-			tween = get_tree().create_tween()
-			tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-			tween.tween_property(Global.fade_screen, "modulate", Color(1, 1, 1, 0), 0.1)
-			await tween.finished
+			show_tween = get_tree().create_tween()
+			show_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+			show_tween.tween_property(Global.fade_screen, "modulate", Color(1, 1, 1, 0), 0.1)
+			await show_tween.finished
 			if Global.screen == Global.ScreenType.MAP:
 				get_tree().paused = false
 			get_parent().visible = false
