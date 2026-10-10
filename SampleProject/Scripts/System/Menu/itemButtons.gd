@@ -192,19 +192,39 @@ func useItem(item: Item) -> bool:
 	var stats = Global.player.stats.Stats 
 	match item.healing_type:
 		item.HealingType.HEALTH:
+			if stats["HP"] == stats["MHP"]:
+				sound.play_sound_effect_from_library("denied")
+				return false
 			stats["HP"] = min(stats["HP"]+item.power, stats["MHP"])
 			sound.play_sound_effect_from_library("HPItem")
+			
 		item.HealingType.MAGIC:
 			stats["MP"] = min(stats["MP"]+item.power, stats["MMP"])
+			if stats["MP"] == stats["MMP"]:
+				sound.play_sound_effect_from_library("denied")
+				return false
 			sound.play_sound_effect_from_library("MPItem")
+
 		item.HealingType.POISON:
+			if Global.player.stats.status[HectorStats.Status.POISON] == 0:
+				sound.play_sound_effect_from_library("denied")
+				return false
 			Global.player.stats.status[HectorStats.Status.POISON] = 0
 			sound.play_sound_effect_from_library("MPItem")
+			
 		item.HealingType.CURSE:
+			if Global.player.stats.status[HectorStats.Status.CURSE] == 0:
+				sound.play_sound_effect_from_library("denied")
+				return false
 			Global.player.stats.status[HectorStats.Status.CURSE] = 0
 			sound.play_sound_effect_from_library("MPItem")
+			
 		item.HealingType.SYNERGY:
+			if stats["SP"] == stats["MSP"]:
+				sound.play_sound_effect_from_library("denied")
+				return false
 			stats["SP"] = min(stats["SP"]+item.power, stats["MSP"])
+			
 		item.HealingType.HEART:
 			if Global.player.innocent_devil == null or not Global.player.innocent_devil.is_alive:
 				sound.play_sound_effect_from_library("denied")
@@ -212,6 +232,7 @@ func useItem(item: Item) -> bool:
 			Global.player.innocent_devil.stats.Stats["Hearts"] = min(Global.player.innocent_devil.stats.Stats["Hearts"]+item.power, Global.player.innocent_devil.stats.Stats["MHearts"])
 			sound.play_sound_effect_from_library("MPItem")
 			displayProperties(item)
+			
 		item.HealingType.REVIVE:
 			if Global.player.innocent_devil == null or Global.player.innocent_devil.is_alive:
 				sound.play_sound_effect_from_library("denied")
