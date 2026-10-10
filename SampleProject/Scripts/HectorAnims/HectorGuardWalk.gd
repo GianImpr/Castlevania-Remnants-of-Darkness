@@ -22,6 +22,7 @@ func Update(delta: float):
 
 
 	if player.direction == 0 and Input.is_action_pressed("guard"):
+		HectorGuard.skip_guard_anim = true
 		Transitioned.emit(self, "guard")
 	elif not Input.is_action_pressed("guard"):
 		run_without_start_anim(false)
