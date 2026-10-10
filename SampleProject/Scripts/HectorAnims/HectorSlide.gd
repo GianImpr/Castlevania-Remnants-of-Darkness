@@ -6,6 +6,7 @@ class_name HectorSlide
 @export var trail_timer: Timer
 @export var debris_timer: Timer
 @export var turn_timer: Timer
+@export var slide_hitbox: CollisionShape2D
 var can_perfect_guard: bool = true
 var deceleration_tween: Tween
 const SLIDE_CANCEL_EXTRA_VERTICAL_MOMENTUM: float = 400
@@ -24,6 +25,7 @@ func enter():
 	player.instantiateScene(debris_scene, false, Vector2(player.facing_position*DEBRIS_POSITION.x,DEBRIS_POSITION.y))
 	trail_timer.start()
 	debris_timer.start()
+	
 	
 func Update(delta: float):
 	if animation.current_animation_position > 0.2:
@@ -48,6 +50,7 @@ func exit():
 	if deceleration_tween:
 		deceleration_tween.kill()
 	player.velocity.x *= SLIDE_CANCEL_SPEED_BOOST_MULTIPLIER
+	slide_hitbox.set_deferred("disabled", true)
 	
 	if player.state_machine.new_state is HectorFalling:
 		sound.play_sound_effect_from_library("slide_jump")

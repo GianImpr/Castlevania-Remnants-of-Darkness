@@ -6525,7 +6525,7 @@ slide_after_timer = NodePath("Slide_after")
 wait_time = 0.02
 one_shot = true
 
-[node name="Slide" type="Node" parent="StateMachine" unique_id=874481497 node_paths=PackedStringArray("trail_timer", "debris_timer", "turn_timer")]
+[node name="Slide" type="Node" parent="StateMachine" unique_id=874481497 node_paths=PackedStringArray("trail_timer", "debris_timer", "turn_timer", "slide_hitbox")]
 script = ExtResource("129_w5oev")
 slide_speed = 600.0
 trail_scene = ExtResource("140_4ybkv")
@@ -6533,6 +6533,7 @@ debris_scene = ExtResource("16_8e2oa")
 trail_timer = NodePath("Trail_timer")
 debris_timer = NodePath("Debris_timer")
 turn_timer = NodePath("Turn_timer")
+slide_hitbox = NodePath("../../Sprite2D/SlideHitbox/CollisionShape2D")
 attack_state = true
 metadata/_custom_type_script = "uid://bu6a0jaceyaa4"
 
