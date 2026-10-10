@@ -187,15 +187,16 @@ tolerances = Array[int]([9])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1995060519]
 texture = ExtResource("3_lgc47")
+offset = Vector2(-8, 0)
 hframes = 10
 vframes = 4
 
 [node name="Collision box" type="CollisionShape2D" parent="." unique_id=794089044]
-position = Vector2(10.2826, 7.17391)
+position = Vector2(2, 7.174)
 shape = SubResource("RectangleShape2D_5cx7u")
 
 [node name="Collision box2" type="CollisionShape2D" parent="." unique_id=1035740653]
-position = Vector2(-2.3587, -3.32607)
+position = Vector2(-10, -3.326)
 shape = SubResource("RectangleShape2D_t4nq5")
 
 [node name="PolyphonicAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=172011969]
@@ -208,6 +209,7 @@ script = ExtResource("8_pbxox")
 damage_node = ExtResource("9_g8e0w")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1498933246]
+position = Vector2(-8, 0)
 collision_layer = 0
 collision_mask = 2
 
@@ -222,7 +224,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="Hitbox" type="CollisionShape2D" parent="Sword" unique_id=1517961375]
-position = Vector2(-21.087, 8.04348)
+position = Vector2(-29, 8.043)
 shape = SubResource("RectangleShape2D_01brj")
 disabled = true
 
