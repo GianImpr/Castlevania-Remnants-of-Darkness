@@ -6,6 +6,7 @@ var animation: AnimationPlayer
 var sound
 var voice
 @export var attack_state: bool = false
+var aerial_velocity_y: float
 const Actions = {
 	JUMP = "jump",
 	BACKDASH = "backdash",
@@ -323,8 +324,9 @@ func can_dive_kick():
 		Transitioned.emit(self, "dive_kick")
 	
 func can_land():
+	const HARD_LAND_SPEED_THRESHOLD: float = 1000
 	if player.is_on_floor():
-		if Global.player.stats.status[Global.player.stats.Status.POISON] == 0:
+		if Global.player.stats.status[Global.player.stats.Status.POISON] == 0 and aerial_velocity_y < HARD_LAND_SPEED_THRESHOLD:
 			sound.play_sound_effect_from_library("land")
 		if attacking() and not player.can_jump_cancel:
 			player.resume_attack = true
@@ -332,12 +334,14 @@ func can_land():
 			return
 		if attacking() and player.can_jump_cancel:
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.JUMP_CANCEL)
-		if Global.player.stats.status[Global.player.stats.Status.POISON] > 0:
+		if Global.player.stats.status[Global.player.stats.Status.POISON] > 0 or aerial_velocity_y >= HARD_LAND_SPEED_THRESHOLD:
 			Transitioned.emit(self, "hard_landing")
 			return
 		run_without_start_anim(true, true)
 		if not player.direction:
 			Transitioned.emit(self, "landing")
+	else:
+		aerial_velocity_y = player.velocity.y
 	
 func play_sound(sfx_name: String):
 	sound.set_stream(load("res://assets/sounds/" + sfx_name))
