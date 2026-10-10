@@ -3670,6 +3670,23 @@ tracks/4/keys = {
 "values": [Vector2(0.5, 12.5)]
 }
 
+[sub_resource type="Animation" id="Animation_xt5ia"]
+resource_name = "kick_launcher"
+length = 0.97
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.12, 0.16, 0.23, 0.27, 0.32, 0.39, 0.49, 0.54, 0.59, 0.66, 0.73, 0.8, 0.87),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714]
+}
+
 [sub_resource type="Animation" id="Animation_453o6"]
 resource_name = "landing"
 length = 0.82
@@ -4618,8 +4635,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_3k6ne"]
 resource_name = "thunder_uppercut"
-length = 0.85
-step = 0.05
+length = 0.65
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4627,10 +4644,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.65, 0.7, 0.75, 0.79999995),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.04, 0.09, 0.13, 0.23, 0.25, 0.27, 0.31, 0.33, 0.35, 0.45, 0.5, 0.54, 0.58, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238]
+"values": [226, 227, 228, 229, 230, 230, 231, 232, 233, 234, 234, 235, 236, 236, 238]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -4639,7 +4656,7 @@ tracks/1/path = NodePath("StateMachine/Uppercut")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.25, 0.3),
+"times": PackedFloat32Array(0.27, 0.32000002),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -4656,7 +4673,7 @@ tracks/2/path = NodePath("PolyphonicAudioPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.25),
+"times": PackedFloat32Array(0.27),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["ewgf"],
@@ -4670,7 +4687,7 @@ tracks/3/path = NodePath("UppercutLightning/UppercutSpark1:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.25),
+"times": PackedFloat32Array(0.27),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -4682,7 +4699,7 @@ tracks/4/path = NodePath("UppercutLightning/UppercutSpark2:emitting")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.25),
+"times": PackedFloat32Array(0.27),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -4694,7 +4711,7 @@ tracks/5/path = NodePath("UppercutLightning/ThunderLighting:energy")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.15, 0.3, 0.50000006, 0.6000001),
+"times": PackedFloat32Array(0.17000002, 0.32000002, 0.5200001, 0.6200001),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 6.0, 6.0, 0.0]
@@ -4706,7 +4723,7 @@ tracks/6/path = NodePath("Sprite2D/ThunderUppercutHitbox/CollisionShape2D:disabl
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.25, 0.39999998),
+"times": PackedFloat32Array(0.27, 0.42),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -4714,8 +4731,8 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_iotq6"]
 resource_name = "uppercut"
-length = 0.85
-step = 0.05
+length = 0.65
+step = 0.01
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4723,7 +4740,7 @@ tracks/0/path = NodePath("StateMachine/Uppercut")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.25),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -4737,7 +4754,7 @@ tracks/1/path = NodePath("PolyphonicAudioPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.25),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["punch"],
@@ -4751,7 +4768,7 @@ tracks/2/path = NodePath("Sprite2D/UppercutHitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.25, 0.35000002),
+"times": PackedFloat32Array(0.3, 0.40000004),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -4763,10 +4780,10 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.65, 0.7, 0.75, 0.79999995),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.04, 0.09, 0.13, 0.23, 0.25, 0.27, 0.31, 0.33, 0.35, 0.45, 0.5, 0.54, 0.58, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238]
+"values": [226, 227, 228, 229, 230, 230, 231, 232, 233, 234, 234, 235, 236, 236, 238]
 }
 
 [sub_resource type="Animation" id="Animation_4ybkv"]
@@ -5191,6 +5208,7 @@ _data = {
 &"idle_weak": SubResource("Animation_onbmp"),
 &"idle_weak_loop": SubResource("Animation_406d8"),
 &"jump": SubResource("Animation_2pg2k"),
+&"kick_launcher": SubResource("Animation_xt5ia"),
 &"landing": SubResource("Animation_453o6"),
 &"landing_moving": SubResource("Animation_37cei"),
 &"level_up": SubResource("Animation_xdv4l"),

@@ -199,10 +199,10 @@ func useItem(item: Item) -> bool:
 			sound.play_sound_effect_from_library("HPItem")
 			
 		item.HealingType.MAGIC:
-			stats["MP"] = min(stats["MP"]+item.power, stats["MMP"])
 			if stats["MP"] == stats["MMP"]:
 				sound.play_sound_effect_from_library("denied")
 				return false
+			stats["MP"] = min(stats["MP"]+item.power, stats["MMP"])
 			sound.play_sound_effect_from_library("MPItem")
 
 		item.HealingType.POISON:

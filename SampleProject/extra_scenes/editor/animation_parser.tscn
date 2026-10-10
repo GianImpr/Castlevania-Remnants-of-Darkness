@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://dtfxu1jn7ht65" path="res://SampleProject/Shaders/rainbowradial.gdshader" id="1_qmig6"]
 [ext_resource type="Texture2D" uid="uid://bc22rt5lbfl50" path="res://assets/sprites/Characters/Hector/HectorSprite2D.png" id="2_2yxjc"]
-[ext_resource type="JSON" path="res://assets/editor_data/json/animations/sword_attack_end-crouch.json" id="4_ou7ed"]
+[ext_resource type="JSON" path="res://assets/editor_data/json/animations/uppercut_remake-idle.json" id="4_2yxjc"]
 [ext_resource type="Texture2D" uid="uid://b8vobg221ljdw" path="res://assets/sprites/Weapons/Swords/Short Sword/UpdatedShortSwordSheathe.png" id="5_2yxjc"]
 [ext_resource type="Script" uid="uid://du6q5lvd43qsi" path="res://SampleProject/Scripts/Editor/animation_parser.gd" id="5_wm7jr"]
 [ext_resource type="Texture2D" uid="uid://dqgyixf5jxmd4" path="res://assets/sprites/Weapons/Swords/Short Sword/UpdatedShortSwordSheatheTrail.png" id="6_ljmr6"]
@@ -54,7 +54,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -72,6 +72,26 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ljmr6"]
 _data = {
 &"RESET": SubResource("Animation_2yxjc")
+}
+
+[sub_resource type="Animation" id="Animation_o702q"]
+length = 0.6500000000000002
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.09, 0.13, 0.23, 0.25, 0.27, 0.31, 0.33, 0.35, 0.45, 0.5, 0.54, 0.58, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [226, 227, 228, 229, 230, 230, 231, 232, 233, 234, 234, 235, 236, 236, 237]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wm7jr"]
+_data = {
+&"kick_launcher": SubResource("Animation_o702q")
 }
 
 [sub_resource type="Animation" id="Animation_ljmr6"]
@@ -242,21 +262,23 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_2yxjc")
 hframes = 20
 vframes = 39
-frame = 680
+frame = 237
 region_rect = Rect2(0, 0, 0, 70)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=339248227]
 physics_interpolation_mode = 2
 libraries/ = SubResource("AnimationLibrary_ljmr6")
+libraries/kick_launcher = SubResource("AnimationLibrary_wm7jr")
 libraries/sword_sheathe = SubResource("AnimationLibrary_qmig6")
 script = ExtResource("5_wm7jr")
-base_frame = 660
-animation_name = "sword_sheathe"
-animation_data = ExtResource("4_ou7ed")
+base_frame = 226
+animation_name = "kick_launcher"
+animation_data = ExtResource("4_2yxjc")
 
 [node name="Weapon" type="Node2D" parent="." unique_id=671835445]
 
 [node name="Weapon" type="Sprite2D" parent="Weapon" unique_id=207483322]
+visible = false
 position = Vector2(-10, 10)
 texture = ExtResource("5_2yxjc")
 hframes = 29
