@@ -217,6 +217,7 @@
 [ext_resource type="AudioStream" uid="uid://d1dl1exlnlmj2" path="res://assets/sounds/Effects/Miscellaneous/WeaponRankUp.wav" id="168_o4hqs"]
 [ext_resource type="PackedScene" uid="uid://dhu73hhippefg" path="res://SampleProject/extra_scenes/HUD/press_up.tscn" id="170_moyg6"]
 [ext_resource type="Script" uid="uid://c8eafdok4s7gk" path="res://SampleProject/Scripts/HectorAnims/HectorWhirlwind.gd" id="171_nrd1h"]
+[ext_resource type="Script" uid="uid://cb15q2lepto0a" path="res://SampleProject/Scripts/HectorAnims/HectorKickLauncher.gd" id="171_r0x2e"]
 [ext_resource type="Texture2D" uid="uid://brw1jnqokwney" path="res://assets/sprites/Effects/IceCollision.png" id="172_syffh"]
 [ext_resource type="PackedScene" uid="uid://b1qte8d156lf4" path="res://SampleProject/Powers/Swords/sword_spin.tscn" id="176_86i4x"]
 [ext_resource type="AudioStream" uid="uid://dtqfaqn26ut0b" path="res://assets/sounds/HectorMovement/SwingGreatsword.MP3" id="178_sf7kt"]
@@ -242,6 +243,7 @@
 [ext_resource type="AudioStream" uid="uid://drbsnlyige8pb" path="res://assets/sounds/Effects/Miscellaneous/Teleport.mp3" id="215_eacfl"]
 [ext_resource type="Texture2D" uid="uid://dcmexpqewqyki" path="res://assets/sprites/Effects/Charge.png" id="215_iee07"]
 [ext_resource type="Texture2D" uid="uid://bd7s6wlxr4eki" path="res://assets/sprites/Effects/ChargeParticles.png" id="216_rbo1h"]
+[ext_resource type="AudioStream" uid="uid://bpiallx3dr4pq" path="res://assets/sounds/HectorMovement/KickLauncher.wav" id="218_64ww5"]
 [ext_resource type="AudioStream" uid="uid://cxt5kclgs5qig" path="res://assets/sounds/HectorMovement/SwordSheathe1.wav" id="219_gl364"]
 [ext_resource type="AudioStream" uid="uid://boa1umpi7bb0r" path="res://assets/sounds/HectorMovement/SwordSheathe2.wav" id="220_64ww5"]
 [ext_resource type="Script" uid="uid://cetysgqumvdh6" path="res://SampleProject/Scripts/Powers/sword_spin.gd" id="223_cwl8n"]
@@ -1312,6 +1314,9 @@ size = Vector2(23.500004, 15.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otvxe"]
 size = Vector2(49.5, 50)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0x2e"]
+size = Vector2(44, 58)
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_25ioo"]
 frequency = 0.6231
 domain_warp_enabled = true
@@ -1884,6 +1889,18 @@ tracks/45/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("Sprite2D/KickHitbox/CollisionShape2D:disabled")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_lhfeg"]
@@ -3681,10 +3698,50 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.12, 0.16, 0.23, 0.27, 0.32, 0.39, 0.49, 0.54, 0.59, 0.66, 0.73, 0.8, 0.87),
+"times": PackedFloat32Array(-1.4901161e-08, 0.05, 0.09, 0.109999985, 0.14, 0.18, 0.22999999, 0.29999998, 0.4, 0.45000002, 0.49999997, 0.57000005, 0.64000005, 0.71000004, 0.78000003),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PolyphonicAudioPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["kick_launcher"],
+"method": &"play_sound_effect_from_library"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Kick_launcher")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"applySpeed"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D/KickHitbox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.13999999, 0.22999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_453o6"]
@@ -5443,9 +5500,15 @@ Tag = "teleport"
 stream = ExtResource("215_eacfl")
 metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
 
+[sub_resource type="Resource" id="Resource_h37ol"]
+script = ExtResource("17_eidx6")
+Tag = "kick_launcher"
+stream = ExtResource("218_64ww5")
+metadata/_custom_type_script = "uid://o0uxsdxy5fxd"
+
 [sub_resource type="Resource" id="Resource_uk8xp"]
 script = ExtResource("140_3d8p5")
-sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_p6pc0"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6"), SubResource("Resource_cj1no"), SubResource("Resource_1q6vw"), SubResource("Resource_4sdvf"), SubResource("Resource_oke0v"), SubResource("Resource_w5oev"), SubResource("Resource_5uixd"), SubResource("Resource_god42"), SubResource("Resource_3rsyo"), SubResource("Resource_1776x"), SubResource("Resource_il6c1"), SubResource("Resource_2t4xi")])
+sound_effects = Array[ExtResource("17_eidx6")]([SubResource("Resource_hltme"), SubResource("Resource_xogs2"), SubResource("Resource_p5qdx"), SubResource("Resource_44eon"), SubResource("Resource_hssc0"), SubResource("Resource_k2jhd"), SubResource("Resource_ry8tl"), SubResource("Resource_p6pc0"), SubResource("Resource_qsqd2"), SubResource("Resource_xc2aa"), SubResource("Resource_0edrx"), SubResource("Resource_6nc23"), SubResource("Resource_as0yw"), SubResource("Resource_bsjr5"), SubResource("Resource_2p13b"), SubResource("Resource_g3lua"), SubResource("Resource_mi0hn"), SubResource("Resource_veehi"), SubResource("Resource_2cgyi"), SubResource("Resource_e3dkt"), SubResource("Resource_kj4nx"), SubResource("Resource_8pr15"), SubResource("Resource_rs8p6"), SubResource("Resource_71ttq"), SubResource("Resource_x07gc"), SubResource("Resource_5vxgf"), SubResource("Resource_rivx6"), SubResource("Resource_cj1no"), SubResource("Resource_1q6vw"), SubResource("Resource_4sdvf"), SubResource("Resource_oke0v"), SubResource("Resource_w5oev"), SubResource("Resource_5uixd"), SubResource("Resource_god42"), SubResource("Resource_3rsyo"), SubResource("Resource_1776x"), SubResource("Resource_il6c1"), SubResource("Resource_2t4xi"), SubResource("Resource_h37ol")])
 
 [sub_resource type="Resource" id="Resource_2oamq"]
 script = ExtResource("17_eidx6")
@@ -6437,6 +6500,7 @@ ice_hit_collision_scene = ExtResource("105_c2fce")
 base_attribute = Array[int]([1])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/FistHitbox" unique_id=1002873315]
+visible = false
 position = Vector2(17.6223, 0.413044)
 shape = SubResource("RectangleShape2D_fu7uc")
 
@@ -6529,6 +6593,28 @@ base_attribute = Array[int]([1])
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/UppercutHitbox" unique_id=1340441218]
 position = Vector2(13.25, 2.5)
 shape = SubResource("RectangleShape2D_otvxe")
+disabled = true
+
+[node name="KickHitbox" type="Area2D" parent="Sprite2D" unique_id=490121536 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
+process_mode = 1
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("3_rge3w")
+dmg_multiplier = 1.4
+damage_boost = 10
+iframes_on_hit = 20
+player = NodePath("../..")
+sound = NodePath("../../PolyphonicAudioPlayer")
+state_machine = NodePath("../../StateMachine")
+hitbox = NodePath("CollisionShape2D")
+hit_collision_scene = ExtResource("5_7iojt")
+ice_hit_collision_scene = ExtResource("105_c2fce")
+base_attribute = Array[int]([1])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/KickHitbox" unique_id=331907641]
+visible = false
+position = Vector2(10, -1)
+shape = SubResource("RectangleShape2D_r0x2e")
 disabled = true
 
 [node name="ThunderUppercutHitbox" type="Area2D" parent="Sprite2D" unique_id=1067574499 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
@@ -6832,6 +6918,16 @@ metadata/_custom_type_script = "uid://6vpewaisae1s"
 script = ExtResource("156_gp8oi")
 uppercut_effects = NodePath("../../UppercutLightning")
 attack_state = true
+
+[node name="Kick_launcher" type="Node" parent="StateMachine" unique_id=1747507002 node_paths=PackedStringArray("kick_launcher_hitbox", "trail_timer")]
+script = ExtResource("171_r0x2e")
+kick_launcher_hitbox = NodePath("../../Sprite2D/KickHitbox/CollisionShape2D")
+trail_timer = NodePath("Trail_timer")
+trail_scene = ExtResource("140_4ybkv")
+attack_state = true
+
+[node name="Trail_timer" type="Timer" parent="StateMachine/Kick_launcher" unique_id=144275099]
+wait_time = 0.06
 
 [node name="Windstorm" type="Node" parent="StateMachine" unique_id=1503880525]
 script = ExtResource("154_yfh6y")
@@ -7408,6 +7504,7 @@ anim_speed_curve = SubResource("Curve_r0x2e")
 [connection signal="body_entered" from="Sprite2D/DiveStraightHitbox" to="Sprite2D/DiveStraightHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/DiveDiagonalHitbox" to="Sprite2D/DiveDiagonalHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/UppercutHitbox" to="Sprite2D/UppercutHitbox" method="_on_body_entered"]
+[connection signal="body_entered" from="Sprite2D/KickHitbox" to="Sprite2D/KickHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="Sprite2D/ThunderUppercutHitbox" to="Sprite2D/ThunderUppercutHitbox" method="_on_body_entered"]
 [connection signal="timeout" from="Sprite2D/Glow" to="Sprite2D" method="_on_glow_timeout"]
 [connection signal="timeout" from="StateMachine/Slide/Trail_timer" to="StateMachine/Slide" method="_on_trail_timer_timeout"]

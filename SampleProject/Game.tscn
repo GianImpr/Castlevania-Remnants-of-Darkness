@@ -2811,14 +2811,17 @@ weapon_rank = 1
 
 [sub_resource type="Resource" id="Resource_yrs72"]
 script = ExtResource("99_ixwc3")
-skill_name = "WICKED_GLADIATOR_FIST"
-skill_description = "WICKED_GLADIATOR_FIST_DESC"
+skill_name = "ROCKET_KICK"
+skill_description = "ROCKET_KICK_DESC"
 type = 2
-command_input_serialized = " [[Square]] while guarding"
+cost_type = 3
+cost_value = 35
+command_input = Array[String](["crouch", "up_arrow", "circle"])
+command_input_serialized = " [[Down]] [[Up]] + [[Circle]]"
 icon = ExtResource("204_qorgr")
 weapon_type = 4
 weapon_rank = 1
-use_voice_clip = true
+transitions_into_state = "Kick_launcher"
 
 [sub_resource type="Resource" id="Resource_awbx6"]
 script = ExtResource("99_ixwc3")
