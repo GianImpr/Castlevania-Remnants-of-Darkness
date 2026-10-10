@@ -84,7 +84,11 @@ func reset_ledge_detection():
 #Allows the player to guard if they have Fortitude Gauntlet (Skill ID 1)
 func can_guard():
 	if player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, player.stats.skill_inventory) and not player.is_hurt:
-		can_perform("guard", false)
+		if self is HectorCrouch:
+			if Input.is_action_pressed("guard"):
+				Transitioned.emit(self, "guard_crouch")
+		else:
+			can_perform("guard", false)
 		player.stats.Stats["Guard"] = max(player.stats.Stats["Guard"], 1)
 	elif not player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, player.stats.skill_inventory):
 		player.stats.Stats["Guard"] = 0
@@ -130,10 +134,13 @@ func check_is_blocking():
 		elif self is HectorJump or self is HectorFalling or self is HectorDoubleJump:
 			return
 			
-		if player.willPerfectGuard():
+		if player.willPerfectGuard() and not self is HectorGuardCrouch:
 			Transitioned.emit(self, "Guard_perfect")
 		elif player.stats.Stats["Guard"] > 0:
-			Transitioned.emit(self, "Guard_blocking")
+			if self is HectorGuard or self is HectorGuardWalk:
+				Transitioned.emit(self, "Guard_blocking")
+			elif self is HectorGuardCrouch:
+				Transitioned.emit(self, "Guard_blocking_crouch")
 		else:
 			Transitioned.emit(self, "Guard_break")
 

@@ -194,6 +194,7 @@
 [ext_resource type="AudioStream" uid="uid://bq4ssv07uwxje" path="res://assets/sounds/Effects/Guard/PerfectGuard.MP3" id="151_gu28v"]
 [ext_resource type="PackedScene" uid="uid://dvtteviefcy4t" path="res://SampleProject/Powers/arctic_shield.tscn" id="151_q5ni2"]
 [ext_resource type="Script" uid="uid://cwpthrj6lp6u1" path="res://SampleProject/Scripts/HectorAnims/HectorPetrified.gd" id="153_8to1u"]
+[ext_resource type="Script" uid="uid://lha8x5005pey" path="res://SampleProject/Scripts/HectorAnims/HectorGuardCrouch.gd" id="153_37cei"]
 [ext_resource type="PackedScene" uid="uid://bt0ligyka3p1g" path="res://SampleProject/extra_scenes/effects/hector_statue_break.tscn" id="154_7mmrn"]
 [ext_resource type="AudioStream" uid="uid://c3hff11461yhv" path="res://assets/sounds/InnocentDevils/InnocentCommand.MP3" id="154_q7ikr"]
 [ext_resource type="Script" uid="uid://c6jhujp4ptd02" path="res://SampleProject/Scripts/HectorAnims/HectorWindstorm.gd" id="154_yfh6y"]
@@ -202,6 +203,7 @@
 [ext_resource type="Script" uid="uid://fq0v2mj1k0ga" path="res://SampleProject/Scripts/HectorAnims/HectorUppercut.gd" id="156_gp8oi"]
 [ext_resource type="AudioStream" uid="uid://cp0wlsu0kr46r" path="res://assets/sounds/Effects/HectorHit/HitFire.MP3" id="156_roqt5"]
 [ext_resource type="AudioStream" uid="uid://bya56k86ttxfv" path="res://assets/sounds/Effects/HectorHit/HitIce.MP3" id="157_an6m8"]
+[ext_resource type="Script" uid="uid://beg8elxwmmmpy" path="res://SampleProject/Scripts/HectorAnims/HectorGuardBlockingCrouch.gd" id="157_stxmr"]
 [ext_resource type="Script" uid="uid://dw8enbgtjf05g" path="res://SampleProject/Scripts/HectorAnims/HectorPose.gd" id="158_nqgeo"]
 [ext_resource type="Script" uid="uid://btn3dp1v3g3j" path="res://SampleProject/Scripts/HectorAnims/HectorShredder.gd" id="158_ypfsk"]
 [ext_resource type="Script" uid="uid://co6ti554k7f83" path="res://SampleProject/Scripts/HectorAnims/HectorTeleport.gd" id="159_2t4xi"]
@@ -1902,6 +1904,18 @@ tracks/46/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("GuardSparkle:position")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_lhfeg"]
 resource_name = "air_attack"
@@ -3110,6 +3124,18 @@ tracks/4/keys = {
 "method": &"restart"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GuardSparkle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_075cc"]
 resource_name = "guard_walk"
@@ -3131,7 +3157,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_ohwuw"]
 resource_name = "guarding"
 length = 0.8
-step = 0.1
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3183,6 +3209,87 @@ tracks/3/keys = {
 "args": [],
 "method": &"restart"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GuardSparkle:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_od10n"]
+resource_name = "guarding_crouch"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [382, 383, 384, 383, 382]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GuardSparkle:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GuardSparkle")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"calculate_sparkle_color"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GuardSparkle")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GuardSparkle:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_ci5hg"]
@@ -3909,6 +4016,18 @@ tracks/4/keys = {
 "method": &"restart"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GuardSparkle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_hd1es"]
 resource_name = "perfect_guarding_air"
@@ -3975,6 +4094,18 @@ tracks/4/keys = {
 "args": [],
 "method": &"restart"
 }]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GuardSparkle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_il6c1"]
@@ -4075,6 +4206,95 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(13, 41)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GuardSparkle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bucin"]
+resource_name = "raise_guard_crouch"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [380, 381]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 21.413)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Collision:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 27.1739)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HurtboxArea/Hurtbox:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 21)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HurtboxArea/Hurtbox:shape:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, 27)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GuardSparkle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 16)]
 }
 
 [sub_resource type="Animation" id="Animation_m23uc"]
@@ -5254,6 +5474,7 @@ _data = {
 &"guard_break": SubResource("Animation_qlkcq"),
 &"guard_walk": SubResource("Animation_075cc"),
 &"guarding": SubResource("Animation_ohwuw"),
+&"guarding_crouch": SubResource("Animation_od10n"),
 &"hard_landing": SubResource("Animation_ci5hg"),
 &"hurt": SubResource("Animation_5bejj"),
 &"hurt_air": SubResource("Animation_rbc1d"),
@@ -5274,6 +5495,7 @@ _data = {
 &"pose": SubResource("Animation_il6c1"),
 &"pose_loop": SubResource("Animation_nqgeo"),
 &"raise_guard": SubResource("Animation_b5ow4"),
+&"raise_guard_crouch": SubResource("Animation_bucin"),
 &"run": SubResource("Animation_m23uc"),
 &"run_end": SubResource("Animation_rcift"),
 &"run_start": SubResource("Animation_xave1"),
@@ -6461,7 +6683,6 @@ collision_layer = 2050
 collision_mask = 0
 
 [node name="Hurtbox" type="CollisionShape2D" parent="HurtboxArea" unique_id=1488121514]
-visible = false
 position = Vector2(0.5, 12.5)
 shape = SubResource("RectangleShape2D_god42")
 debug_color = Color(0.989477, 0, 0.289978, 0.42)
@@ -6853,6 +7074,10 @@ script = ExtResource("116_3em4l")
 [node name="Guard" type="Node" parent="StateMachine" unique_id=351279261]
 script = ExtResource("119_m7var")
 
+[node name="Guard_crouch" type="Node" parent="StateMachine" unique_id=525056247]
+script = ExtResource("153_37cei")
+metadata/_custom_type_script = "uid://lha8x5005pey"
+
 [node name="Guard_down" type="Node" parent="StateMachine" unique_id=8974841]
 script = ExtResource("120_4lii7")
 
@@ -6862,6 +7087,11 @@ script = ExtResource("121_camjn")
 [node name="Guard_blocking" type="Node" parent="StateMachine" unique_id=686127425]
 script = ExtResource("122_uml35")
 recoil_speed = 400.0
+
+[node name="Guard_blocking_crouch" type="Node" parent="StateMachine" unique_id=2097651957]
+script = ExtResource("157_stxmr")
+recoil_speed = 400.0
+metadata/_custom_type_script = "uid://beg8elxwmmmpy"
 
 [node name="Guard_break" type="Node" parent="StateMachine" unique_id=260069116 node_paths=PackedStringArray("ignore_landing")]
 script = ExtResource("123_h7cmy")

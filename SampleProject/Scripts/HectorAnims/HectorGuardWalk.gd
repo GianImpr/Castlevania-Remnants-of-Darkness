@@ -18,6 +18,8 @@ func Update(delta: float):
 	if Input.is_action_just_pressed("attack") and player.stats.canApplySkill(Skill.Skills.CHARGE_ONE) and player.cur_charge == HectorPlayer.Charge.NONE and player.stats.Stats["FP"] == player.stats.Stats["MFP"]:
 		player.activateCharge(HectorPlayer.Charge.ONE)
 
+	check_is_blocking()
+
 
 	if player.direction == 0 and Input.is_action_pressed("guard"):
 		HectorGuard.skip_guard_anim = true
@@ -25,7 +27,6 @@ func Update(delta: float):
 	elif not Input.is_action_pressed("guard"):
 		run_without_start_anim(false)
 		
-	check_is_blocking()
 	_can_activate_magic()
 	
 func Physics_Update(delta: float):

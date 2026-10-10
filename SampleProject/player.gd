@@ -360,7 +360,7 @@ func unlockMagic():
 	unlocked_magic = true
 	
 func isGuarding() -> bool:
-	return state_machine.current_state is HectorGuard or state_machine.current_state is HectorGuardWalk or isPerfectGuarding() or state_machine.current_state is HectorGuardBlocking
+	return state_machine.current_state is HectorGuard or state_machine.current_state is HectorGuardWalk or isPerfectGuarding() or state_machine.current_state is HectorGuardBlocking or state_machine.current_state is HectorGuardBlockingCrouch or state_machine.current_state is HectorGuardCrouch
 
 func isPerfectGuarding() -> bool:
 	return state_machine.current_state.can_perfect_guard and willPerfectGuard()
