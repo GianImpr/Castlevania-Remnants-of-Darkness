@@ -5,6 +5,7 @@ var can_perfect_guard: bool = true
 var snapped_on_platform: bool
 const DOUBLE_JUMP_AFTER: float = 0.1
 var double_jump_ready: bool
+var FALLING_ANIM_OFFSET: float = 0.3
 
 func enter():
 	snapped_on_platform = false
@@ -26,9 +27,10 @@ func exit():
 
 	
 func Physics_Update(delta: float):
-		
 	if not Input.is_action_pressed("jump") and player.velocity.y < 0 and not snapped_on_platform and not player.dive_kicking:
 		player.velocity.y *= 0.95*delta
+		if animation.current_animation_position < FALLING_ANIM_OFFSET:
+			animation.seek(FALLING_ANIM_OFFSET)
 		
 	#Check if player should get pushed above a one-way platform
 	if animation.current_animation_position <= 0.6 and player.raycast.is_colliding() and player.raycast.get_collider() is TileMapLayer and player.velocity.y > 100 and not snapped_on_platform:
