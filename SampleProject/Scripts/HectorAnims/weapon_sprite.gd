@@ -8,6 +8,12 @@ class_name WeaponSprite
 var facing_position: int = 1
 var anim_position: float
 
+enum SheatheType {
+	STANDING,
+	CROUCH,
+	ROUND_TRIP
+}
+
 func ready():
 	visible = false
 
@@ -24,12 +30,15 @@ func play_crouch(anim_speed: float = 1, visible_from_start: bool = true):
 	animation.play("swing_crouch", -1, anim_speed)
 	visible = visible_from_start
 
-func play_sheathe(crouch: bool = false):
+func play_sheathe(variant: SheatheType = SheatheType.STANDING):
 	sheathe.visible = true
-	if not crouch:
-		animation.play("sheathe")
-	else:
-		animation.play("sheathe_crouch")
+	match variant:
+		SheatheType.STANDING:
+			animation.play("sheathe")
+		SheatheType.CROUCH:
+			animation.play("sheathe_crouch")
+		SheatheType.ROUND_TRIP:
+			animation.play("sheathe_rt")
 
 func stop():
 	visible = false

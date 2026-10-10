@@ -86,10 +86,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.46, 0.51, 0.71, 0.81, 0.86, 0.91, 0.96, 1.01, 1.06, 1.11, 1.16, 1.21, 1.28, 1.33, 1.4, 1.5, 1.6, 1.7, 1.8),
+"times": PackedFloat32Array(0, 0.06999993, 0.13999999, 0.24, 0.34, 0.41, 0.46000004, 0.51, 0.71, 0.81, 0.85999995, 0.90999997, 0.9599999, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28, 1.33, 1.4, 1.5, 1.5999999, 1.6999999, 1.7999998),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 649, 650, 650, 651, 651, 652, 652, 653, 654, 654, 655, 656, 657, 658, 659]
+"values": [680, 681, 682, 643, 644, 645, 646, 647, 648, 649, 649, 650, 650, 651, 651, 652, 652, 653, 654, 654, 655, 656, 657, 658, 659]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -98,10 +98,10 @@ tracks/1/path = NodePath("Weapon/Weapon:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.71, 0.81, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28, 1.4, 1.5, 1.5999999),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.71, 0.81, 0.85999995, 0.90999997, 0.9599999, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28, 1.4, 1.5, 1.5999999),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 0]
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -110,10 +110,10 @@ tracks/2/path = NodePath("Weapon/Weapon:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.45999998, 0.51, 0.71, 0.81, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28, 1.4, 1.5, 1.5999999),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.46, 0.71, 0.81, 0.85999995, 0.91, 0.96, 1.01, 1.06, 1.1100001, 1.1600001, 1.21, 1.28, 1.4000001, 1.5, 1.5999999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(-6, 8), Vector2(36, 12), Vector2(-10, 4), Vector2(-4, -6), Vector2(8, -14), Vector2(-32, 44), Vector2(-28, 42), Vector2(-26, 38), Vector2(-28, 36), Vector2(-22, 28), Vector2(-18, 16), Vector2(2, 2), Vector2(16, 18), Vector2(8, 24), Vector2(-8, 10), Vector2(6, -10), Vector2(22, -10), Vector2(26, 4), Vector2(24, 8), Vector2(22, 6), Vector2(20, 8), Vector2(18, 20)]
+"values": [Vector2(6, 14), Vector2(18, 4), Vector2(-5, 2), Vector2(-2, -3), Vector2(4, -7), Vector2(-14, 21), Vector2(-13, 19), Vector2(-14, 18), Vector2(-11, 14), Vector2(-8, 8), Vector2(1, 1), Vector2(8, 9), Vector2(4, 12), Vector2(-4, 5), Vector2(3, -5), Vector2(11, -5), Vector2(13, 2), Vector2(12, 4), Vector2(11, 3), Vector2(10, 4), Vector2(9, 10)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -122,7 +122,7 @@ tracks/3/path = NodePath("Weapon/Weapon:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.6999999),
+"times": PackedFloat32Array(0, 1.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -242,7 +242,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_2yxjc")
 hframes = 20
 vframes = 39
-frame = 669
+frame = 680
 region_rect = Rect2(0, 0, 0, 70)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=339248227]
@@ -263,8 +263,8 @@ hframes = 29
 frame = 1
 
 [node name="Sheathe" type="Sprite2D" parent="Weapon/Weapon" unique_id=455822961]
-self_modulate = Color(0.7744806, 0.7744806, 0.7744806, 0.775365)
+visible = false
 position = Vector2(17, -14)
 texture = ExtResource("6_ljmr6")
 hframes = 13
-frame = 2
+frame = 12

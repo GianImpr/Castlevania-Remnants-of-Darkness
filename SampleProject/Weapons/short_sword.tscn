@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bpi0oegm1gmln" path="res://assets/sprites/Weapons/Swords/ShortSwordTrail.png" id="6_kh1j4"]
 [ext_resource type="Texture2D" uid="uid://b82wsh800tusc" path="res://assets/sprites/Weapons/Swords/Short Sword/ShortSwordBoomerangSwing.png" id="7_kh1j4"]
 [ext_resource type="Texture2D" uid="uid://b8vobg221ljdw" path="res://assets/sprites/Weapons/Swords/Short Sword/UpdatedShortSwordSheathe.png" id="8_87iuq"]
+[ext_resource type="Texture2D" uid="uid://0s27jbgiejqv" path="res://assets/sprites/Weapons/Swords/Short Sword/BoomerangTrail.png" id="8_qd8eh"]
 [ext_resource type="Texture2D" uid="uid://dqgyixf5jxmd4" path="res://assets/sprites/Weapons/Swords/Short Sword/UpdatedShortSwordSheatheTrail.png" id="10_qd8eh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1blf0"]
@@ -159,11 +160,47 @@ tracks/11/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Boomerang/Trail:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, 10)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Boomerang/Trail:self_modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Boomerang/Trail:frame")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_87iuq"]
 resource_name = "boomerang"
 length = 1.1
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -212,10 +249,47 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, -1]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Boomerang/Trail:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.95),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-4, 10), Vector2(4, 17)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Boomerang/Trail:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.13333334, 0.14999999, 0.95, 0.98333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0.53, 0.53, 0.53, 0.49803922), Color(0.53, 0.53, 0.53, 0), Color(1, 1, 1, 1), Color(0.53, 0.53, 0.53, 0.49803922), Color(0.53, 0.53, 0.53, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Boomerang/Trail:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.10000001, 0.95),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
 
 [sub_resource type="Animation" id="Animation_qd8eh"]
 resource_name = "sheathe"
 length = 1.9
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -452,6 +526,121 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_otrh8"]
+resource_name = "sheathe_rt"
+length = 1.9
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sheathe:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.71, 0.81, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28, 1.4, 1.5, 1.5999999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sheathe:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.07, 0.14, 0.24, 0.34, 0.41, 0.46, 0.71, 0.81, 0.85999995, 0.91, 0.96, 1.01, 1.06, 1.1100001, 1.1600001, 1.21, 1.28, 1.4000001, 1.5, 1.5999999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(6, 14), Vector2(18, 4), Vector2(-5, 2), Vector2(-2, -3), Vector2(4, -7), Vector2(-14, 21), Vector2(-13, 19), Vector2(-14, 18), Vector2(-11, 14), Vector2(-8, 8), Vector2(1, 1), Vector2(8, 9), Vector2(4, 12), Vector2(-4, 5), Vector2(3, -5), Vector2(11, -5), Vector2(13, 2), Vector2(12, 4), Vector2(11, 3), Vector2(10, 4), Vector2(9, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sheathe:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6999999),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sheathe/Trail:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.41, 0.51, 0.86, 1.38, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Sheathe/Trail:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.41, 0.45999998, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(12, -12), Vector2(5, -4), Vector2(-6, 2), Vector2(-9, -4), Vector2(2, -9), Vector2(7, 6), Vector2(-3, 9), Vector2(-10, 1), Vector2(-4, -7), Vector2(6, -3), Vector2(5, 6)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Sheathe/Trail:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.41, 0.45999998, 0.85999995, 0.90999997, 0.96, 1.01, 1.06, 1.11, 1.16, 1.2099999, 1.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Sheathe/Trail:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.41, 0.43, 0.45999998, 0.48, 0.85999995, 0.88, 0.90999997, 0.93, 0.96, 0.98, 1.01, 1.03, 1.06, 1.08, 1.11, 1.13, 1.16, 1.18, 1.2099999, 1.23, 1.28, 1.3, 1.3199999),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 0.5019608), Color(0.5, 0.5, 0.5, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Sheathe:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PlayerHitbox")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"recolorTrail"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_nbjk7"]
@@ -841,6 +1030,7 @@ _data = {
 &"boomerang": SubResource("Animation_87iuq"),
 &"sheathe": SubResource("Animation_qd8eh"),
 &"sheathe_crouch": SubResource("Animation_0qks5"),
+&"sheathe_rt": SubResource("Animation_otrh8"),
 &"swing": SubResource("Animation_nbjk7"),
 &"swing_air": SubResource("Animation_1blf0"),
 &"swing_crouch": SubResource("Animation_kh1j4")
@@ -895,14 +1085,24 @@ texture = ExtResource("7_kh1j4")
 offset = Vector2(8, 10)
 hframes = 5
 
+[node name="Trail" type="Sprite2D" parent="Boomerang" unique_id=2095615412]
+visible = false
+z_index = 2
+position = Vector2(-4, 10)
+texture = ExtResource("8_qd8eh")
+hframes = 3
+
 [node name="Sheathe" type="Sprite2D" parent="." unique_id=1403119061]
 visible = false
-position = Vector2(-6, 12)
+position = Vector2(9, 10)
 texture = ExtResource("8_87iuq")
 hframes = 29
+frame = 20
 
 [node name="Trail" type="Sprite2D" parent="Sheathe" unique_id=864696894]
 visible = false
+self_modulate = Color(0.5, 0.5, 0.5, 0)
+position = Vector2(5, 6)
 texture = ExtResource("10_qd8eh")
 hframes = 13
 frame = 10

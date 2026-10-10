@@ -124,4 +124,4 @@ func playAttackAnimation(punch_number: String) -> void:
 func playSheatheAnimation() -> void:
 	transitioned_to_sheathe = true
 	animation.play("sheathe_sword")
-	player.sprite.weapon.play_sheathe()
+	player.sprite.weapon.play_sheathe(WeaponSprite.SheatheType.STANDING)

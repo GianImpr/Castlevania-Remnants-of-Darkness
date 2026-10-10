@@ -98,7 +98,7 @@ func playWeaponAnim() -> void:
 func playSheatheAnimation() -> void:
 	transitioned_to_sheathe = true
 	animation.play("sheathe_sword_crouch")
-	player.sprite.weapon.play_sheathe(true)
+	player.sprite.weapon.play_sheathe(WeaponSprite.SheatheType.CROUCH)
 
 func canSlide() -> void:
 	can_slide = true
