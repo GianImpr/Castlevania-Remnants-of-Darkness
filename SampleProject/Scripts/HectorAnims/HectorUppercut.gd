@@ -8,7 +8,7 @@ static var applyMercyInvincibility: Callable
 const LIGHT_2D_CHILD_INDEX: int = 2
 const UPPERCUT_EFFECTS_POSITION: float = 12
 static var damage_multiplier: float = 1
-const THUNDER_VERSION_WITH_MULTIPLIER_OVER: float = 2
+const THUNDER_VERSION_WITH_MULTIPLIER_OVER: float = 1.6
 
 func enter():
 	if damage_multiplier >= THUNDER_VERSION_WITH_MULTIPLIER_OVER:

@@ -121,9 +121,6 @@ func checkCommandInput(command: Array[String], leniency: int, inputs_to_ignore: 
 			elif actual_command[i] == "move_left" and Global.player.facing_position == -1:
 				actual_command[i] = "move_right"
 				
-	if Input.is_action_just_pressed("circle"):
-		print("here")
-		print("you're not supposed to be here???")
 	
 	for i in range(command_history.size()-1, -1, -1):
 		var reversed_history: Array = command_history[i].duplicate(true)

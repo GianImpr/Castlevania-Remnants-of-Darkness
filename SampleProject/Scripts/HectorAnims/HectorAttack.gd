@@ -9,7 +9,7 @@ static var getWeaponAttackSound: Callable
 static var getHectorAttackSound: Callable
 const WEAPON_ANIMATION_DELAY: float = 0.01
 static var speed_multiplier: float = 1
-const SPEED_INCREASE_AFTER_FIST: float = 0.05
+const SPEED_INCREASE_AFTER_FIST: float = 0.06
 var should_transition_to_sheathe: bool
 var transitioned_to_sheathe: bool
 
