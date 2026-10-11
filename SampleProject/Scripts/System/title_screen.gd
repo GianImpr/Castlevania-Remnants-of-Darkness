@@ -6,15 +6,16 @@ extends Control
 @export var sound: PolyphonicMenuAudio
 
 const TWEEN_DURATION: float = 1
-const BUTTON_QUANTITY: int = 2
+const BUTTON_QUANTITY: int = 3
 var cur_button: int = 0
 var tween: Tween
 
 enum COMMANDS {
 	NEW_GAME,
 	CONTINUE,
+	EXIT,
 	OPTIONS,
-	SOUND_SELECT
+	SOUND_SELECT,
 }
 
 func _ready() -> void:
@@ -24,7 +25,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not animation.is_playing():
 		if Input.is_action_just_pressed("ui_accept"):
-			animation.play("disappear")
+			if cur_button == COMMANDS.EXIT:
+				get_tree().quit()
+			else:
+				animation.play("disappear")
 		elif Input.is_action_just_pressed("ui_up"):
 			var prev_button: int = cur_button
 			cur_button = posmod(cur_button-1, BUTTON_QUANTITY)
