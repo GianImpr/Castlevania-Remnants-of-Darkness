@@ -13,6 +13,8 @@ const SLIDE_CANCEL_EXTRA_VERTICAL_MOMENTUM: float = 400
 const SLIDE_CANCEL_SPEED_BOOST_MULTIPLIER: float = 1.12
 const DEBRIS_POSITION: Vector2 = Vector2(40,68)
 const DECELERATION_DURATION: float = 0.55
+const CAN_GUARD_AFTER: float = 0.3
+const SLIDE_END_PART: float = 0.533
 
 func enter():
 	reset_ledge_detection()
@@ -28,8 +30,9 @@ func enter():
 	
 	
 func Update(delta: float):
-	if animation.current_animation_position > 0.2:
-		can_guard()
+	if animation.current_animation_position > CAN_GUARD_AFTER and Input.is_action_pressed("guard"):
+		if animation.current_animation_position < SLIDE_END_PART:
+			animation.seek(SLIDE_END_PART)
 	
 func Physics_Update(delta: float):
 	can_fall(true, SLIDE_CANCEL_EXTRA_VERTICAL_MOMENTUM)
@@ -40,8 +43,11 @@ func Physics_Update(delta: float):
 		debris_timer.stop()
 		
 	if not animation.is_playing():
-		player.skip_crouch_anim = true
-		Transitioned.emit(self, "crouch")
+		if Input.is_action_pressed("guard"):
+			Transitioned.emit(self, "guard_crouch")
+		else:
+			player.skip_crouch_anim = true
+			Transitioned.emit(self, "crouch")
 		
 func exit():
 	trail_timer.stop()
