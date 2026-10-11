@@ -3862,10 +3862,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.07, 0.14000002, 0.21000001, 0.26, 0.32999998, 0.37999997, 0.44999996, 0.52, 0.57000005, 0.72),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(-1.4901161e-08, 0.07, 0.13999999, 0.18999997, 0.25999996, 0.30999994, 0.37999994, 0.44999996, 0.50000006, 0.65000004),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [626, 627, 100, 101, 102, 103, 104, 105, 106, 107, 108]
+"values": [627, 100, 101, 102, 103, 104, 105, 106, 107, 108]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -6818,6 +6818,7 @@ disabled = true
 
 [node name="KickHitbox" type="Area2D" parent="Sprite2D" unique_id=490121536 node_paths=PackedStringArray("player", "sound", "state_machine", "hitbox")]
 process_mode = 1
+visible = false
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("3_rge3w")
@@ -7582,6 +7583,7 @@ texture = ExtResource("243_nrd1h")
 [node name="Spin" type="TextureRect" parent="Whirlwind/Node2D/Sprite2D" unique_id=1099894288]
 offset_right = 512.0
 offset_bottom = 512.0
+rotation = 37.350044
 texture = SubResource("GradientTexture2D_stxmr")
 
 [node name="SpinningSpear" type="Sprite2D" parent="Whirlwind/Node2D/Sprite2D/Spin" unique_id=157620780]
@@ -7613,7 +7615,6 @@ adjust_facing_position = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Whirlwind/Node2D/DisjointedPlayerHitbox" unique_id=581236721]
 visible = false
 position = Vector2(0, 16)
-scale = Vector2(1, 1e-05)
 polygon = PackedVector2Array(10, 0, -10, 0, -22, -36, 22, -36)
 disabled = true
 
@@ -7622,6 +7623,7 @@ disabled = true
 [node name="Spear" type="Sprite2D" parent="Whirlwind/SpearSprite" unique_id=1981954796]
 physics_interpolation_mode = 2
 visible = false
+self_modulate = Color(0, 0, 0, 0)
 z_index = -1
 position = Vector2(-41, 42.999996)
 rotation = -0.6387905
@@ -7631,7 +7633,6 @@ texture = ExtResource("245_446j8")
 flip_h = true
 flip_v = true
 hframes = 5
-frame = 2
 
 [node name="SpearTrail" type="Sprite2D" parent="Whirlwind/SpearSprite" unique_id=984270751]
 physics_interpolation_mode = 2
