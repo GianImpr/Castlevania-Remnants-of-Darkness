@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 		"neutral": "*"
 	}
 	
-	if false:
+	if true:
 		var command_string: String = "{"
 		for command in command_history:
 			command_string += " ["
@@ -50,7 +50,6 @@ func _process(delta: float) -> void:
 					command_string += Inputs[input["action"]]
 			command_string += "] "
 		command_string += "}"
-		print(command_string)
 		
 		
 func readNewInputs() -> void:
@@ -108,7 +107,7 @@ func readNewInputs() -> void:
 		for entry in popped_entry:
 			total_duration -= entry["duration"]
 	
-func checkCommandInput(command: Array[String], leniency: int, facing_position_matters: bool = true, last_skill_to_check: bool = false) -> bool:
+func checkCommandInput(command: Array[String], leniency: int, inputs_to_ignore: Array[String], facing_position_matters: bool = true, last_skill_to_check: bool = false) -> bool:
 	var inputs_found: Array[String]
 	var input_to_find: int = 0
 	var prev_command: String = ""
@@ -121,10 +120,16 @@ func checkCommandInput(command: Array[String], leniency: int, facing_position_ma
 				actual_command[i] = "move_left"
 			elif actual_command[i] == "move_left" and Global.player.facing_position == -1:
 				actual_command[i] = "move_right"
-		
+				
+	if Input.is_action_just_pressed("circle"):
+		print("here")
+		print("you're not supposed to be here???")
+	
 	for i in range(command_history.size()-1, -1, -1):
-		for button in command_history[i]:
-			if button["action"].begins_with("ui") or (button["action"] == "neutral" and input_to_find == 0):
+		var reversed_history: Array = command_history[i].duplicate(true)
+		reversed_history.reverse()
+		for button in reversed_history:
+			if button["action"].begins_with("ui") or (button["action"] == "neutral" and input_to_find == 0) or button["action"] in inputs_to_ignore:
 				continue
 			if actual_command[input_to_find] == button["action"] and button["duration"] <= leniency and button["action"] != prev_command:
 				inputs_found.append(actual_command[input_to_find])

@@ -2822,6 +2822,7 @@ icon = ExtResource("204_qorgr")
 weapon_type = 4
 weapon_rank = 1
 transitions_into_state = "Kick_launcher"
+inputs_to_ignore = Array[String](["move_left", "move_right"])
 
 [sub_resource type="Resource" id="Resource_awbx6"]
 script = ExtResource("99_ixwc3")

@@ -16,6 +16,7 @@ class_name Skill
 @export var transitions_into_state: String
 @export var use_voice_clip: bool = false
 @export var can_use_in_midair: bool = false
+@export var inputs_to_ignore: Array[String]
 
 enum SkillType {
 	PICKABLE,

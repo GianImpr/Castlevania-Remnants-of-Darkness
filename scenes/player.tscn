@@ -1317,7 +1317,7 @@ size = Vector2(23.500004, 15.5)
 size = Vector2(49.5, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0x2e"]
-size = Vector2(44, 58)
+size = Vector2(44, 68)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_25ioo"]
 frequency = 0.6231
@@ -3845,7 +3845,7 @@ tracks/3/path = NodePath("Sprite2D/KickHitbox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.13999999, 0.22999999),
+"times": PackedFloat32Array(0.13999999, 0.36),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -6823,7 +6823,7 @@ collision_mask = 4
 script = ExtResource("3_rge3w")
 dmg_multiplier = 1.4
 damage_boost = 10
-iframes_on_hit = 20
+iframes_on_hit = 40
 player = NodePath("../..")
 sound = NodePath("../../PolyphonicAudioPlayer")
 state_machine = NodePath("../../StateMachine")
@@ -6833,8 +6833,7 @@ ice_hit_collision_scene = ExtResource("105_c2fce")
 base_attribute = Array[int]([1])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/KickHitbox" unique_id=331907641]
-visible = false
-position = Vector2(10, -1)
+position = Vector2(10, -6)
 shape = SubResource("RectangleShape2D_r0x2e")
 disabled = true
 

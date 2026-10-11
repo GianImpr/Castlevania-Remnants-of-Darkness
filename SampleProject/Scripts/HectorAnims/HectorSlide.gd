@@ -29,7 +29,7 @@ func enter():
 	
 func Update(delta: float):
 	if animation.current_animation_position > 0.2:
-		can_perform("backdash", true)
+		can_guard()
 	
 func Physics_Update(delta: float):
 	can_fall(true, SLIDE_CANCEL_EXTRA_VERTICAL_MOMENTUM)

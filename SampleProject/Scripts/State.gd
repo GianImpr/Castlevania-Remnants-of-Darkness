@@ -84,7 +84,7 @@ func reset_ledge_detection():
 #Allows the player to guard if they have Fortitude Gauntlet (Skill ID 1)
 func can_guard():
 	if player.stats.findItem(Skill.Skills.FORTITUDE_GAUNTLET, player.stats.skill_inventory) and not player.is_hurt:
-		if self is HectorCrouch:
+		if self is HectorCrouch or self is HectorSlide:
 			if Input.is_action_pressed("guard"):
 				Transitioned.emit(self, "guard_crouch")
 		else:
@@ -213,7 +213,7 @@ func can_attack():
 			continue
 		
 		var input_leniency_frames: int = 50*Engine.get_frames_per_second()/144
-		if InputBuffer.checkCommandInput(cur_skill.command_input, input_leniency_frames, true, last_skill) and player.stats.status[Global.player.stats.Status.CURSE] <= 0:
+		if InputBuffer.checkCommandInput(cur_skill.command_input, input_leniency_frames, cur_skill.inputs_to_ignore, true, last_skill) and player.stats.status[Global.player.stats.Status.CURSE] <= 0:
 			if not player.is_on_floor() and not cur_skill.can_use_in_midair:
 				return
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.TECHNIQUES)
