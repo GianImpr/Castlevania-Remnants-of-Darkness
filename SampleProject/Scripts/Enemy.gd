@@ -31,6 +31,7 @@ func _ready() -> void:
 	if agony_effect:
 		agony_effect.visible = agony
 	body_hitbox_on_cooldown = false
+	set_collision_mask_value(15, true)
 	hitbox_iframe.set_collision_mask_value(2, true)
 	if visibility_notifier:
 		stay_idle = not visibility_notifier.is_on_screen()

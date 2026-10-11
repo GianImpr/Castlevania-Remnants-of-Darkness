@@ -9,14 +9,15 @@ func enter():
 	player.velocity.x = 0
 	if player.activated_AI:
 		duration_timer.start()
+	
+func Update(delta: float):
 	if Global.player.global_position.x > player.global_position.x and player.facing_position == -1:
 		player.facing_position = 1
 		turn_around()
 	elif Global.player.global_position.x < player.global_position.x and player.facing_position == 1:
 		player.facing_position = -1
 		turn_around()
-	
-func Update(delta: float):
+
 	if player.activated_AI and duration_timer.is_stopped():
 		duration_timer.start()
 		player.vision.set_deferred("disabled", true)
