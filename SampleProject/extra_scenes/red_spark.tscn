@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://jvlxbvrpvbmy"]
+[gd_scene format=3 uid="uid://jvlxbvrpvbmy"]
 
-[ext_resource type="Script" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="1_pjrsl"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/AudioLibrary.gd" id="2_st27m"]
-[ext_resource type="Script" path="res://SampleProject/Scripts/soundEffect.gd" id="3_8e0c0"]
+[ext_resource type="Script" uid="uid://b6rmc6evqalxh" path="res://SampleProject/Scripts/polyphonic_audio_player.gd" id="1_pjrsl"]
+[ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="2_st27m"]
+[ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="3_8e0c0"]
 [ext_resource type="AudioStream" uid="uid://rbu53sdiqr3y" path="res://assets/sounds/Powerups/RedSpark/RedSpark.mp3" id="4_ng3cf"]
 
 [sub_resource type="Resource" id="Resource_5t6oh"]
@@ -75,33 +75,34 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_83rdi"]
 _data = {
-"RESET": SubResource("Animation_vit62"),
-"spark": SubResource("Animation_tc004")
+&"RESET": SubResource("Animation_vit62"),
+&"spark": SubResource("Animation_tc004")
 }
 
 [sub_resource type="Gradient" id="Gradient_pe6de"]
-offsets = PackedFloat32Array(0, 0.514523, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.04644809, 0.18579236, 0.9972678)
+colors = PackedColorArray(1, 1, 1, 0.6627451, 1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kpp0p"]
 gradient = SubResource("Gradient_pe6de")
-height = 96
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
-[node name="RedSpark" type="Node2D"]
+[node name="RedSpark" type="Node2D" unique_id=85078025]
 
-[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="PolyphonicAudio" type="AudioStreamPlayer2D" parent="." unique_id=1044098722]
 volume_db = -15.0
 script = ExtResource("1_pjrsl")
 audio_library = SubResource("Resource_ht8at")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_83rdi")
-}
-autoplay = "spark"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1819541793]
+libraries/ = SubResource("AnimationLibrary_83rdi")
+autoplay = &"spark"
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1771272299]
 color = Color(0.86357, 0, 0.00457329, 1)
 energy = 2.0
 texture = SubResource("GradientTexture2D_kpp0p")
-offset = Vector2(0, 24)
+texture_scale = 4.51
