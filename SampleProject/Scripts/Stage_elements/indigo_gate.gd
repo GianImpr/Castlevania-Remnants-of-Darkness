@@ -27,4 +27,4 @@ static func checkGateUnlocked() -> void:
 	const MESSAGE_DURATION_SECONDS: float = 2
 	if checkGateIsOpen():
 		Global.tutorial_box.popup(HINT_17_MESSAGE, MESSAGE_DURATION_SECONDS)
-	opened = true
+		opened = true
