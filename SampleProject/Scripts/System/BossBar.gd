@@ -11,6 +11,8 @@ var enemy: Enemy:
 @export var yellow_damage: TextureProgressBar
 @export var blue_damage: TextureProgressBar
 @export var damage_display_duration: Timer
+@export var label: Label
+@export var orb_animation: AnimationPlayer
 var displayed_HP: int = 0
 var displayed_MHP: int = 1
 var damage_deplete_tween: Tween
@@ -22,11 +24,15 @@ func _ready():
 func prepareBar(body: Enemy):
 	displayed_HP = body.stats.HP
 	displayed_MHP = body.stats.HP
+	label.text = body.stats.enemy_name
 	animation.play("initialize")
+	orb_animation.play("pulse_slow")
 	
 func _process(delta: float) -> void:
 	if enemy == null and visible:
 		animation.play("vanish")
+		await animation.animation_finished
+		orb_animation.stop()
 	if enemy == null:
 		return
 	if displayed_HP > enemy.stats.HP:
@@ -37,7 +43,8 @@ func _process(delta: float) -> void:
 		animation.play("shake")
 		damage_display_duration.start()
 		updateBar()
-		
+		if enemy.stats.HP <= displayed_MHP/2:
+			orb_animation.play("pulse_fast")
 		
 func updateBar():
 	yellow_bar.value = float(displayed_HP)/(displayed_MHP/2)*yellow_bar.max_value
