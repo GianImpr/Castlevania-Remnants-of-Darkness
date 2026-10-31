@@ -1937,7 +1937,7 @@ process_material = SubResource("ParticleProcessMaterial_wge43")
 [node name="LaserEffect" type="GPUParticles2D" parent="." unique_id=2141164099]
 z_index = 20
 material = SubResource("CanvasItemMaterial_0rct7")
-position = Vector2(88, 76)
+position = Vector2(28, 79)
 emitting = false
 amount = 1200
 texture = ExtResource("12_4uvrp")
@@ -1965,10 +1965,12 @@ one_shot = true
 autostart = true
 
 [node name="LaserHitbox" type="Area2D" parent="." unique_id=1065040121]
+position = Vector2(-59, 0)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LaserHitbox" unique_id=770398089]
+visible = false
 position = Vector2(738, 79)
 scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_1an2b")
