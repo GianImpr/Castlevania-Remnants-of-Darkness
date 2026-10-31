@@ -68,7 +68,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 
 func _on_thrust_area_entered(area: Area2D) -> void:
 	var body = area.get_parent()
-	hit_target(1.5, body, thrust_hitbox, 5, false, StaticGlobal.Attribute.HIT, 1, true)
+	hit_target(1.5, body, thrust_hitbox, 5, false, StaticGlobal.Attribute.SLASH, 1, true)
 
 
 func _on_shockwave_area_entered(area: Area2D) -> void:

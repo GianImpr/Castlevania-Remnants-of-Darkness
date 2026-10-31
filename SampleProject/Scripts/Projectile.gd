@@ -36,8 +36,8 @@ func calculate_damage(body, multiplier: float = 1, knockback: bool = false) -> i
 			get_parent().destroy()
 		damage = damage + chip_damage
 		if body.isPerfectGuarding():
-			body.stats.Stats["MP"] = min(body.stats.Stats["MMP"], body.stats.Stats["MP"]+floor(damage/10)+10)
-			body.heal_innocent(floor(damage/10)+1)
+			body.stats.Stats["MP"] = min(body.stats.Stats["MMP"], body.stats.Stats["MP"]+floor(min(damage,0)/10)+10)
+			body.heal_innocent(floor(min(damage,0)/10)+1)
 			body.stats.Stats["Guard"] = 3
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.PERFECT_GUARD)
 			TrainingSettings.spawnTrainingHeart(TrainingMode.Training.GUARD)

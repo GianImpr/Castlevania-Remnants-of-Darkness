@@ -498,6 +498,18 @@ tracks/29/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("VerticalThrust/CollisionShape2D:disabled")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_pmnq5"]
 resource_name = "appearing"
@@ -1016,6 +1028,18 @@ tracks/2/keys = {
 "args": ["thrust"],
 "method": &"play_sound_effect_from_library"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VerticalThrust/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.85, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_6bogu"]
@@ -1587,6 +1611,9 @@ size = Vector2(41, 109)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j0fdl"]
 size = Vector2(113, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msljq"]
+size = Vector2(45.977013, 144.82758)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lakvy"]
 size = Vector2(2432, 20)
 
@@ -1900,7 +1927,6 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Thrust" type="Area2D" parent="." unique_id=1339806580]
-visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -1908,6 +1934,17 @@ collision_mask = 2
 position = Vector2(77.5, 90)
 scale = Vector2(0.87, 0.87)
 shape = SubResource("RectangleShape2D_j0fdl")
+disabled = true
+debug_color = Color(0.983864, 0, 0.349033, 0.42)
+
+[node name="VerticalThrust" type="Area2D" parent="." unique_id=1540031882]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VerticalThrust" unique_id=1220780140]
+position = Vector2(61.999996, 86.99999)
+scale = Vector2(0.87, 0.87)
+shape = SubResource("RectangleShape2D_msljq")
 disabled = true
 debug_color = Color(0.983864, 0, 0.349033, 0.42)
 
@@ -2022,6 +2059,7 @@ process_material = SubResource("ParticleProcessMaterial_edw4s")
 [connection signal="timeout" from="StateMachine/Dying/Head_disappear_delay" to="StateMachine/Dying" method="_on_head_disappear_delay_timeout"]
 [connection signal="timeout" from="StateMachine/Dying/Free_delay" to="StateMachine/Dying" method="_on_free_delay_timeout"]
 [connection signal="area_entered" from="Thrust" to="." method="_on_thrust_area_entered"]
+[connection signal="area_entered" from="VerticalThrust" to="." method="_on_thrust_area_entered"]
 [connection signal="area_entered" from="Shockwave" to="." method="_on_shockwave_area_entered"]
 [connection signal="timeout" from="Spikes" to="." method="_on_spikes_timeout"]
 [connection signal="timeout" from="Fangs" to="StateMachine/Throw_head" method="_on_fangs_timeout"]
