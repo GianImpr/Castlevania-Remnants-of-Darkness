@@ -27,6 +27,7 @@ enum Inventory {
 enum Weapons {
 	SHORT_SWORD,
 	BULLOVA,
+	BAMBOO_SWORD,
 	CLAYMORE,
 	ZWEIHANDER,
 	MACE,
