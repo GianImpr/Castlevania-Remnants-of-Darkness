@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://c8movixc3pc7b" path="res://SampleProject/Scripts/AudioLibrary.gd" id="6_6kxn5"]
 [ext_resource type="Script" uid="uid://o0uxsdxy5fxd" path="res://SampleProject/Scripts/soundEffect.gd" id="7_8x1te"]
 [ext_resource type="AudioStream" uid="uid://dtqfaqn26ut0b" path="res://assets/sounds/HectorMovement/SwingGreatsword.MP3" id="7_qp0vv"]
-[ext_resource type="Texture2D" uid="uid://2k2u65dycquu" path="res://assets/sprites/Weapons/Greatswords/Durandal.png" id="8_bljob"]
+[ext_resource type="Texture2D" uid="uid://265nd2t85vfk" path="res://assets/sprites/Weapons/Greatswords/Zweihander.png" id="9_gnvqi"]
 [ext_resource type="Texture2D" uid="uid://dkxgqvaj0gxh" path="res://assets/sprites/Weapons/Swords/Circle.png" id="9_qp0vv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_to7n8"]
@@ -152,11 +152,10 @@ metadata/_custom_type_script = "uid://b6rmc6evqalxh"
 
 [node name="Sword" type="Sprite2D" parent="." unique_id=210785697]
 scale = Vector2(-2, 2)
-texture = ExtResource("8_bljob")
-offset = Vector2(-18, -28)
-hframes = 11
-vframes = 2
-frame = 10
+texture = ExtResource("9_gnvqi")
+offset = Vector2(-23, -35)
+hframes = 9
+frame = 7
 
 [node name="Trail" type="Sprite2D" parent="Sword" unique_id=1066638311]
 modulate = Color(1, 1, 1, 0.657)

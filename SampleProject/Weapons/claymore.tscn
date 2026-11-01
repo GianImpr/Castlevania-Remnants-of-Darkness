@@ -468,6 +468,31 @@ vframes = 2
 script = ExtResource("2_dv0vu")
 animation = NodePath("AnimationPlayer")
 hitbox = NodePath("PlayerHitbox")
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": true,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://assets/editor_data/ase/Zweihander-export.ase",
+"source_uid": 7426543934313429623
+}
 
 [node name="PlayerHitbox" type="Area2D" parent="." unique_id=1197219596 node_paths=PackedStringArray("hitbox", "trail")]
 collision_layer = 8
