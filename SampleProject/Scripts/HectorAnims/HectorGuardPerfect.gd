@@ -2,11 +2,11 @@ extends State
 class_name HectorGuardPerfect
 var can_perfect_guard: bool = true
 
-
 func enter():
 	player.times_guard_pressed = 0
 	player.velocity.x = 0
 	animation.play("perfect_guarding", -1, 2.8)
+	player.perfectGuardEffect()
 	sound.play_sound_effect_from_library("perfect_guard")
 	
 	if player.stats.canApplySkill(Skill.Skills.PERFECT_CHARGE) and player.cur_charge != HectorPlayer.Charge.NONE:

@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://cf8ehmvsei5jj"]
+
+[ext_resource type="Script" uid="uid://cgfob7rhwiij1" path="res://SampleProject/Scripts/Powers/perfect_guard.gd" id="1_2ui55"]
+[ext_resource type="Texture2D" uid="uid://b8qb032kqexjy" path="res://assets/sprites/Effects/PerfectGuardFlash.png" id="2_je55j"]
+
+[sub_resource type="Animation" id="Animation_2ui55"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Flash1:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Flash2:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_je55j"]
+resource_name = "play"
+length = 0.35
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flash1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06, 0.34),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(3, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Flash2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06, 0.34),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(3, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Flash1:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.34),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1.353256, 1.353256, 1.353256, 1), Color(0.50534403, 0.5053441, 0.50534403, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Flash2:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.34),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1.353256, 1.353256, 1.353256, 1), Color(0.50534403, 0.5053441, 0.50534403, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ka603"]
+_data = {
+&"RESET": SubResource("Animation_2ui55"),
+&"play": SubResource("Animation_je55j")
+}
+
+[node name="PerfectGuard" type="Node2D" unique_id=449009710 node_paths=PackedStringArray("flash_1", "flash_2")]
+z_index = 15
+script = ExtResource("1_2ui55")
+flash_1 = NodePath("Flash1")
+flash_2 = NodePath("Flash2")
+
+[node name="Flash1" type="Sprite2D" parent="." unique_id=1507819170]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_je55j")
+
+[node name="Flash2" type="Sprite2D" parent="." unique_id=1319966616]
+self_modulate = Color(0, 0, 0, 0)
+texture = ExtResource("2_je55j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1385109456]
+libraries/ = SubResource("AnimationLibrary_ka603")
+autoplay = &"play"

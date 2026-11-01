@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b8vobg221ljdw" path="res://assets/sprites/Weapons/Swords/Short Sword/UpdatedShortSwordSheathe.png" id="5_2yxjc"]
 [ext_resource type="Script" uid="uid://du6q5lvd43qsi" path="res://SampleProject/Scripts/Editor/animation_parser.gd" id="5_wm7jr"]
 [ext_resource type="Texture2D" uid="uid://dqgyixf5jxmd4" path="res://assets/sprites/Weapons/Swords/Short Sword/UpdatedShortSwordSheatheTrail.png" id="6_ljmr6"]
-[ext_resource type="Texture2D" uid="uid://265nd2t85vfk" path="res://assets/sprites/Weapons/Greatswords/Zweihander.png" id="7_o702q"]
-[ext_resource type="Texture2D" uid="uid://cmnnmwe8svtr" path="res://assets/sprites/Weapons/Greatswords/ZweihanderTrail.png" id="8_wm7jr"]
+[ext_resource type="Texture2D" uid="uid://s1w7bu866q3b" path="res://assets/sprites/Weapons/Knuckles/BrassKnuckles.png" id="7_ljmr6"]
+[ext_resource type="PackedScene" uid="uid://cf8ehmvsei5jj" path="res://SampleProject/extra_scenes/effects/perfect_guard.tscn" id="8_o702q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8u0y"]
 shader = ExtResource("1_qmig6")
@@ -73,62 +73,56 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Greatsword/Weapon:frame")
+tracks/4/path = NodePath(".:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [307]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Greatsword/Weapon:position")
+tracks/5/path = NodePath("Knuckles:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-10, 10)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Greatsword/Weapon/Sheathe:frame")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [20]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Greatsword/Weapon/Sheathe:self_modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+
+[sub_resource type="Animation" id="Animation_ax5x4"]
+resource_name = "fist_1"
+length = 0.9
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03999999, 0.07999998, 0.100000024, 0.15000004, 0.21999997, 0.27000004, 0.31, 0.34999996, 0.39, 0.69, 0.76, 0.83),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Greatsword/Weapon:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Knuckles:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.099999994, 0.22, 0.29000002, 0.33999997, 0.38, 0.42000002, 0.45999998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 21, 22, 23, 24, 25, 26, 27, 28, 29]
 }
 
 [sub_resource type="Animation" id="Animation_25qa8"]
@@ -148,66 +142,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Greatsword/Weapon:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.09, 0.14, 0.19, 0.27, 0.33, 0.39, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Greatsword/Weapon:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(2, -5)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Greatsword/Weapon/Sheathe:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.32999998, 0.39),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Greatsword/Weapon/Sheathe:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.26999998, 0.31, 0.32999998, 0.37, 0.39, 0.43, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 0.5), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 0.5), Color(0.5, 0.5, 0.5, 0.5019608), Color(0.5, 0.5, 0.5, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Greatsword/Weapon:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = false
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.65, 0.77),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_wm7jr"]
 resource_name = "greatsword_air"
@@ -225,66 +159,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Greatsword/Weapon:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.09, 0.14, 0.19, 0.27, 0.33, 0.39, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Greatsword/Weapon:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(-2, -13)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Greatsword/Weapon/Sheathe:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.32999998, 0.39),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Greatsword/Weapon/Sheathe:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.26999998, 0.31, 0.32999998, 0.37, 0.39, 0.43, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 0.5), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 0.5), Color(0.5, 0.5, 0.5, 0.5019608), Color(0.5, 0.5, 0.5, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Greatsword/Weapon:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = false
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.65, 0.77),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_kiyyu"]
@@ -304,70 +178,11 @@ tracks/0/keys = {
 "update": 1,
 "values": [300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Greatsword/Weapon:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.09, 0.14, 0.19, 0.27, 0.33, 0.39, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Greatsword/Weapon:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.32999998, 0.39),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Vector2(1, 6), Vector2(1, 3), Vector2(1, -1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Greatsword/Weapon/Sheathe:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.32999998, 0.39),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Greatsword/Weapon/Sheathe:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.26999998, 0.31, 0.32999998, 0.37, 0.39, 0.43, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 0.5), Color(0.5, 0.5, 0.5, 0.5019608), Color(1, 1, 1, 0.5), Color(0.5, 0.5, 0.5, 0.5019608), Color(0.5, 0.5, 0.5, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Greatsword/Weapon:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = false
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.65, 0.77),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ljmr6"]
 _data = {
 &"RESET": SubResource("Animation_2yxjc"),
+&"fist_1": SubResource("Animation_ax5x4"),
 &"greatsword": SubResource("Animation_25qa8"),
 &"greatsword_air": SubResource("Animation_wm7jr"),
 &"greatsword_crouch": SubResource("Animation_kiyyu")
@@ -590,13 +405,17 @@ texture = ExtResource("6_ljmr6")
 hframes = 13
 frame = 12
 
-[node name="Greatsword" type="Node2D" parent="." unique_id=1674085381]
+[node name="Knuckles" type="Sprite2D" parent="." unique_id=760534084]
+position = Vector2(19.5, 1.5)
+texture = ExtResource("7_ljmr6")
+hframes = 10
+vframes = 5
+frame = 20
 
-[node name="Weapon" type="Sprite2D" parent="Greatsword" unique_id=938760125]
-position = Vector2(-10, 10)
-texture = ExtResource("7_o702q")
-hframes = 9
+[node name="PerfectGuard" parent="." unique_id=449009710 instance=ExtResource("8_o702q")]
+top_level = true
 
-[node name="Sheathe" type="Sprite2D" parent="Greatsword/Weapon" unique_id=822309115]
-texture = ExtResource("8_wm7jr")
-hframes = 3
+[node name="Flash2" parent="PerfectGuard" index="1" unique_id=1319966616]
+self_modulate = Color(0, 0, 0, 0)
+
+[editable path="PerfectGuard"]

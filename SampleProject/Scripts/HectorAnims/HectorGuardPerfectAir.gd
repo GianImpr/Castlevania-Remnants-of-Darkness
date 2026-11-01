@@ -7,6 +7,7 @@ func enter():
 	player.times_guard_pressed = 0
 	animation.play("perfect_guarding_air", -1, 2.8)
 	sound.play_sound_effect_from_library("perfect_guard")
+	player.perfectGuardEffect()
 	player.velocity.y = INITIAL_HEIGHT_BOOST
 
 	if player.stats.canApplySkill(Skill.Skills.PERFECT_CHARGE) and player.cur_charge != HectorPlayer.Charge.NONE:

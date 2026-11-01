@@ -47,6 +47,7 @@ class_name HectorPlayer
 @export var aguni_flames: PackedScene
 @export var aquarius_trap: PackedScene
 @export var relic_sounds: PolyphonicAudio
+@export var perfect_guard_vfx: PackedScene
 
 const AGUNI_LAUREL_COST_PER_SECOND: int = 15
 var aguni_mp_consumption: float = 0
@@ -679,3 +680,8 @@ func isWeak() -> bool:
 
 func isPetrified() -> bool:
 	return state_machine.current_state is HectorPetrified
+
+func perfectGuardEffect() -> void:
+	var perfect_guard = perfect_guard_vfx.instantiate()
+	perfect_guard.global_position = global_position
+	MetSys.get_current_room_instance().add_child(perfect_guard)
