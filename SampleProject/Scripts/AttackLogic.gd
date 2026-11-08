@@ -292,8 +292,6 @@ func calculateDamage(body: Node2D, magical: bool = false) -> int:
 	if body.poisoned:
 		damage *= POISONED_ENEMY_DAMAGE_MULTIPLIER
 		
-	if not TrainingSettings.can_deal_damage and Global.screen == Global.ScreenType.TRAINING:
-		return 0
 		
 	if Global.player.state_machine.current_state is HectorSneakAttack:
 		damage = damage * SNEAK_ATTACK_MULTIPLIER_BOOST + SNEAK_ATTACK_DAMAGE_BOOST
@@ -324,7 +322,10 @@ func applyDamage(body: Node2D, damage: int, physical_based_sound: bool = true) -
 	multiplier_rate = max(multiplier_rate, 1)
 	damage *= log(multiplier_rate) / log(2)
 	damage = max(damage, 1)
-	
+
+	if not TrainingSettings.can_deal_damage and Global.screen == Global.ScreenType.TRAINING:
+		return 0
+
 	body.damage_popup.popup(damage, 1)
 	body.stats.HP -= damage
 	return damage
