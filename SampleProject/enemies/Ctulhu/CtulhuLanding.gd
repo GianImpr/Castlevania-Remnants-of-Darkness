@@ -7,7 +7,7 @@ func enter():
 	player.flying = false
 
 func exit():
-	pass
+	can_turnaround_with_scale()
 
 func Update(delta: float):
 	enemy_can_die()
