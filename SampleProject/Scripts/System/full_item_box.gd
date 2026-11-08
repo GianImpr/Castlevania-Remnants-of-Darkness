@@ -14,6 +14,8 @@ enum Type {
 	RED
 }
 
+signal closed
+
 func _ready() -> void:
 	Global.full_item_box = self
 	
@@ -36,6 +38,7 @@ func dismiss() -> void:
 	await animation.animation_finished
 	Global.screen = Global.ScreenType.NONE
 	get_tree().paused = false
+	closed.emit()
 
 func _setBoxColor(type: Type) -> void:
 	var stylebox = StyleBoxTexture.new()

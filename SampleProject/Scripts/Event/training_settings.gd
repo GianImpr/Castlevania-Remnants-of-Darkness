@@ -58,6 +58,7 @@ func _process(delta: float) -> void:
 		Global.tutorial_box.time = 2
 		if Global.training_menu.trainings[cur_challenge-1].max_challenge_level != TrainingMode.TrainingLevel.ADVANCED:
 			Global.tutorial_box.text = "[color=#00FF00]Challenge completed![/color]"
+			spawnReward()
 		else:
 			Global.tutorial_box.text = "[color=#00FF00]Section completed![/color]"
 			spawnReward()
@@ -92,8 +93,11 @@ func spawnReward() -> void:
 	if reward_type != PickUp.ItemType.ARTIFACT:
 		reward.global_position = Global.player.global_position+Vector2(0,-300)
 	else:
-		reward.global_position = Global.player.global_position
+		reward.global_position = Global.player.global_position+Vector2(0,0)
 	MetSys.get_current_room_instance().call_deferred("add_child", reward)
+	await get_tree().create_timer(1).timeout
+	if reward:
+		reward.global_position = Global.player.global_position
 
 ## Spawns a heart if the current training mode is being played.
 static func spawnTrainingHeart(cur_training: TrainingMode.Training, custom_position: Vector2 = Vector2.ZERO) -> void:
@@ -101,6 +105,9 @@ static func spawnTrainingHeart(cur_training: TrainingMode.Training, custom_posit
 		_spawnHeart(custom_position)
 
 func returnToTrainingMenu() -> void:
+	if Global.screen == Global.ScreenType.ITEM_BOX:
+		await Global.full_item_box.closed
+		await get_tree().create_timer(2.5, true).timeout
 	Global.player.stats.Stats["HP"] = Global.player.stats.Stats["MHP"]
 	Global.player.stats.Stats["MP"] = Global.player.stats.Stats["MMP"]
 	Global.player.heal_innocent(9999)
