@@ -192,6 +192,8 @@ func createHitEffect(body: Node2D) -> void:
 				hit_effect = ice_hit_collision_scene.instantiate()
 			Global.Attribute.FIRE:
 				hit_effect = fire_hit_collision_scene.instantiate()
+			_:
+				hit_effect = hit_collision_scene.instantiate()
 				
 	hit_effect.position = Vector2(effect_x, effect_y)
 	Global.player.get_parent().add_child(hit_effect)
@@ -321,6 +323,7 @@ func applyDamage(body: Node2D, damage: int, physical_based_sound: bool = true) -
 	
 	multiplier_rate = max(multiplier_rate, 1)
 	damage *= log(multiplier_rate) / log(2)
+	damage = max(damage, 1)
 	
 	body.damage_popup.popup(damage, 1)
 	body.stats.HP -= damage

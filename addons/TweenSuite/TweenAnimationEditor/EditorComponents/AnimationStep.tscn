@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://b4un04tpw10g5"]
+
+[ext_resource type="Script" uid="uid://bxd0cjjl161o5" path="res://addons/TweenSuite/TweenAnimationEditor/EditorComponents/AnimationStep.gd" id="1_dww5o"]
+[ext_resource type="Script" uid="uid://c4tys8q3qunhe" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/FormatLabel.gd" id="2_44ei7"]
+[ext_resource type="Script" uid="uid://dfl3iso3r7x0m" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/EditorButton.gd" id="2_dqn4s"]
+
+[node name="PanelContainer" type="PanelContainer" unique_id=1024715189]
+offset_right = 110.0
+offset_bottom = 71.0
+script = ExtResource("1_dww5o")
+
+[node name="AnimationStep" type="HBoxContainer" parent="." unique_id=1141657553]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AnimationStep" unique_id=1156915267]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AnimationStep/VBoxContainer" unique_id=100107032]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AnimationStep/VBoxContainer/MarginContainer" unique_id=314168944]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AnimationStep/VBoxContainer/MarginContainer/HBoxContainer" unique_id=395608061]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="AnimationStep/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1971570964]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Step"
+horizontal_alignment = 1
+
+[node name="HeaderLabel" type="Label" parent="AnimationStep/VBoxContainer/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1517929422]
+unique_name_in_owner = true
+modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "#%d"
+horizontal_alignment = 1
+script = ExtResource("2_44ei7")
+
+[node name="Button" type="Button" parent="AnimationStep/VBoxContainer/MarginContainer/HBoxContainer" unique_id=951631887]
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("2_dqn4s")
+icon_name = &"Remove"
+
+[node name="HSeparator" type="HSeparator" parent="AnimationStep/VBoxContainer" unique_id=1701366329]
+layout_mode = 2
+
+[node name="Tweeners" type="VBoxContainer" parent="AnimationStep/VBoxContainer" unique_id=922001378]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AddTweener" type="MenuButton" parent="AnimationStep/VBoxContainer" unique_id=1125515095]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+text = "Add Tweener"
+flat = false
+item_count = 6
+popup/item_0/text = "Property"
+popup/item_0/id = 0
+popup/item_1/text = "Interval"
+popup/item_1/id = 1
+popup/item_2/text = "Callback"
+popup/item_2/id = 2
+popup/item_3/text = "Method"
+popup/item_3/id = 3
+popup/item_4/text = "Subtween"
+popup/item_4/id = 4
+popup/item_5/text = "Await"
+popup/item_5/id = 5
+
+[connection signal="pressed" from="AnimationStep/VBoxContainer/MarginContainer/HBoxContainer/Button" to="." method="delete_me"]

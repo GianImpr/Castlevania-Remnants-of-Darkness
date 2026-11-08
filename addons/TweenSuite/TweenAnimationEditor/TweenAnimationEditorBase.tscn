@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://do14sdvibpe0k"]
+
+[ext_resource type="Texture2D" uid="uid://bcfuug33fy4te" path="res://addons/TweenSuite/Icons/TweensDock.svg" id="1_c5fk2"]
+[ext_resource type="Script" uid="uid://bqrk8t65vtnb6" path="res://addons/TweenSuite/TweenAnimationEditor/TweenAnimationEditorBase.gd" id="1_c8gub"]
+[ext_resource type="PackedScene" uid="uid://c5al8etaem6a6" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/ObjectEdit.tscn" id="2_es7qw"]
+[ext_resource type="Script" uid="uid://dfl3iso3r7x0m" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/EditorButton.gd" id="2_ls5q1"]
+
+[node name="Tweens" type="EditorDock" unique_id=319922475]
+offset_right = 204.0
+offset_bottom = 179.0
+accessibility_name = "Tweens"
+accessibility_region = true
+global = false
+transient = true
+dock_icon = ExtResource("1_c5fk2")
+default_slot = 8
+available_layouts = 6
+script = ExtResource("1_c8gub")
+
+[node name="Tweens" type="HBoxContainer" parent="." unique_id=1407460882]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tweens" unique_id=178915973]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Tweens/VBoxContainer" unique_id=1079282931]
+layout_mode = 2
+text = "Test Play Root Node"
+horizontal_alignment = 1
+
+[node name="RootPathEdit" parent="Tweens/VBoxContainer" unique_id=1338486298 instance=ExtResource("2_es7qw")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Tweens/VBoxContainer" unique_id=661189104]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="Tweens/VBoxContainer" unique_id=1090546674]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Play"
+script = ExtResource("2_ls5q1")
+icon_name = &"Play"
+
+[node name="Stop" type="Button" parent="Tweens/VBoxContainer" unique_id=834528859]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Stop"
+script = ExtResource("2_ls5q1")
+icon_name = &"Stop"
+
+[node name="AnimationView" type="ScrollContainer" parent="Tweens" unique_id=1318554868]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="Tweens/VBoxContainer/Play" to="." method="play_animation"]
+[connection signal="pressed" from="Tweens/VBoxContainer/Stop" to="." method="stop_animation"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d08ri5ior6sua"]
+
+[ext_resource type="Script" uid="uid://db1ho3deqt15t" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/MethodEdit.gd" id="1_s48qg"]
+[ext_resource type="Script" uid="uid://dfl3iso3r7x0m" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/EditorButton.gd" id="2_y22s4"]
+
+[node name="MethodEdit" type="HBoxContainer"]
+script = ExtResource("1_s48qg")
+
+[node name="Name" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PickButton" type="Button" parent="."]
+layout_mode = 2
+script = ExtResource("2_y22s4")
+icon_name = &"Edit"
+
+[connection signal="pressed" from="PickButton" to="." method="pick"]

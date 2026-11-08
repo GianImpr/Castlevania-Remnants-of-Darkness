@@ -19,6 +19,8 @@ var facing_position: int
 @export_category("Other")
 @export var state_machine: Node
 var max_HP: int
+var previous_move: String
+
 
 const ACTIONS = {
 	BEAM = "beam",
@@ -76,6 +78,11 @@ func decideAction() -> void:
 		state_machine.current_state.Transitioned.emit(state_machine.current_state, "sword")
 		return
 	var action: String = ACTIONS.values().pick_random()
+	
+	if previous_move == action:
+		action = ACTIONS.values().pick_random()
+
+	previous_move = action
 	if stats.HP > max_HP/1.3 and action == "stone_circle":
 		action = ["sword", "beam", "dash"].pick_random()
 	state_machine.current_state.Transitioned.emit(state_machine.current_state, action)

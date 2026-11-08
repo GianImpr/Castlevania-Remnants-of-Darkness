@@ -50,7 +50,7 @@ shader_parameter/petrified = true
 size = Vector2(30.5, 61.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1ylr"]
-size = Vector2(20.5, 43)
+size = Vector2(13, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e6cgv"]
 size = Vector2(578, 166.5)
@@ -944,8 +944,8 @@ ATK = 50
 DEF = 10
 RES = 25
 EXP = 1500
-weaknesses = Array[int]([2, 3])
-tolerances = Array[int]([1, 7, 6, 12])
+weaknesses = Array[int]([2, 3, 5])
+tolerances = Array[int]([7, 6, 12])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=514738193]
 self_modulate = Color(1, 1, 1, 0)
@@ -966,7 +966,7 @@ collision_mask = 2
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Hitbox" unique_id=363544246]
 visible = false
-position = Vector2(-4.25, 11.5)
+position = Vector2(-0.5, 11.5)
 shape = SubResource("RectangleShape2D_x1ylr")
 
 [node name="Vision" type="Area2D" parent="." unique_id=1865640636]

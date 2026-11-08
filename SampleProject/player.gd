@@ -48,6 +48,7 @@ class_name HectorPlayer
 @export var aquarius_trap: PackedScene
 @export var relic_sounds: PolyphonicAudio
 @export var perfect_guard_vfx: PackedScene
+@export var outline_scene: PackedScene
 
 const AGUNI_LAUREL_COST_PER_SECOND: int = 15
 var aguni_mp_consumption: float = 0
@@ -106,6 +107,10 @@ const HEAVY_WATER_GRAVITY_MULTIPLIER: float = 2
 
 const CHARGE_ONE_COST_RATIO: int = 10
 const PERFECT_CHARGE_REGEN: int = 20
+const OUTLINES_ON_POWER_UP: int = 8
+const OUTLINE_INTERVAL_SECONDS: float = 0.1
+const OUTLINE_ON_POWER_UP_COLOR: Color = Color(0,0,1)
+
 var cur_charge: Charge = Charge.NONE
 var times_guard_pressed: int = 0
 var can_double_jump: bool = true
@@ -310,6 +315,7 @@ func weaponRankUp():
 func levelUp():
 	var popup = boost_message.instantiate()
 	sprite.enable_glow = true # Rainbow effect on Hector
+	powerUpOutlineEffect()
 	add_child(popup)
 	while stats.Stats["EXP"] >= expNeededToLvUp() and stats.Stats["LV"] < 99:
 		stats.Stats["LV"] += 1
@@ -685,3 +691,19 @@ func perfectGuardEffect() -> void:
 	var perfect_guard = perfect_guard_vfx.instantiate()
 	perfect_guard.global_position = global_position
 	MetSys.get_current_room_instance().add_child(perfect_guard)
+
+func createOutline(color: Color, play_back: bool) -> void:
+	var outline: Outline = outline_scene.instantiate()
+	outline.process_mode = Node.PROCESS_MODE_ALWAYS
+	outline.global_position = global_position
+	outline.rotation_degrees = sprite.rotation_degrees
+	MetSys.get_current_room_instance().add_child(outline)
+	if play_back:
+		outline.playBackwards(color)
+	else:
+		outline.play(color)
+
+func powerUpOutlineEffect() -> void:
+	for i in range(0, OUTLINES_ON_POWER_UP):
+		await get_tree().create_timer(OUTLINE_INTERVAL_SECONDS).timeout
+		createOutline(OUTLINE_ON_POWER_UP_COLOR, false)

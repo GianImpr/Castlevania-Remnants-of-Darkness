@@ -21,6 +21,7 @@ func _on_area_2d_area_entered(area_body: Area2D) -> void:
 	Global.player.stats.Stats["HP"] = Global.player.stats.Stats["MHP"]
 	Global.player.sprite.enable_glow = true
 	Global.player.add_child(popup)
+	Global.player.powerUpOutlineEffect()
 	Global.player.stats.picked_items[pickup_flag] = true
 	visible = false
 	area.set_deferred("monitoring", false)

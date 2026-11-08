@@ -100,6 +100,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("debug"):
 		for i in range(0, save_flags.size()):
 			save_flags[i] = true
+		Global.player.levelUp()
 		Global.player.unlockMagic()
 		for i in range(0, compendiums.size()):
 			for j in range(1, compendiums[i].size()+1):

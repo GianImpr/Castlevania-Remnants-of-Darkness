@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bll2vfhufokvu"]
+
+[ext_resource type="Script" uid="uid://bfl1syvfjqxm" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/SignalEdit.gd" id="1_g10if"]
+[ext_resource type="Script" uid="uid://dfl3iso3r7x0m" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/EditorButton.gd" id="2_1m43t"]
+
+[node name="SignalEdit" type="HBoxContainer" unique_id=952374640]
+script = ExtResource("1_g10if")
+
+[node name="Name" type="LineEdit" parent="." unique_id=402870112]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PickButton" type="Button" parent="." unique_id=702880187]
+layout_mode = 2
+script = ExtResource("2_1m43t")
+icon_name = &"Edit"
+
+[node name="SignalDialog" type="ConfirmationDialog" parent="." unique_id=467594697]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Select Signal"
+position = Vector2i(0, 36)
+
+[node name="MarginContainer" type="MarginContainer" parent="SignalDialog" unique_id=1636974788]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_type_variation = &"NoBorderHorizontalWindow"
+
+[node name="SignalList" type="Tree" parent="SignalDialog/MarginContainer" unique_id=141538773]
+unique_name_in_owner = true
+auto_translate_mode = 2
+layout_mode = 2
+hide_root = true
+scroll_hint_mode = 1
+
+[connection signal="pressed" from="PickButton" to="." method="pick"]
+[connection signal="confirmed" from="SignalDialog" to="." method="_signal_selected"]
+[connection signal="item_activated" from="SignalDialog/MarginContainer/SignalList" to="." method="_signal_selected"]
+[connection signal="item_selected" from="SignalDialog/MarginContainer/SignalList" to="." method="_on_signal_list_item_selected"]

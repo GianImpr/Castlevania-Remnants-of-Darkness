@@ -6451,6 +6451,7 @@ aguni_flames = ExtResource("122_4xc62")
 aquarius_trap = ExtResource("5_c0ija")
 relic_sounds = NodePath("RelicSounds")
 perfect_guard_vfx = ExtResource("6_stxmr")
+outline_scene = ExtResource("167_4tr32")
 
 [node name="HectorStats" type="Node" parent="." unique_id=1348586030 node_paths=PackedStringArray("poison_tick_timer", "play_time")]
 script = ExtResource("1_f0ls1")
@@ -6755,7 +6756,7 @@ state_machine = NodePath("../../StateMachine")
 hitbox = NodePath("CollisionShape2D")
 hit_collision_scene = ExtResource("5_7iojt")
 ice_hit_collision_scene = ExtResource("105_c2fce")
-base_attribute = Array[int]([1])
+base_attribute = Array[int]([5])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/ThunderUppercutHitbox" unique_id=1669297029]
 position = Vector2(13.25, 2.5)

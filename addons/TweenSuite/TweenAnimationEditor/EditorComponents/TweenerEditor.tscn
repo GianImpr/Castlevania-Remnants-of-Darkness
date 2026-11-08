@@ -1,0 +1,354 @@
+[gd_scene format=3 uid="uid://blplsxu77noo5"]
+
+[ext_resource type="Script" uid="uid://qfrmorfj658w" path="res://addons/TweenSuite/TweenAnimationEditor/EditorComponents/TweenerEditor.gd" id="1_vmb5y"]
+[ext_resource type="Script" uid="uid://c4tys8q3qunhe" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/FormatLabel.gd" id="2_20eyb"]
+[ext_resource type="Script" uid="uid://dfl3iso3r7x0m" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/EditorButton.gd" id="2_kbpp4"]
+[ext_resource type="Script" uid="uid://0qwp7kkklqhy" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/ExpressionEdit.gd" id="3_iulab"]
+[ext_resource type="PackedScene" uid="uid://c5al8etaem6a6" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/ObjectEdit.tscn" id="4_ccge7"]
+[ext_resource type="PackedScene" uid="uid://dkuqneh7wwwbj" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/PropertyEdit.tscn" id="5_dogfc"]
+[ext_resource type="Script" uid="uid://dqoir8pth2ow4" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/OptionHelper.gd" id="7_anet3"]
+[ext_resource type="PackedScene" uid="uid://d08ri5ior6sua" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/MethodEdit.tscn" id="8_ja1xn"]
+[ext_resource type="PackedScene" uid="uid://bll2vfhufokvu" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/SignalEdit.tscn" id="9_anet3"]
+
+[node name="TweenerEditor" type="PanelContainer" unique_id=719963231]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 673.0
+offset_bottom = 378.0
+size_flags_vertical = 0
+script = ExtResource("1_vmb5y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1223696264]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1836391154]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1322348238]
+layout_mode = 2
+
+[node name="ID" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=680456428]
+unique_name_in_owner = true
+modulate = Color(1, 1, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "#%d"
+horizontal_alignment = 1
+script = ExtResource("2_20eyb")
+
+[node name="Type" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1785294310]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1718471702]
+layout_mode = 2
+script = ExtResource("2_kbpp4")
+icon_name = &"Remove"
+
+[node name="PropertyTweener" type="GridContainer" parent="VBoxContainer" unique_id=904031450]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PropertyTweener" unique_id=841602045]
+layout_mode = 2
+text = "Object"
+
+[node name="target" parent="VBoxContainer/PropertyTweener" unique_id=483293148 instance=ExtResource("4_ccge7")]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/PropertyTweener" unique_id=407818712]
+layout_mode = 2
+text = "Property"
+
+[node name="property" parent="VBoxContainer/PropertyTweener" unique_id=918065998 node_paths=PackedStringArray("object_edit") instance=ExtResource("5_dogfc")]
+layout_mode = 2
+object_edit = NodePath("../target")
+
+[node name="Label3" type="Label" parent="VBoxContainer/PropertyTweener" unique_id=761607132]
+layout_mode = 2
+text = "Final Value"
+
+[node name="final_value" type="LineEdit" parent="VBoxContainer/PropertyTweener" unique_id=227347155]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_iulab")
+
+[node name="Label4" type="Label" parent="VBoxContainer/PropertyTweener" unique_id=1077127701]
+layout_mode = 2
+text = "Duration"
+
+[node name="duration" type="SpinBox" parent="VBoxContainer/PropertyTweener" unique_id=1162445776]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1000000.0
+step = 0.001
+value = 1.0
+suffix = "s"
+custom_arrow_step = 0.1
+
+[node name="Label10" type="Label" parent="VBoxContainer/PropertyTweener" unique_id=1158149992]
+layout_mode = 2
+text = "Relative"
+
+[node name="relative" type="CheckBox" parent="VBoxContainer/PropertyTweener" unique_id=1202093591]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label8" type="Label" parent="VBoxContainer/PropertyTweener" unique_id=904888638]
+layout_mode = 2
+text = "Ease"
+
+[node name="easing" type="OptionButton" parent="VBoxContainer/PropertyTweener" unique_id=352426134]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("7_anet3")
+
+[node name="Label9" type="Label" parent="VBoxContainer/PropertyTweener" unique_id=2122807383]
+layout_mode = 2
+text = "Transition"
+
+[node name="transition" type="OptionButton" parent="VBoxContainer/PropertyTweener" unique_id=1399380948]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("7_anet3")
+
+[node name="Label6" type="Label" parent="VBoxContainer/PropertyTweener" unique_id=67797288]
+layout_mode = 2
+text = "From Current"
+
+[node name="from_current" type="CheckBox" parent="VBoxContainer/PropertyTweener" unique_id=361903576]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label5" type="Label" parent="VBoxContainer/PropertyTweener" unique_id=222000669]
+layout_mode = 2
+text = "From"
+
+[node name="from" type="LineEdit" parent="VBoxContainer/PropertyTweener" unique_id=2146208602]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_iulab")
+
+[node name="Label7" type="Label" parent="VBoxContainer/PropertyTweener" unique_id=30064944]
+layout_mode = 2
+text = "Delay"
+
+[node name="delay" type="SpinBox" parent="VBoxContainer/PropertyTweener" unique_id=964902736]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1000000.0
+step = 0.001
+suffix = "s"
+custom_arrow_step = 0.1
+
+[node name="IntervalTweener" type="GridContainer" parent="VBoxContainer" unique_id=1187158714]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/IntervalTweener" unique_id=853855050]
+layout_mode = 2
+text = "Time"
+
+[node name="time" type="SpinBox" parent="VBoxContainer/IntervalTweener" unique_id=1469601547]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1000000.0
+step = 0.001
+value = 1.0
+suffix = "s"
+custom_arrow_step = 0.1
+
+[node name="CallbackTweener" type="GridContainer" parent="VBoxContainer" unique_id=707565561]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/CallbackTweener" unique_id=517058491]
+layout_mode = 2
+text = "Object"
+
+[node name="target" parent="VBoxContainer/CallbackTweener" unique_id=25694124 instance=ExtResource("4_ccge7")]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/CallbackTweener" unique_id=697314471]
+layout_mode = 2
+text = "Method"
+
+[node name="method" parent="VBoxContainer/CallbackTweener" unique_id=2039383623 node_paths=PackedStringArray("object_edit") instance=ExtResource("8_ja1xn")]
+layout_mode = 2
+object_edit = NodePath("../target")
+
+[node name="Label3" type="Label" parent="VBoxContainer/CallbackTweener" unique_id=2037238983]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Binds"
+
+[node name="Label4" type="Label" parent="VBoxContainer/CallbackTweener" unique_id=749895789]
+layout_mode = 2
+text = "Delay"
+
+[node name="delay" type="SpinBox" parent="VBoxContainer/CallbackTweener" unique_id=1347118313]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1000000.0
+step = 0.001
+suffix = "s"
+custom_arrow_step = 0.1
+
+[node name="MethodTweener" type="GridContainer" parent="VBoxContainer" unique_id=1768396999]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MethodTweener" unique_id=669947296]
+layout_mode = 2
+text = "Object"
+
+[node name="target" parent="VBoxContainer/MethodTweener" unique_id=105741066 instance=ExtResource("4_ccge7")]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/MethodTweener" unique_id=1020878144]
+layout_mode = 2
+text = "Method"
+
+[node name="method" parent="VBoxContainer/MethodTweener" unique_id=1244412928 node_paths=PackedStringArray("object_edit") instance=ExtResource("8_ja1xn")]
+layout_mode = 2
+object_edit = NodePath("../target")
+
+[node name="Label3" type="Label" parent="VBoxContainer/MethodTweener" unique_id=1476118632]
+layout_mode = 2
+text = "From"
+
+[node name="from" type="LineEdit" parent="VBoxContainer/MethodTweener" unique_id=920921684]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_iulab")
+
+[node name="Label4" type="Label" parent="VBoxContainer/MethodTweener" unique_id=2012391196]
+layout_mode = 2
+text = "To"
+
+[node name="to" type="LineEdit" parent="VBoxContainer/MethodTweener" unique_id=2060002829]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("3_iulab")
+
+[node name="Label5" type="Label" parent="VBoxContainer/MethodTweener" unique_id=1388203746]
+layout_mode = 2
+text = "Duration"
+
+[node name="duration" type="SpinBox" parent="VBoxContainer/MethodTweener" unique_id=392726347]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1000000.0
+step = 0.001
+value = 1.0
+suffix = "s"
+custom_arrow_step = 0.1
+
+[node name="Label6" type="Label" parent="VBoxContainer/MethodTweener" unique_id=2146046204]
+layout_mode = 2
+text = "Ease"
+
+[node name="easing" type="OptionButton" parent="VBoxContainer/MethodTweener" unique_id=1381890095]
+layout_mode = 2
+script = ExtResource("7_anet3")
+
+[node name="Label7" type="Label" parent="VBoxContainer/MethodTweener" unique_id=1432765606]
+layout_mode = 2
+text = "Transition"
+
+[node name="transition" type="OptionButton" parent="VBoxContainer/MethodTweener" unique_id=1775961360]
+layout_mode = 2
+script = ExtResource("7_anet3")
+
+[node name="Label8" type="Label" parent="VBoxContainer/MethodTweener" unique_id=1829488601]
+layout_mode = 2
+text = "Delay"
+
+[node name="delay" type="SpinBox" parent="VBoxContainer/MethodTweener" unique_id=947625633]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1000000.0
+step = 0.001
+suffix = "s"
+custom_arrow_step = 0.1
+
+[node name="SubtweenTweener" type="GridContainer" parent="VBoxContainer" unique_id=1052323364]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/SubtweenTweener" unique_id=521248543]
+layout_mode = 2
+text = "Sub-Tween"
+
+[node name="subtween" parent="VBoxContainer/SubtweenTweener" unique_id=2121365760 instance=ExtResource("4_ccge7")]
+layout_mode = 2
+filter_type = &"TweenNode"
+
+[node name="Label4" type="Label" parent="VBoxContainer/SubtweenTweener" unique_id=1929572393]
+layout_mode = 2
+text = "Delay"
+
+[node name="delay" type="SpinBox" parent="VBoxContainer/SubtweenTweener" unique_id=1790765804]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1000000.0
+step = 0.001
+suffix = "s"
+custom_arrow_step = 0.1
+
+[node name="AwaitTweener" type="GridContainer" parent="VBoxContainer" unique_id=211628036]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/AwaitTweener" unique_id=741172726]
+layout_mode = 2
+text = "Object"
+
+[node name="target" parent="VBoxContainer/AwaitTweener" unique_id=1536746916 instance=ExtResource("4_ccge7")]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/AwaitTweener" unique_id=2139404754]
+layout_mode = 2
+text = "Signal"
+
+[node name="signal_name" parent="VBoxContainer/AwaitTweener" unique_id=952374640 node_paths=PackedStringArray("object_edit") instance=ExtResource("9_anet3")]
+layout_mode = 2
+object_edit = NodePath("../target")
+
+[node name="Label5" type="Label" parent="VBoxContainer/AwaitTweener" unique_id=1014575329]
+layout_mode = 2
+text = "Timeout"
+
+[node name="timeout" type="SpinBox" parent="VBoxContainer/AwaitTweener" unique_id=1236823472]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -1.0
+max_value = 1000000.0
+step = 0.001
+value = -1.0
+suffix = "s"
+custom_arrow_step = 0.1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=1901640811]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/HBoxContainer/Button" to="." method="delete_me"]
+[connection signal="toggled" from="VBoxContainer/PropertyTweener/from_current" to="." method="from_current_toggled"]

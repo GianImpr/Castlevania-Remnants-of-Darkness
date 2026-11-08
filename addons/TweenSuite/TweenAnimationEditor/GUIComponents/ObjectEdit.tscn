@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5al8etaem6a6"]
+
+[ext_resource type="Script" uid="uid://cqbsi5co62xt4" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/ObjectEdit.gd" id="1_q8p37"]
+[ext_resource type="Script" uid="uid://dfl3iso3r7x0m" path="res://addons/TweenSuite/TweenAnimationEditor/GUIComponents/EditorButton.gd" id="2_726j7"]
+
+[node name="ObjectEdit" type="HBoxContainer"]
+script = ExtResource("1_q8p37")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Path" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+script = ExtResource("2_726j7")
+icon_name = &"Edit"
+
+[connection signal="text_changed" from="Path" to="." method="update_object" unbinds=1]
+[connection signal="pressed" from="Button" to="." method="pick_node"]
