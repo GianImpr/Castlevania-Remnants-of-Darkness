@@ -58,7 +58,6 @@ func _process(delta: float) -> void:
 		Global.tutorial_box.time = 2
 		if Global.training_menu.trainings[cur_challenge-1].max_challenge_level != TrainingMode.TrainingLevel.ADVANCED:
 			Global.tutorial_box.text = "[color=#00FF00]Challenge completed![/color]"
-			spawnReward()
 		else:
 			Global.tutorial_box.text = "[color=#00FF00]Section completed![/color]"
 			spawnReward()
